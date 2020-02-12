@@ -1,13 +1,11 @@
-﻿using CommandLine;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Health.Fhir.SpecManager.Models;
+using CommandLine;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using Microsoft.Health.Fhir.SpecManager.Models;
 
-namespace fhir_binding_generator_cli
+namespace fhir_codegen_cli
 {
     class Program
     {

@@ -1,9 +1,6 @@
 ﻿using CommandLine;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace fhir_binding_generator_cli
+namespace fhir_codegen_cli
 {
     public class Options
     {
