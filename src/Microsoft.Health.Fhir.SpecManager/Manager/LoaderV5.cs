@@ -4,28 +4,28 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using Microsoft.Health.Fhir.SpecManager.Models;
-using fhir_2 = Microsoft.Health.Fhir.SpecManager.fhir.v2;
+using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.v4;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
     ///-------------------------------------------------------------------------------------------------
-    /// <summary>A class to Load a FHIR v4 (R4) Specification</summary>
+    /// <summary>A class to Load a FHIR v5 (R4) Specification</summary>
     ///
     /// <remarks>Gino Canessa, 2/3/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
-    public class LoaderV2
+    public class LoaderV5
     {
         #region Class Constants . . .
 
         /// <summary>Name of the package release.</summary>
-        public const string PackageReleaseName = "DSTU2";
+        public const string PackageReleaseName = "2020Feb";
         /// <summary>Name of the package.</summary>
-        public const string PackageName = "hl7.fhir.r2.core";
+        public const string PackageName = "hl7.fhir.r5.core.tgz";
         /// <summary>The path based on manual downloading of the package.</summary>
-        public const string PathManual = "hl7.fhir.r2.core/package";
+        public const string PathManual = "hl7.fhir.r5.core/package";
         /// <summary>The path based on installing the package using NPM.</summary>
-        public const string PathNpm = "node_modules/hl7.fhir.r2.core";
+        public const string PathNpm = "node_modules/hl7.fhir.r5.core";
 
         #endregion Class Constants . . .
 
@@ -48,7 +48,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <remarks>Gino Canessa, 2/3/2020.</remarks>
         ///-------------------------------------------------------------------------------------------------
 
-        static LoaderV2()
+        static LoaderV5()
         {
             _packageExclusions = new HashSet<string>()
             {
@@ -62,7 +62,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         #region Class Interface . . .
 
         ///-------------------------------------------------------------------------------------------------
-        /// <summary>Searches for the v2 package.</summary>
+        /// <summary>Searches for the v4 package.</summary>
         ///
         /// <remarks>Gino Canessa, 2/12/2020.</remarks>
         ///
@@ -88,7 +88,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                 if (!Directory.Exists(packageDir))
                 {
-                    Console.WriteLine($"TryFindPackage <<< cannot find v2 package ({PathManual} or {PathNpm})!");
+                    Console.WriteLine($"TryFindPackage <<< cannot find v4 package ({PathManual} or {PathNpm})!");
                     return false;
                 }
             }
@@ -100,7 +100,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         ///-------------------------------------------------------------------------------------------------
-        /// <summary>Function to load a DSTU2 spec NPM into an InfoV2 structure.</summary>
+        /// <summary>Function to load an R4 spec NPM into an InfoV5 structure.</summary>
         ///
         /// <remarks>Gino Canessa, 2/3/2020.</remarks>
         ///
@@ -110,7 +110,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <returns>True if it succeeds, false if it fails.</returns>
         ///-------------------------------------------------------------------------------------------------
 
-        public static bool LoadPackage(string npmDirectory, out InfoV2 fhirInfo)
+        public static bool LoadPackage(string npmDirectory, out InfoV5 fhirInfo)
         {
             fhirInfo = null;
 
@@ -126,7 +126,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             if (!FhirPackageInfo.TryLoadPackageInfo(packageDir, out FhirPackageInfo packageInfo))
             {
-                Console.WriteLine($"LoadPackage <<< Failed to load v2 package info, dir: {packageDir}");
+                Console.WriteLine($"LoadPackage <<< Failed to load v5 package info, dir: {packageDir}");
                 return false;
             }
 
@@ -136,7 +136,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             // **** far enough along to create our info structure ****
 
-            fhirInfo = new InfoV2();
+            fhirInfo = new InfoV5();
 
             // **** get the files in this directory ****
 
@@ -144,7 +144,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             // **** grab a converter for polymorphic deserialization ****
 
-            fhir_2.ResourceConverter converter = new fhir_2.ResourceConverter();
+            fhir_5.ResourceConverter converter = new fhir_5.ResourceConverter();
 
             // **** traverse the files ****
 
@@ -169,22 +169,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                 try
                 {
-                    Console.Write($"v2: {shortName,-85}\r");
+                    Console.Write($"v5: {shortName,-85}\r");
 
                     // **** read the file ****
 
                     string contents = File.ReadAllText(filename);
 
-                    // **** parse the file into something v3 (note: var is ~10% faster than dynamic here) ****
+                    // **** parse the file into something v5 (note: var is ~10% faster than dynamic here) ****
 
-                    var obj = JsonConvert.DeserializeObject<fhir_2.Resource>(
+                    var obj = JsonConvert.DeserializeObject<fhir_5.Resource>(
                         contents,
                         converter
                         );
 
                     // **** check for excluded type ****
 
-                    if (InfoV2.IsResourceTypeExcluded(resourceHint))
+                    if (InfoV5.IsResourceTypeExcluded(resourceHint))
                     {
                         // **** skip ****
 
@@ -193,11 +193,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     // **** check for a dictionary for this type ****
 
-                    if (!InfoV2.IsResourceTypeKnown(resourceHint))
+                    if (!InfoV5.IsResourceTypeKnown(resourceHint))
                     {
                         // **** type not found ****
 
-                        Console.WriteLine($"\nLoadFhirV2 <<< Unhandled type: {shortName}, parsed to:{obj.GetType().Name}");
+                        Console.WriteLine($"\nLoadFhirV5 <<< Unhandled type: {shortName}, parsed to:{obj.GetType().Name}");
                         return false;
                     }
 
@@ -205,7 +205,55 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     switch (obj)
                     {
-                        case fhir_2.ConceptMap conceptMap:
+                        case fhir_5.CapabilityStatement capabilityStatement:
+
+                            // **** validate it parsed to what it should ****
+
+                            if (!resourceHint.Equals("CapabilityStatement", StringComparison.Ordinal))
+                            {
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {capabilityStatement.ResourceType,-80}");
+                                return false;
+                            }
+
+                            // **** add to the correct dictionary ****
+
+                            fhirInfo.Capabilities.Add(capabilityStatement.Id, capabilityStatement);
+
+                            break;
+
+                        case fhir_5.CodeSystem codeSystem:
+
+                            // **** validate it parsed to what it should ****
+
+                            if (!resourceHint.Equals("CodeSystem", StringComparison.Ordinal))
+                            {
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {codeSystem.ResourceType,-80}");
+                                return false;
+                            }
+
+                            // **** add to the correct dictionary ****
+
+                            fhirInfo.CodeSystems.Add(codeSystem.Id, codeSystem);
+
+                            break;
+
+                        case fhir_5.CompartmentDefinition compartmentDefinition:
+
+                            // **** validate it parsed to what it should ****
+
+                            if (!resourceHint.Equals("CompartmentDefinition", StringComparison.Ordinal))
+                            {
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {compartmentDefinition.ResourceType,-80}");
+                                return false;
+                            }
+
+                            // **** add to the correct dictionary ****
+
+                            fhirInfo.CompartmentDefinitions.Add(compartmentDefinition.Id, compartmentDefinition);
+
+                            break;
+
+                        case fhir_5.ConceptMap conceptMap:
 
                             // **** validate it parsed to what it should ****
 
@@ -221,23 +269,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             break;
 
-                        case fhir_2.Conformance conformance:
-
-                            // **** validate it parsed to what it should ****
-
-                            if (!resourceHint.Equals("Conformance", StringComparison.Ordinal))
-                            {
-                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {conformance.ResourceType,-80}");
-                                return false;
-                            }
-
-                            // **** add to the correct dictionary ****
-
-                            fhirInfo.Conformances.Add(conformance.Id, conformance);
-
-                            break;
-
-                        case fhir_2.NamingSystem namingSystem:
+                        case fhir_5.NamingSystem namingSystem:
 
                             // **** validate it parsed to what it should ****
 
@@ -253,7 +285,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             break;
 
-                        case fhir_2.OperationDefinition operationDefinition:
+                        case fhir_5.OperationDefinition operationDefinition:
 
                             // **** validate it parsed to what it should ****
 
@@ -269,7 +301,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             break;
 
-                        case fhir_2.SearchParameter searchParameter:
+                        case fhir_5.SearchParameter searchParameter:
 
                             // **** validate it parsed to what it should ****
 
@@ -285,7 +317,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             break;
 
-                        case fhir_2.StructureDefinition structureDefinition:
+                        case fhir_5.StructureDefinition structureDefinition:
 
                             // **** validate it parsed to what it should ****
 
@@ -301,7 +333,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             break;
 
-                        case fhir_2.ValueSet valueSet:
+                        case fhir_5.StructureMap structureMap:
+
+                            // **** validate it parsed to what it should ****
+
+                            if (!resourceHint.Equals("StructureMap", StringComparison.Ordinal))
+                            {
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {structureMap.ResourceType,-80}");
+                                return false;
+                            }
+
+                            // **** add to the correct dictionary ****
+
+                            fhirInfo.StructureMaps.Add(structureMap.Id, structureMap);
+
+                            break;
+
+                        case fhir_5.ValueSet valueSet:
 
                             // **** validate it parsed to what it should ****
 
@@ -334,7 +382,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             // **** make sure we cleared the last line ****
 
-            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR DSTU2!{new string(' ', 100)}");
+            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR R4!{new string(' ', 100)}");
 
             // **** still here means success ****
 
@@ -349,6 +397,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         #region Internal Functions . . .
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Creates the Resource dictionary needed to load FHIR R4.</summary>
+        ///
+        /// <remarks>Gino Canessa, 2/3/2020.</remarks>
+        ///
+        /// <param name="dict">[out] The dictionary.</param>
+        ///
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        //private static bool CreateDictV5(out Dictionary<string, dynamic> dict)
+        //{
+        //    // **** make a new object ****
+
+        //    dict = new Dictionary<string, dynamic>();
+
+        //    // **** add types we should parse ****
+
+        //    dict.Add("CapabilityStatement", new Dictionary<string, fhir_5.CapabilityStatement>());
+        //    dict.Add("CodeSystem", new Dictionary<string, fhir_5.CodeSystem>());
+        //    dict.Add("CompartmentDefinition", new Dictionary<string, fhir_5.CompartmentDefinition>());
+        //    dict.Add("ConceptMap", new Dictionary<string, fhir_5.ConceptMap>());
+        //    dict.Add("NamingSystem", new Dictionary<string, fhir_5.NamingSystem>());
+        //    dict.Add("OperationDefinition", new Dictionary<string, fhir_5.OperationDefinition>());
+        //    dict.Add("SearchParameter", new Dictionary<string, fhir_5.SearchParameter>());
+        //    dict.Add("StructureDefinition", new Dictionary<string, fhir_5.StructureDefinition>());
+        //    dict.Add("StructureMap", new Dictionary<string, fhir_5.StructureMap>());
+        //    dict.Add("ValueSet", new Dictionary<string, fhir_5.ValueSet>());
+
+        //    return true;
+        //}
 
         #endregion Internal Functions . . .
 

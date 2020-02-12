@@ -16,6 +16,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
     public class LoaderV3
     {
+        #region Class Constants . . .
+
+        /// <summary>Name of the package release.</summary>
+        public const string PackageReleaseName = "STU3";
+        /// <summary>Name of the package.</summary>
+        public const string PackageName = "hl7.fhir.r3.core";
+        /// <summary>The path based on manual downloading of the package.</summary>
+        public const string PathManual = "hl7.fhir.r3.core/package";
+        /// <summary>The path based on installing the package using NPM.</summary>
+        public const string PathNpm = "node_modules/hl7.fhir.r3.core";
+
+        #endregion Class Constants . . .
         #region Class Variables . . .
 
         /// <summary>Filenames to exclude when loading a package.</summary>
@@ -49,47 +61,77 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         #region Class Interface . . .
 
         ///-------------------------------------------------------------------------------------------------
+        /// <summary>Searches for the v3 package.</summary>
+        ///
+        /// <remarks>Gino Canessa, 2/12/2020.</remarks>
+        ///
+        /// <param name="npmDirectory">    Pathname of the npm directory.</param>
+        /// <param name="versionDirectory">[out] Pathname of the version directory.</param>
+        ///
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        public static bool TryFindPackage(string npmDirectory, out string versionDirectory)
+        {
+            versionDirectory = null;
+
+            // **** check for manual download first ****
+
+            string packageDir = Path.Combine(npmDirectory, PathManual);
+
+            if (!Directory.Exists(packageDir))
+            {
+                // **** check for npm install directory ****
+
+                packageDir = Path.Combine(npmDirectory, PathNpm);
+
+                if (!Directory.Exists(packageDir))
+                {
+                    Console.WriteLine($"TryFindPackage <<< cannot find v3 package ({PathManual} or {PathNpm})!");
+                    return false;
+                }
+            }
+
+            // **** set our directory ****
+
+            versionDirectory = packageDir;
+            return true;
+        }
+
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Function to load an STU3 spec NPM into an InfoV3 structure.</summary>
         ///
         /// <remarks>Gino Canessa, 2/3/2020.</remarks>
         ///
         /// <param name="npmDirectory">Pathname of the npm directory.</param>
-        /// <param name="fhirDict">      [out] The FHIR dictionary</param>
+        /// <param name="fhirInfo">    [out] The FHIR dictionary.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         ///-------------------------------------------------------------------------------------------------
 
-        public static bool LoadFhirV3(string npmDirectory, out InfoV3 fhirInfo)
+        public static bool LoadPackage(string npmDirectory, out InfoV3 fhirInfo)
         {
             fhirInfo = null;
 
-            // **** build the path to the package ****
+            // **** find the package ****
 
-            string dirV3 = Path.Combine(
-                npmDirectory,
-                "hl7.fhir.r3.core",
-                "package"
-                );
-
-            // **** make sure the directory exists ****
-
-            if (!Directory.Exists(dirV3))
+            if (!TryFindPackage(npmDirectory, out string packageDir))
             {
-                Console.WriteLine($"LoadFhirV3 failed, cannot find v3 directory: {dirV3}");
+                Console.WriteLine($"LoadPackage <<< cannot find v3 package!");
                 return false;
             }
 
             // **** load package info ****
 
-            if (!FhirPackageInfo.TryLoadPackageInfo(dirV3, out FhirPackageInfo packageInfo))
+            if (!FhirPackageInfo.TryLoadPackageInfo(packageDir, out FhirPackageInfo packageInfo))
             {
-                Console.WriteLine($"Failed to load v3 package info, dir: {dirV3}");
+                Console.WriteLine($"LoadPackage <<< Failed to load v3 package info, dir: {packageDir}");
                 return false;
             }
 
             // **** tell the user what's going on ****
 
-            Console.WriteLine($"Found: {packageInfo.Name} version: {packageInfo.Version}");
+            Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
 
             // **** far enough along to create our info structure ****
 
@@ -97,7 +139,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             // **** get the files in this directory ****
 
-            string[] files = Directory.GetFiles(dirV3, "*.json", SearchOption.TopDirectoryOnly);
+            string[] files = Directory.GetFiles(packageDir, "*.json", SearchOption.TopDirectoryOnly);
 
             // **** grab a converter for polymorphic deserialization ****
 
@@ -154,7 +196,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         // **** type not found ****
 
-                        Console.WriteLine($"\nUnhandled type: {shortName}, parsed to:{obj.GetType().Name}");
+                        Console.WriteLine($"\nLoadFhirV3 <<< Unhandled type: {shortName}, parsed to:{obj.GetType().Name}");
                         return false;
                     }
 
@@ -168,7 +210,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("CapabilityStatement", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {capabilityStatement.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {capabilityStatement.ResourceType,-80}");
                                 return false;
                             }
 
@@ -184,7 +226,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("CodeSystem", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {codeSystem.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {codeSystem.ResourceType,-80}");
                                 return false;
                             }
 
@@ -200,7 +242,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("CompartmentDefinition", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {compartmentDefinition.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {compartmentDefinition.ResourceType,-80}");
                                 return false;
                             }
 
@@ -216,7 +258,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("ConceptMap", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {conceptMap.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {conceptMap.ResourceType,-80}");
                                 return false;
                             }
 
@@ -234,7 +276,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("NamingSystem", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {namingSystem.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {namingSystem.ResourceType,-80}");
                                 return false;
                             }
 
@@ -250,7 +292,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("OperationDefinition", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {operationDefinition.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {operationDefinition.ResourceType,-80}");
                                 return false;
                             }
 
@@ -266,7 +308,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("SearchParameter", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {searchParameter.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {searchParameter.ResourceType,-80}");
                                 return false;
                             }
 
@@ -282,7 +324,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("StructureDefinition", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {structureDefinition.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {structureDefinition.ResourceType,-80}");
                                 return false;
                             }
 
@@ -298,7 +340,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("StructureMap", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {structureMap.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {structureMap.ResourceType,-80}");
                                 return false;
                             }
 
@@ -314,7 +356,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                             if (!resourceHint.Equals("ValueSet", StringComparison.Ordinal))
                             {
-                                Console.WriteLine($"Wrong type! {shortName} parsed as {valueSet.ResourceType,-80}");
+                                Console.WriteLine($"LoadPackage <<< Wrong type! {shortName} parsed as {valueSet.ResourceType,-80}");
                                 return false;
                             }
 
@@ -326,7 +368,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                         default:
                             Console.WriteLine("");
-                            Console.WriteLine($"Unhandled type: {shortName}:{obj.GetType().Name}");
+                            Console.WriteLine($"LoadPackage <<< Unhandled type: {shortName}:{obj.GetType().Name}");
                             return false;
                             //break;
                     }
@@ -334,14 +376,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 catch (Exception ex)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine($"Failed to parse file: {filename}: {ex.Message}");
+                    Console.WriteLine($"LoadPackage <<< Failed to parse file: {filename}: {ex.Message}");
                     return false;
                 }
             }
 
             // **** make sure we cleared the last line ****
 
-            Console.WriteLine($"Loaded and Parsed FHIR STU3!{new string(' ', 100)}");
+            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR STU3!{new string(' ', 100)}");
 
             // **** still here means success ****
 

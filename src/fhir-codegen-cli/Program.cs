@@ -54,25 +54,37 @@ namespace fhir_codegen_cli
         {
             // **** check to make sure we have a directory to work from ****
 
-            if (string.IsNullOrEmpty(options.npmDirectory))
+            if (string.IsNullOrEmpty(options.NpmDirectory))
             {
-                Console.WriteLine($"Invalid NPM Directory: {options.npmDirectory}");
+                Console.WriteLine($"Invalid NPM Directory: {options.NpmDirectory}");
                 return false;
             }
 
             // **** make sure the directory exists ****
 
-            if (!Directory.Exists(options.npmDirectory))
+            if (!Directory.Exists(options.NpmDirectory))
             {
-                Console.WriteLine($"NPM directory not found: {options.npmDirectory}");
+                Console.WriteLine($"NPM directory not found: {options.NpmDirectory}");
                 return false;
             }
 
+
+            // **** test downloader ****
+
+            FhirPackageDownloader downloader = new FhirPackageDownloader();
+            downloader.DownloadPublishedPackage(
+                LoaderV4.PackageReleaseName,
+                LoaderV4.PackageName,
+                options.NpmDirectory
+                );
+            //downloader.CheckInstalledVersions(options.NpmDirectory);
+
+
             // **** check for loading V2 ****
 
-            if (options.loadV2)
+            if (options.LoadV2)
             {
-                if (!LoaderV2.LoadFhirV2(options.npmDirectory, out InfoV2 fhirInfoV2))
+                if (!LoaderV2.LoadPackage(options.NpmDirectory, out InfoV2 fhirInfoV2))
                 {
                     Console.WriteLine("Loading v2 failed!");
                     return false;
@@ -81,9 +93,9 @@ namespace fhir_codegen_cli
 
             // **** check for loading V3 ****
 
-            if (options.loadV3)
+            if (options.LoadV3)
             {
-                if (!LoaderV3.LoadFhirV3(options.npmDirectory, out InfoV3 fhirInfoV3))
+                if (!LoaderV3.LoadPackage(options.NpmDirectory, out InfoV3 fhirInfoV3))
                 {
                     Console.WriteLine("Loading v3 failed!");
                     return false;
@@ -92,9 +104,9 @@ namespace fhir_codegen_cli
 
             // **** check for loading V4 ****
 
-            if (options.loadV4)
+            if (options.LoadV4)
             {
-                if (!LoaderV4.LoadFhirV4(options.npmDirectory, out InfoV4 fhirInfoV4))
+                if (!LoaderV4.LoadPackage(options.NpmDirectory, out InfoV4 fhirInfoV4))
                 {
                     Console.WriteLine("Loading v4 failed!");
                     return false;
