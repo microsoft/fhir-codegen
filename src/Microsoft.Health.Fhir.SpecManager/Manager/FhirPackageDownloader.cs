@@ -55,43 +55,69 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         public bool DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
         {
+            Stream fileStream = null;
+            Stream gzipStream = null;
+            TarArchive tar = null;
+
             try
             {
+                // **** build the url to this package ****
+
                 string url = $"{PublishedFhirUrl}{releaseName}/{packageName}.tgz";
 
+                // **** build our extraction directory name ****
+
                 string directory = Path.Combine(npmDirectory, packageName);
+
+                // **** make sure our destination directory exists ****
 
                 if (!Directory.Exists(directory))
                 {
                     Directory.CreateDirectory(directory);
                 }
 
-                // **** start our download ****
+                // **** start our download as a stream ****
 
-                Stream fileStream = _httpClient.GetStreamAsync(url).Result;
+                fileStream = _httpClient.GetStreamAsync(url).Result;
 
                 // **** extract to the npm directory ****
 
-                Stream gzipStream = new GZipInputStream(fileStream);
+                gzipStream = new GZipInputStream(fileStream);
 
                 // ***** grab the tar archive ****
 
-                TarArchive tar = TarArchive.CreateInputTarArchive(gzipStream);
+                tar = TarArchive.CreateInputTarArchive(gzipStream);
 
                 // **** extract ****
 
                 tar.ExtractContents(directory);
-
-                // **** clean up ****
-
-                tar.Close();
-                gzipStream.Close();
-                fileStream.Close();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine($"DownloadPublishedPackage <<< failed to download package: {releaseName}/{packageName}: {ex.Message}");
                 return false;
+            }
+            finally
+            {
+                // **** clean up ****
+
+                if (tar != null)
+                {
+                    tar.Close();
+                    tar = null;
+                }
+
+                if (gzipStream != null)
+                {
+                    gzipStream.Close();
+                    gzipStream = null;
+                }
+
+                if (fileStream != null)
+                {
+                    fileStream.Close();
+                    fileStream = null;
+                }
             }
 
 

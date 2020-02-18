@@ -64,7 +64,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         {
             // **** create dictionaries ****
 
-            ConceptMaps = new Dictionary<string, ConceptMap>();
+            //ConceptMaps = new Dictionary<string, ConceptMap>();
             Conformances = new Dictionary<string, Conformance>();
             NamingSystems = new Dictionary<string, NamingSystem>();
             OperationDefinitions = new Dictionary<string, OperationDefinition>();

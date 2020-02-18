@@ -52,31 +52,20 @@ namespace fhir_codegen_cli
 
         static bool Process(Options options)
         {
-            // **** check to make sure we have a directory to work from ****
+            // **** initialize the FHIR version manager with our requested directory ****
 
-            if (string.IsNullOrEmpty(options.NpmDirectory))
-            {
-                Console.WriteLine($"Invalid NPM Directory: {options.NpmDirectory}");
-                return false;
-            }
-
-            // **** make sure the directory exists ****
-
-            if (!Directory.Exists(options.NpmDirectory))
-            {
-                Console.WriteLine($"NPM directory not found: {options.NpmDirectory}");
-                return false;
-            }
+            FhirManager.Init(options.NpmDirectory);
 
 
-            // **** test downloader ****
 
-            FhirPackageDownloader downloader = new FhirPackageDownloader();
-            downloader.DownloadPublishedPackage(
-                LoaderV4.PackageReleaseName,
-                LoaderV4.PackageName,
-                options.NpmDirectory
-                );
+            //// **** test downloader ****
+
+            //FhirPackageDownloader downloader = new FhirPackageDownloader();
+            //downloader.DownloadPublishedPackage(
+            //    LoaderV4.PackageReleaseName,
+            //    LoaderV4.PackageName,
+            //    options.NpmDirectory
+            //    );
             //downloader.CheckInstalledVersions(options.NpmDirectory);
 
 
@@ -84,7 +73,7 @@ namespace fhir_codegen_cli
 
             if (options.LoadV2)
             {
-                if (!LoaderV2.LoadPackage(options.NpmDirectory, out InfoV2 fhirInfoV2))
+                if (!FhirManager.Current.LoadPublished(2))
                 {
                     Console.WriteLine("Loading v2 failed!");
                     return false;

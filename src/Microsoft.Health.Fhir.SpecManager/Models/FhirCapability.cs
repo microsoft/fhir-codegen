@@ -4,20 +4,14 @@ using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
-    ///-------------------------------------------------------------------------------------------------
-    /// <summary>A FHIR primitive type.</summary>
-    ///
-    /// <remarks>Gino Canessa, 2/5/2020.</remarks>
-    ///-------------------------------------------------------------------------------------------------
-
-    public class FhirPrimitiveType : FhirTypeBase
+    public class FhirCapability
     {
         #region Class Variables . . .
 
         #endregion Class Variables . . .
 
         #region Instance Variables . . .
-        
+
         #endregion Instance Variables . . .
 
         #region Constructors . . .
