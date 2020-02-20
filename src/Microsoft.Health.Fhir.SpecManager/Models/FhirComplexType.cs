@@ -24,11 +24,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The properties.</value>
         ///-------------------------------------------------------------------------------------------------
 
-        public FhirProperty[] Properties { get; set; }
+        public Dictionary<string, FhirProperty> Properties { get; set; }
 
         #endregion Instance Variables . . .
 
         #region Constructors . . .
+
+        public FhirComplexType()
+        {
+            Properties = new Dictionary<string, FhirProperty>();
+        }
 
         #endregion Constructors . . .
 

@@ -32,7 +32,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The cardinaltiy maximum.</value>
         ///-------------------------------------------------------------------------------------------------
 
-        public int CardinaltiyMax { get; set; }
+        public int? CardinaltiyMax { get; set; }
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets Code Values allowed for this property.</summary>
@@ -49,6 +49,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         ///-------------------------------------------------------------------------------------------------
 
         public string ValueSetUrl { get; set; }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Gets or sets a value indicating whether this object is inherited.</summary>
+        ///
+        /// <value>True if this object is inherited, false if not.</value>
+        ///-------------------------------------------------------------------------------------------------
+
+        public bool IsInherited { get; set; }
 
         #endregion Instance Variables . . .
 

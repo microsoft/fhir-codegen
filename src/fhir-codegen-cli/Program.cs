@@ -79,32 +79,33 @@ namespace fhir_codegen_cli
                     return false;
                 }
             }
-
-            // **** check for loading V3 ****
-
-            if (options.LoadV3)
-            {
-                if (!LoaderV3.LoadPackage(options.NpmDirectory, out InfoV3 fhirInfoV3))
-                {
-                    Console.WriteLine("Loading v3 failed!");
-                    return false;
-                }
-            }
-
-            // **** check for loading V4 ****
-
-            if (options.LoadV4)
-            {
-                if (!LoaderV4.LoadPackage(options.NpmDirectory, out InfoV4 fhirInfoV4))
-                {
-                    Console.WriteLine("Loading v4 failed!");
-                    return false;
-                }
-            }
-
-            // **** still here means success ****
-
             return true;
+
+            //// **** check for loading V3 ****
+
+            //if (options.LoadV3)
+            //{
+            //    if (!LoaderV3.LoadPackage(options.NpmDirectory, out InfoV3 fhirInfoV3))
+            //    {
+            //        Console.WriteLine("Loading v3 failed!");
+            //        return false;
+            //    }
+            //}
+
+            //// **** check for loading V4 ****
+
+            //if (options.LoadV4)
+            //{
+            //    if (!LoaderV4.LoadPackage(options.NpmDirectory, out InfoV4 fhirInfoV4))
+            //    {
+            //        Console.WriteLine("Loading v4 failed!");
+            //        return false;
+            //    }
+            //}
+
+            //// **** still here means success ****
+
+            //return true;
         }
 
     }

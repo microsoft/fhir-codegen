@@ -1,4 +1,5 @@
-﻿using Microsoft.Health.Fhir.SpecManager.Models;
+﻿using Microsoft.Health.Fhir.SpecManager.Converters;
+using Microsoft.Health.Fhir.SpecManager.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
     {
         #region Class Constants . . .
 
-        private const string _urlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
-        private const string _urlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
+        public const string UrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
+        public const string UrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
 
         #endregion Class Constants . . .
 
@@ -32,7 +33,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private static Dictionary<int, HashSet<string>> _versionResourcesToProcess;
         private static Dictionary<int, HashSet<string>> _versionResourcesToIgnore;
         private static Dictionary<int, HashSet<string>> _versionFilesToIgnore;
-        
+
         #endregion Class Variables . . .
 
         #region Instance Variables . . .
@@ -117,14 +118,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         public DateTime? LastDownloaded { get; set; }
 
-        /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
-        private JsonConverter _jsonConverter;
+        private IFhirConverter _fhirConverter;
+        private Dictionary<string, FhirSimpleType> _simpleTypes;
+        private Dictionary<string, FhirComplexType> _complexTypes;
+        private Dictionary<string, FhirResource> _resources;
+        private Dictionary<string, FhirCapability> _capabilities;
 
-        Dictionary<string, FhirSimpleType> _simpleTypes;
-        Dictionary<string, FhirComplexType> _complexTypes;
-        Dictionary<string, FhirResource> _resources;
-        Dictionary<string, FhirCapability> _capabilities;
-        
+        public Dictionary<string, FhirSimpleType> SimpleTypes { get => _simpleTypes; set => _simpleTypes = value; }
+        public Dictionary<string, FhirComplexType> ComplexTypes { get => _complexTypes; set => _complexTypes = value; }
+        public Dictionary<string, FhirResource> Resources { get => _resources; set => _resources = value; }
+        public Dictionary<string, FhirCapability> Capabilities { get => _capabilities; set => _capabilities = value; }
+
         #endregion Instance Variables . . .
 
         #region Constructors . . .
@@ -151,12 +155,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     2,
                     new HashSet<string>()
                     {
-                        "Conformance",
-                        "NamingSystem",
-                        "OperationDefinition",
-                        "SearchParameter",
                         "StructureDefinition",
-                        "ValueSet",
                     }
                 },
                 {
@@ -206,6 +205,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     2,
                     new HashSet<string>()
                     {
+                        "Conformance",
+                        "NamingSystem",
+                        "OperationDefinition",
+                        "SearchParameter",
+                        "ValueSet",
+
                         "ConceptMap",
                         "ImplementationGuide",
                     }
@@ -292,18 +297,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             switch (majorVersion)
             {
-                case 2: _jsonConverter = new fhir_2.ResourceConverter(); break;
-                case 3: _jsonConverter = new fhir_3.ResourceConverter(); break;
-                case 4: _jsonConverter = new fhir_4.ResourceConverter(); break;
-                case 5: _jsonConverter = new fhir_5.ResourceConverter(); break;
+                case 2:
+                    _fhirConverter = new FromV2();
+                    break;
+                case 3:
+                    _fhirConverter = null;
+                    break;
+                case 4:
+                    _fhirConverter = null;
+                    break;
+                case 5:
+                    _fhirConverter = null;
+                    break;
             }
 
             // **** create our info dictionaries ****
 
-            _simpleTypes = new Dictionary<string, FhirSimpleType>();
-            _complexTypes = new Dictionary<string, FhirComplexType>();
-            _resources = new Dictionary<string, FhirResource>();
-            _capabilities = new Dictionary<string, FhirCapability>();
+            SimpleTypes = new Dictionary<string, FhirSimpleType>();
+            ComplexTypes = new Dictionary<string, FhirComplexType>();
+            Resources = new Dictionary<string, FhirResource>();
+            Capabilities = new Dictionary<string, FhirCapability>();
         }
 
         #endregion Constructors . . .
@@ -387,294 +400,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         public bool TryParseResource(string json, out object obj)
         {
-            try
-            {
-                // **** act depending on FHIR version ****
-                switch (MajorVersion)
-                {
-                    case 2:
-                        obj = JsonConvert.DeserializeObject<fhir_2.Resource>(json, _jsonConverter);
-                        return true;
-                        //break;
-                    case 3:
-                        obj = JsonConvert.DeserializeObject<fhir_3.Resource>(json, _jsonConverter);
-                        return true;
-                        //break;
-                    case 4:
-                        obj = JsonConvert.DeserializeObject<fhir_4.Resource>(json, _jsonConverter);
-                        return true;
-                        //break;
-                    case 5:
-                        obj = JsonConvert.DeserializeObject<fhir_5.Resource>(json, _jsonConverter);
-                        return true;
-                        //break;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"TryParseResource <<< exception: \n{ex}\n------------------------------------");
-            }
-
-            obj = null;
-            return false;
+            return _fhirConverter.TryParseResource(json, out obj);
         }
 
-        public bool ProcessResource(object obj)
+        public bool TryProcessResource(object obj)
         {
-            switch (obj)
-            {
-                case fhir_2.Conformance conformance:
-                    // **** ignore for now ****
-
-                    return true;
-                    //break;
-
-                case fhir_2.NamingSystem namingSystem:
-                    // **** ignore for now ****
-
-                    return true;
-                //break;
-
-                case fhir_2.OperationDefinition operationDefinition:
-                    // **** ignore for now ****
-
-                    return true;
-                //break;
-
-                case fhir_2.SearchParameter searchParameter:
-                    // **** ignore for now ****
-
-                    return true;
-                //break;
-
-                case fhir_2.StructureDefinition structureDefinition:
-                    return ProcessStructureDefV2(structureDefinition);
-                    //break;
-
-                case fhir_2.ValueSet valueSet:
-                    // **** ignore for now ****
-
-                    return true;
-                    //break;
-            }
-
-            // **** unprocessed ****
-
-            return false;
+            return _fhirConverter.TryProcessResource(
+                obj,
+                ref _simpleTypes,
+                ref _complexTypes,
+                ref _resources
+                );
         }
 
         #endregion Instance Interface . . .
 
         #region Internal Functions . . .
 
-
         #endregion Internal Functions . . .
-
-        #region V2 Processing. . .
-
-        private bool ProcessStructureDefV2(fhir_2.StructureDefinition sd)
-        {
-            // **** ignore retired ****
-
-            if (sd.Status.Equals("retired", StringComparison.Ordinal))
-            {
-                return true;
-            }
-
-            // **** act depending on kind ****
-
-            switch (sd.Kind)
-            {
-                case "datatype":
-                    // **** 4 elements is for a simple type, more is for a complex one ****
-
-                    if (sd.Snapshot.Element.Length > 4)
-                    {
-                        return ProcessDataTypeComplexV2(sd);
-                    }
-
-                    return ProcessDataTypeSimpleV2(sd);
-                    //break;
-
-                case "resource":
-                    break;
-
-                case "logical":
-                    // **** ignore logical ****
-
-                    return true;
-                    //break;
-            }
-
-            // **** here means success ****
-
-            return true;
-        }
-        
-        private bool ProcessDataTypeSimpleV2(fhir_2.StructureDefinition sd)
-        {
-            // **** create a new Simple Type object ****
-
-            FhirSimpleType simple = new FhirSimpleType()
-            {
-                Name = sd.Name,
-                NameCapitalized = string.Concat(sd.Name.Substring(0, 1).ToUpper(), sd.Name.Substring(1)),
-                StandardStatus = sd.Status,
-                ShortDescription = sd.Description,
-                Definition = sd.Requirements,
-            };
-
-            // **** figure out the type ****
-
-            foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
-            {
-                // **** check for {type}.value to find where the actual value is defined ****
-
-                if (element.Path.Equals($"{sd.Name}.value", StringComparison.Ordinal))
-                {
-                    // **** figure out the type ****
-
-                    foreach (fhir_2.ElementDefinitionType edType in element.Type)
-                    {
-                        // **** check for a specified type ****
-
-                        if (!string.IsNullOrEmpty(edType.Code))
-                        {
-                            // **** use this type ****
-
-                            simple.BaseTypeName = edType.Code;
-
-                            // **** done searching ****
-
-                            break;
-                        }
-
-                        // **** use an extension-defined type ****
-
-                        foreach (fhir_2.Extension ext in edType._Code.Extension)
-                        {
-                            if (ext.Url.Equals(_urlJsonType, StringComparison.Ordinal))
-                            {
-                                // *** use this type ****
-
-                                simple.BaseTypeName = ext.ValueString;
-                                
-                                // **** stop looking ****
-
-                                break;
-
-                            }
-                        }
-                    }
-
-                    // **** stop looking ****
-
-                    break;
-                }
-            }
-
-            // **** make sure we have a type ****
-
-            if (string.IsNullOrEmpty(simple.BaseTypeName))
-            {
-                Console.WriteLine($"ProcessDataTypeSimpleV2 <<<" +
-                    $" Could not determine base type for {sd.Name}");
-                return false;
-            }
-
-            // **** add to our dictionary of simple types ****
-
-            _simpleTypes[sd.Name] = simple;
-
-            // **** success ****
-
-            return true;
-        }
-
-        private bool ProcessDataTypeComplexV2(fhir_2.StructureDefinition sd)
-        {
-            // **** create a new Complex Type object ****
-
-            FhirComplexType complex = new FhirComplexType()
-            {
-                Name = sd.Name,
-                NameCapitalized = string.Concat(sd.Name.Substring(0, 1).ToUpper(), sd.Name.Substring(1)),
-                StandardStatus = sd.Status,
-                ShortDescription = sd.Description,
-                Definition = sd.Requirements,
-            };
-
-            // **** figure out the basea type ****
-
-            foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
-            {
-                // **** check for {type}.value to find where the actual value is defined ****
-
-                if (element.Path.Equals(sd.Name, StringComparison.Ordinal))
-                {
-                    // **** figure out the type ****
-
-                    foreach (fhir_2.ElementDefinitionType edType in element.Type)
-                    {
-                        // **** check for a specified type ****
-
-                        if (!string.IsNullOrEmpty(edType.Code))
-                        {
-                            // **** use this type ****
-
-                            complex.BaseTypeName = edType.Code;
-
-                            // **** done searching ****
-
-                            break;
-                        }
-                        
-                        // **** use an extension-defined type ****
-
-                        foreach (fhir_2.Extension ext in edType._Code.Extension)
-                        {
-                            if (ext.Url.Equals(_urlJsonType, StringComparison.Ordinal))
-                            {
-                                // **** use this type ****
-
-                                complex.BaseTypeName = ext.ValueString;
-                                
-                                // **** stop looking ****
-
-                                break;
-                            }
-                        }
-                    }
-                
-                    // **** stop looking ****
-
-                    break;
-                }
-            }
-
-            // **** make sure we have a type ****
-
-            if (string.IsNullOrEmpty(complex.BaseTypeName))
-            {
-                Console.WriteLine($"ProcessDataTypeComplexV2 <<<" +
-                    $" Could not determine base type for {sd.Name}");
-                return false;
-            }
-
-            // **** look for properties on this type ****
-
-
-
-            // **** add to our dictionary of complex types ****
-
-            _complexTypes[sd.Name] = complex;
-
-            // **** success ****
-
-            return true;
-        }
-
-        #endregion V2 Processing. . .
 
     }
 }

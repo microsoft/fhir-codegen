@@ -108,6 +108,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public string ValidationRegEx { get; set; }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Gets or sets a value indicating whether this object is placeholder.</summary>
+        ///
+        /// <value>True if this object is placeholder, false if not.</value>
+        ///-------------------------------------------------------------------------------------------------
+
+        public bool IsPlaceholder { get; set; }
 
         #endregion Instance Variables . . .
 

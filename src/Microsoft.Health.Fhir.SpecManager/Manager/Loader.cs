@@ -123,6 +123,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 return false;
             }
 
+            Console.WriteLine($"LoadPackage <<< simple types: {fhirVersionInfo.SimpleTypes.Count}");
+
+            foreach (KeyValuePair<string, FhirSimpleType> kvp in fhirVersionInfo.SimpleTypes)
+            {
+                Console.WriteLine($" <<< {kvp.Key}: {kvp.Value.BaseTypeName}");
+            }
+
+            Console.WriteLine($"LoadPackage <<< complex types: {fhirVersionInfo.ComplexTypes.Count}");
+
+            foreach (KeyValuePair<string, FhirComplexType> kvp in fhirVersionInfo.ComplexTypes)
+            {
+                Console.WriteLine($" <<< {kvp.Key}: {kvp.Value.BaseTypeName}");
+                foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
+                {
+                    string max = (propKvp.Value.CardinaltiyMax == null) ? "*" : propKvp.Value.CardinaltiyMax.ToString();
+                    Console.WriteLine($" <<< <<< {propKvp.Value.Name}: {propKvp.Value.BaseTypeName}" +
+                        $" ({propKvp.Value.CardinalityMin}" +
+                        $".." +
+                        $"{max})");
+                }
+            }
+
+            Console.WriteLine($"LoadPackage <<< resources: {fhirVersionInfo.Resources.Count}");
+
+            // **** success ****
+
             return true;
         }
 
@@ -191,6 +217,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     string contents = File.ReadAllText(filename);
 
+                    //if (shortName.Equals("StructureDefinition-Address", StringComparison.Ordinal))
+                    //{
+                    //    Console.Write("");
+                    //}
+
                     // **** parse the file ****
 
                     if (!fhirVersionInfo.TryParseResource(contents, out var obj))
@@ -212,12 +243,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         return false;
                     }
 
+                    // **** process this resource ****
 
+                    if (!fhirVersionInfo.TryProcessResource(obj))
+                    {
+                        Console.WriteLine($"\nProcessPackageFiles <<<" +
+                            $" failed to process resource: {shortName}");
+                        return false;
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine($"LoadPackage <<< Failed to parse file: {filename}: {ex.Message}");
+                    Console.WriteLine($"LoadPackage <<< Failed to process file: {filename}: \n{ex}\n--------------");
                     return false;
                 }
             }
