@@ -44,7 +44,7 @@ namespace Microsoft.Health.Fhir.SpecManager
         /// <returns>A string.</returns>
         ///-------------------------------------------------------------------------------------------------
 
-        public static string CapitalizeName(string name)
+        public static string Capitalize(string name)
         {
             return string.Concat(name.Substring(0, 1).ToUpper(), name.Substring(1));
         }

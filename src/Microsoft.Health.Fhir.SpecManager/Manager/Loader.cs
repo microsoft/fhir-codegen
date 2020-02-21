@@ -123,59 +123,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 return false;
             }
 
-            Console.WriteLine($"LoadPackage <<< simple types: {fhirVersionInfo.SimpleTypes.Count}");
-
-            foreach (KeyValuePair<string, FhirSimpleType> kvp in fhirVersionInfo.SimpleTypes)
-            {
-                Console.WriteLine($" <<< {kvp.Key}: {kvp.Value.BaseTypeName}");
-            }
-
-            Console.WriteLine($"LoadPackage <<< complex types: {fhirVersionInfo.ComplexTypes.Count}");
-
-            foreach (KeyValuePair<string, FhirComplexType> kvp in fhirVersionInfo.ComplexTypes)
-            {
-                Console.WriteLine($" <<< {kvp.Key}: {kvp.Value.BaseTypeName}");
-                foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
-                {
-                    string max = (propKvp.Value.CardinaltiyMax == null) ? "*" : propKvp.Value.CardinaltiyMax.ToString();
-                    Console.WriteLine($" <<< <<< {propKvp.Value.Name}: {propKvp.Value.BaseTypeName}" +
-                        $" ({propKvp.Value.CardinalityMin}" +
-                        $".." +
-                        $"{max})");
-                }
-            }
-
-            Console.WriteLine($"LoadPackage <<< resources: {fhirVersionInfo.Resources.Count}");
-
-            foreach (KeyValuePair<string, FhirResource> kvp in fhirVersionInfo.Resources)
-            {
-                Console.WriteLine($" <<< {kvp.Key}: {kvp.Value.BaseTypeName}");
-                foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
-                {
-                    string max = (propKvp.Value.CardinaltiyMax == null) ? "*" : propKvp.Value.CardinaltiyMax.ToString();
-
-                    if (propKvp.Value.ExpandedTypes != null)
-                    {
-                        foreach (string expandedType in propKvp.Value.ExpandedTypes)
-                        {
-                            Console.WriteLine($" <<< <<< {propKvp.Value.Name}{expandedType}: {expandedType}" +
-                                $" ({propKvp.Value.CardinalityMin}" +
-                                $".." +
-                                $"{max})");
-
-                        }
-
-                        continue;
-                    }
-
-                    Console.WriteLine($" <<< <<< {propKvp.Value.Name}: {propKvp.Value.BaseTypeName}" +
-                        $" ({propKvp.Value.CardinalityMin}" +
-                        $".." +
-                        $"{max})");
-
-                }
-            }
-
             // **** success ****
 
             return true;

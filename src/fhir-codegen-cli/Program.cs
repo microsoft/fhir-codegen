@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using CommandLine;
@@ -73,11 +74,15 @@ namespace fhir_codegen_cli
 
             if (options.LoadV2)
             {
-                if (!FhirManager.Current.LoadPublished(2))
+                if (!FhirManager.Current.LoadPublished(2, out FhirVersionInfo r2))
                 {
                     Console.WriteLine("Loading v2 failed!");
                     return false;
                 }
+
+                // **** tell the user what's going on ****
+
+                DumpFhirVersion(r2);
             }
             return true;
 
@@ -106,6 +111,73 @@ namespace fhir_codegen_cli
             //// **** still here means success ****
 
             //return true;
+        }
+
+        static void DumpFhirVersion(FhirVersionInfo info)
+        {
+            // **** tell the user what's going on ****
+
+            Console.WriteLine($"Found: {info.PackageName} version: {info.VersionString}");
+
+            // **** dump simple types ****
+
+            Console.WriteLine($"simple types: {info.SimpleTypes.Count}");
+
+            foreach (KeyValuePair<string, FhirSimpleType> kvp in info.SimpleTypes)
+            {
+                string primitiveMarker = (kvp.Value.IsPrimitive) ? "*" : "";
+                Console.WriteLine($"- {kvp.Key}{primitiveMarker}: {kvp.Value.BaseTypeName}");
+            }
+
+            // **** dump complex types ****
+
+            Console.WriteLine($"complex types: {info.ComplexTypes.Count}");
+
+            foreach (KeyValuePair<string, FhirComplexType> kvp in info.ComplexTypes)
+            {
+                Console.WriteLine($"- {kvp.Key}: {kvp.Value.BaseTypeName}");
+                foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
+                {
+                    string max = (propKvp.Value.CardinaltiyMax == null) ? "*" : propKvp.Value.CardinaltiyMax.ToString();
+                    Console.WriteLine($"  - {propKvp.Value.Name}: {propKvp.Value.BaseTypeName}" +
+                        $" ({propKvp.Value.CardinalityMin}" +
+                        $".." +
+                        $"{max})");
+                }
+            }
+
+            // **** dump resources ****
+
+            Console.WriteLine($"resources: {info.Resources.Count}");
+
+            foreach (KeyValuePair<string, FhirResource> kvp in info.Resources)
+            {
+                Console.WriteLine($"- {kvp.Key}: {kvp.Value.BaseTypeName}");
+                foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
+                {
+                    string max = (propKvp.Value.CardinaltiyMax == null) ? "*" : propKvp.Value.CardinaltiyMax.ToString();
+
+                    if (propKvp.Value.ExpandedTypes != null)
+                    {
+                        foreach (string expandedType in propKvp.Value.ExpandedTypes)
+                        {
+                            Console.WriteLine($"  - {propKvp.Value.Name}: {expandedType}" +
+                                $" ({propKvp.Value.CardinalityMin}" +
+                                $".." +
+                                $"{max})");
+
+                        }
+
+                        continue;
+                    }
+
+                    Console.WriteLine($"  - {propKvp.Value.Name}: {propKvp.Value.BaseTypeName}" +
+                        $" ({propKvp.Value.CardinalityMin}" +
+                        $".." +
+                        $"{max})");
+
+                }
+            }
         }
 
     }

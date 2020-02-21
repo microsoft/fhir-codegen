@@ -151,7 +151,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 FhirSimpleType simple = new FhirSimpleType()
                 {
                     Name = sd.Name,
-                    NameCapitalized = Utils.CapitalizeName(sd.Name),
+                    NameCapitalized = Utils.Capitalize(sd.Name),
                     StandardStatus = sd.Status,
                     ShortDescription = sd.Description,
                     Definition = sd.Requirements,
@@ -423,7 +423,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 FhirComplexType complex = new FhirComplexType()
                 {
                     Name = sd.Name,
-                    NameCapitalized = Utils.CapitalizeName(sd.Name),
+                    NameCapitalized = Utils.Capitalize(sd.Name),
                     StandardStatus = sd.Status,
                     ShortDescription = sd.Description,
                     Definition = sd.Requirements,
@@ -554,7 +554,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             FhirComplexType sub = new FhirComplexType()
                             {
                                 Name = parent,
-                                NameCapitalized = Utils.CapitalizeName(parent),
+                                NameCapitalized = Utils.Capitalize(parent),
                                 ShortDescription = "",
                                 Definition = "",
                                 Comment = $"Placeholder for {parent}",
@@ -575,7 +575,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         new FhirProperty()
                         {
                             Name = field,
-                            NameCapitalized = Utils.CapitalizeName(field),
+                            NameCapitalized = Utils.Capitalize(field),
                             ShortDescription = element.Short,
                             Definition = element.Definition,
                             Comment = element.Comment,
@@ -650,7 +650,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 FhirResource resource = new FhirResource()
                 {
                     Name = sd.Name,
-                    NameCapitalized = Utils.CapitalizeName(sd.Name),
+                    NameCapitalized = Utils.Capitalize(sd.Name),
                     StandardStatus = sd.Status,
                     ShortDescription = sd.Description,
                     Definition = sd.Requirements,
@@ -787,8 +787,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                             FhirResource sub = new FhirResource()
                             {
-                                Name = Utils.CapitalizeName(parent),
-                                NameCapitalized = Utils.CapitalizeName(parent),
+                                Name = Utils.Capitalize(parent),
+                                NameCapitalized = Utils.Capitalize(parent),
                                 ShortDescription = subResources[pParent].Properties[pField].ShortDescription,
                                 Definition = subResources[pParent].Properties[pField].Definition,
                                 Comment = subResources[pParent].Properties[pField].Comment,
@@ -801,7 +801,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                             // **** change our element type to point at the parent ****
 
-                            subResources[pParent].Properties[pField].BaseTypeName = Utils.CapitalizeName(parent);
+                            subResources[pParent].Properties[pField].BaseTypeName = Utils.Capitalize(parent);
                         }
                         else
                         {
@@ -809,8 +809,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                             FhirResource sub = new FhirResource()
                             {
-                                Name = Utils.CapitalizeName(parent),
-                                NameCapitalized = Utils.CapitalizeName(parent),
+                                Name = Utils.Capitalize(parent),
+                                NameCapitalized = Utils.Capitalize(parent),
                                 ShortDescription = "",
                                 Definition = "",
                                 Comment = $"Placeholder for {parent}",
@@ -831,7 +831,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         new FhirProperty()
                         {
                             Name = field,
-                            NameCapitalized = Utils.CapitalizeName(field),
+                            NameCapitalized = Utils.Capitalize(field),
                             ShortDescription = element.Short,
                             Definition = element.Definition,
                             Comment = element.Comment,

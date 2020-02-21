@@ -186,8 +186,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <returns>True if it succeeds, false if it fails.</returns>
         ///-------------------------------------------------------------------------------------------------
 
-        public bool LoadPublished(int version)
+        public bool LoadPublished(int version, out FhirVersionInfo fhirVersionInfo)
         {
+            fhirVersionInfo = null;
+
             // **** check version ****
 
             if (!_publishedVersionDict.ContainsKey(version))
@@ -225,6 +227,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             if (Loader.LoadPackage(_npmDirectory, ref info))
             {
                 _publishedVersionDict[2] = info;
+                fhirVersionInfo = info;
                 return true;
             }
 

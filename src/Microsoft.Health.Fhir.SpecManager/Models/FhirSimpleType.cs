@@ -17,7 +17,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         #endregion Class Variables . . .
 
         #region Instance Variables . . .
-        
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Gets or sets a value indicating whether this object is primitive.</summary>
+        ///
+        /// <value>True if this object is primitive, false if not.</value>
+        ///-------------------------------------------------------------------------------------------------
+
+        public bool IsPrimitive { get; set; }
+
         #endregion Instance Variables . . .
 
         #region Constructors . . .
