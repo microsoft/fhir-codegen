@@ -80,6 +80,76 @@ namespace Microsoft.Health.Fhir.SpecManager
         }
 
         ///-------------------------------------------------------------------------------------------------
+        /// <summary>Type from fhir type.</summary>
+        ///
+        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
+        ///
+        /// <param name="fhirType">Type of the fhir.</param>
+        ///
+        /// <returns>A string.</returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        public static string TypeFromFhirType(string fhirType)
+        {
+            switch (fhirType)
+            {
+                /*
+- base64Binary: http://hl7.org/fhirpath/System.String
+- boolean: http://hl7.org/fhirpath/System.Boolean
+- canonical: http://hl7.org/fhirpath/System.String
+- code: http://hl7.org/fhirpath/System.String
+- date: http://hl7.org/fhirpath/System.Date
+- dateTime: http://hl7.org/fhirpath/System.DateTime
+- decimal: http://hl7.org/fhirpath/System.Decimal
+- id: http://hl7.org/fhirpath/System.String
+- instant: http://hl7.org/fhirpath/System.DateTime
+- integer: http://hl7.org/fhirpath/System.Integer
+- markdown: http://hl7.org/fhirpath/System.String
+- oid: http://hl7.org/fhirpath/System.String
+- positiveInt: http://hl7.org/fhirpath/System.String
+- string: http://hl7.org/fhirpath/System.String
+- time: http://hl7.org/fhirpath/System.Time
+- unsignedInt: http://hl7.org/fhirpath/System.String
+- uri: http://hl7.org/fhirpath/System.String
+- url: http://hl7.org/fhirpath/System.String
+- uuid: http://hl7.org/fhirpath/System.String
+- xhtml: http://hl7.org/fhirpath/System.String
+*/
+                case "http://hl7.org/fhirpath/System.String":
+                    return "string";
+
+                case "http://hl7.org/fhirpath/System.Boolean":
+                    return "boolean";
+
+                case "http://hl7.org/fhirpath/System.Date":
+                    return "date";
+
+                case "http://hl7.org/fhirpath/System.DateTime":
+                    return "dateTime";
+
+                case "http://hl7.org/fhirpath/System.Decimal":
+                    return "decimal";
+
+                case "http://hl7.org/fhirpath/System.Integer":
+                    return "int";
+
+                case "http://hl7.org/fhirpath/System.Time":
+                    return "time";
+
+                //case "":
+                //    return "";
+
+                //case "":
+                //    return "";
+
+                default:
+                    return fhirType;
+                    //break;
+
+            }
+        }
+
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Type from XML type.</summary>
         ///
         /// <remarks>Gino Canessa, 2/21/2020.</remarks>

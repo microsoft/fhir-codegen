@@ -1,4 +1,4 @@
-﻿using Microsoft.Health.Fhir.SpecManager.fhir.v4;
+﻿using Microsoft.Health.Fhir.SpecManager.fhir.r4;
 using System;
 using System.Collections.Generic;
 using System.Text;

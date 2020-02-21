@@ -4,10 +4,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using fhir_2 = Microsoft.Health.Fhir.SpecManager.fhir.v2;
-using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.v3;
-using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.v4;
-using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.v4;
+using fhir_2 = Microsoft.Health.Fhir.SpecManager.fhir.r2;
+using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.r3;
+using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
+using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
@@ -299,13 +299,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             switch (majorVersion)
             {
                 case 2:
-                    _fhirConverter = new FromV2();
+                    _fhirConverter = new FromR2();
                     break;
                 case 3:
-                    _fhirConverter = new FromV3();
+                    _fhirConverter = new FromR3();
                     break;
                 case 4:
-                    _fhirConverter = null;
+                    _fhirConverter = new FromR4();
                     break;
                 case 5:
                     _fhirConverter = null;

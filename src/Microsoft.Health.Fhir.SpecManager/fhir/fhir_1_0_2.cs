@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Microsoft.Health.Fhir.SpecManager.fhir.v2
+namespace Microsoft.Health.Fhir.SpecManager.fhir.r2
 {
 	///<summary>
 	///Base StructureDefinition for Age Type: A duration of time during which an organism (or a process) has existed.

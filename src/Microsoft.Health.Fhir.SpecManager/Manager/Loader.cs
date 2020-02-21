@@ -4,10 +4,10 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using Microsoft.Health.Fhir.SpecManager.Models;
-using fhir_2 = Microsoft.Health.Fhir.SpecManager.fhir.v2;
-using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.v3;
-using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.v4;
-using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.v4;
+using fhir_2 = Microsoft.Health.Fhir.SpecManager.fhir.r2;
+using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.r3;
+using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
+using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
 
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager

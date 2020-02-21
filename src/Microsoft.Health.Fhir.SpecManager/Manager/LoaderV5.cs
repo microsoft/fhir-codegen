@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using Microsoft.Health.Fhir.SpecManager.Models;
-using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.v4;
+using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {

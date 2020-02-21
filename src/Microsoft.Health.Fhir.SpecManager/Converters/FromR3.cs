@@ -3,18 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
-using fhir_2 = Microsoft.Health.Fhir.SpecManager.fhir.v2;
+using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.r3;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
     ///-------------------------------------------------------------------------------------------------
-    /// <summary>from v 2.</summary>
+    /// <summary>Convert FHIR R3 into local definitions.</summary>
     ///
     /// <remarks>Gino Canessa, 2/19/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
-    public class FromV2 : IFhirConverter
+    public class FromR3 : IFhirConverter
     {
         #region Class Variables . . .
 
@@ -29,9 +29,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
         #region Constructors . . .
 
-        public FromV2()
+        public FromR3()
         {
-            _jsonConverter = new fhir_2.ResourceConverter();
+            _jsonConverter = new fhir_3.ResourceConverter();
         }
 
         #endregion Constructors . . .
@@ -60,7 +60,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         ///-------------------------------------------------------------------------------------------------
 
         private bool ProcessStructureDef(
-                                        fhir_2.StructureDefinition sd,
+                                        fhir_3.StructureDefinition sd,
                                         ref Dictionary<string, FhirSimpleType> simpleTypes,
                                         ref Dictionary<string, FhirComplexType> complexTypes,
                                         ref Dictionary<string, FhirResource> resources
@@ -79,36 +79,46 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 switch (sd.Kind)
                 {
-                    case "datatype":
+                    case "primitive-type":
                         // **** exclude extensions ****
 
-                        if (sd.ConstrainedType == "Extension")
+                        if (sd.Type == "Extension")
                         {
                             return true;
                         }
 
-                        // **** 4 elements is for a simple type, more is for a complex one ****
+                        return ProcessDataTypeSimple(sd, ref simpleTypes);
 
-                        if (sd.Snapshot.Element.Length > 4)
+
+                    case "complex-type":
+                        // **** exclude extensions ****
+
+                        if (sd.Type == "Extension")
                         {
-                            return ProcessComplex<FhirComplexType>(sd, ref complexTypes);
+                            return true;
                         }
 
-                        return ProcessDataTypeSimple(sd, ref simpleTypes);
-                    //break;
+                        // **** exclude profiles for now ****
+
+                        if (sd.Derivation == "constraint")
+                        {
+                            return true;
+                        }
+
+                        return ProcessComplex<FhirComplexType>(sd, ref complexTypes);
 
                     case "resource":
 
                         // **** exclude profiles for now ****
 
-                        if (!string.IsNullOrEmpty(sd.ConstrainedType))
+                        if (sd.Derivation == "constraint")
                         {
                             return true;
                         }
 
                         return ProcessComplex<FhirResource>(sd, ref resources);
 
-                        //break;
+                    //break;
 
                     case "logical":
                         // **** ignore logical ****
@@ -119,7 +129,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"FromV2.ProcessStructureDef <<< failed to process {sd.Id}:\n{ex}\n--------------");
+                Console.WriteLine($"FromR3.ProcessStructureDef <<< failed to process {sd.Id}:\n{ex}\n--------------");
                 return false;
             }
 
@@ -140,7 +150,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         ///-------------------------------------------------------------------------------------------------
 
         private bool ProcessDataTypeSimple(
-                                            fhir_2.StructureDefinition sd, 
+                                            fhir_3.StructureDefinition sd,
                                             ref Dictionary<string, FhirSimpleType> simpleTypes
                                             )
         {
@@ -154,7 +164,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     NameCapitalized = Utils.Capitalize(sd.Name),
                     StandardStatus = sd.Status,
                     ShortDescription = sd.Description,
-                    Definition = sd.Requirements,
+                    Definition = sd.Purpose,
                 };
 
                 // **** grab possible types ****
@@ -162,7 +172,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string valueType = null;
                 string mainType = null;
 
-                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+                foreach (fhir_3.ElementDefinition element in sd.Snapshot.Element)
                 {
                     // **** split the path ****
 
@@ -204,7 +214,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 if (string.IsNullOrEmpty(simple.BaseTypeName))
                 {
-                    Console.WriteLine($"FromV2.ProcessDataTypeSimple <<<" +
+                    Console.WriteLine($"FromR3.ProcessDataTypeSimple <<<" +
                         $" Could not determine base type for {sd.Name}");
                     return false;
                 }
@@ -215,7 +225,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"FromV2.ProcessDataTypeSimple <<< failed to process {sd.Id}:\n{ex}\n--------------");
+                Console.WriteLine($"FromR3.ProcessDataTypeSimple <<< failed to process {sd.Id}:\n{ex}\n--------------");
                 return false;
             }
 
@@ -236,7 +246,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         ///-------------------------------------------------------------------------------------------------
 
-        private bool TryGetTypeFromElement(string structureName, fhir_2.ElementDefinition element, out string elementType)
+        private bool TryGetTypeFromElement(string structureName, fhir_3.ElementDefinition element, out string elementType)
         {
             elementType = null;
 
@@ -244,7 +254,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if (element.Type != null)
             {
-                foreach (fhir_2.ElementDefinitionType edType in element.Type)
+                foreach (fhir_3.ElementDefinitionType edType in element.Type)
                 {
                     // **** check for a specified type ****
 
@@ -261,7 +271,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     // **** use an extension-defined type ****
 
-                    foreach (fhir_2.Extension ext in edType._Code.Extension)
+                    foreach (fhir_3.Extension ext in edType._Code.Extension)
                     {
                         switch (ext.Url)
                         {
@@ -274,7 +284,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 // **** stop looking ****
 
                                 return true;
-                                //break;
+                            //break;
 
                             case FhirVersionInfo.UrlXmlType:
 
@@ -285,7 +295,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 // **** stop looking ****
 
                                 return true;
-                                //break;
+                            //break;
 
                             default:
                                 // **** ignore ****
@@ -297,8 +307,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // **** check for base derived type ****
 
-            if ((string.IsNullOrEmpty(element.Name)) ||
-                (element.Name.Equals(structureName, StringComparison.Ordinal)))
+            if ((string.IsNullOrEmpty(element.Id)) ||
+                (element.Id.Equals(structureName, StringComparison.Ordinal)))
             {
                 // **** base type is here ****
 
@@ -326,7 +336,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         ///-------------------------------------------------------------------------------------------------
 
-        private bool TryGetExpandedTypes(fhir_2.ElementDefinition element, out HashSet<string> types)
+        private bool TryGetExpandedTypes(fhir_3.ElementDefinition element, out HashSet<string> types)
         {
             types = new HashSet<string>();
 
@@ -337,7 +347,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return false;
             }
 
-            foreach (fhir_2.ElementDefinitionType edType in element.Type)
+            foreach (fhir_3.ElementDefinitionType edType in element.Type)
             {
 
                 // **** check for a specified type ****
@@ -355,7 +365,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 // **** use an extension-defined type ****
 
-                foreach (fhir_2.Extension ext in edType._Code.Extension)
+                foreach (fhir_3.Extension ext in edType._Code.Extension)
                 {
                     switch (ext.Url)
                     {
@@ -413,7 +423,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         ///-------------------------------------------------------------------------------------------------
 
         private bool ProcessComplex<T>(
-                                    fhir_2.StructureDefinition sd,
+                                    fhir_3.StructureDefinition sd,
                                     ref Dictionary<string, T> complexDefinitions
                                     )
             where T : FhirTypeBase, new()
@@ -428,23 +438,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     NameCapitalized = Utils.Capitalize(sd.Name),
                     StandardStatus = sd.Status,
                     ShortDescription = sd.Description,
-                    Definition = sd.Requirements,
+                    Definition = sd.Purpose,
                 };
 
                 // **** make a dictionary to track all the related resource definitions we create ****
 
                 Dictionary<string, T> subDefs = new Dictionary<string, T>();
 
-                // **** create an alias table for named reference linking within the type ****
-
-                Dictionary<string, string> aliasTable = new Dictionary<string, string>();
-
                 // **** figure out the base type ****
 
                 string mainType = null;
                 string valueType = null;
 
-                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+                foreach (fhir_3.ElementDefinition element in sd.Snapshot.Element)
                 {
                     // **** split the path ****
 
@@ -486,7 +492,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 if (string.IsNullOrEmpty(definition.BaseTypeName))
                 {
-                    Console.WriteLine($"FromV2.ProcessComplex <<<" +
+                    Console.WriteLine($"FromR3.ProcessComplex <<<" +
                         $" Could not determine base type for {sd.Name}");
                     return false;
                 }
@@ -497,7 +503,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 // **** look for properties on this type ****
 
-                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+                foreach (fhir_3.ElementDefinition element in sd.Snapshot.Element)
                 {
                     // **** split the path into component parts ****
 
@@ -533,25 +539,43 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                         if (!TryGetExpandedTypes(element, out expandedTypes))
                         {
-                            Console.WriteLine($"FromV2.ProcessComplex <<<" +
+                            Console.WriteLine($"FromR3.ProcessComplex <<<" +
                                 $" Could not get expanded types for {sd.Name} field {element.Path}");
                             return false;
                         }
                     }
-                    else if (!string.IsNullOrEmpty(element.NameReference))
+                    else if (!string.IsNullOrEmpty(element.ContentReference))
                     {
-                        // **** look up the named reference in the alias table ****
+                        // **** check for local definition ****
 
-                        if (!aliasTable.ContainsKey(element.NameReference))
+                        switch (element.ContentReference[0])
                         {
-                            Console.WriteLine($"FromV2.ProcessComplex <<<" +
-                                $" Could not find named reference {element.NameReference} in {sd.Name} field {element.Path}");
-                            return false;
+                            case '#':
+                                // **** search for referenced element ****
+
+                                string localRef = Utils.PascalFromDot(element.ContentReference.Substring(1));
+
+                                // **** look up the named reference in the alias table ****
+
+                                if (!subDefs.ContainsKey(localRef))
+                                {
+                                    Console.WriteLine($"FromR3.ProcessComplex <<<" +
+                                        $" Could not find content reference {element.ContentReference} in {sd.Name} field {element.Path}");
+                                    return false;
+                                }
+
+                                // **** use the local reference ****
+
+                                elementType = localRef;
+
+                                break;
+
+                            default:
+                                Console.WriteLine($"FromR3.ProcessComplex <<<" +
+                                    $" Could not resolve content reference {element.ContentReference} in {sd.Name} field {element.Path}");
+                                return false;
+                                //break;
                         }
-
-                        // **** use the named type ****
-
-                        elementType = aliasTable[element.NameReference];
                     }
                     else
                     {
@@ -633,18 +657,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             Comment = element.Comment,
                             BaseTypeName = elementType,
                             ExpandedTypes = expandedTypes,
-                            CardinalityMin = element.Min ?? 0,
+                            CardinalityMin = (int)(element.Min ?? 0),
                             CardinaltiyMax = Utils.MaxCardinality(element.Max),
                         });
-
-                    // **** check to see if we need to insert into our alias table ****
-
-                    if (!string.IsNullOrEmpty(element.Name))
-                    {
-                        // **** add this record, with it's current path ****
-
-                        aliasTable.Add(element.Name, $"{parent}{subDefs[parent].Properties[field].NameCapitalized}");
-                    }
                 }
 
                 // **** copy over our definitions ****
@@ -680,7 +695,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"FromV2.ProcessComplex <<< failed to process {sd.Id}:\n{ex}\n--------------");
+                Console.WriteLine($"FromR3.ProcessComplex <<< failed to process {sd.Id}:\n{ex}\n--------------");
                 return false;
             }
             // **** success ****
@@ -710,12 +725,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 // **** try to parse this JSON into a resource object ****
 
-                obj = JsonConvert.DeserializeObject<fhir_2.Resource>(json, _jsonConverter);
+                obj = JsonConvert.DeserializeObject<fhir_3.Resource>(json, _jsonConverter);
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"FromV2.TryParseResource <<< failed to parse:\n{ex}\n------------------------------------");
+                Console.WriteLine($"FromR3.TryParseResource <<< failed to parse:\n{ex}\n------------------------------------");
             }
 
             // **** failed to parse ****
@@ -749,27 +764,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     // **** ignore ****
 
-                    //case fhir_2.Conformance conformance:
-                    //case fhir_2.NamingSystem namingSystem:
-                    //case fhir_2.OperationDefinition operationDefinition:
-                    //case fhir_2.SearchParameter searchParameter:
-                    //case fhir_2.ValueSet valueSet:
+                    //case fhir_3.CapabilityStatement capabilityStatement:
+                    //case fhir_3.CodeSystem codeSystem:
+                    //case fhir_3.CompartmentDefinition compartmentDefinition:
+                    //case fhir_3.ConceptMap conceptMap:
+                    //case fhir_3.NamingSystem namingSystem:
+                    //case fhir_3.OperationDefinition operationDefinition:
+                    //case fhir_3.SearchParameter searchParameter:
+                    //case fhir_3.StructureMap structureMap:
+                    //case fhir_3.ValueSet valueSet:
 
                     // **** process ****
 
-                    case fhir_2.StructureDefinition structureDefinition:
+                    case fhir_3.StructureDefinition structureDefinition:
                         return ProcessStructureDef(
                             structureDefinition,
                             ref simpleTypes,
                             ref complexTypes,
                             ref resources
                             );
-                    //break;
+                        //break;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"FromV2.TryProcessResource <<< Failed to process resource:\n{ex}\n--------------");
+                Console.WriteLine($"FromR3.TryProcessResource <<< Failed to process resource:\n{ex}\n--------------");
                 return false;
             }
 

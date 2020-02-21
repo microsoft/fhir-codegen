@@ -76,7 +76,7 @@ namespace fhir_codegen_cli
             {
                 if (!FhirManager.Current.LoadPublished(2, out FhirVersionInfo r2))
                 {
-                    Console.WriteLine("Loading v2 failed!");
+                    Console.WriteLine("Loading R2 failed!");
                     return false;
                 }
 
@@ -90,13 +90,26 @@ namespace fhir_codegen_cli
             {
                 if (!FhirManager.Current.LoadPublished(3, out FhirVersionInfo r3))
                 {
-                    Console.WriteLine("Loading v3 failed!");
+                    Console.WriteLine("Loading R3 failed!");
                     return false;
                 }
 
                 // **** tell the user what's going on ****
 
                 DumpFhirVersion(r3);
+            }
+
+            if (options.LoadR4)
+            {
+                if (!FhirManager.Current.LoadPublished(4, out FhirVersionInfo r4))
+                {
+                    Console.WriteLine("Loading R4 failed!");
+                    return false;
+                }
+
+                // **** tell the user what's going on ****
+
+                DumpFhirVersion(r4);
             }
 
             return true;
