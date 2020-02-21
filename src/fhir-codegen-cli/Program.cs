@@ -132,25 +132,18 @@ namespace fhir_codegen_cli
             // **** dump complex types ****
 
             Console.WriteLine($"complex types: {info.ComplexTypes.Count}");
-
-            foreach (KeyValuePair<string, FhirComplexType> kvp in info.ComplexTypes)
-            {
-                Console.WriteLine($"- {kvp.Key}: {kvp.Value.BaseTypeName}");
-                foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
-                {
-                    string max = (propKvp.Value.CardinaltiyMax == null) ? "*" : propKvp.Value.CardinaltiyMax.ToString();
-                    Console.WriteLine($"  - {propKvp.Value.Name}: {propKvp.Value.BaseTypeName}" +
-                        $" ({propKvp.Value.CardinalityMin}" +
-                        $".." +
-                        $"{max})");
-                }
-            }
+            DumpComplex<FhirComplexType>(info.ComplexTypes);
 
             // **** dump resources ****
 
             Console.WriteLine($"resources: {info.Resources.Count}");
+            DumpComplex<FhirResource>(info.Resources);
+        }
 
-            foreach (KeyValuePair<string, FhirResource> kvp in info.Resources)
+        private static void DumpComplex<T>(Dictionary<string, T> dict)
+            where T : FhirTypeBase
+        {
+            foreach (KeyValuePair<string, T> kvp in dict)
             {
                 Console.WriteLine($"- {kvp.Key}: {kvp.Value.BaseTypeName}");
                 foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
@@ -170,21 +163,13 @@ namespace fhir_codegen_cli
                             }
 
                             propertyType = $"{propertyType}|{expandedType}";
-
-                            //Console.WriteLine($"  - {propKvp.Value.Name}: {expandedType}" +
-                            //    $" ({propKvp.Value.CardinalityMin}" +
-                            //    $".." +
-                            //    $"{max})");
                         }
-
-                        //continue;
                     }
 
                     Console.WriteLine($"  - {propKvp.Value.Name}: {propertyType}" +
                         $" ({propKvp.Value.CardinalityMin}" +
                         $".." +
                         $"{max})");
-
                 }
             }
         }

@@ -91,7 +91,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                         if (sd.Snapshot.Element.Length > 4)
                         {
-                            return ProcessDataTypeComplex(sd, ref complexTypes);
+                            return ProcessComplex<FhirComplexType>(sd, ref complexTypes);
+                            //return ProcessDataTypeComplex(sd, ref complexTypes);
                         }
 
                         return ProcessDataTypeSimple(sd, ref simpleTypes);
@@ -106,7 +107,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             return true;
                         }
 
-                        return ProcessResource(sd, ref resources);
+                        return ProcessComplex<FhirResource>(sd, ref resources);
+                        //return ProcessResource(sd, ref resources);
 
                         //break;
 
@@ -910,6 +912,282 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             return true;
         }
+
+
+        private bool ProcessComplex<T>(
+                                    fhir_2.StructureDefinition sd,
+                                    ref Dictionary<string, T> complexDefinitions
+                                    )
+            where T : FhirTypeBase, new()
+        {
+            try
+            {
+                // **** create a new Complex Type object ****
+
+                T definition = new T()
+                {
+                    Name = sd.Name,
+                    NameCapitalized = Utils.Capitalize(sd.Name),
+                    StandardStatus = sd.Status,
+                    ShortDescription = sd.Description,
+                    Definition = sd.Requirements,
+                };
+
+                // **** make a dictionary to track all the related resource definitions we create ****
+
+                Dictionary<string, T> subDefs = new Dictionary<string, T>();
+
+                Dictionary<string, string> aliasTable = new Dictionary<string, string>();
+
+                // **** figure out the base type ****
+
+                string mainType = null;
+                string valueType = null;
+
+                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+                {
+                    // **** split the path ****
+
+                    string[] components = element.Path.Split('.');
+
+                    // **** check for base path having a type ****
+
+                    if (components.Length == 1)
+                    {
+                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
+                        {
+                            // **** set our type ****
+
+                            mainType = elementType;
+                            continue;
+                        }
+                    }
+
+                    // **** check for path {type}.value having a type ****
+
+                    if ((components.Length == 2) &&
+                        (components[1].Equals("value", StringComparison.Ordinal)))
+                    {
+                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
+                        {
+                            // **** set our type ****
+
+                            valueType = elementType;
+                            continue;
+                        }
+                    }
+                }
+
+                // **** resource: prefer main type, use 'value' if it isn't present ****
+
+                definition.BaseTypeName = mainType ?? valueType;
+
+                // **** make sure we have a type ****
+
+                if (string.IsNullOrEmpty(definition.BaseTypeName))
+                {
+                    Console.WriteLine($"FromV2.ProcessComplex <<<" +
+                        $" Could not determine base type for {sd.Name}");
+                    return false;
+                }
+
+                // **** add the current type definition to our internal dict for sanity ****
+
+                subDefs.Add(sd.Name, definition);
+
+                // **** look for properties on this type ****
+
+                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+                {
+                    // **** split the path into component parts ****
+
+                    string[] components = element.Path.Split('.');
+
+                    // **** base definition, already processed ****
+
+                    if (components.Length < 2)
+                    {
+                        continue;
+                    }
+
+                    // **** grab field info we need ****
+
+                    Utils.GetParentAndField(components, out string field, out string parent);
+
+                    string elementType;
+                    HashSet<string> expandedTypes = null;
+
+                    // **** determine if there is type expansion ****
+
+                    if (field.Contains("[x]"))
+                    {
+                        // **** fix the field name ****
+
+                        field = field.Replace("[x]", "");
+
+                        // **** no base type ****
+
+                        elementType = "";
+
+                        // **** get multiple types ****
+
+                        if (!TryGetExpandedTypes(element, out expandedTypes))
+                        {
+                            Console.WriteLine($"FromV2.ProcessComplex <<<" +
+                                $" Could not get expanded types for {sd.Name} field {element.Path}");
+                            return false;
+                        }
+                    }
+                    else if (!string.IsNullOrEmpty(element.NameReference))
+                    {
+                        // **** look up the named reference in the alias table ****
+
+                        if (!aliasTable.ContainsKey(element.NameReference))
+                        {
+                            Console.WriteLine($"FromV2.ProcessComplex <<<" +
+                                $" Could not find named reference {element.NameReference} in {sd.Name} field {element.Path}");
+                            return false;
+                        }
+
+                        // **** use the named type ****
+
+                        elementType = aliasTable[element.NameReference];
+                    }
+                    else
+                    {
+                        // **** if we can't find a type, assume Element ****
+
+                        if (!TryGetTypeFromElement(parent, element, out elementType))
+                        {
+                            elementType = "Element";
+                        }
+                    }
+
+                    // **** check to see if we do NOT have this parent, but do have a definition ****
+
+                    if (!subDefs.ContainsKey(parent))
+                    {
+                        // **** figure out if we have this parent as a field ****
+
+                        string[] parentComponents = new string[components.Length - 1];
+                        Array.Copy(components, 0, parentComponents, 0, components.Length - 1);
+
+                        // **** get parent info ****
+
+                        Utils.GetParentAndField(parentComponents, out string pField, out string pParent);
+
+                        if ((subDefs.ContainsKey(pParent)) &&
+                            (subDefs[pParent].Properties.ContainsKey(pField)))
+                        {
+                            // **** use this type ****
+
+                            T sub = new T()
+                            {
+                                Name = Utils.Capitalize(parent),
+                                NameCapitalized = Utils.Capitalize(parent),
+                                ShortDescription = subDefs[pParent].Properties[pField].ShortDescription,
+                                Definition = subDefs[pParent].Properties[pField].Definition,
+                                Comment = subDefs[pParent].Properties[pField].Comment,
+                                BaseTypeName = subDefs[pParent].Properties[pField].BaseTypeName,
+                            };
+
+                            // **** add this parent to our local dictionary ****
+
+                            subDefs.Add(parent, sub);
+
+                            // **** change our element type to point at the parent ****
+
+                            subDefs[pParent].Properties[pField].BaseTypeName = Utils.Capitalize(parent);
+                        }
+                        else
+                        {
+                            // **** add a placeholder type ****
+
+                            T sub = new T()
+                            {
+                                Name = Utils.Capitalize(parent),
+                                NameCapitalized = Utils.Capitalize(parent),
+                                ShortDescription = "",
+                                Definition = "",
+                                Comment = $"Placeholder for {parent}",
+                                BaseTypeName = parent,
+                                IsPlaceholder = true,
+                            };
+
+                            // **** add this parent to our local dictionary ****
+
+                            subDefs.Add(parent, sub);
+                        }
+                    }
+
+                    // **** add this field to the parent type ****
+
+                    subDefs[parent].Properties.Add(
+                        field,
+                        new FhirProperty()
+                        {
+                            Name = field,
+                            NameCapitalized = Utils.Capitalize(field),
+                            ShortDescription = element.Short,
+                            Definition = element.Definition,
+                            Comment = element.Comment,
+                            BaseTypeName = elementType,
+                            ExpandedTypes = expandedTypes,
+                            CardinalityMin = element.Min ?? 0,
+                            CardinaltiyMax = Utils.MaxCardinality(element.Max),
+                        });
+
+                    // **** check to see if we need to insert into our alias table ****
+
+                    if (!string.IsNullOrEmpty(element.Name))
+                    {
+                        // **** add this record, with it's current path ****
+
+                        aliasTable.Add(element.Name, $"{parent}{subDefs[parent].Properties[field].NameCapitalized}");
+                    }
+                }
+
+                // **** copy over our definitions ****
+
+                foreach (KeyValuePair<string, T> kvp in subDefs)
+                {
+                    // **** check for removing a placeholder ****
+
+                    if ((complexDefinitions.ContainsKey(kvp.Key)) &&
+                        (complexDefinitions[kvp.Key].IsPlaceholder == true))
+                    {
+                        complexDefinitions.Remove(kvp.Key);
+                    }
+
+                    // **** check for not being present ****
+
+                    if (!complexDefinitions.ContainsKey(kvp.Key))
+                    {
+                        complexDefinitions.Add(kvp.Key, kvp.Value);
+                        continue;
+                    }
+
+                    // **** check fields ****
+
+                    foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
+                    {
+                        if (!complexDefinitions[kvp.Key].Properties.ContainsKey(propKvp.Key))
+                        {
+                            complexDefinitions[kvp.Key].Properties.Add(propKvp.Key, propKvp.Value);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"FromV2.ProcessComplex <<< failed to process {sd.Id}:\n{ex}\n--------------");
+                return false;
+            }
+            // **** success ****
+
+            return true;
+        }
+
 
         #endregion Internal Functions . . .
 

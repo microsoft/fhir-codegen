@@ -18,14 +18,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         #region Instance Variables . . .
 
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the properties.</summary>
-        ///
-        /// <value>The properties.</value>
-        ///-------------------------------------------------------------------------------------------------
-
-        public Dictionary<string, FhirProperty> Properties { get; set; }
-
         #endregion Instance Variables . . .
 
         #region Constructors . . .

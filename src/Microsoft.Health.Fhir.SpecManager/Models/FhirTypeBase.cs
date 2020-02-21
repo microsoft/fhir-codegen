@@ -116,6 +116,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public bool IsPlaceholder { get; set; }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Gets or sets the properties.</summary>
+        ///
+        /// <value>The properties.</value>
+        ///-------------------------------------------------------------------------------------------------
+
+        public Dictionary<string, FhirProperty> Properties { get; set; }
+
+
         #endregion Instance Variables . . .
 
         #region Constructors . . .
