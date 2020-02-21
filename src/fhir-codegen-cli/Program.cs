@@ -72,7 +72,7 @@ namespace fhir_codegen_cli
 
             // **** check for loading V2 ****
 
-            if (options.LoadV2)
+            if (options.LoadR2)
             {
                 if (!FhirManager.Current.LoadPublished(2, out FhirVersionInfo r2))
                 {
@@ -84,6 +84,21 @@ namespace fhir_codegen_cli
 
                 DumpFhirVersion(r2);
             }
+
+
+            if (options.LoadR3)
+            {
+                if (!FhirManager.Current.LoadPublished(3, out FhirVersionInfo r3))
+                {
+                    Console.WriteLine("Loading v3 failed!");
+                    return false;
+                }
+
+                // **** tell the user what's going on ****
+
+                DumpFhirVersion(r3);
+            }
+
             return true;
 
             //// **** check for loading V3 ****
@@ -139,6 +154,15 @@ namespace fhir_codegen_cli
             Console.WriteLine($"resources: {info.Resources.Count}");
             DumpComplex<FhirResource>(info.Resources);
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>
+        ///
+        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
+        ///
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <param name="dict">The dictionary.</param>
+        ///-------------------------------------------------------------------------------------------------
 
         private static void DumpComplex<T>(Dictionary<string, T> dict)
             where T : FhirTypeBase

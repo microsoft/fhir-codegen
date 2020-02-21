@@ -226,7 +226,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             if (Loader.LoadPackage(_npmDirectory, ref info))
             {
-                _publishedVersionDict[2] = info;
+                _publishedVersionDict[version] = info;
                 fhirVersionInfo = info;
                 return true;
             }

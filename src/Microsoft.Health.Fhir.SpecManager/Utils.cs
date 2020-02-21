@@ -93,40 +93,83 @@ namespace Microsoft.Health.Fhir.SpecManager
         {
             switch (xmlType)
             {
+                case "xsd:token":
                 case "xs:token":
                     return "enum";
 
+                case "xsd:base64Binary":
                 case "base64Binary":
+                case "xsd:string":
                 case "xs:string":
                 case "xs:string+":
                 case "xhtml:div":
                     return "string";
 
+                case "xsd:int":
+                    return "int";
+
+                case "xsd:positiveInteger":
                 case "xs:positiveInteger":
                     return "unsigned int";
 
+                case "xsd:nonNegativeInteger":
                 case "xs:nonNegativeInteger":
                     return "unsigned int";
 
                 case "xs:anyURI+":
+                case "xsd:anyURI":
                 case "xs:anyURI":
                 case "anyURI":
                     return "uri";
 
 
+                case "xsd:gYear OR xsd:gYearMonth OR xsd:date":
                 case "xs:gYear, xs:gYearMonth, xs:date":
+                case "xsd:date":
                     return "date";
 
+                case "xsd:gYear OR xsd:gYearMonth OR xsd:date OR xsd:dateTime":
                 case "xs:gYear, xs:gYearMonth, xs:date, xs:dateTime":
+                case "xsd:dateTime":
                     return "dateTime";
 
+                case "xsd:time":
                 case "time":
                     return "time";
+
+                case "xsd:boolean":
+                    return "boolean";
+
+                case "xsd:decimal":
+                    return "decimal";
 
                 default:
                     return xmlType;
                     //break;
             }
+        }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Pascal string from dot notation string.</summary>
+        ///
+        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
+        ///
+        /// <param name="dot">The dot.</param>
+        ///
+        /// <returns>A string.</returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        public static string PascalFromDot(string dot)
+        {
+            string[] components = dot.Split('.');
+            string val = "";
+
+            foreach (string component in components)
+            {
+                val += Capitalize(component);
+            }
+
+            return val;
         }
 
     }

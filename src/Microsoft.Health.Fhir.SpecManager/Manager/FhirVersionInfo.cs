@@ -302,7 +302,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     _fhirConverter = new FromV2();
                     break;
                 case 3:
-                    _fhirConverter = null;
+                    _fhirConverter = new FromV3();
                     break;
                 case 4:
                     _fhirConverter = null;

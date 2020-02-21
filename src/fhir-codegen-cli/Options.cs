@@ -12,14 +12,17 @@ namespace fhir_codegen_cli
         [Option("install-npms", Default = false, HelpText = "Download NPM packages using 'npm install'")]
         public bool InstallNpms { get; set; }
 
-        [Option("load-v2", Default = true, HelpText = "Load the V2 (DSTU 2) definitions")]
-        public bool LoadV2 { get; set; }
+        [Option("load-r2", Default = false, HelpText = "Load the R2 (DSTU 2) definitions")]
+        public bool LoadR2 { get; set; }
 
-        [Option("load-v3", Default = true, HelpText = "Load the V3 (STU 3) definitions")]
-        public bool LoadV3 { get; set; }
+        [Option("load-r3", Default = false, HelpText = "Load the R3 (STU 3) definitions")]
+        public bool LoadR3 { get; set; }
 
-        [Option("load-v4", Default = true, HelpText = "Load the V4 (R4) definitions")]
-        public bool LoadV4 { get; set; }
+        [Option("load-r4", Default = false, HelpText = "Load the R4 definitions")]
+        public bool LoadR4 { get; set; }
+
+        [Option("load-r5", Default = false, HelpText = "Load the R5 definitions")]
+        public bool LoadR5 { get; set; }
 
         #endregion Input Options . . .
     }
