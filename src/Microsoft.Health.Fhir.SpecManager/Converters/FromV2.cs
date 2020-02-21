@@ -98,7 +98,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     //break;
 
                     case "resource":
-                        break;
+
+                        // **** exclude profiles for now ****
+
+                        if (!string.IsNullOrEmpty(sd.ConstrainedType))
+                        {
+                            return true;
+                        }
+
+                        return ProcessResource(sd, ref resources);
+
+                        //break;
 
                     case "logical":
                         // **** ignore logical ****
@@ -186,7 +196,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     }
                 }
 
-                // **** prefer value type, if not use main type ****
+                // **** simple type: prefer the 'value' type, if not use main type ****
 
                 simple.BaseTypeName = valueType ?? mainType;
 
@@ -305,6 +315,90 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return false;
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Attempts to get expanded types.</summary>
+        ///
+        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
+        ///
+        /// <param name="element">      The element.</param>
+        /// <param name="types">        [out] The types.</param>
+        ///
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        private bool TryGetExpandedTypes(fhir_2.ElementDefinition element, out HashSet<string> types)
+        {
+            types = new HashSet<string>();
+
+            // **** expanded types must be explicit ****
+
+            if (element.Type == null)
+            {
+                return false;
+            }
+
+            foreach (fhir_2.ElementDefinitionType edType in element.Type)
+            {
+
+                // **** check for a specified type ****
+
+                if (!string.IsNullOrEmpty(edType.Code))
+                {
+                    // **** use this type ****
+
+                    types.Add(edType.Code);
+
+                    // **** check next type ****
+
+                    continue;
+                }
+
+                // **** use an extension-defined type ****
+
+                foreach (fhir_2.Extension ext in edType._Code.Extension)
+                {
+                    switch (ext.Url)
+                    {
+                        case FhirVersionInfo.UrlFhirType:
+
+                            // **** use this type ****
+
+                            types.Add(ext.ValueString);
+
+                            // **** check next type ****
+
+                            continue;
+                        //break;
+
+                        case FhirVersionInfo.UrlXmlType:
+
+                            // **** use this type ****
+
+                            types.Add(Utils.TypeFromXmlType(ext.ValueString));
+
+                            // **** check next type ****
+
+                            continue;
+                        //break;
+
+                        default:
+                            // **** ignore ****
+                            break;
+                    }
+                }
+            }
+
+            // **** check for no discovered types ****
+
+            if (types.Count == 0)
+            {
+                return false;
+            }
+
+            // **** success ****
+
+            return true;
+        }
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Process a structure definition for a complex data type.</summary>
@@ -376,7 +470,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     }
                 }
 
-                // **** prefer main type, use value if it isn't present ****
+                // **** complex type: prefer main type, use 'value' if it isn't present ****
 
                 complex.BaseTypeName = mainType ?? valueType;
 
@@ -526,6 +620,263 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             catch (Exception ex)
             {
                 Console.WriteLine($"FromV2.ProcessDataTypeComplex <<< failed to process {sd.Id}:\n{ex}\n--------------");
+                return false;
+            }
+            // **** success ****
+
+            return true;
+        }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Process the resource.</summary>
+        ///
+        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
+        ///
+        /// <param name="sd">       The SD.</param>
+        /// <param name="resources">[in,out] The resources.</param>
+        ///
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        private bool ProcessResource(
+                                    fhir_2.StructureDefinition sd,
+                                    ref Dictionary<string, FhirResource> resources
+                                    )
+        {
+            try
+            {
+                // **** create a new Complex Type object ****
+
+                FhirResource resource = new FhirResource()
+                {
+                    Name = sd.Name,
+                    NameCapitalized = Utils.CapitalizeName(sd.Name),
+                    StandardStatus = sd.Status,
+                    ShortDescription = sd.Description,
+                    Definition = sd.Requirements,
+                };
+
+                Dictionary<string, FhirResource> subResources = new Dictionary<string, FhirResource>();
+
+                // **** figure out the base type ****
+
+                string mainType = null;
+                string valueType = null;
+
+                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+                {
+                    // **** split the path ****
+
+                    string[] components = element.Path.Split('.');
+
+                    // **** check for base path having a type ****
+
+                    if (components.Length == 1)
+                    {
+                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
+                        {
+                            // **** set our type ****
+
+                            mainType = elementType;
+                            continue;
+                        }
+                    }
+
+                    // **** check for path {type}.value having a type ****
+
+                    if ((components.Length == 2) &&
+                        (components[1].Equals("value", StringComparison.Ordinal)))
+                    {
+                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
+                        {
+                            // **** set our type ****
+
+                            valueType = elementType;
+                            continue;
+                        }
+                    }
+                }
+
+                // **** resource: prefer main type, use 'value' if it isn't present ****
+
+                resource.BaseTypeName = mainType ?? valueType;
+
+                // **** make sure we have a type ****
+
+                if (string.IsNullOrEmpty(resource.BaseTypeName))
+                {
+                    Console.WriteLine($"FromV2.ProcessResource <<<" +
+                        $" Could not determine base type for {sd.Name}");
+                    return false;
+                }
+
+                // **** add the current type definition to our internal dict for sanity ****
+
+                subResources.Add(sd.Name, resource);
+
+                // **** look for properties on this type ****
+
+                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+                {
+                    // **** split the path into component parts ****
+
+                    string[] components = element.Path.Split('.');
+
+                    // **** base definition, already processed ****
+
+                    if (components.Length < 2)
+                    {
+                        continue;
+                    }
+
+                    // **** grab field info we need ****
+
+                    Utils.GetParentAndField(components, out string field, out string parent);
+
+                    string elementType;
+                    HashSet<string> expandedTypes = null;
+
+                    // **** determine if there is type expansion ****
+
+                    if (field.Contains("[x]"))
+                    {
+                        // **** fix the field name ****
+
+                        field = field.Replace("[x]", "");
+
+                        // **** no base type ****
+
+                        elementType = "";
+
+                        // **** get multiple types ****
+
+                        if (!TryGetExpandedTypes(element, out expandedTypes))
+                        {
+                            Console.WriteLine($"FromV2.ProcessResource <<<" +
+                                $" Could not get expanded types for {sd.Name} field {element.Path}");
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        // **** if we can't find a type, assume Element ****
+
+                        if (!TryGetTypeFromElement(parent, element, out elementType))
+                        {
+                            elementType = "Element";
+                        }
+                    }
+
+                    // **** check to see if we do NOT have this parent, but do have a definition ****
+
+                    if (!subResources.ContainsKey(parent))
+                    {
+                        // **** figure out if we have this parent as a field ****
+
+                        string[] parentComponents = new string[components.Length - 1];
+                        Array.Copy(components, 0, parentComponents, 0, components.Length - 1);
+
+                        // **** get parent info ****
+
+                        Utils.GetParentAndField(parentComponents, out string pField, out string pParent);
+
+                        if ((subResources.ContainsKey(pParent)) &&
+                            (subResources[pParent].Properties.ContainsKey(pField)))
+                        {
+                            // **** use this type ****
+
+                            FhirResource sub = new FhirResource()
+                            {
+                                Name = Utils.CapitalizeName(parent),
+                                NameCapitalized = Utils.CapitalizeName(parent),
+                                ShortDescription = subResources[pParent].Properties[pField].ShortDescription,
+                                Definition = subResources[pParent].Properties[pField].Definition,
+                                Comment = subResources[pParent].Properties[pField].Comment,
+                                BaseTypeName = subResources[pParent].Properties[pField].BaseTypeName,
+                            };
+
+                            // **** add this parent to our local dictionary ****
+
+                            subResources.Add(parent, sub);
+
+                            // **** change our element type to point at the parent ****
+
+                            subResources[pParent].Properties[pField].BaseTypeName = Utils.CapitalizeName(parent);
+                        }
+                        else
+                        {
+                            // **** add a placeholder type ****
+
+                            FhirResource sub = new FhirResource()
+                            {
+                                Name = Utils.CapitalizeName(parent),
+                                NameCapitalized = Utils.CapitalizeName(parent),
+                                ShortDescription = "",
+                                Definition = "",
+                                Comment = $"Placeholder for {parent}",
+                                BaseTypeName = parent,
+                                IsPlaceholder = true,
+                            };
+
+                            // **** add this parent to our local dictionary ****
+
+                            subResources.Add(parent, sub);
+                        }
+                    }
+
+                    // **** add this field to the parent type ****
+
+                    subResources[parent].Properties.Add(
+                        field,
+                        new FhirProperty()
+                        {
+                            Name = field,
+                            NameCapitalized = Utils.CapitalizeName(field),
+                            ShortDescription = element.Short,
+                            Definition = element.Definition,
+                            Comment = element.Comment,
+                            BaseTypeName = elementType,
+                            ExpandedTypes = expandedTypes,
+                            CardinalityMin = element.Min ?? 0,
+                            CardinaltiyMax = Utils.MaxCardinality(element.Max),
+                        });
+
+                }
+
+                // **** copy over our definitions ****
+
+                foreach (KeyValuePair<string, FhirResource> kvp in subResources)
+                {
+                    // **** check for removing a placeholder ****
+
+                    if ((resources.ContainsKey(kvp.Key)) &&
+                        (resources[kvp.Key].IsPlaceholder == true))
+                    {
+                        resources.Remove(kvp.Key);
+                    }
+
+                    // **** check for not being present ****
+
+                    if (!resources.ContainsKey(kvp.Key))
+                    {
+                        resources.Add(kvp.Key, kvp.Value);
+                        continue;
+                    }
+
+                    // **** check fields ****
+
+                    foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
+                    {
+                        if (!resources[kvp.Key].Properties.ContainsKey(propKvp.Key))
+                        {
+                            resources[kvp.Key].Properties.Add(propKvp.Key, propKvp.Value);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"FromV2.ProcessResource <<< failed to process {sd.Id}:\n{ex}\n--------------");
                 return false;
             }
             // **** success ****

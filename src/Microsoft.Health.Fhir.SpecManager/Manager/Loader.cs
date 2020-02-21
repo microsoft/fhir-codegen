@@ -147,6 +147,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             Console.WriteLine($"LoadPackage <<< resources: {fhirVersionInfo.Resources.Count}");
 
+            foreach (KeyValuePair<string, FhirResource> kvp in fhirVersionInfo.Resources)
+            {
+                Console.WriteLine($" <<< {kvp.Key}: {kvp.Value.BaseTypeName}");
+                foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
+                {
+                    string max = (propKvp.Value.CardinaltiyMax == null) ? "*" : propKvp.Value.CardinaltiyMax.ToString();
+
+                    if (propKvp.Value.ExpandedTypes != null)
+                    {
+                        foreach (string expandedType in propKvp.Value.ExpandedTypes)
+                        {
+                            Console.WriteLine($" <<< <<< {propKvp.Value.Name}{expandedType}: {expandedType}" +
+                                $" ({propKvp.Value.CardinalityMin}" +
+                                $".." +
+                                $"{max})");
+
+                        }
+
+                        continue;
+                    }
+
+                    Console.WriteLine($" <<< <<< {propKvp.Value.Name}: {propKvp.Value.BaseTypeName}" +
+                        $" ({propKvp.Value.CardinalityMin}" +
+                        $".." +
+                        $"{max})");
+
+                }
+            }
+
             // **** success ****
 
             return true;

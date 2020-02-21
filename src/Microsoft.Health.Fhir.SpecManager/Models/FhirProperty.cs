@@ -58,6 +58,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public bool IsInherited { get; set; }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Gets or sets a list of types of the expanded.</summary>
+        ///
+        /// <value>A list of types of the expanded.</value>
+        ///-------------------------------------------------------------------------------------------------
+
+        public HashSet<string> ExpandedTypes { get; set; }
+
         #endregion Instance Variables . . .
 
         #region Constructors . . .
