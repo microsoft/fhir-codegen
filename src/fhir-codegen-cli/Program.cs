@@ -157,21 +157,30 @@ namespace fhir_codegen_cli
                 {
                     string max = (propKvp.Value.CardinaltiyMax == null) ? "*" : propKvp.Value.CardinaltiyMax.ToString();
 
+                    string propertyType = propKvp.Value.BaseTypeName;
+
                     if (propKvp.Value.ExpandedTypes != null)
                     {
                         foreach (string expandedType in propKvp.Value.ExpandedTypes)
                         {
-                            Console.WriteLine($"  - {propKvp.Value.Name}: {expandedType}" +
-                                $" ({propKvp.Value.CardinalityMin}" +
-                                $".." +
-                                $"{max})");
+                            if (string.IsNullOrEmpty(propertyType))
+                            {
+                                propertyType = expandedType;
+                                continue;
+                            }
 
+                            propertyType = $"{propertyType}|{expandedType}";
+
+                            //Console.WriteLine($"  - {propKvp.Value.Name}: {expandedType}" +
+                            //    $" ({propKvp.Value.CardinalityMin}" +
+                            //    $".." +
+                            //    $"{max})");
                         }
 
-                        continue;
+                        //continue;
                     }
 
-                    Console.WriteLine($"  - {propKvp.Value.Name}: {propKvp.Value.BaseTypeName}" +
+                    Console.WriteLine($"  - {propKvp.Value.Name}: {propertyType}" +
                         $" ({propKvp.Value.CardinalityMin}" +
                         $".." +
                         $"{max})");

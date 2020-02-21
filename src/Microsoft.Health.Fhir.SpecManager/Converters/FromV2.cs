@@ -656,7 +656,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     Definition = sd.Requirements,
                 };
 
+                // **** make a dictionary to track all the related resource definitions we create ****
+
                 Dictionary<string, FhirResource> subResources = new Dictionary<string, FhirResource>();
+
+                Dictionary<string, string> aliasTable = new Dictionary<string, string>();
 
                 // **** figure out the base type ****
 
@@ -757,6 +761,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             return false;
                         }
                     }
+                    else if (!string.IsNullOrEmpty(element.NameReference))
+                    {
+                        // **** look up the named reference in the alias table ****
+
+                        if (!aliasTable.ContainsKey(element.NameReference))
+                        {
+                            Console.WriteLine($"FromV2.ProcessResource <<<" +
+                                $" Could not find named reference {element.NameReference} in {sd.Name} field {element.Path}");
+                            return false;
+                        }
+
+                        // **** use the named type ****
+
+                        elementType = aliasTable[element.NameReference];
+                    }
                     else
                     {
                         // **** if we can't find a type, assume Element ****
@@ -841,6 +860,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             CardinaltiyMax = Utils.MaxCardinality(element.Max),
                         });
 
+                    // **** check to see if we need to insert into our alias table ****
+
+                    if (!string.IsNullOrEmpty(element.Name))
+                    {
+                        // **** add this record, with it's current path ****
+
+                        aliasTable.Add(element.Name, $"{parent}{subResources[parent].Properties[field].NameCapitalized}");
+                    }
                 }
 
                 // **** copy over our definitions ****

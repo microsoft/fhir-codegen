@@ -139,12 +139,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         private static bool ProcessPackageFiles(string[] files, ref FhirVersionInfo fhirVersionInfo)
         {
-            InfoV2 versionedInfo = new InfoV2();
-
-            // **** far enough along to create our info structure ****
-
-            versionedInfo = new InfoV2();
-
             // **** traverse the files ****
 
             foreach (string filename in files)
