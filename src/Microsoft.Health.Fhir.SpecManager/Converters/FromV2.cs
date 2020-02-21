@@ -147,27 +147,48 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     Definition = sd.Requirements,
                 };
 
-                // **** figure out the type ****
+                // **** grab possible types ****
+
+                string valueType = null;
+                string mainType = null;
 
                 foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
                 {
-                    // **** check for base path having a type or {type}.value ****
+                    // **** split the path ****
 
-                    if ((!element.Path.Contains(".")) ||
-                        (element.Path.Equals($"{sd.Name}.value", StringComparison.Ordinal)))
+                    string[] components = element.Path.Split('.');
+
+                    // **** check for base path having a type ****
+
+                    if (components.Length == 1)
                     {
                         if (TryGetTypeFromElement(sd.Name, element, out string elementType))
                         {
                             // **** set our type ****
 
-                            simple.BaseTypeName = elementType;
+                            mainType = elementType;
+                            continue;
+                        }
+                    }
 
-                            // **** stop looking ****
+                    // **** check for path {type}.value having a type ****
 
-                            break;
+                    if ((components.Length == 2) &&
+                        (components[1].Equals("value", StringComparison.Ordinal)))
+                    {
+                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
+                        {
+                            // **** set our type ****
+
+                            valueType = elementType;
+                            continue;
                         }
                     }
                 }
+
+                // **** prefer value type, if not use main type ****
+
+                simple.BaseTypeName = valueType ?? mainType;
 
                 // **** make sure we have a type ****
 
@@ -207,49 +228,59 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
         private bool TryGetTypeFromElement(string structureName, fhir_2.ElementDefinition element, out string elementType)
         {
-            // **** check for base definition (self-typed) ****
-
-            if (element.Path.Equals(structureName, StringComparison.Ordinal))
-            {
-                // **** self-defined ****
-
-                elementType = structureName;
-
-                // **** done searching ****
-
-                return true;
-            }
+            elementType = null;
 
             // **** check for declared type ****
 
-            foreach (fhir_2.ElementDefinitionType edType in element.Type)
+            if (element.Type != null)
             {
-                // **** check for a specified type ****
-
-                if (!string.IsNullOrEmpty(edType.Code))
+                foreach (fhir_2.ElementDefinitionType edType in element.Type)
                 {
-                    // **** use this type ****
+                    // **** check for a specified type ****
 
-                    elementType = edType.Code;
-
-                    // **** done searching ****
-
-                    return true;
-                }
-
-                // **** use an extension-defined type ****
-
-                foreach (fhir_2.Extension ext in edType._Code.Extension)
-                {
-                    if (ext.Url.Equals(FhirVersionInfo.UrlJsonType, StringComparison.Ordinal))
+                    if (!string.IsNullOrEmpty(edType.Code))
                     {
                         // **** use this type ****
 
-                        elementType = ext.ValueString;
+                        elementType = edType.Code;
 
-                        // **** stop looking ****
+                        // **** done searching ****
 
                         return true;
+                    }
+
+                    // **** use an extension-defined type ****
+
+                    foreach (fhir_2.Extension ext in edType._Code.Extension)
+                    {
+                        switch (ext.Url)
+                        {
+                            case FhirVersionInfo.UrlFhirType:
+
+                                // **** use this type ****
+
+                                elementType = ext.ValueString;
+
+                                // **** stop looking ****
+
+                                return true;
+                                //break;
+
+                            case FhirVersionInfo.UrlXmlType:
+
+                                // **** use this type ****
+
+                                elementType = Utils.TypeFromXmlType(ext.ValueString);
+
+                                // **** stop looking ****
+
+                                return true;
+                                //break;
+
+                            default:
+                                // **** ignore ****
+                                break;
+                        }
                     }
                 }
             }
@@ -308,25 +339,46 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 // **** figure out the base type ****
 
+                string mainType = null;
+                string valueType = null;
+
                 foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
                 {
-                    // **** check for base path having a type or {type}.value ****
+                    // **** split the path ****
 
-                    if ((!element.Path.Contains(".")) ||
-                        (element.Path.Equals($"{sd.Name}.value", StringComparison.Ordinal)))
+                    string[] components = element.Path.Split('.');
+
+                    // **** check for base path having a type ****
+
+                    if (components.Length == 1)
                     {
                         if (TryGetTypeFromElement(sd.Name, element, out string elementType))
                         {
                             // **** set our type ****
 
-                            complex.BaseTypeName = elementType;
+                            mainType = elementType;
+                            continue;
+                        }
+                    }
 
-                            // **** stop looking ****
+                    // **** check for path {type}.value having a type ****
 
-                            break;
+                    if ((components.Length == 2) &&
+                        (components[1].Equals("value", StringComparison.Ordinal)))
+                    {
+                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
+                        {
+                            // **** set our type ****
+
+                            valueType = elementType;
+                            continue;
                         }
                     }
                 }
+
+                // **** prefer main type, use value if it isn't present ****
+
+                complex.BaseTypeName = mainType ?? valueType;
 
                 // **** make sure we have a type ****
 

@@ -23,6 +23,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         public const string UrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
         public const string UrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
+        public const string UrlFhirType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type";
 
         #endregion Class Constants . . .
 

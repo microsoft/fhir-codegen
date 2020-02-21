@@ -78,5 +78,55 @@ namespace Microsoft.Health.Fhir.SpecManager
 
             return null;
         }
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Type from XML type.</summary>
+        ///
+        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
+        ///
+        /// <param name="xmlType">Type of the XML.</param>
+        ///
+        /// <returns>A string.</returns>
+        ///-------------------------------------------------------------------------------------------------
+
+        public static string TypeFromXmlType(string xmlType)
+        {
+            switch (xmlType)
+            {
+                case "xs:token":
+                    return "enum";
+
+                case "base64Binary":
+                case "xs:string":
+                case "xs:string+":
+                case "xhtml:div":
+                    return "string";
+
+                case "xs:positiveInteger":
+                    return "unsigned int";
+
+                case "xs:nonNegativeInteger":
+                    return "unsigned int";
+
+                case "xs:anyURI+":
+                case "xs:anyURI":
+                case "anyURI":
+                    return "uri";
+
+
+                case "xs:gYear, xs:gYearMonth, xs:date":
+                    return "date";
+
+                case "xs:gYear, xs:gYearMonth, xs:date, xs:dateTime":
+                    return "dateTime";
+
+                case "time":
+                    return "time";
+
+                default:
+                    return xmlType;
+                    //break;
+            }
+        }
     }
 }
