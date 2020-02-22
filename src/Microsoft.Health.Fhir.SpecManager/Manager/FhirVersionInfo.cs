@@ -19,27 +19,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
     public class FhirVersionInfo
     {
-        #region Class Constants . . .
-
-        public const string UrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
+                public const string UrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
         public const string UrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
         public const string UrlFhirType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type";
 
-        #endregion Class Constants . . .
-
-        #region Class Variables . . .
-
-        private static HashSet<int> _knownVersionNumbers;
+                        private static HashSet<int> _knownVersionNumbers;
 
         private static Dictionary<int, HashSet<string>> _versionResourcesToProcess;
         private static Dictionary<int, HashSet<string>> _versionResourcesToIgnore;
         private static Dictionary<int, HashSet<string>> _versionFilesToIgnore;
 
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the major version.</summary>
         ///
         /// <value>The major version.</value>
@@ -130,11 +120,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public Dictionary<string, FhirResource> Resources { get => _resources; set => _resources = value; }
         public Dictionary<string, FhirCapability> Capabilities { get => _capabilities; set => _capabilities = value; }
 
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Static constructor.</summary>
         ///
         /// <remarks>Gino Canessa, 2/18/2020.</remarks>
@@ -320,15 +306,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             Capabilities = new Dictionary<string, FhirCapability>();
         }
 
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Determine if we should process resource.</summary>
         ///
         /// <param name="resourceName"> Name of the resource.</param>
@@ -406,11 +384,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 );
         }
 
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        #endregion Internal Functions . . .
-
-    }
+                            }
 }

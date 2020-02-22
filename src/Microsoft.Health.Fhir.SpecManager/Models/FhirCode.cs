@@ -12,21 +12,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
     public class FhirCode
     {
-        #region Class Variables . . .
-
-        /// <summary>The codes.</summary>
+                /// <summary>The codes.</summary>
         private static Dictionary<string, string[]> _codes;
 
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        static FhirCode()
+                
+                        static FhirCode()
         {
             _codes = new Dictionary<string, string[]>();
         }
@@ -39,11 +29,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         private FhirCode() { }
 
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Adds the codes to 'values'.</summary>
         ///
         /// <param name="name">  The name.</param>
@@ -97,15 +83,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             return true;
         }
 
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        #endregion Internal Functions . . .
-
-    }
+                                            }
 }

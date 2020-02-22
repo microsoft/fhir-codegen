@@ -8,16 +8,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public class InfoV4
     {
 
-        #region Class Variables . . .
-
-        private static HashSet<string> _excludedResourceTypes;
+                private static HashSet<string> _excludedResourceTypes;
         private static HashSet<string> _knownResourceTypes;
 
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        public Dictionary<string, CapabilityStatement> Capabilities { get; set; }
+                        public Dictionary<string, CapabilityStatement> Capabilities { get; set; }
 
         public Dictionary<string, CodeSystem> CodeSystems { get; set; }
         
@@ -37,11 +31,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public Dictionary<string, ValueSet> ValueSets { get; set; }
         
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        static InfoV4()
+                        static InfoV4()
         {
             _knownResourceTypes = new HashSet<string>()
             {
@@ -85,11 +75,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             ValueSets = new Dictionary<string, ValueSet>();
         }
 
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Query if 'resourceType' is resource type known.</summary>
         ///
         /// <param name="resourceType">Type of the resource.</param>
@@ -115,15 +101,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             return _excludedResourceTypes.Contains(resourceType);
         }
 
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        #endregion Internal Functions . . .
-
-    }
+                                            }
 }

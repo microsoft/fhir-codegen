@@ -12,13 +12,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
     public class FhirTypeBase
     {
-        #region Class Variables . . .
-
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-
+                        
         ///-------------------------------------------------------------------------------------------------
         /// <summary>
         /// A natural language name identifying the structure definition. This name should be usable as an 
@@ -125,23 +119,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public Dictionary<string, FhirProperty> Properties { get; set; }
 
 
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        #endregion Internal Functions . . .
-
-    }
+                                                                            }
 }

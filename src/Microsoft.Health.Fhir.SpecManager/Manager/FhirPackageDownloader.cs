@@ -13,26 +13,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
     public class FhirPackageDownloader
     {
-        #region Class Constants . . .
-
-        public const string PublishedFhirUrl = "http://hl7.org/fhir/";
+                public const string PublishedFhirUrl = "http://hl7.org/fhir/";
         public const string BuildFhirUrl = "http://build.fhir.org/";
 
-        #endregion Class Constants . . .
+                        private static HttpClient _httpClient;
 
-        #region Class Variables . . .
-
-        private static HttpClient _httpClient;
-
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Static constructor.</summary>
         ///
         /// <remarks>Gino Canessa, 2/12/2020.</remarks>
@@ -45,15 +31,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _httpClient = new HttpClient();
         }
 
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        public bool DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
+                                        public bool DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
         {
             Stream fileStream = null;
             Stream gzipStream = null;
@@ -129,11 +107,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        #endregion Internal Functions . . .
-
-    }
+                            }
 }

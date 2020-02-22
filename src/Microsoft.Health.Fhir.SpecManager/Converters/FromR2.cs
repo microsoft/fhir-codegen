@@ -16,37 +16,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
     public class FromR2 : IFhirConverter
     {
-        #region Class Variables . . .
-
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
+                                /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private JsonConverter _jsonConverter;
 
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        public FromR2()
+                        public FromR2()
         {
             _jsonConverter = new fhir_2.ResourceConverter();
         }
 
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                                                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Process the structure definition.</summary>
         ///
         /// <param name="sd">          The SD.</param>
@@ -679,11 +657,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
 
-        #endregion Internal Functions . . .
-
-        #region IFhirConverter . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to parse resource an object from the given string.</summary>
         ///
         /// <param name="json">The JSON.</param>
@@ -764,6 +738,4 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-        #endregion IFhirConverter . . .
-    }
-}
+        }

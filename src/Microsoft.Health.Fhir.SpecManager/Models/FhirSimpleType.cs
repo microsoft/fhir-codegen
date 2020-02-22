@@ -12,13 +12,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
     public class FhirSimpleType : FhirTypeBase
     {
-        #region Class Variables . . .
-
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                                ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets a value indicating whether this object is primitive.</summary>
         ///
         /// <value>True if this object is primitive, false if not.</value>
@@ -26,23 +20,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public bool IsPrimitive { get; set; }
 
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        #endregion Internal Functions . . .
-
-    }
+                                                                            }
 }

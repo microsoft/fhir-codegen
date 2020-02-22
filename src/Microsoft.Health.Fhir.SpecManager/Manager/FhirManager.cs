@@ -7,9 +7,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
     public class FhirManager
     {
-        #region Class Variables . . .
-
-        private static FhirManager _instance;
+                private static FhirManager _instance;
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets the current.</summary>
@@ -19,11 +17,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         public static FhirManager Current => _instance;
 
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        /// <summary>Dictionary of published versions.</summary>
+                        /// <summary>Dictionary of published versions.</summary>
         private Dictionary<int, FhirVersionInfo> _publishedVersionDict;
         /// <summary>Dictionary of development versions.</summary>
         private Dictionary<string, FhirVersionInfo> _devVersionDict;
@@ -34,11 +28,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>The FHIR package downloader.</summary>
         FhirPackageDownloader _packageDownloader;
 
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        static FhirManager()
+                        static FhirManager()
         {
             _instance = null;
         }
@@ -130,11 +120,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             ;
         }
 
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Initializes this object.</summary>
         ///
         /// <remarks>Gino Canessa, 2/14/2020.</remarks>
@@ -232,15 +218,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        private void CheckLocalVersions()
+                                        private void CheckLocalVersions()
         {
             // **** traverse the dictionary of published versions ****
 
@@ -252,7 +230,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
         }
 
-        #endregion Internal Functions . . .
-
-    }
+            }
 }

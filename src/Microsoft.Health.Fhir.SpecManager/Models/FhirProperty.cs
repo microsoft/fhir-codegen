@@ -12,13 +12,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
     public class FhirProperty : FhirTypeBase
     {
-        #region Class Variables . . .
-
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                                ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the cardinality minimum.</summary>
         ///
         /// <value>The cardinality minimum.</value>
@@ -66,19 +60,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public HashSet<string> ExpandedTypes { get; set; }
 
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                                                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets a value indicating whether this property is an array.</summary>
         ///
         /// <value>True if this object is array, false if not.</value>
@@ -106,11 +88,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
         }
 
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        #endregion Internal Functions . . .
-
-    }
+                            }
 }

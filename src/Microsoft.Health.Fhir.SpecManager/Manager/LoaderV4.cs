@@ -16,9 +16,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
     public class LoaderV4
     {
-        #region Class Constants . . .
-
-        /// <summary>Name of the package release.</summary>
+                /// <summary>Name of the package release.</summary>
         public const string PackageReleaseName = "R4";
         /// <summary>Name of the package.</summary>
         public const string PackageName = "hl7.fhir.r4.core";
@@ -27,22 +25,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>The path based on installing the package using NPM.</summary>
         public const string PathNpm = "node_modules/hl7.fhir.r4.core";
 
-        #endregion Class Constants . . .
-
-        #region Class Variables . . .
-
-        /// <summary>Filenames to exclude when loading a package.</summary>
+                        /// <summary>Filenames to exclude when loading a package.</summary>
         private static HashSet<string> _packageExclusions;
 
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Static constructor.</summary>
         ///
         /// <remarks>Gino Canessa, 2/3/2020.</remarks>
@@ -57,11 +43,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             };
         }
 
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Searches for the v4 package.</summary>
         ///
         /// <param name="npmDirectory">    Pathname of the npm directory.</param>
@@ -385,15 +367,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Creates the Resource dictionary needed to load FHIR R4.</summary>
         ///
         /// <param name="dict">[out] The dictionary.</param>
@@ -423,7 +397,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         //    return true;
         //}
 
-        #endregion Internal Functions . . .
-
-    }
+            }
 }

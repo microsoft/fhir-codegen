@@ -8,13 +8,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     public class FhirPackageInfo
     {
-        #region Class Variables . . .
-
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        public string Name { get; set; }
+                                public string Name { get; set; }
 
         public string Version { get; set; }
 
@@ -63,15 +57,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public string License { get; set; }
 
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to load FHIR NPM package information from the given directory.</summary>
         ///
         /// <param name="packageDirectory">Pathname of the package directory.</param>
@@ -120,17 +106,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             return false;
         }
 
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        #endregion Internal Functions . . .
-
-
+                                        
 
     }
 }

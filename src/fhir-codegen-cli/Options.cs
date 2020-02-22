@@ -4,9 +4,7 @@ namespace fhir_codegen_cli
 {
     public class Options
     {
-        #region Input Options . . .
-
-        [Option("npm-directory", Default = "", Required =true, HelpText = "Directory where NPM packages are located")]
+                [Option("npm-directory", Default = "", Required =true, HelpText = "Directory where NPM packages are located")]
         public string NpmDirectory { get; set; }
 
         [Option("install-npms", Default = false, HelpText = "Download NPM packages using 'npm install'")]
@@ -24,6 +22,4 @@ namespace fhir_codegen_cli
         [Option("load-r5", Default = false, HelpText = "Load the R5 definitions")]
         public bool LoadR5 { get; set; }
 
-        #endregion Input Options . . .
-    }
-}
+        }

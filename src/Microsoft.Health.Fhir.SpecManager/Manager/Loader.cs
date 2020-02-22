@@ -20,25 +20,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
     public abstract class Loader
     {
-        #region Class Variables . . .
-
-        #endregion Class Variables . . .
-
-        #region Instance Variables . . .
-
-        #endregion Instance Variables . . .
-
-        #region Constructors . . .
-
-        static Loader()
+                                                static Loader()
         {
         }
 
-        #endregion Constructors . . .
-
-        #region Class Interface . . .
-
-        ///-------------------------------------------------------------------------------------------------
+                        ///-------------------------------------------------------------------------------------------------
         /// <summary>Searches for the currently specified package.</summary>
         ///
         /// <param name="npmDirectory">    Pathname of the npm directory.</param>
@@ -125,15 +111,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
 
-        #endregion Class Interface . . .
-
-        #region Instance Interface . . .
-
-        #endregion Instance Interface . . .
-
-        #region Internal Functions . . .
-
-        private static bool ProcessPackageFiles(string[] files, ref FhirVersionInfo fhirVersionInfo)
+                                        private static bool ProcessPackageFiles(string[] files, ref FhirVersionInfo fhirVersionInfo)
         {
             // **** traverse the files ****
 
@@ -235,7 +213,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
-        #endregion Internal Functions . . .
-
-    }
+            }
 }
