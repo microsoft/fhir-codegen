@@ -260,6 +260,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             };
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Constructor - require major version (release #) to validate it is supported</summary>
+        ///
+        /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+        ///
+        /// <param name="majorVersion">The major version.</param>
+        ///-------------------------------------------------------------------------------------------------
+
         public FhirVersionInfo(int majorVersion)
         {
             if (!_knownVersionNumbers.Contains(majorVersion))
@@ -374,6 +382,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 ref _resources
                 );
         }
-
     }
 }

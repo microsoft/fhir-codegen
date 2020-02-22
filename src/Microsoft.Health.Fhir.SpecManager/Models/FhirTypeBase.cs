@@ -89,7 +89,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public string Comment { get; set; }
 
-
         ///-------------------------------------------------------------------------------------------------
         /// <summary>
         /// A RegEx string used to validate values of a type or property.

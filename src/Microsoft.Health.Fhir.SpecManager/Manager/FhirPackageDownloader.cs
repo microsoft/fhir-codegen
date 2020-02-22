@@ -94,7 +94,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
-
             return true;
         }
 
@@ -102,6 +101,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             return false;
         }
-
     }
 }

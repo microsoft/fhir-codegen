@@ -49,7 +49,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
-
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Loads a package.</summary>
         ///
@@ -156,11 +155,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     // **** read the file ****
 
                     string contents = File.ReadAllText(filename);
-
-                    //if (shortName.Equals("StructureDefinition-Address", StringComparison.Ordinal))
-                    //{
-                    //    Console.Write("");
-                    //}
 
                     // **** parse the file ****
 

@@ -670,7 +670,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to parse resource an object from the given string.</summary>
         ///
