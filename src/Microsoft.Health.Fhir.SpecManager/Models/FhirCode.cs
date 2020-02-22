@@ -46,8 +46,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Adds the codes to 'values'.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/6/2020.</remarks>
-        ///
         /// <param name="name">  The name.</param>
         /// <param name="values">The values.</param>
         ///
@@ -80,8 +78,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to get codes a string[] from the given string.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/6/2020.</remarks>
         ///
         /// <param name="name">  The name.</param>
         /// <param name="values">[out] The values.</param>

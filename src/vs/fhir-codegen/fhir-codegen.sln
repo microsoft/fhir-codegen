@@ -5,6 +5,7 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DEDEA68B-9432-40E9-BB9E-84013AD677E0}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\.editorconfig = ..\..\..\.editorconfig
 		..\..\..\.gitignore = ..\..\..\.gitignore
 		..\..\..\CODE_OF_CONDUCT.md = ..\..\..\CODE_OF_CONDUCT.md
 		..\..\..\LICENSE = ..\..\..\LICENSE
@@ -13,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\..\..\THIRDPARTYNOTICES.md = ..\..\..\THIRDPARTYNOTICES.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fhir-codegen-cli", "..\..\fhir-codegen-cli\fhir-codegen-cli.csproj", "{69C02221-EEE0-43B6-9EB6-08E788C464AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen-cli", "..\..\fhir-codegen-cli\fhir-codegen-cli.csproj", "{69C02221-EEE0-43B6-9EB6-08E788C464AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.SpecManager", "..\..\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj", "{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.SpecManager", "..\..\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj", "{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

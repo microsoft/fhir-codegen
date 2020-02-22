@@ -64,8 +64,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Searches for the v4 package.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/12/2020.</remarks>
-        ///
         /// <param name="npmDirectory">    Pathname of the npm directory.</param>
         /// <param name="versionDirectory">[out] Pathname of the version directory.</param>
         ///
@@ -101,8 +99,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Function to load an R4 spec NPM into an InfoV5 structure.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/3/2020.</remarks>
         ///
         /// <param name="npmDirectory">Pathname of the npm directory.</param>
         /// <param name="fhirInfo">    [out] The FHIR dictionary.</param>
@@ -399,8 +395,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Creates the Resource dictionary needed to load FHIR R4.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/3/2020.</remarks>
         ///
         /// <param name="dict">[out] The dictionary.</param>
         ///

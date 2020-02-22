@@ -49,8 +49,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Process the structure definition.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/19/2020.</remarks>
-        ///
         /// <param name="sd">          The SD.</param>
         /// <param name="simpleTypes"> [in,out] List of types of the simples.</param>
         /// <param name="complexTypes">[in,out] List of types of the complexes.</param>
@@ -140,8 +138,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Process a structure definition for a Simple data type.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/19/2020.</remarks>
         ///
         /// <param name="sd">         The SD.</param>
         /// <param name="simpleTypes">[in,out] List of types of the simples.</param>
@@ -237,8 +233,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets type from element.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/20/2020.</remarks>
-        ///
         /// <param name="structureName">Name of the structure.</param>
         /// <param name="element">      The element.</param>
         /// <param name="elementType">  [out] Type of the element.</param>
@@ -328,8 +322,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to get expanded types.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
-        ///
         /// <param name="element">      The element.</param>
         /// <param name="types">        [out] The types.</param>
         ///
@@ -412,8 +404,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Process a complex structure (Complex type or Resource).</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
         ///
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="sd">                The SD.</param>
@@ -711,8 +701,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to parse resource an object from the given string.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/19/2020.</remarks>
-        ///
         /// <param name="json">The JSON.</param>
         /// <param name="obj"> [out] The object.</param>
         ///
@@ -741,8 +729,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to process resource.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/19/2020.</remarks>
         ///
         /// <param name="obj">            [out] The object.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>

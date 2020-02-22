@@ -41,8 +41,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Searches for the currently specified package.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/12/2020.</remarks>
-        ///
         /// <param name="npmDirectory">    Pathname of the npm directory.</param>
         /// <param name="versionInfo">     Information describing the version.</param>
         /// <param name="versionDirectory">[out] Pathname of the version directory.</param>
@@ -80,8 +78,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Loads a package.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/18/2020.</remarks>
         ///
         /// <param name="npmDirectory">Pathname of the npm directory.</param>
         /// <param name="fhirInfo">    [out] Information describing the fhir.</param>

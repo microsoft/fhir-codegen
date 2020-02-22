@@ -331,8 +331,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Determine if we should process resource.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/18/2020.</remarks>
-        ///
         /// <param name="resourceName"> Name of the resource.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
@@ -350,8 +348,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Determine if we should ignore resource.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/18/2020.</remarks>
         ///
         /// <param name="resourceName"> Name of the resource.</param>
         ///
@@ -371,8 +367,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Determine if we should skip file.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/18/2020.</remarks>
-        ///
         /// <param name="filename">Filename of the file.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
@@ -390,8 +384,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to parse resource an object from the given string.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/18/2020.</remarks>
         ///
         /// <param name="json">The JSON.</param>
         /// <param name="obj"> [out] The object.</param>

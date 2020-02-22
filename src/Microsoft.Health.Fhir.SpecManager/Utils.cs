@@ -16,8 +16,6 @@ namespace Microsoft.Health.Fhir.SpecManager
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets the parent and field.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/20/2020.</remarks>
-        ///
         /// <param name="path">  Full pathname of the file.</param>
         /// <param name="field"> [out] The field.</param>
         /// <param name="parent">[out] The parent.</param>
@@ -37,8 +35,6 @@ namespace Microsoft.Health.Fhir.SpecManager
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Capitalize name.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/20/2020.</remarks>
-        ///
         /// <param name="name">The name.</param>
         ///
         /// <returns>A string.</returns>
@@ -51,8 +47,6 @@ namespace Microsoft.Health.Fhir.SpecManager
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Maximum cardinality.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/20/2020.</remarks>
         ///
         /// <param name="max">The maximum.</param>
         ///
@@ -81,8 +75,6 @@ namespace Microsoft.Health.Fhir.SpecManager
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Type from fhir type.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
         ///
         /// <param name="fhirType">Type of the fhir.</param>
         ///
@@ -152,8 +144,6 @@ namespace Microsoft.Health.Fhir.SpecManager
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Type from XML type.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
-        ///
         /// <param name="xmlType">Type of the XML.</param>
         ///
         /// <returns>A string.</returns>
@@ -221,8 +211,6 @@ namespace Microsoft.Health.Fhir.SpecManager
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Pascal string from dot notation string.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
         ///
         /// <param name="dot">The dot.</param>
         ///

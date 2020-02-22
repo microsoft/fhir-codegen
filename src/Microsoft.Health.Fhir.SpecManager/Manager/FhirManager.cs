@@ -179,8 +179,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Loads a published version of FHIR.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/18/2020.</remarks>
-        ///
         /// <param name="version">The version.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>

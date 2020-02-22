@@ -92,8 +92,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Query if 'resourceType' is resource type known.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/3/2020.</remarks>
-        ///
         /// <param name="resourceType">Type of the resource.</param>
         ///
         /// <returns>True if resource type known, false if not.</returns>
@@ -106,8 +104,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Query if 'resourceType' is resource type excluded.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/4/2020.</remarks>
         ///
         /// <param name="resourceType">Type of the resource.</param>
         ///

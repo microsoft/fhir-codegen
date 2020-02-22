@@ -13,8 +13,6 @@ namespace fhir_codegen_cli
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Main entry-point for this application.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/3/2020.</remarks>
-        ///
         /// <param name="args">An array of command-line argument strings.</param>
         ///-------------------------------------------------------------------------------------------------
 
@@ -43,8 +41,6 @@ namespace fhir_codegen_cli
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Main processing function</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/3/2020.</remarks>
         ///
         /// <param name="options">Options for controlling the operation.</param>
         ///
@@ -170,8 +166,6 @@ namespace fhir_codegen_cli
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/21/2020.</remarks>
         ///
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="dict">The dictionary.</param>

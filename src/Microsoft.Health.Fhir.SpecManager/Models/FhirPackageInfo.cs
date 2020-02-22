@@ -74,8 +74,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to load FHIR NPM package information from the given directory.</summary>
         ///
-        /// <remarks>Gino Canessa, 2/3/2020.</remarks>
-        ///
         /// <param name="packageDirectory">Pathname of the package directory.</param>
         /// <param name="packageInfo">     [out] Information describing the package.</param>
         ///
