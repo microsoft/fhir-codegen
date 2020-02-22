@@ -6,8 +6,6 @@ namespace Microsoft.Health.Fhir.SpecManager
 {
     ///-------------------------------------------------------------------------------------------------
     /// <summary>Utilities (temp home until they have better ones)</summary>
-    ///
-    /// <remarks>Gino Canessa, 2/20/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
     public abstract class Utils

@@ -7,7 +7,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
     public class FhirManager
     {
-                private static FhirManager _instance;
+        private static FhirManager _instance;
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets the current.</summary>
@@ -17,7 +17,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         public static FhirManager Current => _instance;
 
-                        /// <summary>Dictionary of published versions.</summary>
+        /// <summary>Dictionary of published versions.</summary>
         private Dictionary<int, FhirVersionInfo> _publishedVersionDict;
         /// <summary>Dictionary of development versions.</summary>
         private Dictionary<string, FhirVersionInfo> _devVersionDict;
@@ -28,15 +28,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>The FHIR package downloader.</summary>
         FhirPackageDownloader _packageDownloader;
 
-                        static FhirManager()
+        static FhirManager()
         {
             _instance = null;
         }
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Constructor that prevents a default instance of this class from being created.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/14/2020.</remarks>
         ///-------------------------------------------------------------------------------------------------
 
         private FhirManager(string npmDirectory)
@@ -120,10 +118,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             ;
         }
 
-                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Initializes this object.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/14/2020.</remarks>
         ///-------------------------------------------------------------------------------------------------
 
         public static bool Init(string npmDirectory)
@@ -205,7 +201,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     return false;
                 }
             }
-            
+
             // **** try to load the package ****
 
             if (Loader.LoadPackage(_npmDirectory, ref info))
@@ -218,7 +214,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
-                                        private void CheckLocalVersions()
+        private void CheckLocalVersions()
         {
             // **** traverse the dictionary of published versions ****
 
@@ -229,6 +225,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             }
         }
-
-            }
+    }
 }

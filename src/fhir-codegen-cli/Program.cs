@@ -53,19 +53,6 @@ namespace fhir_codegen_cli
 
             FhirManager.Init(options.NpmDirectory);
 
-
-
-            //// **** test downloader ****
-
-            //FhirPackageDownloader downloader = new FhirPackageDownloader();
-            //downloader.DownloadPublishedPackage(
-            //    LoaderV4.PackageReleaseName,
-            //    LoaderV4.PackageName,
-            //    options.NpmDirectory
-            //    );
-            //downloader.CheckInstalledVersions(options.NpmDirectory);
-
-
             // **** check for loading V2 ****
 
             if (options.LoadR2)
@@ -80,7 +67,6 @@ namespace fhir_codegen_cli
 
                 DumpFhirVersion(r2);
             }
-
 
             if (options.LoadR3)
             {
@@ -109,32 +95,6 @@ namespace fhir_codegen_cli
             }
 
             return true;
-
-            //// **** check for loading V3 ****
-
-            //if (options.LoadV3)
-            //{
-            //    if (!LoaderV3.LoadPackage(options.NpmDirectory, out InfoV3 fhirInfoV3))
-            //    {
-            //        Console.WriteLine("Loading v3 failed!");
-            //        return false;
-            //    }
-            //}
-
-            //// **** check for loading V4 ****
-
-            //if (options.LoadV4)
-            //{
-            //    if (!LoaderV4.LoadPackage(options.NpmDirectory, out InfoV4 fhirInfoV4))
-            //    {
-            //        Console.WriteLine("Loading v4 failed!");
-            //        return false;
-            //    }
-            //}
-
-            //// **** still here means success ****
-
-            //return true;
         }
 
         static void DumpFhirVersion(FhirVersionInfo info)

@@ -2,29 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Newtonsoft.Json;
 using Microsoft.Health.Fhir.SpecManager.Models;
-using fhir_2 = Microsoft.Health.Fhir.SpecManager.fhir.r2;
-using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.r3;
-using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
-using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
-
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
     ///-------------------------------------------------------------------------------------------------
     /// <summary>A FHIR Specification loader.</summary>
-    ///
-    /// <remarks>Gino Canessa, 2/14/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
     public abstract class Loader
     {
-                                                static Loader()
-        {
-        }
-
-                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Searches for the currently specified package.</summary>
         ///
         /// <param name="npmDirectory">    Pathname of the npm directory.</param>
@@ -110,8 +98,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Process the package files.</summary>
+        ///
+        /// <param name="files">          The files.</param>
+        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+        ///
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        ///-------------------------------------------------------------------------------------------------
 
-                                        private static bool ProcessPackageFiles(string[] files, ref FhirVersionInfo fhirVersionInfo)
+        private static bool ProcessPackageFiles(string[] files, ref FhirVersionInfo fhirVersionInfo)
         {
             // **** traverse the files ****
 
@@ -212,6 +208,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             return true;
         }
-
-            }
+    }
 }

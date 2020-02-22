@@ -6,13 +6,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     ///-------------------------------------------------------------------------------------------------
     /// <summary>A FHIR property (in a complex-type or resource).</summary>
-    ///
-    /// <remarks>Gino Canessa, 2/5/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
     public class FhirProperty : FhirTypeBase
     {
-                                ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the cardinality minimum.</summary>
         ///
         /// <value>The cardinality minimum.</value>
@@ -60,7 +58,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public HashSet<string> ExpandedTypes { get; set; }
 
-                                                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets a value indicating whether this property is an array.</summary>
         ///
         /// <value>True if this object is array, false if not.</value>
@@ -87,6 +85,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 return (CardinalityMin == 0);
             }
         }
-
-                            }
+    }
 }

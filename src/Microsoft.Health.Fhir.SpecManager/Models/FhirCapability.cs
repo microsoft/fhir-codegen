@@ -6,5 +6,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     public class FhirCapability
     {
-                                                                                                    }
+    }
 }

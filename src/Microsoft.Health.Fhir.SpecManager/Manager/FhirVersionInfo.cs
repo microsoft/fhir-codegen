@@ -1,35 +1,28 @@
-﻿using Microsoft.Health.Fhir.SpecManager.Converters;
-using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using fhir_2 = Microsoft.Health.Fhir.SpecManager.fhir.r2;
-using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.r3;
-using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
-using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
+using Microsoft.Health.Fhir.SpecManager.Converters;
+using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
     ///-------------------------------------------------------------------------------------------------
     /// <summary>Information about a FHIR release.</summary>
-    ///
-    /// <remarks>Gino Canessa, 2/14/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
     public class FhirVersionInfo
     {
-                public const string UrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
+        public const string UrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
         public const string UrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
         public const string UrlFhirType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type";
 
-                        private static HashSet<int> _knownVersionNumbers;
+        private static HashSet<int> _knownVersionNumbers;
 
         private static Dictionary<int, HashSet<string>> _versionResourcesToProcess;
         private static Dictionary<int, HashSet<string>> _versionResourcesToIgnore;
         private static Dictionary<int, HashSet<string>> _versionFilesToIgnore;
 
-                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the major version.</summary>
         ///
         /// <value>The major version.</value>
@@ -120,10 +113,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public Dictionary<string, FhirResource> Resources { get => _resources; set => _resources = value; }
         public Dictionary<string, FhirCapability> Capabilities { get => _capabilities; set => _capabilities = value; }
 
-                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Static constructor.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/18/2020.</remarks>
         ///-------------------------------------------------------------------------------------------------
 
         static FhirVersionInfo()
@@ -306,7 +297,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             Capabilities = new Dictionary<string, FhirCapability>();
         }
 
-                                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Determine if we should process resource.</summary>
         ///
         /// <param name="resourceName"> Name of the resource.</param>
@@ -384,5 +375,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 );
         }
 
-                            }
+    }
 }

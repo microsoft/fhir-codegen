@@ -6,13 +6,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     public abstract class FhirCommon
     {
-                public const string StandardStatusDeprecated = "deprecated";
+        public const string StandardStatusDeprecated = "deprecated";
         public const string StandardStatusDraft = "draft";
         public const string StandardStatusExternal = "external";
         public const string StandardStatusInformative = "informative";
         public const string StandardStatusNormative = "normative";
         public const string StandardStatusTrialUse = "trial-use";
-        
+
         public static readonly string[] StandardStatusCodes =
         {
             StandardStatusDeprecated,
@@ -22,6 +22,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             StandardStatusNormative,
             StandardStatusTrialUse
         };
-
-            }
+    }
 }

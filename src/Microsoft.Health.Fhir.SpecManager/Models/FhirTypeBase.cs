@@ -6,13 +6,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     ///-------------------------------------------------------------------------------------------------
     /// <summary>A base class for FHIR types to inherit from (common properties)</summary>
-    ///
-    /// <remarks>Gino Canessa, 2/5/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
     public class FhirTypeBase
     {
-                        
+
         ///-------------------------------------------------------------------------------------------------
         /// <summary>
         /// A natural language name identifying the structure definition. This name should be usable as an 
@@ -117,7 +115,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         ///-------------------------------------------------------------------------------------------------
 
         public Dictionary<string, FhirProperty> Properties { get; set; }
-
-
-                                                                            }
+    }
 }

@@ -1,15 +1,13 @@
-﻿using Microsoft.Health.Fhir.SpecManager.Manager;
-using Microsoft.Health.Fhir.SpecManager.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Health.Fhir.SpecManager.Manager;
+using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
     ///-------------------------------------------------------------------------------------------------
     /// <summary>Interface for converter.</summary>
-    ///
-    /// <remarks>Gino Canessa, 2/19/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
     public interface IFhirConverter

@@ -6,30 +6,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     ///-------------------------------------------------------------------------------------------------
     /// <summary>A FHIR Code value object</summary>
-    ///
-    /// <remarks>Gino Canessa, 2/5/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
     public class FhirCode
     {
-                /// <summary>The codes.</summary>
+        /// <summary>The codes.</summary>
         private static Dictionary<string, string[]> _codes;
 
-                
-                        static FhirCode()
+        static FhirCode()
         {
             _codes = new Dictionary<string, string[]>();
         }
 
         ///-------------------------------------------------------------------------------------------------
         /// <summary>Constructor that prevents a default instance of this class from being created.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/6/2020.</remarks>
         ///-------------------------------------------------------------------------------------------------
 
         private FhirCode() { }
 
-                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Adds the codes to 'values'.</summary>
         ///
         /// <param name="name">  The name.</param>
@@ -58,7 +53,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _codes.Add(name, values);
 
             // **** success ****
-            
+
             return true;
         }
 
@@ -82,6 +77,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             values = _codes[name];
             return true;
         }
-
-                                            }
+    }
 }

@@ -6,22 +6,18 @@ using System.Net.Http;
 using System.Text;
 using ICSharpCode.SharpZipLib.GZip;
 using ICSharpCode.SharpZipLib.Tar;
-using Microsoft.Health.Fhir.SpecManager.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
     public class FhirPackageDownloader
     {
-                public const string PublishedFhirUrl = "http://hl7.org/fhir/";
+        public const string PublishedFhirUrl = "http://hl7.org/fhir/";
         public const string BuildFhirUrl = "http://build.fhir.org/";
 
-                        private static HttpClient _httpClient;
+        private static HttpClient _httpClient;
 
-                                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Static constructor.</summary>
-        ///
-        /// <remarks>Gino Canessa, 2/12/2020.</remarks>
         ///-------------------------------------------------------------------------------------------------
 
         static FhirPackageDownloader()
@@ -31,7 +27,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _httpClient = new HttpClient();
         }
 
-                                        public bool DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
+        public bool DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
         {
             Stream fileStream = null;
             Stream gzipStream = null;
@@ -107,5 +103,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
-                            }
+    }
 }

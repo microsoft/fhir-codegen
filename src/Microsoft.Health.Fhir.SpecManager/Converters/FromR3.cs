@@ -1,17 +1,15 @@
-﻿using Microsoft.Health.Fhir.SpecManager.Manager;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Newtonsoft.Json;
 using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.r3;
+using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
     ///-------------------------------------------------------------------------------------------------
     /// <summary>Convert FHIR R3 into local definitions.</summary>
-    ///
-    /// <remarks>Gino Canessa, 2/19/2020.</remarks>
     ///-------------------------------------------------------------------------------------------------
 
     public class FromR3 : IFhirConverter

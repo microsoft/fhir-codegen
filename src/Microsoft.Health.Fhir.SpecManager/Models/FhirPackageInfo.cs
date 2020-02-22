@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     public class FhirPackageInfo
     {
-                                public string Name { get; set; }
+        public string Name { get; set; }
 
         public string Version { get; set; }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public string License { get; set; }
 
-                                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to load FHIR NPM package information from the given directory.</summary>
         ///
         /// <param name="packageDirectory">Pathname of the package directory.</param>
@@ -105,8 +105,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             return false;
         }
-
-                                        
-
     }
 }
