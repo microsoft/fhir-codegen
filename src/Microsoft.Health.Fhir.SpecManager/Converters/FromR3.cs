@@ -16,15 +16,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
     public class FromR3 : IFhirConverter
     {
-                                /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
+        /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private JsonConverter _jsonConverter;
 
-                        public FromR3()
+        public FromR3()
         {
             _jsonConverter = new fhir_3.ResourceConverter();
         }
 
-                                                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Process the structure definition.</summary>
         ///
         /// <param name="sd">          The SD.</param>
@@ -672,7 +672,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
 
-                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to parse resource an object from the given string.</summary>
         ///
         /// <param name="json">The JSON.</param>
@@ -757,4 +757,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-        }
+    }
+}

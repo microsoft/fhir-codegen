@@ -16,15 +16,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
     public class FromR2 : IFhirConverter
     {
-                                /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
+        /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private JsonConverter _jsonConverter;
 
-                        public FromR2()
+        public FromR2()
         {
             _jsonConverter = new fhir_2.ResourceConverter();
         }
 
-                                                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Process the structure definition.</summary>
         ///
         /// <param name="sd">          The SD.</param>
@@ -84,7 +84,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                         return ProcessComplex<FhirResource>(sd, ref resources);
 
-                        //break;
+                    //break;
 
                     case "logical":
                         // **** ignore logical ****
@@ -114,7 +114,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         ///-------------------------------------------------------------------------------------------------
 
         private bool ProcessDataTypeSimple(
-                                            fhir_2.StructureDefinition sd, 
+                                            fhir_2.StructureDefinition sd,
                                             ref Dictionary<string, FhirSimpleType> simpleTypes
                                             )
         {
@@ -246,7 +246,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 // **** stop looking ****
 
                                 return true;
-                                //break;
+                            //break;
 
                             case FhirVersionInfo.UrlXmlType:
 
@@ -257,7 +257,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 // **** stop looking ****
 
                                 return true;
-                                //break;
+                            //break;
 
                             default:
                                 // **** ignore ****
@@ -657,7 +657,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
 
-                        ///-------------------------------------------------------------------------------------------------
+        ///-------------------------------------------------------------------------------------------------
         /// <summary>Attempts to parse resource an object from the given string.</summary>
         ///
         /// <param name="json">The JSON.</param>
@@ -724,7 +724,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             ref complexTypes,
                             ref resources
                             );
-                    //break;
+                        //break;
                 }
             }
             catch (Exception ex)
@@ -737,5 +737,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             return true;
         }
-
-        }
+    }
+}
