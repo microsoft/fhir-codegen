@@ -57,25 +57,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         public string License { get; set; }
 
-        ///-------------------------------------------------------------------------------------------------
+        /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to load FHIR NPM package information from the given directory.</summary>
         ///
         /// <param name="packageDirectory">Pathname of the package directory.</param>
         /// <param name="packageInfo">     [out] Information describing the package.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        ///-------------------------------------------------------------------------------------------------
-
+        /// -------------------------------------------------------------------------------------------------
         public static bool TryLoadPackageInfo(string packageDirectory, out FhirPackageInfo packageInfo)
         {
             packageInfo = null;
 
-            // **** build the path to our file ****
-
+            // build the path to our file
             string packageFilename = Path.Combine(packageDirectory, "package.json");
 
-            // **** make sure our file exists ****
-
+            // make sure our file exists
             if (!File.Exists(packageFilename))
             {
                 Console.WriteLine($"Package file not found! {packageFilename}");
@@ -84,16 +81,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             try
             {
-                // **** load the file ****
-
+                // load the file
                 string packageContents = File.ReadAllText(packageFilename);
 
-                // **** attempt to parse ****
-
+                // attempt to parse
                 packageInfo = JsonConvert.DeserializeObject<FhirPackageInfo>(packageContents);
 
-                // **** here means success ****
-
+                // here means success
                 return true;
             }
             catch (Exception ex)
@@ -101,8 +95,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 Console.WriteLine($"Parsing package.json failed: {ex.Message}");
             }
 
-            // **** still here means failure ****
-
+            // still here means failure
             return false;
         }
     }

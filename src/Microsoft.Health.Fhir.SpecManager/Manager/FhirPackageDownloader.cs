@@ -1,4 +1,9 @@
-﻿using System;
+﻿// -------------------------------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// -------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -9,25 +14,26 @@ using ICSharpCode.SharpZipLib.Tar;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
-    public class FhirPackageDownloader
+    /// <summary>A fhir package downloader.</summary>
+    public static class FhirPackageDownloader
     {
         public const string PublishedFhirUrl = "http://hl7.org/fhir/";
         public const string BuildFhirUrl = "http://build.fhir.org/";
 
-        private static HttpClient _httpClient;
+        /// <summary>The HTTP client.</summary>
+        private static HttpClient _httpClient = new HttpClient();
 
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>Static constructor.</summary>
-        ///-------------------------------------------------------------------------------------------------
+        /// -------------------------------------------------------------------------------------------------
+        /// <summary>Downloads a published FHIR package.</summary>
+        ///
+        /// <param name="releaseName"> Name of the release.</param>
+        /// <param name="packageName"> Name of the package.</param>
+        /// <param name="npmDirectory">Pathname of the npm directory.</param>
+        ///
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        /// -------------------------------------------------------------------------------------------------
 
-        static FhirPackageDownloader()
-        {
-            // **** create our http client ****
-
-            _httpClient = new HttpClient();
-        }
-
-        public bool DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
+        public static bool DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
         {
             Stream fileStream = null;
             Stream gzipStream = null;
@@ -35,35 +41,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             try
             {
-                // **** build the url to this package ****
-
+                // build the url to this package
                 string url = $"{PublishedFhirUrl}{releaseName}/{packageName}.tgz";
 
-                // **** build our extraction directory name ****
-
+                // build our extraction directory name
                 string directory = Path.Combine(npmDirectory, packageName);
 
-                // **** make sure our destination directory exists ****
-
+                // make sure our destination directory exists
                 if (!Directory.Exists(directory))
                 {
                     Directory.CreateDirectory(directory);
                 }
 
-                // **** start our download as a stream ****
-
+                // start our download as a stream
                 fileStream = _httpClient.GetStreamAsync(url).Result;
 
-                // **** extract to the npm directory ****
-
+                // extract to the npm directory
                 gzipStream = new GZipInputStream(fileStream);
 
-                // ***** grab the tar archive ****
-
+                // grab the tar archive
                 tar = TarArchive.CreateInputTarArchive(gzipStream);
 
-                // **** extract ****
-
+                // extract
                 tar.ExtractContents(directory);
             }
             catch (Exception ex)
@@ -73,8 +72,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
             finally
             {
-                // **** clean up ****
-
+                // clean up
                 if (tar != null)
                 {
                     tar.Close();
@@ -97,7 +95,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
-        public bool DownloadBuildPackage()
+        /// -------------------------------------------------------------------------------------------------
+        /// <summary>Downloads a package from the Dev build server.</summary>
+        ///
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        /// -------------------------------------------------------------------------------------------------
+        public static bool DownloadBuildPackage()
         {
             return false;
         }

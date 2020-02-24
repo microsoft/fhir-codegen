@@ -10,21 +10,21 @@ namespace fhir_codegen_cli
 {
     class Program
     {
-        ///-------------------------------------------------------------------------------------------------
+        /// -------------------------------------------------------------------------------------------------
         /// <summary>Main entry-point for this application.</summary>
         ///
         /// <param name="args">An array of command-line argument strings.</param>
-        ///-------------------------------------------------------------------------------------------------
+        /// -------------------------------------------------------------------------------------------------
 
         static void Main(string[] args)
         {
             bool success = false;
 
-            // **** start timing ****
+            // start timing
 
             Stopwatch timingWatch = Stopwatch.StartNew();
 
-            // **** process based on command line arguments ****
+            // process based on command line arguments
 
             Parser.Default.ParseArguments<Options>(args)
                 .WithParsed<Options>(options => {
@@ -32,28 +32,28 @@ namespace fhir_codegen_cli
                 })
                 .WithNotParsed(errors => { Console.WriteLine("Invalid arguments"); });
 
-            // **** done ****
+            // done
 
             long elapsedMs = timingWatch.ElapsedMilliseconds;
 
             Console.WriteLine($"Finished {success}: {elapsedMs / 1000.0} s");
         }
 
-        ///-------------------------------------------------------------------------------------------------
+        /// -------------------------------------------------------------------------------------------------
         /// <summary>Main processing function</summary>
         ///
         /// <param name="options">Options for controlling the operation.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        ///-------------------------------------------------------------------------------------------------
+        /// -------------------------------------------------------------------------------------------------
 
         static bool Process(Options options)
         {
-            // **** initialize the FHIR version manager with our requested directory ****
+            // initialize the FHIR version manager with our requested directory
 
             FhirManager.Init(options.NpmDirectory);
 
-            // **** check for loading V2 ****
+            // check for loading V2
 
             if (options.LoadR2)
             {
@@ -63,7 +63,7 @@ namespace fhir_codegen_cli
                     return false;
                 }
 
-                // **** tell the user what's going on ****
+                // tell the user what's going on
 
                 DumpFhirVersion(r2);
             }
@@ -76,7 +76,7 @@ namespace fhir_codegen_cli
                     return false;
                 }
 
-                // **** tell the user what's going on ****
+                // tell the user what's going on
 
                 DumpFhirVersion(r3);
             }
@@ -89,7 +89,7 @@ namespace fhir_codegen_cli
                     return false;
                 }
 
-                // **** tell the user what's going on ****
+                // tell the user what's going on
 
                 DumpFhirVersion(r4);
             }
@@ -99,37 +99,37 @@ namespace fhir_codegen_cli
 
         static void DumpFhirVersion(FhirVersionInfo info)
         {
-            // **** tell the user what's going on ****
+            // tell the user what's going on
 
             Console.WriteLine($"Found: {info.PackageName} version: {info.VersionString}");
 
-            // **** dump simple types ****
+            // dump simple types
 
             Console.WriteLine($"simple types: {info.SimpleTypes.Count}");
 
             foreach (KeyValuePair<string, FhirSimpleType> kvp in info.SimpleTypes)
             {
-                string primitiveMarker = (kvp.Value.IsPrimitive) ? "*" : "";
+                string primitiveMarker = kvp.Value.IsPrimitive ? "*" : "";
                 Console.WriteLine($"- {kvp.Key}{primitiveMarker}: {kvp.Value.BaseTypeName}");
             }
 
-            // **** dump complex types ****
+            // dump complex types
 
             Console.WriteLine($"complex types: {info.ComplexTypes.Count}");
             DumpComplex<FhirComplexType>(info.ComplexTypes);
 
-            // **** dump resources ****
+            // dump resources
 
             Console.WriteLine($"resources: {info.Resources.Count}");
             DumpComplex<FhirResource>(info.Resources);
         }
 
-        ///-------------------------------------------------------------------------------------------------
+        /// -------------------------------------------------------------------------------------------------
         /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>
         ///
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="dict">The dictionary.</param>
-        ///-------------------------------------------------------------------------------------------------
+        /// -------------------------------------------------------------------------------------------------
 
         private static void DumpComplex<T>(Dictionary<string, T> dict)
             where T : FhirTypeBase
