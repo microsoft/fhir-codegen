@@ -6,10 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.r3;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Newtonsoft.Json;
+using fhir_3 = Microsoft.Health.Fhir.SpecManager.fhir.r3;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
@@ -21,10 +21,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private JsonConverter _jsonConverter;
 
-        public FromR3()
-        {
-            _jsonConverter = new fhir_3.ResourceConverter();
-        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FromR3"/> class.
+        /// </summary>
+        public FromR3() => _jsonConverter = new fhir_3.ResourceConverter();
 
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Process the structure definition.</summary>
@@ -334,9 +334,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
         private static bool ProcessComplex<T>(
-                                    fhir_3.StructureDefinition sd,
-                                    ref Dictionary<string, T> complexDefinitions
-                                    )
+            fhir_3.StructureDefinition sd,
+            ref Dictionary<string, T> complexDefinitions)
             where T : FhirTypeBase, new()
         {
             try

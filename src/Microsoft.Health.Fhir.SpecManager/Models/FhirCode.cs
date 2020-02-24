@@ -1,26 +1,21 @@
-﻿using System;
+﻿// -------------------------------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// -------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// -------------------------------------------------------------------------------------------------
-    /// <summary>A FHIR Code value object</summary>
+    /// <summary>A FHIR Code value object.</summary>
     /// -------------------------------------------------------------------------------------------------
-    public class FhirCode
+    public static class FhirCode
     {
         /// <summary>The codes.</summary>
-        private static Dictionary<string, string[]> _codes;
-
-        static FhirCode()
-        {
-            _codes = new Dictionary<string, string[]>();
-        }
-
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Constructor that prevents a default instance of this class from being created.</summary>
-        /// -------------------------------------------------------------------------------------------------
-        private FhirCode() { }
+        private static Dictionary<string, string[]> _codes = new Dictionary<string, string[]>();
 
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Adds the codes to 'values'.</summary>
@@ -35,13 +30,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             if (_codes.ContainsKey(name))
             {
                 // should be same
-                if (_codes[name].Length == values.Length)
+                if ((values == null) ||
+                    (_codes[name].Length != values.Length))
                 {
-                    return true;
+                    Console.WriteLine($"Duplicate Code {name} with different values!");
+                    return false;
                 }
 
-                Console.WriteLine($"Duplicate Code {name} with different values!");
-                return false;
+                return true;
             }
 
             // add this code

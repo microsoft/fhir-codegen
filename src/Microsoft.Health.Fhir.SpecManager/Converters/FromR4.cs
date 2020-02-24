@@ -19,12 +19,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
     public class FromR4 : IFhirConverter
     {
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
-        private JsonConverter _jsonConverter;
+        private readonly JsonConverter _jsonConverter;
 
-        public FromR4()
-        {
-            _jsonConverter = new fhir_4.ResourceConverter();
-        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FromR4"/> class.
+        /// </summary>
+        public FromR4() => _jsonConverter = new fhir_4.ResourceConverter();
 
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Process the structure definition.</summary>
@@ -37,11 +37,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
         private bool ProcessStructureDef(
-                                        fhir_4.StructureDefinition sd,
-                                        ref Dictionary<string, FhirSimpleType> simpleTypes,
-                                        ref Dictionary<string, FhirComplexType> complexTypes,
-                                        ref Dictionary<string, FhirResource> resources
-                                        )
+            fhir_4.StructureDefinition sd,
+            ref Dictionary<string, FhirSimpleType> simpleTypes,
+            ref Dictionary<string, FhirComplexType> complexTypes,
+            ref Dictionary<string, FhirResource> resources)
         {
             try
             {
@@ -62,7 +61,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
 
                         return ProcessDataTypeSimple(sd, ref simpleTypes);
-
 
                     case "complex-type":
                         // exclude extensions
@@ -89,11 +87,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                         return ProcessComplex<FhirResource>(sd, ref resources);
 
-
                     case "logical":
                         // ignore logical
                         return true;
-
                 }
             }
             catch (Exception ex)
@@ -223,8 +219,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             case FhirVersionInfo.UrlFhirType:
 
                                 // use this type
-
-                                //elementType = Utils.TypeFromFhirType(ext.ValueString);
+                                // elementType = Utils.TypeFromFhirType(ext.ValueString);
                                 elementType = ext.ValueUrl;
 
                                 // stop looking
@@ -340,9 +335,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
         private bool ProcessComplex<T>(
-                                    fhir_4.StructureDefinition sd,
-                                    ref Dictionary<string, T> complexDefinitions
-                                    )
+            fhir_4.StructureDefinition sd,
+            ref Dictionary<string, T> complexDefinitions)
             where T : FhirTypeBase, new()
         {
             try
@@ -578,6 +572,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 Console.WriteLine($"FromR4.ProcessComplex <<< failed to process {sd.Id}:\n{ex}\n--------------");
                 return false;
             }
+
             // success
             return true;
         }
@@ -611,17 +606,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to process resource.</summary>
         ///
-        /// <param name="obj">            [out] The object.</param>
-        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+        /// <param name="obj">         [out] The object.</param>
+        /// <param name="simpleTypes"> [in,out] Simple types.</param>
+        /// <param name="complexTypes">[in,out] Complex types.</param>
+        /// <param name="resources">   [in,out] Resources.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
         bool IFhirConverter.TryProcessResource(
-                                                object obj,
-                                                ref Dictionary<string, FhirSimpleType> simpleTypes,
-                                                ref Dictionary<string, FhirComplexType> complexTypes,
-                                                ref Dictionary<string, FhirResource> resources
-                                                )
+            object obj,
+            ref Dictionary<string, FhirSimpleType> simpleTypes,
+            ref Dictionary<string, FhirComplexType> complexTypes,
+            ref Dictionary<string, FhirResource> resources)
         {
             try
             {
@@ -629,15 +625,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     // ignore
 
-                    //case fhir_4.CapabilityStatement capabilityStatement:
-                    //case fhir_4.CodeSystem codeSystem:
-                    //case fhir_4.CompartmentDefinition compartmentDefinition:
-                    //case fhir_4.ConceptMap conceptMap:
-                    //case fhir_4.NamingSystem namingSystem:
-                    //case fhir_4.OperationDefinition operationDefinition:
-                    //case fhir_4.SearchParameter searchParameter:
-                    //case fhir_4.StructureMap structureMap:
-                    //case fhir_4.ValueSet valueSet:
+                    // case fhir_4.CapabilityStatement capabilityStatement:
+                    // case fhir_4.CodeSystem codeSystem:
+                    // case fhir_4.CompartmentDefinition compartmentDefinition:
+                    // case fhir_4.ConceptMap conceptMap:
+                    // case fhir_4.NamingSystem namingSystem:
+                    // case fhir_4.OperationDefinition operationDefinition:
+                    // case fhir_4.SearchParameter searchParameter:
+                    // case fhir_4.StructureMap structureMap:
+                    // case fhir_4.ValueSet valueSet:
 
                     // process
                     case fhir_4.StructureDefinition structureDefinition:
@@ -645,9 +641,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             structureDefinition,
                             ref simpleTypes,
                             ref complexTypes,
-                            ref resources
-                            );
-
+                            ref resources);
                 }
             }
             catch (Exception ex)
@@ -661,4 +655,3 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
     }
 }
-

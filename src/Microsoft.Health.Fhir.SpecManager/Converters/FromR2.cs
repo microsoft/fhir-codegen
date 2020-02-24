@@ -326,9 +326,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
         private bool ProcessComplex<T>(
-                                    fhir_2.StructureDefinition sd,
-                                    ref Dictionary<string, T> complexDefinitions
-                                    )
+            fhir_2.StructureDefinition sd,
+            ref Dictionary<string, T> complexDefinitions)
             where T : FhirTypeBase, new()
         {
             try
@@ -558,6 +557,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 Console.WriteLine($"FromR2.ProcessComplex <<< failed to process {sd.Id}:\n{ex}\n--------------");
                 return false;
             }
+
             // success
             return true;
         }
@@ -591,29 +591,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to process resource.</summary>
         ///
-        /// <param name="obj">            [out] The object.</param>
-        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+        /// <param name="obj">         [out] The object.</param>
+        /// <param name="simpleTypes"> [in,out] Simple types.</param>
+        /// <param name="complexTypes">[in,out] Complex types.</param>
+        /// <param name="resources">   [in,out] Resources.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
         bool IFhirConverter.TryProcessResource(
-                                                object obj,
-                                                ref Dictionary<string, FhirSimpleType> simpleTypes,
-                                                ref Dictionary<string, FhirComplexType> complexTypes,
-                                                ref Dictionary<string, FhirResource> resources
-                                                )
+            object obj,
+            ref Dictionary<string, FhirSimpleType> simpleTypes,
+            ref Dictionary<string, FhirComplexType> complexTypes,
+            ref Dictionary<string, FhirResource> resources)
         {
             try
             {
                 switch (obj)
                 {
                     // ignore
-
-                    //case fhir_2.Conformance conformance:
-                    //case fhir_2.NamingSystem namingSystem:
-                    //case fhir_2.OperationDefinition operationDefinition:
-                    //case fhir_2.SearchParameter searchParameter:
-                    //case fhir_2.ValueSet valueSet:
+                    // case fhir_2.Conformance conformance:
+                    // case fhir_2.NamingSystem namingSystem:
+                    // case fhir_2.OperationDefinition operationDefinition:
+                    // case fhir_2.SearchParameter searchParameter:
+                    // case fhir_2.ValueSet valueSet:
 
                     // process
                     case fhir_2.StructureDefinition structureDefinition:
@@ -621,9 +621,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             structureDefinition,
                             ref simpleTypes,
                             ref complexTypes,
-                            ref resources
-                            );
-
+                            ref resources);
                 }
             }
             catch (Exception ex)

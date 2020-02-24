@@ -1,11 +1,18 @@
-﻿using System;
+﻿// -------------------------------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// -------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// -------------------------------------------------------------------------------------------------
-    /// <summary>A base class for FHIR types to inherit from (common properties)</summary>
+    /// <summary>
+    /// A base class for FHIR types to inherit from (common properties)
+    /// </summary>
     /// -------------------------------------------------------------------------------------------------
     public class FhirTypeBase
     {
@@ -21,7 +28,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// -------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Name field with the first letter capitalized, useful in various languages and PascalCase joining
+        /// Name field with the first letter capitalized, useful in various languages and PascalCase joining.
         /// </summary>
         ///
         /// <value>The name capitalized.</value>

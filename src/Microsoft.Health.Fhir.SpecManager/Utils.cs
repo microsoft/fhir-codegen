@@ -1,5 +1,11 @@
-﻿using System;
+﻿// -------------------------------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// -------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager
@@ -18,12 +24,21 @@ namespace Microsoft.Health.Fhir.SpecManager
         /// -------------------------------------------------------------------------------------------------
         public static void GetParentAndField(string[] path, out string field, out string parent)
         {
+            if ((path == null) || (path.Length == 0))
+            {
+                field = string.Empty;
+                parent = string.Empty;
+                return;
+            }
+
+            // grab the field
             field = path[path.Length - 1];
 
+            // determine the parent name
             parent = string.Empty;
             for (int i = 0; i < path.Length - 1; i++)
             {
-                parent += string.Concat(path[i].Substring(0, 1).ToUpper(), path[i].Substring(1));
+                parent += string.Concat(path[i].Substring(0, 1).ToUpper(CultureInfo.InvariantCulture), path[i].Substring(1));
             }
         }
 
@@ -36,7 +51,12 @@ namespace Microsoft.Health.Fhir.SpecManager
         /// -------------------------------------------------------------------------------------------------
         public static string Capitalize(string name)
         {
-            return string.Concat(name.Substring(0, 1).ToUpper(), name.Substring(1));
+            if (string.IsNullOrEmpty(name))
+            {
+                return string.Empty;
+            }
+
+            return string.Concat(name.Substring(0, 1).ToUpper(CultureInfo.InvariantCulture), name.Substring(1));
         }
 
         /// -------------------------------------------------------------------------------------------------
@@ -120,14 +140,8 @@ namespace Microsoft.Health.Fhir.SpecManager
                 case "http://hl7.org/fhirpath/System.Time":
                     return "time";
 
-                //case "":
-                //    return "";
-
-                //case "":
-                //    return "";
                 default:
                     return fhirType;
-
             }
         }
 
@@ -171,7 +185,6 @@ namespace Microsoft.Health.Fhir.SpecManager
                 case "anyURI":
                     return "uri";
 
-
                 case "xsd:gYear OR xsd:gYearMonth OR xsd:date":
                 case "xs:gYear, xs:gYearMonth, xs:date":
                 case "xsd:date":
@@ -194,7 +207,6 @@ namespace Microsoft.Health.Fhir.SpecManager
 
                 default:
                     return xmlType;
-
             }
         }
 
@@ -217,6 +229,5 @@ namespace Microsoft.Health.Fhir.SpecManager
 
             return val;
         }
-
     }
 }
