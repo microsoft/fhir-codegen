@@ -1,4 +1,9 @@
-﻿using System;
+﻿// -------------------------------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// -------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -47,13 +52,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Loads a package.</summary>
         ///
-        /// <param name="npmDirectory">Pathname of the npm directory.</param>
-        /// <param name="fhirInfo">    [out] Information describing the fhir.</param>
+        /// <param name="npmDirectory">   Pathname of the npm directory.</param>
+        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
         public static bool LoadPackage(string npmDirectory, ref FhirVersionInfo fhirVersionInfo)
         {
+            // sanity checks
+            if (fhirVersionInfo == null)
+            {
+                Console.WriteLine("LoadPackage <<< invalid version info is NULL!");
+                return false;
+            }
+
             // find the package
             if (!TryFindPackage(npmDirectory, fhirVersionInfo, out string packageDir))
             {
@@ -100,7 +112,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             foreach (string filename in files)
             {
                 // check for skipping file
-                if (fhirVersionInfo.ShouldSkipFile(Path.GetFileName(filename)))
+                if (FhirVersionInfo.ShouldSkipFile(Path.GetFileName(filename)))
                 {
                     // skip this file
                     continue;

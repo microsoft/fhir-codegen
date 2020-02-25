@@ -17,7 +17,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
     /// <summary>A fhir package downloader.</summary>
     public static class FhirPackageDownloader
     {
+        /// <summary>Base URL for published versions of FHIR.</summary>
         public const string PublishedFhirUrl = "http://hl7.org/fhir/";
+
+        /// <summary>Base URL for developer build versions of FHIR.</summary>
         public const string BuildFhirUrl = "http://build.fhir.org/";
 
         /// <summary>The HTTP client.</summary>
@@ -32,7 +35,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
-
         public static bool DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
         {
             Stream fileStream = null;

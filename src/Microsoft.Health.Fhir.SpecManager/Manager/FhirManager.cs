@@ -1,23 +1,24 @@
-﻿using System;
+﻿// -------------------------------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// -------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
+    /// <summary>FHIR version manager.</summary>
     public class FhirManager
     {
+        /// <summary>FHIR Manager singleton.</summary>
         private static FhirManager _instance;
-
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets the current.</summary>
-        ///
-        /// <value>The current.</value>
-        /// -------------------------------------------------------------------------------------------------
-        public static FhirManager Current => _instance;
 
         /// <summary>Dictionary of published versions.</summary>
         private Dictionary<int, FhirVersionInfo> _publishedVersionDict;
+
         /// <summary>Dictionary of development versions.</summary>
         private Dictionary<string, FhirVersionInfo> _devVersionDict;
 
@@ -25,7 +26,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private string _npmDirectory;
 
         /// -------------------------------------------------------------------------------------------------
-        /// <summary>Constructor that prevents a default instance of this class from being created.</summary>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FhirManager"/> class.
+        /// </summary>
+        ///
+        /// <param name="npmDirectory">Pathname of the npm directory.</param>
         /// -------------------------------------------------------------------------------------------------
         private FhirManager(string npmDirectory)
         {
@@ -79,7 +84,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         IsOnDisk = false,
                     }
                 },
-
             };
 
             // create a dictionary for dev builds
@@ -97,12 +101,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         IsOnDisk = false,
                     }
                 },
-            }
-            ;
+            };
         }
 
         /// -------------------------------------------------------------------------------------------------
+        /// <summary>Gets the current singleton.</summary>
+        ///
+        /// <value>The current FHIR Manager singleton.</value>
+        /// -------------------------------------------------------------------------------------------------
+        public static FhirManager Current => _instance;
+
+        /// -------------------------------------------------------------------------------------------------
         /// <summary>Initializes this object.</summary>
+        ///
+        /// <param name="npmDirectory">Pathname of the npm directory.</param>
+        ///
+        /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
         public static bool Init(string npmDirectory)
         {
@@ -121,7 +135,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     Console.WriteLine($"FhirManager.Init <<< NPM directory not found: {npmDirectory}");
                     return false;
                 }
-
             }
             catch (Exception ex)
             {
@@ -139,7 +152,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Loads a published version of FHIR.</summary>
         ///
-        /// <param name="version">The version.</param>
+        /// <param name="version">        The version.</param>
+        /// <param name="fhirVersionInfo">[out] Information describing the fhir version.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
@@ -166,8 +180,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 if (!FhirPackageDownloader.DownloadPublishedPackage(
                         info.ReleaseName,
                         info.PackageName,
-                        _npmDirectory
-                        ))
+                        _npmDirectory))
                 {
                     Console.WriteLine($"FhirManager.Load <<<" +
                         $" failed to download version {info.MajorVersion} ({info.ReleaseName})");
@@ -186,14 +199,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
+        /// <summary>Check local versions.</summary>
         private void CheckLocalVersions()
         {
             // traverse the dictionary of published versions
             foreach (KeyValuePair<int, FhirVersionInfo> kvp in _publishedVersionDict)
             {
-                // check to see if this version is already downloaded
-
-
+                // TODO: check to see if this version is already downloaded
             }
         }
     }

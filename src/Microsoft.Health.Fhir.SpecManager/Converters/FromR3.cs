@@ -16,7 +16,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
     /// -------------------------------------------------------------------------------------------------
     /// <summary>Convert FHIR R3 into local definitions.</summary>
     /// -------------------------------------------------------------------------------------------------
-    public class FromR3 : IFhirConverter
+    public sealed class FromR3 : IFhirConverter
     {
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private JsonConverter _jsonConverter;
@@ -461,7 +461,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 Console.WriteLine($"FromR3.ProcessComplex <<<" +
                                     $" Could not resolve content reference {element.ContentReference} in {sd.Name} field {element.Path}");
                                 return false;
-
                         }
                     }
                     else
@@ -612,7 +611,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
-
         bool IFhirConverter.TryProcessResource(
             object obj,
             ref Dictionary<string, FhirSimpleType> simpleTypes,

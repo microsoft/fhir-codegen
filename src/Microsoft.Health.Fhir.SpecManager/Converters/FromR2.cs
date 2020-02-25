@@ -16,7 +16,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
     /// -------------------------------------------------------------------------------------------------
     /// <summary>Convert FHIR R2 into local definitions.</summary>
     /// -------------------------------------------------------------------------------------------------
-    public class FromR2 : IFhirConverter
+    public sealed class FromR2 : IFhirConverter
     {
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private readonly JsonConverter _jsonConverter;

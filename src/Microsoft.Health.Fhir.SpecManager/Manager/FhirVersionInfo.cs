@@ -1,4 +1,9 @@
-﻿using System;
+﻿// -------------------------------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// -------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Converters;
@@ -11,15 +16,177 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
     /// -------------------------------------------------------------------------------------------------
     public class FhirVersionInfo
     {
+        /// <summary>Extension URL for JSON type information.</summary>
         public const string UrlJsonType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type";
+
+        /// <summary>Extension URL for XML type information.</summary>
         public const string UrlXmlType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type";
+
+        /// <summary>Extension URL for FHIR type information (added R4).</summary>
         public const string UrlFhirType = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type";
 
-        private static HashSet<int> _knownVersionNumbers;
+        /// <summary>The known version numbers (for fast checking on version load requests).</summary>
+        private static HashSet<int> _knownVersionNumbers = new HashSet<int>()
+        {
+            2,
+            3,
+            4,
+            5,
+        };
 
-        private static Dictionary<int, HashSet<string>> _versionResourcesToProcess;
-        private static Dictionary<int, HashSet<string>> _versionResourcesToIgnore;
-        private static Dictionary<int, HashSet<string>> _versionFilesToIgnore;
+        /// <summary>Types of resources to process, by FHIR version.</summary>
+        private static Dictionary<int, HashSet<string>> _versionResourcesToProcess = new Dictionary<int, HashSet<string>>()
+        {
+            {
+                2,
+                new HashSet<string>()
+                {
+                    "StructureDefinition",
+                }
+            },
+            {
+                3,
+                new HashSet<string>()
+                {
+                    "CapabilityStatement",
+                    "CodeSystem",
+                    "NamingSystem",
+                    "OperationDefinition",
+                    "SearchParameter",
+                    "StructureDefinition",
+                    "ValueSet",
+                }
+            },
+            {
+                4,
+                new HashSet<string>()
+                {
+                    "CapabilityStatement",
+                    "CodeSystem",
+                    "NamingSystem",
+                    "OperationDefinition",
+                    "SearchParameter",
+                    "StructureDefinition",
+                    "ValueSet",
+                }
+            },
+            {
+                5,
+                new HashSet<string>()
+                {
+                    "CapabilityStatement",
+                    "CodeSystem",
+                    "NamingSystem",
+                    "OperationDefinition",
+                    "SearchParameter",
+                    "StructureDefinition",
+                    "ValueSet",
+                }
+            },
+        };
+
+        /// <summary>Types of resources to ignore, by FHIR version.</summary>
+        private static Dictionary<int, HashSet<string>> _versionResourcesToIgnore = new Dictionary<int, HashSet<string>>()
+        {
+            {
+                2,
+                new HashSet<string>()
+                {
+                    "Conformance",
+                    "NamingSystem",
+                    "OperationDefinition",
+                    "SearchParameter",
+                    "ValueSet",
+
+                    "ConceptMap",
+                    "ImplementationGuide",
+                }
+            },
+            {
+                3,
+                new HashSet<string>()
+                {
+                    "CompartmentDefinition",
+                    "ConceptMap",
+                    "ImplementationGuide",
+                    "StructureMap",
+                }
+            },
+            {
+                4,
+                new HashSet<string>()
+                {
+                    "CompartmentDefinition",
+                    "ConceptMap",
+                    "StructureMap",
+                }
+            },
+            {
+                5,
+                new HashSet<string>()
+                {
+                    "CompartmentDefinition",
+                    "ConceptMap",
+                    "StructureMap",
+                }
+            },
+        };
+
+        private static HashSet<string> _npmFilesToIgnore = new HashSet<string>()
+        {
+            ".index.json",
+            "package.json",
+        };
+
+        private IFhirConverter _fhirConverter;
+        private Dictionary<string, FhirSimpleType> _simpleTypes;
+        private Dictionary<string, FhirComplexType> _complexTypes;
+        private Dictionary<string, FhirResource> _resources;
+        private Dictionary<string, FhirCapability> _capabilities;
+
+        /// -------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class.
+        /// Require major version (release #) to validate it is supported.
+        /// </summary>
+        ///
+        /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+        ///
+        /// <param name="majorVersion">The major version.</param>
+        /// -------------------------------------------------------------------------------------------------
+        public FhirVersionInfo(int majorVersion)
+        {
+            if (!_knownVersionNumbers.Contains(majorVersion))
+            {
+                throw new Exception($"Invalid FHIR major version: {majorVersion}!");
+            }
+
+            // copy required fields
+            MajorVersion = majorVersion;
+
+            // create our JSON converter
+            switch (majorVersion)
+            {
+                case 2:
+                    _fhirConverter = new FromR2();
+                    break;
+                case 3:
+                    _fhirConverter = new FromR3();
+                    break;
+                case 4:
+                    _fhirConverter = new FromR4();
+                    break;
+                case 5:
+                    _fhirConverter = null;
+                    break;
+            }
+
+            // create our info dictionaries
+            SimpleTypes = new Dictionary<string, FhirSimpleType>();
+            ComplexTypes = new Dictionary<string, FhirComplexType>();
+            Resources = new Dictionary<string, FhirResource>();
+            Capabilities = new Dictionary<string, FhirCapability>();
+        }
 
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the major version.</summary>
@@ -91,203 +258,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// -------------------------------------------------------------------------------------------------
         public DateTime? LastDownloaded { get; set; }
 
-        private IFhirConverter _fhirConverter;
-        private Dictionary<string, FhirSimpleType> _simpleTypes;
-        private Dictionary<string, FhirComplexType> _complexTypes;
-        private Dictionary<string, FhirResource> _resources;
-        private Dictionary<string, FhirCapability> _capabilities;
-
+        /// -------------------------------------------------------------------------------------------------
+        /// <summary>Gets or sets a dictionary with the known simple types for this version of FHIR.</summary>
+        ///
+        /// <value>A dictionary of the simple types.</value>
+        /// -------------------------------------------------------------------------------------------------
         public Dictionary<string, FhirSimpleType> SimpleTypes { get => _simpleTypes; set => _simpleTypes = value; }
+
+        /// -------------------------------------------------------------------------------------------------
+        /// <summary>Gets or sets a dictionary with the known complex types for this version of FHIR.</summary>
+        ///
+        /// <value>A dictionary of the complex types.</value>
+        /// -------------------------------------------------------------------------------------------------
         public Dictionary<string, FhirComplexType> ComplexTypes { get => _complexTypes; set => _complexTypes = value; }
+
+        /// -------------------------------------------------------------------------------------------------
+        /// <summary>Gets or sets a dictionary with the known resources for this version of FHIR.</summary>
+        ///
+        /// <value>A dictionary of the resources.</value>
+        /// -------------------------------------------------------------------------------------------------
         public Dictionary<string, FhirResource> Resources { get => _resources; set => _resources = value; }
+
+        /// -------------------------------------------------------------------------------------------------
+        /// <summary>Gets or sets the capabilities.</summary>
+        ///
+        /// <value>The capabilities.</value>
+        /// -------------------------------------------------------------------------------------------------
         public Dictionary<string, FhirCapability> Capabilities { get => _capabilities; set => _capabilities = value; }
-
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Static constructor.</summary>
-        /// -------------------------------------------------------------------------------------------------
-        static FhirVersionInfo()
-        {
-            _knownVersionNumbers = new HashSet<int>()
-            {
-                2,
-                3,
-                4,
-                5
-            };
-
-            _versionResourcesToProcess = new Dictionary<int, HashSet<string>>()
-            {
-                {
-                    2,
-                    new HashSet<string>()
-                    {
-                        "StructureDefinition",
-                    }
-                },
-                {
-                    3,
-                    new HashSet<string>()
-                    {
-                        "CapabilityStatement",
-                        "CodeSystem",
-                        "NamingSystem",
-                        "OperationDefinition",
-                        "SearchParameter",
-                        "StructureDefinition",
-                        "ValueSet",
-                    }
-                },
-                {
-                    4,
-                    new HashSet<string>()
-                    {
-                        "CapabilityStatement",
-                        "CodeSystem",
-                        "NamingSystem",
-                        "OperationDefinition",
-                        "SearchParameter",
-                        "StructureDefinition",
-                        "ValueSet",
-                    }
-                },
-                {
-                    5,
-                    new HashSet<string>()
-                    {
-                        "CapabilityStatement",
-                        "CodeSystem",
-                        "NamingSystem",
-                        "OperationDefinition",
-                        "SearchParameter",
-                        "StructureDefinition",
-                        "ValueSet",
-                    }
-                },
-            };
-
-            _versionResourcesToIgnore = new Dictionary<int, HashSet<string>>()
-            {
-                {
-                    2,
-                    new HashSet<string>()
-                    {
-                        "Conformance",
-                        "NamingSystem",
-                        "OperationDefinition",
-                        "SearchParameter",
-                        "ValueSet",
-
-                        "ConceptMap",
-                        "ImplementationGuide",
-                    }
-                },
-                {
-                    3,
-                    new HashSet<string>()
-                    {
-                        "CompartmentDefinition",
-                        "ConceptMap",
-                        "ImplementationGuide",
-                        "StructureMap",
-                    }
-                },
-                {
-                    4,
-                    new HashSet<string>()
-                    {
-                        "CompartmentDefinition",
-                        "ConceptMap",
-                        "StructureMap",
-                    }
-                },
-                {
-                    5,
-                    new HashSet<string>()
-                    {
-                        "CompartmentDefinition",
-                        "ConceptMap",
-                        "StructureMap",
-                    }
-                },
-            };
-
-            _versionFilesToIgnore = new Dictionary<int, HashSet<string>>()
-            {
-                {
-                    2,
-                    new HashSet<string>()
-                    {
-                        ".index.json",
-                        "package.json"
-                    }
-                },
-                {
-                    3,
-                    new HashSet<string>()
-                    {
-                        ".index.json",
-                        "package.json"
-                    }
-                },
-                {
-                    4,
-                    new HashSet<string>()
-                    {
-                        ".index.json",
-                        "package.json"
-                    }
-                },
-                {
-                    5,
-                    new HashSet<string>()
-                    {
-                        ".index.json",
-                        "package.json"
-                    }
-                },
-            };
-        }
-
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Constructor - require major version (release #) to validate it is supported</summary>
-        ///
-        /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-        ///
-        /// <param name="majorVersion">The major version.</param>
-        /// -------------------------------------------------------------------------------------------------
-        public FhirVersionInfo(int majorVersion)
-        {
-            if (!_knownVersionNumbers.Contains(majorVersion))
-            {
-                throw new Exception($"Invalid FHIR major version: {majorVersion}!");
-            }
-
-            // copy required fields
-            MajorVersion = majorVersion;
-
-            // create our JSON converter
-            switch (majorVersion)
-            {
-                case 2:
-                    _fhirConverter = new FromR2();
-                    break;
-                case 3:
-                    _fhirConverter = new FromR3();
-                    break;
-                case 4:
-                    _fhirConverter = new FromR4();
-                    break;
-                case 5:
-                    _fhirConverter = null;
-                    break;
-            }
-
-            // create our info dictionaries
-            SimpleTypes = new Dictionary<string, FhirSimpleType>();
-            ComplexTypes = new Dictionary<string, FhirComplexType>();
-            Resources = new Dictionary<string, FhirResource>();
-            Capabilities = new Dictionary<string, FhirCapability>();
-        }
 
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Determine if we should process resource.</summary>
@@ -330,9 +327,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
-        public bool ShouldSkipFile(string filename)
+        public static bool ShouldSkipFile(string filename)
         {
-            if (_versionFilesToIgnore[MajorVersion].Contains(filename))
+            if (_npmFilesToIgnore.Contains(filename))
             {
                 return true;
             }
@@ -344,23 +341,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Attempts to parse resource an object from the given string.</summary>
         ///
         /// <param name="json">The JSON.</param>
-        /// <param name="obj"> [out] The object.</param>
+        /// <param name="resource"> [out] The resource object.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         /// -------------------------------------------------------------------------------------------------
-        public bool TryParseResource(string json, out object obj)
+        public bool TryParseResource(string json, out object resource)
         {
-            return _fhirConverter.TryParseResource(json, out obj);
+            return _fhirConverter.TryParseResource(json, out resource);
         }
 
-        public bool TryProcessResource(object obj)
+        /// -------------------------------------------------------------------------------------------------
+        /// <summary>Attempts to process resource.</summary>
+        ///
+        /// <param name="resource">[out] The resource object.</param>
+        ///
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        /// -------------------------------------------------------------------------------------------------
+        public bool TryProcessResource(object resource)
         {
             return _fhirConverter.TryProcessResource(
-                obj,
+                resource,
                 ref _simpleTypes,
                 ref _complexTypes,
-                ref _resources
-                );
+                ref _resources);
         }
     }
 }
