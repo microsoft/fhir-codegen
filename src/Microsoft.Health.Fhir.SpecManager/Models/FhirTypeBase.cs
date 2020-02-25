@@ -1,6 +1,8 @@
 ﻿// -------------------------------------------------------------------------------------------------
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// <copyright file="FhirTypeBase.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation. All rights reserved.
+//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// </copyright>
 // -------------------------------------------------------------------------------------------------
 
 using System;
@@ -11,7 +13,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// -------------------------------------------------------------------------------------------------
     /// <summary>
-    /// A base class for FHIR types to inherit from (common properties)
+    /// A base class for FHIR types to inherit from (common properties).
     /// </summary>
     /// -------------------------------------------------------------------------------------------------
     public class FhirTypeBase

@@ -1,6 +1,8 @@
 ﻿// -------------------------------------------------------------------------------------------------
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// <copyright file="Loader.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation. All rights reserved.
+//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// </copyright>
 // -------------------------------------------------------------------------------------------------
 
 using System;
@@ -62,7 +64,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // sanity checks
             if (fhirVersionInfo == null)
             {
-                Console.WriteLine("LoadPackage <<< invalid version info is NULL!");
+                Console.WriteLine($"LoadPackage <<< invalid version info is NULL, cannot load {npmDirectory}");
                 return false;
             }
 
@@ -90,7 +92,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             if (!ProcessPackageFiles(files, ref fhirVersionInfo))
             {
-                Console.WriteLine($"LoadPackage <<< failed to process package files!");
+                Console.WriteLine($"LoadPackage <<< failed to process package files in {npmDirectory}!");
                 return false;
             }
 

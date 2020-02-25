@@ -11,7 +11,7 @@ using System.Text;
 namespace Microsoft.Health.Fhir.SpecManager
 {
     /// -------------------------------------------------------------------------------------------------
-    /// <summary>Utilities (temp home until they have better ones)</summary>
+    /// <summary>Utilities (temp home until they have better ones).</summary>
     /// -------------------------------------------------------------------------------------------------
     public abstract class Utils
     {
@@ -64,7 +64,7 @@ namespace Microsoft.Health.Fhir.SpecManager
         ///
         /// <param name="max">The maximum.</param>
         ///
-        /// <returns>An int?</returns>
+        /// <returns>Null for unbounded cardinality, values for a specific maximum.</returns>
         /// -------------------------------------------------------------------------------------------------
         public static int? MaxCardinality(string max)
         {
@@ -219,6 +219,11 @@ namespace Microsoft.Health.Fhir.SpecManager
         /// -------------------------------------------------------------------------------------------------
         public static string PascalFromDot(string dot)
         {
+            if (string.IsNullOrEmpty(dot))
+            {
+                return string.Empty;
+            }
+
             string[] components = dot.Split('.');
             string val = string.Empty;
 
