@@ -10,12 +10,9 @@ namespace fhir_codegen_cli
 {
     class Program
     {
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Main entry-point for this application.</summary>
         ///
         /// <param name="args">An array of command-line argument strings.</param>
-        /// -------------------------------------------------------------------------------------------------
-
         static void Main(string[] args)
         {
             bool success = false;
@@ -39,14 +36,11 @@ namespace fhir_codegen_cli
             Console.WriteLine($"Finished {success}: {elapsedMs / 1000.0} s");
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Main processing function</summary>
         ///
         /// <param name="options">Options for controlling the operation.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
-
         static bool Process(Options options)
         {
             // initialize the FHIR version manager with our requested directory
@@ -124,13 +118,10 @@ namespace fhir_codegen_cli
             DumpComplex<FhirResource>(info.Resources);
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>
         ///
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="dict">The dictionary.</param>
-        /// -------------------------------------------------------------------------------------------------
-
         private static void DumpComplex<T>(Dictionary<string, T> dict)
             where T : FhirTypeBase
         {

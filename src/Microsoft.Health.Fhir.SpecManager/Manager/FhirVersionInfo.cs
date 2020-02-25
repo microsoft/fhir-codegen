@@ -13,9 +13,7 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
-    /// -------------------------------------------------------------------------------------------------
     /// <summary>Information about a FHIR release.</summary>
-    /// -------------------------------------------------------------------------------------------------
     public class FhirVersionInfo
     {
         /// <summary>Extension URL for JSON type information.</summary>
@@ -146,7 +144,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirResource> _resources;
         private Dictionary<string, FhirCapability> _capabilities;
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class.
         /// Require major version (release #) to validate it is supported.
@@ -155,7 +152,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
         ///
         /// <param name="majorVersion">The major version.</param>
-        /// -------------------------------------------------------------------------------------------------
         public FhirVersionInfo(int majorVersion)
         {
             if (!_knownVersionNumbers.Contains(majorVersion))
@@ -190,111 +186,81 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             Capabilities = new Dictionary<string, FhirCapability>();
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the major version.</summary>
         ///
         /// <value>The major version.</value>
-        /// -------------------------------------------------------------------------------------------------
         public int MajorVersion { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the name of the package release.</summary>
         ///
         /// <value>The name of the package release.</value>
-        /// -------------------------------------------------------------------------------------------------
         public string ReleaseName { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the name of the package.</summary>
         ///
         /// <value>The name of the package.</value>
-        /// -------------------------------------------------------------------------------------------------
         public string PackageName { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the version string.</summary>
         ///
         /// <value>The version string.</value>
-        /// -------------------------------------------------------------------------------------------------
         public string VersionString { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets a value indicating whether this object is development build.</summary>
         ///
         /// <value>True if this object is development build, false if not.</value>
-        /// -------------------------------------------------------------------------------------------------
         public bool IsDevBuild { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the development branch.</summary>
         ///
         /// <value>The development branch.</value>
-        /// -------------------------------------------------------------------------------------------------
         public string DevBranch { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets a value indicating whether this object is local build.</summary>
         ///
         /// <value>True if this object is local build, false if not.</value>
-        /// -------------------------------------------------------------------------------------------------
         public bool IsLocalBuild { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the pathname of the local directory.</summary>
         ///
         /// <value>The pathname of the local directory.</value>
-        /// -------------------------------------------------------------------------------------------------
         public string LocalDirectory { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets a value indicating whether this object is on disk.</summary>
         ///
         /// <value>True if available, false if not.</value>
-        /// -------------------------------------------------------------------------------------------------
         public bool IsOnDisk { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the Date/Time of the last downloaded.</summary>
         ///
         /// <value>The last downloaded.</value>
-        /// -------------------------------------------------------------------------------------------------
         public DateTime? LastDownloaded { get; set; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets a dictionary with the known simple types for this version of FHIR.</summary>
         ///
         /// <value>A dictionary of the simple types.</value>
-        /// -------------------------------------------------------------------------------------------------
         public Dictionary<string, FhirSimpleType> SimpleTypes { get => _simpleTypes; set => _simpleTypes = value; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets a dictionary with the known complex types for this version of FHIR.</summary>
         ///
         /// <value>A dictionary of the complex types.</value>
-        /// -------------------------------------------------------------------------------------------------
         public Dictionary<string, FhirComplexType> ComplexTypes { get => _complexTypes; set => _complexTypes = value; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets a dictionary with the known resources for this version of FHIR.</summary>
         ///
         /// <value>A dictionary of the resources.</value>
-        /// -------------------------------------------------------------------------------------------------
         public Dictionary<string, FhirResource> Resources { get => _resources; set => _resources = value; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets or sets the capabilities.</summary>
         ///
         /// <value>The capabilities.</value>
-        /// -------------------------------------------------------------------------------------------------
         public Dictionary<string, FhirCapability> Capabilities { get => _capabilities; set => _capabilities = value; }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Determine if we should process resource.</summary>
         ///
         /// <param name="resourceName"> Name of the resource.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public bool ShouldProcessResource(string resourceName)
         {
             if (_versionResourcesToProcess[MajorVersion].Contains(resourceName))
@@ -305,13 +271,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Determine if we should ignore resource.</summary>
         ///
         /// <param name="resourceName"> Name of the resource.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public bool ShouldIgnoreResource(string resourceName)
         {
             if (_versionResourcesToIgnore[MajorVersion].Contains(resourceName))
@@ -322,13 +286,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Determine if we should skip file.</summary>
         ///
         /// <param name="filename">Filename of the file.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static bool ShouldSkipFile(string filename)
         {
             if (_npmFilesToIgnore.Contains(filename))
@@ -339,26 +301,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to parse resource an object from the given string.</summary>
         ///
         /// <param name="json">The JSON.</param>
         /// <param name="resource"> [out] The resource object.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public bool TryParseResource(string json, out object resource)
         {
             return _fhirConverter.TryParseResource(json, out resource);
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to process resource.</summary>
         ///
         /// <param name="resource">[out] The resource object.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public bool TryProcessResource(object resource)
         {
             return _fhirConverter.TryProcessResource(

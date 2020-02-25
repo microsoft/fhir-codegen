@@ -11,22 +11,18 @@ using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
-    /// -------------------------------------------------------------------------------------------------
     /// <summary>A FHIR Code value object.</summary>
-    /// -------------------------------------------------------------------------------------------------
     public static class FhirCode
     {
         /// <summary>The codes.</summary>
         private static Dictionary<string, string[]> _codes = new Dictionary<string, string[]>();
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Adds the codes to 'values'.</summary>
         ///
         /// <param name="name">  The name.</param>
         /// <param name="values">The values.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static bool AddCodes(string name, string[] values)
         {
             if (_codes.ContainsKey(name))
@@ -49,14 +45,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             return true;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to get codes a string[] from the given string.</summary>
         ///
         /// <param name="name">  The name.</param>
         /// <param name="values">[out] The values.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static bool TryGetCodes(string name, out string[] values)
         {
             if (!_codes.ContainsKey(name))

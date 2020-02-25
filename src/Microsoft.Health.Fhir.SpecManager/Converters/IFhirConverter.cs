@@ -13,22 +13,17 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
-    /// -------------------------------------------------------------------------------------------------
     /// <summary>Interface for converter.</summary>
-    /// -------------------------------------------------------------------------------------------------
     public interface IFhirConverter
     {
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to parse resource an object from the given string.</summary>
         ///
         /// <param name="json">The JSON.</param>
         /// <param name="resource"> [out] The object.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         bool TryParseResource(string json, out object resource);
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to process resource.</summary>
         ///
         /// <param name="resourceToParse">[out] The resource object.</param>
@@ -37,7 +32,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="resources">      [in,out] Resources.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         bool TryProcessResource(
             object resourceToParse,
             ref Dictionary<string, FhirSimpleType> simpleTypes,

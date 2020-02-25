@@ -27,13 +27,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Pathname of the npm directory.</summary>
         private string _npmDirectory;
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirManager"/> class.
         /// </summary>
         ///
         /// <param name="npmDirectory">Pathname of the npm directory.</param>
-        /// -------------------------------------------------------------------------------------------------
         private FhirManager(string npmDirectory)
         {
             // set locals
@@ -106,20 +104,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             };
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets the current singleton.</summary>
         ///
         /// <value>The current FHIR Manager singleton.</value>
-        /// -------------------------------------------------------------------------------------------------
         public static FhirManager Current => _instance;
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Initializes this object.</summary>
         ///
         /// <param name="npmDirectory">Pathname of the npm directory.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static bool Init(string npmDirectory)
         {
             try
@@ -151,14 +145,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Loads a published version of FHIR.</summary>
         ///
         /// <param name="version">        The version.</param>
         /// <param name="fhirVersionInfo">[out] Information describing the fhir version.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public bool LoadPublished(int version, out FhirVersionInfo fhirVersionInfo)
         {
             fhirVersionInfo = null;

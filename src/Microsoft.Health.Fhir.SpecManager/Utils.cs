@@ -10,18 +10,14 @@ using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager
 {
-    /// -------------------------------------------------------------------------------------------------
     /// <summary>Utilities (temp home until they have better ones).</summary>
-    /// -------------------------------------------------------------------------------------------------
     public abstract class Utils
     {
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets the parent and field.</summary>
         ///
         /// <param name="path">  Full pathname of the file.</param>
         /// <param name="field"> [out] The field.</param>
         /// <param name="parent">[out] The parent.</param>
-        /// -------------------------------------------------------------------------------------------------
         public static void GetParentAndField(string[] path, out string field, out string parent)
         {
             if ((path == null) || (path.Length == 0))
@@ -42,13 +38,11 @@ namespace Microsoft.Health.Fhir.SpecManager
             }
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Capitalize name.</summary>
         ///
         /// <param name="name">The name.</param>
         ///
         /// <returns>A string.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static string Capitalize(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -59,13 +53,11 @@ namespace Microsoft.Health.Fhir.SpecManager
             return string.Concat(name.Substring(0, 1).ToUpper(CultureInfo.InvariantCulture), name.Substring(1));
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Maximum cardinality.</summary>
         ///
         /// <param name="max">The maximum.</param>
         ///
         /// <returns>Null for unbounded cardinality, values for a specific maximum.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static int? MaxCardinality(string max)
         {
             if (string.IsNullOrEmpty(max))
@@ -86,13 +78,11 @@ namespace Microsoft.Health.Fhir.SpecManager
             return null;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Type from fhir type.</summary>
         ///
         /// <param name="fhirType">Type of the fhir.</param>
         ///
         /// <returns>A string.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static string TypeFromFhirType(string fhirType)
         {
             switch (fhirType)
@@ -145,13 +135,11 @@ namespace Microsoft.Health.Fhir.SpecManager
             }
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Type from XML type.</summary>
         ///
         /// <param name="xmlType">Type of the XML.</param>
         ///
         /// <returns>A string.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static string TypeFromXmlType(string xmlType)
         {
             switch (xmlType)
@@ -210,13 +198,11 @@ namespace Microsoft.Health.Fhir.SpecManager
             }
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Pascal string from dot notation string.</summary>
         ///
         /// <param name="dot">The dot.</param>
         ///
         /// <returns>A string.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static string PascalFromDot(string dot)
         {
             if (string.IsNullOrEmpty(dot))

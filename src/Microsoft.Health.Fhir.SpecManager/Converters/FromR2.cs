@@ -15,22 +15,17 @@ using fhir_2 = Microsoft.Health.Fhir.SpecManager.fhir.r2;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
-    /// -------------------------------------------------------------------------------------------------
     /// <summary>Convert FHIR R2 into local definitions.</summary>
-    /// -------------------------------------------------------------------------------------------------
     public sealed class FromR2 : IFhirConverter
     {
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private readonly JsonConverter _jsonConverter;
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>
         /// Initializes a new instance of the <see cref="FromR2"/> class.
         /// </summary>
-        /// -------------------------------------------------------------------------------------------------
         public FromR2() => _jsonConverter = new fhir_2.ResourceConverter();
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Process the structure definition.</summary>
         ///
         /// <param name="sd">          The SD.</param>
@@ -39,7 +34,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="resources">   [in,out] The resources.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         private bool ProcessStructureDef(
             fhir_2.StructureDefinition sd,
             ref Dictionary<string, FhirSimpleType> simpleTypes,
@@ -96,14 +90,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Process a structure definition for a Simple data type.</summary>
         ///
         /// <param name="sd">         The SD.</param>
         /// <param name="simpleTypes">[in,out] List of types of the simples.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         private static bool ProcessDataTypeSimple(
             fhir_2.StructureDefinition sd,
             ref Dictionary<string, FhirSimpleType> simpleTypes)
@@ -177,7 +169,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Gets type from element.</summary>
         ///
         /// <param name="structureName">Name of the structure.</param>
@@ -185,7 +176,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="elementType">  [out] Type of the element.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         private static bool TryGetTypeFromElement(string structureName, fhir_2.ElementDefinition element, out string elementType)
         {
             elementType = null;
@@ -250,14 +240,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return false;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to get expanded types.</summary>
         ///
         /// <param name="element">      The element.</param>
         /// <param name="types">        [out] The types.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         private static bool TryGetExpandedTypes(fhir_2.ElementDefinition element, out HashSet<string> types)
         {
             types = new HashSet<string>();
@@ -318,7 +306,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Process a complex structure (Complex type or Resource).</summary>
         ///
         /// <typeparam name="T">Generic type parameter.</typeparam>
@@ -326,7 +313,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="complexDefinitions">[in,out] The complex definitions.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         private bool ProcessComplex<T>(
             fhir_2.StructureDefinition sd,
             ref Dictionary<string, T> complexDefinitions)
@@ -564,14 +550,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to parse resource an object from the given string.</summary>
         ///
         /// <param name="json">The JSON.</param>
         /// <param name="obj"> [out] The object.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         bool IFhirConverter.TryParseResource(string json, out object obj)
         {
             try
@@ -590,7 +574,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return false;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Attempts to process resource.</summary>
         ///
         /// <param name="obj">         [out] The object.</param>
@@ -599,7 +582,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="resources">   [in,out] Resources.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         bool IFhirConverter.TryProcessResource(
             object obj,
             ref Dictionary<string, FhirSimpleType> simpleTypes,

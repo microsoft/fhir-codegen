@@ -13,12 +13,9 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
-    /// -------------------------------------------------------------------------------------------------
     /// <summary>A FHIR Specification loader.</summary>
-    /// -------------------------------------------------------------------------------------------------
     public abstract class Loader
     {
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Searches for the currently specified package.</summary>
         ///
         /// <param name="npmDirectory">    Pathname of the npm directory.</param>
@@ -26,7 +23,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="versionDirectory">[out] Pathname of the version directory.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static bool TryFindPackage(string npmDirectory, FhirVersionInfo versionInfo, out string versionDirectory)
         {
             versionDirectory = null;
@@ -51,14 +47,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Loads a package.</summary>
         ///
         /// <param name="npmDirectory">   Pathname of the npm directory.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         public static bool LoadPackage(string npmDirectory, ref FhirVersionInfo fhirVersionInfo)
         {
             // sanity checks
@@ -100,14 +94,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Process the package files.</summary>
         ///
         /// <param name="files">          The files.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        /// -------------------------------------------------------------------------------------------------
         private static bool ProcessPackageFiles(string[] files, ref FhirVersionInfo fhirVersionInfo)
         {
             // traverse the files
