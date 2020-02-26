@@ -36,7 +36,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_2.StructureDefinition sd,
             ref Dictionary<string, FhirPrimitiveType> primitiveTypes,
             ref Dictionary<string, FhirComplexType> complexTypes,
-            ref Dictionary<string, FhirResource> resources)
+            ref Dictionary<string, FhirComplexType> resources)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             return ProcessDataTypePrimitive(sd, ref primitiveTypes);
                         }
 
-                        return ProcessComplex<FhirComplexType>(sd, ref complexTypes);
+                        return ProcessComplex(sd, ref complexTypes);
 
                     case "resource":
                         // exclude profiles for now
@@ -71,7 +71,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             return true;
                         }
 
-                        return ProcessComplex<FhirResource>(sd, ref resources);
+                        return ProcessComplex(sd, ref resources);
 
                     case "logical":
                         // ignore logical
@@ -250,22 +250,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-        /// <summary>Process a complex structure (Complex type or Resource).</summary>
-        ///
-        /// <typeparam name="T">Generic type parameter.</typeparam>
-        /// <param name="sd">                The SD.</param>
-        /// <param name="complexDefinitions">[in,out] The complex definitions.</param>
-        ///
+        /// <summary>Process a complex structure (Complex Type or Resource).</summary>
+        /// <param name="sd">         The structure definition to parse.</param>
+        /// <param name="complexDict">[in,out] Dictionary with definitions of this complex type.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        private bool ProcessComplex<T>(
+        private bool ProcessComplex(
             fhir_2.StructureDefinition sd,
-            ref Dictionary<string, T> complexDefinitions)
-            where T : FhirTypeBase, new()
+            ref Dictionary<string, FhirComplexType> complexDict)
         {
             try
             {
                 // create a new Complex Type object
-                T definition = new T()
+                FhirComplexType complex = new FhirComplexType()
                 {
                     Name = sd.Name,
                     NameCapitalized = Utils.Capitalize(sd.Name),
@@ -275,7 +271,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 };
 
                 // make a dictionary to track all the related resource definitions we create
-                Dictionary<string, T> subDefs = new Dictionary<string, T>();
+                Dictionary<string, FhirComplexType> subDefs = new Dictionary<string, FhirComplexType>();
 
                 // create an alias table for named reference linking within the type
                 Dictionary<string, string> aliasTable = new Dictionary<string, string>();
@@ -314,10 +310,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
 
                 // complex: prefer main type, use 'value' if it isn't present
-                definition.BaseTypeName = mainType ?? valueType;
+                complex.BaseTypeName = mainType ?? valueType;
 
                 // make sure we have a type
-                if (string.IsNullOrEmpty(definition.BaseTypeName))
+                if (string.IsNullOrEmpty(complex.BaseTypeName))
                 {
                     Console.WriteLine($"FromR2.ProcessComplex <<<" +
                         $" Could not determine base type for {sd.Name}");
@@ -325,7 +321,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
 
                 // add the current type definition to our internal dict for sanity
-                subDefs.Add(sd.Name, definition);
+                subDefs.Add(sd.Name, complex);
 
                 // look for properties on this type
                 foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
@@ -398,7 +394,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             subDefs[pParent].Properties.ContainsKey(pField))
                         {
                             // use this type
-                            T sub = new T()
+                            FhirComplexType sub = new FhirComplexType()
                             {
                                 Name = Utils.Capitalize(parent),
                                 NameCapitalized = Utils.Capitalize(parent),
@@ -417,7 +413,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         else
                         {
                             // add a placeholder type
-                            T sub = new T()
+                            FhirComplexType sub = new FhirComplexType()
                             {
                                 Name = Utils.Capitalize(parent),
                                 NameCapitalized = Utils.Capitalize(parent),
@@ -458,28 +454,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
 
                 // copy over our definitions
-                foreach (KeyValuePair<string, T> kvp in subDefs)
+                foreach (KeyValuePair<string, FhirComplexType> kvp in subDefs)
                 {
                     // check for removing a placeholder
-                    if (complexDefinitions.ContainsKey(kvp.Key) &&
-                        (complexDefinitions[kvp.Key].IsPlaceholder == true))
+                    if (complexDict.ContainsKey(kvp.Key) &&
+                        (complexDict[kvp.Key].IsPlaceholder == true))
                     {
-                        complexDefinitions.Remove(kvp.Key);
+                        complexDict.Remove(kvp.Key);
                     }
 
                     // check for not being present
-                    if (!complexDefinitions.ContainsKey(kvp.Key))
+                    if (!complexDict.ContainsKey(kvp.Key))
                     {
-                        complexDefinitions.Add(kvp.Key, kvp.Value);
+                        complexDict.Add(kvp.Key, kvp.Value);
                         continue;
                     }
 
                     // check fields
                     foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
                     {
-                        if (!complexDefinitions[kvp.Key].Properties.ContainsKey(propKvp.Key))
+                        if (!complexDict[kvp.Key].Properties.ContainsKey(propKvp.Key))
                         {
-                            complexDefinitions[kvp.Key].Properties.Add(propKvp.Key, propKvp.Value);
+                            complexDict[kvp.Key].Properties.Add(propKvp.Key, propKvp.Value);
                         }
                     }
                 }
@@ -528,7 +524,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             object resourceToParse,
             ref Dictionary<string, FhirPrimitiveType> primitiveTypes,
             ref Dictionary<string, FhirComplexType> complexTypes,
-            ref Dictionary<string, FhirResource> resources)
+            ref Dictionary<string, FhirComplexType> resources)
         {
             try
             {

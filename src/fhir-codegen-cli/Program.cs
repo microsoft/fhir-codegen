@@ -109,7 +109,7 @@ namespace fhir_codegen_cli
 
             //// dump resources
             //Console.WriteLine($"resources: {info.Resources.Count}");
-            //DumpComplex<FhirResource>(info.Resources);
+            //DumpComplex<FhirComplexType>(info.Resources);
         }
 
         /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>

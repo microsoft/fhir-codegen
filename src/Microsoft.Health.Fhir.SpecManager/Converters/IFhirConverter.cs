@@ -36,6 +36,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             object resourceToParse,
             ref Dictionary<string, FhirPrimitiveType> primitiveTypes,
             ref Dictionary<string, FhirComplexType> complexTypes,
-            ref Dictionary<string, FhirResource> resources);
+            ref Dictionary<string, FhirComplexType> resources);
     }
 }

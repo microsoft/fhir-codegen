@@ -141,7 +141,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private IFhirConverter _fhirConverter;
         private Dictionary<string, FhirPrimitiveType> _primitiveTypes;
         private Dictionary<string, FhirComplexType> _complexTypes;
-        private Dictionary<string, FhirResource> _resources;
+        private Dictionary<string, FhirComplexType> _resources;
         private Dictionary<string, FhirCapability> _capabilities;
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // create our info dictionaries
             PrimitiveTypes = new Dictionary<string, FhirPrimitiveType>();
             ComplexTypes = new Dictionary<string, FhirComplexType>();
-            Resources = new Dictionary<string, FhirResource>();
+            Resources = new Dictionary<string, FhirComplexType>();
             Capabilities = new Dictionary<string, FhirCapability>();
         }
 
@@ -249,7 +249,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Gets or sets a dictionary with the known resources for this version of FHIR.</summary>
         ///
         /// <value>A dictionary of the resources.</value>
-        public Dictionary<string, FhirResource> Resources { get => _resources; set => _resources = value; }
+        public Dictionary<string, FhirComplexType> Resources { get => _resources; set => _resources = value; }
 
         /// <summary>Gets or sets the capabilities.</summary>
         ///

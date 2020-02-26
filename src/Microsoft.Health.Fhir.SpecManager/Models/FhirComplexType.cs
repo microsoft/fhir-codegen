@@ -14,6 +14,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A class representing a FHIR complex type.</summary>
     public class FhirComplexType : FhirTypeBase
     {
+        /// <summary>Gets or sets a value indicating whether this object is placeholder.</summary>
+        /// <value>True if this object is placeholder, false if not.</value>
+        public bool IsPlaceholder { get; set; }
+
+        /// <summary>Gets or sets the properties.</summary>
+        /// <value>The properties.</value>
+        public Dictionary<string, FhirProperty> Properties { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirComplexType"/> class.
         /// </summary>
