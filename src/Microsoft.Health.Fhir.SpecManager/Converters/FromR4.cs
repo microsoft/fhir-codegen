@@ -34,9 +34,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         private bool ProcessStructureDef(
             fhir_4.StructureDefinition sd,
-            ref Dictionary<string, FhirPrimitiveType> primitiveTypes,
-            ref Dictionary<string, FhirComplexType> complexTypes,
-            ref Dictionary<string, FhirComplexType> resources)
+            ref Dictionary<string, FhirPrimitive> primitiveTypes,
+            ref Dictionary<string, FhirComplex> complexTypes,
+            ref Dictionary<string, FhirComplex> resources)
         {
             try
             {
@@ -104,12 +104,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool ProcessDataTypePrimitive(
             fhir_4.StructureDefinition sd,
-            ref Dictionary<string, FhirPrimitiveType> primitiveTypes)
+            ref Dictionary<string, FhirPrimitive> primitiveTypes)
         {
             try
             {
                 // create a new primitive type object
-                FhirPrimitiveType primitive = new FhirPrimitiveType()
+                FhirPrimitive primitive = new FhirPrimitive()
                 {
                     Name = sd.Name,
                     NameCapitalized = Utils.Capitalize(sd.Name),
@@ -267,12 +267,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         private bool ProcessComplex(
             fhir_4.StructureDefinition sd,
-            ref Dictionary<string, FhirComplexType> complexDict)
+            ref Dictionary<string, FhirComplex> complexDict)
         {
             try
             {
                 // create a new Complex Type object
-                FhirComplexType complex = new FhirComplexType()
+                FhirComplex complex = new FhirComplex()
                 {
                     Name = sd.Name,
                     NameCapitalized = Utils.Capitalize(sd.Name),
@@ -282,7 +282,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 };
 
                 // make a dictionary to track all the related resource definitions we create
-                Dictionary<string, FhirComplexType> subDefs = new Dictionary<string, FhirComplexType>();
+                Dictionary<string, FhirComplex> subDefs = new Dictionary<string, FhirComplex>();
 
                 // traverse elements looking for a type we can use
                 foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
@@ -415,7 +415,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             subDefs[pParent].Properties.ContainsKey(pField))
                         {
                             // use this type
-                            FhirComplexType sub = new FhirComplexType()
+                            FhirComplex sub = new FhirComplex()
                             {
                                 Name = Utils.Capitalize(parent),
                                 NameCapitalized = Utils.Capitalize(parent),
@@ -434,7 +434,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         else
                         {
                             // add a placeholder type
-                            FhirComplexType sub = new FhirComplexType()
+                            FhirComplex sub = new FhirComplex()
                             {
                                 Name = Utils.Capitalize(parent),
                                 NameCapitalized = Utils.Capitalize(parent),
@@ -468,7 +468,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
 
                 // copy over our definitions
-                foreach (KeyValuePair<string, FhirComplexType> kvp in subDefs)
+                foreach (KeyValuePair<string, FhirComplex> kvp in subDefs)
                 {
                     // check for removing a placeholder
                     if (complexDict.ContainsKey(kvp.Key) &&
@@ -534,9 +534,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         bool IFhirConverter.TryProcessResource(
             object resourceToParse,
-            ref Dictionary<string, FhirPrimitiveType> primitiveTypes,
-            ref Dictionary<string, FhirComplexType> complexTypes,
-            ref Dictionary<string, FhirComplexType> resources)
+            ref Dictionary<string, FhirPrimitive> primitiveTypes,
+            ref Dictionary<string, FhirComplex> complexTypes,
+            ref Dictionary<string, FhirComplex> resources)
         {
             try
             {

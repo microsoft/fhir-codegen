@@ -139,9 +139,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         };
 
         private IFhirConverter _fhirConverter;
-        private Dictionary<string, FhirPrimitiveType> _primitiveTypes;
-        private Dictionary<string, FhirComplexType> _complexTypes;
-        private Dictionary<string, FhirComplexType> _resources;
+        private Dictionary<string, FhirPrimitive> _primitiveTypes;
+        private Dictionary<string, FhirComplex> _complexTypes;
+        private Dictionary<string, FhirComplex> _resources;
         private Dictionary<string, FhirCapability> _capabilities;
 
         /// <summary>
@@ -180,9 +180,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
 
             // create our info dictionaries
-            PrimitiveTypes = new Dictionary<string, FhirPrimitiveType>();
-            ComplexTypes = new Dictionary<string, FhirComplexType>();
-            Resources = new Dictionary<string, FhirComplexType>();
+            PrimitiveTypes = new Dictionary<string, FhirPrimitive>();
+            ComplexTypes = new Dictionary<string, FhirComplex>();
+            Resources = new Dictionary<string, FhirComplex>();
             Capabilities = new Dictionary<string, FhirCapability>();
         }
 
@@ -239,17 +239,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Gets or sets a dictionary with the known primitive types for this version of FHIR.</summary>
         ///
         /// <value>A dictionary of the primitive types.</value>
-        public Dictionary<string, FhirPrimitiveType> PrimitiveTypes { get => _primitiveTypes; set => _primitiveTypes = value; }
+        public Dictionary<string, FhirPrimitive> PrimitiveTypes { get => _primitiveTypes; set => _primitiveTypes = value; }
 
         /// <summary>Gets or sets a dictionary with the known complex types for this version of FHIR.</summary>
         ///
         /// <value>A dictionary of the complex types.</value>
-        public Dictionary<string, FhirComplexType> ComplexTypes { get => _complexTypes; set => _complexTypes = value; }
+        public Dictionary<string, FhirComplex> ComplexTypes { get => _complexTypes; set => _complexTypes = value; }
 
         /// <summary>Gets or sets a dictionary with the known resources for this version of FHIR.</summary>
         ///
         /// <value>A dictionary of the resources.</value>
-        public Dictionary<string, FhirComplexType> Resources { get => _resources; set => _resources = value; }
+        public Dictionary<string, FhirComplex> Resources { get => _resources; set => _resources = value; }
 
         /// <summary>Gets or sets the capabilities.</summary>
         ///

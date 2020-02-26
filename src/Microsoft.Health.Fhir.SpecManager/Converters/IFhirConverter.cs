@@ -34,8 +34,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         bool TryProcessResource(
             object resourceToParse,
-            ref Dictionary<string, FhirPrimitiveType> primitiveTypes,
-            ref Dictionary<string, FhirComplexType> complexTypes,
-            ref Dictionary<string, FhirComplexType> resources);
+            ref Dictionary<string, FhirPrimitive> primitiveTypes,
+            ref Dictionary<string, FhirComplex> complexTypes,
+            ref Dictionary<string, FhirComplex> resources);
     }
 }
