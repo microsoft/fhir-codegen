@@ -284,10 +284,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // make a dictionary to track all the related resource definitions we create
                 Dictionary<string, FhirComplexType> subDefs = new Dictionary<string, FhirComplexType>();
 
-                // figure out the base type
-                string mainType = null;
-                string valueType = null;
-
+                // traverse elements looking for a type we can use
                 foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
                 {
                     // split the path
@@ -299,7 +296,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         if (TryGetTypeFromElement(sd.Name, element, out string elementType))
                         {
                             // set our type
-                            mainType = elementType;
+                            complex.BaseTypeName = elementType;
+
+                            // done searching
                             break;
                         }
                     }
@@ -311,14 +310,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         if (TryGetTypeFromElement(sd.Name, element, out string elementType))
                         {
                             // set our type
-                            valueType = elementType;
+                            complex.BaseTypeName = elementType;
+
+                            // keep looking in case we find a better option
                             continue;
                         }
                     }
                 }
-
-                // complex: prefer main type, use 'value' if it isn't present
-                complex.BaseTypeName = mainType ?? valueType;
 
                 // make sure we have a type
                 if (string.IsNullOrEmpty(complex.BaseTypeName))
@@ -473,25 +471,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 foreach (KeyValuePair<string, FhirComplexType> kvp in subDefs)
                 {
                     // check for removing a placeholder
-                    if (complexDefinitions.ContainsKey(kvp.Key) &&
-                        (complexDefinitions[kvp.Key].IsPlaceholder == true))
+                    if (complexDict.ContainsKey(kvp.Key) &&
+                        (complexDict[kvp.Key].IsPlaceholder == true))
                     {
-                        complexDefinitions.Remove(kvp.Key);
+                        complexDict.Remove(kvp.Key);
                     }
 
                     // check for not being present
-                    if (!complexDefinitions.ContainsKey(kvp.Key))
+                    if (!complexDict.ContainsKey(kvp.Key))
                     {
-                        complexDefinitions.Add(kvp.Key, kvp.Value);
+                        complexDict.Add(kvp.Key, kvp.Value);
                         continue;
                     }
 
                     // check fields
                     foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
                     {
-                        if (!complexDefinitions[kvp.Key].Properties.ContainsKey(propKvp.Key))
+                        if (!complexDict[kvp.Key].Properties.ContainsKey(propKvp.Key))
                         {
-                            complexDefinitions[kvp.Key].Properties.Add(propKvp.Key, propKvp.Value);
+                            complexDict[kvp.Key].Properties.Add(propKvp.Key, propKvp.Value);
                         }
                     }
                 }

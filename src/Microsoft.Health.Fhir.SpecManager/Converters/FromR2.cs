@@ -291,8 +291,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         if (TryGetTypeFromElement(sd.Name, element, out string elementType))
                         {
                             // set our type
-                            mainType = elementType;
-                            continue;
+                            complex.BaseTypeName = elementType;
+
+                            // done searching
+                            break;
                         }
                     }
 
@@ -303,7 +305,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         if (TryGetTypeFromElement(sd.Name, element, out string elementType))
                         {
                             // set our type
-                            valueType = elementType;
+                            complex.BaseTypeName = elementType;
+
+                            // keep looking in case we find a better option
                             continue;
                         }
                     }

@@ -306,8 +306,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         if (TryGetTypeFromElement(sd.Name, element, out string elementType))
                         {
                             // set our type
-                            mainType = elementType;
-                            continue;
+                            complex.BaseTypeName = elementType;
+
+                            // done searching
+                            break;
                         }
                     }
 
@@ -318,7 +320,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         if (TryGetTypeFromElement(sd.Name, element, out string elementType))
                         {
                             // set our type
-                            valueType = elementType;
+                            complex.BaseTypeName = elementType;
+
+                            // keep looking in case we find a better option
                             continue;
                         }
                     }
@@ -480,25 +484,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 foreach (KeyValuePair<string, FhirComplexType> kvp in subDefs)
                 {
                     // check for removing a placeholder
-                    if (complexDefinitions.ContainsKey(kvp.Key) &&
-                        (complexDefinitions[kvp.Key].IsPlaceholder == true))
+                    if (complexDict.ContainsKey(kvp.Key) &&
+                        (complexDict[kvp.Key].IsPlaceholder == true))
                     {
-                        complexDefinitions.Remove(kvp.Key);
+                        complexDict.Remove(kvp.Key);
                     }
 
                     // check for not being present
-                    if (!complexDefinitions.ContainsKey(kvp.Key))
+                    if (!complexDict.ContainsKey(kvp.Key))
                     {
-                        complexDefinitions.Add(kvp.Key, kvp.Value);
+                        complexDict.Add(kvp.Key, kvp.Value);
                         continue;
                     }
 
                     // check fields
                     foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
                     {
-                        if (!complexDefinitions[kvp.Key].Properties.ContainsKey(propKvp.Key))
+                        if (!complexDict[kvp.Key].Properties.ContainsKey(propKvp.Key))
                         {
-                            complexDefinitions[kvp.Key].Properties.Add(propKvp.Key, propKvp.Value);
+                            complexDict[kvp.Key].Properties.Add(propKvp.Key, propKvp.Value);
                         }
                     }
                 }
