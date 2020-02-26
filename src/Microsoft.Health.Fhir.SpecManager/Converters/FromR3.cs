@@ -291,10 +291,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // make a dictionary to track all the related resource definitions we create
                 Dictionary<string, FhirComplexType> subDefs = new Dictionary<string, FhirComplexType>();
 
-                // figure out the base type
-                string mainType = null;
-                string valueType = null;
-
+                // traverse elements looking for a type we can use
                 foreach (fhir_3.ElementDefinition element in sd.Snapshot.Element)
                 {
                     // split the path
@@ -327,9 +324,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
                     }
                 }
-
-                // complex: prefer main type, use 'value' if it isn't present
-                complex.BaseTypeName = mainType ?? valueType;
 
                 // make sure we have a type
                 if (string.IsNullOrEmpty(complex.BaseTypeName))

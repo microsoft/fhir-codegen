@@ -276,10 +276,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // create an alias table for named reference linking within the type
                 Dictionary<string, string> aliasTable = new Dictionary<string, string>();
 
-                // figure out the base type
-                string mainType = null;
-                string valueType = null;
-
+                // traverse elements looking for a type we can use
                 foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
                 {
                     // split the path
@@ -312,9 +309,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
                     }
                 }
-
-                // complex: prefer main type, use 'value' if it isn't present
-                complex.BaseTypeName = mainType ?? valueType;
 
                 // make sure we have a type
                 if (string.IsNullOrEmpty(complex.BaseTypeName))

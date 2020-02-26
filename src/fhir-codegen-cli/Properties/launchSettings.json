@@ -6,15 +6,15 @@
     },
     "r2": {
       "commandName": "Project",
-      "commandLineArgs": "--npm-directory c:\\fhir\\npm --load-r4"
+      "commandLineArgs": "--npm-directory c:\\fhir\\npm -v --load-r4"
     },
     "r3": {
       "commandName": "Project",
-      "commandLineArgs": "--npm-directory c:\\fhir\\npm --load-r3"
+      "commandLineArgs": "--npm-directory c:\\fhir\\npm -v --load-r3"
     },
     "r4": {
       "commandName": "Project",
-      "commandLineArgs": "--npm-directory c:\\fhir\\npm --load-r4"
+      "commandLineArgs": "--npm-directory c:\\fhir\\npm -v --load-r4"
     }
   }
 }

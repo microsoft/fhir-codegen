@@ -55,8 +55,10 @@ namespace fhir_codegen_cli
                 }
 
                 // tell the user what's going on
-
-                DumpFhirVersion(r2);
+                if (options.Verbose)
+                {
+                    DumpFhirVersion(r2);
+                }
             }
 
             if (options.LoadR3)
@@ -68,8 +70,10 @@ namespace fhir_codegen_cli
                 }
 
                 // tell the user what's going on
-
-                DumpFhirVersion(r3);
+                if (options.Verbose)
+                {
+                    DumpFhirVersion(r3);
+                }
             }
 
             if (options.LoadR4)
@@ -81,13 +85,17 @@ namespace fhir_codegen_cli
                 }
 
                 // tell the user what's going on
-
-                DumpFhirVersion(r4);
+                if (options.Verbose)
+                {
+                    DumpFhirVersion(r4);
+                }
             }
 
             return true;
         }
 
+        /// <summary>Dumps information about a FHIR version to the console.</summary>
+        /// <param name="info">The information.</param>
         static void DumpFhirVersion(FhirVersionInfo info)
         {
             // tell the user what's going on

@@ -22,5 +22,8 @@ namespace fhir_codegen_cli
         [Option("load-r5", Default = false, HelpText = "Load the R5 definitions")]
         public bool LoadR5 { get; set; }
 
+        [Option('v', "verbose", Default = false, HelpText = "Show verbose output")]
+        public bool Verbose { get; set; }
+
     }
 }
