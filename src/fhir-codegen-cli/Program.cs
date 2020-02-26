@@ -105,21 +105,18 @@ namespace fhir_codegen_cli
 
             // dump complex types
             Console.WriteLine($"complex types: {info.ComplexTypes.Count}");
-            DumpComplex<FhirComplexType>(info.ComplexTypes);
+            DumpComplex(info.ComplexTypes);
 
             //// dump resources
             //Console.WriteLine($"resources: {info.Resources.Count}");
-            //DumpComplex<FhirComplexType>(info.Resources);
+            //DumpComplex(info.Resources);
         }
 
         /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>
-        ///
-        /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="dict">The dictionary.</param>
-        private static void DumpComplex<T>(Dictionary<string, T> dict)
-            where T : FhirTypeBase
+        private static void DumpComplex(Dictionary<string, FhirComplexType> dict)
         {
-            foreach (KeyValuePair<string, T> kvp in dict)
+            foreach (KeyValuePair<string, FhirComplexType> kvp in dict)
             {
                 Console.WriteLine($"- {kvp.Key}: {kvp.Value.BaseTypeName}");
                 foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
