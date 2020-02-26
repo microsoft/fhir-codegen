@@ -11,7 +11,6 @@ namespace fhir_codegen_cli
     class Program
     {
         /// <summary>Main entry-point for this application.</summary>
-        ///
         /// <param name="args">An array of command-line argument strings.</param>
         static void Main(string[] args)
         {
@@ -36,10 +35,8 @@ namespace fhir_codegen_cli
             Console.WriteLine($"Finished {success}: {elapsedMs / 1000.0} s");
         }
 
-        /// <summary>Main processing function</summary>
-        ///
+        /// <summary>Main processing function.</summary>
         /// <param name="options">Options for controlling the operation.</param>
-        ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         static bool Process(Options options)
         {
@@ -97,25 +94,22 @@ namespace fhir_codegen_cli
 
             Console.WriteLine($"Found: {info.PackageName} version: {info.VersionString}");
 
-            // dump simple types
+            // dump primitive types
 
-            Console.WriteLine($"simple types: {info.SimpleTypes.Count}");
+            Console.WriteLine($"primitive types: {info.PrimitiveTypes.Count}");
 
-            foreach (KeyValuePair<string, FhirSimpleType> kvp in info.SimpleTypes)
+            foreach (KeyValuePair<string, FhirPrimitiveType> kvp in info.PrimitiveTypes)
             {
-                string primitiveMarker = kvp.Value.IsPrimitive ? "*" : "";
-                Console.WriteLine($"- {kvp.Key}{primitiveMarker}: {kvp.Value.BaseTypeName}");
+                Console.WriteLine($"- {kvp.Key}: {kvp.Value.BaseTypeName}");
             }
 
             // dump complex types
-
             Console.WriteLine($"complex types: {info.ComplexTypes.Count}");
             DumpComplex<FhirComplexType>(info.ComplexTypes);
 
-            // dump resources
-
-            Console.WriteLine($"resources: {info.Resources.Count}");
-            DumpComplex<FhirResource>(info.Resources);
+            //// dump resources
+            //Console.WriteLine($"resources: {info.Resources.Count}");
+            //DumpComplex<FhirResource>(info.Resources);
         }
 
         /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>

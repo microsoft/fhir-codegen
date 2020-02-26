@@ -139,7 +139,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         };
 
         private IFhirConverter _fhirConverter;
-        private Dictionary<string, FhirSimpleType> _simpleTypes;
+        private Dictionary<string, FhirPrimitiveType> _primitiveTypes;
         private Dictionary<string, FhirComplexType> _complexTypes;
         private Dictionary<string, FhirResource> _resources;
         private Dictionary<string, FhirCapability> _capabilities;
@@ -180,7 +180,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
 
             // create our info dictionaries
-            SimpleTypes = new Dictionary<string, FhirSimpleType>();
+            PrimitiveTypes = new Dictionary<string, FhirPrimitiveType>();
             ComplexTypes = new Dictionary<string, FhirComplexType>();
             Resources = new Dictionary<string, FhirResource>();
             Capabilities = new Dictionary<string, FhirCapability>();
@@ -236,10 +236,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <value>The last downloaded.</value>
         public DateTime? LastDownloaded { get; set; }
 
-        /// <summary>Gets or sets a dictionary with the known simple types for this version of FHIR.</summary>
+        /// <summary>Gets or sets a dictionary with the known primitive types for this version of FHIR.</summary>
         ///
-        /// <value>A dictionary of the simple types.</value>
-        public Dictionary<string, FhirSimpleType> SimpleTypes { get => _simpleTypes; set => _simpleTypes = value; }
+        /// <value>A dictionary of the primitive types.</value>
+        public Dictionary<string, FhirPrimitiveType> PrimitiveTypes { get => _primitiveTypes; set => _primitiveTypes = value; }
 
         /// <summary>Gets or sets a dictionary with the known complex types for this version of FHIR.</summary>
         ///
@@ -321,7 +321,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             return _fhirConverter.TryProcessResource(
                 resource,
-                ref _simpleTypes,
+                ref _primitiveTypes,
                 ref _complexTypes,
                 ref _resources);
         }

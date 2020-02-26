@@ -2,6 +2,18 @@
   "profiles": {
     "fhir-codegen-cli": {
       "commandName": "Project",
+      "commandLineArgs": "--npm-directory c:\\fhir\\npm --load-r2 --load-r3 --load-r4"
+    },
+    "r2": {
+      "commandName": "Project",
+      "commandLineArgs": "--npm-directory c:\\fhir\\npm --load-r4"
+    },
+    "r3": {
+      "commandName": "Project",
+      "commandLineArgs": "--npm-directory c:\\fhir\\npm --load-r3"
+    },
+    "r4": {
+      "commandName": "Project",
       "commandLineArgs": "--npm-directory c:\\fhir\\npm --load-r4"
     }
   }

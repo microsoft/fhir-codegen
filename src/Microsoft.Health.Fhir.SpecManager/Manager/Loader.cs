@@ -27,6 +27,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             versionDirectory = null;
 
+            // sanity checks
+            if (versionInfo == null)
+            {
+                Console.WriteLine($"TryFindPackage <<< invalid versionInfo is NULL for {npmDirectory}!");
+                return false;
+            }
+
             // check for manual download first
             string packageDir = Path.Combine(npmDirectory, versionInfo.PackageName, "package");
 

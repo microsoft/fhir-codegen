@@ -135,6 +135,31 @@ namespace Microsoft.Health.Fhir.SpecManager
             }
         }
 
+        /*
+- base64Binary: string
+- boolean: boolean
+- code: enum
+- date: date
+- dateTime: dateTime
+- decimal: decimal
+- id: string
+- instant: dateTime
+- integer: int
+- markdown: string
+- oid: uri
+- positiveInt: positiveInt
+- string: string
+- time: time
+- unsignedInt: unsignedInt
+- uri: uri
+- uuid: uri
+- xhtml: string
+
+- BackboneElement: Element
+- Element: Element
+
+ *          */
+
         /// <summary>Type from XML type.</summary>
         ///
         /// <param name="xmlType">Type of the XML.</param>
@@ -146,10 +171,12 @@ namespace Microsoft.Health.Fhir.SpecManager
             {
                 case "xsd:token":
                 case "xs:token":
-                    return "enum";
+                    return "code";
 
                 case "xsd:base64Binary":
                 case "base64Binary":
+                    return "base64Binary";
+
                 case "xsd:string":
                 case "xs:string":
                 case "xs:string+":
@@ -161,11 +188,11 @@ namespace Microsoft.Health.Fhir.SpecManager
 
                 case "xsd:positiveInteger":
                 case "xs:positiveInteger":
-                    return "unsigned int";
+                    return "positiveInt";
 
                 case "xsd:nonNegativeInteger":
                 case "xs:nonNegativeInteger":
-                    return "unsigned int";
+                    return "unsignedInt";
 
                 case "xs:anyURI+":
                 case "xsd:anyURI":

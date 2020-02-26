@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
-    /// <summary>A fhir resource.</summary>
+    /// <summary>A class representing a FHIR resource.</summary>
     public class FhirResource : FhirTypeBase
     {
         /// <summary>

@@ -27,16 +27,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         public FromR3() => _jsonConverter = new fhir_3.ResourceConverter();
 
         /// <summary>Process the structure definition.</summary>
-        ///
-        /// <param name="sd">          The SD.</param>
-        /// <param name="simpleTypes"> [in,out] List of types of the simples.</param>
-        /// <param name="complexTypes">[in,out] List of types of the complexes.</param>
-        /// <param name="resources">   [in,out] The resources.</param>
-        ///
+        /// <param name="sd">            The structure definition to parse.</param>
+        /// <param name="primitiveTypes">[in,out] Primitive types.</param>
+        /// <param name="complexTypes">  [in,out] Complex types.</param>
+        /// <param name="resources">     [in,out] Resources.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool ProcessStructureDef(
             fhir_3.StructureDefinition sd,
-            ref Dictionary<string, FhirSimpleType> simpleTypes,
+            ref Dictionary<string, FhirPrimitiveType> primitiveTypes,
             ref Dictionary<string, FhirComplexType> complexTypes,
             ref Dictionary<string, FhirResource> resources)
         {
@@ -58,7 +56,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             return true;
                         }
 
-                        return ProcessDataTypeSimple(sd, ref simpleTypes);
+                        return ProcessDataTypePrimitive(sd, ref primitiveTypes);
 
                     case "complex-type":
                         // exclude extensions
@@ -100,78 +98,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-        /// <summary>Process a structure definition for a Simple data type.</summary>
-        ///
-        /// <param name="sd">         The SD.</param>
-        /// <param name="simpleTypes">[in,out] List of types of the simples.</param>
-        ///
+        /// <summary>Process a structure definition for a Primitve data type.</summary>
+        /// <param name="sd">            The structure definition.</param>
+        /// <param name="primitiveTypes">[in,out] Primitive types.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ProcessDataTypeSimple(
+        private static bool ProcessDataTypePrimitive(
             fhir_3.StructureDefinition sd,
-            ref Dictionary<string, FhirSimpleType> simpleTypes)
+            ref Dictionary<string, FhirPrimitiveType> primitiveTypes)
         {
             try
             {
-                // create a new Simple Type object
-                FhirSimpleType simple = new FhirSimpleType()
+                FhirPrimitiveType primitive = new FhirPrimitiveType()
                 {
                     Name = sd.Name,
                     NameCapitalized = Utils.Capitalize(sd.Name),
                     StandardStatus = sd.Status,
                     ShortDescription = sd.Description,
                     Definition = sd.Purpose,
+                    BaseTypeName = sd.Id,
                 };
 
-                // grab possible types
-                string valueType = null;
-                string mainType = null;
-
-                foreach (fhir_3.ElementDefinition element in sd.Snapshot.Element)
-                {
-                    // split the path
-                    string[] components = element.Path.Split('.');
-
-                    // check for base path having a type
-                    if (components.Length == 1)
-                    {
-                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
-                        {
-                            // set our type
-                            mainType = elementType;
-                            continue;
-                        }
-                    }
-
-                    // check for path {type}.value having a type
-                    if ((components.Length == 2) &&
-                        components[1].Equals("value", StringComparison.Ordinal))
-                    {
-                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
-                        {
-                            // set our type
-                            valueType = elementType;
-                            continue;
-                        }
-                    }
-                }
-
-                // simple type: prefer the 'value' type, if not use main type
-                simple.BaseTypeName = valueType ?? mainType;
-
-                // make sure we have a type
-                if (string.IsNullOrEmpty(simple.BaseTypeName))
-                {
-                    Console.WriteLine($"FromR3.ProcessDataTypeSimple <<<" +
-                        $" Could not determine base type for {sd.Name}");
-                    return false;
-                }
-
-                // add to our dictionary of simple types
-                simpleTypes[sd.Name] = simple;
+                // add to our dictionary of primitive types
+                primitiveTypes[sd.Name] = primitive;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"FromR3.ProcessDataTypeSimple <<< failed to process {sd.Id}:\n{ex}\n--------------");
+                Console.WriteLine($"FromR3.ProcessDataTypePrimitive <<< failed to process {sd.Id}:\n{ex}\n--------------");
                 return false;
             }
 
@@ -590,22 +542,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
         /// <summary>Attempts to process resource.</summary>
-        ///
-        /// <param name="obj">         [out] The object.</param>
-        /// <param name="simpleTypes"> [in,out] Information describing the fhir version.</param>
-        /// <param name="complexTypes">[in,out] List of types of the complexes.</param>
-        /// <param name="resources">   [in,out] The resources.</param>
-        ///
+        /// <param name="resourceToParse">[out] The resource object.</param>
+        /// <param name="primitiveTypes"> [in,out] Primitive types.</param>
+        /// <param name="complexTypes">   [in,out] Complex types.</param>
+        /// <param name="resources">      [in,out] Resources.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         bool IFhirConverter.TryProcessResource(
-            object obj,
-            ref Dictionary<string, FhirSimpleType> simpleTypes,
+            object resourceToParse,
+            ref Dictionary<string, FhirPrimitiveType> primitiveTypes,
             ref Dictionary<string, FhirComplexType> complexTypes,
             ref Dictionary<string, FhirResource> resources)
         {
             try
             {
-                switch (obj)
+                switch (resourceToParse)
                 {
                     // ignore
                     /*
@@ -623,7 +573,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     case fhir_3.StructureDefinition structureDefinition:
                         return ProcessStructureDef(
                             structureDefinition,
-                            ref simpleTypes,
+                            ref primitiveTypes,
                             ref complexTypes,
                             ref resources);
                 }
