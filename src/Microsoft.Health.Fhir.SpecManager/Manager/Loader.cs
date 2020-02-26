@@ -89,7 +89,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
 
             // get the files in this directory
-            string[] files = Directory.GetFiles(packageDir, "*.json", SearchOption.TopDirectoryOnly);
+            // TODO: relax filter to *.json when more than structure defintions are being parsed
+            string[] files = Directory.GetFiles(packageDir, "StructureDefinition*.json", SearchOption.TopDirectoryOnly);
 
             if (!ProcessPackageFiles(files, ref fhirVersionInfo))
             {

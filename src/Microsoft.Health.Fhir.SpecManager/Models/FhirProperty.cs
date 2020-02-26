@@ -14,6 +14,45 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A FHIR property (in a complex-type or resource).</summary>
     public class FhirProperty : FhirTypeBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FhirProperty"/> class.
+        /// </summary>
+        /// <param name="path">            Full pathname of the file.</param>
+        /// <param name="fieldOrder">      The field order.</param>
+        /// <param name="shortDescription">Information describing the short.</param>
+        /// <param name="definition">      The definition.</param>
+        /// <param name="comment">         The comment.</param>
+        /// <param name="validationRegEx"> The validation RegEx.</param>
+        /// <param name="baseTypeName">    Name of the base type.</param>
+        /// <param name="expandedTypes">   A list of types of the expanded.</param>
+        /// <param name="cardinalityMin">  The cardinality minimum.</param>
+        /// <param name="cardinalityMax">  The cardinaltiy maximum.</param>
+        public FhirProperty(
+            string path,
+            int fieldOrder,
+            string shortDescription,
+            string definition,
+            string comment,
+            string validationRegEx,
+            string baseTypeName,
+            HashSet<string> expandedTypes,
+            int cardinalityMin,
+            string cardinalityMax)
+            : base(
+                path,
+                string.Empty,
+                shortDescription,
+                definition,
+                comment,
+                validationRegEx,
+                baseTypeName)
+        {
+            FieldOrder = fieldOrder;
+            ExpandedTypes = expandedTypes;
+            CardinalityMin = cardinalityMin;
+            CardinalityMax = MaxCardinality(cardinalityMax);
+        }
+
         /// <summary>Gets or sets the cardinality minimum.</summary>
         ///
         /// <value>The cardinality minimum.</value>
@@ -22,7 +61,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets or sets the cardinaltiy maximum, -1 for unbounded (e.g., *).</summary>
         ///
         /// <value>The cardinaltiy maximum.</value>
-        public int? CardinaltiyMax { get; set; }
+        public int? CardinalityMax { get; set; }
+
+        /// <summary>Gets or sets the field order.</summary>
+        /// <value>The field order.</value>
+        public int FieldOrder { get; set; }
 
         /// <summary>Gets or sets Code Values allowed for this property.</summary>
         ///
@@ -51,7 +94,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         {
             get
             {
-                return (CardinaltiyMax == -1) || (CardinaltiyMax > 1);
+                return (CardinalityMax == -1) || (CardinalityMax > 1);
             }
         }
 
@@ -65,5 +108,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 return CardinalityMin == 0;
             }
         }
+
+        /// <summary>Maximum cardinality.</summary>
+        /// <param name="max">The maximum.</param>
+        /// <returns>An int?</returns>
+        private static int? MaxCardinality(string max)
+        {
+            if (string.IsNullOrEmpty(max))
+            {
+                return null;
+            }
+
+            if (max.Equals("*", StringComparison.Ordinal))
+            {
+                return null;
+            }
+
+            if (int.TryParse(max, out int parsed))
+            {
+                return parsed;
+            }
+
+            return null;
+        }
+
     }
 }

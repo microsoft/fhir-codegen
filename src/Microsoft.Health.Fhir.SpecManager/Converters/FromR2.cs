@@ -96,15 +96,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_2.StructureDefinition sd,
             ref Dictionary<string, FhirPrimitive> primitiveTypes)
         {
-            FhirPrimitive primitive = new FhirPrimitive()
-            {
-                Name = sd.Name,
-                NameCapitalized = Utils.Capitalize(sd.Name),
-                StandardStatus = sd.Status,
-                ShortDescription = sd.Description,
-                Definition = sd.Requirements,
-                BaseTypeName = sd.Id,
-            };
+            // create a new primitive type object
+            FhirPrimitive primitive = new FhirPrimitive(
+                sd.Name,
+                sd.Status,
+                sd.Description,
+                sd.Requirements,
+                string.Empty,
+                null);
 
             // add to our dictionary of primitive types
             primitiveTypes[sd.Name] = primitive;
@@ -260,15 +259,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         {
             try
             {
-                // create a new Complex Type object
-                FhirComplex complex = new FhirComplex()
-                {
-                    Name = sd.Name,
-                    NameCapitalized = Utils.Capitalize(sd.Name),
-                    StandardStatus = sd.Status,
-                    ShortDescription = sd.Description,
-                    Definition = sd.Requirements,
-                };
+                // create a new complex type object
+                FhirComplex complex = new FhirComplex(
+                    sd.Name,
+                    sd.Status,
+                    sd.Description,
+                    sd.Requirements,
+                    string.Empty,
+                    null);
 
                 // make a dictionary to track all the related resource definitions we create
                 Dictionary<string, FhirComplex> subDefs = new Dictionary<string, FhirComplex>();
@@ -392,56 +390,56 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             subDefs[pParent].Properties.ContainsKey(pField))
                         {
                             // use this type
-                            FhirComplex sub = new FhirComplex()
-                            {
-                                Name = Utils.Capitalize(parent),
-                                NameCapitalized = Utils.Capitalize(parent),
-                                ShortDescription = subDefs[pParent].Properties[pField].ShortDescription,
-                                Definition = subDefs[pParent].Properties[pField].Definition,
-                                Comment = subDefs[pParent].Properties[pField].Comment,
-                                BaseTypeName = subDefs[pParent].Properties[pField].BaseTypeName,
-                            };
+                            //FhirComplex sub = new FhirComplex()
+                            //{
+                            //    Name = Utils.Capitalize(parent),
+                            //    NameCapitalized = Utils.Capitalize(parent),
+                            //    ShortDescription = subDefs[pParent].Properties[pField].ShortDescription,
+                            //    Definition = subDefs[pParent].Properties[pField].Purpose,
+                            //    Comment = subDefs[pParent].Properties[pField].Comment,
+                            //    BaseTypeName = subDefs[pParent].Properties[pField].BaseTypeName,
+                            //};
 
                             // add this parent to our local dictionary
-                            subDefs.Add(parent, sub);
+                            //subDefs.Add(parent, sub);
 
                             // change our element type to point at the parent
-                            subDefs[pParent].Properties[pField].BaseTypeName = Utils.Capitalize(parent);
+                            //subDefs[pParent].Properties[pField].BaseTypeName = Utils.Capitalize(parent);
                         }
                         else
                         {
                             // add a placeholder type
-                            FhirComplex sub = new FhirComplex()
-                            {
-                                Name = Utils.Capitalize(parent),
-                                NameCapitalized = Utils.Capitalize(parent),
-                                ShortDescription = string.Empty,
-                                Definition = string.Empty,
-                                Comment = $"Placeholder for {parent}",
-                                BaseTypeName = parent,
-                                IsPlaceholder = true,
-                            };
+                            //FhirComplex sub = new FhirComplex()
+                            //{
+                            //    Name = Utils.Capitalize(parent),
+                            //    NameCapitalized = Utils.Capitalize(parent),
+                            //    ShortDescription = string.Empty,
+                            //    Definition = string.Empty,
+                            //    Comment = $"Placeholder for {parent}",
+                            //    BaseTypeName = parent,
+                            //    IsPlaceholder = true,
+                            //};
 
                             // add this parent to our local dictionary
-                            subDefs.Add(parent, sub);
+                            //subDefs.Add(parent, sub);
                         }
                     }
 
                     // add this field to the parent type
-                    subDefs[parent].Properties.Add(
-                        field,
-                        new FhirProperty()
-                        {
-                            Name = field,
-                            NameCapitalized = Utils.Capitalize(field),
-                            ShortDescription = element.Short,
-                            Definition = element.Definition,
-                            Comment = element.Comment,
-                            BaseTypeName = elementType,
-                            ExpandedTypes = expandedTypes,
-                            CardinalityMin = element.Min ?? 0,
-                            CardinaltiyMax = Utils.MaxCardinality(element.Max),
-                        });
+                    //subDefs[parent].Properties.Add(
+                    //    field,
+                    //    new FhirProperty()
+                    //    {
+                    //        Name = field,
+                    //        NameCapitalized = Utils.Capitalize(field),
+                    //        ShortDescription = element.Short,
+                    //        Definition = element.Definition,
+                    //        Comment = element.Comment,
+                    //        BaseTypeName = elementType,
+                    //        ExpandedTypes = expandedTypes,
+                    //        CardinalityMin = element.Min ?? 0,
+                    //        CardinalityMax = Utils.MaxCardinality(element.Max),
+                    //    });
 
                     // check to see if we need to insert into our alias table
                     if (!string.IsNullOrEmpty(element.Name))

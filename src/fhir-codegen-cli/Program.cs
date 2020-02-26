@@ -112,9 +112,9 @@ namespace fhir_codegen_cli
             Console.WriteLine($"complex types: {info.ComplexTypes.Count}");
             DumpComplex(info.ComplexTypes);
 
-            //// dump resources
-            //Console.WriteLine($"resources: {info.Resources.Count}");
-            //DumpComplex(info.Resources);
+            // dump resources
+            Console.WriteLine($"resources: {info.Resources.Count}");
+            DumpComplex(info.Resources);
         }
 
         /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>
@@ -126,7 +126,7 @@ namespace fhir_codegen_cli
                 Console.WriteLine($"- {kvp.Key}: {kvp.Value.BaseTypeName}");
                 foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
                 {
-                    string max = (propKvp.Value.CardinaltiyMax == null) ? "*" : propKvp.Value.CardinaltiyMax.ToString();
+                    string max = (propKvp.Value.CardinalityMax == null) ? "*" : propKvp.Value.CardinalityMax.ToString();
 
                     string propertyType = propKvp.Value.BaseTypeName;
 
