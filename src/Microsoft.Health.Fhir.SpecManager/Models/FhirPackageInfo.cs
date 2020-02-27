@@ -16,123 +16,119 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>Information about the fhir package.</summary>
     public class FhirPackageInfo
     {
-        /// <summary>Gets or sets the name.</summary>
-        ///
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FhirPackageInfo"/> class.
+        /// </summary>
+        /// <param name="name">           The name.</param>
+        /// <param name="version">        The version.</param>
+        /// <param name="fhirVersionList">A list of fhir versions.</param>
+        /// <param name="fhirVersions">   The fhir versions.</param>
+        /// <param name="packageType">    The type of the package.</param>
+        /// <param name="toolsVersion">   The tools version.</param>
+        /// <param name="canonical">      The canonical.</param>
+        /// <param name="homepage">       The homepage.</param>
+        /// <param name="url">            The URL.</param>
+        /// <param name="title">          The title.</param>
+        /// <param name="description">    The description.</param>
+        /// <param name="keywords">       The keywords.</param>
+        /// <param name="author">         The author.</param>
+        /// <param name="license">        The license.</param>
+        [JsonConstructor]
+        internal FhirPackageInfo(
+            string name,
+            string version,
+            List<string> fhirVersionList,
+            List<string> fhirVersions,
+            string packageType,
+            decimal toolsVersion,
+            string canonical,
+            string homepage,
+            Uri url,
+            string title,
+            string description,
+            List<string> keywords,
+            string author,
+            string license)
+        {
+            Name = name;
+            Version = version;
+            FhirVersionList = fhirVersionList;
+            FhirVersions = fhirVersions;
+            PackageType = packageType;
+            ToolsVersion = toolsVersion;
+            Canonical = canonical;
+            Homepage = homepage;
+            URL = url;
+            Title = title;
+            Description = description;
+            Keywords = keywords;
+            Author = author;
+            License = license;
+        }
+
+        /// <summary>Gets the name.</summary>
         /// <value>The name.</value>
-        public string Name { get; set; }
+        public string Name { get; }
 
-        /// <summary>Gets or sets the version.</summary>
-        ///
+        /// <summary>Gets the version.</summary>
         /// <value>The version.</value>
-        public string Version { get; set; }
+        public string Version { get; }
 
-        /// <summary>Gets or sets a list of fhir versions.</summary>
-        ///
+        /// <summary>Gets a list of fhir versions.</summary>
         /// <value>A list of fhir versions.</value>
         [JsonProperty(PropertyName = "fhir-version-list")]
-        public string[] FhirVersionList { get; set; }
+        public List<string> FhirVersionList { get; }
 
-        /// <summary>Gets or sets the fhir versions.</summary>
-        ///
+        /// <summary>Gets the fhir versions.</summary>
         /// <value>The fhir versions.</value>
         [JsonProperty(PropertyName = "fhirVersions")]
-        public string[] FhirVersions { get; set; }
+        public List<string> FhirVersions { get; }
 
-        /// <summary>Gets or sets the type of the package.</summary>
-        ///
+        /// <summary>Gets the type of the package.</summary>
         /// <value>The type of the package.</value>
         [JsonProperty(PropertyName = "type")]
-        public string PackageType { get; set; }
+        public string PackageType { get; }
 
-        /// <summary>Gets or sets the tools version.</summary>
-        ///
+        /// <summary>Gets the tools version.</summary>
         /// <value>The tools version.</value>
         [JsonProperty(PropertyName = "tools-version")]
-        public decimal ToolsVersion { get; set; }
+        public decimal ToolsVersion { get; }
 
-        /// <summary>Gets or sets the canonical.</summary>
-        ///
+        /// <summary>Gets the canonical.</summary>
         /// <value>The canonical.</value>
-        public string Canonical { get; set; }
+        public string Canonical { get; }
 
-        /// <summary>Gets or sets the homepage.</summary>
-        ///
+        /// <summary>Gets the homepage.</summary>
         /// <value>The homepage.</value>
-        public string Homepage { get; set; }
+        public string Homepage { get; }
 
-        /// <summary>Gets or sets URL of the document.</summary>
-        ///
+        /// <summary>Gets URL of the document.</summary>
         /// <value>The URL.</value>
-        public string URL { get; set; }
+        public Uri URL { get; }
 
-        /// <summary>Gets or sets the title.</summary>
-        ///
+        /// <summary>Gets the title.</summary>
         /// <value>The title.</value>
-        public string Title { get; set; }
+        public string Title { get; }
 
-        /// <summary>Gets or sets the description.</summary>
-        ///
+        /// <summary>Gets the description.</summary>
         /// <value>The description.</value>
-        public string Description { get; set; }
+        public string Description { get; }
 
-        /// <summary>Information about the dependency.</summary>
-        public class DependencyInfo
-        {
-            /// <summary>Gets or sets the name.</summary>
-            ///
-            /// <value>The name.</value>
-            public string Name { get; set; }
-
-            /// <summary>Gets or sets the version.</summary>
-            ///
-            /// <value>The version.</value>
-            public string Version { get; set; }
-        }
-
-        /// <summary>Gets or sets the dependencies.</summary>
-        ///
-        /// <value>The dependencies.</value>
-        public DependencyInfo[] Dependencies { get; set; }
-
-        /// <summary>Gets or sets the keywords.</summary>
-        ///
+        /// <summary>Gets the keywords.</summary>
         /// <value>The keywords.</value>
-        public string[] Keywords { get; set; }
+        public List<string> Keywords { get; }
 
-        /// <summary>Gets or sets the author.</summary>
-        ///
+        /// <summary>Gets the author.</summary>
         /// <value>The author.</value>
-        public string Author { get; set; }
+        public string Author { get; }
 
-        /// <summary>Information about the maintainer.</summary>
-        public class MaintainerInfo
-        {
-            /// <summary>Gets or sets the name.</summary>
-            ///
-            /// <value>The name.</value>
-            public string Name { get; set; }
-
-            /// <summary>Gets or sets the email.</summary>
-            ///
-            /// <value>The email.</value>
-            public string Email { get; set; }
-        }
-
-        /// <summary>Gets or sets the maintainers.</summary>
-        ///
-        /// <value>The maintainers.</value>
-        public MaintainerInfo[] Maintainers { get; set; }
-
-        /// <summary>Gets or sets the license.</summary>
-        ///
+        /// <summary>Gets the license.</summary>
         /// <value>The license.</value>
-        public string License { get; set; }
+        public string License { get; }
 
         /// <summary>Attempts to load FHIR NPM package information from the given directory.</summary>
-        ///
         /// <param name="packageDirectory">Pathname of the package directory.</param>
         /// <param name="packageInfo">     [out] Information describing the package.</param>
-        ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         public static bool TryLoadPackageInfo(string packageDirectory, out FhirPackageInfo packageInfo)
         {
