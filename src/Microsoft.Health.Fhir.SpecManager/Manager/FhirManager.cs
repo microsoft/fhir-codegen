@@ -138,23 +138,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Loads a published version of FHIR.</summary>
-        ///
-        /// <param name="version">        The version.</param>
-        /// <param name="fhirVersionInfo">[out] Information describing the fhir version.</param>
-        ///
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
+        ///  required range.</exception>
+        /// <param name="version">The version.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public bool LoadPublished(int version, out FhirVersionInfo fhirVersionInfo)
+        public FhirVersionInfo LoadPublished(int version)
         {
-            fhirVersionInfo = null;
-
             // check version
             if (!_publishedVersionDict.ContainsKey(version))
             {
-                Console.WriteLine($"FhirManager.Load <<< unknown Published FHIR version: {version}");
-                return false;
+                throw new ArgumentOutOfRangeException($"Unknown Published FHIR version: {version}");
             }
 
-            // grab the correct version info
+            // grab the correct basic version info
             FhirVersionInfo info = _publishedVersionDict[version];
 
             // check for local package
@@ -169,15 +165,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     _npmDirectory);
             }
 
-            // try to load the package
-            if (Loader.LoadPackage(_npmDirectory, ref info))
-            {
-                _publishedVersionDict[version] = info;
-                fhirVersionInfo = info;
-                return true;
-            }
+            // load the package
+            Loader.LoadPackage(_npmDirectory, ref info);
 
-            return false;
+            // update our version information
+            _publishedVersionDict[version] = info;
+
+            // return this record
+            return info;
         }
 
         /// <summary>Check local versions.</summary>

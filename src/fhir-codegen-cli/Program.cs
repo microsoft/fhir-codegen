@@ -46,46 +46,55 @@ namespace fhir_codegen_cli
 
             if (options.LoadR2)
             {
-                if (!FhirManager.Current.LoadPublished(2, out FhirVersionInfo r2))
+                try
                 {
-                    Console.WriteLine("Loading R2 failed!");
-                    return false;
-                }
+                    FhirVersionInfo r2 = FhirManager.Current.LoadPublished(2);
 
-                // tell the user what's going on
-                if (options.Verbose)
+                    if (options.Verbose)
+                    {
+                        DumpFhirVersion(r2);
+                    }
+                }
+                catch (Exception ex)
                 {
-                    DumpFhirVersion(r2);
+                    Console.WriteLine($"Loading R2 failed: {ex}");
+                    return false;
                 }
             }
 
             if (options.LoadR3)
             {
-                if (!FhirManager.Current.LoadPublished(3, out FhirVersionInfo r3))
+                try
                 {
-                    Console.WriteLine("Loading R3 failed!");
-                    return false;
-                }
+                    FhirVersionInfo r3 = FhirManager.Current.LoadPublished(3);
 
-                // tell the user what's going on
-                if (options.Verbose)
+                    if (options.Verbose)
+                    {
+                        DumpFhirVersion(r3);
+                    }
+                }
+                catch (Exception ex)
                 {
-                    DumpFhirVersion(r3);
+                    Console.WriteLine($"Loading R3 failed: {ex}");
+                    return false;
                 }
             }
 
             if (options.LoadR4)
             {
-                if (!FhirManager.Current.LoadPublished(4, out FhirVersionInfo r4))
+                try
                 {
-                    Console.WriteLine("Loading R4 failed!");
-                    return false;
-                }
+                    FhirVersionInfo r4 = FhirManager.Current.LoadPublished(4);
 
-                // tell the user what's going on
-                if (options.Verbose)
+                    if (options.Verbose)
+                    {
+                        DumpFhirVersion(r4);
+                    }
+                }
+                catch (Exception ex)
                 {
-                    DumpFhirVersion(r4);
+                    Console.WriteLine($"Loading R4 failed: {ex}");
+                    return false;
                 }
             }
 

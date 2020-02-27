@@ -463,22 +463,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return true;
         }
 
-        /// <summary>Attempts to parse resource an object from the given string.</summary>
+        /// <summary>Parses resource an object from the given string.</summary>
         /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
         /// <param name="json">The JSON.</param>
-        /// <param name="obj"> [out] The object.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        bool IFhirConverter.TryParseResource(string json, out object obj)
+        /// <returns>A typed Resource object.</returns>
+        object IFhirConverter.ParseResource(string json)
         {
             try
             {
                 // try to parse this JSON into a resource object
-                obj = JsonConvert.DeserializeObject<fhir_3.Resource>(json, _jsonConverter);
-                return true;
+                return JsonConvert.DeserializeObject<fhir_3.Resource>(json, _jsonConverter);
             }
             catch (JsonException ex)
             {
-                Console.WriteLine($"FromR3.TryParseResource <<< failed to parse:\n{ex}\n------------------------------------");
+                Console.WriteLine($"FromR3.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
                 throw;
             }
         }
@@ -486,10 +484,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Attempts to process resource.</summary>
         /// <param name="resourceToParse">[out] The resource object.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        bool IFhirConverter.TryProcessResource(
-            object resourceToParse,
-            FhirVersionInfo fhirVersionInfo)
+        void IFhirConverter.ProcessResource(object resourceToParse, FhirVersionInfo fhirVersionInfo)
         {
             switch (resourceToParse)
             {
@@ -507,13 +502,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 */
                 // process
                 case fhir_3.StructureDefinition structureDefinition:
-                    return ProcessStructureDef(
-                        structureDefinition,
-                        fhirVersionInfo);
+                    ProcessStructureDef(structureDefinition, fhirVersionInfo);
+                    break;
             }
-
-            // ignored
-            return true;
         }
     }
 }

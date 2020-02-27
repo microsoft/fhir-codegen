@@ -16,20 +16,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
     /// <summary>Interface for converter.</summary>
     public interface IFhirConverter
     {
-        /// <summary>Attempts to parse resource an object from the given string.</summary>
-        ///
+        /// <summary>Parses resource an object from the given string.</summary>
         /// <param name="json">The JSON.</param>
-        /// <param name="resource"> [out] The object.</param>
-        ///
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        bool TryParseResource(string json, out object resource);
+        /// <returns>A typed Resource object.</returns>
+        object ParseResource(string json);
 
         /// <summary>Attempts to process resource.</summary>
         /// <param name="resourceToParse">[out] The resource object.</param>
         /// <param name="fhirVersionInfo">Primitive types.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        bool TryProcessResource(
-            object resourceToParse,
-            FhirVersionInfo fhirVersionInfo);
+        void ProcessResource(object resourceToParse, FhirVersionInfo fhirVersionInfo);
     }
 }

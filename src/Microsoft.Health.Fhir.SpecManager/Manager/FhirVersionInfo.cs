@@ -312,23 +312,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
-        /// <summary>Attempts to parse resource an object from the given string.</summary>
-        /// <param name="json">    The JSON.</param>
-        /// <param name="resource">[out] The resource object.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public bool TryParseResource(string json, out object resource)
+        /// <summary>Parses resource an object from the given string.</summary>
+        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
+        /// <param name="json">The JSON.</param>
+        /// <returns>A typed Resource object.</returns>
+        public object ParseResource(string json)
         {
-            return _fhirConverter.TryParseResource(json, out resource);
+            return _fhirConverter.ParseResource(json);
         }
 
         /// <summary>Attempts to process resource.</summary>
         /// <param name="resource">[out] The resource object.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public bool TryProcessResource(object resource)
+        public void ProcessResource(object resource)
         {
-            return _fhirConverter.TryProcessResource(
-                resource,
-                this);
+            // process this per the correct FHIR version
+            _fhirConverter.ProcessResource(resource, this);
         }
     }
 }

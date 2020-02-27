@@ -127,37 +127,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public string License { get; }
 
         /// <summary>Attempts to load FHIR NPM package information from the given directory.</summary>
+        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+        /// <exception cref="JsonException">        Thrown when a JSON error condition occurs.</exception>
         /// <param name="packageDirectory">Pathname of the package directory.</param>
-        /// <param name="packageInfo">     [out] Information describing the package.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool TryLoadPackageInfo(string packageDirectory, out FhirPackageInfo packageInfo)
+        /// <returns>The package information.</returns>
+        public static FhirPackageInfo Load(string packageDirectory)
         {
-            packageInfo = null;
-
             // build the path to our file
             string packageFilename = Path.Combine(packageDirectory, "package.json");
 
             // make sure our file exists
             if (!File.Exists(packageFilename))
             {
-                Console.WriteLine($"Package file not found! {packageFilename}");
-                return false;
+                throw new FileNotFoundException($"Package file {packageFilename} not found!");
             }
 
+            // load the file
+            string packageContents = File.ReadAllText(packageFilename);
+
+            // attempt to parse
             try
             {
-                // load the file
-                string packageContents = File.ReadAllText(packageFilename);
-
-                // attempt to parse
-                packageInfo = JsonConvert.DeserializeObject<FhirPackageInfo>(packageContents);
-
-                // here means success
-                return true;
+                return JsonConvert.DeserializeObject<FhirPackageInfo>(packageContents);
             }
-            catch (Exception ex)
+            catch (JsonException)
             {
-                Console.WriteLine($"Parsing package.json failed: {ex.Message}");
                 throw;
             }
         }

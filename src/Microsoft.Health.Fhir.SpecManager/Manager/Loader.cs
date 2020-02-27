@@ -17,11 +17,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
     public abstract class Loader
     {
         /// <summary>Searches for the currently specified package.</summary>
-        ///
         /// <param name="npmDirectory">    Pathname of the npm directory.</param>
         /// <param name="versionInfo">     Information describing the version.</param>
         /// <param name="versionDirectory">[out] Pathname of the version directory.</param>
-        ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         public static bool TryFindPackage(string npmDirectory, FhirVersionInfo versionInfo, out string versionDirectory)
         {
@@ -55,35 +53,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Loads a package.</summary>
-        ///
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
         /// <param name="npmDirectory">   Pathname of the npm directory.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
-        ///
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool LoadPackage(string npmDirectory, ref FhirVersionInfo fhirVersionInfo)
+        public static void LoadPackage(string npmDirectory, ref FhirVersionInfo fhirVersionInfo)
         {
             // sanity checks
             if (fhirVersionInfo == null)
             {
                 Console.WriteLine($"LoadPackage <<< invalid version info is NULL, cannot load {npmDirectory}");
-                return false;
+                throw new ArgumentNullException(nameof(fhirVersionInfo));
             }
 
             // find the package
             if (!TryFindPackage(npmDirectory, fhirVersionInfo, out string packageDir))
             {
                 Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}!");
-                return false;
+                throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}");
             }
 
             // load package info
-            if (!FhirPackageInfo.TryLoadPackageInfo(packageDir, out FhirPackageInfo packageInfo))
-            {
-                Console.WriteLine($"LoadPackage <<<" +
-                                    $" Failed to load version {fhirVersionInfo.MajorVersion}" +
-                                    $" package info, dir: {packageDir}");
-                return false;
-            }
+            FhirPackageInfo packageInfo = FhirPackageInfo.Load(packageDir);
 
             // tell the user what's going on
             Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
@@ -92,23 +84,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // TODO: relax filter to *.json when more than structure defintions are being parsed
             string[] files = Directory.GetFiles(packageDir, "StructureDefinition*.json", SearchOption.TopDirectoryOnly);
 
-            if (!ProcessPackageFiles(files, ref fhirVersionInfo))
-            {
-                Console.WriteLine($"LoadPackage <<< failed to process package files in {npmDirectory}!");
-                return false;
-            }
-
-            // success
-            return true;
+            // process these files
+            ProcessPackageFiles(files, ref fhirVersionInfo);
         }
 
         /// <summary>Process the package files.</summary>
-        ///
+        /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
         /// <param name="files">          The files.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
-        ///
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ProcessPackageFiles(string[] files, ref FhirVersionInfo fhirVersionInfo)
+        private static void ProcessPackageFiles(string[] files, ref FhirVersionInfo fhirVersionInfo)
         {
             // traverse the files
             foreach (string filename in files)
@@ -142,37 +126,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         // type not found
                         Console.WriteLine($"\nProcessPackageFiles <<< Unhandled type: {shortName}");
-                        return false;
+                        throw new InvalidDataException($"Unhandled type: {shortName}");
                     }
 
                     // read the file
                     string contents = File.ReadAllText(filename);
 
-                    // parse the file
-                    if (!fhirVersionInfo.TryParseResource(contents, out var obj))
-                    {
-                        Console.WriteLine($"\nProcessPackageFiles <<<" +
-                            $" failed to parse resource: {shortName}");
-                        return false;
-                    }
+                    // parse the file - note: using var here is siginificantly more performant than object
+                    var resource = fhirVersionInfo.ParseResource(contents);
 
                     // check type matching
-                    if (!obj.GetType().Name.Equals(resourceHint, StringComparison.Ordinal))
+                    if (!resource.GetType().Name.Equals(resourceHint, StringComparison.Ordinal))
                     {
                         // type not found
                         Console.WriteLine($"\nProcessPackageFiles <<<" +
                             $" Mismatched type: {shortName}," +
-                            $" should be {resourceHint} parsed to:{obj.GetType().Name}");
-                        return false;
+                            $" should be {resourceHint} parsed to:{resource.GetType().Name}");
+                        throw new InvalidDataException($"Mismatched type: {shortName}: {resourceHint} != {resource.GetType().Name}");
                     }
 
                     // process this resource
-                    if (!fhirVersionInfo.TryProcessResource(obj))
-                    {
-                        Console.WriteLine($"\nProcessPackageFiles <<<" +
-                            $" failed to process resource: {shortName}");
-                        return false;
-                    }
+                    fhirVersionInfo.ProcessResource(resource);
                 }
                 catch (Exception ex)
                 {
@@ -184,9 +158,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             // make sure we cleared the last line
             Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}!{new string(' ', 100)}");
-
-            // still here means success
-            return true;
         }
     }
 }
