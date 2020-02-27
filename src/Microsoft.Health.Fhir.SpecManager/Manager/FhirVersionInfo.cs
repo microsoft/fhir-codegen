@@ -257,9 +257,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public Dictionary<string, FhirCapability> Capabilities { get => _capabilities; set => _capabilities = value; }
 
         /// <summary>Determine if we should process resource.</summary>
-        ///
-        /// <param name="resourceName"> Name of the resource.</param>
-        ///
+        /// <param name="resourceName">Name of the resource.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public bool ShouldProcessResource(string resourceName)
         {
@@ -272,9 +270,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Determine if we should ignore resource.</summary>
-        ///
-        /// <param name="resourceName"> Name of the resource.</param>
-        ///
+        /// <param name="resourceName">Name of the resource.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public bool ShouldIgnoreResource(string resourceName)
         {
@@ -287,9 +283,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Determine if we should skip file.</summary>
-        ///
         /// <param name="filename">Filename of the file.</param>
-        ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         public static bool ShouldSkipFile(string filename)
         {
@@ -302,10 +296,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Attempts to parse resource an object from the given string.</summary>
-        ///
-        /// <param name="json">The JSON.</param>
-        /// <param name="resource"> [out] The resource object.</param>
-        ///
+        /// <param name="json">    The JSON.</param>
+        /// <param name="resource">[out] The resource object.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public bool TryParseResource(string json, out object resource)
         {
@@ -313,9 +305,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Attempts to process resource.</summary>
-        ///
         /// <param name="resource">[out] The resource object.</param>
-        ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         public bool TryProcessResource(object resource)
         {
@@ -325,7 +315,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 ref _complexTypes,
                 ref _resources);
         }
-
-
     }
 }

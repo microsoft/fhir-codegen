@@ -65,17 +65,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
         }
 
-        /// <summary>Gets or sets the cardinality minimum.</summary>
+        /// <summary>Gets the cardinality minimum.</summary>
         ///
         /// <value>The cardinality minimum.</value>
         public int CardinalityMin { get; }
 
-        /// <summary>Gets or sets the cardinaltiy maximum, -1 for unbounded (e.g., *).</summary>
+        /// <summary>Gets the cardinaltiy maximum, -1 for unbounded (e.g., *).</summary>
         ///
         /// <value>The cardinaltiy maximum.</value>
         public int? CardinalityMax { get; }
 
-        /// <summary>Gets or sets the field order.</summary>
+        /// <summary>Gets the field order.</summary>
         /// <value>The field order.</value>
         public int FieldOrder { get; }
 
@@ -94,14 +94,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>True if this object is inherited, false if not.</value>
         public bool IsInherited { get; set; }
 
-        /// <summary>Gets or sets a list of choice types for this property.</summary>
+        /// <summary>Gets a list of choice types for this property.</summary>
         ///
         /// <value>A list of types allowed for this property.</value>
-        public HashSet<string> ChoiceTypes { get; set; }
+        public HashSet<string> ChoiceTypes { get; }
 
-        /// <summary>Gets or sets target profiles.</summary>
+        /// <summary>Gets target profiles.</summary>
         /// <value>The target profiles.</value>
-        public HashSet<string> TargetProfiles { get; set; }
+        public HashSet<string> TargetProfiles { get; }
 
         /// <summary>Gets a value indicating whether this property is an array.</summary>
         ///
@@ -127,7 +127,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Maximum cardinality.</summary>
         /// <param name="max">The maximum.</param>
-        /// <returns>An int?</returns>
+        /// <returns>Null for unbounded cardinality, value for a specific maximum.</returns>
         private static int? MaxCardinality(string max)
         {
             if (string.IsNullOrEmpty(max))
@@ -147,6 +147,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             return null;
         }
-
     }
 }

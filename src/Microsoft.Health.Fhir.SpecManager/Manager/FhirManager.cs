@@ -116,25 +116,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <returns>True if it succeeds, false if it fails.</returns>
         public static bool Init(string npmDirectory)
         {
-            try
+            // check to make sure we have a directory to work from
+            if (string.IsNullOrEmpty(npmDirectory))
             {
-                // check to make sure we have a directory to work from
-                if (string.IsNullOrEmpty(npmDirectory))
-                {
-                    Console.WriteLine($"FhirManager.Init <<< Invalid NPM Directory: {npmDirectory}");
-                    return false;
-                }
-
-                // make sure the directory exists
-                if (!Directory.Exists(npmDirectory))
-                {
-                    Console.WriteLine($"FhirManager.Init <<< NPM directory not found: {npmDirectory}");
-                    return false;
-                }
+                Console.WriteLine($"FhirManager.Init <<< Invalid NPM Directory: {npmDirectory}");
+                return false;
             }
-            catch (Exception ex)
+
+            // make sure the directory exists
+            if (!Directory.Exists(npmDirectory))
             {
-                Console.WriteLine($"FhirManager.Init <<< exception checking NPM directory {npmDirectory}: {ex}");
+                Console.WriteLine($"FhirManager.Init <<< NPM directory not found: {npmDirectory}");
                 return false;
             }
 

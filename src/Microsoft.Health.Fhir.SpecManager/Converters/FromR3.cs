@@ -344,141 +344,132 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_3.StructureDefinition sd,
             ref Dictionary<string, FhirComplex> complexDict)
         {
-            try
+            string[] targetProfiles = null;
+
+            // create a new complex type object
+            FhirComplex complex = new FhirComplex(
+                sd.Name,
+                sd.Status,
+                sd.Description,
+                sd.Purpose,
+                string.Empty,
+                null);
+
+            // check for a base definition
+            if (!string.IsNullOrEmpty(sd.BaseDefinition))
             {
-                string[] targetProfiles = null;
-
-                // create a new complex type object
-                FhirComplex complex = new FhirComplex(
-                    sd.Name,
-                    sd.Status,
-                    sd.Description,
-                    sd.Purpose,
-                    string.Empty,
-                    null);
-
-                // check for a base definition
-                if (!string.IsNullOrEmpty(sd.BaseDefinition))
+                complex.BaseTypeName = sd.BaseDefinition.Substring(sd.BaseDefinition.LastIndexOf('/') + 1);
+            }
+            else
+            {
+                if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out string typeName, out targetProfiles))
                 {
-                    complex.BaseTypeName = sd.BaseDefinition.Substring(sd.BaseDefinition.LastIndexOf('/') + 1);
+                    Console.WriteLine($"FromR3.ProcessComplex <<< Could not determine base type for {sd.Name}");
+                    return false;
+                }
+
+                complex.BaseTypeName = typeName;
+            }
+
+            // look for properties on this type
+            foreach (fhir_3.ElementDefinition element in sd.Snapshot.Element)
+            {
+                string path = element.Path;
+
+                // split the path into component parts
+                string[] components = element.Path.Split('.');
+
+                // base definition, already processed
+                if (components.Length < 2)
+                {
+                    continue;
+                }
+
+                // get the parent container and our field name
+                if (!complex.GetParentAndFieldName(
+                        components,
+                        out FhirComplex parent,
+                        out string field))
+                {
+                    Console.WriteLine($"FromR3.ProcessComplex <<<" +
+                        $" Could not find parent for {element.Path}!");
+                    return false;
+                }
+
+                string elementType;
+                HashSet<string> choiceTypes = null;
+
+                // determine if there is type expansion
+                if (field.Contains("[x]"))
+                {
+                    // fix the field and path names
+                    path = path.Replace("[x]", string.Empty);
+                    field = field.Replace("[x]", string.Empty);
+
+                    // no base type
+                    elementType = string.Empty;
+
+                    // get multiple types
+                    if (!TryGetChoiceTypes(element, out choiceTypes))
+                    {
+                        Console.WriteLine($"FromR3.ProcessComplex <<<" +
+                            $" Could not get expanded types for {sd.Name} field {element.Path}");
+                        return false;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(element.ContentReference))
+                {
+                    // check for local definition
+                    switch (element.ContentReference[0])
+                    {
+                        case '#':
+                            // use the local reference
+                            elementType = element.ContentReference.Substring(1);
+                            break;
+
+                        default:
+                            Console.WriteLine($"FromR3.ProcessComplex <<<" +
+                                $" Could not resolve content reference {element.ContentReference} in {sd.Name} field {element.Path}");
+                            return false;
+                    }
                 }
                 else
                 {
-                    if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out string typeName, out targetProfiles))
+                    // if we can't find a type, assume Element
+                    if (!TryGetTypeFromElement(parent.Name, element, out elementType, out targetProfiles))
                     {
-                        Console.WriteLine($"FromR3.ProcessComplex <<< Could not determine base type for {sd.Name}");
-                        return false;
+                        elementType = "Element";
                     }
-
-                    complex.BaseTypeName = typeName;
                 }
 
-                // look for properties on this type
-                foreach (fhir_3.ElementDefinition element in sd.Snapshot.Element)
-                {
-                    string path = element.Path;
-
-                    // split the path into component parts
-                    string[] components = element.Path.Split('.');
-
-                    // base definition, already processed
-                    if (components.Length < 2)
-                    {
-                        continue;
-                    }
-
-                    // get the parent container and our field name
-                    if (!complex.GetParentAndFieldName(
-                            components,
-                            out FhirComplex parent,
-                            out string field))
-                    {
-                        Console.WriteLine($"FromR3.ProcessComplex <<<" +
-                            $" Could not find parent for {element.Path}!");
-                        return false;
-                    }
-
-                    string elementType;
-                    HashSet<string> choiceTypes = null;
-
-                    // determine if there is type expansion
-                    if (field.Contains("[x]"))
-                    {
-                        // fix the field and path names
-                        path = path.Replace("[x]", string.Empty);
-                        field = field.Replace("[x]", string.Empty);
-
-                        // no base type
-                        elementType = string.Empty;
-
-                        // get multiple types
-                        if (!TryGetChoiceTypes(element, out choiceTypes))
-                        {
-                            Console.WriteLine($"FromR3.ProcessComplex <<<" +
-                                $" Could not get expanded types for {sd.Name} field {element.Path}");
-                            return false;
-                        }
-                    }
-                    else if (!string.IsNullOrEmpty(element.ContentReference))
-                    {
-                        // check for local definition
-                        switch (element.ContentReference[0])
-                        {
-                            case '#':
-                                // use the local reference
-                                elementType = element.ContentReference.Substring(1);
-                                break;
-
-                            default:
-                                Console.WriteLine($"FromR3.ProcessComplex <<<" +
-                                    $" Could not resolve content reference {element.ContentReference} in {sd.Name} field {element.Path}");
-                                return false;
-                        }
-                    }
-                    else
-                    {
-                        // if we can't find a type, assume Element
-                        if (!TryGetTypeFromElement(parent.Name, element, out elementType, out targetProfiles))
-                        {
-                            elementType = "Element";
-                        }
-                    }
-
-                    // add this field to the parent type
-                    parent.Properties.Add(
+                // add this field to the parent type
+                parent.Properties.Add(
+                    path,
+                    new FhirProperty(
                         path,
-                        new FhirProperty(
-                            path,
-                            parent.Properties.Count,
-                            element.Short,
-                            element.Definition,
-                            element.Comment,
-                            string.Empty,
-                            elementType,
-                            choiceTypes,
-                            (int)(element.Min ?? 0),
-                            element.Max,
-                            targetProfiles));
-                }
+                        parent.Properties.Count,
+                        element.Short,
+                        element.Definition,
+                        element.Comment,
+                        string.Empty,
+                        elementType,
+                        choiceTypes,
+                        (int)(element.Min ?? 0),
+                        element.Max,
+                        targetProfiles));
+            }
 
-                // add our type
-                complexDict.Add(complex.Path, complex);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"FromR3.ProcessComplex <<< failed to process {sd.Id}:\n{ex}\n--------------");
-                return false;
-            }
+            // add our type
+            complexDict.Add(complex.Path, complex);
 
             // success
             return true;
         }
 
         /// <summary>Attempts to parse resource an object from the given string.</summary>
-        ///
+        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
         /// <param name="json">The JSON.</param>
         /// <param name="obj"> [out] The object.</param>
-        ///
         /// <returns>True if it succeeds, false if it fails.</returns>
         bool IFhirConverter.TryParseResource(string json, out object obj)
         {
@@ -488,14 +479,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 obj = JsonConvert.DeserializeObject<fhir_3.Resource>(json, _jsonConverter);
                 return true;
             }
-            catch (Exception ex)
+            catch (JsonException ex)
             {
                 Console.WriteLine($"FromR3.TryParseResource <<< failed to parse:\n{ex}\n------------------------------------");
+                throw;
             }
-
-            // failed to parse
-            obj = null;
-            return false;
         }
 
         /// <summary>Attempts to process resource.</summary>
@@ -510,35 +498,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             ref Dictionary<string, FhirComplex> complexTypes,
             ref Dictionary<string, FhirComplex> resources)
         {
-            try
+            switch (resourceToParse)
             {
-                switch (resourceToParse)
-                {
-                    // ignore
-                    /*
-                    //case fhir_3.CapabilityStatement capabilityStatement:
-                    //case fhir_3.CodeSystem codeSystem:
-                    //case fhir_3.CompartmentDefinition compartmentDefinition:
-                    //case fhir_3.ConceptMap conceptMap:
-                    //case fhir_3.NamingSystem namingSystem:
-                    //case fhir_3.OperationDefinition operationDefinition:
-                    //case fhir_3.SearchParameter searchParameter:
-                    //case fhir_3.StructureMap structureMap:
-                    //case fhir_3.ValueSet valueSet:
-                    */
-                    // process
-                    case fhir_3.StructureDefinition structureDefinition:
-                        return ProcessStructureDef(
-                            structureDefinition,
-                            ref primitiveTypes,
-                            ref complexTypes,
-                            ref resources);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"FromR3.TryProcessResource <<< Failed to process resource:\n{ex}\n--------------");
-                return false;
+                // ignore
+                /*
+                //case fhir_3.CapabilityStatement capabilityStatement:
+                //case fhir_3.CodeSystem codeSystem:
+                //case fhir_3.CompartmentDefinition compartmentDefinition:
+                //case fhir_3.ConceptMap conceptMap:
+                //case fhir_3.NamingSystem namingSystem:
+                //case fhir_3.OperationDefinition operationDefinition:
+                //case fhir_3.SearchParameter searchParameter:
+                //case fhir_3.StructureMap structureMap:
+                //case fhir_3.ValueSet valueSet:
+                */
+                // process
+                case fhir_3.StructureDefinition structureDefinition:
+                    return ProcessStructureDef(
+                        structureDefinition,
+                        ref primitiveTypes,
+                        ref complexTypes,
+                        ref resources);
             }
 
             // ignored

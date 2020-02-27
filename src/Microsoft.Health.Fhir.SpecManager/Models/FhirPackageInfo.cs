@@ -162,10 +162,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             catch (Exception ex)
             {
                 Console.WriteLine($"Parsing package.json failed: {ex.Message}");
+                throw;
             }
-
-            // still here means failure
-            return false;
         }
     }
 }

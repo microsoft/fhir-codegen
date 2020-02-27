@@ -101,7 +101,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>
         /// Gets status of this type in the standards process - use FhirCommon.StandardStatusCodes
-        /// see: http://hl7.org/fhir/valueset-standards-status.html
+        /// see: http://hl7.org/fhir/valueset-standards-status.html.
         /// </summary>
         /// <value>The standard status.</value>
         public string StandardStatus { get; }
@@ -140,7 +140,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The validation RegEx.</value>
         public string ValidationRegEx { get; }
 
-        /// <summary>Capitalizes a name</summary>
+        /// <summary>Capitalizes a name.</summary>
         /// <param name="name">The name.</param>
         /// <returns>A string.</returns>
         private static string Capitalize(string name)

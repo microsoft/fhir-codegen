@@ -73,13 +73,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>True if this object is placeholder, false if not.</value>
         public bool IsPlaceholder { get; set; }
 
-        /// <summary>Gets or sets the properties.</summary>
+        /// <summary>Gets the properties.</summary>
         /// <value>The properties.</value>
-        public Dictionary<string, FhirProperty> Properties { get; set; }
+        public Dictionary<string, FhirProperty> Properties { get; }
 
-        /// <summary>Gets or sets the components.</summary>
+        /// <summary>Gets the components.</summary>
         /// <value>The components.</value>
-        public Dictionary<string, FhirComplex> Components { get; set; }
+        public Dictionary<string, FhirComplex> Components { get; }
 
         /// <summary>Adds a component from a property.</summary>
         /// <param name="path">Name of the property.</param>

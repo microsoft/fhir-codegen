@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
-    /// <summary>Common definitions for FHIR Internal properties</summary>
+    /// <summary>Common definitions for FHIR Internal properties.</summary>
     public abstract class FhirCommon
     {
         /// <summary>The standard status deprecated.</summary>
