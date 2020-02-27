@@ -25,17 +25,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         bool TryParseResource(string json, out object resource);
 
         /// <summary>Attempts to process resource.</summary>
-        ///
         /// <param name="resourceToParse">[out] The resource object.</param>
-        /// <param name="primitiveTypes"> [in,out] Primitive types.</param>
-        /// <param name="complexTypes">   [in,out] Complex types.</param>
-        /// <param name="resources">      [in,out] Resources.</param>
-        ///
+        /// <param name="fhirVersionInfo">Primitive types.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         bool TryProcessResource(
             object resourceToParse,
-            ref Dictionary<string, FhirPrimitive> primitiveTypes,
-            ref Dictionary<string, FhirComplex> complexTypes,
-            ref Dictionary<string, FhirComplex> resources);
+            FhirVersionInfo fhirVersionInfo);
     }
 }

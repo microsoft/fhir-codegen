@@ -27,16 +27,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         public FromR4() => _jsonConverter = new fhir_4.ResourceConverter();
 
         /// <summary>Process the structure definition.</summary>
-        /// <param name="sd">            The structure definition we are parsing.</param>
-        /// <param name="primitiveTypes">[in,out] Primitive types.</param>
-        /// <param name="complexTypes">  [in,out] Complex types.</param>
-        /// <param name="resources">     [in,out] Resources.</param>
+        /// <param name="sd">             The structure definition we are parsing.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private bool ProcessStructureDef(
             fhir_4.StructureDefinition sd,
-            ref Dictionary<string, FhirPrimitive> primitiveTypes,
-            ref Dictionary<string, FhirComplex> complexTypes,
-            ref Dictionary<string, FhirComplex> resources)
+            FhirVersionInfo fhirVersionInfo)
         {
             // ignore retired
             if (sd.Status.Equals("retired", StringComparison.Ordinal))
@@ -54,7 +50,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         return true;
                     }
 
-                    return ProcessDataTypePrimitive(sd, ref primitiveTypes);
+                    return ProcessDataTypePrimitive(sd, fhirVersionInfo);
 
                 case "complex-type":
                     // exclude extensions
@@ -69,7 +65,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         return true;
                     }
 
-                    return ProcessComplex(sd, ref complexTypes);
+                    return ProcessComplex(sd, fhirVersionInfo, false);
 
                 case "resource":
 
@@ -79,7 +75,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         return true;
                     }
 
-                    return ProcessComplex(sd, ref resources);
+                    return ProcessComplex(sd, fhirVersionInfo, true);
 
                 case "logical":
                     // ignore logical
@@ -91,12 +87,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
         /// <summary>Process a structure definition for a Primitive data type.</summary>
-        /// <param name="sd">            The structure definition.</param>
-        /// <param name="primitiveTypes">[in,out] Primitive types.</param>
+        /// <param name="sd">             The structure definition.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool ProcessDataTypePrimitive(
             fhir_4.StructureDefinition sd,
-            ref Dictionary<string, FhirPrimitive> primitiveTypes)
+            FhirVersionInfo fhirVersionInfo)
         {
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
@@ -108,7 +104,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 null);
 
             // add to our dictionary of primitive types
-            primitiveTypes[sd.Name] = primitive;
+            fhirVersionInfo.AddPrimitive(primitive);
 
             // success
             return true;
@@ -306,12 +302,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
         /// <summary>Process a complex structure (Complex Type or Resource).</summary>
-        /// <param name="sd">         The structure definition to parse.</param>
-        /// <param name="complexDict">[in,out] Dictionary with definitions known types.</param>
+        /// <param name="sd">             The structure definition to parse.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        /// <param name="isResource">     True if is resource, false if not.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool ProcessComplex(
             fhir_4.StructureDefinition sd,
-            ref Dictionary<string, FhirComplex> complexDict)
+            FhirVersionInfo fhirVersionInfo,
+            bool isResource)
         {
             string[] targetProfiles = null;
 
@@ -429,7 +427,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
 
             // add our type
-            complexDict.Add(complex.Path, complex);
+            if (isResource)
+            {
+                fhirVersionInfo.AddResource(complex);
+            }
+            else
+            {
+                fhirVersionInfo.AddComplexType(complex);
+            }
 
             // success
             return true;
@@ -457,15 +462,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
         /// <summary>Attempts to process resource.</summary>
         /// <param name="resourceToParse">[out] The resource object.</param>
-        /// <param name="primitiveTypes"> [in,out] Primitive types.</param>
-        /// <param name="complexTypes">   [in,out] Complex types.</param>
-        /// <param name="resources">      [in,out] Resources.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         bool IFhirConverter.TryProcessResource(
             object resourceToParse,
-            ref Dictionary<string, FhirPrimitive> primitiveTypes,
-            ref Dictionary<string, FhirComplex> complexTypes,
-            ref Dictionary<string, FhirComplex> resources)
+            FhirVersionInfo fhirVersionInfo)
         {
             try
             {
@@ -487,9 +488,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     case fhir_4.StructureDefinition structureDefinition:
                         return ProcessStructureDef(
                             structureDefinition,
-                            ref primitiveTypes,
-                            ref complexTypes,
-                            ref resources);
+                            fhirVersionInfo);
                 }
             }
             catch (Exception ex)

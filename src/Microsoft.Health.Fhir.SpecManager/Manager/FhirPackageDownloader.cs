@@ -29,13 +29,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private static HttpClient _httpClient = new HttpClient();
 
         /// <summary>Downloads a published FHIR package.</summary>
-        ///
         /// <param name="releaseName"> Name of the release.</param>
         /// <param name="packageName"> Name of the package.</param>
         /// <param name="npmDirectory">Pathname of the npm directory.</param>
-        ///
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
+        public static void DownloadPublishedPackage(string releaseName, string packageName, string npmDirectory)
         {
             Stream fileStream = null;
             Stream gzipStream = null;
@@ -70,7 +67,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             catch (Exception ex)
             {
                 Console.WriteLine($"DownloadPublishedPackage <<< failed to download package: {releaseName}/{packageName}: {ex.Message}");
-                return false;
+                throw;
             }
             finally
             {
@@ -93,8 +90,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     fileStream = null;
                 }
             }
-
-            return true;
         }
 
         /// <summary>Downloads a package from the Dev build server.</summary>

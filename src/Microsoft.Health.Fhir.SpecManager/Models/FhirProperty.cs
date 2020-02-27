@@ -27,7 +27,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="expandedTypes">   A list of types of the expanded.</param>
         /// <param name="cardinalityMin">  The cardinality minimum.</param>
         /// <param name="cardinalityMax">  The cardinaltiy maximum.</param>
-        /// <param name="targetProfiles">  Target profiles valid for this type</param>
+        /// <param name="targetProfiles">  Target profiles valid for this type.</param>
         public FhirProperty(
             string path,
             int fieldOrder,
@@ -71,7 +71,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public int CardinalityMin { get; }
 
         /// <summary>Gets the cardinaltiy maximum, -1 for unbounded (e.g., *).</summary>
-        ///
         /// <value>The cardinaltiy maximum.</value>
         public int? CardinalityMax { get; }
 
@@ -80,14 +79,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public int FieldOrder { get; }
 
         /// <summary>Gets or sets Code Values allowed for this property.</summary>
-        ///
         /// <value>The code values.</value>
         public string CodesName { get; set; }
-
-        /// <summary>Gets or sets URL of the value set.</summary>
-        ///
-        /// <value>The value set URL.</value>
-        public string ValueSetUrl { get; set; }
 
         /// <summary>Gets or sets a value indicating whether this object is inherited.</summary>
         ///

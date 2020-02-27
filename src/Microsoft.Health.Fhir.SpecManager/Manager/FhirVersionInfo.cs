@@ -180,10 +180,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
 
             // create our info dictionaries
-            PrimitiveTypes = new Dictionary<string, FhirPrimitive>();
-            ComplexTypes = new Dictionary<string, FhirComplex>();
-            Resources = new Dictionary<string, FhirComplex>();
-            Capabilities = new Dictionary<string, FhirCapability>();
+            _primitiveTypes = new Dictionary<string, FhirPrimitive>();
+            _complexTypes = new Dictionary<string, FhirComplex>();
+            _resources = new Dictionary<string, FhirComplex>();
+            _capabilities = new Dictionary<string, FhirCapability>();
         }
 
         /// <summary>Gets or sets the major version.</summary>
@@ -236,25 +236,42 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <value>The last downloaded.</value>
         public DateTime? LastDownloaded { get; set; }
 
-        /// <summary>Gets or sets a dictionary with the known primitive types for this version of FHIR.</summary>
-        ///
+        /// <summary>Gets a dictionary with the known primitive types for this version of FHIR.</summary>
         /// <value>A dictionary of the primitive types.</value>
-        public Dictionary<string, FhirPrimitive> PrimitiveTypes { get => _primitiveTypes; set => _primitiveTypes = value; }
+        public Dictionary<string, FhirPrimitive> PrimitiveTypes { get => _primitiveTypes; }
 
-        /// <summary>Gets or sets a dictionary with the known complex types for this version of FHIR.</summary>
-        ///
+        /// <summary>Gets a dictionary with the known complex types for this version of FHIR.</summary>
         /// <value>A dictionary of the complex types.</value>
-        public Dictionary<string, FhirComplex> ComplexTypes { get => _complexTypes; set => _complexTypes = value; }
+        public Dictionary<string, FhirComplex> ComplexTypes { get => _complexTypes; }
 
-        /// <summary>Gets or sets a dictionary with the known resources for this version of FHIR.</summary>
-        ///
+        /// <summary>Gets a dictionary with the known resources for this version of FHIR.</summary>
         /// <value>A dictionary of the resources.</value>
-        public Dictionary<string, FhirComplex> Resources { get => _resources; set => _resources = value; }
+        public Dictionary<string, FhirComplex> Resources { get => _resources; }
 
-        /// <summary>Gets or sets the capabilities.</summary>
-        ///
+        /// <summary>Gets the capabilities.</summary>
         /// <value>The capabilities.</value>
-        public Dictionary<string, FhirCapability> Capabilities { get => _capabilities; set => _capabilities = value; }
+        public Dictionary<string, FhirCapability> Capabilities { get => _capabilities;  }
+
+        /// <summary>Adds a primitive.</summary>
+        /// <param name="primitive">The primitive.</param>
+        internal void AddPrimitive(FhirPrimitive primitive)
+        {
+            _primitiveTypes.Add(primitive.Name, primitive);
+        }
+
+        /// <summary>Adds a complex type.</summary>
+        /// <param name="complex">The complex.</param>
+        internal void AddComplexType(FhirComplex complex)
+        {
+            _complexTypes.Add(complex.Path, complex);
+        }
+
+        /// <summary>Adds a resource.</summary>
+        /// <param name="resource">[out] The resource object.</param>
+        internal void AddResource(FhirComplex resource)
+        {
+            _resources.Add(resource.Path, resource);
+        }
 
         /// <summary>Determine if we should process resource.</summary>
         /// <param name="resourceName">Name of the resource.</param>
@@ -311,9 +328,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             return _fhirConverter.TryProcessResource(
                 resource,
-                ref _primitiveTypes,
-                ref _complexTypes,
-                ref _resources);
+                this);
         }
     }
 }

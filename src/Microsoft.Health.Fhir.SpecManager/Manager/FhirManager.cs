@@ -163,15 +163,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 Console.WriteLine($"FhirManager.Load <<< downloading version {info.MajorVersion} ({info.ReleaseName})");
 
                 // download the published version
-                if (!FhirPackageDownloader.DownloadPublishedPackage(
-                        info.ReleaseName,
-                        info.PackageName,
-                        _npmDirectory))
-                {
-                    Console.WriteLine($"FhirManager.Load <<<" +
-                        $" failed to download version {info.MajorVersion} ({info.ReleaseName})");
-                    return false;
-                }
+                FhirPackageDownloader.DownloadPublishedPackage(
+                    info.ReleaseName,
+                    info.PackageName,
+                    _npmDirectory);
             }
 
             // try to load the package

@@ -178,7 +178,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 {
                     Console.WriteLine(string.Empty);
                     Console.WriteLine($"LoadPackage <<< Failed to process file: {filename}: \n{ex}\n--------------");
-                    return false;
+                    throw;
                 }
             }
 
