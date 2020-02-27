@@ -1,4 +1,9 @@
-﻿using System;
+﻿// <copyright file="Program.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation. All rights reserved.
+//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,40 +12,41 @@ using CommandLine;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
-namespace fhir_codegen_cli
+namespace FhirCodegenCli
 {
-    class Program
+    /// <summary>FHIR CodeGen CLI.</summary>
+    public static class Program
     {
         /// <summary>Main entry-point for this application.</summary>
         /// <param name="args">An array of command-line argument strings.</param>
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             bool success = false;
 
             // start timing
-
             Stopwatch timingWatch = Stopwatch.StartNew();
 
             // process based on command line arguments
-
             Parser.Default.ParseArguments<Options>(args)
-                .WithParsed<Options>(options => {
-                    success = Process(options);
-                })
+                .WithParsed<Options>(options => { Process(options); })
                 .WithNotParsed(errors => { Console.WriteLine("Invalid arguments"); });
 
             // done
-
             long elapsedMs = timingWatch.ElapsedMilliseconds;
 
             Console.WriteLine($"Finished {success}: {elapsedMs / 1000.0} s");
         }
 
         /// <summary>Main processing function.</summary>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="options">Options for controlling the operation.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        static bool Process(Options options)
+        public static void Process(Options options)
         {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
             // initialize the FHIR version manager with our requested directory
             FhirManager.Init(options.NpmDirectory);
 
@@ -58,7 +64,7 @@ namespace fhir_codegen_cli
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Loading R2 failed: {ex}");
-                    return false;
+                    throw;
                 }
             }
 
@@ -76,7 +82,7 @@ namespace fhir_codegen_cli
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Loading R3 failed: {ex}");
-                    return false;
+                    throw;
                 }
             }
 
@@ -94,23 +100,19 @@ namespace fhir_codegen_cli
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Loading R4 failed: {ex}");
-                    return false;
+                    throw;
                 }
             }
-
-            return true;
         }
 
         /// <summary>Dumps information about a FHIR version to the console.</summary>
         /// <param name="info">The information.</param>
-        static void DumpFhirVersion(FhirVersionInfo info)
+        private static void DumpFhirVersion(FhirVersionInfo info)
         {
             // tell the user what's going on
-
             Console.WriteLine($"Found: {info.PackageName} version: {info.VersionString}");
 
             // dump primitive types
-
             Console.WriteLine($"primitive types: {info.PrimitiveTypes.Count}");
 
             foreach (KeyValuePair<string, FhirPrimitive> kvp in info.PrimitiveTypes)
@@ -127,7 +129,7 @@ namespace fhir_codegen_cli
             DumpComplexDict(info.Resources);
         }
 
-        /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>
+        /// <summary>Dumps a complex structure (complex type/resource and properties).</summary>
         /// <param name="dict">The dictionary.</param>
         private static void DumpComplexDict(Dictionary<string, FhirComplex> dict)
         {
@@ -137,6 +139,9 @@ namespace fhir_codegen_cli
             }
         }
 
+        /// <summary>Dumps a complex element.</summary>
+        /// <param name="complex">    The complex.</param>
+        /// <param name="indentation">(Optional) The indentation.</param>
         private static void DumpComplexElement(FhirComplex complex, int indentation = 0)
         {
             // write this type's line, if it's a root element
@@ -200,6 +205,5 @@ namespace fhir_codegen_cli
                 }
             }
         }
-
     }
 }
