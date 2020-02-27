@@ -38,60 +38,52 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             ref Dictionary<string, FhirComplex> complexTypes,
             ref Dictionary<string, FhirComplex> resources)
         {
-            try
+            // ignore retired
+            if (sd.Status.Equals("retired", StringComparison.Ordinal))
             {
-                // ignore retired
-                if (sd.Status.Equals("retired", StringComparison.Ordinal))
-                {
-                    return true;
-                }
-
-                // act depending on kind
-                switch (sd.Kind)
-                {
-                    case "primitive-type":
-                        // exclude extensions
-                        if (sd.Type == "Extension")
-                        {
-                            return true;
-                        }
-
-                        return ProcessDataTypePrimitive(sd, ref primitiveTypes);
-
-                    case "complex-type":
-                        // exclude extensions
-                        if (sd.Type == "Extension")
-                        {
-                            return true;
-                        }
-
-                        // exclude profiles for now
-                        if (sd.Derivation == "constraint")
-                        {
-                            return true;
-                        }
-
-                        return ProcessComplex(sd, ref complexTypes);
-
-                    case "resource":
-
-                        // exclude profiles for now
-                        if (sd.Derivation == "constraint")
-                        {
-                            return true;
-                        }
-
-                        return ProcessComplex(sd, ref resources);
-
-                    case "logical":
-                        // ignore logical
-                        return true;
-                }
+                return true;
             }
-            catch (Exception ex)
+
+            // act depending on kind
+            switch (sd.Kind)
             {
-                Console.WriteLine($"FromR4.ProcessStructureDef <<< failed to process {sd.Id}:\n{ex}\n--------------");
-                return false;
+                case "primitive-type":
+                    // exclude extensions
+                    if (sd.Type == "Extension")
+                    {
+                        return true;
+                    }
+
+                    return ProcessDataTypePrimitive(sd, ref primitiveTypes);
+
+                case "complex-type":
+                    // exclude extensions
+                    if (sd.Type == "Extension")
+                    {
+                        return true;
+                    }
+
+                    // exclude profiles for now
+                    if (sd.Derivation == "constraint")
+                    {
+                        return true;
+                    }
+
+                    return ProcessComplex(sd, ref complexTypes);
+
+                case "resource":
+
+                    // exclude profiles for now
+                    if (sd.Derivation == "constraint")
+                    {
+                        return true;
+                    }
+
+                    return ProcessComplex(sd, ref resources);
+
+                case "logical":
+                    // ignore logical
+                    return true;
             }
 
             // here means success
@@ -106,25 +98,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_4.StructureDefinition sd,
             ref Dictionary<string, FhirPrimitive> primitiveTypes)
         {
-            try
-            {
-                // create a new primitive type object
-                FhirPrimitive primitive = new FhirPrimitive(
-                    sd.Name,
-                    sd.Status,
-                    sd.Description,
-                    sd.Purpose,
-                    string.Empty,
-                    null);
+            // create a new primitive type object
+            FhirPrimitive primitive = new FhirPrimitive(
+                sd.Name,
+                sd.Status,
+                sd.Description,
+                sd.Purpose,
+                string.Empty,
+                null);
 
-                // add to our dictionary of primitive types
-                primitiveTypes[sd.Name] = primitive;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"FromR4.ProcessDataTypePrimitive <<< failed to process {sd.Id}:\n{ex}\n--------------");
-                return false;
-            }
+            // add to our dictionary of primitive types
+            primitiveTypes[sd.Name] = primitive;
 
             // success
             return true;
@@ -161,8 +145,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                     // use this type
                                     // elementType = Utils.TypeFromFhirType(ext.ValueString);
                                     elementType = ext.ValueUrl;
-
-                                    // TODO: check this is valid
                                     targetProfiles = null;
 
                                     // stop looking
@@ -263,7 +245,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="element">The element.</param>
         /// <param name="types">  [out] The types.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool TryGetExpandedTypes(fhir_4.ElementDefinition element, out HashSet<string> types)
+        private static bool TryGetChoiceTypes(fhir_4.ElementDefinition element, out HashSet<string> types)
         {
             types = new HashSet<string>();
 
@@ -386,7 +368,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     }
 
                     string elementType;
-                    HashSet<string> expandedTypes = null;
+                    HashSet<string> choiceTypes = null;
 
                     // determine if there is type expansion
                     if (field.Contains("[x]"))
@@ -399,7 +381,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         elementType = string.Empty;
 
                         // get multiple types
-                        if (!TryGetExpandedTypes(element, out expandedTypes))
+                        if (!TryGetChoiceTypes(element, out choiceTypes))
                         {
                             Console.WriteLine($"FromR4.ProcessComplex <<<" +
                                 $" Could not get expanded types for {sd.Name} field {element.Path}");
@@ -442,7 +424,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             element.Comment,
                             string.Empty,
                             elementType,
-                            expandedTypes,
+                            choiceTypes,
                             (int)(element.Min ?? 0),
                             element.Max,
                             targetProfiles));
