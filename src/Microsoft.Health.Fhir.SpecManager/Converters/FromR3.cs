@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -29,15 +30,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Process the structure definition.</summary>
         /// <param name="sd">             The structure definition to parse.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ProcessStructureDef(
+        private static void ProcessStructureDef(
             fhir_3.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo)
         {
             // ignore retired
             if (sd.Status.Equals("retired", StringComparison.Ordinal))
             {
-                return true;
+                return;
             }
 
             // act depending on kind
@@ -47,50 +47,36 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     // exclude extensions
                     if (sd.Type == "Extension")
                     {
-                        return true;
+                        ProcessDataTypePrimitive(sd, fhirVersionInfo);
                     }
 
-                    return ProcessDataTypePrimitive(sd, fhirVersionInfo);
+                    break;
 
                 case "complex-type":
-                    // exclude extensions
-                    if (sd.Type == "Extension")
+                    // exclude extensions and profiles
+                    if ((sd.Type != "Extension") &&
+                        (sd.Derivation != "constraint"))
                     {
-                        return true;
+                        ProcessComplex(sd, fhirVersionInfo, false);
                     }
 
-                    // exclude profiles for now
-                    if (sd.Derivation == "constraint")
-                    {
-                        return true;
-                    }
-
-                    return ProcessComplex(sd, fhirVersionInfo, false);
+                    break;
 
                 case "resource":
-
                     // exclude profiles for now
-                    if (sd.Derivation == "constraint")
+                    if (sd.Derivation != "constraint")
                     {
-                        return true;
+                        ProcessComplex(sd, fhirVersionInfo, true);
                     }
 
-                    return ProcessComplex(sd, fhirVersionInfo, true);
-
-                case "logical":
-                    // ignore logical
-                    return true;
+                    break;
             }
-
-            // here means success
-            return true;
         }
 
         /// <summary>Process a structure definition for a Primitve data type.</summary>
         /// <param name="sd">             The structure definition.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ProcessDataTypePrimitive(
+        private static void ProcessDataTypePrimitive(
             fhir_3.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo)
         {
@@ -105,9 +91,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // add to our dictionary of primitive types
             fhirVersionInfo.AddPrimitive(primitive);
-
-            // success
-            return true;
         }
 
         /// <summary>Gets type from element.</summary>
@@ -328,8 +311,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="sd">             The structure definition to parse.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         /// <param name="isResource">     True if is resource, false if not.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ProcessComplex(
+        private static void ProcessComplex(
             fhir_3.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo,
             bool isResource)
@@ -354,8 +336,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out string typeName, out targetProfiles))
                 {
-                    Console.WriteLine($"FromR3.ProcessComplex <<< Could not determine base type for {sd.Name}");
-                    return false;
+                    throw new InvalidDataException($"Could not determine base type for {sd.Name}");
                 }
 
                 complex.BaseTypeName = typeName;
@@ -381,9 +362,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         out FhirComplex parent,
                         out string field))
                 {
-                    Console.WriteLine($"FromR3.ProcessComplex <<<" +
-                        $" Could not find parent for {element.Path}!");
-                    return false;
+                    throw new InvalidDataException($"Could not find parent for {element.Path}!");
                 }
 
                 string elementType;
@@ -402,9 +381,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     // get multiple types
                     if (!TryGetChoiceTypes(element, out choiceTypes))
                     {
-                        Console.WriteLine($"FromR3.ProcessComplex <<<" +
-                            $" Could not get expanded types for {sd.Name} field {element.Path}");
-                        return false;
+                        throw new InvalidDataException($"Could not get choice types for {sd.Name} field {element.Path}");
                     }
                 }
                 else if (!string.IsNullOrEmpty(element.ContentReference))
@@ -418,9 +395,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             break;
 
                         default:
-                            Console.WriteLine($"FromR3.ProcessComplex <<<" +
-                                $" Could not resolve content reference {element.ContentReference} in {sd.Name} field {element.Path}");
-                            return false;
+                            throw new InvalidDataException($"Could not resolve ContentReference {element.ContentReference} in {sd.Name} field {element.Path}");
                     }
                 }
                 else
@@ -458,9 +433,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 fhirVersionInfo.AddComplexType(complex);
             }
-
-            // success
-            return true;
         }
 
         /// <summary>Parses resource an object from the given string.</summary>
