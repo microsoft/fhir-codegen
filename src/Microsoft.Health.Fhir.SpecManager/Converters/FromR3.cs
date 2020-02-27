@@ -106,25 +106,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_3.StructureDefinition sd,
             ref Dictionary<string, FhirPrimitive> primitiveTypes)
         {
-            try
-            {
-                // create a new primitive type object
-                FhirPrimitive primitive = new FhirPrimitive(
-                    sd.Name,
-                    sd.Status,
-                    sd.Description,
-                    sd.Purpose,
-                    string.Empty,
-                    null);
+            // create a new primitive type object
+            FhirPrimitive primitive = new FhirPrimitive(
+                sd.Name,
+                sd.Status,
+                sd.Description,
+                sd.Purpose,
+                string.Empty,
+                null);
 
-                // add to our dictionary of primitive types
-                primitiveTypes[sd.Name] = primitive;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"FromR3.ProcessDataTypePrimitive <<< failed to process {sd.Id}:\n{ex}\n--------------");
-                return false;
-            }
+            // add to our dictionary of primitive types
+            primitiveTypes[sd.Name] = primitive;
 
             // success
             return true;
@@ -157,6 +149,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         // use this type
                         elementType = edType.Code;
+
+                        // check for a target profile
                         if (!string.IsNullOrEmpty(edType.TargetProfile))
                         {
                             profiles.Add(edType.TargetProfile);
@@ -278,7 +272,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             return false;
         }
 
-        /// <summary>Attempts to get expanded types.</summary>
+        /// <summary>Attempts to get choice types.</summary>
         /// <param name="element">The element.</param>
         /// <param name="types">  [out] The types.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
@@ -399,7 +393,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             out FhirComplex parent,
                             out string field))
                     {
-                        Console.WriteLine($"FromR4.ProcessComplex <<<" +
+                        Console.WriteLine($"FromR3.ProcessComplex <<<" +
                             $" Could not find parent for {element.Path}!");
                         return false;
                     }

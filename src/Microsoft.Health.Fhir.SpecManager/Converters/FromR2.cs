@@ -119,9 +119,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="elementType">  [out] Type of the element.</param>
         ///
         /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool TryGetTypeFromElement(string structureName, fhir_2.ElementDefinition element, out string elementType)
+        private static bool TryGetTypeFromElement(
+            string structureName,
+            fhir_2.ElementDefinition element,
+            out string elementType,
+            out string[] targetProfiles)
         {
+            targetProfiles = null;
             elementType = null;
+
+            List<string> profiles = new List<string>();
 
             // check for declared type
             if (element.Type != null)
@@ -133,6 +140,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         // use this type
                         elementType = edType.Code;
+
+                        // check for a target profile
+                        if (edType.Profile != null)
+                        {
+                            profiles.AddRange(edType.Profile);
+                        }
+
+                        // reference will have multiple types here - need to grab each profile
+                        if (elementType.Equals("Reference", StringComparison.Ordinal))
+                        {
+                            continue;
+                        }
 
                         // done searching
                         return true;
@@ -167,6 +186,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
             }
 
+            // check for target profiles
+            if (profiles.Count > 0)
+            {
+                targetProfiles = profiles.ToArray();
+                return true;
+            }
+
             // check for base derived type
             if (string.IsNullOrEmpty(element.Name) ||
                 element.Name.Equals(structureName, StringComparison.Ordinal))
@@ -179,17 +205,69 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
 
             // no discovered type
-            elementType = null;
             return false;
         }
 
-        /// <summary>Attempts to get expanded types.</summary>
-        ///
-        /// <param name="element">      The element.</param>
-        /// <param name="types">        [out] The types.</param>
-        ///
+        /// <summary>Attempts to get type from elements.</summary>
+        /// <param name="structureName">Name of the structure.</param>
+        /// <param name="elements">     The elements.</param>
+        /// <param name="typeName">     [out] Name of the type.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool TryGetExpandedTypes(fhir_2.ElementDefinition element, out HashSet<string> types)
+        private static bool TryGetTypeFromElements(
+            string structureName,
+            fhir_2.ElementDefinition[] elements,
+            out string typeName,
+            out string[] targetProfiles)
+        {
+            targetProfiles = null;
+            typeName = string.Empty;
+
+            foreach (fhir_2.ElementDefinition element in elements)
+            {
+                // split the path
+                string[] components = element.Path.Split('.');
+
+                // check for base path having a type
+                if (components.Length == 1)
+                {
+                    if (TryGetTypeFromElement(structureName, element, out string elementType, out targetProfiles))
+                    {
+                        // set our type
+                        typeName = elementType;
+
+                        // done searching
+                        return true;
+                    }
+                }
+
+                // check for path {type}.value having a type
+                if ((components.Length == 2) &&
+                    components[1].Equals("value", StringComparison.Ordinal))
+                {
+                    if (TryGetTypeFromElement(structureName, element, out string elementType, out targetProfiles))
+                    {
+                        // set our type
+                        typeName = elementType;
+
+                        // keep looking in case we find a better option
+                        continue;
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(typeName))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>Attempts to get choice types.</summary>
+        /// <param name="element">The element.</param>
+        /// <param name="types">  [out] The types.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private static bool TryGetChoiceTypes(fhir_2.ElementDefinition element, out HashSet<string> types)
         {
             types = new HashSet<string>();
 
@@ -253,12 +331,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="sd">         The structure definition to parse.</param>
         /// <param name="complexDict">[in,out] Dictionary with definitions of this complex type.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        private bool ProcessComplex(
+        private static bool ProcessComplex(
             fhir_2.StructureDefinition sd,
             ref Dictionary<string, FhirComplex> complexDict)
         {
             try
             {
+                string[] targetProfiles = null;
+                Dictionary<string, string> aliasTable = new Dictionary<string, string>();
+
                 // create a new complex type object
                 FhirComplex complex = new FhirComplex(
                     sd.Name,
@@ -268,60 +349,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     string.Empty,
                     null);
 
-                // make a dictionary to track all the related resource definitions we create
-                Dictionary<string, FhirComplex> subDefs = new Dictionary<string, FhirComplex>();
-
-                // create an alias table for named reference linking within the type
-                Dictionary<string, string> aliasTable = new Dictionary<string, string>();
-
-                // traverse elements looking for a type we can use
-                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+                // check for a base definition
+                if (!string.IsNullOrEmpty(sd.Base))
                 {
-                    // split the path
-                    string[] components = element.Path.Split('.');
-
-                    // check for base path having a type
-                    if (components.Length == 1)
+                    complex.BaseTypeName = sd.Base.Substring(sd.Base.LastIndexOf('/') + 1);
+                }
+                else
+                {
+                    if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out string typeName, out targetProfiles))
                     {
-                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
-                        {
-                            // set our type
-                            complex.BaseTypeName = elementType;
-
-                            // done searching
-                            break;
-                        }
+                        Console.WriteLine($"FromR2.ProcessComplex <<< Could not determine base type for {sd.Name}");
+                        return false;
                     }
 
-                    // check for path {type}.value having a type
-                    if ((components.Length == 2) &&
-                        components[1].Equals("value", StringComparison.Ordinal))
-                    {
-                        if (TryGetTypeFromElement(sd.Name, element, out string elementType))
-                        {
-                            // set our type
-                            complex.BaseTypeName = elementType;
-
-                            // keep looking in case we find a better option
-                            continue;
-                        }
-                    }
+                    complex.BaseTypeName = typeName;
                 }
-
-                // make sure we have a type
-                if (string.IsNullOrEmpty(complex.BaseTypeName))
-                {
-                    Console.WriteLine($"FromR2.ProcessComplex <<<" +
-                        $" Could not determine base type for {sd.Name}");
-                    return false;
-                }
-
-                // add the current type definition to our internal dict for sanity
-                subDefs.Add(sd.Name, complex);
 
                 // look for properties on this type
                 foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
                 {
+                    string path = element.Path;
+
                     // split the path into component parts
                     string[] components = element.Path.Split('.');
 
@@ -331,23 +379,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         continue;
                     }
 
-                    // grab field info we need
-                    Utils.GetParentAndField(components, out string field, out string parent);
+                    // get the parent container and our field name
+                    if (!complex.GetParentAndFieldName(
+                            components,
+                            out FhirComplex parent,
+                            out string field))
+                    {
+                        Console.WriteLine($"FromR2.ProcessComplex <<<" +
+                            $" Could not find parent for {element.Path}!");
+                        return false;
+                    }
 
                     string elementType;
-                    HashSet<string> expandedTypes = null;
+                    HashSet<string> choiceTypes = null;
 
                     // determine if there is type expansion
                     if (field.Contains("[x]"))
                     {
-                        // fix the field name
+                        // fix the field and path names
+                        path = path.Replace("[x]", string.Empty);
                         field = field.Replace("[x]", string.Empty);
 
                         // no base type
                         elementType = string.Empty;
 
                         // get multiple types
-                        if (!TryGetExpandedTypes(element, out expandedTypes))
+                        if (!TryGetChoiceTypes(element, out choiceTypes))
                         {
                             Console.WriteLine($"FromR2.ProcessComplex <<<" +
                                 $" Could not get expanded types for {sd.Name} field {element.Path}");
@@ -370,111 +427,38 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     else
                     {
                         // if we can't find a type, assume Element
-                        if (!TryGetTypeFromElement(parent, element, out elementType))
+                        if (!TryGetTypeFromElement(parent.Name, element, out elementType, out targetProfiles))
                         {
                             elementType = "Element";
                         }
                     }
 
-                    // check to see if we do NOT have this parent, but do have a definition
-                    if (!subDefs.ContainsKey(parent))
-                    {
-                        // figure out if we have this parent as a field
-                        string[] parentComponents = new string[components.Length - 1];
-                        Array.Copy(components, 0, parentComponents, 0, components.Length - 1);
-
-                        // get parent info
-                        Utils.GetParentAndField(parentComponents, out string pField, out string pParent);
-
-                        if (subDefs.ContainsKey(pParent) &&
-                            subDefs[pParent].Properties.ContainsKey(pField))
-                        {
-                            // use this type
-                            //FhirComplex sub = new FhirComplex()
-                            //{
-                            //    Name = Utils.Capitalize(parent),
-                            //    NameCapitalized = Utils.Capitalize(parent),
-                            //    ShortDescription = subDefs[pParent].Properties[pField].ShortDescription,
-                            //    Definition = subDefs[pParent].Properties[pField].Purpose,
-                            //    Comment = subDefs[pParent].Properties[pField].Comment,
-                            //    BaseTypeName = subDefs[pParent].Properties[pField].BaseTypeName,
-                            //};
-
-                            // add this parent to our local dictionary
-                            //subDefs.Add(parent, sub);
-
-                            // change our element type to point at the parent
-                            //subDefs[pParent].Properties[pField].BaseTypeName = Utils.Capitalize(parent);
-                        }
-                        else
-                        {
-                            // add a placeholder type
-                            //FhirComplex sub = new FhirComplex()
-                            //{
-                            //    Name = Utils.Capitalize(parent),
-                            //    NameCapitalized = Utils.Capitalize(parent),
-                            //    ShortDescription = string.Empty,
-                            //    Definition = string.Empty,
-                            //    Comment = $"Placeholder for {parent}",
-                            //    BaseTypeName = parent,
-                            //    IsPlaceholder = true,
-                            //};
-
-                            // add this parent to our local dictionary
-                            //subDefs.Add(parent, sub);
-                        }
-                    }
-
                     // add this field to the parent type
-                    //subDefs[parent].Properties.Add(
-                    //    field,
-                    //    new FhirProperty()
-                    //    {
-                    //        Name = field,
-                    //        NameCapitalized = Utils.Capitalize(field),
-                    //        ShortDescription = element.Short,
-                    //        Definition = element.Definition,
-                    //        Comment = element.Comment,
-                    //        BaseTypeName = elementType,
-                    //        ExpandedTypes = expandedTypes,
-                    //        CardinalityMin = element.Min ?? 0,
-                    //        CardinalityMax = Utils.MaxCardinality(element.Max),
-                    //    });
+                    parent.Properties.Add(
+                        path,
+                        new FhirProperty(
+                            path,
+                            parent.Properties.Count,
+                            element.Short,
+                            element.Definition,
+                            element.Comment,
+                            string.Empty,
+                            elementType,
+                            choiceTypes,
+                            (int)(element.Min ?? 0),
+                            element.Max,
+                            targetProfiles));
 
                     // check to see if we need to insert into our alias table
                     if (!string.IsNullOrEmpty(element.Name))
                     {
                         // add this record, with it's current path
-                        aliasTable.Add(element.Name, $"{parent}{subDefs[parent].Properties[field].NameCapitalized}");
+                        aliasTable.Add(element.Name, element.Path);
                     }
                 }
 
-                // copy over our definitions
-                foreach (KeyValuePair<string, FhirComplex> kvp in subDefs)
-                {
-                    // check for removing a placeholder
-                    if (complexDict.ContainsKey(kvp.Key) &&
-                        (complexDict[kvp.Key].IsPlaceholder == true))
-                    {
-                        complexDict.Remove(kvp.Key);
-                    }
-
-                    // check for not being present
-                    if (!complexDict.ContainsKey(kvp.Key))
-                    {
-                        complexDict.Add(kvp.Key, kvp.Value);
-                        continue;
-                    }
-
-                    // check fields
-                    foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
-                    {
-                        if (!complexDict[kvp.Key].Properties.ContainsKey(propKvp.Key))
-                        {
-                            complexDict[kvp.Key].Properties.Add(propKvp.Key, propKvp.Value);
-                        }
-                    }
-                }
+                // add our type
+                complexDict.Add(complex.Path, complex);
             }
             catch (Exception ex)
             {
