@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using CommandLine;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -110,44 +111,83 @@ namespace fhir_codegen_cli
 
             // dump complex types
             Console.WriteLine($"complex types: {info.ComplexTypes.Count}");
-            DumpComplex(info.ComplexTypes);
+            DumpComplexDict(info.ComplexTypes);
 
             // dump resources
             Console.WriteLine($"resources: {info.Resources.Count}");
-            DumpComplex(info.Resources);
+            DumpComplexDict(info.Resources);
         }
 
         /// <summary>Dumps a complex structure (complex type/resource and properties)</summary>
         /// <param name="dict">The dictionary.</param>
-        private static void DumpComplex(Dictionary<string, FhirComplex> dict)
+        private static void DumpComplexDict(Dictionary<string, FhirComplex> dict)
         {
             foreach (KeyValuePair<string, FhirComplex> kvp in dict)
             {
-                Console.WriteLine($"- {kvp.Key}: {kvp.Value.BaseTypeName}");
-                foreach (KeyValuePair<string, FhirProperty> propKvp in kvp.Value.Properties)
+                DumpComplexElement(kvp.Value);
+            }
+        }
+
+        private static void DumpComplexElement(FhirComplex complex, int indentation = 0)
+        {
+            // write this type's line, if it's a root element
+            // (sub-properties are written with cardinality in the prior loop)
+            if (indentation == 0)
+            {
+                Console.WriteLine($"{new string(' ', indentation)}- {complex.Name}: {complex.BaseTypeName}");
+            }
+
+            // traverse properties for this type
+            foreach (KeyValuePair<string, FhirProperty> kvp in complex.Properties.OrderBy(s => s.Value.FieldOrder))
+            {
+                string max = (kvp.Value.CardinalityMax == null) ? "*" : kvp.Value.CardinalityMax.ToString();
+
+                string propertyType = kvp.Value.BaseTypeName;
+
+                if (kvp.Value.ChoiceTypes != null)
                 {
-                    string max = (propKvp.Value.CardinalityMax == null) ? "*" : propKvp.Value.CardinalityMax.ToString();
-
-                    string propertyType = propKvp.Value.BaseTypeName;
-
-                    if (propKvp.Value.ExpandedTypes != null)
+                    foreach (string choiceType in kvp.Value.ChoiceTypes)
                     {
-                        foreach (string expandedType in propKvp.Value.ExpandedTypes)
+                        if (string.IsNullOrEmpty(propertyType))
                         {
-                            if (string.IsNullOrEmpty(propertyType))
-                            {
-                                propertyType = expandedType;
-                                continue;
-                            }
-
-                            propertyType = $"{propertyType}|{expandedType}";
+                            propertyType = choiceType;
+                            continue;
                         }
-                    }
 
-                    Console.WriteLine($"  - {propKvp.Value.Name}: {propertyType}" +
-                        $" ({propKvp.Value.CardinalityMin}" +
-                        $".." +
-                        $"{max})");
+                        propertyType = $"{propertyType}|{choiceType}";
+                    }
+                }
+
+                string profiles = string.Empty;
+                if (kvp.Value.TargetProfiles != null)
+                {
+                    foreach (string profile in kvp.Value.TargetProfiles)
+                    {
+                        if (string.IsNullOrEmpty(profiles))
+                        {
+                            profiles = profile;
+                            continue;
+                        }
+
+                        profiles = $"{profiles}|{profile}";
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(profiles))
+                {
+                    propertyType = $"{propertyType}({profiles})";
+                }
+
+                Console.WriteLine($"{new string(' ', indentation + 2)}- {kvp.Value.Name}: {propertyType}" +
+                    $" ({kvp.Value.CardinalityMin}" +
+                    $".." +
+                    $"{max})");
+
+                // check for an inline component definition
+                if (complex.Components.ContainsKey(kvp.Value.Path))
+                {
+                    // recurse into this definition
+                    DumpComplexElement(complex.Components[kvp.Value.Path], indentation + 2);
                 }
             }
         }

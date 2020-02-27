@@ -135,8 +135,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="element">      The element.</param>
         /// <param name="elementType">  [out] Type of the element.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool TryGetTypeFromElement(string structureName, fhir_4.ElementDefinition element, out string elementType)
+        private static bool TryGetTypeFromElement(
+            string structureName,
+            fhir_4.ElementDefinition element,
+            out string elementType,
+            out string[] targetProfiles)
         {
+            targetProfiles = null;
             elementType = null;
 
             // check for declared type
@@ -157,6 +162,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                     // elementType = Utils.TypeFromFhirType(ext.ValueString);
                                     elementType = ext.ValueUrl;
 
+                                    // TODO: check this is valid
+                                    targetProfiles = null;
+
                                     // stop looking
                                     return true;
 
@@ -172,6 +180,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         // use this type
                         elementType = Utils.TypeFromFhirType(edType.Code);
+                        targetProfiles = edType.TargetProfile;
 
                         // done searching
                         return true;
@@ -203,8 +212,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         private static bool TryGetTypeFromElements(
             string structureName,
             fhir_4.ElementDefinition[] elements,
-            out string typeName)
+            out string typeName,
+            out string[] targetProfiles)
         {
+            targetProfiles = null;
             typeName = string.Empty;
 
             foreach (fhir_4.ElementDefinition element in elements)
@@ -215,7 +226,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // check for base path having a type
                 if (components.Length == 1)
                 {
-                    if (TryGetTypeFromElement(structureName, element, out string elementType))
+                    if (TryGetTypeFromElement(structureName, element, out string elementType, out targetProfiles))
                     {
                         // set our type
                         typeName = elementType;
@@ -229,7 +240,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 if ((components.Length == 2) &&
                     components[1].Equals("value", StringComparison.Ordinal))
                 {
-                    if (TryGetTypeFromElement(structureName, element, out string elementType))
+                    if (TryGetTypeFromElement(structureName, element, out string elementType, out targetProfiles))
                     {
                         // set our type
                         typeName = elementType;
@@ -244,6 +255,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 return true;
             }
+
             return false;
         }
 
@@ -321,6 +333,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         {
             try
             {
+                string[] targetProfiles = null;
+
                 // create a new complex type object for this type or resource
                 FhirComplex complex = new FhirComplex(
                     sd.Name,
@@ -337,7 +351,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
                 else
                 {
-                    if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out string typeName))
+                    if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out string typeName, out targetProfiles))
                     {
                         Console.WriteLine($"FromR4.ProcessComplex <<< Could not determine base type for {sd.Name}");
                         return false;
@@ -411,7 +425,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     else
                     {
                         // if we can't find a type, assume Element
-                        if (!TryGetTypeFromElement(parent.Name, element, out elementType))
+                        if (!TryGetTypeFromElement(parent.Name, element, out elementType, out targetProfiles))
                         {
                             elementType = "Element";
                         }
@@ -430,7 +444,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             elementType,
                             expandedTypes,
                             (int)(element.Min ?? 0),
-                            element.Max));
+                            element.Max,
+                            targetProfiles));
                 }
 
                 // add our type

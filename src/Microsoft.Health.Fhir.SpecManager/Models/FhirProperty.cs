@@ -27,6 +27,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="expandedTypes">   A list of types of the expanded.</param>
         /// <param name="cardinalityMin">  The cardinality minimum.</param>
         /// <param name="cardinalityMax">  The cardinaltiy maximum.</param>
+        /// <param name="targetProfiles">  Target profiles valid for this type</param>
         public FhirProperty(
             string path,
             int fieldOrder,
@@ -37,7 +38,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string baseTypeName,
             HashSet<string> expandedTypes,
             int cardinalityMin,
-            string cardinalityMax)
+            string cardinalityMax,
+            string[] targetProfiles)
             : base(
                 path,
                 string.Empty,
@@ -48,24 +50,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 baseTypeName)
         {
             FieldOrder = fieldOrder;
-            ExpandedTypes = expandedTypes;
+            ChoiceTypes = expandedTypes;
             CardinalityMin = cardinalityMin;
             CardinalityMax = MaxCardinality(cardinalityMax);
+
+            // process target profiles
+            TargetProfiles = new HashSet<string>();
+            if (targetProfiles != null)
+            {
+                foreach (string targetProfile in targetProfiles)
+                {
+                    TargetProfiles.Add(targetProfile.Substring(targetProfile.LastIndexOf('/') + 1));
+                }
+            }
         }
 
         /// <summary>Gets or sets the cardinality minimum.</summary>
         ///
         /// <value>The cardinality minimum.</value>
-        public int CardinalityMin { get; set; }
+        public int CardinalityMin { get; }
 
         /// <summary>Gets or sets the cardinaltiy maximum, -1 for unbounded (e.g., *).</summary>
         ///
         /// <value>The cardinaltiy maximum.</value>
-        public int? CardinalityMax { get; set; }
+        public int? CardinalityMax { get; }
 
         /// <summary>Gets or sets the field order.</summary>
         /// <value>The field order.</value>
-        public int FieldOrder { get; set; }
+        public int FieldOrder { get; }
 
         /// <summary>Gets or sets Code Values allowed for this property.</summary>
         ///
@@ -82,10 +94,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>True if this object is inherited, false if not.</value>
         public bool IsInherited { get; set; }
 
-        /// <summary>Gets or sets a list of types of the expanded.</summary>
+        /// <summary>Gets or sets a list of choice types for this property.</summary>
         ///
-        /// <value>A list of types of the expanded.</value>
-        public HashSet<string> ExpandedTypes { get; set; }
+        /// <value>A list of types allowed for this property.</value>
+        public HashSet<string> ChoiceTypes { get; set; }
+
+        /// <summary>Gets or sets target profiles.</summary>
+        /// <value>The target profiles.</value>
+        public HashSet<string> TargetProfiles { get; set; }
 
         /// <summary>Gets a value indicating whether this property is an array.</summary>
         ///
