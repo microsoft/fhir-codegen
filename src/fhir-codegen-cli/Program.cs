@@ -127,6 +127,37 @@ namespace FhirCodegenCli
             // dump resources
             Console.WriteLine($"resources: {info.Resources.Count}");
             DumpComplexDict(info.Resources);
+
+            // dump search parameters
+            Console.WriteLine($"search parameters: {info.SearchParameters.Count}");
+            foreach (KeyValuePair<string, FhirSearchParam> kvp in info.SearchParameters)
+            {
+                DumpSearchParam(kvp.Value);
+            }
+        }
+
+        /// <summary>Dumps a search parameter.</summary>
+        /// <param name="param">The parameter.</param>
+        private static void DumpSearchParam(FhirSearchParam param)
+        {
+            // grab base types
+            string resourceTypes = string.Empty;
+
+            if (param.ResourceTypes != null)
+            {
+                foreach (string searchResourceType in param.ResourceTypes)
+                {
+                    if (string.IsNullOrEmpty(resourceTypes))
+                    {
+                        resourceTypes = searchResourceType;
+                        continue;
+                    }
+
+                    resourceTypes = $"{resourceTypes}|{searchResourceType}";
+                }
+            }
+
+            Console.WriteLine($"- {param.Id}: {param.Code}({param.ValueType}) on: {resourceTypes}");
         }
 
         /// <summary>Dumps a complex structure (complex type/resource and properties).</summary>

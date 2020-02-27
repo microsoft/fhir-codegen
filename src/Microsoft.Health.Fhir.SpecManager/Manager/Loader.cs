@@ -82,7 +82,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             // get the files in this directory
             // TODO: relax filter to *.json when more than structure defintions are being parsed
-            string[] files = Directory.GetFiles(packageDir, "StructureDefinition*.json", SearchOption.TopDirectoryOnly);
+            string[] files = Directory.GetFiles(packageDir, "S*.json", SearchOption.TopDirectoryOnly);
 
             // process these files
             ProcessPackageFiles(files, ref fhirVersionInfo);

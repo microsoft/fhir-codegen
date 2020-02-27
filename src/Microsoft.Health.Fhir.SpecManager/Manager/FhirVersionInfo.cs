@@ -143,6 +143,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirComplex> _complexTypes;
         private Dictionary<string, FhirComplex> _resources;
         private Dictionary<string, FhirCapability> _capabilities;
+        private Dictionary<string, FhirSearchParam> _searchParameters;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class.
@@ -184,6 +185,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _complexTypes = new Dictionary<string, FhirComplex>();
             _resources = new Dictionary<string, FhirComplex>();
             _capabilities = new Dictionary<string, FhirCapability>();
+            _searchParameters = new Dictionary<string, FhirSearchParam>();
         }
 
         /// <summary>Gets or sets the major version.</summary>
@@ -252,6 +254,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <value>The capabilities.</value>
         public Dictionary<string, FhirCapability> Capabilities { get => _capabilities;  }
 
+        /// <summary>Gets search parameters</summary>
+        /// <value>Search parameters.</value>
+        public Dictionary<string, FhirSearchParam> SearchParameters { get => _searchParameters; }
+
         /// <summary>Adds a primitive.</summary>
         /// <param name="primitive">The primitive.</param>
         internal void AddPrimitive(FhirPrimitive primitive)
@@ -267,10 +273,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Adds a resource.</summary>
-        /// <param name="resource">[out] The resource object.</param>
+        /// <param name="resource">The resource object.</param>
         internal void AddResource(FhirComplex resource)
         {
             _resources.Add(resource.Path, resource);
+        }
+
+        /// <summary>Adds a search parameter.</summary>
+        /// <param name="searchParam">The search parameter.</param>
+        internal void AddSearchParameter(FhirSearchParam searchParam)
+        {
+            _searchParameters.Add(searchParam.Id, searchParam);
         }
 
         /// <summary>Determine if we should process resource.</summary>

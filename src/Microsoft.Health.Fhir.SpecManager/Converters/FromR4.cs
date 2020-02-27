@@ -27,6 +27,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// </summary>
         public FromR4() => _jsonConverter = new fhir_4.ResourceConverter();
 
+        /// <summary>Process the search parameter.</summary>
+        /// <param name="sp">             The sp.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        private void ProcessSearchParam(
+            fhir_4.SearchParameter sp,
+            FhirVersionInfo fhirVersionInfo)
+        {
+            // ignore retired
+            if (sp.Status.Equals("retired", StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            // create the search parameter
+            FhirSearchParam param = new FhirSearchParam(
+                sp.Id,
+                sp.Url,
+                sp.Version,
+                sp.Name,
+                sp.Purpose,
+                sp.Code,
+                sp.Base,
+                sp.Type);
+
+            // add our parameter
+            fhirVersionInfo.AddSearchParameter(param);
+        }
+
         /// <summary>Process the structure definition.</summary>
         /// <param name="sd">             The structure definition we are parsing.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
@@ -447,11 +475,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     // case fhir_4.ConceptMap conceptMap:
                     // case fhir_4.NamingSystem namingSystem:
                     // case fhir_4.OperationDefinition operationDefinition:
-                    // case fhir_4.SearchParameter searchParameter:
                     // case fhir_4.StructureMap structureMap:
                     // case fhir_4.ValueSet valueSet:
 
                     // process
+                    case fhir_4.SearchParameter searchParameter:
+                        ProcessSearchParam(searchParameter, fhirVersionInfo);
+                        break;
+
                     case fhir_4.StructureDefinition structureDefinition:
                         ProcessStructureDef(structureDefinition, fhirVersionInfo);
                         break;
