@@ -89,8 +89,97 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // process operations (adds to resources and version info (server level))
             ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo);
 
+            // add version-specific "MAGIC" items
+            AddSearchMagicParameters(ref fhirVersionInfo);
+
             // make sure we cleared the last line
             Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+        }
+
+        /// <summary>Adds the search magic parameters.</summary>
+        /// <param name="info">[in,out] The information.</param>
+        private static void AddSearchMagicParameters(ref FhirVersionInfo info)
+        {
+            switch (info.MajorVersion)
+            {
+                case 2:
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_id", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_lastUpdated", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_tag", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_profile", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_security", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_text", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_content", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_list", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_query", "string");
+
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_sort", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_count", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_include", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_revinclude", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_summary", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_elements", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_contained", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_containedType", "string");
+
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllInteraction, "_format", "string");
+                    break;
+
+                case 3:
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_id", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_lastUpdated", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_tag", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_profile", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_security", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_text", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_content", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_list", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_has", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_type", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_query", "string");
+
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_sort", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_count", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_include", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_revinclude", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_summary", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_elements", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_contained", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_containedType", "string");
+
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllInteraction, "_format", "string");
+
+                    break;
+
+                case 4:
+                default:
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_id", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_lastUpdated", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_tag", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_profile", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_security", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_text", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_content", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_list", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_has", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_type", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_query", "string");
+
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_sort", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_count", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_include", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_revinclude", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_summary", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_total", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_elements", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_contained", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_containedType", "string");
+
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllInteraction, "_format", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllInteraction, "_pretty", "string");
+
+                    break;
+            }
         }
 
         /// <summary>Process a file group, specified by the file prefix (e.g., StructureDefinition).</summary>

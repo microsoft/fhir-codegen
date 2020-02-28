@@ -144,6 +144,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirComplex> _resources;
         private Dictionary<string, FhirResourceCapability> _capabilities;
         private Dictionary<string, FhirOperation> _systemOperations;
+        private Dictionary<string, FhirSearchParam> _allResourceParameters;
+        private Dictionary<string, FhirSearchParam> _searchResultParameters;
+        private Dictionary<string, FhirSearchParam> _allInteractionParameters;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class.
@@ -186,6 +189,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _resources = new Dictionary<string, FhirComplex>();
             _capabilities = new Dictionary<string, FhirResourceCapability>();
             _systemOperations = new Dictionary<string, FhirOperation>();
+            _allResourceParameters = new Dictionary<string, FhirSearchParam>();
+            _searchResultParameters = new Dictionary<string, FhirSearchParam>();
+            _allInteractionParameters = new Dictionary<string, FhirSearchParam>();
+        }
+
+        /// <summary>Values that represent search magic parameters.</summary>
+        internal enum SearchMagicParameter
+        {
+            /// <summary>An enum constant representing all resource option.</summary>
+            AllResource,
+
+            /// <summary>An enum constant representing the search result option.</summary>
+            SearchResult,
+
+            /// <summary>An enum constant representing all interaction option.</summary>
+            AllInteraction,
         }
 
         /// <summary>Gets or sets the major version.</summary>
@@ -194,7 +213,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public int MajorVersion { get; set; }
 
         /// <summary>Gets or sets the name of the package release.</summary>
-        ///
         /// <value>The name of the package release.</value>
         public string ReleaseName { get; set; }
 
@@ -204,7 +222,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public string PackageName { get; set; }
 
         /// <summary>Gets or sets the version string.</summary>
-        ///
         /// <value>The version string.</value>
         public string VersionString { get; set; }
 
@@ -252,11 +269,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets the capabilities.</summary>
         /// <value>The capabilities.</value>
-        public Dictionary<string, FhirResourceCapability> Capabilities { get => _capabilities;  }
+        public Dictionary<string, FhirResourceCapability> Capabilities { get => _capabilities; }
 
         /// <summary>Gets the system operations.</summary>
         /// <value>The system operations.</value>
         public Dictionary<string, FhirOperation> SystemOperations { get => _systemOperations; }
+
+        /// <summary>Gets options for controlling all resource.</summary>
+        /// <value>Options that control all resource.</value>
+        public Dictionary<string, FhirSearchParam> AllResourceParameters { get => _allResourceParameters; }
+
+        /// <summary>Gets options for controlling the search result.</summary>
+        /// <value>Options that control the search result.</value>
+        public Dictionary<string, FhirSearchParam> SearchResultParameters { get => _searchResultParameters; }
+
+        /// <summary>Gets options for controlling all interaction.</summary>
+        /// <value>Options that control all interaction.</value>
+        public Dictionary<string, FhirSearchParam> AllInteractionParameters { get => _allInteractionParameters; }
 
         /// <summary>Adds a primitive.</summary>
         /// <param name="primitive">The primitive.</param>
@@ -374,6 +403,56 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             // process this per the correct FHIR version
             _fhirConverter.ProcessResource(resource, this);
+        }
+
+        /// <summary>Adds a versioned parameter.</summary>
+        /// <param name="searchMagicType">Type of the search magic.</param>
+        /// <param name="name">           The name.</param>
+        /// <param name="parameterType">  Type of the parameter.</param>
+        internal void AddVersionedParam(
+            SearchMagicParameter searchMagicType,
+            string name,
+            string parameterType)
+        {
+            switch (searchMagicType)
+            {
+                case SearchMagicParameter.AllResource:
+                    AddVersionedParam(_allResourceParameters, name, parameterType);
+                    break;
+
+                case SearchMagicParameter.SearchResult:
+                    AddVersionedParam(_searchResultParameters, name, parameterType);
+                    break;
+
+                case SearchMagicParameter.AllInteraction:
+                    AddVersionedParam(_allInteractionParameters, name, parameterType);
+                    break;
+            }
+        }
+
+        /// <summary>Adds a versioned parameter.</summary>
+        /// <param name="dict">The dictionary.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="type">The type.</param>
+        private void AddVersionedParam(
+            Dictionary<string, FhirSearchParam> dict,
+            string name,
+            string type)
+        {
+            dict.Add(
+                name,
+                new FhirSearchParam(
+                    name,
+                    new Uri($"http://hl7.org/fhir/{ReleaseName}/search.html#{name.Substring(1)}"),
+                    VersionString,
+                    name,
+                    $"Filter search by {name}",
+                    string.Empty,
+                    name,
+                    null,
+                    type,
+                    string.Empty,
+                    false));
         }
     }
 }

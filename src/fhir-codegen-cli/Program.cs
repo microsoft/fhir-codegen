@@ -21,8 +21,6 @@ namespace FhirCodegenCli
         /// <param name="args">An array of command-line argument strings.</param>
         public static void Main(string[] args)
         {
-            bool success = false;
-
             // start timing
             Stopwatch timingWatch = Stopwatch.StartNew();
 
@@ -34,7 +32,7 @@ namespace FhirCodegenCli
             // done
             long elapsedMs = timingWatch.ElapsedMilliseconds;
 
-            Console.WriteLine($"Finished {success}: {elapsedMs / 1000.0} s");
+            Console.WriteLine($"Finished: {elapsedMs / 1000.0} s");
         }
 
         /// <summary>Main processing function.</summary>
@@ -131,6 +129,18 @@ namespace FhirCodegenCli
             // dump server level operations
             Console.WriteLine($"system operations: {info.SystemOperations.Count}");
             DumpOperations(info.SystemOperations.Values, 0);
+
+            // dump magic search parameters - all resource parameters
+            Console.WriteLine($"all resource parameters: {info.AllResourceParameters.Count}");
+            DumpSearchParameters(info.AllResourceParameters.Values, 0);
+
+            // dump magic search parameters - search result parameters
+            Console.WriteLine($"search result parameters: {info.SearchResultParameters.Count}");
+            DumpSearchParameters(info.SearchResultParameters.Values, 0);
+
+            // dump magic search parameters - search result parameters
+            Console.WriteLine($"all interaction parameters: {info.AllInteractionParameters.Count}");
+            DumpSearchParameters(info.AllInteractionParameters.Values, 0);
         }
 
         /// <summary>Dumps a complex structure (complex type/resource and properties).</summary>
@@ -212,12 +222,7 @@ namespace FhirCodegenCli
             // dump search parameters
             if (complex.SearchParameters != null)
             {
-                foreach (FhirSearchParam searchParam in complex.SearchParameters.Values)
-                {
-                    Console.WriteLine($"{new string(' ', indentation + 2)}" +
-                        $"?{searchParam.Code}" +
-                        $"={searchParam.ValueType}");
-                }
+                DumpSearchParameters(complex.SearchParameters.Values, indentation);
             }
 
             // dump type operations
@@ -230,6 +235,19 @@ namespace FhirCodegenCli
             if (complex.InstanceOperations != null)
             {
                 DumpOperations(complex.InstanceOperations.Values, indentation);
+            }
+        }
+
+        /// <summary>Dumps a search parameters.</summary>
+        /// <param name="parameters"> Options for controlling the operation.</param>
+        /// <param name="indentation">The indentation.</param>
+        private static void DumpSearchParameters(IEnumerable<FhirSearchParam> parameters, int indentation)
+        {
+            foreach (FhirSearchParam searchParam in parameters)
+            {
+                Console.WriteLine($"{new string(' ', indentation + 2)}" +
+                    $"?{searchParam.Code}" +
+                    $"={searchParam.ValueType}");
             }
         }
 
@@ -252,7 +270,6 @@ namespace FhirCodegenCli
                     }
                 }
             }
-
         }
     }
 }
