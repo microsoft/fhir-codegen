@@ -210,7 +210,9 @@ namespace FhirCodegenCli
             {
                 foreach (FhirSearchParam searchParam in complex.SearchParameters.Values)
                 {
-                    Console.WriteLine($"{new string(' ', indentation + 2)}?{searchParam.Code} ({searchParam.ValueType})");
+                    Console.WriteLine($"{new string(' ', indentation + 2)}" +
+                        $"{complex.Name}?{searchParam.Code}" +
+                        $"={searchParam.ValueType}");
                 }
             }
         }

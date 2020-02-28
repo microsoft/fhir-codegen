@@ -27,6 +27,64 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// </summary>
         public FromR3() => _jsonConverter = new fhir_3.ResourceConverter();
 
+        /// <summary>Process the search parameter.</summary>
+        /// <param name="sp">             The sp.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        private void ProcessSearchParam(
+            fhir_3.SearchParameter sp,
+            FhirVersionInfo fhirVersionInfo)
+        {
+            // ignore retired
+            if (sp.Status.Equals("retired", StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            string[] resources = sp.Base;
+
+            // check for parameters with no base resource
+            if (sp.Base == null)
+            {
+                List<string> resourceList = new List<string>();
+
+                // see if we can determine the resource based on id
+                string[] components = sp.Id.Split('-');
+
+                foreach (string component in components)
+                {
+                    if (fhirVersionInfo.Resources.ContainsKey(component))
+                    {
+                        resourceList.Add(component);
+                    }
+                }
+
+                // don't know where to put this, could try parsing XPath in the future
+                if (resourceList.Count == 0)
+                {
+                    return;
+                }
+
+                resources = resourceList.ToArray();
+            }
+
+            // create the search parameter
+            FhirSearchParam param = new FhirSearchParam(
+                sp.Id,
+                new Uri(sp.Url),
+                sp.Version,
+                sp.Name,
+                sp.Description,
+                sp.Purpose,
+                sp.Code,
+                resources,
+                sp.Type,
+                sp.Status,
+                sp.Experimental == true);
+
+            // add our parameter
+            fhirVersionInfo.AddSearchParameter(param);
+        }
+
         /// <summary>Process the structure definition.</summary>
         /// <param name="sd">             The structure definition to parse.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
@@ -468,11 +526,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 //case fhir_3.ConceptMap conceptMap:
                 //case fhir_3.NamingSystem namingSystem:
                 //case fhir_3.OperationDefinition operationDefinition:
-                //case fhir_3.SearchParameter searchParameter:
                 //case fhir_3.StructureMap structureMap:
                 //case fhir_3.ValueSet valueSet:
                 */
                 // process
+                case fhir_3.SearchParameter searchParameter:
+                    ProcessSearchParam(searchParameter, fhirVersionInfo);
+                    break;
+
                 case fhir_3.StructureDefinition structureDefinition:
                     ProcessStructureDef(structureDefinition, fhirVersionInfo);
                     break;

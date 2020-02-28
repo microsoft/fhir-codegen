@@ -18,6 +18,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="url">           The URL.</param>
         /// <param name="version">       The version.</param>
         /// <param name="name">          The name.</param>
+        /// <param name="description">   The description.</param>
         /// <param name="purpose">       The purpose.</param>
         /// <param name="code">          The code.</param>
         /// <param name="resourceTypes"> The type of the resource.</param>
@@ -29,6 +30,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Uri url,
             string version,
             string name,
+            string description,
             string purpose,
             string code,
             string[] resourceTypes,
@@ -39,6 +41,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Id = id;
             Version = version;
             Name = name;
+            Description = description;
             Purpose = purpose;
             Code = code;
             ValueType = valueType;
@@ -75,6 +78,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the code.</summary>
         /// <value>The code.</value>
         public string Code { get; }
+
+        /// <summary>Gets the description.</summary>
+        /// <value>The description.</value>
+        public string Description { get; }
 
         /// <summary>Gets the type of the resource.</summary>
         /// <value>The type of the resource.</value>

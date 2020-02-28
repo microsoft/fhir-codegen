@@ -74,6 +74,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 new Uri(sp.Url),
                 sp.Version,
                 sp.Name,
+                sp.Description,
                 sp.Purpose,
                 sp.Code,
                 resources,

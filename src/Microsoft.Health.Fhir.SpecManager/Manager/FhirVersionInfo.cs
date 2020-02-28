@@ -277,11 +277,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="searchParam">The search parameter.</param>
         internal void AddSearchParameter(FhirSearchParam searchParam)
         {
-            if (searchParam.ResourceTypes == null)
-            {
-                Console.Write(string.Empty);
-            }
-
             // traverse resources in the search parameter
             foreach (string resourceName in searchParam.ResourceTypes)
             {

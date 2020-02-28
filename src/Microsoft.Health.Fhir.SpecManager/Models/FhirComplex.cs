@@ -94,11 +94,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="searchParam">The search parameter.</param>
         internal void AddSearchParameter(FhirSearchParam searchParam)
         {
-            if (string.IsNullOrEmpty(searchParam.Code))
-            {
-                Console.Write(string.Empty);
-            }
-
             if (_searchParameters.ContainsKey(searchParam.Code))
             {
                 return;

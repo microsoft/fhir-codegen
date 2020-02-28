@@ -85,6 +85,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             // second, process search parameters (adds to resources)
             ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo);
+
+            // make sure we cleared the last line
+            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
         }
 
         /// <summary>Process a file group, specified by the file prefix (e.g., StructureDefinition).</summary>
@@ -167,9 +170,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     throw;
                 }
             }
-
-            // make sure we cleared the last line
-            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}!{new string(' ', 100)}");
         }
     }
 }
