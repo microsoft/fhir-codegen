@@ -142,7 +142,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirPrimitive> _primitiveTypes;
         private Dictionary<string, FhirComplex> _complexTypes;
         private Dictionary<string, FhirComplex> _resources;
-        private Dictionary<string, FhirCapability> _capabilities;
+        private Dictionary<string, FhirResourceCapability> _capabilities;
+        private Dictionary<string, FhirOperation> _systemOperations;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class.
@@ -183,7 +184,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _primitiveTypes = new Dictionary<string, FhirPrimitive>();
             _complexTypes = new Dictionary<string, FhirComplex>();
             _resources = new Dictionary<string, FhirComplex>();
-            _capabilities = new Dictionary<string, FhirCapability>();
+            _capabilities = new Dictionary<string, FhirResourceCapability>();
         }
 
         /// <summary>Gets or sets the major version.</summary>
@@ -250,7 +251,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets the capabilities.</summary>
         /// <value>The capabilities.</value>
-        public Dictionary<string, FhirCapability> Capabilities { get => _capabilities;  }
+        public Dictionary<string, FhirResourceCapability> Capabilities { get => _capabilities;  }
 
         /// <summary>Adds a primitive.</summary>
         /// <param name="primitive">The primitive.</param>
