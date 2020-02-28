@@ -14,6 +14,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A class representing a FHIR complex type.</summary>
     public class FhirComplex : FhirTypeBase
     {
+        private Dictionary<string, FhirComplex> _components;
+        private Dictionary<string, FhirProperty> _properties;
+        private Dictionary<string, FhirSearchParam> _searchParameters;
+
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
         /// <param name="path">            Full pathname of the file.</param>
         /// <param name="standardStatus">  The standard status.</param>
@@ -36,8 +40,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 comment,
                 validationRegEx)
         {
-            Components = new Dictionary<string, FhirComplex>();
-            Properties = new Dictionary<string, FhirProperty>();
+            _components = new Dictionary<string, FhirComplex>();
+            _properties = new Dictionary<string, FhirProperty>();
+            _searchParameters = new Dictionary<string, FhirSearchParam>();
         }
 
         /// <summary>
@@ -75,27 +80,49 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the properties.</summary>
         /// <value>The properties.</value>
-        public Dictionary<string, FhirProperty> Properties { get; }
+        public Dictionary<string, FhirProperty> Properties { get => _properties; }
 
         /// <summary>Gets the components.</summary>
         /// <value>The components.</value>
-        public Dictionary<string, FhirComplex> Components { get; }
+        public Dictionary<string, FhirComplex> Components { get => _components; }
+
+        /// <summary>Gets the search parameters.</summary>
+        /// <value>Search Parameters defined on this resource.</value>
+        public Dictionary<string, FhirSearchParam> SearchParameters { get => _searchParameters; }
+
+        /// <summary>Adds a search parameter.</summary>
+        /// <param name="searchParam">The search parameter.</param>
+        internal void AddSearchParameter(FhirSearchParam searchParam)
+        {
+            if (string.IsNullOrEmpty(searchParam.Code))
+            {
+                Console.Write(string.Empty);
+            }
+
+            if (_searchParameters.ContainsKey(searchParam.Code))
+            {
+                return;
+            }
+
+            // add this parameter
+            _searchParameters.Add(searchParam.Code, searchParam);
+        }
 
         /// <summary>Adds a component from a property.</summary>
         /// <param name="path">Name of the property.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public bool AddComponentFromProperty(string path)
         {
-            if ((!Properties.ContainsKey(path)) ||
-                Components.ContainsKey(path))
+            if ((!_properties.ContainsKey(path)) ||
+                _components.ContainsKey(path))
             {
                 return false;
             }
 
-            FhirProperty property = Properties[path];
+            FhirProperty property = _properties[path];
 
             // create a new complex type from the property
-            Components.Add(property.Path, new FhirComplex(
+            _components.Add(property.Path, new FhirComplex(
                 property.Path,
                 property.StandardStatus,
                 property.ShortDescription,
@@ -166,18 +193,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string path = PathForComponents(elementComponents, 0, startIndex + 1);
 
             // check for matching property, but no component
-            if (Properties.ContainsKey(path) &&
-                (!Components.ContainsKey(path)))
+            if (_properties.ContainsKey(path) &&
+                (!_components.ContainsKey(path)))
             {
                 // add component from property
                 AddComponentFromProperty(path);
             }
 
             // check Components for match
-            if (Components.ContainsKey(path))
+            if (_components.ContainsKey(path))
             {
                 // recurse
-                return Components[path].GetParentAndFieldNameRecurse(
+                return _components[path].GetParentAndFieldNameRecurse(
                     elementComponents,
                     startIndex + 1,
                     out parent,

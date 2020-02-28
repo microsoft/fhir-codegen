@@ -80,9 +80,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // tell the user what's going on
             Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
 
+            // first, process structure definitions (want types and resources)
+            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);
+
+            // second, process search parameters (adds to resources)
+            ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo);
+        }
+
+        /// <summary>Process a file group, specified by the file prefix (e.g., StructureDefinition).</summary>
+        /// <param name="packageDir">     The package dir.</param>
+        /// <param name="prefix">         The prefix.</param>
+        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+        private static void ProcessFileGroup(string packageDir, string prefix, ref FhirVersionInfo fhirVersionInfo)
+        {
             // get the files in this directory
-            // TODO: relax filter to *.json when more than structure defintions are being parsed
-            string[] files = Directory.GetFiles(packageDir, "S*.json", SearchOption.TopDirectoryOnly);
+            string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
 
             // process these files
             ProcessPackageFiles(files, ref fhirVersionInfo);

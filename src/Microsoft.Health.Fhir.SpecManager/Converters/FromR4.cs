@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Microsoft.Health.Fhir.SpecManager.fhir.r2;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Newtonsoft.Json;
@@ -40,16 +41,45 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
+            string[] resources = sp.Base;
+
+            // check for parameters with no base resource
+            if (sp.Base == null)
+            {
+                List<string> resourceList = new List<string>();
+
+                // see if we can determine the resource based on id
+                string[] components = sp.Id.Split('-');
+
+                foreach (string component in components)
+                {
+                    if (fhirVersionInfo.Resources.ContainsKey(component))
+                    {
+                        resourceList.Add(component);
+                    }
+                }
+
+                // don't know where to put this, could try parsing XPath in the future
+                if (resourceList.Count == 0)
+                {
+                    return;
+                }
+
+                resources = resourceList.ToArray();
+            }
+
             // create the search parameter
             FhirSearchParam param = new FhirSearchParam(
                 sp.Id,
-                sp.Url,
+                new Uri(sp.Url),
                 sp.Version,
                 sp.Name,
                 sp.Purpose,
                 sp.Code,
-                sp.Base,
-                sp.Type);
+                resources,
+                sp.Type,
+                sp.Status,
+                sp.Experimental == true);
 
             // add our parameter
             fhirVersionInfo.AddSearchParameter(param);
