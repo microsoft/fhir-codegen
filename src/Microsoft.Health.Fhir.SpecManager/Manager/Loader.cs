@@ -80,11 +80,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // tell the user what's going on
             Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
 
-            // first, process structure definitions (want types and resources)
+            // process structure definitions (want types and resources)
             ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);
 
-            // second, process search parameters (adds to resources)
+            // process search parameters (adds to resources)
             ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo);
+
+            // process operations (adds to resources and version info (server level))
+            ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo);
 
             // make sure we cleared the last line
             Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");

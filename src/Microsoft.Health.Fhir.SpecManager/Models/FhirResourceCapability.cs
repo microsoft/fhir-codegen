@@ -21,6 +21,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirResourceCapability"/> class.
         /// </summary>
+        /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
         /// <param name="name">             The name.</param>
         /// <param name="url">              The URL.</param>
         /// <param name="resourceName">     The name of the resource.</param>
@@ -53,6 +54,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             List<FhirSearchParam> searchParams,
             List<FhirOperation> operations)
         {
+            _operations = new Dictionary<string, FhirOperation>();
+            _searchParameters = new Dictionary<string, FhirSearchParam>();
+
             Name = name;
             URL = url;
             ResourceName = resourceName;
@@ -61,6 +65,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             UpdateCreate = updateCreate;
             ConditionalCreate = conditionalCreate;
             ConditionalUpdate = conditionalUpdate;
+            SearchIncludes = searchIncludes;
+            SearchRevIncludes = searchRevIncludes;
 
             // interactions default to off
             InteractionCreate = false;
@@ -158,6 +164,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 default:
                     ConditionalDelete = ConditionalDeleteStatus.NotSupported;
                     break;
+            }
+
+            // process search parameters
+            if (searchParams != null)
+            {
+                foreach (FhirSearchParam parameter in searchParams)
+                {
+                    _searchParameters.Add(parameter.Code, parameter);
+                }
+            }
+
+            // process operations
+            if (operations != null)
+            {
+                foreach (FhirOperation operation in operations)
+                {
+                    _operations.Add(operation.Code, operation);
+                }
             }
         }
 

@@ -17,6 +17,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private Dictionary<string, FhirComplex> _components;
         private Dictionary<string, FhirProperty> _properties;
         private Dictionary<string, FhirSearchParam> _searchParameters;
+        private Dictionary<string, FhirOperation> _typeOperations;
+        private Dictionary<string, FhirOperation> _instanceOperations;
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
         /// <param name="path">            Full pathname of the file.</param>
@@ -43,6 +45,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _components = new Dictionary<string, FhirComplex>();
             _properties = new Dictionary<string, FhirProperty>();
             _searchParameters = new Dictionary<string, FhirSearchParam>();
+            _typeOperations = new Dictionary<string, FhirOperation>();
+            _instanceOperations = new Dictionary<string, FhirOperation>();
         }
 
         /// <summary>
@@ -90,6 +94,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>Search Parameters defined on this resource.</value>
         public Dictionary<string, FhirSearchParam> SearchParameters { get => _searchParameters; }
 
+        /// <summary>Gets the type operations.</summary>
+        /// <value>The type operations.</value>
+        public Dictionary<string, FhirOperation> TypeOperations { get => _typeOperations; }
+
+        /// <summary>Gets the instance operations.</summary>
+        /// <value>The instance operations.</value>
+        public Dictionary<string, FhirOperation> InstanceOperations { get => _instanceOperations; }
+
         /// <summary>Adds a search parameter.</summary>
         /// <param name="searchParam">The search parameter.</param>
         internal void AddSearchParameter(FhirSearchParam searchParam)
@@ -101,6 +113,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             // add this parameter
             _searchParameters.Add(searchParam.Code, searchParam);
+        }
+
+        /// <summary>Adds an operation.</summary>
+        /// <param name="operation">The operation.</param>
+        internal void AddOperation(FhirOperation operation)
+        {
+            if (operation.DefinedOnType)
+            {
+                if (!_typeOperations.ContainsKey(operation.Code))
+                {
+                    _typeOperations.Add(operation.Code, operation);
+                }
+            }
+
+            if (operation.DefinedOnInstance)
+            {
+                if (!_instanceOperations.ContainsKey(operation.Code))
+                {
+                    _instanceOperations.Add(operation.Code, operation);
+                }
+            }
         }
 
         /// <summary>Adds a component from a property.</summary>

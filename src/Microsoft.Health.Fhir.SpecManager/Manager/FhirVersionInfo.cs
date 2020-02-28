@@ -185,6 +185,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _complexTypes = new Dictionary<string, FhirComplex>();
             _resources = new Dictionary<string, FhirComplex>();
             _capabilities = new Dictionary<string, FhirResourceCapability>();
+            _systemOperations = new Dictionary<string, FhirOperation>();
         }
 
         /// <summary>Gets or sets the major version.</summary>
@@ -253,6 +254,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <value>The capabilities.</value>
         public Dictionary<string, FhirResourceCapability> Capabilities { get => _capabilities;  }
 
+        /// <summary>Gets the system operations.</summary>
+        /// <value>The system operations.</value>
+        public Dictionary<string, FhirOperation> SystemOperations { get => _systemOperations; }
+
         /// <summary>Adds a primitive.</summary>
         /// <param name="primitive">The primitive.</param>
         internal void AddPrimitive(FhirPrimitive primitive)
@@ -287,6 +292,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
 
                 _resources[resourceName].AddSearchParameter(searchParam);
+            }
+        }
+
+        /// <summary>Adds an operation.</summary>
+        /// <param name="operation">The operation.</param>
+        internal void AddOperation(FhirOperation operation)
+        {
+            // check for system level operation
+            if (operation.DefinedOnSystem)
+            {
+                _systemOperations.Add(operation.Code, operation);
+            }
+
+            // look for resources this should be defined on
+            if (operation.ResourceTypes != null)
+            {
+                foreach (string resourceName in operation.ResourceTypes)
+                {
+                    if (!_resources.ContainsKey(resourceName))
+                    {
+                        continue;
+                    }
+
+                    _resources[resourceName].AddOperation(operation);
+                }
             }
         }
 

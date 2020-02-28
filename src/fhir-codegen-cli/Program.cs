@@ -127,6 +127,10 @@ namespace FhirCodegenCli
             // dump resources
             Console.WriteLine($"resources: {info.Resources.Count}");
             DumpComplexDict(info.Resources);
+
+            // dump server level operations
+            Console.WriteLine($"system operations: {info.SystemOperations.Count}");
+            DumpOperations(info.SystemOperations.Values, 0);
         }
 
         /// <summary>Dumps a complex structure (complex type/resource and properties).</summary>
@@ -211,10 +215,44 @@ namespace FhirCodegenCli
                 foreach (FhirSearchParam searchParam in complex.SearchParameters.Values)
                 {
                     Console.WriteLine($"{new string(' ', indentation + 2)}" +
-                        $"{complex.Name}?{searchParam.Code}" +
+                        $"?{searchParam.Code}" +
                         $"={searchParam.ValueType}");
                 }
             }
+
+            // dump type operations
+            if (complex.TypeOperations != null)
+            {
+                DumpOperations(complex.TypeOperations.Values, indentation);
+            }
+
+            // dump instance operations
+            if (complex.InstanceOperations != null)
+            {
+                DumpOperations(complex.InstanceOperations.Values, indentation);
+            }
+        }
+
+        /// <summary>Dumps the operations.</summary>
+        /// <param name="operations"> The operations.</param>
+        /// <param name="indentation">The indentation.</param>
+        private static void DumpOperations(IEnumerable<FhirOperation> operations, int indentation)
+        {
+            foreach (FhirOperation operation in operations)
+            {
+                Console.WriteLine($"{new string(' ', indentation + 2)}${operation.Code}");
+
+                if (operation.Parameters != null)
+                {
+                    foreach (FhirParameter parameter in operation.Parameters.OrderBy(p => p.FieldOrder))
+                    {
+                        string max = (parameter.Max == null) ? "*" : parameter.Max.ToString();
+                        Console.WriteLine($"{new string(' ', indentation + 4)}" +
+                            $"{parameter.Use}: {parameter.Name} ({parameter.Min}-{max})");
+                    }
+                }
+            }
+
         }
     }
 }
