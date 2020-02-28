@@ -128,7 +128,7 @@ namespace FhirCodegenCli
 
             // dump server level operations
             Console.WriteLine($"system operations: {info.SystemOperations.Count}");
-            DumpOperations(info.SystemOperations.Values, 0);
+            DumpOperations(info.SystemOperations.Values, 0, true);
 
             // dump magic search parameters - all resource parameters
             Console.WriteLine($"all resource parameters: {info.AllResourceParameters.Count}");
@@ -228,13 +228,13 @@ namespace FhirCodegenCli
             // dump type operations
             if (complex.TypeOperations != null)
             {
-                DumpOperations(complex.TypeOperations.Values, indentation);
+                DumpOperations(complex.TypeOperations.Values, indentation, true);
             }
 
             // dump instance operations
             if (complex.InstanceOperations != null)
             {
-                DumpOperations(complex.InstanceOperations.Values, indentation);
+                DumpOperations(complex.InstanceOperations.Values, indentation, false);
             }
         }
 
@@ -254,11 +254,19 @@ namespace FhirCodegenCli
         /// <summary>Dumps the operations.</summary>
         /// <param name="operations"> The operations.</param>
         /// <param name="indentation">The indentation.</param>
-        private static void DumpOperations(IEnumerable<FhirOperation> operations, int indentation)
+        /// <param name="isTypeLevel">True if is type level, false if not.</param>
+        private static void DumpOperations(IEnumerable<FhirOperation> operations, int indentation, bool isTypeLevel)
         {
             foreach (FhirOperation operation in operations)
             {
-                Console.WriteLine($"{new string(' ', indentation + 2)}${operation.Code}");
+                if (isTypeLevel)
+                {
+                    Console.WriteLine($"{new string(' ', indentation + 2)}${operation.Code}");
+                }
+                else
+                {
+                    Console.WriteLine($"{new string(' ', indentation + 2)}/{{id}}${operation.Code}");
+                }
 
                 if (operation.Parameters != null)
                 {

@@ -27,6 +27,55 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// </summary>
         public FromR3() => _jsonConverter = new fhir_3.ResourceConverter();
 
+        /// <summary>Process the operation.</summary>
+        /// <param name="op">             The operation.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        private void ProcessOperation(
+            fhir_3.OperationDefinition op,
+            FhirVersionInfo fhirVersionInfo)
+        {
+            // ignore retired
+            if (op.Status.Equals("retired", StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            List<FhirParameter> parameters = new List<FhirParameter>();
+
+            if (op.Parameter != null)
+            {
+                foreach (fhir_3.OperationDefinitionParameter opParam in op.Parameter)
+                {
+                    parameters.Add(new FhirParameter(
+                        opParam.Name,
+                        opParam.Use,
+                        opParam.Min,
+                        opParam.Max,
+                        opParam.Documentation,
+                        opParam.Type,
+                        parameters.Count));
+                }
+            }
+
+            // create the operation
+            FhirOperation operation = new FhirOperation(
+                op.Id,
+                new Uri(op.Url),
+                op.Version,
+                op.Name,
+                op.Description,
+                op.System,
+                op.Type,
+                op.Instance,
+                op.Code,
+                op.Comment,
+                op.Resource,
+                parameters);
+
+            // add our parameter
+            fhirVersionInfo.AddOperation(operation);
+        }
+
         /// <summary>Process the search parameter.</summary>
         /// <param name="sp">             The sp.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
@@ -525,11 +574,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 //case fhir_3.CompartmentDefinition compartmentDefinition:
                 //case fhir_3.ConceptMap conceptMap:
                 //case fhir_3.NamingSystem namingSystem:
-                //case fhir_3.OperationDefinition operationDefinition:
                 //case fhir_3.StructureMap structureMap:
                 //case fhir_3.ValueSet valueSet:
                 */
                 // process
+                case fhir_3.OperationDefinition operationDefinition:
+                    ProcessOperation(operationDefinition, fhirVersionInfo);
+                    break;
+
                 case fhir_3.SearchParameter searchParameter:
                     ProcessSearchParam(searchParameter, fhirVersionInfo);
                     break;
