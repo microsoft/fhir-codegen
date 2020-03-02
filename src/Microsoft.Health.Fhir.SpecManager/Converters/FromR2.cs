@@ -179,6 +179,146 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
         }
 
+        /// <summary>Process the structure definition of an extension.</summary>
+        /// <param name="sd">             The structure definition we are parsing.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        private void ProcessStructureDefExtension(
+            fhir_2.StructureDefinition sd,
+            FhirVersionInfo fhirVersionInfo)
+        {
+            // ignore retired
+            if (sd.Status.Equals("retired", StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            // act depending on kind
+            switch (sd.Kind)
+            {
+                case "datatype":
+                    // exclude extensions
+                    if (sd.ConstrainedType == "Extension")
+                    {
+                        ProcessExtension(sd, fhirVersionInfo);
+                    }
+
+                    break;
+
+                case "resource":
+                    if (!string.IsNullOrEmpty(sd.ConstrainedType))
+                    {
+                        ProcessExtension(sd, fhirVersionInfo);
+                    }
+
+                    break;
+            }
+        }
+
+        /// <summary>Process the extension.</summary>
+        /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+        ///  illegal values.</exception>
+        /// <param name="sd">             The structure definition to parse.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        private static void ProcessExtension(
+            fhir_2.StructureDefinition sd,
+            FhirVersionInfo fhirVersionInfo)
+        {
+            List<string> elementPaths = new List<string>();
+            Dictionary<string, List<string>> allowedTypesAndProfiles = new Dictionary<string, List<string>>();
+            bool isModifier = false;
+            bool isSummary = false;
+
+            // check for nothing to process
+            if ((sd == null) ||
+                (sd.Context == null) ||
+                (sd.Snapshot == null) ||
+                (sd.Snapshot.Element == null))
+            {
+                return;
+            }
+
+            // look for context information
+            foreach (string context in sd.Context)
+            {
+                elementPaths.Add(context);
+            }
+
+            // traverse elements looking for data we need
+            foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+            {
+                switch (element.Id)
+                {
+                    case "Extension.value[x]":
+                        // grab types
+                        if (element.Type != null)
+                        {
+                            foreach (fhir_2.ElementDefinitionType type in element.Type)
+                            {
+                                if (!allowedTypesAndProfiles.ContainsKey(type.Code))
+                                {
+                                    allowedTypesAndProfiles.Add(type.Code, new List<string>());
+                                }
+
+                                if (type.Profile != null)
+                                {
+                                    foreach (string profile in type.Profile)
+                                    {
+                                        allowedTypesAndProfiles[type.Code].Add(
+                                            profile.Substring(profile.LastIndexOf('/') + 1));
+                                    }
+                                }
+                            }
+                        }
+
+                        if (element.IsModifier == true)
+                        {
+                            isModifier = true;
+                        }
+
+                        if (element.IsSummary == true)
+                        {
+                            isSummary = true;
+                        }
+
+                        break;
+
+                    case "Extension":
+
+                        if (element.IsModifier == true)
+                        {
+                            isModifier = true;
+                        }
+
+                        if (element.IsSummary == true)
+                        {
+                            isSummary = true;
+                        }
+
+                        break;
+                }
+            }
+
+            // check internal constraints for adding
+            if ((elementPaths.Count == 0) ||
+                (allowedTypesAndProfiles.Count == 0))
+            {
+                return;
+            }
+
+            // create a new extension object
+            FhirExtension extension = new FhirExtension(
+                sd.Name,
+                sd.Id,
+                new Uri(sd.Url),
+                elementPaths,
+                allowedTypesAndProfiles,
+                isModifier,
+                isSummary);
+
+            // add our property extension
+            fhirVersionInfo.AddExtension(extension);
+        }
+
         /// <summary>Process a structure definition for a primitive data type.</summary>
         /// <param name="sd">             The structure definition to parse.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
@@ -591,7 +731,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     break;
 
                 case fhir_2.StructureDefinition structureDefinition:
-                    ProcessStructureDef(structureDefinition, fhirVersionInfo);
+                    if (processHint.Equals("Extension", StringComparison.Ordinal))
+                    {
+                        ProcessStructureDefExtension(structureDefinition, fhirVersionInfo);
+                    }
+                    else
+                    {
+                        ProcessStructureDef(structureDefinition, fhirVersionInfo);
+                    }
+
                     break;
             }
         }

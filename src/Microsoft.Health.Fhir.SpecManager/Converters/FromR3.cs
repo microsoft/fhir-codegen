@@ -747,6 +747,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         ProcessStructureDef(structureDefinition, fhirVersionInfo);
                     }
+
                     break;
             }
         }
