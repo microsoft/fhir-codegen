@@ -13,19 +13,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public class FhirExtension
     {
         /// <summary>Initializes a new instance of the <see cref="FhirExtension"/> class.</summary>
-        /// <param name="name">             The name.</param>
-        /// <param name="id">               The identifier.</param>
-        /// <param name="url">              The URL.</param>
-        /// <param name="elementPaths">     The full pathname of the element file.</param>
-        /// <param name="allowedValueTypes">A list of types of the allowed values.</param>
-        /// <param name="isModifier">       True if this object is modifier, false if not.</param>
-        /// <param name="isSummary">        True if this object is summary, false if not.</param>
+        /// <param name="name">                   The name.</param>
+        /// <param name="id">                     The identifier.</param>
+        /// <param name="url">                    The URL.</param>
+        /// <param name="elementPaths">           The full pathname of the element file.</param>
+        /// <param name="allowedTypesAndProfiles">Allowed types and profiles.</param>
+        /// <param name="isModifier">             True if this object is modifier, false if not.</param>
+        /// <param name="isSummary">              True if this object is summary, false if not.</param>
         public FhirExtension(
             string name,
             string id,
             Uri url,
             List<string> elementPaths,
-            List<string> allowedValueTypes,
+            Dictionary<string, List<string>> allowedTypesAndProfiles,
             bool isModifier,
             bool isSummary)
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Id = id;
             URL = url;
             ElementPaths = elementPaths;
-            AllowedValueTypes = allowedValueTypes;
+            AllowedTypesAndProfiles = allowedTypesAndProfiles;
             IsModifier = isModifier;
             IsSummary = isSummary;
         }
@@ -56,7 +56,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets a list of types of the allowed values.</summary>
         /// <value>A list of types of the allowed values.</value>
-        public List<string> AllowedValueTypes { get; }
+        public Dictionary<string, List<string>> AllowedTypesAndProfiles { get; }
 
         /// <summary>Gets a value indicating whether this object is modifier.</summary>
         /// <value>True if this object is modifier, false if not.</value>

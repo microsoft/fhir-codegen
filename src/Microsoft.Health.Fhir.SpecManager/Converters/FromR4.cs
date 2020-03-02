@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.fhir.r2;
 using Microsoft.Health.Fhir.SpecManager.Manager;
@@ -182,7 +183,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
         }
 
-        /// <summary>Process the structure definition.</summary>
+        /// <summary>Process the structure definition of an extension.</summary>
         /// <param name="sd">             The structure definition we are parsing.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessStructureDefExtension(
@@ -228,12 +229,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
         }
 
+        /// <summary>Process the extension.</summary>
+        /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+        ///  illegal values.</exception>
+        /// <param name="sd">             The structure definition we are parsing.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private static void ProcessExtension(
             fhir_4.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo)
         {
             List<string> elementPaths = new List<string>();
-            List<string> allowedValueTypes = new List<string>();
+            Dictionary<string, List<string>> allowedTypesAndProfiles = new Dictionary<string, List<string>>();
             bool isModifier = false;
             bool isSummary = false;
 
@@ -268,7 +274,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         {
                             foreach (fhir_4.ElementDefinitionType type in element.Type)
                             {
-                                allowedValueTypes.Add(type.Code);
+                                if (!allowedTypesAndProfiles.ContainsKey(type.Code))
+                                {
+                                    allowedTypesAndProfiles.Add(type.Code, new List<string>());
+                                }
+
+                                if (type.TargetProfile != null)
+                                {
+                                    foreach (string profile in type.TargetProfile)
+                                    {
+                                        allowedTypesAndProfiles[type.Code].Add(
+                                            profile.Substring(profile.LastIndexOf('/') + 1));
+                                    }
+                                }
                             }
                         }
 
@@ -302,7 +320,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // check internal constraints for adding
             if ((elementPaths.Count == 0) ||
-                (allowedValueTypes.Count == 0))
+                (allowedTypesAndProfiles.Count == 0))
             {
             return;
             }
@@ -313,7 +331,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 sd.Id,
                 new Uri(sd.Url),
                 elementPaths,
-                allowedValueTypes,
+                allowedTypesAndProfiles,
                 isModifier,
                 isSummary);
 

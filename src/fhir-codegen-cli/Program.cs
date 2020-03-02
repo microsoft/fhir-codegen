@@ -241,10 +241,34 @@ namespace FhirCodegenCli
         {
             foreach (FhirExtension extension in extensions)
             {
-                string extensionValueTypes = string.Join('|', extension.AllowedValueTypes);
+                string typesAndProfiles = string.Empty;
+                string joiner = string.Empty;
+
+                foreach (KeyValuePair<string, List<string>> kvp in extension.AllowedTypesAndProfiles)
+                {
+                    string profiles = string.Join('|', kvp.Value);
+
+                    if (string.IsNullOrEmpty(typesAndProfiles))
+                    {
+                        joiner = string.Empty;
+                    }
+                    else
+                    {
+                        joiner = "|";
+                    }
+
+                    if (string.IsNullOrEmpty(profiles))
+                    {
+                        typesAndProfiles = $"{typesAndProfiles}{joiner}{kvp.Key}";
+                    }
+                    else
+                    {
+                        typesAndProfiles = $"{typesAndProfiles}{joiner}{kvp.Key}({profiles})";
+                    }
+                }
 
                 Console.WriteLine($"{new string(' ', indentation + 2)}" +
-                    $"+{extension.URL}: {extensionValueTypes}");
+                    $"+{extension.URL}: {typesAndProfiles}");
             }
         }
 
