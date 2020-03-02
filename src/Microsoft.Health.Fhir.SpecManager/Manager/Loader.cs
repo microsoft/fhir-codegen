@@ -195,10 +195,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Process the package files.</summary>
         /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
-        /// <param name="files">            The files.</param>
-        /// <param name="fhirVersionInfo">  [in,out] Information describing the fhir version.</param>
-        /// <param name="inclusionCriteria">(Optional) Additional inclusion criteria.</param>
-        /// <param name="exclusionCriteria">(Optional) Additional exclusion criteria.</param>
+        /// <param name="files">          The files.</param>
+        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+        /// <param name="processHint">    (Optional) Additional inclusion criteria.</param>
         private static void ProcessPackageFiles(
             string[] files,
             ref FhirVersionInfo fhirVersionInfo,
@@ -216,13 +215,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                 // parse the name into parts we want
                 string shortName = Path.GetFileNameWithoutExtension(filename);
-                string resourceHint = shortName.Split('-')[0];
+                string[] components = shortName.Split('-');
+                string resourceHint = components[0];
                 string resourceName = shortName.Substring(resourceHint.Length + 1);
 
                 // attempt to load this file
                 try
                 {
                     Console.Write($"v{fhirVersionInfo.MajorVersion}: {shortName,-85}\r");
+
+                    // TODO: this feels hacky - figure out a better way
+                    // check for SDs to skip based on number of components + extensions flag
+                    if (resourceHint.Equals("StructureDefinition", StringComparison.Ordinal))
+                    {
+                        if (string.IsNullOrEmpty(processHint) && (components.Length > 2))
+                        {
+                            continue;
+                        }
+
+                        if ((processHint == "Extension") && (components.Length == 2))
+                        {
+                            continue;
+                        }
+                    }
 
                     // check for ignored types
                     if (fhirVersionInfo.ShouldIgnoreResource(resourceHint))
