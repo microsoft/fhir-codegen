@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.fhir.r2;
@@ -179,6 +180,145 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     break;
             }
+        }
+
+        /// <summary>Process the structure definition.</summary>
+        /// <param name="sd">             The structure definition we are parsing.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        private void ProcessStructureDefExtension(
+            fhir_4.StructureDefinition sd,
+            FhirVersionInfo fhirVersionInfo)
+        {
+            // ignore retired
+            if (sd.Status.Equals("retired", StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            // act depending on kind
+            switch (sd.Kind)
+            {
+                case "primitive-type":
+                    // include extensions
+                    if (sd.Type == "Extension")
+                    {
+                        ProcessExtension(sd, fhirVersionInfo);
+                    }
+
+                    break;
+
+                case "complex-type":
+                    // include extensions and profiles
+                    if ((sd.Type == "Extension") ||
+                        (sd.Derivation == "constraint"))
+                    {
+                        ProcessExtension(sd, fhirVersionInfo);
+                    }
+
+                    break;
+
+                case "resource":
+                    // include profiles
+                    if (sd.Derivation == "constraint")
+                    {
+                        ProcessExtension(sd, fhirVersionInfo);
+                    }
+
+                    break;
+            }
+        }
+
+        private static void ProcessExtension(
+            fhir_4.StructureDefinition sd,
+            FhirVersionInfo fhirVersionInfo)
+        {
+            List<string> elementPaths = new List<string>();
+            List<string> allowedValueTypes = new List<string>();
+            bool isModifier = false;
+            bool isSummary = false;
+
+            // check for nothing to process
+            if ((sd == null) ||
+                (sd.Context == null) ||
+                (sd.Snapshot == null) ||
+                (sd.Snapshot.Element == null))
+            {
+                return;
+            }
+
+            // look for context information
+            foreach (fhir_4.StructureDefinitionContext context in sd.Context)
+            {
+                if (context.Type != "element")
+                {
+                    throw new ArgumentException($"Invalid extension context type: {context.Type}");
+                }
+
+                elementPaths.Add(context.Expression);
+            }
+
+            // traverse elements looking for data we need
+            foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
+            {
+                switch (element.Id)
+                {
+                    case "Extension.value[x]":
+                        // grab types
+                        if (element.Type != null)
+                        {
+                            foreach (fhir_4.ElementDefinitionType type in element.Type)
+                            {
+                                allowedValueTypes.Add(type.Code);
+                            }
+                        }
+
+                        if (element.IsModifier == true)
+                        {
+                            isModifier = true;
+                        }
+
+                        if (element.IsSummary == true)
+                        {
+                            isSummary = true;
+                        }
+
+                        break;
+
+                    case "Extension":
+
+                        if (element.IsModifier == true)
+                        {
+                            isModifier = true;
+                        }
+
+                        if (element.IsSummary == true)
+                        {
+                            isSummary = true;
+                        }
+
+                        break;
+                }
+            }
+
+            // check internal constraints for adding
+            if ((elementPaths.Count == 0) ||
+                (allowedValueTypes.Count == 0))
+            {
+            return;
+            }
+
+            // create a new extension object
+            FhirExtension extension = new FhirExtension(
+                sd.Name,
+                sd.Id,
+                new Uri(sd.Url),
+                elementPaths,
+                allowedValueTypes,
+                isModifier,
+                isSummary);
+
+            // add our property extension
+            fhirVersionInfo.AddExtension(extension);
         }
 
         /// <summary>Process a structure definition for a Primitive data type.</summary>
@@ -541,7 +681,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Attempts to process resource.</summary>
         /// <param name="resourceToParse">[out] The resource object.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        void IFhirConverter.ProcessResource(object resourceToParse, FhirVersionInfo fhirVersionInfo)
+        /// <param name="processHint">    Process hints related to load operation.</param>
+        void IFhirConverter.ProcessResource(
+            object resourceToParse,
+            FhirVersionInfo fhirVersionInfo,
+            string processHint)
         {
             try
             {
@@ -567,7 +711,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         break;
 
                     case fhir_4.StructureDefinition structureDefinition:
-                        ProcessStructureDef(structureDefinition, fhirVersionInfo);
+                        if (processHint.Equals("Extension", StringComparison.Ordinal))
+                        {
+                            ProcessStructureDefExtension(structureDefinition, fhirVersionInfo);
+                        }
+                        else
+                        {
+                            ProcessStructureDef(structureDefinition, fhirVersionInfo);
+                        }
+
                         break;
                 }
             }

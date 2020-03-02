@@ -144,17 +144,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirComplex> _resources;
         private Dictionary<string, FhirResourceCapability> _capabilities;
         private Dictionary<string, FhirOperation> _systemOperations;
-        private Dictionary<string, FhirSearchParam> _allResourceParameters;
+        private Dictionary<string, FhirSearchParam> _globalSearchParameters;
         private Dictionary<string, FhirSearchParam> _searchResultParameters;
         private Dictionary<string, FhirSearchParam> _allInteractionParameters;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class.
-        /// Require major version (release #) to validate it is supported.
+        /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class. Require major version
+        /// (release #) to validate it is supported.
         /// </summary>
-        ///
         /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-        ///
         /// <param name="majorVersion">The major version.</param>
         public FhirVersionInfo(int majorVersion)
         {
@@ -189,7 +187,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _resources = new Dictionary<string, FhirComplex>();
             _capabilities = new Dictionary<string, FhirResourceCapability>();
             _systemOperations = new Dictionary<string, FhirOperation>();
-            _allResourceParameters = new Dictionary<string, FhirSearchParam>();
+            _globalSearchParameters = new Dictionary<string, FhirSearchParam>();
             _searchResultParameters = new Dictionary<string, FhirSearchParam>();
             _allInteractionParameters = new Dictionary<string, FhirSearchParam>();
         }
@@ -198,13 +196,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         internal enum SearchMagicParameter
         {
             /// <summary>An enum constant representing all resource option.</summary>
-            AllResource,
+            Global,
 
             /// <summary>An enum constant representing the search result option.</summary>
-            SearchResult,
+            Result,
 
             /// <summary>An enum constant representing all interaction option.</summary>
-            AllInteraction,
+            Interaction,
         }
 
         /// <summary>Gets or sets the major version.</summary>
@@ -277,7 +275,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets options for controlling all resource.</summary>
         /// <value>Options that control all resource.</value>
-        public Dictionary<string, FhirSearchParam> AllResourceParameters { get => _allResourceParameters; }
+        public Dictionary<string, FhirSearchParam> AllResourceParameters { get => _globalSearchParameters; }
 
         /// <summary>Gets options for controlling the search result.</summary>
         /// <value>Options that control the search result.</value>
@@ -315,6 +313,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // traverse resources in the search parameter
             foreach (string resourceName in searchParam.ResourceTypes)
             {
+                // check for search parameters on 'Resource', means they are global
+                if (resourceName.Equals("Resource", StringComparison.Ordinal))
+                {
+                    // add to global
+                    if (!_globalSearchParameters.ContainsKey(searchParam.Name))
+                    {
+                        _globalSearchParameters.Add(searchParam.Name, searchParam);
+                    }
+
+                    continue;
+                }
+
+                // check for having this resource
                 if (!_resources.ContainsKey(resourceName))
                 {
                     continue;
@@ -345,6 +356,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     }
 
                     _resources[resourceName].AddOperation(operation);
+                }
+            }
+        }
+
+        /// <summary>Adds an extension.</summary>
+        /// <param name="extension">The extension.</param>
+        internal void AddExtension(FhirExtension extension)
+        {
+            // look for properties this should be defined on
+            if (extension.ElementPaths != null)
+            {
+                foreach (string elementPath in extension.ElementPaths)
+                {
+                    if (string.IsNullOrEmpty(elementPath))
+                    {
+                        continue;
+                    }
+
+                    string[] components = elementPath.Split('.');
+
+                    if (_resources.ContainsKey(components[0]))
+                    {
+                        _resources[components[0]].AddExtension(extension, components, 0);
+                    }
+
+                    if (_complexTypes.ContainsKey(components[0]))
+                    {
+                        _complexTypes[components[0]].AddExtension(extension, components, 0);
+                    }
                 }
             }
         }
@@ -398,11 +438,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Attempts to process resource.</summary>
-        /// <param name="resource">[out] The resource object.</param>
-        public void ProcessResource(object resource)
+        /// <param name="resource">   [out] The resource object.</param>
+        /// <param name="processHint">The process hint.</param>
+        public void ProcessResource(
+            object resource,
+            string processHint)
         {
             // process this per the correct FHIR version
-            _fhirConverter.ProcessResource(resource, this);
+            _fhirConverter.ProcessResource(resource, this, processHint);
         }
 
         /// <summary>Adds a versioned parameter.</summary>
@@ -416,15 +459,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             switch (searchMagicType)
             {
-                case SearchMagicParameter.AllResource:
-                    AddVersionedParam(_allResourceParameters, name, parameterType);
+                case SearchMagicParameter.Global:
+                    AddVersionedParam(_globalSearchParameters, name, parameterType);
                     break;
 
-                case SearchMagicParameter.SearchResult:
+                case SearchMagicParameter.Result:
                     AddVersionedParam(_searchResultParameters, name, parameterType);
                     break;
 
-                case SearchMagicParameter.AllInteraction:
+                case SearchMagicParameter.Interaction:
                     AddVersionedParam(_allInteractionParameters, name, parameterType);
                     break;
             }
@@ -439,6 +482,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             string name,
             string type)
         {
+            if (dict.ContainsKey(name))
+            {
+                return;
+            }
+
             dict.Add(
                 name,
                 new FhirSearchParam(

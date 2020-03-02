@@ -563,7 +563,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Attempts to process resource.</summary>
         /// <param name="resourceToParse">[out] The resource object.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        void IFhirConverter.ProcessResource(object resourceToParse, FhirVersionInfo fhirVersionInfo)
+        /// <param name="processHint">    Process hints related to load operation.</param>
+        void IFhirConverter.ProcessResource(
+            object resourceToParse,
+            FhirVersionInfo fhirVersionInfo,
+            string processHint)
         {
             switch (resourceToParse)
             {

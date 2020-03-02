@@ -113,9 +113,15 @@ namespace FhirCodegenCli
             // dump primitive types
             Console.WriteLine($"primitive types: {info.PrimitiveTypes.Count}");
 
-            foreach (KeyValuePair<string, FhirPrimitive> kvp in info.PrimitiveTypes)
+            foreach (FhirPrimitive primitive in info.PrimitiveTypes.Values)
             {
-                Console.WriteLine($"- {kvp.Key}: {kvp.Value.BaseTypeName}");
+                Console.WriteLine($"- {primitive.Name}: {primitive.BaseTypeName}");
+
+                // check for extensions
+                if (primitive.Extensions != null)
+                {
+                    DumpExtensions(primitive.Extensions.Values, 0);
+                }
             }
 
             // dump complex types
@@ -170,35 +176,16 @@ namespace FhirCodegenCli
             {
                 string max = (kvp.Value.CardinalityMax == null) ? "*" : kvp.Value.CardinalityMax.ToString();
 
-                string propertyType = kvp.Value.BaseTypeName;
-
+                string propertyType = string.Empty;
                 if (kvp.Value.ChoiceTypes != null)
                 {
-                    foreach (string choiceType in kvp.Value.ChoiceTypes)
-                    {
-                        if (string.IsNullOrEmpty(propertyType))
-                        {
-                            propertyType = choiceType;
-                            continue;
-                        }
-
-                        propertyType = $"{propertyType}|{choiceType}";
-                    }
+                    propertyType = string.Join('|', kvp.Value.ChoiceTypes);
                 }
 
                 string profiles = string.Empty;
                 if (kvp.Value.TargetProfiles != null)
                 {
-                    foreach (string profile in kvp.Value.TargetProfiles)
-                    {
-                        if (string.IsNullOrEmpty(profiles))
-                        {
-                            profiles = profile;
-                            continue;
-                        }
-
-                        profiles = $"{profiles}|{profile}";
-                    }
+                    profiles = string.Join('|', kvp.Value.TargetProfiles);
                 }
 
                 if (!string.IsNullOrEmpty(profiles))
@@ -211,12 +198,24 @@ namespace FhirCodegenCli
                     $".." +
                     $"{max})");
 
+                // check for extensions
+                if (kvp.Value.Extensions != null)
+                {
+                    DumpExtensions(kvp.Value.Extensions.Values, indentation + 2);
+                }
+
                 // check for an inline component definition
                 if (complex.Components.ContainsKey(kvp.Value.Path))
                 {
                     // recurse into this definition
                     DumpComplexElement(complex.Components[kvp.Value.Path], indentation + 2);
                 }
+            }
+
+            // check for extensions
+            if (complex.Extensions != null)
+            {
+                DumpExtensions(complex.Extensions.Values, indentation);
             }
 
             // dump search parameters
@@ -235,6 +234,17 @@ namespace FhirCodegenCli
             if (complex.InstanceOperations != null)
             {
                 DumpOperations(complex.InstanceOperations.Values, indentation, false);
+            }
+        }
+
+        private static void DumpExtensions(IEnumerable<FhirExtension> extensions, int indentation)
+        {
+            foreach (FhirExtension extension in extensions)
+            {
+                string extensionValueTypes = string.Join('|', extension.AllowedValueTypes);
+
+                Console.WriteLine($"{new string(' ', indentation + 2)}" +
+                    $"+{extension.URL}: {extensionValueTypes}");
             }
         }
 

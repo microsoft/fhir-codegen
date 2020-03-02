@@ -97,26 +97,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public HashSet<string> TargetProfiles { get; }
 
         /// <summary>Gets a value indicating whether this property is an array.</summary>
-        ///
         /// <value>True if this object is array, false if not.</value>
-        public bool IsArray
-        {
-            get
-            {
-                return (CardinalityMax == -1) || (CardinalityMax > 1);
-            }
-        }
+        public bool IsArray => (CardinalityMax == -1) || (CardinalityMax > 1);
 
         /// <summary>Gets a value indicating whether this object is optional.</summary>
-        ///
         /// <value>True if this object is optional, false if not.</value>
-        public bool IsOptional
-        {
-            get
-            {
-                return CardinalityMin == 0;
-            }
-        }
+        public bool IsOptional => CardinalityMin == 0;
 
         /// <summary>Maximum cardinality.</summary>
         /// <param name="max">The maximum.</param>

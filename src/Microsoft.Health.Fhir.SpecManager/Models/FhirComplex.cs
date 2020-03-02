@@ -136,6 +136,49 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
         }
 
+        /// <summary>Adds extension.</summary>
+        /// <param name="extension">        The extension.</param>
+        /// <param name="elementComponents">The element components.</param>
+        /// <param name="startIndex">       The start index.</param>
+        internal void AddExtension(FhirExtension extension, string[] elementComponents, int startIndex)
+        {
+            // check for no name match
+            if (!Name.Equals(elementComponents[startIndex], StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            // check for this type
+            if (startIndex == (elementComponents.Length - 1))
+            {
+                this.AddExtension(extension);
+                return;
+            }
+
+            // check for being the parent to the field
+            if (startIndex == (elementComponents.Length - 2))
+            {
+                // check for field name
+                if (!_properties.ContainsKey(elementComponents[startIndex + 1]))
+                {
+                    return;
+                }
+
+                _properties[elementComponents[startIndex + 1]].AddExtension(extension);
+
+                return;
+            }
+
+            // try to recurse
+            if (_components.ContainsKey(elementComponents[startIndex + 1]))
+            {
+                _components[elementComponents[startIndex + 1]].AddExtension(
+                    extension,
+                    elementComponents,
+                    startIndex + 1);
+            }
+        }
+
         /// <summary>Adds a component from a property.</summary>
         /// <param name="path">Name of the property.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>

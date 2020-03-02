@@ -81,7 +81,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
 
             // process structure definitions (want types and resources)
-            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);
+            ProcessFileGroup(
+                packageDir,
+                "StructureDefinition",
+                ref fhirVersionInfo);
+
+            // process structure definitions for extensions
+            ProcessFileGroup(
+                packageDir,
+                "StructureDefinition",
+                ref fhirVersionInfo,
+                processHint: "Extension");
 
             // process search parameters (adds to resources)
             ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo);
@@ -103,103 +113,96 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             switch (info.MajorVersion)
             {
                 case 2:
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_id", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_lastUpdated", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_tag", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_profile", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_security", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_text", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_content", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_list", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_query", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_content", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_list", "string");
 
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_sort", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_count", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_include", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_revinclude", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_summary", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_elements", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_contained", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_containedType", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_sort", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_count", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_include", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_revinclude", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_summary", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_elements", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_contained", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_containedType", "string");
 
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllInteraction, "_format", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_format", "string");
                     break;
 
                 case 3:
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_id", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_lastUpdated", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_tag", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_profile", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_security", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_text", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_content", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_list", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_has", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_type", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_query", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_text", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_content", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_list", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_has", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_type", "string");
 
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_sort", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_count", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_include", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_revinclude", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_summary", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_elements", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_contained", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_containedType", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_sort", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_count", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_include", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_revinclude", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_summary", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_elements", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_contained", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_containedType", "string");
 
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllInteraction, "_format", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_format", "string");
 
                     break;
 
                 case 4:
                 default:
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_id", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_lastUpdated", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_tag", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_profile", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_security", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_text", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_content", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_list", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_has", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_type", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllResource, "_query", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_text", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_content", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_list", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_has", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_type", "string");
 
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_sort", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_count", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_include", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_revinclude", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_summary", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_total", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_elements", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_contained", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.SearchResult, "_containedType", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_sort", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_count", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_include", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_revinclude", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_summary", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_total", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_elements", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_contained", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_containedType", "string");
 
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllInteraction, "_format", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.AllInteraction, "_pretty", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_format", "string");
+                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_pretty", "string");
 
                     break;
             }
         }
 
-        /// <summary>Process a file group, specified by the file prefix (e.g., StructureDefinition).</summary>
+        /// <summary>
+        /// Process a file group, specified by the file prefix (e.g., StructureDefinition).
+        /// </summary>
         /// <param name="packageDir">     The package dir.</param>
         /// <param name="prefix">         The prefix.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
-        private static void ProcessFileGroup(string packageDir, string prefix, ref FhirVersionInfo fhirVersionInfo)
+        /// <param name="processHint">    (Optional) Additional inclusion criteria.</param>
+        private static void ProcessFileGroup(
+            string packageDir,
+            string prefix,
+            ref FhirVersionInfo fhirVersionInfo,
+            string processHint = "")
         {
             // get the files in this directory
             string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
 
             // process these files
-            ProcessPackageFiles(files, ref fhirVersionInfo);
+            ProcessPackageFiles(files, ref fhirVersionInfo, processHint);
         }
 
         /// <summary>Process the package files.</summary>
         /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
-        /// <param name="files">          The files.</param>
-        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
-        private static void ProcessPackageFiles(string[] files, ref FhirVersionInfo fhirVersionInfo)
+        /// <param name="files">            The files.</param>
+        /// <param name="fhirVersionInfo">  [in,out] Information describing the fhir version.</param>
+        /// <param name="inclusionCriteria">(Optional) Additional inclusion criteria.</param>
+        /// <param name="exclusionCriteria">(Optional) Additional exclusion criteria.</param>
+        private static void ProcessPackageFiles(
+            string[] files,
+            ref FhirVersionInfo fhirVersionInfo,
+            string processHint = "")
         {
             // traverse the files
             foreach (string filename in files)
@@ -253,7 +256,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     }
 
                     // process this resource
-                    fhirVersionInfo.ProcessResource(resource);
+                    fhirVersionInfo.ProcessResource(resource, processHint);
                 }
                 catch (Exception ex)
                 {
