@@ -617,7 +617,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         out FhirComplex parent,
                         out string field))
                 {
-                    throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                    // throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                    // should load later
+                    // TODO: figure out a way to verify all dependencies loaded
+                    continue;
                 }
 
                 string elementType;

@@ -80,6 +80,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // tell the user what's going on
             Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
 
+            // update our structure
+            fhirVersionInfo.VersionString = packageInfo.Version;
+
             // process structure definitions (want types and resources)
             ProcessFileGroup(
                 packageDir,

@@ -263,6 +263,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 elementPaths.Add(context.Expression);
             }
 
+            if (sd.Snapshot.Element.Length > 5)
+            {
+                Console.Write(string.Empty);
+            }
+
             // traverse elements looking for data we need
             foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
             {
@@ -605,7 +610,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         out FhirComplex parent,
                         out string field))
                 {
-                    throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                    // throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                    // should load later
+                    // TODO: figure out a way to verify all dependencies loaded
+                    continue;
                 }
 
                 string elementType;

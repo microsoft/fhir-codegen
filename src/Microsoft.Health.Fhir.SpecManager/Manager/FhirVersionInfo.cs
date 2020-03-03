@@ -41,6 +41,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 2,
                 new HashSet<string>()
                 {
+                    "OperationDefinition",
+                    "SearchParameter",
                     "StructureDefinition",
                 }
             },
@@ -94,8 +96,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 {
                     "Conformance",
                     "NamingSystem",
-                    "OperationDefinition",
-                    "SearchParameter",
                     "ValueSet",
 
                     "ConceptMap",

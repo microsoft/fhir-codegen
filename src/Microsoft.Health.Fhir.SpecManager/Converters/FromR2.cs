@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -84,7 +85,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             FhirVersionInfo fhirVersionInfo)
         {
             // ignore retired
-            if (sp.Status.Equals("retired", StringComparison.Ordinal))
+            if (sp.Status == "retired")
             {
                 return;
             }
@@ -187,7 +188,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             FhirVersionInfo fhirVersionInfo)
         {
             // ignore retired
-            if (sd.Status.Equals("retired", StringComparison.Ordinal))
+            if (sd.Status == "retired")
             {
                 return;
             }
@@ -237,16 +238,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            // look for context information
-            foreach (string context in sd.Context)
-            {
-                elementPaths.Add(context);
-            }
+            // copy context information
+            elementPaths = sd.Context.ToList();
 
             // traverse elements looking for data we need
             foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
             {
-                switch (element.Id)
+                switch (element.Base.Path)
                 {
                     case "Extension.value[x]":
                         // grab types
@@ -610,7 +608,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         out FhirComplex parent,
                         out string field))
                 {
-                    throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                    // throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                    // should load later
+                    // TODO: figure out a way to verify all dependencies loaded
+                    continue;
                 }
 
                 string elementType;
