@@ -10,49 +10,51 @@ using System.Text;
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// <summary>A FHIR extension.</summary>
-    public class FhirExtension
+    public class FhirExtension : FhirTypeBase
     {
+        private Dictionary<string, FhirElement> _properties;
+
         /// <summary>Initializes a new instance of the <see cref="FhirExtension"/> class.</summary>
-        /// <param name="name">                   The name.</param>
-        /// <param name="id">                     The identifier.</param>
-        /// <param name="url">                    The URL.</param>
-        /// <param name="elementPaths">           The full pathname of the element file.</param>
-        /// <param name="allowedTypesAndProfiles">Allowed types and profiles.</param>
-        /// <param name="isModifier">             True if this object is modifier, false if not.</param>
-        /// <param name="isSummary">              True if this object is summary, false if not.</param>
+        /// <param name="name">            The name.</param>
+        /// <param name="id">              The identifier.</param>
+        /// <param name="url">             The URL.</param>
+        /// <param name="standardStatus">  The standard status.</param>
+        /// <param name="shortDescription">Information describing the short.</param>
+        /// <param name="definition">      The definition.</param>
+        /// <param name="comment">         The comment.</param>
+        /// <param name="elementPaths">    The element paths where this extension is valid.</param>
+        /// <param name="isModifier">      True if this object is modifier, false if not.</param>
+        /// <param name="isSummary">       True if this object is summary, false if not.</param>
         public FhirExtension(
             string name,
             string id,
             Uri url,
+            string standardStatus,
+            string shortDescription,
+            string definition,
+            string comment,
             List<string> elementPaths,
-            Dictionary<string, List<string>> allowedTypesAndProfiles,
             bool isModifier,
             bool isSummary)
+            : base(
+                name,
+                url,
+                standardStatus,
+                shortDescription,
+                definition,
+                comment,
+                string.Empty)
         {
-            Name = name;
-            Id = id;
-            URL = url;
             ElementPaths = elementPaths;
-            AllowedTypesAndProfiles = allowedTypesAndProfiles;
             IsModifier = isModifier;
             IsSummary = isSummary;
+
+            _properties = new Dictionary<string, FhirElement>();
         }
-
-        /// <summary>Gets the name.</summary>
-        /// <value>The name.</value>
-        public string Name { get; }
-
-        /// <summary>Gets the identifier.</summary>
-        /// <value>The identifier.</value>
-        public string Id { get; }
 
         /// <summary>Gets the full pathname of the element file.</summary>
         /// <value>The full pathname of the element file.</value>
         public List<string> ElementPaths { get; }
-
-        /// <summary>Gets URL of the document.</summary>
-        /// <value>The URL.</value>
-        public Uri URL { get; }
 
         /// <summary>Gets a list of types of the allowed values.</summary>
         /// <value>A list of types of the allowed values.</value>
@@ -65,5 +67,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets a value indicating whether this object is summary.</summary>
         /// <value>True if this object is summary, false if not.</value>
         public bool IsSummary { get; }
+
+        /// <summary>Gets the properties.</summary>
+        /// <value>The properties.</value>
+        public Dictionary<string, FhirElement> Properties { get => _properties; }
     }
 }

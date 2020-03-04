@@ -15,13 +15,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public class FhirComplex : FhirTypeBase
     {
         private Dictionary<string, FhirComplex> _components;
-        private Dictionary<string, FhirProperty> _properties;
+        private Dictionary<string, FhirElement> _elements;
         private Dictionary<string, FhirSearchParam> _searchParameters;
         private Dictionary<string, FhirOperation> _typeOperations;
         private Dictionary<string, FhirOperation> _instanceOperations;
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
         /// <param name="path">            Full pathname of the file.</param>
+        /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">Information describing the short.</param>
         /// <param name="purpose">         The purpose.</param>
@@ -29,6 +30,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="validationRegEx"> The validation RegEx.</param>
         public FhirComplex(
             string path,
+            Uri url,
             string standardStatus,
             string shortDescription,
             string purpose,
@@ -36,6 +38,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string validationRegEx)
             : base(
                 path,
+                url,
                 standardStatus,
                 shortDescription,
                 purpose,
@@ -43,16 +46,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 validationRegEx)
         {
             _components = new Dictionary<string, FhirComplex>();
-            _properties = new Dictionary<string, FhirProperty>();
+            _elements = new Dictionary<string, FhirElement>();
             _searchParameters = new Dictionary<string, FhirSearchParam>();
             _typeOperations = new Dictionary<string, FhirOperation>();
             _instanceOperations = new Dictionary<string, FhirOperation>();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FhirComplex"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
         /// <param name="path">            Full pathname of the file.</param>
+        /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">Information describing the short.</param>
         /// <param name="purpose">         The purpose.</param>
@@ -61,6 +63,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="baseTypeName">    Name of the base type.</param>
         public FhirComplex(
             string path,
+            Uri url,
             string standardStatus,
             string shortDescription,
             string purpose,
@@ -69,6 +72,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string baseTypeName)
             : this(
                 path,
+                url,
                 standardStatus,
                 shortDescription,
                 purpose,
@@ -82,9 +86,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>True if this object is placeholder, false if not.</value>
         public bool IsPlaceholder { get; set; }
 
-        /// <summary>Gets the properties.</summary>
-        /// <value>The properties.</value>
-        public Dictionary<string, FhirProperty> Properties { get => _properties; }
+        /// <summary>Gets the elements.</summary>
+        /// <value>The elements.</value>
+        public Dictionary<string, FhirElement> Elements { get => _elements; }
 
         /// <summary>Gets the components.</summary>
         /// <value>The components.</value>
@@ -159,12 +163,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             if (startIndex == (elementComponents.Length - 2))
             {
                 // check for field name
-                if (!_properties.ContainsKey(elementComponents[startIndex + 1]))
+                if (!_elements.ContainsKey(elementComponents[startIndex + 1]))
                 {
                     return;
                 }
 
-                _properties[elementComponents[startIndex + 1]].AddExtension(extension);
+                _elements[elementComponents[startIndex + 1]].AddExtension(extension);
 
                 return;
             }
@@ -179,28 +183,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
         }
 
-        /// <summary>Adds a component from a property.</summary>
-        /// <param name="path">Name of the property.</param>
+        /// <summary>Adds a component from an element.</summary>
+        /// <param name="path">Name of the element.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public bool AddComponentFromProperty(string path)
+        public bool AddComponentFromElement(string path)
         {
-            if ((!_properties.ContainsKey(path)) ||
+            if ((!_elements.ContainsKey(path)) ||
                 _components.ContainsKey(path))
             {
                 return false;
             }
 
-            FhirProperty property = _properties[path];
+            FhirElement property = _elements[path];
 
             // create a new complex type from the property
-            _components.Add(property.Path, new FhirComplex(
-                property.Path,
-                property.StandardStatus,
-                property.ShortDescription,
-                property.Purpose,
-                property.Comment,
-                property.ValidationRegEx,
-                property.BaseTypeName));
+            _components.Add(property.Path,
+                new FhirComplex(
+                    property.Path,
+                    property.URL,
+                    property.StandardStatus,
+                    property.ShortDescription,
+                    property.Purpose,
+                    property.Comment,
+                    property.ValidationRegEx,
+                    property.BaseTypeName));
 
             return true;
         }
@@ -264,11 +270,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string path = PathForComponents(elementComponents, 0, startIndex + 1);
 
             // check for matching property, but no component
-            if (_properties.ContainsKey(path) &&
+            if (_elements.ContainsKey(path) &&
                 (!_components.ContainsKey(path)))
             {
                 // add component from property
-                AddComponentFromProperty(path);
+                AddComponentFromElement(path);
             }
 
             // check Components for match

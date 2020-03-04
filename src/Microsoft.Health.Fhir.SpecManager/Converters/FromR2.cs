@@ -303,18 +303,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            // create a new extension object
-            FhirExtension extension = new FhirExtension(
-                sd.Name,
-                sd.Id,
-                new Uri(sd.Url),
-                elementPaths,
-                allowedTypesAndProfiles,
-                isModifier,
-                isSummary);
+            //// create a new extension object
+            //FhirExtension extension = new FhirExtension(
+            //    sd.Name,
+            //    sd.Id,
+            //    new Uri(sd.Url),
+            //    elementPaths,
+            //    allowedTypesAndProfiles,
+            //    isModifier,
+            //    isSummary);
 
-            // add our property extension
-            fhirVersionInfo.AddExtension(extension);
+            //// add our property extension
+            //fhirVersionInfo.AddExtension(extension);
         }
 
         /// <summary>Process a structure definition for a primitive data type.</summary>
@@ -327,6 +327,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Name,
+                new Uri(sd.Url),
                 sd.Status,
                 sd.Description,
                 sd.Requirements,
@@ -567,6 +568,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             // create a new complex type object
             FhirComplex complex = new FhirComplex(
                 sd.Name,
+                new Uri(sd.Url),
                 sd.Status,
                 sd.Description,
                 sd.Requirements,
@@ -654,20 +656,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
 
                 // add this field to the parent type
-                parent.Properties.Add(
+                parent.Elements.Add(
                     path,
-                    new FhirProperty(
+                    new FhirElement(
                         path,
-                        parent.Properties.Count,
+                        null,
+                        parent.Elements.Count,
                         element.Short,
                         element.Definition,
                         element.Comment,
                         string.Empty,
                         elementType,
-                        choiceTypes,
+                        null,
                         (int)(element.Min ?? 0),
-                        element.Max,
-                        targetProfiles));
+                        element.Max));
 
                 // check to see if we need to insert into our alias table
                 if (!string.IsNullOrEmpty(element.Name))

@@ -18,11 +18,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public class FhirTypeBase
     {
         /// <summary>The extensions.</summary>
-        internal Dictionary<string, FhirExtension> _extensions;
+        private Dictionary<string, FhirExtension> _extensions;
 
         /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="path">            The full pathname of the file.</param>
+        /// <param name="url">             The URL.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">The description.</param>
         /// <param name="purpose">         The purpose of this definition.</param>
@@ -30,6 +31,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="validationRegEx"> The validation RegEx.</param>
         internal FhirTypeBase(
             string path,
+            Uri url,
             string standardStatus,
             string shortDescription,
             string purpose,
@@ -49,6 +51,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Purpose = purpose;
             Comment = comment;
             ValidationRegEx = validationRegEx;
+            URL = url;
 
             // check for components in the path
             string[] components = path.Split('.');
@@ -58,10 +61,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _extensions = new Dictionary<string, FhirExtension>();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FhirTypeBase"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
         /// <param name="path">            The full pathname of the file.</param>
+        /// <param name="url">             The URL.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">The description.</param>
         /// <param name="purpose">         The purpose of this definition.</param>
@@ -70,6 +72,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="baseTypeName">    The name of the base type.</param>
         internal FhirTypeBase(
             string path,
+            Uri url,
             string standardStatus,
             string shortDescription,
             string purpose,
@@ -78,6 +81,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string baseTypeName)
             : this(
                 path,
+                url,
                 standardStatus,
                 shortDescription,
                 purpose,
@@ -103,6 +107,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// </summary>
         /// <value>The name capitalized.</value>
         public string NameCapitalized { get; }
+
+        /// <summary>Gets URL of the document.</summary>
+        /// <value>The URL.</value>
+        public Uri URL { get; }
 
         /// <summary>
         /// Gets status of this type in the standards process - use FhirCommon.StandardStatusCodes

@@ -172,43 +172,48 @@ namespace FhirCodegenCli
             }
 
             // traverse properties for this type
-            foreach (KeyValuePair<string, FhirProperty> kvp in complex.Properties.OrderBy(s => s.Value.FieldOrder))
+            foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.FieldOrder))
             {
-                string max = (kvp.Value.CardinalityMax == null) ? "*" : kvp.Value.CardinalityMax.ToString();
+                string max = (element.CardinalityMax == null) ? "*" : element.CardinalityMax.ToString();
 
                 string propertyType = string.Empty;
-                if (kvp.Value.ChoiceTypes != null)
+
+                if (element.ElementTypes != null)
                 {
-                    propertyType = string.Join('|', kvp.Value.ChoiceTypes);
+                    string joiner = string.IsNullOrEmpty(propertyType) ? string.Empty : "|";
+
+                    foreach (FhirElementType elementType in element.ElementTypes.Values)
+                    {
+                        string profiles = string.Empty;
+                        if ((elementType.Profiles != null) && (elementType.Profiles.Count > 0))
+                        {
+                            profiles = "(" + string.Join('|', elementType.Profiles.Values) + ")";
+                        }
+
+                        propertyType = $"{propertyType}{joiner}{elementType.Code}{profiles}";
+                    }
                 }
 
-                string profiles = string.Empty;
-                if (kvp.Value.TargetProfiles != null)
+                if (string.IsNullOrEmpty(propertyType))
                 {
-                    profiles = string.Join('|', kvp.Value.TargetProfiles);
+                    propertyType = element.BaseTypeName;
                 }
 
-                if (!string.IsNullOrEmpty(profiles))
-                {
-                    propertyType = $"{propertyType}({profiles})";
-                }
-
-                Console.WriteLine($"{new string(' ', indentation + 2)}- {kvp.Value.Name}: {propertyType}" +
-                    $" ({kvp.Value.CardinalityMin}" +
-                    $".." +
-                    $"{max})");
+                Console.WriteLine($"{new string(' ', indentation + 2)}- {element.Name}" +
+                    $"[{element.CardinalityMin}..{max}]" +
+                    $": {propertyType}");
 
                 // check for extensions
-                if (kvp.Value.Extensions != null)
+                if (element.Extensions != null)
                 {
-                    DumpExtensions(kvp.Value.Extensions.Values, indentation + 2);
+                    DumpExtensions(element.Extensions.Values, indentation + 2);
                 }
 
                 // check for an inline component definition
-                if (complex.Components.ContainsKey(kvp.Value.Path))
+                if (complex.Components.ContainsKey(element.Path))
                 {
                     // recurse into this definition
-                    DumpComplexElement(complex.Components[kvp.Value.Path], indentation + 2);
+                    DumpComplexElement(complex.Components[element.Path], indentation + 2);
                 }
             }
 

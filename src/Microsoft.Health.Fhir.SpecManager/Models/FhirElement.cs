@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------------
-// <copyright file="FhirProperty.cs" company="Microsoft Corporation">
+// <copyright file="FhirElement.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -11,37 +11,40 @@ using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
-    /// <summary>A FHIR property (in a complex-type or resource).</summary>
-    public class FhirProperty : FhirTypeBase
+    /// <summary>A FHIR element.</summary>
+    public class FhirElement : FhirTypeBase
     {
+        private Dictionary<string, FhirElementType> _elementTypes;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="FhirProperty"/> class.
+        /// Initializes a new instance of the <see cref="FhirElement"/> class.
         /// </summary>
         /// <param name="path">            Full pathname of the file.</param>
+        /// <param name="url">             URL of the resource.</param>
         /// <param name="fieldOrder">      The field order.</param>
         /// <param name="shortDescription">Information describing the short.</param>
         /// <param name="definition">      The definition.</param>
         /// <param name="comment">         The comment.</param>
         /// <param name="validationRegEx"> The validation RegEx.</param>
         /// <param name="baseTypeName">    Name of the base type.</param>
-        /// <param name="expandedTypes">   A list of types of the expanded.</param>
+        /// <param name="elementTypes">    Types and associated profiles.</param>
         /// <param name="cardinalityMin">  The cardinality minimum.</param>
         /// <param name="cardinalityMax">  The cardinaltiy maximum.</param>
-        /// <param name="targetProfiles">  Target profiles valid for this type.</param>
-        public FhirProperty(
+        public FhirElement(
             string path,
+            Uri url,
             int fieldOrder,
             string shortDescription,
             string definition,
             string comment,
             string validationRegEx,
             string baseTypeName,
-            HashSet<string> expandedTypes,
+            Dictionary<string, FhirElementType> elementTypes,
             int cardinalityMin,
-            string cardinalityMax,
-            string[] targetProfiles)
+            string cardinalityMax)
             : base(
                 path,
+                url,
                 string.Empty,
                 shortDescription,
                 definition,
@@ -50,19 +53,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 baseTypeName)
         {
             FieldOrder = fieldOrder;
-            ChoiceTypes = expandedTypes;
+            _elementTypes = elementTypes;
             CardinalityMin = cardinalityMin;
             CardinalityMax = MaxCardinality(cardinalityMax);
-
-            // process target profiles
-            TargetProfiles = new HashSet<string>();
-            if (targetProfiles != null)
-            {
-                foreach (string targetProfile in targetProfiles)
-                {
-                    TargetProfiles.Add(targetProfile.Substring(targetProfile.LastIndexOf('/') + 1));
-                }
-            }
         }
 
         /// <summary>Gets the cardinality minimum.</summary>
@@ -82,19 +75,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The code values.</value>
         public string CodesName { get; set; }
 
-        /// <summary>Gets or sets a value indicating whether this object is inherited.</summary>
-        ///
-        /// <value>True if this object is inherited, false if not.</value>
-        public bool IsInherited { get; set; }
-
-        /// <summary>Gets a list of choice types for this property.</summary>
-        ///
-        /// <value>A list of types allowed for this property.</value>
-        public HashSet<string> ChoiceTypes { get; }
-
-        /// <summary>Gets target profiles.</summary>
-        /// <value>The target profiles.</value>
-        public HashSet<string> TargetProfiles { get; }
+        /// <summary>Gets types and their associated profiles for this element.</summary>
+        /// <value>Types and their associated profiles for this element.</value>
+        public Dictionary<string, FhirElementType> ElementTypes { get => _elementTypes; }
 
         /// <summary>Gets a value indicating whether this property is an array.</summary>
         /// <value>True if this object is array, false if not.</value>

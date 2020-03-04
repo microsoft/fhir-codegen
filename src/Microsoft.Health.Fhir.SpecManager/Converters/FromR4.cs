@@ -22,6 +22,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
     /// <summary>Convert FHIR R4 into local definitions.</summary>
     public sealed class FromR4 : IFhirConverter
     {
+        /// <summary>The path seperators.</summary>
+        private static readonly char[] _pathSeperators = new char[] { '.', ':' };
+
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private readonly JsonConverter _jsonConverter;
 
@@ -238,8 +241,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_4.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo)
         {
+            return;
+            /*
             List<string> elementPaths = new List<string>();
-            Dictionary<string, List<string>> allowedTypesAndProfiles = new Dictionary<string, List<string>>();
             bool isModifier = false;
             bool isSummary = false;
 
@@ -268,20 +272,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 Console.Write(string.Empty);
             }
 
+            string description = string.Empty;
+            string definition = string.Empty;
+            string comment = string.Empty;
+
+            Dictionary<string, FhirElement> properties = new Dictionary<string, FhirElement>();
+
             // traverse elements looking for data we need
             foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
             {
-                switch (element.Id)
+                string path = element.Path;
+                string[] components = element.Path.Split(_pathSeperators);
+                string field = string.Empty;
+                List<string> targetProfiles = new List<string>();
+
+                HashSet<string> choiceTypes = null;
+
+                switch (path)
                 {
                     case "Extension.value[x]":
                         // grab types
                         if (element.Type != null)
                         {
+                            field = field.Replace("[x]", string.Empty);
+                            path = path.Replace("[x]", string.Empty);
+
+                            // traverse allowed types
                             foreach (fhir_4.ElementDefinitionType type in element.Type)
                             {
-                                if (!allowedTypesAndProfiles.ContainsKey(type.Code))
+                                if (!choiceTypes.Contains(type.Code))
                                 {
-                                    allowedTypesAndProfiles.Add(type.Code, new List<string>());
+                                    choiceTypes.Add(type.Code);
                                 }
 
                                 if (type.TargetProfile != null)
@@ -293,6 +314,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                     }
                                 }
                             }
+
+                            // create a new property for this value
+                            FhirElement property = new FhirElement(
+                                path,
+                                null,
+                                properties.Count,
+                                element.Short,
+                                element.Definition,
+                                element.Comment,
+                                null,
+                                string.Empty,
+                                choiceTypes,
+                                (int)(element.Min ?? 0),
+                                element.Max,
+                                targetProfiles);
                         }
 
                         if (element.IsModifier == true)
@@ -319,6 +355,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             isSummary = true;
                         }
 
+                        description = element.Short;
+                        definition = element.Definition;
+                        comment = element.Comment;
+
                         break;
                 }
             }
@@ -335,13 +375,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 sd.Name,
                 sd.Id,
                 new Uri(sd.Url),
+                sd.Status,
+                description,
+                definition,
+                comment,
                 elementPaths,
-                allowedTypesAndProfiles,
                 isModifier,
                 isSummary);
 
             // add our property extension
             fhirVersionInfo.AddExtension(extension);
+            */
         }
 
         /// <summary>Process a structure definition for a Primitive data type.</summary>
@@ -354,6 +398,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Name,
+                new Uri(sd.Url),
                 sd.Status,
                 sd.Description,
                 sd.Purpose,
@@ -367,57 +412,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Gets type from element.</summary>
         /// <param name="structureName">Name of the structure.</param>
         /// <param name="element">      The element.</param>
-        /// <param name="elementType">  [out] Type of the element.</param>
+        /// <param name="elementTypes"> [out] Type of the element.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElement(
             string structureName,
             fhir_4.ElementDefinition element,
-            out string elementType,
-            out string[] targetProfiles)
+            out Dictionary<string, FhirElementType> elementTypes)
         {
-            targetProfiles = null;
-            elementType = null;
+            elementTypes = new Dictionary<string, FhirElementType>();
 
             // check for declared type
             if (element.Type != null)
             {
                 foreach (fhir_4.ElementDefinitionType edType in element.Type)
                 {
-                    if ((edType._Code != null) && (edType._Code.Extension != null))
-                    {
-                        // use an extension-defined type
-                        foreach (fhir_4.Extension ext in edType._Code.Extension)
-                        {
-                            switch (ext.Url)
-                            {
-                                case FhirVersionInfo.UrlFhirType:
-
-                                    // use this type
-                                    // elementType = Utils.TypeFromFhirType(ext.ValueString);
-                                    elementType = ext.ValueUrl;
-                                    targetProfiles = null;
-
-                                    // stop looking
-                                    return true;
-
-                                default:
-                                    // ignore
-                                    break;
-                            }
-                        }
-                    }
-
                     // check for a specified type
                     if (!string.IsNullOrEmpty(edType.Code))
                     {
-                        // use this type
-                        elementType = Utils.TypeFromFhirType(edType.Code);
-                        targetProfiles = edType.TargetProfile;
+                        // create a type for this code
+                        FhirElementType elementType = new FhirElementType(edType.Code, edType.TargetProfile);
 
-                        // done searching
-                        return true;
+                        // add to our dictionary
+                        elementTypes.Add(elementType.Code, elementType);
                     }
                 }
+            }
+
+            if (elementTypes.Count > 0)
+            {
+                return true;
             }
 
             // check for base derived type
@@ -425,30 +448,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 element.Id.Equals(structureName, StringComparison.Ordinal))
             {
                 // base type is here
-                elementType = element.Path;
+                FhirElementType elementType = new FhirElementType(element.Path, null);
+
+                // add to our dictionary
+                elementTypes.Add(elementType.Code, elementType);
 
                 // done searching
                 return true;
             }
 
             // no discovered type
-            elementType = null;
+            elementTypes = null;
             return false;
         }
 
         /// <summary>Attempts to get type from elements.</summary>
         /// <param name="structureName">Name of the structure.</param>
         /// <param name="elements">     The elements.</param>
-        /// <param name="typeName">     [out] Name of the type.</param>
+        /// <param name="elementTypes"> [out] Type of the element.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElements(
             string structureName,
             fhir_4.ElementDefinition[] elements,
-            out string typeName,
-            out string[] targetProfiles)
+            out Dictionary<string, FhirElementType> elementTypes)
         {
-            targetProfiles = null;
-            typeName = string.Empty;
+            elementTypes = null;
 
             foreach (fhir_4.ElementDefinition element in elements)
             {
@@ -458,11 +482,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // check for base path having a type
                 if (components.Length == 1)
                 {
-                    if (TryGetTypeFromElement(structureName, element, out string elementType, out targetProfiles))
+                    if (TryGetTypeFromElement(structureName, element, out elementTypes))
                     {
-                        // set our type
-                        typeName = elementType;
-
                         // done searching
                         return true;
                     }
@@ -472,87 +493,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 if ((components.Length == 2) &&
                     components[1].Equals("value", StringComparison.Ordinal))
                 {
-                    if (TryGetTypeFromElement(structureName, element, out string elementType, out targetProfiles))
+                    if (TryGetTypeFromElement(structureName, element, out elementTypes))
                     {
-                        // set our type
-                        typeName = elementType;
-
                         // keep looking in case we find a better option
                         continue;
                     }
                 }
             }
 
-            if (!string.IsNullOrEmpty(typeName))
+            if (elementTypes != null)
             {
                 return true;
             }
 
             return false;
-        }
-
-        /// <summary>Attempts to get expanded types.</summary>
-        /// <param name="element">The element.</param>
-        /// <param name="types">  [out] The types.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool TryGetChoiceTypes(fhir_4.ElementDefinition element, out HashSet<string> types)
-        {
-            types = new HashSet<string>();
-
-            // expanded types must be explicit
-            if (element.Type == null)
-            {
-                return false;
-            }
-
-            foreach (fhir_4.ElementDefinitionType edType in element.Type)
-            {
-                // check for a specified type
-                if (!string.IsNullOrEmpty(edType.Code))
-                {
-                    // use this type
-                    types.Add(edType.Code);
-
-                    // check next type
-                    continue;
-                }
-
-                // use an extension-defined type
-                foreach (fhir_4.Extension ext in edType._Code.Extension)
-                {
-                    switch (ext.Url)
-                    {
-                        case FhirVersionInfo.UrlFhirType:
-
-                            // use this type
-                            types.Add(ext.ValueString);
-
-                            // check next type
-                            continue;
-
-                        case FhirVersionInfo.UrlXmlType:
-
-                            // use this type
-                            types.Add(Utils.TypeFromXmlType(ext.ValueString));
-
-                            // check next type
-                            continue;
-
-                        default:
-                            // ignore
-                            break;
-                    }
-                }
-            }
-
-            // check for no discovered types
-            if (types.Count == 0)
-            {
-                return false;
-            }
-
-            // success
-            return true;
         }
 
         /// <summary>Process a complex structure (Complex Type or Resource).</summary>
@@ -564,11 +518,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             FhirVersionInfo fhirVersionInfo,
             bool isResource)
         {
-            string[] targetProfiles = null;
-
             // create a new complex type object for this type or resource
             FhirComplex complex = new FhirComplex(
                 sd.Name,
+                new Uri(sd.Url),
                 sd.Status,
                 sd.Description,
                 sd.Purpose,
@@ -582,18 +535,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
             else
             {
-                if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out string typeName, out targetProfiles))
+                if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out Dictionary<string, FhirElementType> baseTypes))
                 {
                     throw new InvalidDataException($"Could not determine base type for {sd.Name}");
                 }
 
-                complex.BaseTypeName = typeName;
+                if (baseTypes.Count == 0)
+                {
+                    throw new InvalidDataException($"Could not determine base type for {sd.Name}");
+                }
+
+                if (baseTypes.Count > 1)
+                {
+                    throw new InvalidDataException($"Too many types for {sd.Name}: {baseTypes.Count}");
+                }
+
+                complex.BaseTypeName = baseTypes.ElementAt(0).Value.Code;
             }
 
             // look for properties on this type
             foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
             {
                 string path = element.Path;
+                Dictionary<string, FhirElementType> elementTypes = null;
+                string elementType = string.Empty;
 
                 // split the path into component parts
                 string[] components = path.Split('.');
@@ -616,8 +581,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     continue;
                 }
 
-                string elementType;
-                HashSet<string> choiceTypes = null;
+                // if we can't find a type, assume Element
+                if (!TryGetTypeFromElement(parent.Name, element, out elementTypes))
+                {
+                    elementType = "Element";
+                }
 
                 // determine if there is type expansion
                 if (field.Contains("[x]"))
@@ -626,14 +594,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     path = path.Replace("[x]", string.Empty);
                     field = field.Replace("[x]", string.Empty);
 
-                    // no base type
+                    // force no base type
                     elementType = string.Empty;
-
-                    // get multiple types
-                    if (!TryGetChoiceTypes(element, out choiceTypes))
-                    {
-                        throw new InvalidDataException($"Could not get choice types for {sd.Name} field {element.Path}");
-                    }
                 }
                 else if (!string.IsNullOrEmpty(element.ContentReference))
                 {
@@ -649,30 +611,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             throw new InvalidDataException($"Could not resolve ContentReference {element.ContentReference} in {sd.Name} field {element.Path}");
                     }
                 }
-                else
-                {
-                    // if we can't find a type, assume Element
-                    if (!TryGetTypeFromElement(parent.Name, element, out elementType, out targetProfiles))
-                    {
-                        elementType = "Element";
-                    }
-                }
 
                 // add this field to the parent type
-                parent.Properties.Add(
+                parent.Elements.Add(
                     path,
-                    new FhirProperty(
+                    new FhirElement(
                         path,
-                        parent.Properties.Count,
+                        null,
+                        parent.Elements.Count,
                         element.Short,
                         element.Definition,
                         element.Comment,
                         string.Empty,
                         elementType,
-                        choiceTypes,
+                        elementTypes,
                         (int)(element.Min ?? 0),
-                        element.Max,
-                        targetProfiles));
+                        element.Max));
             }
 
             // add our type
