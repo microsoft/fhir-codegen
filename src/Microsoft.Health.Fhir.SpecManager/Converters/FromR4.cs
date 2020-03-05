@@ -170,7 +170,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     if ((sd.Type != "Extension") &&
                         (sd.Derivation != "constraint"))
                     {
-                        ProcessComplex(sd, fhirVersionInfo, false);
+                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.DataType);
                     }
 
                     break;
@@ -179,7 +179,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     // exclude profiles
                     if (sd.Derivation != "constraint")
                     {
-                        ProcessComplex(sd, fhirVersionInfo, true);
+                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Resource);
                     }
 
                     break;
@@ -203,11 +203,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             switch (sd.Kind)
             {
                 case "primitive-type":
-                    // include extensions
-                    if (sd.Type == "Extension")
-                    {
-                        ProcessExtension(sd, fhirVersionInfo);
-                    }
+                    Console.Write(string.Empty);
 
                     break;
 
@@ -216,7 +212,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     if ((sd.Type == "Extension") ||
                         (sd.Derivation == "constraint"))
                     {
-                        ProcessExtension(sd, fhirVersionInfo);
+                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
                     }
 
                     break;
@@ -225,7 +221,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     // include profiles
                     if (sd.Derivation == "constraint")
                     {
-                        ProcessExtension(sd, fhirVersionInfo);
+                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
                     }
 
                     break;
@@ -397,6 +393,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         {
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
+                sd.Id,
                 sd.Name,
                 new Uri(sd.Url),
                 sd.Status,
@@ -510,133 +507,220 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
         /// <summary>Process a complex structure (Complex Type or Resource).</summary>
-        /// <param name="sd">             The structure definition to parse.</param>
-        /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        /// <param name="isResource">     True if is resource, false if not.</param>
+        /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
+        /// <param name="sd">                   The structure definition to parse.</param>
+        /// <param name="fhirVersionInfo">      FHIR Version information.</param>
+        /// <param name="definitionComplexType">True if is resource, false if not.</param>
         private static void ProcessComplex(
             fhir_4.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo,
-            bool isResource)
+            FhirComplex.FhirComplexType definitionComplexType)
         {
-            // create a new complex type object for this type or resource
-            FhirComplex complex = new FhirComplex(
-                sd.Name,
-                new Uri(sd.Url),
-                sd.Status,
-                sd.Description,
-                sd.Purpose,
-                string.Empty,
-                null);
-
-            // check for a base definition
-            if (!string.IsNullOrEmpty(sd.BaseDefinition))
+            try
             {
-                complex.BaseTypeName = sd.BaseDefinition.Substring(sd.BaseDefinition.LastIndexOf('/') + 1);
-            }
-            else
-            {
-                if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out Dictionary<string, FhirElementType> baseTypes))
+                if ((sd.Snapshot == null) || (sd.Snapshot.Element == null))
                 {
-                    throw new InvalidDataException($"Could not determine base type for {sd.Name}");
+                    return;
                 }
 
-                if (baseTypes.Count == 0)
+                List<string> contextElements = new List<string>();
+
+                // create a new complex type object for this type or resource
+                FhirComplex complex = new FhirComplex(
+                    sd.Id,
+                    sd.Name,
+                    new Uri(sd.Url),
+                    sd.Status,
+                    sd.Description,
+                    sd.Purpose,
+                    string.Empty,
+                    null);
+
+                if (sd.Context != null)
                 {
-                    throw new InvalidDataException($"Could not determine base type for {sd.Name}");
-                }
-
-                if (baseTypes.Count > 1)
-                {
-                    throw new InvalidDataException($"Too many types for {sd.Name}: {baseTypes.Count}");
-                }
-
-                complex.BaseTypeName = baseTypes.ElementAt(0).Value.Code;
-            }
-
-            // look for properties on this type
-            foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
-            {
-                string path = element.Path;
-                Dictionary<string, FhirElementType> elementTypes = null;
-                string elementType = string.Empty;
-
-                // split the path into component parts
-                string[] components = path.Split('.');
-
-                // base definition, already processed
-                if (components.Length < 2)
-                {
-                    continue;
-                }
-
-                // get the parent container and our field name
-                if (!complex.GetParentAndFieldName(
-                        components,
-                        out FhirComplex parent,
-                        out string field))
-                {
-                    // throw new InvalidDataException($"Could not find parent for {element.Path}!");
-                    // should load later
-                    // TODO: figure out a way to verify all dependencies loaded
-                    continue;
-                }
-
-                // if we can't find a type, assume Element
-                if (!TryGetTypeFromElement(parent.Name, element, out elementTypes))
-                {
-                    elementType = "Element";
-                }
-
-                // determine if there is type expansion
-                if (field.Contains("[x]"))
-                {
-                    // fix the field and path names
-                    path = path.Replace("[x]", string.Empty);
-                    field = field.Replace("[x]", string.Empty);
-
-                    // force no base type
-                    elementType = string.Empty;
-                }
-                else if (!string.IsNullOrEmpty(element.ContentReference))
-                {
-                    // check for local definition
-                    switch (element.ContentReference[0])
+                    foreach (fhir_4.StructureDefinitionContext context in sd.Context)
                     {
-                        case '#':
-                            // use the local reference
-                            elementType = element.ContentReference.Substring(1);
-                            break;
+                        if (context.Type != "element")
+                        {
+                            throw new ArgumentException($"Invalid extension context type: {context.Type}");
+                        }
 
-                        default:
-                            throw new InvalidDataException($"Could not resolve ContentReference {element.ContentReference} in {sd.Name} field {element.Path}");
+                        contextElements.Add(context.Expression);
                     }
                 }
 
-                // add this field to the parent type
-                parent.Elements.Add(
-                    path,
-                    new FhirElement(
-                        path,
-                        null,
-                        parent.Elements.Count,
-                        element.Short,
-                        element.Definition,
-                        element.Comment,
-                        string.Empty,
-                        elementType,
-                        elementTypes,
-                        (int)(element.Min ?? 0),
-                        element.Max));
-            }
+                // check for a base definition
+                if (!string.IsNullOrEmpty(sd.BaseDefinition))
+                {
+                    complex.BaseTypeName = sd.BaseDefinition.Substring(sd.BaseDefinition.LastIndexOf('/') + 1);
+                }
+                else
+                {
+                    if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out Dictionary<string, FhirElementType> baseTypes))
+                    {
+                        throw new InvalidDataException($"Could not determine base type for {sd.Name}");
+                    }
 
-            // add our type
-            if (isResource)
-            {
-                fhirVersionInfo.AddResource(complex);
+                    if (baseTypes.Count == 0)
+                    {
+                        throw new InvalidDataException($"Could not determine base type for {sd.Name}");
+                    }
+
+                    if (baseTypes.Count > 1)
+                    {
+                        throw new InvalidDataException($"Too many types for {sd.Name}: {baseTypes.Count}");
+                    }
+
+                    complex.BaseTypeName = baseTypes.ElementAt(0).Value.Code;
+                }
+
+                // look for properties on this type
+                foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
+                {
+                    string id = element.Id;
+                    string path = element.Path;
+                    Dictionary<string, FhirElementType> elementTypes = null;
+                    string elementType = string.Empty;
+
+                    // split the id into component parts
+                    string[] idComponents = id.Split('.');
+                    string[] pathComponents = path.Split('.');
+
+                    // base definition, already processed
+                    if (pathComponents.Length < 2)
+                    {
+                        continue;
+                    }
+
+                    // get the parent container and our field name
+                    if (!complex.GetParentAndFieldName(
+                            idComponents,
+                            pathComponents,
+                            out FhirComplex parent,
+                            out string field,
+                            out string sliceName))
+                    {
+                        // throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                        // should load later
+                        // TODO: figure out a way to verify all dependencies loaded
+                        continue;
+                    }
+
+                    // check for needing to add a slice to an element
+                    if (!string.IsNullOrEmpty(sliceName))
+                    {
+                        // add this slice to the field
+                        parent.Elements[field].AddSlice(sliceName);
+
+                        // only slice parent has slice name
+                        continue;
+                    }
+
+                    // if we can't find a type, assume Element
+                    if (!TryGetTypeFromElement(parent.Name, element, out elementTypes))
+                    {
+                        elementType = "Element";
+                    }
+
+                    // determine if there is type expansion
+                    if (field.Contains("[x]"))
+                    {
+                        // fix the field and path names
+                        id = id.Replace("[x]", string.Empty);
+                        field = field.Replace("[x]", string.Empty);
+
+                        // force no base type
+                        elementType = string.Empty;
+                    }
+                    else if (!string.IsNullOrEmpty(element.ContentReference))
+                    {
+                        // check for local definition
+                        switch (element.ContentReference[0])
+                        {
+                            case '#':
+                                // use the local reference
+                                elementType = element.ContentReference.Substring(1);
+                                break;
+
+                            default:
+                                throw new InvalidDataException($"Could not resolve ContentReference {element.ContentReference} in {sd.Name} field {element.Path}");
+                        }
+                    }
+
+                    FhirSlicing slicing = null;
+
+                    if (element.Slicing != null)
+                    {
+                        List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>();
+
+                        if (element.Slicing.Discriminator == null)
+                        {
+                            throw new InvalidDataException($"Missing slicing discriminator: {sd.Name} - {element.Path}");
+                        }
+
+                        foreach (fhir_4.ElementDefinitionSlicingDiscriminator discriminator in element.Slicing.Discriminator)
+                        {
+                            discriminatorRules.Add(new FhirSliceDiscriminatorRule(
+                                discriminator.Type,
+                                discriminator.Path));
+                        }
+
+                        // create our slicing
+                        slicing = new FhirSlicing(
+                            element.Slicing.Description,
+                            element.Slicing.Ordered,
+                            element.Slicing.Rules,
+                            discriminatorRules);
+                    }
+
+                    // get default values (if present)
+                    GetDefaultValueIfPresent(element, out string defaultName, out object defaultValue);
+
+                    // get fixed values (if present)
+                    GetFixedValueIfPresent(element, out string fixedName, out object fixedValue);
+
+                    // add this field to the parent type
+                    parent.Elements.Add(
+                        path,
+                        new FhirElement(
+                            id,
+                            path,
+                            null,
+                            parent.Elements.Count,
+                            element.Short,
+                            element.Definition,
+                            element.Comment,
+                            string.Empty,
+                            elementType,
+                            elementTypes,
+                            (int)(element.Min ?? 0),
+                            element.Max,
+                            element.IsModifier,
+                            element.IsSummary,
+                            defaultName,
+                            defaultValue,
+                            slicing,
+                            fixedName,
+                            fixedValue));
+                }
+
+                switch (definitionComplexType)
+                {
+                    case FhirComplex.FhirComplexType.DataType:
+                        fhirVersionInfo.AddComplexType(complex);
+                        break;
+                    case FhirComplex.FhirComplexType.Resource:
+                        fhirVersionInfo.AddResource(complex);
+                        break;
+                    case FhirComplex.FhirComplexType.Extension:
+                        fhirVersionInfo.AddExtension(contextElements, complex);
+                        break;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                fhirVersionInfo.AddComplexType(complex);
+                Console.WriteLine(ex);
+                throw;
             }
         }
 
@@ -708,6 +792,298 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 Console.WriteLine($"FromR4.TryProcessResource <<< Failed to process resource:\n{ex}\n--------------");
                 throw;
             }
+        }
+
+        /// <summary>Gets default value if present.</summary>
+        /// <param name="element">     The element.</param>
+        /// <param name="defaultName"> [out] The default name.</param>
+        /// <param name="defaultValue">[out] The default value.</param>
+        private static void GetDefaultValueIfPresent(
+            fhir_4.ElementDefinition element,
+            out string defaultName,
+            out object defaultValue)
+        {
+            if (element.DefaultValueBase64Binary != null)
+            {
+                defaultName = "defaultValueBase64Binary";
+                defaultValue = element.DefaultValueBase64Binary;
+                return;
+            }
+
+            if (element.DefaultValueCanonical != null)
+            {
+                defaultName = "defaultValueCanonical";
+                defaultValue = element.DefaultValueCanonical;
+                return;
+            }
+
+            if (element.DefaultValueCode != null)
+            {
+                defaultName = "defaultValueCode";
+                defaultValue = element.DefaultValueCode;
+                return;
+            }
+
+            if (element.DefaultValueDate != null)
+            {
+                defaultName = "defaultValueDate";
+                defaultValue = element.DefaultValueDate;
+                return;
+            }
+
+            if (element.DefaultValueDateTime != null)
+            {
+                defaultName = "defaultValueDateTime";
+                defaultValue = element.DefaultValueDateTime;
+                return;
+            }
+
+            if (element.DefaultValueDecimal != null)
+            {
+                defaultName = "defaultValueDecimal";
+                defaultValue = element.DefaultValueDecimal;
+                return;
+            }
+
+            if (element.DefaultValueId != null)
+            {
+                defaultName = "defaultValueId";
+                defaultValue = element.DefaultValueId;
+                return;
+            }
+
+            if (element.DefaultValueInstant != null)
+            {
+                defaultName = "defaultValueInstant";
+                defaultValue = element.DefaultValueInstant;
+                return;
+            }
+
+            if (element.DefaultValueInteger != null)
+            {
+                defaultName = "defaultValueInteger";
+                defaultValue = element.DefaultValueInteger;
+                return;
+            }
+
+            if (element.DefaultValueInteger64 != null)
+            {
+                defaultName = "defaultValueInteger64";
+                defaultValue = element.DefaultValueInteger64;
+                return;
+            }
+
+            if (element.DefaultValueMarkdown != null)
+            {
+                defaultName = "defaultValueMarkdown";
+                defaultValue = element.DefaultValueMarkdown;
+                return;
+            }
+
+            if (element.DefaultValueOid != null)
+            {
+                defaultName = "defaultValueOid";
+                defaultValue = element.DefaultValueOid;
+                return;
+            }
+
+            if (element.DefaultValuePositiveInt != null)
+            {
+                defaultName = "defaultValuePositiveInt";
+                defaultValue = element.DefaultValuePositiveInt;
+                return;
+            }
+
+            if (element.DefaultValueString != null)
+            {
+                defaultName = "defaultValueString";
+                defaultValue = element.DefaultValueString;
+                return;
+            }
+
+            if (element.DefaultValueTime != null)
+            {
+                defaultName = "defaultValueTime";
+                defaultValue = element.DefaultValueTime;
+                return;
+            }
+
+            if (element.DefaultValueUnsignedInt != null)
+            {
+                defaultName = "defaultValueUnsignedInt";
+                defaultValue = element.DefaultValueUnsignedInt;
+                return;
+            }
+
+            if (element.DefaultValueUri != null)
+            {
+                defaultName = "defaultValueUri";
+                defaultValue = element.DefaultValueUri;
+                return;
+            }
+
+            if (element.DefaultValueUrl != null)
+            {
+                defaultName = "defaultValueUrl";
+                defaultValue = element.DefaultValueUrl;
+                return;
+            }
+
+            if (element.DefaultValueUuid != null)
+            {
+                defaultName = "defaultValueUuid";
+                defaultValue = element.DefaultValueUuid;
+                return;
+            }
+
+            defaultName = string.Empty;
+            defaultValue = null;
+        }
+
+        /// <summary>Gets fixed value if present.</summary>
+        /// <param name="element">   The element.</param>
+        /// <param name="fixedName"> [out] Name of the fixed.</param>
+        /// <param name="fixedValue">[out] The fixed value.</param>
+        private static void GetFixedValueIfPresent(
+            fhir_4.ElementDefinition element,
+            out string fixedName,
+            out object fixedValue)
+        {
+            if (element.FixedBase64Binary != null)
+            {
+                fixedName = "fixedValueBase64Binary";
+                fixedValue = element.FixedBase64Binary;
+                return;
+            }
+
+            if (element.FixedCanonical != null)
+            {
+                fixedName = "fixedValueCanonical";
+                fixedValue = element.FixedCanonical;
+                return;
+            }
+
+            if (element.FixedCode != null)
+            {
+                fixedName = "fixedValueCode";
+                fixedValue = element.FixedCode;
+                return;
+            }
+
+            if (element.FixedDate != null)
+            {
+                fixedName = "fixedValueDate";
+                fixedValue = element.FixedDate;
+                return;
+            }
+
+            if (element.FixedDateTime != null)
+            {
+                fixedName = "fixedValueDateTime";
+                fixedValue = element.FixedDateTime;
+                return;
+            }
+
+            if (element.FixedDecimal != null)
+            {
+                fixedName = "fixedValueDecimal";
+                fixedValue = element.FixedDecimal;
+                return;
+            }
+
+            if (element.FixedId != null)
+            {
+                fixedName = "fixedValueId";
+                fixedValue = element.FixedId;
+                return;
+            }
+
+            if (element.FixedInstant != null)
+            {
+                fixedName = "fixedValueInstant";
+                fixedValue = element.FixedInstant;
+                return;
+            }
+
+            if (element.FixedInteger != null)
+            {
+                fixedName = "fixedValueInteger";
+                fixedValue = element.FixedInteger;
+                return;
+            }
+
+            if (element.FixedInteger64 != null)
+            {
+                fixedName = "fixedValueInteger64";
+                fixedValue = element.FixedInteger64;
+                return;
+            }
+
+            if (element.FixedMarkdown != null)
+            {
+                fixedName = "fixedValueMarkdown";
+                fixedValue = element.FixedMarkdown;
+                return;
+            }
+
+            if (element.FixedOid != null)
+            {
+                fixedName = "fixedValueOid";
+                fixedValue = element.FixedOid;
+                return;
+            }
+
+            if (element.FixedPositiveInt != null)
+            {
+                fixedName = "fixedValuePositiveInt";
+                fixedValue = element.FixedPositiveInt;
+                return;
+            }
+
+            if (element.FixedString != null)
+            {
+                fixedName = "fixedValueString";
+                fixedValue = element.FixedString;
+                return;
+            }
+
+            if (element.FixedTime != null)
+            {
+                fixedName = "fixedValueTime";
+                fixedValue = element.FixedTime;
+                return;
+            }
+
+            if (element.FixedUnsignedInt != null)
+            {
+                fixedName = "fixedValueUnsignedInt";
+                fixedValue = element.FixedUnsignedInt;
+                return;
+            }
+
+            if (element.FixedUri != null)
+            {
+                fixedName = "fixedValueUri";
+                fixedValue = element.FixedUri;
+                return;
+            }
+
+            if (element.FixedUrl != null)
+            {
+                fixedName = "fixedValueUrl";
+                fixedValue = element.FixedUrl;
+                return;
+            }
+
+            if (element.FixedUuid != null)
+            {
+                fixedName = "fixedValueUuid";
+                fixedValue = element.FixedUuid;
+                return;
+            }
+
+            fixedName = string.Empty;
+            fixedValue = null;
         }
     }
 }

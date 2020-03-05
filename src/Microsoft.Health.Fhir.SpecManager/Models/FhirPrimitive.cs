@@ -15,6 +15,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public class FhirPrimitive : FhirTypeBase
     {
         /// <summary>Initializes a new instance of the <see cref="FhirPrimitive"/> class.</summary>
+        /// <param name="id">              The identifier.</param>
         /// <param name="path">            Full pathname of the file.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
@@ -23,6 +24,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="comment">         The comment.</param>
         /// <param name="validationRegEx"> The validation RegEx.</param>
         public FhirPrimitive(
+            string id,
             string path,
             Uri url,
             string standardStatus,
@@ -31,6 +33,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string comment,
             string validationRegEx)
             : base(
+                id,
                 path,
                 url,
                 standardStatus,

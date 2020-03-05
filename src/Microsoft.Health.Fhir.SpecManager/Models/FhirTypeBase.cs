@@ -18,11 +18,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public class FhirTypeBase
     {
         /// <summary>The extensions.</summary>
-        private Dictionary<string, FhirExtension> _extensions;
+        private Dictionary<string, FhirComplex> _extensions;
 
         /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-        /// <param name="path">            The full pathname of the file.</param>
+        /// <param name="id">              The id of this element/resource/datatype.</param>
+        /// <param name="path">            The dot-notation path to this element/resource/datatype.</param>
         /// <param name="url">             The URL.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">The description.</param>
@@ -30,6 +31,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="comment">         The comment.</param>
         /// <param name="validationRegEx"> The validation RegEx.</param>
         internal FhirTypeBase(
+            string id,
             string path,
             Uri url,
             string standardStatus,
@@ -45,6 +47,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             // set internal values
+            Id = id;
             Path = path;
             StandardStatus = standardStatus;
             ShortDescription = shortDescription;
@@ -58,11 +61,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Name = components[components.Length - 1];
             NameCapitalized = Capitalize(Name);
 
-            _extensions = new Dictionary<string, FhirExtension>();
+            _extensions = new Dictionary<string, FhirComplex>();
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
-        /// <param name="path">            The full pathname of the file.</param>
+        /// <param name="id">              The id of this element/resource/datatype/extension.</param>
+        /// <param name="path">            The dot-notation path to this element/resource/datatype/extension.</param>
         /// <param name="url">             The URL.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">The description.</param>
@@ -71,6 +75,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="validationRegEx"> The validation RegEx.</param>
         /// <param name="baseTypeName">    The name of the base type.</param>
         internal FhirTypeBase(
+            string id,
             string path,
             Uri url,
             string standardStatus,
@@ -80,6 +85,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string validationRegEx,
             string baseTypeName)
             : this(
+                id,
                 path,
                 url,
                 standardStatus,
@@ -91,8 +97,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             BaseTypeName = baseTypeName;
         }
 
-        /// <summary>Gets the full path to this object.</summary>
-        /// <value>The full pathname of the file.</value>
+        /// <summary>Gets the Id for this element/resource/datatype.</summary>
+        /// <value>The Id for this element/resource/datatype.</value>
+        public string Id { get; }
+
+        /// <summary>Gets the dot-notation path to this element/resource/datatype.</summary>
+        /// <value>The dot-notation path to this element/resource/datatype.</value>
         public string Path { get; }
 
         /// <summary>
@@ -155,7 +165,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the extensions.</summary>
         /// <value>The extensions.</value>
-        public Dictionary<string, FhirExtension> Extensions { get => _extensions; }
+        public Dictionary<string, FhirComplex> Extensions { get => _extensions; }
 
         /// <summary>Capitalizes a name.</summary>
         /// <param name="name">The name.</param>
@@ -172,7 +182,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Adds an extension.</summary>
         /// <param name="extension">The extension.</param>
-        internal void AddExtension(FhirExtension extension)
+        internal void AddExtension(FhirComplex extension)
         {
             string url = extension.URL.ToString();
 

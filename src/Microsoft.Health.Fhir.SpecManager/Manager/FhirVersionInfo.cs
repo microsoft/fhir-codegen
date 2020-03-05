@@ -362,29 +362,49 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Adds an extension.</summary>
         /// <param name="extension">The extension.</param>
-        internal void AddExtension(FhirExtension extension)
+        private void AddExtension(FhirComplex extension)
         {
-            // look for properties this should be defined on
-            if (extension.ElementPaths != null)
+            if (_resources.ContainsKey(extension.BaseTypeName))
             {
-                foreach (string elementPath in extension.ElementPaths)
+                string[] components = new string[1] { extension.BaseTypeName };
+
+                _resources[extension.BaseTypeName].AddExtension(extension, components, 0);
+            }
+        }
+
+        /// <summary>Adds an extension.</summary>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+        /// <param name="contextElements">The context elements.</param>
+        /// <param name="extension">      The extension.</param>
+        internal void AddExtension(List<string> contextElements, FhirComplex extension)
+        {
+            if ((contextElements == null) || (contextElements.Count == 0))
+            {
+                if (string.IsNullOrEmpty(extension.BaseTypeName))
                 {
-                    if (string.IsNullOrEmpty(elementPath))
-                    {
-                        continue;
-                    }
+                    throw new ArgumentNullException(nameof(contextElements));
+                }
 
-                    string[] components = elementPath.Split('.');
+                AddExtension(extension);
+            }
 
-                    if (_resources.ContainsKey(components[0]))
-                    {
-                        _resources[components[0]].AddExtension(extension, components, 0);
-                    }
+            foreach (string elementPath in contextElements)
+            {
+                if (string.IsNullOrEmpty(elementPath))
+                {
+                    continue;
+                }
 
-                    if (_complexTypes.ContainsKey(components[0]))
-                    {
-                        _complexTypes[components[0]].AddExtension(extension, components, 0);
-                    }
+                string[] components = elementPath.Split('.');
+
+                if (_resources.ContainsKey(components[0]))
+                {
+                    _resources[components[0]].AddExtension(extension, components, 0);
+                }
+
+                if (_complexTypes.ContainsKey(components[0]))
+                {
+                    _complexTypes[components[0]].AddExtension(extension, components, 0);
                 }
             }
         }

@@ -19,18 +19,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirElement"/> class.
         /// </summary>
-        /// <param name="path">            Full pathname of the file.</param>
-        /// <param name="url">             URL of the resource.</param>
-        /// <param name="fieldOrder">      The field order.</param>
-        /// <param name="shortDescription">Information describing the short.</param>
-        /// <param name="definition">      The definition.</param>
-        /// <param name="comment">         The comment.</param>
-        /// <param name="validationRegEx"> The validation RegEx.</param>
-        /// <param name="baseTypeName">    Name of the base type.</param>
-        /// <param name="elementTypes">    Types and associated profiles.</param>
-        /// <param name="cardinalityMin">  The cardinality minimum.</param>
-        /// <param name="cardinalityMax">  The cardinaltiy maximum.</param>
+        /// <param name="id">               Id for this element.</param>
+        /// <param name="path">             Dot notation path for this element.</param>
+        /// <param name="url">              URL of this element (if present).</param>
+        /// <param name="fieldOrder">       The field order.</param>
+        /// <param name="shortDescription"> Information describing the short.</param>
+        /// <param name="definition">       The definition.</param>
+        /// <param name="comment">          The comment.</param>
+        /// <param name="validationRegEx">  The validation RegEx.</param>
+        /// <param name="baseTypeName">     Name of the base type.</param>
+        /// <param name="elementTypes">     Types and associated profiles.</param>
+        /// <param name="cardinalityMin">   The cardinality minimum.</param>
+        /// <param name="cardinalityMax">   The cardinaltiy maximum.</param>
+        /// <param name="isModifier">       If this element modifies the meaning of its parent.</param>
+        /// <param name="isSummary">        If this element should be included in summaries.</param>
+        /// <param name="slicing">          Slicing information for this element, if present.</param>
+        /// <param name="defaultFieldName"> Name of a default field, e.g., defaultUri, defaultCode.</param>
+        /// <param name="defaultFieldValue">Value of a default field.</param>
+        /// <param name="fixedFieldName">   Name of a fixed field, e.g., fixedUri, fixedCode.</param>
+        /// <param name="fixedFieldValue">  Value of a fixed field.</param>
         public FhirElement(
+            string id,
             string path,
             Uri url,
             int fieldOrder,
@@ -41,8 +50,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string baseTypeName,
             Dictionary<string, FhirElementType> elementTypes,
             int cardinalityMin,
-            string cardinalityMax)
+            string cardinalityMax,
+            bool? isModifier,
+            bool? isSummary,
+            string defaultFieldName,
+            object defaultFieldValue,
+            FhirSlicing slicing,
+            string fixedFieldName,
+            object fixedFieldValue)
             : base(
+                id,
                 path,
                 url,
                 string.Empty,
@@ -54,8 +71,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         {
             FieldOrder = fieldOrder;
             _elementTypes = elementTypes;
+
             CardinalityMin = cardinalityMin;
             CardinalityMax = MaxCardinality(cardinalityMax);
+
+            IsModifier = isModifier == true;
+            IsSummary = isSummary == true;
+
+            DefaultFieldName = defaultFieldName;
+            DefaultFieldValue = defaultFieldValue;
+
+            Slicing = slicing;
+
+            FixedFieldName = fixedFieldName;
+            FixedFieldValue = fixedFieldValue;
         }
 
         /// <summary>Gets the cardinality minimum.</summary>
@@ -66,6 +95,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the cardinaltiy maximum, -1 for unbounded (e.g., *).</summary>
         /// <value>The cardinaltiy maximum.</value>
         public int? CardinalityMax { get; }
+
+        /// <summary>Gets a value indicating whether this object is modifier.</summary>
+        /// <value>True if this object is modifier, false if not.</value>
+        public bool IsModifier { get; }
+
+        /// <summary>Gets a value indicating whether this object is summary.</summary>
+        /// <value>True if this object is summary, false if not.</value>
+        public bool IsSummary { get; }
 
         /// <summary>Gets the field order.</summary>
         /// <value>The field order.</value>
@@ -78,6 +115,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets types and their associated profiles for this element.</summary>
         /// <value>Types and their associated profiles for this element.</value>
         public Dictionary<string, FhirElementType> ElementTypes { get => _elementTypes; }
+
+        /// <summary>Gets the name of the default field.</summary>
+        /// <value>The name of the default field.</value>
+        public string DefaultFieldName { get; }
+
+        /// <summary>Gets the default field value.</summary>
+        /// <value>The default field value.</value>
+        public object DefaultFieldValue { get; }
+
+        /// <summary>Gets the slicing information</summary>
+        /// <value>The slicing.</value>
+        public FhirSlicing Slicing { get; }
+
+        /// <summary>Gets the name of the fixed field.</summary>
+        /// <value>The name of the fixed field.</value>
+        public string FixedFieldName { get; }
+
+        /// <summary>Gets the fixed field value.</summary>
+        /// <value>The fixed field value.</value>
+        public object FixedFieldValue { get; }
 
         /// <summary>Gets a value indicating whether this property is an array.</summary>
         /// <value>True if this object is array, false if not.</value>
@@ -108,6 +165,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             return null;
+        }
+
+        /// <summary>Adds a component from an element.</summary>
+        /// <param name="sliceName">Name of the element.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        internal bool AddSlice(string sliceName)
+        {
+            if (Slicing.Slices.ContainsKey(sliceName))
+            {
+                return false;
+            }
+
+            // create a new complex type from the property
+            Slicing.AddSlice(
+                sliceName,
+                new FhirComplex(
+                    Id,
+                    Path,
+                    URL,
+                    StandardStatus,
+                    ShortDescription,
+                    Purpose,
+                    Comment,
+                    ValidationRegEx,
+                    BaseTypeName));
+
+            return true;
         }
     }
 }

@@ -21,7 +21,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private Dictionary<string, FhirOperation> _instanceOperations;
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
-        /// <param name="path">            Full pathname of the file.</param>
+        /// <param name="id">              The id of this resource/datatype/extension.</param>
+        /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">Information describing the short.</param>
@@ -29,6 +30,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="comment">         The comment.</param>
         /// <param name="validationRegEx"> The validation RegEx.</param>
         public FhirComplex(
+            string id,
             string path,
             Uri url,
             string standardStatus,
@@ -37,6 +39,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string comment,
             string validationRegEx)
             : base(
+                id,
                 path,
                 url,
                 standardStatus,
@@ -53,7 +56,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
-        /// <param name="path">            Full pathname of the file.</param>
+        /// <param name="id">              The id of this resource/datatype/extension.</param>
+        /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">Information describing the short.</param>
@@ -62,6 +66,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="validationRegEx"> The validation RegEx.</param>
         /// <param name="baseTypeName">    Name of the base type.</param>
         public FhirComplex(
+            string id,
             string path,
             Uri url,
             string standardStatus,
@@ -71,6 +76,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string validationRegEx,
             string baseTypeName)
             : this(
+                id,
                 path,
                 url,
                 standardStatus,
@@ -80,6 +86,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 validationRegEx)
         {
             BaseTypeName = baseTypeName;
+        }
+
+        /// <summary>Values that represent fhir complex types.</summary>
+        public enum FhirComplexType
+        {
+            /// <summary>An enum constant representing the data type option.</summary>
+            DataType,
+
+            /// <summary>An enum constant representing the resource option.</summary>
+            Resource,
+
+            /// <summary>An enum constant representing the extension option.</summary>
+            Extension,
+
+            /// <summary>An enum constant representing the profile option.</summary>
+            Profile,
         }
 
         /// <summary>Gets or sets a value indicating whether this object is placeholder.</summary>
@@ -142,43 +164,46 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Adds extension.</summary>
         /// <param name="extension">        The extension.</param>
-        /// <param name="elementComponents">The element components.</param>
+        /// <param name="pathComponents">The element components.</param>
         /// <param name="startIndex">       The start index.</param>
-        internal void AddExtension(FhirExtension extension, string[] elementComponents, int startIndex)
+        internal void AddExtension(FhirComplex extension, string[] pathComponents, int startIndex)
         {
             // check for no name match
-            if (!Name.Equals(elementComponents[startIndex], StringComparison.Ordinal))
+            if (!Name.Equals(pathComponents[startIndex], StringComparison.Ordinal))
             {
                 return;
             }
 
             // check for this type
-            if (startIndex == (elementComponents.Length - 1))
+            if (startIndex == (pathComponents.Length - 1))
             {
                 this.AddExtension(extension);
                 return;
             }
 
+            // build the path to the next item in the path
+            string path = DotForComponents(pathComponents, 0, startIndex + 1);
+
             // check for being the parent to the field
-            if (startIndex == (elementComponents.Length - 2))
+            if (startIndex == (pathComponents.Length - 2))
             {
                 // check for field name
-                if (!_elements.ContainsKey(elementComponents[startIndex + 1]))
+                if (!_elements.ContainsKey(path))
                 {
                     return;
                 }
 
-                _elements[elementComponents[startIndex + 1]].AddExtension(extension);
+                _elements[path].AddExtension(extension);
 
                 return;
             }
 
             // try to recurse
-            if (_components.ContainsKey(elementComponents[startIndex + 1]))
+            if (_components.ContainsKey(path))
             {
-                _components[elementComponents[startIndex + 1]].AddExtension(
+                _components[path].AddExtension(
                     extension,
-                    elementComponents,
+                    pathComponents,
                     startIndex + 1);
             }
         }
@@ -197,8 +222,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             FhirElement property = _elements[path];
 
             // create a new complex type from the property
-            _components.Add(property.Path,
+            _components.Add(
+                property.Path,
                 new FhirComplex(
+                    property.Id,
                     property.Path,
                     property.URL,
                     property.StandardStatus,
@@ -212,68 +239,98 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Gets the parent and field name.</summary>
-        /// <param name="elementComponents">The element components.</param>
-        /// <param name="parent">           [out] The parent.</param>
-        /// <param name="field">            [out] The field.</param>
+        /// <param name="idComponents">  The id components.</param>
+        /// <param name="pathComponents">The path components.</param>
+        /// <param name="parent">        [out] The parent.</param>
+        /// <param name="field">         [out] The field.</param>
+        /// <param name="sliceName">     [out] Name of the slice.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public bool GetParentAndFieldName(
-            string[] elementComponents,
+            string[] idComponents,
+            string[] pathComponents,
             out FhirComplex parent,
-            out string field)
+            out string field,
+            out string sliceName)
         {
             // sanity checks - need at least 2 path components to have a parent
-            if ((elementComponents == null) || (elementComponents.Length < 2))
+            if ((idComponents == null) || (idComponents.Length < 2) ||
+                (pathComponents == null) || (pathComponents.Length < 2))
             {
                 parent = null;
                 field = string.Empty;
+                sliceName = string.Empty;
                 return false;
             }
 
             // find the parent and field name
             return GetParentAndFieldNameRecurse(
-                elementComponents,
+                idComponents,
+                pathComponents,
                 0,
                 out parent,
-                out field);
+                out field,
+                out sliceName);
         }
 
         /// <summary>Gets the parent and field name, recursively.</summary>
-        /// <param name="elementComponents">The element components.</param>
-        /// <param name="startIndex">       The start index.</param>
-        /// <param name="parent">           [out] The parent.</param>
-        /// <param name="field">            [out] The field.</param>
+        /// <param name="idComponents">The id components.</param>
+        /// <param name="startIndex">  The start index.</param>
+        /// <param name="parent">      [out] The parent.</param>
+        /// <param name="field">       [out] The field.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private bool GetParentAndFieldNameRecurse(
-            string[] elementComponents,
+            string[] idComponents,
+            string[] pathComponents,
             int startIndex,
             out FhirComplex parent,
-            out string field)
+            out string field,
+            out string sliceName)
         {
             // check for no name match
-            if (!Name.Equals(elementComponents[startIndex], StringComparison.Ordinal))
+            if (!Name.Equals(pathComponents[startIndex], StringComparison.Ordinal))
             {
                 // fail
                 parent = null;
                 field = string.Empty;
+                sliceName = string.Empty;
                 return false;
             }
 
             // check for being the parent to the field
-            if (startIndex == (elementComponents.Length - 2))
+            if (startIndex == (pathComponents.Length - 2))
             {
+                // check for slice name on field
+                sliceName = GetSliceNameIfPresent(idComponents, idComponents.Length - 1);
+
                 parent = this;
-                field = elementComponents[elementComponents.Length - 1];
+                field = pathComponents[pathComponents.Length - 1];
+
                 return true;
             }
 
-            // build the path to this location
-            string path = PathForComponents(elementComponents, 0, startIndex + 1);
+            // build the path to the next item in the path
+            string path = DotForComponents(pathComponents, 0, startIndex + 1);
 
-            // check for matching property, but no component
+            // check for needing to divert into a slice
+            string nextIdSlice = GetSliceNameIfPresent(idComponents, startIndex + 1);
+            if (_elements.ContainsKey(path) &&
+                (!string.IsNullOrEmpty(nextIdSlice)))
+            {
+                // recurse into slice
+                return _elements[path].Slicing[nextIdSlice].GetParentAndFieldNameRecurse(
+                    idComponents,
+                    pathComponents,
+                    startIndex + 1,
+                    out parent,
+                    out field,
+                    out sliceName);
+            }
+
+            // check for matching element, but no component
             if (_elements.ContainsKey(path) &&
                 (!_components.ContainsKey(path)))
             {
-                // add component from property
+                // add component from the element
                 AddComponentFromElement(path);
             }
 
@@ -282,16 +339,56 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 // recurse
                 return _components[path].GetParentAndFieldNameRecurse(
-                    elementComponents,
+                    idComponents,
+                    pathComponents,
                     startIndex + 1,
                     out parent,
-                    out field);
+                    out field,
+                    out sliceName);
             }
 
             // fail
             parent = null;
             field = string.Empty;
+            sliceName = string.Empty;
             return false;
+        }
+
+        /// <summary>Attempts to get slice.</summary>
+        /// <param name="idComponents">The id components.</param>
+        /// <param name="index">       Zero-based index of the.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private static string GetSliceNameIfPresent(string[] idComponents, int index)
+        {
+            string[] split = idComponents[index].Split(':');
+
+            if (split.Length == 1)
+            {
+                return string.Empty;
+            }
+
+            return split[1];
+        }
+
+        /// <summary>Gets component and slice.</summary>
+        /// <param name="mixed">The mixed.</param>
+        /// <param name="path"> [out] Name of the element.</param>
+        /// <param name="slice">[out] The slice.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private static bool GetComponentAndSlice(string mixed, out string path, out string slice)
+        {
+            string[] split = mixed.Split(':');
+
+            path = split[0];
+
+            if (split.Length == 1)
+            {
+                slice = string.Empty;
+                return false;
+            }
+
+            slice = split[1];
+            return true;
         }
 
         /// <summary>Path for components.</summary>
@@ -299,7 +396,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="startIndex">The start index.</param>
         /// <param name="endIndex">  The end index.</param>
         /// <returns>A string.</returns>
-        private static string PathForComponents(string[] components, int startIndex, int endIndex)
+        private static string DotForComponents(
+            string[] components,
+            int startIndex,
+            int endIndex)
         {
             string val = components[startIndex];
 

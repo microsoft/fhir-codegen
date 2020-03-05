@@ -326,6 +326,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         {
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
+                sd.Id,
                 sd.Name,
                 new Uri(sd.Url),
                 sd.Status,
@@ -567,6 +568,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // create a new complex type object
             FhirComplex complex = new FhirComplex(
+                sd.Id,
                 sd.Name,
                 new Uri(sd.Url),
                 sd.Status,
@@ -593,22 +595,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             // look for properties on this type
             foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
             {
+                string id = element.Id;
                 string path = element.Path;
 
                 // split the path into component parts
-                string[] components = element.Path.Split('.');
+                string[] idComponents = element.Path.Split('.');
+                string[] pathComponents = element.Path.Split('.');
 
                 // base definition, already processed
-                if (components.Length < 2)
+                if (pathComponents.Length < 2)
                 {
                     continue;
                 }
 
                 // get the parent container and our field name
                 if (!complex.GetParentAndFieldName(
-                        components,
+                        idComponents,
+                        pathComponents,
                         out FhirComplex parent,
-                        out string field))
+                        out string field,
+                        out string sliceName))
                 {
                     // throw new InvalidDataException($"Could not find parent for {element.Path}!");
                     // should load later
@@ -656,20 +662,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
 
                 // add this field to the parent type
-                parent.Elements.Add(
-                    path,
-                    new FhirElement(
-                        path,
-                        null,
-                        parent.Elements.Count,
-                        element.Short,
-                        element.Definition,
-                        element.Comment,
-                        string.Empty,
-                        elementType,
-                        null,
-                        (int)(element.Min ?? 0),
-                        element.Max));
+                //parent.Elements.Add(
+                //    path,
+                //    new FhirElement(
+                //        id,
+                //        path,
+                //        null,
+                //        parent.Elements.Count,
+                //        element.Short,
+                //        element.Definition,
+                //        element.Comment,
+                //        string.Empty,
+                //        elementType,
+                //        null,
+                //        (int)(element.Min ?? 0),
+                //        element.Max));
 
                 // check to see if we need to insert into our alias table
                 if (!string.IsNullOrEmpty(element.Name))

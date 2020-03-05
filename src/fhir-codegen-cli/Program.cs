@@ -180,10 +180,10 @@ namespace FhirCodegenCli
 
                 if (element.ElementTypes != null)
                 {
-                    string joiner = string.IsNullOrEmpty(propertyType) ? string.Empty : "|";
-
                     foreach (FhirElementType elementType in element.ElementTypes.Values)
                     {
+                        string joiner = string.IsNullOrEmpty(propertyType) ? string.Empty : "|";
+
                         string profiles = string.Empty;
                         if ((elementType.Profiles != null) && (elementType.Profiles.Count > 0))
                         {
@@ -242,35 +242,35 @@ namespace FhirCodegenCli
             }
         }
 
-        private static void DumpExtensions(IEnumerable<FhirExtension> extensions, int indentation)
+        private static void DumpExtensions(IEnumerable<FhirComplex> extensions, int indentation)
         {
-            foreach (FhirExtension extension in extensions)
+            foreach (FhirComplex extension in extensions)
             {
                 string typesAndProfiles = string.Empty;
                 string joiner = string.Empty;
 
-                foreach (KeyValuePair<string, List<string>> kvp in extension.AllowedTypesAndProfiles)
-                {
-                    string profiles = string.Join('|', kvp.Value);
+                //foreach (KeyValuePair<string, List<string>> kvp in extension.AllowedTypesAndProfiles)
+                //{
+                //    string profiles = string.Join('|', kvp.Value);
 
-                    if (string.IsNullOrEmpty(typesAndProfiles))
-                    {
-                        joiner = string.Empty;
-                    }
-                    else
-                    {
-                        joiner = "|";
-                    }
+                //    if (string.IsNullOrEmpty(typesAndProfiles))
+                //    {
+                //        joiner = string.Empty;
+                //    }
+                //    else
+                //    {
+                //        joiner = "|";
+                //    }
 
-                    if (string.IsNullOrEmpty(profiles))
-                    {
-                        typesAndProfiles = $"{typesAndProfiles}{joiner}{kvp.Key}";
-                    }
-                    else
-                    {
-                        typesAndProfiles = $"{typesAndProfiles}{joiner}{kvp.Key}({profiles})";
-                    }
-                }
+                //    if (string.IsNullOrEmpty(profiles))
+                //    {
+                //        typesAndProfiles = $"{typesAndProfiles}{joiner}{kvp.Key}";
+                //    }
+                //    else
+                //    {
+                //        typesAndProfiles = $"{typesAndProfiles}{joiner}{kvp.Key}({profiles})";
+                //    }
+                //}
 
                 Console.WriteLine($"{new string(' ', indentation + 2)}" +
                     $"+{extension.URL}: {typesAndProfiles}");
