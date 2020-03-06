@@ -14,6 +14,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A FHIR element.</summary>
     public class FhirElement : FhirTypeBase
     {
+        private readonly Dictionary<string, FhirSlicing> _slicing;
         private Dictionary<string, FhirElementType> _elementTypes;
 
         /// <summary>
@@ -33,7 +34,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="cardinalityMax">   The cardinaltiy maximum.</param>
         /// <param name="isModifier">       If this element modifies the meaning of its parent.</param>
         /// <param name="isSummary">        If this element should be included in summaries.</param>
-        /// <param name="slicing">          Slicing information for this element, if present.</param>
         /// <param name="defaultFieldName"> Name of a default field, e.g., defaultUri, defaultCode.</param>
         /// <param name="defaultFieldValue">Value of a default field.</param>
         /// <param name="fixedFieldName">   Name of a fixed field, e.g., fixedUri, fixedCode.</param>
@@ -55,7 +55,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             bool? isSummary,
             string defaultFieldName,
             object defaultFieldValue,
-            FhirSlicing slicing,
             string fixedFieldName,
             object fixedFieldValue)
             : base(
@@ -81,7 +80,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             DefaultFieldName = defaultFieldName;
             DefaultFieldValue = defaultFieldValue;
 
-            Slicing = slicing;
+            _slicing = new Dictionary<string, FhirSlicing>();
 
             FixedFieldName = fixedFieldName;
             FixedFieldValue = fixedFieldValue;
@@ -126,7 +125,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the slicing information</summary>
         /// <value>The slicing.</value>
-        public FhirSlicing Slicing { get; }
+        public Dictionary<string, FhirSlicing> Slicing => _slicing;
 
         /// <summary>Gets the name of the fixed field.</summary>
         /// <value>The name of the fixed field.</value>
@@ -167,18 +166,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             return null;
         }
 
+        /// <summary>Adds a slicing.</summary>
+        /// <param name="slicing">Slicing information for this element, if present.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        internal void AddSlicing(FhirSlicing slicing)
+        {
+            string url = slicing.DefinedByUrl.ToString();
+
+            if (!_slicing.ContainsKey(url))
+            {
+                _slicing.Add(url, slicing);
+            }
+        }
+
         /// <summary>Adds a component from an element.</summary>
+        /// <param name="url">      URL of this element (if present).</param>
         /// <param name="sliceName">Name of the element.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        internal bool AddSlice(string sliceName)
+        internal bool AddSlice(string url, string sliceName)
         {
-            if (Slicing.Slices.ContainsKey(sliceName))
+            if (_slicing[url].Slices.ContainsKey(sliceName))
             {
                 return false;
             }
 
             // create a new complex type from the property
-            Slicing.AddSlice(
+            _slicing[url].AddSlice(
                 sliceName,
                 new FhirComplex(
                     Id,

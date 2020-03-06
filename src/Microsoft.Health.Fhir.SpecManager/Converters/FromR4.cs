@@ -148,7 +148,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             FhirVersionInfo fhirVersionInfo)
         {
             // ignore retired
-            if (sd.Status.Equals("retired", StringComparison.Ordinal))
+            if (sd.Status == "retired")
             {
                 return;
             }
@@ -226,162 +226,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     break;
             }
-        }
-
-        /// <summary>Process the extension.</summary>
-        /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
-        ///  illegal values.</exception>
-        /// <param name="sd">             The structure definition we are parsing.</param>
-        /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        private static void ProcessExtension(
-            fhir_4.StructureDefinition sd,
-            FhirVersionInfo fhirVersionInfo)
-        {
-            return;
-            /*
-            List<string> elementPaths = new List<string>();
-            bool isModifier = false;
-            bool isSummary = false;
-
-            // check for nothing to process
-            if ((sd == null) ||
-                (sd.Context == null) ||
-                (sd.Snapshot == null) ||
-                (sd.Snapshot.Element == null))
-            {
-                return;
-            }
-
-            // look for context information
-            foreach (fhir_4.StructureDefinitionContext context in sd.Context)
-            {
-                if (context.Type != "element")
-                {
-                    throw new ArgumentException($"Invalid extension context type: {context.Type}");
-                }
-
-                elementPaths.Add(context.Expression);
-            }
-
-            if (sd.Snapshot.Element.Length > 5)
-            {
-                Console.Write(string.Empty);
-            }
-
-            string description = string.Empty;
-            string definition = string.Empty;
-            string comment = string.Empty;
-
-            Dictionary<string, FhirElement> properties = new Dictionary<string, FhirElement>();
-
-            // traverse elements looking for data we need
-            foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
-            {
-                string path = element.Path;
-                string[] components = element.Path.Split(_pathSeperators);
-                string field = string.Empty;
-                List<string> targetProfiles = new List<string>();
-
-                HashSet<string> choiceTypes = null;
-
-                switch (path)
-                {
-                    case "Extension.value[x]":
-                        // grab types
-                        if (element.Type != null)
-                        {
-                            field = field.Replace("[x]", string.Empty);
-                            path = path.Replace("[x]", string.Empty);
-
-                            // traverse allowed types
-                            foreach (fhir_4.ElementDefinitionType type in element.Type)
-                            {
-                                if (!choiceTypes.Contains(type.Code))
-                                {
-                                    choiceTypes.Add(type.Code);
-                                }
-
-                                if (type.TargetProfile != null)
-                                {
-                                    foreach (string profile in type.TargetProfile)
-                                    {
-                                        allowedTypesAndProfiles[type.Code].Add(
-                                            profile.Substring(profile.LastIndexOf('/') + 1));
-                                    }
-                                }
-                            }
-
-                            // create a new property for this value
-                            FhirElement property = new FhirElement(
-                                path,
-                                null,
-                                properties.Count,
-                                element.Short,
-                                element.Definition,
-                                element.Comment,
-                                null,
-                                string.Empty,
-                                choiceTypes,
-                                (int)(element.Min ?? 0),
-                                element.Max,
-                                targetProfiles);
-                        }
-
-                        if (element.IsModifier == true)
-                        {
-                            isModifier = true;
-                        }
-
-                        if (element.IsSummary == true)
-                        {
-                            isSummary = true;
-                        }
-
-                        break;
-
-                    case "Extension":
-
-                        if (element.IsModifier == true)
-                        {
-                            isModifier = true;
-                        }
-
-                        if (element.IsSummary == true)
-                        {
-                            isSummary = true;
-                        }
-
-                        description = element.Short;
-                        definition = element.Definition;
-                        comment = element.Comment;
-
-                        break;
-                }
-            }
-
-            // check internal constraints for adding
-            if ((elementPaths.Count == 0) ||
-                (allowedTypesAndProfiles.Count == 0))
-            {
-            return;
-            }
-
-            // create a new extension object
-            FhirExtension extension = new FhirExtension(
-                sd.Name,
-                sd.Id,
-                new Uri(sd.Url),
-                sd.Status,
-                description,
-                definition,
-                comment,
-                elementPaths,
-                isModifier,
-                isSummary);
-
-            // add our property extension
-            fhirVersionInfo.AddExtension(extension);
-            */
         }
 
         /// <summary>Process a structure definition for a Primitive data type.</summary>
@@ -510,7 +354,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
         /// <param name="sd">                   The structure definition to parse.</param>
         /// <param name="fhirVersionInfo">      FHIR Version information.</param>
-        /// <param name="definitionComplexType">True if is resource, false if not.</param>
+        /// <param name="definitionComplexType">Type of strcuture definition we are parsing.</param>
         private static void ProcessComplex(
             fhir_4.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo,
@@ -577,7 +421,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // look for properties on this type
                 foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
                 {
-                    if (element.Id == "Patient.contact")
+                    if (element.Id == "Observation.code.coding:BMICode")
                     {
                         Console.Write(string.Empty);
                     }
@@ -599,6 +443,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     // get the parent container and our field name
                     if (!complex.GetParentAndFieldName(
+                            sd.Url,
                             idComponents,
                             pathComponents,
                             out FhirComplex parent,
@@ -615,7 +460,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     if (!string.IsNullOrEmpty(sliceName))
                     {
                         // add this slice to the field
-                        parent.Elements[field].AddSlice(sliceName);
+                        parent.Elements[field].AddSlice(sd.Url, sliceName);
 
                         // only slice parent has slice name
                         continue;
@@ -652,32 +497,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
                     }
 
-                    FhirSlicing slicing = null;
-
-                    if (element.Slicing != null)
-                    {
-                        List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>();
-
-                        if (element.Slicing.Discriminator == null)
-                        {
-                            throw new InvalidDataException($"Missing slicing discriminator: {sd.Name} - {element.Path}");
-                        }
-
-                        foreach (fhir_4.ElementDefinitionSlicingDiscriminator discriminator in element.Slicing.Discriminator)
-                        {
-                            discriminatorRules.Add(new FhirSliceDiscriminatorRule(
-                                discriminator.Type,
-                                discriminator.Path));
-                        }
-
-                        // create our slicing
-                        slicing = new FhirSlicing(
-                            element.Slicing.Description,
-                            element.Slicing.Ordered,
-                            element.Slicing.Rules,
-                            discriminatorRules);
-                    }
-
                     // get default values (if present)
                     GetDefaultValueIfPresent(element, out string defaultName, out object defaultValue);
 
@@ -704,9 +523,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             element.IsSummary,
                             defaultName,
                             defaultValue,
-                            slicing,
                             fixedName,
                             fixedValue));
+
+                    if (element.Slicing != null)
+                    {
+                        List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>();
+
+                        if (element.Slicing.Discriminator == null)
+                        {
+                            throw new InvalidDataException($"Missing slicing discriminator: {sd.Name} - {element.Path}");
+                        }
+
+                        foreach (fhir_4.ElementDefinitionSlicingDiscriminator discriminator in element.Slicing.Discriminator)
+                        {
+                            discriminatorRules.Add(new FhirSliceDiscriminatorRule(
+                                discriminator.Type,
+                                discriminator.Path));
+                        }
+
+                        // create our slicing
+                        parent.Elements[path].AddSlicing(
+                            new FhirSlicing(
+                                sd.Id,
+                                new Uri(sd.Url),
+                                element.Slicing.Description,
+                                element.Slicing.Ordered,
+                                element.Slicing.Rules,
+                                discriminatorRules));
+                    }
                 }
 
                 switch (definitionComplexType)

@@ -10,11 +10,11 @@
     },
     "r3": {
       "commandName": "Project",
-      "commandLineArgs": "--fhir-spec-directory c:\\fhir\\npm --verbose --load-r3"
+      "commandLineArgs": "--fhir-spec-directory c:\\fhir\\npm --output-file c:\\temp\\codegen\\r3.txt --load-r3"
     },
     "r4": {
       "commandName": "Project",
-      "commandLineArgs": "--fhir-spec-directory c:\\fhir\\npm --verbose --load-r4"
+      "commandLineArgs": "--fhir-spec-directory c:\\fhir\\npm --output-file c:\\temp\\codegen\\r4.txt --load-r4"
     }
   }
 }

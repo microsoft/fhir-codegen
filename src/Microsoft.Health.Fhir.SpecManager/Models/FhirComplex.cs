@@ -250,6 +250,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Gets the parent and field name.</summary>
+        /// <param name="url">           URL of the resource.</param>
         /// <param name="idComponents">  The id components.</param>
         /// <param name="pathComponents">The path components.</param>
         /// <param name="parent">        [out] The parent.</param>
@@ -257,6 +258,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="sliceName">     [out] Name of the slice.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public bool GetParentAndFieldName(
+            string url,
             string[] idComponents,
             string[] pathComponents,
             out FhirComplex parent,
@@ -275,6 +277,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             // find the parent and field name
             return GetParentAndFieldNameRecurse(
+                url,
                 idComponents,
                 pathComponents,
                 0,
@@ -284,12 +287,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Gets the parent and field name, recursively.</summary>
-        /// <param name="idComponents">The id components.</param>
-        /// <param name="startIndex">  The start index.</param>
-        /// <param name="parent">      [out] The parent.</param>
-        /// <param name="field">       [out] The field.</param>
+        /// <param name="url">           URL of the resource.</param>
+        /// <param name="idComponents">  The id components.</param>
+        /// <param name="pathComponents">The path components.</param>
+        /// <param name="startIndex">    The start index.</param>
+        /// <param name="parent">        [out] The parent.</param>
+        /// <param name="field">         [out] The field.</param>
+        /// <param name="sliceName">     [out] Name of the slice.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private bool GetParentAndFieldNameRecurse(
+            string url,
             string[] idComponents,
             string[] pathComponents,
             int startIndex,
@@ -328,7 +335,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 (!string.IsNullOrEmpty(nextIdSlice)))
             {
                 // recurse into slice
-                return _elements[path].Slicing[nextIdSlice].GetParentAndFieldNameRecurse(
+                return _elements[path].Slicing[url][nextIdSlice].GetParentAndFieldNameRecurse(
+                    url,
                     idComponents,
                     pathComponents,
                     startIndex + 1,
@@ -350,6 +358,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 // recurse
                 return _components[path].GetParentAndFieldNameRecurse(
+                    url,
                     idComponents,
                     pathComponents,
                     startIndex + 1,

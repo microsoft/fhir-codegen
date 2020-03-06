@@ -235,6 +235,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         {
                             continue;
                         }
+
+                        if ((components.Length == 2) &&
+                            (processHint == "Extension") &&
+                            (fhirVersionInfo.ComplexTypes.ContainsKey(components[1]) ||
+                             fhirVersionInfo.Resources.ContainsKey(components[1])))
+                        {
+                            continue;
+                        }
                     }
 
                     // check for ignored types

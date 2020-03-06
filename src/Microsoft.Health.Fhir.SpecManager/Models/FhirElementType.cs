@@ -15,6 +15,42 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private readonly Dictionary<string, FhirElementProfile> _profiles;
         private readonly Uri _baseElementTypeUri = new Uri("http://hl7.org/fhir/StructureDefinition");
 
+        /// <summary>Initializes a new instance of the <see cref="FhirElementType"/> class.</summary>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+        /// <param name="code">The code.</param>
+        public FhirElementType(string code)
+        {
+            if (string.IsNullOrEmpty(code))
+            {
+                throw new ArgumentNullException(nameof(code));
+            }
+
+            if (IsXmlType(code, out string xmlFhirType))
+            {
+                code = xmlFhirType;
+            }
+
+            if (IsFhirPathType(code, out string fhirType))
+            {
+                code = fhirType;
+            }
+
+            // check for no slashes - implied relative StructureDefinition url
+            int lastSlash = code.LastIndexOf('/');
+            if (lastSlash == -1)
+            {
+                Code = code;
+                URL = new Uri(_baseElementTypeUri, code);
+            }
+            else
+            {
+                Code = code.Substring(lastSlash + 1);
+                URL = new Uri(code);
+            }
+
+            _profiles = new Dictionary<string, FhirElementProfile>();
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirElementType"/> class.
         /// </summary>
@@ -24,9 +60,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string code,
             IEnumerable<string> profiles)
         {
+            // TODO: chain initializers properly
             if (string.IsNullOrEmpty(code))
             {
                 throw new ArgumentNullException(nameof(code));
+            }
+
+            if (IsXmlType(code, out string xmlFhirType))
+            {
+                code = xmlFhirType;
             }
 
             if (IsFhirPathType(code, out string fhirType))
@@ -81,6 +123,99 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the profiles.</summary>
         /// <value>The profiles.</value>
         public Dictionary<string, FhirElementProfile> Profiles => _profiles;
+
+        /// <summary>Adds a profile.</summary>
+        /// <param name="profileUrl">The profile url.</param>
+        internal void AddProfile(string profileUrl)
+        {
+            FhirElementProfile profile = new FhirElementProfile(new Uri(profileUrl));
+
+            if (_profiles.ContainsKey(profile.Name))
+            {
+                return;
+            }
+
+            _profiles.Add(profile.Name, profile);
+        }
+
+        /// <summary>Type from XML type.</summary>
+        /// <param name="xmlType">Type of the XML.</param>
+        /// <returns>A string.</returns>
+        public static bool IsXmlType(string xmlType, out string fhirType)
+        {
+            fhirType = string.Empty;
+
+            switch (xmlType)
+            {
+                case "xsd:token":
+                case "xs:token":
+                    fhirType = "code";
+                    break;
+
+                case "xsd:base64Binary":
+                case "base64Binary":
+                    fhirType = "base64Binary";
+                    break;
+
+                case "xsd:string":
+                case "xs:string":
+                case "xs:string+":
+                case "xhtml:div":
+                    fhirType = "string";
+                    break;
+
+                case "xsd:int":
+                    fhirType = "int";
+                    break;
+
+                case "xsd:positiveInteger":
+                case "xs:positiveInteger":
+                    fhirType = "positiveInt";
+                    break;
+
+                case "xsd:nonNegativeInteger":
+                case "xs:nonNegativeInteger":
+                    fhirType = "unsignedInt";
+                    break;
+
+                case "xs:anyURI+":
+                case "xsd:anyURI":
+                case "xs:anyURI":
+                case "anyURI":
+                    fhirType = "uri";
+                    break;
+
+                case "xsd:gYear OR xsd:gYearMonth OR xsd:date":
+                case "xs:gYear, xs:gYearMonth, xs:date":
+                case "xsd:date":
+                    fhirType = "date";
+                    break;
+
+                case "xsd:gYear OR xsd:gYearMonth OR xsd:date OR xsd:dateTime":
+                case "xs:gYear, xs:gYearMonth, xs:date, xs:dateTime":
+                case "xsd:dateTime":
+                    fhirType = "dateTime";
+                    break;
+
+                case "xsd:time":
+                case "time":
+                    fhirType = "time";
+                    break;
+
+                case "xsd:boolean":
+                    fhirType = "boolean";
+                    break;
+
+                case "xsd:decimal":
+                    fhirType = "decimal";
+                    break;
+
+                default:
+                    break;
+            }
+
+            return !string.IsNullOrEmpty(fhirType);
+        }
 
         /// <summary>Check if a type is listed in FHIRPath notation, and return the FHIR type if it is.</summary>
         /// <param name="fhirPathType">Type in FHIRPath.</param>

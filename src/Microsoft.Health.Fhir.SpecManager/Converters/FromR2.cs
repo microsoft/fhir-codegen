@@ -610,6 +610,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 // get the parent container and our field name
                 if (!complex.GetParentAndFieldName(
+                        sd.Url,
                         idComponents,
                         pathComponents,
                         out FhirComplex parent,

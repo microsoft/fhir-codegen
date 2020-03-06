@@ -15,16 +15,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private readonly Dictionary<string, FhirComplex> _slices;
 
         /// <summary>Initializes a new instance of the <see cref="FhirSlicing"/> class.</summary>
+        /// <exception cref="ArgumentException">    Thrown when one or more arguments have unsupported or
+        ///  illegal values.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+        /// <param name="definedById">       The identifier of the defined by.</param>
+        /// <param name="definedByUrl">      The defined by URL.</param>
         /// <param name="description">       The description.</param>
         /// <param name="isOrdered">         True if ordered, false if not.</param>
         /// <param name="slicingRules">      Rules associated with this slicing group.</param>
         /// <param name="discriminatorRules">The discriminator rules for this slicing group.</param>
         public FhirSlicing(
+            string definedById,
+            Uri definedByUrl,
             string description,
             bool? isOrdered,
             string slicingRules,
             IEnumerable<FhirSliceDiscriminatorRule> discriminatorRules)
         {
+            DefinedById = definedById;
+            DefinedByUrl = definedByUrl;
             Description = description;
             IsOrdered = isOrdered == true;
 
@@ -76,6 +85,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             /// </summary>
             OpenAtEnd,
         }
+
+        /// <summary>Gets the identifier of the defined by.</summary>
+        /// <value>The identifier of the defined by.</value>
+        public string DefinedById { get; }
+
+        /// <summary>Gets URL of the defined by.</summary>
+        /// <value>The defined by URL.</value>
+        public Uri DefinedByUrl { get; }
 
         /// <summary>Gets the text description of how slicing works (or not).</summary>
         /// <value>The text description of how slicing works (or not).</value>
