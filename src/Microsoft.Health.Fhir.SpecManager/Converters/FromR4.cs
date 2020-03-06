@@ -577,6 +577,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // look for properties on this type
                 foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
                 {
+                    if (element.Id == "Patient.contact")
+                    {
+                        Console.Write(string.Empty);
+                    }
+
                     string id = element.Id;
                     string path = element.Path;
                     Dictionary<string, FhirElementType> elementTypes = null;

@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
@@ -221,6 +222,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             FhirElement property = _elements[path];
 
+            string elementType = property.BaseTypeName;
+
+            if (string.IsNullOrEmpty(elementType) && (property.ElementTypes.Count > 0))
+            {
+                elementType = property.ElementTypes.Values.ElementAt(0).Code;
+            }
+
             // create a new complex type from the property
             _components.Add(
                 property.Path,
@@ -233,7 +241,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     property.Purpose,
                     property.Comment,
                     property.ValidationRegEx,
-                    property.BaseTypeName));
+                    elementType));
+
+            // change the element to point at the new area
+            _elements[path].BaseTypeName = property.Path;
 
             return true;
         }
