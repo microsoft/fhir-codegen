@@ -25,7 +25,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirVersionInfo> _devVersionDict;
 
         /// <summary>Pathname of the npm directory.</summary>
-        private string _npmDirectory;
+        private string _fhirSpecDirectory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirManager"/> class.
@@ -35,7 +35,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private FhirManager(string npmDirectory)
         {
             // set locals
-            _npmDirectory = npmDirectory;
+            _fhirSpecDirectory = npmDirectory;
 
             // build the dictionary of published versions*
             _publishedVersionDict = new Dictionary<int, FhirVersionInfo>()
@@ -140,9 +140,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Loads a published version of FHIR.</summary>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
         ///  required range.</exception>
-        /// <param name="version">The version.</param>
+        /// <param name="version">      The version.</param>
+        /// <param name="offlineMode">(Optional) True to allow, false to suppress the download.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public FhirVersionInfo LoadPublished(int version)
+        public FhirVersionInfo LoadPublished(int version, bool offlineMode = false)
         {
             // check version
             if (!_publishedVersionDict.ContainsKey(version))
@@ -154,19 +155,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             FhirVersionInfo info = _publishedVersionDict[version];
 
             // check for local package
-            if (!Loader.TryFindPackage(_npmDirectory, info, out _))
+            if (!Loader.TryFindPackage(_fhirSpecDirectory, info, out _))
             {
+                if (offlineMode)
+                {
+                    throw new DirectoryNotFoundException(
+                        $"Failed to find FHIR R{info.MajorVersion}" +
+                        $" ({info.ReleaseName})" +
+                        $" in {_fhirSpecDirectory}");
+                }
+
                 Console.WriteLine($"FhirManager.Load <<< downloading version {info.MajorVersion} ({info.ReleaseName})");
 
                 // download the published version
                 FhirPackageDownloader.DownloadPublishedPackage(
                     info.ReleaseName,
                     info.PackageName,
-                    _npmDirectory);
+                    _fhirSpecDirectory);
             }
 
             // load the package
-            Loader.LoadPackage(_npmDirectory, ref info);
+            Loader.LoadPackage(_fhirSpecDirectory, ref info);
 
             // update our version information
             _publishedVersionDict[version] = info;

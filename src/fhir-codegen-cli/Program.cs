@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using CommandLine;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -18,46 +17,89 @@ namespace FhirCodegenCli
     public static class Program
     {
         /// <summary>Main entry-point for this application.</summary>
-        /// <param name="args">An array of command-line argument strings.</param>
-        public static void Main(string[] args)
+        /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>
+        /// <param name="verbose">          Show verbose output.</param>
+        /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
+        /// <param name="loadR2">           Whether FHIR R2 should be loaded.</param>
+        /// <param name="loadR3">           Whether FHIR R3 should be loaded.</param>
+        /// <param name="loadR4">           Whether FHIR R4 should be loaded.</param>
+        public static void Main(
+            string fhirSpecDirectory,
+            bool verbose = false,
+            bool offlineMode = false,
+            bool loadR2 = false,
+            bool loadR3 = false,
+            bool loadR4 = false)
         {
             // start timing
             Stopwatch timingWatch = Stopwatch.StartNew();
 
-            // process based on command line arguments
-            Parser.Default.ParseArguments<Options>(args)
-                .WithParsed<Options>(options => { Process(options); })
-                .WithNotParsed(errors => { Console.WriteLine("Invalid arguments"); });
+            // process
+            Process(
+                fhirSpecDirectory,
+                offlineMode,
+                loadR2,
+                out FhirVersionInfo r2,
+                loadR3,
+                out FhirVersionInfo r3,
+                loadR4,
+                out FhirVersionInfo r4);
+
+            // done loading
+            long loadMS = timingWatch.ElapsedMilliseconds;
+
+            if ((verbose == true) && (r2 != null))
+            {
+                DumpFhirVersion(r2);
+            }
+
+            if ((verbose == true) && (r3 != null))
+            {
+                DumpFhirVersion(r3);
+            }
+
+            if ((verbose == true) && (r4 != null))
+            {
+                DumpFhirVersion(r4);
+            }
 
             // done
-            long elapsedMs = timingWatch.ElapsedMilliseconds;
+            long totalMS = timingWatch.ElapsedMilliseconds;
 
-            Console.WriteLine($"Finished: {elapsedMs / 1000.0} s");
+            Console.WriteLine($"Done! Loading: {loadMS / 1000.0}s, Total: {totalMS / 1000.0}s");
         }
 
         /// <summary>Main processing function.</summary>
-        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-        /// <param name="options">Options for controlling the operation.</param>
-        public static void Process(Options options)
+        /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>
+        /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
+        /// <param name="loadR2">           Whether FHIR R2 should be loaded.</param>
+        /// <param name="r2">               [out] The FhirVersionInfo for R2 (if loaded).</param>
+        /// <param name="loadR3">           Whether FHIR R3 should be loaded.</param>
+        /// <param name="r3">               [out] The FhirVersionInfo for R3 (if loaded).</param>
+        /// <param name="loadR4">           Whether FHIR R4 should be loaded.</param>
+        /// <param name="r4">               [out] The FhirVersionInfo for R4 (if loaded).</param>
+        public static void Process(
+            string fhirSpecDirectory,
+            bool offlineMode,
+            bool loadR2,
+            out FhirVersionInfo r2,
+            bool loadR3,
+            out FhirVersionInfo r3,
+            bool loadR4,
+            out FhirVersionInfo r4)
         {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
-
             // initialize the FHIR version manager with our requested directory
-            FhirManager.Init(options.NpmDirectory);
+            FhirManager.Init(fhirSpecDirectory);
 
-            if (options.LoadR2)
+            r2 = null;
+            r3 = null;
+            r4 = null;
+
+            if (loadR2)
             {
                 try
                 {
-                    FhirVersionInfo r2 = FhirManager.Current.LoadPublished(2);
-
-                    if (options.Verbose)
-                    {
-                        DumpFhirVersion(r2);
-                    }
+                    r2 = FhirManager.Current.LoadPublished(2, offlineMode);
                 }
                 catch (Exception ex)
                 {
@@ -66,16 +108,11 @@ namespace FhirCodegenCli
                 }
             }
 
-            if (options.LoadR3)
+            if (loadR3)
             {
                 try
                 {
-                    FhirVersionInfo r3 = FhirManager.Current.LoadPublished(3);
-
-                    if (options.Verbose)
-                    {
-                        DumpFhirVersion(r3);
-                    }
+                    r3 = FhirManager.Current.LoadPublished(3, offlineMode);
                 }
                 catch (Exception ex)
                 {
@@ -84,16 +121,11 @@ namespace FhirCodegenCli
                 }
             }
 
-            if (options.LoadR4)
+            if (loadR4)
             {
                 try
                 {
-                    FhirVersionInfo r4 = FhirManager.Current.LoadPublished(4);
-
-                    if (options.Verbose)
-                    {
-                        DumpFhirVersion(r4);
-                    }
+                    r4 = FhirManager.Current.LoadPublished(4, offlineMode);
                 }
                 catch (Exception ex)
                 {
