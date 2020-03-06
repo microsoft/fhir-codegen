@@ -153,7 +153,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 case "primitive-type":
                     // exclude extensions
-                    if (sd.Type == "Extension")
+                    if (sd.Type != "Extension")
                     {
                         ProcessDataTypePrimitive(sd, fhirVersionInfo);
                     }
