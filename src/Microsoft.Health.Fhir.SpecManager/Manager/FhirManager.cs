@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
@@ -18,8 +19,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>FHIR Manager singleton.</summary>
         private static FhirManager _instance;
 
+        /// <summary>Map of known major versions and version strings.</summary>
+        private Dictionary<int, SortedSet<string>> _knownVersions;
+
         /// <summary>Dictionary of published versions.</summary>
-        private Dictionary<int, FhirVersionInfo> _publishedVersionDict;
+        private Dictionary<string, FhirVersionInfo> _publishedVersionDict;
 
         /// <summary>Dictionary of development versions.</summary>
         private Dictionary<string, FhirVersionInfo> _devVersionDict;
@@ -37,48 +41,60 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // set locals
             _fhirSpecDirectory = npmDirectory;
 
+            _knownVersions = new Dictionary<int, SortedSet<string>>()
+            {
+                { 2, new SortedSet<string>() { "1.0.2" } },
+                { 3, new SortedSet<string>() { "3.0.2" } },
+                { 4, new SortedSet<string>() { "4.0.1" } },
+                { 5, new SortedSet<string>() { "4.2.0" } },
+            };
+
             // build the dictionary of published versions*
-            _publishedVersionDict = new Dictionary<int, FhirVersionInfo>()
+            _publishedVersionDict = new Dictionary<string, FhirVersionInfo>()
             {
                 {
-                    2,
+                    "1.0.2",
                     new FhirVersionInfo(2)
                     {
                         ReleaseName = "DSTU2",
                         PackageName = "hl7.fhir.r2.core",
+                        VersionString = "1.0.2",
                         IsDevBuild = false,
                         IsLocalBuild = false,
                         IsOnDisk = false,
                     }
                 },
                 {
-                    3,
+                    "3.0.2",
                     new FhirVersionInfo(3)
                     {
                         ReleaseName = "STU3",
                         PackageName = "hl7.fhir.r3.core",
+                        VersionString = "3.0.2",
                         IsDevBuild = false,
                         IsLocalBuild = false,
                         IsOnDisk = false,
                     }
                 },
                 {
-                    4,
+                    "4.0.1",
                     new FhirVersionInfo(4)
                     {
                         ReleaseName = "R4",
                         PackageName = "hl7.fhir.r4.core",
+                        VersionString = "4.0.1",
                         IsDevBuild = false,
                         IsLocalBuild = false,
                         IsOnDisk = false,
                     }
                 },
                 {
-                    5,
+                    "4.2.0",
                     new FhirVersionInfo(5)
                     {
                         ReleaseName = "2020Feb",
                         PackageName = "hl7.fhir.r5.core",
+                        VersionString = "4.2.0",
                         IsDevBuild = false,
                         IsLocalBuild = false,
                         IsOnDisk = false,
@@ -95,6 +111,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         ReleaseName = string.Empty,
                         PackageName = "hl7.fhir.r5.core",
+                        VersionString = "4.2.0",
                         IsDevBuild = true,
                         DevBranch = string.Empty,
                         IsLocalBuild = false,
@@ -110,49 +127,104 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public static FhirManager Current => _instance;
 
         /// <summary>Initializes this object.</summary>
-        ///
-        /// <param name="npmDirectory">Pathname of the npm directory.</param>
-        ///
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool Init(string npmDirectory)
+        /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
+        ///  null.</exception>
+        /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
+        ///  present.</exception>
+        /// <param name="fhirSpecDirectory">Pathname of the FHIR Spec directory.</param>
+        public static void Init(string fhirSpecDirectory)
         {
             // check to make sure we have a directory to work from
-            if (string.IsNullOrEmpty(npmDirectory))
+            if (string.IsNullOrEmpty(fhirSpecDirectory))
             {
-                Console.WriteLine($"FhirManager.Init <<< Invalid NPM Directory: {npmDirectory}");
-                return false;
+                throw new ArgumentNullException(nameof(fhirSpecDirectory));
+            }
+
+            string dir;
+
+            // check for rooted vs relative
+            if (Path.IsPathRooted(fhirSpecDirectory))
+            {
+                dir = fhirSpecDirectory;
+            }
+            else
+            {
+                dir = Path.Combine(Directory.GetCurrentDirectory(), fhirSpecDirectory);
             }
 
             // make sure the directory exists
-            if (!Directory.Exists(npmDirectory))
+            if (!Directory.Exists(dir))
             {
-                Console.WriteLine($"FhirManager.Init <<< NPM directory not found: {npmDirectory}");
-                return false;
+                throw new DirectoryNotFoundException($"FHIR Specification Directory not found: {fhirSpecDirectory}");
             }
 
             // make our instance
-            _instance = new FhirManager(npmDirectory);
-
-            // here means success
-            return true;
+            _instance = new FhirManager(dir);
         }
 
         /// <summary>Loads a published version of FHIR.</summary>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
         ///  required range.</exception>
-        /// <param name="version">      The version.</param>
-        /// <param name="offlineMode">(Optional) True to allow, false to suppress the download.</param>
+        /// <exception cref="DirectoryNotFoundException"> Thrown when the requested directory is not
+        ///  present.</exception>
+        /// <param name="majorRelease">The release number of FHIR to load (e.g., 2 for DSTU2).</param>
+        /// <param name="versions">    The specific version of FHIR to load, or 'latest' for highest known version.</param>
+        /// <param name="offlineMode"> (Optional) True to allow, false to suppress the download.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public FhirVersionInfo LoadPublished(int version, bool offlineMode = false)
+        public FhirVersionInfo LoadPublished(
+            int majorRelease,
+            string versions,
+            bool offlineMode = false)
         {
-            // check version
-            if (!_publishedVersionDict.ContainsKey(version))
+            HashSet<string> versionsToLoad = new HashSet<string>();
+
+            // check major version
+            if (!_knownVersions.ContainsKey(majorRelease))
             {
-                throw new ArgumentOutOfRangeException($"Unknown Published FHIR version: {version}");
+                throw new ArgumentOutOfRangeException($"Unknown Published FHIR version: {majorRelease}");
             }
 
+            // figure out which version(s) we are loading
+            if (string.IsNullOrEmpty(versions) || (versions == "latest"))
+            {
+                versionsToLoad.Add(_knownVersions[majorRelease].ElementAt(0));
+            }
+            else
+            {
+                // NOTE: we'll have to support multiple versions of a release in the future, was easier to just put this in now
+                string[] versionSplit = versions.Split(',');
+
+                foreach (string version in versionSplit)
+                {
+                    if (version == "latest")
+                    {
+                        if (!versionsToLoad.Contains(_knownVersions[majorRelease].ElementAt(0)))
+                        {
+                            versionsToLoad.Add(_knownVersions[majorRelease].ElementAt(0));
+                        }
+
+                        continue;
+                    }
+
+                    if (!_knownVersions[majorRelease].Contains(version))
+                    {
+                        throw new ArgumentException($"Invalid version {version} for R{majorRelease}");
+                    }
+
+                    versionsToLoad.Add(version);
+                }
+            }
+
+            if (versionsToLoad.Count == 0)
+            {
+                throw new ArgumentException($"Could not find version to load: R{majorRelease}, versions: {versions}");
+            }
+
+            // for now, only load the first version we encountered
+            string versionToLoad = versionsToLoad.ElementAt(0);
+
             // grab the correct basic version info
-            FhirVersionInfo info = _publishedVersionDict[version];
+            FhirVersionInfo info = _publishedVersionDict[versionToLoad];
 
             // check for local package
             if (!Loader.TryFindPackage(_fhirSpecDirectory, info, out _))
@@ -165,12 +237,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         $" in {_fhirSpecDirectory}");
                 }
 
-                Console.WriteLine($"FhirManager.Load <<< downloading version {info.MajorVersion} ({info.ReleaseName})");
+                Console.WriteLine($"FhirManager.Load <<< downloading R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
 
-                // download the published version
-                FhirPackageDownloader.DownloadPublishedPackage(
+                // download from the package manager
+                FhirPackageDownloader.DownloadPackage(
                     info.ReleaseName,
                     info.PackageName,
+                    info.VersionString,
                     _fhirSpecDirectory);
             }
 
@@ -178,20 +251,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             Loader.LoadPackage(_fhirSpecDirectory, ref info);
 
             // update our version information
-            _publishedVersionDict[version] = info;
+            _publishedVersionDict[versionToLoad] = info;
 
             // return this record
             return info;
-        }
-
-        /// <summary>Check local versions.</summary>
-        private void CheckLocalVersions()
-        {
-            // traverse the dictionary of published versions
-            foreach (KeyValuePair<int, FhirVersionInfo> kvp in _publishedVersionDict)
-            {
-                // TODO: check to see if this version is already downloaded
-            }
         }
     }
 }

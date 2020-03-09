@@ -2,19 +2,22 @@
   "profiles": {
     "fhir-codegen-cli": {
       "commandName": "Project",
-      "commandLineArgs": "--fhir-spec-directory c:\\fhir\\npm --load-r2 --load-r3 --load-r4"
+      "commandLineArgs": "--load-r2 latest --load-r3 latest --load-r4 latest",
+      "workingDirectory": "..\\.."
     },
     "r2": {
       "commandName": "Project",
-      "commandLineArgs": "--fhir-spec-directory c:\\fhir\\npm --verbose --load-r2"
+      "commandLineArgs": "--output-file c:\\temp\\codegen\\r2.txt --load-r2 latest",
+      "workingDirectory": "..\\.."
     },
     "r3": {
       "commandName": "Project",
-      "commandLineArgs": "--fhir-spec-directory c:\\fhir\\npm --output-file c:\\temp\\codegen\\r3.txt --load-r3"
+      "commandLineArgs": "--output-file c:\\temp\\codegen\\r3.txt --load-r3 latest",
+      "workingDirectory": "..\\.."
     },
     "r4": {
       "commandName": "Project",
-      "commandLineArgs": "--fhir-spec-directory c:\\fhir\\npm --output-file c:\\temp\\codegen\\r4.txt --load-r4"
+      "commandLineArgs": "--output-file c:\\temp\\codegen\\r4.txt --load-r4 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
     }
   }
 }

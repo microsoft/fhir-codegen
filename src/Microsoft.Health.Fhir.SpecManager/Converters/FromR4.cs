@@ -22,9 +22,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
     /// <summary>Convert FHIR R4 into local definitions.</summary>
     public sealed class FromR4 : IFhirConverter
     {
-        /// <summary>The path seperators.</summary>
-        private static readonly char[] _pathSeperators = new char[] { '.', ':' };
-
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private readonly JsonConverter _jsonConverter;
 

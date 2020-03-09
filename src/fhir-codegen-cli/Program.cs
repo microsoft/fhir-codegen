@@ -22,17 +22,17 @@ namespace FhirCodegenCli
         /// <param name="outputFile">       An array of command-line argument strings.</param>
         /// <param name="verbose">          Show verbose output.</param>
         /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
-        /// <param name="loadR2">           Whether FHIR R2 should be loaded.</param>
-        /// <param name="loadR3">           Whether FHIR R3 should be loaded.</param>
-        /// <param name="loadR4">           Whether FHIR R4 should be loaded.</param>
+        /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or latest).</param>
+        /// <param name="loadR3">           If FHIR R3 should be loaded, which version (e.g., 3.0.2 or latest).</param>
+        /// <param name="loadR4">           If FHIR R4 should be loaded, which version (e.g., 4.0.1 or latest).</param>
         public static void Main(
             string fhirSpecDirectory,
             string outputFile = "",
             bool verbose = false,
             bool offlineMode = false,
-            bool loadR2 = false,
-            bool loadR3 = false,
-            bool loadR4 = false)
+            string loadR2 = "",
+            string loadR3 = "",
+            string loadR4 = "")
         {
             // start timing
             Stopwatch timingWatch = Stopwatch.StartNew();
@@ -69,21 +69,29 @@ namespace FhirCodegenCli
                 }
             }
 
-            using (StreamWriter writer = new StreamWriter(new FileStream(outputFile, FileMode.Create)))
+            if (!string.IsNullOrEmpty(outputFile))
             {
-                if (r2 != null)
+                if (!Directory.Exists(Path.GetDirectoryName(outputFile)))
                 {
-                    DumpFhirVersion(writer, r2);
+                    Directory.CreateDirectory(Path.GetDirectoryName(outputFile));
                 }
 
-                if (r3 != null)
+                using (StreamWriter writer = new StreamWriter(new FileStream(outputFile, FileMode.Create)))
                 {
-                    DumpFhirVersion(writer, r3);
-                }
+                    if (r2 != null)
+                    {
+                        DumpFhirVersion(writer, r2);
+                    }
 
-                if (r4 != null)
-                {
-                    DumpFhirVersion(writer, r4);
+                    if (r3 != null)
+                    {
+                        DumpFhirVersion(writer, r3);
+                    }
+
+                    if (r4 != null)
+                    {
+                        DumpFhirVersion(writer, r4);
+                    }
                 }
             }
 
@@ -96,20 +104,20 @@ namespace FhirCodegenCli
         /// <summary>Main processing function.</summary>
         /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>
         /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
-        /// <param name="loadR2">           Whether FHIR R2 should be loaded.</param>
+        /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or latest).</param>
         /// <param name="r2">               [out] The FhirVersionInfo for R2 (if loaded).</param>
-        /// <param name="loadR3">           Whether FHIR R3 should be loaded.</param>
+        /// <param name="loadR3">           If FHIR R3 should be loaded, which version (e.g., 3.0.2 or latest).</param>
         /// <param name="r3">               [out] The FhirVersionInfo for R3 (if loaded).</param>
-        /// <param name="loadR4">           Whether FHIR R4 should be loaded.</param>
+        /// <param name="loadR4">           If FHIR R4 should be loaded, which version (e.g., 4.0.1 or latest).</param>
         /// <param name="r4">               [out] The FhirVersionInfo for R4 (if loaded).</param>
         public static void Process(
             string fhirSpecDirectory,
             bool offlineMode,
-            bool loadR2,
+            string loadR2,
             out FhirVersionInfo r2,
-            bool loadR3,
+            string loadR3,
             out FhirVersionInfo r3,
-            bool loadR4,
+            string loadR4,
             out FhirVersionInfo r4)
         {
             // initialize the FHIR version manager with our requested directory
@@ -119,41 +127,41 @@ namespace FhirCodegenCli
             r3 = null;
             r4 = null;
 
-            if (loadR2)
+            if (!string.IsNullOrEmpty(loadR2))
             {
                 try
                 {
-                    r2 = FhirManager.Current.LoadPublished(2, offlineMode);
+                    r2 = FhirManager.Current.LoadPublished(2, loadR2, offlineMode);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Loading R2 failed: {ex}");
+                    Console.WriteLine($"Loading R2 ({loadR2}) failed: {ex}");
                     throw;
                 }
             }
 
-            if (loadR3)
+            if (!string.IsNullOrEmpty(loadR3))
             {
                 try
                 {
-                    r3 = FhirManager.Current.LoadPublished(3, offlineMode);
+                    r3 = FhirManager.Current.LoadPublished(3, loadR3, offlineMode);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Loading R3 failed: {ex}");
+                    Console.WriteLine($"Loading R3 ({loadR3}) failed: {ex}");
                     throw;
                 }
             }
 
-            if (loadR4)
+            if (!string.IsNullOrEmpty(loadR4))
             {
                 try
                 {
-                    r4 = FhirManager.Current.LoadPublished(4, offlineMode);
+                    r4 = FhirManager.Current.LoadPublished(4, loadR4, offlineMode);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Loading R4 failed: {ex}");
+                    Console.WriteLine($"Loading R4 ({loadR4}) failed: {ex}");
                     throw;
                 }
             }

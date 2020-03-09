@@ -17,32 +17,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
     public abstract class Loader
     {
         /// <summary>Searches for the currently specified package.</summary>
-        /// <param name="npmDirectory">    Pathname of the npm directory.</param>
+        /// <param name="fhirSpecDirectory">    Pathname of the FHIR spec directory.</param>
         /// <param name="versionInfo">     Information describing the version.</param>
         /// <param name="versionDirectory">[out] Pathname of the version directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool TryFindPackage(string npmDirectory, FhirVersionInfo versionInfo, out string versionDirectory)
+        public static bool TryFindPackage(
+            string fhirSpecDirectory,
+            FhirVersionInfo versionInfo,
+            out string versionDirectory)
         {
             versionDirectory = null;
 
             // sanity checks
             if (versionInfo == null)
             {
-                Console.WriteLine($"TryFindPackage <<< invalid versionInfo is NULL for {npmDirectory}!");
-                return false;
+                throw new ArgumentNullException(nameof(versionInfo));
             }
 
-            // check for manual download first
-            string packageDir = Path.Combine(npmDirectory, versionInfo.PackageName, "package");
+            // check for finding the directory
+            string packageDir = Path.Combine(
+                fhirSpecDirectory,
+                $"{versionInfo.PackageName}-{versionInfo.VersionString}",
+                "package");
 
             if (!Directory.Exists(packageDir))
             {
-                // check for npm install directory
-                packageDir = Path.Combine(npmDirectory, "node_modules", versionInfo.PackageName);
+                // check for NPM installed version
+                packageDir = Path.Combine(fhirSpecDirectory, "node_modules", versionInfo.PackageName);
 
                 if (!Directory.Exists(packageDir))
                 {
-                    Console.WriteLine($"TryFindPackage <<< cannot find FHIR Package: {versionInfo.ReleaseName}, {versionInfo.PackageName}!");
+                    Console.WriteLine($"Cannot find R{versionInfo.ReleaseName}-{versionInfo.PackageName} in {fhirSpecDirectory}");
                     return false;
                 }
             }
@@ -56,19 +61,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
         /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
-        /// <param name="npmDirectory">   Pathname of the npm directory.</param>
-        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
-        public static void LoadPackage(string npmDirectory, ref FhirVersionInfo fhirVersionInfo)
+        /// <param name="fhirSpecDirectory">   Pathname of the FHIR spec directory.</param>
+        /// <param name="fhirVersionInfo">[in,out] Information describing the FHIR version.</param>
+        public static void LoadPackage(string fhirSpecDirectory, ref FhirVersionInfo fhirVersionInfo)
         {
             // sanity checks
             if (fhirVersionInfo == null)
             {
-                Console.WriteLine($"LoadPackage <<< invalid version info is NULL, cannot load {npmDirectory}");
+                Console.WriteLine($"LoadPackage <<< invalid version info is NULL, cannot load {fhirSpecDirectory}");
                 throw new ArgumentNullException(nameof(fhirVersionInfo));
             }
 
             // find the package
-            if (!TryFindPackage(npmDirectory, fhirVersionInfo, out string packageDir))
+            if (!TryFindPackage(fhirSpecDirectory, fhirVersionInfo, out string packageDir))
             {
                 Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}!");
                 throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}");
