@@ -7,17 +7,15 @@
     },
     "r2": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file c:\\temp\\codegen\\r2.txt --load-r2 latest",
-      "workingDirectory": "..\\.."
+      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r2.txt --load-r2 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
     },
     "r3": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file c:\\temp\\codegen\\r3.txt --load-r3 latest",
-      "workingDirectory": "..\\.."
+      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r3.txt --load-r3 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
     },
     "r4": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file c:\\temp\\codegen\\r4.txt --load-r4 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
+      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r4.txt --load-r4 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
     }
   }
 }

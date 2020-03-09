@@ -163,7 +163,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
                         else
                         {
-                            ProcessComplex(sd, fhirVersionInfo, false);
+                            ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.DataType);
                         }
                     }
 
@@ -173,7 +173,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     // exclude profiles for now
                     if (string.IsNullOrEmpty(sd.ConstrainedType))
                     {
-                        ProcessComplex(sd, fhirVersionInfo, true);
+                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Resource);
                     }
 
                     break;
@@ -200,7 +200,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     // exclude extensions
                     if (sd.ConstrainedType == "Extension")
                     {
-                        ProcessExtension(sd, fhirVersionInfo);
+                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
                     }
 
                     break;
@@ -208,113 +208,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 case "resource":
                     if (!string.IsNullOrEmpty(sd.ConstrainedType))
                     {
-                        ProcessExtension(sd, fhirVersionInfo);
+                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
                     }
 
                     break;
             }
-        }
-
-        /// <summary>Process the extension.</summary>
-        /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
-        ///  illegal values.</exception>
-        /// <param name="sd">             The structure definition to parse.</param>
-        /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        private static void ProcessExtension(
-            fhir_2.StructureDefinition sd,
-            FhirVersionInfo fhirVersionInfo)
-        {
-            List<string> elementPaths = new List<string>();
-            Dictionary<string, List<string>> allowedTypesAndProfiles = new Dictionary<string, List<string>>();
-            bool isModifier = false;
-            bool isSummary = false;
-
-            // check for nothing to process
-            if ((sd == null) ||
-                (sd.Context == null) ||
-                (sd.Snapshot == null) ||
-                (sd.Snapshot.Element == null))
-            {
-                return;
-            }
-
-            // copy context information
-            elementPaths = sd.Context.ToList();
-
-            // traverse elements looking for data we need
-            foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
-            {
-                switch (element.Base.Path)
-                {
-                    case "Extension.value[x]":
-                        // grab types
-                        if (element.Type != null)
-                        {
-                            foreach (fhir_2.ElementDefinitionType type in element.Type)
-                            {
-                                if (!allowedTypesAndProfiles.ContainsKey(type.Code))
-                                {
-                                    allowedTypesAndProfiles.Add(type.Code, new List<string>());
-                                }
-
-                                if (type.Profile != null)
-                                {
-                                    foreach (string profile in type.Profile)
-                                    {
-                                        allowedTypesAndProfiles[type.Code].Add(
-                                            profile.Substring(profile.LastIndexOf('/') + 1));
-                                    }
-                                }
-                            }
-                        }
-
-                        if (element.IsModifier == true)
-                        {
-                            isModifier = true;
-                        }
-
-                        if (element.IsSummary == true)
-                        {
-                            isSummary = true;
-                        }
-
-                        break;
-
-                    case "Extension":
-
-                        if (element.IsModifier == true)
-                        {
-                            isModifier = true;
-                        }
-
-                        if (element.IsSummary == true)
-                        {
-                            isSummary = true;
-                        }
-
-                        break;
-                }
-            }
-
-            // check internal constraints for adding
-            if ((elementPaths.Count == 0) ||
-                (allowedTypesAndProfiles.Count == 0))
-            {
-                return;
-            }
-
-            //// create a new extension object
-            //FhirExtension extension = new FhirExtension(
-            //    sd.Name,
-            //    sd.Id,
-            //    new Uri(sd.Url),
-            //    elementPaths,
-            //    allowedTypesAndProfiles,
-            //    isModifier,
-            //    isSummary);
-
-            //// add our property extension
-            //fhirVersionInfo.AddExtension(extension);
         }
 
         /// <summary>Process a structure definition for a primitive data type.</summary>
@@ -340,22 +238,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
         /// <summary>Gets type from element.</summary>
-        ///
         /// <param name="structureName">Name of the structure.</param>
         /// <param name="element">      The element.</param>
-        /// <param name="elementType">  [out] Type of the element.</param>
-        ///
+        /// <param name="elementTypes"> [out] Name of the type.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElement(
             string structureName,
             fhir_2.ElementDefinition element,
-            out string elementType,
-            out string[] targetProfiles)
+            out Dictionary<string, FhirElementType> elementTypes)
         {
-            targetProfiles = null;
-            elementType = null;
-
-            List<string> profiles = new List<string>();
+            elementTypes = new Dictionary<string, FhirElementType>();
 
             // check for declared type
             if (element.Type != null)
@@ -365,23 +257,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     // check for a specified type
                     if (!string.IsNullOrEmpty(edType.Code))
                     {
-                        // use this type
-                        elementType = edType.Code;
+                        // create a type for this code
+                        FhirElementType elementType = new FhirElementType(edType.Code);
 
-                        // check for a target profile
+                        if (!elementTypes.ContainsKey(elementType.Code))
+                        {
+                            elementTypes.Add(elementType.Code, elementType);
+                        }
+
                         if (edType.Profile != null)
                         {
-                            profiles.AddRange(edType.Profile);
+                            foreach (string profile in edType.Profile)
+                            {
+                                elementTypes[elementType.Code].AddProfile(profile);
+                            }
                         }
 
-                        // reference will have multiple types here - need to grab each profile
-                        if (elementType.Equals("Reference", StringComparison.Ordinal))
-                        {
-                            continue;
-                        }
-
-                        // done searching
-                        return true;
+                        continue;
                     }
 
                     // use an extension-defined type
@@ -389,21 +281,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         switch (ext.Url)
                         {
+                            case FhirVersionInfo.UrlXmlType:
                             case FhirVersionInfo.UrlFhirType:
 
-                                // use this type
-                                elementType = ext.ValueString;
+                                // create a type for this code
+                                FhirElementType elementType = new FhirElementType(edType.Code);
 
-                                // stop looking
-                                return true;
+                                if (!elementTypes.ContainsKey(elementType.Code))
+                                {
+                                    elementTypes.Add(elementType.Code, elementType);
+                                }
 
-                            case FhirVersionInfo.UrlXmlType:
+                                if (edType.Profile != null)
+                                {
+                                    foreach (string profile in edType.Profile)
+                                    {
+                                        elementTypes[elementType.Code].AddProfile(profile);
+                                    }
+                                }
 
-                                // use this type
-                                elementType = Utils.TypeFromXmlType(ext.ValueString);
-
-                                // stop looking
-                                return true;
+                                break;
 
                             default:
                                 // ignore
@@ -413,10 +310,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
             }
 
-            // check for target profiles
-            if (profiles.Count > 0)
+            if (elementTypes.Count > 0)
             {
-                targetProfiles = profiles.ToArray();
                 return true;
             }
 
@@ -425,29 +320,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 element.Name.Equals(structureName, StringComparison.Ordinal))
             {
                 // base type is here
-                elementType = element.Path;
+                FhirElementType elementType = new FhirElementType(element.Path, null);
+
+                // add to our dictionary
+                elementTypes.Add(elementType.Code, elementType);
 
                 // done searching
                 return true;
             }
 
             // no discovered type
+            elementTypes = null;
             return false;
         }
 
         /// <summary>Attempts to get type from elements.</summary>
         /// <param name="structureName">Name of the structure.</param>
         /// <param name="elements">     The elements.</param>
-        /// <param name="typeName">     [out] Name of the type.</param>
+        /// <param name="elementTypes"> [out] Name of the type.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElements(
             string structureName,
             fhir_2.ElementDefinition[] elements,
-            out string typeName,
-            out string[] targetProfiles)
+            out Dictionary<string, FhirElementType> elementTypes)
         {
-            targetProfiles = null;
-            typeName = string.Empty;
+            elementTypes = null;
 
             foreach (fhir_2.ElementDefinition element in elements)
             {
@@ -457,11 +354,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // check for base path having a type
                 if (components.Length == 1)
                 {
-                    if (TryGetTypeFromElement(structureName, element, out string elementType, out targetProfiles))
+                    if (TryGetTypeFromElement(structureName, element, out elementTypes))
                     {
-                        // set our type
-                        typeName = elementType;
-
                         // done searching
                         return true;
                     }
@@ -471,18 +365,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 if ((components.Length == 2) &&
                     components[1].Equals("value", StringComparison.Ordinal))
                 {
-                    if (TryGetTypeFromElement(structureName, element, out string elementType, out targetProfiles))
+                    if (TryGetTypeFromElement(structureName, element, out elementTypes))
                     {
-                        // set our type
-                        typeName = elementType;
-
                         // keep looking in case we find a better option
                         continue;
                     }
                 }
             }
 
-            if (!string.IsNullOrEmpty(typeName))
+            if (elementTypes != null)
             {
                 return true;
             }
@@ -555,16 +446,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
         /// <summary>Process a complex structure (Complex Type or Resource).</summary>
-        /// <param name="sd">             The structure definition to parse.</param>
-        /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        /// <param name="isResource">     True if is resource, false if not.</param>
+        /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
+        /// <param name="sd">                   The structure definition to parse.</param>
+        /// <param name="fhirVersionInfo">      FHIR Version information.</param>
+        /// <param name="definitionComplexType">Type of structure definition we are parsing.</param>
         private static void ProcessComplex(
             fhir_2.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo,
-            bool isResource)
+            FhirComplex.FhirComplexType definitionComplexType)
         {
-            string[] targetProfiles = null;
+            if ((sd.Snapshot == null) || (sd.Snapshot.Element == null))
+            {
+                return;
+            }
+
             Dictionary<string, string> aliasTable = new Dictionary<string, string>();
+            List<string> contextElements = new List<string>();
 
             // create a new complex type object
             FhirComplex complex = new FhirComplex(
@@ -577,6 +474,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string.Empty,
                 null);
 
+            if (sd.Context != null)
+            {
+                contextElements.AddRange(sd.Context);
+            }
+
             // check for a base definition
             if (!string.IsNullOrEmpty(sd.Base))
             {
@@ -584,23 +486,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             }
             else
             {
-                if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out string typeName, out targetProfiles))
+                if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out Dictionary<string, FhirElementType> baseTypes))
                 {
                     throw new InvalidDataException($"Could not determine base type for {sd.Name}");
                 }
 
-                complex.BaseTypeName = typeName;
+                if (baseTypes.Count == 0)
+                {
+                    throw new InvalidDataException($"Could not determine base type for {sd.Name}");
+                }
+
+                if (baseTypes.Count > 1)
+                {
+                    throw new InvalidDataException($"Too many types for {sd.Name}: {baseTypes.Count}");
+                }
+
+                complex.BaseTypeName = baseTypes.ElementAt(0).Value.Code;
             }
 
             // look for properties on this type
             foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
             {
-                string id = element.Id;
-                string path = element.Path;
+                string id = element.Id ?? element.Path;
+                string path = element.Path ?? element.Id;
+                Dictionary<string, FhirElementType> elementTypes = null;
+                string elementType = string.Empty;
 
-                // split the path into component parts
-                string[] idComponents = element.Path.Split('.');
-                string[] pathComponents = element.Path.Split('.');
+                // split the id into component parts
+                string[] idComponents = id.Split('.');
+                string[] pathComponents = path.Split('.');
 
                 // base definition, already processed
                 if (pathComponents.Length < 2)
@@ -623,24 +537,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     continue;
                 }
 
-                string elementType;
-                HashSet<string> choiceTypes = null;
+                // check for needing to add a slice to an element
+                if (!string.IsNullOrEmpty(sliceName))
+                {
+                    // add this slice to the field
+                    parent.Elements[field].AddSlice(sd.Url, sliceName);
+
+                    // only slice parent has slice name
+                    continue;
+                }
+
+                // if we can't find a type, assume Element
+                if (!TryGetTypeFromElement(parent.Name, element, out elementTypes))
+                {
+                    elementType = "Element";
+                }
 
                 // determine if there is type expansion
                 if (field.Contains("[x]"))
                 {
                     // fix the field and path names
-                    path = path.Replace("[x]", string.Empty);
+                    id = id.Replace("[x]", string.Empty);
                     field = field.Replace("[x]", string.Empty);
 
-                    // no base type
+                    // force no base type
                     elementType = string.Empty;
-
-                    // get multiple types
-                    if (!TryGetChoiceTypes(element, out choiceTypes))
-                    {
-                        throw new InvalidDataException($"Could not get choice types for {sd.Name} field {element.Path}");
-                    }
                 }
                 else if (!string.IsNullOrEmpty(element.NameReference))
                 {
@@ -653,31 +574,62 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     // use the named type
                     elementType = aliasTable[element.NameReference];
                 }
-                else
-                {
-                    // if we can't find a type, assume Element
-                    if (!TryGetTypeFromElement(parent.Name, element, out elementType, out targetProfiles))
-                    {
-                        elementType = "Element";
-                    }
-                }
+
+                // get default values (if present)
+                GetDefaultValueIfPresent(element, out string defaultName, out object defaultValue);
+
+                // get fixed values (if present)
+                GetFixedValueIfPresent(element, out string fixedName, out object fixedValue);
 
                 // add this field to the parent type
-                //parent.Elements.Add(
-                //    path,
-                //    new FhirElement(
-                //        id,
-                //        path,
-                //        null,
-                //        parent.Elements.Count,
-                //        element.Short,
-                //        element.Definition,
-                //        element.Comment,
-                //        string.Empty,
-                //        elementType,
-                //        null,
-                //        (int)(element.Min ?? 0),
-                //        element.Max));
+                parent.Elements.Add(
+                    path,
+                    new FhirElement(
+                        id,
+                        path,
+                        null,
+                        parent.Elements.Count,
+                        element.Short,
+                        element.Definition,
+                        element.Comment,
+                        string.Empty,
+                        elementType,
+                        elementTypes,
+                        (int)(element.Min ?? 0),
+                        element.Max,
+                        element.IsModifier,
+                        element.IsSummary,
+                        defaultName,
+                        defaultValue,
+                        fixedName,
+                        fixedValue));
+
+                if (element.Slicing != null)
+                {
+                    List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>();
+
+                    if (element.Slicing.Discriminator == null)
+                    {
+                        throw new InvalidDataException($"Missing slicing discriminator: {sd.Name} - {element.Path}");
+                    }
+
+                    foreach (string discriminator in element.Slicing.Discriminator)
+                    {
+                        discriminatorRules.Add(new FhirSliceDiscriminatorRule(
+                            string.Empty,
+                            discriminator));
+                    }
+
+                    // create our slicing
+                    parent.Elements[path].AddSlicing(
+                        new FhirSlicing(
+                            sd.Id,
+                            new Uri(sd.Url),
+                            element.Slicing.Description,
+                            element.Slicing.Ordered,
+                            element.Slicing.Rules,
+                            discriminatorRules));
+                }
 
                 // check to see if we need to insert into our alias table
                 if (!string.IsNullOrEmpty(element.Name))
@@ -687,14 +639,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
             }
 
-            // add our type
-            if (isResource)
+            switch (definitionComplexType)
             {
-                fhirVersionInfo.AddResource(complex);
-            }
-            else
-            {
-                fhirVersionInfo.AddComplexType(complex);
+                case FhirComplex.FhirComplexType.DataType:
+                    fhirVersionInfo.AddComplexType(complex);
+                    break;
+                case FhirComplex.FhirComplexType.Resource:
+                    fhirVersionInfo.AddResource(complex);
+                    break;
+                case FhirComplex.FhirComplexType.Extension:
+                    fhirVersionInfo.AddExtension(contextElements, complex);
+                    break;
             }
         }
 
@@ -753,6 +708,256 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     break;
             }
+        }
+
+        /// <summary>Gets default value if present.</summary>
+        /// <param name="element">     The element.</param>
+        /// <param name="defaultName"> [out] The default name.</param>
+        /// <param name="defaultValue">[out] The default value.</param>
+        private static void GetDefaultValueIfPresent(
+            fhir_2.ElementDefinition element,
+            out string defaultName,
+            out object defaultValue)
+        {
+            if (element.DefaultValueBase64Binary != null)
+            {
+                defaultName = "defaultValueBase64Binary";
+                defaultValue = element.DefaultValueBase64Binary;
+                return;
+            }
+
+            if (element.DefaultValueCode != null)
+            {
+                defaultName = "defaultValueCode";
+                defaultValue = element.DefaultValueCode;
+                return;
+            }
+
+            if (element.DefaultValueDate != null)
+            {
+                defaultName = "defaultValueDate";
+                defaultValue = element.DefaultValueDate;
+                return;
+            }
+
+            if (element.DefaultValueDateTime != null)
+            {
+                defaultName = "defaultValueDateTime";
+                defaultValue = element.DefaultValueDateTime;
+                return;
+            }
+
+            if (element.DefaultValueDecimal != null)
+            {
+                defaultName = "defaultValueDecimal";
+                defaultValue = element.DefaultValueDecimal;
+                return;
+            }
+
+            if (element.DefaultValueId != null)
+            {
+                defaultName = "defaultValueId";
+                defaultValue = element.DefaultValueId;
+                return;
+            }
+
+            if (element.DefaultValueInstant != null)
+            {
+                defaultName = "defaultValueInstant";
+                defaultValue = element.DefaultValueInstant;
+                return;
+            }
+
+            if (element.DefaultValueInteger != null)
+            {
+                defaultName = "defaultValueInteger";
+                defaultValue = element.DefaultValueInteger;
+                return;
+            }
+
+            if (element.DefaultValueOid != null)
+            {
+                defaultName = "defaultValueOid";
+                defaultValue = element.DefaultValueOid;
+                return;
+            }
+
+            if (element.DefaultValuePositiveInt != null)
+            {
+                defaultName = "defaultValuePositiveInt";
+                defaultValue = element.DefaultValuePositiveInt;
+                return;
+            }
+
+            if (element.DefaultValueString != null)
+            {
+                defaultName = "defaultValueString";
+                defaultValue = element.DefaultValueString;
+                return;
+            }
+
+            if (element.DefaultValueTime != null)
+            {
+                defaultName = "defaultValueTime";
+                defaultValue = element.DefaultValueTime;
+                return;
+            }
+
+            if (element.DefaultValueUnsignedInt != null)
+            {
+                defaultName = "defaultValueUnsignedInt";
+                defaultValue = element.DefaultValueUnsignedInt;
+                return;
+            }
+
+            if (element.DefaultValueUri != null)
+            {
+                defaultName = "defaultValueUri";
+                defaultValue = element.DefaultValueUri;
+                return;
+            }
+
+            if (element.DefaultValueUrl != null)
+            {
+                defaultName = "defaultValueUrl";
+                defaultValue = element.DefaultValueUrl;
+                return;
+            }
+
+            if (element.DefaultValueUuid != null)
+            {
+                defaultName = "defaultValueUuid";
+                defaultValue = element.DefaultValueUuid;
+                return;
+            }
+
+            defaultName = string.Empty;
+            defaultValue = null;
+        }
+
+        /// <summary>Gets fixed value if present.</summary>
+        /// <param name="element">   The element.</param>
+        /// <param name="fixedName"> [out] Name of the fixed.</param>
+        /// <param name="fixedValue">[out] The fixed value.</param>
+        private static void GetFixedValueIfPresent(
+            fhir_2.ElementDefinition element,
+            out string fixedName,
+            out object fixedValue)
+        {
+            if (element.FixedBase64Binary != null)
+            {
+                fixedName = "fixedValueBase64Binary";
+                fixedValue = element.FixedBase64Binary;
+                return;
+            }
+
+            if (element.FixedCode != null)
+            {
+                fixedName = "fixedValueCode";
+                fixedValue = element.FixedCode;
+                return;
+            }
+
+            if (element.FixedDate != null)
+            {
+                fixedName = "fixedValueDate";
+                fixedValue = element.FixedDate;
+                return;
+            }
+
+            if (element.FixedDateTime != null)
+            {
+                fixedName = "fixedValueDateTime";
+                fixedValue = element.FixedDateTime;
+                return;
+            }
+
+            if (element.FixedDecimal != null)
+            {
+                fixedName = "fixedValueDecimal";
+                fixedValue = element.FixedDecimal;
+                return;
+            }
+
+            if (element.FixedId != null)
+            {
+                fixedName = "fixedValueId";
+                fixedValue = element.FixedId;
+                return;
+            }
+
+            if (element.FixedInstant != null)
+            {
+                fixedName = "fixedValueInstant";
+                fixedValue = element.FixedInstant;
+                return;
+            }
+
+            if (element.FixedInteger != null)
+            {
+                fixedName = "fixedValueInteger";
+                fixedValue = element.FixedInteger;
+                return;
+            }
+
+            if (element.FixedOid != null)
+            {
+                fixedName = "fixedValueOid";
+                fixedValue = element.FixedOid;
+                return;
+            }
+
+            if (element.FixedPositiveInt != null)
+            {
+                fixedName = "fixedValuePositiveInt";
+                fixedValue = element.FixedPositiveInt;
+                return;
+            }
+
+            if (element.FixedString != null)
+            {
+                fixedName = "fixedValueString";
+                fixedValue = element.FixedString;
+                return;
+            }
+
+            if (element.FixedTime != null)
+            {
+                fixedName = "fixedValueTime";
+                fixedValue = element.FixedTime;
+                return;
+            }
+
+            if (element.FixedUnsignedInt != null)
+            {
+                fixedName = "fixedValueUnsignedInt";
+                fixedValue = element.FixedUnsignedInt;
+                return;
+            }
+
+            if (element.FixedUri != null)
+            {
+                fixedName = "fixedValueUri";
+                fixedValue = element.FixedUri;
+                return;
+            }
+
+            if (element.FixedUrl != null)
+            {
+                fixedName = "fixedValueUrl";
+                fixedValue = element.FixedUrl;
+                return;
+            }
+
+            if (element.FixedUuid != null)
+            {
+                fixedName = "fixedValueUuid";
+                fixedValue = element.FixedUuid;
+                return;
+            }
+
+            fixedName = string.Empty;
+            fixedValue = null;
         }
     }
 }

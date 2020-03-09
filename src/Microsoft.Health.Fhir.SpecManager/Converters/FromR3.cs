@@ -338,13 +338,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             // no discovered type
             elementTypes = null;
             return false;
-
         }
 
         /// <summary>Attempts to get type from elements.</summary>
         /// <param name="structureName">Name of the structure.</param>
         /// <param name="elements">     The elements.</param>
-        /// <param name="typeName">     [out] Name of the type.</param>
+        /// <param name="elementTypes"> [out] Type of the element.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElements(
             string structureName,
@@ -456,7 +455,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
         /// <param name="sd">                   The structure definition to parse.</param>
         /// <param name="fhirVersionInfo">      FHIR Version information.</param>
-        /// <param name="definitionComplexType">Type of strcuture definition we are parsing.</param>
+        /// <param name="definitionComplexType">Type of structure definition we are parsing.</param>
         private static void ProcessComplex(
             fhir_3.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo,
