@@ -20,6 +20,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
     /// <summary>Convert FHIR R2 into local definitions.</summary>
     public sealed class FromR2 : IFhirConverter
     {
+        private const string ExtensionComment = "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.";
+        private const string ExtensionDefinition = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.";
+        private const string ExtensionShort = "Additional content defined by implementations";
+
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private readonly JsonConverter _jsonConverter;
 
@@ -153,8 +157,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             switch (sd.Kind)
             {
                 case "datatype":
-                    // exclude extensions
-                    if (sd.ConstrainedType != "Extension")
+                    if (sd.ConstrainedType == "Extension")
+                    {
+                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
+                    }
+                    else
                     {
                         // leading lower case is primitive
                         if (char.IsLower(sd.Name[0]))
@@ -170,43 +177,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     break;
 
                 case "resource":
-                    // exclude profiles for now
                     if (string.IsNullOrEmpty(sd.ConstrainedType))
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Resource);
                     }
-
-                    break;
-            }
-        }
-
-        /// <summary>Process the structure definition of an extension.</summary>
-        /// <param name="sd">             The structure definition we are parsing.</param>
-        /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        private void ProcessStructureDefExtension(
-            fhir_2.StructureDefinition sd,
-            FhirVersionInfo fhirVersionInfo)
-        {
-            // ignore retired
-            if (sd.Status == "retired")
-            {
-                return;
-            }
-
-            // act depending on kind
-            switch (sd.Kind)
-            {
-                case "datatype":
-                    // exclude extensions
-                    if (sd.ConstrainedType == "Extension")
-                    {
-                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
-                    }
-
-                    break;
-
-                case "resource":
-                    if (!string.IsNullOrEmpty(sd.ConstrainedType))
+                    else
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
                     }
@@ -460,196 +435,281 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            Dictionary<string, string> aliasTable = new Dictionary<string, string>();
-            List<string> contextElements = new List<string>();
-
-            // create a new complex type object
-            FhirComplex complex = new FhirComplex(
-                sd.Id,
-                sd.Name,
-                new Uri(sd.Url),
-                sd.Status,
-                sd.Description,
-                sd.Requirements,
-                string.Empty,
-                null);
-
-            if (sd.Context != null)
+            try
             {
-                contextElements.AddRange(sd.Context);
-            }
-
-            // check for a base definition
-            if (!string.IsNullOrEmpty(sd.Base))
-            {
-                complex.BaseTypeName = sd.Base.Substring(sd.Base.LastIndexOf('/') + 1);
-            }
-            else
-            {
-                if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out Dictionary<string, FhirElementType> baseTypes))
+                Dictionary<string, string> aliasTable = new Dictionary<string, string>();
+                List<string> contextElements = new List<string>();
+                if (sd.Context != null)
                 {
-                    throw new InvalidDataException($"Could not determine base type for {sd.Name}");
+                    contextElements.AddRange(sd.Context);
                 }
 
-                if (baseTypes.Count == 0)
+                // create a new complex type object
+                FhirComplex complex = new FhirComplex(
+                    sd.Id,
+                    sd.Name,
+                    new Uri(sd.Url),
+                    sd.Status,
+                    sd.Description,
+                    sd.Requirements,
+                    string.Empty,
+                    null,
+                    contextElements);
+
+                // check for a base definition
+                if (!string.IsNullOrEmpty(sd.Base))
                 {
-                    throw new InvalidDataException($"Could not determine base type for {sd.Name}");
+                    complex.BaseTypeName = sd.Base.Substring(sd.Base.LastIndexOf('/') + 1);
                 }
-
-                if (baseTypes.Count > 1)
+                else
                 {
-                    throw new InvalidDataException($"Too many types for {sd.Name}: {baseTypes.Count}");
-                }
-
-                complex.BaseTypeName = baseTypes.ElementAt(0).Value.Code;
-            }
-
-            // look for properties on this type
-            foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
-            {
-                string id = element.Id ?? element.Path;
-                string path = element.Path ?? element.Id;
-                Dictionary<string, FhirElementType> elementTypes = null;
-                string elementType = string.Empty;
-
-                // split the id into component parts
-                string[] idComponents = id.Split('.');
-                string[] pathComponents = path.Split('.');
-
-                // base definition, already processed
-                if (pathComponents.Length < 2)
-                {
-                    continue;
-                }
-
-                // get the parent container and our field name
-                if (!complex.GetParentAndFieldName(
-                        sd.Url,
-                        idComponents,
-                        pathComponents,
-                        out FhirComplex parent,
-                        out string field,
-                        out string sliceName))
-                {
-                    // throw new InvalidDataException($"Could not find parent for {element.Path}!");
-                    // should load later
-                    // TODO: figure out a way to verify all dependencies loaded
-                    continue;
-                }
-
-                // check for needing to add a slice to an element
-                if (!string.IsNullOrEmpty(sliceName))
-                {
-                    // add this slice to the field
-                    parent.Elements[field].AddSlice(sd.Url, sliceName);
-
-                    // only slice parent has slice name
-                    continue;
-                }
-
-                // if we can't find a type, assume Element
-                if (!TryGetTypeFromElement(parent.Name, element, out elementTypes))
-                {
-                    elementType = "Element";
-                }
-
-                // determine if there is type expansion
-                if (field.Contains("[x]"))
-                {
-                    // fix the field and path names
-                    id = id.Replace("[x]", string.Empty);
-                    field = field.Replace("[x]", string.Empty);
-
-                    // force no base type
-                    elementType = string.Empty;
-                }
-                else if (!string.IsNullOrEmpty(element.NameReference))
-                {
-                    // look up the named reference in the alias table
-                    if (!aliasTable.ContainsKey(element.NameReference))
+                    if (!TryGetTypeFromElements(sd.Name, sd.Snapshot.Element, out Dictionary<string, FhirElementType> baseTypes))
                     {
-                        throw new InvalidDataException($"Could not resolve NameReference {element.NameReference} in {sd.Name} field {element.Path}");
+                        throw new InvalidDataException($"Could not determine base type for {sd.Name}");
                     }
 
-                    // use the named type
-                    elementType = aliasTable[element.NameReference];
-                }
-
-                // get default values (if present)
-                GetDefaultValueIfPresent(element, out string defaultName, out object defaultValue);
-
-                // get fixed values (if present)
-                GetFixedValueIfPresent(element, out string fixedName, out object fixedValue);
-
-                // add this field to the parent type
-                parent.Elements.Add(
-                    path,
-                    new FhirElement(
-                        id,
-                        path,
-                        null,
-                        parent.Elements.Count,
-                        element.Short,
-                        element.Definition,
-                        element.Comment,
-                        string.Empty,
-                        elementType,
-                        elementTypes,
-                        (int)(element.Min ?? 0),
-                        element.Max,
-                        element.IsModifier,
-                        element.IsSummary,
-                        defaultName,
-                        defaultValue,
-                        fixedName,
-                        fixedValue));
-
-                if (element.Slicing != null)
-                {
-                    List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>();
-
-                    if (element.Slicing.Discriminator == null)
+                    if (baseTypes.Count == 0)
                     {
-                        throw new InvalidDataException($"Missing slicing discriminator: {sd.Name} - {element.Path}");
+                        throw new InvalidDataException($"Could not determine base type for {sd.Name}");
                     }
 
-                    foreach (string discriminator in element.Slicing.Discriminator)
+                    if (baseTypes.Count > 1)
                     {
-                        discriminatorRules.Add(new FhirSliceDiscriminatorRule(
-                            string.Empty,
-                            discriminator));
+                        throw new InvalidDataException($"Too many types for {sd.Name}: {baseTypes.Count}");
                     }
 
-                    // create our slicing
-                    parent.Elements[path].AddSlicing(
-                        new FhirSlicing(
-                            sd.Id,
-                            new Uri(sd.Url),
-                            element.Slicing.Description,
-                            element.Slicing.Ordered,
-                            element.Slicing.Rules,
-                            discriminatorRules));
+                    complex.BaseTypeName = baseTypes.ElementAt(0).Value.Code;
                 }
 
-                // check to see if we need to insert into our alias table
-                if (!string.IsNullOrEmpty(element.Name))
+                // look for properties on this type
+                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
                 {
-                    // add this record, with it's current path
-                    aliasTable.Add(element.Name, element.Path);
+                    try
+                    {
+                        string id = element.Id ?? element.Path;
+                        string path = element.Path ?? element.Id;
+                        Dictionary<string, FhirElementType> elementTypes = null;
+                        string elementType = string.Empty;
+
+                        // split the id into component parts
+                        string[] idComponents = id.Split('.');
+                        string[] pathComponents = path.Split('.');
+
+                        // base definition, already processed
+                        if (pathComponents.Length < 2)
+                        {
+                            // check for this component being different from primar
+                            if (pathComponents[0] != sd.Name)
+                            {
+                                // add to our context
+                                complex.AddContextElement(pathComponents[0]);
+                            }
+
+                            continue;
+                        }
+
+                        // get the parent container and our field name
+                        if (!complex.GetParentAndFieldName(
+                                sd.Url,
+                                idComponents,
+                                pathComponents,
+                                out FhirComplex parent,
+                                out string field,
+                                out string sliceName))
+                        {
+                            // throw new InvalidDataException($"Could not find parent for {element.Path}!");
+                            // should load later
+                            // TODO: figure out a way to verify all dependencies loaded
+                            continue;
+                        }
+
+                        // check for needing to add a slice to an element
+                        if (!string.IsNullOrEmpty(sliceName))
+                        {
+                            // check for extension (implicit slicing in differentials)
+                            if ((!parent.Elements.ContainsKey(path)) && (field == "extension"))
+                            {
+                                // grab the extension definition
+                                parent.Elements.Add(
+                                    path,
+                                    new FhirElement(
+                                        path,
+                                        path,
+                                        null,
+                                        parent.Elements.Count,
+                                        ExtensionShort,
+                                        ExtensionDefinition,
+                                        ExtensionComment,
+                                        string.Empty,
+                                        "Extension",
+                                        null,
+                                        0,
+                                        "*",
+                                        false,
+                                        false,
+                                        string.Empty,
+                                        null,
+                                        string.Empty,
+                                        null));
+                            }
+
+                            // check for implicit slicing definition
+                            if (parent.Elements.ContainsKey(path) &&
+                                (!parent.Elements[path].Slicing.ContainsKey(sd.Url)))
+                            {
+                                List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>()
+                                {
+                                    new FhirSliceDiscriminatorRule(
+                                        "value",
+                                        "url"),
+                                };
+
+                                // create our slicing
+                                parent.Elements[path].AddSlicing(
+                                    new FhirSlicing(
+                                        sd.Id,
+                                        new Uri(sd.Url),
+                                        "Extensions are always sliced by (at least) url",
+                                        null,
+                                        "open",
+                                        discriminatorRules));
+                            }
+
+                            // check for invalid slicing definition (composition-catalog)
+                            if (parent.Elements.ContainsKey(path))
+                            {
+                                // add this slice to the field
+                                parent.Elements[path].AddSlice(sd.Url, sliceName);
+                            }
+
+                            // only slice parent has slice name
+                            continue;
+                        }
+
+                        // if we can't find a type, assume Element
+                        if (!TryGetTypeFromElement(parent.Name, element, out elementTypes))
+                        {
+                            if ((field == "Extension") || (field == "extension"))
+                            {
+                                elementType = "Extension";
+                            }
+                            else
+                            {
+                                elementType = "Element";
+                            }
+                        }
+
+                        // determine if there is type expansion
+                        if (field.Contains("[x]"))
+                        {
+                            // fix the field and path names
+                            id = id.Replace("[x]", string.Empty);
+                            field = field.Replace("[x]", string.Empty);
+
+                            // force no base type
+                            elementType = string.Empty;
+                        }
+                        else if (!string.IsNullOrEmpty(element.NameReference))
+                        {
+                            // look up the named reference in the alias table
+                            if (!aliasTable.ContainsKey(element.NameReference))
+                            {
+                                throw new InvalidDataException($"Could not resolve NameReference {element.NameReference} in {sd.Name} field {element.Path}");
+                            }
+
+                            // use the named type
+                            elementType = aliasTable[element.NameReference];
+                        }
+
+                        // get default values (if present)
+                        GetDefaultValueIfPresent(element, out string defaultName, out object defaultValue);
+
+                        // get fixed values (if present)
+                        GetFixedValueIfPresent(element, out string fixedName, out object fixedValue);
+
+                        // add this field to the parent type
+                        parent.Elements.Add(
+                            path,
+                            new FhirElement(
+                                id,
+                                path,
+                                null,
+                                parent.Elements.Count,
+                                element.Short,
+                                element.Definition,
+                                element.Comment,
+                                string.Empty,
+                                elementType,
+                                elementTypes,
+                                (int)(element.Min ?? 0),
+                                element.Max,
+                                element.IsModifier,
+                                element.IsSummary,
+                                defaultName,
+                                defaultValue,
+                                fixedName,
+                                fixedValue));
+
+                        if (element.Slicing != null)
+                        {
+                            List<FhirSliceDiscriminatorRule> discriminatorRules = new List<FhirSliceDiscriminatorRule>();
+
+                            if (element.Slicing.Discriminator == null)
+                            {
+                                throw new InvalidDataException($"Missing slicing discriminator: {sd.Name} - {element.Path}");
+                            }
+
+                            foreach (string discriminator in element.Slicing.Discriminator)
+                            {
+                                discriminatorRules.Add(new FhirSliceDiscriminatorRule(
+                                    string.Empty,
+                                    discriminator));
+                            }
+
+                            // create our slicing
+                            parent.Elements[path].AddSlicing(
+                                new FhirSlicing(
+                                    sd.Id,
+                                    new Uri(sd.Url),
+                                    element.Slicing.Description,
+                                    element.Slicing.Ordered,
+                                    element.Slicing.Rules,
+                                    discriminatorRules));
+                        }
+
+                        // check to see if we need to insert into our alias table
+                        if (!string.IsNullOrEmpty(element.Name))
+                        {
+                            // add this record, with it's current path
+                            aliasTable.Add(element.Name, element.Path);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(string.Empty);
+                        Console.WriteLine($"FromR4.ProcessComplex <<< element: {element.Path} ({element.Id}) - exception: {ex.Message}");
+                        throw;
+                    }
+                }
+
+                switch (definitionComplexType)
+                {
+                    case FhirComplex.FhirComplexType.DataType:
+                        fhirVersionInfo.AddComplexType(complex);
+                        break;
+                    case FhirComplex.FhirComplexType.Resource:
+                        fhirVersionInfo.AddResource(complex);
+                        break;
+                    case FhirComplex.FhirComplexType.Extension:
+                        fhirVersionInfo.AddExtension(complex);
+                        break;
                 }
             }
-
-            switch (definitionComplexType)
+            catch (Exception ex)
             {
-                case FhirComplex.FhirComplexType.DataType:
-                    fhirVersionInfo.AddComplexType(complex);
-                    break;
-                case FhirComplex.FhirComplexType.Resource:
-                    fhirVersionInfo.AddResource(complex);
-                    break;
-                case FhirComplex.FhirComplexType.Extension:
-                    fhirVersionInfo.AddExtension(contextElements, complex);
-                    break;
+                Console.WriteLine(string.Empty);
+                Console.WriteLine($"FromR4.ProcessComplex <<< SD: {sd.Name} ({sd.Id}) - exception: {ex.Message}");
+                throw;
             }
         }
 
@@ -674,11 +734,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Attempts to process resource.</summary>
         /// <param name="resourceToParse">[out] The resource object.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        /// <param name="processHint">    Process hints related to load operation.</param>
         void IFhirConverter.ProcessResource(
             object resourceToParse,
-            FhirVersionInfo fhirVersionInfo,
-            string processHint)
+            FhirVersionInfo fhirVersionInfo)
         {
             switch (resourceToParse)
             {
@@ -697,15 +755,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     break;
 
                 case fhir_2.StructureDefinition structureDefinition:
-                    if (processHint.Equals("Extension", StringComparison.Ordinal))
-                    {
-                        ProcessStructureDefExtension(structureDefinition, fhirVersionInfo);
-                    }
-                    else
-                    {
-                        ProcessStructureDef(structureDefinition, fhirVersionInfo);
-                    }
-
+                    ProcessStructureDef(structureDefinition, fhirVersionInfo);
                     break;
             }
         }

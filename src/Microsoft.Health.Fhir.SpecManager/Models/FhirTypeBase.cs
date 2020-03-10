@@ -17,9 +17,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// </summary>
     public class FhirTypeBase
     {
-        /// <summary>The extensions.</summary>
-        private Dictionary<string, FhirComplex> _extensions;
-
         /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="id">              The id of this element/resource/datatype.</param>
@@ -60,8 +57,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string[] components = path.Split('.');
             Name = components[components.Length - 1];
             NameCapitalized = Capitalize(Name);
-
-            _extensions = new Dictionary<string, FhirComplex>();
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
@@ -163,10 +158,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The validation RegEx.</value>
         public string ValidationRegEx { get; }
 
-        /// <summary>Gets the extensions.</summary>
-        /// <value>The extensions.</value>
-        public Dictionary<string, FhirComplex> Extensions { get => _extensions; }
-
         /// <summary>Capitalizes a name.</summary>
         /// <param name="name">The name.</param>
         /// <returns>A string.</returns>
@@ -178,18 +169,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             return string.Concat(name.Substring(0, 1).ToUpper(CultureInfo.InvariantCulture), name.Substring(1));
-        }
-
-        /// <summary>Adds an extension.</summary>
-        /// <param name="extension">The extension.</param>
-        internal void AddExtension(FhirComplex extension)
-        {
-            string url = extension.URL.ToString();
-
-            if (!_extensions.ContainsKey(url))
-            {
-                _extensions.Add(url, extension);
-            }
         }
     }
 }

@@ -88,18 +88,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // update our structure
             fhirVersionInfo.VersionString = packageInfo.Version;
 
-            // process structure definitions (want types and resources)
-            ProcessFileGroup(
-                packageDir,
-                "StructureDefinition",
-                ref fhirVersionInfo);
-
-            // process structure definitions for extensions
-            ProcessFileGroup(
-                packageDir,
-                "StructureDefinition",
-                ref fhirVersionInfo,
-                processHint: "Extension");
+            // process structure definitions
+            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);
 
             // process search parameters (adds to resources)
             ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo);
@@ -187,29 +177,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="packageDir">     The package dir.</param>
         /// <param name="prefix">         The prefix.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
-        /// <param name="processHint">    (Optional) Additional inclusion criteria.</param>
         private static void ProcessFileGroup(
             string packageDir,
             string prefix,
-            ref FhirVersionInfo fhirVersionInfo,
-            string processHint = "")
+            ref FhirVersionInfo fhirVersionInfo)
         {
             // get the files in this directory
             string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
 
             // process these files
-            ProcessPackageFiles(files, ref fhirVersionInfo, processHint);
+            ProcessPackageFiles(files, ref fhirVersionInfo);
         }
 
         /// <summary>Process the package files.</summary>
         /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
         /// <param name="files">          The files.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
-        /// <param name="processHint">    (Optional) Additional inclusion criteria.</param>
         private static void ProcessPackageFiles(
             string[] files,
-            ref FhirVersionInfo fhirVersionInfo,
-            string processHint = "")
+            ref FhirVersionInfo fhirVersionInfo)
         {
             // traverse the files
             foreach (string filename in files)
@@ -231,24 +217,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 try
                 {
                     Console.Write($"v{fhirVersionInfo.MajorVersion}: {shortName,-85}\r");
-
-                    // TODO: this feels hacky - figure out a better way
-                    // check for SDs to skip based on number of components + extensions flag
-                    if (resourceHint.Equals("StructureDefinition", StringComparison.Ordinal))
-                    {
-                        if (string.IsNullOrEmpty(processHint) && (components.Length > 2))
-                        {
-                            continue;
-                        }
-
-                        if ((components.Length == 2) &&
-                            (processHint == "Extension") &&
-                            (fhirVersionInfo.ComplexTypes.ContainsKey(components[1]) ||
-                             fhirVersionInfo.Resources.ContainsKey(components[1])))
-                        {
-                            continue;
-                        }
-                    }
 
                     // check for ignored types
                     if (fhirVersionInfo.ShouldIgnoreResource(resourceHint))
@@ -282,7 +250,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     }
 
                     // process this resource
-                    fhirVersionInfo.ProcessResource(resource, processHint);
+                    fhirVersionInfo.ProcessResource(resource);
                 }
                 catch (Exception ex)
                 {

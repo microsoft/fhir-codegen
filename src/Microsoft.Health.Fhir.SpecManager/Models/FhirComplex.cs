@@ -20,6 +20,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private Dictionary<string, FhirSearchParam> _searchParameters;
         private Dictionary<string, FhirOperation> _typeOperations;
         private Dictionary<string, FhirOperation> _instanceOperations;
+        private List<string> _contextElements;
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
         /// <param name="id">              The id of this resource/datatype/extension.</param>
@@ -54,6 +55,41 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _searchParameters = new Dictionary<string, FhirSearchParam>();
             _typeOperations = new Dictionary<string, FhirOperation>();
             _instanceOperations = new Dictionary<string, FhirOperation>();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FhirComplex"/> class.
+        /// </summary>
+        /// <param name="id">              The id of this resource/datatype/extension.</param>
+        /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
+        /// <param name="url">             URL of the resource.</param>
+        /// <param name="standardStatus">  The standard status.</param>
+        /// <param name="shortDescription">Information describing the short.</param>
+        /// <param name="purpose">         The purpose.</param>
+        /// <param name="comment">         The comment.</param>
+        /// <param name="validationRegEx"> The validation RegEx.</param>
+        /// <param name="contextElements"> The context elements.</param>
+        public FhirComplex(
+            string id,
+            string path,
+            Uri url,
+            string standardStatus,
+            string shortDescription,
+            string purpose,
+            string comment,
+            string validationRegEx,
+            List<string> contextElements)
+            : this(
+                id,
+                path,
+                url,
+                standardStatus,
+                shortDescription,
+                purpose,
+                comment,
+                validationRegEx)
+        {
+            _contextElements = contextElements;
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
@@ -129,6 +165,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The instance operations.</value>
         public Dictionary<string, FhirOperation> InstanceOperations { get => _instanceOperations; }
 
+        /// <summary>Gets the context elements.</summary>
+        /// <value>The context elements.</value>
+        public List<string> ContextElements { get => _contextElements; }
+
         /// <summary>Adds a search parameter.</summary>
         /// <param name="searchParam">The search parameter.</param>
         internal void AddSearchParameter(FhirSearchParam searchParam)
@@ -163,50 +203,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
         }
 
-        /// <summary>Adds extension.</summary>
-        /// <param name="extension">        The extension.</param>
-        /// <param name="pathComponents">The element components.</param>
-        /// <param name="startIndex">       The start index.</param>
-        internal void AddExtension(FhirComplex extension, string[] pathComponents, int startIndex)
+        /// <summary>Adds a context element.</summary>
+        /// <param name="element">The element.</param>
+        internal void AddContextElement(string element)
         {
-            // check for no name match
-            if (!Name.Equals(pathComponents[startIndex], StringComparison.Ordinal))
+            if (_contextElements == null)
             {
-                return;
+                _contextElements = new List<string>();
             }
 
-            // check for this type
-            if (startIndex == (pathComponents.Length - 1))
-            {
-                this.AddExtension(extension);
-                return;
-            }
-
-            // build the path to the next item in the path
-            string path = DotForComponents(pathComponents, 0, startIndex + 1);
-
-            // check for being the parent to the field
-            if (startIndex == (pathComponents.Length - 2))
-            {
-                // check for field name
-                if (!_elements.ContainsKey(path))
-                {
-                    return;
-                }
-
-                _elements[path].AddExtension(extension);
-
-                return;
-            }
-
-            // try to recurse
-            if (_components.ContainsKey(path))
-            {
-                _components[path].AddExtension(
-                    extension,
-                    pathComponents,
-                    startIndex + 1);
-            }
+            _contextElements.Add(element);
         }
 
         /// <summary>Adds a component from an element.</summary>
@@ -304,16 +310,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             out string field,
             out string sliceName)
         {
-            // check for no name match
-            if (!Name.Equals(pathComponents[startIndex], StringComparison.Ordinal))
-            {
-                // fail
-                parent = null;
-                field = string.Empty;
-                sliceName = string.Empty;
-                return false;
-            }
-
             // check for being the parent to the field
             if (startIndex == (pathComponents.Length - 2))
             {

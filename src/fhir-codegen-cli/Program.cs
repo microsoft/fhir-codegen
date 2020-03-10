@@ -17,6 +17,8 @@ namespace FhirCodegenCli
     /// <summary>FHIR CodeGen CLI.</summary>
     public static class Program
     {
+        private static HashSet<string> _extensionsOutputted;
+
         /// <summary>Main entry-point for this application.</summary>
         /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>
         /// <param name="outputFile">       An array of command-line argument strings.</param>
@@ -34,6 +36,8 @@ namespace FhirCodegenCli
             string loadR3 = "",
             string loadR4 = "")
         {
+            _extensionsOutputted = new HashSet<string>();
+
             // start timing
             Stopwatch timingWatch = Stopwatch.StartNew();
 
@@ -169,7 +173,7 @@ namespace FhirCodegenCli
 
         /// <summary>Dumps information about a FHIR version to the console.</summary>
         /// <param name="writer">The writer.</param>
-        /// <param name="info">  The information.</param>
+        /// <param name="info">  The FHIR information.</param>
         private static void DumpFhirVersion(TextWriter writer, FhirVersionInfo info)
         {
             // tell the user what's going on
@@ -183,53 +187,66 @@ namespace FhirCodegenCli
                 writer.WriteLine($"- {primitive.Name}: {primitive.BaseTypeName}");
 
                 // check for extensions
-                if (primitive.Extensions != null)
+                if (info.ExtensionsByPath.ContainsKey(primitive.Name))
                 {
-                    DumpExtensions(writer, primitive.Extensions.Values, 0);
+                    DumpExtensions(writer, info, info.ExtensionsByPath[primitive.Name].Values, 2);
                 }
             }
 
             // dump complex types
             writer.WriteLine($"complex types: {info.ComplexTypes.Count}");
-            DumpComplexDict(writer, info.ComplexTypes);
+            DumpComplexDict(writer, info, info.ComplexTypes);
 
             // dump resources
             writer.WriteLine($"resources: {info.Resources.Count}");
-            DumpComplexDict(writer, info.Resources);
+            DumpComplexDict(writer, info, info.Resources);
 
             // dump server level operations
             writer.WriteLine($"system operations: {info.SystemOperations.Count}");
-            DumpOperations(writer, info.SystemOperations.Values, 0, true);
+            DumpOperations(writer, info, info.SystemOperations.Values, 0, true);
 
             // dump magic search parameters - all resource parameters
             writer.WriteLine($"all resource parameters: {info.AllResourceParameters.Count}");
-            DumpSearchParameters(writer, info.AllResourceParameters.Values, 0);
+            DumpSearchParameters(writer, info, info.AllResourceParameters.Values, 0);
 
             // dump magic search parameters - search result parameters
             writer.WriteLine($"search result parameters: {info.SearchResultParameters.Count}");
-            DumpSearchParameters(writer, info.SearchResultParameters.Values, 0);
+            DumpSearchParameters(writer, info, info.SearchResultParameters.Values, 0);
 
             // dump magic search parameters - search result parameters
             writer.WriteLine($"all interaction parameters: {info.AllInteractionParameters.Count}");
-            DumpSearchParameters(writer, info.AllInteractionParameters.Values, 0);
+            DumpSearchParameters(writer, info, info.AllInteractionParameters.Values, 0);
+
+            // dump extension info
+            writer.WriteLine($"extensions: paths exported {_extensionsOutputted.Count} of {info.ExtensionsByUrl.Count}");
+            DumpMissingExtensions(writer, info, 0);
         }
 
         /// <summary>Dumps a complex structure (complex type/resource and properties).</summary>
         /// <param name="writer">The writer.</param>
+        /// <param name="info">  The FHIR information.</param>
         /// <param name="dict">  The dictionary.</param>
-        private static void DumpComplexDict(TextWriter writer, Dictionary<string, FhirComplex> dict)
+        private static void DumpComplexDict(
+            TextWriter writer,
+            FhirVersionInfo info,
+            Dictionary<string, FhirComplex> dict)
         {
             foreach (KeyValuePair<string, FhirComplex> kvp in dict)
             {
-                DumpComplex(writer, kvp.Value);
+                DumpComplex(writer, info, kvp.Value);
             }
         }
 
         /// <summary>Dumps a complex element.</summary>
         /// <param name="writer">     The writer.</param>
+        /// <param name="info">       The FHIR information.</param>
         /// <param name="complex">    The complex.</param>
         /// <param name="indentation">(Optional) The indentation.</param>
-        private static void DumpComplex(TextWriter writer, FhirComplex complex, int indentation = 0)
+        private static void DumpComplex(
+            TextWriter writer,
+            FhirVersionInfo info,
+            FhirComplex complex,
+            int indentation = 0)
         {
             // write this type's line, if it's a root element
             // (sub-properties are written with cardinality in the prior loop)
@@ -270,17 +287,31 @@ namespace FhirCodegenCli
                     $"[{element.CardinalityMin}..{max}]" +
                     $": {propertyType}");
 
-                // check for extensions
-                if (element.Extensions != null)
+                if (!string.IsNullOrEmpty(element.DefaultFieldName))
                 {
-                    DumpExtensions(writer, element.Extensions.Values, indentation + 2);
+                    writer.WriteLine($"{new string(' ', indentation + 4)}" +
+                        $".{element.DefaultFieldName} = {element.DefaultFieldValue}");
+                }
+
+                if (!string.IsNullOrEmpty(element.FixedFieldName))
+                {
+                    writer.WriteLine($"{new string(' ', indentation + 4)}" +
+                        $".{element.FixedFieldName} = {element.FixedFieldValue}");
                 }
 
                 // check for an inline component definition
                 if (complex.Components.ContainsKey(element.Path))
                 {
                     // recurse into this definition
-                    DumpComplex(writer, complex.Components[element.Path], indentation + 2);
+                    DumpComplex(writer, info, complex.Components[element.Path], indentation + 2);
+                }
+                else
+                {
+                    // only check for extensions on elements that are NOT also backbone elements (will dump there)
+                    if (info.ExtensionsByPath.ContainsKey(element.Path))
+                    {
+                        DumpExtensions(writer, info, info.ExtensionsByPath[element.Path].Values, indentation + 2);
+                    }
                 }
 
                 // check for slices
@@ -292,69 +323,118 @@ namespace FhirCodegenCli
                         foreach (FhirComplex slice in slicing.Slices.Values)
                         {
                             writer.WriteLine($"{new string(' ', indentation + 4)}: {element.Name}:{slice.Name}");
-                            DumpComplex(writer, slice, indentation + 4);
+                            DumpComplex(writer, info, slice, indentation + 4);
                         }
                     }
                 }
             }
 
             // check for extensions
-            if (complex.Extensions != null)
+            if (info.ExtensionsByPath.ContainsKey(complex.Path))
             {
-                DumpExtensions(writer, complex.Extensions.Values, indentation);
+                DumpExtensions(writer, info, info.ExtensionsByPath[complex.Path].Values, indentation);
             }
 
             // dump search parameters
             if (complex.SearchParameters != null)
             {
-                DumpSearchParameters(writer, complex.SearchParameters.Values, indentation);
+                DumpSearchParameters(writer, info, complex.SearchParameters.Values, indentation);
             }
 
             // dump type operations
             if (complex.TypeOperations != null)
             {
-                DumpOperations(writer, complex.TypeOperations.Values, indentation, true);
+                DumpOperations(writer, info, complex.TypeOperations.Values, indentation, true);
             }
 
             // dump instance operations
             if (complex.InstanceOperations != null)
             {
-                DumpOperations(writer, complex.InstanceOperations.Values, indentation, false);
+                DumpOperations(writer, info, complex.InstanceOperations.Values, indentation, false);
             }
         }
 
         /// <summary>Dumps the extensions.</summary>
         /// <param name="writer">     The writer.</param>
+        /// <param name="info">       The FHIR information.</param>
         /// <param name="extensions"> The extensions.</param>
         /// <param name="indentation">The indentation.</param>
-        private static void DumpExtensions(TextWriter writer, IEnumerable<FhirComplex> extensions, int indentation)
+        private static void DumpExtensions(
+            TextWriter writer,
+            FhirVersionInfo info,
+            IEnumerable<FhirComplex> extensions,
+            int indentation)
         {
             foreach (FhirComplex extension in extensions)
             {
-                DumpExtension(writer, extension, indentation);
+                DumpExtension(writer, info, extension, indentation);
             }
         }
 
         /// <summary>Dumps an extension.</summary>
         /// <param name="writer">     The writer.</param>
+        /// <param name="info">       The FHIR information.</param>
         /// <param name="extension">  The extension.</param>
         /// <param name="indentation">The indentation.</param>
-        private static void DumpExtension(TextWriter writer, FhirComplex extension, int indentation)
+        private static void DumpExtension(
+            TextWriter writer,
+            FhirVersionInfo info,
+            FhirComplex extension,
+            int indentation)
         {
             writer.WriteLine($"{new string(' ', indentation + 2)}+{extension.URL}");
 
             if (extension.Elements.Count > 0)
             {
-                DumpComplex(writer, extension, indentation + 2);
+                DumpComplex(writer, info, extension, indentation + 2);
+            }
+
+            if (!_extensionsOutputted.Contains(extension.URL.ToString()))
+            {
+                _extensionsOutputted.Add(extension.URL.ToString());
+            }
+        }
+
+        /// <summary>Dumps a missing extensions.</summary>
+        /// <param name="writer">     The writer.</param>
+        /// <param name="info">       The FHIR information.</param>
+        /// <param name="indentation">(Optional) The indentation.</param>
+        private static void DumpMissingExtensions(
+            TextWriter writer,
+            FhirVersionInfo info,
+            int indentation = 0)
+        {
+            // traverse all extensions by URL and see what is missing
+            foreach (KeyValuePair<string, FhirComplex> kvp in info.ExtensionsByUrl)
+            {
+                if (!_extensionsOutputted.Contains(kvp.Key))
+                {
+                    writer.WriteLine($"{new string(' ', indentation + 2)}+{kvp.Value.URL}");
+
+                    if (kvp.Value.ContextElements != null)
+                    {
+                        foreach (string contextElement in kvp.Value.ContextElements)
+                        {
+                            writer.WriteLine($"{new string(' ', indentation + 4)}- {contextElement}");
+                        }
+                    }
+
+                    if (kvp.Value.Elements.Count > 0)
+                    {
+                        DumpComplex(writer, info, kvp.Value, indentation + 2);
+                    }
+                }
             }
         }
 
         /// <summary>Dumps a search parameters.</summary>
         /// <param name="writer">     The writer.</param>
+        /// <param name="info">       The FHIR information.</param>
         /// <param name="parameters"> Options for controlling the operation.</param>
         /// <param name="indentation">The indentation.</param>
         private static void DumpSearchParameters(
             TextWriter writer,
+            FhirVersionInfo info,
             IEnumerable<FhirSearchParam> parameters,
             int indentation)
         {
@@ -368,11 +448,13 @@ namespace FhirCodegenCli
 
         /// <summary>Dumps the operations.</summary>
         /// <param name="writer">     The writer.</param>
+        /// <param name="info">       The FHIR information.</param>
         /// <param name="operations"> The operations.</param>
         /// <param name="indentation">The indentation.</param>
         /// <param name="isTypeLevel">True if is type level, false if not.</param>
         private static void DumpOperations(
             TextWriter writer,
+            FhirVersionInfo info,
             IEnumerable<FhirOperation> operations,
             int indentation,
             bool isTypeLevel)

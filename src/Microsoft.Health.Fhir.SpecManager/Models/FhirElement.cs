@@ -123,7 +123,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The default field value.</value>
         public object DefaultFieldValue { get; }
 
-        /// <summary>Gets the slicing information</summary>
+        /// <summary>Gets the slicing information.</summary>
         /// <value>The slicing.</value>
         public Dictionary<string, FhirSlicing> Slicing => _slicing;
 
@@ -168,7 +168,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Adds a slicing.</summary>
         /// <param name="slicing">Slicing information for this element, if present.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
         internal void AddSlicing(FhirSlicing slicing)
         {
             string url = slicing.DefinedByUrl.ToString();
@@ -185,6 +184,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <returns>True if it succeeds, false if it fails.</returns>
         internal bool AddSlice(string url, string sliceName)
         {
+            if (!_slicing.ContainsKey(url))
+            {
+                return false;
+            }
+
             if (_slicing[url].Slices.ContainsKey(sliceName))
             {
                 return false;

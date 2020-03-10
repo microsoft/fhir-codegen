@@ -136,12 +136,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             ".index.json",
             "package.json",
+            "StructureDefinition-example.json",
         };
 
         private IFhirConverter _fhirConverter;
-        private Dictionary<string, FhirPrimitive> _primitiveTypes;
-        private Dictionary<string, FhirComplex> _complexTypes;
-        private Dictionary<string, FhirComplex> _resources;
+        private Dictionary<string, FhirPrimitive> _primitiveTypesByName;
+        private Dictionary<string, FhirComplex> _complexTypesByName;
+        private Dictionary<string, FhirComplex> _resourcesByName;
+        private Dictionary<string, FhirComplex> _extensionsByUrl;
+        private Dictionary<string, Dictionary<string, FhirComplex>> _extensionsByPath;
         private Dictionary<string, FhirResourceCapability> _capabilities;
         private Dictionary<string, FhirOperation> _systemOperations;
         private Dictionary<string, FhirSearchParam> _globalSearchParameters;
@@ -182,9 +185,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
 
             // create our info dictionaries
-            _primitiveTypes = new Dictionary<string, FhirPrimitive>();
-            _complexTypes = new Dictionary<string, FhirComplex>();
-            _resources = new Dictionary<string, FhirComplex>();
+            _primitiveTypesByName = new Dictionary<string, FhirPrimitive>();
+            _complexTypesByName = new Dictionary<string, FhirComplex>();
+            _resourcesByName = new Dictionary<string, FhirComplex>();
+            _extensionsByUrl = new Dictionary<string, FhirComplex>();
+            _extensionsByPath = new Dictionary<string, Dictionary<string, FhirComplex>>();
             _capabilities = new Dictionary<string, FhirResourceCapability>();
             _systemOperations = new Dictionary<string, FhirOperation>();
             _globalSearchParameters = new Dictionary<string, FhirSearchParam>();
@@ -255,15 +260,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets a dictionary with the known primitive types for this version of FHIR.</summary>
         /// <value>A dictionary of the primitive types.</value>
-        public Dictionary<string, FhirPrimitive> PrimitiveTypes { get => _primitiveTypes; }
+        public Dictionary<string, FhirPrimitive> PrimitiveTypes { get => _primitiveTypesByName; }
 
         /// <summary>Gets a dictionary with the known complex types for this version of FHIR.</summary>
         /// <value>A dictionary of the complex types.</value>
-        public Dictionary<string, FhirComplex> ComplexTypes { get => _complexTypes; }
+        public Dictionary<string, FhirComplex> ComplexTypes { get => _complexTypesByName; }
 
         /// <summary>Gets a dictionary with the known resources for this version of FHIR.</summary>
         /// <value>A dictionary of the resources.</value>
-        public Dictionary<string, FhirComplex> Resources { get => _resources; }
+        public Dictionary<string, FhirComplex> Resources { get => _resourcesByName; }
+
+        /// <summary>Gets URL of the extensions by.</summary>
+        /// <value>The extensions by URL.</value>
+        public Dictionary<string, FhirComplex> ExtensionsByUrl { get => _extensionsByUrl; }
+
+        /// <summary>Gets the extensions per path, in a dictionary keyed by URL.</summary>
+        /// <value>The extensions.</value>
+        public Dictionary<string, Dictionary<string, FhirComplex>> ExtensionsByPath { get => _extensionsByPath; }
 
         /// <summary>Gets the capabilities.</summary>
         /// <value>The capabilities.</value>
@@ -289,21 +302,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="primitive">The primitive.</param>
         internal void AddPrimitive(FhirPrimitive primitive)
         {
-            _primitiveTypes.Add(primitive.Name, primitive);
+            _primitiveTypesByName.Add(primitive.Name, primitive);
         }
 
         /// <summary>Adds a complex type.</summary>
         /// <param name="complex">The complex.</param>
         internal void AddComplexType(FhirComplex complex)
         {
-            _complexTypes.Add(complex.Path, complex);
+            _complexTypesByName.Add(complex.Path, complex);
         }
 
         /// <summary>Adds a resource.</summary>
         /// <param name="resource">The resource object.</param>
         internal void AddResource(FhirComplex resource)
         {
-            _resources.Add(resource.Path, resource);
+            _resourcesByName.Add(resource.Path, resource);
         }
 
         /// <summary>Adds a search parameter.</summary>
@@ -326,12 +339,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
 
                 // check for having this resource
-                if (!_resources.ContainsKey(resourceName))
+                if (!_resourcesByName.ContainsKey(resourceName))
                 {
                     continue;
                 }
 
-                _resources[resourceName].AddSearchParameter(searchParam);
+                _resourcesByName[resourceName].AddSearchParameter(searchParam);
             }
         }
 
@@ -350,61 +363,61 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             {
                 foreach (string resourceName in operation.ResourceTypes)
                 {
-                    if (!_resources.ContainsKey(resourceName))
+                    if (!_resourcesByName.ContainsKey(resourceName))
                     {
                         continue;
                     }
 
-                    _resources[resourceName].AddOperation(operation);
+                    _resourcesByName[resourceName].AddOperation(operation);
                 }
-            }
-        }
-
-        /// <summary>Adds an extension.</summary>
-        /// <param name="extension">The extension.</param>
-        private void AddExtension(FhirComplex extension)
-        {
-            if (_resources.ContainsKey(extension.BaseTypeName))
-            {
-                string[] components = new string[1] { extension.BaseTypeName };
-
-                _resources[extension.BaseTypeName].AddExtension(extension, components, 0);
             }
         }
 
         /// <summary>Adds an extension.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-        /// <param name="contextElements">The context elements.</param>
-        /// <param name="extension">      The extension.</param>
-        internal void AddExtension(List<string> contextElements, FhirComplex extension)
+        /// <param name="extension">The extension.</param>
+        internal void AddExtension(FhirComplex extension)
         {
-            if ((contextElements == null) || (contextElements.Count == 0))
+            string url = extension.URL.ToString();
+
+            // add this extension to our primary dictionary
+            if (!_extensionsByUrl.ContainsKey(url))
+            {
+                _extensionsByUrl.Add(url, extension);
+            }
+
+            // check for needing to use the base type name for context
+            if ((extension.ContextElements == null) || (extension.ContextElements.Count == 0))
             {
                 if (string.IsNullOrEmpty(extension.BaseTypeName))
                 {
-                    throw new ArgumentNullException(nameof(contextElements));
+                    throw new ArgumentNullException(
+                        nameof(extension),
+                        $"ContextElements ({extension.ContextElements}) or BaseTypeName ({extension.BaseTypeName}) is required");
                 }
 
-                AddExtension(extension);
+                // add the base type name as a context element
+                extension.AddContextElement(extension.BaseTypeName);
             }
 
-            foreach (string elementPath in contextElements)
+            foreach (string elementPath in extension.ContextElements)
             {
                 if (string.IsNullOrEmpty(elementPath))
                 {
                     continue;
                 }
 
-                string[] components = elementPath.Split('.');
-
-                if (_resources.ContainsKey(components[0]))
+                // check for this path being new
+                if (!_extensionsByPath.ContainsKey(elementPath))
                 {
-                    _resources[components[0]].AddExtension(extension, components, 0);
+                    _extensionsByPath.Add(elementPath, new Dictionary<string, FhirComplex>());
                 }
 
-                if (_complexTypes.ContainsKey(components[0]))
+                // add this extension (if necessary)
+                if (!_extensionsByPath[elementPath].ContainsKey(url))
                 {
-                    _complexTypes[components[0]].AddExtension(extension, components, 0);
+                    // add as reference to main dictionary
+                    _extensionsByPath[elementPath].Add(url, _extensionsByUrl[url]);
                 }
             }
         }
@@ -458,14 +471,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Attempts to process resource.</summary>
-        /// <param name="resource">   [out] The resource object.</param>
-        /// <param name="processHint">The process hint.</param>
-        public void ProcessResource(
-            object resource,
-            string processHint)
+        /// <param name="resource">[out] The resource object.</param>
+        public void ProcessResource(object resource)
         {
             // process this per the correct FHIR version
-            _fhirConverter.ProcessResource(resource, this, processHint);
+            _fhirConverter.ProcessResource(resource, this);
         }
 
         /// <summary>Adds a versioned parameter.</summary>

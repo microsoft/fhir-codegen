@@ -22,12 +22,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         object ParseResource(string json);
 
         /// <summary>Attempts to process resource.</summary>
-        /// <param name="resourceToParse">  [out] The resource object.</param>
-        /// <param name="fhirVersionInfo">  Primitive types.</param>
-        /// <param name="processHint">    Process hints related to load operation.</param>
+        /// <param name="resourceToParse">[out] The resource object.</param>
+        /// <param name="fhirVersionInfo">Primitive types.</param>
         void ProcessResource(
             object resourceToParse,
-            FhirVersionInfo fhirVersionInfo,
-            string processHint = "");
+            FhirVersionInfo fhirVersionInfo);
     }
 }
