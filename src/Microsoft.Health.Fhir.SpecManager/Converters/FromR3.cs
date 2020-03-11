@@ -487,7 +487,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         if (pathComponents.Length < 2)
                         {
                             // check for this component being different from primar
-                            if (pathComponents[0] != sd.Name)
+                            if ((pathComponents[0] != sd.Name) && (contextElements.Count == 0))
                             {
                                 // add to our context
                                 complex.AddContextElement(pathComponents[0]);
