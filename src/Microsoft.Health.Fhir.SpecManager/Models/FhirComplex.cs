@@ -60,8 +60,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirComplex"/> class.
         /// </summary>
-        /// <param name="id">              The id of this resource/datatype/extension.</param>
-        /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
+        /// <param name="id">              The id of this resource/data type/extension.</param>
+        /// <param name="path">            The dot-notation path to this resource/data type/extension.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">Information describing the short.</param>

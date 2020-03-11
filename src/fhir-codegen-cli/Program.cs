@@ -319,6 +319,11 @@ namespace FhirCodegenCli
                 {
                     foreach (FhirSlicing slicing in element.Slicing.Values)
                     {
+                        if (slicing.Slices.Count == 0)
+                        {
+                            continue;
+                        }
+
                         writer.WriteLine($"{new string(' ', indentation + 4)}: {slicing.DefinedByUrl} ({slicing.SlicingRules})");
                         foreach (FhirComplex slice in slicing.Slices.Values)
                         {
