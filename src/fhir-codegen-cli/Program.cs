@@ -447,7 +447,7 @@ namespace FhirCodegenCli
             {
                 writer.WriteLine($"{new string(' ', indentation + 2)}" +
                     $"?{searchParam.Code}" +
-                    $"={searchParam.ValueType}");
+                    $" = {searchParam.ValueType} ({searchParam.Name})");
             }
         }
 

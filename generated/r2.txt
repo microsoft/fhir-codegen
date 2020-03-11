@@ -789,15 +789,15 @@ resources: 96
   - subject[0..1]: Reference(Patient|Device|Practitioner|Location|HealthcareService|Organization)
   - owner[0..1]: Reference(Organization)
   - description[0..1]: string
-  ?balance=quantity
-  ?identifier=token
-  ?name=string
-  ?owner=reference
-  ?patient=reference
-  ?period=date
-  ?status=token
-  ?subject=reference
-  ?type=token
+  ?balance = quantity (balance)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?owner = reference (owner)
+  ?patient = reference (patient)
+  ?period = date (period)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?type = token (type)
 - AllergyIntolerance: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1067,21 +1067,21 @@ resources: 96
         - url[1..1]: uri
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/openEHR-management
         - valueString[1..1]: string
-  ?category=token
-  ?criticality=token
-  ?date=date
-  ?identifier=token
-  ?last-date=date
-  ?manifestation=token
-  ?onset=date
-  ?patient=reference
-  ?recorder=reference
-  ?reporter=reference
-  ?route=token
-  ?severity=token
-  ?status=token
-  ?substance=token
-  ?type=token
+  ?category = token (category)
+  ?criticality = token (criticality)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?last-date = date (last-date)
+  ?manifestation = token (manifestation)
+  ?onset = date (onset)
+  ?patient = reference (patient)
+  ?recorder = reference (recorder)
+  ?reporter = reference (reporter)
+  ?route = token (route)
+  ?severity = token (severity)
+  ?status = token (status)
+  ?substance = token (substance)
+  ?type = token (type)
 - Appointment: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1110,14 +1110,14 @@ resources: 96
     - actor[0..1]: Reference(Patient|Practitioner|RelatedPerson|Device|HealthcareService|Location)
     - required[0..1]: code
     - status[1..1]: code
-  ?actor=reference
-  ?date=date
-  ?identifier=token
-  ?location=reference
-  ?part-status=token
-  ?patient=reference
-  ?practitioner=reference
-  ?status=token
+  ?actor = reference (actor)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?part-status = token (part-status)
+  ?patient = reference (patient)
+  ?practitioner = reference (practitioner)
+  ?status = token (status)
 - AppointmentResponse: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1135,13 +1135,13 @@ resources: 96
   - actor[0..1]: Reference(Patient|Practitioner|RelatedPerson|Device|HealthcareService|Location)
   - participantStatus[1..1]: code
   - comment[0..1]: string
-  ?actor=reference
-  ?appointment=reference
-  ?identifier=token
-  ?location=reference
-  ?part-status=token
-  ?patient=reference
-  ?practitioner=reference
+  ?actor = reference (actor)
+  ?appointment = reference (appointment)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?part-status = token (part-status)
+  ?patient = reference (patient)
+  ?practitioner = reference (practitioner)
 - AuditEvent: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1274,23 +1274,23 @@ resources: 96
         - modifierExtension[0..*]: Extension
         - type[1..1]: string
         - value[1..1]: base64Binary
-  ?action=token
-  ?address=token
-  ?altid=token
-  ?date=date
-  ?desc=string
-  ?identity=token
-  ?name=string
-  ?object-type=token
-  ?participant=reference
-  ?patient=reference
-  ?policy=uri
-  ?reference=reference
-  ?site=token
-  ?source=token
-  ?subtype=token
-  ?type=token
-  ?user=token
+  ?action = token (action)
+  ?address = token (address)
+  ?altid = token (altid)
+  ?date = date (date)
+  ?desc = string (desc)
+  ?identity = token (identity)
+  ?name = string (name)
+  ?object-type = token (object-type)
+  ?participant = reference (participant)
+  ?patient = reference (patient)
+  ?policy = uri (policy)
+  ?reference = reference (reference)
+  ?site = token (site)
+  ?source = token (source)
+  ?subtype = token (subtype)
+  ?type = token (type)
+  ?user = token (user)
 - Basic: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1422,12 +1422,12 @@ resources: 96
     - subject[0..1]: Reference(qicore-patient)
     - author[0..1]: Reference(qicore-patient|qicore-relatedperson|qicore-practitioner)
     - created[0..1]: date
-  ?author=reference
-  ?code=token
-  ?created=date
-  ?identifier=token
-  ?patient=reference
-  ?subject=reference
+  ?author = reference (author)
+  ?code = token (code)
+  ?created = date (created)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?subject = reference (subject)
 - Binary: Resource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1435,7 +1435,7 @@ resources: 96
   - language[0..1]: code
   - contentType[1..1]: code
   - content[1..1]: base64Binary
-  ?contenttype=token
+  ?contenttype = token (contenttype)
 - BodySite: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1466,9 +1466,9 @@ resources: 96
     - modifier[0..*]: CodeableConcept
     - description[0..1]: string
     - image[0..*]: Attachment
-  ?code=token
-  ?identifier=token
-  ?patient=reference
+  ?code = token (code)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
 - Bundle: Resource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1526,9 +1526,9 @@ resources: 96
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/http-response-header
         - valueString[1..1]: string
   - signature[0..1]: Signature
-  ?composition=reference
-  ?message=reference
-  ?type=token
+  ?composition = reference (composition)
+  ?message = reference (message)
+  ?type = token (type)
 - CarePlan: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1662,19 +1662,19 @@ resources: 96
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/careplan-activity-title
         - valueString[1..1]: string
     - note[0..0]: Annotation
-  ?activitycode=token
-  ?activitydate=date
-  ?activityreference=reference
-  ?condition=reference
-  ?date=date
-  ?goal=reference
-  ?participant=reference
-  ?patient=reference
-  ?performer=reference
-  ?related=composite
-  ?relatedcode=token
-  ?relatedplan=reference
-  ?subject=reference
+  ?activitycode = token (activitycode)
+  ?activitydate = date (activitydate)
+  ?activityreference = reference (activityreference)
+  ?condition = reference (condition)
+  ?date = date (date)
+  ?goal = reference (goal)
+  ?participant = reference (participant)
+  ?patient = reference (patient)
+  ?performer = reference (performer)
+  ?related = composite (related)
+  ?relatedcode = token (relatedcode)
+  ?relatedplan = reference (relatedplan)
+  ?subject = reference (subject)
 - Claim: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1793,11 +1793,11 @@ resources: 96
     - tooth[1..1]: Coding
     - reason[0..1]: Coding
     - extractionDate[0..1]: date
-  ?identifier=token
-  ?patient=reference
-  ?priority=token
-  ?provider=reference
-  ?use=token
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?priority = token (priority)
+  ?provider = reference (provider)
+  ?use = token (use)
 - ClaimResponse: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1920,7 +1920,7 @@ resources: 96
     - preAuthRef[0..*]: string
     - claimResponse[0..1]: Reference(ClaimResponse)
     - originalRuleset[0..1]: Coding
-  ?identifier=token
+  ?identifier = token (identifier)
 - ClinicalImpression: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1962,20 +1962,20 @@ resources: 96
   - prognosis[0..1]: string
   - plan[0..*]: Reference(CarePlan|Appointment|CommunicationRequest|DeviceUseRequest|DiagnosticOrder|MedicationOrder|NutritionOrder|Order|ProcedureRequest|ProcessRequest|ReferralRequest|SupplyRequest|VisionPrescription)
   - action[0..*]: Reference(ReferralRequest|ProcedureRequest|Procedure|MedicationOrder|DiagnosticOrder|NutritionOrder|SupplyRequest|Appointment)
-  ?action=reference
-  ?assessor=reference
-  ?date=date
-  ?finding=token
-  ?investigation=reference
-  ?patient=reference
-  ?plan=reference
-  ?previous=reference
-  ?problem=reference
-  ?resolved=token
-  ?ruledout=token
-  ?status=token
-  ?trigger-code=token
-  ?trigger=reference
+  ?action = reference (action)
+  ?assessor = reference (assessor)
+  ?date = date (date)
+  ?finding = token (finding)
+  ?investigation = reference (investigation)
+  ?patient = reference (patient)
+  ?plan = reference (plan)
+  ?previous = reference (previous)
+  ?problem = reference (problem)
+  ?resolved = token (resolved)
+  ?ruledout = token (ruledout)
+  ?status = token (status)
+  ?trigger-code = token (trigger-code)
+  ?trigger = reference (trigger)
 - Communication: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -2042,18 +2042,18 @@ resources: 96
     - reason[0..*]: CodeableConcept
     - subject[0..1]: Reference(qicore-patient)
     - requestDetail[0..1]: Reference(CommunicationRequest)
-  ?category=token
-  ?encounter=reference
-  ?identifier=token
-  ?medium=token
-  ?patient=reference
-  ?received=date
-  ?recipient=reference
-  ?request=reference
-  ?sender=reference
-  ?sent=date
-  ?status=token
-  ?subject=reference
+  ?category = token (category)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?medium = token (medium)
+  ?patient = reference (patient)
+  ?received = date (received)
+  ?recipient = reference (recipient)
+  ?request = reference (request)
+  ?sender = reference (sender)
+  ?sent = date (sent)
+  ?status = token (status)
+  ?subject = reference (subject)
 - CommunicationRequest: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -2122,19 +2122,19 @@ resources: 96
     - requestedOn[0..1]: dateTime
     - subject[0..1]: Reference(Patient)
     - priority[0..1]: CodeableConcept
-  ?category=token
-  ?encounter=reference
-  ?identifier=token
-  ?medium=token
-  ?patient=reference
-  ?priority=token
-  ?recipient=reference
-  ?requested=date
-  ?requester=reference
-  ?sender=reference
-  ?status=token
-  ?subject=reference
-  ?time=date
+  ?category = token (category)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?medium = token (medium)
+  ?patient = reference (patient)
+  ?priority = token (priority)
+  ?recipient = reference (recipient)
+  ?requested = date (requested)
+  ?requester = reference (requester)
+  ?sender = reference (sender)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?time = date (time)
 - Composition: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -2297,22 +2297,22 @@ resources: 96
         - url[1..1]: uri
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/cqm-BasedOnMeasure
         - valueReference[1..1]: Reference(DocumentReference)
-  ?attester=reference
-  ?author=reference
-  ?class=token
-  ?confidentiality=token
-  ?context=token
-  ?date=date
-  ?encounter=reference
-  ?entry=reference
-  ?identifier=token
-  ?patient=reference
-  ?period=date
-  ?section=token
-  ?status=token
-  ?subject=reference
-  ?title=string
-  ?type=token
+  ?attester = reference (attester)
+  ?author = reference (author)
+  ?class = token (class)
+  ?confidentiality = token (confidentiality)
+  ?context = token (context)
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?entry = reference (entry)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?period = date (period)
+  ?section = token (section)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?title = string (title)
+  ?type = token (type)
 - ConceptMap: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -2364,24 +2364,24 @@ resources: 96
         - codeSystem[1..1]: uri
         - code[1..1]: string
       - product[0..*]: ConceptMap.element.target.product
-  ?context=token
-  ?date=date
-  ?dependson=uri
-  ?description=string
-  ?identifier=token
-  ?name=string
-  ?product=uri
-  ?publisher=string
-  ?source=reference
-  ?sourcecode=token
-  ?sourcesystem=uri
-  ?sourceuri=reference
-  ?status=token
-  ?target=reference
-  ?targetcode=token
-  ?targetsystem=uri
-  ?url=uri
-  ?version=token
+  ?context = token (context)
+  ?date = date (date)
+  ?dependson = uri (dependson)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?product = uri (product)
+  ?publisher = string (publisher)
+  ?source = reference (source)
+  ?sourcecode = token (sourcecode)
+  ?sourcesystem = uri (sourcesystem)
+  ?sourceuri = reference (sourceuri)
+  ?status = token (status)
+  ?target = reference (target)
+  ?targetcode = token (targetcode)
+  ?targetsystem = uri (targetsystem)
+  ?url = uri (url)
+  ?version = token (version)
   /{id}$translate
     in: code (0-1)
     in: system (0-1)
@@ -2682,21 +2682,21 @@ resources: 96
       - detail[0..*]: Reference(Resource)
     - bodySite[0..*]: CodeableConcept
     - notes[0..1]: string
-  ?asserter=reference
-  ?body-site=token
-  ?category=token
-  ?clinicalstatus=token
-  ?code=token
-  ?age=number
-  ?date-recorded=date
-  ?encounter=reference
-  ?evidence=token
-  ?identifier=token
-  ?onset-info=string
-  ?onset=date
-  ?patient=reference
-  ?severity=token
-  ?stage=token
+  ?asserter = reference (asserter)
+  ?body-site = token (body-site)
+  ?category = token (category)
+  ?clinicalstatus = token (clinicalstatus)
+  ?code = token (code)
+  ?age = number (age)
+  ?date-recorded = date (date-recorded)
+  ?encounter = reference (encounter)
+  ?evidence = token (evidence)
+  ?identifier = token (identifier)
+  ?onset-info = string (onset-info)
+  ?onset = date (onset)
+  ?patient = reference (patient)
+  ?severity = token (severity)
+  ?stage = token (stage)
 - Conformance: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -2933,22 +2933,22 @@ resources: 96
     - url[1..1]: uri
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/conformance-supported-system
     - valueUri[1..1]: uri
-  ?date=date
-  ?description=string
-  ?event=token
-  ?fhirversion=token
-  ?format=token
-  ?mode=token
-  ?name=string
-  ?profile=reference
-  ?publisher=string
-  ?resource=token
-  ?security=token
-  ?software=string
-  ?status=token
-  ?supported-profile=reference
-  ?url=uri
-  ?version=token
+  ?date = date (date)
+  ?description = string (description)
+  ?event = token (event)
+  ?fhirversion = token (fhirversion)
+  ?format = token (format)
+  ?mode = token (mode)
+  ?name = string (name)
+  ?profile = reference (profile)
+  ?publisher = string (publisher)
+  ?resource = token (resource)
+  ?security = token (security)
+  ?software = string (software)
+  ?status = token (status)
+  ?supported-profile = reference (supported-profile)
+  ?url = uri (url)
+  ?version = token (version)
 - Contract: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3133,11 +3133,11 @@ resources: 96
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
       - content[x][1..1]: Attachment|Reference(DocumentReference)
-  ?actor=reference
-  ?identifier=token
-  ?patient=reference
-  ?signer=reference
-  ?subject=reference
+  ?actor = reference (actor)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?signer = reference (signer)
+  ?subject = reference (subject)
 - Coverage: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3161,14 +3161,14 @@ resources: 96
   - subscriber[0..1]: Reference(Patient)
   - network[0..1]: Identifier
   - contract[0..*]: Reference(Contract)
-  ?dependent=token
-  ?group=token
-  ?identifier=token
-  ?issuer=reference
-  ?plan=token
-  ?sequence=token
-  ?subplan=token
-  ?type=token
+  ?dependent = token (dependent)
+  ?group = token (group)
+  ?identifier = token (identifier)
+  ?issuer = reference (issuer)
+  ?plan = token (plan)
+  ?sequence = token (sequence)
+  ?subplan = token (subplan)
+  ?type = token (type)
 - DataElement: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3632,19 +3632,19 @@ resources: 96
           - identity[1..1]: id
           - language[0..1]: code
           - map[1..1]: string
-  ?code=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?identifier=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?stringency=token
-  ?url=uri
-  ?version=string
-  ?objectClass=token
-  ?objectClassProperty=token
+  ?code = token (code)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?stringency = token (stringency)
+  ?url = uri (url)
+  ?version = string (version)
+  ?objectClass = token (objectClass)
+  ?objectClassProperty = token (objectClassProperty)
 - DetectedIssue: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3670,12 +3670,12 @@ resources: 96
     - action[1..1]: CodeableConcept
     - date[0..1]: dateTime
     - author[0..1]: Reference(Practitioner)
-  ?author=reference
-  ?category=token
-  ?date=date
-  ?identifier=token
-  ?implicated=reference
-  ?patient=reference
+  ?author = reference (author)
+  ?category = token (category)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?implicated = reference (implicated)
+  ?patient = reference (patient)
 - Device: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3726,15 +3726,15 @@ resources: 96
     - patient[0..1]: Reference(qicore-patient)
     - contact[0..*]: ContactPoint
     - url[0..1]: uri
-  ?identifier=token
-  ?location=reference
-  ?manufacturer=string
-  ?model=string
-  ?organization=reference
-  ?patient=reference
-  ?type=token
-  ?udi=string
-  ?url=uri
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?manufacturer = string (manufacturer)
+  ?model = string (model)
+  ?organization = reference (organization)
+  ?patient = reference (patient)
+  ?type = token (type)
+  ?udi = string (udi)
+  ?url = uri (url)
 - DeviceComponent: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3760,9 +3760,9 @@ resources: 96
     - componentId[0..1]: Identifier
     - productionSpec[0..1]: string
   - languageCode[0..1]: CodeableConcept
-  ?parent=reference
-  ?source=reference
-  ?type=token
+  ?parent = reference (parent)
+  ?source = reference (source)
+  ?type = token (type)
 - DeviceMetric: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3788,11 +3788,11 @@ resources: 96
     - type[0..1]: code
     - state[0..1]: code
     - time[0..1]: instant
-  ?category=token
-  ?identifier=token
-  ?parent=reference
-  ?source=reference
-  ?type=token
+  ?category = token (category)
+  ?identifier = token (identifier)
+  ?parent = reference (parent)
+  ?source = reference (source)
+  ?type = token (type)
 - DeviceUseRequest: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3845,9 +3845,9 @@ resources: 96
     - subject[1..1]: Reference(qicore-patient)
     - timing[x][0..1]: Timing|Period|dateTime
     - priority[0..1]: code
-  ?device=reference
-  ?patient=reference
-  ?subject=reference
+  ?device = reference (device)
+  ?patient = reference (patient)
+  ?subject = reference (subject)
 - DeviceUseStatement: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3884,9 +3884,9 @@ resources: 96
     - recordedOn[0..1]: dateTime
     - subject[1..1]: Reference(qicore-patient)
     - timing[x][0..1]: Timing|Period|dateTime
-  ?device=reference
-  ?patient=reference
-  ?subject=reference
+  ?device = reference (device)
+  ?patient = reference (patient)
+  ?subject = reference (subject)
 - DiagnosticOrder: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4150,23 +4150,23 @@ resources: 96
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/diagnosticorder-precondition
         - valueCodeableConcept[1..1]: CodeableConcept
     - note[0..*]: Annotation
-  ?actor=reference
-  ?bodysite=token
-  ?code=token
-  ?encounter=reference
-  ?event-date=date
-  ?event-status-date=composite
-  ?event-status=token
-  ?identifier=token
-  ?item-date=date
-  ?item-past-status=token
-  ?item-status-date=composite
-  ?item-status=token
-  ?orderer=reference
-  ?patient=reference
-  ?specimen=reference
-  ?status=token
-  ?subject=reference
+  ?actor = reference (actor)
+  ?bodysite = token (bodysite)
+  ?code = token (code)
+  ?encounter = reference (encounter)
+  ?event-date = date (event-date)
+  ?event-status-date = composite (event-status-date)
+  ?event-status = token (event-status)
+  ?identifier = token (identifier)
+  ?item-date = date (item-date)
+  ?item-past-status = token (item-past-status)
+  ?item-status-date = composite (item-status-date)
+  ?item-status = token (item-status)
+  ?orderer = reference (orderer)
+  ?patient = reference (patient)
+  ?specimen = reference (specimen)
+  ?status = token (status)
+  ?subject = reference (subject)
 - DiagnosticReport: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4378,21 +4378,21 @@ resources: 96
     - conclusion[0..1]: string
     - codedDiagnosis[0..*]: CodeableConcept
     - presentedForm[0..*]: Attachment
-  ?category=token
-  ?code=token
-  ?date=date
-  ?diagnosis=token
-  ?encounter=reference
-  ?identifier=token
-  ?image=reference
-  ?issued=date
-  ?patient=reference
-  ?performer=reference
-  ?request=reference
-  ?result=reference
-  ?specimen=reference
-  ?status=token
-  ?subject=reference
+  ?category = token (category)
+  ?code = token (code)
+  ?date = date (date)
+  ?diagnosis = token (diagnosis)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?image = reference (image)
+  ?issued = date (issued)
+  ?patient = reference (patient)
+  ?performer = reference (performer)
+  ?request = reference (request)
+  ?result = reference (result)
+  ?specimen = reference (specimen)
+  ?status = token (status)
+  ?subject = reference (subject)
 - DocumentManifest: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4453,19 +4453,19 @@ resources: 96
       - modifierExtension[0..*]: Extension
       - identifier[0..1]: Identifier
       - ref[0..1]: Reference(Resource)
-  ?author=reference
-  ?content-ref=reference
-  ?created=date
-  ?description=string
-  ?identifier=token
-  ?patient=reference
-  ?recipient=reference
-  ?related-id=token
-  ?related-ref=reference
-  ?source=uri
-  ?status=token
-  ?subject=reference
-  ?type=token
+  ?author = reference (author)
+  ?content-ref = reference (content-ref)
+  ?created = date (created)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?recipient = reference (recipient)
+  ?related-id = token (related-id)
+  ?related-ref = reference (related-ref)
+  ?source = uri (source)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?type = token (type)
 - DocumentReference: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4578,32 +4578,32 @@ resources: 96
         - modifierExtension[0..*]: Extension
         - identifier[0..1]: Identifier
         - ref[0..1]: Reference(Resource)
-  ?authenticator=reference
-  ?author=reference
-  ?class=token
-  ?created=date
-  ?custodian=reference
-  ?description=string
-  ?encounter=reference
-  ?event=token
-  ?facility=token
-  ?format=token
-  ?identifier=token
-  ?indexed=date
-  ?language=token
-  ?location=uri
-  ?patient=reference
-  ?period=date
-  ?related-id=token
-  ?related-ref=reference
-  ?relatesto=reference
-  ?relation=token
-  ?relationship=composite
-  ?securitylabel=token
-  ?setting=token
-  ?status=token
-  ?subject=reference
-  ?type=token
+  ?authenticator = reference (authenticator)
+  ?author = reference (author)
+  ?class = token (class)
+  ?created = date (created)
+  ?custodian = reference (custodian)
+  ?description = string (description)
+  ?encounter = reference (encounter)
+  ?event = token (event)
+  ?facility = token (facility)
+  ?format = token (format)
+  ?identifier = token (identifier)
+  ?indexed = date (indexed)
+  ?language = token (language)
+  ?location = uri (location)
+  ?patient = reference (patient)
+  ?period = date (period)
+  ?related-id = token (related-id)
+  ?related-ref = reference (related-ref)
+  ?relatesto = reference (relatesto)
+  ?relation = token (relation)
+  ?relationship = composite (relationship)
+  ?securitylabel = token (securitylabel)
+  ?setting = token (setting)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?type = token (type)
 - DomainResource: Resource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4629,7 +4629,7 @@ resources: 96
   - target[0..1]: Reference(Organization)
   - provider[0..1]: Reference(Practitioner)
   - organization[0..1]: Reference(Organization)
-  ?identifier=token
+  ?identifier = token (identifier)
 - EligibilityResponse: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4649,7 +4649,7 @@ resources: 96
   - organization[0..1]: Reference(Organization)
   - requestProvider[0..1]: Reference(Practitioner)
   - requestOrganization[0..1]: Reference(Organization)
-  ?identifier=token
+  ?identifier = token (identifier)
 - Encounter: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4917,26 +4917,26 @@ resources: 96
       - period[0..1]: Period
     - serviceProvider[0..1]: Reference(qicore-organization)
     - partOf[0..1]: Reference(qicore-encounter)
-  ?appointment=reference
-  ?condition=reference
-  ?date=date
-  ?episodeofcare=reference
-  ?identifier=token
-  ?incomingreferral=reference
-  ?indication=reference
-  ?length=number
-  ?location-period=date
-  ?location=reference
-  ?part-of=reference
-  ?participant-type=token
-  ?participant=reference
-  ?patient=reference
-  ?practitioner=reference
-  ?procedure=reference
-  ?reason=token
-  ?special-arrangement=token
-  ?status=token
-  ?type=token
+  ?appointment = reference (appointment)
+  ?condition = reference (condition)
+  ?date = date (date)
+  ?episodeofcare = reference (episodeofcare)
+  ?identifier = token (identifier)
+  ?incomingreferral = reference (incomingreferral)
+  ?indication = reference (indication)
+  ?length = number (length)
+  ?location-period = date (location-period)
+  ?location = reference (location)
+  ?part-of = reference (part-of)
+  ?participant-type = token (participant-type)
+  ?participant = reference (participant)
+  ?patient = reference (patient)
+  ?practitioner = reference (practitioner)
+  ?procedure = reference (procedure)
+  ?reason = token (reason)
+  ?special-arrangement = token (special-arrangement)
+  ?status = token (status)
+  ?type = token (type)
 - EnrollmentRequest: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4956,9 +4956,9 @@ resources: 96
   - subject[1..1]: Reference(Patient)
   - coverage[1..1]: Reference(Coverage)
   - relationship[1..1]: Coding
-  ?identifier=token
-  ?patient=reference
-  ?subject=reference
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?subject = reference (subject)
 - EnrollmentResponse: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4978,7 +4978,7 @@ resources: 96
   - organization[0..1]: Reference(Organization)
   - requestProvider[0..1]: Reference(Practitioner)
   - requestOrganization[0..1]: Reference(Organization)
-  ?identifier=token
+  ?identifier = token (identifier)
 - EpisodeOfCare: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5010,16 +5010,16 @@ resources: 96
     - role[0..*]: CodeableConcept
     - period[0..1]: Period
     - member[0..1]: Reference(Practitioner|Organization)
-  ?care-manager=reference
-  ?condition=reference
-  ?date=date
-  ?identifier=token
-  ?incomingreferral=reference
-  ?organization=reference
-  ?patient=reference
-  ?status=token
-  ?team-member=reference
-  ?type=token
+  ?care-manager = reference (care-manager)
+  ?condition = reference (condition)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?incomingreferral = reference (incomingreferral)
+  ?organization = reference (organization)
+  ?patient = reference (patient)
+  ?status = token (status)
+  ?team-member = reference (team-member)
+  ?type = token (type)
 - ExplanationOfBenefit: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5039,7 +5039,7 @@ resources: 96
   - organization[0..1]: Reference(Organization)
   - requestProvider[0..1]: Reference(Practitioner)
   - requestOrganization[0..1]: Reference(Organization)
-  ?identifier=token
+  ?identifier = token (identifier)
 - FamilyMemberHistory: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5237,13 +5237,13 @@ resources: 96
         - url[1..1]: uri
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/familymemberhistory-severity
         - valueCodeableConcept[1..1]: CodeableConcept
-  ?code=token
-  ?condition=token
-  ?relationship=token
-  ?date=date
-  ?gender=token
-  ?identifier=token
-  ?patient=reference
+  ?code = token (code)
+  ?condition = token (condition)
+  ?relationship = token (relationship)
+  ?date = date (date)
+  ?gender = token (gender)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
 - Flag: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5290,11 +5290,11 @@ resources: 96
     - encounter[0..1]: Reference(Encounter)
     - author[0..1]: Reference(Device|Organization|Patient|Practitioner)
     - code[1..1]: CodeableConcept
-  ?author=reference
-  ?date=date
-  ?encounter=reference
-  ?patient=reference
-  ?subject=reference
+  ?author = reference (author)
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?patient = reference (patient)
+  ?subject = reference (subject)
 - Goal: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5429,12 +5429,12 @@ resources: 96
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
       - result[x][0..1]: CodeableConcept|Reference(Observation)
-  ?category=token
-  ?identifier=token
-  ?patient=reference
-  ?status=token
-  ?subject=reference
-  ?targetdate=date
+  ?category = token (category)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?targetdate = date (targetdate)
 - Group: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5465,15 +5465,15 @@ resources: 96
     - entity[1..1]: Reference(Patient|Practitioner|Device|Medication|Substance)
     - period[0..1]: Period
     - inactive[0..1]: boolean
-  ?actual=token
-  ?characteristic-value=composite
-  ?characteristic=token
-  ?code=token
-  ?exclude=token
-  ?identifier=token
-  ?member=reference
-  ?type=token
-  ?value=token
+  ?actual = token (actual)
+  ?characteristic-value = composite (characteristic-value)
+  ?characteristic = token (characteristic)
+  ?code = token (code)
+  ?exclude = token (exclude)
+  ?identifier = token (identifier)
+  ?member = reference (member)
+  ?type = token (type)
+  ?value = token (value)
 - HealthcareService: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5522,14 +5522,14 @@ resources: 96
     - description[1..1]: string
     - during[0..1]: Period
   - availabilityExceptions[0..1]: string
-  ?characteristic=token
-  ?identifier=token
-  ?location=reference
-  ?name=string
-  ?organization=reference
-  ?programname=string
-  ?servicecategory=token
-  ?servicetype=token
+  ?characteristic = token (characteristic)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?name = string (name)
+  ?organization = reference (organization)
+  ?programname = string (programname)
+  ?servicecategory = token (servicecategory)
+  ?servicetype = token (servicetype)
 - ImagingObjectSelection: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5571,12 +5571,12 @@ resources: 96
           - modifierExtension[0..*]: Extension
           - frameNumbers[1..*]: unsignedInt
           - url[1..1]: uri
-  ?author=reference
-  ?authoring-time=date
-  ?identifier=uri
-  ?patient=reference
-  ?selected-study=uri
-  ?title=token
+  ?author = reference (author)
+  ?authoring-time = date (authoring-time)
+  ?identifier = uri (identifier)
+  ?patient = reference (patient)
+  ?selected-study = uri (selected-study)
+  ?title = token (title)
 - ImagingStudy: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5688,16 +5688,16 @@ resources: 96
         - type[0..1]: string
         - title[0..1]: string
         - content[0..*]: Attachment
-  ?accession=token
-  ?bodysite=token
-  ?dicom-class=uri
-  ?modality=token
-  ?order=reference
-  ?patient=reference
-  ?series=uri
-  ?started=date
-  ?study=uri
-  ?uid=uri
+  ?accession = token (accession)
+  ?bodysite = token (bodysite)
+  ?dicom-class = uri (dicom-class)
+  ?modality = token (modality)
+  ?order = reference (order)
+  ?patient = reference (patient)
+  ?series = uri (series)
+  ?started = date (started)
+  ?study = uri (study)
+  ?uid = uri (uid)
 - Immunization: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5854,22 +5854,22 @@ resources: 96
       - targetDisease[1..*]: CodeableConcept
       - doseStatus[1..1]: CodeableConcept
       - doseStatusReason[0..1]: CodeableConcept
-  ?date=date
-  ?dose-sequence=number
-  ?identifier=token
-  ?location=reference
-  ?lot-number=string
-  ?manufacturer=reference
-  ?notgiven=token
-  ?patient=reference
-  ?performer=reference
-  ?reaction-date=date
-  ?reaction=reference
-  ?reason-not-given=token
-  ?reason=token
-  ?requester=reference
-  ?status=token
-  ?vaccine-code=token
+  ?date = date (date)
+  ?dose-sequence = number (dose-sequence)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?lot-number = string (lot-number)
+  ?manufacturer = reference (manufacturer)
+  ?notgiven = token (notgiven)
+  ?patient = reference (patient)
+  ?performer = reference (performer)
+  ?reaction-date = date (reaction-date)
+  ?reaction = reference (reaction)
+  ?reason-not-given = token (reason-not-given)
+  ?reason = token (reason)
+  ?requester = reference (requester)
+  ?status = token (status)
+  ?vaccine-code = token (vaccine-code)
 - ImmunizationRecommendation: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5940,15 +5940,15 @@ resources: 96
         - series[0..1]: string
       - supportingImmunization[0..*]: Reference(qicore-immunization)
       - supportingPatientInformation[0..*]: Reference(qicore-observation|qicore-allergyintolerance)
-  ?date=date
-  ?dose-number=number
-  ?dose-sequence=number
-  ?identifier=token
-  ?information=reference
-  ?patient=reference
-  ?status=token
-  ?support=reference
-  ?vaccine-type=token
+  ?date = date (date)
+  ?dose-number = number (dose-number)
+  ?dose-sequence = number (dose-sequence)
+  ?identifier = token (identifier)
+  ?information = reference (information)
+  ?patient = reference (patient)
+  ?status = token (status)
+  ?support = reference (support)
+  ?vaccine-type = token (vaccine-type)
 - ImplementationGuide: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -6015,16 +6015,16 @@ resources: 96
     - package[0..*]: string
     - format[0..1]: code
     - page[0..*]: ImplementationGuide.page.page
-  ?context=token
-  ?date=date
-  ?dependency=uri
-  ?description=string
-  ?experimental=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?url=uri
-  ?version=token
+  ?context = token (context)
+  ?date = date (date)
+  ?dependency = uri (dependency)
+  ?description = string (description)
+  ?experimental = token (experimental)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?url = uri (url)
+  ?version = token (version)
 - List: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -6264,17 +6264,17 @@ resources: 96
       - date[0..1]: dateTime
       - item[1..1]: Reference(daf-diagnosticreport)
     - emptyReason[0..1]: CodeableConcept
-  ?code=token
-  ?date=date
-  ?empty-reason=token
-  ?encounter=reference
-  ?item=reference
-  ?notes=string
-  ?patient=reference
-  ?source=reference
-  ?status=token
-  ?subject=reference
-  ?title=string
+  ?code = token (code)
+  ?date = date (date)
+  ?empty-reason = token (empty-reason)
+  ?encounter = reference (encounter)
+  ?item = reference (item)
+  ?notes = string (notes)
+  ?patient = reference (patient)
+  ?source = reference (source)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?title = string (title)
 - Location: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -6386,21 +6386,21 @@ resources: 96
       - altitude[0..1]: decimal
     - managingOrganization[0..1]: Reference(qicore-organization)
     - partOf[0..1]: Reference(qicore-location)
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?alias=string
-  ?identifier=token
-  ?name=string
-  ?near-distance=token
-  ?near=token
-  ?organization=reference
-  ?partof=reference
-  ?status=token
-  ?type=token
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?alias = string (alias)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?near-distance = token (near-distance)
+  ?near = token (near)
+  ?organization = reference (organization)
+  ?partof = reference (partof)
+  ?status = token (status)
+  ?type = token (type)
 - Media: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -6423,14 +6423,14 @@ resources: 96
     .defaultValueInteger = 1
   - duration[0..1]: unsignedInt
   - content[1..1]: Attachment
-  ?created=date
-  ?identifier=token
-  ?operator=reference
-  ?patient=reference
-  ?subject=reference
-  ?subtype=token
-  ?type=token
-  ?view=token
+  ?created = date (created)
+  ?identifier = token (identifier)
+  ?operator = reference (operator)
+  ?patient = reference (patient)
+  ?subject = reference (subject)
+  ?subtype = token (subtype)
+  ?type = token (type)
+  ?view = token (view)
 - Medication: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -6589,12 +6589,12 @@ resources: 96
         - modifierExtension[0..*]: Extension
         - item[1..1]: Reference(qicore-medication)
         - amount[0..1]: Quantity(SimpleQuantity)
-  ?code=token
-  ?container=token
-  ?content=reference
-  ?form=token
-  ?ingredient=reference
-  ?manufacturer=reference
+  ?code = token (code)
+  ?container = token (container)
+  ?content = reference (content)
+  ?form = token (form)
+  ?ingredient = reference (ingredient)
+  ?manufacturer = reference (manufacturer)
 - MedicationAdministration: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -6695,17 +6695,17 @@ resources: 96
       - method[0..1]: CodeableConcept
       - quantity[0..1]: Quantity(SimpleQuantity)
       - rate[x][0..1]: Ratio|Range
-  ?code=token
-  ?device=reference
-  ?effectivetime=date
-  ?encounter=reference
-  ?identifier=token
-  ?medication=reference
-  ?notgiven=token
-  ?patient=reference
-  ?practitioner=reference
-  ?prescription=reference
-  ?status=token
+  ?code = token (code)
+  ?device = reference (device)
+  ?effectivetime = date (effectivetime)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?medication = reference (medication)
+  ?notgiven = token (notgiven)
+  ?patient = reference (patient)
+  ?practitioner = reference (practitioner)
+  ?prescription = reference (prescription)
+  ?status = token (status)
 - MedicationDispense: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -7010,19 +7010,19 @@ resources: 96
       - type[1..1]: CodeableConcept
       - reason[0..*]: CodeableConcept
       - responsibleParty[0..*]: Reference(qicore-practitioner)
-  ?code=token
-  ?destination=reference
-  ?dispenser=reference
-  ?identifier=token
-  ?medication=reference
-  ?patient=reference
-  ?prescription=reference
-  ?receiver=reference
-  ?responsibleparty=reference
-  ?status=token
-  ?type=token
-  ?whenhandedover=date
-  ?whenprepared=date
+  ?code = token (code)
+  ?destination = reference (destination)
+  ?dispenser = reference (dispenser)
+  ?identifier = token (identifier)
+  ?medication = reference (medication)
+  ?patient = reference (patient)
+  ?prescription = reference (prescription)
+  ?receiver = reference (receiver)
+  ?responsibleparty = reference (responsibleparty)
+  ?status = token (status)
+  ?type = token (type)
+  ?whenhandedover = date (whenhandedover)
+  ?whenprepared = date (whenprepared)
 - MedicationOrder: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -7348,14 +7348,14 @@ resources: 96
       - type[1..1]: CodeableConcept
       - reason[0..1]: CodeableConcept
     - priorPrescription[0..1]: Reference(MedicationOrder)
-  ?code=token
-  ?datewritten=date
-  ?encounter=reference
-  ?identifier=token
-  ?medication=reference
-  ?patient=reference
-  ?prescriber=reference
-  ?status=token
+  ?code = token (code)
+  ?datewritten = date (datewritten)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?medication = reference (medication)
+  ?patient = reference (patient)
+  ?prescriber = reference (prescriber)
+  ?status = token (status)
 - MedicationStatement: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -7458,13 +7458,13 @@ resources: 96
       - quantity[x][0..1]: Quantity(SimpleQuantity)|Range
       - rate[x][0..1]: Ratio|Range
       - maxDosePerPeriod[0..1]: Ratio
-  ?code=token
-  ?effectivedate=date
-  ?identifier=token
-  ?medication=reference
-  ?patient=reference
-  ?source=reference
-  ?status=token
+  ?code = token (code)
+  ?effectivedate = date (effectivedate)
+  ?identifier = token (identifier)
+  ?medication = reference (medication)
+  ?patient = reference (patient)
+  ?source = reference (source)
+  ?status = token (status)
 - MessageHeader: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -7505,20 +7505,20 @@ resources: 96
   - responsible[0..1]: Reference(Practitioner|Organization)
   - reason[0..1]: CodeableConcept
   - data[0..*]: Reference(Resource)
-  ?author=reference
-  ?code=token
-  ?data=reference
-  ?destination-uri=uri
-  ?destination=string
-  ?enterer=reference
-  ?event=token
-  ?receiver=reference
-  ?response-id=token
-  ?responsible=reference
-  ?source-uri=uri
-  ?source=string
-  ?target=reference
-  ?timestamp=date
+  ?author = reference (author)
+  ?code = token (code)
+  ?data = reference (data)
+  ?destination-uri = uri (destination-uri)
+  ?destination = string (destination)
+  ?enterer = reference (enterer)
+  ?event = token (event)
+  ?receiver = reference (receiver)
+  ?response-id = token (response-id)
+  ?responsible = reference (responsible)
+  ?source-uri = uri (source-uri)
+  ?source = string (source)
+  ?target = reference (target)
+  ?timestamp = date (timestamp)
 - NamingSystem: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -7553,20 +7553,20 @@ resources: 96
     - preferred[0..1]: boolean
     - period[0..1]: Period
   - replacedBy[0..1]: Reference(NamingSystem)
-  ?contact=string
-  ?context=token
-  ?date=date
-  ?id-type=token
-  ?kind=token
-  ?name=string
-  ?period=date
-  ?publisher=string
-  ?replaced-by=reference
-  ?responsible=string
-  ?status=token
-  ?telecom=token
-  ?type=token
-  ?value=string
+  ?contact = string (contact)
+  ?context = token (context)
+  ?date = date (date)
+  ?id-type = token (id-type)
+  ?kind = token (kind)
+  ?name = string (name)
+  ?period = date (period)
+  ?publisher = string (publisher)
+  ?replaced-by = reference (replaced-by)
+  ?responsible = string (responsible)
+  ?status = token (status)
+  ?telecom = token (telecom)
+  ?type = token (type)
+  ?value = string (value)
 - NutritionOrder: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -7633,16 +7633,16 @@ resources: 96
       - rate[x][0..1]: Quantity(SimpleQuantity)|Ratio
     - maxVolumeToDeliver[0..1]: Quantity(SimpleQuantity)
     - administrationInstruction[0..1]: string
-  ?additive=token
-  ?datetime=date
-  ?encounter=reference
-  ?formula=token
-  ?identifier=token
-  ?oraldiet=token
-  ?patient=reference
-  ?provider=reference
-  ?status=token
-  ?supplement=token
+  ?additive = token (additive)
+  ?datetime = date (datetime)
+  ?encounter = reference (encounter)
+  ?formula = token (formula)
+  ?identifier = token (identifier)
+  ?oraldiet = token (oraldiet)
+  ?patient = reference (patient)
+  ?provider = reference (provider)
+  ?status = token (status)
+  ?supplement = token (supplement)
 - Observation: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -9137,41 +9137,41 @@ resources: 96
     - url[1..1]: uri
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/uslab-specimenrejectreason
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?category=token
-  ?code-value-[x]=composite
-  ?code=token
-  ?component-code-value-[x]=composite
-  ?component-code=token
-  ?component-data-absent-reason=token
-  ?component-value-concept=token
-  ?component-value-quantity=quantity
-  ?component-value-string=string
-  ?data-absent-reason=token
-  ?date=date
-  ?device=reference
-  ?encounter=reference
-  ?amino-acid-change=string
-  ?assessed-condition=reference
-  ?chromosome-genomicstart=string
-  ?condition-gene-dnavariant=string
-  ?condition-gene=string
-  ?dna-variant=string
-  ?gene-amino-acid-change=string
-  ?gene-dnavariant=string
-  ?gene-identifier=token
-  ?identifier=token
-  ?patient=reference
-  ?performer=reference
-  ?related-target=reference
-  ?related-type=token
-  ?related=composite
-  ?specimen=reference
-  ?status=token
-  ?subject=reference
-  ?value-concept=token
-  ?value-date=date
-  ?value-quantity=quantity
-  ?value-string=string
+  ?category = token (category)
+  ?code-value-[x] = composite (code-value-[x])
+  ?code = token (code)
+  ?component-code-value-[x] = composite (component-code-value-[x])
+  ?component-code = token (component-code)
+  ?component-data-absent-reason = token (component-data-absent-reason)
+  ?component-value-concept = token (component-value-concept)
+  ?component-value-quantity = quantity (component-value-quantity)
+  ?component-value-string = string (component-value-string)
+  ?data-absent-reason = token (data-absent-reason)
+  ?date = date (date)
+  ?device = reference (device)
+  ?encounter = reference (encounter)
+  ?amino-acid-change = string (amino-acid-change)
+  ?assessed-condition = reference (assessed-condition)
+  ?chromosome-genomicstart = string (chromosome-genomicstart)
+  ?condition-gene-dnavariant = string (condition-gene-dnavariant)
+  ?condition-gene = string (condition-gene)
+  ?dna-variant = string (dna-variant)
+  ?gene-amino-acid-change = string (gene-amino-acid-change)
+  ?gene-dnavariant = string (gene-dnavariant)
+  ?gene-identifier = token (gene-identifier)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?performer = reference (performer)
+  ?related-target = reference (related-target)
+  ?related-type = token (related-type)
+  ?related = composite (related)
+  ?specimen = reference (specimen)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?value-concept = token (value-concept)
+  ?value-date = date (value-date)
+  ?value-quantity = quantity (value-quantity)
+  ?value-string = string (value-string)
 - OperationDefinition: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -9222,19 +9222,19 @@ resources: 96
       - strength[1..1]: code
       - valueSet[x][1..1]: uri|Reference(ValueSet)
     - part[0..*]: OperationDefinition.parameter.part
-  ?base=reference
-  ?code=token
-  ?date=date
-  ?instance=token
-  ?kind=token
-  ?name=string
-  ?profile=reference
-  ?publisher=string
-  ?status=token
-  ?system=token
-  ?type=token
-  ?url=uri
-  ?version=token
+  ?base = reference (base)
+  ?code = token (code)
+  ?date = date (date)
+  ?instance = token (instance)
+  ?kind = token (kind)
+  ?name = string (name)
+  ?profile = reference (profile)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?system = token (system)
+  ?type = token (type)
+  ?url = uri (url)
+  ?version = token (version)
 - OperationOutcome: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -9293,15 +9293,15 @@ resources: 96
     - code[0..1]: CodeableConcept
     - schedule[0..1]: Timing
   - detail[1..*]: Reference(Resource)
-  ?date=date
-  ?detail=reference
-  ?identifier=token
-  ?patient=reference
-  ?source=reference
-  ?subject=reference
-  ?target=reference
-  ?when=date
-  ?when_code=token
+  ?date = date (date)
+  ?detail = reference (detail)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?source = reference (source)
+  ?subject = reference (subject)
+  ?target = reference (target)
+  ?when = date (when)
+  ?when_code = token (when_code)
 - OrderResponse: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -9318,12 +9318,12 @@ resources: 96
   - orderStatus[1..1]: code
   - description[0..1]: string
   - fulfillment[0..*]: Reference(Resource)
-  ?code=token
-  ?date=date
-  ?fulfillment=reference
-  ?identifier=token
-  ?request=reference
-  ?who=reference
+  ?code = token (code)
+  ?date = date (date)
+  ?fulfillment = reference (fulfillment)
+  ?identifier = token (identifier)
+  ?request = reference (request)
+  ?who = reference (who)
 - Organization: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -9645,19 +9645,19 @@ resources: 96
         - url[1..1]: uri
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/organization-preferredContact
         - valueBoolean[1..1]: boolean
-  ?active=token
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?alias=string
-  ?identifier=token
-  ?name=string
-  ?partof=reference
-  ?phonetic=string
-  ?type=token
+  ?active = token (active)
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?alias = string (alias)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?partof = reference (partof)
+  ?phonetic = string (phonetic)
+  ?type = token (type)
 - Parameters: Resource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -10409,41 +10409,41 @@ resources: 96
       - modifierExtension[0..*]: Extension
       - other[1..1]: Reference(Patient)
       - type[1..1]: code
-  ?part-agree=reference
-  ?active=token
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?animal-breed=token
-  ?animal-species=token
-  ?birthdate=date
-  ?careprovider=reference
-  ?deathdate=date
-  ?deceased=token
-  ?email=token
-  ?age=number
-  ?birthOrderBoolean=token
-  ?city=string
-  ?country=string
-  ?mothersMaidenName=string
-  ?postalCode=string
-  ?state=string
-  ?family=string
-  ?gender=token
-  ?given=string
-  ?identifier=token
-  ?language=token
-  ?link=reference
-  ?name=string
-  ?organization=reference
-  ?phone=token
-  ?phonetic=string
-  ?telecom=token
-  ?ethnicity=token
-  ?race=token
+  ?part-agree = reference (Example Search Parameter on an extension)
+  ?active = token (active)
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?animal-breed = token (animal-breed)
+  ?animal-species = token (animal-species)
+  ?birthdate = date (birthdate)
+  ?careprovider = reference (careprovider)
+  ?deathdate = date (deathdate)
+  ?deceased = token (deceased)
+  ?email = token (email)
+  ?age = number (age)
+  ?birthOrderBoolean = token (birthOrderBoolean)
+  ?city = string (city)
+  ?country = string (country)
+  ?mothersMaidenName = string (mothersMaidenName)
+  ?postalCode = string (postalCode)
+  ?state = string (state)
+  ?family = string (family)
+  ?gender = token (gender)
+  ?given = string (given)
+  ?identifier = token (identifier)
+  ?language = token (language)
+  ?link = reference (link)
+  ?name = string (name)
+  ?organization = reference (organization)
+  ?phone = token (phone)
+  ?phonetic = string (phonetic)
+  ?telecom = token (telecom)
+  ?ethnicity = token (ethnicity)
+  ?race = token (race)
   /{id}$everything
     in: start (0-1)
     in: end (0-1)
@@ -10467,7 +10467,7 @@ resources: 96
   - request[0..1]: Reference(Resource)
   - response[0..1]: Reference(Resource)
   - paymentStatus[1..1]: Coding
-  ?identifier=token
+  ?identifier = token (identifier)
 - PaymentReconciliation: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -10507,7 +10507,7 @@ resources: 96
     - modifierExtension[0..*]: Extension
     - type[0..1]: Coding
     - text[0..1]: string
-  ?identifier=token
+  ?identifier = token (identifier)
 - Person: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -10532,25 +10532,25 @@ resources: 96
     - modifierExtension[0..*]: Extension
     - target[1..1]: Reference(Patient|Practitioner|RelatedPerson|Person)
     - assurance[0..1]: code
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?birthdate=date
-  ?email=token
-  ?gender=token
-  ?identifier=token
-  ?link=reference
-  ?name=string
-  ?organization=reference
-  ?patient=reference
-  ?phone=token
-  ?phonetic=string
-  ?practitioner=reference
-  ?relatedperson=reference
-  ?telecom=token
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?birthdate = date (birthdate)
+  ?email = token (email)
+  ?gender = token (gender)
+  ?identifier = token (identifier)
+  ?link = reference (link)
+  ?name = string (name)
+  ?organization = reference (organization)
+  ?patient = reference (patient)
+  ?phone = token (phone)
+  ?phonetic = string (phonetic)
+  ?practitioner = reference (practitioner)
+  ?relatedperson = reference (relatedperson)
+  ?telecom = token (telecom)
 - Practitioner: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -10876,26 +10876,26 @@ resources: 96
       - period[0..1]: Period
       - issuer[0..1]: Reference(Organization)
     - communication[0..*]: CodeableConcept
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?communication=token
-  ?email=token
-  ?family=string
-  ?gender=token
-  ?given=string
-  ?identifier=token
-  ?location=reference
-  ?name=string
-  ?organization=reference
-  ?phone=token
-  ?phonetic=string
-  ?role=token
-  ?specialty=token
-  ?telecom=token
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?communication = token (communication)
+  ?email = token (email)
+  ?family = string (family)
+  ?gender = token (gender)
+  ?given = string (given)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?name = string (name)
+  ?organization = reference (organization)
+  ?phone = token (phone)
+  ?phonetic = string (phonetic)
+  ?role = token (role)
+  ?specialty = token (specialty)
+  ?telecom = token (telecom)
 - Procedure: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11055,14 +11055,14 @@ resources: 96
       - action[0..1]: CodeableConcept
       - manipulated[1..1]: Reference(qicore-device)
     - used[0..*]: Reference(Device|Medication|Substance)
-  ?code=token
-  ?date=date
-  ?encounter=reference
-  ?identifier=token
-  ?location=reference
-  ?patient=reference
-  ?performer=reference
-  ?subject=reference
+  ?code = token (code)
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?patient = reference (patient)
+  ?performer = reference (performer)
+  ?subject = reference (subject)
 - ProcedureRequest: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11143,12 +11143,12 @@ resources: 96
     - orderedOn[0..1]: dateTime
     - orderer[0..1]: Reference(qicore-practitioner|qicore-patient|qicore-relatedperson|qicore-device)
     - priority[0..1]: code
-  ?encounter=reference
-  ?identifier=token
-  ?orderer=reference
-  ?patient=reference
-  ?performer=reference
-  ?subject=reference
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?orderer = reference (orderer)
+  ?patient = reference (patient)
+  ?performer = reference (performer)
+  ?subject = reference (subject)
 - ProcessRequest: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11178,10 +11178,10 @@ resources: 96
   - include[0..*]: string
   - exclude[0..*]: string
   - period[0..1]: Period
-  ?action=token
-  ?identifier=token
-  ?organization=reference
-  ?provider=reference
+  ?action = token (action)
+  ?identifier = token (identifier)
+  ?organization = reference (organization)
+  ?provider = reference (provider)
 - ProcessResponse: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11209,11 +11209,11 @@ resources: 96
     - type[0..1]: Coding
     - text[0..1]: string
   - error[0..*]: Coding
-  ?identifier=token
-  ?organization=reference
-  ?request=reference
-  ?requestorganization=reference
-  ?requestprovider=reference
+  ?identifier = token (identifier)
+  ?organization = reference (organization)
+  ?request = reference (request)
+  ?requestorganization = reference (requestorganization)
+  ?requestprovider = reference (requestprovider)
 - Provenance: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11292,16 +11292,16 @@ resources: 96
       - display[0..1]: string
       - agent[0..1]: Provenance.entity.agent
     - signature[0..*]: Signature
-  ?agent=reference
-  ?end=date
-  ?entity=uri
-  ?entitytype=token
-  ?location=reference
-  ?patient=reference
-  ?sigtype=token
-  ?start=date
-  ?target=reference
-  ?userid=token
+  ?agent = reference (agent)
+  ?end = date (end)
+  ?entity = uri (entity)
+  ?entitytype = token (entitytype)
+  ?location = reference (location)
+  ?patient = reference (patient)
+  ?sigtype = token (sigtype)
+  ?start = date (start)
+  ?target = reference (target)
+  ?userid = token (userid)
 - Questionnaire: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12125,15 +12125,15 @@ resources: 96
         - url[1..1]: uri
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
         - valueInteger[1..1]: integer
-  ?code=token
-  ?date=date
-  ?category=token
-  ?deReference=token
-  ?identifier=token
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?version=string
+  ?code = token (code)
+  ?date = date (date)
+  ?category = token (category)
+  ?deReference = token (deReference)
+  ?identifier = token (identifier)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?version = string (version)
   /{id}$populate
     in: subject (1-1)
     out: return (1-1)
@@ -12255,14 +12255,14 @@ resources: 96
         - url[1..1]: uri
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaireresponse-author
         - value[x][1..1]: Reference(Patient|RelatedPerson|Device|Practitioner)
-  ?author=reference
-  ?authored=date
-  ?encounter=reference
-  ?patient=reference
-  ?questionnaire=reference
-  ?source=reference
-  ?status=token
-  ?subject=reference
+  ?author = reference (author)
+  ?authored = date (authored)
+  ?encounter = reference (encounter)
+  ?patient = reference (patient)
+  ?questionnaire = reference (questionnaire)
+  ?source = reference (source)
+  ?status = token (status)
+  ?subject = reference (subject)
 - ReferralRequest: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12321,14 +12321,14 @@ resources: 96
     - url[1..1]: uri
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/referralrequest-reasonRefused
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?date=date
-  ?patient=reference
-  ?priority=token
-  ?recipient=reference
-  ?requester=reference
-  ?specialty=token
-  ?status=token
-  ?type=token
+  ?date = date (date)
+  ?patient = reference (patient)
+  ?priority = token (priority)
+  ?recipient = reference (recipient)
+  ?requester = reference (requester)
+  ?specialty = token (specialty)
+  ?status = token (status)
+  ?type = token (type)
 - RelatedPerson: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12392,21 +12392,21 @@ resources: 96
     - address[0..*]: Address
     - photo[0..*]: Attachment
     - period[0..1]: Period
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?birthdate=date
-  ?email=token
-  ?gender=token
-  ?identifier=token
-  ?name=string
-  ?patient=reference
-  ?phone=token
-  ?phonetic=string
-  ?telecom=token
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?birthdate = date (birthdate)
+  ?email = token (email)
+  ?gender = token (gender)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?patient = reference (patient)
+  ?phone = token (phone)
+  ?phonetic = string (phonetic)
+  ?telecom = token (telecom)
 - Resource: Resource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12452,14 +12452,14 @@ resources: 96
     - when[x][0..1]: Period|Range
     - rationale[0..1]: string
   - mitigation[0..1]: string
-  ?condition=reference
-  ?date=date
-  ?encounter=reference
-  ?identifier=token
-  ?method=token
-  ?patient=reference
-  ?performer=reference
-  ?subject=reference
+  ?condition = reference (condition)
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?method = token (method)
+  ?patient = reference (patient)
+  ?performer = reference (performer)
+  ?subject = reference (subject)
 - Schedule: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12474,10 +12474,10 @@ resources: 96
   - actor[1..1]: Reference(Patient|Practitioner|RelatedPerson|Device|HealthcareService|Location)
   - planningHorizon[0..1]: Period
   - comment[0..1]: string
-  ?actor=reference
-  ?date=date
-  ?identifier=token
-  ?type=token
+  ?actor = reference (actor)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?type = token (type)
 - SearchParameter: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12507,13 +12507,13 @@ resources: 96
   - xpath[0..1]: string
   - xpathUsage[0..1]: code
   - target[0..*]: code
-  ?base=token
-  ?code=token
-  ?description=string
-  ?name=string
-  ?target=token
-  ?type=token
-  ?url=uri
+  ?base = token (base)
+  ?code = token (code)
+  ?description = string (description)
+  ?name = string (name)
+  ?target = token (target)
+  ?type = token (type)
+  ?url = uri (url)
 - Slot: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12531,11 +12531,11 @@ resources: 96
   - end[1..1]: instant
   - overbooked[0..1]: boolean
   - comment[0..1]: string
-  ?fb-type=token
-  ?identifier=token
-  ?schedule=reference
-  ?slot-type=token
-  ?start=date
+  ?fb-type = token (fb-type)
+  ?identifier = token (identifier)
+  ?schedule = reference (schedule)
+  ?slot-type = token (slot-type)
+  ?start = date (start)
 - Specimen: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12910,17 +12910,17 @@ resources: 96
         - url[1..1]: uri
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/specimen-sequenceNumber
         - valueInteger[1..1]: integer
-  ?accession=token
-  ?bodysite=token
-  ?collected=date
-  ?collector=reference
-  ?container-id=token
-  ?container=token
-  ?identifier=token
-  ?parent=reference
-  ?patient=reference
-  ?subject=reference
-  ?type=token
+  ?accession = token (accession)
+  ?bodysite = token (bodysite)
+  ?collected = date (collected)
+  ?collector = reference (collector)
+  ?container-id = token (container-id)
+  ?container = token (container)
+  ?identifier = token (identifier)
+  ?parent = reference (parent)
+  ?patient = reference (patient)
+  ?subject = reference (subject)
+  ?type = token (type)
 - StructureDefinition: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12999,27 +12999,27 @@ resources: 96
     - url[1..1]: uri
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-template-status
     - valueCode[1..1]: code
-  ?abstract=token
-  ?base-path=token
-  ?base=uri
-  ?code=token
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?display=string
-  ?experimental=token
-  ?ext-context=string
-  ?identifier=token
-  ?kind=token
-  ?name=string
-  ?path=token
-  ?publisher=string
-  ?status=token
-  ?type=token
-  ?url=uri
-  ?valueset=reference
-  ?version=token
+  ?abstract = token (abstract)
+  ?base-path = token (base-path)
+  ?base = uri (base)
+  ?code = token (code)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?display = string (display)
+  ?experimental = token (experimental)
+  ?ext-context = string (ext-context)
+  ?identifier = token (identifier)
+  ?kind = token (kind)
+  ?name = string (name)
+  ?path = token (path)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?type = token (type)
+  ?url = uri (url)
+  ?valueset = reference (valueset)
+  ?version = token (version)
   /{id}$questionnaire
     in: identifier (0-1)
     in: profile (0-1)
@@ -13050,13 +13050,13 @@ resources: 96
     - header[0..1]: string
   - end[0..1]: instant
   - tag[0..*]: Coding
-  ?contact=token
-  ?criteria=string
-  ?payload=string
-  ?status=token
-  ?tag=token
-  ?type=token
-  ?url=uri
+  ?contact = token (contact)
+  ?criteria = string (criteria)
+  ?payload = string (payload)
+  ?status = token (status)
+  ?tag = token (tag)
+  ?type = token (type)
+  ?url = uri (url)
 - Substance: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13135,13 +13135,13 @@ resources: 96
       - modifierExtension[0..*]: Extension
       - quantity[0..1]: Ratio
       - substance[1..1]: Reference(qicore-substance)
-  ?category=token
-  ?code=token
-  ?container-identifier=token
-  ?expiry=date
-  ?identifier=token
-  ?quantity=quantity
-  ?substance=reference
+  ?category = token (category)
+  ?code = token (code)
+  ?container-identifier = token (container-identifier)
+  ?expiry = date (expiry)
+  ?identifier = token (identifier)
+  ?quantity = quantity (quantity)
+  ?substance = reference (substance)
 - SupplyDelivery: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13162,11 +13162,11 @@ resources: 96
   - time[0..1]: dateTime
   - destination[0..1]: Reference(Location)
   - receiver[0..*]: Reference(Practitioner)
-  ?identifier=token
-  ?patient=reference
-  ?receiver=reference
-  ?status=token
-  ?supplier=reference
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?receiver = reference (receiver)
+  ?status = token (status)
+  ?supplier = reference (supplier)
 - SupplyRequest: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13191,13 +13191,13 @@ resources: 96
     - modifierExtension[0..*]: Extension
     - code[0..1]: CodeableConcept
     - schedule[0..1]: Timing
-  ?date=date
-  ?identifier=token
-  ?kind=token
-  ?patient=reference
-  ?source=reference
-  ?status=token
-  ?supplier=reference
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?kind = token (kind)
+  ?patient = reference (patient)
+  ?source = reference (source)
+  ?status = token (status)
+  ?supplier = reference (supplier)
 - TestScript: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13339,13 +13339,13 @@ resources: 96
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
       - operation[0..1]: TestScript.teardown.action.operation
-  ?description=string
-  ?identifier=token
-  ?name=string
-  ?testscript-capability=string
-  ?testscript-setup-capability=string
-  ?testscript-test-capability=string
-  ?url=uri
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?testscript-capability = string (testscript-capability)
+  ?testscript-setup-capability = string (testscript-setup-capability)
+  ?testscript-test-capability = string (testscript-test-capability)
+  ?url = uri (url)
 - ValueSet: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -14546,24 +14546,24 @@ resources: 96
     - url[1..1]: uri
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-workflowStatus
     - valueString[1..1]: string
-  ?code=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?expansion=uri
-  ?author=string
-  ?effective=date
-  ?end=date
-  ?keyword=string
-  ?workflow=token
-  ?identifier=token
-  ?name=string
-  ?publisher=string
-  ?reference=uri
-  ?status=token
-  ?system=uri
-  ?url=uri
-  ?version=token
+  ?code = token (code)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?expansion = uri (expansion)
+  ?author = string (author)
+  ?effective = date (effective)
+  ?end = date (end)
+  ?keyword = string (keyword)
+  ?workflow = token (workflow)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?reference = uri (reference)
+  ?status = token (status)
+  ?system = uri (system)
+  ?url = uri (url)
+  ?version = token (version)
   /{id}$expand
     in: identifier (0-1)
     in: valueSet (0-1)
@@ -14623,11 +14623,11 @@ resources: 96
     - color[0..1]: string
     - brand[0..1]: string
     - notes[0..1]: string
-  ?datewritten=date
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?prescriber=reference
+  ?datewritten = date (datewritten)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?prescriber = reference (prescriber)
 system operations: 3
   $closure
     in: name (1-1)
@@ -14641,28 +14641,27 @@ system operations: 3
     out: return (0-1)
   $meta
     out: return (1-1)
-all resource parameters: 10
-  ?_id=token
-  ?_content=string
-  ?_id=token
-  ?_lastUpdated=date
-  ?_profile=uri
-  ?_query=token
-  ?_security=token
-  ?_tag=token
-  ?_text=string
-  ?_list=string
+all resource parameters: 9
+  ?_id = token (Example Search Parameter)
+  ?_content = string (_content)
+  ?_lastUpdated = date (_lastUpdated)
+  ?_profile = uri (_profile)
+  ?_query = token (_query)
+  ?_security = token (_security)
+  ?_tag = token (_tag)
+  ?_text = string (_text)
+  ?_list = string (_list)
 search result parameters: 8
-  ?_sort=string
-  ?_count=string
-  ?_include=string
-  ?_revinclude=string
-  ?_summary=string
-  ?_elements=string
-  ?_contained=string
-  ?_containedType=string
+  ?_sort = string (_sort)
+  ?_count = string (_count)
+  ?_include = string (_include)
+  ?_revinclude = string (_revinclude)
+  ?_summary = string (_summary)
+  ?_elements = string (_elements)
+  ?_contained = string (_contained)
+  ?_containedType = string (_containedType)
 all interaction parameters: 1
-  ?_format=string
+  ?_format = string (_format)
 extensions: paths exported 373 of 391
   +http://hl7.org/fhir/StructureDefinition/body-site-instance
     - *

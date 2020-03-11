@@ -1650,14 +1650,14 @@ resources: 148
     - onHold[0..1]: boolean
     - period[0..1]: Period
   - partOf[0..1]: Reference(Account)
-  ?identifier=token
-  ?name=string
-  ?owner=reference
-  ?patient=reference
-  ?period=date
-  ?status=token
-  ?subject=reference
-  ?type=token
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?owner = reference (owner)
+  ?patient = reference (patient)
+  ?period = date (period)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?type = token (type)
 - ActivityDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -1794,28 +1794,28 @@ resources: 148
       - modifierExtension[0..*]: Extension
       - path[1..1]: string
       - expression[1..1]: Expression
-  ?composed-of=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?depends-on=reference
-  ?derived-from=reference
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?predecessor=reference
-  ?publisher=string
-  ?status=token
-  ?successor=reference
-  ?title=string
-  ?topic=token
-  ?url=uri
-  ?version=token
+  ?composed-of = reference (composed-of)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?depends-on = reference (depends-on)
+  ?derived-from = reference (derived-from)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?predecessor = reference (predecessor)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?successor = reference (successor)
+  ?title = string (title)
+  ?topic = token (topic)
+  ?url = uri (url)
+  ?version = token (version)
   $apply
     in: activityDefinition (0-1)
     in: subject (1-*)
@@ -1889,18 +1889,18 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-episodeOfCare
     - value[x][1..1]: Reference(EpisodeOfCare)
-  ?actuality=token
-  ?category=token
-  ?date=date
-  ?event=token
-  ?location=reference
-  ?recorder=reference
-  ?resultingcondition=reference
-  ?seriousness=token
-  ?severity=token
-  ?study=reference
-  ?subject=reference
-  ?substance=reference
+  ?actuality = token (actuality)
+  ?category = token (category)
+  ?date = date (date)
+  ?event = token (event)
+  ?location = reference (location)
+  ?recorder = reference (recorder)
+  ?resultingcondition = reference (resultingcondition)
+  ?seriousness = token (seriousness)
+  ?severity = token (severity)
+  ?study = reference (study)
+  ?subject = reference (subject)
+  ?substance = reference (substance)
 - AllergyIntolerance: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -2033,22 +2033,22 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/openEHR-test
     - value[x][1..1]: Reference(Observation|DiagnosticReport)
-  ?asserter=reference
-  ?category=token
-  ?clinical-status=token
-  ?criticality=token
-  ?last-date=date
-  ?manifestation=token
-  ?onset=date
-  ?recorder=reference
-  ?route=token
-  ?severity=token
-  ?verification-status=token
-  ?code=token
-  ?date=date
-  ?identifier=token
-  ?patient=reference
-  ?type=token
+  ?asserter = reference (asserter)
+  ?category = token (category)
+  ?clinical-status = token (clinical-status)
+  ?criticality = token (criticality)
+  ?last-date = date (last-date)
+  ?manifestation = token (manifestation)
+  ?onset = date (onset)
+  ?recorder = reference (recorder)
+  ?route = token (route)
+  ?severity = token (severity)
+  ?verification-status = token (verification-status)
+  ?code = token (code)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?type = token (type)
 - Appointment: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -2088,23 +2088,23 @@ resources: 148
     - status[1..1]: code
     - period[0..1]: Period
   - requestedPeriod[0..*]: Period
-  ?actor=reference
-  ?appointment-type=token
-  ?based-on=reference
-  ?date=date
-  ?identifier=token
-  ?location=reference
-  ?part-status=token
-  ?patient=reference
-  ?practitioner=reference
-  ?reason-code=token
-  ?reason-reference=reference
-  ?service-category=token
-  ?service-type=token
-  ?slot=reference
-  ?specialty=token
-  ?status=token
-  ?supporting-info=reference
+  ?actor = reference (actor)
+  ?appointment-type = token (appointment-type)
+  ?based-on = reference (based-on)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?part-status = token (part-status)
+  ?patient = reference (patient)
+  ?practitioner = reference (practitioner)
+  ?reason-code = token (reason-code)
+  ?reason-reference = reference (reason-reference)
+  ?service-category = token (service-category)
+  ?service-type = token (service-type)
+  ?slot = reference (slot)
+  ?specialty = token (specialty)
+  ?status = token (status)
+  ?supporting-info = reference (supporting-info)
 - AppointmentResponse: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -2122,13 +2122,13 @@ resources: 148
   - actor[0..1]: Reference(Patient|Practitioner|PractitionerRole|RelatedPerson|Device|HealthcareService|Location)
   - participantStatus[1..1]: code
   - comment[0..1]: string
-  ?actor=reference
-  ?appointment=reference
-  ?identifier=token
-  ?location=reference
-  ?part-status=token
-  ?patient=reference
-  ?practitioner=reference
+  ?actor = reference (actor)
+  ?appointment = reference (appointment)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?part-status = token (part-status)
+  ?patient = reference (patient)
+  ?practitioner = reference (practitioner)
 - AuditEvent: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -2349,24 +2349,24 @@ resources: 148
         - url[1..1]: string
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/auditevent-SOPClass
         - value[x][1..1]: Reference(ImagingStudy)
-  ?action=token
-  ?address=string
-  ?agent-name=string
-  ?agent-role=token
-  ?agent=reference
-  ?altid=token
-  ?date=date
-  ?entity-name=string
-  ?entity-role=token
-  ?entity-type=token
-  ?entity=reference
-  ?outcome=token
-  ?patient=reference
-  ?policy=uri
-  ?site=token
-  ?source=reference
-  ?subtype=token
-  ?type=token
+  ?action = token (action)
+  ?address = string (address)
+  ?agent-name = string (agent-name)
+  ?agent-role = token (agent-role)
+  ?agent = reference (agent)
+  ?altid = token (altid)
+  ?date = date (date)
+  ?entity-name = string (entity-name)
+  ?entity-role = token (entity-role)
+  ?entity-type = token (entity-type)
+  ?entity = reference (entity)
+  ?outcome = token (outcome)
+  ?patient = reference (patient)
+  ?policy = uri (policy)
+  ?site = token (site)
+  ?source = reference (source)
+  ?subtype = token (subtype)
+  ?type = token (type)
 - Basic: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -2447,12 +2447,12 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/cqf-systemUserType
     - value[x][1..1]: CodeableConcept
-  ?author=reference
-  ?code=token
-  ?created=date
-  ?identifier=token
-  ?patient=reference
-  ?subject=reference
+  ?author = reference (author)
+  ?code = token (code)
+  ?created = date (created)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?subject = reference (subject)
 - Binary: Resource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -2523,10 +2523,10 @@ resources: 148
   - description[0..1]: string
   - image[0..*]: Attachment
   - patient[1..1]: Reference(Patient)
-  ?identifier=token
-  ?location=token
-  ?morphology=token
-  ?patient=reference
+  ?identifier = token (identifier)
+  ?location = token (location)
+  ?morphology = token (morphology)
+  ?patient = reference (patient)
 - Bundle: Resource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -2593,11 +2593,11 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/http-response-header
         - value[x][1..1]: string
   - signature[0..1]: Signature
-  ?composition=reference
-  ?identifier=token
-  ?message=reference
-  ?timestamp=date
-  ?type=token
+  ?composition = reference (composition)
+  ?identifier = token (identifier)
+  ?message = reference (message)
+  ?timestamp = date (timestamp)
+  ?type = token (type)
 - CapabilityStatement: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -2904,29 +2904,29 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?fhirversion=token
-  ?format=token
-  ?guide=reference
-  ?mode=token
-  ?resource-profile=reference
-  ?resource=token
-  ?security-service=token
-  ?software=string
-  ?supported-profile=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?fhirversion = token (fhirversion)
+  ?format = token (format)
+  ?guide = reference (guide)
+  ?mode = token (mode)
+  ?resource-profile = reference (resource-profile)
+  ?resource = token (resource)
+  ?security-service = token (security-service)
+  ?software = string (software)
+  ?supported-profile = reference (supported-profile)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
   $conforms
     in: left (0-1)
     in: right (0-1)
@@ -3024,26 +3024,26 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-episodeOfCare
     - value[x][1..1]: Reference(EpisodeOfCare)
-  ?activity-code=token
-  ?activity-date=date
-  ?activity-reference=reference
-  ?based-on=reference
-  ?care-team=reference
-  ?category=token
-  ?condition=reference
-  ?encounter=reference
-  ?goal=reference
-  ?instantiates-canonical=reference
-  ?instantiates-uri=uri
-  ?intent=token
-  ?part-of=reference
-  ?performer=reference
-  ?replaces=reference
-  ?status=token
-  ?subject=reference
-  ?date=date
-  ?identifier=token
-  ?patient=reference
+  ?activity-code = token (activity-code)
+  ?activity-date = date (activity-date)
+  ?activity-reference = reference (activity-reference)
+  ?based-on = reference (based-on)
+  ?care-team = reference (care-team)
+  ?category = token (category)
+  ?condition = reference (condition)
+  ?encounter = reference (encounter)
+  ?goal = reference (goal)
+  ?instantiates-canonical = reference (instantiates-canonical)
+  ?instantiates-uri = uri (instantiates-uri)
+  ?intent = token (intent)
+  ?part-of = reference (part-of)
+  ?performer = reference (performer)
+  ?replaces = reference (replaces)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
 - CareTeam: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -3079,14 +3079,14 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-episodeOfCare
     - value[x][1..1]: Reference(EpisodeOfCare)
-  ?category=token
-  ?encounter=reference
-  ?participant=reference
-  ?status=token
-  ?subject=reference
-  ?date=date
-  ?identifier=token
-  ?patient=reference
+  ?category = token (category)
+  ?encounter = reference (encounter)
+  ?participant = reference (participant)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
 - CatalogEntry: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -3154,23 +3154,23 @@ resources: 148
   - account[0..*]: Reference(Account)
   - note[0..*]: Annotation
   - supportingInformation[0..*]: Reference(Resource)
-  ?account=reference
-  ?code=token
-  ?context=reference
-  ?entered-date=date
-  ?enterer=reference
-  ?factor-override=number
-  ?identifier=token
-  ?occurrence=date
-  ?patient=reference
-  ?performer-actor=reference
-  ?performer-function=token
-  ?performing-organization=reference
-  ?price-override=quantity
-  ?quantity=quantity
-  ?requesting-organization=reference
-  ?service=reference
-  ?subject=reference
+  ?account = reference (account)
+  ?code = token (code)
+  ?context = reference (context)
+  ?entered-date = date (entered-date)
+  ?enterer = reference (enterer)
+  ?factor-override = number (factor-override)
+  ?identifier = token (identifier)
+  ?occurrence = date (occurrence)
+  ?patient = reference (patient)
+  ?performer-actor = reference (performer-actor)
+  ?performer-function = token (performer-function)
+  ?performing-organization = reference (performing-organization)
+  ?price-override = quantity (price-override)
+  ?quantity = quantity (quantity)
+  ?requesting-organization = reference (requesting-organization)
+  ?service = reference (service)
+  ?subject = reference (subject)
 - ChargeItemDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -3227,21 +3227,21 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
   /{id}$apply
     in: chargeItem (1-1)
     in: account (0-1)
@@ -3395,23 +3395,23 @@ resources: 148
         - net[0..1]: Money
         - udi[0..*]: Reference(Device)
   - total[0..1]: Money
-  ?care-team=reference
-  ?created=date
-  ?detail-udi=reference
-  ?encounter=reference
-  ?enterer=reference
-  ?facility=reference
-  ?identifier=token
-  ?insurer=reference
-  ?item-udi=reference
-  ?patient=reference
-  ?payee=reference
-  ?priority=token
-  ?procedure-udi=reference
-  ?provider=reference
-  ?status=token
-  ?subdetail-udi=reference
-  ?use=token
+  ?care-team = reference (care-team)
+  ?created = date (created)
+  ?detail-udi = reference (detail-udi)
+  ?encounter = reference (encounter)
+  ?enterer = reference (enterer)
+  ?facility = reference (facility)
+  ?identifier = token (identifier)
+  ?insurer = reference (insurer)
+  ?item-udi = reference (item-udi)
+  ?patient = reference (patient)
+  ?payee = reference (payee)
+  ?priority = token (priority)
+  ?procedure-udi = reference (procedure-udi)
+  ?provider = reference (provider)
+  ?status = token (status)
+  ?subdetail-udi = reference (subdetail-udi)
+  ?use = token (use)
   $submit
     in: resource (1-1)
     out: return (1-1)
@@ -3558,17 +3558,17 @@ resources: 148
     - detailSequence[0..1]: positiveInt
     - subDetailSequence[0..1]: positiveInt
     - code[1..1]: CodeableConcept
-  ?created=date
-  ?disposition=string
-  ?identifier=token
-  ?insurer=reference
-  ?outcome=token
-  ?patient=reference
-  ?payment-date=date
-  ?request=reference
-  ?requestor=reference
-  ?status=token
-  ?use=token
+  ?created = date (created)
+  ?disposition = string (disposition)
+  ?identifier = token (identifier)
+  ?insurer = reference (insurer)
+  ?outcome = token (outcome)
+  ?patient = reference (patient)
+  ?payment-date = date (payment-date)
+  ?request = reference (request)
+  ?requestor = reference (requestor)
+  ?status = token (status)
+  ?use = token (use)
 - ClinicalImpression: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -3615,19 +3615,19 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-episodeOfCare
     - value[x][1..1]: Reference(EpisodeOfCare)
-  ?date=date
-  ?patient=reference
-  ?assessor=reference
-  ?encounter=reference
-  ?finding-code=token
-  ?finding-ref=reference
-  ?identifier=token
-  ?investigation=reference
-  ?previous=reference
-  ?problem=reference
-  ?status=token
-  ?subject=reference
-  ?supporting-info=reference
+  ?date = date (date)
+  ?patient = reference (patient)
+  ?assessor = reference (assessor)
+  ?encounter = reference (encounter)
+  ?finding-code = token (finding-code)
+  ?finding-ref = reference (finding-ref)
+  ?identifier = token (identifier)
+  ?investigation = reference (investigation)
+  ?previous = reference (previous)
+  ?problem = reference (problem)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?supporting-info = reference (supporting-info)
 - CodeSystem: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -4030,31 +4030,31 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-special-status
     - value[x][1..1]: string
-  ?code=token
-  ?content-mode=token
-  ?author=string
-  ?effective=date
-  ?end=date
-  ?keyword=string
-  ?workflow=token
-  ?language=token
-  ?supplements=reference
-  ?system=uri
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?code = token (code)
+  ?content-mode = token (content-mode)
+  ?author = string (author)
+  ?effective = date (effective)
+  ?end = date (end)
+  ?keyword = string (keyword)
+  ?workflow = token (workflow)
+  ?language = token (language)
+  ?supplements = reference (supplements)
+  ?system = uri (system)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
   $find-matches
     in: system (0-1)
     in: version (0-1)
@@ -4174,21 +4174,21 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-episodeOfCare
     - value[x][1..1]: Reference(EpisodeOfCare)
-  ?based-on=reference
-  ?category=token
-  ?encounter=reference
-  ?identifier=token
-  ?instantiates-canonical=reference
-  ?instantiates-uri=uri
-  ?medium=token
-  ?part-of=reference
-  ?patient=reference
-  ?received=date
-  ?recipient=reference
-  ?sender=reference
-  ?sent=date
-  ?status=token
-  ?subject=reference
+  ?based-on = reference (based-on)
+  ?category = token (category)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?instantiates-canonical = reference (instantiates-canonical)
+  ?instantiates-uri = uri (instantiates-uri)
+  ?medium = token (medium)
+  ?part-of = reference (part-of)
+  ?patient = reference (patient)
+  ?received = date (received)
+  ?recipient = reference (recipient)
+  ?sender = reference (sender)
+  ?sent = date (sent)
+  ?status = token (status)
+  ?subject = reference (subject)
 - CommunicationRequest: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -4260,22 +4260,22 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo
     - value[x][1..1]: Reference(Resource)
-  ?authored=date
-  ?based-on=reference
-  ?category=token
-  ?encounter=reference
-  ?group-identifier=token
-  ?identifier=token
-  ?medium=token
-  ?occurrence=date
-  ?patient=reference
-  ?priority=token
-  ?recipient=reference
-  ?replaces=reference
-  ?requester=reference
-  ?sender=reference
-  ?status=token
-  ?subject=reference
+  ?authored = date (authored)
+  ?based-on = reference (based-on)
+  ?category = token (category)
+  ?encounter = reference (encounter)
+  ?group-identifier = token (group-identifier)
+  ?identifier = token (identifier)
+  ?medium = token (medium)
+  ?occurrence = date (occurrence)
+  ?patient = reference (patient)
+  ?priority = token (priority)
+  ?recipient = reference (recipient)
+  ?replaces = reference (replaces)
+  ?requester = reference (requester)
+  ?sender = reference (sender)
+  ?status = token (status)
+  ?subject = reference (subject)
 - CompartmentDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -4329,20 +4329,20 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?code=token
-  ?resource=token
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?url=uri
-  ?version=token
+  ?code = token (code)
+  ?resource = token (resource)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?url = uri (url)
+  ?version = token (version)
 - Composition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -4550,24 +4550,24 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?date=date
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?type=token
-  ?attester=reference
-  ?author=reference
-  ?category=token
-  ?confidentiality=token
-  ?context=token
-  ?entry=reference
-  ?period=date
-  ?related-id=token
-  ?related-ref=reference
-  ?section=token
-  ?status=token
-  ?subject=reference
-  ?title=string
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?type = token (type)
+  ?attester = reference (attester)
+  ?author = reference (author)
+  ?category = token (category)
+  ?confidentiality = token (confidentiality)
+  ?context = token (context)
+  ?entry = reference (entry)
+  ?period = date (period)
+  ?related-id = token (related-id)
+  ?related-ref = reference (related-ref)
+  ?section = token (section)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?title = string (title)
   $document
     in: id (0-1)
     in: persist (0-1)
@@ -4671,32 +4671,32 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?dependson=uri
-  ?other=reference
-  ?product=uri
-  ?source-code=token
-  ?source-system=uri
-  ?source-uri=reference
-  ?source=reference
-  ?target-code=token
-  ?target-system=uri
-  ?target-uri=reference
-  ?target=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?dependson = uri (dependson)
+  ?other = reference (other)
+  ?product = uri (product)
+  ?source-code = token (source-code)
+  ?source-system = uri (source-system)
+  ?source-uri = reference (source-uri)
+  ?source = reference (source)
+  ?target-code = token (target-code)
+  ?target-system = uri (target-system)
+  ?target-uri = reference (target-uri)
+  ?target = reference (target)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
   $translate
     in: url (0-1)
     in: conceptMap (0-1)
@@ -4834,27 +4834,27 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-instantiatesUri
     - value[x][1..1]: uri
-  ?code=token
-  ?identifier=token
-  ?patient=reference
-  ?abatement-age=quantity
-  ?abatement-date=date
-  ?abatement-string=string
-  ?asserter=reference
-  ?body-site=token
-  ?category=token
-  ?clinical-status=token
-  ?encounter=reference
-  ?evidence-detail=reference
-  ?evidence=token
-  ?onset-age=quantity
-  ?onset-date=date
-  ?onset-info=string
-  ?recorded-date=date
-  ?severity=token
-  ?stage=token
-  ?subject=reference
-  ?verification-status=token
+  ?code = token (code)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?abatement-age = quantity (abatement-age)
+  ?abatement-date = date (abatement-date)
+  ?abatement-string = string (abatement-string)
+  ?asserter = reference (asserter)
+  ?body-site = token (body-site)
+  ?category = token (category)
+  ?clinical-status = token (clinical-status)
+  ?encounter = reference (encounter)
+  ?evidence-detail = reference (evidence-detail)
+  ?evidence = token (evidence)
+  ?onset-age = quantity (onset-age)
+  ?onset-date = date (onset-date)
+  ?onset-info = string (onset-info)
+  ?recorded-date = date (recorded-date)
+  ?severity = token (severity)
+  ?stage = token (stage)
+  ?subject = reference (subject)
+  ?verification-status = token (verification-status)
 - Consent: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -4942,21 +4942,21 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?date=date
-  ?identifier=token
-  ?patient=reference
-  ?action=token
-  ?actor=reference
-  ?category=token
-  ?consentor=reference
-  ?data=reference
-  ?organization=reference
-  ?period=date
-  ?purpose=token
-  ?scope=token
-  ?security-label=token
-  ?source-reference=reference
-  ?status=token
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?action = token (action)
+  ?actor = reference (actor)
+  ?category = token (category)
+  ?consentor = reference (consentor)
+  ?data = reference (data)
+  ?organization = reference (organization)
+  ?period = date (period)
+  ?purpose = token (purpose)
+  ?scope = token (scope)
+  ?security-label = token (security-label)
+  ?source-reference = reference (source-reference)
+  ?status = token (status)
 - Contract: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5140,16 +5140,16 @@ resources: 148
     - modifierExtension[0..*]: Extension
     - content[x][1..1]: Attachment|Reference(DocumentReference)
   - legallyBinding[x][0..1]: Attachment|Reference(Composition|DocumentReference|QuestionnaireResponse|Contract)
-  ?authority=reference
-  ?domain=reference
-  ?identifier=token
-  ?instantiates=uri
-  ?issued=date
-  ?patient=reference
-  ?signer=reference
-  ?status=token
-  ?subject=reference
-  ?url=uri
+  ?authority = reference (authority)
+  ?domain = reference (domain)
+  ?identifier = token (identifier)
+  ?instantiates = uri (instantiates)
+  ?issued = date (issued)
+  ?patient = reference (patient)
+  ?signer = reference (signer)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?url = uri (url)
 - Coverage: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5193,17 +5193,17 @@ resources: 148
       - period[0..1]: Period
   - subrogation[0..1]: boolean
   - contract[0..*]: Reference(Contract)
-  ?beneficiary=reference
-  ?class-type=token
-  ?class-value=string
-  ?dependent=string
-  ?identifier=token
-  ?patient=reference
-  ?payor=reference
-  ?policy-holder=reference
-  ?status=token
-  ?subscriber=reference
-  ?type=token
+  ?beneficiary = reference (beneficiary)
+  ?class-type = token (class-type)
+  ?class-value = string (class-value)
+  ?dependent = string (dependent)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?payor = reference (payor)
+  ?policy-holder = reference (policy-holder)
+  ?status = token (status)
+  ?subscriber = reference (subscriber)
+  ?type = token (type)
 - CoverageEligibilityRequest: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5256,13 +5256,13 @@ resources: 148
       - modifierExtension[0..*]: Extension
       - diagnosis[x][0..1]: CodeableConcept|Reference(Condition)
     - detail[0..*]: Reference(Resource)
-  ?created=date
-  ?enterer=reference
-  ?facility=reference
-  ?identifier=token
-  ?patient=reference
-  ?provider=reference
-  ?status=token
+  ?created = date (created)
+  ?enterer = reference (enterer)
+  ?facility = reference (facility)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?provider = reference (provider)
+  ?status = token (status)
   $submit
     in: resource (1-1)
     out: return (1-1)
@@ -5324,15 +5324,15 @@ resources: 148
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept
-  ?created=date
-  ?disposition=string
-  ?identifier=token
-  ?insurer=reference
-  ?outcome=token
-  ?patient=reference
-  ?request=reference
-  ?requestor=reference
-  ?status=token
+  ?created = date (created)
+  ?disposition = string (disposition)
+  ?identifier = token (identifier)
+  ?insurer = reference (insurer)
+  ?outcome = token (outcome)
+  ?patient = reference (patient)
+  ?request = reference (request)
+  ?requestor = reference (requestor)
+  ?status = token (status)
 - DetectedIssue: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5365,12 +5365,12 @@ resources: 148
     - action[1..1]: CodeableConcept
     - date[0..1]: dateTime
     - author[0..1]: Reference(Practitioner|PractitionerRole)
-  ?identifier=token
-  ?patient=reference
-  ?author=reference
-  ?code=token
-  ?identified=date
-  ?implicated=reference
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?author = reference (author)
+  ?code = token (code)
+  ?identified = date (identified)
+  ?implicated = reference (implicated)
 - Device: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5443,19 +5443,19 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/device-implantStatus
     - value[x][1..1]: code
-  ?device-name=string
-  ?din=token
-  ?identifier=token
-  ?location=reference
-  ?manufacturer=string
-  ?model=string
-  ?organization=reference
-  ?patient=reference
-  ?status=token
-  ?type=token
-  ?udi-carrier=string
-  ?udi-di=string
-  ?url=uri
+  ?device-name = string (device-name)
+  ?din = token (din)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?manufacturer = string (manufacturer)
+  ?model = string (model)
+  ?organization = reference (organization)
+  ?patient = reference (patient)
+  ?status = token (status)
+  ?type = token (type)
+  ?udi-carrier = string (udi-carrier)
+  ?udi-di = string (udi-di)
+  ?url = uri (url)
 - DeviceDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5520,9 +5520,9 @@ resources: 148
     - substance[1..1]: CodeableConcept
     - alternate[0..1]: boolean
     - allergenicIndicator[0..1]: boolean
-  ?identifier=token
-  ?parent=reference
-  ?type=token
+  ?identifier = token (identifier)
+  ?parent = reference (parent)
+  ?type = token (type)
 - DeviceMetric: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5548,11 +5548,11 @@ resources: 148
     - type[0..1]: code
     - state[0..1]: code
     - time[0..1]: instant
-  ?category=token
-  ?identifier=token
-  ?parent=reference
-  ?source=reference
-  ?type=token
+  ?category = token (category)
+  ?identifier = token (identifier)
+  ?parent = reference (parent)
+  ?source = reference (source)
+  ?type = token (type)
 - DeviceRequest: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5628,24 +5628,24 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-episodeOfCare
     - value[x][1..1]: Reference(EpisodeOfCare)
-  ?code=token
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?authored-on=date
-  ?based-on=reference
-  ?device=reference
-  ?event-date=date
-  ?group-identifier=token
-  ?instantiates-canonical=reference
-  ?instantiates-uri=uri
-  ?insurance=reference
-  ?intent=token
-  ?performer=reference
-  ?prior-request=reference
-  ?requester=reference
-  ?status=token
-  ?subject=reference
+  ?code = token (code)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?authored-on = date (authored-on)
+  ?based-on = reference (based-on)
+  ?device = reference (device)
+  ?event-date = date (event-date)
+  ?group-identifier = token (group-identifier)
+  ?instantiates-canonical = reference (instantiates-canonical)
+  ?instantiates-uri = uri (instantiates-uri)
+  ?insurance = reference (insurance)
+  ?intent = token (intent)
+  ?performer = reference (performer)
+  ?prior-request = reference (prior-request)
+  ?requester = reference (requester)
+  ?status = token (status)
+  ?subject = reference (subject)
 - DeviceUseStatement: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5698,10 +5698,10 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?patient=reference
-  ?device=reference
-  ?identifier=token
-  ?subject=reference
+  ?patient = reference (patient)
+  ?device = reference (device)
+  ?identifier = token (identifier)
+  ?subject = reference (subject)
 - DiagnosticReport: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6207,23 +6207,23 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo
     - value[x][1..1]: Reference(Resource)
-  ?code=token
-  ?date=date
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?based-on=reference
-  ?category=token
-  ?conclusion=token
-  ?assessed-condition=reference
-  ?issued=date
-  ?media=reference
-  ?performer=reference
-  ?result=reference
-  ?results-interpreter=reference
-  ?specimen=reference
-  ?status=token
-  ?subject=reference
+  ?code = token (code)
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?based-on = reference (based-on)
+  ?category = token (category)
+  ?conclusion = token (conclusion)
+  ?assessed-condition = reference (assessed-condition)
+  ?issued = date (issued)
+  ?media = reference (media)
+  ?performer = reference (performer)
+  ?result = reference (result)
+  ?results-interpreter = reference (results-interpreter)
+  ?specimen = reference (specimen)
+  ?status = token (status)
+  ?subject = reference (subject)
 - DocumentManifest: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6250,19 +6250,19 @@ resources: 148
     - modifierExtension[0..*]: Extension
     - identifier[0..1]: Identifier
     - ref[0..1]: Reference(Resource)
-  ?identifier=token
-  ?patient=reference
-  ?type=token
-  ?author=reference
-  ?created=date
-  ?description=string
-  ?item=reference
-  ?recipient=reference
-  ?related-id=token
-  ?related-ref=reference
-  ?source=uri
-  ?status=token
-  ?subject=reference
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?type = token (type)
+  ?author = reference (author)
+  ?created = date (created)
+  ?description = string (description)
+  ?item = reference (item)
+  ?recipient = reference (recipient)
+  ?related-id = token (related-id)
+  ?related-ref = reference (related-ref)
+  ?source = uri (source)
+  ?status = token (status)
+  ?subject = reference (subject)
 - DocumentReference: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6308,31 +6308,31 @@ resources: 148
     - practiceSetting[0..1]: CodeableConcept
     - sourcePatientInfo[0..1]: Reference(Patient)
     - related[0..*]: Reference(Resource)
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?type=token
-  ?authenticator=reference
-  ?author=reference
-  ?category=token
-  ?contenttype=token
-  ?custodian=reference
-  ?date=date
-  ?description=string
-  ?event=token
-  ?facility=token
-  ?format=token
-  ?language=token
-  ?location=uri
-  ?period=date
-  ?related=reference
-  ?relatesto=reference
-  ?relation=token
-  ?relationship=composite
-  ?security-label=token
-  ?setting=token
-  ?status=token
-  ?subject=reference
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?type = token (type)
+  ?authenticator = reference (authenticator)
+  ?author = reference (author)
+  ?category = token (category)
+  ?contenttype = token (contenttype)
+  ?custodian = reference (custodian)
+  ?date = date (date)
+  ?description = string (description)
+  ?event = token (event)
+  ?facility = token (facility)
+  ?format = token (format)
+  ?language = token (language)
+  ?location = uri (location)
+  ?period = date (period)
+  ?related = reference (related)
+  ?relatesto = reference (relatesto)
+  ?relation = token (relation)
+  ?relationship = composite (relationship)
+  ?security-label = token (security-label)
+  ?setting = token (setting)
+  ?status = token (status)
+  ?subject = reference (subject)
 - DomainResource: Resource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6342,7 +6342,7 @@ resources: 148
   - contained[0..*]: Resource
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
-  ?_text=string
+  ?_text = string (_text)
 - EffectEvidenceSynthesis: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6432,22 +6432,22 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
 - Encounter: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6545,29 +6545,29 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?date=date
-  ?identifier=token
-  ?patient=reference
-  ?type=token
-  ?account=reference
-  ?appointment=reference
-  ?based-on=reference
-  ?class=token
-  ?diagnosis=reference
-  ?episode-of-care=reference
-  ?length=quantity
-  ?location-period=date
-  ?location=reference
-  ?part-of=reference
-  ?participant-type=token
-  ?participant=reference
-  ?practitioner=reference
-  ?reason-code=token
-  ?reason-reference=reference
-  ?service-provider=reference
-  ?special-arrangement=token
-  ?status=token
-  ?subject=reference
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?type = token (type)
+  ?account = reference (account)
+  ?appointment = reference (appointment)
+  ?based-on = reference (based-on)
+  ?class = token (class)
+  ?diagnosis = reference (diagnosis)
+  ?episode-of-care = reference (episode-of-care)
+  ?length = quantity (length)
+  ?location-period = date (location-period)
+  ?location = reference (location)
+  ?part-of = reference (part-of)
+  ?participant-type = token (participant-type)
+  ?participant = reference (participant)
+  ?practitioner = reference (practitioner)
+  ?reason-code = token (reason-code)
+  ?reason-reference = reference (reason-reference)
+  ?service-provider = reference (service-provider)
+  ?special-arrangement = token (special-arrangement)
+  ?status = token (status)
+  ?subject = reference (subject)
   /{id}$everything
     in: _since (0-1)
     in: _type (0-*)
@@ -6593,12 +6593,12 @@ resources: 148
   - payloadMimeType[0..*]: code
   - address[1..1]: url
   - header[0..*]: string
-  ?connection-type=token
-  ?identifier=token
-  ?name=string
-  ?organization=reference
-  ?payload-type=token
-  ?status=token
+  ?connection-type = token (connection-type)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?organization = reference (organization)
+  ?payload-type = token (payload-type)
+  ?status = token (status)
 - EnrollmentRequest: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6615,10 +6615,10 @@ resources: 148
   - provider[0..1]: Reference(Practitioner|PractitionerRole|Organization)
   - candidate[0..1]: Reference(Patient)
   - coverage[0..1]: Reference(Coverage)
-  ?identifier=token
-  ?patient=reference
-  ?status=token
-  ?subject=reference
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?status = token (status)
+  ?subject = reference (subject)
 - EnrollmentResponse: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6636,9 +6636,9 @@ resources: 148
   - created[0..1]: dateTime
   - organization[0..1]: Reference(Organization)
   - requestProvider[0..1]: Reference(Practitioner|PractitionerRole|Organization)
-  ?identifier=token
-  ?request=reference
-  ?status=token
+  ?identifier = token (identifier)
+  ?request = reference (request)
+  ?status = token (status)
 - EpisodeOfCare: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6671,15 +6671,15 @@ resources: 148
   - careManager[0..1]: Reference(Practitioner|PractitionerRole)
   - team[0..*]: Reference(CareTeam)
   - account[0..*]: Reference(Account)
-  ?date=date
-  ?identifier=token
-  ?patient=reference
-  ?type=token
-  ?care-manager=reference
-  ?condition=reference
-  ?incoming-referral=reference
-  ?organization=reference
-  ?status=token
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?type = token (type)
+  ?care-manager = reference (care-manager)
+  ?condition = reference (condition)
+  ?incoming-referral = reference (incoming-referral)
+  ?organization = reference (organization)
+  ?status = token (status)
 - EventDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6723,28 +6723,28 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?composed-of=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?depends-on=reference
-  ?derived-from=reference
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?predecessor=reference
-  ?publisher=string
-  ?status=token
-  ?successor=reference
-  ?title=string
-  ?topic=token
-  ?url=uri
-  ?version=token
+  ?composed-of = reference (composed-of)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?depends-on = reference (depends-on)
+  ?derived-from = reference (derived-from)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?predecessor = reference (predecessor)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?successor = reference (successor)
+  ?title = string (title)
+  ?topic = token (topic)
+  ?url = uri (url)
+  ?version = token (version)
 - Evidence: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6825,28 +6825,28 @@ resources: 148
     - exposureBackground[1..1]: Reference(EvidenceVariable)
     - exposureVariant[1..2]: Reference(EvidenceVariable)
     - outcome[1..*]: Reference(EvidenceVariable)
-  ?composed-of=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?depends-on=reference
-  ?derived-from=reference
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?predecessor=reference
-  ?publisher=string
-  ?status=token
-  ?successor=reference
-  ?title=string
-  ?topic=token
-  ?url=uri
-  ?version=token
+  ?composed-of = reference (composed-of)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?depends-on = reference (depends-on)
+  ?derived-from = reference (derived-from)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?predecessor = reference (predecessor)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?successor = reference (successor)
+  ?title = string (title)
+  ?topic = token (topic)
+  ?url = uri (url)
+  ?version = token (version)
 - EvidenceVariable: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6945,28 +6945,28 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?composed-of=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?depends-on=reference
-  ?derived-from=reference
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?predecessor=reference
-  ?publisher=string
-  ?status=token
-  ?successor=reference
-  ?title=string
-  ?topic=token
-  ?url=uri
-  ?version=token
+  ?composed-of = reference (composed-of)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?depends-on = reference (depends-on)
+  ?derived-from = reference (derived-from)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?predecessor = reference (predecessor)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?successor = reference (successor)
+  ?title = string (title)
+  ?topic = token (topic)
+  ?url = uri (url)
+  ?version = token (version)
 - ExampleScenario: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7059,19 +7059,19 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?url=uri
-  ?version=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?url = uri (url)
+  ?version = token (version)
 - ExplanationOfBenefit: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7328,23 +7328,23 @@ resources: 148
       - type[1..1]: CodeableConcept
       - allowed[x][0..1]: unsignedInt|string|Money
       - used[x][0..1]: unsignedInt|Money
-  ?care-team=reference
-  ?claim=reference
-  ?coverage=reference
-  ?created=date
-  ?detail-udi=reference
-  ?disposition=string
-  ?encounter=reference
-  ?enterer=reference
-  ?facility=reference
-  ?identifier=token
-  ?item-udi=reference
-  ?patient=reference
-  ?payee=reference
-  ?procedure-udi=reference
-  ?provider=reference
-  ?status=token
-  ?subdetail-udi=reference
+  ?care-team = reference (care-team)
+  ?claim = reference (claim)
+  ?coverage = reference (coverage)
+  ?created = date (created)
+  ?detail-udi = reference (detail-udi)
+  ?disposition = string (disposition)
+  ?encounter = reference (encounter)
+  ?enterer = reference (enterer)
+  ?facility = reference (facility)
+  ?identifier = token (identifier)
+  ?item-udi = reference (item-udi)
+  ?patient = reference (patient)
+  ?payee = reference (payee)
+  ?procedure-udi = reference (procedure-udi)
+  ?provider = reference (provider)
+  ?status = token (status)
+  ?subdetail-udi = reference (subdetail-udi)
 - FamilyMemberHistory: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7479,15 +7479,15 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?code=token
-  ?date=date
-  ?identifier=token
-  ?patient=reference
-  ?instantiates-canonical=reference
-  ?instantiates-uri=uri
-  ?relationship=token
-  ?sex=token
-  ?status=token
+  ?code = token (code)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?instantiates-canonical = reference (instantiates-canonical)
+  ?instantiates-uri = uri (instantiates-uri)
+  ?relationship = token (relationship)
+  ?sex = token (sex)
+  ?status = token (status)
 - Flag: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7517,12 +7517,12 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/flag-priority
     - value[x][1..1]: CodeableConcept
-  ?date=date
-  ?encounter=reference
-  ?patient=reference
-  ?author=reference
-  ?identifier=token
-  ?subject=reference
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?patient = reference (patient)
+  ?author = reference (author)
+  ?identifier = token (identifier)
+  ?subject = reference (subject)
 - Goal: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7604,14 +7604,14 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/goal-relationship
     - value[x][0..0]: base64Binary|boolean|canonical|code|date|dateTime|decimal|id|instant|integer|markdown|oid|positiveInt|string|time|unsignedInt|uri|url|uuid|Address|Age|Annotation|Attachment|CodeableConcept|Coding|ContactPoint|Count|Distance|Duration|HumanName|Identifier|Money|Period|Quantity|Range|Ratio|Reference|SampledData|Signature|Timing|ContactDetail|Contributor|DataRequirement|Expression|ParameterDefinition|RelatedArtifact|TriggerDefinition|UsageContext|Dosage|Meta
-  ?identifier=token
-  ?patient=reference
-  ?achievement-status=token
-  ?category=token
-  ?lifecycle-status=token
-  ?start-date=date
-  ?subject=reference
-  ?target-date=date
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?achievement-status = token (achievement-status)
+  ?category = token (category)
+  ?lifecycle-status = token (lifecycle-status)
+  ?start-date = date (start-date)
+  ?subject = reference (subject)
+  ?target-date = date (target-date)
 - GraphDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7667,20 +7667,20 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?url=uri
-  ?version=token
-  ?start=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?url = uri (url)
+  ?version = token (version)
+  ?start = token (start)
 - Group: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7777,16 +7777,16 @@ resources: 148
       - entity[1..1]: Reference(Patient|Practitioner|PractitionerRole|Device|Medication|Substance|Group)
       - period[0..1]: Period
       - inactive[0..1]: boolean
-  ?actual=token
-  ?characteristic-value=composite
-  ?characteristic=token
-  ?code=token
-  ?exclude=token
-  ?identifier=token
-  ?managing-entity=reference
-  ?member=reference
-  ?type=token
-  ?value=token
+  ?actual = token (actual)
+  ?characteristic-value = composite (characteristic-value)
+  ?characteristic = token (characteristic)
+  ?code = token (code)
+  ?exclude = token (exclude)
+  ?identifier = token (identifier)
+  ?managing-entity = reference (managing-entity)
+  ?member = reference (member)
+  ?type = token (type)
+  ?value = token (value)
   /{id}$everything
     in: start (0-1)
     in: end (0-1)
@@ -7846,10 +7846,10 @@ resources: 148
     - outputParameters[0..1]: Reference(Parameters)
     - result[0..1]: Reference(CarePlan|RequestGroup)
     - dataRequirement[0..*]: DataRequirement
-  ?identifier=token
-  ?patient=reference
-  ?request=token
-  ?subject=reference
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?request = token (request)
+  ?subject = reference (subject)
 - HealthcareService: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7900,18 +7900,18 @@ resources: 148
     - during[0..1]: Period
   - availabilityExceptions[0..1]: string
   - endpoint[0..*]: Reference(Endpoint)
-  ?active=token
-  ?characteristic=token
-  ?coverage-area=reference
-  ?endpoint=reference
-  ?identifier=token
-  ?location=reference
-  ?name=string
-  ?organization=reference
-  ?program=token
-  ?service-category=token
-  ?service-type=token
-  ?specialty=token
+  ?active = token (active)
+  ?characteristic = token (characteristic)
+  ?coverage-area = reference (coverage-area)
+  ?endpoint = reference (endpoint)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?name = string (name)
+  ?organization = reference (organization)
+  ?program = token (program)
+  ?service-category = token (service-category)
+  ?service-type = token (service-type)
+  ?specialty = token (specialty)
 - ImagingStudy: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7968,23 +7968,23 @@ resources: 148
       - sopClass[1..1]: Coding
       - number[0..1]: unsignedInt
       - title[0..1]: string
-  ?identifier=token
-  ?patient=reference
-  ?basedon=reference
-  ?bodysite=token
-  ?dicom-class=token
-  ?encounter=reference
-  ?endpoint=reference
-  ?instance=token
-  ?interpreter=reference
-  ?modality=token
-  ?performer=reference
-  ?reason=token
-  ?referrer=reference
-  ?series=token
-  ?started=date
-  ?status=token
-  ?subject=reference
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?basedon = reference (basedon)
+  ?bodysite = token (bodysite)
+  ?dicom-class = token (dicom-class)
+  ?encounter = reference (encounter)
+  ?endpoint = reference (endpoint)
+  ?instance = token (instance)
+  ?interpreter = reference (interpreter)
+  ?modality = token (modality)
+  ?performer = reference (performer)
+  ?reason = token (reason)
+  ?referrer = reference (referrer)
+  ?series = token (series)
+  ?started = date (started)
+  ?status = token (status)
+  ?subject = reference (subject)
 - Immunization: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -8054,22 +8054,22 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?date=date
-  ?identifier=token
-  ?patient=reference
-  ?location=reference
-  ?lot-number=string
-  ?manufacturer=reference
-  ?performer=reference
-  ?reaction-date=date
-  ?reaction=reference
-  ?reason-code=token
-  ?reason-reference=reference
-  ?series=string
-  ?status-reason=token
-  ?status=token
-  ?target-disease=token
-  ?vaccine-code=token
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?location = reference (location)
+  ?lot-number = string (lot-number)
+  ?manufacturer = reference (manufacturer)
+  ?performer = reference (performer)
+  ?reaction-date = date (reaction-date)
+  ?reaction = reference (reaction)
+  ?reason-code = token (reason-code)
+  ?reason-reference = reference (reason-reference)
+  ?series = string (series)
+  ?status-reason = token (status-reason)
+  ?status = token (status)
+  ?target-disease = token (target-disease)
+  ?vaccine-code = token (vaccine-code)
 - ImmunizationEvaluation: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -8092,13 +8092,13 @@ resources: 148
   - series[0..1]: string
   - doseNumber[x][0..1]: positiveInt|string
   - seriesDoses[x][0..1]: positiveInt|string
-  ?date=date
-  ?dose-status=token
-  ?identifier=token
-  ?immunization-event=reference
-  ?patient=reference
-  ?status=token
-  ?target-disease=token
+  ?date = date (date)
+  ?dose-status = token (dose-status)
+  ?identifier = token (identifier)
+  ?immunization-event = reference (immunization-event)
+  ?patient = reference (patient)
+  ?status = token (status)
+  ?target-disease = token (target-disease)
 - ImmunizationRecommendation: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -8133,14 +8133,14 @@ resources: 148
     - seriesDoses[x][0..1]: positiveInt|string
     - supportingImmunization[0..*]: Reference(Immunization|ImmunizationEvaluation)
     - supportingPatientInformation[0..*]: Reference(Resource)
-  ?date=date
-  ?identifier=token
-  ?information=reference
-  ?patient=reference
-  ?status=token
-  ?support=reference
-  ?target-disease=token
-  ?vaccine-type=token
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?information = reference (information)
+  ?patient = reference (patient)
+  ?status = token (status)
+  ?support = reference (support)
+  ?target-disease = token (target-disease)
+  ?vaccine-type = token (vaccine-type)
 - ImplementationGuide: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -8265,24 +8265,24 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
-  ?depends-on=reference
-  ?experimental=token
-  ?global=reference
-  ?resource=reference
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
+  ?depends-on = reference (depends-on)
+  ?experimental = token (experimental)
+  ?global = reference (global)
+  ?resource = reference (resource)
 - InsurancePlan: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -8363,20 +8363,20 @@ resources: 148
           - applicability[0..1]: CodeableConcept
           - qualifiers[0..*]: CodeableConcept
           - value[0..1]: Quantity
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?administered-by=reference
-  ?endpoint=reference
-  ?identifier=token
-  ?name=string
-  ?owned-by=reference
-  ?phonetic=string
-  ?status=token
-  ?type=token
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?administered-by = reference (administered-by)
+  ?endpoint = reference (endpoint)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?owned-by = reference (owned-by)
+  ?phonetic = string (phonetic)
+  ?status = token (status)
+  ?type = token (type)
 - Invoice: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -8420,19 +8420,19 @@ resources: 148
   - totalGross[0..1]: Money
   - paymentTerms[0..1]: markdown
   - note[0..*]: Annotation
-  ?account=reference
-  ?date=date
-  ?identifier=token
-  ?issuer=reference
-  ?participant-role=token
-  ?participant=reference
-  ?patient=reference
-  ?recipient=reference
-  ?status=token
-  ?subject=reference
-  ?totalgross=quantity
-  ?totalnet=quantity
-  ?type=token
+  ?account = reference (account)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?issuer = reference (issuer)
+  ?participant-role = token (participant-role)
+  ?participant = reference (participant)
+  ?patient = reference (patient)
+  ?recipient = reference (recipient)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?totalgross = quantity (totalgross)
+  ?totalnet = quantity (totalnet)
+  ?type = token (type)
 - Library: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -8559,30 +8559,30 @@ resources: 148
     - parameter[0..*]: ParameterDefinition
     - dataRequirement[0..*]: DataRequirement
     - content[0..*]: Attachment
-  ?composed-of=reference
-  ?content-type=token
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?depends-on=reference
-  ?derived-from=reference
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?predecessor=reference
-  ?publisher=string
-  ?status=token
-  ?successor=reference
-  ?title=string
-  ?topic=token
-  ?type=token
-  ?url=uri
-  ?version=token
+  ?composed-of = reference (composed-of)
+  ?content-type = token (content-type)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?depends-on = reference (depends-on)
+  ?derived-from = reference (derived-from)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?predecessor = reference (predecessor)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?successor = reference (successor)
+  ?title = string (title)
+  ?topic = token (topic)
+  ?type = token (type)
+  ?url = uri (url)
+  ?version = token (version)
   /{id}$data-requirements
     in: target (0-1)
     out: return (1-1)
@@ -8603,9 +8603,9 @@ resources: 148
     - modifierExtension[0..*]: Extension
     - type[1..1]: code
     - resource[1..1]: Reference(Resource)
-  ?author=reference
-  ?item=reference
-  ?source=reference
+  ?author = reference (author)
+  ?item = reference (item)
+  ?source = reference (source)
 - List: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -8641,18 +8641,18 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/list-changeBase
     - value[x][1..1]: Reference(List)
-  ?code=token
-  ?date=date
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?empty-reason=token
-  ?item=reference
-  ?notes=string
-  ?source=reference
-  ?status=token
-  ?subject=reference
-  ?title=string
+  ?code = token (code)
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?empty-reason = token (empty-reason)
+  ?item = reference (item)
+  ?notes = string (notes)
+  ?source = reference (source)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?title = string (title)
   $find
     in: patient (1-1)
     in: name (1-1)
@@ -8701,21 +8701,21 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/location-boundary-geojson
     - value[x][1..1]: Attachment
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?endpoint=reference
-  ?identifier=token
-  ?name=string
-  ?near=special
-  ?operational-status=token
-  ?organization=reference
-  ?partof=reference
-  ?status=token
-  ?type=token
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?endpoint = reference (endpoint)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?near = special (near)
+  ?operational-status = token (operational-status)
+  ?organization = reference (organization)
+  ?partof = reference (partof)
+  ?status = token (status)
+  ?type = token (type)
 - Measure: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -8888,28 +8888,28 @@ resources: 148
       - usage[0..*]: CodeableConcept
       - description[0..1]: string
       - criteria[1..1]: Expression
-  ?composed-of=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?depends-on=reference
-  ?derived-from=reference
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?predecessor=reference
-  ?publisher=string
-  ?status=token
-  ?successor=reference
-  ?title=string
-  ?topic=token
-  ?url=uri
-  ?version=token
+  ?composed-of = reference (composed-of)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?depends-on = reference (depends-on)
+  ?derived-from = reference (derived-from)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?predecessor = reference (predecessor)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?successor = reference (successor)
+  ?title = string (title)
+  ?topic = token (topic)
+  ?url = uri (url)
+  ?version = token (version)
   $care-gaps
     in: periodStart (1-1)
     in: periodEnd (1-1)
@@ -9018,15 +9018,15 @@ resources: 148
           - subjectResults[0..1]: Reference(List)
         - measureScore[0..1]: Quantity
   - evaluatedResource[0..*]: Reference(Resource)
-  ?date=date
-  ?evaluated-resource=reference
-  ?identifier=token
-  ?measure=reference
-  ?patient=reference
-  ?period=date
-  ?reporter=reference
-  ?status=token
-  ?subject=reference
+  ?date = date (date)
+  ?evaluated-resource = reference (evaluated-resource)
+  ?identifier = token (identifier)
+  ?measure = reference (measure)
+  ?patient = reference (patient)
+  ?period = date (period)
+  ?reporter = reference (reporter)
+  ?status = token (status)
+  ?subject = reference (subject)
 - Media: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9112,19 +9112,19 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?based-on=reference
-  ?created=date
-  ?device=reference
-  ?encounter=reference
-  ?identifier=token
-  ?modality=token
-  ?operator=reference
-  ?patient=reference
-  ?site=token
-  ?status=token
-  ?subject=reference
-  ?type=token
-  ?view=token
+  ?based-on = reference (based-on)
+  ?created = date (created)
+  ?device = reference (device)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?modality = token (modality)
+  ?operator = reference (operator)
+  ?patient = reference (patient)
+  ?site = token (site)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?type = token (type)
+  ?view = token (view)
 - Medication: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9153,15 +9153,15 @@ resources: 148
     - modifierExtension[0..*]: Extension
     - lotNumber[0..1]: string
     - expirationDate[0..1]: dateTime
-  ?code=token
-  ?expiration-date=date
-  ?form=token
-  ?identifier=token
-  ?ingredient-code=token
-  ?ingredient=reference
-  ?lot-number=token
-  ?manufacturer=reference
-  ?status=token
+  ?code = token (code)
+  ?expiration-date = date (expiration-date)
+  ?form = token (form)
+  ?identifier = token (identifier)
+  ?ingredient-code = token (ingredient-code)
+  ?ingredient = reference (ingredient)
+  ?lot-number = token (lot-number)
+  ?manufacturer = reference (manufacturer)
+  ?status = token (status)
 - MedicationAdministration: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9210,19 +9210,19 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?code=token
-  ?identifier=token
-  ?patient=reference
-  ?context=reference
-  ?device=reference
-  ?effective-time=date
-  ?performer=reference
-  ?reason-given=token
-  ?reason-not-given=token
-  ?request=reference
-  ?subject=reference
-  ?medication=reference
-  ?status=token
+  ?code = token (code)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?context = reference (context)
+  ?device = reference (device)
+  ?effective-time = date (effective-time)
+  ?performer = reference (performer)
+  ?reason-given = token (reason-given)
+  ?reason-not-given = token (reason-not-given)
+  ?request = reference (request)
+  ?subject = reference (subject)
+  ?medication = reference (medication)
+  ?status = token (status)
 - MedicationDispense: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9274,21 +9274,21 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?code=token
-  ?identifier=token
-  ?patient=reference
-  ?context=reference
-  ?destination=reference
-  ?performer=reference
-  ?receiver=reference
-  ?responsibleparty=reference
-  ?subject=reference
-  ?type=token
-  ?whenhandedover=date
-  ?whenprepared=date
-  ?medication=reference
-  ?prescription=reference
-  ?status=token
+  ?code = token (code)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?context = reference (context)
+  ?destination = reference (destination)
+  ?performer = reference (performer)
+  ?receiver = reference (receiver)
+  ?responsibleparty = reference (responsibleparty)
+  ?subject = reference (subject)
+  ?type = token (type)
+  ?whenhandedover = date (whenhandedover)
+  ?whenprepared = date (whenprepared)
+  ?medication = reference (medication)
+  ?prescription = reference (prescription)
+  ?status = token (status)
 - MedicationKnowledge: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9405,19 +9405,19 @@ resources: 148
     - areaUnderCurve[0..*]: Quantity
     - lethalDose50[0..*]: Quantity
     - halfLifePeriod[0..1]: Duration
-  ?classification-type=token
-  ?classification=token
-  ?code=token
-  ?doseform=token
-  ?ingredient-code=token
-  ?ingredient=reference
-  ?manufacturer=reference
-  ?monitoring-program-name=token
-  ?monitoring-program-type=token
-  ?monograph-type=token
-  ?monograph=reference
-  ?source-cost=token
-  ?status=token
+  ?classification-type = token (classification-type)
+  ?classification = token (classification)
+  ?code = token (code)
+  ?doseform = token (doseform)
+  ?ingredient-code = token (ingredient-code)
+  ?ingredient = reference (ingredient)
+  ?manufacturer = reference (manufacturer)
+  ?monitoring-program-name = token (monitoring-program-name)
+  ?monitoring-program-type = token (monitoring-program-type)
+  ?monograph-type = token (monograph-type)
+  ?monograph = reference (monograph)
+  ?source-cost = token (source-cost)
+  ?status = token (status)
 - MedicationRequest: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9479,22 +9479,22 @@ resources: 148
   - priorPrescription[0..1]: Reference(MedicationRequest)
   - detectedIssue[0..*]: Reference(DetectedIssue)
   - eventHistory[0..*]: Reference(Provenance)
-  ?code=token
-  ?identifier=token
-  ?patient=reference
-  ?authoredon=date
-  ?category=token
-  ?intended-dispenser=reference
-  ?intended-performer=reference
-  ?intended-performertype=token
-  ?intent=token
-  ?priority=token
-  ?requester=reference
-  ?subject=reference
-  ?date=date
-  ?encounter=reference
-  ?medication=reference
-  ?status=token
+  ?code = token (code)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?authoredon = date (authoredon)
+  ?category = token (category)
+  ?intended-dispenser = reference (intended-dispenser)
+  ?intended-performer = reference (intended-performer)
+  ?intended-performertype = token (intended-performertype)
+  ?intent = token (intent)
+  ?priority = token (priority)
+  ?requester = reference (requester)
+  ?subject = reference (subject)
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?medication = reference (medication)
+  ?status = token (status)
 - MedicationStatement: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9527,17 +9527,17 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?code=token
-  ?identifier=token
-  ?patient=reference
-  ?medication=reference
-  ?status=token
-  ?category=token
-  ?context=reference
-  ?effective=date
-  ?part-of=reference
-  ?source=reference
-  ?subject=reference
+  ?code = token (code)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?medication = reference (medication)
+  ?status = token (status)
+  ?category = token (category)
+  ?context = reference (context)
+  ?effective = date (effective)
+  ?part-of = reference (part-of)
+  ?source = reference (source)
+  ?subject = reference (subject)
 - MedicinalProduct: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9603,9 +9603,9 @@ resources: 148
     - status[0..1]: CodeableConcept
     - date[0..1]: dateTime
     - species[0..1]: CodeableConcept
-  ?identifier=token
-  ?name-language=token
-  ?name=string
+  ?identifier = token (identifier)
+  ?name-language = token (name-language)
+  ?name = string (name)
   $everything
     in: _since (0-1)
     in: _count (0-1)
@@ -9654,11 +9654,11 @@ resources: 148
     - type[1..1]: CodeableConcept
     - date[x][0..1]: Period|dateTime
     - application[0..*]: MedicinalProductAuthorization.procedure
-  ?country=token
-  ?holder=reference
-  ?identifier=token
-  ?status=token
-  ?subject=reference
+  ?country = token (country)
+  ?holder = reference (holder)
+  ?identifier = token (identifier)
+  ?status = token (status)
+  ?subject = reference (subject)
 - MedicinalProductContraindication: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9680,7 +9680,7 @@ resources: 148
     - therapyRelationshipType[1..1]: CodeableConcept
     - medication[x][1..1]: CodeableConcept|Reference(MedicinalProduct|Medication|Substance|SubstanceSpecification)
   - population[0..*]: Population
-  ?subject=reference
+  ?subject = reference (subject)
 - MedicinalProductIndication: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9704,7 +9704,7 @@ resources: 148
     - medication[x][1..1]: CodeableConcept|Reference(MedicinalProduct|Medication|Substance|SubstanceSpecification)
   - undesirableEffect[0..*]: Reference(MedicinalProductUndesirableEffect)
   - population[0..*]: Population
-  ?subject=reference
+  ?subject = reference (subject)
 - MedicinalProductIngredient: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9770,7 +9770,7 @@ resources: 148
   - effect[0..1]: CodeableConcept
   - incidence[0..1]: CodeableConcept
   - management[0..1]: CodeableConcept
-  ?subject=reference
+  ?subject = reference (subject)
 - MedicinalProductManufactured: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9825,8 +9825,8 @@ resources: 148
     - otherCharacteristics[0..*]: CodeableConcept
     - shelfLifeStorage[0..*]: ProductShelfLife
     - manufacturer[0..*]: Reference(Organization)
-  ?identifier=token
-  ?subject=reference
+  ?identifier = token (identifier)
+  ?subject = reference (subject)
 - MedicinalProductPharmaceutical: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9869,9 +9869,9 @@ resources: 148
         - tissue[1..1]: CodeableConcept
         - value[1..1]: Quantity
         - supportingInformation[0..1]: string
-  ?identifier=token
-  ?route=token
-  ?target-species=token
+  ?identifier = token (identifier)
+  ?route = token (route)
+  ?target-species = token (target-species)
 - MedicinalProductUndesirableEffect: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9886,7 +9886,7 @@ resources: 148
   - classification[0..1]: CodeableConcept
   - frequencyOfOccurrence[0..1]: CodeableConcept
   - population[0..*]: Population
-  ?subject=reference
+  ?subject = reference (subject)
 - MessageDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9938,25 +9938,25 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
-  ?category=token
-  ?event=token
-  ?focus=token
-  ?parent=reference
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
+  ?category = token (category)
+  ?event = token (event)
+  ?focus = token (focus)
+  ?parent = reference (parent)
 - MessageHeader: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -10004,20 +10004,20 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/messageheader-response-request
     - value[x][1..1]: code
-  ?author=reference
-  ?code=token
-  ?destination-uri=uri
-  ?destination=string
-  ?enterer=reference
-  ?event=token
-  ?focus=reference
-  ?receiver=reference
-  ?response-id=token
-  ?responsible=reference
-  ?sender=reference
-  ?source-uri=uri
-  ?source=string
-  ?target=reference
+  ?author = reference (author)
+  ?code = token (code)
+  ?destination-uri = uri (destination-uri)
+  ?destination = string (destination)
+  ?enterer = reference (enterer)
+  ?event = token (event)
+  ?focus = reference (focus)
+  ?receiver = reference (receiver)
+  ?response-id = token (response-id)
+  ?responsible = reference (responsible)
+  ?sender = reference (sender)
+  ?source-uri = uri (source-uri)
+  ?source = string (source)
+  ?target = reference (target)
 - MolecularSequence: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -10119,19 +10119,19 @@ resources: 148
       - modifierExtension[0..*]: Extension
       - start[0..1]: integer
       - end[0..1]: integer
-  ?chromosome-variant-coordinate=composite
-  ?chromosome-window-coordinate=composite
-  ?chromosome=token
-  ?identifier=token
-  ?patient=reference
-  ?referenceseqid-variant-coordinate=composite
-  ?referenceseqid-window-coordinate=composite
-  ?referenceseqid=token
-  ?type=token
-  ?variant-end=number
-  ?variant-start=number
-  ?window-end=number
-  ?window-start=number
+  ?chromosome-variant-coordinate = composite (chromosome-variant-coordinate)
+  ?chromosome-window-coordinate = composite (chromosome-window-coordinate)
+  ?chromosome = token (chromosome)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?referenceseqid-variant-coordinate = composite (referenceseqid-variant-coordinate)
+  ?referenceseqid-window-coordinate = composite (referenceseqid-window-coordinate)
+  ?referenceseqid = token (referenceseqid)
+  ?type = token (type)
+  ?variant-end = number (variant-end)
+  ?variant-start = number (variant-start)
+  ?window-end = number (window-end)
+  ?window-start = number (window-start)
 - NamingSystem: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -10186,25 +10186,25 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?contact=string
-  ?id-type=token
-  ?kind=token
-  ?period=date
-  ?responsible=string
-  ?telecom=token
-  ?type=token
-  ?value=string
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?contact = string (contact)
+  ?id-type = token (id-type)
+  ?kind = token (kind)
+  ?period = date (period)
+  ?responsible = string (responsible)
+  ?telecom = token (telecom)
+  ?type = token (type)
+  ?value = string (value)
   $preferred-id
     in: id (1-1)
     in: type (1-1)
@@ -10334,18 +10334,18 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-reasonReference
     - value[x][1..1]: Reference(Condition|DiagnosticReport|DocumentReference|Observation|Media)
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?additive=token
-  ?datetime=date
-  ?formula=token
-  ?instantiates-canonical=reference
-  ?instantiates-uri=uri
-  ?oraldiet=token
-  ?provider=reference
-  ?status=token
-  ?supplement=token
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?additive = token (additive)
+  ?datetime = date (datetime)
+  ?formula = token (formula)
+  ?instantiates-canonical = reference (instantiates-canonical)
+  ?instantiates-uri = uri (instantiates-uri)
+  ?oraldiet = token (oraldiet)
+  ?provider = reference (provider)
+  ?status = token (status)
+  ?supplement = token (supplement)
 - Observation: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -12254,49 +12254,49 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo
     - value[x][1..1]: Reference(Resource)
-  ?code=token
-  ?date=date
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?based-on=reference
-  ?category=token
-  ?code-value-concept=composite
-  ?code-value-date=composite
-  ?code-value-quantity=composite
-  ?code-value-string=composite
-  ?combo-code-value-concept=composite
-  ?combo-code-value-quantity=composite
-  ?combo-code=token
-  ?combo-data-absent-reason=token
-  ?combo-value-concept=token
-  ?combo-value-quantity=quantity
-  ?component-code-value-concept=composite
-  ?component-code-value-quantity=composite
-  ?component-code=token
-  ?component-data-absent-reason=token
-  ?component-value-concept=token
-  ?component-value-quantity=quantity
-  ?data-absent-reason=token
-  ?derived-from=reference
-  ?device=reference
-  ?focus=reference
-  ?amino-acid-change=string
-  ?dna-variant=string
-  ?gene-amino-acid-change=string
-  ?gene-dnavariant=string
-  ?gene-identifier=token
-  ?has-member=reference
-  ?method=token
-  ?part-of=reference
-  ?performer=reference
-  ?specimen=reference
-  ?status=token
-  ?subject=reference
-  ?value-concept=token
-  ?value-date=date
-  ?value-quantity=quantity
-  ?value-string=string
+  ?code = token (code)
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?based-on = reference (based-on)
+  ?category = token (category)
+  ?code-value-concept = composite (code-value-concept)
+  ?code-value-date = composite (code-value-date)
+  ?code-value-quantity = composite (code-value-quantity)
+  ?code-value-string = composite (code-value-string)
+  ?combo-code-value-concept = composite (combo-code-value-concept)
+  ?combo-code-value-quantity = composite (combo-code-value-quantity)
+  ?combo-code = token (combo-code)
+  ?combo-data-absent-reason = token (combo-data-absent-reason)
+  ?combo-value-concept = token (combo-value-concept)
+  ?combo-value-quantity = quantity (combo-value-quantity)
+  ?component-code-value-concept = composite (component-code-value-concept)
+  ?component-code-value-quantity = composite (component-code-value-quantity)
+  ?component-code = token (component-code)
+  ?component-data-absent-reason = token (component-data-absent-reason)
+  ?component-value-concept = token (component-value-concept)
+  ?component-value-quantity = quantity (component-value-quantity)
+  ?data-absent-reason = token (data-absent-reason)
+  ?derived-from = reference (derived-from)
+  ?device = reference (device)
+  ?focus = reference (focus)
+  ?amino-acid-change = string (amino-acid-change)
+  ?dna-variant = string (dna-variant)
+  ?gene-amino-acid-change = string (gene-amino-acid-change)
+  ?gene-dnavariant = string (gene-dnavariant)
+  ?gene-identifier = token (gene-identifier)
+  ?has-member = reference (has-member)
+  ?method = token (method)
+  ?part-of = reference (part-of)
+  ?performer = reference (performer)
+  ?specimen = reference (specimen)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?value-concept = token (value-concept)
+  ?value-date = date (value-date)
+  ?value-quantity = quantity (value-quantity)
+  ?value-string = string (value-string)
   $lastn
     in: max (0-1)
     out: return (1-1)
@@ -12452,28 +12452,28 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
-  ?base=reference
-  ?code=token
-  ?input-profile=reference
-  ?instance=token
-  ?kind=token
-  ?output-profile=reference
-  ?system=token
-  ?type=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
+  ?base = reference (base)
+  ?code = token (code)
+  ?input-profile = reference (input-profile)
+  ?instance = token (instance)
+  ?kind = token (kind)
+  ?output-profile = reference (output-profile)
+  ?system = token (system)
+  ?type = token (type)
 - OperationOutcome: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -12549,19 +12549,19 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/organization-period
     - value[x][1..1]: Period
-  ?active=token
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?endpoint=reference
-  ?identifier=token
-  ?name=string
-  ?partof=reference
-  ?phonetic=string
-  ?type=token
+  ?active = token (active)
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?endpoint = reference (endpoint)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?partof = reference (partof)
+  ?phonetic = string (phonetic)
+  ?type = token (type)
 - OrganizationAffiliation: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -12589,20 +12589,20 @@ resources: 148
   - healthcareService[0..*]: Reference(HealthcareService)
   - telecom[0..*]: ContactPoint
   - endpoint[0..*]: Reference(Endpoint)
-  ?active=token
-  ?date=date
-  ?email=token
-  ?endpoint=reference
-  ?identifier=token
-  ?location=reference
-  ?network=reference
-  ?participating-organization=reference
-  ?phone=token
-  ?primary-organization=reference
-  ?role=token
-  ?service=reference
-  ?specialty=token
-  ?telecom=token
+  ?active = token (active)
+  ?date = date (date)
+  ?email = token (email)
+  ?endpoint = reference (endpoint)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?network = reference (network)
+  ?participating-organization = reference (participating-organization)
+  ?phone = token (phone)
+  ?primary-organization = reference (primary-organization)
+  ?role = token (role)
+  ?service = reference (service)
+  ?specialty = token (specialty)
+  ?telecom = token (telecom)
 - Parameters: Resource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -12827,33 +12827,33 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/patient-religion
     - value[x][1..1]: CodeableConcept
-  ?part-agree=reference
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?birthdate=date
-  ?email=token
-  ?family=string
-  ?gender=token
-  ?given=string
-  ?phone=token
-  ?phonetic=string
-  ?telecom=token
-  ?active=token
-  ?death-date=date
-  ?deceased=token
-  ?age=number
-  ?birthOrderBoolean=token
-  ?mothersMaidenName=string
-  ?general-practitioner=reference
-  ?identifier=token
-  ?language=token
-  ?link=reference
-  ?name=string
-  ?organization=reference
+  ?part-agree = reference (Example Search Parameter on an extension)
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?birthdate = date (birthdate)
+  ?email = token (email)
+  ?family = string (family)
+  ?gender = token (gender)
+  ?given = string (given)
+  ?phone = token (phone)
+  ?phonetic = string (phonetic)
+  ?telecom = token (telecom)
+  ?active = token (active)
+  ?death-date = date (death-date)
+  ?deceased = token (deceased)
+  ?age = number (age)
+  ?birthOrderBoolean = token (birthOrderBoolean)
+  ?mothersMaidenName = string (mothersMaidenName)
+  ?general-practitioner = reference (general-practitioner)
+  ?identifier = token (identifier)
+  ?language = token (language)
+  ?link = reference (link)
+  ?name = string (name)
+  ?organization = reference (organization)
   $everything
     in: start (0-1)
     in: end (0-1)
@@ -12894,13 +12894,13 @@ resources: 148
   - recipient[1..1]: Reference(Organization)
   - amount[1..1]: Money
   - paymentStatus[0..1]: CodeableConcept
-  ?created=date
-  ?identifier=token
-  ?payment-status=token
-  ?provider=reference
-  ?request=reference
-  ?response=reference
-  ?status=token
+  ?created = date (created)
+  ?identifier = token (identifier)
+  ?payment-status = token (payment-status)
+  ?provider = reference (provider)
+  ?request = reference (request)
+  ?response = reference (response)
+  ?status = token (status)
 - PaymentReconciliation: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -12943,14 +12943,14 @@ resources: 148
     - modifierExtension[0..*]: Extension
     - type[0..1]: code
     - text[0..1]: string
-  ?created=date
-  ?disposition=string
-  ?identifier=token
-  ?outcome=token
-  ?payment-issuer=reference
-  ?request=reference
-  ?requestor=reference
-  ?status=token
+  ?created = date (created)
+  ?disposition = string (disposition)
+  ?identifier = token (identifier)
+  ?outcome = token (outcome)
+  ?payment-issuer = reference (payment-issuer)
+  ?request = reference (request)
+  ?requestor = reference (requestor)
+  ?status = token (status)
 - Person: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -12975,25 +12975,25 @@ resources: 148
     - modifierExtension[0..*]: Extension
     - target[1..1]: Reference(Patient|Practitioner|RelatedPerson|Person)
     - assurance[0..1]: code
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?birthdate=date
-  ?email=token
-  ?gender=token
-  ?phone=token
-  ?phonetic=string
-  ?telecom=token
-  ?identifier=token
-  ?link=reference
-  ?name=string
-  ?organization=reference
-  ?patient=reference
-  ?practitioner=reference
-  ?relatedperson=reference
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?birthdate = date (birthdate)
+  ?email = token (email)
+  ?gender = token (gender)
+  ?phone = token (phone)
+  ?phonetic = string (phonetic)
+  ?telecom = token (telecom)
+  ?identifier = token (identifier)
+  ?link = reference (link)
+  ?name = string (name)
+  ?organization = reference (organization)
+  ?patient = reference (patient)
+  ?practitioner = reference (practitioner)
+  ?relatedperson = reference (relatedperson)
 - PlanDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -13488,30 +13488,30 @@ resources: 148
         - url[1..1]: string
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
         - value[x][0..0]: base64Binary|boolean|canonical|code|date|dateTime|decimal|id|instant|integer|markdown|oid|positiveInt|string|time|unsignedInt|uri|url|uuid|Address|Age|Annotation|Attachment|CodeableConcept|Coding|ContactPoint|Count|Distance|Duration|HumanName|Identifier|Money|Period|Quantity|Range|Ratio|Reference|SampledData|Signature|Timing|ContactDetail|Contributor|DataRequirement|Expression|ParameterDefinition|RelatedArtifact|TriggerDefinition|UsageContext|Dosage|Meta
-  ?composed-of=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?definition=reference
-  ?depends-on=reference
-  ?derived-from=reference
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?predecessor=reference
-  ?publisher=string
-  ?status=token
-  ?successor=reference
-  ?title=string
-  ?topic=token
-  ?type=token
-  ?url=uri
-  ?version=token
+  ?composed-of = reference (composed-of)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?definition = reference (definition)
+  ?depends-on = reference (depends-on)
+  ?derived-from = reference (derived-from)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?predecessor = reference (predecessor)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?successor = reference (successor)
+  ?title = string (title)
+  ?topic = token (topic)
+  ?type = token (type)
+  ?url = uri (url)
+  ?version = token (version)
   $apply
     in: planDefinition (0-1)
     in: subject (1-*)
@@ -13570,23 +13570,23 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies
     - value[x][1..1]: CodeableConcept
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?email=token
-  ?family=string
-  ?gender=token
-  ?given=string
-  ?phone=token
-  ?phonetic=string
-  ?telecom=token
-  ?active=token
-  ?communication=token
-  ?identifier=token
-  ?name=string
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?email = token (email)
+  ?family = string (family)
+  ?gender = token (gender)
+  ?given = string (given)
+  ?phone = token (phone)
+  ?phonetic = string (phonetic)
+  ?telecom = token (telecom)
+  ?active = token (active)
+  ?communication = token (communication)
+  ?identifier = token (identifier)
+  ?name = string (name)
 - PractitionerRole: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -13628,19 +13628,19 @@ resources: 148
     - during[0..1]: Period
   - availabilityExceptions[0..1]: string
   - endpoint[0..*]: Reference(Endpoint)
-  ?email=token
-  ?phone=token
-  ?telecom=token
-  ?active=token
-  ?date=date
-  ?endpoint=reference
-  ?identifier=token
-  ?location=reference
-  ?organization=reference
-  ?practitioner=reference
-  ?role=token
-  ?service=reference
-  ?specialty=token
+  ?email = token (email)
+  ?phone = token (phone)
+  ?telecom = token (telecom)
+  ?active = token (active)
+  ?date = date (date)
+  ?endpoint = reference (endpoint)
+  ?identifier = token (identifier)
+  ?location = reference (location)
+  ?organization = reference (organization)
+  ?practitioner = reference (practitioner)
+  ?role = token (role)
+  ?service = reference (service)
+  ?specialty = token (specialty)
 - Procedure: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -13749,22 +13749,22 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?code=token
-  ?date=date
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?based-on=reference
-  ?category=token
-  ?instantiates-canonical=reference
-  ?instantiates-uri=uri
-  ?location=reference
-  ?part-of=reference
-  ?performer=reference
-  ?reason-code=token
-  ?reason-reference=reference
-  ?status=token
-  ?subject=reference
+  ?code = token (code)
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?based-on = reference (based-on)
+  ?category = token (category)
+  ?instantiates-canonical = reference (instantiates-canonical)
+  ?instantiates-uri = uri (instantiates-uri)
+  ?location = reference (location)
+  ?part-of = reference (part-of)
+  ?performer = reference (performer)
+  ?reason-code = token (reason-code)
+  ?reason-reference = reference (reason-reference)
+  ?status = token (status)
+  ?subject = reference (subject)
 - Provenance: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -13870,16 +13870,16 @@ resources: 148
       - what[1..1]: Reference(Resource)
       - agent[0..*]: Provenance.agent:Author
     - signature[0..*]: Signature
-  ?agent-role=token
-  ?agent-type=token
-  ?agent=reference
-  ?entity=reference
-  ?location=reference
-  ?patient=reference
-  ?recorded=date
-  ?signature-type=token
-  ?target=reference
-  ?when=date
+  ?agent-role = token (agent-role)
+  ?agent-type = token (agent-type)
+  ?agent = reference (agent)
+  ?entity = reference (entity)
+  ?location = reference (location)
+  ?patient = reference (patient)
+  ?recorded = date (recorded)
+  ?signature-type = token (signature-type)
+  ?target = reference (target)
+  ?when = date (when)
 - Questionnaire: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -14887,25 +14887,25 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/variable
     - value[x][1..1]: Expression
-  ?code=token
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?definition=uri
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?subject-type=token
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?code = token (code)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?definition = uri (definition)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?subject-type = token (subject-type)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
   /{id}$populate
     in: subject (1-1)
     in: local (0-1)
@@ -15003,18 +15003,18 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?author=reference
-  ?authored=date
-  ?based-on=reference
-  ?encounter=reference
-  ?item-subject=reference
-  ?identifier=token
-  ?part-of=reference
-  ?patient=reference
-  ?questionnaire=reference
-  ?source=reference
-  ?status=token
-  ?subject=reference
+  ?author = reference (author)
+  ?authored = date (authored)
+  ?based-on = reference (based-on)
+  ?encounter = reference (encounter)
+  ?item-subject = reference (item-subject)
+  ?identifier = token (identifier)
+  ?part-of = reference (part-of)
+  ?patient = reference (patient)
+  ?questionnaire = reference (questionnaire)
+  ?source = reference (source)
+  ?status = token (status)
+  ?subject = reference (subject)
 - RelatedPerson: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15047,23 +15047,23 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies
     - value[x][1..1]: CodeableConcept
-  ?address-city=string
-  ?address-country=string
-  ?address-postalcode=string
-  ?address-state=string
-  ?address-use=token
-  ?address=string
-  ?birthdate=date
-  ?email=token
-  ?gender=token
-  ?phone=token
-  ?phonetic=string
-  ?telecom=token
-  ?active=token
-  ?identifier=token
-  ?name=string
-  ?patient=reference
-  ?relationship=token
+  ?address-city = string (address-city)
+  ?address-country = string (address-country)
+  ?address-postalcode = string (address-postalcode)
+  ?address-state = string (address-state)
+  ?address-use = token (address-use)
+  ?address = string (address)
+  ?birthdate = date (birthdate)
+  ?email = token (email)
+  ?gender = token (gender)
+  ?phone = token (phone)
+  ?phonetic = string (phonetic)
+  ?telecom = token (telecom)
+  ?active = token (active)
+  ?identifier = token (identifier)
+  ?name = string (name)
+  ?patient = reference (patient)
+  ?relationship = token (relationship)
 - RequestGroup: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15210,20 +15210,20 @@ resources: 148
         - url[1..1]: string
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
         - value[x][0..0]: base64Binary|boolean|canonical|code|date|dateTime|decimal|id|instant|integer|markdown|oid|positiveInt|string|time|unsignedInt|uri|url|uuid|Address|Age|Annotation|Attachment|CodeableConcept|Coding|ContactPoint|Count|Distance|Duration|HumanName|Identifier|Money|Period|Quantity|Range|Ratio|Reference|SampledData|Signature|Timing|ContactDetail|Contributor|DataRequirement|Expression|ParameterDefinition|RelatedArtifact|TriggerDefinition|UsageContext|Dosage|Meta
-  ?author=reference
-  ?authored=date
-  ?code=token
-  ?encounter=reference
-  ?group-identifier=token
-  ?identifier=token
-  ?instantiates-canonical=reference
-  ?instantiates-uri=uri
-  ?intent=token
-  ?participant=reference
-  ?patient=reference
-  ?priority=token
-  ?status=token
-  ?subject=reference
+  ?author = reference (author)
+  ?authored = date (authored)
+  ?code = token (code)
+  ?encounter = reference (encounter)
+  ?group-identifier = token (group-identifier)
+  ?identifier = token (identifier)
+  ?instantiates-canonical = reference (instantiates-canonical)
+  ?instantiates-uri = uri (instantiates-uri)
+  ?intent = token (intent)
+  ?participant = reference (participant)
+  ?patient = reference (patient)
+  ?priority = token (priority)
+  ?status = token (status)
+  ?subject = reference (subject)
 - ResearchDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15273,28 +15273,28 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?composed-of=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?depends-on=reference
-  ?derived-from=reference
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?predecessor=reference
-  ?publisher=string
-  ?status=token
-  ?successor=reference
-  ?title=string
-  ?topic=token
-  ?url=uri
-  ?version=token
+  ?composed-of = reference (composed-of)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?depends-on = reference (depends-on)
+  ?derived-from = reference (derived-from)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?predecessor = reference (predecessor)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?successor = reference (successor)
+  ?title = string (title)
+  ?topic = token (topic)
+  ?url = uri (url)
+  ?version = token (version)
 - ResearchElementDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15358,28 +15358,28 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?composed-of=reference
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?depends-on=reference
-  ?derived-from=reference
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?predecessor=reference
-  ?publisher=string
-  ?status=token
-  ?successor=reference
-  ?title=string
-  ?topic=token
-  ?url=uri
-  ?version=token
+  ?composed-of = reference (composed-of)
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?depends-on = reference (depends-on)
+  ?derived-from = reference (derived-from)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?predecessor = reference (predecessor)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?successor = reference (successor)
+  ?title = string (title)
+  ?topic = token (topic)
+  ?url = uri (url)
+  ?version = token (version)
 - ResearchStudy: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15424,19 +15424,19 @@ resources: 148
     - modifierExtension[0..*]: Extension
     - name[0..1]: string
     - type[0..1]: CodeableConcept
-  ?category=token
-  ?date=date
-  ?focus=token
-  ?identifier=token
-  ?keyword=token
-  ?location=token
-  ?partof=reference
-  ?principalinvestigator=reference
-  ?protocol=reference
-  ?site=reference
-  ?sponsor=reference
-  ?status=token
-  ?title=string
+  ?category = token (category)
+  ?date = date (date)
+  ?focus = token (focus)
+  ?identifier = token (identifier)
+  ?keyword = token (keyword)
+  ?location = token (location)
+  ?partof = reference (partof)
+  ?principalinvestigator = reference (principalinvestigator)
+  ?protocol = reference (protocol)
+  ?site = reference (site)
+  ?sponsor = reference (sponsor)
+  ?status = token (status)
+  ?title = string (title)
 - ResearchSubject: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15454,12 +15454,12 @@ resources: 148
   - assignedArm[0..1]: string
   - actualArm[0..1]: string
   - consent[0..1]: Reference(Consent)
-  ?date=date
-  ?identifier=token
-  ?individual=reference
-  ?patient=reference
-  ?status=token
-  ?study=reference
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?individual = reference (individual)
+  ?patient = reference (patient)
+  ?status = token (status)
+  ?study = reference (study)
 - Resource: Resource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15538,16 +15538,16 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?date=date
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?condition=reference
-  ?method=token
-  ?performer=reference
-  ?probability=number
-  ?risk=token
-  ?subject=reference
+  ?date = date (date)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?condition = reference (condition)
+  ?method = token (method)
+  ?performer = reference (performer)
+  ?probability = number (probability)
+  ?risk = token (risk)
+  ?subject = reference (subject)
 - RiskEvidenceSynthesis: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15629,22 +15629,22 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?effective=date
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?effective = date (effective)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
 - Schedule: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15662,13 +15662,13 @@ resources: 148
   - actor[1..*]: Reference(Patient|Practitioner|PractitionerRole|RelatedPerson|Device|HealthcareService|Location)
   - planningHorizon[0..1]: Period
   - comment[0..1]: string
-  ?active=token
-  ?actor=reference
-  ?date=date
-  ?identifier=token
-  ?service-category=token
-  ?service-type=token
-  ?specialty=token
+  ?active = token (active)
+  ?actor = reference (actor)
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?service-category = token (service-category)
+  ?service-type = token (service-type)
+  ?specialty = token (specialty)
 - SearchParameter: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15733,25 +15733,25 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?url=uri
-  ?version=token
-  ?base=token
-  ?code=token
-  ?component=reference
-  ?derived-from=reference
-  ?target=token
-  ?type=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?url = uri (url)
+  ?version = token (version)
+  ?base = token (base)
+  ?code = token (code)
+  ?component = reference (component)
+  ?derived-from = reference (derived-from)
+  ?target = token (target)
+  ?type = token (type)
 - ServiceRequest: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15892,27 +15892,27 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-episodeOfCare
     - value[x][1..1]: Reference(EpisodeOfCare)
-  ?code=token
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?authored=date
-  ?based-on=reference
-  ?body-site=token
-  ?category=token
-  ?instantiates-canonical=reference
-  ?instantiates-uri=uri
-  ?intent=token
-  ?occurrence=date
-  ?performer-type=token
-  ?performer=reference
-  ?priority=token
-  ?replaces=reference
-  ?requester=reference
-  ?requisition=token
-  ?specimen=reference
-  ?status=token
-  ?subject=reference
+  ?code = token (code)
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?authored = date (authored)
+  ?based-on = reference (based-on)
+  ?body-site = token (body-site)
+  ?category = token (category)
+  ?instantiates-canonical = reference (instantiates-canonical)
+  ?instantiates-uri = uri (instantiates-uri)
+  ?intent = token (intent)
+  ?occurrence = date (occurrence)
+  ?performer-type = token (performer-type)
+  ?performer = reference (performer)
+  ?priority = token (priority)
+  ?replaces = reference (replaces)
+  ?requester = reference (requester)
+  ?requisition = token (requisition)
+  ?specimen = reference (specimen)
+  ?status = token (status)
+  ?subject = reference (subject)
 - Slot: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -15933,14 +15933,14 @@ resources: 148
   - end[1..1]: instant
   - overbooked[0..1]: boolean
   - comment[0..1]: string
-  ?appointment-type=token
-  ?identifier=token
-  ?schedule=reference
-  ?service-category=token
-  ?service-type=token
-  ?specialty=token
-  ?start=date
-  ?status=token
+  ?appointment-type = token (appointment-type)
+  ?identifier = token (identifier)
+  ?schedule = reference (schedule)
+  ?service-category = token (service-category)
+  ?service-type = token (service-type)
+  ?specialty = token (specialty)
+  ?start = date (start)
+  ?status = token (status)
 - Specimen: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -16025,18 +16025,18 @@ resources: 148
       - value[x][1..1]: integer
   - condition[0..*]: CodeableConcept
   - note[0..*]: Annotation
-  ?accession=token
-  ?bodysite=token
-  ?collected=date
-  ?collector=reference
-  ?container-id=token
-  ?container=token
-  ?identifier=token
-  ?parent=reference
-  ?patient=reference
-  ?status=token
-  ?subject=reference
-  ?type=token
+  ?accession = token (accession)
+  ?bodysite = token (bodysite)
+  ?collected = date (collected)
+  ?collector = reference (collector)
+  ?container-id = token (container-id)
+  ?container = token (container)
+  ?identifier = token (identifier)
+  ?parent = reference (parent)
+  ?patient = reference (patient)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?type = token (type)
 - SpecimenDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -16085,9 +16085,9 @@ resources: 148
       - temperatureRange[0..1]: Range
       - maxDuration[0..1]: Duration
       - instruction[0..1]: string
-  ?container=token
-  ?identifier=token
-  ?type=token
+  ?container = token (container)
+  ?identifier = token (identifier)
+  ?type = token (type)
 - StructureDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -16246,32 +16246,32 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-no-order
     - value[x][1..1]: boolean
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
-  ?abstract=token
-  ?base-path=token
-  ?base=reference
-  ?derivation=token
-  ?experimental=token
-  ?ext-context=token
-  ?keyword=token
-  ?kind=token
-  ?path=token
-  ?type=uri
-  ?valueset=reference
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
+  ?abstract = token (abstract)
+  ?base-path = token (base-path)
+  ?base = reference (base)
+  ?derivation = token (derivation)
+  ?experimental = token (experimental)
+  ?ext-context = token (ext-context)
+  ?keyword = token (keyword)
+  ?kind = token (kind)
+  ?path = token (path)
+  ?type = uri (type)
+  ?valueset = reference (valueset)
   $questionnaire
     in: identifier (0-1)
     in: profile (0-1)
@@ -16409,21 +16409,21 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
   $transform
     in: source (0-1)
     in: content (1-1)
@@ -16455,12 +16455,12 @@ resources: 148
     - endpoint[0..1]: url
     - payload[0..1]: code
     - header[0..*]: string
-  ?contact=token
-  ?criteria=string
-  ?payload=token
-  ?status=token
-  ?type=token
-  ?url=uri
+  ?contact = token (contact)
+  ?criteria = string (criteria)
+  ?payload = token (payload)
+  ?status = token (status)
+  ?type = token (type)
+  ?url = uri (url)
 - Substance: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -16488,14 +16488,14 @@ resources: 148
     - modifierExtension[0..*]: Extension
     - quantity[0..1]: Ratio
     - substance[x][1..1]: CodeableConcept|Reference(Substance)
-  ?category=token
-  ?code=token
-  ?container-identifier=token
-  ?expiry=date
-  ?identifier=token
-  ?quantity=quantity
-  ?status=token
-  ?substance-reference=reference
+  ?category = token (category)
+  ?code = token (code)
+  ?container-identifier = token (container-identifier)
+  ?expiry = date (expiry)
+  ?identifier = token (identifier)
+  ?quantity = quantity (quantity)
+  ?status = token (status)
+  ?substance-reference = reference (substance-reference)
 - SubstanceNucleicAcid: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -16833,7 +16833,7 @@ resources: 148
   - polymer[0..1]: Reference(SubstancePolymer)
   - protein[0..1]: Reference(SubstanceProtein)
   - sourceMaterial[0..1]: Reference(SubstanceSourceMaterial)
-  ?code=token
+  ?code = token (code)
 - SupplyDelivery: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -16895,11 +16895,11 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?identifier=token
-  ?patient=reference
-  ?receiver=reference
-  ?status=token
-  ?supplier=reference
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?receiver = reference (receiver)
+  ?status = token (status)
+  ?supplier = reference (supplier)
 - SupplyRequest: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -16947,13 +16947,13 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-instantiatesUri
     - value[x][1..1]: uri
-  ?date=date
-  ?identifier=token
-  ?category=token
-  ?requester=reference
-  ?status=token
-  ?subject=reference
-  ?supplier=reference
+  ?date = date (date)
+  ?identifier = token (identifier)
+  ?category = token (category)
+  ?requester = reference (requester)
+  ?status = token (status)
+  ?subject = reference (subject)
+  ?supplier = reference (supplier)
 - Task: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -17034,25 +17034,25 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
     - value[x][1..1]: Reference(ResearchStudy)
-  ?authored-on=date
-  ?based-on=reference
-  ?business-status=token
-  ?code=token
-  ?encounter=reference
-  ?focus=reference
-  ?group-identifier=token
-  ?identifier=token
-  ?intent=token
-  ?modified=date
-  ?owner=reference
-  ?part-of=reference
-  ?patient=reference
-  ?performer=token
-  ?period=date
-  ?priority=token
-  ?requester=reference
-  ?status=token
-  ?subject=reference
+  ?authored-on = date (authored-on)
+  ?based-on = reference (based-on)
+  ?business-status = token (business-status)
+  ?code = token (code)
+  ?encounter = reference (encounter)
+  ?focus = reference (focus)
+  ?group-identifier = token (group-identifier)
+  ?identifier = token (identifier)
+  ?intent = token (intent)
+  ?modified = date (modified)
+  ?owner = reference (owner)
+  ?part-of = reference (part-of)
+  ?patient = reference (patient)
+  ?performer = token (performer)
+  ?period = date (period)
+  ?priority = token (priority)
+  ?requester = reference (requester)
+  ?status = token (status)
+  ?subject = reference (subject)
 - TerminologyCapabilities: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -17147,20 +17147,20 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
 - TestReport: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -17228,12 +17228,12 @@ resources: 148
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
       - operation[1..1]: TestReport.setup.action.operation
-  ?identifier=token
-  ?issued=date
-  ?participant=uri
-  ?result=token
-  ?tester=string
-  ?testscript=reference
+  ?identifier = token (identifier)
+  ?issued = date (issued)
+  ?participant = uri (participant)
+  ?result = token (result)
+  ?tester = string (tester)
+  ?testscript = reference (testscript)
 - TestScript: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -17398,22 +17398,22 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?testscript-capability=string
-  ?title=string
-  ?url=uri
-  ?version=token
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?testscript-capability = string (testscript-capability)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
 - ValueSet: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -18014,29 +18014,29 @@ resources: 148
     - url[1..1]: string
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-workflowStatus
     - value[x][1..1]: string
-  ?context-quantity=quantity
-  ?context-type-quantity=composite
-  ?context-type-value=composite
-  ?context-type=token
-  ?context=token
-  ?date=date
-  ?description=string
-  ?identifier=token
-  ?jurisdiction=token
-  ?name=string
-  ?publisher=string
-  ?status=token
-  ?title=string
-  ?url=uri
-  ?version=token
-  ?code=token
-  ?expansion=uri
-  ?author=string
-  ?effective=date
-  ?end=date
-  ?keyword=string
-  ?workflow=token
-  ?reference=uri
+  ?context-quantity = quantity (context-quantity)
+  ?context-type-quantity = composite (context-type-quantity)
+  ?context-type-value = composite (context-type-value)
+  ?context-type = token (context-type)
+  ?context = token (context)
+  ?date = date (date)
+  ?description = string (description)
+  ?identifier = token (identifier)
+  ?jurisdiction = token (jurisdiction)
+  ?name = string (name)
+  ?publisher = string (publisher)
+  ?status = token (status)
+  ?title = string (title)
+  ?url = uri (url)
+  ?version = token (version)
+  ?code = token (code)
+  ?expansion = uri (expansion)
+  ?author = string (author)
+  ?effective = date (effective)
+  ?end = date (end)
+  ?keyword = string (keyword)
+  ?workflow = token (workflow)
+  ?reference = uri (reference)
   $expand
     in: url (0-1)
     in: valueSet (0-1)
@@ -18167,7 +18167,7 @@ resources: 148
     - organization[1..1]: Reference(Organization)
     - identityCertificate[0..1]: string
     - attestationSignature[0..1]: Signature
-  ?target=reference
+  ?target = reference (target)
 - VisionPrescription: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -18207,12 +18207,12 @@ resources: 148
     - color[0..1]: string
     - brand[0..1]: string
     - note[0..*]: Annotation
-  ?encounter=reference
-  ?identifier=token
-  ?patient=reference
-  ?datewritten=date
-  ?prescriber=reference
-  ?status=token
+  ?encounter = reference (encounter)
+  ?identifier = token (identifier)
+  ?patient = reference (patient)
+  ?datewritten = date (datewritten)
+  ?prescriber = reference (prescriber)
+  ?status = token (status)
 system operations: 7
   $versions
     out: version (1-*)
@@ -18238,32 +18238,31 @@ system operations: 7
     out: result (1-1)
   $meta
     out: return (1-1)
-all resource parameters: 14
-  ?_id=token
-  ?_filter=special
-  ?_content=string
-  ?_id=token
-  ?_lastUpdated=date
-  ?_profile=uri
-  ?_query=token
-  ?_security=token
-  ?_source=uri
-  ?_tag=token
-  ?_text=string
-  ?_list=string
-  ?_has=string
-  ?_type=string
+all resource parameters: 13
+  ?_id = token (ID-SEARCH-PARAMETER)
+  ?_filter = special (FilterSearchParameter)
+  ?_content = string (_content)
+  ?_lastUpdated = date (_lastUpdated)
+  ?_profile = uri (_profile)
+  ?_query = token (_query)
+  ?_security = token (_security)
+  ?_source = uri (_source)
+  ?_tag = token (_tag)
+  ?_text = string (_text)
+  ?_list = string (_list)
+  ?_has = string (_has)
+  ?_type = string (_type)
 search result parameters: 9
-  ?_sort=string
-  ?_count=string
-  ?_include=string
-  ?_revinclude=string
-  ?_summary=string
-  ?_total=string
-  ?_elements=string
-  ?_contained=string
-  ?_containedType=string
+  ?_sort = string (_sort)
+  ?_count = string (_count)
+  ?_include = string (_include)
+  ?_revinclude = string (_revinclude)
+  ?_summary = string (_summary)
+  ?_total = string (_total)
+  ?_elements = string (_elements)
+  ?_contained = string (_contained)
+  ?_containedType = string (_containedType)
 all interaction parameters: 2
-  ?_format=string
-  ?_pretty=string
+  ?_format = string (_format)
+  ?_pretty = string (_pretty)
 extensions: paths exported 442 of 442

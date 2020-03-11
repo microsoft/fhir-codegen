@@ -330,9 +330,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 if (resourceName.Equals("Resource", StringComparison.Ordinal))
                 {
                     // add to global
-                    if (!_globalSearchParameters.ContainsKey(searchParam.Name))
+                    if (!_globalSearchParameters.ContainsKey(searchParam.Code))
                     {
-                        _globalSearchParameters.Add(searchParam.Name, searchParam);
+                        _globalSearchParameters.Add(searchParam.Code, searchParam);
                     }
 
                     continue;
