@@ -840,16 +840,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             slicingDepths.Add(slicingDepth);
                             slicingPaths[slicingDepth] = element.Path;
                         }
-
-                        //// check to see if we need to insert into our alias table
-                        //if (!string.IsNullOrEmpty(element.Name))
-                        //{
-                        //    if (!_namedReferenceLinks.ContainsKey(element.Name))
-                        //    {
-                        //        // add this record, with it's current path
-                        //        _namedReferenceLinks.Add(element.Name, element.Path);
-                        //    }
-                        //}
                     }
                     catch (Exception ex)
                     {
