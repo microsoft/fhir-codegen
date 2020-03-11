@@ -446,7 +446,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         string.Empty,
                                         null,
                                         string.Empty,
-                                        null));
+                                        null,
+                                        true,
+                                        true));
                             }
 
                             // check for implicit slicing definition
@@ -526,6 +528,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         // get fixed values (if present)
                         GetFixedValueIfPresent(element, out string fixedName, out object fixedValue);
 
+                        // determine if this element is inherited
+                        bool isInherited = false;
+                        bool modifiesParent = true;
+
+                        if (element.Base != null)
+                        {
+                            if (element.Base.Path != element.Path)
+                            {
+                                isInherited = true;
+                            }
+
+                            if ((element.Base.Min == element.Min) &&
+                                (element.Base.Max == element.Max) &&
+                                (element.Slicing == null))
+                            {
+                                modifiesParent = false;
+                            }
+                        }
+
                         // add this field to the parent type
                         parent.Elements.Add(
                             path,
@@ -547,7 +568,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 defaultName,
                                 defaultValue,
                                 fixedName,
-                                fixedValue));
+                                fixedValue,
+                                isInherited,
+                                modifiesParent));
 
                         if (element.Slicing != null)
                         {

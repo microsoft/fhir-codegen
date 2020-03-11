@@ -31,13 +31,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="baseTypeName">     Name of the base type.</param>
         /// <param name="elementTypes">     Types and associated profiles.</param>
         /// <param name="cardinalityMin">   The cardinality minimum.</param>
-        /// <param name="cardinalityMax">   The cardinaltiy maximum.</param>
+        /// <param name="cardinalityMax">   The cardinality maximum.</param>
         /// <param name="isModifier">       If this element modifies the meaning of its parent.</param>
         /// <param name="isSummary">        If this element should be included in summaries.</param>
         /// <param name="defaultFieldName"> Name of a default field, e.g., defaultUri, defaultCode.</param>
         /// <param name="defaultFieldValue">Value of a default field.</param>
         /// <param name="fixedFieldName">   Name of a fixed field, e.g., fixedUri, fixedCode.</param>
         /// <param name="fixedFieldValue">  Value of a fixed field.</param>
+        /// <param name="isInherited">      If this element is inherited from somewhere else.</param>
+        /// <param name="modifiesParent">   If this element modifies the definition of its parent.</param>
         public FhirElement(
             string id,
             string path,
@@ -56,7 +58,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string defaultFieldName,
             object defaultFieldValue,
             string fixedFieldName,
-            object fixedFieldValue)
+            object fixedFieldValue,
+            bool isInherited,
+            bool modifiesParent)
             : base(
                 id,
                 path,
@@ -84,6 +88,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             FixedFieldName = fixedFieldName;
             FixedFieldValue = fixedFieldValue;
+
+            IsInherited = isInherited;
+            ModifiesParent = modifiesParent;
         }
 
         /// <summary>Gets the cardinality minimum.</summary>
@@ -94,6 +101,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the cardinaltiy maximum, -1 for unbounded (e.g., *).</summary>
         /// <value>The cardinaltiy maximum.</value>
         public int? CardinalityMax { get; }
+
+        /// <summary>Gets a value indicating whether this object is inherited.</summary>
+        /// <value>True if this object is inherited, false if not.</value>
+        public bool IsInherited { get; }
+
+        /// <summary>Gets a value indicating whether the modifies parent.</summary>
+        /// <value>True if modifies parent, false if not.</value>
+        public bool ModifiesParent { get; }
 
         /// <summary>Gets a value indicating whether this object is modifier.</summary>
         /// <value>True if this object is modifier, false if not.</value>
