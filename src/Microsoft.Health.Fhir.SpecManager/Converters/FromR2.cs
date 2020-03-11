@@ -24,13 +24,102 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         private const string ExtensionDefinition = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.";
         private const string ExtensionShort = "Additional content defined by implementations";
 
+        /// <summary>The maximum number of path components.</summary>
+        private const int MaxPathComponents = 10;
+
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private readonly JsonConverter _jsonConverter;
+
+        /// <summary>The named reference links.</summary>
+        private static Dictionary<string, string> _namedReferenceLinks;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FromR2"/> class.
         /// </summary>
-        public FromR2() => _jsonConverter = new fhir_2.ResourceConverter();
+        public FromR2()
+        {
+            _jsonConverter = new fhir_2.ResourceConverter();
+            _namedReferenceLinks = new Dictionary<string, string>()
+            {
+                { "extension", "Extension.extension" },
+                { "link", "Bundle.link" },
+                { "section", "Composition.section" },
+                { "dependsOn", "ConceptMap.element.target.dependsOn" },
+                { "searchParam", "Conformance.rest.resource.searchParam" },
+                { "ConsentDirective.identifier", "Contract.identifier" },
+                { "ConsentDirective.issued", "Contract.issued" },
+                { "ConsentDirective.applies", "Contract.applies" },
+                { "ConsentDirective.subject", "Contract.subject" },
+                { "ConsentDirective.authority", "Contract.authority" },
+                { "ConsentDirective.domain", "Contract.domain" },
+                { "ConsentDirective.type", "Contract.type" },
+                { "ConsentDirective.subType", "Contract.subType" },
+                { "ConsentDirective.action", "Contract.action" },
+                { "ConsentDirective.actionReason", "Contract.actionReason" },
+                { "ConsentDirective.actor", "Contract.actor" },
+                { "ConsentDirective.actor.entity", "Contract.actor.entity" },
+                { "ConsentDirective.actor.role", "Contract.actor.role" },
+                { "ConsentDirective.valuedItem", "Contract.valuedItem" },
+                { "ConsentDirective.valuedItem.entity[x]", "Contract.valuedItem.entity[x]" },
+                { "ConsentDirective.valuedItem.identifier", "Contract.valuedItem.identifier" },
+                { "ConsentDirective.valuedItem.effectiveTime", "Contract.valuedItem.effectiveTime" },
+                { "ConsentDirective.valuedItem.quantity", "Contract.valuedItem.quantity" },
+                { "ConsentDirective.valuedItem.unitprice", "Contract.valuedItem.unitPrice" },
+                { "ConsentDirective.valuedItem.factor", "Contract.valuedItem.factor" },
+                { "ConsentDirective.valuedItem.points", "Contract.valuedItem.points" },
+                { "ConsentDirective.valuedItem.net", "Contract.valuedItem.net" },
+                { "ConsentDirective.signer", "Contract.signer" },
+                { "ConsentDirective.signer.type", "Contract.signer.type" },
+                { "ConsentDirective.signer.party", "Contract.signer.party" },
+                { "ConsentDirective.signer.signature", "Contract.signer.signature" },
+                { "ConsentDirective.term", "Contract.term" },
+                { "ConsentDirective.term.identifier", "Contract.term.identifier" },
+                { "ConsentDirective.term.issued", "Contract.term.issued" },
+                { "ConsentDirective.term.applies", "Contract.term.applies" },
+                { "ConsentDirective.term.type", "Contract.term.type" },
+                { "ConsentDirective.term.subType", "Contract.term.subType" },
+                { "ConsentDirective.term.subject", "Contract.term.subject" },
+                { "ConsentDirective.term.action", "Contract.term.action" },
+                { "ConsentDirective.term.actionReason", "Contract.term.actionReason" },
+                { "ConsentDirective.term.actor", "Contract.term.actor" },
+                { "ConsentDirective.term.actor.entity", "Contract.term.actor.entity" },
+                { "ConsentDirective.term.actor.role", "Contract.term.actor.role" },
+                { "ConsentDirective.term.text", "Contract.term.text" },
+                { "ConsentDirective.term.valuedItem", "Contract.term.valuedItem" },
+                { "ConsentDirective.term.valuedItem.entity[x]", "Contract.term.valuedItem.entity[x]" },
+                { "ConsentDirective.term.valuedItem.", "Contract.term.valuedItem.identifier" },
+                { "ConsentDirective.term.valuedItem.effectiveTime", "Contract.term.valuedItem.effectiveTime" },
+                { "ConsentDirective.term.valuedItem.quantity", "Contract.term.valuedItem.quantity" },
+                { "ConsentDirective.term.valuedItem.unitPrice", "Contract.term.valuedItem.unitPrice" },
+                { "ConsentDirective.term.valuedItem.factor", "Contract.term.valuedItem.factor" },
+                { "ConsentDirective.term.valuedItem.points", "Contract.term.valuedItem.points" },
+                { "ConsentDirective.term.valuedItem.net", "Contract.term.valuedItem.net" },
+                { "term", "Contract.term" },
+                { "onsetquantity", "Condition.onsetQuantity" },
+                { "onsetdatetime", "Condition.onsetDateTime" },
+                { "USLabLOINCCoding", "DiagnosticReport.code.coding" },
+                { "medicationcodeableconcept", "MedicationAdministration.medicationCodeableConcept" },
+                { "medicationreference", "MedicationAdministration.medicationReference" },
+                { "referenceRange", "Observation.referenceRange" },
+                { "USLabPlacerSID", "Specimen.identifier" },
+                { "event", "DiagnosticOrder.event" },
+                { "page", "ImplementationGuide.page" },
+                { "parameter", "OperationDefinition.parameter" },
+                { "agent", "Provenance.agent" },
+                { "DiagnosticReport.locationPerformed.valueReference", "DiagnosticReport.extension.valueReference" },
+                { "group", "Questionnaire.group" },
+                { "designation", "ValueSet.codeSystem.concept.designation" },
+                { "l", "DataElement.element.maxValue[x]" },
+                { "MappingEquivalence", "DataElement.element.mapping.extension" },
+                { "concept", "ValueSet.codeSystem.concept" },
+                { "include", "ValueSet.compose.include" },
+                { "contains", "ValueSet.expansion.contains" },
+                { "metadata", "TestScript.metadata" },
+                { "operation", "TestScript.setup.action.operation" },
+                { "assert", "TestScript.setup.action.assert" },
+                { "USLabDOPlacerID", "DiagnosticOrder.identifier" },
+            };
+        }
 
         /// <summary>Process the operation.</summary>
         /// <param name="op">             The operation.</param>
@@ -437,7 +526,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             try
             {
-                Dictionary<string, string> aliasTable = new Dictionary<string, string>();
                 List<string> contextElements = new List<string>();
                 if (sd.Context != null)
                 {
@@ -481,6 +569,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     complex.BaseTypeName = baseTypes.ElementAt(0).Value.Code;
                 }
 
+                HashSet<int> slicingDepths = new HashSet<int>();
+                string[] slicingPaths = new string[MaxPathComponents];
+                string[] traversalSliceNames = new string[MaxPathComponents];
+
+                for (int i = 0; i < MaxPathComponents; i++)
+                {
+                    slicingPaths[i] = string.Empty;
+                    traversalSliceNames[i] = string.Empty;
+                }
+
                 // look for properties on this type
                 foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
                 {
@@ -506,6 +604,63 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             }
 
                             continue;
+                        }
+
+                        // check for having slicing
+                        if (slicingDepths.Count > 0)
+                        {
+                            List<int> depthsToRemove = new List<int>();
+
+                            int elementDepth = pathComponents.Length - 1;
+
+                            // check according to depth
+                            foreach (int depth in slicingDepths)
+                            {
+                                // check for earlier depths than current
+                                if (elementDepth > depth)
+                                {
+                                    // add slice name to this component
+                                    idComponents[depth] = $"{idComponents[depth]}:{traversalSliceNames[depth]}";
+
+                                    // done with this slicing
+                                    continue;
+                                }
+
+                                // check for matching slicing level
+                                if (elementDepth == depth)
+                                {
+                                    if ((path == slicingPaths[depth]) &&
+                                        (!string.IsNullOrEmpty(element.Name)))
+                                    {
+                                        // grab our new slice name
+                                        traversalSliceNames[depth] = element.Name;
+
+                                        // add slice name to this component
+                                        idComponents[depth] = $"{idComponents[depth]}:{traversalSliceNames[depth]}";
+
+                                        // done with this depth
+                                        continue;
+                                    }
+                                }
+
+                                // we have iterated out of this slicing group
+                                slicingPaths[depth] = string.Empty;
+                                traversalSliceNames[depth] = string.Empty;
+                                depthsToRemove.Add(depth);
+                            }
+
+                            // remove cleared depths
+                            foreach (int depth in depthsToRemove)
+                            {
+                                slicingDepths.Remove(depth);
+                            }
+                        }
+
+                        // check for needing to rebuild the id
+                        if (slicingDepths.Count > 0)
+                        {
+                            // rebuild the id with our slicing information
+                            id = string.Join(".", idComponents);
                         }
 
                         // get the parent container and our field name
@@ -612,13 +767,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         else if (!string.IsNullOrEmpty(element.NameReference))
                         {
                             // look up the named reference in the alias table
-                            if (!aliasTable.ContainsKey(element.NameReference))
+                            if (!_namedReferenceLinks.ContainsKey(element.NameReference))
                             {
                                 throw new InvalidDataException($"Could not resolve NameReference {element.NameReference} in {sd.Name} field {element.Path}");
                             }
 
                             // use the named type
-                            elementType = aliasTable[element.NameReference];
+                            elementType = _namedReferenceLinks[element.NameReference];
                         }
 
                         // get default values (if present)
@@ -627,28 +782,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         // get fixed values (if present)
                         GetFixedValueIfPresent(element, out string fixedName, out object fixedValue);
 
-                        // add this field to the parent type
-                        parent.Elements.Add(
-                            path,
-                            new FhirElement(
-                                id,
+                        // elements can repeat in R2 due to the way slicing was done
+                        if (!parent.Elements.ContainsKey(path))
+                        {
+                            // add this field to the parent type
+                            parent.Elements.Add(
                                 path,
-                                null,
-                                parent.Elements.Count,
-                                element.Short,
-                                element.Definition,
-                                element.Comment,
-                                string.Empty,
-                                elementType,
-                                elementTypes,
-                                (int)(element.Min ?? 0),
-                                element.Max,
-                                element.IsModifier,
-                                element.IsSummary,
-                                defaultName,
-                                defaultValue,
-                                fixedName,
-                                fixedValue));
+                                new FhirElement(
+                                    id,
+                                    path,
+                                    null,
+                                    parent.Elements.Count,
+                                    element.Short,
+                                    element.Definition,
+                                    element.Comment,
+                                    string.Empty,
+                                    elementType,
+                                    elementTypes,
+                                    (int)(element.Min ?? 0),
+                                    element.Max,
+                                    element.IsModifier,
+                                    element.IsSummary,
+                                    defaultName,
+                                    defaultValue,
+                                    fixedName,
+                                    fixedValue));
+                        }
 
                         if (element.Slicing != null)
                         {
@@ -662,7 +821,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             foreach (string discriminator in element.Slicing.Discriminator)
                             {
                                 discriminatorRules.Add(new FhirSliceDiscriminatorRule(
-                                    string.Empty,
+                                    "value",
                                     discriminator));
                             }
 
@@ -675,14 +834,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                     element.Slicing.Ordered,
                                     element.Slicing.Rules,
                                     discriminatorRules));
+
+                            // flag we are in a slicing
+                            int slicingDepth = pathComponents.Length - 1;
+                            slicingDepths.Add(slicingDepth);
+                            slicingPaths[slicingDepth] = element.Path;
                         }
 
-                        // check to see if we need to insert into our alias table
-                        if (!string.IsNullOrEmpty(element.Name))
-                        {
-                            // add this record, with it's current path
-                            aliasTable.Add(element.Name, element.Path);
-                        }
+                        //// check to see if we need to insert into our alias table
+                        //if (!string.IsNullOrEmpty(element.Name))
+                        //{
+                        //    if (!_namedReferenceLinks.ContainsKey(element.Name))
+                        //    {
+                        //        // add this record, with it's current path
+                        //        _namedReferenceLinks.Add(element.Name, element.Path);
+                        //    }
+                        //}
                     }
                     catch (Exception ex)
                     {
