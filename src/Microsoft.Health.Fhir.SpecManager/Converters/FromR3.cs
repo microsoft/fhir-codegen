@@ -230,14 +230,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         // create a type for this code
                         FhirElementType elementType = new FhirElementType(edType.Code);
 
-                        if (!elementTypes.ContainsKey(elementType.Code))
+                        if (!elementTypes.ContainsKey(elementType.Name))
                         {
-                            elementTypes.Add(elementType.Code, elementType);
+                            elementTypes.Add(elementType.Name, elementType);
                         }
 
                         if (!string.IsNullOrEmpty(edType.TargetProfile))
                         {
-                            elementTypes[elementType.Code].AddProfile(edType.TargetProfile);
+                            elementTypes[elementType.Name].AddProfile(edType.TargetProfile);
                         }
 
                         continue;
@@ -254,14 +254,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 // create a type for this code
                                 FhirElementType elementType = new FhirElementType(edType.Code);
 
-                                if (!elementTypes.ContainsKey(elementType.Code))
+                                if (!elementTypes.ContainsKey(elementType.Name))
                                 {
-                                    elementTypes.Add(elementType.Code, elementType);
+                                    elementTypes.Add(elementType.Name, elementType);
                                 }
 
                                 if (!string.IsNullOrEmpty(edType.TargetProfile))
                                 {
-                                    elementTypes[elementType.Code].AddProfile(edType.TargetProfile);
+                                    elementTypes[elementType.Name].AddProfile(edType.TargetProfile);
                                 }
 
                                 break;
@@ -287,7 +287,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 FhirElementType elementType = new FhirElementType(element.Path, null);
 
                 // add to our dictionary
-                elementTypes.Add(elementType.Code, elementType);
+                elementTypes.Add(elementType.Name, elementType);
 
                 // done searching
                 return true;
@@ -402,7 +402,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         throw new InvalidDataException($"Too many types for {sd.Name}: {baseTypes.Count}");
                     }
 
-                    complex.BaseTypeName = baseTypes.ElementAt(0).Value.Code;
+                    complex.BaseTypeName = baseTypes.ElementAt(0).Value.Name;
                 }
 
                 // look for properties on this type

@@ -39,14 +39,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             int lastSlash = code.LastIndexOf('/');
             if (lastSlash == -1)
             {
-                Code = code;
+                Name = code;
                 URL = new Uri(_baseElementTypeUri, code);
             }
             else
             {
-                Code = code.Substring(lastSlash + 1);
+                Name = code.Substring(lastSlash + 1);
                 URL = new Uri(code);
             }
+
+            Type = Name;
 
             _profiles = new Dictionary<string, FhirElementProfile>();
         }
@@ -80,15 +82,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             int lastSlash = code.LastIndexOf('/');
             if (lastSlash == -1)
             {
-                Code = code;
+                Name = code;
                 URL = new Uri(_baseElementTypeUri, code);
             }
             else
             {
-                Code = code.Substring(lastSlash + 1);
+                Name = code.Substring(lastSlash + 1);
                 URL = new Uri(code);
             }
 
+            Type = Name;
             _profiles = new Dictionary<string, FhirElementProfile>();
 
             if (profiles != null)
@@ -112,9 +115,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
         }
 
-        /// <summary>Gets the code.</summary>
-        /// <value>The code.</value>
-        public string Code { get; }
+        /// <summary>Initializes a new instance of the <see cref="FhirElementType"/> class.</summary>
+        /// <param name="name">    The code.</param>
+        /// <param name="url">     The URL.</param>
+        /// <param name="profiles">The profiles.</param>
+        private FhirElementType(string name, string type, Uri url, Dictionary<string, FhirElementProfile> profiles)
+        {
+            Name = name;
+            Type = type;
+            URL = url;
+            _profiles = profiles;
+        }
+
+        /// <summary>Gets the name.</summary>
+        /// <value>The name.</value>
+        public string Name { get; }
+
+        /// <summary>Gets the type.</summary>
+        /// <value>The type.</value>
+        public string Type { get; }
 
         /// <summary>Gets URL of the document.</summary>
         /// <value>The URL.</value>
@@ -138,8 +157,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _profiles.Add(profile.Name, profile);
         }
 
+        /// <summary>Deep copy.</summary>
+        /// <param name="primitiveTypeMap">The primitive type map.</param>
+        /// <returns>A FhirElementType.</returns>
+        public FhirElementType DeepCopy(
+            Dictionary<string, string> primitiveTypeMap)
+        {
+            Dictionary<string, FhirElementProfile> profiles = new Dictionary<string, FhirElementProfile>();
+
+            foreach (KeyValuePair<string, FhirElementProfile> kvp in _profiles)
+            {
+                profiles.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            string type = Type ?? Name;
+
+            if ((primitiveTypeMap != null) && primitiveTypeMap.ContainsKey(type))
+            {
+                type = primitiveTypeMap[type];
+            }
+
+            return new FhirElementType(Name, type, URL, profiles);
+        }
+
         /// <summary>Type from XML type.</summary>
-        /// <param name="xmlType">Type of the XML.</param>
+        /// <param name="xmlType"> Type of the XML.</param>
+        /// <param name="fhirType">[out] Type in FHIR.</param>
         /// <returns>A string.</returns>
         public static bool IsXmlType(string xmlType, out string fhirType)
         {

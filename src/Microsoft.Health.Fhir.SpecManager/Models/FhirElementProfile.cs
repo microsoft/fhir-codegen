@@ -26,6 +26,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Name = url.Segments[url.Segments.Length - 1];
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FhirElementProfile"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="url"> The URL.</param>
+        public FhirElementProfile(
+            string name,
+            Uri url)
+        {
+            Name = name;
+            URL = url;
+        }
+
         /// <summary>Gets the name.</summary>
         /// <value>The name.</value>
         public string Name { get; }
@@ -37,5 +50,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Returns a string that represents the current object.</summary>
         /// <returns>A string that represents the current object.</returns>
         public override string ToString() => Name;
+
+        /// <summary>Deep copy.</summary>
+        /// <returns>A FhirElementProfile.</returns>
+        public FhirElementProfile DeepCopy()
+        {
+            return new FhirElementProfile(Name, URL);
+        }
     }
 }

@@ -65,6 +65,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The maximum value.</value>
         public int? Max { get; }
 
+        /// <summary>Gets the cardinality maximum string.</summary>
+        /// <value>The cardinality maximum string.</value>
+        public string MaxString
+        {
+            get
+            {
+                if ((Max == null) || (Max == -1))
+                {
+                    return "*";
+                }
+
+                return Max.ToString();
+            }
+        }
+
+        /// <summary>Gets the FHIR cardinality string: min..max.</summary>
+        /// <value>The FHIR cardinality.</value>
+        public string FhirCardinality => $"{Min}..{MaxString}";
+
         /// <summary>Gets the documentation.</summary>
         /// <value>The documentation.</value>
         public string Documentation { get; }
@@ -76,5 +95,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the field order.</summary>
         /// <value>The field order.</value>
         public int FieldOrder { get; }
+
+        /// <summary>Deep copy.</summary>
+        /// <returns>A FhirParameter.</returns>
+        public FhirParameter DeepCopy()
+        {
+            return new FhirParameter(
+                Name,
+                Use,
+                Min,
+                Max == null ? "*" : Max.ToString(),
+                Documentation,
+                ValueType,
+                FieldOrder);
+        }
     }
 }

@@ -49,6 +49,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Path = path;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FhirSliceDiscriminatorRule"/> class.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="path">The full pathname of the file.</param>
+        public FhirSliceDiscriminatorRule(
+            FhirSliceDiscriminatorType type,
+            string path)
+        {
+            DiscriminatorType = type;
+            Path = path;
+        }
+
         /// <summary>Values that represent fhir slice discriminator types.</summary>
         public enum FhirSliceDiscriminatorType
         {
@@ -80,8 +93,43 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The type of the discriminator.</value>
         public FhirSliceDiscriminatorType DiscriminatorType { get; }
 
+        /// <summary>Gets the name of the discriminator type.</summary>
+        /// <value>The name of the discriminator type.</value>
+        public string DiscriminatorTypeName
+        {
+            get
+            {
+                switch (DiscriminatorType)
+                {
+                    case FhirSliceDiscriminatorType.Value:
+                        return "value";
+
+                    case FhirSliceDiscriminatorType.Exists:
+                        return "exists";
+
+                    case FhirSliceDiscriminatorType.Pattern:
+                        return "pattern";
+
+                    case FhirSliceDiscriminatorType.Type:
+                        return "type";
+
+                    case FhirSliceDiscriminatorType.Profile:
+                        return "profile";
+                }
+
+                return string.Empty;
+            }
+        }
+
         /// <summary>Gets the full pathname of the file.</summary>
         /// <value>The full pathname of the file.</value>
         public string Path { get; }
+
+        /// <summary>Deep copy.</summary>
+        /// <returns>A FhirSliceDiscriminatorRule.</returns>
+        public FhirSliceDiscriminatorRule DeepCopy()
+        {
+            return new FhirSliceDiscriminatorRule(DiscriminatorType, Path);
+        }
     }
 }

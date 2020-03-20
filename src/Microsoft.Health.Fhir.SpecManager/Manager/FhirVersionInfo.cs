@@ -7,8 +7,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Converters;
+using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
@@ -145,7 +147,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirComplex> _resourcesByName;
         private Dictionary<string, FhirComplex> _extensionsByUrl;
         private Dictionary<string, Dictionary<string, FhirComplex>> _extensionsByPath;
-        private Dictionary<string, FhirResourceCapability> _capabilities;
         private Dictionary<string, FhirOperation> _systemOperations;
         private Dictionary<string, FhirSearchParam> _globalSearchParameters;
         private Dictionary<string, FhirSearchParam> _searchResultParameters;
@@ -190,7 +191,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _resourcesByName = new Dictionary<string, FhirComplex>();
             _extensionsByUrl = new Dictionary<string, FhirComplex>();
             _extensionsByPath = new Dictionary<string, Dictionary<string, FhirComplex>>();
-            _capabilities = new Dictionary<string, FhirResourceCapability>();
             _systemOperations = new Dictionary<string, FhirOperation>();
             _globalSearchParameters = new Dictionary<string, FhirSearchParam>();
             _searchResultParameters = new Dictionary<string, FhirSearchParam>();
@@ -229,12 +229,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public string VersionString { get; set; }
 
         /// <summary>Gets or sets a value indicating whether this object is development build.</summary>
-        ///
         /// <value>True if this object is development build, false if not.</value>
         public bool IsDevBuild { get; set; }
 
         /// <summary>Gets or sets the development branch.</summary>
-        ///
         /// <value>The development branch.</value>
         public string DevBranch { get; set; }
 
@@ -277,10 +275,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Gets the extensions per path, in a dictionary keyed by URL.</summary>
         /// <value>The extensions.</value>
         public Dictionary<string, Dictionary<string, FhirComplex>> ExtensionsByPath { get => _extensionsByPath; }
-
-        /// <summary>Gets the capabilities.</summary>
-        /// <value>The capabilities.</value>
-        public Dictionary<string, FhirResourceCapability> Capabilities { get => _capabilities; }
 
         /// <summary>Gets the system operations.</summary>
         /// <value>The system operations.</value>
@@ -531,6 +525,220 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     type,
                     string.Empty,
                     false));
+        }
+
+        /// <summary>Recursively adds a resource or type to the export set.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="set"> [in,out] The set.</param>
+        private void AddToExportSet(string name, ref HashSet<string> set)
+        {
+            // if we've already added this, we're done
+            if (set.Contains(name))
+            {
+                return;
+            }
+
+            // check for primitive
+            if (_primitiveTypesByName.ContainsKey(name))
+            {
+                // add this item
+                set.Add(name);
+
+                // no recursion on primitive types
+                return;
+            }
+
+            // check for this being a type
+            if (_complexTypesByName.ContainsKey(name))
+            {
+                // add this item
+                set.Add(name);
+
+                // check for a parent type
+                if (!string.IsNullOrEmpty(_complexTypesByName[name].BaseTypeName))
+                {
+                    // add the parent
+                    AddToExportSet(_complexTypesByName[name].BaseTypeName, ref set);
+                }
+            }
+
+            // check for this being a resource
+            if (_resourcesByName.ContainsKey(name))
+            {
+                // add this item
+                set.Add(name);
+
+                // check for a parent type
+                if (!string.IsNullOrEmpty(_resourcesByName[name].BaseTypeName))
+                {
+                    // add the parent
+                    AddToExportSet(_resourcesByName[name].BaseTypeName, ref set);
+                }
+            }
+        }
+
+        /// <summary>Copies for export.</summary>
+        /// <param name="primitiveTypeMap">     The fhir to language primitve map.</param>
+        /// <param name="exportList">           List of exports.</param>
+        /// <param name="copyPrimitives">       (Optional) True to copy primitives.</param>
+        /// <param name="copyComplexTypes">     (Optional) True to copy complex types.</param>
+        /// <param name="copyResources">        (Optional) True to copy resources.</param>
+        /// <param name="copyExtensions">       (Optional) True to copy extensions.</param>
+        /// <param name="extensionUrls">        (Optional) The extension urls.</param>
+        /// <param name="extensionElementPaths">(Optional) The extension paths.</param>
+        /// <param name="copySlicing">          (Optional) True to copy slicing.</param>
+        /// <param name="canHideParentFields">  (Optional) True if can hide parent fields, false if not.</param>
+        /// <returns>A FhirVersionInfo.</returns>
+        internal FhirVersionInfo CopyForExport(
+            Dictionary<string, string> primitiveTypeMap,
+            IEnumerable<string> exportList,
+            bool copyPrimitives = true,
+            bool copyComplexTypes = true,
+            bool copyResources = true,
+            bool copyExtensions = true,
+            HashSet<string> extensionUrls = null,
+            HashSet<string> extensionElementPaths = null,
+            bool copySlicing = true,
+            bool canHideParentFields = true)
+        {
+            // create our return object
+            FhirVersionInfo info = new FhirVersionInfo(MajorVersion)
+            {
+                ReleaseName = this.ReleaseName,
+                PackageName = this.PackageName,
+                VersionString = this.VersionString,
+                IsDevBuild = this.IsDevBuild,
+                DevBranch = this.DevBranch,
+                IsLocalBuild = this.IsLocalBuild,
+                LocalDirectory = this.LocalDirectory,
+                IsOnDisk = this.IsOnDisk,
+                LastDownloaded = this.LastDownloaded,
+            };
+
+            bool restrictOutput = false;
+            HashSet<string> exportSet = new HashSet<string>();
+
+            // figure out all the the dependencies we need to include based on requests
+            if (exportList != null)
+            {
+                foreach (string path in exportList)
+                {
+                    restrictOutput = true;
+                    AddToExportSet(path, ref exportSet);
+                }
+            }
+
+            // check if we are exporting primitives
+            if (copyPrimitives)
+            {
+                foreach (KeyValuePair<string, FhirPrimitive> kvp in _primitiveTypesByName)
+                {
+                    // check for restricting output
+                    if (restrictOutput && (!exportSet.Contains(kvp.Key)))
+                    {
+                        continue;
+                    }
+
+                    info._primitiveTypesByName.Add(kvp.Key, kvp.Value.DeepCopy());
+
+                    // update type to reflect language
+                    if (primitiveTypeMap.ContainsKey(kvp.Value.BaseTypeName))
+                    {
+                        info._primitiveTypesByName[kvp.Key].BaseTypeName = primitiveTypeMap[kvp.Value.BaseTypeName];
+                    }
+                }
+            }
+
+            // check if we are exporting complex types
+            if (copyComplexTypes)
+            {
+                foreach (KeyValuePair<string, FhirComplex> kvp in _complexTypesByName)
+                {
+                    // check for restricting output
+                    if (restrictOutput && (!exportSet.Contains(kvp.Key)))
+                    {
+                        continue;
+                    }
+
+                    info._complexTypesByName.Add(
+                        kvp.Key,
+                        kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                }
+            }
+
+            // check if we are exporting resources
+            if (copyResources)
+            {
+                foreach (KeyValuePair<string, FhirComplex> kvp in _resourcesByName)
+                {
+                    // check for restricting output
+                    if (restrictOutput && (!exportSet.Contains(kvp.Key)))
+                    {
+                        continue;
+                    }
+
+                    info._resourcesByName.Add(
+                        kvp.Key,
+                        kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                }
+            }
+
+            if (copyExtensions)
+            {
+                // need to work directly with extensions due to nature of filtering
+                foreach (FhirComplex extension in _extensionsByUrl.Values)
+                {
+                    // check for restricting output
+                    if (restrictOutput)
+                    {
+                        foreach (string path in extension.ContextElements)
+                        {
+                            string[] components = path.Split('.');
+                            if (!exportSet.Contains(components[0]))
+                            {
+                                continue;
+                            }
+                        }
+                    }
+
+                    // check for including extensions by url
+                    if ((extensionUrls != null) && (!extensionUrls.Contains(extension.URL.ToString())))
+                    {
+                        continue;
+                    }
+
+                    // check for including extensions by path
+                    if ((extensionElementPaths != null) && (!extension.ContextElements.Union(extensionElementPaths).Any()))
+                    {
+                        continue;
+                    }
+
+                    // add this extension using the primary function (adds to multiple dictionaries)
+                    info.AddExtension(extension.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                }
+            }
+
+            foreach (KeyValuePair<string, FhirOperation> kvp in _systemOperations)
+            {
+                info._systemOperations.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            foreach (KeyValuePair<string, FhirSearchParam> kvp in _globalSearchParameters)
+            {
+                info._globalSearchParameters.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchResultParameters)
+            {
+                info._searchResultParameters.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            foreach (KeyValuePair<string, FhirSearchParam> kvp in _allInteractionParameters)
+            {
+                info._allInteractionParameters.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            return info;
         }
     }
 }

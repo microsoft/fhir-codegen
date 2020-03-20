@@ -12,7 +12,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public class FhirSlicing
     {
         private readonly Dictionary<string, FhirSliceDiscriminatorRule> _rules;
-        private readonly Dictionary<string, FhirComplex> _slices;
+        private readonly List<FhirComplex> _slices;
+        private readonly Dictionary<string, FhirComplex> _slicesByName;
 
         /// <summary>Initializes a new instance of the <see cref="FhirSlicing"/> class.</summary>
         /// <exception cref="ArgumentException">    Thrown when one or more arguments have unsupported or
@@ -39,14 +40,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             switch (slicingRules)
             {
+                case "Closed":
                 case "closed":
                     SlicingRules = FhirSlicingRule.Closed;
                     break;
 
+                case "Open":
                 case "open":
                     SlicingRules = FhirSlicingRule.Open;
                     break;
 
+                case "OpenAtEnd":
                 case "openAtEnd":
                     SlicingRules = FhirSlicingRule.OpenAtEnd;
                     break;
@@ -66,7 +70,48 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 _rules.Add(discriminator.Path, discriminator);
             }
 
-            _slices = new Dictionary<string, FhirComplex>();
+            _slices = new List<FhirComplex>();
+            _slicesByName = new Dictionary<string, FhirComplex>();
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="FhirSlicing"/> class.</summary>
+        /// <param name="definedById">       The identifier of the defined by.</param>
+        /// <param name="definedByUrl">      The defined by URL.</param>
+        /// <param name="description">       The description.</param>
+        /// <param name="isOrdered">         True if ordered, false if not.</param>
+        /// <param name="slicingRules">      Rules associated with this slicing group.</param>
+        /// <param name="discriminatorRules">The discriminator rules for this slicing group.</param>
+        /// <param name="slices">            The slices.</param>
+        public FhirSlicing(
+            string definedById,
+            Uri definedByUrl,
+            string description,
+            bool isOrdered,
+            FhirSlicingRule slicingRules,
+            Dictionary<string, FhirSliceDiscriminatorRule> discriminatorRules,
+            List<FhirComplex> slices)
+        {
+            DefinedById = definedById;
+            DefinedByUrl = definedByUrl;
+            Description = description;
+            IsOrdered = isOrdered;
+            SlicingRules = slicingRules;
+            _rules = discriminatorRules;
+
+            if (slices == null)
+            {
+                _slices = new List<FhirComplex>();
+            }
+            else
+            {
+                _slices = slices;
+            }
+
+            _slicesByName = new Dictionary<string, FhirComplex>();
+            foreach (FhirComplex slice in _slices)
+            {
+                _slicesByName.Add(slice.Name, slice);
+            }
         }
 
         /// <summary>Values that represent how slices are interpreted when evaluating an instance.</summary>
@@ -116,7 +161,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the slices.</summary>
         /// <value>The slices.</value>
-        public Dictionary<string, FhirComplex> Slices => _slices;
+        public List<FhirComplex> Slices => _slices;
 
         /// <summary>Indexer to get slices based on name.</summary>
         /// <param name="sliceName">Name of the slice.</param>
@@ -125,13 +170,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         {
             get
             {
-                if (!_slices.ContainsKey(sliceName))
+                if (!_slicesByName.ContainsKey(sliceName))
                 {
                     throw new ArgumentOutOfRangeException(nameof(sliceName));
                 }
 
-                return _slices[sliceName];
+                return _slicesByName[sliceName];
             }
+        }
+
+        /// <summary>Query if 'name' has slice.</summary>
+        /// <param name="name">The name.</param>
+        /// <returns>True if slice, false if not.</returns>
+        public bool HasSlice(string name)
+        {
+            return _slicesByName.ContainsKey(name);
         }
 
         /// <summary>Adds a slice.</summary>
@@ -139,7 +192,42 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="slice">    The slice.</param>
         internal void AddSlice(string sliceName, FhirComplex slice)
         {
-            _slices.Add(sliceName, slice);
+            _slices.Add(slice);
+            _slicesByName.Add(sliceName, slice);
+        }
+
+        /// <summary>Deep copy.</summary>
+        /// <param name="primitiveTypeMap">   The primitive type map.</param>
+        /// <param name="copySlicing">        True to copy slicing.</param>
+        /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
+        /// <returns>A FhirSlicing.</returns>
+        public FhirSlicing DeepCopy(
+            Dictionary<string, string> primitiveTypeMap,
+            bool copySlicing,
+            bool canHideParentFields)
+        {
+            Dictionary<string, FhirSliceDiscriminatorRule> rules = new Dictionary<string, FhirSliceDiscriminatorRule>();
+
+            foreach (KeyValuePair<string, FhirSliceDiscriminatorRule> kvp in _rules)
+            {
+                rules.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            List<FhirComplex> slices = new List<FhirComplex>();
+
+            foreach (FhirComplex slice in _slices)
+            {
+                slices.Add(slice.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+            }
+
+            return new FhirSlicing(
+                DefinedById,
+                DefinedByUrl,
+                Description,
+                IsOrdered,
+                SlicingRules,
+                rules,
+                slices);
         }
     }
 }

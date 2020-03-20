@@ -17,6 +17,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// </summary>
     public class FhirTypeBase
     {
+        private readonly string _name;
+        private readonly string _nameCapitalized;
+        private readonly string _path;
+
         /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="id">              The id of this element/resource/datatype.</param>
@@ -45,7 +49,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             // set internal values
             Id = id;
-            Path = path;
+            _path = path;
             StandardStatus = standardStatus;
             ShortDescription = shortDescription;
             Purpose = purpose;
@@ -55,8 +59,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             // check for components in the path
             string[] components = path.Split('.');
-            Name = components[components.Length - 1];
-            NameCapitalized = Capitalize(Name);
+            _name = components[components.Length - 1];
+            _nameCapitalized = ToPascal(_name);
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
@@ -92,26 +96,51 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             BaseTypeName = baseTypeName;
         }
 
+        /// <summary>Values that represent naming conventions for item types.</summary>
+        public enum NamingConvention
+        {
+            /// <summary>This feature is not supported / used.</summary>
+            None,
+
+            /// <summary>Names are standard FHIR dot notation (e.g., path).</summary>
+            FhirDotNotation,
+
+            /// <summary>Names are dot notation, with each first letter capitalized.</summary>
+            PascalDotNotation,
+
+            /// <summary>Names are Pascal Case (first letter capitalized).</summary>
+            PascalCase,
+
+            /// <summary>Names are Camel Case (first letter lower case).</summary>
+            CamelCase,
+
+            /// <summary>Names are all upper case.</summary>
+            UpperCase,
+
+            /// <summary>Names are all lower case.</summary>
+            LowerCase,
+        }
+
         /// <summary>Gets the Id for this element/resource/datatype.</summary>
         /// <value>The Id for this element/resource/datatype.</value>
         public string Id { get; }
 
         /// <summary>Gets the dot-notation path to this element/resource/datatype.</summary>
         /// <value>The dot-notation path to this element/resource/datatype.</value>
-        public string Path { get; }
+        public string Path => _path;
 
         /// <summary>
         /// Gets a natural language name identifying the structure definition. This name should be usable as an
         /// identifier for the module by machine processing applications such as code generation.
         /// </summary>
         /// <value>The name.</value>
-        public string Name { get; }
+        public string Name => _name;
 
         /// <summary>
         /// Gets name field with the first letter capitalized, useful in various languages and PascalCase joining.
         /// </summary>
         /// <value>The name capitalized.</value>
-        public string NameCapitalized { get; }
+        public string NameCapitalized => _nameCapitalized;
 
         /// <summary>Gets URL of the document.</summary>
         /// <value>The URL.</value>
@@ -158,17 +187,178 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The validation RegEx.</value>
         public string ValidationRegEx { get; }
 
-        /// <summary>Capitalizes a name.</summary>
-        /// <param name="name">The name.</param>
-        /// <returns>A string.</returns>
-        private static string Capitalize(string name)
+        /// <summary>Capitalizes a word.</summary>
+        /// <param name="word">The word.</param>
+        /// <returns>A capitalized version of the word.</returns>
+        private static string ToPascal(string word)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(word))
             {
                 return string.Empty;
             }
 
-            return string.Concat(name.Substring(0, 1).ToUpper(CultureInfo.InvariantCulture), name.Substring(1));
+            return string.Concat(word.Substring(0, 1).ToUpperInvariant(), word.Substring(1));
+        }
+
+        /// <summary>Capitalizes a word.</summary>
+        /// <param name="words">The words.</param>
+        /// <returns>A capitalized version of the word.</returns>
+        private static string[] ToPascal(string[] words)
+        {
+            string[] output = new string[words.Length];
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                output[i] = ToPascal(words[i]);
+            }
+
+            return output;
+        }
+
+        /// <summary>Converts a word to a camel case.</summary>
+        /// <param name="word">The word.</param>
+        /// <returns>Word as a string.</returns>
+        private static string ToCamel(string word)
+        {
+            if (string.IsNullOrEmpty(word))
+            {
+                return string.Empty;
+            }
+
+            return string.Concat(word.Substring(0, 1).ToLowerInvariant(), word.Substring(1));
+        }
+
+        /// <summary>Converts a word to a camel case.</summary>
+        /// <param name="words">The words.</param>
+        /// <returns>Word as a string.</returns>
+        private static string[] ToCamel(string[] words)
+        {
+            string[] output = new string[words.Length];
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                // first word is lower case
+                if (i == 0)
+                {
+                    output[i] = ToCamel(words[i]);
+                    continue;
+                }
+
+                // other words are capitalized
+                output[i] = ToPascal(words[i]);
+            }
+
+            return output;
+        }
+
+        /// <summary>Converts the words to an upper invariant.</summary>
+        /// <param name="words">The words.</param>
+        /// <returns>Words as a string[].</returns>
+        private static string[] ToUpperInvariant(string[] words)
+        {
+            string[] output = new string[words.Length];
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                output[i] = words[i].ToUpperInvariant();
+            }
+
+            return output;
+        }
+
+        /// <summary>Converts the words to a lower invariant.</summary>
+        /// <param name="words">The words.</param>
+        /// <returns>Words as a string[].</returns>
+        private static string[] ToLowerInvariant(string[] words)
+        {
+            string[] output = new string[words.Length];
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                output[i] = words[i].ToUpperInvariant();
+            }
+
+            return output;
+        }
+
+        /// <summary>Converts this object to a requested naming convention.</summary>
+        /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+        ///  illegal values.</exception>
+        /// <param name="convention">            The convention.</param>
+        /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
+        /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
+        /// <returns>A string.</returns>
+        public string NameForExport(
+            NamingConvention convention,
+            bool concatenatePath = false,
+            string concatenationDelimiter = "")
+        {
+            if (string.IsNullOrEmpty(_name))
+            {
+                throw new ArgumentException($"Invalid Name: {_name}");
+            }
+
+            if (string.IsNullOrEmpty(_nameCapitalized))
+            {
+                throw new ArgumentException($"Invalid Name: {_nameCapitalized}");
+            }
+
+            if (string.IsNullOrEmpty(_path))
+            {
+                throw new ArgumentException($"Invalid Path: {_path}");
+            }
+
+            switch (convention)
+            {
+                case NamingConvention.FhirDotNotation:
+                    return _path;
+
+                case NamingConvention.PascalDotNotation:
+                    {
+                        string[] components = ToPascal(_path.Split('.'));
+                        return string.Join(".", components);
+                    }
+
+                case NamingConvention.PascalCase:
+                    if (concatenatePath)
+                    {
+                        string[] components = ToPascal(_path.Split('.'));
+                        return string.Join(concatenationDelimiter, components);
+                    }
+
+                    return _nameCapitalized;
+
+                case NamingConvention.CamelCase:
+                    if (concatenatePath)
+                    {
+                        string[] components = ToCamel(_path.Split('.'));
+                        return string.Join(concatenationDelimiter, components);
+                    }
+
+                    return ToCamel(_name);
+
+                case NamingConvention.UpperCase:
+                    if (concatenatePath)
+                    {
+                        string[] components = ToUpperInvariant(_path.Split('.'));
+                        return string.Join(concatenationDelimiter, components);
+                    }
+
+                    return _name.ToUpperInvariant();
+
+                case NamingConvention.LowerCase:
+                    if (concatenatePath)
+                    {
+                        string[] components = ToLowerInvariant(_path.Split('.'));
+                        return string.Join(concatenationDelimiter, components);
+                    }
+
+                    return _name.ToLowerInvariant();
+
+                case NamingConvention.None:
+                default:
+                    throw new ArgumentException($"Invalid Naming Convention: {convention}");
+            }
         }
     }
 }

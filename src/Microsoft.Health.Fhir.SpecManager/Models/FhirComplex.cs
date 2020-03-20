@@ -232,7 +232,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             if (string.IsNullOrEmpty(elementType) && (property.ElementTypes.Count > 0))
             {
-                elementType = property.ElementTypes.Values.ElementAt(0).Code;
+                elementType = property.ElementTypes.Values.ElementAt(0).Name;
             }
 
             // create a new complex type from the property
@@ -386,27 +386,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             return split[1];
         }
 
-        /// <summary>Gets component and slice.</summary>
-        /// <param name="mixed">The mixed.</param>
-        /// <param name="path"> [out] Name of the element.</param>
-        /// <param name="slice">[out] The slice.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool GetComponentAndSlice(string mixed, out string path, out string slice)
-        {
-            string[] split = mixed.Split(':');
-
-            path = split[0];
-
-            if (split.Length == 1)
-            {
-                slice = string.Empty;
-                return false;
-            }
-
-            slice = split[1];
-            return true;
-        }
-
         /// <summary>Path for components.</summary>
         /// <param name="components">The components.</param>
         /// <param name="startIndex">The start index.</param>
@@ -425,6 +404,92 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             return val;
+        }
+
+        /// <summary>Deep copy.</summary>
+        /// <param name="primitiveTypeMap">   The primitive type map.</param>
+        /// <param name="copySlicing">        True to copy slicing.</param>
+        /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
+        /// <returns>A FhirComplex.</returns>
+        public FhirComplex DeepCopy(
+            Dictionary<string, string> primitiveTypeMap,
+            bool copySlicing,
+            bool canHideParentFields)
+        {
+            List<string> contextElements = null;
+
+            if (ContextElements != null)
+            {
+                contextElements = new List<string>();
+                foreach (string contextElement in ContextElements)
+                {
+                    contextElements.Add(string.Copy(contextElement));
+                }
+            }
+
+            // generate our base copy
+            FhirComplex complex = new FhirComplex(
+                    Id,
+                    Path,
+                    URL,
+                    StandardStatus,
+                    ShortDescription,
+                    Purpose,
+                    Comment,
+                    ValidationRegEx,
+                    ContextElements);
+
+            if (!string.IsNullOrEmpty(BaseTypeName))
+            {
+                if ((primitiveTypeMap != null) && primitiveTypeMap.ContainsKey(this.BaseTypeName))
+                {
+                    complex.BaseTypeName = primitiveTypeMap[this.BaseTypeName];
+                }
+                else
+                {
+                    complex.BaseTypeName = this.BaseTypeName;
+                }
+            }
+
+            // copy elements - must retain field order!
+            foreach (FhirElement element in _elements.Values.OrderBy(s => s.FieldOrder))
+            {
+                // check for hiding a parent field
+                if ((!canHideParentFields) && element.HidesParent)
+                {
+                    continue;
+                }
+
+                complex.Elements.Add(element.Path, element.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+            }
+
+            // copy backbone elements (unordered)
+            foreach (KeyValuePair<string, FhirComplex> kvp in _components)
+            {
+                complex.Components.Add(
+                    kvp.Key,
+                    kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+            }
+
+            // search
+            foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchParameters)
+            {
+                complex.SearchParameters.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            // type operations
+            foreach (KeyValuePair<string, FhirOperation> kvp in _typeOperations)
+            {
+                complex.TypeOperations.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            // instance operations
+            foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
+            {
+                complex.InstanceOperations.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            return complex;
         }
     }
 }

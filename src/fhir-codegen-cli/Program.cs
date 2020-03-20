@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.fhir.r2;
+using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -95,6 +96,24 @@ namespace FhirCodegenCli
                     if (r4 != null)
                     {
                         DumpFhirVersion(writer, r4);
+
+                        string testName = outputFile.Replace(".txt", "-test.txt", StringComparison.Ordinal);
+                        ILanguage lang = new LanguageInfo();
+                        ExporterOptions options = new ExporterOptions(
+                            "Info",
+                            null,
+                            true,
+                            false,
+                            true,
+                            FhirTypeBase.NamingConvention.CamelCase,
+                            FhirTypeBase.NamingConvention.PascalCase,
+                            FhirTypeBase.NamingConvention.PascalCase,
+                            FhirTypeBase.NamingConvention.PascalCase,
+                            ExporterOptions.ExtensionSupportLevel.OfficialExtensions,
+                            null,
+                            null);
+
+                        Exporter.Export(r4, lang, options, testName);
                     }
                 }
             }
@@ -274,7 +293,7 @@ namespace FhirCodegenCli
                             profiles = "(" + string.Join('|', elementType.Profiles.Values) + ")";
                         }
 
-                        propertyType = $"{propertyType}{joiner}{elementType.Code}{profiles}";
+                        propertyType = $"{propertyType}{joiner}{elementType.Name}{profiles}";
                     }
                 }
 
@@ -324,10 +343,28 @@ namespace FhirCodegenCli
                             continue;
                         }
 
-                        writer.WriteLine($"{new string(' ', indentation + 4)}: {slicing.DefinedByUrl} ({slicing.SlicingRules})");
-                        foreach (FhirComplex slice in slicing.Slices.Values)
+                        string rules = string.Empty;
+
+                        foreach (FhirSliceDiscriminatorRule rule in slicing.DiscriminatorRules.Values)
                         {
-                            writer.WriteLine($"{new string(' ', indentation + 4)}: {element.Name}:{slice.Name}");
+                            if (!string.IsNullOrEmpty(rules))
+                            {
+                                rules += ", ";
+                            }
+
+                            rules += $"{rule.DiscriminatorTypeName}@{rule.Path}";
+                        }
+
+                        writer.WriteLine(
+                            $"{new string(' ', indentation + 4)}" +
+                            $": {slicing.DefinedByUrl}" +
+                            $" - {slicing.SlicingRules}" +
+                            $" ({rules})");
+
+                        int sliceNumber = 0;
+                        foreach (FhirComplex slice in slicing.Slices)
+                        {
+                            writer.WriteLine($"{new string(' ', indentation + 4)}: Slice {sliceNumber++}:{slice.Name}");
                             DumpComplex(writer, info, slice, indentation + 4);
                         }
                     }

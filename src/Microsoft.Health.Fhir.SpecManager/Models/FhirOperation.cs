@@ -38,7 +38,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             bool definedOnInstance,
             string code,
             string comment,
-            string[] resourceTypes,
+            IEnumerable<string> resourceTypes,
             List<FhirParameter> parameters)
         {
             Id = id;
@@ -106,5 +106,36 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets allowed parameters to this operation.</summary>
         /// <value>The allowed parameters to this operation.</value>
         public List<FhirParameter> Parameters { get; }
+
+        /// <summary>Deep copy.</summary>
+        /// <returns>A FhirOperation.</returns>
+        public FhirOperation DeepCopy()
+        {
+            List<string> resourceTypes = new List<string>();
+            foreach (string resourceType in ResourceTypes)
+            {
+                resourceTypes.Add(string.Copy(resourceType));
+            }
+
+            List<FhirParameter> parameters = new List<FhirParameter>();
+            foreach (FhirParameter parameter in Parameters)
+            {
+                parameters.Add(parameter.DeepCopy());
+            }
+
+            return new FhirOperation(
+                Id,
+                URL,
+                Version,
+                Name,
+                Description,
+                DefinedOnSystem,
+                DefinedOnType,
+                DefinedOnInstance,
+                Code,
+                Comment,
+                resourceTypes,
+                parameters);
+        }
     }
 }

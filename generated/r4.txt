@@ -25,14 +25,14 @@ primitive types: 20
     +http://hl7.org/fhir/StructureDefinition/translation
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/translation (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/translation - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = lang
           - value[x][1..1]: code
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -45,20 +45,20 @@ primitive types: 20
     +http://hl7.org/fhir/StructureDefinition/relative-date
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/relative-date (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/relative-date - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = event
           - value[x][1..1]: Reference(Resource)|CodeableConcept
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = relationship
           - value[x][1..1]: code
-        : extension:extension
+        : Slice 2:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -89,20 +89,20 @@ primitive types: 20
     +http://hl7.org/fhir/StructureDefinition/relative-date
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/relative-date (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/relative-date - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = event
           - value[x][1..1]: Reference(Resource)|CodeableConcept
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = relationship
           - value[x][1..1]: code
-        : extension:extension
+        : Slice 2:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -161,14 +161,14 @@ primitive types: 20
     +http://hl7.org/fhir/StructureDefinition/translation
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/translation (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/translation - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = lang
           - value[x][1..1]: code
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -201,14 +201,14 @@ primitive types: 20
       +http://hl7.org/fhir/StructureDefinition/translation
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/translation (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/translation - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = lang
             - value[x][1..1]: code
-          : extension:extension
+          : Slice 1:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -226,14 +226,14 @@ primitive types: 20
     +http://hl7.org/fhir/StructureDefinition/translation
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/translation (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/translation - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = lang
           - value[x][1..1]: code
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -397,14 +397,14 @@ complex types: 41
   +http://hl7.org/fhir/StructureDefinition/geolocation
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/geolocation (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/geolocation - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = latitude
         - value[x][1..1]: decimal
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -672,20 +672,20 @@ complex types: 41
   +http://hl7.org/fhir/StructureDefinition/cqf-measureInfo
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/cqf-measureInfo (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/cqf-measureInfo - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = measure
         - value[x][1..1]: canonical(Measure)
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = groupId
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -697,26 +697,26 @@ complex types: 41
   +http://hl7.org/fhir/StructureDefinition/cqf-relativeDateTime
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/cqf-relativeDateTime (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/cqf-relativeDateTime - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = target
         - value[x][1..1]: Reference(Resource)
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = targetPath
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = relationship
         - value[x][1..1]: code
-      : extension:extension
+      : Slice 3:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -836,24 +836,24 @@ complex types: 41
         - url[1..1]: Element
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type
         - value[x][0..1]: string
-          : http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type (Closed)
-          : value[x]:value[x]
+          : http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type - Closed (type@$this)
+          : Slice 0:value[x]
       +http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type
         - id[0..1]: Element
         - extension[0..0]: Extension
         - url[1..1]: Element
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type
         - value[x][0..1]: string
-          : http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type (Closed)
-          : value[x]:value[x]
+          : http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type - Closed (type@$this)
+          : Slice 0:value[x]
       +http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type
         - id[0..1]: Element
         - extension[0..0]: Extension
         - url[1..1]: Element
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type
         - value[x][0..1]: string
-          : http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type (Closed)
-          : value[x]:value[x]
+          : http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type - Closed (type@$this)
+          : Slice 0:value[x]
     - profile[0..*]: canonical(StructureDefinition|ImplementationGuide)
       +http://hl7.org/fhir/StructureDefinition/elementdefinition-profile-element
         - id[0..1]: string
@@ -986,14 +986,14 @@ complex types: 41
   +http://hl7.org/fhir/StructureDefinition/elementdefinition-de
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/elementdefinition-de (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/elementdefinition-de - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: string
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-question
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: string
@@ -1047,24 +1047,24 @@ complex types: 41
           - url[1..1]: Element
             .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type
           - value[x][0..1]: string
-            : http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type (Closed)
-            : value[x]:value[x]
+            : http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type - Closed (type@$this)
+            : Slice 0:value[x]
         +http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type
           - id[0..1]: Element
           - extension[0..0]: Extension
           - url[1..1]: Element
             .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type
           - value[x][0..1]: string
-            : http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type (Closed)
-            : value[x]:value[x]
+            : http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type - Closed (type@$this)
+            : Slice 0:value[x]
         +http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type
           - id[0..1]: Element
           - extension[0..0]: Extension
           - url[1..1]: Element
             .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type
           - value[x][0..1]: string
-            : http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type (Closed)
-            : value[x]:value[x]
+            : http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type - Closed (type@$this)
+            : Slice 0:value[x]
       - profile[0..0]: canonical(StructureDefinition|ImplementationGuide)
         +http://hl7.org/fhir/StructureDefinition/elementdefinition-profile-element
           - id[0..1]: string
@@ -2011,14 +2011,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/allergyintolerance-substanceExposureRisk
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/allergyintolerance-substanceExposureRisk (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/allergyintolerance-substanceExposureRisk - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = substance
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -2664,26 +2664,26 @@ resources: 148
       +http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris (Open)
-          : extension:extension
+          : http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = authorize
             - value[x][1..1]: uri
-          : extension:extension
+          : Slice 1:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = token
             - value[x][1..1]: uri
-          : extension:extension
+          : Slice 2:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = register
             - value[x][1..1]: uri
-          : extension:extension
+          : Slice 3:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -2770,14 +2770,14 @@ resources: 148
       +http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = required
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 1:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -3700,14 +3700,14 @@ resources: 148
     +http://hl7.org/fhir/StructureDefinition/codesystem-alternate
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/codesystem-alternate (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/codesystem-alternate - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = code
           - value[x][1..1]: code
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -3767,36 +3767,36 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/codesystem-history
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/codesystem-history (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/codesystem-history - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = name
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
-          : http://hl7.org/fhir/StructureDefinition/codesystem-history (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/codesystem-history - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = date
             - value[x][1..1]: dateTime
-          : extension:extension
+          : Slice 1:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = id
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 2:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = author
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 3:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -3823,14 +3823,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/codesystem-otherName
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/codesystem-otherName (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/codesystem-otherName - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = name
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -3854,14 +3854,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/codesystem-usage
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/codesystem-usage (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/codesystem-usage - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = user
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -3978,14 +3978,14 @@ resources: 148
       +http://hl7.org/fhir/StructureDefinition/codesystem-alternate
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/codesystem-alternate (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/codesystem-alternate - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = code
             - value[x][1..1]: code
-          : extension:extension
+          : Slice 1:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -4411,8 +4411,8 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/catalog (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/catalog - Open (value@url)
+      : Slice 0:extension
     - modifierExtension[0..*]: Extension
     - identifier[0..1]: Identifier
     - status[1..1]: code
@@ -4472,8 +4472,8 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/clinicaldocument (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/clinicaldocument - Open (value@url)
+      : Slice 0:extension
     - modifierExtension[0..*]: Extension
     - identifier[0..1]: Identifier
     - status[1..1]: code
@@ -5594,14 +5594,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/devicerequest-patientInstruction
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/devicerequest-patientInstruction (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/devicerequest-patientInstruction - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = lang
         - value[x][1..1]: code
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -5760,11 +5760,11 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/diagnosticreport-genetics (Open)
-      : extension:extension
-      : extension:extension
-      : extension:extension
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/diagnosticreport-genetics - Open (value@url)
+      : Slice 0:extension
+      : Slice 1:extension
+      : Slice 2:extension
+      : Slice 3:extension
     - modifierExtension[0..*]: Extension
     - identifier[0..*]: Identifier
     - basedOn[0..*]: Reference(CarePlan|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
@@ -5798,14 +5798,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsAnalysis
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsAnalysis (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsAnalysis - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = type
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -5835,14 +5835,14 @@ resources: 148
     +http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = type
           - value[x][1..1]: CodeableConcept
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -5854,14 +5854,14 @@ resources: 148
     +http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-sibling
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-sibling (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-sibling - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = type
           - value[x][1..1]: CodeableConcept
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -5878,10 +5878,10 @@ resources: 148
       - text[0..1]: Narrative
       - contained[0..*]: Resource
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic (Open)
-        : extension:extension
-        : extension:extension
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic - Open (value@url)
+        : Slice 0:extension
+        : Slice 1:extension
+        : Slice 2:extension
       - modifierExtension[0..*]: Extension
       - identifier[0..*]: Identifier
       - instantiatesCanonical[0..*]: canonical(PlanDefinition|Questionnaire|ActivityDefinition|Measure|OperationDefinition)
@@ -5916,20 +5916,20 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsReferences
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsReferences (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsReferences - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = description
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = reference
         - value[x][1..1]: uri
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -5995,14 +5995,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/hla-genotyping-results-glstring
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/hla-genotyping-results-glstring (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/hla-genotyping-results-glstring - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = url
         - value[x][1..1]: uri
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -6014,20 +6014,20 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/hla-genotyping-results-haploid
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/hla-genotyping-results-haploid (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/hla-genotyping-results-haploid - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = locus
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = type
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -6050,11 +6050,11 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/hlaresult (Open)
-      : extension:extension
-      : extension:extension
-      : extension:extension
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/hlaresult - Open (value@url)
+      : Slice 0:extension
+      : Slice 1:extension
+      : Slice 2:extension
+      : Slice 3:extension
     - modifierExtension[0..*]: Extension
     - identifier[0..*]: Identifier
     - basedOn[0..*]: Reference(CarePlan|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
@@ -6113,11 +6113,11 @@ resources: 148
     - resultsInterpreter[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam)
     - specimen[0..*]: Reference(Specimen)
     - result[3..4]: Reference(Observation)
-      : http://hl7.org/fhir/StructureDefinition/lipidprofile (Closed)
-      : result:result
-      : result:result
-      : result:result
-      : result:result
+      : http://hl7.org/fhir/StructureDefinition/lipidprofile - Closed (value@resolve().code)
+      : Slice 0:result
+      : Slice 1:result
+      : Slice 2:result
+      : Slice 3:result
     - imagingStudy[0..*]: Reference(ImagingStudy)
     - media[0..*]: BackboneElement
       - id[0..1]: string
@@ -6131,26 +6131,26 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/servicerequest-geneticsItem
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/servicerequest-geneticsItem (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/servicerequest-geneticsItem - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = code
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = geneticsObservation
         - value[x][1..1]: Reference(Observation)
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = specimen
         - value[x][1..1]: Reference(Specimen)
-      : extension:extension
+      : Slice 3:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -7401,14 +7401,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = type
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -7420,14 +7420,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-sibling
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-sibling (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-sibling - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = type
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -7444,10 +7444,10 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic (Open)
-      : extension:extension
-      : extension:extension
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic - Open (value@url)
+      : Slice 0:extension
+      : Slice 1:extension
+      : Slice 2:extension
     - modifierExtension[0..*]: Extension
     - identifier[0..*]: Identifier
     - instantiatesCanonical[0..*]: canonical(PlanDefinition|Questionnaire|ActivityDefinition|Measure|OperationDefinition)
@@ -7557,20 +7557,20 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/goal-acceptance
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/goal-acceptance (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/goal-acceptance - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = individual
         - value[x][1..1]: Reference(Patient|Practitioner|RelatedPerson)
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = status
         - value[x][1..1]: code
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -7588,14 +7588,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/goal-relationship
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/goal-relationship (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/goal-relationship - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = type
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -7826,14 +7826,14 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/cdshooksguidanceresponse (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/cdshooksguidanceresponse - Open (value@url)
+      : Slice 0:extension
     - modifierExtension[0..*]: Extension
     - requestIdentifier[1..1]: Identifier
     - identifier[1..1]: Identifier
     - module[x][1..1]: uri
-      : http://hl7.org/fhir/StructureDefinition/cdshooksguidanceresponse (Closed)
-      : module[x]:module[x]
+      : http://hl7.org/fhir/StructureDefinition/cdshooksguidanceresponse - Closed (type@$this)
+      : Slice 0:module[x]
     - status[1..1]: code
     - subject[0..1]: Reference(Patient|Group)
     - encounter[0..1]: Reference(Encounter)
@@ -10422,8 +10422,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/bmi (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/bmi - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -10441,8 +10441,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/bmi (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/bmi - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[1..1]: uri
@@ -10466,8 +10466,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/bmi (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/bmi - Closed (type@$this)
+      : Slice 0:value[x]
         - id[0..1]: string
         - extension[0..*]: Extension
         - value[1..1]: decimal
@@ -10525,8 +10525,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/bodyheight (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/bodyheight - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -10544,8 +10544,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/bodyheight (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/bodyheight - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[1..1]: uri
@@ -10569,8 +10569,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/bodyheight (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/bodyheight - Closed (type@$this)
+      : Slice 0:value[x]
         - id[0..1]: string
         - extension[0..*]: Extension
         - value[1..1]: decimal
@@ -10627,8 +10627,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/bodytemp (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/bodytemp - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -10646,8 +10646,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/bodytemp (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/bodytemp - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[1..1]: uri
@@ -10671,8 +10671,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/bodytemp (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/bodytemp - Closed (type@$this)
+      : Slice 0:value[x]
         - id[0..1]: string
         - extension[0..*]: Extension
         - value[1..1]: decimal
@@ -10729,8 +10729,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/bodyweight (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/bodyweight - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -10748,8 +10748,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/bodyweight (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/bodyweight - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[1..1]: uri
@@ -10773,8 +10773,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/bodyweight (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/bodyweight - Closed (type@$this)
+      : Slice 0:value[x]
         - id[0..1]: string
         - extension[0..*]: Extension
         - value[1..1]: decimal
@@ -10831,8 +10831,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/bp (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/bp - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -10850,8 +10850,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/bp (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/bp - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[1..1]: uri
@@ -10875,8 +10875,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/bp (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/bp - Closed (type@$this)
+      : Slice 0:value[x]
     - dataAbsentReason[0..1]: CodeableConcept
     - interpretation[0..*]: CodeableConcept
     - note[0..*]: Annotation
@@ -10911,8 +10911,8 @@ resources: 148
         - url[1..1]: string
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-timeOffset
         - value[x][1..1]: integer
-      : http://hl7.org/fhir/StructureDefinition/bp (Open)
-      : component:component
+      : http://hl7.org/fhir/StructureDefinition/bp - Open (value@code.coding.code, value@code.coding.system)
+      : Slice 0:component
         - id[0..1]: string
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
@@ -10920,8 +10920,8 @@ resources: 148
           - id[0..1]: string
           - extension[0..*]: Extension
           - coding[0..*]: Coding
-            : http://hl7.org/fhir/StructureDefinition/bp (Open)
-            : coding:coding
+            : http://hl7.org/fhir/StructureDefinition/bp - Open (value@code, value@system)
+            : Slice 0:coding
               - id[0..1]: string
               - extension[0..*]: Extension
               - system[1..1]: uri
@@ -10951,7 +10951,7 @@ resources: 148
           - url[1..1]: string
             .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-timeOffset
           - value[x][1..1]: integer
-      : component:component
+      : Slice 1:component
         - id[0..1]: string
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
@@ -10959,8 +10959,8 @@ resources: 148
           - id[0..1]: string
           - extension[0..*]: Extension
           - coding[0..*]: Coding
-            : http://hl7.org/fhir/StructureDefinition/bp (Open)
-            : coding:coding
+            : http://hl7.org/fhir/StructureDefinition/bp - Open (value@code, value@system)
+            : Slice 0:coding
               - id[0..1]: string
               - extension[0..*]: Extension
               - system[1..1]: uri
@@ -11018,8 +11018,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/cholesterol (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/cholesterol - Closed (type@$this)
+      : Slice 0:value[x]
         - id[0..1]: string
         - extension[0..*]: Extension
         - value[0..1]: decimal
@@ -11083,8 +11083,8 @@ resources: 148
     - focus[0..*]: Reference(Resource)
     - encounter[0..0]: Reference(Encounter)
     - effective[x][0..1]: dateTime
-      : http://hl7.org/fhir/StructureDefinition/devicemetricobservation (Closed)
-      : effective[x]:effective[x]
+      : http://hl7.org/fhir/StructureDefinition/devicemetricobservation - Closed (type@$this)
+      : Slice 0:effective[x]
     - issued[0..0]: instant
     - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam|Patient|RelatedPerson)
       +http://hl7.org/fhir/StructureDefinition/event-performerFunction
@@ -11180,8 +11180,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/hdlcholesterol (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/hdlcholesterol - Closed (type@$this)
+      : Slice 0:value[x]
     - dataAbsentReason[0..1]: CodeableConcept
     - interpretation[0..1]: CodeableConcept
     - note[0..*]: Annotation
@@ -11230,8 +11230,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/headcircum (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/headcircum - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -11249,8 +11249,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/headcircum (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/headcircum - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[1..1]: uri
@@ -11274,8 +11274,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/headcircum (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/headcircum - Closed (type@$this)
+      : Slice 0:value[x]
         - id[0..1]: string
         - extension[0..*]: Extension
         - value[1..1]: decimal
@@ -11332,8 +11332,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/heartrate (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/heartrate - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -11351,8 +11351,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/heartrate (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/heartrate - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[1..1]: uri
@@ -11376,8 +11376,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/heartrate (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/heartrate - Closed (type@$this)
+      : Slice 0:value[x]
         - id[0..1]: string
         - extension[0..*]: Extension
         - value[1..1]: decimal
@@ -11449,8 +11449,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/ldlcholesterol (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/ldlcholesterol - Closed (type@$this)
+      : Slice 0:value[x]
     - dataAbsentReason[0..1]: CodeableConcept
     - interpretation[0..1]: CodeableConcept
     - note[0..*]: Annotation
@@ -11523,17 +11523,17 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/observation-genetics (Open)
-      : extension:extension
-      : extension:extension
-      : extension:extension
-      : extension:extension
-      : extension:extension
-      : extension:extension
-      : extension:extension
-      : extension:extension
-      : extension:extension
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/observation-genetics - Open (value@url)
+      : Slice 0:extension
+      : Slice 1:extension
+      : Slice 2:extension
+      : Slice 3:extension
+      : Slice 4:extension
+      : Slice 5:extension
+      : Slice 6:extension
+      : Slice 7:extension
+      : Slice 8:extension
+      : Slice 9:extension
     - modifierExtension[0..*]: Extension
     - identifier[0..*]: Identifier
     - basedOn[0..*]: Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
@@ -11591,20 +11591,20 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/observation-geneticsAllele
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/observation-geneticsAllele (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/observation-geneticsAllele - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = Name
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = State
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -11616,14 +11616,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/observation-geneticsAminoAcidChange
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/observation-geneticsAminoAcidChange (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/observation-geneticsAminoAcidChange - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = Name
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -11635,20 +11635,20 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/observation-geneticsAncestry
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/observation-geneticsAncestry (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/observation-geneticsAncestry - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = Name
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = Percentage
         - value[x][1..1]: decimal
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -11690,14 +11690,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/observation-geneticsPhaseSet
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/observation-geneticsPhaseSet (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/observation-geneticsPhaseSet - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = Id
         - value[x][1..1]: uri
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -11709,20 +11709,20 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/observation-geneticsVariant
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/observation-geneticsVariant (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/observation-geneticsVariant - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = Name
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = Id
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -11781,8 +11781,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/oxygensat (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/oxygensat - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -11800,8 +11800,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/oxygensat (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/oxygensat - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[1..1]: uri
@@ -11825,8 +11825,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/oxygensat (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/oxygensat - Closed (type@$this)
+      : Slice 0:value[x]
         - id[0..1]: string
         - extension[0..*]: Extension
         - value[1..1]: decimal
@@ -11884,8 +11884,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/resprate (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/resprate - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -11903,8 +11903,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/resprate (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/resprate - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[1..1]: uri
@@ -11928,8 +11928,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/resprate (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/resprate - Closed (type@$this)
+      : Slice 0:value[x]
         - id[0..1]: string
         - extension[0..*]: Extension
         - value[1..1]: decimal
@@ -12001,8 +12001,8 @@ resources: 148
           .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
         - value[x][1..1]: CodeableConcept
     - value[x][0..1]: Quantity
-      : http://hl7.org/fhir/StructureDefinition/triglyceride (Closed)
-      : value[x]:value[x]
+      : http://hl7.org/fhir/StructureDefinition/triglyceride - Closed (type@$this)
+      : Slice 0:value[x]
     - dataAbsentReason[0..1]: CodeableConcept
     - interpretation[0..1]: CodeableConcept
     - note[0..*]: Annotation
@@ -12051,8 +12051,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/vitalsigns (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/vitalsigns - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -12128,8 +12128,8 @@ resources: 148
     - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
     - status[1..1]: code
     - category[1..*]: CodeableConcept
-      : http://hl7.org/fhir/StructureDefinition/vitalspanel (Open)
-      : category:category
+      : http://hl7.org/fhir/StructureDefinition/vitalspanel - Open (value@coding.code, value@coding.system)
+      : Slice 0:category
         - id[0..1]: string
         - extension[0..*]: Extension
         - coding[1..*]: Coding
@@ -12147,8 +12147,8 @@ resources: 148
       - id[0..1]: string
       - extension[0..*]: Extension
       - coding[0..*]: Coding
-        : http://hl7.org/fhir/StructureDefinition/vitalspanel (Open)
-        : coding:coding
+        : http://hl7.org/fhir/StructureDefinition/vitalspanel - Open (value@code, value@system)
+        : Slice 0:coding
           - id[0..1]: string
           - extension[0..*]: Extension
           - system[0..1]: uri
@@ -12680,14 +12680,14 @@ resources: 148
     +http://hl7.org/fhir/StructureDefinition/patient-proficiency
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/patient-proficiency (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/patient-proficiency - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = level
           - value[x][1..1]: Coding
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -12713,20 +12713,20 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/patient-animal
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/patient-animal (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/patient-animal - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = species
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = breed
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -12750,14 +12750,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/patient-citizenship
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/patient-citizenship (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/patient-citizenship - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = code
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -12805,14 +12805,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/patient-nationality
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/patient-nationality (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/patient-nationality - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = code
         - value[x][1..1]: CodeableConcept
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -13104,8 +13104,8 @@ resources: 148
     +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -13122,8 +13122,8 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/cdshooksserviceplandefinition (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/cdshooksserviceplandefinition - Open (value@url)
+      : Slice 0:extension
     - modifierExtension[0..*]: Extension
     - url[0..1]: uri
     - identifier[0..*]: Identifier
@@ -13226,8 +13226,8 @@ resources: 148
       +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -13346,8 +13346,8 @@ resources: 148
       +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -13478,8 +13478,8 @@ resources: 148
       +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -13853,8 +13853,8 @@ resources: 148
       - role[0..*]: CodeableConcept
       - who[1..1]: Reference(Practitioner|PractitionerRole|RelatedPerson|Patient|Device|Organization)
       - onBehalfOf[0..1]: Reference(Practitioner|PractitionerRole|RelatedPerson|Patient|Device|Organization)
-      : http://hl7.org/fhir/StructureDefinition/provenance-relevant-history (Open)
-      : agent:agent
+      : http://hl7.org/fhir/StructureDefinition/provenance-relevant-history - Open (value@type)
+      : Slice 0:agent
         - id[0..1]: string
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
@@ -13996,38 +13996,38 @@ resources: 148
       +http://hl7.org/fhir/StructureDefinition/questionnaire-constraint
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = key
             - value[x][1..1]: id
-          : extension:extension
+          : Slice 1:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = requirements
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 2:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = severity
             - value[x][1..1]: code
-          : extension:extension
+          : Slice 3:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = expression
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 4:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = human
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 5:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -14201,38 +14201,38 @@ resources: 148
     +http://hl7.org/fhir/StructureDefinition/questionnaire-constraint
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = key
           - value[x][1..1]: id
-        : extension:extension
+        : Slice 1:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = requirements
           - value[x][1..1]: string
-        : extension:extension
+        : Slice 2:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = severity
           - value[x][1..1]: code
-        : extension:extension
+        : Slice 3:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = expression
           - value[x][1..1]: string
-        : extension:extension
+        : Slice 4:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
             .fixedValueUri = human
           - value[x][1..1]: string
-        : extension:extension
+        : Slice 5:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -14357,8 +14357,8 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/cqf-questionnaire (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/cqf-questionnaire - Open (value@url)
+      : Slice 0:extension
     - modifierExtension[0..*]: Extension
     - url[0..1]: uri
     - identifier[0..*]: Identifier
@@ -14467,38 +14467,38 @@ resources: 148
         +http://hl7.org/fhir/StructureDefinition/questionnaire-constraint
           - id[0..1]: string
           - extension[0..*]: Extension
-            : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint (Open)
-            : extension:extension
+            : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint - Open (value@url)
+            : Slice 0:extension
               - id[0..1]: string
               - extension[0..0]: Extension
               - url[1..1]: uri
                 .fixedValueUri = key
               - value[x][1..1]: id
-            : extension:extension
+            : Slice 1:extension
               - id[0..1]: string
               - extension[0..0]: Extension
               - url[1..1]: uri
                 .fixedValueUri = requirements
               - value[x][1..1]: string
-            : extension:extension
+            : Slice 2:extension
               - id[0..1]: string
               - extension[0..0]: Extension
               - url[1..1]: uri
                 .fixedValueUri = severity
               - value[x][1..1]: code
-            : extension:extension
+            : Slice 3:extension
               - id[0..1]: string
               - extension[0..0]: Extension
               - url[1..1]: uri
                 .fixedValueUri = expression
               - value[x][1..1]: string
-            : extension:extension
+            : Slice 4:extension
               - id[0..1]: string
               - extension[0..0]: Extension
               - url[1..1]: uri
                 .fixedValueUri = human
               - value[x][1..1]: string
-            : extension:extension
+            : Slice 5:extension
               - id[0..1]: string
               - extension[0..0]: Extension
               - url[1..1]: uri
@@ -14672,38 +14672,38 @@ resources: 148
       +http://hl7.org/fhir/StructureDefinition/questionnaire-constraint
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = key
             - value[x][1..1]: id
-          : extension:extension
+          : Slice 1:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = requirements
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 2:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = severity
             - value[x][1..1]: code
-          : extension:extension
+          : Slice 3:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = expression
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 4:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = human
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 5:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -14829,38 +14829,38 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/questionnaire-constraint
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = key
         - value[x][1..1]: id
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = requirements
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 2:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = severity
         - value[x][1..1]: code
-      : extension:extension
+      : Slice 3:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = expression
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 4:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = human
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 5:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -15127,8 +15127,8 @@ resources: 148
     +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
       - id[0..1]: string
       - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle (Open)
-        : extension:extension
+        : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+        : Slice 0:extension
           - id[0..1]: string
           - extension[0..0]: Extension
           - url[1..1]: uri
@@ -15200,8 +15200,8 @@ resources: 148
       +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -15832,8 +15832,8 @@ resources: 148
     - text[0..1]: Narrative
     - contained[0..*]: Resource
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/servicerequest-genetics (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/servicerequest-genetics - Open (value@url)
+      : Slice 0:extension
     - modifierExtension[0..*]: Extension
     - identifier[0..*]: Identifier
     - instantiatesCanonical[0..*]: canonical(ActivityDefinition|PlanDefinition)
@@ -17517,20 +17517,20 @@ resources: 148
       +http://hl7.org/fhir/StructureDefinition/valueset-expand-group
         - id[0..1]: string
         - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/valueset-expand-group (Open)
-          : extension:extension
+          : http://hl7.org/fhir/StructureDefinition/valueset-expand-group - Open (value@url)
+          : Slice 0:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = code
             - value[x][1..1]: code
-          : extension:extension
+          : Slice 1:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
               .fixedValueUri = display
             - value[x][1..1]: string
-          : extension:extension
+          : Slice 2:extension
             - id[0..1]: string
             - extension[0..0]: Extension
             - url[1..1]: uri
@@ -17759,20 +17759,20 @@ resources: 148
         +http://hl7.org/fhir/StructureDefinition/valueset-expand-group
           - id[0..1]: string
           - extension[0..*]: Extension
-            : http://hl7.org/fhir/StructureDefinition/valueset-expand-group (Open)
-            : extension:extension
+            : http://hl7.org/fhir/StructureDefinition/valueset-expand-group - Open (value@url)
+            : Slice 0:extension
               - id[0..1]: string
               - extension[0..0]: Extension
               - url[1..1]: uri
                 .fixedValueUri = code
               - value[x][1..1]: code
-            : extension:extension
+            : Slice 1:extension
               - id[0..1]: string
               - extension[0..0]: Extension
               - url[1..1]: uri
                 .fixedValueUri = display
               - value[x][1..1]: string
-            : extension:extension
+            : Slice 2:extension
               - id[0..1]: string
               - extension[0..0]: Extension
               - url[1..1]: uri
@@ -17931,14 +17931,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/valueset-otherName
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/valueset-otherName (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/valueset-otherName - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = name
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
@@ -17986,14 +17986,14 @@ resources: 148
   +http://hl7.org/fhir/StructureDefinition/valueset-usage
     - id[0..1]: string
     - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/valueset-usage (Open)
-      : extension:extension
+      : http://hl7.org/fhir/StructureDefinition/valueset-usage - Open (value@url)
+      : Slice 0:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri
           .fixedValueUri = user
         - value[x][1..1]: string
-      : extension:extension
+      : Slice 1:extension
         - id[0..1]: string
         - extension[0..0]: Extension
         - url[1..1]: uri

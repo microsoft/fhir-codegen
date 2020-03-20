@@ -32,7 +32,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string description,
             string purpose,
             string code,
-            string[] resourceTypes,
+            IEnumerable<string> resourceTypes,
             string valueType,
             string standardStatus,
             bool isExperimental)
@@ -97,5 +97,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets a value indicating whether this object is experimental.</summary>
         /// <value>True if this object is experimental, false if not.</value>
         public bool IsExperimental { get; }
+
+        /// <summary>Deep copy.</summary>
+        /// <returns>A FhirSearchParam.</returns>
+        public FhirSearchParam DeepCopy()
+        {
+            return new FhirSearchParam(
+                Id,
+                URL,
+                Version,
+                Name,
+                Description,
+                Purpose,
+                Code,
+                ResourceTypes,
+                ValueType,
+                StandardStatus,
+                IsExperimental);
+        }
     }
 }

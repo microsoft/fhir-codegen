@@ -25,7 +25,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="url">              URL of this element (if present).</param>
         /// <param name="fieldOrder">       The field order.</param>
         /// <param name="shortDescription"> Information describing the short.</param>
-        /// <param name="definition">       The definition.</param>
+        /// <param name="purpose">       The definition.</param>
         /// <param name="comment">          The comment.</param>
         /// <param name="validationRegEx">  The validation RegEx.</param>
         /// <param name="baseTypeName">     Name of the base type.</param>
@@ -39,14 +39,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="fixedFieldName">   Name of a fixed field, e.g., fixedUri, fixedCode.</param>
         /// <param name="fixedFieldValue">  Value of a fixed field.</param>
         /// <param name="isInherited">      If this element is inherited from somewhere else.</param>
-        /// <param name="modifiesParent">   If this element modifies the definition of its parent.</param>
+        /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
         public FhirElement(
             string id,
             string path,
             Uri url,
             int fieldOrder,
             string shortDescription,
-            string definition,
+            string purpose,
             string comment,
             string validationRegEx,
             string baseTypeName,
@@ -67,7 +67,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 url,
                 string.Empty,
                 shortDescription,
-                definition,
+                purpose,
                 comment,
                 validationRegEx,
                 baseTypeName)
@@ -77,6 +77,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             CardinalityMin = cardinalityMin;
             CardinalityMax = MaxCardinality(cardinalityMax);
+
+            if (cardinalityMax == "0")
+            {
+                HidesParent = true;
+            }
+            else
+            {
+                HidesParent = false;
+            }
 
             IsModifier = isModifier == true;
             IsSummary = isSummary == true;
@@ -98,9 +107,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The cardinality minimum.</value>
         public int CardinalityMin { get; }
 
-        /// <summary>Gets the cardinaltiy maximum, -1 for unbounded (e.g., *).</summary>
-        /// <value>The cardinaltiy maximum.</value>
+        /// <summary>Gets the cardinality maximum, -1 for unbounded (e.g., *).</summary>
+        /// <value>The cardinality maximum.</value>
         public int? CardinalityMax { get; }
+
+        /// <summary>Gets the cardinality maximum string.</summary>
+        /// <value>The cardinality maximum string.</value>
+        public string CardinalityMaxString
+        {
+            get
+            {
+                if ((CardinalityMax == null) || (CardinalityMax == -1))
+                {
+                    return "*";
+                }
+
+                return CardinalityMax.ToString();
+            }
+        }
+
+        /// <summary>Gets the FHIR cardinality string: min..max.</summary>
+        /// <value>The FHIR cardinality.</value>
+        public string FhirCardinality => $"{CardinalityMin}..{CardinalityMaxString}";
 
         /// <summary>Gets a value indicating whether this object is inherited.</summary>
         /// <value>True if this object is inherited, false if not.</value>
@@ -109,6 +137,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets a value indicating whether the modifies parent.</summary>
         /// <value>True if modifies parent, false if not.</value>
         public bool ModifiesParent { get; }
+
+        /// <summary>Gets a value indicating whether this field hides a parent field.</summary>
+        /// <value>True if it hides a parent field, false if not.</value>
+        public bool HidesParent { get; }
 
         /// <summary>Gets a value indicating whether this object is modifier.</summary>
         /// <value>True if this object is modifier, false if not.</value>
@@ -204,7 +236,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 return false;
             }
 
-            if (_slicing[url].Slices.ContainsKey(sliceName))
+            if (_slicing[url].HasSlice(sliceName))
             {
                 return false;
             }
@@ -224,6 +256,77 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     BaseTypeName));
 
             return true;
+        }
+
+        /// <summary>Deep copy.</summary>
+        /// <param name="primitiveTypeMap">The primitive type map.</param>
+        /// <param name="copySlicing">     True to copy slicing.</param>
+        /// <returns>A FhirElement.</returns>
+        public FhirElement DeepCopy(
+            Dictionary<string, string> primitiveTypeMap,
+            bool copySlicing,
+            bool canHideParentFields)
+        {
+            // copy the element types
+            Dictionary<string, FhirElementType> elementTypes = null;
+
+            if (_elementTypes != null)
+            {
+                elementTypes = new Dictionary<string, FhirElementType>();
+
+                foreach (KeyValuePair<string, FhirElementType> kvp in _elementTypes)
+                {
+                    elementTypes.Add(kvp.Key, kvp.Value.DeepCopy(primitiveTypeMap));
+                }
+            }
+
+            // generate our copy
+            FhirElement element = new FhirElement(
+                Id,
+                Path,
+                URL,
+                FieldOrder,
+                ShortDescription,
+                Purpose,
+                Comment,
+                ValidationRegEx,
+                BaseTypeName,
+                elementTypes,
+                CardinalityMin,
+                CardinalityMax == null ? "*" : CardinalityMax.ToString(),
+                IsModifier,
+                IsSummary,
+                DefaultFieldName,
+                DefaultFieldValue,
+                FixedFieldName,
+                FixedFieldValue,
+                IsInherited,
+                ModifiesParent);
+
+            // check for base type name
+            if (!string.IsNullOrEmpty(BaseTypeName))
+            {
+                if ((primitiveTypeMap != null) && primitiveTypeMap.ContainsKey(BaseTypeName))
+                {
+                    element.BaseTypeName = primitiveTypeMap[BaseTypeName];
+                }
+                else
+                {
+                    element.BaseTypeName = BaseTypeName;
+                }
+            }
+
+            // add slices
+            if (copySlicing)
+            {
+                foreach (KeyValuePair<string, FhirSlicing> kvp in _slicing)
+                {
+                    element.AddSlicing(
+                        kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                }
+            }
+
+            return element;
         }
     }
 }

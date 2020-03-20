@@ -220,7 +220,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 sp.Description,
                 string.Empty,
                 sp.Code,
-                resourceList.ToArray(),
+                resourceList,
                 sp.Type,
                 sp.Status,
                 sp.Experimental == true);
@@ -324,16 +324,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         // create a type for this code
                         FhirElementType elementType = new FhirElementType(edType.Code);
 
-                        if (!elementTypes.ContainsKey(elementType.Code))
+                        if (!elementTypes.ContainsKey(elementType.Name))
                         {
-                            elementTypes.Add(elementType.Code, elementType);
+                            elementTypes.Add(elementType.Name, elementType);
                         }
 
                         if (edType.Profile != null)
                         {
                             foreach (string profile in edType.Profile)
                             {
-                                elementTypes[elementType.Code].AddProfile(profile);
+                                elementTypes[elementType.Name].AddProfile(profile);
                             }
                         }
 
@@ -351,16 +351,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 // create a type for this code
                                 FhirElementType elementType = new FhirElementType(edType.Code);
 
-                                if (!elementTypes.ContainsKey(elementType.Code))
+                                if (!elementTypes.ContainsKey(elementType.Name))
                                 {
-                                    elementTypes.Add(elementType.Code, elementType);
+                                    elementTypes.Add(elementType.Name, elementType);
                                 }
 
                                 if (edType.Profile != null)
                                 {
                                     foreach (string profile in edType.Profile)
                                     {
-                                        elementTypes[elementType.Code].AddProfile(profile);
+                                        elementTypes[elementType.Name].AddProfile(profile);
                                     }
                                 }
 
@@ -387,7 +387,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 FhirElementType elementType = new FhirElementType(element.Path, null);
 
                 // add to our dictionary
-                elementTypes.Add(elementType.Code, elementType);
+                elementTypes.Add(elementType.Name, elementType);
 
                 // done searching
                 return true;
@@ -502,7 +502,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         throw new InvalidDataException($"Too many types for {sd.Name}: {baseTypes.Count}");
                     }
 
-                    complex.BaseTypeName = baseTypes.ElementAt(0).Value.Code;
+                    complex.BaseTypeName = baseTypes.ElementAt(0).Value.Name;
                 }
 
                 HashSet<int> slicingDepths = new HashSet<int>();

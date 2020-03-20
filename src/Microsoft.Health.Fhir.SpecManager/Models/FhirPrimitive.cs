@@ -44,5 +44,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 path)
         {
         }
+
+        /// <summary>Deep copy.</summary>
+        /// <returns>A FhirPrimitive.</returns>
+        public FhirPrimitive DeepCopy()
+        {
+            // generate the base object
+            FhirPrimitive primitive = new FhirPrimitive(
+                Id,
+                Path,
+                URL,
+                StandardStatus,
+                ShortDescription,
+                Purpose,
+                Comment,
+                ValidationRegEx);
+
+            return primitive;
+        }
     }
 }
