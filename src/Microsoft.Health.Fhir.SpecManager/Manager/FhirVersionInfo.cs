@@ -642,7 +642,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     info._primitiveTypesByName.Add(kvp.Key, kvp.Value.DeepCopy());
 
                     // update type to reflect language
-                    if (primitiveTypeMap.ContainsKey(kvp.Value.BaseTypeName))
+                    if (primitiveTypeMap.ContainsKey(kvp.Value.Name))
                     {
                         info._primitiveTypesByName[kvp.Key].BaseTypeName = primitiveTypeMap[kvp.Value.BaseTypeName];
                     }
@@ -683,6 +683,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
+            bool checkUrls = (extensionUrls != null) && (extensionUrls.Count != 0);
+            bool checkPaths = (extensionElementPaths != null) && (extensionElementPaths.Count != 0);
+
             if (copyExtensions)
             {
                 // need to work directly with extensions due to nature of filtering
@@ -702,13 +705,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     }
 
                     // check for including extensions by url
-                    if ((extensionUrls != null) && (!extensionUrls.Contains(extension.URL.ToString())))
+                    if (checkUrls && (!extensionUrls.Contains(extension.URL.ToString())))
                     {
                         continue;
                     }
 
                     // check for including extensions by path
-                    if ((extensionElementPaths != null) && (!extension.ContextElements.Union(extensionElementPaths).Any()))
+                    if (checkPaths && (!extension.ContextElements.Union(extensionElementPaths).Any()))
                     {
                         continue;
                     }

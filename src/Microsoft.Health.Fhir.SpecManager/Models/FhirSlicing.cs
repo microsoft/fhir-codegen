@@ -110,7 +110,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _slicesByName = new Dictionary<string, FhirComplex>();
             foreach (FhirComplex slice in _slices)
             {
-                _slicesByName.Add(slice.Name, slice);
+                _slicesByName.Add(slice.SliceName, slice);
             }
         }
 
@@ -192,6 +192,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="slice">    The slice.</param>
         internal void AddSlice(string sliceName, FhirComplex slice)
         {
+            slice.SliceName = sliceName;
             _slices.Add(slice);
             _slicesByName.Add(sliceName, slice);
         }

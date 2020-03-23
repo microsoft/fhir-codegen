@@ -126,8 +126,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteHeader(writer);
 
             WritePrimitiveTypes(writer, _info.PrimitiveTypes.Values, 0);
-            WriteComplexes(writer, _info.ComplexTypes.Values, 0);
-            WriteComplexes(writer, _info.Resources.Values, 0);
+            WriteComplexes(writer, _info.ComplexTypes.Values, 0, "Complex Types");
+            WriteComplexes(writer, _info.Resources.Values, 0, "Resources");
 
             WriteOperations(writer, _info.SystemOperations.Values, 0, true);
             WriteSearchParameters(writer, _info.AllResourceParameters.Values, 0);
@@ -144,8 +144,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteComplexes(
             TextWriter writer,
             IEnumerable<FhirComplex> complexes,
-            int indentation)
+            int indentation,
+            string headerHint = null)
         {
+            if (!string.IsNullOrEmpty(headerHint))
+            {
+                WriteIndented(writer, indentation, $"{headerHint}: {complexes.Count()}");
+            }
+
             foreach (FhirComplex complex in complexes)
             {
                 WriteComplex(writer, complex, indentation);
@@ -161,6 +167,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             IEnumerable<FhirPrimitive> primitives,
             int indentation)
         {
+            WriteIndented(writer, indentation, $"Primitive Types: {primitives.Count()}");
+
             foreach (FhirPrimitive primitive in primitives)
             {
                 WritePrimitiveType(writer, primitive, indentation);
@@ -177,7 +185,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             WriteIndented(writer, indentation, $"- {primitive.Name}: {primitive.NameForExport(_options.PrimitiveNameStyle)}");
 
-            if (_info.ExtensionsByPath.ContainsKey(primitive.Name))
+            if (_info.ExtensionsByPath.ContainsKey(primitive.Path))
             {
                 WriteExtensions(writer, _info.ExtensionsByPath[primitive.Name].Values, indentation + 1);
             }
@@ -192,6 +200,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             IEnumerable<FhirComplex> extensions,
             int indentation)
         {
+            WriteIndented(writer, indentation, $"Extensions: {extensions.Count()}");
+
             foreach (FhirComplex extension in extensions)
             {
                 WriteExtension(writer, extension, indentation);
@@ -292,7 +302,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
-
         /// <summary>Writes search parameters.</summary>
         /// <param name="writer">          The writer.</param>
         /// <param name="searchParameters">Options for controlling the search.</param>
@@ -307,7 +316,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndented(
                     writer,
                     indentation,
-                    $"?{searchParam.Code} = {searchParam.ValueType} ({searchParam.Name})");
+                    $"?{searchParam.Code} {searchParam.ValueType} ({searchParam.Name})");
             }
         }
 
@@ -534,6 +543,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     break;
             }
         }
-
     }
 }

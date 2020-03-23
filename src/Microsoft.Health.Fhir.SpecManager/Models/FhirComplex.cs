@@ -145,6 +145,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>True if this object is placeholder, false if not.</value>
         public bool IsPlaceholder { get; set; }
 
+        /// <summary>Gets or sets the name of the slice.</summary>
+        /// <value>The name of the slice.</value>
+        public string SliceName { get; set; }
+
         /// <summary>Gets the elements.</summary>
         /// <value>The elements.</value>
         public Dictionary<string, FhirElement> Elements { get => _elements; }
@@ -438,6 +442,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     Comment,
                     ValidationRegEx,
                     ContextElements);
+
+            if (!string.IsNullOrEmpty(SliceName))
+            {
+                complex.SliceName = this.SliceName;
+            }
 
             if (!string.IsNullOrEmpty(BaseTypeName))
             {

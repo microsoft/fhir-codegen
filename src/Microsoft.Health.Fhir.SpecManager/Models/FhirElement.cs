@@ -241,10 +241,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 return false;
             }
 
-            // create a new complex type from the property
-            _slicing[url].AddSlice(
-                sliceName,
-                new FhirComplex(
+            FhirComplex slice = new FhirComplex(
                     Id,
                     Path,
                     URL,
@@ -253,7 +250,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     Purpose,
                     Comment,
                     ValidationRegEx,
-                    BaseTypeName));
+                    BaseTypeName);
+            slice.SliceName = sliceName;
+
+            // create a new complex type from the property
+            _slicing[url].AddSlice(
+                sliceName,
+                slice);
 
             return true;
         }

@@ -107,7 +107,7 @@ namespace FhirCodegenCli
                             true,
                             FhirTypeBase.NamingConvention.CamelCase,
                             FhirTypeBase.NamingConvention.PascalCase,
-                            FhirTypeBase.NamingConvention.PascalCase,
+                            FhirTypeBase.NamingConvention.CamelCase,
                             FhirTypeBase.NamingConvention.PascalCase,
                             ExporterOptions.ExtensionSupportLevel.OfficialExtensions,
                             null,
