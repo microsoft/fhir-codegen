@@ -17,15 +17,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
     {
         /// <summary>Exports.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-        /// <param name="sourceFhirInfo">Information describing the source fhir.</param>
+        /// <param name="sourceFhirInfo">Information describing the source FHIR version information.</param>
         /// <param name="exportLanguage">The export language.</param>
         /// <param name="options">       Options for controlling the operation.</param>
-        /// <param name="outputFile">    The output file.</param>
+        /// <param name="outputDir">     The output directory.</param>
         public static void Export(
             FhirVersionInfo sourceFhirInfo,
             ILanguage exportLanguage,
             ExporterOptions options,
-            string outputFile)
+            string outputDir)
         {
             if (sourceFhirInfo == null)
             {
@@ -40,6 +40,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             if (options == null)
             {
                 throw new ArgumentNullException(nameof(options));
+            }
+
+            if (string.IsNullOrEmpty(outputDir))
+            {
+                throw new ArgumentNullException(nameof(outputDir));
+            }
+
+            if (!Directory.Exists(outputDir))
+            {
+                Directory.CreateDirectory(outputDir);
             }
 
             bool copyPrimitives = options.PrimitiveNameStyle != FhirTypeBase.NamingConvention.None;
@@ -59,27 +69,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 exportLanguage.SupportsSlicing,
                 options.HideRemovedParentFields);
 
-            MemoryStream ms = new MemoryStream();
-
             // perform our export
             exportLanguage.Export(
                 info,
                 options,
-                ref ms);
-
-            if (!Directory.Exists(Path.GetDirectoryName(outputFile)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(outputFile));
-            }
-
-            using (FileStream stream = new FileStream(outputFile, FileMode.Create))
-            {
-                ms.Seek(0, 0);
-                ms.CopyTo(stream);
-            }
-
-            ms.Close();
-            ms.Dispose();
+                outputDir);
         }
     }
 }

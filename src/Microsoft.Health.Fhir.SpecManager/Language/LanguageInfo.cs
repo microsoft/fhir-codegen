@@ -21,6 +21,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
 
+        /// <summary>The currently in-use text writer.</summary>
+        private TextWriter _writer;
+
         /// <summary>Name of the language.</summary>
         private const string _languageName = "Info";
 
@@ -105,132 +108,125 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedInteractionNameStyles => _allNamingStyles;
 
         /// <summary>Gets the export.</summary>
-        /// <param name="info">   The information.</param>
-        /// <param name="options">Options for controlling the operation.</param>
-        /// <param name="stream"> [in,out] The stream.</param>
+        /// <param name="info">           The information.</param>
+        /// <param name="options">        Options for controlling the operation.</param>
+        /// <param name="exportDirectory">Directory to write files.</param>
         void ILanguage.Export(
             FhirVersionInfo info,
             ExporterOptions options,
-            ref MemoryStream stream)
+            string exportDirectory)
         {
             // set internal vars so we don't pass them to every function
             // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info
             _info = info;
             _options = options;
 
-            // fill in our file
-#pragma warning disable CA2000 // Dispose objects before losing scope
-            StreamWriter writer = new StreamWriter(stream);
-#pragma warning restore CA2000 // Dispose objects before losing scope
+            // create a filename for writing (single file for now)
+            string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.txt");
 
-            WriteHeader(writer);
+            using (StreamWriter writer = new StreamWriter(new FileStream(filename, FileMode.Create)))
+            {
+                _writer = writer;
 
-            WritePrimitiveTypes(writer, _info.PrimitiveTypes.Values, 0);
-            WriteComplexes(writer, _info.ComplexTypes.Values, 0, "Complex Types");
-            WriteComplexes(writer, _info.Resources.Values, 0, "Resources");
+                WriteHeader();
 
-            WriteOperations(writer, _info.SystemOperations.Values, 0, true);
-            WriteSearchParameters(writer, _info.AllResourceParameters.Values, 0);
-            WriteSearchParameters(writer, _info.SearchResultParameters.Values, 0);
-            WriteSearchParameters(writer, _info.AllInteractionParameters.Values, 0);
+                WritePrimitiveTypes(_info.PrimitiveTypes.Values, 0);
+                WriteComplexes(_info.ComplexTypes.Values, 0, "Complex Types");
+                WriteComplexes(_info.Resources.Values, 0, "Resources");
 
-            WriteFooter(writer);
+                WriteOperations(_info.SystemOperations.Values, 0, true, "System Operations");
+                WriteSearchParameters(_info.AllResourceParameters.Values, 0, "All Resource Parameters");
+                WriteSearchParameters(_info.SearchResultParameters.Values, 0, "Search Result Parameters");
+                WriteSearchParameters(_info.AllInteractionParameters.Values, 0, "All Interaction Parameters");
+
+                WriteFooter();
+            }
         }
 
         /// <summary>Writes the complexes.</summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="complexes">  The complexes.</param>
         /// <param name="indentation">The indentation.</param>
+        /// <param name="headerHint"> (Optional) The header hint.</param>
         private void WriteComplexes(
-            TextWriter writer,
             IEnumerable<FhirComplex> complexes,
             int indentation,
             string headerHint = null)
         {
             if (!string.IsNullOrEmpty(headerHint))
             {
-                WriteIndented(writer, indentation, $"{headerHint}: {complexes.Count()}");
+                WriteIndented(indentation, $"{headerHint}: {complexes.Count()}");
             }
 
             foreach (FhirComplex complex in complexes)
             {
-                WriteComplex(writer, complex, indentation);
+                WriteComplex(complex, indentation);
             }
         }
 
         /// <summary>Writes a primitive types.</summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="primitives"> The primitives.</param>
         /// <param name="indentation">The indentation.</param>
         private void WritePrimitiveTypes(
-            TextWriter writer,
             IEnumerable<FhirPrimitive> primitives,
             int indentation)
         {
-            WriteIndented(writer, indentation, $"Primitive Types: {primitives.Count()}");
+            WriteIndented(indentation, $"Primitive Types: {primitives.Count()}");
 
             foreach (FhirPrimitive primitive in primitives)
             {
-                WritePrimitiveType(writer, primitive, indentation);
+                WritePrimitiveType(primitive, indentation);
             }
         }
 
         /// <summary>Writes a primitive type.</summary>
-        /// <param name="writer">   The writer.</param>
-        /// <param name="primitive">The primitive.</param>
+        /// <param name="primitive">  The primitive.</param>
+        /// <param name="indentation">The indentation.</param>
         private void WritePrimitiveType(
-            TextWriter writer,
             FhirPrimitive primitive,
             int indentation)
         {
-            WriteIndented(writer, indentation, $"- {primitive.Name}: {primitive.NameForExport(_options.PrimitiveNameStyle)}");
+            WriteIndented(indentation, $"- {primitive.Name}: {primitive.NameForExport(_options.PrimitiveNameStyle)}");
 
             if (_info.ExtensionsByPath.ContainsKey(primitive.Path))
             {
-                WriteExtensions(writer, _info.ExtensionsByPath[primitive.Name].Values, indentation + 1);
+                WriteExtensions(_info.ExtensionsByPath[primitive.Name].Values, indentation + 1);
             }
         }
 
         /// <summary>Writes the extensions.</summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="extensions"> The extensions.</param>
         /// <param name="indentation">The indentation.</param>
         private void WriteExtensions(
-            TextWriter writer,
             IEnumerable<FhirComplex> extensions,
             int indentation)
         {
-            WriteIndented(writer, indentation, $"Extensions: {extensions.Count()}");
+            WriteIndented(indentation, $"Extensions: {extensions.Count()}");
 
             foreach (FhirComplex extension in extensions)
             {
-                WriteExtension(writer, extension, indentation);
+                WriteExtension(extension, indentation);
             }
         }
 
         /// <summary>Writes an extension.</summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="extension">  The extension.</param>
         /// <param name="indentation">The indentation.</param>
         private void WriteExtension(
-            TextWriter writer,
             FhirComplex extension,
             int indentation)
         {
-            WriteIndented(writer, indentation, $"+{extension.URL}");
+            WriteIndented(indentation, $"+{extension.URL}");
 
             if (extension.Elements.Count > 0)
             {
-                WriteComplex(writer, extension, indentation + 1);
+                WriteComplex(extension, indentation + 1);
             }
         }
 
         /// <summary>Writes a complex.</summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="complex">    The complex.</param>
         /// <param name="indentation">The indentation.</param>
         private void WriteComplex(
-            TextWriter writer,
             FhirComplex complex,
             int indentation)
         {
@@ -238,57 +234,63 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // (sub-properties are written with cardinality in the prior loop)
             if (indentation == 0)
             {
-                WriteIndented(writer, indentation, $"- {complex.Name}: {complex.BaseTypeName}");
+                WriteIndented(indentation, $"- {complex.Name}: {complex.BaseTypeName}");
             }
 
             // write elements
-            WriteElements(writer, complex, indentation + 1);
+            WriteElements(complex, indentation + 1);
 
             // check for extensions
             if (_info.ExtensionsByPath.ContainsKey(complex.Path))
             {
-                WriteExtensions(writer, _info.ExtensionsByPath[complex.Path].Values, indentation + 1);
+                WriteExtensions(_info.ExtensionsByPath[complex.Path].Values, indentation + 1);
             }
 
             // check for search parameters on this object
             if (complex.SearchParameters != null)
             {
-                WriteSearchParameters(writer, complex.SearchParameters.Values, indentation + 1);
+                WriteSearchParameters(complex.SearchParameters.Values, indentation + 1);
             }
 
             // check for type operations
             if (complex.TypeOperations != null)
             {
-                WriteOperations(writer, complex.TypeOperations.Values, indentation + 1, true);
+                WriteOperations(complex.TypeOperations.Values, indentation + 1, true);
             }
 
             // check for instance operations
             if (complex.InstanceOperations != null)
             {
-                WriteOperations(writer, complex.TypeOperations.Values, indentation + 1, false);
+                WriteOperations(complex.TypeOperations.Values, indentation + 1, false);
             }
         }
 
         /// <summary>Writes the operations.</summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="operations"> The operations.</param>
         /// <param name="indentation">The indentation.</param>
         /// <param name="isTypeLevel">True if is type level, false if not.</param>
+        /// <param name="headerHint"> (Optional) The header hint.</param>
         private void WriteOperations(
-            TextWriter writer,
             IEnumerable<FhirOperation> operations,
             int indentation,
-            bool isTypeLevel)
+            bool isTypeLevel,
+            string headerHint = null)
         {
+            if (!string.IsNullOrEmpty(headerHint))
+            {
+                WriteIndented(indentation, $"{headerHint}: {operations.Count()}");
+                indentation++;
+            }
+
             foreach (FhirOperation operation in operations)
             {
                 if (isTypeLevel)
                 {
-                    WriteIndented(writer, indentation, $"${operation.Code}");
+                    WriteIndented(indentation, $"${operation.Code}");
                 }
                 else
                 {
-                    WriteIndented(writer, indentation, $"/{{id}}${operation.Code}");
+                    WriteIndented(indentation, $"/{{id}}${operation.Code}");
                 }
 
                 if (operation.Parameters != null)
@@ -296,51 +298,53 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // write operation parameters inline
                     foreach (FhirParameter parameter in operation.Parameters.OrderBy(p => p.FieldOrder))
                     {
-                        WriteIndented(writer, indentation, $"{parameter.Use}: {parameter.Name} ({parameter.FhirCardinality})");
+                        WriteIndented(indentation + 1, $"{parameter.Use}: {parameter.Name} ({parameter.FhirCardinality})");
                     }
                 }
             }
         }
 
         /// <summary>Writes search parameters.</summary>
-        /// <param name="writer">          The writer.</param>
         /// <param name="searchParameters">Options for controlling the search.</param>
         /// <param name="indentation">     The indentation.</param>
+        /// <param name="headerHint">      (Optional) The header hint.</param>
         private void WriteSearchParameters(
-            TextWriter writer,
             IEnumerable<FhirSearchParam> searchParameters,
-            int indentation)
+            int indentation,
+            string headerHint = null)
         {
+            if (!string.IsNullOrEmpty(headerHint))
+            {
+                WriteIndented(indentation, $"{headerHint}: {searchParameters.Count()}");
+                indentation++;
+            }
+
             foreach (FhirSearchParam searchParam in searchParameters)
             {
                 WriteIndented(
-                    writer,
                     indentation,
-                    $"?{searchParam.Code} {searchParam.ValueType} ({searchParam.Name})");
+                    $"?{searchParam.Code}={searchParam.ValueType} ({searchParam.Name})");
             }
         }
 
         /// <summary>Writes the elements.</summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="complex">    The complex.</param>
         /// <param name="indentation">The indentation.</param>
         private void WriteElements(
-            TextWriter writer,
             FhirComplex complex,
             int indentation)
         {
             foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.FieldOrder))
             {
-                WriteElement(writer, complex, element, indentation);
+                WriteElement(complex, element, indentation);
             }
         }
 
         /// <summary>Writes an element.</summary>
-        /// <param name="writer">     The writer.</param>
+        /// <param name="complex">    The complex.</param>
         /// <param name="element">    The element.</param>
         /// <param name="indentation">The indentation.</param>
         private void WriteElement(
-            TextWriter writer,
             FhirComplex complex,
             FhirElement element,
             int indentation)
@@ -368,43 +372,41 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 propertyType = element.BaseTypeName;
             }
 
-            WriteIndented(writer, indentation, $"- {element.NameForExport(_options.ElementNameStyle)}[{element.FhirCardinality}]: {propertyType}");
+            WriteIndented(indentation, $"- {element.NameForExport(_options.ElementNameStyle)}[{element.FhirCardinality}]: {propertyType}");
 
             // check for default value
             if (!string.IsNullOrEmpty(element.DefaultFieldName))
             {
-                WriteIndented(writer, indentation + 1, $".{element.DefaultFieldName} = {element.DefaultFieldValue}");
+                WriteIndented(indentation + 1, $".{element.DefaultFieldName} = {element.DefaultFieldValue}");
             }
 
             // check for fixed value
             if (!string.IsNullOrEmpty(element.FixedFieldName))
             {
-                WriteIndented(writer, indentation + 1, $".{element.FixedFieldName} = {element.FixedFieldValue}");
+                WriteIndented(indentation + 1, $".{element.FixedFieldName} = {element.FixedFieldValue}");
             }
 
             // either step into backbone definition OR extensions, don't write both
             if (complex.Components.ContainsKey(element.Path))
             {
-                WriteComplex(writer, complex.Components[element.Path], indentation + 1);
+                WriteComplex(complex.Components[element.Path], indentation + 1);
             }
             else if (_info.ExtensionsByPath.ContainsKey(element.Path))
             {
-                WriteExtensions(writer, _info.ExtensionsByPath[element.Path].Values, indentation + 1);
+                WriteExtensions(_info.ExtensionsByPath[element.Path].Values, indentation + 1);
             }
 
             // check for slicing information
             if (element.Slicing != null)
             {
-                WriteSlicings(writer, element.Slicing.Values, indentation + 1);
+                WriteSlicings(element.Slicing.Values, indentation + 1);
             }
         }
 
         /// <summary>Writes the slicings.</summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="slicings">   The slicings.</param>
         /// <param name="indentation">The indentation.</param>
         private void WriteSlicings(
-            TextWriter writer,
             IEnumerable<FhirSlicing> slicings,
             int indentation)
         {
@@ -415,16 +417,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WriteSlicing(writer, slicing, indentation);
+                WriteSlicing(slicing, indentation);
             }
         }
 
         /// <summary>Writes a slicing.</summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="slicing">    The slicing.</param>
         /// <param name="indentation">The indentation.</param>
         private void WriteSlicing(
-            TextWriter writer,
             FhirSlicing slicing,
             int indentation)
         {
@@ -441,7 +441,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             WriteIndented(
-                writer,
                 indentation,
                 $": {slicing.DefinedByUrl} - {slicing.SlicingRules} ({rules})");
 
@@ -449,37 +448,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             int sliceNumber = 0;
             foreach (FhirComplex slice in slicing.Slices)
             {
-                WriteIndented(writer, indentation + 1, $": Slice {sliceNumber++}:{slice.Name}");
+                WriteIndented(indentation + 1, $": Slice {sliceNumber++}:{slice.SliceName} - on {slice.Name}");
 
                 // recurse into this slice
-                WriteComplex(writer, slice, indentation + 2);
+                WriteComplex(slice, indentation + 2);
             }
         }
 
         /// <summary>Writes a header.</summary>
-        /// <param name="writer">The writer.</param>
-        private void WriteHeader(TextWriter writer)
+        private void WriteHeader()
         {
-            WriteIndented(writer, 0, $"Contents of: {_info.PackageName} version: {_info.VersionString}");
-            WriteIndented(writer, 1, $"  Using Model Inheritance: {_options.UseModelInheritance}");
-            WriteIndented(writer, 1, $"  Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
-            WriteIndented(writer, 1, $"  Nesting Type Definitions: {_options.NestTypeDefinitions}");
-            WriteIndented(writer, 1, $"  Primitive Naming Sylte: {_options.PrimitiveNameStyle}");
-            WriteIndented(writer, 1, $"  Complex Type Naming Sylte: {_options.ComplexTypeNameStyle}");
-            WriteIndented(writer, 1, $"  Resource Naming Sylte: {_options.ResourceNameStyle}");
-            WriteIndented(writer, 1, $"  Interaction Naming Sylte: {_options.InteractionNameStyle}");
-            WriteIndented(writer, 1, $"  Extension Support: {_options.ExtensionSupport}");
+            WriteIndented(0, $"Contents of: {_info.PackageName} version: {_info.VersionString}");
+            WriteIndented(1, $"  Using Model Inheritance: {_options.UseModelInheritance}");
+            WriteIndented(1, $"  Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
+            WriteIndented(1, $"  Nesting Type Definitions: {_options.NestTypeDefinitions}");
+            WriteIndented(1, $"  Primitive Naming Sylte: {_options.PrimitiveNameStyle}");
+            WriteIndented(1, $"  Complex Type Naming Sylte: {_options.ComplexTypeNameStyle}");
+            WriteIndented(1, $"  Resource Naming Sylte: {_options.ResourceNameStyle}");
+            WriteIndented(1, $"  Interaction Naming Sylte: {_options.InteractionNameStyle}");
+            WriteIndented(1, $"  Extension Support: {_options.ExtensionSupport}");
 
             if ((_options.ExportList != null) && _options.ExportList.Any())
             {
                 string restrictions = string.Join("|", _options.ExportList);
-                WriteIndented(writer, 1, $"  Restricted to: {restrictions}");
+                WriteIndented(1, $"  Restricted to: {restrictions}");
             }
         }
 
         /// <summary>Writes a footer.</summary>
-        /// <param name="writer">The writer.</param>
-        private void WriteFooter(TextWriter writer)
+        private void WriteFooter()
         {
             return;
         }
@@ -487,59 +484,58 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>
         /// Writes a line indented, convenience function for clarity in this language output.
         /// </summary>
-        /// <param name="writer">     The writer.</param>
         /// <param name="indentation">The indentation.</param>
         /// <param name="value">      The value.</param>
-        private static void WriteIndented(TextWriter writer, int indentation, string value)
+        private void WriteIndented(int indentation, string value)
         {
             switch (indentation)
             {
                 case 0:
-                    writer.WriteLine(value);
+                    _writer.WriteLine(value);
                     break;
 
                 case 1:
-                    writer.WriteLine($"  {value}");
+                    _writer.WriteLine($"  {value}");
                     break;
 
                 case 2:
-                    writer.WriteLine($"    {value}");
+                    _writer.WriteLine($"    {value}");
                     break;
 
                 case 3:
-                    writer.WriteLine($"      {value}");
+                    _writer.WriteLine($"      {value}");
                     break;
 
                 case 4:
-                    writer.WriteLine($"        {value}");
+                    _writer.WriteLine($"        {value}");
                     break;
 
                 case 5:
-                    writer.WriteLine($"          {value}");
+                    _writer.WriteLine($"          {value}");
                     break;
 
                 case 6:
-                    writer.WriteLine($"            {value}");
+                    _writer.WriteLine($"            {value}");
                     break;
 
                 case 7:
-                    writer.WriteLine($"              {value}");
+                    _writer.WriteLine($"              {value}");
                     break;
 
                 case 8:
-                    writer.WriteLine($"                {value}");
+                    _writer.WriteLine($"                {value}");
                     break;
 
                 case 9:
-                    writer.WriteLine($"                  {value}");
+                    _writer.WriteLine($"                  {value}");
                     break;
 
                 case 10:
-                    writer.WriteLine($"                      {value}");
+                    _writer.WriteLine($"                      {value}");
                     break;
 
                 default:
-                    writer.WriteLine($"{new string(' ', indentation * 2)}{value}");
+                    _writer.WriteLine($"{new string(' ', indentation * 2)}{value}");
                     break;
             }
         }

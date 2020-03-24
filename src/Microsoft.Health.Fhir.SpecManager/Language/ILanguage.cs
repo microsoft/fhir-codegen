@@ -56,12 +56,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         HashSet<NamingConvention> SupportedInteractionNameStyles { get; }
 
         /// <summary>Gets the export.</summary>
-        /// <param name="info">   The information.</param>
-        /// <param name="options">Options for controlling the operation.</param>
-        /// <param name="stream"> [in,out] The stream.</param>
+        /// <param name="info">           The information.</param>
+        /// <param name="options">        Options for controlling the operation.</param>
+        /// <param name="exportDirectory">Directory to write files.</param>
         void Export(
             FhirVersionInfo info,
             ExporterOptions options,
-            ref MemoryStream stream);
+            string exportDirectory);
     }
 }

@@ -76,9 +76,11 @@ namespace FhirCodegenCli
 
             if (!string.IsNullOrEmpty(outputFile))
             {
-                if (!Directory.Exists(Path.GetDirectoryName(outputFile)))
+                string baseDirectory = Path.GetDirectoryName(outputFile);
+
+                if (!Directory.Exists(Path.GetDirectoryName(baseDirectory)))
                 {
-                    Directory.CreateDirectory(Path.GetDirectoryName(outputFile));
+                    Directory.CreateDirectory(Path.GetDirectoryName(baseDirectory));
                 }
 
                 using (StreamWriter writer = new StreamWriter(new FileStream(outputFile, FileMode.Create)))
@@ -97,13 +99,12 @@ namespace FhirCodegenCli
                     {
                         DumpFhirVersion(writer, r4);
 
-                        string testName = outputFile.Replace(".txt", "-test.txt", StringComparison.Ordinal);
                         ILanguage lang = new LanguageInfo();
                         ExporterOptions options = new ExporterOptions(
                             "Info",
                             null,
                             true,
-                            false,
+                            true,
                             true,
                             FhirTypeBase.NamingConvention.CamelCase,
                             FhirTypeBase.NamingConvention.PascalCase,
@@ -113,7 +114,10 @@ namespace FhirCodegenCli
                             null,
                             null);
 
-                        Exporter.Export(r4, lang, options, testName);
+                        // make a sub-directory for this export
+                        string outputDir = Path.Combine(baseDirectory, lang.LanguageName);
+
+                        Exporter.Export(r4, lang, options, outputDir);
                     }
                 }
             }
