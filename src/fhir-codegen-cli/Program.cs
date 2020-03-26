@@ -83,42 +83,34 @@ namespace FhirCodegenCli
                     Directory.CreateDirectory(Path.GetDirectoryName(baseDirectory));
                 }
 
-                using (StreamWriter writer = new StreamWriter(new FileStream(outputFile, FileMode.Create)))
+                ILanguage lang = new LanguageInfo();
+                ExporterOptions options = new ExporterOptions(
+                    "Info",
+                    null,
+                    true,
+                    true,
+                    true,
+                    FhirTypeBase.NamingConvention.CamelCase,
+                    FhirTypeBase.NamingConvention.PascalCase,
+                    FhirTypeBase.NamingConvention.CamelCase,
+                    FhirTypeBase.NamingConvention.PascalCase,
+                    ExporterOptions.ExtensionSupportLevel.OfficialExtensions,
+                    null,
+                    null);
+
+                if (r2 != null)
                 {
-                    if (r2 != null)
-                    {
-                        DumpFhirVersion(writer, r2);
-                    }
+                    Exporter.Export(r2, lang, options, outputFile);
+                }
 
-                    if (r3 != null)
-                    {
-                        DumpFhirVersion(writer, r3);
-                    }
+                if (r3 != null)
+                {
+                    Exporter.Export(r3, lang, options, outputFile);
+                }
 
-                    if (r4 != null)
-                    {
-                        DumpFhirVersion(writer, r4);
-
-                        ILanguage lang = new LanguageInfo();
-                        ExporterOptions options = new ExporterOptions(
-                            "Info",
-                            null,
-                            true,
-                            true,
-                            true,
-                            FhirTypeBase.NamingConvention.CamelCase,
-                            FhirTypeBase.NamingConvention.PascalCase,
-                            FhirTypeBase.NamingConvention.CamelCase,
-                            FhirTypeBase.NamingConvention.PascalCase,
-                            ExporterOptions.ExtensionSupportLevel.OfficialExtensions,
-                            null,
-                            null);
-
-                        // make a sub-directory for this export
-                        string outputDir = Path.Combine(baseDirectory, lang.LanguageName);
-
-                        Exporter.Export(r4, lang, options, outputDir);
-                    }
+                if (r4 != null)
+                {
+                    Exporter.Export(r4, lang, options, outputFile);
                 }
             }
 
