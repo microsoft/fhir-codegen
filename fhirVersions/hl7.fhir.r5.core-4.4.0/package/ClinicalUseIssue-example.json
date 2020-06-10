@@ -1,0 +1,30 @@
+{
+  "resourceType": "ClinicalUseIssue",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>type</b>: contraindication</p><h3>Contraindications</h3><table><tr><td>-</td><td><b>DiseaseSymptomProcedure</b></td><td><b>Comorbidity</b></td></tr><tr><td>*</td><td>Hepatic disease associated with coagulopathy and clinically relevant bleeding risk <span>(Details : {http://ema.europa.eu/example/contraindicationsasdisease-symptom-procedure code 'Coagulopathiesandbleedingdiatheses(exclthrombocytopenic)' = 'Coagulopathiesandbleedingdiatheses(exclthrombocytopenic))</span></td><td>Hepaticdisease <span>(Details : {http://ema.europa.eu/example/comorbidity code 'Hepaticdisease' = 'Hepaticdisease)</span></td></tr></table></div>"
+  },
+  "type": "contraindication",
+  "contraindication": {
+    "diseaseSymptomProcedure": {
+      "coding": [
+        {
+          "system": "http://ema.europa.eu/example/contraindicationsasdisease-symptom-procedure",
+          "code": "Coagulopathiesandbleedingdiatheses(exclthrombocytopenic)"
+        }
+      ],
+      "text": "Hepatic disease associated with coagulopathy and clinically relevant bleeding risk"
+    },
+    "comorbidity": [
+      {
+        "coding": [
+          {
+            "system": "http://ema.europa.eu/example/comorbidity",
+            "code": "Hepaticdisease"
+          }
+        ]
+      }
+    ]
+  }
+}

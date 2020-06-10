@@ -1,0 +1,80 @@
+{
+  "resourceType": "EvidenceVariable",
+  "id": "example-Stroke-Thrombolysis-Trialists-2014-2016-IPD-MA-Cohort",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>\n        Stroke Thrombolysis Trialists’ Collaborators Group collection used for individual patient data meta-analysis\n      </p>\n\t</div>"
+  },
+  "name": "Stroke Thrombolysis Trialists’ 2014-2016 IPD-MA Cohort",
+  "title": "Stroke Thrombolysis Trialists’ Collaborators Group collection used for individual patient data meta-analysis",
+  "status": "draft",
+  "relatedArtifact": [
+    {
+      "type": "citation",
+      "label": "Emberson 2014",
+      "display": "Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: a meta-analysis of individual patient data from randomised trials.",
+      "citation": "Emberson J, Lees KR, Lyden P, Blackwell L, Albers G, Bluhmki E, et al;Stroke Thrombolysis Trialists' Collaborative Group. Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: a meta-analysis of individual patient data from randomised trials. Lancet 2014 Nov 29;384(9958):1929-35 PMID 25106063",
+      "url": "https://doi.org/10.1016/S0140-6736(14)60584-5"
+    },
+    {
+      "type": "citation",
+      "label": "Lees 2016",
+      "display": "Figure 2 Lees 2016",
+      "citation": "Lees KR, Emberson J, Blackwell L, Bluhmki E, Davis SM, Donnan GA, et al; Stroke Thrombolysis Trialists’ Collaborators Group. Effects of alteplase for acute stroke on the distribution of functional outcomes: a pooled analysis of 9 trials. Stroke. 2016;47:2373-2379. PMID 27507856",
+      "url": "https://doi.org/10.1161/STROKEAHA.116.013644"
+    }
+  ],
+  "actual": true,
+  "characteristicCombination": "union",
+  "characteristic": [
+    {
+      "definitionReference": {
+        "reference": "Group/ECASSIII-Trial-Cohort",
+        "type": "Group",
+        "display": "ECASS III Trial Cohort"
+      }
+    },
+    {
+      "definitionReference": {
+        "reference": "Group/IST3-Trial-Cohort",
+        "type": "Group",
+        "display": "IST3 Trial Cohort"
+      }
+    },
+    {
+      "definitionReference": {
+        "reference": "Group/ECASS-Trial-Cohort",
+        "type": "Group",
+        "display": "ECASS Trial Cohort"
+      }
+    },
+    {
+      "definitionReference": {
+        "reference": "Group/ECASSII-Trial-Cohort",
+        "type": "Group",
+        "display": "ECASSII Trial Cohort"
+      }
+    },
+    {
+      "definitionReference": {
+        "reference": "Group/EPITHET-Trial-Cohort",
+        "type": "Group",
+        "display": "EPITHET Trial Cohort"
+      }
+    },
+    {
+      "definitionReference": {
+        "reference": "Group/ATLANTIS-Trial-Cohort",
+        "type": "Group",
+        "display": "ATLANTIS Trial Cohort"
+      }
+    },
+    {
+      "definitionReference": {
+        "reference": "Group/NINDS-Trial-Cohort",
+        "type": "Group",
+        "display": "NINDS Trial Cohort"
+      }
+    }
+  ]
+}

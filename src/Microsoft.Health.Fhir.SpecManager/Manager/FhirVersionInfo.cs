@@ -181,7 +181,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     _fhirConverter = new FromR4();
                     break;
                 case 5:
-                    _fhirConverter = null;
+                    _fhirConverter = new FromR5();
                     break;
             }
 
@@ -349,7 +349,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // check for system level operation
             if (operation.DefinedOnSystem)
             {
-                _systemOperations.Add(operation.Code, operation);
+                if (!_systemOperations.ContainsKey(operation.Code))
+                {
+                    _systemOperations.Add(operation.Code, operation);
+                }
             }
 
             // look for resources this should be defined on

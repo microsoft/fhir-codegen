@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
@@ -46,7 +47,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 { 2, new SortedSet<string>() { "1.0.2" } },
                 { 3, new SortedSet<string>() { "3.0.2" } },
                 { 4, new SortedSet<string>() { "4.0.1" } },
-                { 5, new SortedSet<string>() { "4.2.0" } },
+                { 5, new SortedSet<string>() { "4.4.0" } },
             };
 
             // build the dictionary of published versions*
@@ -89,12 +90,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     }
                 },
                 {
-                    "4.2.0",
+                    "4.4.0",
                     new FhirVersionInfo(5)
                     {
-                        ReleaseName = "2020Feb",
+                        ReleaseName = "2020May",
                         PackageName = "hl7.fhir.r5.core",
-                        VersionString = "4.2.0",
+                        VersionString = "4.4.0",
                         IsDevBuild = false,
                         IsLocalBuild = false,
                         IsOnDisk = false,
@@ -111,7 +112,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         ReleaseName = string.Empty,
                         PackageName = "hl7.fhir.r5.core",
-                        VersionString = "4.2.0",
+                        VersionString = "4.4.0",
                         IsDevBuild = true,
                         DevBranch = string.Empty,
                         IsLocalBuild = false,
@@ -237,14 +238,47 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         $" in {_fhirSpecDirectory}");
                 }
 
-                Console.WriteLine($"FhirManager.Load <<< downloading R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
+                bool loaded = false;
 
-                // download from the package manager
-                FhirPackageDownloader.DownloadPackage(
-                    info.ReleaseName,
-                    info.PackageName,
-                    info.VersionString,
-                    _fhirSpecDirectory);
+                try
+                {
+                    Console.WriteLine($"FhirManager.Load <<< downloading PACKAGE R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
+
+                    // download from the package manager
+                    loaded = FhirPackageDownloader.DownloadPackage(
+                        info.ReleaseName,
+                        info.PackageName,
+                        info.VersionString,
+                        _fhirSpecDirectory);
+                }
+                catch (HttpRequestException)
+                {
+                    Console.WriteLine($"Failed to download Package: R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
+                }
+
+                if (!loaded)
+                {
+                    try
+                    {
+                        Console.WriteLine($"FhirManager.Load <<< downloading PUBLISHED R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
+
+                        // download from publish URL
+                        loaded = FhirPackageDownloader.DownloadPublished(
+                            info.ReleaseName,
+                            info.PackageName,
+                            info.VersionString,
+                            _fhirSpecDirectory);
+                    }
+                    catch (HttpRequestException)
+                    {
+                        Console.WriteLine($"Failed to download Published: R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
+                    }
+                }
+
+                if (!loaded)
+                {
+                    throw new Exception($"Could not download: R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
+                }
             }
 
             // load the package

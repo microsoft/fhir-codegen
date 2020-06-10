@@ -39,6 +39,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The FHIR primitive type map.</value>
         Dictionary<string, string> FhirPrimitiveTypeMap { get; }
 
+        /// <summary>Gets the reserved words.</summary>
+        /// <value>The reserved words.</value>
+        HashSet<string> ReservedWords { get; }
+
         /// <summary>Gets the primitive configuration.</summary>
         /// <value>The primitive configuration.</value>
         HashSet<NamingConvention> SupportedPrimitiveNameStyles { get; }
@@ -47,6 +51,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The complex type configuration.</value>
         HashSet<NamingConvention> SupportedComplexTypeNameStyles { get; }
 
+        /// <summary>Gets the supported element name styles.</summary>
+        /// <value>The supported element name styles.</value>
+        HashSet<NamingConvention> SupportedElementNameStyles { get; }
+
         /// <summary>Gets the resource configuration.</summary>
         /// <value>The resource configuration.</value>
         HashSet<NamingConvention> SupportedResourceNameStyles { get; }
@@ -54,6 +62,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Gets the interaction configuration.</summary>
         /// <value>The interaction configuration.</value>
         HashSet<NamingConvention> SupportedInteractionNameStyles { get; }
+
+        /// <summary>Gets the supported enum styles.</summary>
+        /// <value>The supported enum styles.</value>
+        HashSet<NamingConvention> SupportedEnumStyles { get; }
 
         /// <summary>Gets the export.</summary>
         /// <param name="info">           The information.</param>

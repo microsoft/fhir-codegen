@@ -12,7 +12,7 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
-    /// <summary>Information about the language.</summary>
+    /// <summary>Export to an Information format - used to check parsing and dump FHIR version info.</summary>
     public sealed class LanguageInfo : ILanguage
     {
         /// <summary>FHIR information we are exporting.</summary>
@@ -30,6 +30,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
+            { "base", "base" },
             { "base64Binary", "base64Binary" },
             { "boolean", "boolean" },
             { "canonical", "canonical" },
@@ -52,6 +53,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "uuid", "uuid" },
             { "xhtml", "xhtml" },
         };
+
+        /// <summary>Gets the reserved words.</summary>
+        /// <value>The reserved words.</value>
+        private static HashSet<string> _reservedWords => new HashSet<string>();
 
         /// <summary>This language supports all naming styles on all object types.</summary>
         private static readonly HashSet<FhirTypeBase.NamingConvention> _allNamingStyles = new HashSet<FhirTypeBase.NamingConvention>()
@@ -91,6 +96,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The FHIR primitive type map.</value>
         Dictionary<string, string> ILanguage.FhirPrimitiveTypeMap => _primitiveTypeMap;
 
+        /// <summary>Gets the reserved words.</summary>
+        /// <value>The reserved words.</value>
+        HashSet<string> ILanguage.ReservedWords => _reservedWords;
+
         /// <summary>Gets the primitive configuration.</summary>
         /// <value>The primitive configuration.</value>
         HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedPrimitiveNameStyles => _allNamingStyles;
@@ -98,6 +107,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Gets the complex type configuration.</summary>
         /// <value>The complex type configuration.</value>
         HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedComplexTypeNameStyles => _allNamingStyles;
+
+        /// <summary>Gets the supported element name styles.</summary>
+        /// <value>The supported element name styles.</value>
+        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedElementNameStyles => _allNamingStyles;
 
         /// <summary>Gets the resource configuration.</summary>
         /// <value>The resource configuration.</value>
@@ -107,7 +120,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The interaction configuration.</value>
         HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedInteractionNameStyles => _allNamingStyles;
 
-        /// <summary>Gets the export.</summary>
+        /// <summary>Gets the supported enum styles.</summary>
+        /// <value>The supported enum styles.</value>
+        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedEnumStyles => _allNamingStyles;
+
+        /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
         /// <param name="options">        Options for controlling the operation.</param>
         /// <param name="exportDirectory">Directory to write files.</param>
@@ -185,7 +202,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirPrimitive primitive,
             int indentation)
         {
-            WriteIndented(indentation, $"- {primitive.Name}: {primitive.NameForExport(_options.PrimitiveNameStyle)}");
+            WriteIndented(
+                indentation,
+                $"- {primitive.Name}:" +
+                    $" {primitive.NameForExport(_options.PrimitiveNameStyle)}" +
+                    $"::{primitive.TypeForExport(_options.PrimitiveNameStyle, _primitiveTypeMap)}");
 
             if (_info.ExtensionsByPath.ContainsKey(primitive.Path))
             {

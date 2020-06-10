@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
@@ -16,6 +17,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     {
         private readonly Dictionary<string, FhirSlicing> _slicing;
         private Dictionary<string, FhirElementType> _elementTypes;
+        private List<string> _codes;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirElement"/> class.
@@ -74,6 +76,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         {
             FieldOrder = fieldOrder;
             _elementTypes = elementTypes;
+
+            _codes = null;
+            if ((baseTypeName == "code") ||
+                ((elementTypes != null) && elementTypes.Any((e) => { return e.Key == "code"; })))
+            {
+                if (!string.IsNullOrEmpty(shortDescription))
+                {
+                    _codes = new List<string>();
+                    string[] codeValues = shortDescription.Split('|');
+                    foreach (string code in codeValues)
+                    {
+                        _codes.Add(code.Trim());
+                    }
+                }
+            }
 
             CardinalityMin = cardinalityMin;
             CardinalityMax = MaxCardinality(cardinalityMax);
@@ -157,6 +174,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets or sets Code Values allowed for this property.</summary>
         /// <value>The code values.</value>
         public string CodesName { get; set; }
+
+        /// <summary>Gets the codes.</summary>
+        /// <value>The codes.</value>
+        public List<string> Codes => _codes;
 
         /// <summary>Gets types and their associated profiles for this element.</summary>
         /// <value>Types and their associated profiles for this element.</value>
@@ -330,6 +351,91 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             return element;
+        }
+
+        /// <summary>Names and types for export.</summary>
+        /// <param name="nameConvention">        The name convention.</param>
+        /// <param name="typeConvention">        The convention.</param>
+        /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
+        /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
+        /// <param name="isComponent">           (Optional) True if is component, false if not.</param>
+        /// <returns>A Dictionary&lt;string,string&gt;</returns>
+        public Dictionary<string, string> NamesAndTypesForExport(
+            NamingConvention nameConvention,
+            NamingConvention typeConvention,
+            bool concatenatePath = false,
+            string concatenationDelimiter = "",
+            bool isComponent = false)
+        {
+            Dictionary<string, string> values = new Dictionary<string, string>();
+
+            string baseName = Name;
+            bool isChoice = false;
+
+            if ((_elementTypes != null) && (_elementTypes.Count > 0))
+            {
+                if (baseName.Contains("[x]"))
+                {
+                    baseName = baseName.Replace("[x]", string.Empty);
+                    isChoice = true;
+                }
+
+                if (isChoice)
+                {
+                    foreach (FhirElementType elementType in _elementTypes.Values)
+                    {
+                        string name = FhirUtils.ToConvention(baseName, Path, typeConvention, concatenatePath, concatenationDelimiter);
+                        string type = FhirUtils.ToConvention(elementType.Type, string.Empty, nameConvention);
+
+                        string combined = $"{name}{type}";
+
+                        if (!values.ContainsKey(combined))
+                        {
+                            values.Add(combined, elementType.Type);
+                        }
+                    }
+                }
+                else
+                {
+                    string types = string.Empty;
+
+                    foreach (FhirElementType elementType in _elementTypes.Values)
+                    {
+                        string type = elementType.Type;
+
+                        if (string.IsNullOrEmpty(types))
+                        {
+                            types = type;
+                        }
+                        else
+                        {
+                            types = $"{types}|{type}";
+                        }
+                    }
+
+                    if (!values.ContainsKey(baseName))
+                    {
+                        values.Add(baseName, types);
+                    }
+                }
+
+                return values;
+            }
+
+            if (isComponent)
+            {
+                values.Add(
+                    FhirUtils.ToConvention(Name, Path, typeConvention, concatenatePath, concatenationDelimiter),
+                    FhirUtils.ToConvention(Path, string.Empty, nameConvention));
+            }
+            else
+            {
+                values.Add(
+                    FhirUtils.ToConvention(Name, Path, typeConvention, concatenatePath, concatenationDelimiter),
+                    FhirUtils.ToConvention(BaseTypeName, string.Empty, typeConvention));
+            }
+
+            return values;
         }
     }
 }

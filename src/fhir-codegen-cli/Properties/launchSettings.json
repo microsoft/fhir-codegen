@@ -16,6 +16,18 @@
     "r4": {
       "commandName": "Project",
       "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r4.txt --load-r4 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
+    },
+    "r5": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r5.txt --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
+    },
+    "ts5": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r5.ts --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language TypeScript"
+    },
+    "ts4": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r4.ts --load-r4 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language TypeScript"
     }
   }
 }

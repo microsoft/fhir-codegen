@@ -34,11 +34,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Downloads a published FHIR package.</summary>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+        /// <exception cref="InvalidDataException"> Thrown when an Invalid Data error condition occurs.</exception>
         /// <param name="releaseName">      The release name (e.g., R4, DSTU2).</param>
         /// <param name="packageName">      Name of the package.</param>
         /// <param name="version">          The version string (e.g., 4.0.1).</param>
         /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
-        public static void DownloadPackage(
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public static bool DownloadPackage(
             string releaseName,
             string packageName,
             string version,
@@ -47,7 +49,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             Uri infoUri = new Uri(PackageDownloadUriBase, packageName);
 
             // check the package server for version information
-            string versionInfoJson = _httpClient.GetStringAsync(infoUri).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(infoUri).Result;
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"Failed to GET package info: {response.StatusCode}");
+                return false;
+            }
+
+            string versionInfoJson = response.Content.ReadAsStringAsync().Result;
 
             // deserialize our version info
             Models.PackagesVersionInfo info = JsonConvert.DeserializeObject<Models.PackagesVersionInfo>(versionInfoJson);
@@ -70,7 +80,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
 
             // download and extract our package
-            DownloadAndExtract(info.Versions[version].URL, packageName, version, fhirSpecDirectory);
+            return DownloadAndExtract(info.Versions[version].URL, packageName, version, fhirSpecDirectory);
         }
 
         /// <summary>Downloads a published FHIR package.</summary>
@@ -78,7 +88,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="packageName">      Name of the package.</param>
         /// <param name="version">          The version string (e.g., 4.0.1).</param>
         /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
-        public static void DownloadPublished(
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public static bool DownloadPublished(
             string releaseName,
             string packageName,
             string version,
@@ -88,7 +99,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             string url = $"{PublishedDownloadUrlBase}{releaseName}/{packageName}.tgz";
 
             // download and extract our package
-            DownloadAndExtract(new Uri(url), packageName, version, fhirSpecDirectory);
+            return DownloadAndExtract(new Uri(url), packageName, version, fhirSpecDirectory);
         }
 
         /// <summary>Downloads the and extract.</summary>

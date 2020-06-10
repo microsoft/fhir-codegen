@@ -22,20 +22,30 @@ namespace FhirCodegenCli
 
         /// <summary>Main entry-point for this application.</summary>
         /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>
-        /// <param name="outputFile">       An array of command-line argument strings.</param>
+        /// <param name="outputFile">       Where to write output.</param>
         /// <param name="verbose">          Show verbose output.</param>
         /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
-        /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or latest).</param>
-        /// <param name="loadR3">           If FHIR R3 should be loaded, which version (e.g., 3.0.2 or latest).</param>
-        /// <param name="loadR4">           If FHIR R4 should be loaded, which version (e.g., 4.0.1 or latest).</param>
+        /// <param name="language">         Name of the language to export (default: info).</param>
+        /// <param name="exportKeys">       '|' separated list of items to export (not present to export everything).</param>
+        /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or
+        ///  latest).</param>
+        /// <param name="loadR3">           If FHIR R3 should be loaded, which version (e.g., 3.0.2 or
+        ///  latest).</param>
+        /// <param name="loadR4">           If FHIR R4 should be loaded, which version (e.g., 4.0.1 or
+        ///  latest).</param>
+        /// <param name="loadR5">           If FHIR R5 should be loaded, which version (e.g., 4.4.0 or
+        ///  latest).</param>
         public static void Main(
             string fhirSpecDirectory,
             string outputFile = "",
             bool verbose = false,
             bool offlineMode = false,
+            string language = "Info",
+            string exportKeys = "",
             string loadR2 = "",
             string loadR3 = "",
-            string loadR4 = "")
+            string loadR4 = "",
+            string loadR5 = "")
         {
             _extensionsOutputted = new HashSet<string>();
 
@@ -51,7 +61,9 @@ namespace FhirCodegenCli
                 loadR3,
                 out FhirVersionInfo r3,
                 loadR4,
-                out FhirVersionInfo r4);
+                out FhirVersionInfo r4,
+                loadR5,
+                out FhirVersionInfo r5);
 
             // done loading
             long loadMS = timingWatch.ElapsedMilliseconds;
@@ -83,9 +95,14 @@ namespace FhirCodegenCli
                     Directory.CreateDirectory(Path.GetDirectoryName(baseDirectory));
                 }
 
-                ILanguage lang = new LanguageInfo();
-                ExporterOptions options = new ExporterOptions(
-                    "Info",
+                ILanguage lang = LanguageHelper.GetLanguage(language);
+
+                ExporterOptions options;
+
+                if (lang.LanguageName == "Info")
+                {
+                    options = new ExporterOptions(
+                    lang.LanguageName,
                     null,
                     true,
                     true,
@@ -93,10 +110,36 @@ namespace FhirCodegenCli
                     FhirTypeBase.NamingConvention.CamelCase,
                     FhirTypeBase.NamingConvention.PascalCase,
                     FhirTypeBase.NamingConvention.CamelCase,
+                    FhirTypeBase.NamingConvention.PascalCase,
                     FhirTypeBase.NamingConvention.PascalCase,
                     ExporterOptions.ExtensionSupportLevel.OfficialExtensions,
                     null,
                     null);
+                }
+                else
+                {
+                    string[] exportList = null;
+
+                    if (!string.IsNullOrEmpty(exportKeys))
+                    {
+                        exportList = exportKeys.Split('|');
+                    }
+
+                    options = new ExporterOptions(
+                        lang.LanguageName,
+                        exportList,
+                        lang.SupportsModelInheritance,
+                        lang.SupportsHidingParentField,
+                        lang.SupportsNestedTypeDefinitions,
+                        lang.SupportedPrimitiveNameStyles.First(),
+                        lang.SupportedComplexTypeNameStyles.First(),
+                        lang.SupportedElementNameStyles.First(),
+                        lang.SupportedInteractionNameStyles.First(),
+                        lang.SupportedEnumStyles.First(),
+                        ExporterOptions.ExtensionSupportLevel.NonPrimitives,
+                        null,
+                        null);
+                }
 
                 if (r2 != null)
                 {
@@ -112,6 +155,11 @@ namespace FhirCodegenCli
                 {
                     Exporter.Export(r4, lang, options, outputFile);
                 }
+
+                if (r5 != null)
+                {
+                    Exporter.Export(r5, lang, options, outputFile);
+                }
             }
 
             // done
@@ -123,12 +171,18 @@ namespace FhirCodegenCli
         /// <summary>Main processing function.</summary>
         /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>
         /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
-        /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or latest).</param>
+        /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or
+        ///  latest).</param>
         /// <param name="r2">               [out] The FhirVersionInfo for R2 (if loaded).</param>
-        /// <param name="loadR3">           If FHIR R3 should be loaded, which version (e.g., 3.0.2 or latest).</param>
+        /// <param name="loadR3">           If FHIR R3 should be loaded, which version (e.g., 3.0.2 or
+        ///  latest).</param>
         /// <param name="r3">               [out] The FhirVersionInfo for R3 (if loaded).</param>
-        /// <param name="loadR4">           If FHIR R4 should be loaded, which version (e.g., 4.0.1 or latest).</param>
+        /// <param name="loadR4">           If FHIR R4 should be loaded, which version (e.g., 4.0.1 or
+        ///  latest).</param>
         /// <param name="r4">               [out] The FhirVersionInfo for R4 (if loaded).</param>
+        /// <param name="loadR5">           If FHIR R5 should be loaded, which version (e.g., 4.4.0 or
+        ///  latest).</param>
+        /// <param name="r5">               [out] The FhirVersionInfo for R5 (if loaded).</param>
         public static void Process(
             string fhirSpecDirectory,
             bool offlineMode,
@@ -137,7 +191,9 @@ namespace FhirCodegenCli
             string loadR3,
             out FhirVersionInfo r3,
             string loadR4,
-            out FhirVersionInfo r4)
+            out FhirVersionInfo r4,
+            string loadR5,
+            out FhirVersionInfo r5)
         {
             // initialize the FHIR version manager with our requested directory
             FhirManager.Init(fhirSpecDirectory);
@@ -145,6 +201,7 @@ namespace FhirCodegenCli
             r2 = null;
             r3 = null;
             r4 = null;
+            r5 = null;
 
             if (!string.IsNullOrEmpty(loadR2))
             {
@@ -181,6 +238,19 @@ namespace FhirCodegenCli
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Loading R4 ({loadR4}) failed: {ex}");
+                    throw;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(loadR5))
+            {
+                try
+                {
+                    r5 = FhirManager.Current.LoadPublished(5, loadR5, offlineMode);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Loading R5 ({loadR5}) failed: {ex}");
                     throw;
                 }
             }

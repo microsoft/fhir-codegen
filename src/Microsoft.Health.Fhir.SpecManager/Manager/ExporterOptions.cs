@@ -26,6 +26,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="complexNameStyle">       The complex name style (complex types, resources, etc.).</param>
         /// <param name="elementNameStyle">       The element name style.</param>
         /// <param name="interactionNameStyle">   The interaction name style.</param>
+        /// <param name="enumStyle">              The enum style.</param>
         /// <param name="extensionSupport">       The extension support.</param>
         /// <param name="extensionUrls">          Manually supported extension URLs that should be added.</param>
         /// <param name="extensionElementPaths">  Manually supported element paths that should have
@@ -40,6 +41,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             NamingConvention complexNameStyle,
             NamingConvention elementNameStyle,
             NamingConvention interactionNameStyle,
+            NamingConvention enumStyle,
             ExtensionSupportLevel extensionSupport,
             IEnumerable<string> extensionUrls,
             IEnumerable<string> extensionElementPaths)
@@ -53,6 +55,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             ElementNameStyle = elementNameStyle;
             ComplexTypeNameStyle = complexNameStyle;
             InteractionNameStyle = interactionNameStyle;
+            EnumStyle = enumStyle;
             ExtensionSupport = extensionSupport;
 
             _extensionUrls = new HashSet<string>();
@@ -144,6 +147,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Gets the interaction name style.</summary>
         /// <value>The interaction name style.</value>
         public NamingConvention InteractionNameStyle { get; }
+
+        /// <summary>Gets the enum style.</summary>
+        /// <value>The enum style.</value>
+        public NamingConvention EnumStyle { get; }
 
         /// <summary>Gets the extension support.</summary>
         /// <value>The extension support.</value>
