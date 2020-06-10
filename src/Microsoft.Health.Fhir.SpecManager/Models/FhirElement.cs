@@ -205,7 +205,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets a value indicating whether this property is an array.</summary>
         /// <value>True if this object is array, false if not.</value>
-        public bool IsArray => (CardinalityMax == -1) || (CardinalityMax > 1);
+        public bool IsArray => (CardinalityMax == -1) || (CardinalityMax > 1) || (CardinalityMax == null);
 
         /// <summary>Gets a value indicating whether this object is optional.</summary>
         /// <value>True if this object is optional, false if not.</value>
@@ -372,6 +372,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string baseName = Name;
             bool isChoice = false;
 
+            if (isComponent)
+            {
+                values.Add(
+                    FhirUtils.ToConvention(Name, Path, nameConvention, concatenatePath, concatenationDelimiter),
+                    FhirUtils.ToConvention(Path, string.Empty, typeConvention));
+
+                return values;
+            }
+
             if ((_elementTypes != null) && (_elementTypes.Count > 0))
             {
                 if (baseName.Contains("[x]"))
@@ -384,8 +393,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 {
                     foreach (FhirElementType elementType in _elementTypes.Values)
                     {
-                        string name = FhirUtils.ToConvention(baseName, Path, typeConvention, concatenatePath, concatenationDelimiter);
-                        string type = FhirUtils.ToConvention(elementType.Type, string.Empty, nameConvention);
+                        string name = FhirUtils.ToConvention(baseName, Path, nameConvention, concatenatePath, concatenationDelimiter);
+                        string type = FhirUtils.ToConvention(elementType.Name, string.Empty, typeConvention);
 
                         string combined = $"{name}{type}";
 
@@ -422,18 +431,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 return values;
             }
 
-            if (isComponent)
-            {
-                values.Add(
-                    FhirUtils.ToConvention(Name, Path, typeConvention, concatenatePath, concatenationDelimiter),
-                    FhirUtils.ToConvention(Path, string.Empty, nameConvention));
-            }
-            else
-            {
-                values.Add(
-                    FhirUtils.ToConvention(Name, Path, typeConvention, concatenatePath, concatenationDelimiter),
-                    FhirUtils.ToConvention(BaseTypeName, string.Empty, typeConvention));
-            }
+            values.Add(
+                FhirUtils.ToConvention(Name, Path, typeConvention, concatenatePath, concatenationDelimiter),
+                FhirUtils.ToConvention(BaseTypeName, string.Empty, typeConvention));
 
             return values;
         }

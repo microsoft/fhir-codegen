@@ -310,7 +310,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 return primitiveTypeMap[_baseTypeName];
             }
 
-            return FhirUtils.ToConvention(_baseTypeName, _path, convention, concatenatePath, concatenationDelimiter);
+            string type = FhirUtils.ToConvention(_baseTypeName, _path, convention, concatenatePath, concatenationDelimiter);
+
+            // Resources cannot inherit CanonicalResource, but they are listed that way today
+            // see https://chat.fhir.org/#narrow/stream/179177-conformance/topic/Inheritance.20and.20Cardinality.20Changes
+            if (type == "CanonicalResource")
+            {
+                return "DomainResource";
+            }
+
+            return type;
         }
 
         /// <summary>Converts this object to a requested naming convention.</summary>
