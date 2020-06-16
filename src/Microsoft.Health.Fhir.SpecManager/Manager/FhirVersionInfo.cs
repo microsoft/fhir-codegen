@@ -563,6 +563,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     // add the parent
                     AddToExportSet(_complexTypesByName[name].BaseTypeName, ref set);
                 }
+
+                // check for element types
+                if (_complexTypesByName[name].Elements != null)
+                {
+                    foreach (KeyValuePair<string, FhirElement> kvp in _complexTypesByName[name].Elements)
+                    {
+                        if (!string.IsNullOrEmpty(kvp.Value.BaseTypeName))
+                        {
+                            // add the element type
+                            AddToExportSet(kvp.Value.BaseTypeName, ref set);
+                        }
+
+                        if (kvp.Value.ElementTypes != null)
+                        {
+                            foreach (string elementTypeName in kvp.Value.ElementTypes.Keys)
+                            {
+                                // add the element type
+                                AddToExportSet(elementTypeName, ref set);
+                            }
+                        }
+                    }
+                }
             }
 
             // check for this being a resource
@@ -576,6 +598,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 {
                     // add the parent
                     AddToExportSet(_resourcesByName[name].BaseTypeName, ref set);
+
+                    // Resources cannot inherit CanonicalResource, but they are listed that way today
+                    // see https://chat.fhir.org/#narrow/stream/179177-conformance/topic/Inheritance.20and.20Cardinality.20Changes
+                    if (_resourcesByName[name].BaseTypeName == "CanonicalResource")
+                    {
+                        AddToExportSet("DomainResource", ref set);
+                    }
+                }
+
+                // check for element types
+                if (_resourcesByName[name].Elements != null)
+                {
+                    foreach (KeyValuePair<string, FhirElement> kvp in _resourcesByName[name].Elements)
+                    {
+                        if (!string.IsNullOrEmpty(kvp.Value.BaseTypeName))
+                        {
+                            // add the element type
+                            AddToExportSet(kvp.Value.BaseTypeName, ref set);
+                        }
+
+                        if (kvp.Value.ElementTypes != null)
+                        {
+                            foreach (string elementTypeName in kvp.Value.ElementTypes.Keys)
+                            {
+                                // add the element type
+                                AddToExportSet(elementTypeName, ref set);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -626,8 +677,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             {
                 foreach (string path in exportList)
                 {
-                    restrictOutput = true;
                     AddToExportSet(path, ref exportSet);
+                }
+
+                if (exportSet.Count > 0)
+                {
+                    restrictOutput = true;
                 }
             }
 
