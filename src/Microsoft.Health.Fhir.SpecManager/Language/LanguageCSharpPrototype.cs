@@ -1,4 +1,4 @@
-﻿// <copyright file="LanguageTypeScript.cs" company="Microsoft Corporation">
+﻿// <copyright file="LanguageCSharpPrototype.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -12,8 +12,8 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
-    /// <summary>Export to TypeScript - serializable to/from JSON.</summary>
-    public sealed class LanguageTypeScript : ILanguage
+    /// <summary>A language C# prototype.</summary>
+    public sealed class LanguageCSharpPrototype : ILanguage
     {
         /// <summary>FHIR information we are exporting.</summary>
         private FhirVersionInfo _info;
@@ -21,36 +21,38 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
 
+        private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
+
         /// <summary>The currently in-use text writer.</summary>
         private TextWriter _writer;
 
         /// <summary>Name of the language.</summary>
-        private const string _languageName = "TypeScript";
+        private const string _languageName = "CSharpPrototype";
 
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
             { "base", "Object" },
             { "base64Binary", "string" },
-            { "boolean", "boolean" },
+            { "boolean", "bool" },
             { "canonical", "string" },
             { "code", "string" },
             { "date", "string" },
-            { "dateTime", "string" },
-            { "decimal", "number" },
+            { "dateTime", "string" },           // Cannot use "DateTime" because of Partial Dates... may want to consider defining a new type, but not today
+            { "decimal", "decimal" },
             { "id", "string" },
             { "instant", "string" },
-            { "integer", "number" },
-            { "integer64", "string" },       // int64 serializes as string, need to add custom handling here
+            { "integer", "int" },
+            { "integer64", "string" },          // int64 serializes as string, need to add custom handling here
             { "markdown", "string" },
             { "oid", "string" },
-            { "positiveInt", "number" },
+            { "positiveInt", "uint" },
             { "string", "string" },
             { "time", "string" },
-            { "unsignedInt", "number" },
+            { "unsignedInt", "uint" },
             { "uri", "string" },
             { "url", "string" },
-            { "uuid", "string" },
+            { "uuid", "Guid" },
             { "xhtml", "string" },
         };
 
@@ -58,10 +60,84 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The reserved words.</value>
         private static HashSet<string> _reservedWords => new HashSet<string>()
         {
+            "abstract",
+            "as",
+            "base",
+            "bool",
+            "break",
+            "byte",
+            "case",
+            "catch",
+            "char",
+            "checked",
+            "class",
             "const",
+            "continue",
+            "decimal",
+            "default",
+            "delegate",
+            "do",
+            "double",
+            "else",
             "enum",
-            "export",
+            "event",
+            "explicit",
+            "extern",
+            "false",
+            "finally",
+            "fixed",
+            "float",
+            "for",
+            "foreach",
+            "goto",
+            "if",
+            "implicit",
+            "in",
+            "int",
             "interface",
+            "internal",
+            "is",
+            "lock",
+            "long",
+            "namespace",
+            "new",
+            "null",
+            "object",
+            "operator",
+            "out",
+            "override",
+            "params",
+            "private",
+            "protected",
+            "public",
+            "readonly",
+            "ref",
+            "return",
+            "sbyte",
+            "sealed",
+            "short",
+            "sizeof",
+            "stackalloc",
+            "static",
+            "string",
+            "struct",
+            "switch",
+            "this",
+            "throw",
+            "true",
+            "try",
+            "typeof",
+            "uint",
+            "ulong",
+            "unchecked",
+            "unsafe",
+            "ushort",
+            "using",
+            "static",
+            "virtual",
+            "void",
+            "volatile",
+            "while",
         };
 
         /// <summary>This option supports only Pascal case.</summary>
@@ -70,10 +146,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirTypeBase.NamingConvention.PascalCase,
         };
 
-        /// <summary>This option supports only Pascal case.</summary>
+        /// <summary>This option supports only Camel case.</summary>
         private static readonly HashSet<FhirTypeBase.NamingConvention> _camelStyle = new HashSet<FhirTypeBase.NamingConvention>()
         {
             FhirTypeBase.NamingConvention.CamelCase,
+        };
+
+        /// <summary>This option supports only Upper case.</summary>
+        private static readonly HashSet<FhirTypeBase.NamingConvention> _upperStyle = new HashSet<FhirTypeBase.NamingConvention>()
+        {
+            FhirTypeBase.NamingConvention.UpperCase,
         };
 
         /// <summary>The not supported style.</summary>
@@ -122,7 +204,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the supported element name styles.</summary>
         /// <value>The supported element name styles.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedElementNameStyles => _camelStyle;
+        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedElementNameStyles => _pascalStyle;
 
         /// <summary>Gets the resource configuration.</summary>
         /// <value>The resource configuration.</value>
@@ -151,7 +233,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _options = options;
 
             // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.ts");
+            string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.cs");
 
             using (StreamWriter writer = new StreamWriter(new FileStream(filename, FileMode.Create)))
             {
@@ -170,8 +252,78 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteComplexes(_info.Resources.Values, 0, true);
                 }
 
+                WritePolymorphicHelpers(1);
+
                 WriteFooter();
             }
+        }
+
+        /// <summary>Writes a polymorphic helpers.</summary>
+        /// <param name="indentation">The indentation.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private void WritePolymorphicHelpers(int indentation)
+        {
+            WriteIndented(indentation, "public class ResourceConverter : JsonConverter");
+            WriteIndented(indentation, "{");
+
+            // function CanConvert
+            WriteIndented(indentation + 1, "public override bool CanConvert(Type objectType)");
+            WriteIndented(indentation + 1, "{");
+            WriteIndented(indentation + 2, "return typeof(Resource).IsAssignableFrom(objectType);");
+            WriteIndented(indentation + 1, "}");
+
+            // property CanWrite
+            WriteIndented(indentation + 1, "public override bool CanWrite");
+            WriteIndented(indentation + 1, "{");
+            WriteIndented(indentation + 2, "get { return false; }");
+            WriteIndented(indentation + 1, "}");
+
+            // function WriteJson
+            WriteIndented(indentation + 1, "public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)");
+            WriteIndented(indentation + 1, "{");
+            WriteIndented(indentation + 2, "throw new NotImplementedException();");
+            WriteIndented(indentation + 1, "}");
+
+            // property CanRead
+            WriteIndented(indentation + 1, "public override bool CanRead");
+            WriteIndented(indentation + 1, "{");
+            WriteIndented(indentation + 2, "get { return true; }");
+            WriteIndented(indentation + 1, "}");
+
+            // function ReadJson
+            WriteIndented(indentation + 1, "public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)");
+            WriteIndented(indentation + 1, "{");
+            WriteIndented(indentation + 2, "JObject jObject = JObject.Load(reader);");
+            WriteIndented(indentation + 2, "string resourceType = jObject[\"resourceType\"].Value<string>();");
+            WriteIndented(indentation + 2, "object target = null;");
+            WriteIndented(indentation + 2, "switch (resourceType)");
+            WriteIndented(indentation + 2, "{");
+
+            // loop through our types
+            foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
+            {
+                WriteIndented(indentation + 3, $"case \"{kvp.Key}\":");
+                WriteIndented(indentation + 4, $"target = new {kvp.Value}();");
+                WriteIndented(indentation + 4, "break;");
+            }
+
+            // default case returns a Resource object
+            WriteIndented(indentation + 3, "default:");
+            WriteIndented(indentation + 4, "target = new Resource();");
+            WriteIndented(indentation + 4, "break;");
+
+            // close switch
+            WriteIndented(indentation + 2, "}");
+
+            // populate
+            WriteIndented(indentation + 2, "serializer.Populate(jObject.CreateReader(), target);");
+
+            // return/close ReadJson
+            WriteIndented(indentation + 2, "return target;");
+            WriteIndented(indentation + 1, "}");
+
+            // close class
+            WriteIndented(indentation, "}");
         }
 
         /// <summary>Writes the complexes.</summary>
@@ -216,39 +368,42 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 WriteIndented(
                     indentation,
-                    $"export interface {complex.NameForExport(_options.ComplexTypeNameStyle)} {{");
+                    $"public class {complex.NameForExport(_options.ComplexTypeNameStyle)} {{");
             }
             else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
             {
                 WriteIndented(
                     indentation,
-                    $"export interface" +
+                    $"public class" +
                         $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
-                        $" extends Element {{");
+                        $" : Element {{");
             }
             else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
             {
                 WriteIndented(
                     indentation,
-                    $"export interface" +
+                    $"public class" +
                         $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
-                        $" extends" +
+                        $" :" +
                         $" {complex.TypeForExport(_options.ComplexTypeNameStyle, _primitiveTypeMap, false)} {{");
             }
             else
             {
                 WriteIndented(
                     indentation,
-                    $"export interface" +
+                    $"public class" +
                         $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
-                        $" extends" +
+                        $" :" +
                         $" {complex.TypeForExport(_options.ComplexTypeNameStyle, _primitiveTypeMap)} {{");
             }
 
             if (isResource && ShouldWriteResourceName(complex.Name))
             {
+                _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
+
                 WriteIndented(indentation + 1, "/** Resource Type Name (for serialization) */");
-                WriteIndented(indentation + 1, $"resourceType: '{complex.Name}'");
+                WriteIndented(indentation + 1, "[JsonPropertyName(\"resourceType\")]");
+                WriteIndented(indentation + 1, $"public string ResourceType => \"{complex.Name}\";");
             }
 
             // write elements
@@ -270,9 +425,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element,
             int indentation)
         {
-            WriteIndented(indentation, $"/**");
-            WriteIndented(indentation, $" * Code Values for the {element.Path} field");
-            WriteIndented(indentation, $" */");
+            WriteIndented(indentation, $"/// <summary>");
+            WriteIndented(indentation, $"/// Code Values for the {element.Path} field");
+            WriteIndented(indentation, $"/// </summary>");
 
             string codeName = FhirUtils.ToConvention(
                 $"{element.Path}.Codes",
@@ -284,13 +439,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 codeName = codeName.Replace("[x]", string.Empty);
             }
 
-            WriteIndented(indentation, $"export enum {codeName} {{");
+            if (codeName.Contains("[X]"))
+            {
+                codeName = codeName.Replace("[X]", string.Empty);
+            }
+
+            WriteIndented(indentation, $"public sealed class {codeName} {{");
 
             foreach (string code in element.Codes)
             {
                 FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
-                WriteIndented(indentation + 1, $"{name.ToUpperInvariant()} = \"{value}\",");
+                WriteIndented(indentation + 1, $"public const string {name.ToUpperInvariant()} = \"{value}\";");
             }
 
             WriteIndented(indentation, "}");
@@ -365,12 +525,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteIndentedComment(indentation, element.Comment);
                 }
 
+                string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
+
+                WriteIndented(indentation, $"[JsonPropertyName(\"{camel}\")]");
+
                 WriteIndented(
                     indentation,
-                    $"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                    $"public {kvp.Value}{optionalFlagString}{arrayFlagString} {kvp.Key} {{ get; set; }}");
 
-                WriteIndented(indentation, $"_{kvp.Key}?: Element;");
+                WriteIndented(indentation, $"[JsonPropertyName(\"_{camel}\")]");
+                WriteIndented(indentation, $"public Element{arrayFlagString} _{kvp.Key} {{ get; set; }}");
             }
+        }
+
+        /// <summary>Query if 'typeName' is nullable.</summary>
+        /// <param name="typeName">Name of the type.</param>
+        /// <returns>True if nullable, false if not.</returns>
+        private static bool IsNullable(string typeName)
+        {
+            // nullable reference types are not allowed in current C#
+            switch (typeName)
+            {
+                case "bool":
+                case "decimal":
+                case "DateTime":
+                case "int":
+                case "uint":
+                case "Guid":
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>Writes a primitive types.</summary>
@@ -400,10 +585,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteIndented(
                 indentation,
-                $"export type" +
-                    $" {primitive.NameForExport(_options.PrimitiveNameStyle)}" +
-                    $" =" +
-                    $" {primitive.TypeForExport(_options.PrimitiveNameStyle, _primitiveTypeMap)};");
+                $"public" +
+                    $" {primitive.TypeForExport(_options.PrimitiveNameStyle, _primitiveTypeMap)}" +
+                    $" : " +
+                    $" {primitive.NameForExport(_options.PrimitiveNameStyle)};");
         }
 
         /// <summary>Writes a header.</summary>
@@ -425,6 +610,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string restrictions = string.Join("|", _options.ExportList);
                 WriteIndented(1, $"// Restricted to: {restrictions}");
             }
+
+            WriteIndented(0, string.Empty);
+
+            WriteIndented(0, "using System;");
+            WriteIndented(0, "using System.Collections.Generic;");
+            WriteIndented(0, "using Newtonsoft.Json;");
+            WriteIndented(0, "using Newtonsoft.Json.Linq;");
+            WriteIndented(0, string.Empty);
         }
 
         /// <summary>Writes a footer.</summary>
@@ -438,15 +631,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="value">      The value.</param>
         private void WriteIndentedComment(int indentation, string value)
         {
-            string prefix = $"{new string(' ', indentation * 2)} * ";
+            string prefix = $"{new string(' ', indentation * 2)}/// ";
 
-            WriteIndented(indentation, $"/**");
+            WriteIndented(indentation, "/// <summary>");
+
             _writer.Write(prefix);
-
             prefix = $"\n{prefix}";
 
             _writer.WriteLine(value.Replace("\n", prefix).Replace("\r", string.Empty));
-            WriteIndented(indentation, $" */");
+
+            WriteIndented(indentation, "/// </summary>");
         }
 
         /// <summary>

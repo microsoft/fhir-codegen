@@ -422,9 +422,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         }
                     }
 
-                    if (!values.ContainsKey(baseName))
+                    string cased = FhirUtils.ToConvention(baseName, string.Empty, nameConvention, concatenatePath, concatenationDelimiter);
+
+                    if (!values.ContainsKey(cased))
                     {
-                        values.Add(baseName, types);
+                        values.Add(cased, types);
                     }
                 }
 

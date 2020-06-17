@@ -28,6 +28,10 @@
     "ts4": {
       "commandName": "Project",
       "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r4.ts --load-r4 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language TypeScript"
+    },
+    "cs5": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r5.cs --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language CSharpPrototype"
     }
   }
 }
