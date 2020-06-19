@@ -46,6 +46,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     "OperationDefinition",
                     "SearchParameter",
                     "StructureDefinition",
+                    "ValueSet",
                 }
             },
             {
@@ -98,8 +99,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 {
                     "Conformance",
                     "NamingSystem",
-                    "ValueSet",
-
                     "ConceptMap",
                     "ImplementationGuide",
                 }
@@ -151,6 +150,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirSearchParam> _globalSearchParameters;
         private Dictionary<string, FhirSearchParam> _searchResultParameters;
         private Dictionary<string, FhirSearchParam> _allInteractionParameters;
+        private Dictionary<string, FhirCodeSystem> _codeSystemsByUrl;
+        private Dictionary<string, Dictionary<string, FhirValueSet>> _valueSetsByUrlByVersion;
+        private Dictionary<string, List<FhirTriplet>> _resolvedValueSets;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class. Require major version
@@ -195,6 +197,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _globalSearchParameters = new Dictionary<string, FhirSearchParam>();
             _searchResultParameters = new Dictionary<string, FhirSearchParam>();
             _allInteractionParameters = new Dictionary<string, FhirSearchParam>();
+            _codeSystemsByUrl = new Dictionary<string, FhirCodeSystem>();
+            _valueSetsByUrlByVersion = new Dictionary<string, Dictionary<string, FhirValueSet>>();
+            _resolvedValueSets = new Dictionary<string, List<FhirTriplet>>();
         }
 
         /// <summary>Values that represent search magic parameters.</summary>
@@ -271,6 +276,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Gets URL of the extensions by.</summary>
         /// <value>The extensions by URL.</value>
         public Dictionary<string, FhirComplex> ExtensionsByUrl { get => _extensionsByUrl; }
+
+        /// <summary>Gets the code systems.</summary>
+        /// <value>The code systems.</value>
+        public Dictionary<string, FhirCodeSystem> CodeSystems { get => _codeSystemsByUrl; }
+
+        /// <summary>Gets the value sets by URL by version.</summary>
+        /// <value>The value sets by URL by version.</value>
+        public Dictionary<string, Dictionary<string, FhirValueSet>> ValueSetsByUrlByVersion { get => _valueSetsByUrlByVersion; }
+
+        /// <summary>Gets the sets the resolved value belongs to.</summary>
+        /// <value>The resolved value sets.</value>
+        public Dictionary<string, List<FhirTriplet>> ResolvedValueSets { get => _resolvedValueSets; }
 
         /// <summary>Gets the extensions per path, in a dictionary keyed by URL.</summary>
         /// <value>The extensions.</value>
@@ -367,6 +384,39 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     _resourcesByName[resourceName].AddOperation(operation);
                 }
+            }
+        }
+
+        /// <summary>Adds a code system.</summary>
+        /// <param name="codeSystem">The code system.</param>
+        internal void AddCodeSystem(FhirCodeSystem codeSystem)
+        {
+            if ((codeSystem.URL == null) ||
+                _codeSystemsByUrl.ContainsKey(codeSystem.URL))
+            {
+                return;
+            }
+
+            _codeSystemsByUrl.Add(codeSystem.URL, codeSystem);
+        }
+
+        /// <summary>Adds a value set.</summary>
+        /// <param name="valueSet">Set the value belongs to.</param>
+        internal void AddValueSet(FhirValueSet valueSet)
+        {
+            if (valueSet.URL == null)
+            {
+                return;
+            }
+
+            if (!_valueSetsByUrlByVersion.ContainsKey(valueSet.URL))
+            {
+                _valueSetsByUrlByVersion.Add(valueSet.URL, new Dictionary<string, FhirValueSet>());
+            }
+
+            if (!_valueSetsByUrlByVersion[valueSet.URL].ContainsKey(valueSet.Version))
+            {
+                _valueSetsByUrlByVersion[valueSet.URL].Add(valueSet.Version, valueSet);
             }
         }
 
@@ -642,6 +692,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="extensionElementPaths">(Optional) The extension paths.</param>
         /// <param name="copySlicing">          (Optional) True to copy slicing.</param>
         /// <param name="canHideParentFields">  (Optional) True if can hide parent fields, false if not.</param>
+        /// <param name="copyValueSets">        (Optional) True to copy value sets.</param>
         /// <returns>A FhirVersionInfo.</returns>
         internal FhirVersionInfo CopyForExport(
             Dictionary<string, string> primitiveTypeMap,
@@ -653,7 +704,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             HashSet<string> extensionUrls = null,
             HashSet<string> extensionElementPaths = null,
             bool copySlicing = true,
-            bool canHideParentFields = true)
+            bool canHideParentFields = true,
+            bool copyValueSets = true)
         {
             // create our return object
             FhirVersionInfo info = new FhirVersionInfo(MajorVersion)
@@ -797,6 +849,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             foreach (KeyValuePair<string, FhirSearchParam> kvp in _allInteractionParameters)
             {
                 info._allInteractionParameters.Add(kvp.Key, kvp.Value.DeepCopy());
+            }
+
+            if (copyValueSets)
+            {
+                foreach (KeyValuePair<string, Dictionary<string, FhirValueSet>> url in _valueSetsByUrlByVersion)
+                {
+                    foreach (KeyValuePair<string, FhirValueSet> versioned in url.Value)
+                    {
+                        string key = $"{url.Key}|{versioned.Key}";
+
+                        if (info._resolvedValueSets.ContainsKey(key))
+                        {
+                            continue;
+                        }
+
+                        info._resolvedValueSets.Add(key, versioned.Value.GetValues(_codeSystemsByUrl));
+                    }
+                }
             }
 
             return info;

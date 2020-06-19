@@ -121,6 +121,267 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             };
         }
 
+
+        /// <summary>Process the value set.</summary>
+        /// <param name="vs">             The vs.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        private void ProcessValueSet(
+            fhir_2.ValueSet vs,
+            FhirVersionInfo fhirVersionInfo)
+        {
+            // ignore retired
+            if (vs.Status.Equals("retired", StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            List<FhirValueSetComposition> includes = null;
+            List<FhirValueSetComposition> excludes = null;
+            FhirValueSetExpansion expansion = null;
+
+            if ((vs.Compose != null) &&
+                (vs.Compose.Include != null) &&
+                (vs.Compose.Include.Length > 0))
+            {
+                includes = new List<FhirValueSetComposition>();
+
+                foreach (fhir_2.ValueSetComposeInclude compose in vs.Compose.Include)
+                {
+                    includes.Add(BuildComposition(compose));
+                }
+            }
+
+            if ((vs.Compose != null) &&
+                (vs.Compose.Exclude != null) &&
+                (vs.Compose.Exclude.Length > 0))
+            {
+                excludes = new List<FhirValueSetComposition>();
+
+                foreach (fhir_2.ValueSetComposeInclude compose in vs.Compose.Exclude)
+                {
+                    excludes.Add(BuildComposition(compose));
+                }
+            }
+
+            if (vs.Expansion != null)
+            {
+                Dictionary<string, dynamic> parameters = null;
+
+                if ((vs.Expansion.Parameter != null) && (vs.Expansion.Parameter.Length > 0))
+                {
+                    parameters = new Dictionary<string, dynamic>();
+
+                    foreach (fhir_2.ValueSetExpansionParameter param in vs.Expansion.Parameter)
+                    {
+                        if (param.ValueBoolean != null)
+                        {
+                            parameters.Add(param.Name, param.ValueBoolean);
+                            continue;
+                        }
+
+                        if (param.ValueCode != null)
+                        {
+                            parameters.Add(param.Name, param.ValueCode);
+                            continue;
+                        }
+
+                        if (param.ValueDateTime != null)
+                        {
+                            parameters.Add(param.Name, param.ValueDateTime);
+                            continue;
+                        }
+
+                        if (param.ValueDecimal != null)
+                        {
+                            parameters.Add(param.Name, param.ValueDecimal);
+                            continue;
+                        }
+
+                        if (param.ValueInteger != null)
+                        {
+                            parameters.Add(param.Name, param.ValueInteger);
+                            continue;
+                        }
+
+                        if (!string.IsNullOrEmpty(param.ValueString))
+                        {
+                            parameters.Add(param.Name, param.ValueString);
+                            continue;
+                        }
+
+                        if (param.ValueUri != null)
+                        {
+                            parameters.Add(param.Name, param.ValueUri);
+                            continue;
+                        }
+                    }
+                }
+
+                List<FhirTriplet> expansionContains = null;
+
+                if ((vs.Expansion.Contains != null) && (vs.Expansion.Contains.Length > 0))
+                {
+                    foreach (fhir_2.ValueSetExpansionContains contains in vs.Expansion.Contains)
+                    {
+                        AddContains(ref expansionContains, contains);
+                    }
+                }
+
+                expansion = new FhirValueSetExpansion(
+                    vs.Expansion.Id,
+                    vs.Expansion.Timestamp,
+                    vs.Expansion.Total,
+                    vs.Expansion.Offset,
+                    parameters,
+                    expansionContains);
+            }
+
+            if (string.IsNullOrEmpty(vs.Url))
+            {
+                return;
+                throw new Exception($"Cannot index ValueSet: {vs.Name} version: {vs.Version}");
+            }
+
+            if (string.IsNullOrEmpty(vs.Version))
+            {
+                return;
+                throw new Exception($"Cannot index ValueSet: {vs.Url} version: {vs.Version}");
+            }
+
+            FhirValueSet valueSet = new FhirValueSet(
+                vs.Name,
+                vs.Id,
+                vs.Version,
+                string.Empty,
+                vs.Url,
+                vs.Status,
+                vs.Description,
+                includes,
+                excludes,
+                expansion);
+
+            // add our code system
+            fhirVersionInfo.AddValueSet(valueSet);
+        }
+
+        /// <summary>Adds the contains to 'ec'.</summary>
+        /// <param name="contains">[in,out] The contains.</param>
+        /// <param name="ec">      The ec.</param>
+        private void AddContains(ref List<FhirTriplet> contains, fhir_2.ValueSetExpansionContains ec)
+        {
+            if (contains == null)
+            {
+                contains = new List<FhirTriplet>();
+            }
+
+            // TODO: Determine if the Inactive flag needs to be checked
+            if ((!string.IsNullOrEmpty(ec.System)) ||
+                (!string.IsNullOrEmpty(ec.Code)))
+            {
+                contains.Add(new FhirTriplet(
+                    ec.System,
+                    ec.Code,
+                    ec.Display,
+                    ec.Version));
+            }
+
+            if ((ec.Contains != null) && (ec.Contains.Length > 0))
+            {
+                foreach (fhir_2.ValueSetExpansionContains subContains in ec.Contains)
+                {
+                    AddContains(ref contains, subContains);
+                }
+            }
+        }
+
+        /// <summary>Builds a composition.</summary>
+        /// <param name="compose">The compose.</param>
+        /// <returns>A FhirValueSetComposition.</returns>
+        private static FhirValueSetComposition BuildComposition(fhir_2.ValueSetComposeInclude compose)
+        {
+            if (compose == null)
+            {
+                return null;
+            }
+
+            List<FhirTriplet> concepts = null;
+            List<FhirValueSetFilter> filters = null;
+            List<string> linkedValueSets = null;
+
+            if ((compose.Concept != null) && (compose.Concept.Length > 0))
+            {
+                concepts = new List<FhirTriplet>();
+
+                foreach (fhir_2.ValueSetComposeIncludeConcept concept in compose.Concept)
+                {
+                    concepts.Add(new FhirTriplet(
+                        compose.System,
+                        concept.Code,
+                        concept.Display));
+                }
+            }
+
+            if ((compose.Filter != null) && (compose.Filter.Length > 0))
+            {
+                filters = new List<FhirValueSetFilter>();
+
+                foreach (fhir_2.ValueSetComposeIncludeFilter filter in compose.Filter)
+                {
+                    filters.Add(new FhirValueSetFilter(
+                        filter.Property,
+                        filter.Op,
+                        filter.Value));
+                }
+            }
+
+            return new FhirValueSetComposition(
+                compose.System,
+                compose.Version,
+                concepts,
+                filters,
+                linkedValueSets);
+        }
+
+        /// <summary>Process the code system.</summary>
+        /// <param name="cs">             The create struct.</param>
+        /// <param name="fhirVersionInfo">FHIR Version information.</param>
+        private void ProcessCodeSystem(
+            fhir_2.ValueSetCodeSystem cs,
+            FhirVersionInfo fhirVersionInfo)
+        {
+            Dictionary<string, FhirTriplet> concepts = new Dictionary<string, FhirTriplet>();
+
+            if (cs.Concept != null)
+            {
+                foreach (fhir_2.ValueSetCodeSystemConcept concept in cs.Concept)
+                {
+                    if (string.IsNullOrEmpty(concept.Code) || concepts.ContainsKey(concept.Code))
+                    {
+                        continue;
+                    }
+
+                    concepts.Add(concept.Code, new FhirTriplet(
+                        cs.System,
+                        concept.Code,
+                        concept.Display));
+                }
+            }
+
+            FhirCodeSystem codeSystem = new FhirCodeSystem(
+                string.Empty,
+                cs.Id,
+                cs.Version,
+                string.Empty,
+                cs.System,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                concepts);
+
+            // add our code system
+            fhirVersionInfo.AddCodeSystem(codeSystem);
+        }
+
         /// <summary>Process the operation.</summary>
         /// <param name="op">             The operation.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
@@ -860,9 +1121,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // ignore
                 // case fhir_2.Conformance conformance:
                 // case fhir_2.NamingSystem namingSystem:
-                // case fhir_2.ValueSet valueSet:
 
                 // process
+                case fhir_2.ValueSetCodeSystem codeSystem:
+                    ProcessCodeSystem(codeSystem, fhirVersionInfo);
+                    break;
+
                 case fhir_2.OperationDefinition operationDefinition:
                     ProcessOperation(operationDefinition, fhirVersionInfo);
                     break;
@@ -873,6 +1137,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 case fhir_2.StructureDefinition structureDefinition:
                     ProcessStructureDef(structureDefinition, fhirVersionInfo);
+                    break;
+
+                case fhir_2.ValueSet valueSet:
+                    ProcessValueSet(valueSet, fhirVersionInfo);
                     break;
             }
         }

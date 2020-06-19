@@ -81,13 +81,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             if ((baseTypeName == "code") ||
                 ((elementTypes != null) && elementTypes.Any((e) => { return e.Key == "code"; })))
             {
-                if (!string.IsNullOrEmpty(shortDescription))
+                if ((!string.IsNullOrEmpty(shortDescription)) &&
+                    shortDescription.Contains('|'))
                 {
                     _codes = new List<string>();
                     string[] codeValues = shortDescription.Split('|');
                     foreach (string code in codeValues)
                     {
-                        _codes.Add(code.Trim());
+                        string clean = code.Trim();
+                        if (clean.Contains(" "))
+                        {
+                            clean = clean.Substring(0, clean.IndexOf(" ", StringComparison.Ordinal));
+                        }
+
+                        _codes.Add(clean.Trim());
                     }
                 }
             }

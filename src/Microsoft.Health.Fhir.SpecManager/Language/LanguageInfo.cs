@@ -156,8 +156,52 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteSearchParameters(_info.SearchResultParameters.Values, 0, "Search Result Parameters");
                 WriteSearchParameters(_info.AllInteractionParameters.Values, 0, "All Interaction Parameters");
 
+                WriteValueSets(_info.ResolvedValueSets, 0, "Value Sets");
+
                 WriteFooter();
             }
+        }
+
+        /// <summary>Writes a value sets.</summary>
+        /// <param name="valueSets">  Sets the value belongs to.</param>
+        /// <param name="indentation">The indentation.</param>
+        /// <param name="headerHint"> (Optional) The header hint.</param>
+        private void WriteValueSets(
+            Dictionary<string, List<FhirTriplet>> valueSets,
+            int indentation,
+            string headerHint = null)
+        {
+            if (!string.IsNullOrEmpty(headerHint))
+            {
+                WriteIndented(indentation, $"{headerHint}: {valueSets.Count} (unversioned)");
+            }
+
+            foreach (KeyValuePair<string, List<FhirTriplet>> valueSet in valueSets)
+            {
+                WriteIndented(
+                    indentation,
+                    $"- ValueSet: {valueSet.Key}");
+
+                foreach (FhirTriplet value in valueSet.Value)
+                {
+                    WriteIndented(
+                        indentation + 1,
+                        $"- {value.System}#{value.Code}: {value.Display}");
+                }
+            }
+        }
+
+        /// <summary>Writes a value set.</summary>
+        /// <param name="valueSet">   Set the value belongs to.</param>
+        /// <param name="indentation">The indendation.</param>
+        private void WriteValueSet(
+            FhirValueSet valueSet,
+            int indentation)
+        {
+            WriteIndented(
+                indentation,
+                $"- {valueSet.URL}|{valueSet.Version} ({valueSet.Name})");
+
         }
 
         /// <summary>Writes the complexes.</summary>
@@ -405,6 +449,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (!string.IsNullOrEmpty(element.FixedFieldName))
             {
                 WriteIndented(indentation + 1, $".{element.FixedFieldName} = {element.FixedFieldValue}");
+            }
+
+            if ((element.Codes != null) && (element.Codes.Count > 0))
+            {
+                string codes = string.Join("|", element.Codes);
+                WriteIndented(indentation + 1, $"{{{codes}}}");
             }
 
             // either step into backbone definition OR extensions, don't write both

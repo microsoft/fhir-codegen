@@ -112,15 +112,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public FhirOperation DeepCopy()
         {
             List<string> resourceTypes = new List<string>();
-            foreach (string resourceType in ResourceTypes)
+
+            if (ResourceTypes != null)
             {
-                resourceTypes.Add(string.Copy(resourceType));
+                foreach (string resourceType in ResourceTypes)
+                {
+                    resourceTypes.Add(string.Copy(resourceType));
+                }
             }
 
             List<FhirParameter> parameters = new List<FhirParameter>();
-            foreach (FhirParameter parameter in Parameters)
+
+            if (Parameters != null)
             {
-                parameters.Add(parameter.DeepCopy());
+                foreach (FhirParameter parameter in Parameters)
+                {
+                    parameters.Add(parameter.DeepCopy());
+                }
             }
 
             return new FhirOperation(

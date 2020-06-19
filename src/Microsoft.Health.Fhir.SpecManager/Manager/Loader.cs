@@ -88,6 +88,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // update our structure
             fhirVersionInfo.VersionString = packageInfo.Version;
 
+            // process Code Systems
+            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo);
+
+            // process Value Sets
+            ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo);
+
             // process structure definitions
             ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);
 
