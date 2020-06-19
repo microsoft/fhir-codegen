@@ -865,6 +865,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         }
 
                         info._resolvedValueSets.Add(key, versioned.Value.GetValues(_codeSystemsByUrl));
+
+                        if (info._resolvedValueSets[key].Count == 0)
+                        {
+                            info._resolvedValueSets.Remove(key);
+                        }
                     }
                 }
             }

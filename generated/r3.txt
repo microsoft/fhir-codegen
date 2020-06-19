@@ -14323,7 +14323,7 @@ Search Result Parameters: 8
   ?_containedType=string (_containedType)
 All Interaction Parameters: 1
   ?_format=string (_format)
-Value Sets: 1150 (unversioned)
+Value Sets: 1080 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/abstract-types|3.0.2
   - http://hl7.org/fhir/abstract-types#Any: Any
   - http://hl7.org/fhir/abstract-types#Type: Type
@@ -14397,7 +14397,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/action-grouping-behavior#logical-group: Logical Group
   - http://hl7.org/fhir/action-grouping-behavior#sentence-group: Sentence Group
   - http://hl7.org/fhir/action-grouping-behavior#visual-group: Visual Group
-- ValueSet: http://hl7.org/fhir/ValueSet/action-participant-role|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/action-participant-type|3.0.2
   - http://hl7.org/fhir/action-participant-type#patient: Patient
   - http://hl7.org/fhir/action-participant-type#practitioner: Practitioner
@@ -14440,8 +14439,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/activity-definition-category#assessment: Assessment
   - http://hl7.org/fhir/activity-definition-category#education: Education
   - http://hl7.org/fhir/activity-definition-category#treatment: Treatment
-- ValueSet: http://hl7.org/fhir/ValueSet/activity-reason|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/additional-instruction-codes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/additionalmaterials|3.0.2
   - http://hl7.org/fhir/additionalmaterials#document: Document
   - http://hl7.org/fhir/additionalmaterials#email: Email
@@ -14472,7 +14469,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/adjudication#eligpercent: Eligible %
   - http://hl7.org/fhir/adjudication#tax: Emergency Department
   - http://hl7.org/fhir/adjudication#total: Total
-- ValueSet: http://hl7.org/fhir/ValueSet/administration-method-codes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/administrative-gender|3.0.2
   - http://hl7.org/fhir/administrative-gender#female: Female
   - http://hl7.org/fhir/administrative-gender#male: Male
@@ -14504,7 +14500,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/adverse-event-seriousness#Mild: Mild
   - http://hl7.org/fhir/adverse-event-seriousness#Moderate: Moderate
   - http://hl7.org/fhir/adverse-event-seriousness#Severe: Severe
-- ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-type|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/age-units|3.0.2
   - http://unitsofmeasure.org#a: years
   - http://unitsofmeasure.org#d: days
@@ -14512,7 +14507,6 @@ Value Sets: 1150 (unversioned)
   - http://unitsofmeasure.org#min: minutes
   - http://unitsofmeasure.org#mo: months
   - http://unitsofmeasure.org#wk: weeks
-- ValueSet: http://hl7.org/fhir/ValueSet/all-languages|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/all-types|3.0.2
   - http://hl7.org/fhir/abstract-types#Any: Any
   - http://hl7.org/fhir/abstract-types#Type: Type
@@ -14712,7 +14706,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/allergy-verification-status#entered-in-error: Entered In Error
   - http://hl7.org/fhir/allergy-verification-status#refuted: Refuted
   - http://hl7.org/fhir/allergy-verification-status#unconfirmed: Unconfirmed
-- ValueSet: http://hl7.org/fhir/ValueSet/allergyintolerance-code|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/animal-breeds|3.0.2
   - http://snomed.info/sct#1006005: Percheron horse (organism)
   - http://snomed.info/sct#10261003: Belgium landrace pig (organism)
@@ -17108,7 +17101,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/appointmentstatus#noshow: No Show
   - http://hl7.org/fhir/appointmentstatus#pending: Pending
   - http://hl7.org/fhir/appointmentstatus#proposed: Proposed
-- ValueSet: http://hl7.org/fhir/ValueSet/approach-site-codes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/assert-direction-codes|3.0.2
   - http://hl7.org/fhir/assert-direction-codes#request: request
   - http://hl7.org/fhir/assert-direction-codes#response: response
@@ -17414,7 +17406,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/binding-strength#extensible: Extensible
   - http://hl7.org/fhir/binding-strength#preferred: Preferred
   - http://hl7.org/fhir/binding-strength#required: Required
-- ValueSet: http://hl7.org/fhir/ValueSet/body-site|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/bodysite-laterality|3.0.2
   - http://snomed.info/sct#419161000: Unilateral left
   - http://snomed.info/sct#419465000: Unilateral right
@@ -24098,7 +24089,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/care-plan-activity-category#other: Other
   - http://hl7.org/fhir/care-plan-activity-category#procedure: Procedure
   - http://hl7.org/fhir/care-plan-activity-category#supply: Supply
-- ValueSet: http://hl7.org/fhir/ValueSet/care-plan-activity-outcome|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/care-plan-activity-status|3.0.2
   - http://hl7.org/fhir/care-plan-activity-status#cancelled: Cancelled
   - http://hl7.org/fhir/care-plan-activity-status#completed: Completed
@@ -24107,8 +24097,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/care-plan-activity-status#on-hold: On Hold
   - http://hl7.org/fhir/care-plan-activity-status#scheduled: Scheduled
   - http://hl7.org/fhir/care-plan-activity-status#unknown: Unknown
-- ValueSet: http://hl7.org/fhir/ValueSet/care-plan-activity|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/care-plan-category|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/care-plan-intent|3.0.2
   - http://hl7.org/fhir/care-plan-intent#option: Option
   - http://hl7.org/fhir/care-plan-intent#order: Order
@@ -24218,12 +24206,10 @@ Value Sets: 1150 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/classification-or-context|3.0.2
   - http://hl7.org/fhir/classification-or-context#classification: Classification
   - http://hl7.org/fhir/classification-or-context#context: Context
-- ValueSet: http://hl7.org/fhir/ValueSet/clinical-findings|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/clinical-impression-status|3.0.2
   - http://hl7.org/fhir/clinical-impression-status#completed: Completed
   - http://hl7.org/fhir/clinical-impression-status#draft: In progress
   - http://hl7.org/fhir/clinical-impression-status#entered-in-error: Entered in Error
-- ValueSet: http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/codesystem-content-mode|3.0.2
   - http://hl7.org/fhir/codesystem-content-mode#complete: Complete
   - http://hl7.org/fhir/codesystem-content-mode#example: Example
@@ -24286,19 +24272,15 @@ Value Sets: 1150 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-category|3.0.2
   - http://hl7.org/fhir/condition-category#encounter-diagnosis: Encounter Diagnosis
   - http://hl7.org/fhir/condition-category#problem-list-item: Problem List Item
-- ValueSet: http://hl7.org/fhir/ValueSet/condition-cause|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-clinical|3.0.2
   - http://hl7.org/fhir/condition-clinical#active: Active
   - http://hl7.org/fhir/condition-clinical#inactive: Inactive
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-code|3.0.2
   - http://snomed.info/sct#160245001: No current problems or disability
-- ValueSet: http://hl7.org/fhir/ValueSet/condition-outcome|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/condition-predecessor|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-severity|3.0.2
   - http://snomed.info/sct#24484000: 
   - http://snomed.info/sct#255604002: 
   - http://snomed.info/sct#6736007: 
-- ValueSet: http://hl7.org/fhir/ValueSet/condition-stage|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-state|3.0.2
   - http://hl7.org/fhir/condition-state#active: Active
   - http://hl7.org/fhir/condition-state#inactive: Inactive
@@ -24484,7 +24466,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/resource-types#VisionPrescription: VisionPrescription
   - urn:ietf:bcp:13#application/hl7-cda+xml: CDA Documents
   - urn:ietf:rfc:3986#http://hl7.org/fhir/StructureDefinition/lipidprofile: Lipid Lab Report
-- ValueSet: http://hl7.org/fhir/ValueSet/consent-content-code|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/consent-data-meaning|3.0.2
   - http://hl7.org/fhir/consent-data-meaning#authoredby: AuthoredBy
   - http://hl7.org/fhir/consent-data-meaning#dependents: Dependents
@@ -24719,8 +24700,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/data-types#uri: uri
   - http://hl7.org/fhir/data-types#uuid: uuid
   - http://hl7.org/fhir/data-types#xhtml: XHTML
-- ValueSet: http://hl7.org/fhir/ValueSet/dataelement-sdcobjectclass|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/dataelement-sdcobjectclassproperty|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/dataelement-stringency|3.0.2
   - http://hl7.org/fhir/dataelement-stringency#comparable: Comparable
   - http://hl7.org/fhir/dataelement-stringency#flexible: Flexible
@@ -24915,7 +24894,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/definition-topic#assessment: Assessment
   - http://hl7.org/fhir/definition-topic#education: Education
   - http://hl7.org/fhir/definition-topic#treatment: Treatment
-- ValueSet: http://hl7.org/fhir/ValueSet/designation-use|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/detectedissue-category|3.0.2
   - http://hl7.org/fhir/v3/ActCode#C: corrected
   - http://hl7.org/fhir/v3/ActCode#COPAY: 
@@ -25030,8 +25008,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/detectedissue-severity#high: High
   - http://hl7.org/fhir/detectedissue-severity#low: Low
   - http://hl7.org/fhir/detectedissue-severity#moderate: Moderate
-- ValueSet: http://hl7.org/fhir/ValueSet/device-action|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/device-kind|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/device-safety|3.0.2
   - urn:oid:2.16.840.1.113883.3.26.1.1#C101673: Labeled as Containing Natural Rubber Latex
   - urn:oid:2.16.840.1.113883.3.26.1.1#C106038: Not Made with Natural Rubber Latex
@@ -25051,7 +25027,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/device-status#entered-in-error: Entered in Error
   - http://hl7.org/fhir/device-status#inactive: Inactive
   - http://hl7.org/fhir/device-status#unknown: Unknown
-- ValueSet: http://hl7.org/fhir/ValueSet/devicemetric-type|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/diagnosis-role|3.0.2
   - http://hl7.org/fhir/diagnosis-role#AD: Admission diagnosis
   - http://hl7.org/fhir/diagnosis-role#CC: Chief complaint
@@ -25163,7 +25138,6 @@ Value Sets: 1150 (unversioned)
   - http://dicom.nema.org/resources/ontology/DCM#VA: Visual Acuity
   - http://dicom.nema.org/resources/ontology/DCM#XA: X-Ray Angiography
   - http://dicom.nema.org/resources/ontology/DCM#XC: External-camera Photography
-- ValueSet: http://hl7.org/fhir/ValueSet/diet-type|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/digital-media-subtype|3.0.2
   - http://hl7.org/fhir/media-subtype#diagram: Diagram
   - http://hl7.org/fhir/media-subtype#face: Face
@@ -25273,7 +25247,6 @@ Value Sets: 1150 (unversioned)
   - http://loinc.org#8648-8: 
   - http://loinc.org#8653-8: 
   - http://loinc.org#8716-3: 
-- ValueSet: http://hl7.org/fhir/ValueSet/doc-typecodes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/document-mode|3.0.2
   - http://hl7.org/fhir/document-mode#consumer: Consumer
   - http://hl7.org/fhir/document-mode#producer: Producer
@@ -25327,7 +25300,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/v3/ParticipationType#PART: Participation
   - http://hl7.org/fhir/v3/ParticipationType#PPRF: 
   - http://hl7.org/fhir/v3/ParticipationType#SPRF: 
-- ValueSet: http://hl7.org/fhir/ValueSet/encounter-reason|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/encounter-special-arrangements|3.0.2
   - http://hl7.org/fhir/encounter-special-arrangements#add-bed: Additional bedding
   - http://hl7.org/fhir/encounter-special-arrangements#att: Attendant
@@ -25595,13 +25567,11 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/ex-revenue-center#0450: Emergency Room
   - http://hl7.org/fhir/ex-revenue-center#0451: Emergency Room - EM/EMTALA
   - http://hl7.org/fhir/ex-revenue-center#0452: Emergency Room - beyond EMTALA
-- ValueSet: http://hl7.org/fhir/ValueSet/example-expansion|20150622
 - ValueSet: http://hl7.org/fhir/ValueSet/example-extensional|20150622
   - http://loinc.org#14647-2: Cholesterol [Moles/Volume]
   - http://loinc.org#2093-3: Cholesterol [Mass/Volume]
   - http://loinc.org#35200-5: Cholesterol [Mass Or Moles/Volume]
   - http://loinc.org#9342-7: Cholesterol [Percentile]
-- ValueSet: http://hl7.org/fhir/ValueSet/example-intensional|20150622
 - ValueSet: http://hl7.org/fhir/ValueSet/explanationofbenefit-status|3.0.2
   - http://hl7.org/fhir/explanationofbenefit-status#active: Active
   - http://hl7.org/fhir/explanationofbenefit-status#cancelled: Cancelled
@@ -28923,7 +28893,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/flag-category#diet: Diet
   - http://hl7.org/fhir/flag-category#drug: Drug
   - http://hl7.org/fhir/flag-category#lab: Lab
-- ValueSet: http://hl7.org/fhir/ValueSet/flag-code|1.0.0
 - ValueSet: http://hl7.org/fhir/ValueSet/flag-priority|3.0.2
   - http://hl7.org/fhir/flag-priority-code#PH: High priority
   - http://hl7.org/fhir/flag-priority-code#PL: Low priority
@@ -28948,7 +28917,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/v3/ParticipationType#DON: donor
   - http://hl7.org/fhir/v3/RoleCode#SPS: spouse
   - http://snomed.info/sct#83418008: Fetus
-- ValueSet: http://hl7.org/fhir/ValueSet/food-type|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/formatcodes|20150326
   - urn:oid:1.3.6.1.4.1.19376.1.2.3#urn:hl7-org:sdwg:ccda-nonXMLBody:1.1: For documents following C-CDA 1.1 constraints using a non structured body. 
   - urn:oid:1.3.6.1.4.1.19376.1.2.3#urn:hl7-org:sdwg:ccda-nonXMLBody:2.1: For documents following C-CDA 2.1 constraints using a non structured body. 
@@ -29258,7 +29226,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/item-type#display: Display
   - http://hl7.org/fhir/item-type#group: Group
   - http://hl7.org/fhir/item-type#question: Question
-- ValueSet: http://hl7.org/fhir/ValueSet/jurisdiction|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/kos-title|3.0.2
   - http://dicom.nema.org/resources/ontology/DCM#113000: 
   - http://dicom.nema.org/resources/ontology/DCM#113002: 
@@ -29416,7 +29383,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/location-status#active: Active
   - http://hl7.org/fhir/location-status#inactive: Inactive
   - http://hl7.org/fhir/location-status#suspended: Suspended
-- ValueSet: http://hl7.org/fhir/ValueSet/manifestation-or-symptom|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/map-context-type|3.0.2
   - http://hl7.org/fhir/map-context-type#type: Type
   - http://hl7.org/fhir/map-context-type#variable: Variable
@@ -29522,7 +29488,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/measurement-principle#optical: MSP Optical
   - http://hl7.org/fhir/measurement-principle#other: MSP Other
   - http://hl7.org/fhir/measurement-principle#thermal: MSP Thermal
-- ValueSet: http://hl7.org/fhir/ValueSet/media-view|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/medication-admin-category|3.0.2
   - http://hl7.org/fhir/medication-admin-category#community: Community
   - http://hl7.org/fhir/medication-admin-category#inpatient: Inpatient
@@ -29534,8 +29499,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/medication-admin-status#on-hold: On Hold
   - http://hl7.org/fhir/medication-admin-status#stopped: Stopped
   - http://hl7.org/fhir/medication-admin-status#unknown: Unknown
-- ValueSet: http://hl7.org/fhir/ValueSet/medication-as-needed-reason|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/medication-codes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/medication-dispense-category|3.0.2
   - http://hl7.org/fhir/medication-dispense-category#community: Community
   - http://hl7.org/fhir/medication-dispense-category#inpatient: Inpatient
@@ -29547,7 +29510,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/medication-dispense-status#on-hold: On Hold
   - http://hl7.org/fhir/medication-dispense-status#preparation: Preparation
   - http://hl7.org/fhir/medication-dispense-status#stopped: Stopped
-- ValueSet: http://hl7.org/fhir/ValueSet/medication-form-codes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/medication-package-form|3.0.2
   - http://hl7.org/fhir/medication-package-form#ampoule: Ampoule
   - http://hl7.org/fhir/medication-package-form#bottle: Bottle
@@ -29861,7 +29823,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/observation-category#survey: Survey
   - http://hl7.org/fhir/observation-category#therapy: Therapy
   - http://hl7.org/fhir/observation-category#vital-signs: Vital Signs
-- ValueSet: http://hl7.org/fhir/ValueSet/observation-codes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-interpretation|3.0.2
   - http://hl7.org/fhir/v2/0078#<: Off scale low
   - http://hl7.org/fhir/v2/0078#>: Off scale high
@@ -29902,7 +29863,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/v2/0078#W: Worse
   - http://hl7.org/fhir/v2/0078#WR: Weakly reactive
   - http://hl7.org/fhir/v2/0078#null: No range defined, or normal ranges don't apply
-- ValueSet: http://hl7.org/fhir/ValueSet/observation-methods|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-relationshiptypes|3.0.2
   - http://hl7.org/fhir/observation-relationshiptypes#derived-from: Derived From
   - http://hl7.org/fhir/observation-relationshiptypes#has-member: Has Member
@@ -30091,7 +30051,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/v3/RoleCode#phlebotomist: Phlebotomist
   - http://hl7.org/fhir/v3/RoleCode#subject: Self
   - http://hl7.org/fhir/v3/RoleCode#thirdParty: Third Party
-- ValueSet: http://hl7.org/fhir/ValueSet/participant-role|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/participantrequired|3.0.2
   - http://hl7.org/fhir/participantrequired#information-only: Information Only
   - http://hl7.org/fhir/participantrequired#optional: Optional
@@ -30115,7 +30074,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/payment-type#adjustment: Adjustment
   - http://hl7.org/fhir/payment-type#advance: Advance
   - http://hl7.org/fhir/payment-type#payment: Payment
-- ValueSet: http://hl7.org/fhir/ValueSet/performer-role|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/plan-definition-type|3.0.2
   - http://hl7.org/fhir/plan-definition-type#eca-rule: ECA Rule
   - http://hl7.org/fhir/plan-definition-type#order-set: Order Set
@@ -30166,7 +30124,6 @@ Value Sets: 1150 (unversioned)
   - http://snomed.info/sct#409063005: 
   - http://snomed.info/sct#409073007: 
   - http://snomed.info/sct#46947000: 
-- ValueSet: http://hl7.org/fhir/ValueSet/procedure-code|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-followup|3.0.2
   - http://snomed.info/sct#18949003: 
   - http://snomed.info/sct#225164002: 
@@ -30178,7 +30135,6 @@ Value Sets: 1150 (unversioned)
   - http://snomed.info/sct#359825008: 
   - http://snomed.info/sct#394725008: 
   - http://snomed.info/sct#447346005: 
-- ValueSet: http://hl7.org/fhir/ValueSet/procedure-not-performed-reason|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-outcome|3.0.2
   - http://snomed.info/sct#385669000: 
   - http://snomed.info/sct#385670004: 
@@ -30190,7 +30146,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/procedure-progress-status-code#in-recovery-room: In Recovery Room
   - http://hl7.org/fhir/procedure-progress-status-code#open-incision: Open Incision
   - http://hl7.org/fhir/procedure-progress-status-code#prepared: Prepared
-- ValueSet: http://hl7.org/fhir/ValueSet/procedure-reason|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/process-outcome|3.0.2
   - http://hl7.org/fhir/processoutcomecodes#complete: Complete
   - http://hl7.org/fhir/processoutcomecodes#error: Error
@@ -30199,7 +30154,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/processpriority#deferred: Deferred
   - http://hl7.org/fhir/processpriority#normal: Normal
   - http://hl7.org/fhir/processpriority#stat: Immediate
-- ValueSet: http://hl7.org/fhir/ValueSet/profile-code|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/property-representation|3.0.2
   - http://hl7.org/fhir/property-representation#cdaText: CDA Text Format
   - http://hl7.org/fhir/property-representation#typeAttr: Type Attribute
@@ -30241,7 +30195,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/ex-providerqualification#311405: Dentist
   - http://hl7.org/fhir/ex-providerqualification#604210: Optometrist
   - http://hl7.org/fhir/ex-providerqualification#604215: Ophthalmologist
-- ValueSet: http://hl7.org/fhir/ValueSet/provider-taxonomy|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/publication-status|3.0.2
   - http://hl7.org/fhir/publication-status#active: Active
   - http://hl7.org/fhir/publication-status#draft: Draft
@@ -30264,7 +30217,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/questionnaire-answers-status#entered-in-error: Entered in Error
   - http://hl7.org/fhir/questionnaire-answers-status#in-progress: In Progress
   - http://hl7.org/fhir/questionnaire-answers-status#stopped: Stopped
-- ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-answers|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-category|3.0.2
   - http://snomed.info/sct#273384008: Consumer satisfaction questionnaire
   - http://snomed.info/sct#273479001: General health questionnaire
@@ -30278,7 +30230,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/questionnaire-item-control#group: 
   - http://hl7.org/fhir/questionnaire-item-control#question: 
   - http://hl7.org/fhir/questionnaire-item-control#text: 
-- ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-questions|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-usage-mode|3.0.2
   - http://hl7.org/fhir/questionnaire-usage-mode#capture: Capture Only
   - http://hl7.org/fhir/questionnaire-usage-mode#capture-display: Capture & Display
@@ -30298,8 +30249,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/reason-medication-given#a: None
   - http://hl7.org/fhir/reason-medication-given#b: Given as Ordered
   - http://hl7.org/fhir/reason-medication-given#c: Emergency
-- ValueSet: http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/reason-medication-not-taken-codes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/reference-handling-policy|3.0.2
   - http://hl7.org/fhir/reference-handling-policy#enforced: Reference Integrity Enforced
   - http://hl7.org/fhir/reference-handling-policy#literal: Literal References
@@ -30317,7 +30266,6 @@ Value Sets: 1150 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/referencerange-meaning|3.0.2
   - http://hl7.org/fhir/referencerange-meaning#endocrine: Endocrine
   - http://hl7.org/fhir/referencerange-meaning#type: Type
-- ValueSet: http://hl7.org/fhir/ValueSet/referral-type|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/related-artifact-type|3.0.2
   - http://hl7.org/fhir/related-artifact-type#citation: Citation
   - http://hl7.org/fhir/related-artifact-type#composed-of: Composed Of
@@ -30392,7 +30340,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/report-action-result-codes#pass: Pass
   - http://hl7.org/fhir/report-action-result-codes#skip: Skip
   - http://hl7.org/fhir/report-action-result-codes#warning: Warning
-- ValueSet: http://hl7.org/fhir/ValueSet/report-codes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/report-participant-type|3.0.2
   - http://hl7.org/fhir/report-participant-type#client: Client
   - http://hl7.org/fhir/report-participant-type#server: Server
@@ -30601,7 +30548,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/risk-probability#low: Low likelihood
   - http://hl7.org/fhir/risk-probability#moderate: Moderate likelihood
   - http://hl7.org/fhir/risk-probability#negligible: Negligible likelihood
-- ValueSet: http://hl7.org/fhir/ValueSet/route-codes|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/search-comparator|3.0.2
   - http://hl7.org/fhir/search-comparator#ap: Approximately
   - http://hl7.org/fhir/search-comparator#eb: Ends Before
@@ -30642,7 +30588,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/search-xpath-usage#normal: Normal
   - http://hl7.org/fhir/search-xpath-usage#other: Other
   - http://hl7.org/fhir/search-xpath-usage#phonetic: Phonetic
-- ValueSet: http://hl7.org/fhir/ValueSet/security-labels|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/security-role-type|1.8.0
   - http://dicom.nema.org/resources/ontology/DCM#110150: 
   - http://dicom.nema.org/resources/ontology/DCM#110151: 
@@ -30742,10 +30687,6 @@ Value Sets: 1150 (unversioned)
   - http://www.hl7.org/fhir/contractsignertypecodes#TRANS: 
   - http://www.hl7.org/fhir/contractsignertypecodes#VALID: 
   - http://www.hl7.org/fhir/contractsignertypecodes#VERF: 
-- ValueSet: http://hl7.org/fhir/ValueSet/sequence-quality-method|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/sequence-quality-standardSequence|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/sequence-referenceSeq|3.0.2
-- ValueSet: http://hl7.org/fhir/ValueSet/sequence-species|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/sequence-type|3.0.2
   - http://hl7.org/fhir/sequence-type#aa: AA Sequence
   - http://hl7.org/fhir/sequence-type#dna: DNA Sequence
@@ -31587,7 +31528,6 @@ Value Sets: 1150 (unversioned)
   - http://example.com#5: ROUTINE
   - http://example.com#6: NURSE COLLECT
   - http://example.com#7: CALL OR FAX
-- ValueSet: http://hl7.org/fhir/ValueSet/specimen-container-type|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/specimen-processing-procedure|3.0.2
   - http://hl7.org/fhir/v2/0373#ACID: Acidification
   - http://hl7.org/fhir/v2/0373#ALK: Alkalization
@@ -31629,7 +31569,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/substance-category#drug: Drug or Medicament
   - http://hl7.org/fhir/substance-category#food: Dietary Substance
   - http://hl7.org/fhir/substance-category#material: Material
-- ValueSet: http://hl7.org/fhir/ValueSet/substance-code|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/substance-status|3.0.2
   - http://hl7.org/fhir/substance-status#active: Active
   - http://hl7.org/fhir/substance-status#entered-in-error: Entered in Error
@@ -31680,7 +31619,6 @@ Value Sets: 1150 (unversioned)
   - http://snomed.info/sct#444381000124107: Liquid electrolyte replacement supplement
   - http://snomed.info/sct#444401000124107: Frozen electrolyte replacement supplement
   - http://snomed.info/sct#444431000124104: Pediatric reduced energy formula
-- ValueSet: http://hl7.org/fhir/ValueSet/supply-item|1.0
 - ValueSet: http://hl7.org/fhir/ValueSet/supplydelivery-status|3.0.2
   - http://hl7.org/fhir/supplydelivery-status#abandoned: Abandoned
   - http://hl7.org/fhir/supplydelivery-status#completed: Delivered
@@ -31952,7 +31890,6 @@ Value Sets: 1150 (unversioned)
   - http://unitsofmeasure.org#[lb_av]: 
   - http://unitsofmeasure.org#g: 
   - http://unitsofmeasure.org#kg: 
-- ValueSet: http://hl7.org/fhir/ValueSet/ucum-units|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-vitals-common|3.0.2
   - http://unitsofmeasure.org#%: percent
   - http://unitsofmeasure.org#/min: per minute
@@ -31997,7 +31934,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/usage-context-type#user: User Type
   - http://hl7.org/fhir/usage-context-type#venue: Clinical Venue
   - http://hl7.org/fhir/usage-context-type#workflow: Workflow Setting
-- ValueSet: http://hl7.org/fhir/ValueSet/use-context|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/usps-state|3.0.2
   - https://www.usps.com/#AK: Alaska
   - https://www.usps.com/#AL: Alabama
@@ -39488,7 +39424,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/v3/ActStatus#normal: normal
   - http://hl7.org/fhir/v3/ActStatus#nullified: nullified
   - http://hl7.org/fhir/v3/ActStatus#obsolete: obsolete
-- ValueSet: http://hl7.org/fhir/ValueSet/v3-ActSubstanceAdminSubstitutionCode|2014-03-26
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActTaskCode|2014-03-26
   - http://hl7.org/fhir/v3/ActCode#C: corrected
   - http://hl7.org/fhir/v3/ActCode#COPAY: 
@@ -39749,7 +39684,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/v3/DocumentCompletion#NU: nullified document
   - http://hl7.org/fhir/v3/DocumentCompletion#PA: pre-authenticated
   - http://hl7.org/fhir/v3/DocumentCompletion#UC: unsigned completed document
-- ValueSet: http://hl7.org/fhir/ValueSet/v3-DocumentSectionType|2014-03-26
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-DocumentStorage|2016-11-11
   - http://hl7.org/fhir/v3/DocumentStorage#AC: active
   - http://hl7.org/fhir/v3/DocumentStorage#AR: archived (not active)
@@ -39989,7 +39923,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/v3/HtmlLinkType#start: start
   - http://hl7.org/fhir/v3/HtmlLinkType#stylesheet: stylesheet
   - http://hl7.org/fhir/v3/HtmlLinkType#subsection: subsection
-- ValueSet: http://hl7.org/fhir/ValueSet/v3-HumanLanguage|2014-03-26
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-IdentifierReliability|2016-11-11
   - http://hl7.org/fhir/v3/IdentifierReliability#ISS: Issued by System
   - http://hl7.org/fhir/v3/IdentifierReliability#UNV: Unverified by system
@@ -40691,7 +40624,6 @@ Value Sets: 1150 (unversioned)
   - http://hl7.org/fhir/v3/DocumentCompletion#DO: 
   - http://hl7.org/fhir/v3/DocumentCompletion#LA: 
   - http://hl7.org/fhir/v3/DocumentCompletion#UC: 
-- ValueSet: http://hl7.org/fhir/ValueSet/v3-ProvenanceEventCurrentState|2014-08-07
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse|2014-03-26
   - http://hl7.org/fhir/v3/ActReason#BONUS: 
   - http://hl7.org/fhir/v3/ActReason#CHD: Children only
@@ -41061,7 +40993,6 @@ Value Sets: 1150 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RouteOfAdministration|2016-11-11
   - http://hl7.org/fhir/v3/RouteOfAdministration#_RouteByMethod: RouteByMethod
   - http://hl7.org/fhir/v3/RouteOfAdministration#_RouteBySite: RouteBySite
-- ValueSet: http://hl7.org/fhir/ValueSet/v3-SecurityControlObservationValue|2014-03-26
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SecurityIntegrityObservationValue|2014-03-26
   - http://hl7.org/fhir/v3/ObservationValue#_ActCoverageAssessmentObservationValue: ActCoverageAssessmentObservationValue
   - http://hl7.org/fhir/v3/ObservationValue#_AllergyTestValue: AllergyTestValue
@@ -41646,7 +41577,6 @@ Value Sets: 1150 (unversioned)
   - http://snomed.info/sct#398102009: 
   - http://snomed.info/sct#709410003: 
   - http://snomed.info/sct#76902006: 
-- ValueSet: http://hl7.org/fhir/ValueSet/vaccine-code|3.0.2
 - ValueSet: http://hl7.org/fhir/ValueSet/variant-state|3.0.2
   - http://hl7.org/fhir/variant-state#absent: absent
   - http://hl7.org/fhir/variant-state#negative: negative
