@@ -15,6 +15,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
     /// <summary>A language C# prototype.</summary>
     public sealed class LanguageCSharpBasic : ILanguage
     {
+        /// <summary>The systems named by display.</summary>
+        private static HashSet<string> _systemsNamedByDisplay = new HashSet<string>()
+        {
+            /// <summary>Units of Measure have incomprehensible codes after naming substitutions.</summary>
+            "http://unitsofmeasure.org",
+        };
+
+        private static HashSet<string> _systemsNamedByCode = new HashSet<string>()
+        {
+            /// <summary>Operation Outcomes include c-style string formats in display.</summary>
+            "http://terminology.hl7.org/CodeSystem/operation-outcome",
+
+            /// <summary>SMART descriptions have quoted values.</summary>
+            "http://terminology.hl7.org/CodeSystem/smart-capabilities",
+
+            /// <summary>Display values are too long to be useful.</summary>
+            "http://terminology.hl7.org/CodeSystem/v2-0178",
+            /// <summary>Display values are too long to be useful.</summary>
+            "http://terminology.hl7.org/CodeSystem/v2-0277",
+
+            /// <summary>Display includes operation symbols: $.</summary>
+            "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+        };
+
         /// <summary>FHIR information we are exporting.</summary>
         private FhirVersionInfo _info;
 
@@ -241,18 +265,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteHeader();
 
+                // open namespace
+                WriteIndented(0, "namespace fhir");
+                WriteIndented(0, "{");
+
                 if (options.PrimitiveNameStyle != FhirTypeBase.NamingConvention.None)
                 {
-                    WritePrimitiveTypes(_info.PrimitiveTypes.Values, 0);
+                    WritePrimitiveTypes(_info.PrimitiveTypes.Values, 1);
                 }
 
                 if (options.ComplexTypeNameStyle != FhirTypeBase.NamingConvention.None)
                 {
-                    WriteComplexes(_info.ComplexTypes.Values, 0, false);
-                    WriteComplexes(_info.Resources.Values, 0, true);
+                    WriteComplexes(_info.ComplexTypes.Values, 1, false);
+                    WriteComplexes(_info.Resources.Values, 1, true);
+                }
+
+                if (options.EnumStyle != FhirTypeBase.NamingConvention.None)
+                {
+                    WriteValueSets(_info.ValueSetsByUrl.Values, 1);
                 }
 
                 WritePolymorphicHelpers(1);
+
+                // close namespace
+                WriteIndented(0, "}");
 
                 WriteFooter();
             }
@@ -323,6 +359,137 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             // close class
             WriteIndented(indentation, "}");
+        }
+
+        /// <summary>Writes a value sets.</summary>
+        /// <param name="valueSets">  List of valueSetCollections.</param>
+        /// <param name="indentation">The indentation.</param>
+        private void WriteValueSets(
+            IEnumerable<FhirValueSetCollection> valueSets,
+            int indentation)
+        {
+            foreach (FhirValueSetCollection collection in valueSets.OrderBy(c => c.URL))
+            {
+                foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderBy(v => v.Version))
+                {
+                    WriteValueSet(
+                        vs,
+                        indentation);
+                }
+            }
+        }
+
+        /// <summary>Writes a value set.</summary>
+        /// <param name="vs">         The value set.</param>
+        /// <param name="indentation">The indentation.</param>
+        private void WriteValueSet(
+            FhirValueSet vs,
+            int indentation)
+        {
+            string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
+
+            vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
+
+            if (!string.IsNullOrEmpty(vs.Description))
+            {
+                WriteIndentedComment(indentation, vs.Description);
+            }
+            else
+            {
+                WriteIndentedComment(indentation, $"Value Set: {vs.URL}|{vs.Version}");
+            }
+
+            WriteIndented(
+                indentation,
+                $"public abstract class {vsName}");
+
+            WriteIndented(
+                indentation,
+                "{");
+
+            bool prefixWithSystem = vs.ReferencedCodeSystems.Count > 1;
+            HashSet<string> usedValues = new HashSet<string>();
+
+            foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
+            {
+                string input = concept.Display;
+                if (_systemsNamedByDisplay.Contains(concept.System))
+                {
+                    input = concept.Display;
+                }
+                else if (_systemsNamedByCode.Contains(concept.System))
+                {
+                    input = concept.Code;
+                }
+                else if (string.IsNullOrEmpty(input))
+                {
+                    input = concept.Code;
+                }
+
+                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords);
+                string codeValue = FhirUtils.SanitizeForValue(concept.Code);
+
+                codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
+
+                string name;
+
+                if (prefixWithSystem)
+                {
+                    name = $"{codeName}_{concept.SystemLocalName}";
+                }
+                else
+                {
+                    name = codeName;
+                }
+
+                if (usedValues.Contains(name))
+                {
+                    // start at 2 so that the unadorned version makes sense as v1
+                    for (int i = 2; i < 1000; i++)
+                    {
+                        if (usedValues.Contains($"{name}_{i}"))
+                        {
+                            continue;
+                        }
+
+                        name = $"{name}_{i}";
+                        break;
+                    }
+                }
+
+                usedValues.Add(name);
+
+                WriteIndented(
+                    indentation + 1,
+                    $"public static readonly Coding {name} = new Coding");
+
+                WriteIndented(
+                    indentation + 1,
+                    "{");
+
+                WriteIndented(
+                    indentation + 2,
+                    $"Code = \"{codeValue}\",");
+
+                if (!string.IsNullOrEmpty(concept.Display))
+                {
+                    WriteIndented(
+                        indentation + 2,
+                        $"Display = \"{FhirUtils.SanitizeForQuoted(concept.Display)}\",");
+                }
+
+                WriteIndented(
+                    indentation + 2,
+                    $"System = \"{concept.System}\"");
+
+                WriteIndented(
+                    indentation + 1,
+                    "};");
+            }
+
+            WriteIndented(
+                indentation,
+                "};");
         }
 
         /// <summary>Writes the complexes.</summary>

@@ -34,6 +34,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "http://terminology.hl7.org/CodeSystem/v2-0178",
             /// <summary>Display values are too long to be useful.</summary>
             "http://terminology.hl7.org/CodeSystem/v2-0277",
+
+            /// <summary>Display includes operation symbols: $.</summary>
+            "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
         };
 
         /// <summary>FHIR information we are exporting.</summary>
@@ -719,7 +722,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
-        /// <summary>Information about the written code.</summary>
+        /// <summary>Information about written codes.</summary>
         private struct WrittenCodeInfo
         {
             internal string Name;

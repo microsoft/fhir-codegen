@@ -348,6 +348,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         sb.Append("_number_");
                         break;
 
+                    case '$':
+                        sb.Append("_dollar_");
+                        break;
+
                     case '%':
                         sb.Append("_percent_");
                         break;
