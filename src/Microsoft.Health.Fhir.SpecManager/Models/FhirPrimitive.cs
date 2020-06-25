@@ -12,7 +12,7 @@ using System.Text;
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// <summary>A class representing a FHIR primitive (r2:simple) type.</summary>
-    public class FhirPrimitive : FhirTypeBase
+    public class FhirPrimitive : FhirTypeBase, ICloneable
     {
         /// <summary>Initializes a new instance of the <see cref="FhirPrimitive"/> class.</summary>
         /// <param name="id">              The identifier.</param>
@@ -47,7 +47,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Deep copy.</summary>
         /// <returns>A FhirPrimitive.</returns>
-        public FhirPrimitive DeepCopy()
+        public object Clone()
         {
             // generate the base object
             FhirPrimitive primitive = new FhirPrimitive(

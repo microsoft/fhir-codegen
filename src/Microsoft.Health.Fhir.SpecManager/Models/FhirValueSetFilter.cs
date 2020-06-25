@@ -9,7 +9,7 @@ using System.Text;
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// <summary>A fhir value set filter.</summary>
-    public class FhirValueSetFilter
+    public class FhirValueSetFilter : ICloneable
     {
         /// <summary>Operation equality test.</summary>
         public const string FilterOperationEquals = "=";
@@ -79,5 +79,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the value.</summary>
         /// <value>The value.</value>
         public string Value { get; }
+
+        /// <summary>Makes a deep copy of this object.</summary>
+        /// <returns>A copy of this object.</returns>
+        public object Clone()
+        {
+            return new FhirValueSetFilter(Property, Operation, Value);
+        }
     }
 }

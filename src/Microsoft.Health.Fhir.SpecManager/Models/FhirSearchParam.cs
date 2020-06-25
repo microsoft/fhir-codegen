@@ -10,7 +10,7 @@ using System.Linq;
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// <summary>A fhir search parameter.</summary>
-    public class FhirSearchParam
+    public class FhirSearchParam : ICloneable
     {
         /// <summary>Initializes a new instance of the <see cref="FhirSearchParam"/> class.</summary>
         /// <param name="id">            The identifier.</param>
@@ -100,7 +100,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Deep copy.</summary>
         /// <returns>A FhirSearchParam.</returns>
-        public FhirSearchParam DeepCopy()
+        public object Clone()
         {
             return new FhirSearchParam(
                 Id,

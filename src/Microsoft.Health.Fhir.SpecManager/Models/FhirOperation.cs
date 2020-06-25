@@ -10,7 +10,7 @@ using System.Linq;
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// <summary>A fhir operation.</summary>
-    public class FhirOperation
+    public class FhirOperation : ICloneable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirOperation"/> class.
@@ -109,7 +109,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Deep copy.</summary>
         /// <returns>A FhirOperation.</returns>
-        public FhirOperation DeepCopy()
+        public object Clone()
         {
             List<string> resourceTypes = new List<string>();
 

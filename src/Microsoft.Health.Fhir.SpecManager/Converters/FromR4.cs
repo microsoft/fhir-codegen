@@ -130,7 +130,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     }
                 }
 
-                List<FhirTriplet> expansionContains = null;
+                List<FhirConcept> expansionContains = null;
 
                 if ((vs.Expansion.Contains != null) && (vs.Expansion.Contains.Length > 0))
                 {
@@ -178,18 +178,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Adds the contains to 'ec'.</summary>
         /// <param name="contains">[in,out] The contains.</param>
         /// <param name="ec">      The ec.</param>
-        private void AddContains(ref List<FhirTriplet> contains, fhir_4.ValueSetExpansionContains ec)
+        private void AddContains(ref List<FhirConcept> contains, fhir_4.ValueSetExpansionContains ec)
         {
             if (contains == null)
             {
-                contains = new List<FhirTriplet>();
+                contains = new List<FhirConcept>();
             }
 
             // TODO: Determine if the Inactive flag needs to be checked
             if ((!string.IsNullOrEmpty(ec.System)) ||
                 (!string.IsNullOrEmpty(ec.Code)))
             {
-                contains.Add(new FhirTriplet(
+                contains.Add(new FhirConcept(
                     ec.System,
                     ec.Code,
                     ec.Display,
@@ -215,17 +215,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return null;
             }
 
-            List<FhirTriplet> concepts = null;
+            List<FhirConcept> concepts = null;
             List<FhirValueSetFilter> filters = null;
             List<string> linkedValueSets = null;
 
             if ((compose.Concept != null) && (compose.Concept.Length > 0))
             {
-                concepts = new List<FhirTriplet>();
+                concepts = new List<FhirConcept>();
 
                 foreach (fhir_4.ValueSetComposeIncludeConcept concept in compose.Concept)
                 {
-                    concepts.Add(new FhirTriplet(
+                    concepts.Add(new FhirConcept(
                         compose.System,
                         concept.Code,
                         concept.Display));
@@ -281,22 +281,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            Dictionary<string, FhirTriplet> concepts = new Dictionary<string, FhirTriplet>();
+            Dictionary<string, FhirConcept> concepts = new Dictionary<string, FhirConcept>();
 
             if (cs.Concept != null)
             {
-                foreach (fhir_4.CodeSystemConcept concept in cs.Concept)
-                {
-                    if (string.IsNullOrEmpty(concept.Code) || concepts.ContainsKey(concept.Code))
-                    {
-                        continue;
-                    }
-
-                    concepts.Add(concept.Code, new FhirTriplet(
-                        cs.Url,
-                        concept.Code,
-                        concept.Display));
-                }
+                AddConceptTree(cs.Url, cs.Id, cs.Concept, ref concepts);
             }
 
             FhirCodeSystem codeSystem = new FhirCodeSystem(
@@ -312,6 +301,64 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // add our code system
             fhirVersionInfo.AddCodeSystem(codeSystem);
+        }
+
+        /// <summary>Adds a concept tree to 'concepts'.</summary>
+        /// <param name="codeSystemUrl"> URL of the code system.</param>
+        /// <param name="codeSystemId">  Id of the code system.</param>
+        /// <param name="concepts">      The concept.</param>
+        /// <param name="triplets">      [in,out] The concepts.</param>
+        private void AddConceptTree(
+            string codeSystemUrl,
+            string codeSystemId,
+            fhir_4.CodeSystemConcept[] concepts,
+            ref Dictionary<string, FhirConcept> triplets)
+        {
+            if (concepts == null)
+            {
+                return;
+            }
+
+            foreach (fhir_4.CodeSystemConcept concept in concepts)
+            {
+                if (concept.Concept != null)
+                {
+                    AddConceptTree(codeSystemUrl, codeSystemId, concept.Concept, ref triplets);
+                }
+
+                if (string.IsNullOrEmpty(concept.Code) || triplets.ContainsKey(concept.Code))
+                {
+                    continue;
+                }
+
+                if (concept.Property != null)
+                {
+                    bool deprecated = false;
+                    foreach (fhir_4.CodeSystemConceptProperty prop in concept.Property)
+                    {
+                        if ((prop.Code == "status") && (prop.ValueCode == "deprecated"))
+                        {
+                            deprecated = true;
+                            break;
+                        }
+                    }
+
+                    if (deprecated)
+                    {
+                        continue;
+                    }
+                }
+
+                triplets.Add(
+                    concept.Code,
+                    new FhirConcept(
+                        codeSystemUrl,
+                        concept.Code,
+                        concept.Display,
+                        string.Empty,
+                        concept.Definition,
+                        codeSystemId));
+            }
         }
 
         /// <summary>Process the operation.</summary>
@@ -728,7 +775,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         string.Empty,
                                         null,
                                         true,
-                                        true));
+                                        true,
+                                        string.Empty,
+                                        string.Empty));
                             }
 
                             // check for implicit slicing definition
@@ -827,6 +876,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             }
                         }
 
+                        string bindingStrength = string.Empty;
+                        string valueSet = string.Empty;
+
+                        if (element.Binding != null)
+                        {
+                            bindingStrength = element.Binding.Strength;
+                            valueSet = element.Binding.ValueSet;
+                        }
+
                         // add this field to the parent type
                         parent.Elements.Add(
                             path,
@@ -850,7 +908,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 fixedName,
                                 fixedValue,
                                 isInherited,
-                                modifiesParent));
+                                modifiesParent,
+                                bindingStrength,
+                                valueSet));
 
                         if (element.Slicing != null)
                         {

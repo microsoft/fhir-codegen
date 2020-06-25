@@ -4,12 +4,13 @@
 // </copyright>
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// <summary>A fhir value set expansion.</summary>
-    public class FhirValueSetExpansion
+    public class FhirValueSetExpansion : ICloneable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirValueSetExpansion"/> class.
@@ -26,7 +27,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             int? total,
             int? offset,
             Dictionary<string, dynamic> parameters,
-            List<FhirTriplet> contains)
+            List<FhirConcept> contains)
         {
             Identifier = identifier;
             Timestamp = timestamp;
@@ -58,6 +59,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the contains.</summary>
         /// <value>The contains.</value>
-        public List<FhirTriplet> Contains { get; }
+        public List<FhirConcept> Contains { get; }
+
+        /// <summary>Makes a deep copy of this object.</summary>
+        /// <returns>A copy of this object.</returns>
+        public object Clone()
+        {
+            Dictionary<string, dynamic> parameters = null;
+
+            if (Parameters != null)
+            {
+                parameters = new Dictionary<string, dynamic>();
+                foreach (KeyValuePair<string, dynamic> kvp in Parameters)
+                {
+                    parameters.Add(kvp.Key, kvp.Value.Clone());
+                }
+            }
+
+            List<FhirConcept> contains = null;
+
+            if (Contains != null)
+            {
+                contains = Contains.Select(c => (FhirConcept)c.Clone()).ToList();
+            }
+
+            return new FhirValueSetExpansion(
+                Identifier,
+                Timestamp,
+                Total,
+                Offset,
+                parameters,
+                contains);
+        }
     }
 }

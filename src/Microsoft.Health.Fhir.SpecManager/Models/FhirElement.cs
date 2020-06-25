@@ -42,6 +42,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="fixedFieldValue">  Value of a fixed field.</param>
         /// <param name="isInherited">      If this element is inherited from somewhere else.</param>
         /// <param name="modifiesParent">   If this element hides a field of its parent.</param>
+        /// <param name="bindingStrength">  Strength of binding: required|extensible|preferred|example.</param>
+        /// <param name="valueSet">         URL of the value set bound to this element.</param>
         public FhirElement(
             string id,
             string path,
@@ -62,7 +64,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string fixedFieldName,
             object fixedFieldValue,
             bool isInherited,
-            bool modifiesParent)
+            bool modifiesParent,
+            string bindingStrength,
+            string valueSet)
             : base(
                 id,
                 path,
@@ -124,6 +128,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             IsInherited = isInherited;
             ModifiesParent = modifiesParent;
+
+            BindingStrength = bindingStrength;
+            ValueSet = valueSet;
         }
 
         /// <summary>Gets the cardinality minimum.</summary>
@@ -185,6 +192,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the codes.</summary>
         /// <value>The codes.</value>
         public List<string> Codes => _codes;
+
+        /// <summary>Gets the value set this element is bound to.</summary>
+        /// <value>The value set.</value>
+        public string ValueSet { get; }
+
+        /// <summary>Gets the binding strength for a value set binding to this element.</summary>
+        /// <value>The binding strength.</value>
+        public string BindingStrength { get; }
 
         /// <summary>Gets types and their associated profiles for this element.</summary>
         /// <value>Types and their associated profiles for this element.</value>
@@ -290,13 +305,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Deep copy.</summary>
-        /// <param name="primitiveTypeMap">The primitive type map.</param>
-        /// <param name="copySlicing">     True to copy slicing.</param>
+        /// <param name="primitiveTypeMap">   The primitive type map.</param>
+        /// <param name="copySlicing">        True to copy slicing.</param>
+        /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
+        /// <param name="valueSets">          [in,out] Sets the value belongs to.</param>
         /// <returns>A FhirElement.</returns>
         public FhirElement DeepCopy(
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
-            bool canHideParentFields)
+            bool canHideParentFields,
+            ref HashSet<string> valueSets)
         {
             // copy the element types
             Dictionary<string, FhirElementType> elementTypes = null;
@@ -332,7 +350,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 FixedFieldName,
                 FixedFieldValue,
                 IsInherited,
-                ModifiesParent);
+                ModifiesParent,
+                BindingStrength,
+                ValueSet);
 
             // check for base type name
             if (!string.IsNullOrEmpty(BaseTypeName))
@@ -352,9 +372,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 foreach (KeyValuePair<string, FhirSlicing> kvp in _slicing)
                 {
-                    element.AddSlicing(
-                        kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                    FhirSlicing slicing = kvp.Value.DeepCopy(
+                            primitiveTypeMap,
+                            copySlicing,
+                            canHideParentFields,
+                            ref valueSets);
+
+                    element.AddSlicing(slicing);
                 }
+            }
+
+            // check for referenced value sets
+            if ((valueSets != null) &&
+                (!string.IsNullOrEmpty(ValueSet)) &&
+                (!valueSets.Contains(ValueSet)))
+            {
+                valueSets.Add(ValueSet);
             }
 
             return element;

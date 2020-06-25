@@ -4,12 +4,13 @@
 // </copyright>
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// <summary>A fhir value set composition.</summary>
-    public class FhirValueSetComposition
+    public class FhirValueSetComposition : ICloneable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirValueSetComposition"/> class.
@@ -22,7 +23,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public FhirValueSetComposition(
             string system,
             string version,
-            List<FhirTriplet> concepts,
+            List<FhirConcept> concepts,
             List<FhirValueSetFilter> filters,
             List<string> linkedValueSets)
         {
@@ -53,7 +54,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the concepts.</summary>
         /// <value>The concepts.</value>
-        public List<FhirTriplet> Concepts { get; }
+        public List<FhirConcept> Concepts { get; }
 
         /// <summary>Gets the filters.</summary>
         /// <value>The filters.</value>
@@ -62,5 +63,38 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the sets the linked value belongs to.</summary>
         /// <value>The linked value sets.</value>
         public List<string> LinkedValueSets { get; }
+
+        /// <summary>Creates a new object that is a copy of the current instance.</summary>
+        /// <returns>A new object that is a copy of this instance.</returns>
+        public object Clone()
+        {
+            List<FhirConcept> concepts = null;
+
+            if (Concepts != null)
+            {
+                concepts = Concepts.Select(c => (FhirConcept)c.Clone()).ToList();
+            }
+
+            List<FhirValueSetFilter> filters = null;
+
+            if (Filters != null)
+            {
+                filters = Filters.Select(f => (FhirValueSetFilter)f.Clone()).ToList();
+            }
+
+            List<string> linked = null;
+
+            if (LinkedValueSets != null)
+            {
+                linked = LinkedValueSets.Select(s => (string)s.Clone()).ToList();
+            }
+
+            return new FhirValueSetComposition(
+                System,
+                Version,
+                concepts,
+                filters,
+                linked);
+        }
     }
 }

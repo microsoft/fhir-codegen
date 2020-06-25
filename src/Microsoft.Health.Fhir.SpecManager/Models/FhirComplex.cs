@@ -410,15 +410,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             return val;
         }
 
-        /// <summary>Deep copy.</summary>
+        /// <summary>Deep copy - cannot use Clone because of needed parameters.</summary>
         /// <param name="primitiveTypeMap">   The primitive type map.</param>
         /// <param name="copySlicing">        True to copy slicing.</param>
         /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
+        /// <param name="valueSets">          [in,out] Sets the value belongs to.</param>
         /// <returns>A FhirComplex.</returns>
         public FhirComplex DeepCopy(
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
-            bool canHideParentFields)
+            bool canHideParentFields,
+            ref HashSet<string> valueSets)
         {
             List<string> contextElements = null;
 
@@ -469,7 +471,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     continue;
                 }
 
-                complex.Elements.Add(element.Path, element.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                FhirElement copied = element.DeepCopy(
+                        primitiveTypeMap,
+                        copySlicing,
+                        canHideParentFields,
+                        ref valueSets);
+
+                complex.Elements.Add(element.Path, copied);
             }
 
             // copy backbone elements (unordered)
@@ -477,25 +485,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 complex.Components.Add(
                     kvp.Key,
-                    kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                    kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields, ref valueSets));
             }
 
             // search
             foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchParameters)
             {
-                complex.SearchParameters.Add(kvp.Key, kvp.Value.DeepCopy());
+                complex.SearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
             }
 
             // type operations
             foreach (KeyValuePair<string, FhirOperation> kvp in _typeOperations)
             {
-                complex.TypeOperations.Add(kvp.Key, kvp.Value.DeepCopy());
+                complex.TypeOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
             }
 
             // instance operations
             foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
             {
-                complex.InstanceOperations.Add(kvp.Key, kvp.Value.DeepCopy());
+                complex.InstanceOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
             }
 
             return complex;

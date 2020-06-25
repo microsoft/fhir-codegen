@@ -10,8 +10,11 @@ using System.Text;
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// <summary>A fhir value set.</summary>
-    public class FhirValueSet
+    public class FhirValueSet : ICloneable
     {
+        private List<FhirConcept> _valueList = null;
+        private HashSet<string> _codeSystems = new HashSet<string>();
+
         /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
         /// <param name="name">           The name.</param>
         /// <param name="id">             The identifier.</param>
@@ -47,6 +50,48 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Expansion = expansion;
         }
 
+        /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
+        /// <param name="name">           The name.</param>
+        /// <param name="id">             The identifier.</param>
+        /// <param name="version">        The version.</param>
+        /// <param name="title">          The title.</param>
+        /// <param name="url">            The URL.</param>
+        /// <param name="standardStatus"> The standard status.</param>
+        /// <param name="description">    The description.</param>
+        /// <param name="composeIncludes">The compose includes.</param>
+        /// <param name="composeExcludes">The compose excludes.</param>
+        /// <param name="expansion">      The expansion.</param>
+        /// <param name="concepts">       The resolved concepts.</param>
+        /// <param name="referencedCodeSystems">The list of code systems referenced by this value set.</param>
+        private FhirValueSet(
+            string name,
+            string id,
+            string version,
+            string title,
+            string url,
+            string standardStatus,
+            string description,
+            List<FhirValueSetComposition> composeIncludes,
+            List<FhirValueSetComposition> composeExcludes,
+            FhirValueSetExpansion expansion,
+            List<FhirConcept> concepts,
+            HashSet<string> referencedCodeSystems)
+            : this(
+                name,
+                id,
+                version,
+                title,
+                url,
+                standardStatus,
+                description,
+                composeIncludes,
+                composeExcludes,
+                expansion)
+        {
+            _valueList = concepts;
+            _codeSystems = referencedCodeSystems;
+        }
+
         /// <summary>Gets the name.</summary>
         /// <value>The name.</value>
         public string Name { get; }
@@ -66,6 +111,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets URL of the document.</summary>
         /// <value>The URL.</value>
         public string URL { get; }
+
+        /// <summary>Gets the key.</summary>
+        /// <value>The key.</value>
+        public string Key => $"{URL}|{Version}";
 
         /// <summary>Gets the standard status.</summary>
         /// <value>The standard status.</value>
@@ -87,30 +136,52 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The expansions.</value>
         public FhirValueSetExpansion Expansion { get; }
 
+        /// <summary>Gets the concepts.</summary>
+        /// <value>The concepts.</value>
+        public List<FhirConcept> Concepts => _valueList;
+
+        /// <summary>Gets the referenced code systems.</summary>
+        /// <value>The referenced code systems.</value>
+        public HashSet<string> ReferencedCodeSystems => _codeSystems;
+
         /// <summary>Gets a list of FhirTriplets to cover all values in the value set.</summary>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="codeSystems">The code systems.</param>
-        /// <returns>The FhirTriplets that are contained in this ValueSet.</returns>
-        public List<FhirTriplet> GetValues(Dictionary<string, FhirCodeSystem> codeSystems)
+        public void Resolve(Dictionary<string, FhirCodeSystem> codeSystems)
         {
+            if (_valueList != null)
+            {
+                return;
+            }
+
             if (codeSystems == null)
             {
                 throw new ArgumentNullException(nameof(codeSystems));
             }
 
-            Dictionary<string, FhirTriplet> values = new Dictionary<string, FhirTriplet>();
+            _codeSystems.Clear();
+
+            Dictionary<string, FhirConcept> values = new Dictionary<string, FhirConcept>();
 
             if (ComposeIncludes != null)
             {
                 foreach (FhirValueSetComposition comp in ComposeIncludes)
                 {
-                    if ((comp.System != null) && codeSystems.ContainsKey(comp.System))
-                    {
-                        AddCodeSystem(ref values, codeSystems[comp.System], comp);
-                    }
-
                     if (comp.Concepts != null)
                     {
-                        AddConcepts(ref values, comp.Concepts);
+                        AddConcepts(ref values, comp.Concepts, codeSystems);
+                        continue;
+                    }
+
+                    if ((comp.System != null) &&
+                        codeSystems.ContainsKey(comp.System))
+                    {
+                        if (!_codeSystems.Contains(comp.System))
+                        {
+                            _codeSystems.Add(comp.System);
+                        }
+
+                        AddCodeSystem(ref values, codeSystems[comp.System], comp);
                     }
                 }
             }
@@ -131,10 +202,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 }
             }
 
-            List<FhirTriplet> valueList = values.Values.ToList<FhirTriplet>();
-            valueList.Sort((a, b) => string.CompareOrdinal(a.SystemAndCode(), b.SystemAndCode()));
-
-            return valueList;
+            _valueList = values.Values.ToList<FhirConcept>();
+            _valueList.Sort((a, b) => string.CompareOrdinal(a.SystemAndCode(), b.SystemAndCode()));
         }
 
         /// <summary>Removes the code system.</summary>
@@ -142,7 +211,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="codeSystem">The code system.</param>
         /// <param name="comp">      The component.</param>
         private static void RemoveCodeSystem(
-            ref Dictionary<string, FhirTriplet> values,
+            ref Dictionary<string, FhirConcept> values,
             FhirCodeSystem codeSystem,
             FhirValueSetComposition comp)
         {
@@ -167,8 +236,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="values">    [in,out] The values.</param>
         /// <param name="codeSystem">The code system.</param>
         /// <param name="comp">      The component.</param>
-        private static void AddCodeSystem(
-            ref Dictionary<string, FhirTriplet> values,
+        private void AddCodeSystem(
+            ref Dictionary<string, FhirConcept> values,
             FhirCodeSystem codeSystem,
             FhirValueSetComposition comp)
         {
@@ -194,8 +263,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="concepts">The concepts.</param>
         /// <param name="filter">  Specifies the filter.</param>
         private static void RemoveFilteredConcepts(
-            ref Dictionary<string, FhirTriplet> values,
-            IEnumerable<FhirTriplet> concepts,
+            ref Dictionary<string, FhirConcept> values,
+            IEnumerable<FhirConcept> concepts,
             FhirValueSetFilter filter)
         {
             throw new NotImplementedException();
@@ -206,13 +275,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="concepts">The concepts.</param>
         /// <param name="filter">  Specifies the filter.</param>
         private static void AddFilteredConcepts(
-            ref Dictionary<string, FhirTriplet> values,
-            IEnumerable<FhirTriplet> concepts,
+            ref Dictionary<string, FhirConcept> values,
+            IEnumerable<FhirConcept> concepts,
             FhirValueSetFilter filter)
         {
             if (concepts != null)
             {
-                foreach (FhirTriplet concept in concepts)
+                foreach (FhirConcept concept in concepts)
                 {
                     string key = concept.Key();
 
@@ -232,10 +301,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="values">  [in,out] The values.</param>
         /// <param name="concepts">The concepts.</param>
         private static void RemoveConcepts(
-            ref Dictionary<string, FhirTriplet> values,
-            IEnumerable<FhirTriplet> concepts)
+            ref Dictionary<string, FhirConcept> values,
+            IEnumerable<FhirConcept> concepts)
         {
-            foreach (FhirTriplet concept in concepts)
+            foreach (FhirConcept concept in concepts)
             {
                 string key = concept.Key();
 
@@ -247,13 +316,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Adds the concepts to 'concepts'.</summary>
-        /// <param name="values">  [in,out] The values.</param>
-        /// <param name="concepts">The concepts.</param>
-        private static void AddConcepts(
-            ref Dictionary<string, FhirTriplet> values,
-            IEnumerable<FhirTriplet> concepts)
+        /// <param name="values">     [in,out] The values.</param>
+        /// <param name="concepts">   The concepts.</param>
+        /// <param name="codeSystems">(Optional) The code systems.</param>
+        private void AddConcepts(
+            ref Dictionary<string, FhirConcept> values,
+            IEnumerable<FhirConcept> concepts,
+            Dictionary<string, FhirCodeSystem> codeSystems = null)
         {
-            foreach (FhirTriplet concept in concepts)
+            foreach (FhirConcept concept in concepts)
             {
                 string key = concept.Key();
 
@@ -262,8 +333,78 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     continue;
                 }
 
+                if ((codeSystems != null) &&
+                    codeSystems.ContainsKey(concept.System) &&
+                    codeSystems[concept.System].Concepts.ContainsKey(concept.Code))
+                {
+                    if (!_codeSystems.Contains(concept.System))
+                    {
+                        _codeSystems.Add(concept.System);
+                    }
+
+                    values.Add(key, codeSystems[concept.System].Concepts[concept.Code]);
+                    continue;
+                }
+
                 values.Add(key, concept);
             }
+        }
+
+        /// <summary>Deep copy.</summary>
+        /// <param name="resolveRules">(Optional) True to resolve rules.</param>
+        /// <returns>A FhirValueSet.</returns>
+        public object Clone()
+        {
+            List<FhirValueSetComposition> includes = new List<FhirValueSetComposition>();
+
+            if (ComposeIncludes != null)
+            {
+                includes = ComposeIncludes.Select(i => (FhirValueSetComposition)i.Clone()).ToList();
+            }
+
+            List<FhirValueSetComposition> excludes = new List<FhirValueSetComposition>();
+
+            if (ComposeExcludes != null)
+            {
+                excludes = ComposeExcludes.Select(e => (FhirValueSetComposition)e.Clone()).ToList();
+            }
+
+            FhirValueSetExpansion expansion = null;
+
+            if (Expansion != null)
+            {
+                expansion = (FhirValueSetExpansion)Expansion.Clone();
+            }
+
+            List<FhirConcept> concepts = null;
+
+            if (Concepts != null)
+            {
+                concepts = Concepts.Select(c => (FhirConcept)c.Clone()).ToList();
+            }
+
+            HashSet<string> codeSystems = new HashSet<string>();
+            if (_codeSystems != null)
+            {
+                foreach (string val in _codeSystems)
+                {
+                    codeSystems.Add(val);
+                }
+            }
+
+            return new FhirValueSet(
+                Name,
+                Id,
+                Version,
+                Title,
+                URL,
+                StandardStatus,
+                Description,
+                includes,
+                excludes,
+                expansion,
+                concepts,
+                codeSystems);
         }
     }
 }

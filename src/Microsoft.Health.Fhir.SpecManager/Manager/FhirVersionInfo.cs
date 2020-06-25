@@ -151,8 +151,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirSearchParam> _searchResultParameters;
         private Dictionary<string, FhirSearchParam> _allInteractionParameters;
         private Dictionary<string, FhirCodeSystem> _codeSystemsByUrl;
-        private Dictionary<string, Dictionary<string, FhirValueSet>> _valueSetsByUrlByVersion;
-        private Dictionary<string, List<FhirTriplet>> _resolvedValueSets;
+        private Dictionary<string, FhirValueSetCollection> _valueSetsByUrl;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class. Require major version
@@ -198,8 +197,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _searchResultParameters = new Dictionary<string, FhirSearchParam>();
             _allInteractionParameters = new Dictionary<string, FhirSearchParam>();
             _codeSystemsByUrl = new Dictionary<string, FhirCodeSystem>();
-            _valueSetsByUrlByVersion = new Dictionary<string, Dictionary<string, FhirValueSet>>();
-            _resolvedValueSets = new Dictionary<string, List<FhirTriplet>>();
+            _valueSetsByUrl = new Dictionary<string, FhirValueSetCollection>();
         }
 
         /// <summary>Values that represent search magic parameters.</summary>
@@ -283,11 +281,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets the value sets by URL by version.</summary>
         /// <value>The value sets by URL by version.</value>
-        public Dictionary<string, Dictionary<string, FhirValueSet>> ValueSetsByUrlByVersion { get => _valueSetsByUrlByVersion; }
-
-        /// <summary>Gets the sets the resolved value belongs to.</summary>
-        /// <value>The resolved value sets.</value>
-        public Dictionary<string, List<FhirTriplet>> ResolvedValueSets { get => _resolvedValueSets; }
+        public Dictionary<string, FhirValueSetCollection> ValueSetsByUrl { get => _valueSetsByUrl; }
 
         /// <summary>Gets the extensions per path, in a dictionary keyed by URL.</summary>
         /// <value>The extensions.</value>
@@ -409,15 +403,44 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 return;
             }
 
-            if (!_valueSetsByUrlByVersion.ContainsKey(valueSet.URL))
+            if (!_valueSetsByUrl.ContainsKey(valueSet.URL))
             {
-                _valueSetsByUrlByVersion.Add(valueSet.URL, new Dictionary<string, FhirValueSet>());
+                _valueSetsByUrl.Add(valueSet.URL, new FhirValueSetCollection(valueSet.URL));
             }
 
-            if (!_valueSetsByUrlByVersion[valueSet.URL].ContainsKey(valueSet.Version))
+            _valueSetsByUrl[valueSet.URL].AddValueSet(valueSet);
+        }
+
+        /// <summary>Query if 'urlOrKey' has value set.</summary>
+        /// <param name="urlOrKey">The URL or key.</param>
+        /// <returns>True if value set, false if not.</returns>
+        internal bool HasValueSet(string urlOrKey)
+        {
+            string url;
+            string version = string.Empty;
+
+            if (urlOrKey.Contains('|'))
             {
-                _valueSetsByUrlByVersion[valueSet.URL].Add(valueSet.Version, valueSet);
+                string[] components = urlOrKey.Split('|');
+                url = components[0];
+                version = components[1];
             }
+            else
+            {
+                url = urlOrKey;
+            }
+
+            if (!_valueSetsByUrl.ContainsKey(url))
+            {
+                return false;
+            }
+
+            if (_valueSetsByUrl[url].HasVersion(version))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>Adds an extension.</summary>
@@ -738,6 +761,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
+            HashSet<string> valueSets = restrictOutput ? new HashSet<string>() : null;
+
             // check if we are exporting primitives
             if (copyPrimitives)
             {
@@ -749,7 +774,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         continue;
                     }
 
-                    info._primitiveTypesByName.Add(kvp.Key, kvp.Value.DeepCopy());
+                    info._primitiveTypesByName.Add(kvp.Key, (FhirPrimitive)kvp.Value.Clone());
 
                     // update type to reflect language
                     if (primitiveTypeMap.ContainsKey(kvp.Value.Name))
@@ -772,7 +797,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     info._complexTypesByName.Add(
                         kvp.Key,
-                        kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                        kvp.Value.DeepCopy(
+                            primitiveTypeMap,
+                            copySlicing,
+                            canHideParentFields,
+                            ref valueSets));
                 }
             }
 
@@ -789,7 +818,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     info._resourcesByName.Add(
                         kvp.Key,
-                        kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                        kvp.Value.DeepCopy(
+                            primitiveTypeMap,
+                            copySlicing,
+                            canHideParentFields,
+                            ref valueSets));
                 }
             }
 
@@ -827,49 +860,72 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     }
 
                     // add this extension using the primary function (adds to multiple dictionaries)
-                    info.AddExtension(extension.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields));
+                    info.AddExtension(
+                        extension.DeepCopy(
+                            primitiveTypeMap,
+                            copySlicing,
+                            canHideParentFields,
+                            ref valueSets));
                 }
             }
 
             foreach (KeyValuePair<string, FhirOperation> kvp in _systemOperations)
             {
-                info._systemOperations.Add(kvp.Key, kvp.Value.DeepCopy());
+                info._systemOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
             }
 
             foreach (KeyValuePair<string, FhirSearchParam> kvp in _globalSearchParameters)
             {
-                info._globalSearchParameters.Add(kvp.Key, kvp.Value.DeepCopy());
+                info._globalSearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
             }
 
             foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchResultParameters)
             {
-                info._searchResultParameters.Add(kvp.Key, kvp.Value.DeepCopy());
+                info._searchResultParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
             }
 
             foreach (KeyValuePair<string, FhirSearchParam> kvp in _allInteractionParameters)
             {
-                info._allInteractionParameters.Add(kvp.Key, kvp.Value.DeepCopy());
+                info._allInteractionParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
             }
 
             if (copyValueSets)
             {
-                foreach (KeyValuePair<string, Dictionary<string, FhirValueSet>> url in _valueSetsByUrlByVersion)
+                foreach (KeyValuePair<string, FhirValueSetCollection> collectionKvp in _valueSetsByUrl)
                 {
-                    foreach (KeyValuePair<string, FhirValueSet> versioned in url.Value)
+                    foreach (KeyValuePair<string, FhirValueSet> versionKvp in collectionKvp.Value.ValueSetsByVersion)
                     {
-                        string key = $"{url.Key}|{versioned.Key}";
+                        string key = $"{collectionKvp.Key}|{versionKvp.Key}";
 
-                        if (info._resolvedValueSets.ContainsKey(key))
+                        if (info.HasValueSet(key))
                         {
                             continue;
                         }
 
-                        info._resolvedValueSets.Add(key, versioned.Value.GetValues(_codeSystemsByUrl));
-
-                        if (info._resolvedValueSets[key].Count == 0)
+                        // check for restricted output and not seeing this valueSet
+                        if (restrictOutput &&
+                            (!valueSets.Contains(key)) &&
+                            (!valueSets.Contains(collectionKvp.Key)))
                         {
-                            info._resolvedValueSets.Remove(key);
+                            continue;
                         }
+
+                        versionKvp.Value.Resolve(_codeSystemsByUrl);
+
+                        if ((versionKvp.Value.Concepts == null) ||
+                            (versionKvp.Value.Concepts.Count == 0))
+                        {
+                            continue;
+                        }
+
+                        if (!info._valueSetsByUrl.ContainsKey(collectionKvp.Key))
+                        {
+                            info._valueSetsByUrl.Add(collectionKvp.Key, new FhirValueSetCollection(collectionKvp.Key));
+                        }
+
+                        FhirValueSet vs = (FhirValueSet)versionKvp.Value.Clone();
+
+                        info._valueSetsByUrl[collectionKvp.Key].AddValueSet(vs);
                     }
                 }
             }

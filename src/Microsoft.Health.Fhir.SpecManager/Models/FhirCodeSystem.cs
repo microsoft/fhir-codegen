@@ -13,7 +13,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public class FhirCodeSystem
     {
         /// <summary>The concepts, by code.</summary>
-        private readonly Dictionary<string, FhirTriplet> _concepts;
+        private readonly Dictionary<string, FhirConcept> _concepts;
 
         /// <summary>Initializes a new instance of the <see cref="FhirCodeSystem"/> class.</summary>
         /// <param name="name">          The name.</param>
@@ -34,7 +34,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string standardStatus,
             string description,
             string content,
-            Dictionary<string, FhirTriplet> concepts)
+            Dictionary<string, FhirConcept> concepts)
         {
             if (url == null)
             {
@@ -86,6 +86,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the concepts (by code).</summary>
         /// <value>The concepts (by code).</value>
-        public Dictionary<string, FhirTriplet> Concepts => _concepts;
+        public Dictionary<string, FhirConcept> Concepts => _concepts;
     }
 }

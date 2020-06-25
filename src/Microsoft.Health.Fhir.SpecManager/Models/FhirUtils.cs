@@ -14,10 +14,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public abstract class FhirUtils
     {
         /// <summary>The RegEx sanitize for property definition.</summary>
-        private const string _regexSanitizeForPropertyDefinition = "[\r\n\\.\\|\\- \\/\\(\\)]";
+        private const string _regexSanitizeForPropertyDefinition = "[\r\n\\.\\|\\- \\/\\(\\)\\:\\*\\[\\]\\{\\}]";
+
+        /// <summary>The RegEx remove duplicate lines.</summary>
+        private const string _regexRemoveDuplicateLinesDefinition = "__+";
 
         /// <summary>The RegEx sanitize for property.</summary>
         private static Regex _regexSanitizeForProperty = new Regex(_regexSanitizeForPropertyDefinition);
+
+        /// <summary>The RegEx remove duplicate lines.</summary>
+        private static Regex _regexRemoveDuplicateLines = new Regex(_regexRemoveDuplicateLinesDefinition);
 
         /// <summary>Converts this object to a convention.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
@@ -89,6 +95,73 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
         }
 
+        /// <summary>Sanitized to convention.</summary>
+        /// <param name="sanitized"> The sanitized.</param>
+        /// <param name="convention">The convention.</param>
+        /// <returns>A string.</returns>
+        public static string SanitizedToConvention(string sanitized, NamingConvention convention)
+        {
+            if (string.IsNullOrEmpty(sanitized))
+            {
+                throw new ArgumentNullException(nameof(sanitized));
+            }
+
+            switch (convention)
+            {
+                case NamingConvention.FhirDotNotation:
+                    return sanitized.Replace('_', '.');
+
+                case NamingConvention.PascalDotNotation:
+                    {
+                        string[] components = ToPascal(sanitized.Split('_'));
+                        return string.Join(".", components);
+                    }
+
+                case NamingConvention.PascalCase:
+                    {
+                        string[] components = ToPascal(sanitized.Split('_'));
+                        return string.Join(string.Empty, components);
+                    }
+
+                case NamingConvention.CamelCase:
+                    {
+                        string[] components = ToCamel(sanitized.Split('_'));
+                        return string.Join(string.Empty, components);
+                    }
+
+                case NamingConvention.UpperCase:
+                    {
+                        return sanitized.ToUpperInvariant();
+                    }
+
+                case NamingConvention.LowerCase:
+                    {
+                        return sanitized.ToLowerInvariant();
+                    }
+
+                case NamingConvention.None:
+                default:
+                    throw new ArgumentException($"Invalid Naming Convention: {convention}");
+            }
+        }
+
+        /// <summary>Sanitize for quoted.</summary>
+        /// <param name="input">The input.</param>
+        /// <returns>A string.</returns>
+        public static string SanitizeForQuoted(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return string.Empty;
+            }
+
+            input = input.Replace("\"", "\\\"");
+            input = input.Replace("\r", "\\r");
+            input = input.Replace("\n", "\\n");
+
+            return input;
+        }
+
         /// <summary>Sanitize for code.</summary>
         /// <param name="input">        The input.</param>
         /// <param name="reservedWords">The reserved words.</param>
@@ -118,85 +191,277 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             name = SanitizeForProperty(name, reservedWords);
         }
 
+        /// <summary>Sanitize for value.</summary>
+        /// <param name="input">The input.</param>
+        /// <returns>A string.</returns>
+        public static string SanitizeForValue(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return string.Empty;
+            }
+
+            string value = input.Trim();
+            value = value.Replace("\"", "\\\"");
+
+            return value;
+        }
+
         /// <summary>Requires alpha.</summary>
         /// <param name="value">The value.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool RequiresAlpha(string value)
         {
-            foreach (char c in value)
+            if (string.IsNullOrEmpty(value))
             {
-                if (((c < '0') || (c > '9')) && (c != '_'))
-                {
-                    return false;
-                }
+                return true;
             }
 
-            return true;
+            if (value[0] == '_')
+            {
+                return true;
+            }
+
+            if (!char.IsLetter(value[0]))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>Sanitize for property.</summary>
         /// <param name="value">        The value.</param>
         /// <param name="reservedWords">The reserved words.</param>
         /// <returns>A string.</returns>
-        public static string SanitizeForProperty(string value, HashSet<string> reservedWords)
+        public static string SanitizeForProperty(
+            string value,
+            HashSet<string> reservedWords)
         {
             if (string.IsNullOrEmpty(value))
             {
                 return "NONE";
             }
 
-            if (value.Equals("...", StringComparison.Ordinal))
+            if (value.StartsWith("http://hl7.org/fhir/", StringComparison.Ordinal))
             {
-                value = "NONE";
+                value = value.Substring(20);
             }
 
-            if (value.Contains("<="))
+            StringBuilder sb = new StringBuilder();
+
+            int valueLen = value.Length;
+
+            for (int i = 0; i < valueLen; i++)
             {
-                value = value.Replace("<=", "LESS_THAN_OR_EQUALS");
+                char ch = value[i];
+                char second = (i + 1 < valueLen) ? value[i + 1] : '\0';
+                char third = (i + 2 < valueLen) ? value[i + 2] : '\0';
+
+                switch (ch)
+                {
+                    case '.':
+                        if ((second == '.') &&
+                            (third == '.'))
+                        {
+                            sb.Append("_ellipsis_");
+                            i += 2;
+                            continue;
+                        }
+
+                        sb.Append('_');
+                        break;
+
+                    case '\'':
+                        if (second == '\'')
+                        {
+                            sb.Append("_double_quote_");
+                            i++;
+                            continue;
+                        }
+
+                        sb.Append("_quote_");
+
+                        break;
+
+                    case '=':
+                        if (second == '=')
+                        {
+                            sb.Append("_double_equals_");
+                            i++;
+                            continue;
+                        }
+
+                        sb.Append("_equals_");
+
+                        break;
+
+                    case '!':
+                        if (second == '=')
+                        {
+                            sb.Append("_not_equals_");
+                            i++;
+                            continue;
+                        }
+
+                        sb.Append("_not_");
+
+                        break;
+
+                    case '<':
+                        if (second == '=')
+                        {
+                            sb.Append("_less_than_or_equals_");
+                            i++;
+                            continue;
+                        }
+
+                        sb.Append("_less_than_");
+
+                        break;
+
+                    case '>':
+                        if (second == '=')
+                        {
+                            sb.Append("_greater_than_or_equals_");
+                            i++;
+                            continue;
+                        }
+
+                        sb.Append("_greater_than_");
+
+                        break;
+
+                    case '…':
+                        sb.Append("_ellipsis_unicode_");
+                        break;
+
+                    case '*':
+                        sb.Append("_asterisk_");
+                        break;
+
+                    case '^':
+                        sb.Append("_power_");
+                        break;
+
+                    case '#':
+                        sb.Append("_number_");
+                        break;
+
+                    case '%':
+                        sb.Append("_percent_");
+                        break;
+
+                    case '&':
+                        sb.Append("_and_");
+                        break;
+
+                    case '@':
+                        sb.Append("_at_");
+                        break;
+
+                    case '+':
+                        sb.Append("_plus_");
+                        break;
+
+                    case '{':
+                        sb.Append("_");     // sb.Append("_open_brace_");
+                        break;
+
+                    case '}':
+                        sb.Append("_");     // sb.Append("_close_brace_");
+                        break;
+
+                    case '[':
+                        sb.Append("_");     // sb.Append("_open_bracket_");
+                        break;
+
+                    case ']':
+                        sb.Append("_");     // sb.Append("_close_bracket_");
+                        break;
+
+                    case '(':
+                        sb.Append("_");     // sb.Append("_open_parenthesis_");
+                        break;
+
+                    case ')':
+                        sb.Append("_");     // sb.Append("_close_parenthesis_");
+                        break;
+
+                    case '\\':
+                        sb.Append("_");     // sb.Append("_backslash_");
+                        break;
+
+                    case '/':
+                        sb.Append("_");     // sb.Append("_slash_");
+                        break;
+
+                    case '|':
+                        sb.Append("_pipe_");
+                        break;
+
+                    case ':':
+                        sb.Append("_");     // sb.Append("_colon_");
+                        break;
+
+                    case ';':
+                        sb.Append("_");     // sb.Append("_semicolon_");
+                        break;
+
+                    case ',':
+                        sb.Append("_");     // sb.Append("_comma_");
+                        break;
+
+                    case '°':
+                        sb.Append("_degrees_");
+                        break;
+
+                    case '?':
+                        sb.Append("_question_");
+                        break;
+
+                    case '"':
+                    case '“':
+                    case '”':
+                        sb.Append("_quotation_");
+                        break;
+
+                    case ' ':
+                    case '-':
+                    case '–':
+                    case '—':
+                    case '_':
+                        if (sb.Length != 0)
+                        {
+                            sb.Append('_');
+                        }
+
+                        break;
+
+                    case '\r':
+                    case '\n':
+                        break;
+
+                    default:
+                        sb.Append(ch);
+                        break;
+                }
             }
 
-            if (value.Contains("<"))
+            value = sb.ToString();
+
+            // remove duplicate underscores caused by prior replacements
+            value = _regexRemoveDuplicateLines.Replace(value, "_");
+
+            while (value.StartsWith("_", StringComparison.Ordinal))
             {
-                value = value.Replace("<", "LESS_THAN");
+                value = value.Substring(1);
             }
 
-            if (value.Contains(">="))
+            while (value.EndsWith("_", StringComparison.Ordinal))
             {
-                value = value.Replace(">=", "GREATER_THAN_OR_EQUALS");
+                value = value.Remove(value.Length - 1);
             }
-
-            if (value.Contains(">"))
-            {
-                value = value.Replace(">", "GREATER_THAN");
-            }
-
-            if (value.Contains("!="))
-            {
-                value = value.Replace("!=", "NOT_EQUALS");
-            }
-
-            if (value.Contains("=="))
-            {
-                value = value.Replace("==", "EQUALS");
-            }
-
-            if (value.Contains("="))
-            {
-                value = value.Replace("=", "EQUALS");
-            }
-
-            if (value.Contains("+"))
-            {
-                value = value.Replace("+", "PLUS");
-            }
-
-            if (char.IsDigit(value[0]))
-            {
-                value = "_" + value;
-            }
-
-            // make major substitutions
-            value = _regexSanitizeForProperty.Replace(value, "_");
 
             // need to check for all digits or underscores, or reserved word
             if (RequiresAlpha(value) ||

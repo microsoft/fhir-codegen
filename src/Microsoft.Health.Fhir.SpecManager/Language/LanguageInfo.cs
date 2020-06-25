@@ -156,7 +156,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteSearchParameters(_info.SearchResultParameters.Values, 0, "Search Result Parameters");
                 WriteSearchParameters(_info.AllInteractionParameters.Values, 0, "All Interaction Parameters");
 
-                WriteValueSets(_info.ResolvedValueSets, 0, "Value Sets");
+                WriteValueSets(_info.ValueSetsByUrl.Values, 0, "Value Sets");
 
                 WriteFooter();
             }
@@ -167,26 +167,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="indentation">The indentation.</param>
         /// <param name="headerHint"> (Optional) The header hint.</param>
         private void WriteValueSets(
-            Dictionary<string, List<FhirTriplet>> valueSets,
+            IEnumerable<FhirValueSetCollection> valueSets,
             int indentation,
             string headerHint = null)
         {
             if (!string.IsNullOrEmpty(headerHint))
             {
-                WriteIndented(indentation, $"{headerHint}: {valueSets.Count} (unversioned)");
+                WriteIndented(indentation, $"{headerHint}: {valueSets.Count()} (unversioned)");
             }
 
-            foreach (KeyValuePair<string, List<FhirTriplet>> valueSet in valueSets)
+            foreach (FhirValueSetCollection collection in valueSets.OrderBy(c => c.URL))
             {
-                WriteIndented(
-                    indentation,
-                    $"- ValueSet: {valueSet.Key}");
-
-                foreach (FhirTriplet value in valueSet.Value)
+                foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderBy(v => v.Version))
                 {
                     WriteIndented(
-                        indentation + 1,
-                        $"- {value.System}#{value.Code}: {value.Display}");
+                        indentation,
+                        $"- ValueSet: {vs.URL}|{vs.Version}");
+
+                    foreach (FhirConcept value in vs.Concepts)
+                    {
+                        WriteIndented(
+                            indentation + 1,
+                            $"- #{value.Code}: {value.Display}");
+                    }
                 }
             }
         }
