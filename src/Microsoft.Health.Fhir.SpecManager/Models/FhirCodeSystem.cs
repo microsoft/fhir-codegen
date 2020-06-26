@@ -12,10 +12,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A fhir code system.</summary>
     public class FhirCodeSystem
     {
+        /// <summary>The root concept.</summary>
+        private readonly FhirConceptTreeNode _rootConcept;
+
         /// <summary>The concepts, by code.</summary>
-        private readonly Dictionary<string, FhirConcept> _concepts;
+        private readonly Dictionary<string, FhirConceptTreeNode> _conceptLookup;
 
         /// <summary>Initializes a new instance of the <see cref="FhirCodeSystem"/> class.</summary>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="name">          The name.</param>
         /// <param name="id">            The identifier.</param>
         /// <param name="version">       The version.</param>
@@ -24,7 +28,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="standardStatus">The standard status.</param>
         /// <param name="description">   The description.</param>
         /// <param name="content">       The content.</param>
-        /// <param name="concepts">      The concepts, by code.</param>
+        /// <param name="rootConcept">   The root concept.</param>
+        /// <param name="conceptLookup"> The concept lookup.</param>
         public FhirCodeSystem(
             string name,
             string id,
@@ -34,7 +39,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string standardStatus,
             string description,
             string content,
-            Dictionary<string, FhirConcept> concepts)
+            FhirConceptTreeNode rootConcept,
+            Dictionary<string, FhirConceptTreeNode> conceptLookup)
         {
             if (url == null)
             {
@@ -49,7 +55,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             StandardStatus = standardStatus;
             Description = description;
             Content = content;
-            _concepts = concepts;
+            _rootConcept = rootConcept;
+            _conceptLookup = conceptLookup;
         }
 
         /// <summary>Gets the name.</summary>
@@ -84,8 +91,38 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The content.</value>
         public string Content { get; }
 
+        /// <summary>Gets the root concept.</summary>
+        /// <value>The root concept.</value>
+        public FhirConceptTreeNode RootConcept => _rootConcept;
+
         /// <summary>Gets the concepts (by code).</summary>
         /// <value>The concepts (by code).</value>
-        public Dictionary<string, FhirConcept> Concepts => _concepts;
+        public Dictionary<string, FhirConceptTreeNode> ConceptLookup => _conceptLookup;
+
+        /// <summary>Indexer to get slices based on name.</summary>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
+        ///  required range.</exception>
+        /// <param name="code">The code.</param>
+        /// <returns>The indexed item.</returns>
+        public FhirConceptTreeNode this[string code]
+        {
+            get
+            {
+                if (!_conceptLookup.ContainsKey(code))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(code));
+                }
+
+                return _conceptLookup[code];
+            }
+        }
+
+        /// <summary>Query if this system contains a concept, specified by code.</summary>
+        /// <param name="code">The code.</param>
+        /// <returns>True if this system has the concept, false if it does not.</returns>
+        public bool ContainsConcept(string code)
+        {
+            return _conceptLookup.ContainsKey(code);
+        }
     }
 }

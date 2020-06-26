@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
@@ -223,13 +224,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             if (comp.Filters != null)
             {
-                foreach (FhirValueSetFilter filter in comp.Filters)
-                {
-                    RemoveFilteredConcepts(ref values, codeSystem.Concepts.Values, filter);
-                }
+                ApplyFilteredConcepts(ref values, codeSystem, comp.Filters, false, true);
+                return;
             }
 
-            RemoveConcepts(ref values, codeSystem.Concepts.Values);
+            RemoveFromNode(
+                ref values,
+                codeSystem.RootConcept,
+                false,
+                true,
+                false,
+                string.Empty,
+                null,
+                null,
+                null);
         }
 
         /// <summary>Adds a code system to 'codeSystem'.</summary>
@@ -249,13 +257,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             if (comp.Filters != null)
             {
-                foreach (FhirValueSetFilter filter in comp.Filters)
-                {
-                    AddFilteredConcepts(ref values, codeSystem.Concepts.Values, filter);
-                }
+                ApplyFilteredConcepts(ref values, codeSystem, comp.Filters, true, false);
+                return;
             }
 
-            AddConcepts(ref values, codeSystem.Concepts.Values);
+            AddFromNode(
+                ref values,
+                codeSystem.RootConcept,
+                false,
+                true,
+                false,
+                string.Empty,
+                null,
+                null,
+                null);
         }
 
         /// <summary>Removes the filtered concepts.</summary>
@@ -271,29 +286,355 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Adds a filtered concepts.</summary>
-        /// <param name="values">  [in,out] The values.</param>
-        /// <param name="concepts">The concepts.</param>
-        /// <param name="filter">  Specifies the filter.</param>
-        private static void AddFilteredConcepts(
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+        /// <param name="values">    [in,out] The values.</param>
+        /// <param name="codeSystem">The code system.</param>
+        /// <param name="filters">   Specifies the filters.</param>
+        /// <param name="include">   True to include, false to exclude.</param>
+        /// <param name="exclude">   True to exclude, false to include.</param>
+        private static void ApplyFilteredConcepts(
             ref Dictionary<string, FhirConcept> values,
-            IEnumerable<FhirConcept> concepts,
-            FhirValueSetFilter filter)
+            FhirCodeSystem codeSystem,
+            List<FhirValueSetFilter> filters,
+            bool include,
+            bool exclude)
         {
-            if (concepts != null)
+            if (codeSystem == null)
             {
-                foreach (FhirConcept concept in concepts)
-                {
-                    string key = concept.Key();
+                throw new ArgumentNullException(nameof(codeSystem));
+            }
 
-                    if (!values.ContainsKey(key))
-                    {
-                        values.Add(key, concept);
-                    }
+            if ((filters == null) || (filters.Count == 0))
+            {
+                throw new ArgumentNullException(nameof(filters));
+            }
+
+            if (include && exclude)
+            {
+                throw new Exception("Cannot include and exclude the same filters!");
+            }
+
+            if ((!include) && (!exclude))
+            {
+                throw new Exception("Must either include or exclude for filters!");
+            }
+
+            string startingCode = string.Empty;
+            bool includeSelf = false;
+            bool includeChildren = false;
+            bool includeParents = false;
+            string exclusionKey = string.Empty;
+            Regex regex = null;
+            HashSet<string> inclusionSet = null;
+            HashSet<string> exclusionSet = null;
+            int maxRecusrions = -1;
+
+            foreach (FhirValueSetFilter filter in filters)
+            {
+                string filterKey = $"{filter.Property}:{filter.Operation}";
+
+                switch (filterKey)
+                {
+                    case "concept:=":
+                        startingCode = filter.Value;
+                        includeSelf = true;
+                        includeChildren = false;
+                        includeParents = false;
+
+                        break;
+
+                    case "concept:is-a":
+                        startingCode = filter.Value;
+                        includeSelf = true;
+                        includeChildren = true;
+                        includeParents = false;
+
+                        break;
+
+                    case "concept:descendent-of":
+                        startingCode = filter.Value;
+                        includeSelf = false;
+                        includeChildren = true;
+                        includeParents = false;
+
+                        break;
+
+                    case "concept:is-not-a":
+                        exclusionKey = filter.Value;
+                        break;
+
+                    case "concept:regex":
+                        regex = new Regex(filter.Value);
+                        break;
+
+                    case "concept:in":
+                        inclusionSet = new HashSet<string>();
+
+                        string[] inculsions = filter.Value.Split(',');
+
+                        foreach (string value in inculsions)
+                        {
+                            inclusionSet.Add(value);
+                        }
+
+                        break;
+
+                    case "concept:not-in":
+                        exclusionSet = new HashSet<string>();
+
+                        string[] exclusions = filter.Value.Split(',');
+
+                        foreach (string value in exclusions)
+                        {
+                            exclusionSet.Add(value);
+                        }
+
+                        break;
+
+                    case "concept:generalizes":
+                        startingCode = filter.Value;
+                        includeSelf = true;
+                        includeChildren = false;
+                        includeParents = true;
+
+                        break;
+
+                    case "parent:=":
+                        startingCode = filter.Value;
+                        includeSelf = false;
+                        includeChildren = true;
+                        includeParents = false;
+                        maxRecusrions = 1;
+                        break;
+
+                    case "child:=":
+                        startingCode = filter.Value;
+                        includeSelf = false;
+                        includeChildren = false;
+                        includeParents = true;
+                        maxRecusrions = 1;
+                        break;
+
+                    // ignore these
+                    case "acme-plasma:=":
+                        return;
+
+                    case "concept:exists":
+                    default:
+                        throw new NotImplementedException($"Unhandled filter: {filterKey}");
                 }
             }
-            else
+
+            FhirConceptTreeNode startingNode = codeSystem.RootConcept;
+
+            if ((!string.IsNullOrEmpty(startingCode)) &&
+                codeSystem.ContainsConcept(startingCode))
             {
-                throw new NotImplementedException();
+                startingNode = codeSystem[startingCode];
+            }
+
+            if (include)
+            {
+                AddFromNode(
+                    ref values,
+                    startingNode,
+                    includeSelf,
+                    includeChildren,
+                    includeParents,
+                    exclusionKey,
+                    regex,
+                    inclusionSet,
+                    exclusionSet,
+                    maxRecusrions);
+            }
+
+            if (exclude)
+            {
+                RemoveFromNode(
+                    ref values,
+                    startingNode,
+                    includeSelf,
+                    includeChildren,
+                    includeParents,
+                    exclusionKey,
+                    regex,
+                    inclusionSet,
+                    exclusionSet,
+                    maxRecusrions);
+            }
+        }
+
+        /// <summary>Removes from node.</summary>
+        /// <param name="values">         [in,out] The values.</param>
+        /// <param name="node">           The node.</param>
+        /// <param name="includeSelf">    True to include, false to exclude the self.</param>
+        /// <param name="includeChildren">True to include, false to exclude the children.</param>
+        /// <param name="includeParents"> True to include, false to exclude the parents.</param>
+        /// <param name="exclusionKey">   The exclusion key.</param>
+        /// <param name="regex">          The RegEx.</param>
+        /// <param name="inclusionSet">   Set the inclusion belongs to.</param>
+        /// <param name="exclusionSet">   Set the exclusion belongs to.</param>
+        /// <param name="maxRecursions">  (Optional) The maximum recursions (-1 for no limit).</param>
+        private static void RemoveFromNode(
+            ref Dictionary<string, FhirConcept> values,
+            FhirConceptTreeNode node,
+            bool includeSelf,
+            bool includeChildren,
+            bool includeParents,
+            string exclusionKey,
+            Regex regex,
+            HashSet<string> inclusionSet,
+            HashSet<string> exclusionSet,
+            int maxRecursions = -1)
+        {
+            if ((!string.IsNullOrEmpty(exclusionKey)) &&
+                (node.Concept.Code == exclusionKey))
+            {
+                return;
+            }
+
+            if (includeSelf &&
+                (!values.ContainsKey(node.Concept.Code)) &&
+                ((regex == null) || regex.IsMatch(node.Concept.Code)) &&
+                ((inclusionSet == null) || inclusionSet.Contains(node.Concept.Code)) &&
+                ((exclusionSet == null) || (!exclusionSet.Contains(node.Concept.Code))))
+            {
+                if (values.ContainsKey(node.Concept.Code))
+                {
+                    values.Remove(node.Concept.Code);
+                }
+            }
+
+            if (includeChildren &&
+                (node.Children != null) &&
+                (maxRecursions != 0))
+            {
+                if (maxRecursions > 0)
+                {
+                    maxRecursions--;
+                }
+
+                foreach (FhirConceptTreeNode child in node.Children.Values)
+                {
+                    RemoveFromNode(
+                        ref values,
+                        child,
+                        true,
+                        true,
+                        false,
+                        exclusionKey,
+                        regex,
+                        inclusionSet,
+                        exclusionSet,
+                        maxRecursions);
+                }
+            }
+
+            if (includeParents &&
+                (node.Parent != null) &&
+                (maxRecursions != 0))
+            {
+                if (maxRecursions > 0)
+                {
+                    maxRecursions--;
+                }
+
+                RemoveFromNode(
+                    ref values,
+                    node.Parent,
+                    true,
+                    false,
+                    true,
+                    exclusionKey,
+                    regex,
+                    inclusionSet,
+                    exclusionSet,
+                    maxRecursions);
+            }
+        }
+
+        /// <summary>Adds from node.</summary>
+        /// <param name="values">         [in,out] The values.</param>
+        /// <param name="node">           The node.</param>
+        /// <param name="includeSelf">    True to include, false to exclude the self.</param>
+        /// <param name="includeChildren">True to include, false to exclude the children.</param>
+        /// <param name="includeParents"> True to include, false to exclude the parents.</param>
+        /// <param name="exclusionKey">   The exclusion key.</param>
+        /// <param name="regex">          The RegEx.</param>
+        /// <param name="inclusionSet">   Set the inclusion belongs to.</param>
+        /// <param name="exclusionSet">   Set the exclusion belongs to.</param>
+        private static void AddFromNode(
+            ref Dictionary<string, FhirConcept> values,
+            FhirConceptTreeNode node,
+            bool includeSelf,
+            bool includeChildren,
+            bool includeParents,
+            string exclusionKey,
+            Regex regex,
+            HashSet<string> inclusionSet,
+            HashSet<string> exclusionSet,
+            int maxRecursions = -1)
+        {
+            if ((!string.IsNullOrEmpty(exclusionKey)) &&
+                (node.Concept != null) &&
+                (node.Concept.Code == exclusionKey))
+            {
+                return;
+            }
+
+            if (includeSelf &&
+                (node.Concept != null) &&
+                (!values.ContainsKey(node.Concept.Code)) &&
+                ((regex == null) || regex.IsMatch(node.Concept.Code)) &&
+                ((inclusionSet == null) || inclusionSet.Contains(node.Concept.Code)) &&
+                ((exclusionSet == null) || (!exclusionSet.Contains(node.Concept.Code))))
+            {
+                values.Add(node.Concept.Code, node.Concept);
+            }
+
+            if (includeChildren &&
+                (node.Children != null) &&
+                (maxRecursions != 0))
+            {
+                if (maxRecursions > 0)
+                {
+                    maxRecursions--;
+                }
+
+                foreach (FhirConceptTreeNode child in node.Children.Values)
+                {
+                    AddFromNode(
+                        ref values,
+                        child,
+                        true,
+                        true,
+                        false,
+                        exclusionKey,
+                        regex,
+                        inclusionSet,
+                        exclusionSet);
+                }
+            }
+
+            if (includeParents &&
+                (node.Parent != null) &&
+                (maxRecursions != 0))
+            {
+                if (maxRecursions > 0)
+                {
+                    maxRecursions--;
+                }
+
+                AddFromNode(
+                    ref values,
+                    node.Parent,
+                    true,
+                    false,
+                    true,
+                    exclusionKey,
+                    regex,
+                    inclusionSet,
+                    exclusionSet);
             }
         }
 
@@ -335,14 +676,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
                 if ((codeSystems != null) &&
                     codeSystems.ContainsKey(concept.System) &&
-                    codeSystems[concept.System].Concepts.ContainsKey(concept.Code))
+                    codeSystems[concept.System].ContainsConcept(concept.Code))
                 {
                     if (!_codeSystems.Contains(concept.System))
                     {
                         _codeSystems.Add(concept.System);
                     }
 
-                    values.Add(key, codeSystems[concept.System].Concepts[concept.Code]);
+                    values.Add(key, codeSystems[concept.System][concept.Code].Concept);
                     continue;
                 }
 

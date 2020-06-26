@@ -370,11 +370,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 id = id.Replace("-", "_");
             }
 
-            Dictionary<string, FhirConcept> concepts = new Dictionary<string, FhirConcept>();
+            Dictionary<string, FhirConceptTreeNode> nodeLookup = new Dictionary<string, FhirConceptTreeNode>();
+            FhirConceptTreeNode root = new FhirConceptTreeNode(null, null);
 
             if (cs.Concept != null)
             {
-                AddConceptTree(cs.System, id, cs.Concept, ref concepts);
+                AddConceptTree(cs.System, id, cs.Concept, ref root, ref nodeLookup);
             }
 
             FhirCodeSystem codeSystem = new FhirCodeSystem(
@@ -386,22 +387,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string.Empty,
                 string.Empty,
                 string.Empty,
-                concepts);
+                root,
+                nodeLookup);
 
             // add our code system
             fhirVersionInfo.AddCodeSystem(codeSystem);
         }
 
         /// <summary>Adds a concept tree to 'concepts'.</summary>
-        /// <param name="codeSystemUrl"> URL of the code system.</param>
-        /// <param name="codeSystemName">Name of the code system.</param>
-        /// <param name="concepts">      The concept.</param>
-        /// <param name="triplets">      [in,out] The concepts.</param>
+        /// <param name="codeSystemUrl">URL of the code system.</param>
+        /// <param name="codeSystemId"> Identifier for the code system.</param>
+        /// <param name="concepts">     The concept.</param>
+        /// <param name="parent">       [in,out] The parent.</param>
+        /// <param name="nodeLookup">   [in,out] The node lookup.</param>
         private void AddConceptTree(
             string codeSystemUrl,
-            string codeSystemName,
+            string codeSystemId,
             fhir_2.ValueSetCodeSystemConcept[] concepts,
-            ref Dictionary<string, FhirConcept> triplets)
+            ref FhirConceptTreeNode parent,
+            ref Dictionary<string, FhirConceptTreeNode> nodeLookup)
         {
             if (concepts == null)
             {
@@ -410,16 +414,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             foreach (fhir_2.ValueSetCodeSystemConcept concept in concepts)
             {
-                if (concept.Concept != null)
-                {
-                    AddConceptTree(codeSystemUrl, codeSystemName, concept.Concept, ref triplets);
-                }
-
-                if (string.IsNullOrEmpty(concept.Code) || triplets.ContainsKey(concept.Code))
-                {
-                    continue;
-                }
-
                 if (concept.Extension != null)
                 {
                     bool deprecated = false;
@@ -439,15 +433,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     }
                 }
 
-                triplets.Add(
-                    concept.Code,
+                if (string.IsNullOrEmpty(concept.Code) || nodeLookup.ContainsKey(concept.Code))
+                {
+                    continue;
+                }
+
+                FhirConceptTreeNode node = parent.AddChild(
                     new FhirConcept(
                         codeSystemUrl,
                         concept.Code,
                         concept.Display,
                         string.Empty,
                         concept.Definition,
-                        codeSystemName));
+                        codeSystemId));
+
+                if (concept.Concept != null)
+                {
+                    AddConceptTree(codeSystemUrl, codeSystemId, concept.Concept, ref node, ref nodeLookup);
+                }
+
+                nodeLookup.Add(concept.Code, node);
             }
         }
 

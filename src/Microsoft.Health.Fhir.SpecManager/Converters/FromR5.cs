@@ -280,11 +280,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            Dictionary<string, FhirConcept> concepts = new Dictionary<string, FhirConcept>();
+            Dictionary<string, FhirConceptTreeNode> nodeLookup = new Dictionary<string, FhirConceptTreeNode>();
+            FhirConceptTreeNode root = new FhirConceptTreeNode(null, null);
 
             if (cs.Concept != null)
             {
-                AddConceptTree(cs.Url, cs.Id, cs.Concept, ref concepts);
+                AddConceptTree(cs.Url, cs.Id, cs.Concept, ref root, ref nodeLookup);
             }
 
             FhirCodeSystem codeSystem = new FhirCodeSystem(
@@ -296,40 +297,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 cs.Status,
                 cs.Description,
                 cs.Content,
-                concepts);
+                root,
+                nodeLookup);
 
             // add our code system
             fhirVersionInfo.AddCodeSystem(codeSystem);
         }
 
         /// <summary>Adds a concept tree to 'concepts'.</summary>
-        /// <param name="codeSystemUrl"> URL of the code system.</param>
-        /// <param name="codeSystemId">  Id of the code system.</param>
-        /// <param name="concepts">      The concept.</param>
-        /// <param name="triplets">      [in,out] The concepts.</param>
+        /// <param name="codeSystemUrl">URL of the code system.</param>
+        /// <param name="codeSystemId"> Id of the code system.</param>
+        /// <param name="concepts">     The concept.</param>
+        /// <param name="parent">       [in,out] The parent.</param>
+        /// <param name="nodeLookup">   [in,out] The node lookup.</param>
         private void AddConceptTree(
             string codeSystemUrl,
             string codeSystemId,
             fhir_5.CodeSystemConcept[] concepts,
-            ref Dictionary<string, FhirConcept> triplets)
+            ref FhirConceptTreeNode parent,
+            ref Dictionary<string, FhirConceptTreeNode> nodeLookup)
         {
-            if (concepts == null)
+            if ((concepts == null) || (parent == null))
             {
                 return;
             }
 
             foreach (fhir_5.CodeSystemConcept concept in concepts)
             {
-                if (concept.Concept != null)
-                {
-                    AddConceptTree(codeSystemUrl, codeSystemId, concept.Concept, ref triplets);
-                }
-
-                if (string.IsNullOrEmpty(concept.Code) || triplets.ContainsKey(concept.Code))
-                {
-                    continue;
-                }
-
                 if (concept.Property != null)
                 {
                     bool deprecated = false;
@@ -344,12 +338,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     if (deprecated)
                     {
+                        // do not add this node or any children
                         continue;
                     }
                 }
 
-                triplets.Add(
-                    concept.Code,
+                if (string.IsNullOrEmpty(concept.Code) || nodeLookup.ContainsKey(concept.Code))
+                {
+                    continue;
+                }
+
+                FhirConceptTreeNode node = parent.AddChild(
                     new FhirConcept(
                         codeSystemUrl,
                         concept.Code,
@@ -357,6 +356,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         string.Empty,
                         concept.Definition,
                         codeSystemId));
+
+                if (concept.Concept != null)
+                {
+                    AddConceptTree(codeSystemUrl, codeSystemId, concept.Concept, ref node, ref nodeLookup);
+                }
+
+                nodeLookup.Add(concept.Code, node);
             }
         }
 
