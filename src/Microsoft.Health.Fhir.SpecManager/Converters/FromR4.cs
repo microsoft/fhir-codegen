@@ -521,17 +521,64 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_4.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo)
         {
+            string regex = string.Empty;
+            string descriptionShort = sd.Description;
+            string definition = sd.Purpose;
+            string comment = string.Empty;
+
+            if ((sd.Snapshot != null) &&
+                (sd.Snapshot.Element != null) &&
+                (sd.Snapshot.Element.Length > 0))
+            {
+                foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
+                {
+                    if (element.Id == sd.Id)
+                    {
+                        descriptionShort = element.Short;
+                        definition = element.Definition;
+                        comment = element.Comment;
+                        continue;
+                    }
+
+                    if (element.Id != $"{sd.Id}.value")
+                    {
+                        continue;
+                    }
+
+                    if (element.Type == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (fhir_4.ElementDefinitionType type in element.Type)
+                    {
+                        if (type.Extension == null)
+                        {
+                            continue;
+                        }
+
+                        foreach (fhir_4.Extension ext in type.Extension)
+                        {
+                            if (ext.Url == "http://hl7.org/fhir/StructureDefinition/regex")
+                            {
+                                regex = ext.ValueString;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Id,
                 sd.Name,
                 new Uri(sd.Url),
                 sd.Status,
-                sd.Description,
-                sd.Purpose,
-                string.Empty,
-                null);
-
+                descriptionShort,
+                definition,
+                comment,
+                regex);
             // add to our dictionary of primitive types
             fhirVersionInfo.AddPrimitive(primitive);
         }
@@ -540,19 +587,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="structureName">Name of the structure.</param>
         /// <param name="element">      The element.</param>
         /// <param name="elementTypes"> [out] Type of the element.</param>
+        /// <param name="regex">        [out] The RegEx.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElement(
             string structureName,
             fhir_4.ElementDefinition element,
-            out Dictionary<string, FhirElementType> elementTypes)
+            out Dictionary<string, FhirElementType> elementTypes,
+            out string regex)
         {
             elementTypes = new Dictionary<string, FhirElementType>();
+            regex = string.Empty;
 
             // check for declared type
             if (element.Type != null)
             {
                 foreach (fhir_4.ElementDefinitionType edType in element.Type)
                 {
+                    // check for extensions to find regex pattern
+                    if (edType.Extension != null)
+                    {
+                        foreach (fhir_4.Extension ext in edType.Extension)
+                        {
+                            if (ext.Url == "http://hl7.org/fhir/StructureDefinition/regex")
+                            {
+                                regex = ext.ValueString;
+                            }
+                        }
+                    }
+
                     // check for a specified type
                     if (!string.IsNullOrEmpty(edType.Code))
                     {
@@ -597,9 +659,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         private static bool TryGetTypeFromElements(
             string structureName,
             fhir_4.ElementDefinition[] elements,
-            out Dictionary<string, FhirElementType> elementTypes)
+            out Dictionary<string, FhirElementType> elementTypes,
+            out string regex)
         {
             elementTypes = null;
+            regex = string.Empty;
 
             foreach (fhir_4.ElementDefinition element in elements)
             {
@@ -609,7 +673,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 // check for base path having a type
                 if (components.Length == 1)
                 {
-                    if (TryGetTypeFromElement(structureName, element, out elementTypes))
+                    if (TryGetTypeFromElement(structureName, element, out elementTypes, out regex))
                     {
                         // done searching
                         return true;
@@ -620,7 +684,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 if ((components.Length == 2) &&
                     components[1].Equals("value", StringComparison.Ordinal))
                 {
-                    if (TryGetTypeFromElement(structureName, element, out elementTypes))
+                    if (TryGetTypeFromElement(structureName, element, out elementTypes, out regex))
                     {
                         // keep looking in case we find a better option
                         continue;
@@ -686,7 +750,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
                 else
                 {
-                    if (!TryGetTypeFromElements(sd.Name, sd.Differential.Element, out Dictionary<string, FhirElementType> baseTypes))
+                    if (!TryGetTypeFromElements(
+                            sd.Name,
+                            sd.Differential.Element,
+                            out Dictionary<string, FhirElementType> baseTypes,
+                            out string regex))
                     {
                         throw new InvalidDataException($"Could not determine base type for {sd.Name}");
                     }
@@ -713,6 +781,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         string path = element.Path ?? element.Id;
                         Dictionary<string, FhirElementType> elementTypes = null;
                         string elementType = string.Empty;
+                        string regex = string.Empty;
 
                         // split the id into component parts
                         string[] idComponents = id.Split('.');
@@ -814,7 +883,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
 
                         // if we can't find a type, assume Element
-                        if (!TryGetTypeFromElement(parent.Name, element, out elementTypes))
+                        if (!TryGetTypeFromElement(parent.Name, element, out elementTypes, out regex))
                         {
                             if ((field == "Extension") || (field == "extension"))
                             {
@@ -896,7 +965,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 element.Short,
                                 element.Definition,
                                 element.Comment,
-                                string.Empty,
+                                regex,
                                 elementType,
                                 elementTypes,
                                 (int)(element.Min ?? 0),

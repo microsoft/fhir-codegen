@@ -255,6 +255,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     $" {primitive.NameForExport(_options.PrimitiveNameStyle)}" +
                     $"::{primitive.TypeForExport(_options.PrimitiveNameStyle, _primitiveTypeMap)}");
 
+            // check for regex
+            if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
+            {
+                WriteIndented(indentation + 1, $"[{primitive.ValidationRegEx}]");
+            }
+
             if (_info.ExtensionsByPath.ContainsKey(primitive.Path))
             {
                 WriteExtensions(_info.ExtensionsByPath[primitive.Name].Values, indentation + 1);
@@ -441,6 +447,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             WriteIndented(indentation, $"- {element.NameForExport(_options.ElementNameStyle)}[{element.FhirCardinality}]: {propertyType}");
+
+            // check for regex
+            if (!string.IsNullOrEmpty(element.ValidationRegEx))
+            {
+                WriteIndented(indentation + 1, $"[{element.ValidationRegEx}]");
+            }
 
             // check for default value
             if (!string.IsNullOrEmpty(element.DefaultFieldName))

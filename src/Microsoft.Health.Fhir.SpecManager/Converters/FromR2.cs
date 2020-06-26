@@ -616,16 +616,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_2.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo)
         {
+            string regex = string.Empty;
+            string descriptionShort = sd.Description;
+            string definition = sd.Requirements;
+            string comment = string.Empty;
+
+            if ((sd.Snapshot != null) &&
+                (sd.Snapshot.Element != null) &&
+                (sd.Snapshot.Element.Length > 0))
+            {
+                foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
+                {
+                    if (element.Id == sd.Id)
+                    {
+                        descriptionShort = element.Short;
+                        definition = element.Definition;
+                        comment = element.Comment;
+                        break;
+                    }
+                }
+            }
+
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Id,
                 sd.Name,
                 new Uri(sd.Url),
                 sd.Status,
-                sd.Description,
-                sd.Requirements,
-                string.Empty,
-                null);
+                descriptionShort,
+                definition,
+                comment,
+                regex);
 
             // add to our dictionary of primitive types
             fhirVersionInfo.AddPrimitive(primitive);
