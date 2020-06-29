@@ -272,6 +272,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         sb.Append('_');
                         break;
 
+                    case '’':
                     case '\'':
                         if (second == '\'')
                         {
@@ -447,7 +448,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         break;
 
                     default:
-                        sb.Append(ch);
+                        if (ch < 128)
+                        {
+                            sb.Append(ch);
+                        }
+
                         break;
                 }
             }

@@ -1568,7 +1568,7 @@ Resources: 96
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - link[0..*]: Bundle.entry.link
+      - link[0..*]: Bundle.link
       - fullUrl[0..1]: uri
       - resource[0..1]: Resource
       - search[0..1]: BackboneElement
@@ -2288,7 +2288,7 @@ Resources: 96
       - orderedBy[0..1]: CodeableConcept
       - entry[0..*]: Reference(Resource)
       - emptyReason[0..1]: CodeableConcept
-      - section[0..*]: Composition.section.section
+      - section[0..*]: Composition.section
       Extensions: 1
       +http://hl7.org/fhir/StructureDefinition/cqm-BasedOnMeasure
           - id[0..1]: id
@@ -2345,7 +2345,7 @@ Resources: 96
           - orderedBy[0..1]: CodeableConcept
           - entry[0..*]: Reference(Resource)
           - emptyReason[0..1]: CodeableConcept
-          - section[0..*]: Composition.section.section
+          - section[0..*]: Composition.section
           Extensions: 1
           +http://hl7.org/fhir/StructureDefinition/cqm-BasedOnMeasure
               - id[0..1]: id
@@ -2407,7 +2407,7 @@ Resources: 96
           - orderedBy[0..1]: CodeableConcept
           - entry[1..1]: Reference(Observation)
           - emptyReason[0..1]: CodeableConcept
-          - section[0..*]: Composition.section.section
+          - section[0..*]: Composition.section
           Extensions: 1
           +http://hl7.org/fhir/StructureDefinition/cqm-BasedOnMeasure
               - id[0..1]: id
@@ -2483,7 +2483,7 @@ Resources: 96
               - element[1..1]: uri
               - codeSystem[1..1]: uri
               - code[1..1]: string
-          - product[0..*]: ConceptMap.element.target.product
+          - product[0..*]: ConceptMap.element.target.dependsOn
   ?context=token (context)
   ?date=date (date)
   ?dependson=uri (dependson)
@@ -2988,7 +2988,7 @@ Resources: 96
       - transactionMode[0..1]: code
         .defaultValueCode = not-supported
         {not-supported|batch|transaction|both}
-      - searchParam[0..*]: Conformance.rest.searchParam
+      - searchParam[0..*]: Conformance.rest.resource.searchParam
       - operation[0..*]: BackboneElement
           - id[0..1]: id
           - extension[0..*]: Extension
@@ -3166,7 +3166,7 @@ Resources: 96
           - factor[0..1]: decimal
           - points[0..1]: decimal
           - net[0..1]: Quantity(Money)
-      - group[0..*]: Contract.term.group
+      - group[0..*]: Contract.term
   - binding[x][0..1]: Attachment|Reference(Composition|DocumentReference|QuestionnaireResponse)
   - friendly[0..*]: BackboneElement
       - id[0..1]: id
@@ -4114,7 +4114,7 @@ Resources: 96
       - bodySite[0..1]: CodeableConcept
       - status[0..1]: code
         {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
-      - event[0..*]: DiagnosticOrder.item.event
+      - event[0..*]: DiagnosticOrder.event
       Extensions: 1
       +http://hl7.org/fhir/StructureDefinition/diagnosticorder-precondition
           - id[0..1]: id
@@ -4196,7 +4196,7 @@ Resources: 96
           - bodySite[0..1]: CodeableConcept
           - status[1..1]: code
             {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
-          - event[0..*]: DiagnosticOrder.item.event
+          - event[0..*]: DiagnosticOrder.event
           Extensions: 1
           +http://hl7.org/fhir/StructureDefinition/diagnosticorder-precondition
               - id[0..1]: id
@@ -4259,7 +4259,7 @@ Resources: 96
           - bodySite[0..1]: CodeableConcept
           - status[0..1]: code
             {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
-          - event[0..*]: DiagnosticOrder.item.event
+          - event[0..*]: DiagnosticOrder.event
           Extensions: 1
           +http://hl7.org/fhir/StructureDefinition/diagnosticorder-precondition
               - id[0..1]: id
@@ -4353,7 +4353,7 @@ Resources: 96
           - bodySite[0..0]: CodeableConcept
           - status[1..1]: code
             {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
-          - event[0..*]: DiagnosticOrder.item.event
+          - event[0..*]: DiagnosticOrder.event
           Extensions: 1
           +http://hl7.org/fhir/StructureDefinition/diagnosticorder-precondition
               - id[0..1]: id
@@ -6301,7 +6301,7 @@ Resources: 96
       - type[0..*]: code
       - package[0..*]: string
       - format[0..1]: code
-      - page[0..*]: ImplementationGuide.page.page
+      - page[0..*]: ImplementationGuide.page
   ?context=token (context)
   ?date=date (date)
   ?dependency=uri (dependency)
@@ -8046,7 +8046,7 @@ Resources: 96
       - code[1..1]: CodeableConcept
       - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
       - dataAbsentReason[0..1]: CodeableConcept
-      - referenceRange[0..*]: Observation.component.referenceRange
+      - referenceRange[0..*]: Observation.referenceRange
   Extensions: 47
   +http://hl7.org/fhir/StructureDefinition/cholesterol
       - id[0..1]: id
@@ -8109,7 +8109,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/daf-resultobs
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -8203,7 +8203,7 @@ Resources: 96
               - text[0..1]: string
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..1]: Observation.component.referenceRange
+          - referenceRange[0..1]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/daf-smokingstatus
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -8254,7 +8254,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/daf-vitalsigns
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -8333,7 +8333,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/devicemetricobservation
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -8384,7 +8384,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/genetics
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -8461,7 +8461,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
       - id[0..1]: id
       - extension[0..0]: Extension
@@ -8662,7 +8662,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/ldlcholesterol
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -8715,7 +8715,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/lipid-report-ldl-chol-calculated
       - id[0..1]: id
       - extension[0..0]: Extension
@@ -8792,7 +8792,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/triglyceride
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -8843,7 +8843,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obscode
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -8946,7 +8946,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-observationkind
       - id[0..1]: id
       - extension[0..0]: Extension
@@ -9055,7 +9055,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obspanel
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -9148,7 +9148,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obsquantity
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -9291,7 +9291,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obsrange
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -9434,7 +9434,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-obsratio
       - id[0..1]: id
       - meta[0..1]: Meta
@@ -9537,7 +9537,7 @@ Resources: 96
           - code[1..1]: CodeableConcept
           - value[x][0..1]: Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
           - dataAbsentReason[0..1]: CodeableConcept
-          - referenceRange[0..*]: Observation.component.referenceRange
+          - referenceRange[0..*]: Observation.referenceRange
   +http://hl7.org/fhir/StructureDefinition/uslab-specimenrejectreason
       - id[0..1]: id
       - extension[0..0]: Extension
@@ -9632,7 +9632,7 @@ Resources: 96
           - strength[1..1]: code
             {required|extensible|preferred|example}
           - valueSet[x][1..1]: uri|Reference(ValueSet)
-      - part[0..*]: OperationDefinition.parameter.part
+      - part[0..*]: OperationDefinition.parameter
   ?base=reference (base)
   ?code=token (code)
   ?date=date (date)
@@ -10110,7 +10110,7 @@ Resources: 96
       - name[1..1]: string
       - value[x][0..1]: boolean|integer|decimal|base64Binary|instant|string|uri|date|dateTime|time|code|oid|id|unsignedInt|positiveInt|markdown|Annotation|Attachment|Identifier|CodeableConcept|Coding|Quantity|Range|Period|Ratio|SampledData|Signature|HumanName|Address|ContactPoint|Timing|Reference|Meta
       - resource[0..1]: Resource
-      - part[0..*]: Parameters.parameter.part
+      - part[0..*]: OperationDefinition.parameter
 - Patient: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11778,7 +11778,7 @@ Resources: 96
       - type[1..1]: Coding
       - reference[1..1]: uri
       - display[0..1]: string
-      - agent[0..1]: Provenance.entity.agent
+      - agent[0..1]: Provenance.agent
   - signature[0..*]: Signature
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/ehrsrle-provenance
@@ -11819,7 +11819,7 @@ Resources: 96
           - type[1..1]: Coding
           - reference[1..1]: uri
           - display[0..1]: string
-          - agent[0..1]: Provenance.entity.agent
+          - agent[0..1]: Provenance.agent
       - signature[0..*]: Signature
   ?agent=reference (agent)
   ?end=date (end)
@@ -11858,7 +11858,7 @@ Resources: 96
       - text[0..1]: string
       - required[0..1]: boolean
       - repeats[0..1]: boolean
-      - group[0..*]: Questionnaire.group.group
+      - group[0..*]: Questionnaire.group
         Extensions: 5
         +http://hl7.org/fhir/StructureDefinition/questionnaire-enableWhen
             - id[0..1]: id
@@ -11935,7 +11935,7 @@ Resources: 96
                   .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
                 - valueReference[1..1]: Reference(ValueSet)
           - option[0..*]: Coding
-          - group[0..*]: Questionnaire.group.question.group
+          - group[0..*]: Questionnaire.group
           Extensions: 20
           +http://hl7.org/fhir/StructureDefinition/entryFormat
               - id[0..1]: id
@@ -12267,7 +12267,7 @@ Resources: 96
               - value[0..1]: Questionnaire.group.text.value
           - required[1..1]: boolean
           - repeats[1..1]: boolean
-          - group[0..*]: Questionnaire.group.group
+          - group[0..*]: Questionnaire.group
             Extensions: 5
             +http://hl7.org/fhir/StructureDefinition/questionnaire-enableWhen
                 - id[0..1]: id
@@ -12476,7 +12476,7 @@ Resources: 96
                       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
                       - valueReference[1..1]: Reference(ValueSet)
               - option[0..*]: Coding
-              - group[0..*]: Questionnaire.group.question.group
+              - group[0..*]: Questionnaire.group
               Extensions: 20
               +http://hl7.org/fhir/StructureDefinition/entryFormat
                   - id[0..1]: id
@@ -12702,7 +12702,7 @@ Resources: 96
       - title[0..1]: string
       - text[0..1]: string
       - subject[0..1]: Reference(Resource)
-      - group[0..*]: QuestionnaireResponse.group.group
+      - group[0..*]: Questionnaire.group
       - question[0..*]: BackboneElement
           - id[0..1]: id
           - extension[0..*]: Extension
@@ -12714,7 +12714,7 @@ Resources: 96
               - extension[0..*]: Extension
               - modifierExtension[0..*]: Extension
               - value[x][0..1]: boolean|decimal|integer|date|dateTime|instant|time|string|uri|Attachment|Coding|Quantity|Reference(Resource)
-              - group[0..*]: QuestionnaireResponse.group.question.answer.group
+              - group[0..*]: Questionnaire.group
               Extensions: 1
               +http://hl7.org/fhir/StructureDefinition/questionnaireresponse-author
                   - id[0..1]: id
@@ -12769,7 +12769,7 @@ Resources: 96
           - title[0..1]: string
           - text[0..1]: string
           - subject[0..1]: Reference(Resource)
-          - group[0..*]: QuestionnaireResponse.group.group
+          - group[0..*]: Questionnaire.group
           - question[0..*]: BackboneElement
               - id[0..1]: id
               - extension[0..*]: Extension
@@ -12781,7 +12781,7 @@ Resources: 96
                   - extension[0..*]: Extension
                   - modifierExtension[0..*]: Extension
                   - value[x][0..1]: boolean|date|dateTime|time|instant|decimal|integer|string|Coding|uri|Quantity|Attachment|Reference(Resource)
-                  - group[0..*]: QuestionnaireResponse.group.question.answer.group
+                  - group[0..*]: Questionnaire.group
                   Extensions: 1
                   +http://hl7.org/fhir/StructureDefinition/questionnaireresponse-author
                       - id[0..1]: id
@@ -13848,7 +13848,7 @@ Resources: 96
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - metadata[0..1]: TestScript.setup.metadata
+      - metadata[0..1]: TestScript.metadata
       - action[1..*]: BackboneElement
           - id[0..1]: id
           - extension[0..*]: Extension
@@ -13911,13 +13911,13 @@ Resources: 96
       - modifierExtension[0..*]: Extension
       - name[0..1]: string
       - description[0..1]: string
-      - metadata[0..1]: TestScript.test.metadata
+      - metadata[0..1]: TestScript.metadata
       - action[1..*]: BackboneElement
           - id[0..1]: id
           - extension[0..*]: Extension
           - modifierExtension[0..*]: Extension
-          - operation[0..1]: TestScript.test.action.operation
-          - assert[0..1]: TestScript.test.action.assert
+          - operation[0..1]: TestScript.setup.action.operation
+          - assert[0..1]: TestScript.setup.action.assert
   - teardown[0..1]: BackboneElement
       - id[0..1]: id
       - extension[0..*]: Extension
@@ -13926,7 +13926,7 @@ Resources: 96
           - id[0..1]: id
           - extension[0..*]: Extension
           - modifierExtension[0..*]: Extension
-          - operation[0..1]: TestScript.teardown.action.operation
+          - operation[0..1]: TestScript.setup.action.operation
   ?description=string (description)
   ?identifier=token (identifier)
   ?name=string (name)
@@ -13987,7 +13987,7 @@ Resources: 96
               - language[0..1]: code
               - use[0..1]: Coding
               - value[1..1]: string
-          - concept[0..*]: ValueSet.codeSystem.concept.concept
+          - concept[0..*]: ValueSet.codeSystem.concept
             Extensions: 1
             +http://hl7.org/fhir/StructureDefinition/valueset-deprecated
                 - id[0..1]: id
@@ -14062,7 +14062,7 @@ Resources: 96
               - modifierExtension[0..*]: Extension
               - code[1..1]: code
               - display[0..1]: string
-              - designation[0..*]: ValueSet.compose.include.concept.designation
+              - designation[0..*]: ValueSet.codeSystem.concept.designation
               Extensions: 5
               +http://hl7.org/fhir/StructureDefinition/valueset-comments
                   - id[0..1]: id
@@ -14115,7 +14115,7 @@ Resources: 96
               - url[1..1]: uri
                 .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemRef
               - valueUri[1..1]: uri
-      - exclude[0..*]: ValueSet.compose.exclude
+      - exclude[0..*]: ValueSet.compose.include
   - expansion[0..1]: BackboneElement
       - id[0..1]: id
       - extension[0..*]: Extension
@@ -14139,7 +14139,7 @@ Resources: 96
           - version[0..1]: string
           - code[0..1]: code
           - display[0..1]: string
-          - contains[0..*]: ValueSet.expansion.contains.contains
+          - contains[0..*]: ValueSet.expansion.contains
           Extensions: 5
           +http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
               - id[0..1]: id
@@ -14260,7 +14260,7 @@ Resources: 96
                   - language[0..1]: code
                   - use[0..1]: Coding
                   - value[1..1]: string
-              - concept[0..*]: ValueSet.codeSystem.concept.concept
+              - concept[0..*]: ValueSet.codeSystem.concept
                 Extensions: 1
                 +http://hl7.org/fhir/StructureDefinition/valueset-deprecated
                       - id[0..1]: id
@@ -14355,7 +14355,7 @@ Resources: 96
                           : Slice 0:codeDisplay.renderingStyle - on extension
                           : Slice 1:codeDisplay.markup - on extension
                       - value[0..1]: ValueSet.compose.include.concept.display.value
-                  - designation[0..*]: ValueSet.compose.include.concept.designation
+                  - designation[0..*]: ValueSet.codeSystem.concept.designation
                   Extensions: 5
                   +http://hl7.org/fhir/StructureDefinition/valueset-comments
                       - id[0..1]: id
@@ -14408,7 +14408,7 @@ Resources: 96
                   - url[1..1]: uri
                       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemRef
                   - valueUri[1..1]: uri
-          - exclude[0..*]: ValueSet.compose.exclude
+          - exclude[0..*]: ValueSet.compose.include
       - expansion[0..1]: BackboneElement
           - id[0..1]: id
           - extension[0..*]: Extension
@@ -14452,7 +14452,7 @@ Resources: 96
                       : Slice 0:expansionDisplay.renderingStyle - on extension
                       : Slice 1:expansionDisplay.markup - on extension
                   - value[0..1]: ValueSet.expansion.contains.display.value
-              - contains[0..*]: ValueSet.expansion.contains.contains
+              - contains[0..*]: ValueSet.expansion.contains
               Extensions: 5
               +http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
                   - id[0..1]: id
@@ -14557,7 +14557,7 @@ Resources: 96
                   - language[0..1]: code
                   - use[0..1]: Coding
                   - value[1..1]: string
-              - concept[0..*]: ValueSet.codeSystem.concept.concept
+              - concept[0..*]: ValueSet.codeSystem.concept
                 Extensions: 1
                 +http://hl7.org/fhir/StructureDefinition/valueset-deprecated
                       - id[0..1]: id
@@ -14634,7 +14634,7 @@ Resources: 96
                   - modifierExtension[0..*]: Extension
                   - code[1..1]: code
                   - display[0..1]: string
-                  - designation[0..*]: ValueSet.compose.include.concept.designation
+                  - designation[0..*]: ValueSet.codeSystem.concept.designation
                   Extensions: 5
                   +http://hl7.org/fhir/StructureDefinition/valueset-comments
                       - id[0..1]: id
@@ -14687,7 +14687,7 @@ Resources: 96
                   - url[1..1]: uri
                       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemRef
                   - valueUri[1..1]: uri
-          - exclude[0..*]: ValueSet.compose.exclude
+          - exclude[0..*]: ValueSet.compose.include
       - expansion[0..1]: BackboneElement
           - id[0..1]: id
           - extension[0..*]: Extension
@@ -14715,7 +14715,7 @@ Resources: 96
               - version[0..1]: string
               - code[0..1]: code
               - display[0..1]: string
-              - contains[0..*]: ValueSet.expansion.contains.contains
+              - contains[0..*]: ValueSet.expansion.contains
               Extensions: 5
               +http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
                   - id[0..1]: id
@@ -14813,7 +14813,7 @@ Resources: 96
                   - language[0..1]: code
                   - use[0..1]: Coding
                   - value[1..1]: string
-              - concept[0..*]: ValueSet.codeSystem.concept.concept
+              - concept[0..*]: ValueSet.codeSystem.concept
                 Extensions: 1
                 +http://hl7.org/fhir/StructureDefinition/valueset-deprecated
                       - id[0..1]: id
@@ -14888,7 +14888,7 @@ Resources: 96
                   - modifierExtension[0..*]: Extension
                   - code[1..1]: code
                   - display[0..1]: string
-                  - designation[0..*]: ValueSet.compose.include.concept.designation
+                  - designation[0..*]: ValueSet.codeSystem.concept.designation
                   Extensions: 5
                   +http://hl7.org/fhir/StructureDefinition/valueset-comments
                       - id[0..1]: id
@@ -14941,7 +14941,7 @@ Resources: 96
                   - url[1..1]: uri
                       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemRef
                   - valueUri[1..1]: uri
-          - exclude[0..*]: ValueSet.compose.exclude
+          - exclude[0..*]: ValueSet.compose.include
       - expansion[0..1]: BackboneElement
           - id[0..1]: id
           - extension[0..*]: Extension
@@ -14965,7 +14965,7 @@ Resources: 96
               - version[0..1]: string
               - code[0..1]: code
               - display[0..1]: string
-              - contains[0..*]: ValueSet.expansion.contains.contains
+              - contains[0..*]: ValueSet.expansion.contains
               Extensions: 5
               +http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
                   - id[0..1]: id

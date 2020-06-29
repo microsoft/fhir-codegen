@@ -1070,6 +1070,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                             // use the named type
                             elementType = _namedReferenceLinks[element.NameReference];
+                            elementTypes = null;
                         }
 
                         // get default values (if present)
