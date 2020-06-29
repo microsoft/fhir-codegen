@@ -3,39 +3,52 @@
     "fhir-codegen-cli": {
       "commandName": "Project",
       "commandLineArgs": "--load-r2 latest --load-r3 latest --load-r4 latest",
-      "workingDirectory": "..\\.."
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     },
     "r2": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r2.txt --load-r2 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
+      "commandLineArgs": "--output-file generated\\r2.txt --load-r2 latest --fhir-spec-directory fhirVersions",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     },
     "r3": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r3.txt --load-r3 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
+      "commandLineArgs": "--output-file generated\\r3.txt --load-r3 latest --fhir-spec-directory fhirVersions",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     },
     "r4": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r4.txt --load-r4 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
+      "commandLineArgs": "--output-file generated\\r4.txt --load-r4 latest --fhir-spec-directory fhirVersions",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     },
     "r5": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r5.txt --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions"
+      "commandLineArgs": "--output-file generated\\r5.txt --load-r5 latest --fhir-spec-directory fhirVersions",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     },
     "ts5": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r5.ts --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language TypeScript"
+      "commandLineArgs": "--output-file generated\\r5.ts --load-r5 latest --fhir-spec-directory fhirVersions --language TypeScript",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     },
     "ts4": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r4.ts --load-r4 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language TypeScript"
+      "commandLineArgs": "--output-file generated\\r4.ts --load-r4 latest --fhir-spec-directory fhirVersions --language TypeScript",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     },
     "cs5": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\ --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language CSharpBasic"
+      "commandLineArgs": "--output-file generated\\ --load-r5 latest --fhir-spec-directory fhirVersions --language CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     },
     "GenerateAll": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\ --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language Info|TypeScript|CSharpBasic"
+      "commandLineArgs": "--output-file generated\\ --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory fhirVersions --language Info|TypeScript|CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "Firely5": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-file firely\\ --load-r5 latest --fhir-spec-directory fhirVersions --language CSharpFirely",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     }
   }
 }

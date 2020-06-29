@@ -291,6 +291,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 throw new NotSupportedException($"Unsupported enum naming style: {options.EnumStyle}");
             }
 
+            if (options.PrimitiveNameStyle != FhirTypeBase.NamingConvention.None)
+            {
+                WritePrimitiveTypes(_info.PrimitiveTypes.Values, 1);
+            }
+
+            #if DISABLED
             // create a filename for writing (single file for now)
             string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.cs");
 
@@ -301,11 +307,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteHeader();
 
                 WriteNamespaceOpen();
-
-                if (options.PrimitiveNameStyle != FhirTypeBase.NamingConvention.None)
-                {
-                    WritePrimitiveTypes(_info.PrimitiveTypes.Values, 1);
-                }
 
                 if (options.ComplexTypeNameStyle != FhirTypeBase.NamingConvention.None)
                 {
@@ -324,6 +325,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteFooter();
             }
+            #endif
         }
 
         /// <summary>Writes a polymorphic helpers.</summary>
@@ -777,6 +779,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             int indentation)
         {
             string exportName;
+            string typeName = primitive.TypeForExport(_options.PrimitiveNameStyle, _primitiveTypeMap);
 
             if (_typeMappings.ContainsKey(primitive.Name))
             {
@@ -784,7 +787,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                exportName = FhirUtils.ToConvention(primitive.Name, string.Empty, _options.PrimitiveNameStyle);
+                exportName = primitive.NameForExport(_options.PrimitiveNameStyle);
             }
 
             string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
@@ -810,11 +813,101 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndented(indentation + 1, "[DataContract]");
 
                 WriteIndented(
-                    indentation,
+                    indentation + 1,
                     $"public partial class" +
-                        $" {primitive.TypeForExport(_options.PrimitiveNameStyle, _primitiveTypeMap)}" +
-                        $" : " +
-                        $" {primitive.NameForExport(_options.PrimitiveNameStyle)};");
+                        $" {exportName}" +
+                        $" : {_namespace}.Primitive<{typeName}>," +
+                        $" System.ComponentModel.INotifyPropertyChanged");
+
+                // open class
+                WriteIndented(
+                    indentation + 1,
+                    "{");
+
+                WriteIndented(
+                    indentation + 2,
+                    "[NotMapped]");
+
+                WriteIndented(
+                    indentation + 2,
+                    $"public override string TypeName {{ get {{ return \"{typeName}\"; }} }}");
+
+                WriteIndented(0, string.Empty);
+
+                if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
+                {
+                    WriteIndentedComment(
+                        indentation + 2,
+                        $"Must conform to pattern \"{primitive.ValidationRegEx}\"",
+                        false);
+
+                    WriteIndented(
+                        indentation + 2,
+                        $"public const string PATTERN = @\"{primitive.ValidationRegEx}\";");
+
+                    WriteIndented(0, string.Empty);
+                }
+
+                WriteIndented(
+                    indentation + 2,
+                    $"public {exportName}({typeName} value)");
+
+                WriteIndented(
+                    indentation + 2,
+                    "{");
+
+                WriteIndented(
+                    indentation + 3,
+                    "Value = value;");
+
+                WriteIndented(
+                    indentation + 2,
+                    "}");
+
+                WriteIndented(0, string.Empty);
+
+                WriteIndented(
+                    indentation + 2,
+                    $"public {exportName}(): this(({typeName})null) {{}}");
+
+                WriteIndented(0, string.Empty);
+
+                WriteIndentedComment(
+                    indentation + 2,
+                    "Primitive value of the element");
+
+                WriteIndented(
+                    indentation + 2,
+                    "[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
+
+                WriteIndented(
+                    indentation + 2,
+                    "[DataMemeber]");
+
+                WriteIndented(
+                    indentation + 2,
+                    $"public {typeName} Value");
+
+                WriteIndented(
+                    indentation + 2,
+                    "{");
+
+                WriteIndented(
+                    indentation + 3,
+                    $"get {{ return ({typeName})ObjectValue; }}");
+
+                WriteIndented(
+                    indentation + 3,
+                    "set { ObjectValue = value; OnPropertyChanged(\"Value\"); }");
+
+                WriteIndented(
+                    indentation + 2,
+                    "}");
+
+                // close class
+                WriteIndented(
+                    indentation + 1,
+                    "}");
 
                 WriteNamespaceClose();
 
@@ -930,24 +1023,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a footer.</summary>
         private void WriteFooter()
         {
-            return;
+            WriteIndentedComment(0, "end of file");
         }
 
         /// <summary>Writes an indented comment.</summary>
         /// <param name="indentation">The indentation.</param>
         /// <param name="value">      The value.</param>
-        private void WriteIndentedComment(int indentation, string value)
+        /// <param name="isSummary">  (Optional) True if is summary, false if not.</param>
+        private void WriteIndentedComment(int indentation, string value, bool isSummary = true)
         {
             string prefix = $"{new string(' ', indentation * 2)}/// ";
 
-            WriteIndented(indentation, "/// <summary>");
+            if (isSummary)
+            {
+                WriteIndented(indentation, "/// <summary>");
+            }
 
             _writer.Write(prefix);
             prefix = $"\n{prefix}";
 
             _writer.WriteLine(value.Replace("\n", prefix).Replace("\r", string.Empty));
 
-            WriteIndented(indentation, "/// </summary>");
+            if (isSummary)
+            {
+                WriteIndented(indentation, "/// </summary>");
+            }
         }
 
         /// <summary>

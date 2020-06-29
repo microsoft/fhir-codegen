@@ -798,7 +798,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a footer.</summary>
         private void WriteFooter()
         {
-            return;
+            WriteIndentedComment(0, "end of file");
         }
 
         /// <summary>Writes an indented comment.</summary>

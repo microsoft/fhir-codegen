@@ -25,7 +25,7 @@ namespace FhirCodegenCli
         /// <param name="outputFile">       Where to write output.</param>
         /// <param name="verbose">          Show verbose output.</param>
         /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
-        /// <param name="language">         Name of the language to export (default: info).</param>
+        /// <param name="language">         Name of the language to export (default: Info|TypeScript|CSharpBasic).</param>
         /// <param name="exportKeys">       '|' separated list of items to export (not present to export everything).</param>
         /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or
         ///  latest).</param>
@@ -36,11 +36,11 @@ namespace FhirCodegenCli
         /// <param name="loadR5">           If FHIR R5 should be loaded, which version (e.g., 4.4.0 or
         ///  latest).</param>
         public static void Main(
-            string fhirSpecDirectory,
+            string fhirSpecDirectory = "",
             string outputFile = "",
             bool verbose = false,
             bool offlineMode = false,
-            string language = "Info",
+            string language = "",
             string exportKeys = "",
             string loadR2 = "",
             string loadR3 = "",
@@ -48,6 +48,32 @@ namespace FhirCodegenCli
             string loadR5 = "")
         {
             _extensionsOutputted = new HashSet<string>();
+
+            if (string.IsNullOrEmpty(fhirSpecDirectory))
+            {
+                fhirSpecDirectory = Path.Combine(Directory.GetCurrentDirectory(), "fhirVersions");
+            }
+
+            if (string.IsNullOrEmpty(outputFile))
+            {
+                outputFile = Path.Combine(Directory.GetCurrentDirectory(), "generated");
+            }
+
+            if (string.IsNullOrEmpty(loadR2) &&
+                string.IsNullOrEmpty(loadR3) &&
+                string.IsNullOrEmpty(loadR4) &&
+                string.IsNullOrEmpty(loadR5))
+            {
+                loadR2 = "latest";
+                loadR3 = "latest";
+                loadR4 = "latest";
+                loadR5 = "latest";
+            }
+
+            if (string.IsNullOrEmpty(language))
+            {
+                language = "Info|TypeScript|CSharpBasic";
+            }
 
             // start timing
             Stopwatch timingWatch = Stopwatch.StartNew();
