@@ -647,10 +647,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteIndented(1, $"// Using Model Inheritance: {_options.UseModelInheritance}");
             WriteIndented(1, $"// Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
             WriteIndented(1, $"// Nesting Type Definitions: {_options.NestTypeDefinitions}");
-            WriteIndented(1, $"// Primitive Naming Sylte: {_options.PrimitiveNameStyle}");
-            WriteIndented(1, $"// Complex Type Naming Sylte: {_options.ComplexTypeNameStyle}");
-            WriteIndented(1, $"// Resource Naming Sylte: {_options.ResourceNameStyle}");
-            WriteIndented(1, $"// Interaction Naming Sylte: {_options.InteractionNameStyle}");
+            WriteIndented(1, $"// Primitive Naming Style: {_options.PrimitiveNameStyle}");
+            WriteIndented(1, $"// Complex Type / Resource Naming Style: {_options.ComplexTypeNameStyle}");
+            WriteIndented(1, $"// Interaction Naming Style: {_options.InteractionNameStyle}");
             WriteIndented(1, $"// Extension Support: {_options.ExtensionSupport}");
 
             if ((_options.ExportList != null) && _options.ExportList.Any())

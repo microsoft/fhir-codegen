@@ -140,10 +140,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <value>The complex type name style.</value>
         public NamingConvention ComplexTypeNameStyle { get; }
 
-        /// <summary>Gets the resource name style.</summary>
-        /// <value>The resource name style.</value>
-        public NamingConvention ResourceNameStyle { get; }
-
         /// <summary>Gets the interaction name style.</summary>
         /// <value>The interaction name style.</value>
         public NamingConvention InteractionNameStyle { get; }

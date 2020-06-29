@@ -51,12 +51,12 @@ namespace FhirCodegenCli
 
             if (string.IsNullOrEmpty(fhirSpecDirectory))
             {
-                fhirSpecDirectory = Path.Combine(Directory.GetCurrentDirectory(), "fhirVersions");
+                fhirSpecDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\fhirVersions");
             }
 
             if (string.IsNullOrEmpty(outputFile))
             {
-                outputFile = Path.Combine(Directory.GetCurrentDirectory(), "generated");
+                outputFile = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\generated");
             }
 
             if (string.IsNullOrEmpty(loadR2) &&
