@@ -31,7 +31,11 @@
     },
     "cs5": {
       "commandName": "Project",
-      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\r5.cs --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language CSharpBasic"
+      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\ --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language CSharpBasic"
+    },
+    "GenerateAll": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-file ..\\..\\..\\..\\..\\generated\\ --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\..\\..\\..\\fhirVersions --language Info|TypeScript|CSharpBasic"
     }
   }
 }

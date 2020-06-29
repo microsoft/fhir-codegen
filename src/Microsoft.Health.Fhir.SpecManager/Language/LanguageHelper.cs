@@ -38,11 +38,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _initialized = true;
         }
 
-        /// <summary>Gets a language.</summary>
+        /// <summary>Gets the language interfaces for the requested languages.</summary>
         /// <param name="name">The name.</param>
-        /// <returns>The language.</returns>
-        public static ILanguage GetLanguage(string name)
+        /// <returns>The languages.</returns>
+        public static List<ILanguage> GetLanguages(string name)
         {
+            List<ILanguage> languages = new List<ILanguage>();
+
             if (!_initialized)
             {
                 Init();
@@ -53,12 +55,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return null;
             }
 
-            if (!_languagesByName.ContainsKey(name.ToLowerInvariant()))
+            if (_languagesByName.ContainsKey(name.ToLowerInvariant()))
             {
-                return null;
+                languages.Add(_languagesByName[name.ToLowerInvariant()]);
             }
 
-            return _languagesByName[name.ToLowerInvariant()];
+            if (name.Contains('|'))
+            {
+                string[] names = name.Split('|');
+
+                foreach (string n in names)
+                {
+                    if (_languagesByName.ContainsKey(n.ToLowerInvariant()))
+                    {
+                        languages.Add(_languagesByName[n.ToLowerInvariant()]);
+                    }
+                }
+            }
+
+            return languages;
         }
     }
 }

@@ -85,6 +85,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 options,
                 exportDir);
 
+            // check for being a directory - just copy our process files
+            if (Directory.Exists(outputFile))
+            {
+                string[] exportedFiles = Directory.GetFiles(exportDir);
+
+                foreach (string file in exportedFiles)
+                {
+                    string exportName = Path.Combine(outputFile, Path.GetFileName(file));
+
+                    if (File.Exists(exportName))
+                    {
+                        File.Delete(exportName);
+                    }
+
+                    File.Move(file, exportName);
+                }
+
+                DeleteDirectory(exportDir);
+
+                return;
+            }
+
             // make sure our destination is clear
             if (File.Exists(outputFile))
             {

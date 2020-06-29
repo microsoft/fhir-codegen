@@ -95,70 +95,73 @@ namespace FhirCodegenCli
                     Directory.CreateDirectory(Path.GetDirectoryName(baseDirectory));
                 }
 
-                ILanguage lang = LanguageHelper.GetLanguage(language);
+                List<ILanguage> languages = LanguageHelper.GetLanguages(language);
 
-                ExporterOptions options;
-
-                if (lang.LanguageName == "Info")
+                foreach (ILanguage lang in languages)
                 {
-                    options = new ExporterOptions(
-                    lang.LanguageName,
-                    null,
-                    true,
-                    true,
-                    true,
-                    FhirTypeBase.NamingConvention.CamelCase,
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    FhirTypeBase.NamingConvention.CamelCase,
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    ExporterOptions.ExtensionSupportLevel.OfficialExtensions,
-                    null,
-                    null);
-                }
-                else
-                {
-                    string[] exportList = null;
+                    ExporterOptions options;
 
-                    if (!string.IsNullOrEmpty(exportKeys))
+                    if (lang.LanguageName == "Info")
                     {
-                        exportList = exportKeys.Split('|');
-                    }
-
-                    options = new ExporterOptions(
+                        options = new ExporterOptions(
                         lang.LanguageName,
-                        exportList,
-                        lang.SupportsModelInheritance,
-                        lang.SupportsHidingParentField,
-                        lang.SupportsNestedTypeDefinitions,
-                        lang.SupportedPrimitiveNameStyles.First(),
-                        lang.SupportedComplexTypeNameStyles.First(),
-                        lang.SupportedElementNameStyles.First(),
-                        lang.SupportedInteractionNameStyles.First(),
-                        lang.SupportedEnumStyles.First(),
-                        ExporterOptions.ExtensionSupportLevel.NonPrimitives,
+                        null,
+                        true,
+                        true,
+                        true,
+                        FhirTypeBase.NamingConvention.CamelCase,
+                        FhirTypeBase.NamingConvention.PascalCase,
+                        FhirTypeBase.NamingConvention.CamelCase,
+                        FhirTypeBase.NamingConvention.PascalCase,
+                        FhirTypeBase.NamingConvention.PascalCase,
+                        ExporterOptions.ExtensionSupportLevel.OfficialExtensions,
                         null,
                         null);
-                }
+                    }
+                    else
+                    {
+                        string[] exportList = null;
 
-                if (r2 != null)
-                {
-                    Exporter.Export(r2, lang, options, outputFile);
-                }
+                        if (!string.IsNullOrEmpty(exportKeys))
+                        {
+                            exportList = exportKeys.Split('|');
+                        }
 
-                if (r3 != null)
-                {
-                    Exporter.Export(r3, lang, options, outputFile);
-                }
+                        options = new ExporterOptions(
+                            lang.LanguageName,
+                            exportList,
+                            lang.SupportsModelInheritance,
+                            lang.SupportsHidingParentField,
+                            lang.SupportsNestedTypeDefinitions,
+                            lang.SupportedPrimitiveNameStyles.First(),
+                            lang.SupportedComplexTypeNameStyles.First(),
+                            lang.SupportedElementNameStyles.First(),
+                            lang.SupportedInteractionNameStyles.First(),
+                            lang.SupportedEnumStyles.First(),
+                            ExporterOptions.ExtensionSupportLevel.NonPrimitives,
+                            null,
+                            null);
+                    }
 
-                if (r4 != null)
-                {
-                    Exporter.Export(r4, lang, options, outputFile);
-                }
+                    if (r2 != null)
+                    {
+                        Exporter.Export(r2, lang, options, outputFile);
+                    }
 
-                if (r5 != null)
-                {
-                    Exporter.Export(r5, lang, options, outputFile);
+                    if (r3 != null)
+                    {
+                        Exporter.Export(r3, lang, options, outputFile);
+                    }
+
+                    if (r4 != null)
+                    {
+                        Exporter.Export(r4, lang, options, outputFile);
+                    }
+
+                    if (r5 != null)
+                    {
+                        Exporter.Export(r5, lang, options, outputFile);
+                    }
                 }
             }
 

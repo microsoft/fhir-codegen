@@ -34,9 +34,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "http://terminology.hl7.org/CodeSystem/v2-0178",
             /// <summary>Display values are too long to be useful.</summary>
             "http://terminology.hl7.org/CodeSystem/v2-0277",
+            /// <summary>Display values are too long to be useful.</summary>
+            "http://terminology.hl7.org/CodeSystem/v3-VaccineManufacturer",
 
             /// <summary>Display includes operation symbols: $.</summary>
             "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+
+            /// <summary>Names are often just symbols.</summary>
+            "http://hl7.org/fhir/v2/0290",
         };
 
         /// <summary>FHIR information we are exporting.</summary>
