@@ -13,14 +13,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A fhir utilities.</summary>
     public abstract class FhirUtils
     {
-        /// <summary>The RegEx sanitize for property definition.</summary>
-        private const string _regexSanitizeForPropertyDefinition = "[\r\n\\.\\|\\- \\/\\(\\)\\:\\*\\[\\]\\{\\}]";
-
         /// <summary>The RegEx remove duplicate lines.</summary>
         private const string _regexRemoveDuplicateLinesDefinition = "__+";
-
-        /// <summary>The RegEx sanitize for property.</summary>
-        private static Regex _regexSanitizeForProperty = new Regex(_regexSanitizeForPropertyDefinition);
 
         /// <summary>The RegEx remove duplicate lines.</summary>
         private static Regex _regexRemoveDuplicateLines = new Regex(_regexRemoveDuplicateLinesDefinition);

@@ -30,16 +30,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             /// <summary>Operation Outcomes include c-style string formats in display.</summary>
             "http://terminology.hl7.org/CodeSystem/operation-outcome",
 
-            /// <summary>SMART descriptions have quoted values.</summary>
+            /// <summary>Descriptions have quoted values.</summary>
             "http://terminology.hl7.org/CodeSystem/smart-capabilities",
+
+            /// <summary>Descriptions have quoted values.</summary>
+            "http://hl7.org/fhir/v2/0301",
 
             /// <summary>Display values are too long to be useful.</summary>
             "http://terminology.hl7.org/CodeSystem/v2-0178",
+
             /// <summary>Display values are too long to be useful.</summary>
             "http://terminology.hl7.org/CodeSystem/v2-0277",
 
+            /// <summary>Display values are too long to be useful.</summary>
+            "http://terminology.hl7.org/CodeSystem/v3-VaccineManufacturer",
+
+            /// <summary>Display values are too long to be useful.</summary>
+            "http://hl7.org/fhir/v2/0278",
+
             /// <summary>Display includes operation symbols: $.</summary>
             "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+
+            /// <summary>Names are often just symbols.</summary>
+            "http://hl7.org/fhir/v2/0290",
+
+            /// <summary>Display includes too many Unicode characters (invalid export names).</summary>
+            "http://hl7.org/fhir/v2/0255",
+
+            /// <summary>Display includes too many Unicode characters (invalid export names).</summary>
+            "http://hl7.org/fhir/v2/0256",
         };
 
         /// <summary>FHIR information we are exporting.</summary>
@@ -79,7 +98,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
-        private static HashSet<string> _reservedWords => new HashSet<string>()
+        private static readonly HashSet<string> _reservedWords = new HashSet<string>()
         {
             "abstract",
             "as",
@@ -165,18 +184,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly HashSet<FhirTypeBase.NamingConvention> _pascalStyle = new HashSet<FhirTypeBase.NamingConvention>()
         {
             FhirTypeBase.NamingConvention.PascalCase,
-        };
-
-        /// <summary>This option supports only Camel case.</summary>
-        private static readonly HashSet<FhirTypeBase.NamingConvention> _camelStyle = new HashSet<FhirTypeBase.NamingConvention>()
-        {
-            FhirTypeBase.NamingConvention.CamelCase,
-        };
-
-        /// <summary>This option supports only Upper case.</summary>
-        private static readonly HashSet<FhirTypeBase.NamingConvention> _upperStyle = new HashSet<FhirTypeBase.NamingConvention>()
-        {
-            FhirTypeBase.NamingConvention.UpperCase,
         };
 
         /// <summary>The not supported style.</summary>

@@ -311,12 +311,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             if (include && exclude)
             {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 throw new Exception("Cannot include and exclude the same filters!");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
 
             if ((!include) && (!exclude))
             {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 throw new Exception("Must either include or exclude for filters!");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
 
             string startingCode = string.Empty;

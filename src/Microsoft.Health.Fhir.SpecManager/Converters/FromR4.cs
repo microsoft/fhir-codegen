@@ -34,7 +34,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// </summary>
         public FromR4() => _jsonConverter = new fhir_4.ResourceConverter();
 
-
         /// <summary>Process the value set.</summary>
         /// <param name="vs">             The vs.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
@@ -584,6 +583,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 definition,
                 comment,
                 regex);
+
             // add to our dictionary of primitive types
             fhirVersionInfo.AddPrimitive(primitive);
         }

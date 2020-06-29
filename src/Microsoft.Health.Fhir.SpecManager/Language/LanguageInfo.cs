@@ -56,7 +56,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
-        private static HashSet<string> _reservedWords => new HashSet<string>();
+        private static readonly HashSet<string> _reservedWords = new HashSet<string>();
 
         /// <summary>This language supports all naming styles on all object types.</summary>
         private static readonly HashSet<FhirTypeBase.NamingConvention> _allNamingStyles = new HashSet<FhirTypeBase.NamingConvention>()
@@ -204,7 +204,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteIndented(
                 indentation,
                 $"- {valueSet.URL}|{valueSet.Version} ({valueSet.Name})");
-
         }
 
         /// <summary>Writes the complexes.</summary>

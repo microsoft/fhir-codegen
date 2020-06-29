@@ -65,18 +65,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // make sure we match
             if (info.Name != packageName)
             {
-                throw new FileNotFoundException($"Package not found: {packageName}");
+                throw new FileNotFoundException($"Package not found: {releaseName}:{packageName}");
             }
 
             if (info.Versions == null)
             {
-                throw new InvalidDataException($"Version information not found for package: {packageName}");
+                throw new InvalidDataException($"Version information not found for package: {releaseName}:{packageName}");
             }
 
             // find the correct download url for this version
             if (!info.Versions.ContainsKey(version))
             {
-                throw new InvalidDataException($"Version {version} not found in package {packageName}");
+                throw new InvalidDataException($"Version {version} not found in package {releaseName}:{packageName}");
             }
 
             // download and extract our package

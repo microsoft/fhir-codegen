@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+
 namespace Microsoft.Health.Fhir.SpecManager.fhir.r5
 {
     ///<summary>
@@ -7792,4 +7794,6 @@ namespace Microsoft.Health.Fhir.SpecManager.fhir.r5
         }
     }
 } // close namespace: fhir
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+
 /** END OF GENERATED FILE **/
