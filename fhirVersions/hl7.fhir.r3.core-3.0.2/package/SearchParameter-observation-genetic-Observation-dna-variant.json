@@ -1,0 +1,1 @@
+{"resourceType":"SearchParameter","id":"observation-genetic-Observation-dna-variant","url":"http://hl7.org/fhir/SearchParameter/observation-genetic-Observation-dna-variant","name":"dna-variant","status":"draft","experimental":true,"code":"dna-variant","base":["Observation"],"type":"string","description":"HGVS DNA variant","xpathUsage":"normal"}

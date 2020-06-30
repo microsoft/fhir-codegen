@@ -1,0 +1,1 @@
+﻿{"date":"2005-01-25","description":"This was a wrong registration for the spanish editions of SNOMED CT. Do not use","id":"example-replaced","kind":"codesystem","name":"SNOMED CT Spanish","publisher":"Not HL7!","replacedBy":{"reference":"NamingSystem/example"},"resourceType":"NamingSystem","status":"retired","uniqueId":[{"type":"oid","value":"2.16.840.1.113883.6.96.1"}]}
