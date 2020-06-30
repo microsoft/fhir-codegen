@@ -58,6 +58,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "http://hl7.org/fhir/v2/0256",
         };
 
+        /// <summary>The names requiring keyword new.</summary>
+        private static HashSet<string> _namesRequiringKeywordNew = new HashSet<string>()
+        {
+            "Equals",
+        };
+
         /// <summary>FHIR information we are exporting.</summary>
         private FhirVersionInfo _info;
 
@@ -468,9 +474,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 usedValues.Add(name);
 
-                WriteIndented(
-                    indentation + 1,
-                    $"public static readonly Coding {name} = new Coding");
+                if (_namesRequiringKeywordNew.Contains(name))
+                {
+                    WriteIndented(
+                        indentation + 1,
+                        $"public static readonly new Coding {name} = new Coding");
+                }
+                else
+                {
+                    WriteIndented(
+                        indentation + 1,
+                        $"public static readonly Coding {name} = new Coding");
+                }
 
                 WriteIndented(
                     indentation + 1,
