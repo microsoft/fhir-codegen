@@ -410,7 +410,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteIndented(
                 indentation,
-                $"public static class {vsName}");
+                $"public static class {vsName}ValueSet");
 
             WriteIndented(
                 indentation,
@@ -577,7 +577,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
 
                 WriteIndented(indentation + 1, "/** Resource Type Name (for serialization) */");
-                WriteIndented(indentation + 1, "[JsonPropertyName(\"resourceType\")]");
+                WriteIndented(indentation + 1, "[JsonProperty(\"resourceType\")]");
                 WriteIndented(indentation + 1, $"public string ResourceType => \"{complex.Name}\";");
             }
 
@@ -619,7 +619,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 codeName = codeName.Replace("[X]", string.Empty);
             }
 
-            WriteIndented(indentation, $"public sealed class {codeName} {{");
+            WriteIndented(indentation, $"public static class {codeName}Codes {{");
 
             foreach (string code in element.Codes)
             {
@@ -683,7 +683,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element,
             int indentation)
         {
-            string optionalFlagString = element.IsOptional ? "?" : string.Empty;
             string arrayFlagString = element.IsArray ? "[]" : string.Empty;
 
             Dictionary<string, string> values = element.NamesAndTypesForExport(
@@ -695,6 +694,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (KeyValuePair<string, string> kvp in values)
             {
+                string elementName;
+                if (kvp.Key == complex.Name)
+                {
+                    elementName = $"{kvp.Key}Field";
+                }
+                else
+                {
+                    elementName = kvp.Key;
+                }
+
+                string optionalFlagString = (element.IsOptional && IsNullable(kvp.Value)) ? "?" : string.Empty;
+
                 if (!string.IsNullOrEmpty(element.Comment))
                 {
                     WriteIndentedComment(indentation, element.Comment);
@@ -702,14 +713,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
 
-                WriteIndented(indentation, $"[JsonPropertyName(\"{camel}\")]");
+                WriteIndented(indentation, $"[JsonProperty(\"{camel}\")]");
 
                 WriteIndented(
                     indentation,
-                    $"public {kvp.Value}{optionalFlagString}{arrayFlagString} {kvp.Key} {{ get; set; }}");
+                    $"public {kvp.Value}{optionalFlagString}{arrayFlagString} {elementName} {{ get; set; }}");
 
-                WriteIndented(indentation, $"[JsonPropertyName(\"_{camel}\")]");
-                WriteIndented(indentation, $"public Element{arrayFlagString} _{kvp.Key} {{ get; set; }}");
+                WriteIndented(indentation, $"[JsonProperty(\"_{camel}\")]");
+                WriteIndented(indentation, $"public Element{arrayFlagString} _{elementName} {{ get; set; }}");
             }
         }
 
@@ -797,24 +808,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a footer.</summary>
         private void WriteFooter()
         {
-            WriteIndentedComment(0, "end of file");
+            WriteIndentedComment(0, "end of file", false);
         }
 
         /// <summary>Writes an indented comment.</summary>
         /// <param name="indentation">The indentation.</param>
         /// <param name="value">      The value.</param>
-        private void WriteIndentedComment(int indentation, string value)
+        /// <param name="isSummary">  (Optional) True if is summary, false if not.</param>
+        private void WriteIndentedComment(int indentation, string value, bool isSummary = true)
         {
             string prefix = $"{new string(' ', indentation * 2)}/// ";
 
-            WriteIndented(indentation, "/// <summary>");
+            if (isSummary)
+            {
+                WriteIndented(indentation, "/// <summary>");
+            }
 
             _writer.Write(prefix);
             prefix = $"\n{prefix}";
 
             _writer.WriteLine(value.Replace("\n", prefix).Replace("\r", string.Empty));
 
-            WriteIndented(indentation, "/// </summary>");
+            if (isSummary)
+            {
+                WriteIndented(indentation, "/// </summary>");
+            }
         }
 
         /// <summary>

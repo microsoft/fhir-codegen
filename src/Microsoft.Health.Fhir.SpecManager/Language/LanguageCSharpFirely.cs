@@ -224,7 +224,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the primitive configuration.</summary>
         /// <value>The primitive configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedPrimitiveNameStyles => _notSupportedStyle;
+        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedPrimitiveNameStyles => _pascalStyle;
 
         /// <summary>Gets the complex type configuration.</summary>
         /// <value>The complex type configuration.</value>

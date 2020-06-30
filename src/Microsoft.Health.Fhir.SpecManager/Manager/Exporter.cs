@@ -49,6 +49,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 throw new ArgumentNullException(nameof(outputFile));
             }
 
+            // check for rooted vs relative
+            if (!Path.IsPathRooted(outputFile))
+            {
+                outputFile = Path.Combine(Directory.GetCurrentDirectory(), outputFile);
+            }
+
             string outputDir = Path.GetDirectoryName(outputFile);
             string exportDir = Path.Combine(outputDir, $"{exportLanguage.LanguageName}-{DateTime.Now.Ticks}");
 

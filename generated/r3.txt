@@ -2,10 +2,9 @@ Contents of: hl7.fhir.r3.core version: 3.0.2
     Using Model Inheritance: True
     Hiding Removed Parent Fields: True
     Nesting Type Definitions: True
-    Primitive Naming Sylte: CamelCase
-    Complex Type Naming Sylte: PascalCase
-    Resource Naming Sylte: None
-    Interaction Naming Sylte: PascalCase
+    Primitive Naming Style: CamelCase
+    Complex Type / Resource Naming Style: PascalCase
+    Interaction Naming Style: PascalCase
     Extension Support: OfficialExtensions
 Primitive Types: 18
 - base64Binary: base64Binary::base64Binary
