@@ -861,6 +861,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     complex.BaseTypeName = baseTypes.ElementAt(0).Value.Name;
                 }
 
+                HashSet<string> differentialPaths = new HashSet<string>();
+
+                if ((sd.Differential != null) && (sd.Differential.Element != null))
+                {
+                    foreach (fhir_2.ElementDefinition element in sd.Differential.Element)
+                    {
+                        if (string.IsNullOrEmpty(element.Path))
+                        {
+                            continue;
+                        }
+
+                        differentialPaths.Add(element.Path);
+                    }
+                }
+
                 HashSet<int> slicingDepths = new HashSet<int>();
                 string[] slicingPaths = new string[MaxPathComponents];
                 string[] traversalSliceNames = new string[MaxPathComponents];
@@ -1096,6 +1111,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             {
                                 modifiesParent = false;
                             }
+                        }
+
+                        if (!differentialPaths.Contains(element.Path))
+                        {
+                            isInherited = true;
+                            modifiesParent = false;
                         }
 
                         string bindingStrength = string.Empty;

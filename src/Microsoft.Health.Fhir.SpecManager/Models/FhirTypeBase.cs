@@ -312,14 +312,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             string type = FhirUtils.ToConvention(_baseTypeName, _path, convention, concatenatePath, concatenationDelimiter);
 
-            // Resources cannot inherit CanonicalResource, but they are listed that way today
+            // Resources cannot inherit patterns, but they are listed that way today
             // see https://chat.fhir.org/#narrow/stream/179177-conformance/topic/Inheritance.20and.20Cardinality.20Changes
-            if (type == "CanonicalResource")
+            switch (type)
             {
-                return "DomainResource";
-            }
+                case "CanonicalResource":
+                case "MetadataResource":
+                    return "DomainResource";
 
-            return type;
+                default:
+                    return type;
+            }
         }
 
         /// <summary>Converts this object to a requested naming convention.</summary>

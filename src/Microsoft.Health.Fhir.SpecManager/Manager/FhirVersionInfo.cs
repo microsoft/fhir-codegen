@@ -672,11 +672,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     // add the parent
                     AddToExportSet(_resourcesByName[name].BaseTypeName, ref set);
 
-                    // Resources cannot inherit CanonicalResource, but they are listed that way today
+                    // Resources cannot inherit patterns, but they are listed that way today
                     // see https://chat.fhir.org/#narrow/stream/179177-conformance/topic/Inheritance.20and.20Cardinality.20Changes
-                    if (_resourcesByName[name].BaseTypeName == "CanonicalResource")
+                    switch (_resourcesByName[name].BaseTypeName)
                     {
-                        AddToExportSet("DomainResource", ref set);
+                        case "CanonicalResource":
+                        case "MetadataResource":
+                            AddToExportSet("DomainResource", ref set);
+                            break;
                     }
                 }
 

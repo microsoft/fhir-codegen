@@ -41,18 +41,6 @@ namespace fhir
     [JsonProperty("_district")]
     public Element _District { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.
     /// </summary>
     [JsonProperty("line")]
@@ -103,7 +91,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Address.type field
   /// </summary>
-  public static class AddressTypeCodesCodes {
+  public static class AddressTypeCodes {
     public const string POSTAL = "postal";
     public const string PHYSICAL = "physical";
     public const string BOTH = "both";
@@ -111,69 +99,13 @@ namespace fhir
   /// <summary>
   /// Code Values for the Address.use field
   /// </summary>
-  public static class AddressUseCodesCodes {
+  public static class AddressUseCodes {
     public const string HOME = "home";
     public const string WORK = "work";
     public const string TEMP = "temp";
     public const string OLD = "old";
   }
   public class Age : Quantity {
-    /// <summary>
-    /// The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system.
-    /// </summary>
-    [JsonProperty("code")]
-    public string Code { get; set; }
-    [JsonProperty("_code")]
-    public Element _Code { get; set; }
-    /// <summary>
-    /// This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value.
-    /// </summary>
-    [JsonProperty("comparator")]
-    public string Comparator { get; set; }
-    [JsonProperty("_comparator")]
-    public Element _Comparator { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// The identification of the system that provides the coded form of the unit.
-    /// </summary>
-    [JsonProperty("system")]
-    public string System { get; set; }
-    [JsonProperty("_system")]
-    public Element _System { get; set; }
-    /// <summary>
-    /// A human-readable form of the unit.
-    /// </summary>
-    [JsonProperty("unit")]
-    public string Unit { get; set; }
-    [JsonProperty("_unit")]
-    public Element _Unit { get; set; }
-    /// <summary>
-    /// The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books).
-    /// </summary>
-    [JsonProperty("value")]
-    public decimal? Value { get; set; }
-    [JsonProperty("_value")]
-    public Element _Value { get; set; }
-  }
-  /// <summary>
-  /// Code Values for the Quantity.comparator field
-  /// </summary>
-  public static class QuantityComparatorCodesCodes {
-    public const string LESS_THAN = "<";
-    public const string LESS_THAN_OR_EQUALS = "<=";
-    public const string GREATER_THAN_OR_EQUALS = ">=";
-    public const string GREATER_THAN = ">";
   }
   public class Annotation : Element {
     /// <summary>
@@ -188,18 +120,6 @@ namespace fhir
     public string AuthorString { get; set; }
     [JsonProperty("_authorString")]
     public Element _AuthorString { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// The text of the annotation.
     /// </summary>
@@ -241,24 +161,12 @@ namespace fhir
     [JsonProperty("_data")]
     public Element _Data { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The calculated hash of the data using SHA-1. Represented using base64.
     /// </summary>
     [JsonProperty("hash")]
     public string Hash { get; set; }
     [JsonProperty("_hash")]
     public Element _Hash { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// The human language of the content. The value can be any valid value according to BCP 47.
     /// </summary>
@@ -290,18 +198,6 @@ namespace fhir
     /// <summary>
     /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
     /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
     [JsonProperty("modifierExtension")]
     public Extension[] ModifierExtension { get; set; }
   }
@@ -314,18 +210,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("coding")]
     public Coding[] Coding { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Very often the text is the same as a displayName of one of the codings.
     /// </summary>
@@ -353,18 +237,6 @@ namespace fhir
     [JsonProperty("_display")]
     public Element _Display { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously.
     /// </summary>
     [JsonProperty("system")]
@@ -388,18 +260,6 @@ namespace fhir
   /// Need to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc.
   /// </summary>
   public class ContactPoint : Element {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Time period when the contact point was/is in use.
     /// </summary>
@@ -435,7 +295,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ContactPoint.system field
   /// </summary>
-  public static class ContactPointSystemCodesCodes {
+  public static class ContactPointSystemCodes {
     public const string PHONE = "phone";
     public const string FAX = "fax";
     public const string EMAIL = "email";
@@ -445,7 +305,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ContactPoint.use field
   /// </summary>
-  public static class ContactPointUseCodesCodes {
+  public static class ContactPointUseCodes {
     public const string HOME = "home";
     public const string WORK = "work";
     public const string TEMP = "temp";
@@ -453,178 +313,10 @@ namespace fhir
     public const string MOBILE = "mobile";
   }
   public class Count : Quantity {
-    /// <summary>
-    /// The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system.
-    /// </summary>
-    [JsonProperty("code")]
-    public string Code { get; set; }
-    [JsonProperty("_code")]
-    public Element _Code { get; set; }
-    /// <summary>
-    /// This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value.
-    /// </summary>
-    [JsonProperty("comparator")]
-    public string Comparator { get; set; }
-    [JsonProperty("_comparator")]
-    public Element _Comparator { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// The identification of the system that provides the coded form of the unit.
-    /// </summary>
-    [JsonProperty("system")]
-    public string System { get; set; }
-    [JsonProperty("_system")]
-    public Element _System { get; set; }
-    /// <summary>
-    /// A human-readable form of the unit.
-    /// </summary>
-    [JsonProperty("unit")]
-    public string Unit { get; set; }
-    [JsonProperty("_unit")]
-    public Element _Unit { get; set; }
-    /// <summary>
-    /// The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books).
-    /// </summary>
-    [JsonProperty("value")]
-    public decimal? Value { get; set; }
-    [JsonProperty("_value")]
-    public Element _Value { get; set; }
-  }
-  /// <summary>
-  /// Code Values for the Quantity.comparator field
-  /// </summary>
-  public static class QuantityComparatorCodesCodes {
-    public const string LESS_THAN = "<";
-    public const string LESS_THAN_OR_EQUALS = "<=";
-    public const string GREATER_THAN_OR_EQUALS = ">=";
-    public const string GREATER_THAN = ">";
   }
   public class Distance : Quantity {
-    /// <summary>
-    /// The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system.
-    /// </summary>
-    [JsonProperty("code")]
-    public string Code { get; set; }
-    [JsonProperty("_code")]
-    public Element _Code { get; set; }
-    /// <summary>
-    /// This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value.
-    /// </summary>
-    [JsonProperty("comparator")]
-    public string Comparator { get; set; }
-    [JsonProperty("_comparator")]
-    public Element _Comparator { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// The identification of the system that provides the coded form of the unit.
-    /// </summary>
-    [JsonProperty("system")]
-    public string System { get; set; }
-    [JsonProperty("_system")]
-    public Element _System { get; set; }
-    /// <summary>
-    /// A human-readable form of the unit.
-    /// </summary>
-    [JsonProperty("unit")]
-    public string Unit { get; set; }
-    [JsonProperty("_unit")]
-    public Element _Unit { get; set; }
-    /// <summary>
-    /// The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books).
-    /// </summary>
-    [JsonProperty("value")]
-    public decimal? Value { get; set; }
-    [JsonProperty("_value")]
-    public Element _Value { get; set; }
-  }
-  /// <summary>
-  /// Code Values for the Quantity.comparator field
-  /// </summary>
-  public static class QuantityComparatorCodesCodes {
-    public const string LESS_THAN = "<";
-    public const string LESS_THAN_OR_EQUALS = "<=";
-    public const string GREATER_THAN_OR_EQUALS = ">=";
-    public const string GREATER_THAN = ">";
   }
   public class Duration : Quantity {
-    /// <summary>
-    /// The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system.
-    /// </summary>
-    [JsonProperty("code")]
-    public string Code { get; set; }
-    [JsonProperty("_code")]
-    public Element _Code { get; set; }
-    /// <summary>
-    /// This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value.
-    /// </summary>
-    [JsonProperty("comparator")]
-    public string Comparator { get; set; }
-    [JsonProperty("_comparator")]
-    public Element _Comparator { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// The identification of the system that provides the coded form of the unit.
-    /// </summary>
-    [JsonProperty("system")]
-    public string System { get; set; }
-    [JsonProperty("_system")]
-    public Element _System { get; set; }
-    /// <summary>
-    /// A human-readable form of the unit.
-    /// </summary>
-    [JsonProperty("unit")]
-    public string Unit { get; set; }
-    [JsonProperty("_unit")]
-    public Element _Unit { get; set; }
-    /// <summary>
-    /// The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books).
-    /// </summary>
-    [JsonProperty("value")]
-    public decimal? Value { get; set; }
-    [JsonProperty("_value")]
-    public Element _Value { get; set; }
-  }
-  /// <summary>
-  /// Code Values for the Quantity.comparator field
-  /// </summary>
-  public static class QuantityComparatorCodesCodes {
-    public const string LESS_THAN = "<";
-    public const string LESS_THAN_OR_EQUALS = "<=";
-    public const string GREATER_THAN_OR_EQUALS = ">=";
-    public const string GREATER_THAN = ">";
   }
   public class Element {
     /// <summary>
@@ -659,18 +351,6 @@ namespace fhir
     [JsonProperty("_discriminator")]
     public Element[] _Discriminator { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Order should only be required when it is a pressing concern for presentation. Profile authors should consider making the order a feature of the rules about the narrative, not the rules about the data - requiring ordered data makes the profile much less re-usable.
     /// </summary>
     [JsonProperty("ordered")]
@@ -686,7 +366,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ElementDefinition.slicing.rules field
   /// </summary>
-  public static class ElementDefinitionSlicingRulesCodesCodes {
+  public static class ElementDefinitionSlicingRulesCodes {
     public const string CLOSED = "closed";
     public const string OPEN = "open";
     public const string OPENATEND = "openAtEnd";
@@ -695,18 +375,6 @@ namespace fhir
   /// The base information does not carry any information that could not be determined from the path and related profiles, but making this determination requires both that the related profiles are available, and that the algorithm to determine them be available. So they are deformalised into this location for tooling convenience, and to ensure that the base information is available without dependencies.
   /// </summary>
   public class ElementDefinitionBase : Element {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// This is provided to code generation, since the wire representation in JSON differs depending on whether the base element has max > 1. Also, some forms of code generation may differ.
     /// </summary>
@@ -746,18 +414,6 @@ namespace fhir
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
     /// </summary>
     [JsonProperty("profile")]
@@ -768,7 +424,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ElementDefinition.type.aggregation field
   /// </summary>
-  public static class ElementDefinitionTypeAggregationCodesCodes {
+  public static class ElementDefinitionTypeAggregationCodes {
     public const string CONTAINED = "contained";
     public const string REFERENCED = "referenced";
     public const string BUNDLED = "bundled";
@@ -778,24 +434,12 @@ namespace fhir
   /// </summary>
   public class ElementDefinitionConstraint : Element {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Should be expressed in business terms as much as possible.
     /// </summary>
     [JsonProperty("human")]
     public string Human { get; set; }
     [JsonProperty("_human")]
     public Element _Human { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality.
     /// </summary>
@@ -828,7 +472,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ElementDefinition.constraint.severity field
   /// </summary>
-  public static class ElementDefinitionConstraintSeverityCodesCodes {
+  public static class ElementDefinitionConstraintSeverityCodes {
     public const string ERROR = "error";
     public const string WARNING = "warning";
   }
@@ -843,18 +487,6 @@ namespace fhir
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// For further discussion, see [[[Using Terminologies]]].
     /// </summary>
@@ -878,7 +510,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ElementDefinition.binding.strength field
   /// </summary>
-  public static class ElementDefinitionBindingStrengthCodesCodes {
+  public static class ElementDefinitionBindingStrengthCodes {
     public const string REQUIRED = "required";
     public const string EXTENSIBLE = "extensible";
     public const string PREFERRED = "preferred";
@@ -888,18 +520,6 @@ namespace fhir
   /// Mappings are not necessarily specific enough for safe translation.
   /// </summary>
   public class ElementDefinitionMapping : Element {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// An internal reference to the definition of a mapping.
     /// </summary>
@@ -1350,11 +970,6 @@ namespace fhir
     [JsonProperty("exampleMeta")]
     public Meta ExampleMeta { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
     /// </summary>
     [JsonProperty("fixedBoolean")]
@@ -1543,13 +1158,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("fixedMeta")]
     public Meta FixedMeta { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Only the definition of an element can set IsModifier true - either the specification itself or where an extension is originally defined. Once set, it cannot be changed in derived profiles. An element/extension that has isModifier=true SHOULD also have a minimum cardinality of 1, so that there is no lack of clarity about what to do if it is missing. If it can be missing, the definition SHALL make the meaning of a missing element clear.
     /// </summary>
@@ -2226,18 +1834,6 @@ namespace fhir
   /// </summary>
   public class Extension : Element {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] ExtensionField { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.
     /// </summary>
     [JsonProperty("url")]
@@ -2439,11 +2035,6 @@ namespace fhir
   /// </summary>
   public class HumanName : Element {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// For family name, hyphenated names such as "Smith-Jones" are a single name, but names with spaces such as "Smith Jones" are broken into multiple parts.
     /// </summary>
     [JsonProperty("family")]
@@ -2457,13 +2048,6 @@ namespace fhir
     public string[] Given { get; set; }
     [JsonProperty("_given")]
     public Element[] _Given { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Indicates the period of time when this name was valid for the named person.
     /// </summary>
@@ -2501,7 +2085,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the HumanName.use field
   /// </summary>
-  public static class HumanNameUseCodesCodes {
+  public static class HumanNameUseCodes {
     public const string USUAL = "usual";
     public const string OFFICIAL = "official";
     public const string TEMP = "temp";
@@ -2519,18 +2103,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("assigner")]
     public Reference Assigner { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Time period during which identifier is/was valid for use.
     /// </summary>
@@ -2566,25 +2138,13 @@ namespace fhir
   /// <summary>
   /// Code Values for the Identifier.use field
   /// </summary>
-  public static class IdentifierUseCodesCodes {
+  public static class IdentifierUseCodes {
     public const string USUAL = "usual";
     public const string OFFICIAL = "official";
     public const string TEMP = "temp";
     public const string SECONDARY = "secondary";
   }
   public class Meta : Element {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// This value is always populated except when the resource is first being created. The server / resource manager sets this value; what a client provides is irrelevant.
     /// </summary>
@@ -2618,62 +2178,6 @@ namespace fhir
     public Element _VersionId { get; set; }
   }
   public class Money : Quantity {
-    /// <summary>
-    /// The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system.
-    /// </summary>
-    [JsonProperty("code")]
-    public string Code { get; set; }
-    [JsonProperty("_code")]
-    public Element _Code { get; set; }
-    /// <summary>
-    /// This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value.
-    /// </summary>
-    [JsonProperty("comparator")]
-    public string Comparator { get; set; }
-    [JsonProperty("_comparator")]
-    public Element _Comparator { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// The identification of the system that provides the coded form of the unit.
-    /// </summary>
-    [JsonProperty("system")]
-    public string System { get; set; }
-    [JsonProperty("_system")]
-    public Element _System { get; set; }
-    /// <summary>
-    /// A human-readable form of the unit.
-    /// </summary>
-    [JsonProperty("unit")]
-    public string Unit { get; set; }
-    [JsonProperty("_unit")]
-    public Element _Unit { get; set; }
-    /// <summary>
-    /// The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books).
-    /// </summary>
-    [JsonProperty("value")]
-    public decimal? Value { get; set; }
-    [JsonProperty("_value")]
-    public Element _Value { get; set; }
-  }
-  /// <summary>
-  /// Code Values for the Quantity.comparator field
-  /// </summary>
-  public static class QuantityComparatorCodesCodes {
-    public const string LESS_THAN = "<";
-    public const string LESS_THAN_OR_EQUALS = "<=";
-    public const string GREATER_THAN_OR_EQUALS = ">=";
-    public const string GREATER_THAN = ">";
   }
   public class Narrative : Element {
     /// <summary>
@@ -2683,18 +2187,6 @@ namespace fhir
     public string Div { get; set; }
     [JsonProperty("_div")]
     public Element _Div { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.
     /// </summary>
@@ -2706,7 +2198,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Narrative.status field
   /// </summary>
-  public static class NarrativeStatusCodesCodes {
+  public static class NarrativeStatusCodes {
     public const string GENERATED = "generated";
     public const string EXTENSIONS = "extensions";
     public const string ADDITIONAL = "additional";
@@ -2720,18 +2212,6 @@ namespace fhir
     public string End { get; set; }
     [JsonProperty("_end")]
     public Element _End { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// If the low element is missing, the meaning is that the low boundary is not known.
     /// </summary>
@@ -2759,18 +2239,6 @@ namespace fhir
     [JsonProperty("_comparator")]
     public Element _Comparator { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The identification of the system that provides the coded form of the unit.
     /// </summary>
     [JsonProperty("system")]
@@ -2795,7 +2263,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Quantity.comparator field
   /// </summary>
-  public static class QuantityComparatorCodesCodes {
+  public static class QuantityComparatorCodes {
     public const string LESS_THAN = "<";
     public const string LESS_THAN_OR_EQUALS = "<=";
     public const string GREATER_THAN_OR_EQUALS = ">=";
@@ -2806,22 +2274,10 @@ namespace fhir
   /// </summary>
   public class Range : Element {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// If the high element is missing, the high boundary is not known.
     /// </summary>
     [JsonProperty("high")]
     public Quantity High { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// If the low element is missing, the low boundary is not known.
     /// </summary>
@@ -2838,18 +2294,6 @@ namespace fhir
     [JsonProperty("denominator")]
     public Quantity Denominator { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The value of the numerator.
     /// </summary>
     [JsonProperty("numerator")]
@@ -2863,18 +2307,6 @@ namespace fhir
     public string Display { get; set; }
     [JsonProperty("_display")]
     public Element _Display { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the URL conforms to the structure "/[type]/[id]" then it should be assumed that the reference is to a FHIR RESTful server.
     /// </summary>
@@ -2900,24 +2332,12 @@ namespace fhir
     [JsonProperty("dimensions")]
     public uint Dimensions { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// A correction factor that is applied to the sampled data points before they are added to the origin.
     /// </summary>
     [JsonProperty("factor")]
     public decimal? Factor { get; set; }
     [JsonProperty("_factor")]
     public Element _Factor { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).
     /// </summary>
@@ -2964,18 +2384,6 @@ namespace fhir
     [JsonProperty("_contentType")]
     public Element _ContentType { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Examples include attesting to: authorship, correct transcription, and witness of specific event. Also known as a &quot;Commitment Type Indication&quot;.
     /// </summary>
     [JsonProperty("type")]
@@ -3001,46 +2409,6 @@ namespace fhir
     public Reference WhoReference { get; set; }
   }
   public class SimpleQuantity : Quantity {
-    /// <summary>
-    /// The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system.
-    /// </summary>
-    [JsonProperty("code")]
-    public string Code { get; set; }
-    [JsonProperty("_code")]
-    public Element _Code { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// The identification of the system that provides the coded form of the unit.
-    /// </summary>
-    [JsonProperty("system")]
-    public string System { get; set; }
-    [JsonProperty("_system")]
-    public Element _System { get; set; }
-    /// <summary>
-    /// A human-readable form of the unit.
-    /// </summary>
-    [JsonProperty("unit")]
-    public string Unit { get; set; }
-    [JsonProperty("_unit")]
-    public Element _Unit { get; set; }
-    /// <summary>
-    /// The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books).
-    /// </summary>
-    [JsonProperty("value")]
-    public decimal? Value { get; set; }
-    [JsonProperty("_value")]
-    public Element _Value { get; set; }
   }
   /// <summary>
   /// A set of rules that describe when the event should occur.
@@ -3088,11 +2456,6 @@ namespace fhir
     [JsonProperty("_durationUnits")]
     public Element _DurationUnits { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The number of times to repeat the action within the specified period / period range (i.e. both period and periodMax provided).
     /// </summary>
     [JsonProperty("frequency")]
@@ -3102,13 +2465,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("frequencyMax")]
     public int? FrequencyMax { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Indicates the duration of time over which repetitions are to occur; e.g. to express "3 times per day", 3 would be the frequency and "1 day" would be the period.
     /// </summary>
@@ -3141,7 +2497,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Timing.repeat.durationUnits field
   /// </summary>
-  public static class TimingRepeatDurationUnitsCodesCodes {
+  public static class TimingRepeatDurationUnitsCodes {
     public const string S = "s";
     public const string MIN = "min";
     public const string H = "h";
@@ -3153,7 +2509,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Timing.repeat.periodUnits field
   /// </summary>
-  public static class TimingRepeatPeriodUnitsCodesCodes {
+  public static class TimingRepeatPeriodUnitsCodes {
     public const string S = "s";
     public const string MIN = "min";
     public const string H = "h";
@@ -3179,18 +2535,6 @@ namespace fhir
     [JsonProperty("_event")]
     public Element[] _Event { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A set of rules that describe when the event should occur.
     /// </summary>
     [JsonProperty("repeat")]
@@ -3211,11 +2555,6 @@ namespace fhir
     [JsonProperty("balance")]
     public Quantity Balance { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// It is possible for transactions relevant to a coverage period to be posted to the account before or after the coverage period.
     /// </summary>
     [JsonProperty("coveragePeriod")]
@@ -3233,46 +2572,10 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Unique identifier used to reference the account.  May or may not be intended for human use (e.g. credit card number).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Name used for the account when displaying it to humans in reports, etc.
     /// </summary>
@@ -3298,11 +2601,6 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Categorizes the account for reporting and searching purposes.
     /// </summary>
     [JsonProperty("type")]
@@ -3311,7 +2609,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Account.status field
   /// </summary>
-  public static class AccountStatusCodesCodes {
+  public static class AccountStatusCodes {
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
   }
@@ -3339,27 +2637,10 @@ namespace fhir
     [JsonProperty("exposureRoute")]
     public CodeableConcept ExposureRoute { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Manifestation can be expressed as a single word, phrase or brief description. For example: nausea, rash or no reaction. It is preferable that manifestation should be coded with a terminology, where possible. The values entered here may be used to display on an application screen as part of a list of adverse reactions, as recommended in the UK NHS CUI guidelines.  Terminologies commonly used include, but are not limited to, SNOMED CT or ICD10.
     /// </summary>
     [JsonProperty("manifestation")]
     public CodeableConcept[] Manifestation { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Use this field to record information indirectly related to a particular event and not captured in the description. For example: Clinical records are no longer available, recorded based on information provided to the patient by her mother and her mother is deceased.
     /// </summary>
@@ -3388,7 +2669,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the AllergyIntolerance.reaction.certainty field
   /// </summary>
-  public static class AllergyIntoleranceReactionCertaintyCodesCodes {
+  public static class AllergyIntoleranceReactionCertaintyCodes {
     public const string UNLIKELY = "unlikely";
     public const string LIKELY = "likely";
     public const string CONFIRMED = "confirmed";
@@ -3396,7 +2677,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the AllergyIntolerance.reaction.severity field
   /// </summary>
-  public static class AllergyIntoleranceReactionSeverityCodesCodes {
+  public static class AllergyIntoleranceReactionSeverityCodes {
     public const string MILD = "mild";
     public const string MODERATE = "moderate";
     public const string SEVERE = "severe";
@@ -3416,11 +2697,6 @@ namespace fhir
     [JsonProperty("_category")]
     public Element _Category { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The default criticality value for any propensity to an adverse reaction should be 'Low Risk', indicating at the very least a relative contraindication to deliberate or voluntary exposure to the Substance. 'High Risk' is flagged if the clinician has identified a propensity for a more serious or potentially life-threatening reaction, such as anaphylaxis, and implies an absolute contraindication to deliberate or voluntary exposure to the substance. If this element is missing, the criticality is unknown (though it may be known elsewhere).
     /// </summary>
     [JsonProperty("criticality")]
@@ -3428,36 +2704,10 @@ namespace fhir
     [JsonProperty("_criticality")]
     public Element _Criticality { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// This date may be replicated by one of the Onset of Reaction dates. Where a textual representation of the date of last occurrence is required e.g. 'In Childhood, '10 years ago' the Comment element should be used.
     /// </summary>
@@ -3465,16 +2715,6 @@ namespace fhir
     public string LastOccurence { get; set; }
     [JsonProperty("_lastOccurence")]
     public Element _LastOccurence { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// For example: including reason for flagging a seriousness of 'High Risk'; and instructions related to future exposure or administration of the Substance, such as administration within an Intensive Care Unit or under corticosteroid cover. The notes should be related to an allergy or intolerance as a condition in general and not related to any particular episode of it. For episode notes and descriptions, use AllergyIntolerance.event.description and  AllergyIntolerance.event.notes.
     /// </summary>
@@ -3527,11 +2767,6 @@ namespace fhir
     [JsonProperty("substance")]
     public CodeableConcept Substance { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Allergic (typically immune-mediated) reactions have been traditionally regarded as an indicator for potential escalation to significant future risk. Contemporary knowledge suggests that some reactions previously thought to be immune-mediated are, in fact, non-immune, but in some cases can still pose a life threatening risk. It is acknowledged that many clinicians may not be in a position to distinguish the mechanism of a particular reaction. Often the term "allergy" is used rather generically and may overlap with the use of "intolerance" - in practice the boundaries between these two concepts may not be well-defined or understood. This data element is included nevertheless, because many legacy systems have captured this attribute. Immunologic testing may provide supporting evidence for the basis of the reaction and the causative substance, but no tests are 100% sensitive or specific for sensitivity to a particular substance. If, as is commonly the case, it is unclear whether the reaction is due to an allergy or an intolerance, then the type element should be omitted from the resource.
     /// </summary>
     [JsonProperty("type")]
@@ -3542,7 +2777,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the AllergyIntolerance.category field
   /// </summary>
-  public static class AllergyIntoleranceCategoryCodesCodes {
+  public static class AllergyIntoleranceCategoryCodes {
     public const string FOOD = "food";
     public const string MEDICATION = "medication";
     public const string ENVIRONMENT = "environment";
@@ -3551,7 +2786,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the AllergyIntolerance.criticality field
   /// </summary>
-  public static class AllergyIntoleranceCriticalityCodesCodes {
+  public static class AllergyIntoleranceCriticalityCodes {
     public const string CRITL = "CRITL";
     public const string CRITH = "CRITH";
     public const string CRITU = "CRITU";
@@ -3559,7 +2794,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the AllergyIntolerance.status field
   /// </summary>
-  public static class AllergyIntoleranceStatusCodesCodes {
+  public static class AllergyIntoleranceStatusCodes {
     public const string ACTIVE = "active";
     public const string UNCONFIRMED = "unconfirmed";
     public const string CONFIRMED = "confirmed";
@@ -3571,7 +2806,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the AllergyIntolerance.type field
   /// </summary>
-  public static class AllergyIntoleranceTypeCodesCodes {
+  public static class AllergyIntoleranceTypeCodes {
     public const string ALLERGY = "allergy";
     public const string INTOLERANCE = "intolerance";
   }
@@ -3584,23 +2819,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("actor")]
     public Reference Actor { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Is this participant required to be present at the meeting. This covers a use-case where 2 doctors need to meet to discuss the results for a specific patient, and the patient is not required to be present.
     /// </summary>
@@ -3624,7 +2842,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Appointment.participant.required field
   /// </summary>
-  public static class AppointmentParticipantRequiredCodesCodes {
+  public static class AppointmentParticipantRequiredCodes {
     public const string REQUIRED = "required";
     public const string OPTIONAL = "optional";
     public const string INFORMATION_ONLY = "information-only";
@@ -3632,7 +2850,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Appointment.participant.status field
   /// </summary>
-  public static class AppointmentParticipantStatusCodesCodes {
+  public static class AppointmentParticipantStatusCodes {
     public const string ACCEPTED = "accepted";
     public const string DECLINED = "declined";
     public const string TENTATIVE = "tentative";
@@ -3650,11 +2868,6 @@ namespace fhir
     [JsonProperty("_comment")]
     public Element _Comment { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The brief description of the appointment as would be shown on a subject line in a meeting request, or appointment list. Detailed or expanded information should be put in the comment field.
     /// </summary>
     [JsonProperty("description")]
@@ -3669,51 +2882,15 @@ namespace fhir
     [JsonProperty("_end")]
     public Element _End { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This records identifiers associated with this appointment concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// Number of minutes that the appointment is to take. This can be less than the duration between the start and end times (where actual time of appointment is only an estimate or is a planned appointment request).
     /// </summary>
     [JsonProperty("minutesDuration")]
     public uint? MinutesDuration { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// List of participants involved in the appointment.
     /// </summary>
@@ -3749,11 +2926,6 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The type of appointment that is being booked (This may also be associated with participants for location, and/or a HealthcareService).
     /// </summary>
     [JsonProperty("type")]
@@ -3762,7 +2934,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Appointment.status field
   /// </summary>
-  public static class AppointmentStatusCodesCodes {
+  public static class AppointmentStatusCodes {
     public const string PROPOSED = "proposed";
     public const string PENDING = "pending";
     public const string BOOKED = "booked";
@@ -3793,11 +2965,6 @@ namespace fhir
     [JsonProperty("_comment")]
     public Element _Comment { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// This may be either the same as the appointment request to confirm the details of the appointment, or alternately a new time to request a re-negotiation of the end time.
     /// </summary>
     [JsonProperty("end")]
@@ -3805,46 +2972,10 @@ namespace fhir
     [JsonProperty("_end")]
     public Element _End { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This records identifiers associated with this appointment response concern that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Participation status of the participant. When the status is declined or tentative if the start/end times are different to the appointment, then these times should be interpreted as a requested time change. When the status is accepted, the times can either be the time of the appointment (as a confirmation of the time) or can be empty.
     /// </summary>
@@ -3864,16 +2995,11 @@ namespace fhir
     public string Start { get; set; }
     [JsonProperty("_start")]
     public Element _Start { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the AppointmentResponse.participantStatus field
   /// </summary>
-  public static class AppointmentResponseParticipantStatusCodesCodes {
+  public static class AppointmentResponseParticipantStatusCodes {
     public const string ACCEPTED = "accepted";
     public const string DECLINED = "declined";
     public const string TENTATIVE = "tentative";
@@ -3899,23 +3025,6 @@ namespace fhir
     public string DateTime { get; set; }
     [JsonProperty("_dateTime")]
     public Element _DateTime { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// In some cases a "success" may be partial, for example, an incomplete or interrupted transfer of a radiological study. For the purpose of establishing accountability, these distinctions are not relevant.
     /// </summary>
@@ -3958,23 +3067,6 @@ namespace fhir
     [JsonProperty("_address")]
     public Element _Address { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// An identifier for the type of network access point that originated the audit event.
     /// </summary>
     [JsonProperty("type")]
@@ -3994,18 +3086,6 @@ namespace fhir
     [JsonProperty("_altId")]
     public Element _AltId { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Where the event occurred.
     /// </summary>
     [JsonProperty("location")]
@@ -4015,11 +3095,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("media")]
     public Coding Media { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Human-meaningful name for the user.
     /// </summary>
@@ -4070,27 +3145,10 @@ namespace fhir
   /// </summary>
   public class AuditEventSource : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier of the source where the event was detected.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group.
     /// </summary>
@@ -4108,23 +3166,6 @@ namespace fhir
   /// Additional Information about the Object.
   /// </summary>
   public class AuditEventObjectDetail : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Name of the property.
     /// </summary>
@@ -4157,18 +3198,6 @@ namespace fhir
     [JsonProperty("detail")]
     public AuditEventObjectDetail[] Detail { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier detail depends on object type.
     /// </summary>
     [JsonProperty("identifier")]
@@ -4178,11 +3207,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("lifecycle")]
     public Coding Lifecycle { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This field may be used in a query/report to identify audit events for a specific person.  For example, where multiple synonymous Participant Object IDs (patient number, medical record number, encounter number, etc.) have been used.
     /// </summary>
@@ -4223,51 +3247,10 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "AuditEvent";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Identifies the name, action type, time, and disposition of the audited event.
     /// </summary>
     [JsonProperty("event")]
     public AuditEventEvent Event { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Required unless the values for Event Identification, Active Participant Identification, and Audit Source Identification are sufficient to document the entire auditable event. Because events may have more than one participant object, this group can be a repeating set of values.
     /// </summary>
@@ -4283,11 +3266,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("source")]
     public AuditEventSource Source { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Need some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources.
@@ -4307,11 +3285,6 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Identifies when the resource was first created.
     /// </summary>
     [JsonProperty("created")]
@@ -4319,56 +3292,15 @@ namespace fhir
     [JsonProperty("_created")]
     public Element _Created { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier assigned to the resource for business purposes, outside the context of FHIR.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Optional as not all resources potential resources will have subjects.  Resources associated with multiple subjects can handle this via extension.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// There are situations where it is useful or required to handle pure binary content using the same framework as other resources.
@@ -4391,32 +3323,6 @@ namespace fhir
     public string ContentType { get; set; }
     [JsonProperty("_contentType")]
     public Element _ContentType { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
   }
   public class BodySite : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -4428,29 +3334,12 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// This Description  could include any visual markings used to orientate the viewer e.g. external reference points, special sutures, ink markings.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Identifier for this instance of the anatomical location.
     /// </summary>
@@ -4462,66 +3351,20 @@ namespace fhir
     [JsonProperty("image")]
     public Attachment[] Image { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// Modifier to refine the anatomical location.  These include modifiers for laterality, relative location, directionality, number, and plane.
     /// </summary>
     [JsonProperty("modifier")]
     public CodeableConcept[] Modifier { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The person to which the body site belongs.
     /// </summary>
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// A series of links that provide context to this bundle.
   /// </summary>
   public class BundleLink : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A name which details the functional use for this link - see [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]].
     /// </summary>
@@ -4542,29 +3385,12 @@ namespace fhir
   /// </summary>
   public class BundleEntrySearch : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// There is only one mode. In some corner cases, a resource may be included because it is both a match and an include. In these circumstances, 'match' takes precedence.
     /// </summary>
     [JsonProperty("mode")]
     public string Mode { get; set; }
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Servers are not required to return a ranking score. 1 is most relevant, and 0 is least relevant. Often, search results are sorted by score, but the client may specify a different sort order.
     /// </summary>
@@ -4576,7 +3402,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Bundle.entry.search.mode field
   /// </summary>
-  public static class BundleEntrySearchModeCodesCodes {
+  public static class BundleEntrySearchModeCodes {
     public const string MATCH = "match";
     public const string INCLUDE = "include";
     public const string OUTCOME = "outcome";
@@ -4585,18 +3411,6 @@ namespace fhir
   /// Additional information about how this entry should be processed as part of a transaction.
   /// </summary>
   public class BundleEntryRequest : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Only perform the operation if the Etag value matches. For more information, see the API section ["Managing Resource Contention"](http.html#concurrency).
     /// </summary>
@@ -4633,11 +3447,6 @@ namespace fhir
     [JsonProperty("_method")]
     public Element _Method { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// E.g. for a Patient Create, the method would be "POST" and the URL would be "Patient". For a Patient Update, the method would be PUT, and the URL would be "Patient/[id]".
     /// </summary>
     [JsonProperty("url")]
@@ -4648,7 +3457,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Bundle.entry.request.method field
   /// </summary>
-  public static class BundleEntryRequestMethodCodesCodes {
+  public static class BundleEntryRequestMethodCodes {
     public const string GET = "GET";
     public const string POST = "POST";
     public const string PUT = "PUT";
@@ -4666,18 +3475,6 @@ namespace fhir
     [JsonProperty("_etag")]
     public Element _Etag { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This has to match the same time in the meta header if a resource is included.
     /// </summary>
     [JsonProperty("lastModified")]
@@ -4692,11 +3489,6 @@ namespace fhir
     [JsonProperty("_location")]
     public Element _Location { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The status code returned by processing this entry.
     /// </summary>
     [JsonProperty("status")]
@@ -4709,11 +3501,6 @@ namespace fhir
   /// </summary>
   public class BundleEntry : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// fullUrl may not be [unique in the context of a resource](bundle.html#bundle-unique). Note that since [FHIR resources do not need to be served through the FHIR API](references.html), the absolute URL may not end with the logical id of the resource (Resource.id), but if the fullUrl does look like a RESTful server URL (e.g. meets the [regex](references.html#regex), then it SHALL end with the Resource.id.
     /// </summary>
     [JsonProperty("fullUrl")]
@@ -4721,22 +3508,10 @@ namespace fhir
     [JsonProperty("_fullUrl")]
     public Element _FullUrl { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A series of links that provide context to this entry.
     /// </summary>
     [JsonProperty("link")]
     public BundleLink[] Link { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Additional information about how this entry should be processed as part of a transaction.
     /// </summary>
@@ -4768,36 +3543,10 @@ namespace fhir
     [JsonProperty("entry")]
     public BundleEntry[] Entry { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// A series of links that provide context to this bundle.
     /// </summary>
     [JsonProperty("link")]
     public BundleLink[] Link { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
     /// <summary>
     /// The signature could be created by the "author" of the bundle or by the originating device.   Requirements around inclusion of a signature, verification of signatures and treatment of signed/non-signed bundles is implementation-environment specific.
     /// </summary>
@@ -4819,7 +3568,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Bundle.type field
   /// </summary>
-  public static class BundleTypeCodesCodes {
+  public static class BundleTypeCodes {
     public const string DOCUMENT = "document";
     public const string MESSAGE = "message";
     public const string TRANSACTION = "transaction";
@@ -4842,23 +3591,6 @@ namespace fhir
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A reference to the plan to which a relationship is asserted.
     /// </summary>
     [JsonProperty("plan")]
@@ -4867,7 +3599,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the CarePlan.relatedPlan.code field
   /// </summary>
-  public static class CarePlanRelatedPlanCodeCodesCodes {
+  public static class CarePlanRelatedPlanCodeCodes {
     public const string INCLUDES = "includes";
     public const string REPLACES = "replaces";
     public const string FULFILLS = "fulfills";
@@ -4877,27 +3609,10 @@ namespace fhir
   /// </summary>
   public class CarePlanParticipant : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Patient only needs to be listed if they have a role other than "subject of care".  Member is optional because some participants may be known only by their role, particularly in draft plans.
     /// </summary>
     [JsonProperty("member")]
     public Reference Member { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care plan.  General relationships should be handled as properties of the Patient resource directly.
     /// </summary>
@@ -4931,32 +3646,15 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Internal reference that identifies the goals that this activity is intended to contribute towards meeting.
     /// </summary>
     [JsonProperty("goal")]
     public Reference[] Goal { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// May reference a specific clinical location or may identify a type of location.
     /// </summary>
     [JsonProperty("location")]
     public Reference Location { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A performer MAY also be a participant in the care plan.
     /// </summary>
@@ -5025,7 +3723,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the CarePlan.activity.detail.status field
   /// </summary>
-  public static class CarePlanActivityDetailStatusCodesCodes {
+  public static class CarePlanActivityDetailStatusCodes {
     public const string NOT_STARTED = "not-started";
     public const string SCHEDULED = "scheduled";
     public const string IN_PROGRESS = "in-progress";
@@ -5047,23 +3745,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("detail")]
     public CarePlanActivityDetail Detail { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This element should NOT be used to describe the activity to be performed - that occurs either within the resource pointed to by activity.detail.reference or in activity.detail.description.
     /// </summary>
@@ -5100,11 +3781,6 @@ namespace fhir
     [JsonProperty("category")]
     public CodeableConcept[] Category { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Activities conducted as a result of the care plan may well occur as part of other encounters/episodes.
     /// </summary>
     [JsonProperty("context")]
@@ -5117,46 +3793,15 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline.
     /// </summary>
     [JsonProperty("goal")]
     public Reference[] Goal { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This records identifiers associated with this care plan that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
     /// <summary>
     /// Identifies the most recent date on which the plan has been revised.
     /// </summary>
@@ -5164,11 +3809,6 @@ namespace fhir
     public string Modified { get; set; }
     [JsonProperty("_modified")]
     public Element _Modified { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// General notes about the care plan not covered elsewhere.
     /// </summary>
@@ -5206,16 +3846,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("support")]
     public Reference[] Support { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the CarePlan.status field
   /// </summary>
-  public static class CarePlanStatusCodesCodes {
+  public static class CarePlanStatusCodes {
     public const string PROPOSED = "proposed";
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
@@ -5226,23 +3861,6 @@ namespace fhir
   /// The party to be reimbursed for the services.
   /// </summary>
   public class ClaimPayee : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The organization who is to be reimbursed for the claim (the party to whom any benefit is assigned).
     /// </summary>
@@ -5274,23 +3892,6 @@ namespace fhir
     [JsonProperty("diagnosis")]
     public Coding Diagnosis { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Sequence of diagnosis which serves to order and provide a link.
     /// </summary>
     [JsonProperty("sequence")]
@@ -5318,27 +3919,10 @@ namespace fhir
     [JsonProperty("coverage")]
     public Reference Coverage { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The instance number of the Coverage which is the focus for adjudication. The Coverage against which the claim is to be adjudicated.
     /// </summary>
     [JsonProperty("focal")]
     public bool Focal { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The style (standard) and version of the original material which was converted into this resource.
     /// </summary>
@@ -5367,29 +3951,12 @@ namespace fhir
   /// </summary>
   public class ClaimItemDetailSubDetail : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
     /// </summary>
     [JsonProperty("factor")]
     public decimal? Factor { get; set; }
     [JsonProperty("_factor")]
     public Element _Factor { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
     /// </summary>
@@ -5438,29 +4005,12 @@ namespace fhir
   /// </summary>
   public class ClaimItemDetail : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
     /// </summary>
     [JsonProperty("factor")]
     public decimal? Factor { get; set; }
     [JsonProperty("_factor")]
     public Element _Factor { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
     /// </summary>
@@ -5514,27 +4064,10 @@ namespace fhir
   /// </summary>
   public class ClaimItemProsthesis : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Indicates whether this is the initial placement of a fixed prosthesis.
     /// </summary>
     [JsonProperty("initial")]
     public bool? Initial { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Date of the initial placement.
     /// </summary>
@@ -5568,11 +4101,6 @@ namespace fhir
     [JsonProperty("diagnosisLinkId")]
     public uint?[] DiagnosisLinkId { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
     /// </summary>
     [JsonProperty("factor")]
@@ -5580,22 +4108,10 @@ namespace fhir
     [JsonProperty("_factor")]
     public Element _Factor { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Item typification or modifiers codes, e.g. for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.
     /// </summary>
     [JsonProperty("modifier")]
     public Coding[] Modifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
     /// </summary>
@@ -5666,29 +4182,12 @@ namespace fhir
   /// </summary>
   public class ClaimMissingTeeth : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The date of the extraction either known from records or patient reported estimate.
     /// </summary>
     [JsonProperty("extractionDate")]
     public string ExtractionDate { get; set; }
     [JsonProperty("_extractionDate")]
     public Element _ExtractionDate { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Missing reason may be: E-extraction, O-other.
     /// </summary>
@@ -5727,11 +4226,6 @@ namespace fhir
     [JsonProperty("condition")]
     public Coding[] Condition { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Financial instrument by which payment information for health care.
     /// </summary>
     [JsonProperty("coverage")]
@@ -5759,11 +4253,6 @@ namespace fhir
     [JsonProperty("exception")]
     public Coding[] Exception { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Facility where the services were provided.
     /// </summary>
     [JsonProperty("facility")]
@@ -5774,24 +4263,10 @@ namespace fhir
     [JsonProperty("fundsReserve")]
     public Coding FundsReserve { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The business identifier for the instance: invoice number, claim number, pre-determination or pre-authorization number.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// A list of intervention and exception codes which may influence the adjudication of the claim.
     /// </summary>
@@ -5803,27 +4278,10 @@ namespace fhir
     [JsonProperty("item")]
     public ClaimItem[] Item { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons.
     /// </summary>
     [JsonProperty("missingTeeth")]
     public ClaimMissingTeeth[] MissingTeeth { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The organization which is responsible for the bill, claim pre-determination, pre-authorization.
     /// </summary>
@@ -5887,11 +4345,6 @@ namespace fhir
     [JsonProperty("target")]
     public Reference Target { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Affects which fields and value sets are used.
     /// </summary>
     [JsonProperty("type")]
@@ -5909,7 +4362,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Claim.type field
   /// </summary>
-  public static class ClaimTypeCodesCodes {
+  public static class ClaimTypeCodes {
     public const string INSTITUTIONAL = "institutional";
     public const string ORAL = "oral";
     public const string PHARMACY = "pharmacy";
@@ -5919,7 +4372,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Claim.use field
   /// </summary>
-  public static class ClaimUseCodesCodes {
+  public static class ClaimUseCodes {
     public const string COMPLETE = "complete";
     public const string PROPOSED = "proposed";
     public const string EXPLORATORY = "exploratory";
@@ -5939,23 +4392,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("code")]
     public Coding Code { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
     /// </summary>
@@ -5979,23 +4415,6 @@ namespace fhir
     [JsonProperty("code")]
     public Coding Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
     /// </summary>
     [JsonProperty("value")]
@@ -6018,23 +4437,6 @@ namespace fhir
     [JsonProperty("code")]
     public Coding Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
     /// </summary>
     [JsonProperty("value")]
@@ -6052,23 +4454,6 @@ namespace fhir
     [JsonProperty("adjudication")]
     public ClaimResponseItemDetailSubDetailAdjudication[] Adjudication { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A service line number.
     /// </summary>
     [JsonProperty("sequenceLinkId")]
@@ -6083,23 +4468,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("adjudication")]
     public ClaimResponseItemDetailAdjudication[] Adjudication { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A service line number.
     /// </summary>
@@ -6126,23 +4494,6 @@ namespace fhir
     [JsonProperty("detail")]
     public ClaimResponseItemDetail[] Detail { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A list of note references to the notes provided below.
     /// </summary>
     [JsonProperty("noteNumber")]
@@ -6168,23 +4519,6 @@ namespace fhir
     [JsonProperty("code")]
     public Coding Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
     /// </summary>
     [JsonProperty("value")]
@@ -6207,23 +4541,6 @@ namespace fhir
     [JsonProperty("code")]
     public Coding Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
     /// </summary>
     [JsonProperty("value")]
@@ -6241,27 +4558,10 @@ namespace fhir
     [JsonProperty("adjudication")]
     public ClaimResponseAddItemDetailAdjudication[] Adjudication { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The fee charged for the professional service or product..
     /// </summary>
     [JsonProperty("fee")]
     public Quantity Fee { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A code to indicate the Professional Service or Product supplied.
     /// </summary>
@@ -6283,27 +4583,10 @@ namespace fhir
     [JsonProperty("detail")]
     public ClaimResponseAddItemDetail[] Detail { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The fee charged for the professional service or product..
     /// </summary>
     [JsonProperty("fee")]
     public Quantity Fee { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A list of note references to the notes provided below.
     /// </summary>
@@ -6335,23 +4618,6 @@ namespace fhir
     [JsonProperty("detailSequenceLinkId")]
     public uint? DetailSequenceLinkId { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The sequence number of the line item submitted which contains the error. This value is omitted when the error is elsewhere.
     /// </summary>
     [JsonProperty("sequenceLinkId")]
@@ -6366,23 +4632,6 @@ namespace fhir
   /// Note text.
   /// </summary>
   public class ClaimResponseNote : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// An integer associated with each note which may be referred to from each service line item.
     /// </summary>
@@ -6423,27 +4672,10 @@ namespace fhir
     [JsonProperty("coverage")]
     public Reference Coverage { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The instance number of the Coverage which is the focus for adjudication. The Coverage against which the claim is to be adjudicated.
     /// </summary>
     [JsonProperty("focal")]
     public bool Focal { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The style (standard) and version of the original material which was converted into this resource.
     /// </summary>
@@ -6477,11 +4709,6 @@ namespace fhir
     [JsonProperty("addItem")]
     public ClaimResponseAddItem[] AddItem { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Financial instrument by which payment information for health care.
     /// </summary>
     [JsonProperty("coverage")]
@@ -6506,56 +4733,20 @@ namespace fhir
     [JsonProperty("error")]
     public ClaimResponseError[] Error { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The form to be used for printing the content.
     /// </summary>
     [JsonProperty("form")]
     public Coding Form { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// The first tier service adjudications for submitted services.
     /// </summary>
     [JsonProperty("item")]
     public ClaimResponseItem[] Item { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Note text.
     /// </summary>
@@ -6636,11 +4827,6 @@ namespace fhir
     [JsonProperty("ruleset")]
     public Coding Ruleset { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Total amount of benefit payable (Equal to sum of the Benefit amounts from all detail lines and additions less the Unallocated Deductible).
     /// </summary>
     [JsonProperty("totalBenefit")]
@@ -6659,7 +4845,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ClaimResponse.outcome field
   /// </summary>
-  public static class ClaimResponseOutcomeCodesCodes {
+  public static class ClaimResponseOutcomeCodes {
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
   }
@@ -6673,27 +4859,10 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Most investigations are observations of one kind of or another but some other specific types of data collection resources can also be used.
     /// </summary>
     [JsonProperty("item")]
     public Reference[] Item { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.
@@ -6707,54 +4876,20 @@ namespace fhir
     [JsonProperty("_cause")]
     public Element _Cause { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Specific text of code for finding or diagnosis.
     /// </summary>
     [JsonProperty("item")]
     public CodeableConcept Item { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Diagnosis considered not possible.
   /// </summary>
   public class ClinicalImpressionRuledOut : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Specific text of code for diagnosis.
     /// </summary>
     [JsonProperty("item")]
     public CodeableConcept Item { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Grounds for elimination.
     /// </summary>
@@ -6778,11 +4913,6 @@ namespace fhir
     [JsonProperty("assessor")]
     public Reference Assessor { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// This SHOULD be accurate to at least the minute, though some assessments only have a known date.
     /// </summary>
     [JsonProperty("date")]
@@ -6797,51 +4927,15 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.
     /// </summary>
     [JsonProperty("finding")]
     public ClinicalImpressionFinding[] Finding { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
     /// </summary>
     [JsonProperty("investigations")]
     public ClinicalImpressionInvestigations[] Investigations { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The patient being assessed.
     /// </summary>
@@ -6901,11 +4995,6 @@ namespace fhir
     [JsonProperty("_summary")]
     public Element _Summary { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The request or event that necessitated this assessment. This may be a diagnosis, a Care Plan, a Request Referral, or some other resource.
     /// </summary>
     [JsonProperty("triggerCodeableConcept")]
@@ -6919,7 +5008,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ClinicalImpression.status field
   /// </summary>
-  public static class ClinicalImpressionStatusCodesCodes {
+  public static class ClinicalImpressionStatusCodes {
     public const string IN_PROGRESS = "in-progress";
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
@@ -6945,23 +5034,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contentReference")]
     public Reference ContentReference { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class Communication : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -6973,61 +5045,20 @@ namespace fhir
     [JsonProperty("category")]
     public CodeableConcept Category { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The encounter within which the communication was sent.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Identifiers associated with this Communication that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// A channel that was used for this communication (e.g. email, fax).
     /// </summary>
     [JsonProperty("medium")]
     public CodeableConcept[] Medium { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Text, attachment(s), or resource(s) that was communicated to the recipient.
     /// </summary>
@@ -7079,16 +5110,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the Communication.status field
   /// </summary>
-  public static class CommunicationStatusCodesCodes {
+  public static class CommunicationStatusCodes {
     public const string IN_PROGRESS = "in-progress";
     public const string COMPLETED = "completed";
     public const string SUSPENDED = "suspended";
@@ -7116,23 +5142,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contentReference")]
     public Reference ContentReference { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class CommunicationRequest : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -7144,61 +5153,20 @@ namespace fhir
     [JsonProperty("category")]
     public CodeableConcept Category { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The encounter within which the communication request was created.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// A unique ID of this request for reference purposes. It must be provided if user wants it returned as part of any output, otherwise it will be autogenerated, if needed, by CDS system. Does not need to be the actual ID of the source system.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// A channel that was used for this communication (e.g. email, fax).
     /// </summary>
     [JsonProperty("medium")]
     public CodeableConcept[] Medium { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Text, attachment(s), or resource(s) to be communicated to the recipient.
     /// </summary>
@@ -7260,16 +5228,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the CommunicationRequest.status field
   /// </summary>
-  public static class CommunicationRequestStatusCodesCodes {
+  public static class CommunicationRequestStatusCodes {
     public const string PROPOSED = "proposed";
     public const string PLANNED = "planned";
     public const string REQUESTED = "requested";
@@ -7286,29 +5249,12 @@ namespace fhir
   /// </summary>
   public class CompositionAttester : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Use more than one code where a single attester has more than one mode (professional and legal are often paired).
     /// </summary>
     [JsonProperty("mode")]
     public string[] Mode { get; set; }
     [JsonProperty("_mode")]
     public Element[] _Mode { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Who attested the composition in the specified way.
     /// </summary>
@@ -7325,7 +5271,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Composition.attester.mode field
   /// </summary>
-  public static class CompositionAttesterModeCodesCodes {
+  public static class CompositionAttesterModeCodes {
     public const string PERSONAL = "personal";
     public const string PROFESSIONAL = "professional";
     public const string LEGAL = "legal";
@@ -7345,23 +5291,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("detail")]
     public Reference[] Detail { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The period of time covered by the documentation. There is no assertion that the documentation is a complete representation for this period, only that it documents events during this time.
     /// </summary>
@@ -7388,29 +5317,12 @@ namespace fhir
     [JsonProperty("entry")]
     public Reference[] Entry { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// How the entry list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.
     /// </summary>
     [JsonProperty("mode")]
     public string Mode { get; set; }
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Applications SHOULD render ordered lists in the order provided, but MAY allow users to re-order based on their own preferences as well. If there is no order specified, the order is unknown, though there may still be some order.
     /// </summary>
@@ -7437,7 +5349,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Composition.section.mode field
   /// </summary>
-  public static class CompositionSectionModeCodesCodes {
+  public static class CompositionSectionModeCodes {
     public const string WORKING = "working";
     public const string SNAPSHOT = "snapshot";
     public const string CHANGES = "changes";
@@ -7472,11 +5384,6 @@ namespace fhir
     [JsonProperty("_confidentiality")]
     public Element _Confidentiality { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// This is useful when documents are derived from a composition - provides guidance for how to get the latest version of the document. This is optional because this is sometimes not known by the authoring system, and can be inferred by context. However it is important that this information be known when working with a derived document, so providing a custodian is encouraged.
     /// </summary>
     [JsonProperty("custodian")]
@@ -7499,46 +5406,10 @@ namespace fhir
     [JsonProperty("event")]
     public CompositionEvent[] Event { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// See discussion in resource definition for how these relate.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The root of the sections that make up the composition.
     /// </summary>
@@ -7557,11 +5428,6 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// For many compositions, the title is the same as the text or a display name of Composition.type (e.g. a "consultation" or "progress note"). Note that CDA does not make title mandatory, but there are no known cases where it is useful for title to be omitted, so it is mandatory here. Feedback on this requirement is welcome during the trial use period.
     /// </summary>
     [JsonProperty("title")]
@@ -7577,7 +5443,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Composition.status field
   /// </summary>
-  public static class CompositionStatusCodesCodes {
+  public static class CompositionStatusCodes {
     public const string PRELIMINARY = "preliminary";
     public const string FINAL = "final";
     public const string AMENDED = "amended";
@@ -7587,23 +5453,6 @@ namespace fhir
   /// May be a web site, an email address, a telephone number, etc.
   /// </summary>
   public class ConceptMapContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -7642,23 +5491,6 @@ namespace fhir
     public string Element { get; set; }
     [JsonProperty("_element")]
     public Element _Element { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Ideally there would only be one map, with equal or equivalent mapping. But multiple maps are allowed for several narrower options, or to assert that other concepts are unmatched.
@@ -7698,23 +5530,6 @@ namespace fhir
     [JsonProperty("_equivalence")]
     public Element _Equivalence { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the equivalence cannot be relied on.
     /// </summary>
     [JsonProperty("product")]
@@ -7723,7 +5538,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ConceptMap.element.target.equivalence field
   /// </summary>
-  public static class ConceptMapElementTargetEquivalenceCodesCodes {
+  public static class ConceptMapElementTargetEquivalenceCodes {
     public const string EQUIVALENT = "equivalent";
     public const string EQUAL = "equal";
     public const string WIDER = "wider";
@@ -7753,23 +5568,6 @@ namespace fhir
     [JsonProperty("_codeSystem")]
     public Element _CodeSystem { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Ideally there would only be one map, with equal or equivalent mapping. But multiple maps are allowed for several narrower options, or to assert that other concepts are unmatched.
     /// </summary>
     [JsonProperty("target")]
@@ -7784,11 +5582,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contact")]
     public ConceptMapContact[] Contact { get; set; }
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// Frequently, the copyright differs between the concept map, and codes that are included. The copyright statement should clearly differentiate between these when required.
     /// </summary>
@@ -7821,46 +5614,10 @@ namespace fhir
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Typically, this is used for values that can go in a v3 II data type.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Not expected to be unique.
     /// </summary>
@@ -7914,11 +5671,6 @@ namespace fhir
     [JsonProperty("targetReference")]
     public Reference TargetReference { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// An absolute URL that is used to identify this concept map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this concept map is (or will be) published.
     /// </summary>
     [JsonProperty("url")]
@@ -7941,7 +5693,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ConceptMap.status field
   /// </summary>
-  public static class ConceptMapStatusCodesCodes {
+  public static class ConceptMapStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -7955,23 +5707,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("assessment")]
     public Reference[] Assessment { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A simple summary of the stage such as "Stage 3". The determination of the stage is disease-specific.
     /// </summary>
@@ -7992,23 +5727,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("detail")]
     public Reference[] Detail { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class Condition : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -8076,11 +5794,6 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The Date Recorded represents the date when this particular Condition record was created in the EHR, not the date of the most recent update in terms of when severity, abatement, etc. were specified.  The date of the last record modification can be retrieved from the resource metadata.
     /// </summary>
     [JsonProperty("dateRecorded")]
@@ -8098,46 +5811,10 @@ namespace fhir
     [JsonProperty("evidence")]
     public ConditionEvidence[] Evidence { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This records identifiers associated with this condition that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis.
     /// </summary>
@@ -8190,11 +5867,6 @@ namespace fhir
     [JsonProperty("stage")]
     public ConditionStage Stage { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The verification status to support the clinical status of the condition.
     /// </summary>
     [JsonProperty("verificationStatus")]
@@ -8205,7 +5877,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Condition.clinicalStatus field
   /// </summary>
-  public static class ConditionClinicalStatusCodesCodes {
+  public static class ConditionClinicalStatusCodes {
     public const string ACTIVE = "active";
     public const string RELAPSE = "relapse";
     public const string REMISSION = "remission";
@@ -8214,7 +5886,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Condition.verificationStatus field
   /// </summary>
-  public static class ConditionVerificationStatusCodesCodes {
+  public static class ConditionVerificationStatusCodes {
     public const string PROVISIONAL = "provisional";
     public const string DIFFERENTIAL = "differential";
     public const string CONFIRMED = "confirmed";
@@ -8226,23 +5898,6 @@ namespace fhir
   /// May be a web site, an email address, a telephone number (tel:), etc.
   /// </summary>
   public class ConformanceContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -8260,23 +5915,6 @@ namespace fhir
   /// Software that is covered by this conformance statement.  It is used when the conformance statement describes the capabilities of a particular software version, independent of an installation.
   /// </summary>
   public class ConformanceSoftware : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Name software is known by.
     /// </summary>
@@ -8311,23 +5949,6 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// An absolute base URL for the implementation.  This forms the base for REST interfaces as well as the mailbox and document interfaces.
     /// </summary>
     [JsonProperty("url")]
@@ -8346,23 +5967,6 @@ namespace fhir
     public string Blob { get; set; }
     [JsonProperty("_blob")]
     public Element _Blob { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Mime type for certificate.
     /// </summary>
@@ -8393,23 +5997,6 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Types of security services are supported/required by the system.
     /// </summary>
     [JsonProperty("service")]
@@ -8433,28 +6020,11 @@ namespace fhir
     public string Documentation { get; set; }
     [JsonProperty("_documentation")]
     public Element _Documentation { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Code Values for the Conformance.rest.resource.interaction.code field
   /// </summary>
-  public static class ConformanceRestResourceInteractionCodeCodesCodes {
+  public static class ConformanceRestResourceInteractionCodeCodes {
     public const string READ = "read";
     public const string VREAD = "vread";
     public const string UPDATE = "update";
@@ -8491,29 +6061,12 @@ namespace fhir
     [JsonProperty("_documentation")]
     public Element _Documentation { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A modifier supported for the search parameter.
     /// </summary>
     [JsonProperty("modifier")]
     public string[] Modifier { get; set; }
     [JsonProperty("_modifier")]
     public Element[] _Modifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Parameter names cannot overlap with standard parameter names, and standard parameters cannot be redefined.
     /// </summary>
@@ -8539,7 +6092,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.rest.resource.searchParam.modifier field
   /// </summary>
-  public static class ConformanceRestResourceSearchParamModifierCodesCodes {
+  public static class ConformanceRestResourceSearchParamModifierCodes {
     public const string MISSING = "missing";
     public const string EXACT = "exact";
     public const string CONTAINS = "contains";
@@ -8554,7 +6107,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.rest.resource.searchParam.type field
   /// </summary>
-  public static class ConformanceRestResourceSearchParamTypeCodesCodes {
+  public static class ConformanceRestResourceSearchParamTypeCodes {
     public const string NUMBER = "number";
     public const string DATE = "date";
     public const string VAL_STRING = "string";
@@ -8586,27 +6139,10 @@ namespace fhir
     [JsonProperty("conditionalUpdate")]
     public bool? ConditionalUpdate { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifies a restful operation supported by the solution.
     /// </summary>
     [JsonProperty("interaction")]
     public ConformanceRestResourceInteraction[] Interaction { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The profile applies to all  resources of this type - i.e. it is the superset of what is supported by the system.
     /// </summary>
@@ -8659,7 +6195,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.rest.resource.conditionalDelete field
   /// </summary>
-  public static class ConformanceRestResourceConditionalDeleteCodesCodes {
+  public static class ConformanceRestResourceConditionalDeleteCodes {
     public const string NOT_SUPPORTED = "not-supported";
     public const string SINGLE = "single";
     public const string MULTIPLE = "multiple";
@@ -8667,7 +6203,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.rest.resource.versioning field
   /// </summary>
-  public static class ConformanceRestResourceVersioningCodesCodes {
+  public static class ConformanceRestResourceVersioningCodes {
     public const string NO_VERSION = "no-version";
     public const string VERSIONED = "versioned";
     public const string VERSIONED_UPDATE = "versioned-update";
@@ -8690,28 +6226,11 @@ namespace fhir
     public string Documentation { get; set; }
     [JsonProperty("_documentation")]
     public Element _Documentation { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Code Values for the Conformance.rest.interaction.code field
   /// </summary>
-  public static class ConformanceRestInteractionCodeCodesCodes {
+  public static class ConformanceRestInteractionCodeCodes {
     public const string TRANSACTION = "transaction";
     public const string SEARCH_SYSTEM = "search-system";
     public const string HISTORY_SYSTEM = "history-system";
@@ -8725,23 +6244,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("definition")]
     public Reference Definition { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The name here SHOULD be the same as the name in the definition, unless there is a name clash and the name cannot be used.
     /// </summary>
@@ -8769,18 +6271,6 @@ namespace fhir
     [JsonProperty("_documentation")]
     public Element _Documentation { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A specification of restful operations supported by the system.
     /// </summary>
     [JsonProperty("interaction")]
@@ -8792,11 +6282,6 @@ namespace fhir
     public string Mode { get; set; }
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Definition of an operation or a named query and with its parameters and their meaning and type.
     /// </summary>
@@ -8828,14 +6313,14 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.rest.mode field
   /// </summary>
-  public static class ConformanceRestModeCodesCodes {
+  public static class ConformanceRestModeCodes {
     public const string CLIENT = "client";
     public const string SERVER = "server";
   }
   /// <summary>
   /// Code Values for the Conformance.rest.transactionMode field
   /// </summary>
-  public static class ConformanceRestTransactionModeCodesCodes {
+  public static class ConformanceRestTransactionModeCodes {
     public const string NOT_SUPPORTED = "not-supported";
     public const string BATCH = "batch";
     public const string TRANSACTION = "transaction";
@@ -8852,23 +6337,6 @@ namespace fhir
     public string Address { get; set; }
     [JsonProperty("_address")]
     public Element _Address { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A list of the messaging transport protocol(s) identifiers, supported by this endpoint.
     /// </summary>
@@ -8899,11 +6367,6 @@ namespace fhir
     [JsonProperty("_documentation")]
     public Element _Documentation { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// This SHALL be provided if the event type supports multiple different resource types.
     /// </summary>
     [JsonProperty("focus")]
@@ -8911,24 +6374,12 @@ namespace fhir
     [JsonProperty("_focus")]
     public Element _Focus { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The mode of this event declaration - whether application is sender or receiver.
     /// </summary>
     [JsonProperty("mode")]
     public string Mode { get; set; }
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Information about the request for this event.
     /// </summary>
@@ -8943,7 +6394,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.messaging.event.category field
   /// </summary>
-  public static class ConformanceMessagingEventCategoryCodesCodes {
+  public static class ConformanceMessagingEventCategoryCodes {
     public const string CONSEQUENCE = "Consequence";
     public const string CURRENCY = "Currency";
     public const string NOTIFICATION = "Notification";
@@ -8951,7 +6402,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.messaging.event.mode field
   /// </summary>
-  public static class ConformanceMessagingEventModeCodesCodes {
+  public static class ConformanceMessagingEventModeCodes {
     public const string SENDER = "sender";
     public const string RECEIVER = "receiver";
   }
@@ -8977,23 +6428,6 @@ namespace fhir
     [JsonProperty("event")]
     public ConformanceMessagingEvent[] Event { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// If this value is missing then the application does not implement (receiver) or depend on (sender) reliable messaging.
     /// </summary>
     [JsonProperty("reliableCache")]
@@ -9011,29 +6445,12 @@ namespace fhir
     [JsonProperty("_documentation")]
     public Element _Documentation { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Mode of this document declaration - whether application is producer or consumer.
     /// </summary>
     [JsonProperty("mode")]
     public string Mode { get; set; }
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The first resource is the document resource.
     /// </summary>
@@ -9043,7 +6460,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.document.mode field
   /// </summary>
-  public static class ConformanceDocumentModeCodesCodes {
+  public static class ConformanceDocumentModeCodes {
     public const string PRODUCER = "producer";
     public const string CONSUMER = "consumer";
   }
@@ -9063,11 +6480,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contact")]
     public ConformanceContact[] Contact { get; set; }
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// A copyright statement relating to the conformance statement and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the system described by the conformance statement.
     /// </summary>
@@ -9100,11 +6512,6 @@ namespace fhir
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The version of the FHIR specification on which this conformance statement is based.
     /// </summary>
     [JsonProperty("fhirVersion")]
@@ -9119,24 +6526,10 @@ namespace fhir
     [JsonProperty("_format")]
     public Element[] _Format { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifies a specific implementation instance that is described by the conformance statement - i.e. a particular installation, rather than the capabilities of a software program.
     /// </summary>
     [JsonProperty("implementation")]
     public ConformanceImplementation Implementation { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// The way that this statement is intended to be used, to describe an actual running instance of software, a particular product (kind not instance of software) or a class of implementation (e.g. a desired purchase).
     /// </summary>
@@ -9145,27 +6538,10 @@ namespace fhir
     [JsonProperty("_kind")]
     public Element _Kind { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// Multiple repetitions allow the documentation of multiple endpoints per solution.
     /// </summary>
     [JsonProperty("messaging")]
     public ConformanceMessaging[] Messaging { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The name is not expected to be globally unique.
     /// </summary>
@@ -9210,11 +6586,6 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// An absolute URL that is used to identify this conformance statement when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this conformance statement is (or will be) published.
     /// </summary>
     [JsonProperty("url")]
@@ -9232,7 +6603,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.acceptUnknown field
   /// </summary>
-  public static class ConformanceAcceptUnknownCodesCodes {
+  public static class ConformanceAcceptUnknownCodes {
     public const string NO = "no";
     public const string EXTENSIONS = "extensions";
     public const string ELEMENTS = "elements";
@@ -9241,7 +6612,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.format field
   /// </summary>
-  public static class ConformanceFormatCodesCodes {
+  public static class ConformanceFormatCodes {
     public const string FORMATS = "formats";
     public const string JSON = "json";
     public const string MIME = "mime";
@@ -9249,7 +6620,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.kind field
   /// </summary>
-  public static class ConformanceKindCodesCodes {
+  public static class ConformanceKindCodes {
     public const string INSTANCE = "instance";
     public const string CAPABILITY = "capability";
     public const string REQUIREMENTS = "requirements";
@@ -9257,7 +6628,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Conformance.status field
   /// </summary>
-  public static class ConformanceStatusCodesCodes {
+  public static class ConformanceStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -9271,23 +6642,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("entity")]
     public Reference Entity { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Role type of actors assigned roles in this Contract.
     /// </summary>
@@ -9316,11 +6670,6 @@ namespace fhir
     [JsonProperty("entityReference")]
     public Reference EntityReference { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// A real number that represents a multiplier used in determining the overall value of the Contract Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
     /// </summary>
     [JsonProperty("factor")]
@@ -9328,22 +6677,10 @@ namespace fhir
     [JsonProperty("_factor")]
     public Element _Factor { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifies a Contract Valued Item instance.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Expresses the product of the Contract Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
     /// </summary>
@@ -9372,23 +6709,6 @@ namespace fhir
   /// </summary>
   public class ContractSigner : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Party which is a signator to this Contract.
     /// </summary>
     [JsonProperty("party")]
@@ -9415,23 +6735,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("entity")]
     public Reference Entity { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Role played by the actor assigned this role in this Contract Provision.
     /// </summary>
@@ -9460,11 +6763,6 @@ namespace fhir
     [JsonProperty("entityReference")]
     public Reference EntityReference { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// A real number that represents a multiplier used in determining the overall value of the Contract Provision Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
     /// </summary>
     [JsonProperty("factor")]
@@ -9472,22 +6770,10 @@ namespace fhir
     [JsonProperty("_factor")]
     public Element _Factor { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifies a Contract Provision Valued Item instance.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Expresses the product of the Contract Provision Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
     /// </summary>
@@ -9536,22 +6822,10 @@ namespace fhir
     [JsonProperty("applies")]
     public Period Applies { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Nested group of Contract Provisions.
     /// </summary>
     [JsonProperty("group")]
     public ContractTerm[] Group { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Unique identifier for this particular Contract Provision.
     /// </summary>
@@ -9564,11 +6838,6 @@ namespace fhir
     public string Issued { get; set; }
     [JsonProperty("_issued")]
     public Element _Issued { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Who or what this Contract Provision is about.
     /// </summary>
@@ -9611,23 +6880,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contentReference")]
     public Reference ContentReference { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// List of Legal expressions or representations of this Contract.
@@ -9643,23 +6895,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contentReference")]
     public Reference ContentReference { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// List of Computable Policy Rule Language Representations of this Contract.
@@ -9675,23 +6910,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contentReference")]
     public Reference ContentReference { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class Contract : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -9733,44 +6951,20 @@ namespace fhir
     [JsonProperty("bindingReference")]
     public Reference BindingReference { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Recognized governance framework or system operating with a circumscribed scope in accordance with specified principles, policies, processes or procedures for managing rights, actions, or behaviors of parties or principals relative to resources.
     /// </summary>
     [JsonProperty("domain")]
     public Reference[] Domain { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
     /// <summary>
     /// The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
     /// </summary>
     [JsonProperty("friendly")]
     public ContractFriendly[] Friendly { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Unique identifier for this Contract.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// When this  Contract was issued.
     /// </summary>
@@ -9779,27 +6973,10 @@ namespace fhir
     [JsonProperty("_issued")]
     public Element _Issued { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// List of Legal expressions or representations of this Contract.
     /// </summary>
     [JsonProperty("legal")]
     public ContractLegal[] Legal { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// List of Computable Policy Rule Language Representations of this Contract.
     /// </summary>
@@ -9826,11 +7003,6 @@ namespace fhir
     [JsonProperty("term")]
     public ContractTerm[] Term { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Type of Contract such as an insurance policy, real estate contract, a will, power of attorny, Privacy or Security policy , trust framework agreement, etc.
     /// </summary>
     [JsonProperty("type")]
@@ -9854,11 +7026,6 @@ namespace fhir
     [JsonProperty("bin")]
     public Identifier Bin { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The policy(s) which constitute this insurance coverage.
     /// </summary>
     [JsonProperty("contract")]
@@ -9869,11 +7036,6 @@ namespace fhir
     [JsonProperty("dependent")]
     public uint? Dependent { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.
     /// </summary>
     [JsonProperty("group")]
@@ -9881,46 +7043,15 @@ namespace fhir
     [JsonProperty("_group")]
     public Element _Group { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Subscriber Id, Certificate number or Personal Health Number or Case ID.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// The program or plan underwriter or payor.
     /// </summary>
     [JsonProperty("issuer")]
     public Reference Issuer { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The identifier for a community of providers.
     /// </summary>
@@ -9961,11 +7092,6 @@ namespace fhir
     [JsonProperty("subscriberId")]
     public Identifier SubscriberId { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health.
     /// </summary>
     [JsonProperty("type")]
@@ -9975,23 +7101,6 @@ namespace fhir
   /// May be a web site, an email address, a telephone number (tel:), etc.
   /// </summary>
   public class DataElementContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -10017,29 +7126,12 @@ namespace fhir
     [JsonProperty("_comments")]
     public Element _Comments { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The specification is described once, with general comments, and then specific mappings are made that reference this declaration.
     /// </summary>
     [JsonProperty("identity")]
     public string Identity { get; set; }
     [JsonProperty("_identity")]
     public Element _Identity { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A name for the specification that is being mapped to.
     /// </summary>
@@ -10065,11 +7157,6 @@ namespace fhir
     [JsonProperty("contact")]
     public DataElementContact[] Contact { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The copyright statement does not apply to values for the data element, only to its definition.
     /// </summary>
     [JsonProperty("copyright")]
@@ -10094,51 +7181,15 @@ namespace fhir
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Typically, this is used for values that can go in a v3 II data type.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with.
     /// </summary>
     [JsonProperty("mapping")]
     public DataElementMapping[] Mapping { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This may be similar to the question used to prompt someone for a data element value, but the purpose is communicating about the data element, not asking the question.  (Refer to the 'question' element for the latter.).
     /// </summary>
@@ -10168,11 +7219,6 @@ namespace fhir
     [JsonProperty("_stringency")]
     public Element _Stringency { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// An absolute URL that is used to identify this data element when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this data element is (or will be) published.
     /// </summary>
     [JsonProperty("url")]
@@ -10195,7 +7241,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DataElement.status field
   /// </summary>
-  public static class DataElementStatusCodesCodes {
+  public static class DataElementStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -10203,7 +7249,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DataElement.stringency field
   /// </summary>
-  public static class DataElementStringencyCodesCodes {
+  public static class DataElementStringencyCodes {
     public const string COMPARABLE = "comparable";
     public const string FULLY_SPECIFIED = "fully-specified";
     public const string EQUIVALENT = "equivalent";
@@ -10232,23 +7278,6 @@ namespace fhir
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class DetectedIssue : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -10265,11 +7294,6 @@ namespace fhir
     [JsonProperty("category")]
     public CodeableConcept Category { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The date or date-time when the detected issue was initially identified.
     /// </summary>
     [JsonProperty("date")]
@@ -10284,18 +7308,6 @@ namespace fhir
     [JsonProperty("_detail")]
     public Element _Detail { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Business identifier associated with the detected issue record.
     /// </summary>
     [JsonProperty("identifier")]
@@ -10306,34 +7318,10 @@ namespace fhir
     [JsonProperty("implicated")]
     public Reference[] Implicated { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// Indicates an action that has been taken or is committed to to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.
     /// </summary>
     [JsonProperty("mitigation")]
     public DetectedIssueMitigation[] Mitigation { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Indicates the patient whose record the detected issue is associated with.
     /// </summary>
@@ -10353,16 +7341,11 @@ namespace fhir
     public string Severity { get; set; }
     [JsonProperty("_severity")]
     public Element _Severity { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the DetectedIssue.severity field
   /// </summary>
-  public static class DetectedIssueSeverityCodesCodes {
+  public static class DetectedIssueSeverityCodes {
     public const string HIGH = "high";
     public const string MODERATE = "moderate";
     public const string LOW = "low";
@@ -10380,11 +7363,6 @@ namespace fhir
     [JsonProperty("contact")]
     public ContactPoint[] Contact { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The date and time beyond which this device is no longer valid or should not be used (if applicable).
     /// </summary>
     [JsonProperty("expiry")]
@@ -10392,36 +7370,10 @@ namespace fhir
     [JsonProperty("_expiry")]
     public Element _Expiry { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Often fixed to the device as a barcode and may include names given to the device in local usage.  Note that some of the barcodes affixed to the device identify its type, not its instance.  For the FDA mandated Unique Device Identifier (UDI) use  the Device.udi element.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// The place where the device can be found.
     /// </summary>
@@ -10449,22 +7401,12 @@ namespace fhir
     [JsonProperty("_manufacturer")]
     public Element _Manufacturer { get; set; }
     /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// The "model" is an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.
     /// </summary>
     [JsonProperty("model")]
     public string Model { get; set; }
     [JsonProperty("_model")]
     public Element _Model { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Descriptive information, usage information or implantation information that is not captured in an existing element.
     /// </summary>
@@ -10487,11 +7429,6 @@ namespace fhir
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
     /// <summary>
     /// For the FDA mandated Unique Device Identifier (UDI) use  the Device.udi element.
     /// </summary>
@@ -10522,7 +7459,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Device.status field
   /// </summary>
-  public static class DeviceStatusCodesCodes {
+  public static class DeviceStatusCodes {
     public const string AVAILABLE = "available";
     public const string NOT_AVAILABLE = "not-available";
     public const string ENTERED_IN_ERROR = "entered-in-error";
@@ -10536,23 +7473,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("componentId")]
     public Identifier ComponentId { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Describes the printable string defining the component.
     /// </summary>
@@ -10571,41 +7491,10 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "DeviceComponent";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Describes the local assigned unique identification by the software. For example: handle ID.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// Describes the language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US.
     /// </summary>
@@ -10625,16 +7514,6 @@ namespace fhir
     public string MeasurementPrinciple { get; set; }
     [JsonProperty("_measurementPrinciple")]
     public Element _MeasurementPrinciple { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// OperationalStatus for the MDS, VMD, or Channel will be bound to a specific ValueSet that is defined in its profile.
     /// </summary>
@@ -10661,11 +7540,6 @@ namespace fhir
     [JsonProperty("source")]
     public Reference Source { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// DeviceComponent.type can be referred to either GDMN (nomenclature system supported by FDA Global UDI Database) or preferable RTMMS coding system.
     /// </summary>
     [JsonProperty("type")]
@@ -10674,7 +7548,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DeviceComponent.measurementPrinciple field
   /// </summary>
-  public static class DeviceComponentMeasurementPrincipleCodesCodes {
+  public static class DeviceComponentMeasurementPrincipleCodes {
     public const string OTHER = "other";
     public const string CHEMICAL = "chemical";
     public const string ELECTRICAL = "electrical";
@@ -10691,23 +7565,6 @@ namespace fhir
   /// Describes the calibrations that have been performed or that are required to be performed.
   /// </summary>
   public class DeviceMetricCalibration : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Describes the state of the calibration.
     /// </summary>
@@ -10733,7 +7590,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DeviceMetric.calibration.state field
   /// </summary>
-  public static class DeviceMetricCalibrationStateCodesCodes {
+  public static class DeviceMetricCalibrationStateCodes {
     public const string NOT_CALIBRATED = "not-calibrated";
     public const string CALIBRATION_REQUIRED = "calibration-required";
     public const string CALIBRATED = "calibrated";
@@ -10742,7 +7599,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DeviceMetric.calibration.type field
   /// </summary>
-  public static class DeviceMetricCalibrationTypeCodesCodes {
+  public static class DeviceMetricCalibrationTypeCodes {
     public const string UNSPECIFIED = "unspecified";
     public const string OFFSET = "offset";
     public const string GAIN = "gain";
@@ -10772,56 +7629,15 @@ namespace fhir
     [JsonProperty("_color")]
     public Element _Color { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID.  It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// Describes the measurement repetition time. This is not necessarily the same as the update period. The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour. The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.
     /// </summary>
     [JsonProperty("measurementPeriod")]
     public Timing MeasurementPeriod { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Indicates current operational state of the device. For example: On, Off, Standby, etc.
     /// </summary>
@@ -10840,11 +7656,6 @@ namespace fhir
     [JsonProperty("source")]
     public Reference Source { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// DeviceMetric.type can be referred to either GDMN (nomenclature system supported by FDA Global UDI Database) or preferable RTMMS coding system.
     /// </summary>
     [JsonProperty("type")]
@@ -10858,7 +7669,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DeviceMetric.category field
   /// </summary>
-  public static class DeviceMetricCategoryCodesCodes {
+  public static class DeviceMetricCategoryCodes {
     public const string MEASUREMENT = "measurement";
     public const string SETTING = "setting";
     public const string CALCULATION = "calculation";
@@ -10867,7 +7678,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DeviceMetric.color field
   /// </summary>
-  public static class DeviceMetricColorCodesCodes {
+  public static class DeviceMetricColorCodes {
     public const string BLACK = "black";
     public const string RED = "red";
     public const string GREEN = "green";
@@ -10880,7 +7691,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DeviceMetric.operationalStatus field
   /// </summary>
-  public static class DeviceMetricOperationalStatusCodesCodes {
+  public static class DeviceMetricOperationalStatusCodes {
     public const string ON = "on";
     public const string OFF = "off";
     public const string STANDBY = "standby";
@@ -10900,11 +7711,6 @@ namespace fhir
     [JsonProperty("bodySiteReference")]
     public Reference BodySiteReference { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The details of the device  to be used.
     /// </summary>
     [JsonProperty("device")]
@@ -10915,51 +7721,15 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifiers assigned to this order by the orderer or by the receiver.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// Reason or justification for the use of this device.
     /// </summary>
     [JsonProperty("indication")]
     public CodeableConcept[] Indication { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Details about this request that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement.
     /// </summary>
@@ -11006,11 +7776,6 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
     /// </summary>
     [JsonProperty("timingTiming")]
@@ -11031,7 +7796,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DeviceUseRequest.priority field
   /// </summary>
-  public static class DeviceUseRequestPriorityCodesCodes {
+  public static class DeviceUseRequestPriorityCodes {
     public const string ROUTINE = "routine";
     public const string URGENT = "urgent";
     public const string STAT = "stat";
@@ -11040,7 +7805,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DeviceUseRequest.status field
   /// </summary>
-  public static class DeviceUseRequestStatusCodesCodes {
+  public static class DeviceUseRequestStatusCodes {
     public const string PROPOSED = "proposed";
     public const string PLANNED = "planned";
     public const string REQUESTED = "requested";
@@ -11067,61 +7832,20 @@ namespace fhir
     [JsonProperty("bodySiteReference")]
     public Reference BodySiteReference { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The details of the device used.
     /// </summary>
     [JsonProperty("device")]
     public Reference Device { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// An external identifier for this statement such as an IRI.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// Reason or justification for the use of the device.
     /// </summary>
     [JsonProperty("indication")]
     public CodeableConcept[] Indication { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Details about the device statement that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement.
     /// </summary>
@@ -11141,11 +7865,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
     /// <summary>
     /// How often the device was used.
     /// </summary>
@@ -11191,23 +7910,6 @@ namespace fhir
     [JsonProperty("description")]
     public CodeableConcept Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The status for the event.
     /// </summary>
     [JsonProperty("status")]
@@ -11218,7 +7920,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DiagnosticOrder.event.status field
   /// </summary>
-  public static class DiagnosticOrderEventStatusCodesCodes {
+  public static class DiagnosticOrderEventStatusCodes {
     public const string PROPOSED = "proposed";
     public const string DRAFT = "draft";
     public const string PLANNED = "planned";
@@ -11253,23 +7955,6 @@ namespace fhir
     [JsonProperty("event")]
     public DiagnosticOrderEvent[] Event { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A single specimen should not appear in both DiagnosticOrder.specimen and DiagnosticOrder.item.specimen.
     /// </summary>
     [JsonProperty("specimen")]
@@ -11285,7 +7970,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DiagnosticOrder.item.status field
   /// </summary>
-  public static class DiagnosticOrderItemStatusCodesCodes {
+  public static class DiagnosticOrderItemStatusCodes {
     public const string PROPOSED = "proposed";
     public const string DRAFT = "draft";
     public const string PLANNED = "planned";
@@ -11305,11 +7990,6 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "DiagnosticOrder";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// An encounter that provides additional information about the healthcare context in which this request is made.
     /// </summary>
     [JsonProperty("encounter")]
@@ -11320,51 +8000,15 @@ namespace fhir
     [JsonProperty("event")]
     public DiagnosticOrderEvent[] Event { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The identifier.type element is used to distinguish between the identifiers assigned by the orderer (known as the 'Placer' in HL7 v2) and the producer of the observations in response to the order (known as the 'Filler' in HL7 v2). For further discussion and examples see the [notes section](diagnosticorder.html#4.22.4) below.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// There would always be at least one item in normal usage, but this is optional so that a workflow can quote order details without having to list the items.
     /// </summary>
     [JsonProperty("item")]
     public DiagnosticOrderItem[] Item { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Any other notes associated with this patient, specimen or order (e.g. "patient hates needles").
     /// </summary>
@@ -11409,16 +8053,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("supportingInformation")]
     public Reference[] SupportingInformation { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the DiagnosticOrder.priority field
   /// </summary>
-  public static class DiagnosticOrderPriorityCodesCodes {
+  public static class DiagnosticOrderPriorityCodes {
     public const string ROUTINE = "routine";
     public const string URGENT = "urgent";
     public const string STAT = "stat";
@@ -11427,7 +8066,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DiagnosticOrder.status field
   /// </summary>
-  public static class DiagnosticOrderStatusCodesCodes {
+  public static class DiagnosticOrderStatusCodes {
     public const string PROPOSED = "proposed";
     public const string DRAFT = "draft";
     public const string PLANNED = "planned";
@@ -11454,27 +8093,10 @@ namespace fhir
     [JsonProperty("_comment")]
     public Element _Comment { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Reference to the image source.
     /// </summary>
     [JsonProperty("link")]
     public Reference Link { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// To support reporting for any diagnostic report into a clinical data repository.
@@ -11506,11 +8128,6 @@ namespace fhir
     [JsonProperty("_conclusion")]
     public Element _Conclusion { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// If the diagnostic procedure was performed on the patient, this is the time it was performed. If there are specimens, the diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship between the specimens and the diagnostically relevant time is not always automatic.
     /// </summary>
     [JsonProperty("effectiveDateTime")]
@@ -11528,18 +8145,6 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The local ID assigned to the report by the order filler, usually by the Information System of the diagnostic service provider.
     /// </summary>
     [JsonProperty("identifier")]
@@ -11555,36 +8160,12 @@ namespace fhir
     [JsonProperty("imagingStudy")]
     public Reference[] ImagingStudy { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// May be different from the update time of the resource itself, because that is the status of the record (potentially a secondary copy), not the actual release time of the report.
     /// </summary>
     [JsonProperty("issued")]
     public string Issued { get; set; }
     [JsonProperty("_issued")]
     public Element _Issued { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This is not necessarily the source of the atomic data items. It is the entity that takes responsibility for the clinical report.
     /// </summary>
@@ -11622,16 +8203,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the DiagnosticReport.status field
   /// </summary>
-  public static class DiagnosticReportStatusCodesCodes {
+  public static class DiagnosticReportStatusCodes {
     public const string REGISTERED = "registered";
     public const string PARTIAL = "partial";
     public const string FINAL = "final";
@@ -11644,23 +8220,6 @@ namespace fhir
   /// The list of Documents included in the manifest.
   /// </summary>
   public class DocumentManifestContent : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The intended focus of the DocumentManifest is for the reference to target either DocumentReference or Media Resources, and most implementation guides will restrict to these resources. The reference is to "Any" to support EN 13606 usage, where an extract is DocumentManifest that references  List and Composition resources.
     /// </summary>
@@ -11677,27 +8236,10 @@ namespace fhir
   /// </summary>
   public class DocumentManifestRelated : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// If both identifier and ref elements are present they shall refer to the same thing.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If both identifier and ref elements are present they shall refer to the same thing.
     /// </summary>
@@ -11713,11 +8255,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("author")]
     public Reference[] Author { get; set; }
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The list of Documents included in the manifest.
     /// </summary>
@@ -11738,51 +8275,15 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Other identifiers associated with the document manifest, including version independent  identifiers.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// A single identifier that uniquely identifies this manifest. Principally used to refer to the manifest in non-FHIR contexts.
     /// </summary>
     [JsonProperty("masterIdentifier")]
     public Identifier MasterIdentifier { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// How the recipient receives the document set or is notified of it is up to the implementation. This element is just a statement of intent. If the recipient is a person, and it is not known whether the person is a patient or a practitioner, RelatedPerson would be the default choice.
     /// </summary>
@@ -11813,11 +8314,6 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Specifies the kind of this set of documents (e.g. Patient Summary, Discharge Summary, Prescription, etc.). The type of a set of documents may be the same as one of the documents in it - especially if there is only one - but it may be wider.
     /// </summary>
     [JsonProperty("type")]
@@ -11826,7 +8322,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DocumentManifest.status field
   /// </summary>
-  public static class DocumentManifestStatusCodesCodes {
+  public static class DocumentManifestStatusCodes {
     public const string CURRENT = "current";
     public const string SUPERSEDED = "superseded";
     public const string ENTERED_IN_ERROR = "entered-in-error";
@@ -11843,23 +8339,6 @@ namespace fhir
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The target document of this relationship.
     /// </summary>
     [JsonProperty("target")]
@@ -11868,7 +8347,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DocumentReference.relatesTo.code field
   /// </summary>
-  public static class DocumentReferenceRelatesToCodeCodesCodes {
+  public static class DocumentReferenceRelatesToCodeCodes {
     public const string REPLACES = "replaces";
     public const string TRANSFORMS = "transforms";
     public const string SIGNS = "signs";
@@ -11884,54 +8363,20 @@ namespace fhir
     [JsonProperty("attachment")]
     public Attachment Attachment { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Note that while IHE mostly issues URNs for format types, not all documents can be identified by a URI.
     /// </summary>
     [JsonProperty("format")]
     public Coding[] Format { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// May be identifiers or resources that caused the DocumentReference or referenced Document to be created.
   /// </summary>
   public class DocumentReferenceContextRelated : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Order numbers, accession numbers, XDW workflow numbers.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Order, DiagnosticOrder,  Procedure, EligibilityRequest, etc.
     /// </summary>
@@ -11953,27 +8398,10 @@ namespace fhir
     [JsonProperty("event")]
     public CodeableConcept[] Event { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The kind of facility where the patient was seen.
     /// </summary>
     [JsonProperty("facilityType")]
     public CodeableConcept FacilityType { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The time period over which the service that is described by the document was provided.
     /// </summary>
@@ -12015,11 +8443,6 @@ namespace fhir
     [JsonProperty("class")]
     public CodeableConcept Class { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The document and format referenced. There may be multiple content element repetitions, each with a different format.
     /// </summary>
     [JsonProperty("content")]
@@ -12054,29 +8477,10 @@ namespace fhir
     [JsonProperty("docStatus")]
     public CodeableConcept DocStatus { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Other identifiers associated with the document, including version independent identifiers.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// Referencing/indexing time is used for tracking, organizing versions and searching.
     /// </summary>
@@ -12085,27 +8489,10 @@ namespace fhir
     [JsonProperty("_indexed")]
     public Element _Indexed { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// CDA Document Id extension and root.
     /// </summary>
     [JsonProperty("masterIdentifier")]
     public Identifier MasterIdentifier { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Relationships that this document has with other document references that already exist.
     /// </summary>
@@ -12129,11 +8516,6 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Key metadata element describing the document, used in searching/filtering.
     /// </summary>
     [JsonProperty("type")]
@@ -12142,7 +8524,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the DocumentReference.status field
   /// </summary>
-  public static class DocumentReferenceStatusCodesCodes {
+  public static class DocumentReferenceStatusCodes {
     public const string CURRENT = "current";
     public const string SUPERSEDED = "superseded";
     public const string ENTERED_IN_ERROR = "entered-in-error";
@@ -12159,32 +8541,6 @@ namespace fhir
     [JsonProperty("extension")]
     public Extension[] Extension { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
     /// </summary>
     [JsonProperty("modifierExtension")]
@@ -12200,11 +8556,6 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "EligibilityRequest";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The date when this resource was created.
     /// </summary>
     [JsonProperty("created")]
@@ -12212,46 +8563,10 @@ namespace fhir
     [JsonProperty("_created")]
     public Element _Created { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The organization which is responsible for the services rendered to the patient.
     /// </summary>
@@ -12277,21 +8592,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("target")]
     public Reference Target { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   public class EligibilityResponse : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "EligibilityResponse";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The date when the enclosed suite of services were performed or completed.
     /// </summary>
@@ -12307,46 +8612,10 @@ namespace fhir
     [JsonProperty("_disposition")]
     public Element _Disposition { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The Insurer who produced this adjudicated response.
     /// </summary>
@@ -12384,16 +8653,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("ruleset")]
     public Coding Ruleset { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the EligibilityResponse.outcome field
   /// </summary>
-  public static class EligibilityResponseOutcomeCodesCodes {
+  public static class EligibilityResponseOutcomeCodes {
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
   }
@@ -12401,23 +8665,6 @@ namespace fhir
   /// The current status is always found in the current version of the resource, not the status history.
   /// </summary>
   public class EncounterStatusHistory : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The time that the episode was in the specified status.
     /// </summary>
@@ -12434,7 +8681,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Encounter.statusHistory.status field
   /// </summary>
-  public static class EncounterStatusHistoryStatusCodesCodes {
+  public static class EncounterStatusHistoryStatusCodes {
     public const string PLANNED = "planned";
     public const string ARRIVED = "arrived";
     public const string IN_PROGRESS = "in-progress";
@@ -12447,27 +8694,10 @@ namespace fhir
   /// </summary>
   public class EncounterParticipant : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Persons involved in the encounter other than the patient.
     /// </summary>
     [JsonProperty("individual")]
     public Reference Individual { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The period of time that the specified participant was present during the encounter. These can overlap or be sub-sets of the overall encounters period.
     /// </summary>
@@ -12514,23 +8744,6 @@ namespace fhir
     [JsonProperty("dischargeDisposition")]
     public CodeableConcept DischargeDisposition { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The location from which the patient came before admission.
     /// </summary>
     [JsonProperty("origin")]
@@ -12561,27 +8774,10 @@ namespace fhir
   /// </summary>
   public class EncounterLocation : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The location where the encounter takes place.
     /// </summary>
     [JsonProperty("location")]
     public Reference Location { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Time period during which the patient was present at the location.
     /// </summary>
@@ -12598,7 +8794,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Encounter.location.status field
   /// </summary>
-  public static class EncounterLocationStatusCodesCodes {
+  public static class EncounterLocationStatusCodes {
     public const string PLANNED = "planned";
     public const string ACTIVE = "active";
     public const string RESERVED = "reserved";
@@ -12621,44 +8817,20 @@ namespace fhir
     [JsonProperty("_class")]
     public Element _Class { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).
     /// </summary>
     [JsonProperty("episodeOfCare")]
     public Reference[] EpisodeOfCare { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
     /// <summary>
     /// An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.  The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.
     /// </summary>
     [JsonProperty("hospitalization")]
     public EncounterHospitalization Hospitalization { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier(s) by which this encounter is known.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// The referral request this encounter satisfies (incoming referral).
     /// </summary>
@@ -12670,13 +8842,6 @@ namespace fhir
     [JsonProperty("indication")]
     public Reference[] Indication { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// May differ from the time the Encounter.period lasted because of leave of absence.
     /// </summary>
     [JsonProperty("length")]
@@ -12686,16 +8851,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("location")]
     public EncounterLocation[] Location { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The list of people responsible for providing the service.
     /// </summary>
@@ -12744,11 +8899,6 @@ namespace fhir
     [JsonProperty("statusHistory")]
     public EncounterStatusHistory[] StatusHistory { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Since there are many ways to further classify encounters, this element is 0..*.
     /// </summary>
     [JsonProperty("type")]
@@ -12757,7 +8907,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Encounter.class field
   /// </summary>
-  public static class EncounterClassCodesCodes {
+  public static class EncounterClassCodes {
     public const string INPATIENT = "inpatient";
     public const string OUTPATIENT = "outpatient";
     public const string AMBULATORY = "ambulatory";
@@ -12766,7 +8916,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Encounter.status field
   /// </summary>
-  public static class EncounterStatusCodesCodes {
+  public static class EncounterStatusCodes {
     public const string PLANNED = "planned";
     public const string ARRIVED = "arrived";
     public const string IN_PROGRESS = "in-progress";
@@ -12778,11 +8928,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "EnrollmentRequest";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// Reference to the program or plan identification, underwriter or payor.
     /// </summary>
@@ -12796,46 +8941,10 @@ namespace fhir
     [JsonProperty("_created")]
     public Element _Created { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The organization which is responsible for the services rendered to the patient.
     /// </summary>
@@ -12871,21 +8980,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("target")]
     public Reference Target { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   public class EnrollmentResponse : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "EnrollmentResponse";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The date when the enclosed suite of services were performed or completed.
     /// </summary>
@@ -12901,46 +9000,10 @@ namespace fhir
     [JsonProperty("_disposition")]
     public Element _Disposition { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The Insurer who produced this adjudicated response.
     /// </summary>
@@ -12978,16 +9041,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("ruleset")]
     public Coding Ruleset { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the EnrollmentResponse.outcome field
   /// </summary>
-  public static class EnrollmentResponseOutcomeCodesCodes {
+  public static class EnrollmentResponseOutcomeCodes {
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
   }
@@ -12995,23 +9053,6 @@ namespace fhir
   /// The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).
   /// </summary>
   public class EpisodeOfCareStatusHistory : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The period during this EpisodeOfCare that the specific status applied.
     /// </summary>
@@ -13028,7 +9069,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the EpisodeOfCare.statusHistory.status field
   /// </summary>
-  public static class EpisodeOfCareStatusHistoryStatusCodesCodes {
+  public static class EpisodeOfCareStatusHistoryStatusCodes {
     public const string PLANNED = "planned";
     public const string WAITLIST = "waitlist";
     public const string ACTIVE = "active";
@@ -13041,27 +9082,10 @@ namespace fhir
   /// </summary>
   public class EpisodeOfCareCareTeam : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Where an Organization is included in the CareTeam, it is really providing some form of services to the EpisodeOfCare (e.g. Jim's Mowing Services) the details of the services would be included on a CarePlan.
     /// </summary>
     [JsonProperty("member")]
     public Reference Member { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The period of time this practitioner is performing some role within the episode of care.
     /// </summary>
@@ -13093,56 +9117,15 @@ namespace fhir
     [JsonProperty("condition")]
     public Reference[] Condition { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier(s) by which this EpisodeOfCare is known.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// The organization that has assumed the specific responsibilities for the specified duration.
     /// </summary>
     [JsonProperty("managingOrganization")]
     public Reference ManagingOrganization { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The patient that this EpisodeOfCare applies to.
     /// </summary>
@@ -13171,11 +9154,6 @@ namespace fhir
     [JsonProperty("statusHistory")]
     public EpisodeOfCareStatusHistory[] StatusHistory { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The type can be very important in processing as this could be used in determining if the EpisodeOfCare is relevant to specific government reporting, or other types of classifications.
     /// </summary>
     [JsonProperty("type")]
@@ -13184,7 +9162,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the EpisodeOfCare.status field
   /// </summary>
-  public static class EpisodeOfCareStatusCodesCodes {
+  public static class EpisodeOfCareStatusCodes {
     public const string PLANNED = "planned";
     public const string WAITLIST = "waitlist";
     public const string ACTIVE = "active";
@@ -13196,11 +9174,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "ExplanationOfBenefit";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The date when the enclosed suite of services were performed or completed.
     /// </summary>
@@ -13216,46 +9189,10 @@ namespace fhir
     [JsonProperty("_disposition")]
     public Element _Disposition { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The Insurer who produced this adjudicated response.
     /// </summary>
@@ -13293,16 +9230,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("ruleset")]
     public Coding Ruleset { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the ExplanationOfBenefit.outcome field
   /// </summary>
-  public static class ExplanationOfBenefitOutcomeCodesCodes {
+  public static class ExplanationOfBenefitOutcomeCodes {
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
   }
@@ -13315,23 +9247,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// An area where general notes can be placed about this specific condition.
     /// </summary>
@@ -13411,11 +9326,6 @@ namespace fhir
     [JsonProperty("condition")]
     public FamilyMemberHistoryCondition[] Condition { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// This should be captured even if the same as the date on the List aggregating the full family history.
     /// </summary>
     [JsonProperty("date")]
@@ -13452,11 +9362,6 @@ namespace fhir
     [JsonProperty("_deceasedString")]
     public Element _DeceasedString { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes.
     /// </summary>
     [JsonProperty("gender")]
@@ -13464,41 +9369,10 @@ namespace fhir
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This records identifiers associated with this family member history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This will either be a name or a description; e.g. "Aunt Susan", "my cousin with the red hair".
     /// </summary>
@@ -13528,16 +9402,11 @@ namespace fhir
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the FamilyMemberHistory.gender field
   /// </summary>
-  public static class FamilyMemberHistoryGenderCodesCodes {
+  public static class FamilyMemberHistoryGenderCodes {
     public const string MALE = "male";
     public const string FEMALE = "female";
     public const string OTHER = "other";
@@ -13546,7 +9415,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the FamilyMemberHistory.status field
   /// </summary>
-  public static class FamilyMemberHistoryStatusCodesCodes {
+  public static class FamilyMemberHistoryStatusCodes {
     public const string PARTIAL = "partial";
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
@@ -13572,56 +9441,15 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// This alert is only relevant during the encounter.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier assigned to the flag for external use (outside the FHIR environment).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The period of time from the activation of the flag to inactivation of the flag. If the flag is active, the end of the period should be unspecified.
     /// </summary>
@@ -13639,16 +9467,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the Flag.status field
   /// </summary>
-  public static class FlagStatusCodesCodes {
+  public static class FlagStatusCodes {
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
@@ -13657,23 +9480,6 @@ namespace fhir
   /// Note that this should not duplicate the goal status.
   /// </summary>
   public class GoalOutcome : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Details of what's changed (or not changed).
     /// </summary>
@@ -13705,11 +9511,6 @@ namespace fhir
     [JsonProperty("category")]
     public CodeableConcept[] Category { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Human-readable description of a specific desired objective of care.
     /// </summary>
     [JsonProperty("description")]
@@ -13717,46 +9518,10 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This records identifiers associated with this care plan that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// May be used for progress notes, concerns or other related information that doesn't actually describe the goal itself.
     /// </summary>
@@ -13820,16 +9585,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("targetQuantity")]
     public Quantity TargetQuantity { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the Goal.status field
   /// </summary>
-  public static class GoalStatusCodesCodes {
+  public static class GoalStatusCodes {
     public const string PROPOSED = "proposed";
     public const string PLANNED = "planned";
     public const string ACCEPTED = "accepted";
@@ -13854,23 +9614,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("exclude")]
     public bool Exclude { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The period over which the characteristic is tested; e.g. the patient had an operation during the month of June.
     /// </summary>
@@ -13907,27 +9650,10 @@ namespace fhir
     [JsonProperty("entity")]
     public Reference Entity { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A flag to indicate that the member is no longer in the group, but previously may have been a member.
     /// </summary>
     [JsonProperty("inactive")]
     public bool? Inactive { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The period that the member was in the group, if known.
     /// </summary>
@@ -13954,56 +9680,15 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A unique business identifier for this group.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// Identifies the resource instances that are members of the group.
     /// </summary>
     [JsonProperty("member")]
     public GroupMember[] Member { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A label assigned to the group for human identification and communication.
     /// </summary>
@@ -14017,11 +9702,6 @@ namespace fhir
     [JsonProperty("quantity")]
     public uint? Quantity { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Group members SHALL be of the appropriate resource type (Patient for person or animal; or Practitioner, Device, Medicaiton or Substance for the other types.).
     /// </summary>
     [JsonProperty("type")]
@@ -14032,7 +9712,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Group.type field
   /// </summary>
-  public static class GroupTypeCodesCodes {
+  public static class GroupTypeCodes {
     public const string PERSON = "person";
     public const string ANIMAL = "animal";
     public const string PRACTITIONER = "practitioner";
@@ -14044,23 +9724,6 @@ namespace fhir
   /// A specific type of service that may be delivered or performed.
   /// </summary>
   public class HealthcareServiceServiceType : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Collection of specialties handled by the service site. This is more of a medical term.
     /// </summary>
@@ -14102,28 +9765,11 @@ namespace fhir
     public string[] DaysOfWeek { get; set; }
     [JsonProperty("_daysOfWeek")]
     public Element[] _DaysOfWeek { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Code Values for the HealthcareService.availableTime.daysOfWeek field
   /// </summary>
-  public static class HealthcareServiceAvailableTimeDaysOfWeekCodesCodes {
+  public static class HealthcareServiceAvailableTimeDaysOfWeekCodes {
     public const string MON = "mon";
     public const string TUE = "tue";
     public const string WED = "wed";
@@ -14148,23 +9794,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("during")]
     public Period During { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class HealthcareService : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -14200,11 +9829,6 @@ namespace fhir
     [JsonProperty("_comment")]
     public Element _Comment { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The locations referenced by the coverage area can include both specific locations, including areas, and also conceptual domains too (mode = kind), such as a physical area (tri-state area) and some other attribute (covered by Example Care Organization). These types of Locations are often not managed by any specific organization. This could also include generic locations such as "in-home".
     /// </summary>
     [JsonProperty("coverageArea")]
@@ -14222,11 +9846,6 @@ namespace fhir
     [JsonProperty("_eligibilityNote")]
     public Element _EligibilityNote { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Extra details about the service that can't be placed in the other fields.
     /// </summary>
     [JsonProperty("extraDetails")]
@@ -14234,46 +9853,15 @@ namespace fhir
     [JsonProperty("_extraDetails")]
     public Element _ExtraDetails { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// External identifiers for this item.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// The location where this healthcare service may be provided.
     /// </summary>
     [JsonProperty("location")]
     public Reference Location { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The HealthcareService is not available during this period of time due to the provided reason.
     /// </summary>
@@ -14335,38 +9923,16 @@ namespace fhir
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// This component may be used if the referenced image SOP Instance is a multi-frame image.
   /// </summary>
   public class ImagingObjectSelectionStudySeriesInstanceFrames : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The frame numbers in the frame set.
     /// </summary>
     [JsonProperty("frameNumbers")]
     public uint[] FrameNumbers { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Frame level locator information is required.
     /// </summary>
@@ -14380,27 +9946,10 @@ namespace fhir
   /// </summary>
   public class ImagingObjectSelectionStudySeriesInstance : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// This component may be used if the referenced image SOP Instance is a multi-frame image.
     /// </summary>
     [JsonProperty("frames")]
     public ImagingObjectSelectionStudySeriesInstanceFrames[] Frames { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// SOP class UID identifies the type of the selected instances, e.g. CT image, Gray scale softcopy presentation state, ECG waveform, etc.
     /// </summary>
@@ -14428,27 +9977,10 @@ namespace fhir
   /// </summary>
   public class ImagingObjectSelectionStudySeries : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// SOP Instance component identify the instance selected, along with the study and series identities to form the DICOM identity hierachy.
     /// </summary>
     [JsonProperty("instance")]
     public ImagingObjectSelectionStudySeriesInstance[] Instance { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Series instance UID of the SOP instances in the selection.
     /// </summary>
@@ -14469,27 +10001,10 @@ namespace fhir
   /// </summary>
   public class ImagingObjectSelectionStudy : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Reference to the Imaging Study in FHIR form.
     /// </summary>
     [JsonProperty("imagingStudy")]
     public Reference ImagingStudy { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Series component represents the series level identity and locator information of the DICOM SOP instances in the selection.
     /// </summary>
@@ -14530,53 +10045,12 @@ namespace fhir
     [JsonProperty("_authoringTime")]
     public Element _AuthoringTime { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Free text narrative description of the ImagingObjectSelection.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// SOP instances selected in the ImagingObjectSelection can be from different studies, but must be of the same patient.
     /// </summary>
@@ -14587,11 +10061,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("study")]
     public ImagingObjectSelectionStudy[] Study { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
     /// <summary>
     /// Coded concept of kind of the ImagingObjectSelection. Value set is defined in the DICOM standard Part 16, CID-7010.
     /// </summary>
@@ -14614,23 +10083,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("content")]
     public Attachment[] Content { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The number of instance in the series.
     /// </summary>
@@ -14689,18 +10141,6 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A single SOP Instance within the series, e.g. an image, or presentation state.
     /// </summary>
     [JsonProperty("instance")]
@@ -14715,11 +10155,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("modality")]
     public Coding Modality { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The Numeric identifier of this series in the study.
     /// </summary>
@@ -14755,7 +10190,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ImagingStudy.series.availability field
   /// </summary>
-  public static class ImagingStudySeriesAvailabilityCodesCodes {
+  public static class ImagingStudySeriesAvailabilityCodes {
     public const string ONLINE = "ONLINE";
     public const string OFFLINE = "OFFLINE";
     public const string NEARLINE = "NEARLINE";
@@ -14778,11 +10213,6 @@ namespace fhir
     [JsonProperty("_availability")]
     public Element _Availability { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Institution-generated description or classification of the Study performed.
     /// </summary>
     [JsonProperty("description")]
@@ -14790,56 +10220,20 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Other identifiers for the study.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// Who read the study and interpreted the images or other content.
     /// </summary>
     [JsonProperty("interpreter")]
     public Reference Interpreter { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).
     /// </summary>
     [JsonProperty("modalityList")]
     public Coding[] ModalityList { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Number of SOP Instances in Study.
     /// </summary>
@@ -14883,11 +10277,6 @@ namespace fhir
     [JsonProperty("_started")]
     public Element _Started { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Formal identifier for the study.
     /// </summary>
     [JsonProperty("uid")]
@@ -14905,7 +10294,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ImagingStudy.availability field
   /// </summary>
-  public static class ImagingStudyAvailabilityCodesCodes {
+  public static class ImagingStudyAvailabilityCodes {
     public const string ONLINE = "ONLINE";
     public const string OFFLINE = "OFFLINE";
     public const string NEARLINE = "NEARLINE";
@@ -14915,23 +10304,6 @@ namespace fhir
   /// Reasons why a vaccine was or was not administered.
   /// </summary>
   public class ImmunizationExplanation : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Reasons why a vaccine was administered.
     /// </summary>
@@ -14959,23 +10331,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("detail")]
     public Reference Detail { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Self-reported indicator.
     /// </summary>
@@ -15014,23 +10369,6 @@ namespace fhir
     [JsonProperty("doseStatusReason")]
     public CodeableConcept DoseStatusReason { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// One possible path to achieve presumed immunity against a disease - within the context of an authority.
     /// </summary>
     [JsonProperty("series")]
@@ -15052,11 +10390,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "Immunization";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// When immunizations are given a specific date and time should always be known.   When immunizations are patient reported, a specific date might not be known.  Although partial dates are allowed, an adult patient might not be able to recall the year a childhood immunization was given.
     /// </summary>
@@ -15087,36 +10420,10 @@ namespace fhir
     [JsonProperty("explanation")]
     public ImmunizationExplanation Explanation { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A unique identifier assigned to this immunization record.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// The service delivery location where the vaccine administration occurred.
     /// </summary>
@@ -15134,16 +10441,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("manufacturer")]
     public Reference Manufacturer { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Extra information about the immunization that is not conveyed by the other attributes.
     /// </summary>
@@ -15192,11 +10489,6 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Contains information about the protocol(s) under which the vaccine was administered.
     /// </summary>
     [JsonProperty("vaccinationProtocol")]
@@ -15215,7 +10507,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Immunization.status field
   /// </summary>
-  public static class ImmunizationStatusCodesCodes {
+  public static class ImmunizationStatusCodes {
     public const string IN_PROGRESS = "in-progress";
     public const string ON_HOLD = "on-hold";
     public const string COMPLETED = "completed";
@@ -15231,23 +10523,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The date whose meaning is specified by dateCriterion.code.
     /// </summary>
@@ -15278,23 +10553,6 @@ namespace fhir
     [JsonProperty("doseSequence")]
     public int? DoseSequence { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// One possible path to achieve presumed immunity against a disease - within the context of an authority.
     /// </summary>
     [JsonProperty("series")]
@@ -15324,27 +10582,10 @@ namespace fhir
     [JsonProperty("doseNumber")]
     public uint? DoseNumber { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Vaccine administration status.
     /// </summary>
     [JsonProperty("forecastStatus")]
     public CodeableConcept ForecastStatus { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Contains information about the protocol under which the vaccine was administered.
     /// </summary>
@@ -15371,51 +10612,10 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "ImmunizationRecommendation";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A unique identifier assigned to this particular recommendation record.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The patient for whom the recommendations are for.
     /// </summary>
@@ -15426,33 +10626,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("recommendation")]
     public ImmunizationRecommendationRecommendation[] Recommendation { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// May be a web site, an email address, a telephone number (tel:), etc.
   /// </summary>
   public class ImplementationGuideContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -15471,23 +10649,6 @@ namespace fhir
   /// </summary>
   public class ImplementationGuideDependency : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// For information about processing included guides, see [Including Guides]{implementationguide.html#include}.
     /// </summary>
     [JsonProperty("type")]
@@ -15505,7 +10666,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ImplementationGuide.dependency.type field
   /// </summary>
-  public static class ImplementationGuideDependencyTypeCodesCodes {
+  public static class ImplementationGuideDependencyTypeCodes {
     public const string REFERENCE = "reference";
     public const string INCLUSION = "inclusion";
   }
@@ -15532,23 +10693,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("exampleFor")]
     public Reference ExampleFor { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A human assigned name for the resource. All resources SHOULD have a name, but the name may be extracted from the resource (e.g. ValueSet.name).
     /// </summary>
@@ -15579,7 +10723,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ImplementationGuide.package.resource.purpose field
   /// </summary>
-  public static class ImplementationGuidePackageResourcePurposeCodesCodes {
+  public static class ImplementationGuidePackageResourcePurposeCodes {
     public const string EXAMPLE = "example";
     public const string TERMINOLOGY = "terminology";
     public const string PROFILE = "profile";
@@ -15599,23 +10743,6 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The name for the group, as used in page.package.
     /// </summary>
     [JsonProperty("name")]
@@ -15632,23 +10759,6 @@ namespace fhir
   /// See [Default Profiles](implementationguide.html#default) for a discussion of which resources are 'covered' by an implementation guide.
   /// </summary>
   public class ImplementationGuideGlobal : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A reference to the profile that all instances must conform to.
     /// </summary>
@@ -15667,11 +10777,6 @@ namespace fhir
   /// </summary>
   public class ImplementationGuidePage : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// This is primarily for the publishing tool, that will convert all pages to html format. HTML pages are pre-processed, see xxxx.
     /// </summary>
     [JsonProperty("format")]
@@ -15679,24 +10784,12 @@ namespace fhir
     [JsonProperty("_format")]
     public Element _Format { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The kind of page that this is. Some pages are autogenerated (list, example), and other kinds are of interest so that tools can navigate the user to the page of interest.
     /// </summary>
     [JsonProperty("kind")]
     public string Kind { get; set; }
     [JsonProperty("_kind")]
     public Element _Kind { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A short name used to represent this page in navigational structures such as table of contents, bread crumbs, etc.
     /// </summary>
@@ -15734,7 +10827,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ImplementationGuide.page.kind field
   /// </summary>
-  public static class ImplementationGuidePageKindCodesCodes {
+  public static class ImplementationGuidePageKindCodes {
     public const string PAGE = "page";
     public const string EXAMPLE = "example";
     public const string LIST = "list";
@@ -15763,11 +10856,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contact")]
     public ImplementationGuideContact[] Contact { get; set; }
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// A copyright statement relating to the implementation guide and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.
     /// </summary>
@@ -15800,11 +10888,6 @@ namespace fhir
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// An Implementation Guide should specify the target it applies to, as ImplementationGuides are rarely valid across multiple versions of FHIR.
     /// </summary>
     [JsonProperty("fhirVersion")]
@@ -15816,37 +10899,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("global")]
     public ImplementationGuideGlobal[] Global { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Not expected to be globally unique.
     /// </summary>
@@ -15879,11 +10931,6 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// An absolute URL that is used to identify this implementation guide when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this implementation guide is (or will be) published.
     /// </summary>
     [JsonProperty("url")]
@@ -15906,7 +10953,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ImplementationGuide.status field
   /// </summary>
-  public static class ImplementationGuideStatusCodesCodes {
+  public static class ImplementationGuideStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -15928,32 +10975,15 @@ namespace fhir
     [JsonProperty("deleted")]
     public bool? Deleted { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The flag can only be understood in the context of the List.code. If the flag means that the entry has actually been deleted from the list, the deleted element SHALL be true. Deleted can only be used if the List.mode is "changes".
     /// </summary>
     [JsonProperty("flag")]
     public CodeableConcept Flag { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A reference to the actual resource from which data was derived.
     /// </summary>
     [JsonProperty("item")]
     public Reference Item { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class List : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -15964,11 +10994,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The actual important date is the date of currency of the resources that were summarized, but it is usually assumed that these are current when the preparation occurs.
     /// </summary>
@@ -15992,41 +11017,10 @@ namespace fhir
     [JsonProperty("entry")]
     public ListEntry[] Entry { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier for the List assigned for business purposes outside the context of FHIR.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
     /// <summary>
     /// How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.
     /// </summary>
@@ -16034,11 +11028,6 @@ namespace fhir
     public string Mode { get; set; }
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Comments that apply to the overall list.
     /// </summary>
@@ -16069,11 +11058,6 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// A label for the list assigned by the author.
     /// </summary>
     [JsonProperty("title")]
@@ -16084,7 +11068,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the List.mode field
   /// </summary>
-  public static class ListModeCodesCodes {
+  public static class ListModeCodes {
     public const string WORKING = "working";
     public const string SNAPSHOT = "snapshot";
     public const string CHANGES = "changes";
@@ -16092,7 +11076,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the List.status field
   /// </summary>
-  public static class ListStatusCodesCodes {
+  public static class ListStatusCodes {
     public const string CURRENT = "current";
     public const string RETIRED = "retired";
     public const string ENTERED_IN_ERROR = "entered-in-error";
@@ -16109,18 +11093,6 @@ namespace fhir
     [JsonProperty("_altitude")]
     public Element _Altitude { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Latitude. The value domain and the interpretation are the same as for the text of the latitude element in KML (see notes below).
     /// </summary>
     [JsonProperty("latitude")]
@@ -16134,11 +11106,6 @@ namespace fhir
     public decimal Longitude { get; set; }
     [JsonProperty("_longitude")]
     public Element _Longitude { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class Location : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -16150,11 +11117,6 @@ namespace fhir
     [JsonProperty("address")]
     public Address Address { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Description of the Location, which helps in finding or referencing the place.
     /// </summary>
     [JsonProperty("description")]
@@ -16162,46 +11124,15 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Unique code or number identifying the location to its users.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// This can also be used as the part of the organization hierarchy where this location provides services. These services can be defined through the HealthcareService resource.
     /// </summary>
     [JsonProperty("managingOrganization")]
     public Reference ManagingOrganization { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
     /// <summary>
     /// Indicates whether a resource instance represents a specific location or a class of locations.
     /// </summary>
@@ -16209,11 +11140,6 @@ namespace fhir
     public string Mode { get; set; }
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Name of the location as used by humans. Does not need to be unique.
     /// </summary>
@@ -16249,11 +11175,6 @@ namespace fhir
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Indicates the type of function performed at the location.
     /// </summary>
     [JsonProperty("type")]
@@ -16262,14 +11183,14 @@ namespace fhir
   /// <summary>
   /// Code Values for the Location.mode field
   /// </summary>
-  public static class LocationModeCodesCodes {
+  public static class LocationModeCodes {
     public const string INSTANCE = "instance";
     public const string KIND = "kind";
   }
   /// <summary>
   /// Code Values for the Location.status field
   /// </summary>
-  public static class LocationStatusCodesCodes {
+  public static class LocationStatusCodes {
     public const string ACTIVE = "active";
     public const string SUSPENDED = "suspended";
     public const string INACTIVE = "inactive";
@@ -16278,11 +11199,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "Media";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// Recommended content types: image/jpeg, image/png, image/tiff, video/mpeg, audio/mp4, application/dicom. Application/dicom can contain the transfer syntax as a parameter.  For an media that covers a period of time (video/sound), the content.creationTime is the end time. Creation time is used for tracking, organizing versions and searching.
     /// </summary>
@@ -16301,11 +11217,6 @@ namespace fhir
     [JsonProperty("duration")]
     public uint? Duration { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.
     /// </summary>
     [JsonProperty("frames")]
@@ -16316,41 +11227,10 @@ namespace fhir
     [JsonProperty("height")]
     public uint? Height { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The identifier label and use can be used to determine what kind of identifier it is.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The person who administered the collection of the image.
     /// </summary>
@@ -16366,11 +11246,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("subtype")]
     public CodeableConcept Subtype { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
     /// <summary>
     /// Whether the media is a photo (still image), an audio recording, or a video recording.
     /// </summary>
@@ -16392,7 +11267,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Media.type field
   /// </summary>
-  public static class MediaTypeCodesCodes {
+  public static class MediaTypeCodes {
     public const string PHOTO = "photo";
     public const string VIDEO = "video";
     public const string AUDIO = "audio";
@@ -16407,27 +11282,10 @@ namespace fhir
     [JsonProperty("amount")]
     public Ratio Amount { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The actual ingredient - either a substance (simple ingredient) or another medication.
     /// </summary>
     [JsonProperty("item")]
     public Reference Item { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Information about a group of medication produced or packaged from one production run.
@@ -16441,29 +11299,12 @@ namespace fhir
     [JsonProperty("_expirationDate")]
     public Element _ExpirationDate { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The assigned lot number of a batch of the specified product.
     /// </summary>
     [JsonProperty("lotNumber")]
     public string LotNumber { get; set; }
     [JsonProperty("_lotNumber")]
     public Element _LotNumber { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Information that only applies to products (not packages).
@@ -16475,32 +11316,15 @@ namespace fhir
     [JsonProperty("batch")]
     public MedicationProductBatch[] Batch { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Describes the form of the item.  Powder; tablets; carton.
     /// </summary>
     [JsonProperty("form")]
     public CodeableConcept Form { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The ingredients need not be a complete list; usually only active ingredients are listed.
     /// </summary>
     [JsonProperty("ingredient")]
     public MedicationProductIngredient[] Ingredient { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// A set of components that go to make up the described item.
@@ -16512,27 +11336,10 @@ namespace fhir
     [JsonProperty("amount")]
     public Quantity Amount { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifies one of the items in the package.
     /// </summary>
     [JsonProperty("item")]
     public Reference Item { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Information that only applies to packages (not products).
@@ -16548,23 +11355,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("content")]
     public MedicationPackageContent[] Content { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class Medication : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -16576,56 +11366,15 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// Set to true if the item is attributable to a specific manufacturer.
     /// </summary>
     [JsonProperty("isBrand")]
     public bool? IsBrand { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// Describes the details of the manufacturer.
     /// </summary>
     [JsonProperty("manufacturer")]
     public Reference Manufacturer { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Information that only applies to packages (not products).
     /// </summary>
@@ -16636,38 +11385,16 @@ namespace fhir
     /// </summary>
     [JsonProperty("product")]
     public MedicationProduct Product { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Describes the medication dosage information details e.g. dose, rate, site, route, etc.
   /// </summary>
   public class MedicationAdministrationDosage : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If the administration is not instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount administered over period of time of a single administration (as indicated by schedule).
     /// </summary>
@@ -16711,11 +11438,6 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "MedicationAdministration";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The device used in administering the medication to the patient.  For example, a particular infusion pump.
     /// </summary>
     [JsonProperty("device")]
@@ -16743,36 +11465,10 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the administered medication. When the only available information is a text description of the medication, Medication.code.text should be used.
     /// </summary>
@@ -16783,16 +11479,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Extra information about the medication administration that is not conveyed by the other attributes.
     /// </summary>
@@ -16833,11 +11519,6 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Set this to true if the record is saying that the medication was NOT administered.
     /// </summary>
     [JsonProperty("wasNotGiven")]
@@ -16846,7 +11527,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the MedicationAdministration.status field
   /// </summary>
-  public static class MedicationAdministrationStatusCodesCodes {
+  public static class MedicationAdministrationStatusCodes {
     public const string IN_PROGRESS = "in-progress";
     public const string ON_HOLD = "on-hold";
     public const string COMPLETED = "completed";
@@ -16883,18 +11564,6 @@ namespace fhir
     [JsonProperty("doseQuantity")]
     public Quantity DoseQuantity { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time,  e.g. 1000mg in 24 hours.
     /// </summary>
     [JsonProperty("maxDosePerPeriod")]
@@ -16904,11 +11573,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
     /// </summary>
@@ -16952,23 +11616,6 @@ namespace fhir
   /// </summary>
   public class MedicationDispenseSubstitution : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Indicates the reason for the substitution of (or lack of substitution) from what was prescribed.
     /// </summary>
     [JsonProperty("reason")]
@@ -16994,11 +11641,6 @@ namespace fhir
     [JsonProperty("authorizingPrescription")]
     public Reference[] AuthorizingPrescription { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The amount of medication expressed as a timing amount.
     /// </summary>
     [JsonProperty("daysSupply")]
@@ -17019,36 +11661,10 @@ namespace fhir
     [JsonProperty("dosageInstruction")]
     public MedicationDispenseDosageInstruction[] DosageInstruction { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier assigned by the dispensing facility - this is an identifier assigned outside FHIR.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the dispensed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
     /// </summary>
@@ -17059,16 +11675,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Extra information about the dispense that could not be conveyed in the other attributes.
     /// </summary>
@@ -17104,11 +11710,6 @@ namespace fhir
     [JsonProperty("substitution")]
     public MedicationDispenseSubstitution Substitution { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.
     /// </summary>
     [JsonProperty("type")]
@@ -17131,7 +11732,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the MedicationDispense.status field
   /// </summary>
-  public static class MedicationDispenseStatusCodesCodes {
+  public static class MedicationDispenseStatusCodes {
     public const string IN_PROGRESS = "in-progress";
     public const string ON_HOLD = "on-hold";
     public const string COMPLETED = "completed";
@@ -17168,18 +11769,6 @@ namespace fhir
     [JsonProperty("doseQuantity")]
     public Quantity DoseQuantity { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This is intended for use as an adjunct to the dosage when there is an upper cap.  For example "2 tablets every 4 hours to a maximum of 8/day".
     /// </summary>
     [JsonProperty("maxDosePerPeriod")]
@@ -17189,11 +11778,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// It is possible to supply both a rate and a doseQuantity to provide full details about how the medication is to be administered and supplied. If the rate is intended to change over time, depending on local rules/regulations, each change should be captured as a new version of the MedicationOrder with an updated rate, or captured with a new MedicationOrder with the new rate.
     /// </summary>
@@ -17242,18 +11826,6 @@ namespace fhir
     [JsonProperty("expectedSupplyDuration")]
     public Quantity ExpectedSupplyDuration { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.
     /// </summary>
     [JsonProperty("medicationCodeableConcept")]
@@ -17263,11 +11835,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If displaying "number of authorized refills", subtract 1 from this number.
     /// </summary>
@@ -17289,23 +11856,6 @@ namespace fhir
   /// </summary>
   public class MedicationOrderSubstitution : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Indicates the reason for the substitution, or why substitution must or must not be performed.
     /// </summary>
     [JsonProperty("reason")]
@@ -17320,11 +11870,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "MedicationOrder";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The date (and perhaps time) when the prescription was stopped.
     /// </summary>
@@ -17355,36 +11900,10 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// External identifier - one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an entire workflow process where records have to be tracked through an entire system.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the prescribed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
     /// </summary>
@@ -17395,16 +11914,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Extra information about the prescription that could not be conveyed by the other attributes.
     /// </summary>
@@ -17454,16 +11963,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("substitution")]
     public MedicationOrderSubstitution Substitution { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the MedicationOrder.status field
   /// </summary>
-  public static class MedicationOrderStatusCodesCodes {
+  public static class MedicationOrderStatusCodes {
     public const string ACTIVE = "active";
     public const string ON_HOLD = "on-hold";
     public const string COMPLETED = "completed";
@@ -17486,18 +11990,6 @@ namespace fhir
     [JsonProperty("asNeededCodeableConcept")]
     public CodeableConcept AsNeededCodeableConcept { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time.  For example, 1000mg in 24 hours.
     /// </summary>
     [JsonProperty("maxDosePerPeriod")]
@@ -17507,11 +11999,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The amount of therapeutic or other substance given at one administration event.
     /// </summary>
@@ -17565,11 +12052,6 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "MedicationStatement";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The date when the medication statement was asserted by the information source.
     /// </summary>
     [JsonProperty("dateAsserted")]
@@ -17594,41 +12076,15 @@ namespace fhir
     [JsonProperty("effectivePeriod")]
     public Period EffectivePeriod { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// The person who provided the information about the taking of this medication.
     /// </summary>
     [JsonProperty("informationSource")]
     public Reference InformationSource { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used.
     /// </summary>
@@ -17639,16 +12095,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Provides extra information about the medication statement that is not conveyed by the other attributes.
     /// </summary>
@@ -17689,11 +12135,6 @@ namespace fhir
     [JsonProperty("supportingInformation")]
     public Reference[] SupportingInformation { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Set this to true if the record is saying that the medication was NOT taken.
     /// </summary>
     [JsonProperty("wasNotTaken")]
@@ -17702,7 +12143,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the MedicationStatement.status field
   /// </summary>
-  public static class MedicationStatementStatusCodesCodes {
+  public static class MedicationStatementStatusCodes {
     public const string ACTIVE = "active";
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
@@ -17725,34 +12166,17 @@ namespace fhir
     [JsonProperty("details")]
     public Reference Details { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The id of the message that this message is a response to.
     /// </summary>
     [JsonProperty("identifier")]
     public string Identifier { get; set; }
     [JsonProperty("_identifier")]
     public Element _Identifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Code Values for the MessageHeader.response.code field
   /// </summary>
-  public static class MessageHeaderResponseCodeCodesCodes {
+  public static class MessageHeaderResponseCodeCodes {
     public const string OK = "ok";
     public const string TRANSIENT_ERROR = "transient-error";
     public const string FATAL_ERROR = "fatal-error";
@@ -17773,23 +12197,6 @@ namespace fhir
     public string Endpoint { get; set; }
     [JsonProperty("_endpoint")]
     public Element _Endpoint { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Human-readable name for the source system.
     /// </summary>
@@ -17824,23 +12231,6 @@ namespace fhir
     [JsonProperty("_endpoint")]
     public Element _Endpoint { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Human-readable name for the target system.
     /// </summary>
     [JsonProperty("name")]
@@ -17866,11 +12256,6 @@ namespace fhir
     [JsonProperty("author")]
     public Reference Author { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The data is defined where the transaction type is defined. The transaction data is always included in the bundle that is the full message.  Only the root resource is specified.  The resources it references should be contained in the bundle but are not also listed here.  Multiple repetitions are allowed to cater for merges and other situations with multiple focal targets.
     /// </summary>
     [JsonProperty("data")]
@@ -17890,42 +12275,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("event")]
     public Coding Event { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Coded indication of the cause for the event - indicates  a reason for the occurrence of the event that is a focus of this message.
     /// </summary>
@@ -17952,11 +12301,6 @@ namespace fhir
     [JsonProperty("source")]
     public MessageHeaderSource Source { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The time that the message was sent.
     /// </summary>
     [JsonProperty("timestamp")]
@@ -17968,23 +12312,6 @@ namespace fhir
   /// May be a web site, an email address, a telephone number (tel:), etc.
   /// </summary>
   public class NamingSystemContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -18002,23 +12329,6 @@ namespace fhir
   /// Multiple identifiers may exist, either due to duplicate registration, regional rules, needs of different communication technologies, etc.
   /// </summary>
   public class NamingSystemUniqueId : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Within a registry, a given identifier should only be "active" for a single namespace at a time.  (Ideally, an identifier should only ever be associated with a single namespace across all time).
     /// </summary>
@@ -18047,7 +12357,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the NamingSystem.uniqueId.type field
   /// </summary>
-  public static class NamingSystemUniqueIdTypeCodesCodes {
+  public static class NamingSystemUniqueIdTypeCodes {
     public const string OID = "oid";
     public const string UUID = "uuid";
     public const string URI = "uri";
@@ -18063,11 +12373,6 @@ namespace fhir
     [JsonProperty("contact")]
     public NamingSystemContact[] Contact { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Additional specific dates may be added as extensions.
     /// </summary>
     [JsonProperty("date")]
@@ -18082,48 +12387,12 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// Indicates the purpose for the naming system - what kinds of things does it make unique?
     /// </summary>
     [JsonProperty("kind")]
     public string Kind { get; set; }
     [JsonProperty("_kind")]
     public Element _Kind { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The"symbolic name" for an OID would be captured as an extension.
     /// </summary>
@@ -18158,11 +12427,6 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// This will most commonly be used for identifier namespaces, but categories could potentially be useful for code systems and authorities as well.
     /// </summary>
     [JsonProperty("type")]
@@ -18188,7 +12452,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the NamingSystem.kind field
   /// </summary>
-  public static class NamingSystemKindCodesCodes {
+  public static class NamingSystemKindCodes {
     public const string CODESYSTEM = "codesystem";
     public const string IDENTIFIER = "identifier";
     public const string ROOT = "root";
@@ -18196,7 +12460,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the NamingSystem.status field
   /// </summary>
-  public static class NamingSystemStatusCodesCodes {
+  public static class NamingSystemStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -18211,81 +12475,35 @@ namespace fhir
     [JsonProperty("amount")]
     public Quantity Amount { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The nutrient that is being modified such as carbohydrate or sodium.
     /// </summary>
     [JsonProperty("modifier")]
     public CodeableConcept Modifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Class that describes any texture modifications required for the patient to safely consume various types of solid foods.
   /// </summary>
   public class NutritionOrderOralDietTexture : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Coupled with the textureModifier; could be (All Foods).
     /// </summary>
     [JsonProperty("foodType")]
     public CodeableConcept FoodType { get; set; }
     /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Coupled with the foodType (Meat).
     /// </summary>
     [JsonProperty("modifier")]
     public CodeableConcept Modifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Diet given orally in contrast to enteral (tube) feeding.
   /// </summary>
   public class NutritionOrderOralDiet : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The required consistency (e.g. honey-thick, nectar-thick, thin, thickened.) of liquids or fluids served to the patient.
     /// </summary>
     [JsonProperty("fluidConsistencyType")]
     public CodeableConcept[] FluidConsistencyType { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Free text dosage instructions can be used for cases where the instructions are too complex to code.
     /// </summary>
@@ -18293,11 +12511,6 @@ namespace fhir
     public string Instruction { get; set; }
     [JsonProperty("_instruction")]
     public Element _Instruction { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Class that defines the quantity and type of nutrient modifications required for the oral diet.
     /// </summary>
@@ -18324,29 +12537,12 @@ namespace fhir
   /// </summary>
   public class NutritionOrderSupplement : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Free text dosage instructions can be used for cases where the instructions are too complex to code.
     /// </summary>
     [JsonProperty("instruction")]
     public string Instruction { get; set; }
     [JsonProperty("_instruction")]
     public Element _Instruction { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The product or brand name of the nutritional supplement such as "Acme Protein Shake".
     /// </summary>
@@ -18374,23 +12570,6 @@ namespace fhir
   /// See implementation notes below for further discussion on how to order continuous vs bolus enteral feeding using this resource.
   /// </summary>
   public class NutritionOrderEnteralFormulaAdministration : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The volume of formula to provide to the patient per the specified administration schedule.
     /// </summary>
@@ -18458,27 +12637,10 @@ namespace fhir
     [JsonProperty("caloricDensity")]
     public Quantity CaloricDensity { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The maximum total quantity of formula that may be administered to a subject over the period of time, e.g. 1440 mL over 24 hours.
     /// </summary>
     [JsonProperty("maxVolumeToDeliver")]
     public Quantity MaxVolumeToDeliver { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The route or physiological path of administration into the patient's gastrointestinal  tract for purposes of providing the formula feeding, e.g. nasogastric tube.
     /// </summary>
@@ -18494,11 +12656,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("allergyIntolerance")]
     public Reference[] AllergyIntolerance { get; set; }
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The date and time that this nutrition order was requested.
     /// </summary>
@@ -18522,51 +12679,15 @@ namespace fhir
     [JsonProperty("excludeFoodModifier")]
     public CodeableConcept[] ExcludeFoodModifier { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Information on a patient's food preferences that inform healthcare personnel about the food that the patient should receive or consume.
     /// </summary>
     [JsonProperty("foodPreferenceModifier")]
     public CodeableConcept[] FoodPreferenceModifier { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifiers assigned to this order by the order sender or by the order receiver.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Diet given orally in contrast to enteral (tube) feeding.
     /// </summary>
@@ -18594,16 +12715,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("supplement")]
     public NutritionOrderSupplement[] Supplement { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the NutritionOrder.status field
   /// </summary>
-  public static class NutritionOrderStatusCodesCodes {
+  public static class NutritionOrderStatusCodes {
     public const string PROPOSED = "proposed";
     public const string DRAFT = "draft";
     public const string PLANNED = "planned";
@@ -18623,22 +12739,10 @@ namespace fhir
     [JsonProperty("age")]
     public Range Age { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The value of the high bound of the reference range.  The high bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the high bound is omitted,  it is assumed to be meaningless (e.g. reference range is >= 2.3).
     /// </summary>
     [JsonProperty("high")]
     public Quantity High { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// The value of the low bound of the reference range.  The low bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the low bound is omitted,  it is assumed to be meaningless (e.g. reference range is <=2.3).
     /// </summary>
@@ -18649,11 +12753,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("meaning")]
     public CodeableConcept Meaning { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of "Negative" or a list or table of 'normals'.
     /// </summary>
@@ -18666,23 +12765,6 @@ namespace fhir
   /// For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
   /// </summary>
   public class ObservationRelated : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A reference to the observation or [[[QuestionnaireResponse]]] resource that is related to this observation.
     /// </summary>
@@ -18699,7 +12781,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Observation.related.type field
   /// </summary>
-  public static class ObservationRelatedTypeCodesCodes {
+  public static class ObservationRelatedTypeCodes {
     public const string HAS_MEMBER = "has-member";
     public const string DERIVED_FROM = "derived-from";
     public const string SEQUEL_TO = "sequel-to";
@@ -18721,23 +12803,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("dataAbsentReason")]
     public CodeableConcept DataAbsentReason { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
     /// </summary>
@@ -18835,11 +12900,6 @@ namespace fhir
     [JsonProperty("component")]
     public ObservationComponent[] Component { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Null or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  "detected", "not detected", "inconclusive", or  "specimen unsatisfactory".   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code "error" could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.
     /// </summary>
     [JsonProperty("dataAbsentReason")]
@@ -18867,29 +12927,10 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A unique identifier for the simple observation instance.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// The assessment made based on the result of the observation.  Intended as a simple compact code often placed adjacent to the result value in reports and flow sheets to signal the meaning/normalcy status of the result. Otherwise known as abnormal flag.
     /// </summary>
@@ -18903,27 +12944,10 @@ namespace fhir
     [JsonProperty("_issued")]
     public Element _Issued { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// Only used if not implicit in code for Observation.code.
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Who was responsible for asserting the observed value as "true".
     /// </summary>
@@ -18956,11 +12980,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
     /// <summary>
     /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
     /// </summary>
@@ -19021,7 +13040,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Observation.status field
   /// </summary>
-  public static class ObservationStatusCodesCodes {
+  public static class ObservationStatusCodes {
     public const string REGISTERED = "registered";
     public const string PRELIMINARY = "preliminary";
     public const string FINAL = "final";
@@ -19031,23 +13050,6 @@ namespace fhir
   /// May be a web site, an email address, a telephone number (tel:), etc.
   /// </summary>
   public class OperationDefinitionContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -19065,23 +13067,6 @@ namespace fhir
   /// Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
   /// </summary>
   public class OperationDefinitionParameterBinding : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// For further discussion, see [[[Using Terminologies]]].
     /// </summary>
@@ -19105,7 +13090,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the OperationDefinition.parameter.binding.strength field
   /// </summary>
-  public static class OperationDefinitionParameterBindingStrengthCodesCodes {
+  public static class OperationDefinitionParameterBindingStrengthCodes {
     public const string REQUIRED = "required";
     public const string EXTENSIBLE = "extensible";
     public const string PREFERRED = "preferred";
@@ -19128,18 +13113,6 @@ namespace fhir
     [JsonProperty("_documentation")]
     public Element _Documentation { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The maximum number of times this element is permitted to appear in the request or response.
     /// </summary>
     [JsonProperty("max")]
@@ -19151,11 +13124,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("min")]
     public int Min { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This name must be a token (start with a letter in a..z, and only contain letters, numerals, and underscore.
     /// </summary>
@@ -19191,7 +13159,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the OperationDefinition.parameter.use field
   /// </summary>
-  public static class OperationDefinitionParameterUseCodesCodes {
+  public static class OperationDefinitionParameterUseCodes {
     public const string VAL_IN = "in";
     public const string VAL_OUT = "out";
   }
@@ -19217,11 +13185,6 @@ namespace fhir
     [JsonProperty("contact")]
     public OperationDefinitionContact[] Contact { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Additional specific dates may be added as extensions.
     /// </summary>
     [JsonProperty("date")]
@@ -19241,29 +13204,10 @@ namespace fhir
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Operations that are idempotent (see [HTTP specification definition of idempotent](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)) may be invoked by performing an HTTP GET operation instead of a POST.
     /// </summary>
     [JsonProperty("idempotent")]
     public bool? Idempotent { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// Indicates whether this operation can be invoked on a particular instance of one of the given types.
     /// </summary>
@@ -19276,23 +13220,6 @@ namespace fhir
     public string Kind { get; set; }
     [JsonProperty("_kind")]
     public Element _Kind { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Not expected to be globally unique.
     /// </summary>
@@ -19339,11 +13266,6 @@ namespace fhir
     [JsonProperty("system")]
     public bool System { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a resource type for the context).
     /// </summary>
     [JsonProperty("type")]
@@ -19368,14 +13290,14 @@ namespace fhir
   /// <summary>
   /// Code Values for the OperationDefinition.kind field
   /// </summary>
-  public static class OperationDefinitionKindCodesCodes {
+  public static class OperationDefinitionKindCodes {
     public const string OPERATION = "operation";
     public const string QUERY = "query";
   }
   /// <summary>
   /// Code Values for the OperationDefinition.status field
   /// </summary>
-  public static class OperationDefinitionStatusCodesCodes {
+  public static class OperationDefinitionStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -19404,29 +13326,12 @@ namespace fhir
     [JsonProperty("_diagnostics")]
     public Element _Diagnostics { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The root of the XPath is the resource or bundle that generated OperationOutcome.  Each XPath SHALL resolve to a single node.  The XPath syntax is used whether the referenced instance is expressed in XML or JSON.
     /// </summary>
     [JsonProperty("location")]
     public string[] Location { get; set; }
     [JsonProperty("_location")]
     public Element[] _Location { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This is labeled as "Is Modifier" because applications should not confuse hints and warnings with errors.
     /// </summary>
@@ -19438,7 +13343,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the OperationOutcome.issue.severity field
   /// </summary>
-  public static class OperationOutcomeIssueSeverityCodesCodes {
+  public static class OperationOutcomeIssueSeverityCodes {
     public const string FATAL = "fatal";
     public const string ERROR = "error";
     public const string WARNING = "warning";
@@ -19449,56 +13354,10 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "OperationOutcome";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// An error, warning or information message that results from a system action.
     /// </summary>
     [JsonProperty("issue")]
     public OperationOutcomeIssue[] Issue { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// When order should be fulfilled.
@@ -19510,23 +13369,6 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A formal schedule.
     /// </summary>
     [JsonProperty("schedule")]
@@ -19536,11 +13378,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "Order";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// When the order was made.
     /// </summary>
@@ -19554,46 +13391,10 @@ namespace fhir
     [JsonProperty("detail")]
     public Reference[] Detail { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifiers assigned to this order by the orderer or by the receiver.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Text - why the order was made.
     /// </summary>
@@ -19620,11 +13421,6 @@ namespace fhir
     [JsonProperty("target")]
     public Reference Target { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// When order should be fulfilled.
     /// </summary>
     [JsonProperty("when")]
@@ -19634,11 +13430,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "OrderResponse";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The date and time at which this order response was made (created/posted).
     /// </summary>
@@ -19654,51 +13445,15 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Links to resources that provide details of the outcome of performing the order; e.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.
     /// </summary>
     [JsonProperty("fulfillment")]
     public Reference[] Fulfillment { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifiers assigned to this order. The identifiers are usually assigned by the system responding to the order, but they may be provided or added to by other systems.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// What this response says about the status of the original order.
     /// </summary>
@@ -19712,11 +13467,6 @@ namespace fhir
     [JsonProperty("request")]
     public Reference Request { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The person, organization, or device credited with making the response.
     /// </summary>
     [JsonProperty("who")]
@@ -19725,7 +13475,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the OrderResponse.orderStatus field
   /// </summary>
-  public static class OrderResponseOrderStatusCodesCodes {
+  public static class OrderResponseOrderStatusCodes {
     public const string PENDING = "pending";
     public const string REVIEW = "review";
     public const string REJECTED = "rejected";
@@ -19745,23 +13495,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("address")]
     public Address Address { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A name associated with the contact.
     /// </summary>
@@ -19798,51 +13531,10 @@ namespace fhir
     [JsonProperty("contact")]
     public OrganizationContact[] Contact { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier for the organization that is used to identify the organization across multiple disparate systems.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A name associated with the organization.
     /// </summary>
@@ -19861,11 +13553,6 @@ namespace fhir
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes.
     /// </summary>
     [JsonProperty("type")]
@@ -19875,23 +13562,6 @@ namespace fhir
   /// A parameter passed to or received from the operation.
   /// </summary>
   public class ParametersParameter : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The name of the parameter (reference to the operation definition).
     /// </summary>
@@ -20104,32 +13774,6 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Parameters";
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// A parameter passed to or received from the operation.
     /// </summary>
     [JsonProperty("parameter")]
@@ -20145,29 +13789,12 @@ namespace fhir
     [JsonProperty("address")]
     public Address Address { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.
     /// </summary>
     [JsonProperty("gender")]
     public string Gender { get; set; }
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A name associated with the contact person.
     /// </summary>
@@ -20197,7 +13824,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Patient.contact.gender field
   /// </summary>
-  public static class PatientContactGenderCodesCodes {
+  public static class PatientContactGenderCodes {
     public const string MALE = "male";
     public const string FEMALE = "female";
     public const string OTHER = "other";
@@ -20213,27 +13840,10 @@ namespace fhir
     [JsonProperty("breed")]
     public CodeableConcept Breed { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Indicates the current state of the animal's reproductive organs.
     /// </summary>
     [JsonProperty("genderStatus")]
     public CodeableConcept GenderStatus { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If the patient is non-human, at least a species SHALL be specified. Species SHALL be a widely recognised taxonomic classification.  It may or may not be Linnaean taxonomy and may or may not be at the level of species. If the level is finer than species--such as a breed code--the code system used SHALL allow inference of the species.  (The common example is that the word "Hereford" does not allow inference of the species Bos taurus, because there is a Hereford pig breed, but the SNOMED CT code for "Hereford Cattle Breed" does.).
     /// </summary>
@@ -20245,27 +13855,10 @@ namespace fhir
   /// </summary>
   public class PatientCommunication : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
     /// </summary>
     [JsonProperty("language")]
     public CodeableConcept Language { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This language is specifically identified for communicating healthcare information.
     /// </summary>
@@ -20276,23 +13869,6 @@ namespace fhir
   /// There is no assumption that linked patient records have mutual links.
   /// </summary>
   public class PatientLink : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The other patient resource that the link refers to.
     /// </summary>
@@ -20309,7 +13885,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Patient.link.type field
   /// </summary>
-  public static class PatientLinkTypeCodesCodes {
+  public static class PatientLinkTypeCodes {
     public const string REPLACE = "replace";
     public const string REFER = "refer";
     public const string SEEALSO = "seealso";
@@ -20359,11 +13935,6 @@ namespace fhir
     [JsonProperty("contact")]
     public PatientContact[] Contact { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// If there's no value in the instance it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
     /// </summary>
     [JsonProperty("deceasedBoolean")]
@@ -20376,11 +13947,6 @@ namespace fhir
     [JsonProperty("_deceasedDateTime")]
     public Element _DeceasedDateTime { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F.  Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific gender aspect of interest (anatomical, chromosonal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosonal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overrideable error, not a "hard" error.
     /// </summary>
     [JsonProperty("gender")]
@@ -20388,31 +13954,10 @@ namespace fhir
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// An identifier for this patient.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// There is no assumption that linked patient records have mutual links.
     /// </summary>
@@ -20428,16 +13973,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("maritalStatus")]
     public CodeableConcept MaritalStatus { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Indicates whether the patient is part of a multiple or indicates the actual birth order.
     /// </summary>
@@ -20463,16 +13998,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the Patient.gender field
   /// </summary>
-  public static class PatientGenderCodesCodes {
+  public static class PatientGenderCodes {
     public const string MALE = "male";
     public const string FEMALE = "female";
     public const string OTHER = "other";
@@ -20483,11 +14013,6 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "PaymentNotice";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The date when this resource was created.
     /// </summary>
     [JsonProperty("created")]
@@ -20495,46 +14020,10 @@ namespace fhir
     [JsonProperty("_created")]
     public Element _Created { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The organization which is responsible for the services rendered to the patient.
     /// </summary>
@@ -20575,11 +14064,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("target")]
     public Reference Target { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// List of individual settlement amounts and the corresponding transaction.
@@ -20597,23 +14081,6 @@ namespace fhir
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The organization which is receiving the payment.
     /// </summary>
@@ -20645,23 +14112,6 @@ namespace fhir
   /// </summary>
   public class PaymentReconciliationNote : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The note text.
     /// </summary>
     [JsonProperty("text")]
@@ -20678,11 +14128,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "PaymentReconciliation";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The date when the enclosed suite of services were performed or completed.
     /// </summary>
@@ -20703,51 +14148,15 @@ namespace fhir
     [JsonProperty("_disposition")]
     public Element _Disposition { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The form to be used for printing the content.
     /// </summary>
     [JsonProperty("form")]
     public Coding Form { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Suite of notes.
     /// </summary>
@@ -20796,11 +14205,6 @@ namespace fhir
     [JsonProperty("ruleset")]
     public Coding Ruleset { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Total payment amount.
     /// </summary>
     [JsonProperty("total")]
@@ -20809,7 +14213,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the PaymentReconciliation.outcome field
   /// </summary>
-  public static class PaymentReconciliationOutcomeCodesCodes {
+  public static class PaymentReconciliationOutcomeCodes {
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
   }
@@ -20825,23 +14229,6 @@ namespace fhir
     [JsonProperty("_assurance")]
     public Element _Assurance { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The resource to which this actual person is associated.
     /// </summary>
     [JsonProperty("target")]
@@ -20850,7 +14237,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Person.link.assurance field
   /// </summary>
-  public static class PersonLinkAssuranceCodesCodes {
+  public static class PersonLinkAssuranceCodes {
     public const string LEVEL1 = "level1";
     public const string LEVEL2 = "level2";
     public const string LEVEL3 = "level3";
@@ -20881,16 +14268,6 @@ namespace fhir
     [JsonProperty("_birthDate")]
     public Element _BirthDate { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F.
     /// </summary>
     [JsonProperty("gender")]
@@ -20898,31 +14275,10 @@ namespace fhir
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier for a person within a particular scope.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
     /// <summary>
     /// Link to a resource that concerns the same actual person.
     /// </summary>
@@ -20933,16 +14289,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("managingOrganization")]
     public Reference ManagingOrganization { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Person may have multiple names with different uses or applicable periods.
     /// </summary>
@@ -20958,16 +14304,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the Person.gender field
   /// </summary>
-  public static class PersonGenderCodesCodes {
+  public static class PersonGenderCodes {
     public const string MALE = "male";
     public const string FEMALE = "female";
     public const string OTHER = "other";
@@ -20978,22 +14319,10 @@ namespace fhir
   /// </summary>
   public class PractitionerPractitionerRole : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The list of healthcare services that this worker provides for this role's Organization/Location(s).
     /// </summary>
     [JsonProperty("healthcareService")]
     public Reference[] HealthcareService { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// The location(s) at which this practitioner provides care.
     /// </summary>
@@ -21004,11 +14333,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("managingOrganization")]
     public Reference ManagingOrganization { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The period during which the person is authorized to act as a practitioner in these role(s) for the organization.
     /// </summary>
@@ -21035,18 +14359,6 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// An identifier that applies to this person's qualification in this role.
     /// </summary>
     [JsonProperty("identifier")]
@@ -21056,11 +14368,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("issuer")]
     public Reference Issuer { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Period during which the qualification is valid.
     /// </summary>
@@ -21097,16 +14404,6 @@ namespace fhir
     [JsonProperty("communication")]
     public CodeableConcept[] Communication { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
     /// </summary>
     [JsonProperty("gender")]
@@ -21114,41 +14411,10 @@ namespace fhir
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// An identifier that applies to this person in this role.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A name associated with the person.
     /// </summary>
@@ -21174,16 +14440,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the Practitioner.gender field
   /// </summary>
-  public static class PractitionerGenderCodesCodes {
+  public static class PractitionerGenderCodes {
     public const string MALE = "male";
     public const string FEMALE = "female";
     public const string OTHER = "other";
@@ -21198,23 +14459,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("actor")]
     public Reference Actor { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// For example: surgeon, anaethetist, endoscopist.
     /// </summary>
@@ -21231,27 +14475,10 @@ namespace fhir
     [JsonProperty("action")]
     public CodeableConcept Action { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The device that was manipulated (changed) during the procedure.
     /// </summary>
     [JsonProperty("manipulated")]
     public Reference Manipulated { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class Procedure : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -21278,20 +14505,10 @@ namespace fhir
     [JsonProperty("complication")]
     public CodeableConcept[] Complication { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The encounter during which the procedure was performed.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
     /// <summary>
     /// A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure.
     /// </summary>
@@ -21303,46 +14520,15 @@ namespace fhir
     [JsonProperty("followUp")]
     public CodeableConcept[] FollowUp { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This records identifiers associated with this procedure that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// The location where the procedure actually happened.  E.g. a newborn at home, a tracheostomy at a restaurant.
     /// </summary>
     [JsonProperty("location")]
     public Reference Location { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Any other notes about the procedure.  E.g. the operative notes.
     /// </summary>
@@ -21413,11 +14599,6 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// For devices actually implanted or removed, use Procedure.device.
     /// </summary>
     [JsonProperty("used")]
@@ -21426,7 +14607,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Procedure.status field
   /// </summary>
-  public static class ProcedureStatusCodesCodes {
+  public static class ProcedureStatusCodes {
     public const string IN_PROGRESS = "in-progress";
     public const string ABORTED = "aborted";
     public const string COMPLETED = "completed";
@@ -21457,56 +14638,15 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The encounter within which the procedure proposal or request was created.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifiers assigned to this order by the order or by the receiver.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Any other notes associated with this proposal or order - e.g. provider instructions.
     /// </summary>
@@ -21575,16 +14715,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the ProcedureRequest.priority field
   /// </summary>
-  public static class ProcedureRequestPriorityCodesCodes {
+  public static class ProcedureRequestPriorityCodes {
     public const string ROUTINE = "routine";
     public const string URGENT = "urgent";
     public const string STAT = "stat";
@@ -21593,7 +14728,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ProcedureRequest.status field
   /// </summary>
-  public static class ProcedureRequestStatusCodesCodes {
+  public static class ProcedureRequestStatusCodes {
     public const string PROPOSED = "proposed";
     public const string DRAFT = "draft";
     public const string REQUESTED = "requested";
@@ -21609,23 +14744,6 @@ namespace fhir
   /// List of top level items to be re-adjudicated, if none specified then the entire submission is re-adjudicated.
   /// </summary>
   public class ProcessRequestItem : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A service line number.
     /// </summary>
@@ -21644,11 +14762,6 @@ namespace fhir
     [JsonProperty("_action")]
     public Element _Action { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The date when this resource was created.
     /// </summary>
     [JsonProperty("created")]
@@ -21663,29 +14776,10 @@ namespace fhir
     [JsonProperty("_exclude")]
     public Element[] _Exclude { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The ProcessRequest business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// Names of resource types to include.
     /// </summary>
@@ -21698,23 +14792,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("item")]
     public ProcessRequestItem[] Item { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If true remove all history excluding audit.
     /// </summary>
@@ -21767,16 +14844,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("target")]
     public Reference Target { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the ProcessRequest.action field
   /// </summary>
-  public static class ProcessRequestActionCodesCodes {
+  public static class ProcessRequestActionCodes {
     public const string CANCEL = "cancel";
     public const string POLL = "poll";
     public const string REPROCESS = "reprocess";
@@ -21786,23 +14858,6 @@ namespace fhir
   /// Suite of processing note or additional requirements is the processing has been held.
   /// </summary>
   public class ProcessResponseNotes : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The note text.
     /// </summary>
@@ -21820,11 +14875,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "ProcessResponse";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The date when the enclosed suite of services were performed or completed.
     /// </summary>
@@ -21845,51 +14895,15 @@ namespace fhir
     [JsonProperty("error")]
     public Coding[] Error { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The form to be used for printing the content.
     /// </summary>
     [JsonProperty("form")]
     public Coding Form { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Suite of processing note or additional requirements is the processing has been held.
     /// </summary>
@@ -21930,33 +14944,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("ruleset")]
     public Coding Ruleset { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest.
   /// </summary>
   public class ProvenanceAgentRelatedAgent : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The uri has the form #[id] where [id] is on another Provenance.agent in this same resource.
     /// </summary>
@@ -21979,23 +14971,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("actor")]
     public Reference Actor { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest.
     /// </summary>
@@ -22029,23 +15004,6 @@ namespace fhir
     [JsonProperty("_display")]
     public Element _Display { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Identity may be a reference to a resource or to something else, depending on the type.
     /// </summary>
     [JsonProperty("reference")]
@@ -22068,7 +15026,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Provenance.entity.role field
   /// </summary>
-  public static class ProvenanceEntityRoleCodesCodes {
+  public static class ProvenanceEntityRoleCodes {
     public const string DERIVATION = "derivation";
     public const string REVISION = "revision";
     public const string QUOTATION = "quotation";
@@ -22089,56 +15047,15 @@ namespace fhir
     [JsonProperty("agent")]
     public ProvenanceAgent[] Agent { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Multiple userIds may be associated with the same Practitioner or other individual across various appearances, each with distinct privileges.
     /// </summary>
     [JsonProperty("entity")]
     public ProvenanceEntity[] Entity { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// Where the activity occurred, if relevant.
     /// </summary>
     [JsonProperty("location")]
     public Reference Location { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The period can be a little arbitrary; where possible, the time should correspond to human assessment of the activity time.
     /// </summary>
@@ -22173,11 +15090,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("target")]
     public Reference[] Target { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Set of questions within this group. The order of questions within the group is relevant.
@@ -22189,22 +15101,10 @@ namespace fhir
     [JsonProperty("concept")]
     public Coding[] Concept { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Nested group, containing nested question for this question. The order of groups within the question is relevant.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup[] Group { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// May be omitted if there is no expectation to link answers back to a questionnaire.  This *can* be a meaningful identifier (e.g. a LOINC code) but is not intended to have any meaning.  GUIDs or sequential numbers are appropriate here.
     /// </summary>
@@ -22212,11 +15112,6 @@ namespace fhir
     public string LinkId { get; set; }
     [JsonProperty("_linkId")]
     public Element _LinkId { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// For a "choice" question, identifies one of the permitted answers for the question.
     /// </summary>
@@ -22255,7 +15150,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Questionnaire.group.question.type field
   /// </summary>
-  public static class QuestionnaireGroupQuestionTypeCodesCodes {
+  public static class QuestionnaireGroupQuestionTypeCodes {
     public const string BOOLEAN = "boolean";
     public const string VAL_DECIMAL = "decimal";
     public const string INTEGER = "integer";
@@ -22272,22 +15167,10 @@ namespace fhir
     [JsonProperty("concept")]
     public Coding[] Concept { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// A sub-group within a group. The ordering of groups within this group is relevant.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup[] Group { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// May be omitted if there is no expectation to link answers back to a questionnaire.  This ''can'' be a meaningful identifier (e.g. a LOINC code) but is not intended to have any meaning.  GUIDs or sequential numbers are appropriate here.
     /// </summary>
@@ -22295,11 +15178,6 @@ namespace fhir
     public string LinkId { get; set; }
     [JsonProperty("_linkId")]
     public Element _LinkId { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Set of questions within this group. The order of questions within the group is relevant.
     /// </summary>
@@ -22338,11 +15216,6 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Questionnaire";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The date that this questionnaire was last changed.
     /// </summary>
     [JsonProperty("date")]
@@ -22350,51 +15223,15 @@ namespace fhir
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.  Information on this root group applies to the questionnaire as a whole.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup Group { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This records identifiers associated with this question set that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Organization or person responsible for developing and maintaining the questionnaire.
     /// </summary>
@@ -22422,11 +15259,6 @@ namespace fhir
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated.
     /// </summary>
     [JsonProperty("version")]
@@ -22437,7 +15269,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Questionnaire.status field
   /// </summary>
-  public static class QuestionnaireStatusCodesCodes {
+  public static class QuestionnaireStatusCodes {
     public const string DRAFT = "draft";
     public const string PUBLISHED = "published";
     public const string RETIRED = "retired";
@@ -22447,27 +15279,10 @@ namespace fhir
   /// </summary>
   public class QuestionnaireResponseGroupQuestionAnswer : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Nested group, containing nested question for this question. The order of groups within the question is relevant.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup[] Group { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
     /// </summary>
@@ -22558,29 +15373,12 @@ namespace fhir
     [JsonProperty("answer")]
     public QuestionnaireResponseGroupQuestionAnswer[] Answer { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireResponse resource.
     /// </summary>
     [JsonProperty("linkId")]
     public string LinkId { get; set; }
     [JsonProperty("_linkId")]
     public Element _LinkId { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The actual question as shown to the user to prompt them for an answer.
     /// </summary>
@@ -22594,22 +15392,10 @@ namespace fhir
   /// </summary>
   public class QuestionnaireResponseGroup : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// A sub-group within a group. The ordering of groups within this group is relevant.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup[] Group { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireResponse resource.
     /// </summary>
@@ -22617,11 +15403,6 @@ namespace fhir
     public string LinkId { get; set; }
     [JsonProperty("_linkId")]
     public Element _LinkId { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Set of questions within this group. The order of questions within the group is relevant.
     /// </summary>
@@ -22667,61 +15448,20 @@ namespace fhir
     [JsonProperty("_authored")]
     public Element _Authored { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Encounter during which this set of questionnaire response were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
     /// <summary>
     /// The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireResponseGroup Group { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A business identifier assigned to a particular completed (or partially completed) questionnaire.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Indicates the Questionnaire resource that defines the form for which answers are being provided.
     /// </summary>
@@ -22744,16 +15484,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the QuestionnaireResponse.status field
   /// </summary>
-  public static class QuestionnaireResponseStatusCodesCodes {
+  public static class QuestionnaireResponseStatusCodes {
     public const string IN_PROGRESS = "in-progress";
     public const string COMPLETED = "completed";
     public const string AMENDED = "amended";
@@ -22762,11 +15497,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "ReferralRequest";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// Date/DateTime of creation for draft requests and date of activation for active requests.
     /// </summary>
@@ -22794,51 +15524,15 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The period of time within which the services identified in the referral/transfer of care is specified or required to occur.
     /// </summary>
     [JsonProperty("fulfillmentTime")]
     public Period FulfillmentTime { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Business identifier that uniquely identifies the referral/care transfer request instance.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Referral of family, group or community is to be catered for by profiles.
     /// </summary>
@@ -22887,11 +15581,6 @@ namespace fhir
     [JsonProperty("supportingInformation")]
     public Reference[] SupportingInformation { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Examples of referral type: - consultation;         second opinion;          third opinion - Assume management - Request for procedure(s)  HL7 v2.8 Example - Table 0336: S = second opinion p = patient preference o = provider ordered w = work load.
     /// </summary>
     [JsonProperty("type")]
@@ -22900,7 +15589,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ReferralRequest.status field
   /// </summary>
-  public static class ReferralRequestStatusCodesCodes {
+  public static class ReferralRequestStatusCodes {
     public const string DRAFT = "draft";
     public const string REQUESTED = "requested";
     public const string ACTIVE = "active";
@@ -22929,16 +15618,6 @@ namespace fhir
     [JsonProperty("_birthDate")]
     public Element _BirthDate { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
     /// </summary>
     [JsonProperty("gender")]
@@ -22946,41 +15625,10 @@ namespace fhir
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier for a person within a particular scope.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A name associated with the person.
     /// </summary>
@@ -23011,16 +15659,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the RelatedPerson.gender field
   /// </summary>
-  public static class RelatedPersonGenderCodesCodes {
+  public static class RelatedPersonGenderCodes {
     public const string MALE = "male";
     public const string FEMALE = "female";
     public const string OTHER = "other";
@@ -23058,23 +15701,6 @@ namespace fhir
   /// Multiple repetitions can be used to identify the same type of outcome in different timeframes as well as different types of outcomes.
   /// </summary>
   public class RiskAssessmentPrediction : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// One of the potential outcomes for the patient (e.g. remission, death,  a particular condition).
     /// </summary>
@@ -23137,11 +15763,6 @@ namespace fhir
     [JsonProperty("condition")]
     public Reference Condition { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The date (and possibly time) the risk assessment was performed.
     /// </summary>
     [JsonProperty("date")]
@@ -23154,41 +15775,10 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Business identifier assigned to the risk assessment.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
     /// <summary>
     /// The algorithm, process or mechanism used to evaluate the risk.
     /// </summary>
@@ -23201,11 +15791,6 @@ namespace fhir
     public string Mitigation { get; set; }
     [JsonProperty("_mitigation")]
     public Element _Mitigation { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The provider or software application that performed the assessment.
     /// </summary>
@@ -23221,11 +15806,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   public class Schedule : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -23244,61 +15824,15 @@ namespace fhir
     [JsonProperty("_comment")]
     public Element _Comment { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// External Ids for this item.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The period of time that the slots that are attached to this Schedule resource cover (even if none exist). These  cover the amount of time that an organization's planning horizon; the interval for which they are currently accepting appointments. This does not define a "template" for planning outside these dates.
     /// </summary>
     [JsonProperty("planningHorizon")]
     public Period PlanningHorizon { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
     /// <summary>
     /// The schedule type can be used for the categorization of healthcare services or other appointment types.
     /// </summary>
@@ -23309,23 +15843,6 @@ namespace fhir
   /// May be a web site, an email address, a telephone number (tel:), etc.
   /// </summary>
   public class SearchParameterContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -23363,11 +15880,6 @@ namespace fhir
     [JsonProperty("contact")]
     public SearchParameterContact[] Contact { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Additional specific dates may be added as extensions.
     /// </summary>
     [JsonProperty("date")]
@@ -23386,42 +15898,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This is often the same as the code for the parameter, but does not need to be.
     /// </summary>
@@ -23458,11 +15934,6 @@ namespace fhir
     [JsonProperty("_target")]
     public Element[] _Target { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The type of value a search parameter refers to, and how the content is interpreted.
     /// </summary>
     [JsonProperty("type")]
@@ -23494,7 +15965,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the SearchParameter.status field
   /// </summary>
-  public static class SearchParameterStatusCodesCodes {
+  public static class SearchParameterStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -23502,7 +15973,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the SearchParameter.type field
   /// </summary>
-  public static class SearchParameterTypeCodesCodes {
+  public static class SearchParameterTypeCodes {
     public const string NUMBER = "number";
     public const string DATE = "date";
     public const string VAL_STRING = "string";
@@ -23515,7 +15986,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the SearchParameter.xpathUsage field
   /// </summary>
-  public static class SearchParameterXpathUsageCodesCodes {
+  public static class SearchParameterXpathUsageCodes {
     public const string NORMAL = "normal";
     public const string PHONETIC = "phonetic";
     public const string NEARBY = "nearby";
@@ -23534,22 +16005,12 @@ namespace fhir
     [JsonProperty("_comment")]
     public Element _Comment { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Date/Time that the slot is to conclude.
     /// </summary>
     [JsonProperty("end")]
     public string End { get; set; }
     [JsonProperty("_end")]
     public Element _End { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
     /// <summary>
     /// busy | free | busy-unavailable | busy-tentative.
     /// </summary>
@@ -23558,41 +16019,10 @@ namespace fhir
     [JsonProperty("_freeBusyType")]
     public Element _FreeBusyType { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// External Ids for this item.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// This slot has already been overbooked, appointments are unlikely to be accepted for this time.
     /// </summary>
@@ -23611,11 +16041,6 @@ namespace fhir
     [JsonProperty("_start")]
     public Element _Start { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource.
     /// </summary>
     [JsonProperty("type")]
@@ -23624,7 +16049,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Slot.freeBusyType field
   /// </summary>
-  public static class SlotFreeBusyTypeCodesCodes {
+  public static class SlotFreeBusyTypeCodes {
     public const string BUSY = "busy";
     public const string FREE = "free";
     public const string BUSY_UNAVAILABLE = "busy-unavailable";
@@ -23664,27 +16089,10 @@ namespace fhir
     [JsonProperty("_comment")]
     public Element[] _Comment { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A coded value specifying the technique that is used to perform the procedure.
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The quantity of specimen collected; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample.
     /// </summary>
@@ -23707,23 +16115,6 @@ namespace fhir
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A coded value specifying the procedure used to process the specimen.
     /// </summary>
@@ -23757,27 +16148,10 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Id for container. There may be multiple; a manufacturer's bar code, lab assigned identifier, etc. The container ID may differ from the specimen id in some circumstances.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The quantity of specimen in the container; may be volume, dimensions, or other appropriate measurements, depending on the specimen type.
     /// </summary>
@@ -23804,56 +16178,15 @@ namespace fhir
     [JsonProperty("collection")]
     public SpecimenCollection Collection { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.
     /// </summary>
     [JsonProperty("container")]
     public SpecimenContainer[] Container { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Id for specimen.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The parent specimen could be the source from which the current specimen is derived by some processing step (e.g. an aliquot or isolate or extracted nucleic acids from clinical samples) or one of many specimens that were combined to create a pooled sample.
     /// </summary>
@@ -23879,11 +16212,6 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// Details concerning treatment and processing steps for the specimen.
     /// </summary>
     [JsonProperty("treatment")]
@@ -23897,7 +16225,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Specimen.status field
   /// </summary>
-  public static class SpecimenStatusCodesCodes {
+  public static class SpecimenStatusCodes {
     public const string AVAILABLE = "available";
     public const string UNAVAILABLE = "unavailable";
     public const string UNSATISFACTORY = "unsatisfactory";
@@ -23907,23 +16235,6 @@ namespace fhir
   /// May be a web site, an email address, a telephone number (tel:), etc.
   /// </summary>
   public class StructureDefinitionContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -23949,29 +16260,12 @@ namespace fhir
     [JsonProperty("_comments")]
     public Element _Comments { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The specification is described once, with general comments, and then specific mappings are made that reference this declaration.
     /// </summary>
     [JsonProperty("identity")]
     public string Identity { get; set; }
     [JsonProperty("_identity")]
     public Element _Identity { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A name for the specification that is being mapped to.
     /// </summary>
@@ -23996,23 +16290,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("element")]
     public ElementDefinition[] Element { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies.
@@ -24023,23 +16300,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("element")]
     public ElementDefinition[] Element { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class StructureDefinition : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -24074,11 +16334,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contact")]
     public StructureDefinitionContact[] Contact { get; set; }
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not. Note that a context of "string" doesn't mean that the extension can be used with one of the string patterns such as "id" etc.
     /// </summary>
@@ -24132,11 +16387,6 @@ namespace fhir
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// A StructureDefinition does not need to specify the target it applies to,as StructureDefinitions will often be valid across multiple versions of FHIR. FHIR tooling can determine whether a StructureDefinition is consistent with a particular StructureDefinition if desired.
     /// </summary>
     [JsonProperty("fhirVersion")]
@@ -24144,24 +16394,10 @@ namespace fhir
     [JsonProperty("_fhirVersion")]
     public Element _FhirVersion { get; set; }
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Formal identifier that is used to identify this StructureDefinition when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// Defines the kind of structure that this definition is describing.
     /// </summary>
@@ -24170,27 +16406,10 @@ namespace fhir
     [JsonProperty("_kind")]
     public Element _Kind { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// An external specification that the content is mapped to.
     /// </summary>
     [JsonProperty("mapping")]
     public StructureDefinitionMapping[] Mapping { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Not expected to be globally unique.
     /// </summary>
@@ -24225,11 +16444,6 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// An absolute URL that is used to identify this structure definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure definition is (or will be) published.
     /// </summary>
     [JsonProperty("url")]
@@ -24252,7 +16466,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the StructureDefinition.contextType field
   /// </summary>
-  public static class StructureDefinitionContextTypeCodesCodes {
+  public static class StructureDefinitionContextTypeCodes {
     public const string RESOURCE = "resource";
     public const string DATATYPE = "datatype";
     public const string MAPPING = "mapping";
@@ -24261,7 +16475,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the StructureDefinition.kind field
   /// </summary>
-  public static class StructureDefinitionKindCodesCodes {
+  public static class StructureDefinitionKindCodes {
     public const string DATATYPE = "datatype";
     public const string RESOURCE = "resource";
     public const string LOGICAL = "logical";
@@ -24269,7 +16483,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the StructureDefinition.status field
   /// </summary>
-  public static class StructureDefinitionStatusCodesCodes {
+  public static class StructureDefinitionStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -24286,29 +16500,12 @@ namespace fhir
     [JsonProperty("_endpoint")]
     public Element _Endpoint { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Exactly what these mean depend on the channel type. The can convey additional information to the recipient and/or meet security requirements.
     /// </summary>
     [JsonProperty("header")]
     public string Header { get; set; }
     [JsonProperty("_header")]
     public Element _Header { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Sending the payload has obvious security consequences. The server is responsible for ensuring that the content is appropriately secured.
     /// </summary>
@@ -24327,7 +16524,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the Subscription.channel.type field
   /// </summary>
-  public static class SubscriptionChannelTypeCodesCodes {
+  public static class SubscriptionChannelTypeCodes {
     public const string REST_HOOK = "rest-hook";
     public const string WEBSOCKET = "websocket";
     public const string EMAIL = "email";
@@ -24348,11 +16545,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contact")]
     public ContactPoint[] Contact { get; set; }
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The rules are a search criteria (without the [base] part). Like Bundle.entry.request.url, it has no leading "/".
     /// </summary>
@@ -24375,42 +16567,6 @@ namespace fhir
     [JsonProperty("_error")]
     public Element _Error { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// A description of why this subscription is defined.
     /// </summary>
     [JsonProperty("reason")]
@@ -24429,16 +16585,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("tag")]
     public Coding[] Tag { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// Code Values for the Subscription.status field
   /// </summary>
-  public static class SubscriptionStatusCodesCodes {
+  public static class SubscriptionStatusCodes {
     public const string REQUESTED = "requested";
     public const string ACTIVE = "active";
     public const string ERROR = "error";
@@ -24456,27 +16607,10 @@ namespace fhir
     [JsonProperty("_expiry")]
     public Element _Expiry { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Identifier associated with the package/container (usually a label affixed directly).
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The amount of the substance.
     /// </summary>
@@ -24487,23 +16621,6 @@ namespace fhir
   /// A substance can be composed of other substances.
   /// </summary>
   public class SubstanceIngredient : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The amount of the ingredient in the substance - a concentration ratio.
     /// </summary>
@@ -24530,11 +16647,6 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// A description of the substance - its appearance, handling requirements, and other usage notes.
     /// </summary>
     [JsonProperty("description")]
@@ -24542,29 +16654,10 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This identifier is associated with the kind of substance in contrast to the  Substance.instance.identifier which is associated with the package/container.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
     /// <summary>
     /// A substance can be composed of other substances.
     /// </summary>
@@ -24575,84 +16668,21 @@ namespace fhir
     /// </summary>
     [JsonProperty("instance")]
     public SubstanceInstance[] Instance { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   public class SupplyDelivery : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "SupplyDelivery";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Identification of the facility/location where the Supply was shipped to, as part of the dispense event.
     /// </summary>
     [JsonProperty("destination")]
     public Reference Destination { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This is assigned by the dispenser, and used to refer to this order in other external standards.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A link to a resource representing the person whom the delivered item is for.
     /// </summary>
@@ -24686,11 +16716,6 @@ namespace fhir
     [JsonProperty("supplier")]
     public Reference Supplier { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// The time the dispensed item was sent or handed to the patient (or agent).
     /// </summary>
     [JsonProperty("time")]
@@ -24711,7 +16736,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the SupplyDelivery.status field
   /// </summary>
-  public static class SupplyDeliveryStatusCodesCodes {
+  public static class SupplyDeliveryStatusCodes {
     public const string IN_PROGRESS = "in-progress";
     public const string COMPLETED = "completed";
     public const string ABANDONED = "abandoned";
@@ -24726,23 +16751,6 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// Formal fulfillment schedule.
     /// </summary>
     [JsonProperty("schedule")]
@@ -24753,11 +16761,6 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "SupplyRequest";
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// When the request was made.
     /// </summary>
     [JsonProperty("date")]
@@ -24765,51 +16768,15 @@ namespace fhir
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This is assigned by the orderer, and used to refer to this order in other external standards.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
     /// Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process.
     /// </summary>
     [JsonProperty("kind")]
     public CodeableConcept Kind { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Note that there's a difference between a prescription - an instruction to take a medication, along with a (sometimes) implicit supply, and an explicit request to supply, with no explicit instructions.
     /// </summary>
@@ -24848,11 +16815,6 @@ namespace fhir
     [JsonProperty("supplier")]
     public Reference[] Supplier { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// When the request should be fulfilled.
     /// </summary>
     [JsonProperty("when")]
@@ -24861,7 +16823,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the SupplyRequest.status field
   /// </summary>
-  public static class SupplyRequestStatusCodesCodes {
+  public static class SupplyRequestStatusCodes {
     public const string REQUESTED = "requested";
     public const string COMPLETED = "completed";
     public const string FAILED = "failed";
@@ -24871,23 +16833,6 @@ namespace fhir
   /// May be a web site, an email address, a telephone number (tel:), etc.
   /// </summary>
   public class TestScriptContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -24912,23 +16857,6 @@ namespace fhir
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// URL to a particular requirement or feature within the FHIR specification.
     /// </summary>
@@ -24959,29 +16887,12 @@ namespace fhir
     [JsonProperty("destination")]
     public int? Destination { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Links to the FHIR specification that describes this interaction and the resources involved in more detail.
     /// </summary>
     [JsonProperty("link")]
     public string[] Link { get; set; }
     [JsonProperty("_link")]
     public Element[] _Link { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Whether or not the test execution will require the given capabilities of the server in order for this test script to execute.
     /// </summary>
@@ -25003,27 +16914,10 @@ namespace fhir
     [JsonProperty("capability")]
     public TestScriptMetadataCapability[] Capability { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// A link to the FHIR specification that this test is covering.
     /// </summary>
     [JsonProperty("link")]
     public TestScriptMetadataLink[] Link { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
@@ -25040,23 +16934,6 @@ namespace fhir
     [JsonProperty("autodelete")]
     public bool? Autodelete { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types.
     /// </summary>
     [JsonProperty("resource")]
@@ -25067,29 +16944,12 @@ namespace fhir
   /// </summary>
   public class TestScriptVariable : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// If headerField is defined, then the variable will be evaluated against the headers that sourceId is pointing to.  If path is defined, then the variable will be evaluated against the fixture body that sourceId is pointing to.  It is an error to define both headerField and path.
     /// </summary>
     [JsonProperty("headerField")]
     public string HeaderField { get; set; }
     [JsonProperty("_headerField")]
     public Element _HeaderField { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Placeholders would contain the variable name wrapped in ${} in "operation.params", "operation.requestHeader.value", and "operation.url" elements.  These placeholders would need to be replaced by the variable value before the operation is executed.
     /// </summary>
@@ -25117,29 +16977,12 @@ namespace fhir
   /// </summary>
   public class TestScriptSetupActionOperationRequestHeader : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// If header element is specified, then field is required.
     /// </summary>
     [JsonProperty("field")]
     public string Field { get; set; }
     [JsonProperty("_field")]
     public Element _Field { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If header element is specified, then value is required.  No conversions will be done by Test Engine e.g. "xml" to "application/xml+fhir".  The values will be set in HTTP headers "as-is".  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before sending the request.
     /// </summary>
@@ -25184,29 +17027,12 @@ namespace fhir
     [JsonProperty("encodeRequestUrl")]
     public bool? EncodeRequestUrl { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// This has no impact on the verification itself.
     /// </summary>
     [JsonProperty("label")]
     public string Label { get; set; }
     [JsonProperty("_label")]
     public Element _Label { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If "url" element is specified, then "targetId", "params", and "resource" elements will be ignored as "url" element will have everything needed for constructing the request url.  If "params" element is specified, then "targetId" element is ignored.  For FHIR operations that require a resource (e.g. "read" and "vread" operations), the "resource" element must be specified when "params" element is specified.  If "url" and "params" elements are absent, then the request url will be constructed from "targetId" fixture if present.  For "read" operation, the resource and id values will be extracted from "targetId" fixture and used to construct the url.  For "vread" and "history" operations, the versionId value will also be used.   Test engines would append whatever is specified for "params" to the URL after the resource type without tampering with the string (beyond encoding the URL for HTTP).  The "params" element does not correspond exactly to "search parameters".  Nor is it the "path".  It corresponds to the part of the URL that comes after the [type] (when "resource" element is specified); e.g. It corresponds to "/[id]/_history/[vid] {?_format=[mime-type]}" in the following operation: GET [base]/[type]/[id]/_history/[vid] {?_format=[mime-type]}  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before sending the request.
     /// </summary>
@@ -25263,14 +17089,14 @@ namespace fhir
   /// <summary>
   /// Code Values for the TestScript.setup.action.operation.accept field
   /// </summary>
-  public static class TestScriptSetupActionOperationAcceptCodesCodes {
+  public static class TestScriptSetupActionOperationAcceptCodes {
     public const string XML = "xml";
     public const string JSON = "json";
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.operation.contentType field
   /// </summary>
-  public static class TestScriptSetupActionOperationContentTypeCodesCodes {
+  public static class TestScriptSetupActionOperationContentTypeCodes {
     public const string XML = "xml";
     public const string JSON = "json";
   }
@@ -25314,24 +17140,12 @@ namespace fhir
     [JsonProperty("_direction")]
     public Element _Direction { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// If "headerField" is specified then "value" must be specified.  If "sourceId" is not specified, then "headerField" will be evaluated against the last operation's response headers.  Test engines are to keep track of the last operation's response body and response headers.
     /// </summary>
     [JsonProperty("headerField")]
     public string HeaderField { get; set; }
     [JsonProperty("_headerField")]
     public Element _HeaderField { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// This has no impact on the verification itself.
     /// </summary>
@@ -25346,11 +17160,6 @@ namespace fhir
     public string MinimumId { get; set; }
     [JsonProperty("_minimumId")]
     public Element _MinimumId { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Asserts that the Bundle contains first, last, and next links.
     /// </summary>
@@ -25421,21 +17230,21 @@ namespace fhir
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.contentType field
   /// </summary>
-  public static class TestScriptSetupActionAssertContentTypeCodesCodes {
+  public static class TestScriptSetupActionAssertContentTypeCodes {
     public const string XML = "xml";
     public const string JSON = "json";
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.direction field
   /// </summary>
-  public static class TestScriptSetupActionAssertDirectionCodesCodes {
+  public static class TestScriptSetupActionAssertDirectionCodes {
     public const string RESPONSE = "response";
     public const string REQUEST = "request";
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.operator field
   /// </summary>
-  public static class TestScriptSetupActionAssertOperatorCodesCodes {
+  public static class TestScriptSetupActionAssertOperatorCodes {
     public const string EQUALS = "equals";
     public const string NOTEQUALS = "notEquals";
     public const string VAL_IN = "in";
@@ -25450,7 +17259,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.response field
   /// </summary>
-  public static class TestScriptSetupActionAssertResponseCodesCodes {
+  public static class TestScriptSetupActionAssertResponseCodes {
     public const string OKAY = "okay";
     public const string CREATED = "created";
     public const string NOCONTENT = "noContent";
@@ -25474,23 +17283,6 @@ namespace fhir
     [JsonProperty("assert")]
     public TestScriptSetupActionAssert Assert { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// The operation to perform.
     /// </summary>
     [JsonProperty("operation")]
@@ -25506,27 +17298,10 @@ namespace fhir
     [JsonProperty("action")]
     public TestScriptSetupAction[] Action { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
     /// </summary>
     [JsonProperty("metadata")]
     public TestScriptMetadata Metadata { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
@@ -25537,23 +17312,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("assert")]
     public TestScriptSetupActionAssert Assert { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// An operation would involve a REST request to a server.
     /// </summary>
@@ -25577,27 +17335,10 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
     /// </summary>
     [JsonProperty("metadata")]
     public TestScriptMetadata Metadata { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The name of this test used for tracking/logging purposes by test engines.
     /// </summary>
@@ -25610,23 +17351,6 @@ namespace fhir
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
   /// </summary>
   public class TestScriptTeardownAction : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// An operation would involve a REST request to a server.
     /// </summary>
@@ -25642,23 +17366,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("action")]
     public TestScriptTeardownAction[] Action { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   public class TestScript : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -25669,11 +17376,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("contact")]
     public TestScriptContact[] Contact { get; set; }
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// A copyright statement relating to the Test Script and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.
     /// </summary>
@@ -25701,56 +17403,20 @@ namespace fhir
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
     /// </summary>
     [JsonProperty("fixture")]
     public TestScriptFixture[] Fixture { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
     /// <summary>
     /// Identifier for the TestScript assigned for external purposes outside the context of FHIR.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
     /// The required capability must exist and are assumed to function correctly on the FHIR server being tested.
     /// </summary>
     [JsonProperty("metadata")]
     public TestScriptMetadata Metadata { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If the tests apply to more than one FHIR server (e.g. cross-server interoperability tests) then multiserver=true. Defaults to false if value is unspecified.
     /// </summary>
@@ -25805,11 +17471,6 @@ namespace fhir
     [JsonProperty("test")]
     public TestScriptTest[] Test { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// An absolute URL that is used to identify this Test Script. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this Test Script is (or will be) published.
     /// </summary>
     [JsonProperty("url")]
@@ -25837,7 +17498,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the TestScript.status field
   /// </summary>
-  public static class TestScriptStatusCodesCodes {
+  public static class TestScriptStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -25846,23 +17507,6 @@ namespace fhir
   /// May be a web site, an email address, a telephone number, etc.
   /// </summary>
   public class ValueSetContact : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If there is no named individual, the telecom is for the organization as a whole.
     /// </summary>
@@ -25881,29 +17525,12 @@ namespace fhir
   /// </summary>
   public class ValueSetCodeSystemConceptDesignation : BackboneElement {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// In the absence of a language, the resource language applies.
     /// </summary>
     [JsonProperty("language")]
     public string Language { get; set; }
     [JsonProperty("_language")]
     public Element _Language { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// If no use is provided, the designation can be assumed to be suitable for general display to a human user.
     /// </summary>
@@ -25957,23 +17584,6 @@ namespace fhir
     public string Display { get; set; }
     [JsonProperty("_display")]
     public Element _Display { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// All code systems defined as part of a FHIR value set have an implicit valueset that includes all of the codes in the code system - the value set in which they are defined.
@@ -25989,23 +17599,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("concept")]
     public ValueSetCodeSystemConcept[] Concept { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The reference is not required to point to any specific kind of definition, but the more information that can be provided, the more useful it is for implementers. Best practice is to resolve to a computable definition of the code system (either a value set, or some other format). Terminology servers MAY validate this reference (e.g. when accepting PUT/POST), and MAY make additional rules about what kind of content it refers to.
     /// </summary>
@@ -26044,45 +17637,11 @@ namespace fhir
     public string Display { get; set; }
     [JsonProperty("_display")]
     public Element _Display { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party.
   /// </summary>
   public class ValueSetComposeIncludeFilter : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The kind of operation to perform as a part of the filter criteria.
     /// </summary>
@@ -26108,7 +17667,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ValueSet.compose.include.filter.op field
   /// </summary>
-  public static class ValueSetComposeIncludeFilterOpCodesCodes {
+  public static class ValueSetComposeIncludeFilterOpCodes {
     public const string EQUALS = "=";
     public const string IS_A = "is-a";
     public const string IS_NOT_A = "is-not-a";
@@ -26126,27 +17685,10 @@ namespace fhir
     [JsonProperty("concept")]
     public ValueSetComposeIncludeConcept[] Concept { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party.
     /// </summary>
     [JsonProperty("filter")]
     public ValueSetComposeIncludeFilter[] Filter { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// See ''Coding.system'' for further documentation.
     /// </summary>
@@ -26172,18 +17714,6 @@ namespace fhir
     [JsonProperty("exclude")]
     public ValueSetComposeInclude[] Exclude { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// The value set URI is either a logical reference to a defined value set such as a [SNOMED CT reference set]{snomedct.html#implicit}, or a direct reference to a value set definition using ValueSet.url. The reference may also not reference an actual FHIR ValueSet resource; in this case, whatever is referenced is an implicit definition of a value set that needs to be clear about how versions are resolved.
     /// </summary>
     [JsonProperty("import")]
@@ -26195,33 +17725,11 @@ namespace fhir
     /// </summary>
     [JsonProperty("include")]
     public ValueSetComposeInclude[] Include { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
   /// The server decides which parameters to include here, but at a minimum, the list SHOULD include the date, filter, and profile parameters passed to the $expand operation (if any).
   /// </summary>
   public class ValueSetExpansionParameter : BackboneElement {
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The names are assigned at the discretion of the server.
     /// </summary>
@@ -26297,23 +17805,6 @@ namespace fhir
     [JsonProperty("_display")]
     public Element _Display { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
-    /// <summary>
     /// An absolute URI which is the code system in which the code for this item in the expansion is defined.
     /// </summary>
     [JsonProperty("system")]
@@ -26338,29 +17829,12 @@ namespace fhir
     [JsonProperty("contains")]
     public ValueSetExpansionContains[] Contains { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Typically, this uri is a UUID (e.g. urn:uuid:8230ff20-c97a-4167-a59d-dc2cb9df16dd).
     /// </summary>
     [JsonProperty("identifier")]
     public string Identifier { get; set; }
     [JsonProperty("_identifier")]
     public Element _Identifier { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Paging only applies to flat expansions. If a filter is applied, the count is the number of concepts that matched the filter, not the number of concepts in an unfiltered view of the expansion.
     /// </summary>
@@ -26404,11 +17878,6 @@ namespace fhir
     [JsonProperty("contact")]
     public ValueSetContact[] Contact { get; set; }
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
-    /// <summary>
     /// Frequently, the copyright differs between the value set and the codes that are included. The copyright statement should clearly differentiate between these when required.
     /// </summary>
     [JsonProperty("copyright")]
@@ -26445,18 +17914,6 @@ namespace fhir
     [JsonProperty("extensible")]
     public bool? Extensible { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Typically, this is used for values that can go in an HL7 v3 II data type.
     /// </summary>
     [JsonProperty("identifier")]
@@ -26467,36 +17924,12 @@ namespace fhir
     [JsonProperty("immutable")]
     public bool? Immutable { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
     /// With a defined lockedDate the value set is considered "Locked". Otherwise, the value set may have different expansions as underlying code systems and/or value sets evolve.  The interpretation of lockedDate is often dependent on the context - e.g. a SNOMED CT derived value set with a lockedDate will have a different expansion in USA than in UK.  If a value set specifies a version for include and exclude statements, and also specifies a locked date, the specified versions need to be available that date, or the value set will not be usable.
     /// </summary>
     [JsonProperty("lockedDate")]
     public string LockedDate { get; set; }
     [JsonProperty("_lockedDate")]
     public Element _LockedDate { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// The name is not expected to be unique. A name should be provided unless the value set is a contained resource (e.g. an anonymous value set in a profile). Most registries will require a name.
     /// </summary>
@@ -26526,11 +17959,6 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
-    /// <summary>
     /// An absolute URL that is used to identify this value set when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this value set is (or will be) published.
     /// </summary>
     [JsonProperty("url")]
@@ -26553,7 +17981,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the ValueSet.status field
   /// </summary>
-  public static class ValueSetStatusCodesCodes {
+  public static class ValueSetStatusCodes {
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
@@ -26622,29 +18050,12 @@ namespace fhir
     [JsonProperty("duration")]
     public Quantity Duration { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
     /// The eye for which the lens applies.
     /// </summary>
     [JsonProperty("eye")]
     public string Eye { get; set; }
     [JsonProperty("_eye")]
     public Element _Eye { get; set; }
-    /// <summary>
-    /// unique id for the element within a resource (for internal references).
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// Notes for special requirements such as coatings and lens materials.
     /// </summary>
@@ -26682,7 +18093,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the VisionPrescription.dispense.base field
   /// </summary>
-  public static class VisionPrescriptionDispenseBaseCodesCodes {
+  public static class VisionPrescriptionDispenseBaseCodes {
     public const string UP = "up";
     public const string DOWN = "down";
     public const string VAL_IN = "in";
@@ -26691,7 +18102,7 @@ namespace fhir
   /// <summary>
   /// Code Values for the VisionPrescription.dispense.eye field
   /// </summary>
-  public static class VisionPrescriptionDispenseEyeCodesCodes {
+  public static class VisionPrescriptionDispenseEyeCodes {
     public const string RIGHT = "right";
     public const string LEFT = "left";
   }
@@ -26699,11 +18110,6 @@ namespace fhir
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
     public string ResourceType => "VisionPrescription";
-    /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
-    /// </summary>
-    [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
     /// <summary>
     /// The date (and perhaps time) when the prescription was written.
     /// </summary>
@@ -26722,46 +18128,10 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
-    /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
-    /// </summary>
-    [JsonProperty("id")]
-    public string Id { get; set; }
-    [JsonProperty("_id")]
-    public Element _Id { get; set; }
-    /// <summary>
     /// Business identifier which may be used by other parties to reference or identify the prescription.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
-    /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
-    /// </summary>
-    [JsonProperty("implicitRules")]
-    public string ImplicitRules { get; set; }
-    [JsonProperty("_implicitRules")]
-    public Element _ImplicitRules { get; set; }
-    /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
-    /// </summary>
-    [JsonProperty("language")]
-    public string Language { get; set; }
-    [JsonProperty("_language")]
-    public Element _Language { get; set; }
-    /// <summary>
-    /// The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
-    /// </summary>
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-    /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-    /// </summary>
-    [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
     /// <summary>
     /// A link to a resource representing the person to whom the vision products will be supplied.
     /// </summary>
@@ -26782,11 +18152,6 @@ namespace fhir
     /// </summary>
     [JsonProperty("reasonReference")]
     public Reference ReasonReference { get; set; }
-    /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
-    /// </summary>
-    [JsonProperty("text")]
-    public Narrative Text { get; set; }
   }
   /// <summary>
   /// A valueSet of UCUM codes for representing age value units.

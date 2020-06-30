@@ -70,7 +70,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
 
+        /// <summary>List of types of the exported resource names ands.</summary>
         private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
+
+        /// <summary>The exported codes.</summary>
+        private HashSet<string> _exportedCodes = new HashSet<string>();
 
         /// <summary>The currently in-use text writer.</summary>
         private TextWriter _writer;
@@ -270,6 +274,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _options = options;
 
             _exportedResourceNamesAndTypes = new Dictionary<string, string>();
+            _exportedCodes = new HashSet<string>();
 
             // create a filename for writing (single file for now)
             string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.cs");
@@ -414,9 +419,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment(indentation, $"Value Set: {vs.URL}|{vs.Version}");
             }
 
-            WriteIndented(
-                indentation,
-                $"public static class {vsName}ValueSet");
+            if (vsName.EndsWith("ValueSet", StringComparison.Ordinal))
+            {
+                WriteIndented(
+                    indentation,
+                    $"public static class {vsName}");
+            }
+            else
+            {
+                WriteIndented(
+                    indentation,
+                    $"public static class {vsName}ValueSet");
+            }
 
             WriteIndented(
                 indentation,
@@ -615,10 +629,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element,
             int indentation)
         {
-            WriteIndented(indentation, $"/// <summary>");
-            WriteIndented(indentation, $"/// Code Values for the {element.Path} field");
-            WriteIndented(indentation, $"/// </summary>");
-
             string codeName = FhirUtils.ToConvention(
                 $"{element.Path}.Codes",
                 string.Empty,
@@ -634,7 +644,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 codeName = codeName.Replace("[X]", string.Empty);
             }
 
-            WriteIndented(indentation, $"public static class {codeName}Codes {{");
+            if (_exportedCodes.Contains(codeName))
+            {
+                return;
+            }
+
+            _exportedCodes.Add(codeName);
+
+            WriteIndented(indentation, $"/// <summary>");
+            WriteIndented(indentation, $"/// Code Values for the {element.Path} field");
+            WriteIndented(indentation, $"/// </summary>");
+
+            if (codeName.EndsWith("Codes", StringComparison.Ordinal))
+            {
+                WriteIndented(indentation, $"public static class {codeName} {{");
+            }
+            else
+            {
+                WriteIndented(indentation, $"public static class {codeName}Codes {{");
+            }
 
             foreach (string code in element.Codes)
             {
