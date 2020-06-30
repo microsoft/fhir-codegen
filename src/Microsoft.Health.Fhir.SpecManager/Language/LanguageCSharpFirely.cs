@@ -82,6 +82,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
             { "base", "Object" },
+            { "base64Binary", "byte[]" },
+            { "boolean", "bool" },
+            { "canonical", "string" },
+            { "code", "string" },
+            { "date", "string" },
+            { "dateTime", "string" },           // Cannot use "DateTime" because of Partial Dates... may want to consider defining a new type, but not today
+            { "decimal", "decimal" },
+            { "id", "string" },
+            { "instant", "string" },
+            { "integer", "int" },
+            { "integer64", "long" },
+            { "markdown", "string" },
+            { "oid", "string" },
+            { "positiveInt", "int" },
+            { "string", "string" },
+            { "time", "string" },
+            { "unsignedInt", "int" },
+            { "uri", "string" },
+            { "url", "string" },
+            { "uuid", "string" },
+            { "xhtml", "string" },
         };
 
         /// <summary>Types that have non-standard names or formatting.</summary>
@@ -745,6 +766,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "decimal":
                 case "DateTime":
                 case "int":
+                case "long":
                 case "uint":
                 case "Guid":
                     return true;
@@ -774,7 +796,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             int indentation)
         {
             string exportName;
-            string typeName = primitive.TypeForExport(_options.PrimitiveNameStyle, _primitiveTypeMap);
+            string typeName = primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap);
+
+            if (IsNullable(typeName))
+            {
+                typeName += "?";
+            }
 
             if (_typeMappings.ContainsKey(primitive.Name))
             {
@@ -797,7 +824,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (!string.IsNullOrEmpty(primitive.Comment))
                 {
-                    WriteIndentedComment(indentation + 1, primitive.Comment);
+                    WriteIndentedComment(indentation + 1, $"Primitive Type {primitive.Name}\n{primitive.Comment}");
                 }
                 else
                 {
@@ -825,7 +852,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteIndented(
                     indentation + 2,
-                    $"public override string TypeName {{ get {{ return \"{typeName}\"; }} }}");
+                    $"public override string TypeName {{ get {{ return \"{primitive.Name}\"; }} }}");
 
                 WriteIndented(0, string.Empty);
 
