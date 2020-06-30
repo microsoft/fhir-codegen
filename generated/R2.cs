@@ -23026,7 +23026,7 @@ namespace fhir
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
   }
-  public class Resource : Element {
+  public class Resource {
     /// <summary>
     /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
     /// </summary>

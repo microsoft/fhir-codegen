@@ -457,7 +457,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     indentation,
                     $"export interface" +
                         $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
-                        $" extends Element {{");
+                        $" {{");
             }
             else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
             {
