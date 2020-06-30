@@ -602,8 +602,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     indentation,
                     $"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
 
-                WriteIndented(indentation, $"_{kvp.Key}?: Element;");
+                if (RequiresExtension(kvp.Value))
+                {
+                    WriteIndented(indentation, $"_{kvp.Key}?: Element;");
+                }
             }
+        }
+
+        /// <summary>Requires extension.</summary>
+        /// <param name="typeName">Name of the type.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private bool RequiresExtension(string typeName)
+        {
+            if (string.IsNullOrEmpty(typeName))
+            {
+                return false;
+            }
+
+            if (_primitiveTypeMap.ContainsKey(typeName))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>Writes a primitive types.</summary>

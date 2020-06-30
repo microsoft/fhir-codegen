@@ -58,6 +58,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (_languagesByName.ContainsKey(name.ToLowerInvariant()))
             {
                 languages.Add(_languagesByName[name.ToLowerInvariant()]);
+                return languages;
             }
 
             if (name.Contains('|'))

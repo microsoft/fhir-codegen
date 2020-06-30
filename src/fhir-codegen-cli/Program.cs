@@ -47,6 +47,8 @@ namespace FhirCodegenCli
             string loadR4 = "",
             string loadR5 = "")
         {
+            List<string> filesWritten = new List<string>();
+
             _extensionsOutputted = new HashSet<string>();
 
             if (string.IsNullOrEmpty(fhirSpecDirectory))
@@ -171,22 +173,22 @@ namespace FhirCodegenCli
 
                     if (r2 != null)
                     {
-                        Exporter.Export(r2, lang, options, outputFile);
+                        filesWritten.AddRange(Exporter.Export(r2, lang, options, outputFile));
                     }
 
                     if (r3 != null)
                     {
-                        Exporter.Export(r3, lang, options, outputFile);
+                        filesWritten.AddRange(Exporter.Export(r3, lang, options, outputFile));
                     }
 
                     if (r4 != null)
                     {
-                        Exporter.Export(r4, lang, options, outputFile);
+                        filesWritten.AddRange(Exporter.Export(r4, lang, options, outputFile));
                     }
 
                     if (r5 != null)
                     {
-                        Exporter.Export(r5, lang, options, outputFile);
+                        filesWritten.AddRange(Exporter.Export(r5, lang, options, outputFile));
                     }
                 }
             }
@@ -195,7 +197,89 @@ namespace FhirCodegenCli
             long totalMS = timingWatch.ElapsedMilliseconds;
 
             Console.WriteLine($"Done! Loading: {loadMS / 1000.0}s, Total: {totalMS / 1000.0}s");
+
+            foreach (string file in filesWritten)
+            {
+                Console.WriteLine($"+ {file}");
+
+                if (file.EndsWith(".cs", StringComparison.Ordinal))
+                {
+                }
+            }
         }
+
+        #if DISABLED
+        /// <summary>Tests fhir C# file.</summary>
+        /// <param name="filename">Filename of the file.</param>
+        private static void TestFhirCSharpFile(string filename)
+        {
+            Console.WriteLine($"Compiling {filename}...");
+
+            using (MemoryStream peStream = new MemoryStream())
+            {
+                Microsoft.CodeAnalysis.Emit.EmitResult result = GenerateByteCode(filename).Emit(peStream);
+
+                if (!result.Success)
+                {
+                    IEnumerable<Diagnostic> failures = result.Diagnostics.Where(diagnostic => diagnostic.IsWarningAsError || diagnostic.Severity == DiagnosticSeverity.Error);
+
+                    foreach (Diagnostic diagnostic in failures)
+                    {
+                        string msg = diagnostic.GetMessage();
+
+                        if ((diagnostic.Id == "CS0246") &&
+                            (msg == "The type or namespace name 'JsonProperty' could not be found (are you missing a using directive or an assembly reference?)"))
+                        {
+                            continue;
+                        }
+
+                        if ((diagnostic.Id == "CS0246") &&
+                            (msg == "The type or namespace name 'JsonPropertyAttribute' could not be found (are you missing a using directive or an assembly reference?)"))
+                        {
+                            continue;
+                        }
+
+                        if ((diagnostic.Id == "CS0103") &&
+                            (msg == "The name 'JObject' does not exist in the current context"))
+                        {
+                            continue;
+                        }
+
+                        Console.Error.WriteLine("{0}: {1}", diagnostic.Id, diagnostic.GetMessage());
+                    }
+
+                    return;
+                }
+            }
+        }
+
+        private static CSharpCompilation GenerateByteCode(
+            string filename)
+        {
+            string sourceCode = File.ReadAllText(filename);
+            SourceText codeString = SourceText.From(sourceCode);
+            CSharpParseOptions options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp7_3);
+
+            SyntaxTree parsedSyntaxTree = SyntaxFactory.ParseSyntaxTree(codeString, options);
+
+            MetadataReference[] references = new MetadataReference[]
+            {
+                MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(Console).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(System.Runtime.AssemblyTargetedPatchBandAttribute).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo).Assembly.Location),
+            };
+
+            return CSharpCompilation.Create(
+                $"{filename}.dll",
+                new[] { parsedSyntaxTree },
+                references: references,
+                options: new CSharpCompilationOptions(
+                    OutputKind.DynamicallyLinkedLibrary,
+                    optimizationLevel: OptimizationLevel.Release,
+                    assemblyIdentityComparer: DesktopAssemblyIdentityComparer.Default));
+        }
+        #endif
 
         /// <summary>Main processing function.</summary>
         /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>

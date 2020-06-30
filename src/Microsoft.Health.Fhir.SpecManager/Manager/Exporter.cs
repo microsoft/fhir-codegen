@@ -23,12 +23,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="exportLanguage">The export language.</param>
         /// <param name="options">       Options for controlling the operation.</param>
         /// <param name="outputFile">    The output filename.</param>
-        public static void Export(
+        public static List<string> Export(
             FhirVersionInfo sourceFhirInfo,
             ILanguage exportLanguage,
             ExporterOptions options,
             string outputFile)
         {
+            List<string> filesWritten = new List<string>();
+
             if (sourceFhirInfo == null)
             {
                 throw new ArgumentNullException(nameof(sourceFhirInfo));
@@ -106,11 +108,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     }
 
                     File.Move(file, exportName);
+
+                    filesWritten.Add(exportName);
                 }
 
                 DeleteDirectory(exportDir);
 
-                return;
+                return filesWritten;
             }
 
             // make sure our destination is clear
@@ -124,11 +128,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             if (files.Length == 1)
             {
-                File.Move(files[0], outputFile);
+                string exportName = Path.Combine(outputFile, Path.GetFileName(files[0]));
+
+                if (File.Exists(exportName))
+                {
+                    File.Delete(exportName);
+                }
+
+                File.Move(files[0], exportName);
+                filesWritten.Add(exportName);
 
                 DeleteDirectory(exportDir);
 
-                return;
+                return filesWritten;
             }
 
             string zipName = outputFile;
@@ -141,8 +153,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // zip the files in the directory for download/output
             CreateZip(zipName, exportDir);
 
+            filesWritten.Add(zipName);
+
             // clean up
             DeleteDirectory(exportDir);
+
+            return filesWritten;
         }
 
         /// <summary>Deletes the directory described by dir.</summary>

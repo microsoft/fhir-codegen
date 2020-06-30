@@ -719,9 +719,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     indentation,
                     $"public {kvp.Value}{optionalFlagString}{arrayFlagString} {elementName} {{ get; set; }}");
 
-                WriteIndented(indentation, $"[JsonProperty(\"_{camel}\")]");
-                WriteIndented(indentation, $"public Element{arrayFlagString} _{elementName} {{ get; set; }}");
+                if (RequiresExtension(kvp.Value))
+                {
+                    WriteIndented(indentation, $"[JsonProperty(\"_{camel}\")]");
+                    WriteIndented(indentation, $"public Element{arrayFlagString} _{elementName} {{ get; set; }}");
+                }
             }
+        }
+
+        /// <summary>Requires extension.</summary>
+        /// <param name="typeName">Name of the type.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private bool RequiresExtension(string typeName)
+        {
+            if (string.IsNullOrEmpty(typeName))
+            {
+                return false;
+            }
+
+            if (_primitiveTypeMap.ContainsKey(typeName))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>Query if 'typeName' is nullable.</summary>
