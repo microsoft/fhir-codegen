@@ -128,15 +128,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             if (files.Length == 1)
             {
-                string exportName = Path.Combine(outputFile, Path.GetFileName(files[0]));
-
-                if (File.Exists(exportName))
-                {
-                    File.Delete(exportName);
-                }
-
-                File.Move(files[0], exportName);
-                filesWritten.Add(exportName);
+                File.Move(files[0], outputFile);
+                filesWritten.Add(outputFile);
 
                 DeleteDirectory(exportDir);
 

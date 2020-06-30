@@ -64,6 +64,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
 
+        /// <summary>The exported codes.</summary>
+        private HashSet<string> _exportedCodes = new HashSet<string>();
+
         /// <summary>The currently in-use text writer.</summary>
         private TextWriter _writer;
 
@@ -192,6 +195,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info
             _info = info;
             _options = options;
+
+            _exportedCodes = new HashSet<string>();
 
             // create a filename for writing (single file for now)
             string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.ts");
@@ -503,10 +508,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element,
             int indentation)
         {
-            WriteIndented(indentation, $"/**");
-            WriteIndented(indentation, $" * Code Values for the {element.Path} field");
-            WriteIndented(indentation, $" */");
-
             string codeName = FhirUtils.ToConvention(
                 $"{element.Path}.Codes",
                 string.Empty,
@@ -516,6 +517,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 codeName = codeName.Replace("[x]", string.Empty);
             }
+
+            if (_exportedCodes.Contains(codeName))
+            {
+                return;
+            }
+
+            _exportedCodes.Add(codeName);
+
+            WriteIndented(indentation, $"/**");
+            WriteIndented(indentation, $" * Code Values for the {element.Path} field");
+            WriteIndented(indentation, $" */");
 
             WriteIndented(indentation, $"export enum {codeName} {{");
 
