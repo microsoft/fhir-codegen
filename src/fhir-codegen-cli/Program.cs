@@ -401,19 +401,19 @@ namespace FhirCodegenCli
 
             // dump server level operations
             writer.WriteLine($"system operations: {info.SystemOperations.Count}");
-            DumpOperations(writer, info, info.SystemOperations.Values, 0, true);
+            DumpOperations(writer, info.SystemOperations.Values, 0, true);
 
             // dump magic search parameters - all resource parameters
             writer.WriteLine($"all resource parameters: {info.AllResourceParameters.Count}");
-            DumpSearchParameters(writer, info, info.AllResourceParameters.Values, 0);
+            DumpSearchParameters(writer, info.AllResourceParameters.Values, 0);
 
             // dump magic search parameters - search result parameters
             writer.WriteLine($"search result parameters: {info.SearchResultParameters.Count}");
-            DumpSearchParameters(writer, info, info.SearchResultParameters.Values, 0);
+            DumpSearchParameters(writer, info.SearchResultParameters.Values, 0);
 
             // dump magic search parameters - search result parameters
             writer.WriteLine($"all interaction parameters: {info.AllInteractionParameters.Count}");
-            DumpSearchParameters(writer, info, info.AllInteractionParameters.Values, 0);
+            DumpSearchParameters(writer, info.AllInteractionParameters.Values, 0);
 
             // dump extension info
             writer.WriteLine($"extensions: paths exported {_extensionsOutputted.Count} of {info.ExtensionsByUrl.Count}");
@@ -559,19 +559,19 @@ namespace FhirCodegenCli
             // dump search parameters
             if (complex.SearchParameters != null)
             {
-                DumpSearchParameters(writer, info, complex.SearchParameters.Values, indentation);
+                DumpSearchParameters(writer, complex.SearchParameters.Values, indentation);
             }
 
             // dump type operations
             if (complex.TypeOperations != null)
             {
-                DumpOperations(writer, info, complex.TypeOperations.Values, indentation, true);
+                DumpOperations(writer, complex.TypeOperations.Values, indentation, true);
             }
 
             // dump instance operations
             if (complex.InstanceOperations != null)
             {
-                DumpOperations(writer, info, complex.InstanceOperations.Values, indentation, false);
+                DumpOperations(writer, complex.InstanceOperations.Values, indentation, false);
             }
         }
 
@@ -650,12 +650,10 @@ namespace FhirCodegenCli
 
         /// <summary>Dumps a search parameters.</summary>
         /// <param name="writer">     The writer.</param>
-        /// <param name="info">       The FHIR information.</param>
         /// <param name="parameters"> Options for controlling the operation.</param>
         /// <param name="indentation">The indentation.</param>
         private static void DumpSearchParameters(
             TextWriter writer,
-            FhirVersionInfo info,
             IEnumerable<FhirSearchParam> parameters,
             int indentation)
         {
@@ -669,13 +667,11 @@ namespace FhirCodegenCli
 
         /// <summary>Dumps the operations.</summary>
         /// <param name="writer">     The writer.</param>
-        /// <param name="info">       The FHIR information.</param>
         /// <param name="operations"> The operations.</param>
         /// <param name="indentation">The indentation.</param>
         /// <param name="isTypeLevel">True if is type level, false if not.</param>
         private static void DumpOperations(
             TextWriter writer,
-            FhirVersionInfo info,
             IEnumerable<FhirOperation> operations,
             int indentation,
             bool isTypeLevel)

@@ -612,7 +612,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Requires extension.</summary>
         /// <param name="typeName">Name of the type.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        private bool RequiresExtension(string typeName)
+        private static bool RequiresExtension(string typeName)
         {
             if (string.IsNullOrEmpty(typeName))
             {
