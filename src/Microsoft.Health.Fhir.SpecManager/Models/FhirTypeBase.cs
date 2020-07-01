@@ -112,6 +112,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             /// <summary>This feature is not supported / used.</summary>
             None,
 
+            /// <summary>An enum constant representing the language controlled option.</summary>
+            LanguageControlled,
+
             /// <summary>Names are standard FHIR dot notation (e.g., path).</summary>
             FhirDotNotation,
 

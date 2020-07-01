@@ -18,48 +18,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>The namespace to use during export.</summary>
         private const string _namespace = "Hl7.Fhir.Model";
 
-        /// <summary>The systems named by display.</summary>
-        private static HashSet<string> _systemsNamedByDisplay = new HashSet<string>()
-        {
-            /// <summary>Units of Measure have incomprehensible codes after naming substitutions.</summary>
-            "http://unitsofmeasure.org",
-        };
+        /// <summary>Name of the header user.</summary>
+        private string _headerUserName;
 
-        private static HashSet<string> _systemsNamedByCode = new HashSet<string>()
-        {
-            /// <summary>Operation Outcomes include c-style string formats in display.</summary>
-            "http://terminology.hl7.org/CodeSystem/operation-outcome",
-
-            /// <summary>Descriptions have quoted values.</summary>
-            "http://terminology.hl7.org/CodeSystem/smart-capabilities",
-
-            /// <summary>Descriptions have quoted values.</summary>
-            "http://hl7.org/fhir/v2/0301",
-
-            /// <summary>Display values are too long to be useful.</summary>
-            "http://terminology.hl7.org/CodeSystem/v2-0178",
-
-            /// <summary>Display values are too long to be useful.</summary>
-            "http://terminology.hl7.org/CodeSystem/v2-0277",
-
-            /// <summary>Display values are too long to be useful.</summary>
-            "http://terminology.hl7.org/CodeSystem/v3-VaccineManufacturer",
-
-            /// <summary>Display values are too long to be useful.</summary>
-            "http://hl7.org/fhir/v2/0278",
-
-            /// <summary>Display includes operation symbols: $.</summary>
-            "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
-
-            /// <summary>Names are often just symbols.</summary>
-            "http://hl7.org/fhir/v2/0290",
-
-            /// <summary>Display includes too many Unicode characters (invalid export names).</summary>
-            "http://hl7.org/fhir/v2/0255",
-
-            /// <summary>Display includes too many Unicode characters (invalid export names).</summary>
-            "http://hl7.org/fhir/v2/0256",
-        };
+        /// <summary>The header generation date time.</summary>
+        private string _headerGenerationDateTime;
 
         /// <summary>FHIR information we are exporting.</summary>
         private FhirVersionInfo _info;
@@ -67,6 +30,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
 
+        /// <summary>List of types of the exported resource names ands.</summary>
         private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
 
         /// <summary>The currently in-use text writer.</summary>
@@ -78,39 +42,39 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Name of the language.</summary>
         private const string _languageName = "CSharpFirely";
 
-        /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
+        /// <summary>Dictionary mapping FHIR primitive types to language equivalents (see Template-Model.tt#1252).</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
-            { "base", "Object" },
             { "base64Binary", "byte[]" },
-            { "boolean", "bool" },
+            { "boolean", "bool?" },
             { "canonical", "string" },
             { "code", "string" },
             { "date", "string" },
-            { "dateTime", "string" },           // Cannot use "DateTime" because of Partial Dates... may want to consider defining a new type, but not today
-            { "decimal", "decimal" },
+            { "dateTime", "string" },
+            { "decimal", "decimal?" },
             { "id", "string" },
-            { "instant", "string" },
-            { "integer", "int" },
+            { "instant", "DateTimeOffset?" },
+            { "integer", "int?" },
             { "integer64", "long" },
             { "markdown", "string" },
+            { "narrative", "string" },
             { "oid", "string" },
-            { "positiveInt", "int" },
+            { "positiveInt", "int?" },
             { "string", "string" },
             { "time", "string" },
-            { "unsignedInt", "int" },
+            { "unsignedInt", "int?" },
             { "uri", "string" },
             { "url", "string" },
-            { "uuid", "string" },
             { "xhtml", "string" },
         };
 
-        /// <summary>Types that have non-standard names or formatting.</summary>
-        private static Dictionary<string, string> _typeMappings = new Dictionary<string, string>()
+        /// <summary>Types that have non-standard names or formatting (see Template-Model.tt#1252).</summary>
+        private static Dictionary<string, string> _typeNameMappings = new Dictionary<string, string>()
         {
             { "boolean", "FhirBoolean" },
             { "dateTime", "FhirDateTime" },
             { "decimal", "FhirDecimal" },
+            { "Reference", "ResourceReference" },
             { "string", "FhirString" },
             { "uri", "FhirUri" },
             { "url", "FhirUrl" },
@@ -201,10 +165,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "while",
         };
 
-        /// <summary>This option supports only Pascal case.</summary>
-        private static readonly HashSet<FhirTypeBase.NamingConvention> _pascalStyle = new HashSet<FhirTypeBase.NamingConvention>()
+        /// <summary>This language does not allow configuration of name styles.</summary>
+        private static readonly HashSet<FhirTypeBase.NamingConvention> _supportedStyles = new HashSet<FhirTypeBase.NamingConvention>()
         {
-            FhirTypeBase.NamingConvention.PascalCase,
+            FhirTypeBase.NamingConvention.LanguageControlled,
         };
 
         /// <summary>The not supported style.</summary>
@@ -229,7 +193,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// Gets a value indicating whether the language supports nested type definitions.
         /// </summary>
         /// <value>True if the language supports nested type definitions, false if not.</value>
-        bool ILanguage.SupportsNestedTypeDefinitions => false;
+        bool ILanguage.SupportsNestedTypeDefinitions => true;
 
         /// <summary>Gets a value indicating whether the supports slicing.</summary>
         /// <value>True if supports slicing, false if not.</value>
@@ -245,19 +209,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the primitive configuration.</summary>
         /// <value>The primitive configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedPrimitiveNameStyles => _pascalStyle;
+        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedPrimitiveNameStyles => _supportedStyles;
 
         /// <summary>Gets the complex type configuration.</summary>
         /// <value>The complex type configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedComplexTypeNameStyles => _pascalStyle;
+        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedComplexTypeNameStyles => _supportedStyles;
 
         /// <summary>Gets the supported element name styles.</summary>
         /// <value>The supported element name styles.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedElementNameStyles => _pascalStyle;
+        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedElementNameStyles => _supportedStyles;
 
         /// <summary>Gets the resource configuration.</summary>
         /// <value>The resource configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedResourceNameStyles => _pascalStyle;
+        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedResourceNameStyles => _supportedStyles;
 
         /// <summary>Gets the interaction configuration.</summary>
         /// <value>The interaction configuration.</value>
@@ -265,7 +229,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the supported enum styles.</summary>
         /// <value>The supported enum styles.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedEnumStyles => _pascalStyle;
+        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedEnumStyles => _supportedStyles;
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -307,239 +271,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 throw new NotSupportedException($"Unsupported enum naming style: {options.EnumStyle}");
             }
 
-            if (options.PrimitiveNameStyle != FhirTypeBase.NamingConvention.None)
-            {
-                WritePrimitiveTypes(_info.PrimitiveTypes.Values, 1);
-            }
+            _headerUserName = Environment.UserName;
+            _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
 
-            #if DISABLED
-            // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.cs");
-
-            using (StreamWriter writer = new StreamWriter(new FileStream(filename, FileMode.Create)))
-            {
-                _writer = writer;
-
-                WriteHeader();
-
-                WriteNamespaceOpen();
-
-                if (options.ComplexTypeNameStyle != FhirTypeBase.NamingConvention.None)
-                {
-                    WriteComplexes(_info.ComplexTypes.Values, 1, false);
-                    WriteComplexes(_info.Resources.Values, 1, true);
-                }
-
-                if (options.EnumStyle != FhirTypeBase.NamingConvention.None)
-                {
-                    WriteValueSets(_info.ValueSetsByUrl.Values, 1);
-                }
-
-                WritePolymorphicHelpers(1);
-
-                WriteNamespaceClose();
-
-                WriteFooter();
-            }
-            #endif
-        }
-
-        /// <summary>Writes a polymorphic helpers.</summary>
-        /// <param name="indentation">The indentation.</param>
-        private void WritePolymorphicHelpers(int indentation)
-        {
-            WriteIndented(indentation, "public class ResourceConverter : JsonConverter");
-            WriteIndented(indentation, "{");
-
-            // function CanConvert
-            WriteIndented(indentation + 1, "public override bool CanConvert(Type objectType)");
-            WriteIndented(indentation + 1, "{");
-            WriteIndented(indentation + 2, "return typeof(Resource).IsAssignableFrom(objectType);");
-            WriteIndented(indentation + 1, "}");
-
-            // property CanWrite
-            WriteIndented(indentation + 1, "public override bool CanWrite");
-            WriteIndented(indentation + 1, "{");
-            WriteIndented(indentation + 2, "get { return false; }");
-            WriteIndented(indentation + 1, "}");
-
-            // function WriteJson
-            WriteIndented(indentation + 1, "public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)");
-            WriteIndented(indentation + 1, "{");
-            WriteIndented(indentation + 2, "throw new NotImplementedException();");
-            WriteIndented(indentation + 1, "}");
-
-            // property CanRead
-            WriteIndented(indentation + 1, "public override bool CanRead");
-            WriteIndented(indentation + 1, "{");
-            WriteIndented(indentation + 2, "get { return true; }");
-            WriteIndented(indentation + 1, "}");
-
-            // function ReadJson
-            WriteIndented(indentation + 1, "public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)");
-            WriteIndented(indentation + 1, "{");
-            WriteIndented(indentation + 2, "JObject jObject = JObject.Load(reader);");
-            WriteIndented(indentation + 2, "string resourceType = jObject[\"resourceType\"].Value<string>();");
-            WriteIndented(indentation + 2, "object target = null;");
-            WriteIndented(indentation + 2, "switch (resourceType)");
-            WriteIndented(indentation + 2, "{");
-
-            // loop through our types
-            foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
-            {
-                WriteIndented(indentation + 3, $"case \"{kvp.Key}\":");
-                WriteIndented(indentation + 4, $"target = new {kvp.Value}();");
-                WriteIndented(indentation + 4, "break;");
-            }
-
-            // default case returns a Resource object
-            WriteIndented(indentation + 3, "default:");
-            WriteIndented(indentation + 4, "target = new Resource();");
-            WriteIndented(indentation + 4, "break;");
-
-            // close switch
-            WriteIndented(indentation + 2, "}");
-
-            // populate
-            WriteIndented(indentation + 2, "serializer.Populate(jObject.CreateReader(), target);");
-
-            // return/close ReadJson
-            WriteIndented(indentation + 2, "return target;");
-            WriteIndented(indentation + 1, "}");
-
-            // close class
-            WriteIndented(indentation, "}");
-        }
-
-        /// <summary>Writes a value sets.</summary>
-        /// <param name="valueSets">  List of valueSetCollections.</param>
-        /// <param name="indentation">The indentation.</param>
-        private void WriteValueSets(
-            IEnumerable<FhirValueSetCollection> valueSets,
-            int indentation)
-        {
-            foreach (FhirValueSetCollection collection in valueSets.OrderBy(c => c.URL))
-            {
-                foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderBy(v => v.Version))
-                {
-                    WriteValueSet(
-                        vs,
-                        indentation);
-                }
-            }
-        }
-
-        /// <summary>Writes a value set.</summary>
-        /// <param name="vs">         The value set.</param>
-        /// <param name="indentation">The indentation.</param>
-        private void WriteValueSet(
-            FhirValueSet vs,
-            int indentation)
-        {
-            string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
-
-            vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
-
-            if (!string.IsNullOrEmpty(vs.Description))
-            {
-                WriteIndentedComment(indentation, vs.Description);
-            }
-            else
-            {
-                WriteIndentedComment(indentation, $"Value Set: {vs.URL}|{vs.Version}");
-            }
-
-            WriteIndented(
-                indentation,
-                $"public abstract class {vsName}");
-
-            WriteIndented(
-                indentation,
-                "{");
-
-            bool prefixWithSystem = vs.ReferencedCodeSystems.Count > 1;
-            HashSet<string> usedValues = new HashSet<string>();
-
-            foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
-            {
-                string input = concept.Display;
-                if (_systemsNamedByDisplay.Contains(concept.System))
-                {
-                    input = concept.Display;
-                }
-                else if (_systemsNamedByCode.Contains(concept.System))
-                {
-                    input = concept.Code;
-                }
-                else if (string.IsNullOrEmpty(input))
-                {
-                    input = concept.Code;
-                }
-
-                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords);
-                string codeValue = FhirUtils.SanitizeForValue(concept.Code);
-
-                codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
-
-                string name;
-
-                if (prefixWithSystem)
-                {
-                    name = $"{codeName}_{concept.SystemLocalName}";
-                }
-                else
-                {
-                    name = codeName;
-                }
-
-                if (usedValues.Contains(name))
-                {
-                    // start at 2 so that the unadorned version makes sense as v1
-                    for (int i = 2; i < 1000; i++)
-                    {
-                        if (usedValues.Contains($"{name}_{i}"))
-                        {
-                            continue;
-                        }
-
-                        name = $"{name}_{i}";
-                        break;
-                    }
-                }
-
-                usedValues.Add(name);
-
-                WriteIndented(
-                    indentation + 1,
-                    $"public static readonly Coding {name} = new Coding");
-
-                WriteIndented(
-                    indentation + 1,
-                    "{");
-
-                WriteIndented(
-                    indentation + 2,
-                    $"Code = \"{codeValue}\",");
-
-                if (!string.IsNullOrEmpty(concept.Display))
-                {
-                    WriteIndented(
-                        indentation + 2,
-                        $"Display = \"{FhirUtils.SanitizeForQuoted(concept.Display)}\",");
-                }
-
-                WriteIndented(
-                    indentation + 2,
-                    $"System = \"{concept.System}\"");
-
-                WriteIndented(
-                    indentation + 1,
-                    "};");
-            }
-
-            WriteIndented(
-                indentation,
-                "};");
+            WritePrimitiveTypes(_info.PrimitiveTypes.Values, 1);
         }
 
         /// <summary>Writes the complexes.</summary>
@@ -565,111 +300,163 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             int indentation,
             bool isResource)
         {
-            // check for nested components
-            if (complex.Components != null)
+            #if DISABLED
+            string exportName = complex.NameForExport(_options.ComplexTypeNameStyle);
+
+            string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
+
+            using (StreamWriter writer = new StreamWriter(new FileStream(filename, FileMode.Create)))
             {
-                foreach (FhirComplex component in complex.Components.Values)
+                _writer = writer;
+
+                WriteHeaderComplex();
+
+                WriteNamespaceOpen();
+
+                if (!string.IsNullOrEmpty(complex.Comment))
                 {
-                    WriteComplex(component, indentation, false);
+                    WriteIndentedComment(indentation + 1, $"Primitive Type {complex.Name}\n{complex.Comment}");
                 }
-            }
+                else
+                {
+                    WriteIndentedComment(indentation + 1, $"Primitive Type {complex.Name}");
+                }
 
-            if (!string.IsNullOrEmpty(complex.Comment))
-            {
-                WriteIndentedComment(indentation, complex.Comment);
-            }
+                WriteIndented(indentation + 1, $"[FhirType(\"{complex.Name}\", IsResource=true)]");
+                WriteIndented(indentation + 1, "[DataContract]");
 
-            if (string.IsNullOrEmpty(complex.BaseTypeName) ||
-                complex.Name.Equals("Element", StringComparison.Ordinal))
-            {
+
+                if (string.IsNullOrEmpty(complex.BaseTypeName) ||
+                    complex.Name.Equals("Element", StringComparison.Ordinal))
+                {
+                    WriteIndented(
+                        indentation,
+                        $"public partial class {exportName} {{");
+                }
+                else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
+                {
+                    WriteIndented(
+                        indentation,
+                        $"public class" +
+                            $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
+                            $" {{");
+                }
+                else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
+                {
+                    WriteIndented(
+                        indentation,
+                        $"public class" +
+                            $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
+                            $" :" +
+                            $" {complex.TypeForExport(_options.ComplexTypeNameStyle, _primitiveTypeMap, false)} {{");
+                }
+                else
+                {
+                    WriteIndented(
+                        indentation + 1,
+                        $"public partial class" +
+                            $" {exportName}" +
+                            $" : {_namespace}.Primitive<{typeName}>," +
+                            $" System.ComponentModel.INotifyPropertyChanged");
+                }
+
+
+
+                // open class
                 WriteIndented(
-                    indentation,
-                    $"public class {complex.NameForExport(_options.ComplexTypeNameStyle)} {{");
-            }
-            else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
-            {
+                    indentation + 1,
+                    "{");
+
                 WriteIndented(
-                    indentation,
-                    $"public class" +
-                        $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
-                        $" : Element {{");
-            }
-            else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
-            {
+                    indentation + 2,
+                    "[NotMapped]");
+
                 WriteIndented(
-                    indentation,
-                    $"public class" +
-                        $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
-                        $" :" +
-                        $" {complex.TypeForExport(_options.ComplexTypeNameStyle, _primitiveTypeMap, false)} {{");
-            }
-            else
-            {
+                    indentation + 2,
+                    $"public override string TypeName {{ get {{ return \"{primitive.Name}\"; }} }}");
+
+                WriteIndented(0, string.Empty);
+
+                if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
+                {
+                    WriteIndentedComment(
+                        indentation + 2,
+                        $"Must conform to pattern \"{primitive.ValidationRegEx}\"",
+                        false);
+
+                    WriteIndented(
+                        indentation + 2,
+                        $"public const string PATTERN = @\"{primitive.ValidationRegEx}\";");
+
+                    WriteIndented(0, string.Empty);
+                }
+
                 WriteIndented(
-                    indentation,
-                    $"public class" +
-                        $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
-                        $" :" +
-                        $" {complex.TypeForExport(_options.ComplexTypeNameStyle, _primitiveTypeMap)} {{");
+                    indentation + 2,
+                    $"public {exportName}({typeName} value)");
+
+                WriteIndented(
+                    indentation + 2,
+                    "{");
+
+                WriteIndented(
+                    indentation + 3,
+                    "Value = value;");
+
+                WriteIndented(
+                    indentation + 2,
+                    "}");
+
+                WriteIndented(0, string.Empty);
+
+                WriteIndented(
+                    indentation + 2,
+                    $"public {exportName}(): this(({typeName})null) {{}}");
+
+                WriteIndented(0, string.Empty);
+
+                WriteIndentedComment(
+                    indentation + 2,
+                    "Primitive value of the element");
+
+                WriteIndented(
+                    indentation + 2,
+                    "[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
+
+                WriteIndented(
+                    indentation + 2,
+                    "[DataMemeber]");
+
+                WriteIndented(
+                    indentation + 2,
+                    $"public {typeName} Value");
+
+                WriteIndented(
+                    indentation + 2,
+                    "{");
+
+                WriteIndented(
+                    indentation + 3,
+                    $"get {{ return ({typeName})ObjectValue; }}");
+
+                WriteIndented(
+                    indentation + 3,
+                    "set { ObjectValue = value; OnPropertyChanged(\"Value\"); }");
+
+                WriteIndented(
+                    indentation + 2,
+                    "}");
+
+                // close class
+                WriteIndented(
+                    indentation + 1,
+                    "}");
+
+                WriteNamespaceClose();
+
+                WriteFooter();
             }
-
-            if (isResource && ShouldWriteResourceName(complex.Name))
-            {
-                _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
-
-                WriteIndented(indentation + 1, "/** Resource Type Name (for serialization) */");
-                WriteIndented(indentation + 1, "[JsonPropertyName(\"resourceType\")]");
-                WriteIndented(indentation + 1, $"public string ResourceType => \"{complex.Name}\";");
-            }
-
-            // write elements
-            WriteElements(complex, indentation + 1, out List<FhirElement> elementsWithCodes);
-
-            // close interface (type)
-            WriteIndented(indentation, "}");
-
-            foreach (FhirElement element in elementsWithCodes)
-            {
-                WriteCode(element, indentation);
-            }
-        }
-
-        /// <summary>Writes a code.</summary>
-        /// <param name="element">    The element.</param>
-        /// <param name="indentation">The indentation.</param>
-        private void WriteCode(
-            FhirElement element,
-            int indentation)
-        {
-            WriteIndented(indentation, $"/// <summary>");
-            WriteIndented(indentation, $"/// Code Values for the {element.Path} field");
-            WriteIndented(indentation, $"/// </summary>");
-
-            string codeName = FhirUtils.ToConvention(
-                $"{element.Path}.Codes",
-                string.Empty,
-                _options.EnumStyle);
-
-            if (codeName.Contains("[x]"))
-            {
-                codeName = codeName.Replace("[x]", string.Empty);
-            }
-
-            if (codeName.Contains("[X]"))
-            {
-                codeName = codeName.Replace("[X]", string.Empty);
-            }
-
-            WriteIndented(indentation, $"public sealed class {codeName} {{");
-
-            foreach (string code in element.Codes)
-            {
-                FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
-
-                WriteIndented(indentation + 1, $"public const string {name.ToUpperInvariant()} = \"{value}\";");
-            }
-
-            WriteIndented(indentation, "}");
+        #endif
         }
 
         /// <summary>Determine if we should write resource name.</summary>
@@ -687,71 +474,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return true;
-        }
-
-        /// <summary>Writes the elements.</summary>
-        /// <param name="complex">    The complex.</param>
-        /// <param name="indentation">The indentation.</param>
-        private void WriteElements(
-            FhirComplex complex,
-            int indentation,
-            out List<FhirElement> elementsWithCodes)
-        {
-            elementsWithCodes = new List<FhirElement>();
-
-            foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.Name))
-            {
-                if (_options.UseModelInheritance && element.IsInherited)
-                {
-                    continue;
-                }
-
-                WriteElement(complex, element, indentation);
-
-                if ((element.Codes != null) && (element.Codes.Count > 0))
-                {
-                    elementsWithCodes.Add(element);
-                }
-            }
-        }
-
-        /// <summary>Writes an element.</summary>
-        /// <param name="complex">    The complex.</param>
-        /// <param name="element">    The element.</param>
-        /// <param name="indentation">The indentation.</param>
-        private void WriteElement(
-            FhirComplex complex,
-            FhirElement element,
-            int indentation)
-        {
-            string optionalFlagString = element.IsOptional ? "?" : string.Empty;
-            string arrayFlagString = element.IsArray ? "[]" : string.Empty;
-
-            Dictionary<string, string> values = element.NamesAndTypesForExport(
-                _options.ElementNameStyle,
-                _options.ComplexTypeNameStyle,
-                false,
-                string.Empty,
-                complex.Components.ContainsKey(element.Path));
-
-            foreach (KeyValuePair<string, string> kvp in values)
-            {
-                if (!string.IsNullOrEmpty(element.Comment))
-                {
-                    WriteIndentedComment(indentation, element.Comment);
-                }
-
-                string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
-
-                WriteIndented(indentation, $"[JsonPropertyName(\"{camel}\")]");
-
-                WriteIndented(
-                    indentation,
-                    $"public {kvp.Value}{optionalFlagString}{arrayFlagString} {kvp.Key} {{ get; set; }}");
-
-                WriteIndented(indentation, $"[JsonPropertyName(\"_{camel}\")]");
-                WriteIndented(indentation, $"public Element{arrayFlagString} _{kvp.Key} {{ get; set; }}");
-            }
         }
 
         /// <summary>Query if 'typeName' is nullable.</summary>
@@ -796,20 +518,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             int indentation)
         {
             string exportName;
-            string typeName = primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap);
+            string typeName = primitive.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
 
-            if (IsNullable(typeName))
+            if (_typeNameMappings.ContainsKey(primitive.Name))
             {
-                typeName += "?";
-            }
-
-            if (_typeMappings.ContainsKey(primitive.Name))
-            {
-                exportName = _typeMappings[primitive.Name];
+                exportName = _typeNameMappings[primitive.Name];
             }
             else
             {
-                exportName = primitive.NameForExport(_options.PrimitiveNameStyle);
+                exportName = primitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
             }
 
             string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
@@ -937,34 +654,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
-        /// <summary>Writes a header.</summary>
-        private void WriteHeader()
-        {
-            WriteIndented(0, "// <auto-generated/>");
-            WriteIndented(0, $"// Contents of: {_info.PackageName} version: {_info.VersionString}");
-            WriteIndented(1, $"// Using Model Inheritance: {_options.UseModelInheritance}");
-            WriteIndented(1, $"// Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
-            WriteIndented(1, $"// Nesting Type Definitions: {_options.NestTypeDefinitions}");
-            WriteIndented(1, $"// Primitive Naming Style: {_options.PrimitiveNameStyle}");
-            WriteIndented(1, $"// Complex Type / Resource Naming Style: {_options.ComplexTypeNameStyle}");
-            WriteIndented(1, $"// Interaction Naming Style: {_options.InteractionNameStyle}");
-            WriteIndented(1, $"// Extension Support: {_options.ExtensionSupport}");
-
-            if ((_options.ExportList != null) && _options.ExportList.Any())
-            {
-                string restrictions = string.Join("|", _options.ExportList);
-                WriteIndented(1, $"// Restricted to: {restrictions}");
-            }
-
-            WriteIndented(0, string.Empty);
-
-            WriteIndented(0, "using System;");
-            WriteIndented(0, "using System.Collections.Generic;");
-            WriteIndented(0, "using Newtonsoft.Json;");
-            WriteIndented(0, "using Newtonsoft.Json.Linq;");
-            WriteIndented(0, string.Empty);
-        }
-
         /// <summary>Writes the namespace open.</summary>
         private void WriteNamespaceOpen()
         {
@@ -979,17 +668,52 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes a header.</summary>
+        private void WriteHeaderComplex()
+        {
+            WriteGenerationComment();
+
+            WriteIndented(0, "using System;");
+            WriteIndented(0, "using System.Collections.Generic;");
+            WriteIndented(0, "using Hl7.Fhir.Introspection;");
+            WriteIndented(0, "using Hl7.Fhir.Validation;");
+            WriteIndented(0, "using System.Linq;");
+            WriteIndented(0, "using System.Runtime.Serialization;");
+            WriteIndented(0, "using Hl7.Fhir.Utility;");
+            WriteIndented(0, string.Empty);
+
+            WriteCopyright();
+
+            #if DISABLED    // 2020.07.01 - should be exporting everything with necessary summary tags
+            WriteIndented(0, "#pragma warning disable 1591 // suppress XML summary warnings ");
+            WriteIndented(0, string.Empty);
+            #endif
+        }
+
+        /// <summary>Writes a header.</summary>
         private void WriteHeaderPrimitive()
+        {
+            WriteGenerationComment();
+
+            WriteIndented(0, "using System;");
+            WriteIndented(0, "using System.Collections.Generic;");
+            WriteIndented(0, "using System.Linq;");
+            WriteIndented(0, "using System.Runtime.Serialization;");
+            WriteIndented(0, "using Hl7.Fhir.Introspection;");
+            WriteIndented(0, "using Hl7.Fhir.Serialization;");
+            WriteIndented(0, "using Hl7.Fhir.Specification;");
+            WriteIndented(0, "using Hl7.Fhir.Utility;");
+            WriteIndented(0, "using Hl7.Fhir.Validation;");
+            WriteIndented(0, string.Empty);
+
+            WriteCopyright();
+        }
+
+        /// <summary>Writes the generation comment.</summary>
+        private void WriteGenerationComment()
         {
             WriteIndented(0, "// <auto-generated/>");
             WriteIndented(0, $"// Contents of: {_info.PackageName} version: {_info.VersionString}");
-            WriteIndented(1, $"// Using Model Inheritance: {_options.UseModelInheritance}");
-            WriteIndented(1, $"// Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
-            WriteIndented(1, $"// Nesting Type Definitions: {_options.NestTypeDefinitions}");
-            WriteIndented(1, $"// Primitive Naming Style: {_options.PrimitiveNameStyle}");
-            WriteIndented(1, $"// Complex Type / Resource Naming Style: {_options.ComplexTypeNameStyle}");
-            WriteIndented(1, $"// Interaction Naming Style: {_options.InteractionNameStyle}");
-            WriteIndented(1, $"// Extension Support: {_options.ExtensionSupport}");
+            WriteIndented(0, $"// Generated by {_headerUserName} on {_headerGenerationDateTime}");
 
             if ((_options.ExportList != null) && _options.ExportList.Any())
             {
@@ -998,16 +722,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             WriteIndented(0, string.Empty);
-            WriteIndented(0, "using System;");
-            WriteIndented(0, "using System.Collections.Generic;");
-            WriteIndented(0, "using Hl7.Fhir.Introspection;");
-            WriteIndented(0, "using Hl7.Fhir.Validation;");
-            WriteIndented(0, "using System.Linq;");
-            WriteIndented(0, "using System.Runtime.Serialization;");
-            WriteIndented(0, "using Hl7.Fhir.Serialization;");
-            WriteIndented(0, "using Hl7.Fhir.Utility;");
-            WriteIndented(0, "using Hl7.Fhir.Specification;");
-            WriteIndented(0, string.Empty);
+        }
+
+        /// <summary>Writes the copyright.</summary>
+        private void WriteCopyright()
+        {
             WriteIndented(0, "/*");
             WriteIndented(0, "  Copyright (c) 2011+, HL7, Inc.");
             WriteIndented(0, "  All rights reserved.");
@@ -1035,7 +754,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteIndented(0, "  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE ");
             WriteIndented(0, "  POSSIBILITY OF SUCH DAMAGE.");
             WriteIndented(0, "  ");
-            WriteIndented(0, string.Empty);
             WriteIndented(0, "*/");
             WriteIndented(0, string.Empty);
         }
