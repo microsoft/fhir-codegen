@@ -81,6 +81,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "xhtml", "XHtml" },
         };
 
+        /// <summary>Types or resources to skip writing (Template-Model.tt#1334).</summary>
+        private static HashSet<string> _exclusionSet = new HashSet<string>()
+        {
+            "Base",
+            "CanonicalResource",
+            "DomainResource",
+            "Element",
+            "Extension",
+            "MetadataResource",
+            "Narrative",
+            "Resource",
+            "xhtml",
+        };
+
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
         private static readonly HashSet<string> _reservedWords = new HashSet<string>()
@@ -275,33 +289,36 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
 
             WritePrimitiveTypes(_info.PrimitiveTypes.Values, 1);
+
+            WriteComplexDataTypes(_info.ComplexTypes.Values, 1);
         }
 
-        /// <summary>Writes the complexes.</summary>
-        /// <param name="complexes">  The complexes.</param>
+        /// <summary>Writes the complex data types.</summary>
+        /// <param name="complexes">  The complex data types.</param>
         /// <param name="indentation">The indentation.</param>
-        /// <param name="isResource"> (Optional) True if is resource, false if not.</param>
-        private void WriteComplexes(
+        private void WriteComplexDataTypes(
             IEnumerable<FhirComplex> complexes,
-            int indentation,
-            bool isResource = false)
+            int indentation)
         {
             foreach (FhirComplex complex in complexes.OrderBy(c => c.Name))
             {
-                WriteComplex(complex, indentation, isResource);
+                if (_exclusionSet.Contains(complex.Name))
+                {
+                    continue;
+                }
+
+                WriteComplexDataType(complex, indentation);
             }
         }
 
-        /// <summary>Writes a complex.</summary>
-        /// <param name="complex">    The complex.</param>
+        /// <summary>Writes a complex data type.</summary>
+        /// <param name="complex">    The complex data type.</param>
         /// <param name="indentation">The indentation.</param>
-        private void WriteComplex(
+        private void WriteComplexDataType(
             FhirComplex complex,
-            int indentation,
-            bool isResource)
+            int indentation)
         {
-            #if DISABLED
-            string exportName = complex.NameForExport(_options.ComplexTypeNameStyle);
+            string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
 
             string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
 
@@ -309,154 +326,99 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 _writer = writer;
 
-                WriteHeaderComplex();
+                WriteHeaderComplexDataType();
 
                 WriteNamespaceOpen();
 
-                if (!string.IsNullOrEmpty(complex.Comment))
-                {
-                    WriteIndentedComment(indentation + 1, $"Primitive Type {complex.Name}\n{complex.Comment}");
-                }
-                else
-                {
-                    WriteIndentedComment(indentation + 1, $"Primitive Type {complex.Name}");
-                }
-
-                WriteIndented(indentation + 1, $"[FhirType(\"{complex.Name}\", IsResource=true)]");
-                WriteIndented(indentation + 1, "[DataContract]");
-
-
-                if (string.IsNullOrEmpty(complex.BaseTypeName) ||
-                    complex.Name.Equals("Element", StringComparison.Ordinal))
-                {
-                    WriteIndented(
-                        indentation,
-                        $"public partial class {exportName} {{");
-                }
-                else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
-                {
-                    WriteIndented(
-                        indentation,
-                        $"public class" +
-                            $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
-                            $" {{");
-                }
-                else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
-                {
-                    WriteIndented(
-                        indentation,
-                        $"public class" +
-                            $" {complex.NameForExport(_options.ComplexTypeNameStyle, true)}" +
-                            $" :" +
-                            $" {complex.TypeForExport(_options.ComplexTypeNameStyle, _primitiveTypeMap, false)} {{");
-                }
-                else
-                {
-                    WriteIndented(
-                        indentation + 1,
-                        $"public partial class" +
-                            $" {exportName}" +
-                            $" : {_namespace}.Primitive<{typeName}>," +
-                            $" System.ComponentModel.INotifyPropertyChanged");
-                }
-
-
-
-                // open class
-                WriteIndented(
-                    indentation + 1,
-                    "{");
-
-                WriteIndented(
-                    indentation + 2,
-                    "[NotMapped]");
-
-                WriteIndented(
-                    indentation + 2,
-                    $"public override string TypeName {{ get {{ return \"{primitive.Name}\"; }} }}");
-
-                WriteIndented(0, string.Empty);
-
-                if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
-                {
-                    WriteIndentedComment(
-                        indentation + 2,
-                        $"Must conform to pattern \"{primitive.ValidationRegEx}\"",
-                        false);
-
-                    WriteIndented(
-                        indentation + 2,
-                        $"public const string PATTERN = @\"{primitive.ValidationRegEx}\";");
-
-                    WriteIndented(0, string.Empty);
-                }
-
-                WriteIndented(
-                    indentation + 2,
-                    $"public {exportName}({typeName} value)");
-
-                WriteIndented(
-                    indentation + 2,
-                    "{");
-
-                WriteIndented(
-                    indentation + 3,
-                    "Value = value;");
-
-                WriteIndented(
-                    indentation + 2,
-                    "}");
-
-                WriteIndented(0, string.Empty);
-
-                WriteIndented(
-                    indentation + 2,
-                    $"public {exportName}(): this(({typeName})null) {{}}");
-
-                WriteIndented(0, string.Empty);
-
-                WriteIndentedComment(
-                    indentation + 2,
-                    "Primitive value of the element");
-
-                WriteIndented(
-                    indentation + 2,
-                    "[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
-
-                WriteIndented(
-                    indentation + 2,
-                    "[DataMemeber]");
-
-                WriteIndented(
-                    indentation + 2,
-                    $"public {typeName} Value");
-
-                WriteIndented(
-                    indentation + 2,
-                    "{");
-
-                WriteIndented(
-                    indentation + 3,
-                    $"get {{ return ({typeName})ObjectValue; }}");
-
-                WriteIndented(
-                    indentation + 3,
-                    "set { ObjectValue = value; OnPropertyChanged(\"Value\"); }");
-
-                WriteIndented(
-                    indentation + 2,
-                    "}");
-
-                // close class
-                WriteIndented(
-                    indentation + 1,
-                    "}");
+                WriteComponent(complex, indentation, exportName);
 
                 WriteNamespaceClose();
 
                 WriteFooter();
             }
-        #endif
+        }
+
+        /// <summary>Writes a component.</summary>
+        /// <param name="complex">    The complex data type.</param>
+        /// <param name="indentation">The indentation.</param>
+        /// <param name="exportName"> Name of the export.</param>
+        private void WriteComponent(
+            FhirComplex complex,
+            int indentation,
+            string exportName)
+        {
+            WriteIndentedComment(indentation + 1, $"{complex.ShortDescription}");
+
+            WriteIndented(indentation + 1, $"[FhirType(\"{complex.Name}\")]");
+            WriteIndented(indentation + 1, "[DataContract]");
+
+            switch (complex.BaseTypeName)
+            {
+                case "BackboneType":
+                    WriteIndented(
+                        indentation + 1,
+                        $"public partial class" +
+                            $" {exportName}" +
+                            $" : {_namespace}.BackboneElement," +
+                            $" System.ComponentModel.INotifyPropertyChanged");
+                    break;
+
+                default:
+                    if (_info.HasComplex(complex.BaseTypeName))
+                    {
+                        WriteIndented(
+                            indentation + 1,
+                            $"public partial class" +
+                                $" {exportName}" +
+                                $" : {_namespace}.{complex.BaseTypeName}," +
+                                $" System.ComponentModel.INotifyPropertyChanged");
+                    }
+                    else
+                    {
+                        WriteIndented(
+                            indentation + 1,
+                            $"public partial class" +
+                                $" {exportName}" +
+                                $" : {_namespace}.Element," +
+                                $" System.ComponentModel.INotifyPropertyChanged");
+                    }
+
+                    break;
+            }
+
+            // open class
+            WriteIndented(
+                indentation + 1,
+                "{");
+
+            WriteIndentedComment(
+                indentation + 2,
+                "FHIR Type Name");
+
+            WriteIndented(
+                indentation + 2,
+                "[NotMapped]");
+
+            WriteIndented(
+                indentation + 2,
+                $"public override string TypeName {{ get {{ return \"{complex.Name}\"; }} }}");
+
+            // check for nested components
+            if (complex.Components != null)
+            {
+                foreach (FhirComplex component in complex.Components.Values)
+                {
+                    string componentName = $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
+                    WriteComponent(component, indentation + 1, componentName);
+                }
+            }
+
+            WriteIndented(0, string.Empty);
+
+            // close class
+            WriteIndented(
+                indentation + 1,
+                "}");
         }
 
         /// <summary>Determine if we should write resource name.</summary>
@@ -506,6 +468,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             foreach (FhirPrimitive primitive in primitives)
             {
+                if (_exclusionSet.Contains(primitive.Name))
+                {
+                    continue;
+                }
+
                 WritePrimitiveType(primitive, indentation);
             }
         }
@@ -562,6 +529,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndented(
                     indentation + 1,
                     "{");
+
+                WriteIndentedComment(
+                    indentation + 2,
+                    "FHIR Type Name");
 
                 WriteIndented(
                     indentation + 2,
@@ -668,17 +639,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes a header.</summary>
-        private void WriteHeaderComplex()
+        private void WriteHeaderComplexDataType()
         {
             WriteGenerationComment();
 
             WriteIndented(0, "using System;");
             WriteIndented(0, "using System.Collections.Generic;");
-            WriteIndented(0, "using Hl7.Fhir.Introspection;");
-            WriteIndented(0, "using Hl7.Fhir.Validation;");
             WriteIndented(0, "using System.Linq;");
             WriteIndented(0, "using System.Runtime.Serialization;");
+            WriteIndented(0, "using Hl7.Fhir.Introspection;");
+            WriteIndented(0, "using Hl7.Fhir.Serialization;");
+            WriteIndented(0, "using Hl7.Fhir.Specification;");
             WriteIndented(0, "using Hl7.Fhir.Utility;");
+            WriteIndented(0, "using Hl7.Fhir.Validation;");
             WriteIndented(0, string.Empty);
 
             WriteCopyright();

@@ -531,6 +531,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
+        /// <summary>Query if 'key' has complex.</summary>
+        /// <param name="key">The key.</param>
+        /// <returns>True if complex, false if not.</returns>
+        public bool HasComplex(string key)
+        {
+            if (_primitiveTypesByName.ContainsKey(key))
+            {
+                return true;
+            }
+
+            if (_complexTypesByName.ContainsKey(key))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>Parses resource an object from the given string.</summary>
         /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
         /// <param name="json">The JSON.</param>

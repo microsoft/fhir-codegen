@@ -816,6 +816,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
+            string descriptionShort = sd.Description;
+            string definition = sd.Requirements;
+
             try
             {
                 List<string> contextElements = new List<string>();
@@ -824,14 +827,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     contextElements.AddRange(sd.Context);
                 }
 
+                if (sd.Snapshot.Element.Length > 0)
+                {
+                    descriptionShort = sd.Snapshot.Element[0].Short;
+                    definition = sd.Snapshot.Element[0].Definition;
+                }
+
                 // create a new complex type object
                 FhirComplex complex = new FhirComplex(
                     sd.Id,
                     sd.Name,
                     new Uri(sd.Url),
                     sd.Status,
-                    sd.Description,
-                    sd.Requirements,
+                    descriptionShort,
+                    definition,
                     string.Empty,
                     null,
                     contextElements);
