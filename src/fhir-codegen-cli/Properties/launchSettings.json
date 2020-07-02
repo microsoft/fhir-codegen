@@ -2,27 +2,27 @@
     "profiles": {
         "fhir-codegen-cli": {
             "commandName": "Project",
-            "commandLineArgs": "--load-r2 latest --load-r3 latest --load-r4 latest",
+            "commandLineArgs": "--load-r2 latest --load-r3 latest --load-r4 latest --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r2": {
             "commandName": "Project",
-            "commandLineArgs": "--output-file ..\\..\\generated\\r2.txt --load-r2 latest --fhir-spec-directory ..\\..\\fhirVersions",
+            "commandLineArgs": "--output-file ..\\..\\generated\\R2.txt --load-r2 latest --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r3": {
             "commandName": "Project",
-            "commandLineArgs": "--output-file ..\\..\\generated\\r3.txt --load-r3 latest --fhir-spec-directory ..\\..\\fhirVersions",
+            "commandLineArgs": "--output-file ..\\..\\generated\\R3.txt --load-r3 latest --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-file ..\\..\\generated\\r4.txt --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions",
+            "commandLineArgs": "--output-file ..\\..\\generated\\R4.txt --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r5": {
             "commandName": "Project",
-            "commandLineArgs": "--output-file ..\\..\\generated\\r5.txt --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions",
+            "commandLineArgs": "--output-file ..\\..\\generated\\R5.txt --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "ts2": {

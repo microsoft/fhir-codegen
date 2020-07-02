@@ -71,7 +71,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private HashSet<string> _exportedCodes = new HashSet<string>();
 
         /// <summary>The currently in-use text writer.</summary>
-        private TextWriter _writer;
+        private ExportStreamWriter _writer;
 
         /// <summary>Name of the language.</summary>
         private const string _languageName = "TypeScript";
@@ -192,18 +192,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // create a filename for writing (single file for now)
             string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.ts");
 
-            using (StreamWriter writer = new StreamWriter(new FileStream(filename, FileMode.Create)))
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
             {
                 _writer = writer;
 
                 WriteHeader();
 
-                WriteComplexes(_info.ComplexTypes.Values, 0, false);
-                WriteComplexes(_info.Resources.Values, 0, true);
+                WriteComplexes(_info.ComplexTypes.Values, false);
+                WriteComplexes(_info.Resources.Values, true);
 
                 if (_exportEnums)
                 {
-                    WriteValueSets(_info.ValueSetsByUrl.Values, 0);
+                    WriteValueSets(_info.ValueSetsByUrl.Values);
                 }
 
                 WriteFooter();
@@ -211,11 +212,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes a value sets.</summary>
-        /// <param name="valueSets">  List of valueSetCollections.</param>
-        /// <param name="indentation">The indentation.</param>
+        /// <param name="valueSets">List of valueSetCollections.</param>
         private void WriteValueSets(
-            IEnumerable<FhirValueSetCollection> valueSets,
-            int indentation)
+            IEnumerable<FhirValueSetCollection> valueSets)
         {
             Dictionary<string, WrittenCodeInfo> writtenCodesAndNames = new Dictionary<string, WrittenCodeInfo>();
             HashSet<string> writtenNames = new HashSet<string>();
@@ -226,7 +225,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     WriteValueSet(
                         vs,
-                        indentation,
                         ref writtenCodesAndNames,
                         ref writtenNames);
                 }
@@ -235,13 +233,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Writes a value set.</summary>
         /// <param name="vs">                  The value set.</param>
-        /// <param name="indentation">         The indentation.</param>
         /// <param name="writtenCodesAndNames">[in,out] The written codes, to prevent duplication
         ///  without writing all code systems.</param>
         /// <param name="writtenNames">        [in,out] List of names of the writtens.</param>
         private void WriteValueSet(
             FhirValueSet vs,
-            int indentation,
             ref Dictionary<string, WrittenCodeInfo> writtenCodesAndNames,
             ref HashSet<string> writtenNames)
         {
@@ -305,42 +301,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     new WrittenCodeInfo() { Name = codeName, ConstName = constName });
                 writtenNames.Add(constName);
 
-                WriteIndented(
-                    indentation,
-                    $"const {constName}: Coding = {{");
+                _writer.WriteLineI($"const {constName}: Coding = {{");
+                _writer.IncreaseIndent();
 
-                WriteIndented(
-                    indentation + 1,
-                    $"code: \"{codeValue}\",");
+                _writer.WriteLineI($"code: \"{codeValue}\",");
 
                 if (!string.IsNullOrEmpty(concept.Display))
                 {
-                    WriteIndented(
-                        indentation + 1,
-                        $"display: \"{FhirUtils.SanitizeForQuoted(concept.Display)}\",");
+                    _writer.WriteLineI($"display: \"{FhirUtils.SanitizeForQuoted(concept.Display)}\",");
                 }
 
-                WriteIndented(
-                    indentation + 1,
-                    $"system: \"{concept.System}\"");
+                _writer.WriteLineI($"system: \"{concept.System}\"");
 
-                WriteIndented(
-                    indentation,
-                    "};");
+                _writer.DecreaseIndent();
+
+                _writer.WriteLineI("};");
             }
 
             if (!string.IsNullOrEmpty(vs.Description))
             {
-                WriteIndentedComment(indentation, vs.Description);
+                WriteIndentedComment(vs.Description);
             }
             else
             {
-                WriteIndentedComment(indentation, $"Value Set: {vs.URL}|{vs.Version}");
+                WriteIndentedComment($"Value Set: {vs.URL}|{vs.Version}");
             }
 
-            WriteIndented(
-                indentation,
-                $"export const {vsName} = {{");
+            _writer.WriteLineI($"export const {vsName} = {{");
+            _writer.IncreaseIndent();
 
             bool prefixWithSystem = vs.ReferencedCodeSystems.Count > 1;
             HashSet<string> usedValues = new HashSet<string>();
@@ -352,9 +340,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (!string.IsNullOrEmpty(concept.Definition))
                 {
-                    WriteIndentedComment(
-                        indentation + 1,
-                        concept.Definition);
+                    WriteIndentedComment(concept.Definition);
                 }
 
                 string name;
@@ -385,37 +371,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 usedValues.Add(name);
 
-                WriteIndented(
-                    indentation + 1,
-                    $"{name}: {writtenCodesAndNames[codeKey].ConstName},");
+                _writer.WriteLineI($"{name}: {writtenCodesAndNames[codeKey].ConstName},");
             }
 
-            WriteIndented(
-                indentation,
-                "};");
+            _writer.DecreaseIndent();
+
+            _writer.WriteLineI("};");
         }
 
         /// <summary>Writes the complexes.</summary>
-        /// <param name="complexes">  The complexes.</param>
-        /// <param name="indentation">The indentation.</param>
-        /// <param name="isResource"> (Optional) True if is resource, false if not.</param>
+        /// <param name="complexes"> The complexes.</param>
+        /// <param name="isResource">(Optional) True if is resource, false if not.</param>
         private void WriteComplexes(
             IEnumerable<FhirComplex> complexes,
-            int indentation,
             bool isResource = false)
         {
             foreach (FhirComplex complex in complexes.OrderBy(c => c.Name))
             {
-                WriteComplex(complex, indentation, isResource);
+                WriteComplex(complex, isResource);
             }
         }
 
         /// <summary>Writes a complex.</summary>
-        /// <param name="complex">    The complex.</param>
-        /// <param name="indentation">The indentation.</param>
+        /// <param name="complex">   The complex.</param>
+        /// <param name="isResource">True if is resource, false if not.</param>
         private void WriteComplex(
             FhirComplex complex,
-            int indentation,
             bool isResource)
         {
             // check for nested components
@@ -423,34 +404,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {
-                    WriteComplex(component, indentation, false);
+                    WriteComplex(component, false);
                 }
             }
 
             if (!string.IsNullOrEmpty(complex.Comment))
             {
-                WriteIndentedComment(indentation, complex.Comment);
+                WriteIndentedComment(complex.Comment);
             }
 
             if (string.IsNullOrEmpty(complex.BaseTypeName) ||
                 complex.Name.Equals("Element", StringComparison.Ordinal))
             {
-                WriteIndented(
-                    indentation,
-                    $"export interface {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase)} {{");
+                _writer.WriteLineI($"export interface {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase)} {{");
             }
             else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
             {
-                WriteIndented(
-                    indentation,
+                _writer.WriteLineI(
                     $"export interface" +
                         $" {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true)}" +
                         $" {{");
             }
             else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
             {
-                WriteIndented(
-                    indentation,
+                _writer.WriteLineI(
                     $"export interface" +
                         $" {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true)}" +
                         $" extends" +
@@ -458,41 +435,42 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                WriteIndented(
-                    indentation,
+                _writer.WriteLineI(
                     $"export interface" +
                         $" {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true)}" +
                         $" extends" +
                         $" {complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap)} {{");
             }
 
+            _writer.IncreaseIndent();
+
             if (isResource && ShouldWriteResourceName(complex.Name))
             {
-                WriteIndented(indentation + 1, "/** Resource Type Name (for serialization) */");
-                WriteIndented(indentation + 1, $"resourceType: '{complex.Name}'");
+                _writer.WriteLineI("/** Resource Type Name (for serialization) */");
+                _writer.WriteLineI($"resourceType: '{complex.Name}'");
             }
 
             // write elements
-            WriteElements(complex, indentation + 1, out List<FhirElement> elementsWithCodes);
+            WriteElements(complex, out List<FhirElement> elementsWithCodes);
+
+            _writer.DecreaseIndent();
 
             // close interface (type)
-            WriteIndented(indentation, "}");
+            _writer.WriteLineI("}");
 
             if (_exportEnums)
             {
                 foreach (FhirElement element in elementsWithCodes)
                 {
-                    WriteCode(element, indentation);
+                    WriteCode(element);
                 }
             }
         }
 
         /// <summary>Writes a code.</summary>
-        /// <param name="element">    The element.</param>
-        /// <param name="indentation">The indentation.</param>
+        /// <param name="element">The element.</param>
         private void WriteCode(
-            FhirElement element,
-            int indentation)
+            FhirElement element)
         {
             string codeName = FhirUtils.ToConvention(
                 $"{element.Path}.Codes",
@@ -511,20 +489,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _exportedCodes.Add(codeName);
 
-            WriteIndented(indentation, $"/**");
-            WriteIndented(indentation, $" * Code Values for the {element.Path} field");
-            WriteIndented(indentation, $" */");
+            _writer.WriteLineI($"/**");
+            _writer.WriteLineI($" * Code Values for the {element.Path} field");
+            _writer.WriteLineI($" */");
 
-            WriteIndented(indentation, $"export enum {codeName} {{");
+            _writer.WriteLineI($"export enum {codeName} {{");
 
+            _writer.IncreaseIndent();
             foreach (string code in element.Codes)
             {
                 FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
-                WriteIndented(indentation + 1, $"{name.ToUpperInvariant()} = \"{value}\",");
+                _writer.WriteLineI($"{name.ToUpperInvariant()} = \"{value}\",");
             }
 
-            WriteIndented(indentation, "}");
+            _writer.DecreaseIndent();
+
+            _writer.WriteLineI("}");
         }
 
         /// <summary>Determine if we should write resource name.</summary>
@@ -545,11 +526,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes the elements.</summary>
-        /// <param name="complex">    The complex.</param>
-        /// <param name="indentation">The indentation.</param>
+        /// <param name="complex">          The complex.</param>
+        /// <param name="elementsWithCodes">[out] The elements with codes.</param>
         private void WriteElements(
             FhirComplex complex,
-            int indentation,
             out List<FhirElement> elementsWithCodes)
         {
             elementsWithCodes = new List<FhirElement>();
@@ -561,7 +541,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WriteElement(complex, element, indentation);
+                WriteElement(complex, element);
 
                 if ((element.Codes != null) && (element.Codes.Count > 0))
                 {
@@ -571,13 +551,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes an element.</summary>
-        /// <param name="complex">    The complex.</param>
-        /// <param name="element">    The element.</param>
-        /// <param name="indentation">The indentation.</param>
+        /// <param name="complex">The complex.</param>
+        /// <param name="element">The element.</param>
         private void WriteElement(
             FhirComplex complex,
-            FhirElement element,
-            int indentation)
+            FhirElement element)
         {
             string optionalFlagString = element.IsOptional ? "?" : string.Empty;
             string arrayFlagString = element.IsArray ? "[]" : string.Empty;
@@ -593,16 +571,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 if (!string.IsNullOrEmpty(element.Comment))
                 {
-                    WriteIndentedComment(indentation, element.Comment);
+                    WriteIndentedComment(element.Comment);
                 }
 
-                WriteIndented(
-                    indentation,
-                    $"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                _writer.WriteLineI($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
 
                 if (RequiresExtension(kvp.Value))
                 {
-                    WriteIndented(indentation, $"_{kvp.Key}?: Element;");
+                    _writer.WriteLineI($"_{kvp.Key}?: Element;");
                 }
             }
         }
@@ -628,27 +604,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a header.</summary>
         private void WriteHeader()
         {
-            WriteIndented(0, "// <auto-generated/>");
-            WriteIndented(0, $"// Contents of: {_info.PackageName} version: {_info.VersionString}");
-            WriteIndented(1, $"// Using Model Inheritance: {_options.UseModelInheritance}");
-            WriteIndented(1, $"// Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
-            WriteIndented(1, $"// Nesting Type Definitions: {_options.NestTypeDefinitions}");
-            WriteIndented(1, $"// Primitive Naming Style: {FhirTypeBase.NamingConvention.None}");
-            WriteIndented(1, $"// Complex Type / Resource Naming Style: {FhirTypeBase.NamingConvention.PascalCase}");
-            WriteIndented(1, $"// Interaction Naming Style: {FhirTypeBase.NamingConvention.None}");
-            WriteIndented(1, $"// Extension Support: {_options.ExtensionSupport}");
+            _writer.WriteLineI("// <auto-generated/>");
+            _writer.WriteLineI($"// Contents of: {_info.PackageName} version: {_info.VersionString}");
+            _writer.WriteLineI($"  // Using Model Inheritance: {_options.UseModelInheritance}");
+            _writer.WriteLineI($"  // Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
+            _writer.WriteLineI($"  // Nesting Type Definitions: {_options.NestTypeDefinitions}");
+            _writer.WriteLineI($"  // Primitive Naming Style: {FhirTypeBase.NamingConvention.None}");
+            _writer.WriteLineI($"  // Complex Type / Resource Naming Style: {FhirTypeBase.NamingConvention.PascalCase}");
+            _writer.WriteLineI($"  // Interaction Naming Style: {FhirTypeBase.NamingConvention.None}");
+            _writer.WriteLineI($"  // Extension Support: {_options.ExtensionSupport}");
 
             if ((_options.ExportList != null) && _options.ExportList.Any())
             {
                 string restrictions = string.Join("|", _options.ExportList);
-                WriteIndented(1, $"// Restricted to: {restrictions}");
+                _writer.WriteLineI($"  // Restricted to: {restrictions}");
             }
 
             if ((_options.LanguageOptions != null) && (_options.LanguageOptions.Count > 0))
             {
                 foreach (KeyValuePair<string, string> kvp in _options.LanguageOptions)
                 {
-                    WriteIndented(1, $"// Language option: \"{kvp.Key}\" = \"{kvp.Value}\"");
+                    _writer.WriteLineI($"  // Language option: \"{kvp.Key}\" = \"{kvp.Value}\"");
                 }
             }
         }
@@ -660,78 +636,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes an indented comment.</summary>
-        /// <param name="indentation">The indentation.</param>
-        /// <param name="value">      The value.</param>
-        private void WriteIndentedComment(int indentation, string value)
+        /// <param name="value">The value.</param>
+        private void WriteIndentedComment(string value)
         {
-            string prefix = $"{new string(' ', indentation * 2)} * ";
+            _writer.WriteLineI($"/**");
 
-            WriteIndented(indentation, $"/**");
-            _writer.Write(prefix);
+            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n");
 
-            prefix = $"\n{prefix}";
-
-            _writer.WriteLine(value.Replace("\n", prefix).Replace("\r", string.Empty));
-            WriteIndented(indentation, $" */");
-        }
-
-        /// <summary>
-        /// Writes a line indented, convenience function for clarity in this language output.
-        /// </summary>
-        /// <param name="indentation">The indentation.</param>
-        /// <param name="value">      The value.</param>
-        private void WriteIndented(int indentation, string value)
-        {
-            switch (indentation)
+            string[] lines = comment.Split('\n');
+            foreach (string line in lines)
             {
-                case 0:
-                    _writer.WriteLine(value);
-                    break;
-
-                case 1:
-                    _writer.WriteLine($"  {value}");
-                    break;
-
-                case 2:
-                    _writer.WriteLine($"    {value}");
-                    break;
-
-                case 3:
-                    _writer.WriteLine($"      {value}");
-                    break;
-
-                case 4:
-                    _writer.WriteLine($"        {value}");
-                    break;
-
-                case 5:
-                    _writer.WriteLine($"          {value}");
-                    break;
-
-                case 6:
-                    _writer.WriteLine($"            {value}");
-                    break;
-
-                case 7:
-                    _writer.WriteLine($"              {value}");
-                    break;
-
-                case 8:
-                    _writer.WriteLine($"                {value}");
-                    break;
-
-                case 9:
-                    _writer.WriteLine($"                  {value}");
-                    break;
-
-                case 10:
-                    _writer.WriteLine($"                      {value}");
-                    break;
-
-                default:
-                    _writer.WriteLine($"{new string(' ', indentation * 2)}{value}");
-                    break;
+                _writer.WriteI(" * ");
+                _writer.WriteLine(line);
             }
+
+            _writer.WriteLineI($" */");
         }
 
         /// <summary>Information about written codes.</summary>
