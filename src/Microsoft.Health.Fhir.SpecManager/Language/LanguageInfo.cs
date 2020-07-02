@@ -58,18 +58,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The reserved words.</value>
         private static readonly HashSet<string> _reservedWords = new HashSet<string>();
 
-        /// <summary>This language supports all naming styles on all object types.</summary>
-        private static readonly HashSet<FhirTypeBase.NamingConvention> _allNamingStyles = new HashSet<FhirTypeBase.NamingConvention>()
-        {
-            FhirTypeBase.NamingConvention.None,
-            FhirTypeBase.NamingConvention.FhirDotNotation,
-            FhirTypeBase.NamingConvention.PascalDotNotation,
-            FhirTypeBase.NamingConvention.PascalCase,
-            FhirTypeBase.NamingConvention.CamelCase,
-            FhirTypeBase.NamingConvention.UpperCase,
-            FhirTypeBase.NamingConvention.LowerCase,
-        };
-
         /// <summary>Gets the name of the language.</summary>
         /// <value>The name of the language.</value>
         string ILanguage.LanguageName => _languageName;
@@ -100,29 +88,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The reserved words.</value>
         HashSet<string> ILanguage.ReservedWords => _reservedWords;
 
-        /// <summary>Gets the primitive configuration.</summary>
-        /// <value>The primitive configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedPrimitiveNameStyles => _allNamingStyles;
+        /// <summary>
+        /// Gets a list of FHIR class types that the language WILL export, regardless of user choices.
+        /// Used to provide information to users.
+        /// </summary>
+        List<ExporterOptions.FhirExportClassType> ILanguage.RequiredExportClassTypes => new List<ExporterOptions.FhirExportClassType>()
+        {
+            ExporterOptions.FhirExportClassType.PrimitiveType,
+            ExporterOptions.FhirExportClassType.ComplexType,
+            ExporterOptions.FhirExportClassType.Resource,
+            ExporterOptions.FhirExportClassType.Interaction,
+            ExporterOptions.FhirExportClassType.Enum,
+        };
 
-        /// <summary>Gets the complex type configuration.</summary>
-        /// <value>The complex type configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedComplexTypeNameStyles => _allNamingStyles;
+        /// <summary>
+        /// Gets a list of FHIR class types that the language CAN export, depending on user choices.
+        /// </summary>
+        List<ExporterOptions.FhirExportClassType> ILanguage.OptionalExportClassTypes => new List<ExporterOptions.FhirExportClassType>();
 
-        /// <summary>Gets the supported element name styles.</summary>
-        /// <value>The supported element name styles.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedElementNameStyles => _allNamingStyles;
-
-        /// <summary>Gets the resource configuration.</summary>
-        /// <value>The resource configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedResourceNameStyles => _allNamingStyles;
-
-        /// <summary>Gets the interaction configuration.</summary>
-        /// <value>The interaction configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedInteractionNameStyles => _allNamingStyles;
-
-        /// <summary>Gets the supported enum styles.</summary>
-        /// <value>The supported enum styles.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedEnumStyles => _allNamingStyles;
+        /// <summary>Gets language-specific options and their descriptions.</summary>
+        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>();
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -251,8 +236,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteIndented(
                 indentation,
                 $"- {primitive.Name}:" +
-                    $" {primitive.NameForExport(_options.PrimitiveNameStyle)}" +
-                    $"::{primitive.TypeForExport(_options.PrimitiveNameStyle, _primitiveTypeMap)}");
+                    $" {primitive.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}" +
+                    $"::{primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap)}");
 
             // check for regex
             if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
@@ -445,7 +430,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 propertyType = element.BaseTypeName;
             }
 
-            WriteIndented(indentation, $"- {element.NameForExport(_options.ElementNameStyle)}[{element.FhirCardinality}]: {propertyType}");
+            WriteIndented(indentation, $"- {element.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}[{element.FhirCardinality}]: {propertyType}");
 
             // check for regex
             if (!string.IsNullOrEmpty(element.ValidationRegEx))
@@ -544,18 +529,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteHeader()
         {
             WriteIndented(0, $"Contents of: {_info.PackageName} version: {_info.VersionString}");
-            WriteIndented(1, $"  Using Model Inheritance: {_options.UseModelInheritance}");
-            WriteIndented(1, $"  Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
-            WriteIndented(1, $"  Nesting Type Definitions: {_options.NestTypeDefinitions}");
-            WriteIndented(1, $"  Primitive Naming Style: {_options.PrimitiveNameStyle}");
-            WriteIndented(1, $"  Complex Type / Resource Naming Style: {_options.ComplexTypeNameStyle}");
-            WriteIndented(1, $"  Interaction Naming Style: {_options.InteractionNameStyle}");
-            WriteIndented(1, $"  Extension Support: {_options.ExtensionSupport}");
+            WriteIndented(1, $"Using Model Inheritance: {_options.UseModelInheritance}");
+            WriteIndented(1, $"Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
+            WriteIndented(1, $"Nesting Type Definitions: {_options.NestTypeDefinitions}");
+            WriteIndented(1, $"Primitive Naming Style: {FhirTypeBase.NamingConvention.CamelCase}");
+            WriteIndented(1, $"Element Naming Style: {FhirTypeBase.NamingConvention.CamelCase}");
+            WriteIndented(1, $"Complex Type / Resource Naming Style: {FhirTypeBase.NamingConvention.PascalCase}");
+            WriteIndented(1, $"Enum Naming Style: {FhirTypeBase.NamingConvention.FhirDotNotation}");
+            WriteIndented(1, $"Interaction Naming Style: {FhirTypeBase.NamingConvention.PascalCase}");
+            WriteIndented(1, $"Extension Support: {_options.ExtensionSupport}");
 
             if ((_options.ExportList != null) && _options.ExportList.Any())
             {
                 string restrictions = string.Join("|", _options.ExportList);
                 WriteIndented(1, $"  Restricted to: {restrictions}");
+            }
+
+            if ((_options.LanguageOptions != null) && (_options.LanguageOptions.Count > 0))
+            {
+                foreach (KeyValuePair<string, string> kvp in _options.LanguageOptions)
+                {
+                    WriteIndented(1, $"// Language option: \"{kvp.Key}\" = \"{kvp.Value}\"");
+                }
             }
         }
 

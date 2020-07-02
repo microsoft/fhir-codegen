@@ -32,7 +32,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             foreach (Type localType in localTypes)
             {
                 ILanguage language = (ILanguage)Activator.CreateInstance(localType);
-                _languagesByName.Add(language.LanguageName.ToLowerInvariant(), language);
+                _languagesByName.Add(language.LanguageName.ToUpperInvariant(), language);
             }
 
             _initialized = true;
@@ -55,9 +55,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return null;
             }
 
-            if (_languagesByName.ContainsKey(name.ToLowerInvariant()))
+            if (_languagesByName.ContainsKey(name.ToUpperInvariant()))
             {
-                languages.Add(_languagesByName[name.ToLowerInvariant()]);
+                languages.Add(_languagesByName[name.ToUpperInvariant()]);
                 return languages;
             }
 
@@ -67,9 +67,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 foreach (string n in names)
                 {
-                    if (_languagesByName.ContainsKey(n.ToLowerInvariant()))
+                    if (_languagesByName.ContainsKey(n.ToUpperInvariant()))
                     {
-                        languages.Add(_languagesByName[n.ToLowerInvariant()]);
+                        languages.Add(_languagesByName[n.ToUpperInvariant()]);
                     }
                 }
             }

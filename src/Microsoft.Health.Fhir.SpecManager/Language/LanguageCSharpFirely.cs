@@ -221,29 +221,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The reserved words.</value>
         HashSet<string> ILanguage.ReservedWords => _reservedWords;
 
-        /// <summary>Gets the primitive configuration.</summary>
-        /// <value>The primitive configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedPrimitiveNameStyles => _supportedStyles;
+        /// <summary>
+        /// Gets a list of FHIR class types that the language WILL export, regardless of user choices.
+        /// Used to provide information to users.
+        /// </summary>
+        List<ExporterOptions.FhirExportClassType> ILanguage.RequiredExportClassTypes => new List<ExporterOptions.FhirExportClassType>()
+        {
+            ExporterOptions.FhirExportClassType.PrimitiveType,
+            ExporterOptions.FhirExportClassType.ComplexType,
+            ExporterOptions.FhirExportClassType.Resource,
+            ExporterOptions.FhirExportClassType.Enum,
+        };
 
-        /// <summary>Gets the complex type configuration.</summary>
-        /// <value>The complex type configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedComplexTypeNameStyles => _supportedStyles;
+        /// <summary>
+        /// Gets a list of FHIR class types that the language CAN export, depending on user choices.
+        /// </summary>
+        List<ExporterOptions.FhirExportClassType> ILanguage.OptionalExportClassTypes => new List<ExporterOptions.FhirExportClassType>();
 
-        /// <summary>Gets the supported element name styles.</summary>
-        /// <value>The supported element name styles.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedElementNameStyles => _supportedStyles;
-
-        /// <summary>Gets the resource configuration.</summary>
-        /// <value>The resource configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedResourceNameStyles => _supportedStyles;
-
-        /// <summary>Gets the interaction configuration.</summary>
-        /// <value>The interaction configuration.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedInteractionNameStyles => _notSupportedStyle;
-
-        /// <summary>Gets the supported enum styles.</summary>
-        /// <value>The supported enum styles.</value>
-        HashSet<FhirTypeBase.NamingConvention> ILanguage.SupportedEnumStyles => _supportedStyles;
+        /// <summary>Gets language-specific options and their descriptions.</summary>
+        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>();
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -259,31 +255,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _info = info;
             _options = options;
             _exportDirectory = exportDirectory;
-
-            if (!((ILanguage)this).SupportedPrimitiveNameStyles.Contains(options.PrimitiveNameStyle))
-            {
-                throw new NotSupportedException($"Unsupported primitive naming style: {options.PrimitiveNameStyle}");
-            }
-
-            if (!((ILanguage)this).SupportedComplexTypeNameStyles.Contains(options.ComplexTypeNameStyle))
-            {
-                throw new NotSupportedException($"Unsupported complex naming style: {options.ComplexTypeNameStyle}");
-            }
-
-            if (!((ILanguage)this).SupportedElementNameStyles.Contains(options.ElementNameStyle))
-            {
-                throw new NotSupportedException($"Unsupported element naming style: {options.ElementNameStyle}");
-            }
-
-            if (!((ILanguage)this).SupportedInteractionNameStyles.Contains(options.InteractionNameStyle))
-            {
-                throw new NotSupportedException($"Unsupported interaction naming style: {options.InteractionNameStyle}");
-            }
-
-            if (!((ILanguage)this).SupportedEnumStyles.Contains(options.EnumStyle))
-            {
-                throw new NotSupportedException($"Unsupported enum naming style: {options.EnumStyle}");
-            }
 
             _headerUserName = Environment.UserName;
             _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
@@ -347,16 +318,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             int indentation,
             string exportName)
         {
-            WriteIndentedComment(indentation + 1, $"{complex.ShortDescription}");
+            WriteIndentedComment(indentation, $"{complex.ShortDescription}");
 
-            WriteIndented(indentation + 1, $"[FhirType(\"{complex.Name}\")]");
-            WriteIndented(indentation + 1, "[DataContract]");
+            WriteIndented(indentation, $"[FhirType(\"{complex.Name}\")]");
+            WriteIndented(indentation, "[DataContract]");
 
             switch (complex.BaseTypeName)
             {
                 case "BackboneType":
                     WriteIndented(
-                        indentation + 1,
+                        indentation,
                         $"public partial class" +
                             $" {exportName}" +
                             $" : {_namespace}.BackboneElement," +
@@ -367,7 +338,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     if (_info.HasComplex(complex.BaseTypeName))
                     {
                         WriteIndented(
-                            indentation + 1,
+                            indentation,
                             $"public partial class" +
                                 $" {exportName}" +
                                 $" : {_namespace}.{complex.BaseTypeName}," +
@@ -376,7 +347,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     else
                     {
                         WriteIndented(
-                            indentation + 1,
+                            indentation,
                             $"public partial class" +
                                 $" {exportName}" +
                                 $" : {_namespace}.Element," +
@@ -388,20 +359,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             // open class
             WriteIndented(
-                indentation + 1,
+                indentation,
                 "{");
 
-            WriteIndentedComment(
-                indentation + 2,
-                "FHIR Type Name");
-
-            WriteIndented(
-                indentation + 2,
-                "[NotMapped]");
-
-            WriteIndented(
-                indentation + 2,
-                $"public override string TypeName {{ get {{ return \"{complex.Name}\"; }} }}");
+            WritePropertyTypeName(indentation + 1, complex.Name);
 
             // check for nested components
             if (complex.Components != null)
@@ -409,16 +370,231 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 foreach (FhirComplex component in complex.Components.Values)
                 {
                     string componentName = $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
-                    WriteComponent(component, indentation + 1, componentName);
+                    WriteBackboneComponent(component, indentation + 1, componentName);
                 }
             }
 
             WriteIndented(0, string.Empty);
 
+            WriteEnums(complex, indentation + 1);
+            WriteElements(complex, indentation);
+
             // close class
             WriteIndented(
-                indentation + 1,
+                indentation,
                 "}");
+        }
+
+        /// <summary>Writes a component.</summary>
+        /// <param name="complex">    The complex data type.</param>
+        /// <param name="indentation">The indentation.</param>
+        /// <param name="exportName"> Name of the export.</param>
+        private void WriteBackboneComponent(
+            FhirComplex complex,
+            int indentation,
+            string exportName)
+        {
+            WriteIndentedComment(indentation, $"{complex.ShortDescription}");
+
+            WriteIndented(indentation, $"[FhirType(\"{exportName}\", NamedBackboneElement=true)]");
+            WriteIndented(indentation, "[DataContract]");
+
+            WriteIndented(
+                indentation,
+                $"public partial class" +
+                    $" {exportName}" +
+                    $" : {_namespace}.Element," +
+                    $" System.ComponentModel.INotifyPropertyChanged," +
+                    $" IBackboneElement");
+
+            // open class
+            WriteIndented(
+                indentation,
+                "{");
+
+            WritePropertyTypeName(indentation + 1, exportName);
+
+            // check for nested components
+            if (complex.Components != null)
+            {
+                foreach (FhirComplex component in complex.Components.Values)
+                {
+                    string componentName = $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
+                    WriteBackboneComponent(component, indentation + 1, componentName);
+                }
+            }
+
+            WriteEnums(complex, indentation + 1);
+            WriteElements(complex, indentation + 1);
+
+            // close class
+            WriteIndented(
+                indentation,
+                "}");
+        }
+
+        private void WriteEnums(
+            FhirComplex complex,
+            int indentation)
+        {
+            foreach (FhirElement element in complex.Elements.Values)
+            {
+                if ((!string.IsNullOrEmpty(element.ValueSet)) &&
+                    _info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+                {
+                    WriteValueSet(vs, indentation);
+
+                    continue;
+                }
+            }
+        }
+
+        /// <summary>Writes a value set.</summary>
+        /// <param name="vs">         The vs.</param>
+        /// <param name="indentation">The indentation.</param>
+        private void WriteValueSet(
+            FhirValueSet vs,
+            int indentation)
+        {
+            string name = vs.Name ?? vs.Id;
+            string nameSanitized = FhirUtils.SanitizeForProperty(name, _reservedWords);
+
+            nameSanitized = FhirUtils.SanitizedToConvention(nameSanitized, FhirTypeBase.NamingConvention.PascalCase);
+
+            if (vs.ReferencedCodeSystems.Count == 1)
+            {
+                WriteIndentedComment(indentation, $"{vs.Description}\n(system: {vs.ReferencedCodeSystems.First()})");
+            }
+            else
+            {
+                WriteIndentedComment(indentation, $"{vs.Description}\n(systems: {vs.ReferencedCodeSystems.Count})");
+            }
+
+            WriteIndented(
+                indentation,
+                $"[FhirEnumeration(\"{name}\")]");
+
+            WriteIndented(
+                indentation,
+                $"public enum {nameSanitized}");
+
+            WriteIndented(
+                indentation,
+                "{");
+
+            HashSet<string> usedValues = new HashSet<string>();
+
+            foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
+            {
+                string codeName = FhirUtils.SanitizeForProperty(concept.Code, _reservedWords);
+                string pascal = FhirUtils.ToConvention(codeName, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+                string codeValue = FhirUtils.SanitizeForValue(concept.Code);
+
+                string comment = concept.Definition ?? "MISSING DESCRIPTION";
+
+                string display = FhirUtils.SanitizeForValue(concept.Display);
+
+                WriteIndentedComment(
+                    indentation + 1,
+                    comment);
+
+                WriteIndented(
+                    indentation + 1,
+                    $"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+
+                WriteIndented(
+                    indentation + 1,
+                    $"{pascal},");
+            }
+
+            WriteIndented(
+                indentation,
+                "}");
+        }
+
+        /// <summary>Writes the elements.</summary>
+        /// <param name="complex">    The complex data type.</param>
+        /// <param name="indentation">The indentation.</param>
+        private void WriteElements(
+            FhirComplex complex,
+            int indentation)
+        {
+            int order = 30;
+
+            foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.FieldOrder))
+            {
+                order += 10;
+                WriteElement(complex, element, indentation, order);
+            }
+        }
+
+        private void WriteElement(
+            FhirComplex complex,
+            FhirElement element,
+            int indentation,
+            int order)
+        {
+            return;
+            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+
+            Dictionary<string, string> values = element.NamesAndTypesForExport(
+                FhirTypeBase.NamingConvention.PascalCase,
+                FhirTypeBase.NamingConvention.PascalCase,
+                false,
+                string.Empty,
+                complex.Components.ContainsKey(element.Path));
+
+            WriteIndentedComment(indentation, $"{element.ShortDescription}");
+
+            string inSummary = element.IsSummary ? ", InSummary=true" : string.Empty;
+
+            WriteIndented(
+                indentation,
+                $"[FhirElement(\"{element.Name}\"{inSummary}, Order={order})]");
+
+            WriteIndented(
+                indentation,
+                "[DataMember]");
+
+            WriteIndented(
+                indentation,
+                $"public {_namespace}.{element.BaseTypeName} {pascal}");
+
+            WriteIndented(
+                indentation,
+                "{");
+
+            WriteIndented(
+                indentation + 1,
+                $"get {{ return _{pascal}; }}");
+
+            WriteIndented(
+                indentation + 1,
+                $"set {{ _{pascal} = value; OnPropertyChanged(\"{pascal}\"); }}");
+
+            WriteIndented(
+                indentation,
+                "}");
+        }
+
+        /// <summary>Writes a property type name.</summary>
+        /// <param name="indentation">The indentation.</param>
+        /// <param name="name">       The name.</param>
+        private void WritePropertyTypeName(int indentation, string name)
+        {
+            WriteIndentedComment(
+                indentation,
+                "FHIR Type Name");
+
+            WriteIndented(
+                indentation,
+                "[NotMapped]");
+
+            WriteIndented(
+                indentation,
+                $"public override string TypeName {{ get {{ return \"{name}\"; }} }}");
+
+            WriteIndented(0, string.Empty);
         }
 
         /// <summary>Determine if we should write resource name.</summary>
@@ -530,17 +706,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     indentation + 1,
                     "{");
 
-                WriteIndentedComment(
-                    indentation + 2,
-                    "FHIR Type Name");
-
-                WriteIndented(
-                    indentation + 2,
-                    "[NotMapped]");
-
-                WriteIndented(
-                    indentation + 2,
-                    $"public override string TypeName {{ get {{ return \"{primitive.Name}\"; }} }}");
+                WritePropertyTypeName(indentation + 2, primitive.Name);
 
                 WriteIndented(0, string.Empty);
 

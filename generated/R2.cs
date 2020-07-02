@@ -5,6 +5,8 @@
   // Nesting Type Definitions: False
   // Primitive Naming Style: None
   // Complex Type / Resource Naming Style: PascalCase
+  // Element Naming Style: PascalCase
+  // Enum Naming Style: PascalCase
   // Interaction Naming Style: None
   // Extension Support: NonPrimitives
 
@@ -16,7 +18,7 @@ using Newtonsoft.Json.Linq;
 namespace fhir
 {
   /// <summary>
-  /// Need to be able to record postal addresses, along with notes about their use.
+  /// There is a variety of postal address formats defined around the world. This format defines a superset that is the basis for all addresses around the world.
   /// </summary>
   public class Address : Element {
     /// <summary>
@@ -105,8 +107,14 @@ namespace fhir
     public const string TEMP = "temp";
     public const string OLD = "old";
   }
+  /// <summary>
+  /// There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.  If value is present, it SHALL be positive.
+  /// </summary>
   public class Age : Quantity {
   }
+  /// <summary>
+  /// A  text note which also  contains information about who made the statement and when.
+  /// </summary>
   public class Annotation : Element {
     /// <summary>
     /// The individual responsible for making the annotation.
@@ -136,7 +144,7 @@ namespace fhir
     public Element _Time { get; set; }
   }
   /// <summary>
-  /// Many models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc.
+  /// For referring to data content defined in other formats.
   /// </summary>
   public class Attachment : Element {
     /// <summary>
@@ -194,6 +202,9 @@ namespace fhir
     [JsonProperty("_url")]
     public Element _Url { get; set; }
   }
+  /// <summary>
+  /// Base definition for all elements that are defined inside a resource - but not those in a data type.
+  /// </summary>
   public class BackboneElement : Element {
     /// <summary>
     /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
@@ -202,7 +213,7 @@ namespace fhir
     public Extension[] ModifierExtension { get; set; }
   }
   /// <summary>
-  /// This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept.
+  /// A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.
   /// </summary>
   public class CodeableConcept : Element {
     /// <summary>
@@ -219,7 +230,7 @@ namespace fhir
     public Element _Text { get; set; }
   }
   /// <summary>
-  /// References to codes are very common in healthcare models.
+  /// A reference to a code defined by a terminology system.
   /// </summary>
   public class Coding : Element {
     /// <summary>
@@ -257,7 +268,7 @@ namespace fhir
     public Element _Version { get; set; }
   }
   /// <summary>
-  /// Need to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc.
+  /// Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
   /// </summary>
   public class ContactPoint : Element {
     /// <summary>
@@ -312,12 +323,24 @@ namespace fhir
     public const string OLD = "old";
     public const string MOBILE = "mobile";
   }
+  /// <summary>
+  /// There SHALL be a code with a value of "1" if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.  If present, the value SHALL a whole number.
+  /// </summary>
   public class Count : Quantity {
   }
+  /// <summary>
+  /// There SHALL be a code if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.
+  /// </summary>
   public class Distance : Quantity {
   }
+  /// <summary>
+  /// There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.
+  /// </summary>
   public class Duration : Quantity {
   }
+  /// <summary>
+  /// Base definition for all elements in a resource.
+  /// </summary>
   public class Element {
     /// <summary>
     /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
@@ -542,6 +565,9 @@ namespace fhir
     [JsonProperty("_map")]
     public Element _Map { get; set; }
   }
+  /// <summary>
+  /// Captures constraints on each element within the resource, profile, or extension.
+  /// </summary>
   public class ElementDefinition : Element {
     /// <summary>
     /// Identifies additional names by which this element might also be known.
@@ -1830,7 +1856,7 @@ namespace fhir
     public ElementDefinitionType[] Type { get; set; }
   }
   /// <summary>
-  /// The ability to add extensions in a structured way is what keeps FHIR resources simple.
+  /// Optional Extensions Element - found in all resources.
   /// </summary>
   public class Extension : Element {
     /// <summary>
@@ -2031,7 +2057,7 @@ namespace fhir
     public Meta ValueMeta { get; set; }
   }
   /// <summary>
-  /// Need to be able to record names, along with notes about their use.
+  /// A human's name with the ability to identify parts and usage.
   /// </summary>
   public class HumanName : Element {
     /// <summary>
@@ -2095,7 +2121,7 @@ namespace fhir
     public const string MAIDEN = "maiden";
   }
   /// <summary>
-  /// Need to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation.
+  /// A technical identifier - identifies some entity uniquely and unambiguously.
   /// </summary>
   public class Identifier : Element {
     /// <summary>
@@ -2144,6 +2170,9 @@ namespace fhir
     public const string TEMP = "temp";
     public const string SECONDARY = "secondary";
   }
+  /// <summary>
+  /// The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
+  /// </summary>
   public class Meta : Element {
     /// <summary>
     /// This value is always populated except when the resource is first being created. The server / resource manager sets this value; what a client provides is irrelevant.
@@ -2177,8 +2206,14 @@ namespace fhir
     [JsonProperty("_versionId")]
     public Element _VersionId { get; set; }
   }
+  /// <summary>
+  /// There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = "urn:iso:std:iso:4217" - currency).
+  /// </summary>
   public class Money : Quantity {
   }
+  /// <summary>
+  /// A human-readable formatted text, including images.
+  /// </summary>
   public class Narrative : Element {
     /// <summary>
     /// The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained stylesheets. The XHTML content may not contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects.
@@ -2204,6 +2239,9 @@ namespace fhir
     public const string ADDITIONAL = "additional";
     public const string EMPTY = "empty";
   }
+  /// <summary>
+  /// A time period defined by a start and end date and optionally time.
+  /// </summary>
   public class Period : Element {
     /// <summary>
     /// The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03.
@@ -2221,7 +2259,7 @@ namespace fhir
     public Element _Start { get; set; }
   }
   /// <summary>
-  /// Need to able to capture all sorts of measured values, even if the measured value are not precisely quantified. Values include exact measures such as 3.51g, customary units such as 3 tablets, and currencies such as $100.32USD.
+  /// A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
   /// </summary>
   public class Quantity : Element {
     /// <summary>
@@ -2270,7 +2308,7 @@ namespace fhir
     public const string GREATER_THAN = ">";
   }
   /// <summary>
-  /// Need to be able to specify ranges of values.
+  /// A set of ordered Quantities defined by a low and high limit.
   /// </summary>
   public class Range : Element {
     /// <summary>
@@ -2285,7 +2323,7 @@ namespace fhir
     public Quantity Low { get; set; }
   }
   /// <summary>
-  /// Need to able to capture ratios for some measurements (titers) and some rates (costs).
+  /// A relationship of two Quantity values - expressed as a numerator and a denominator.
   /// </summary>
   public class Ratio : Element {
     /// <summary>
@@ -2299,6 +2337,9 @@ namespace fhir
     [JsonProperty("numerator")]
     public Quantity Numerator { get; set; }
   }
+  /// <summary>
+  /// A reference from one resource to another.
+  /// </summary>
   public class Reference : Element {
     /// <summary>
     /// This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.
@@ -2316,7 +2357,7 @@ namespace fhir
     public Element _ReferenceField { get; set; }
   }
   /// <summary>
-  /// There is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency.
+  /// A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.
   /// </summary>
   public class SampledData : Element {
     /// <summary>
@@ -2366,7 +2407,7 @@ namespace fhir
     public Element _UpperLimit { get; set; }
   }
   /// <summary>
-  /// There are a number of places where content must be signed in healthcare.
+  /// A digital signature along with supporting context. The signature may be electronic/cryptographic in nature, or a graphical image representing a hand-written signature, or a signature process. Different Signature approaches have different utilities.
   /// </summary>
   public class Signature : Element {
     /// <summary>
@@ -2408,6 +2449,9 @@ namespace fhir
     [JsonProperty("whoReference")]
     public Reference WhoReference { get; set; }
   }
+  /// <summary>
+  /// The comparator is not used on a SimpleQuantity
+  /// </summary>
   public class SimpleQuantity : Quantity {
   }
   /// <summary>
@@ -2519,7 +2563,7 @@ namespace fhir
     public const string A = "a";
   }
   /// <summary>
-  /// Need to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals.
+  /// Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds.
   /// </summary>
   public class Timing : Element {
     /// <summary>
@@ -2540,6 +2584,9 @@ namespace fhir
     [JsonProperty("repeat")]
     public TimingRepeat Repeat { get; set; }
   }
+  /// <summary>
+  /// A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centres, etc.
+  /// </summary>
   public class Account : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -2683,7 +2730,7 @@ namespace fhir
     public const string SEVERE = "severe";
   }
   /// <summary>
-  /// To record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance.
+  /// Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
   /// </summary>
   public class AllergyIntolerance : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -2856,6 +2903,9 @@ namespace fhir
     public const string TENTATIVE = "tentative";
     public const string NEEDS_ACTION = "needs-action";
   }
+  /// <summary>
+  /// A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
+  /// </summary>
   public class Appointment : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -2943,6 +2993,9 @@ namespace fhir
     public const string CANCELLED = "cancelled";
     public const string NOSHOW = "noshow";
   }
+  /// <summary>
+  /// A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.
+  /// </summary>
   public class AppointmentResponse : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -3242,6 +3295,9 @@ namespace fhir
     [JsonProperty("type")]
     public Coding Type { get; set; }
   }
+  /// <summary>
+  /// A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
+  /// </summary>
   public class AuditEvent : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -3268,7 +3324,7 @@ namespace fhir
     public AuditEventSource Source { get; set; }
   }
   /// <summary>
-  /// Need some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources.
+  /// Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.
   /// </summary>
   public class Basic : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -3303,7 +3359,7 @@ namespace fhir
     public Reference Subject { get; set; }
   }
   /// <summary>
-  /// There are situations where it is useful or required to handle pure binary content using the same framework as other resources.
+  /// A binary resource can contain any content, whether text, image, pdf, zip archive, etc.
   /// </summary>
   public class Binary : Resource {
     /** Resource Type Name (for serialization) */
@@ -3324,6 +3380,9 @@ namespace fhir
     [JsonProperty("_contentType")]
     public Element _ContentType { get; set; }
   }
+  /// <summary>
+  /// Record details about the anatomical location of a specimen or body part.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case.
+  /// </summary>
   public class BodySite : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -3533,6 +3592,9 @@ namespace fhir
     [JsonProperty("search")]
     public BundleEntrySearch Search { get; set; }
   }
+  /// <summary>
+  /// A container for a collection of resources.
+  /// </summary>
   public class Bundle : Resource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -3756,6 +3818,9 @@ namespace fhir
     [JsonProperty("reference")]
     public Reference Reference { get; set; }
   }
+  /// <summary>
+  /// Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
+  /// </summary>
   public class CarePlan : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -4199,6 +4264,9 @@ namespace fhir
     [JsonProperty("tooth")]
     public Coding Tooth { get; set; }
   }
+  /// <summary>
+  /// A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.
+  /// </summary>
   public class Claim : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -4699,6 +4767,9 @@ namespace fhir
     [JsonProperty("sequence")]
     public uint Sequence { get; set; }
   }
+  /// <summary>
+  /// This resource provides the adjudication details from the processing of a Claim resource.
+  /// </summary>
   public class ClaimResponse : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -4898,6 +4969,9 @@ namespace fhir
     [JsonProperty("_reason")]
     public Element _Reason { get; set; }
   }
+  /// <summary>
+  /// A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called "ClinicalImpression" rather than "ClinicalAssessment" to avoid confusion with the recording of assessment tools such as Apgar score.
+  /// </summary>
   public class ClinicalImpression : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -5035,6 +5109,9 @@ namespace fhir
     [JsonProperty("contentReference")]
     public Reference ContentReference { get; set; }
   }
+  /// <summary>
+  /// An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.
+  /// </summary>
   public class Communication : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -5143,6 +5220,9 @@ namespace fhir
     [JsonProperty("contentReference")]
     public Reference ContentReference { get; set; }
   }
+  /// <summary>
+  /// A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.
+  /// </summary>
   public class CommunicationRequest : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -5355,7 +5435,7 @@ namespace fhir
     public const string CHANGES = "changes";
   }
   /// <summary>
-  /// To support documents, and also to capture the EN13606 notion of an attested commit to the patient EHR, and to allow a set of disparate resources at the information/engineering level to be gathered into a clinical statement.
+  /// A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.
   /// </summary>
   public class Composition : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -5573,6 +5653,9 @@ namespace fhir
     [JsonProperty("target")]
     public ConceptMapElementTarget[] Target { get; set; }
   }
+  /// <summary>
+  /// A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.
+  /// </summary>
   public class ConceptMap : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -5728,6 +5811,9 @@ namespace fhir
     [JsonProperty("detail")]
     public Reference[] Detail { get; set; }
   }
+  /// <summary>
+  /// Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.
+  /// </summary>
   public class Condition : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -6464,6 +6550,9 @@ namespace fhir
     public const string PRODUCER = "producer";
     public const string CONSUMER = "consumer";
   }
+  /// <summary>
+  /// A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+  /// </summary>
   public class Conformance : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -6911,6 +7000,9 @@ namespace fhir
     [JsonProperty("contentReference")]
     public Reference ContentReference { get; set; }
   }
+  /// <summary>
+  /// A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
+  /// </summary>
   public class Contract : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -7014,7 +7106,7 @@ namespace fhir
     public ContractValuedItem[] ValuedItem { get; set; }
   }
   /// <summary>
-  /// Health care programs and insurers are significant payors of health service costs.
+  /// Financial instrument which may be used to pay for or reimburse health care products and services.
   /// </summary>
   public class Coverage : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -7147,6 +7239,9 @@ namespace fhir
     [JsonProperty("_uri")]
     public Element _Uri { get; set; }
   }
+  /// <summary>
+  /// The formal description of a single piece of information that can be gathered and reported.
+  /// </summary>
   public class DataElement : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -7279,6 +7374,9 @@ namespace fhir
     [JsonProperty("_date")]
     public Element _Date { get; set; }
   }
+  /// <summary>
+  /// Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.
+  /// </summary>
   public class DetectedIssue : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -7351,7 +7449,7 @@ namespace fhir
     public const string LOW = "low";
   }
   /// <summary>
-  /// Allows institutions to track their devices.
+  /// This resource identifies an instance of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.  Medical devices includes durable (reusable) medical equipment, implantable devices, as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.  Non-medical devices may include items such as a machine, cellphone, computer, application, etc.
   /// </summary>
   public class Device : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -7486,6 +7584,9 @@ namespace fhir
     [JsonProperty("specType")]
     public CodeableConcept SpecType { get; set; }
   }
+  /// <summary>
+  /// Describes the characteristics, operational status and capabilities of a medical-related component of a medical device.
+  /// </summary>
   public class DeviceComponent : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -7605,6 +7706,9 @@ namespace fhir
     public const string GAIN = "gain";
     public const string TWO_POINT = "two-point";
   }
+  /// <summary>
+  /// Describes a measurement, calculation or setting capability of a medical device.
+  /// </summary>
   public class DeviceMetric : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -7696,6 +7800,9 @@ namespace fhir
     public const string OFF = "off";
     public const string STANDBY = "standby";
   }
+  /// <summary>
+  /// Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
+  /// </summary>
   public class DeviceUseRequest : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -7817,6 +7924,9 @@ namespace fhir
     public const string REJECTED = "rejected";
     public const string ABORTED = "aborted";
   }
+  /// <summary>
+  /// A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.
+  /// </summary>
   public class DeviceUseStatement : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -7985,6 +8095,9 @@ namespace fhir
     public const string REJECTED = "rejected";
     public const string FAILED = "failed";
   }
+  /// <summary>
+  /// A record of a request for a diagnostic investigation service to be performed.
+  /// </summary>
   public class DiagnosticOrder : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -8099,7 +8212,7 @@ namespace fhir
     public Reference Link { get; set; }
   }
   /// <summary>
-  /// To support reporting for any diagnostic report into a clinical data repository.
+  /// The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.
   /// </summary>
   public class DiagnosticReport : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -8246,6 +8359,9 @@ namespace fhir
     [JsonProperty("ref")]
     public Reference Ref { get; set; }
   }
+  /// <summary>
+  /// A manifest that defines a set of documents.
+  /// </summary>
   public class DocumentManifest : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -8423,6 +8539,9 @@ namespace fhir
     [JsonProperty("sourcePatientInfo")]
     public Reference SourcePatientInfo { get; set; }
   }
+  /// <summary>
+  /// A reference to a document .
+  /// </summary>
   public class DocumentReference : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -8529,6 +8648,9 @@ namespace fhir
     public const string SUPERSEDED = "superseded";
     public const string ENTERED_IN_ERROR = "entered-in-error";
   }
+  /// <summary>
+  /// A resource that includes narrative, extensions, and contained resources.
+  /// </summary>
   public class DomainResource : Resource {
     /// <summary>
     /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
@@ -8551,6 +8673,9 @@ namespace fhir
     [JsonProperty("text")]
     public Narrative Text { get; set; }
   }
+  /// <summary>
+  /// This resource provides the insurance eligibility details from the insurer regarding a specified coverage and optionally some class of service.
+  /// </summary>
   public class EligibilityRequest : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -8593,6 +8718,9 @@ namespace fhir
     [JsonProperty("target")]
     public Reference Target { get; set; }
   }
+  /// <summary>
+  /// This resource provides eligibility and plan details from the processing of an Eligibility resource.
+  /// </summary>
   public class EligibilityResponse : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -8800,6 +8928,9 @@ namespace fhir
     public const string RESERVED = "reserved";
     public const string COMPLETED = "completed";
   }
+  /// <summary>
+  /// An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
+  /// </summary>
   public class Encounter : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -8924,6 +9055,9 @@ namespace fhir
     public const string FINISHED = "finished";
     public const string CANCELLED = "cancelled";
   }
+  /// <summary>
+  /// This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
+  /// </summary>
   public class EnrollmentRequest : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -8981,6 +9115,9 @@ namespace fhir
     [JsonProperty("target")]
     public Reference Target { get; set; }
   }
+  /// <summary>
+  /// This resource provides enrollment and plan details from the processing of an Enrollment resource.
+  /// </summary>
   public class EnrollmentResponse : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -9097,6 +9234,9 @@ namespace fhir
     [JsonProperty("role")]
     public CodeableConcept[] Role { get; set; }
   }
+  /// <summary>
+  /// An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.
+  /// </summary>
   public class EpisodeOfCare : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -9170,6 +9310,9 @@ namespace fhir
     public const string FINISHED = "finished";
     public const string CANCELLED = "cancelled";
   }
+  /// <summary>
+  /// This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided.
+  /// </summary>
   public class ExplanationOfBenefit : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -9280,6 +9423,9 @@ namespace fhir
     [JsonProperty("outcome")]
     public CodeableConcept Outcome { get; set; }
   }
+  /// <summary>
+  /// Significant health events and conditions for a person related to the patient relevant in the context of care for the patient.
+  /// </summary>
   public class FamilyMemberHistory : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -9421,6 +9567,9 @@ namespace fhir
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string HEALTH_UNKNOWN = "health-unknown";
   }
+  /// <summary>
+  /// Prospective warnings of potential issues when providing care to the patient.
+  /// </summary>
   public class Flag : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -9491,6 +9640,9 @@ namespace fhir
     [JsonProperty("resultReference")]
     public Reference ResultReference { get; set; }
   }
+  /// <summary>
+  /// Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
+  /// </summary>
   public class Goal : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -9660,6 +9812,9 @@ namespace fhir
     [JsonProperty("period")]
     public Period Period { get; set; }
   }
+  /// <summary>
+  /// Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.
+  /// </summary>
   public class Group : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -9795,6 +9950,9 @@ namespace fhir
     [JsonProperty("during")]
     public Period During { get; set; }
   }
+  /// <summary>
+  /// The details of a healthcare service available at a location.
+  /// </summary>
   public class HealthcareService : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -10026,7 +10184,7 @@ namespace fhir
     public Element _Url { get; set; }
   }
   /// <summary>
-  /// A FHIR representation of DICOM Key Object Selection (KOS) SOP Instances enables access to a set of selected DICOM SOP Instances.
+  /// A manifest of a set of DICOM Service-Object Pair Instances (SOP Instances).  The referenced SOP Instances (images or other content) are for a single patient, and may be from one or more studies. The referenced SOP Instances have been selected for a purpose, such as quality assurance, conference, or consult. Reflecting that range of purposes, typical ImagingObjectSelection resources may include all SOP Instances in a study (perhaps for sharing through a Health Information Exchange); key images from multiple studies (for reference by a referring or treating physician); a multi-frame ultrasound instance ("cine" video clip) and a set of measurements taken from that instance (for inclusion in a teaching file); and so on.
   /// </summary>
   public class ImagingObjectSelection : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -10196,6 +10354,9 @@ namespace fhir
     public const string NEARLINE = "NEARLINE";
     public const string UNAVAILABLE = "UNAVAILABLE";
   }
+  /// <summary>
+  /// Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
+  /// </summary>
   public class ImagingStudy : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -10386,6 +10547,9 @@ namespace fhir
     [JsonProperty("targetDisease")]
     public CodeableConcept[] TargetDisease { get; set; }
   }
+  /// <summary>
+  /// Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
+  /// </summary>
   public class Immunization : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -10607,6 +10771,9 @@ namespace fhir
     [JsonProperty("vaccineCode")]
     public CodeableConcept VaccineCode { get; set; }
   }
+  /// <summary>
+  /// A patient's point-in-time immunization and recommendation (i.e. forecasting a patient's immunization eligibility according to a published schedule) with optional supporting justification.
+  /// </summary>
   public class ImmunizationRecommendation : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -10838,7 +11005,7 @@ namespace fhir
     public const string RESOURCE = "resource";
   }
   /// <summary>
-  /// An implementation guide is able to define default profiles that must apply to any use of a resource, so validation services may need to take one or more implementation guide resources when validating.
+  /// A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts.
   /// </summary>
   public class ImplementationGuide : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -10985,6 +11152,9 @@ namespace fhir
     [JsonProperty("item")]
     public Reference Item { get; set; }
   }
+  /// <summary>
+  /// A set of information summarized from a list of other resources.
+  /// </summary>
   public class List : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -11107,6 +11277,9 @@ namespace fhir
     [JsonProperty("_longitude")]
     public Element _Longitude { get; set; }
   }
+  /// <summary>
+  /// Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated.
+  /// </summary>
   public class Location : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -11195,6 +11368,9 @@ namespace fhir
     public const string SUSPENDED = "suspended";
     public const string INACTIVE = "inactive";
   }
+  /// <summary>
+  /// A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference.
+  /// </summary>
   public class Media : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -11356,6 +11532,9 @@ namespace fhir
     [JsonProperty("content")]
     public MedicationPackageContent[] Content { get; set; }
   }
+  /// <summary>
+  /// This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
+  /// </summary>
   public class Medication : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -11433,6 +11612,9 @@ namespace fhir
     [JsonProperty("_text")]
     public Element _Text { get; set; }
   }
+  /// <summary>
+  /// Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner.
+  /// </summary>
   public class MedicationAdministration : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -11631,6 +11813,9 @@ namespace fhir
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
   }
+  /// <summary>
+  /// Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.
+  /// </summary>
   public class MedicationDispense : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -11866,6 +12051,9 @@ namespace fhir
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
   }
+  /// <summary>
+  /// An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationOrder" rather than "MedicationPrescription" to generalize the use across inpatient and outpatient settings as well as for care plans, etc.
+  /// </summary>
   public class MedicationOrder : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -12047,6 +12235,9 @@ namespace fhir
     [JsonProperty("timing")]
     public Timing Timing { get; set; }
   }
+  /// <summary>
+  /// A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from e.g. the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains   The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.
+  /// </summary>
   public class MedicationStatement : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -12244,7 +12435,7 @@ namespace fhir
     public Reference Target { get; set; }
   }
   /// <summary>
-  /// Many implementations are not prepared to use REST and need a messaging based infrastructure.
+  /// The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle.
   /// </summary>
   public class MessageHeader : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -12363,6 +12554,9 @@ namespace fhir
     public const string URI = "uri";
     public const string OTHER = "other";
   }
+  /// <summary>
+  /// A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
+  /// </summary>
   public class NamingSystem : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -12647,6 +12841,9 @@ namespace fhir
     [JsonProperty("routeofAdministration")]
     public CodeableConcept RouteofAdministration { get; set; }
   }
+  /// <summary>
+  /// A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident.
+  /// </summary>
   public class NutritionOrder : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -12866,7 +13063,7 @@ namespace fhir
     public Period ValuePeriod { get; set; }
   }
   /// <summary>
-  /// Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms.
+  /// Measurements and simple assertions made about a patient, device or other subject.
   /// </summary>
   public class Observation : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -13163,6 +13360,9 @@ namespace fhir
     public const string VAL_IN = "in";
     public const string VAL_OUT = "out";
   }
+  /// <summary>
+  /// A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).
+  /// </summary>
   public class OperationDefinition : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -13349,6 +13549,9 @@ namespace fhir
     public const string WARNING = "warning";
     public const string INFORMATION = "information";
   }
+  /// <summary>
+  /// A collection of error, warning or information messages that result from a system action.
+  /// </summary>
   public class OperationOutcome : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -13374,6 +13577,9 @@ namespace fhir
     [JsonProperty("schedule")]
     public Timing Schedule { get; set; }
   }
+  /// <summary>
+  /// A request to perform an action.
+  /// </summary>
   public class Order : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -13426,6 +13632,9 @@ namespace fhir
     [JsonProperty("when")]
     public OrderWhen When { get; set; }
   }
+  /// <summary>
+  /// A response to an order.
+  /// </summary>
   public class OrderResponse : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -13511,6 +13720,9 @@ namespace fhir
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
   }
+  /// <summary>
+  /// A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc.
+  /// </summary>
   public class Organization : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -13769,6 +13981,9 @@ namespace fhir
     [JsonProperty("valueMeta")]
     public Meta ValueMeta { get; set; }
   }
+  /// <summary>
+  /// This special resource type is used to represent an operation request and response (operations.html). It has no other use, and there is no RESTful endpoint associated with it.
+  /// </summary>
   public class Parameters : Resource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -13891,7 +14106,7 @@ namespace fhir
     public const string SEEALSO = "seealso";
   }
   /// <summary>
-  /// Tracking patient is the center of the healthcare process.
+  /// Demographics and other administrative information about an individual or animal receiving care or other health-related services.
   /// </summary>
   public class Patient : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -14008,6 +14223,9 @@ namespace fhir
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
   }
+  /// <summary>
+  /// This resource provides the status of the payment for goods and services rendered, and the request and response resource references.
+  /// </summary>
   public class PaymentNotice : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -14124,6 +14342,9 @@ namespace fhir
     [JsonProperty("type")]
     public Coding Type { get; set; }
   }
+  /// <summary>
+  /// This resource provides payment details and claim references supporting a bulk payment.
+  /// </summary>
   public class PaymentReconciliation : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -14244,7 +14465,7 @@ namespace fhir
     public const string LEVEL4 = "level4";
   }
   /// <summary>
-  /// Need to track persons potentially across multiple roles.
+  /// Demographics and administrative information about a person independent of a specific health-related context.
   /// </summary>
   public class Person : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -14375,7 +14596,7 @@ namespace fhir
     public Period Period { get; set; }
   }
   /// <summary>
-  /// Need to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc.
+  /// A person who is directly or indirectly involved in the provisioning of healthcare.
   /// </summary>
   public class Practitioner : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -14480,6 +14701,9 @@ namespace fhir
     [JsonProperty("manipulated")]
     public Reference Manipulated { get; set; }
   }
+  /// <summary>
+  /// An action that is or was performed on a patient. This can be a physical intervention like an operation, or less invasive like counseling or hypnotherapy.
+  /// </summary>
   public class Procedure : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -14613,6 +14837,9 @@ namespace fhir
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
   }
+  /// <summary>
+  /// A request for a procedure to be performed. May be a proposal or an order.
+  /// </summary>
   public class ProcedureRequest : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -14750,6 +14977,9 @@ namespace fhir
     [JsonProperty("sequenceLinkId")]
     public int SequenceLinkId { get; set; }
   }
+  /// <summary>
+  /// This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.
+  /// </summary>
   public class ProcessRequest : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -14871,6 +15101,9 @@ namespace fhir
     [JsonProperty("type")]
     public Coding Type { get; set; }
   }
+  /// <summary>
+  /// This resource provides processing status, errors and notes from the processing of a resource.
+  /// </summary>
   public class ProcessResponse : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -15032,6 +15265,9 @@ namespace fhir
     public const string QUOTATION = "quotation";
     public const string SOURCE = "source";
   }
+  /// <summary>
+  /// Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.
+  /// </summary>
   public class Provenance : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -15209,7 +15445,7 @@ namespace fhir
     public Element _Title { get; set; }
   }
   /// <summary>
-  /// To support structured, hierarchical registration of data gathered using digital forms and other questionnaires.
+  /// A structured set of questions intended to guide the collection of answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.
   /// </summary>
   public class Questionnaire : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -15429,7 +15665,7 @@ namespace fhir
     public Element _Title { get; set; }
   }
   /// <summary>
-  /// To support structured, hierarchical registration of data gathered using digital forms and other questionnaires.
+  /// A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.
   /// </summary>
   public class QuestionnaireResponse : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -15493,6 +15729,9 @@ namespace fhir
     public const string COMPLETED = "completed";
     public const string AMENDED = "amended";
   }
+  /// <summary>
+  /// Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.
+  /// </summary>
   public class ReferralRequest : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -15599,7 +15838,7 @@ namespace fhir
     public const string COMPLETED = "completed";
   }
   /// <summary>
-  /// Need to track persons related to the patient or the healthcare process.
+  /// Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
   /// </summary>
   public class RelatedPerson : DomainResource {
     /** Resource Type Name (for serialization) */
@@ -15669,6 +15908,9 @@ namespace fhir
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
   }
+  /// <summary>
+  /// This is the base resource type for everything.
+  /// </summary>
   public class Resource {
     /// <summary>
     /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
@@ -15748,6 +15990,9 @@ namespace fhir
     [JsonProperty("whenRange")]
     public Range WhenRange { get; set; }
   }
+  /// <summary>
+  /// An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.
+  /// </summary>
   public class RiskAssessment : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -15807,6 +16052,9 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
   }
+  /// <summary>
+  /// A container for slot(s) of time that may be available for booking appointments.
+  /// </summary>
   public class Schedule : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -15856,6 +16104,9 @@ namespace fhir
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
   }
+  /// <summary>
+  /// A search parameter that defines a named search item that can be used to search/filter on a resource.
+  /// </summary>
   public class SearchParameter : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -15993,6 +16244,9 @@ namespace fhir
     public const string DISTANCE = "distance";
     public const string OTHER = "other";
   }
+  /// <summary>
+  /// A slot of time on a schedule that may be available for booking appointments.
+  /// </summary>
   public class Slot : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -16163,6 +16417,9 @@ namespace fhir
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
   }
+  /// <summary>
+  /// A sample to be used for analysis.
+  /// </summary>
   public class Specimen : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -16301,6 +16558,9 @@ namespace fhir
     [JsonProperty("element")]
     public ElementDefinition[] Element { get; set; }
   }
+  /// <summary>
+  /// A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions, and constraints on resources and data types.
+  /// </summary>
   public class StructureDefinition : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -16531,6 +16791,9 @@ namespace fhir
     public const string SMS = "sms";
     public const string MESSAGE = "message";
   }
+  /// <summary>
+  /// The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system is able to take an appropriate action.
+  /// </summary>
   public class Subscription : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -16632,6 +16895,9 @@ namespace fhir
     [JsonProperty("substance")]
     public Reference Substance { get; set; }
   }
+  /// <summary>
+  /// A homogeneous material with a definite composition.
+  /// </summary>
   public class Substance : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -16669,6 +16935,9 @@ namespace fhir
     [JsonProperty("instance")]
     public SubstanceInstance[] Instance { get; set; }
   }
+  /// <summary>
+  /// Record of delivery of what is supplied.
+  /// </summary>
   public class SupplyDelivery : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -16756,6 +17025,9 @@ namespace fhir
     [JsonProperty("schedule")]
     public Timing Schedule { get; set; }
   }
+  /// <summary>
+  /// A record of a request for a medication, substance or device used in the healthcare setting.
+  /// </summary>
   public class SupplyRequest : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -17367,6 +17639,9 @@ namespace fhir
     [JsonProperty("action")]
     public TestScriptTeardownAction[] Action { get; set; }
   }
+  /// <summary>
+  /// TestScript is a resource that specifies a suite of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+  /// </summary>
   public class TestScript : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -17858,6 +18133,9 @@ namespace fhir
     [JsonProperty("total")]
     public int? Total { get; set; }
   }
+  /// <summary>
+  /// A value set specifies a set of codes drawn from one or more code systems.
+  /// </summary>
   public class ValueSet : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]
@@ -18106,6 +18384,9 @@ namespace fhir
     public const string RIGHT = "right";
     public const string LEFT = "left";
   }
+  /// <summary>
+  /// An authorization for the supply of glasses and/or contact lenses to a patient.
+  /// </summary>
   public class VisionPrescription : DomainResource {
     /** Resource Type Name (for serialization) */
     [JsonProperty("resourceType")]

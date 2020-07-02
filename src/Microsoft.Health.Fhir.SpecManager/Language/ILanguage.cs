@@ -20,11 +20,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         string LanguageName { get; }
 
         /// <summary>Gets a value indicating whether the language supports model inheritance.</summary>
-        /// <value>True if the language supports model inheritance, false if not.</value>
         bool SupportsModelInheritance { get; }
 
         /// <summary>Gets a value indicating whether the supports hiding parent field.</summary>
-        /// <value>True if the language supports hiding parent field, false if not.</value>
         bool SupportsHidingParentField { get; }
 
         /// <summary>Gets a value indicating whether the language supports nested type definitions.</summary>
@@ -32,40 +30,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         bool SupportsNestedTypeDefinitions { get; }
 
         /// <summary>Gets a value indicating whether the supports slicing.</summary>
-        /// <value>True if supports slicing, false if not.</value>
         bool SupportsSlicing { get; }
 
         /// <summary>Gets the FHIR primitive type map.</summary>
-        /// <value>The FHIR primitive type map.</value>
         Dictionary<string, string> FhirPrimitiveTypeMap { get; }
 
         /// <summary>Gets the reserved words.</summary>
-        /// <value>The reserved words.</value>
         HashSet<string> ReservedWords { get; }
 
-        /// <summary>Gets the primitive configuration.</summary>
-        /// <value>The primitive configuration.</value>
-        HashSet<NamingConvention> SupportedPrimitiveNameStyles { get; }
+        /// <summary>
+        /// Gets a list of FHIR class types that the language WILL export, regardless of user choices.
+        /// Used to provide information to users.
+        /// </summary>
+        List<ExporterOptions.FhirExportClassType> RequiredExportClassTypes { get; }
 
-        /// <summary>Gets the complex type configuration.</summary>
-        /// <value>The complex type configuration.</value>
-        HashSet<NamingConvention> SupportedComplexTypeNameStyles { get; }
+        /// <summary>
+        /// Gets a list of FHIR class types that the language CAN export, depending on user choices.
+        /// </summary>
+        List<ExporterOptions.FhirExportClassType> OptionalExportClassTypes { get; }
 
-        /// <summary>Gets the supported element name styles.</summary>
-        /// <value>The supported element name styles.</value>
-        HashSet<NamingConvention> SupportedElementNameStyles { get; }
-
-        /// <summary>Gets the resource configuration.</summary>
-        /// <value>The resource configuration.</value>
-        HashSet<NamingConvention> SupportedResourceNameStyles { get; }
-
-        /// <summary>Gets the interaction configuration.</summary>
-        /// <value>The interaction configuration.</value>
-        HashSet<NamingConvention> SupportedInteractionNameStyles { get; }
-
-        /// <summary>Gets the supported enum styles.</summary>
-        /// <value>The supported enum styles.</value>
-        HashSet<NamingConvention> SupportedEnumStyles { get; }
+        /// <summary>Gets language-specific options and their descriptions.</summary>
+        Dictionary<string, string> LanguageOptions { get; }
 
         /// <summary>Gets the export.</summary>
         /// <param name="info">           The information.</param>

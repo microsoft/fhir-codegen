@@ -1,11 +1,13 @@
 Contents of: hl7.fhir.r3.core version: 3.0.2
-    Using Model Inheritance: True
-    Hiding Removed Parent Fields: True
-    Nesting Type Definitions: True
-    Primitive Naming Style: CamelCase
-    Complex Type / Resource Naming Style: PascalCase
-    Interaction Naming Style: PascalCase
-    Extension Support: OfficialExtensions
+  Using Model Inheritance: True
+  Hiding Removed Parent Fields: True
+  Nesting Type Definitions: True
+  Primitive Naming Style: CamelCase
+  Element Naming Style: CamelCase
+  Complex Type / Resource Naming Style: PascalCase
+  Enum Naming Style: FhirDotNotation
+  Interaction Naming Style: PascalCase
+  Extension Support: NonPrimitives
 Primitive Types: 18
 - base64Binary: base64Binary::base64Binary
 - boolean: boolean::boolean

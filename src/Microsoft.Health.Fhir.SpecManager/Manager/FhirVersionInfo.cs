@@ -443,6 +443,41 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
+        /// <summary>Attempts to get value set a FhirValueSet from the given string.</summary>
+        /// <param name="urlOrKey">The URL or key.</param>
+        /// <param name="vs">      [out] The vs.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        internal bool TryGetValueSet(string urlOrKey, out FhirValueSet vs)
+        {
+            string url;
+            string version = string.Empty;
+
+            if (urlOrKey.Contains('|'))
+            {
+                string[] components = urlOrKey.Split('|');
+                url = components[0];
+                version = components[1];
+            }
+            else
+            {
+                url = urlOrKey;
+            }
+
+            if (!_valueSetsByUrl.ContainsKey(url))
+            {
+                vs = null;
+                return false;
+            }
+
+            if (_valueSetsByUrl[url].HasVersion(version))
+            {
+                return _valueSetsByUrl[url].TryGetValueSet(version, out vs);
+            }
+
+            vs = null;
+            return false;
+        }
+
         /// <summary>Adds an extension.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="extension">The extension.</param>

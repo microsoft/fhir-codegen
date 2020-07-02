@@ -91,8 +91,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Gets a version.</summary>
-        /// <param name="version">(Optional) The version.</param>
-        /// <returns>The version.</returns>
+        /// <param name="version">The version.</param>
+        /// <param name="vs">     [out] The vs.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
         public bool TryGetValueSet(string version, out FhirValueSet vs)
         {
             if (_valueSetsByVersion.Count == 0)

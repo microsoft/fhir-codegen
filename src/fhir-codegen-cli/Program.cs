@@ -25,8 +25,10 @@ namespace FhirCodegenCli
         /// <param name="outputFile">       Where to write output.</param>
         /// <param name="verbose">          Show verbose output.</param>
         /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
-        /// <param name="language">         Name of the language to export (default: Info|TypeScript|CSharpBasic).</param>
-        /// <param name="exportKeys">       '|' separated list of items to export (not present to export everything).</param>
+        /// <param name="language">         Name of the language to export (default:
+        ///  Info|TypeScript|CSharpBasic).</param>
+        /// <param name="exportKeys">       '|' separated list of items to export (not present to export
+        ///  everything).</param>
         /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or
         ///  latest).</param>
         /// <param name="loadR3">           If FHIR R3 should be loaded, which version (e.g., 3.0.2 or
@@ -35,6 +37,8 @@ namespace FhirCodegenCli
         ///  latest).</param>
         /// <param name="loadR5">           If FHIR R5 should be loaded, which version (e.g., 4.4.0 or
         ///  latest).</param>
+        /// <param name="languageOptions">  Language specific options, see documentation for more
+        ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputFile = "",
@@ -45,7 +49,8 @@ namespace FhirCodegenCli
             string loadR2 = "",
             string loadR3 = "",
             string loadR4 = "",
-            string loadR5 = "")
+            string loadR5 = "",
+            string languageOptions = "")
         {
             List<string> filesWritten = new List<string>();
 
@@ -125,51 +130,31 @@ namespace FhirCodegenCli
 
                 List<ILanguage> languages = LanguageHelper.GetLanguages(language);
 
+                Dictionary<string, Dictionary<string, string>> languageOptsByLang = ParseLanguageOptions(
+                    languageOptions,
+                    languages);
+
                 foreach (ILanguage lang in languages)
                 {
-                    ExporterOptions options;
+                    string[] exportList = null;
 
-                    if (lang.LanguageName == "Info")
+                    if (!string.IsNullOrEmpty(exportKeys))
                     {
-                        options = new ExporterOptions(
+                        exportList = exportKeys.Split('|');
+                    }
+
+                    // for now, just include every optional type
+                    ExporterOptions options = new ExporterOptions(
                         lang.LanguageName,
+                        exportList,
+                        lang.SupportsModelInheritance,
+                        lang.SupportsHidingParentField,
+                        lang.SupportsNestedTypeDefinitions,
+                        lang.OptionalExportClassTypes,
+                        ExporterOptions.ExtensionSupportLevel.NonPrimitives,
                         null,
-                        true,
-                        true,
-                        true,
-                        FhirTypeBase.NamingConvention.CamelCase,
-                        FhirTypeBase.NamingConvention.PascalCase,
-                        FhirTypeBase.NamingConvention.CamelCase,
-                        FhirTypeBase.NamingConvention.PascalCase,
-                        FhirTypeBase.NamingConvention.PascalCase,
-                        ExporterOptions.ExtensionSupportLevel.OfficialExtensions,
                         null,
-                        null);
-                    }
-                    else
-                    {
-                        string[] exportList = null;
-
-                        if (!string.IsNullOrEmpty(exportKeys))
-                        {
-                            exportList = exportKeys.Split('|');
-                        }
-
-                        options = new ExporterOptions(
-                            lang.LanguageName,
-                            exportList,
-                            lang.SupportsModelInheritance,
-                            lang.SupportsHidingParentField,
-                            lang.SupportsNestedTypeDefinitions,
-                            lang.SupportedPrimitiveNameStyles.First(),
-                            lang.SupportedComplexTypeNameStyles.First(),
-                            lang.SupportedElementNameStyles.First(),
-                            lang.SupportedInteractionNameStyles.First(),
-                            lang.SupportedEnumStyles.First(),
-                            ExporterOptions.ExtensionSupportLevel.NonPrimitives,
-                            null,
-                            null);
-                    }
+                        languageOptsByLang[lang.LanguageName]);
 
                     if (r2 != null)
                     {
@@ -208,78 +193,87 @@ namespace FhirCodegenCli
             }
         }
 
-        #if DISABLED
-        /// <summary>Tests fhir C# file.</summary>
-        /// <param name="filename">Filename of the file.</param>
-        private static void TestFhirCSharpFile(string filename)
+        /// <summary>Gets options for language.</summary>
+        /// <param name="languageOptions">Options for controlling the language.</param>
+        /// <param name="languages">      The languages.</param>
+        /// <returns>The options for each language.</returns>
+        private static Dictionary<string, Dictionary<string, string>> ParseLanguageOptions(
+            string languageOptions,
+            List<ILanguage> languages)
         {
-            Console.WriteLine($"Compiling {filename}...");
+            Dictionary<string, Dictionary<string, string>> optionsByLanguage = new Dictionary<string, Dictionary<string, string>>();
 
-            using (MemoryStream peStream = new MemoryStream())
+            if ((languages == null) || (languages.Count == 0))
             {
-                Microsoft.CodeAnalysis.Emit.EmitResult result = GenerateByteCode(filename).Emit(peStream);
+                return optionsByLanguage;
+            }
 
-                if (!result.Success)
+            foreach (ILanguage lang in languages)
+            {
+                optionsByLanguage.Add(lang.LanguageName, new Dictionary<string, string>());
+            }
+
+            if (string.IsNullOrEmpty(languageOptions))
+            {
+                return optionsByLanguage;
+            }
+
+            string[] segments = languageOptions.Split('|');
+
+            if (segments.Length < 2)
+            {
+                return optionsByLanguage;
+            }
+
+            string currentName = string.Empty;
+            string lastName = string.Empty;
+
+            foreach (string segment in segments)
+            {
+                string[] kvp = segment.Split('=');
+
+                // segment without '=' is a language name
+                if (kvp.Length == 1)
                 {
-                    IEnumerable<Diagnostic> failures = result.Diagnostics.Where(diagnostic => diagnostic.IsWarningAsError || diagnostic.Severity == DiagnosticSeverity.Error);
+                    currentName = string.Empty;
 
-                    foreach (Diagnostic diagnostic in failures)
+                    foreach (ILanguage lang in languages)
                     {
-                        string msg = diagnostic.GetMessage();
-
-                        if ((diagnostic.Id == "CS0246") &&
-                            (msg == "The type or namespace name 'JsonProperty' could not be found (are you missing a using directive or an assembly reference?)"))
+                        if (lang.LanguageName.ToUpperInvariant() != lastName)
                         {
-                            continue;
-                        }
+                            lastName = lang.LanguageName.ToUpperInvariant();
+                            currentName = lang.LanguageName;
 
-                        if ((diagnostic.Id == "CS0246") &&
-                            (msg == "The type or namespace name 'JsonPropertyAttribute' could not be found (are you missing a using directive or an assembly reference?)"))
-                        {
-                            continue;
+                            break;
                         }
-
-                        if ((diagnostic.Id == "CS0103") &&
-                            (msg == "The name 'JObject' does not exist in the current context"))
-                        {
-                            continue;
-                        }
-
-                        Console.Error.WriteLine("{0}: {1}", diagnostic.Id, diagnostic.GetMessage());
                     }
 
-                    return;
+                    continue;
                 }
+
+                if (string.IsNullOrEmpty(currentName))
+                {
+                    continue;
+                }
+
+                // don't worry about inline '=' symbols yet - add only if it becomes necessary in the CLI
+                if (kvp.Length != 2)
+                {
+                    Console.WriteLine($"Invalid language option: {segment} for language: {currentName}");
+                    continue;
+                }
+
+                if (optionsByLanguage[currentName].ContainsKey(kvp[0]))
+                {
+                    Console.WriteLine($"Invalid language option redefinition: {segment} for language: {currentName}");
+                    continue;
+                }
+
+                optionsByLanguage[currentName].Add(kvp[0], kvp[1]);
             }
+
+            return optionsByLanguage;
         }
-
-        private static CSharpCompilation GenerateByteCode(
-            string filename)
-        {
-            string sourceCode = File.ReadAllText(filename);
-            SourceText codeString = SourceText.From(sourceCode);
-            CSharpParseOptions options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp7_3);
-
-            SyntaxTree parsedSyntaxTree = SyntaxFactory.ParseSyntaxTree(codeString, options);
-
-            MetadataReference[] references = new MetadataReference[]
-            {
-                MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
-                MetadataReference.CreateFromFile(typeof(Console).Assembly.Location),
-                MetadataReference.CreateFromFile(typeof(System.Runtime.AssemblyTargetedPatchBandAttribute).Assembly.Location),
-                MetadataReference.CreateFromFile(typeof(Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo).Assembly.Location),
-            };
-
-            return CSharpCompilation.Create(
-                $"{filename}.dll",
-                new[] { parsedSyntaxTree },
-                references: references,
-                options: new CSharpCompilationOptions(
-                    OutputKind.DynamicallyLinkedLibrary,
-                    optimizationLevel: OptimizationLevel.Release,
-                    assemblyIdentityComparer: DesktopAssemblyIdentityComparer.Default));
-        }
-        #endif
 
         /// <summary>Main processing function.</summary>
         /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>

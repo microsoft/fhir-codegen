@@ -8,7 +8,7 @@
   // Interaction Naming Style: None
   // Extension Support: NonPrimitives
 /**
- * Need to be able to record postal addresses, along with notes about their use.
+ * There is a variety of postal address formats defined around the world. This format defines a superset that is the basis for all addresses around the world.
  */
 export interface Address extends Element {
   /**
@@ -78,8 +78,14 @@ export enum AddressUseCodes {
   TEMP = "temp",
   OLD = "old",
 }
+/**
+ * There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.  If value is present, it SHALL be positive.
+ */
 export interface Age extends Quantity {
 }
+/**
+ * A  text note which also  contains information about who made the statement and when.
+ */
 export interface Annotation extends Element {
   /**
    * The individual responsible for making the annotation.
@@ -102,7 +108,7 @@ export interface Annotation extends Element {
   _time?: Element;
 }
 /**
- * Many models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc.
+ * For referring to data content defined in other formats.
  */
 export interface Attachment extends Element {
   /**
@@ -145,6 +151,9 @@ export interface Attachment extends Element {
   url?: string;
   _url?: Element;
 }
+/**
+ * Base definition for all elements that are defined inside a resource - but not those in a data type.
+ */
 export interface BackboneElement extends Element {
   /**
    * There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
@@ -152,7 +161,7 @@ export interface BackboneElement extends Element {
   modifierExtension?: Extension[];
 }
 /**
- * This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept.
+ * A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.
  */
 export interface CodeableConcept extends Element {
   /**
@@ -166,7 +175,7 @@ export interface CodeableConcept extends Element {
   _text?: Element;
 }
 /**
- * References to codes are very common in healthcare models.
+ * A reference to a code defined by a terminology system.
  */
 export interface Coding extends Element {
   /**
@@ -196,7 +205,7 @@ export interface Coding extends Element {
   _version?: Element;
 }
 /**
- * Need to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc.
+ * Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
  */
 export interface ContactPoint extends Element {
   /**
@@ -243,12 +252,24 @@ export enum ContactPointUseCodes {
   OLD = "old",
   MOBILE = "mobile",
 }
+/**
+ * There SHALL be a code with a value of "1" if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.  If present, the value SHALL a whole number.
+ */
 export interface Count extends Quantity {
 }
+/**
+ * There SHALL be a code if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.
+ */
 export interface Distance extends Quantity {
 }
+/**
+ * There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.
+ */
 export interface Duration extends Quantity {
 }
+/**
+ * Base definition for all elements in a resource.
+ */
 export interface Element {
   /**
    * There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
@@ -430,6 +451,9 @@ export interface ElementDefinitionMapping extends Element {
   map: string;
   _map?: Element;
 }
+/**
+ * Captures constraints on each element within the resource, profile, or extension.
+ */
 export interface ElementDefinition extends Element {
   /**
    * Identifies additional names by which this element might also be known.
@@ -1413,7 +1437,7 @@ export interface ElementDefinition extends Element {
   type?: ElementDefinitionType[];
 }
 /**
- * The ability to add extensions in a structured way is what keeps FHIR resources simple.
+ * Optional Extensions Element - found in all resources.
  */
 export interface Extension extends Element {
   /**
@@ -1567,7 +1591,7 @@ export interface Extension extends Element {
   valueMeta?: Meta;
 }
 /**
- * Need to be able to record names, along with notes about their use.
+ * A human's name with the ability to identify parts and usage.
  */
 export interface HumanName extends Element {
   /**
@@ -1618,7 +1642,7 @@ export enum HumanNameUseCodes {
   MAIDEN = "maiden",
 }
 /**
- * Need to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation.
+ * A technical identifier - identifies some entity uniquely and unambiguously.
  */
 export interface Identifier extends Element {
   /**
@@ -1658,6 +1682,9 @@ export enum IdentifierUseCodes {
   TEMP = "temp",
   SECONDARY = "secondary",
 }
+/**
+ * The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
+ */
 export interface Meta extends Element {
   /**
    * This value is always populated except when the resource is first being created. The server / resource manager sets this value; what a client provides is irrelevant.
@@ -1683,8 +1710,14 @@ export interface Meta extends Element {
   versionId?: string;
   _versionId?: Element;
 }
+/**
+ * There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = "urn:iso:std:iso:4217" - currency).
+ */
 export interface Money extends Quantity {
 }
+/**
+ * A human-readable formatted text, including images.
+ */
 export interface Narrative extends Element {
   /**
    * The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained stylesheets. The XHTML content may not contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects.
@@ -1706,6 +1739,9 @@ export enum NarrativeStatusCodes {
   ADDITIONAL = "additional",
   EMPTY = "empty",
 }
+/**
+ * A time period defined by a start and end date and optionally time.
+ */
 export interface Period extends Element {
   /**
    * The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03.
@@ -1719,7 +1755,7 @@ export interface Period extends Element {
   _start?: Element;
 }
 /**
- * Need to able to capture all sorts of measured values, even if the measured value are not precisely quantified. Values include exact measures such as 3.51g, customary units such as 3 tablets, and currencies such as $100.32USD.
+ * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
  */
 export interface Quantity extends Element {
   /**
@@ -1757,7 +1793,7 @@ export enum QuantityComparatorCodes {
   GREATER_THAN = ">",
 }
 /**
- * Need to be able to specify ranges of values.
+ * A set of ordered Quantities defined by a low and high limit.
  */
 export interface Range extends Element {
   /**
@@ -1770,7 +1806,7 @@ export interface Range extends Element {
   low?: Quantity;
 }
 /**
- * Need to able to capture ratios for some measurements (titers) and some rates (costs).
+ * A relationship of two Quantity values - expressed as a numerator and a denominator.
  */
 export interface Ratio extends Element {
   /**
@@ -1782,6 +1818,9 @@ export interface Ratio extends Element {
    */
   numerator?: Quantity;
 }
+/**
+ * A reference from one resource to another.
+ */
 export interface Reference extends Element {
   /**
    * This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.
@@ -1795,7 +1834,7 @@ export interface Reference extends Element {
   _reference?: Element;
 }
 /**
- * There is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency.
+ * A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.
  */
 export interface SampledData extends Element {
   /**
@@ -1829,7 +1868,7 @@ export interface SampledData extends Element {
   upperLimit?: number;
 }
 /**
- * There are a number of places where content must be signed in healthcare.
+ * A digital signature along with supporting context. The signature may be electronic/cryptographic in nature, or a graphical image representing a hand-written signature, or a signature process. Different Signature approaches have different utilities.
  */
 export interface Signature extends Element {
   /**
@@ -1861,6 +1900,9 @@ export interface Signature extends Element {
    */
   whoReference: Reference;
 }
+/**
+ * The comparator is not used on a SimpleQuantity
+ */
 export interface SimpleQuantity extends Quantity {
 }
 /**
@@ -1948,7 +1990,7 @@ export enum TimingRepeatPeriodUnitsCodes {
   A = "a",
 }
 /**
- * Need to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals.
+ * Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds.
  */
 export interface Timing extends Element {
   /**
@@ -1965,6 +2007,9 @@ export interface Timing extends Element {
    */
   repeat?: TimingRepeat;
 }
+/**
+ * A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centres, etc.
+ */
 export interface Account extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Account'
@@ -2081,7 +2126,7 @@ export enum AllergyIntoleranceReactionSeverityCodes {
   SEVERE = "severe",
 }
 /**
- * To record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance.
+ * Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
  */
 export interface AllergyIntolerance extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -2226,6 +2271,9 @@ export enum AppointmentParticipantStatusCodes {
   TENTATIVE = "tentative",
   NEEDS_ACTION = "needs-action",
 }
+/**
+ * A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
+ */
 export interface Appointment extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Appointment'
@@ -2295,6 +2343,9 @@ export enum AppointmentStatusCodes {
   CANCELLED = "cancelled",
   NOSHOW = "noshow",
 }
+/**
+ * A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.
+ */
 export interface AppointmentResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'AppointmentResponse'
@@ -2532,6 +2583,9 @@ export interface AuditEventObject extends BackboneElement {
    */
   type?: Coding;
 }
+/**
+ * A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
+ */
 export interface AuditEvent extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'AuditEvent'
@@ -2553,7 +2607,7 @@ export interface AuditEvent extends DomainResource {
   source: AuditEventSource;
 }
 /**
- * Need some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources.
+ * Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.
  */
 export interface Basic extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -2581,7 +2635,7 @@ export interface Basic extends DomainResource {
   subject?: Reference;
 }
 /**
- * There are situations where it is useful or required to handle pure binary content using the same framework as other resources.
+ * A binary resource can contain any content, whether text, image, pdf, zip archive, etc.
  */
 export interface Binary extends Resource {
   /** Resource Type Name (for serialization) */
@@ -2597,6 +2651,9 @@ export interface Binary extends Resource {
   contentType: string;
   _contentType?: Element;
 }
+/**
+ * Record details about the anatomical location of a specimen or body part.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case.
+ */
 export interface BodySite extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'BodySite'
@@ -2762,6 +2819,9 @@ export interface BundleEntry extends BackboneElement {
    */
   search?: BundleEntrySearch;
 }
+/**
+ * A container for a collection of resources.
+ */
 export interface Bundle extends Resource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Bundle'
@@ -2949,6 +3009,9 @@ export interface CarePlanActivity extends BackboneElement {
    */
   reference?: Reference;
 }
+/**
+ * Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
+ */
 export interface CarePlan extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'CarePlan'
@@ -3301,6 +3364,9 @@ export interface ClaimMissingTeeth extends BackboneElement {
    */
   tooth: Coding;
 }
+/**
+ * A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.
+ */
 export interface Claim extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Claim'
@@ -3706,6 +3772,9 @@ export interface ClaimResponseCoverage extends BackboneElement {
    */
   sequence: number;
 }
+/**
+ * This resource provides the adjudication details from the processing of a Claim resource.
+ */
 export interface ClaimResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ClaimResponse'
@@ -3866,6 +3935,9 @@ export interface ClinicalImpressionRuledOut extends BackboneElement {
   reason?: string;
   _reason?: Element;
 }
+/**
+ * A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called "ClinicalImpression" rather than "ClinicalAssessment" to avoid confusion with the recording of assessment tools such as Apgar score.
+ */
 export interface ClinicalImpression extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ClinicalImpression'
@@ -3974,6 +4046,9 @@ export interface CommunicationPayload extends BackboneElement {
    */
   contentReference: Reference;
 }
+/**
+ * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.
+ */
 export interface Communication extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Communication'
@@ -4061,6 +4136,9 @@ export interface CommunicationRequestPayload extends BackboneElement {
    */
   contentReference: Reference;
 }
+/**
+ * A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.
+ */
 export interface CommunicationRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'CommunicationRequest'
@@ -4236,7 +4314,7 @@ export enum CompositionSectionModeCodes {
   CHANGES = "changes",
 }
 /**
- * To support documents, and also to capture the EN13606 notion of an attested commit to the patient EHR, and to allow a set of disparate resources at the information/engineering level to be gathered into a clinical statement.
+ * A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.
  */
 export interface Composition extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -4411,6 +4489,9 @@ export interface ConceptMapElement extends BackboneElement {
    */
   target?: ConceptMapElementTarget[];
 }
+/**
+ * A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.
+ */
 export interface ConceptMap extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ConceptMap'
@@ -4533,6 +4614,9 @@ export interface ConditionEvidence extends BackboneElement {
    */
   detail?: Reference[];
 }
+/**
+ * Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.
+ */
 export interface Condition extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Condition'
@@ -5140,6 +5224,9 @@ export enum ConformanceDocumentModeCodes {
   PRODUCER = "producer",
   CONSUMER = "consumer",
 }
+/**
+ * A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+ */
 export interface Conformance extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Conformance'
@@ -5497,6 +5584,9 @@ export interface ContractRule extends BackboneElement {
    */
   contentReference: Reference;
 }
+/**
+ * A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
+ */
 export interface Contract extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Contract'
@@ -5579,7 +5669,7 @@ export interface Contract extends DomainResource {
   valuedItem?: ContractValuedItem[];
 }
 /**
- * Health care programs and insurers are significant payors of health service costs.
+ * Financial instrument which may be used to pay for or reimburse health care products and services.
  */
 export interface Coverage extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -5683,6 +5773,9 @@ export interface DataElementMapping extends BackboneElement {
   uri?: string;
   _uri?: Element;
 }
+/**
+ * The formal description of a single piece of information that can be gathered and reported.
+ */
 export interface DataElement extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'DataElement'
@@ -5789,6 +5882,9 @@ export interface DetectedIssueMitigation extends BackboneElement {
   date?: string;
   _date?: Element;
 }
+/**
+ * Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.
+ */
 export interface DetectedIssue extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'DetectedIssue'
@@ -5846,7 +5942,7 @@ export enum DetectedIssueSeverityCodes {
   LOW = "low",
 }
 /**
- * Allows institutions to track their devices.
+ * This resource identifies an instance of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.  Medical devices includes durable (reusable) medical equipment, implantable devices, as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.  Non-medical devices may include items such as a machine, cellphone, computer, application, etc.
  */
 export interface Device extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -5951,6 +6047,9 @@ export interface DeviceComponentProductionSpecification extends BackboneElement 
    */
   specType?: CodeableConcept;
 }
+/**
+ * Describes the characteristics, operational status and capabilities of a medical-related component of a medical device.
+ */
 export interface DeviceComponent extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'DeviceComponent'
@@ -6051,6 +6150,9 @@ export enum DeviceMetricCalibrationTypeCodes {
   GAIN = "gain",
   TWO_POINT = "two-point",
 }
+/**
+ * Describes a measurement, calculation or setting capability of a medical device.
+ */
 export interface DeviceMetric extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'DeviceMetric'
@@ -6128,6 +6230,9 @@ export enum DeviceMetricOperationalStatusCodes {
   OFF = "off",
   STANDBY = "standby",
 }
+/**
+ * Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
+ */
 export interface DeviceUseRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'DeviceUseRequest'
@@ -6226,6 +6331,9 @@ export enum DeviceUseRequestStatusCodes {
   REJECTED = "rejected",
   ABORTED = "aborted",
 }
+/**
+ * A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.
+ */
 export interface DeviceUseStatement extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'DeviceUseStatement'
@@ -6366,6 +6474,9 @@ export enum DiagnosticOrderItemStatusCodes {
   REJECTED = "rejected",
   FAILED = "failed",
 }
+/**
+ * A record of a request for a diagnostic investigation service to be performed.
+ */
 export interface DiagnosticOrder extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'DiagnosticOrder'
@@ -6462,7 +6573,7 @@ export interface DiagnosticReportImage extends BackboneElement {
   link: Reference;
 }
 /**
- * To support reporting for any diagnostic report into a clinical data repository.
+ * The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.
  */
 export interface DiagnosticReport extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -6582,6 +6693,9 @@ export interface DocumentManifestRelated extends BackboneElement {
    */
   ref?: Reference;
 }
+/**
+ * A manifest that defines a set of documents.
+ */
 export interface DocumentManifest extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'DocumentManifest'
@@ -6728,6 +6842,9 @@ export interface DocumentReferenceContext extends BackboneElement {
    */
   sourcePatientInfo?: Reference;
 }
+/**
+ * A reference to a document .
+ */
 export interface DocumentReference extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'DocumentReference'
@@ -6812,6 +6929,9 @@ export enum DocumentReferenceStatusCodes {
   SUPERSEDED = "superseded",
   ENTERED_IN_ERROR = "entered-in-error",
 }
+/**
+ * A resource that includes narrative, extensions, and contained resources.
+ */
 export interface DomainResource extends Resource {
   /**
    * This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
@@ -6830,6 +6950,9 @@ export interface DomainResource extends Resource {
    */
   text?: Narrative;
 }
+/**
+ * This resource provides the insurance eligibility details from the insurer regarding a specified coverage and optionally some class of service.
+ */
 export interface EligibilityRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'EligibilityRequest'
@@ -6863,6 +6986,9 @@ export interface EligibilityRequest extends DomainResource {
    */
   target?: Reference;
 }
+/**
+ * This resource provides eligibility and plan details from the processing of an Eligibility resource.
+ */
 export interface EligibilityResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'EligibilityResponse'
@@ -7035,6 +7161,9 @@ export enum EncounterLocationStatusCodes {
   RESERVED = "reserved",
   COMPLETED = "completed",
 }
+/**
+ * An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
+ */
 export interface Encounter extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Encounter'
@@ -7137,6 +7266,9 @@ export enum EncounterStatusCodes {
   FINISHED = "finished",
   CANCELLED = "cancelled",
 }
+/**
+ * This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
+ */
 export interface EnrollmentRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'EnrollmentRequest'
@@ -7182,6 +7314,9 @@ export interface EnrollmentRequest extends DomainResource {
    */
   target?: Reference;
 }
+/**
+ * This resource provides enrollment and plan details from the processing of an Enrollment resource.
+ */
 export interface EnrollmentResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'EnrollmentResponse'
@@ -7278,6 +7413,9 @@ export interface EpisodeOfCareCareTeam extends BackboneElement {
    */
   role?: CodeableConcept[];
 }
+/**
+ * An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.
+ */
 export interface EpisodeOfCare extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'EpisodeOfCare'
@@ -7338,6 +7476,9 @@ export enum EpisodeOfCareStatusCodes {
   FINISHED = "finished",
   CANCELLED = "cancelled",
 }
+/**
+ * This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided.
+ */
 export interface ExplanationOfBenefit extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ExplanationOfBenefit'
@@ -7426,6 +7567,9 @@ export interface FamilyMemberHistoryCondition extends BackboneElement {
    */
   outcome?: CodeableConcept;
 }
+/**
+ * Significant health events and conditions for a person related to the patient relevant in the context of care for the patient.
+ */
 export interface FamilyMemberHistory extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'FamilyMemberHistory'
@@ -7538,6 +7682,9 @@ export enum FamilyMemberHistoryStatusCodes {
   ENTERED_IN_ERROR = "entered-in-error",
   HEALTH_UNKNOWN = "health-unknown",
 }
+/**
+ * Prospective warnings of potential issues when providing care to the patient.
+ */
 export interface Flag extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Flag'
@@ -7596,6 +7743,9 @@ export interface GoalOutcome extends BackboneElement {
    */
   resultReference?: Reference;
 }
+/**
+ * Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
+ */
 export interface Goal extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Goal'
@@ -7736,6 +7886,9 @@ export interface GroupMember extends BackboneElement {
    */
   period?: Period;
 }
+/**
+ * Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.
+ */
 export interface Group extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Group'
@@ -7850,6 +8003,9 @@ export interface HealthcareServiceNotAvailable extends BackboneElement {
    */
   during?: Period;
 }
+/**
+ * The details of a healthcare service available at a location.
+ */
 export interface HealthcareService extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'HealthcareService'
@@ -8031,7 +8187,7 @@ export interface ImagingObjectSelectionStudy extends BackboneElement {
   _url?: Element;
 }
 /**
- * A FHIR representation of DICOM Key Object Selection (KOS) SOP Instances enables access to a set of selected DICOM SOP Instances.
+ * A manifest of a set of DICOM Service-Object Pair Instances (SOP Instances).  The referenced SOP Instances (images or other content) are for a single patient, and may be from one or more studies. The referenced SOP Instances have been selected for a purpose, such as quality assurance, conference, or consult. Reflecting that range of purposes, typical ImagingObjectSelection resources may include all SOP Instances in a study (perhaps for sharing through a Health Information Exchange); key images from multiple studies (for reference by a referring or treating physician); a multi-frame ultrasound instance ("cine" video clip) and a set of measurements taken from that instance (for inclusion in a teaching file); and so on.
  */
 export interface ImagingObjectSelection extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -8164,6 +8320,9 @@ export enum ImagingStudySeriesAvailabilityCodes {
   NEARLINE = "NEARLINE",
   UNAVAILABLE = "UNAVAILABLE",
 }
+/**
+ * Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
+ */
 export interface ImagingStudy extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ImagingStudy'
@@ -8317,6 +8476,9 @@ export interface ImmunizationVaccinationProtocol extends BackboneElement {
    */
   targetDisease: CodeableConcept[];
 }
+/**
+ * Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
+ */
 export interface Immunization extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Immunization'
@@ -8496,6 +8658,9 @@ export interface ImmunizationRecommendationRecommendation extends BackboneElemen
    */
   vaccineCode: CodeableConcept;
 }
+/**
+ * A patient's point-in-time immunization and recommendation (i.e. forecasting a patient's immunization eligibility according to a published schedule) with optional supporting justification.
+ */
 export interface ImmunizationRecommendation extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ImmunizationRecommendation'
@@ -8683,7 +8848,7 @@ export enum ImplementationGuidePageKindCodes {
   RESOURCE = "resource",
 }
 /**
- * An implementation guide is able to define default profiles that must apply to any use of a resource, so validation services may need to take one or more implementation guide resources when validating.
+ * A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts.
  */
 export interface ImplementationGuide extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -8799,6 +8964,9 @@ export interface ListEntry extends BackboneElement {
    */
   item: Reference;
 }
+/**
+ * A set of information summarized from a list of other resources.
+ */
 export interface List extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'List'
@@ -8893,6 +9061,9 @@ export interface LocationPosition extends BackboneElement {
    */
   longitude: number;
 }
+/**
+ * Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated.
+ */
 export interface Location extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Location'
@@ -8964,6 +9135,9 @@ export enum LocationStatusCodes {
   SUSPENDED = "suspended",
   INACTIVE = "inactive",
 }
+/**
+ * A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference.
+ */
 export interface Media extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Media'
@@ -9097,6 +9271,9 @@ export interface MedicationPackage extends BackboneElement {
    */
   content?: MedicationPackageContent[];
 }
+/**
+ * This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
+ */
 export interface Medication extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Medication'
@@ -9160,6 +9337,9 @@ export interface MedicationAdministrationDosage extends BackboneElement {
   text?: string;
   _text?: Element;
 }
+/**
+ * Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner.
+ */
 export interface MedicationAdministration extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'MedicationAdministration'
@@ -9322,6 +9502,9 @@ export interface MedicationDispenseSubstitution extends BackboneElement {
    */
   type: CodeableConcept;
 }
+/**
+ * Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.
+ */
 export interface MedicationDispense extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'MedicationDispense'
@@ -9513,6 +9696,9 @@ export interface MedicationOrderSubstitution extends BackboneElement {
    */
   type: CodeableConcept;
 }
+/**
+ * An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationOrder" rather than "MedicationPrescription" to generalize the use across inpatient and outpatient settings as well as for care plans, etc.
+ */
 export interface MedicationOrder extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'MedicationOrder'
@@ -9659,6 +9845,9 @@ export interface MedicationStatementDosage extends BackboneElement {
    */
   timing?: Timing;
 }
+/**
+ * A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from e.g. the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains   The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.
+ */
 export interface MedicationStatement extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'MedicationStatement'
@@ -9817,7 +10006,7 @@ export interface MessageHeaderDestination extends BackboneElement {
   target?: Reference;
 }
 /**
- * Many implementations are not prepared to use REST and need a messaging based infrastructure.
+ * The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle.
  */
 export interface MessageHeader extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -9915,6 +10104,9 @@ export enum NamingSystemUniqueIdTypeCodes {
   URI = "uri",
   OTHER = "other",
 }
+/**
+ * A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
+ */
 export interface NamingSystem extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'NamingSystem'
@@ -10143,6 +10335,9 @@ export interface NutritionOrderEnteralFormula extends BackboneElement {
    */
   routeofAdministration?: CodeableConcept;
 }
+/**
+ * A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident.
+ */
 export interface NutritionOrder extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'NutritionOrder'
@@ -10322,7 +10517,7 @@ export interface ObservationComponent extends BackboneElement {
   valuePeriod?: Period;
 }
 /**
- * Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms.
+ * Measurements and simple assertions made about a patient, device or other subject.
  */
 export interface Observation extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -10559,6 +10754,9 @@ export enum OperationDefinitionParameterUseCodes {
   IN = "in",
   OUT = "out",
 }
+/**
+ * A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).
+ */
 export interface OperationDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'OperationDefinition'
@@ -10708,6 +10906,9 @@ export enum OperationOutcomeIssueSeverityCodes {
   WARNING = "warning",
   INFORMATION = "information",
 }
+/**
+ * A collection of error, warning or information messages that result from a system action.
+ */
 export interface OperationOutcome extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'OperationOutcome'
@@ -10729,6 +10930,9 @@ export interface OrderWhen extends BackboneElement {
    */
   schedule?: Timing;
 }
+/**
+ * A request to perform an action.
+ */
 export interface Order extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Order'
@@ -10770,6 +10974,9 @@ export interface Order extends DomainResource {
    */
   when?: OrderWhen;
 }
+/**
+ * A response to an order.
+ */
 export interface OrderResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'OrderResponse'
@@ -10840,6 +11047,9 @@ export interface OrganizationContact extends BackboneElement {
    */
   telecom?: ContactPoint[];
 }
+/**
+ * A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc.
+ */
 export interface Organization extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Organization'
@@ -11040,6 +11250,9 @@ export interface ParametersParameter extends BackboneElement {
    */
   valueMeta?: Meta;
 }
+/**
+ * This special resource type is used to represent an operation request and response (operations.html). It has no other use, and there is no RESTful endpoint associated with it.
+ */
 export interface Parameters extends Resource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Parameters'
@@ -11145,7 +11358,7 @@ export enum PatientLinkTypeCodes {
   SEEALSO = "seealso",
 }
 /**
- * Tracking patient is the center of the healthcare process.
+ * Demographics and other administrative information about an individual or animal receiving care or other health-related services.
  */
 export interface Patient extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -11242,6 +11455,9 @@ export enum PatientGenderCodes {
   OTHER = "other",
   UNKNOWN = "unknown",
 }
+/**
+ * This resource provides the status of the payment for goods and services rendered, and the request and response resource references.
+ */
 export interface PaymentNotice extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'PaymentNotice'
@@ -11335,6 +11551,9 @@ export interface PaymentReconciliationNote extends BackboneElement {
    */
   type?: Coding;
 }
+/**
+ * This resource provides payment details and claim references supporting a bulk payment.
+ */
 export interface PaymentReconciliation extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'PaymentReconciliation'
@@ -11433,7 +11652,7 @@ export enum PersonLinkAssuranceCodes {
   LEVEL4 = "level4",
 }
 /**
- * Need to track persons potentially across multiple roles.
+ * Demographics and administrative information about a person independent of a specific health-related context.
  */
 export interface Person extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -11542,7 +11761,7 @@ export interface PractitionerQualification extends BackboneElement {
   period?: Period;
 }
 /**
- * Need to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc.
+ * A person who is directly or indirectly involved in the provisioning of healthcare.
  */
 export interface Practitioner extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -11630,6 +11849,9 @@ export interface ProcedureFocalDevice extends BackboneElement {
    */
   manipulated: Reference;
 }
+/**
+ * An action that is or was performed on a patient. This can be a physical intervention like an operation, or less invasive like counseling or hypnotherapy.
+ */
 export interface Procedure extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Procedure'
@@ -11738,6 +11960,9 @@ export enum ProcedureStatusCodes {
   COMPLETED = "completed",
   ENTERED_IN_ERROR = "entered-in-error",
 }
+/**
+ * A request for a procedure to be performed. May be a proposal or an order.
+ */
 export interface ProcedureRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ProcedureRequest'
@@ -11852,6 +12077,9 @@ export interface ProcessRequestItem extends BackboneElement {
    */
   sequenceLinkId: number;
 }
+/**
+ * This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.
+ */
 export interface ProcessRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ProcessRequest'
@@ -11949,6 +12177,9 @@ export interface ProcessResponseNotes extends BackboneElement {
    */
   type?: Coding;
 }
+/**
+ * This resource provides processing status, errors and notes from the processing of a resource.
+ */
 export interface ProcessResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ProcessResponse'
@@ -12079,6 +12310,9 @@ export enum ProvenanceEntityRoleCodes {
   QUOTATION = "quotation",
   SOURCE = "source",
 }
+/**
+ * Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.
+ */
 export interface Provenance extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Provenance'
@@ -12224,7 +12458,7 @@ export interface QuestionnaireGroup extends BackboneElement {
   _title?: Element;
 }
 /**
- * To support structured, hierarchical registration of data gathered using digital forms and other questionnaires.
+ * A structured set of questions intended to guide the collection of answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.
  */
 export interface Questionnaire extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -12395,7 +12629,7 @@ export interface QuestionnaireResponseGroup extends BackboneElement {
   _title?: Element;
 }
 /**
- * To support structured, hierarchical registration of data gathered using digital forms and other questionnaires.
+ * A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.
  */
 export interface QuestionnaireResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -12447,6 +12681,9 @@ export enum QuestionnaireResponseStatusCodes {
   COMPLETED = "completed",
   AMENDED = "amended",
 }
+/**
+ * Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.
+ */
 export interface ReferralRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ReferralRequest'
@@ -12532,7 +12769,7 @@ export enum ReferralRequestStatusCodes {
   COMPLETED = "completed",
 }
 /**
- * Need to track persons related to the patient or the healthcare process.
+ * Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
  */
 export interface RelatedPerson extends DomainResource {
   /** Resource Type Name (for serialization) */
@@ -12589,6 +12826,9 @@ export enum RelatedPersonGenderCodes {
   OTHER = "other",
   UNKNOWN = "unknown",
 }
+/**
+ * This is the base resource type for everything.
+ */
 export interface Resource {
   /**
    * The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
@@ -12648,6 +12888,9 @@ export interface RiskAssessmentPrediction extends BackboneElement {
    */
   whenRange?: Range;
 }
+/**
+ * An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.
+ */
 export interface RiskAssessment extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'RiskAssessment'
@@ -12694,6 +12937,9 @@ export interface RiskAssessment extends DomainResource {
    */
   subject?: Reference;
 }
+/**
+ * A container for slot(s) of time that may be available for booking appointments.
+ */
 export interface Schedule extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Schedule'
@@ -12733,6 +12979,9 @@ export interface SearchParameterContact extends BackboneElement {
    */
   telecom?: ContactPoint[];
 }
+/**
+ * A search parameter that defines a named search item that can be used to search/filter on a resource.
+ */
 export interface SearchParameter extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'SearchParameter'
@@ -12842,6 +13091,9 @@ export enum SearchParameterXpathUsageCodes {
   DISTANCE = "distance",
   OTHER = "other",
 }
+/**
+ * A slot of time on a schedule that may be available for booking appointments.
+ */
 export interface Slot extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Slot'
@@ -12979,6 +13231,9 @@ export interface SpecimenContainer extends BackboneElement {
    */
   type?: CodeableConcept;
 }
+/**
+ * A sample to be used for analysis.
+ */
 export interface Specimen extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Specimen'
@@ -13091,6 +13346,9 @@ export interface StructureDefinitionDifferential extends BackboneElement {
    */
   element: ElementDefinition[];
 }
+/**
+ * A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions, and constraints on resources and data types.
+ */
 export interface StructureDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'StructureDefinition'
@@ -13273,6 +13531,9 @@ export enum SubscriptionChannelTypeCodes {
   SMS = "sms",
   MESSAGE = "message",
 }
+/**
+ * The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system is able to take an appropriate action.
+ */
 export interface Subscription extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Subscription'
@@ -13354,6 +13615,9 @@ export interface SubstanceIngredient extends BackboneElement {
    */
   substance: Reference;
 }
+/**
+ * A homogeneous material with a definite composition.
+ */
 export interface Substance extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'Substance'
@@ -13383,6 +13647,9 @@ export interface Substance extends DomainResource {
    */
   instance?: SubstanceInstance[];
 }
+/**
+ * Record of delivery of what is supplied.
+ */
 export interface SupplyDelivery extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'SupplyDelivery'
@@ -13454,6 +13721,9 @@ export interface SupplyRequestWhen extends BackboneElement {
    */
   schedule?: Timing;
 }
+/**
+ * A record of a request for a medication, substance or device used in the healthcare setting.
+ */
 export interface SupplyRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'SupplyRequest'
@@ -13954,6 +14224,9 @@ export interface TestScriptTeardown extends BackboneElement {
    */
   action: TestScriptTeardownAction[];
 }
+/**
+ * TestScript is a resource that specifies a suite of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+ */
 export interface TestScript extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'TestScript'
@@ -14345,6 +14618,9 @@ export interface ValueSetExpansion extends BackboneElement {
    */
   total?: number;
 }
+/**
+ * A value set specifies a set of codes drawn from one or more code systems.
+ */
 export interface ValueSet extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'ValueSet'
@@ -14532,6 +14808,9 @@ export enum VisionPrescriptionDispenseEyeCodes {
   RIGHT = "right",
   LEFT = "left",
 }
+/**
+ * An authorization for the supply of glasses and/or contact lenses to a patient.
+ */
 export interface VisionPrescription extends DomainResource {
   /** Resource Type Name (for serialization) */
   resourceType: 'VisionPrescription'

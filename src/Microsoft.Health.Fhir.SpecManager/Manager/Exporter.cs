@@ -23,6 +23,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="exportLanguage">The export language.</param>
         /// <param name="options">       Options for controlling the operation.</param>
         /// <param name="outputFile">    The output filename.</param>
+        /// <returns>A List of files written by the export operation.</returns>
         public static List<string> Export(
             FhirVersionInfo sourceFhirInfo,
             ILanguage exportLanguage,
@@ -70,9 +71,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 Directory.CreateDirectory(exportDir);
             }
 
-            bool copyPrimitives = options.PrimitiveNameStyle != FhirTypeBase.NamingConvention.None;
-            bool copyComplexTypes = options.ComplexTypeNameStyle != FhirTypeBase.NamingConvention.None;
-            bool copyResources = options.ComplexTypeNameStyle != FhirTypeBase.NamingConvention.None;
+            bool copyPrimitives = false;
+            if (exportLanguage.RequiredExportClassTypes.Contains(ExporterOptions.FhirExportClassType.PrimitiveType) ||
+                options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.PrimitiveType))
+            {
+                copyPrimitives = true;
+            }
+
+            bool copyComplexTypes = false;
+            if (exportLanguage.RequiredExportClassTypes.Contains(ExporterOptions.FhirExportClassType.ComplexType) ||
+                options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.ComplexType))
+            {
+                copyComplexTypes = true;
+            }
+
+            bool copyResources = false;
+            if (exportLanguage.RequiredExportClassTypes.Contains(ExporterOptions.FhirExportClassType.Resource) ||
+                options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Resource))
+            {
+                copyResources = true;
+            }
 
             // create a copy of the FHIR information for use in this export
             FhirVersionInfo info = sourceFhirInfo.CopyForExport(
