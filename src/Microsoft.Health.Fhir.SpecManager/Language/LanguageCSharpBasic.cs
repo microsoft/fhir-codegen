@@ -839,13 +839,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            _writer.WriteLineI(string.Empty);
+            _writer.WriteLine(string.Empty);
 
             _writer.WriteLineI("using System;");
             _writer.WriteLineI("using System.Collections.Generic;");
             _writer.WriteLineI("using Newtonsoft.Json;");
             _writer.WriteLineI("using Newtonsoft.Json.Linq;");
-            _writer.WriteLineI(string.Empty);
+            _writer.WriteLine(string.Empty);
         }
 
         /// <summary>Writes a footer.</summary>
