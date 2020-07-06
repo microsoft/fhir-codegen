@@ -189,12 +189,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             continue;
                         }
 
-                        if (param.ValueDateTime != null)
-                        {
-                            parameters.Add(param.Name, param.ValueDateTime);
-                            continue;
-                        }
-
                         if (param.ValueDecimal != null)
                         {
                             parameters.Add(param.Name, param.ValueDecimal);
@@ -497,7 +491,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 (op.Type == null) || (op.Type.Length == 0),
                 op.Instance,
                 op.Code,
-                op.Comment,
+                op.Requirements,
                 op.Type,
                 parameters);
 
@@ -506,7 +500,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         }
 
         /// <summary>Process the search parameter.</summary>
-        /// <param name="sp">             The sp.</param>
+        /// <param name="sp">             The search parameter.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
         private void ProcessSearchParam(
             fhir_2.SearchParameter sp,
@@ -636,7 +630,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         descriptionShort = element.Short;
                         definition = element.Definition;
-                        comment = element.Comment;
+                        comment = element.Requirements;
                         break;
                     }
                 }
@@ -1134,7 +1128,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         if (element.Binding != null)
                         {
                             bindingStrength = element.Binding.Strength;
-                            valueSet = element.Binding.ValueSet;
+                            valueSet = element.Binding.ValueSetUri;
+
+                            if (string.IsNullOrEmpty(valueSet) &&
+                                (element.Binding.ValueSetReference != null))
+                            {
+                                valueSet = element.Binding.ValueSetReference.ReferenceField;
+                            }
                         }
 
                         // elements can repeat in R2 due to the way slicing was done
@@ -1150,7 +1150,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                     parent.Elements.Count,
                                     element.Short,
                                     element.Definition,
-                                    element.Comment,
+                                    element.Requirements,
                                     string.Empty,
                                     elementType,
                                     elementTypes,
@@ -1390,20 +1390,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            if (element.DefaultValueUrl != null)
-            {
-                defaultName = "defaultValueUrl";
-                defaultValue = element.DefaultValueUrl;
-                return;
-            }
-
-            if (element.DefaultValueUuid != null)
-            {
-                defaultName = "defaultValueUuid";
-                defaultValue = element.DefaultValueUuid;
-                return;
-            }
-
             defaultName = string.Empty;
             defaultValue = null;
         }
@@ -1512,20 +1498,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 fixedName = "fixedValueUri";
                 fixedValue = element.FixedUri;
-                return;
-            }
-
-            if (element.FixedUrl != null)
-            {
-                fixedName = "fixedValueUrl";
-                fixedValue = element.FixedUrl;
-                return;
-            }
-
-            if (element.FixedUuid != null)
-            {
-                fixedName = "fixedValueUuid";
-                fixedValue = element.FixedUuid;
                 return;
             }
 

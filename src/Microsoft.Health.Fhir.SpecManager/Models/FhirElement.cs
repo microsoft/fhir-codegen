@@ -399,7 +399,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
         /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
         /// <param name="isComponent">           (Optional) True if is component, false if not.</param>
-        /// <returns>A Dictionary&lt;string,string&gt;</returns>
+        /// <returns>A Dictionary of field names (e.g., ValueBoolean) and types (e.g., boolean).</returns>
         public Dictionary<string, string> NamesAndTypesForExport(
             NamingConvention nameConvention,
             NamingConvention typeConvention,

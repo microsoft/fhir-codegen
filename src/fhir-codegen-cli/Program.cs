@@ -20,9 +20,9 @@ namespace FhirCodegenCli
     {
         private static HashSet<string> _extensionsOutputted;
 
-        /// <summary>Main entry-point for this application.</summary>
-        /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>
-        /// <param name="outputFile">       Where to write output.</param>
+        /// <summary>Command-line utility for processing the FHIR specification into other computer languages.</summary>
+        /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are downloaded and cached.</param>
+        /// <param name="outputPath">       File or directory to write output.</param>
         /// <param name="verbose">          Show verbose output.</param>
         /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
         /// <param name="language">         Name of the language to export (default:
@@ -41,7 +41,7 @@ namespace FhirCodegenCli
         ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
         public static void Main(
             string fhirSpecDirectory = "",
-            string outputFile = "",
+            string outputPath = "",
             bool verbose = false,
             bool offlineMode = false,
             string language = "",
@@ -61,9 +61,9 @@ namespace FhirCodegenCli
                 fhirSpecDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\fhirVersions");
             }
 
-            if (string.IsNullOrEmpty(outputFile))
+            if (string.IsNullOrEmpty(outputPath))
             {
-                outputFile = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\generated");
+                outputPath = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\generated");
             }
 
             if (string.IsNullOrEmpty(loadR2) &&
@@ -101,7 +101,7 @@ namespace FhirCodegenCli
             // done loading
             long loadMS = timingWatch.ElapsedMilliseconds;
 
-            if (string.IsNullOrEmpty(outputFile))
+            if (string.IsNullOrEmpty(outputPath))
             {
                 if ((verbose == true) && (r2 != null))
                 {
@@ -119,9 +119,9 @@ namespace FhirCodegenCli
                 }
             }
 
-            if (!string.IsNullOrEmpty(outputFile))
+            if (!string.IsNullOrEmpty(outputPath))
             {
-                string baseDirectory = Path.GetDirectoryName(outputFile);
+                string baseDirectory = Path.GetDirectoryName(outputPath);
 
                 if (!Directory.Exists(Path.GetDirectoryName(baseDirectory)))
                 {
@@ -158,22 +158,22 @@ namespace FhirCodegenCli
 
                     if (r2 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r2, lang, options, outputFile));
+                        filesWritten.AddRange(Exporter.Export(r2, lang, options, outputPath));
                     }
 
                     if (r3 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r3, lang, options, outputFile));
+                        filesWritten.AddRange(Exporter.Export(r3, lang, options, outputPath));
                     }
 
                     if (r4 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r4, lang, options, outputFile));
+                        filesWritten.AddRange(Exporter.Export(r4, lang, options, outputPath));
                     }
 
                     if (r5 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r5, lang, options, outputFile));
+                        filesWritten.AddRange(Exporter.Export(r5, lang, options, outputPath));
                     }
                 }
             }

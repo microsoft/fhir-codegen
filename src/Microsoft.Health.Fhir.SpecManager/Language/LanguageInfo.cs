@@ -218,7 +218,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WritePrimitiveTypes(
             IEnumerable<FhirPrimitive> primitives)
         {
-            _writer.WriteLineI( $"Primitive Types: {primitives.Count()}");
+            _writer.WriteLineI($"Primitive Types: {primitives.Count()}");
 
             foreach (FhirPrimitive primitive in primitives)
             {
@@ -472,7 +472,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if ((element.Codes != null) && (element.Codes.Count > 0))
             {
                 string codes = string.Join("|", element.Codes);
-                _writer.WriteLineI( $"{{{codes}}}");
+                _writer.WriteLineI($"{{{codes}}}");
             }
 
             // either step into backbone definition OR extensions, don't write both
