@@ -1189,13 +1189,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            if (element.DefaultValueInteger64 != null)
-            {
-                defaultName = "defaultValueInteger64";
-                defaultValue = element.DefaultValueInteger64;
-                return;
-            }
-
             if (element.DefaultValueMarkdown != null)
             {
                 defaultName = "defaultValueMarkdown";
@@ -1332,13 +1325,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 fixedName = "fixedValueInteger";
                 fixedValue = element.FixedInteger;
-                return;
-            }
-
-            if (element.FixedInteger64 != null)
-            {
-                fixedName = "fixedValueInteger64";
-                fixedValue = element.FixedInteger64;
                 return;
             }
 

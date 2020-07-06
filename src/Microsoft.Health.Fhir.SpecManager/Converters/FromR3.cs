@@ -95,12 +95,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             continue;
                         }
 
-                        if (param.ValueDateTime != null)
-                        {
-                            parameters.Add(param.Name, param.ValueDateTime);
-                            continue;
-                        }
-
                         if (param.ValueDecimal != null)
                         {
                             parameters.Add(param.Name, param.ValueDecimal);
@@ -946,7 +940,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         if (element.Binding != null)
                         {
                             bindingStrength = element.Binding.Strength;
-                            valueSet = element.Binding.ValueSet;
+                            valueSet = element.Binding.ValueSetUri;
+
+                            if (string.IsNullOrEmpty(valueSet) &&
+                                (element.Binding.ValueSetReference != null))
+                            {
+                                valueSet = element.Binding.ValueSetReference.ReferenceField;
+                            }
                         }
 
                         // add this field to the parent type
@@ -1106,13 +1106,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            if (element.DefaultValueCanonical != null)
-            {
-                defaultName = "defaultValueCanonical";
-                defaultValue = element.DefaultValueCanonical;
-                return;
-            }
-
             if (element.DefaultValueCode != null)
             {
                 defaultName = "defaultValueCode";
@@ -1211,20 +1204,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            if (element.DefaultValueUrl != null)
-            {
-                defaultName = "defaultValueUrl";
-                defaultValue = element.DefaultValueUrl;
-                return;
-            }
-
-            if (element.DefaultValueUuid != null)
-            {
-                defaultName = "defaultValueUuid";
-                defaultValue = element.DefaultValueUuid;
-                return;
-            }
-
             defaultName = string.Empty;
             defaultValue = null;
         }
@@ -1242,13 +1221,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 fixedName = "fixedValueBase64Binary";
                 fixedValue = element.FixedBase64Binary;
-                return;
-            }
-
-            if (element.FixedCanonical != null)
-            {
-                fixedName = "fixedValueCanonical";
-                fixedValue = element.FixedCanonical;
                 return;
             }
 
@@ -1347,20 +1319,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 fixedName = "fixedValueUri";
                 fixedValue = element.FixedUri;
-                return;
-            }
-
-            if (element.FixedUrl != null)
-            {
-                fixedName = "fixedValueUrl";
-                fixedValue = element.FixedUrl;
-                return;
-            }
-
-            if (element.FixedUuid != null)
-            {
-                fixedName = "fixedValueUuid";
-                fixedValue = element.FixedUuid;
                 return;
             }
 

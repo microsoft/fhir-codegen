@@ -328,6 +328,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             $" System.ComponentModel.INotifyPropertyChanged");
                     break;
 
+                case "DataType":
+                    _writer.WriteLineI(
+                        $"public partial class" +
+                            $" {exportName}" +
+                            $" : {_namespace}.Element," +
+                            $" System.ComponentModel.INotifyPropertyChanged");
+                    break;
+
                 default:
                     if (_info.HasComplex(complex.BaseTypeName))
                     {
