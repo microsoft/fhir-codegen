@@ -32,19 +32,19 @@ Options:
 
 ## Langauge Information
 
-  * LanguageInfo
+  * Info
     
     Basic text output of a version of FHIR for information and testing.
 
-  * LanguageCSharpBasic
+  * CSharpBasic
 
     Basic C# language bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.
 
-  * LanguageTypeScript
+  * TypeScript
 
     Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.
 
-  * LanguageCSharpFirely **EXPERIMENTAL**
+  * CSharpFirely **EXPERIMENTAL**
 
     Export base C# classes needed for the Firely-maintained C# API ([FHIR-Net-API](https://github.com/FirelyTeam/fhir-net-api/)).
 
