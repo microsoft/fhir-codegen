@@ -1,4 +1,4 @@
-﻿// <copyright file="LanguageCSharpFirely.cs" company="Microsoft Corporation">
+﻿// <copyright file="CSharpFirely.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -13,7 +13,7 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
     /// <summary>A language exporter for Firely-compliant C# FHIR output.</summary>
-    public sealed class LanguageCSharpFirely : ILanguage
+    public sealed class CSharpFirely : ILanguage
     {
         /// <summary>The namespace to use during export.</summary>
         private const string _namespace = "Hl7.Fhir.Model";
@@ -32,6 +32,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>List of types of the exported resource names ands.</summary>
         private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
+
+        /// <summary>Keep track of information about written value sets.</summary>
+        private Dictionary<string, WrittenValueSetInfo> _writtenValueSets = new Dictionary<string, WrittenValueSetInfo>();
 
         /// <summary>The currently in-use text writer.</summary>
         private ExportStreamWriter _writer;
@@ -255,13 +258,47 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _info = info;
             _options = options;
             _exportDirectory = exportDirectory;
+            _writtenValueSets = new Dictionary<string, WrittenValueSetInfo>();
 
             _headerUserName = Environment.UserName;
             _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
 
+            WriteCommonValueSets();
+
             WritePrimitiveTypes(_info.PrimitiveTypes.Values);
 
             WriteComplexDataTypes(_info.ComplexTypes.Values);
+        }
+
+        /// <summary>Writes the common enums.</summary>
+        private void WriteCommonValueSets()
+        {
+            string filename = Path.Combine(_exportDirectory, "Template-Bindings.cs");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteHeaderBasic();
+                WriteNamespaceOpen();
+
+                foreach (FhirValueSetCollection collection in _info.ValueSetsByUrl.Values)
+                {
+                    // traverse value sets starting with highest version
+                    foreach (FhirValueSet currentVs in collection.ValueSetsByVersion.Values.OrderByDescending(s => s.Version))
+                    {
+                        if (currentVs.ReferencedByPaths.Count < 2)
+                        {
+                            continue;
+                        }
+
+                        WriteValueSet(currentVs, string.Empty);
+                    }
+                }
+
+                WriteNamespaceClose();
+            }
         }
 
         /// <summary>Writes the complex data types.</summary>
@@ -315,13 +352,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             WriteIndentedComment($"{complex.ShortDescription}");
 
-            _writer.WriteLineI($"[FhirType(\"{complex.Name}\")]");
-            _writer.WriteLineI("[DataContract]");
+            _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
+            _writer.WriteLineIndented("[DataContract]");
 
             switch (complex.BaseTypeName)
             {
                 case "BackboneType":
-                    _writer.WriteLineI(
+                    _writer.WriteLineIndented(
                         $"public partial class" +
                             $" {exportName}" +
                             $" : {_namespace}.BackboneElement," +
@@ -329,7 +366,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     break;
 
                 case "DataType":
-                    _writer.WriteLineI(
+                    _writer.WriteLineIndented(
                         $"public partial class" +
                             $" {exportName}" +
                             $" : {_namespace}.Element," +
@@ -339,7 +376,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 default:
                     if (_info.HasComplex(complex.BaseTypeName))
                     {
-                        _writer.WriteLineI(
+                        _writer.WriteLineIndented(
                             $"public partial class" +
                                 $" {exportName}" +
                                 $" : {_namespace}.{complex.BaseTypeName}," +
@@ -347,7 +384,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     }
                     else
                     {
-                        _writer.WriteLineI(
+                        _writer.WriteLineIndented(
                             $"public partial class" +
                                 $" {exportName}" +
                                 $" : {_namespace}.Element," +
@@ -372,7 +409,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            WriteEnums(complex);
+            WriteEnums(complex, exportName);
             WriteElements(complex);
 
             // close class
@@ -388,10 +425,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             WriteIndentedComment($"{complex.ShortDescription}");
 
-            _writer.WriteLineI($"[FhirType(\"{exportName}\", NamedBackboneElement=true)]");
-            _writer.WriteLineI("[DataContract]");
+            _writer.WriteLineIndented($"[FhirType(\"{exportName}\", NamedBackboneElement=true)]");
+            _writer.WriteLineIndented("[DataContract]");
 
-            _writer.WriteLineI(
+            _writer.WriteLineIndented(
                 $"public partial class" +
                     $" {exportName}" +
                     $" : {_namespace}.Element," +
@@ -413,7 +450,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            WriteEnums(complex);
+            WriteEnums(complex, exportName);
             WriteElements(complex);
 
             // close class
@@ -421,16 +458,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes the enums.</summary>
-        /// <param name="complex">The complex data type.</param>
+        /// <param name="complex">  The complex data type.</param>
+        /// <param name="className">Name of the class this enum is being written in.</param>
         private void WriteEnums(
-            FhirComplex complex)
+            FhirComplex complex,
+            string className)
         {
             foreach (FhirElement element in complex.Elements.Values)
             {
                 if ((!string.IsNullOrEmpty(element.ValueSet)) &&
                     _info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
                 {
-                    WriteValueSet(vs);
+                    WriteValueSet(vs, className);
 
                     continue;
                 }
@@ -438,10 +477,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes a value set.</summary>
-        /// <param name="vs">The vs.</param>
+        /// <param name="vs">       The vs.</param>
+        /// <param name="className">Name of the class this enum is being written in.</param>
         private void WriteValueSet(
-            FhirValueSet vs)
+            FhirValueSet vs,
+            string className)
         {
+            if (_writtenValueSets.ContainsKey(vs.URL))
+            {
+                return;
+            }
+
             string name = vs.Name ?? vs.Id;
             string nameSanitized = FhirUtils.SanitizeForProperty(name, _reservedWords);
 
@@ -456,9 +502,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment($"{vs.Description}\n(systems: {vs.ReferencedCodeSystems.Count})");
             }
 
-            _writer.WriteLineI($"[FhirEnumeration(\"{name}\")]");
+            _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\")]");
 
-            _writer.WriteLineI($"public enum {nameSanitized}");
+            _writer.WriteLineIndented($"public enum {nameSanitized}");
 
             OpenScope();
 
@@ -476,9 +522,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteIndentedComment(comment);
 
-                _writer.WriteLineI($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
-                _writer.WriteLineI($"{pascal},");
+                _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+                _writer.WriteLineIndented($"{pascal},");
             }
+
+            _writtenValueSets.Add(
+                vs.URL,
+                new WrittenValueSetInfo()
+                {
+                    ClassName = className,
+                    ValueSetName = nameSanitized,
+                });
 
             CloseScope();
         }
@@ -497,8 +551,99 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
+                if (!string.IsNullOrEmpty(element.ValueSet))
+                {
+                    WriteCodedElement(complex, element, order);
+                    order += 10;
+                    continue;
+                }
+
                 WriteElement(complex, element, order);
                 order += 10;
+            }
+        }
+
+        /// <summary>Writes an element.</summary>
+        /// <param name="complex">The complex data type.</param>
+        /// <param name="element">The element.</param>
+        /// <param name="order">  The order.</param>
+        private void WriteCodedElement(
+            FhirComplex complex,
+            FhirElement element,
+            int order)
+        {
+            bool hasDefinedEnum = true;
+            if (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+            {
+                hasDefinedEnum = false;
+            }
+
+            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+
+            WriteIndentedComment(element.ShortDescription);
+
+            string inSummary = element.IsSummary ? ", InSummary=true" : string.Empty;
+
+            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{inSummary}, Order={order})]");
+            _writer.WriteLineIndented("[DataMember]");
+
+            if (element.Path == "Address.use")
+            {
+                Console.Write(string.Empty);
+            }
+
+            string codeLiteral;
+
+            if (hasDefinedEnum)
+            {
+                string vsClass = _writtenValueSets[vs.URL].ClassName;
+                string vsName = _writtenValueSets[vs.URL].ValueSetName;
+
+                if (string.IsNullOrEmpty(vsClass))
+                {
+                    codeLiteral = $"Code<{_namespace}.{vsName}>";
+                }
+                else
+                {
+                    codeLiteral = $"Code<{_namespace}.{vsClass}.{vsName}>";
+                }
+            }
+            else
+            {
+                codeLiteral = $"{_namespace}.Code";
+            }
+
+            _writer.WriteLineIndented($"public {codeLiteral} {pascal}Element");
+
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return _{pascal}Element; }}");
+            _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
+            CloseScope();
+
+            _writer.WriteLineIndented($"private {codeLiteral} _{pascal}Element;");
+
+            if (!hasDefinedEnum)
+            {
+                WriteIndentedComment(element.ShortDescription);
+                _writer.WriteLineIndented("[NotMapped]");
+                _writer.WriteLineIndented("[IgnoreDataMember]");
+
+                _writer.WriteLineIndented($"public string {pascal}");
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Value : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
+                _writer.WriteLineIndented("if (value == null)");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{pascal}Element = null;");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented("else");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{pascal}Element = new {_namespace}.Code(value);");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
+                CloseScope();
+                CloseScope();
             }
         }
 
@@ -524,13 +669,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string inSummary = element.IsSummary ? ", InSummary=true" : string.Empty;
 
-            _writer.WriteLineI($"[FhirElement(\"{element.Name}\"{inSummary}, Order={order})]");
-            _writer.WriteLineI("[DataMember]");
-
-            if (element.Path == "Address.use")
-            {
-                Console.Write(string.Empty);
-            }
+            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{inSummary}, Order={order})]");
+            _writer.WriteLineIndented("[DataMember]");
 
             if (element.ElementTypes.Count == 1)
             {
@@ -550,19 +690,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // TODO: left off here - next step is adding the generic to the code
                 }
 
-                _writer.WriteLineI($"public {_namespace}.{name} {pascal}");
+                _writer.WriteLineIndented($"public {_namespace}.{name} {pascal}Element");
             }
             else
             {
-                _writer.WriteLineI($"public {_namespace}.object {pascal}");
+                _writer.WriteLineIndented($"public {_namespace}.object {pascal}Element");
             }
 
             OpenScope();
-
-            _writer.WriteLineI($"get {{ return _{pascal}; }}");
-            _writer.WriteLineI($"set {{ _{pascal} = value; OnPropertyChanged(\"{pascal}\"); }}");
-
+            _writer.WriteLineIndented($"get {{ return _{pascal}Element; }}");
+            _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
             CloseScope();
+
         }
 
         /// <summary>Writes a property type name.</summary>
@@ -571,8 +710,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             WriteIndentedComment("FHIR Type Name");
 
-            _writer.WriteLineI("[NotMapped]");
-            _writer.WriteLineI($"public override string TypeName {{ get {{ return \"{name}\"; }} }}");
+            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented($"public override string TypeName {{ get {{ return \"{name}\"; }} }}");
 
             _writer.WriteLine(string.Empty);
         }
@@ -668,10 +807,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteIndentedComment($"Primitive Type {primitive.Name}");
                 }
 
-                _writer.WriteLineI($"[FhirType(\"{primitive.Name}\")]");
-                _writer.WriteLineI("[DataContract]");
+                _writer.WriteLineIndented($"[FhirType(\"{primitive.Name}\")]");
+                _writer.WriteLineIndented("[DataContract]");
 
-                _writer.WriteLineI(
+                _writer.WriteLineIndented(
                     $"public partial class" +
                         $" {exportName}" +
                         $" : {_namespace}.Primitive<{typeName}>," +
@@ -690,28 +829,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"Must conform to pattern \"{primitive.ValidationRegEx}\"",
                         false);
 
-                    _writer.WriteLineI($"public const string PATTERN = @\"{primitive.ValidationRegEx}\";");
+                    _writer.WriteLineIndented($"public const string PATTERN = @\"{primitive.ValidationRegEx}\";");
 
                     _writer.WriteLine(string.Empty);
                 }
 
-                _writer.WriteLineI($"public {exportName}({typeName} value)");
+                _writer.WriteLineIndented($"public {exportName}({typeName} value)");
                 OpenScope();
-                _writer.WriteLineI("Value = value;");
+                _writer.WriteLineIndented("Value = value;");
                 CloseScope();
                 _writer.WriteLine(string.Empty);
 
-                _writer.WriteLineI($"public {exportName}(): this(({typeName})null) {{}}");
+                _writer.WriteLineIndented($"public {exportName}(): this(({typeName})null) {{}}");
                 _writer.WriteLine(string.Empty);
 
                 WriteIndentedComment("Primitive value of the element");
 
-                _writer.WriteLineI("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
-                _writer.WriteLineI("[DataMemeber]");
-                _writer.WriteLineI($"public {typeName} Value");
+                _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
+                _writer.WriteLineIndented("[DataMemeber]");
+                _writer.WriteLineIndented($"public {typeName} Value");
                 OpenScope();
-                _writer.WriteLineI($"get {{ return ({typeName})ObjectValue; }}");
-                _writer.WriteLineI("set { ObjectValue = value; OnPropertyChanged(\"Value\"); }");
+                _writer.WriteLineIndented($"get {{ return ({typeName})ObjectValue; }}");
+                _writer.WriteLineIndented("set { ObjectValue = value; OnPropertyChanged(\"Value\"); }");
                 CloseScope();
 
                 // close class
@@ -726,7 +865,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the namespace open.</summary>
         private void WriteNamespaceOpen()
         {
-            _writer.WriteLineI($"namespace {_namespace}");
+            _writer.WriteLineIndented($"namespace {_namespace}");
             OpenScope();
         }
 
@@ -737,19 +876,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes a header.</summary>
+        private void WriteHeaderBasic()
+        {
+            WriteGenerationComment();
+
+            _writer.WriteLineIndented("using Hl7.Fhir.Utility;");
+            _writer.WriteLine(string.Empty);
+
+            WriteCopyright();
+        }
+
+        /// <summary>Writes a header.</summary>
         private void WriteHeaderComplexDataType()
         {
             WriteGenerationComment();
 
-            _writer.WriteLineI("using System;");
-            _writer.WriteLineI("using System.Collections.Generic;");
-            _writer.WriteLineI("using System.Linq;");
-            _writer.WriteLineI("using System.Runtime.Serialization;");
-            _writer.WriteLineI("using Hl7.Fhir.Introspection;");
-            _writer.WriteLineI("using Hl7.Fhir.Serialization;");
-            _writer.WriteLineI("using Hl7.Fhir.Specification;");
-            _writer.WriteLineI("using Hl7.Fhir.Utility;");
-            _writer.WriteLineI("using Hl7.Fhir.Validation;");
+            _writer.WriteLineIndented("using System;");
+            _writer.WriteLineIndented("using System.Collections.Generic;");
+            _writer.WriteLineIndented("using System.Linq;");
+            _writer.WriteLineIndented("using System.Runtime.Serialization;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Serialization;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Utility;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
             _writer.WriteLine(string.Empty);
 
             WriteCopyright();
@@ -765,15 +915,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             WriteGenerationComment();
 
-            _writer.WriteLineI("using System;");
-            _writer.WriteLineI("using System.Collections.Generic;");
-            _writer.WriteLineI("using System.Linq;");
-            _writer.WriteLineI("using System.Runtime.Serialization;");
-            _writer.WriteLineI("using Hl7.Fhir.Introspection;");
-            _writer.WriteLineI("using Hl7.Fhir.Serialization;");
-            _writer.WriteLineI("using Hl7.Fhir.Specification;");
-            _writer.WriteLineI("using Hl7.Fhir.Utility;");
-            _writer.WriteLineI("using Hl7.Fhir.Validation;");
+            _writer.WriteLineIndented("using System;");
+            _writer.WriteLineIndented("using System.Collections.Generic;");
+            _writer.WriteLineIndented("using System.Linq;");
+            _writer.WriteLineIndented("using System.Runtime.Serialization;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Serialization;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Utility;");
+            _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
             _writer.WriteLine(string.Empty);
 
             WriteCopyright();
@@ -782,14 +932,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the generation comment.</summary>
         private void WriteGenerationComment()
         {
-            _writer.WriteLineI("// <auto-generated/>");
-            _writer.WriteLineI($"// Contents of: {_info.PackageName} version: {_info.VersionString}");
-            _writer.WriteLineI($"// Generated by {_headerUserName} on {_headerGenerationDateTime}");
+            _writer.WriteLineIndented("// <auto-generated/>");
+            _writer.WriteLineIndented($"// Contents of: {_info.PackageName} version: {_info.VersionString}");
+            _writer.WriteLineIndented($"// Generated by {_headerUserName} on {_headerGenerationDateTime}");
 
             if ((_options.ExportList != null) && _options.ExportList.Any())
             {
                 string restrictions = string.Join("|", _options.ExportList);
-                _writer.WriteLineI($"  // Restricted to: {restrictions}");
+                _writer.WriteLineIndented($"  // Restricted to: {restrictions}");
             }
 
             _writer.WriteLine(string.Empty);
@@ -798,34 +948,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the copyright.</summary>
         private void WriteCopyright()
         {
-            _writer.WriteLineI("/*");
-            _writer.WriteLineI("  Copyright (c) 2011+, HL7, Inc.");
-            _writer.WriteLineI("  All rights reserved.");
-            _writer.WriteLineI("  ");
-            _writer.WriteLineI("  Redistribution and use in source and binary forms, with or without modification, ");
-            _writer.WriteLineI("  are permitted provided that the following conditions are met:");
-            _writer.WriteLineI("  ");
-            _writer.WriteLineI("   * Redistributions of source code must retain the above copyright notice, this ");
-            _writer.WriteLineI("     list of conditions and the following disclaimer.");
-            _writer.WriteLineI("   * Redistributions in binary form must reproduce the above copyright notice, ");
-            _writer.WriteLineI("     this list of conditions and the following disclaimer in the documentation ");
-            _writer.WriteLineI("     and/or other materials provided with the distribution.");
-            _writer.WriteLineI("   * Neither the name of HL7 nor the names of its contributors may be used to ");
-            _writer.WriteLineI("     endorse or promote products derived from this software without specific ");
-            _writer.WriteLineI("     prior written permission.");
-            _writer.WriteLineI("  ");
-            _writer.WriteLineI("  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ");
-            _writer.WriteLineI("  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED ");
-            _writer.WriteLineI("  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. ");
-            _writer.WriteLineI("  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, ");
-            _writer.WriteLineI("  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT ");
-            _writer.WriteLineI("  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR ");
-            _writer.WriteLineI("  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, ");
-            _writer.WriteLineI("  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ");
-            _writer.WriteLineI("  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE ");
-            _writer.WriteLineI("  POSSIBILITY OF SUCH DAMAGE.");
-            _writer.WriteLineI("  ");
-            _writer.WriteLineI("*/");
+            _writer.WriteLineIndented("/*");
+            _writer.WriteLineIndented("  Copyright (c) 2011+, HL7, Inc.");
+            _writer.WriteLineIndented("  All rights reserved.");
+            _writer.WriteLineIndented("  ");
+            _writer.WriteLineIndented("  Redistribution and use in source and binary forms, with or without modification, ");
+            _writer.WriteLineIndented("  are permitted provided that the following conditions are met:");
+            _writer.WriteLineIndented("  ");
+            _writer.WriteLineIndented("   * Redistributions of source code must retain the above copyright notice, this ");
+            _writer.WriteLineIndented("     list of conditions and the following disclaimer.");
+            _writer.WriteLineIndented("   * Redistributions in binary form must reproduce the above copyright notice, ");
+            _writer.WriteLineIndented("     this list of conditions and the following disclaimer in the documentation ");
+            _writer.WriteLineIndented("     and/or other materials provided with the distribution.");
+            _writer.WriteLineIndented("   * Neither the name of HL7 nor the names of its contributors may be used to ");
+            _writer.WriteLineIndented("     endorse or promote products derived from this software without specific ");
+            _writer.WriteLineIndented("     prior written permission.");
+            _writer.WriteLineIndented("  ");
+            _writer.WriteLineIndented("  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ");
+            _writer.WriteLineIndented("  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED ");
+            _writer.WriteLineIndented("  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. ");
+            _writer.WriteLineIndented("  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, ");
+            _writer.WriteLineIndented("  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT ");
+            _writer.WriteLineIndented("  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR ");
+            _writer.WriteLineIndented("  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, ");
+            _writer.WriteLineIndented("  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ");
+            _writer.WriteLineIndented("  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE ");
+            _writer.WriteLineIndented("  POSSIBILITY OF SUCH DAMAGE.");
+            _writer.WriteLineIndented("  ");
+            _writer.WriteLineIndented("*/");
             _writer.WriteLine(string.Empty);
         }
 
@@ -838,7 +988,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Opens the scope.</summary>
         private void OpenScope()
         {
-            _writer.WriteLineI("{");
+            _writer.WriteLineIndented("{");
             _writer.IncreaseIndent();
         }
 
@@ -846,7 +996,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void CloseScope()
         {
             _writer.DecreaseIndent();
-            _writer.WriteLineI("}");
+            _writer.WriteLineIndented("}");
         }
 
         /// <summary>Writes an indented comment.</summary>
@@ -856,7 +1006,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             if (isSummary)
             {
-                _writer.WriteLineI("/// <summary>");
+                _writer.WriteLineIndented("/// <summary>");
             }
 
             string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n");
@@ -864,14 +1014,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string[] lines = comment.Split('\n');
             foreach (string line in lines)
             {
-                _writer.WriteI("/// ");
+                _writer.WriteIndented("/// ");
                 _writer.WriteLine(line);
             }
 
             if (isSummary)
             {
-                _writer.WriteLineI("/// </summary>");
+                _writer.WriteLineIndented("/// </summary>");
             }
+        }
+
+        /// <summary>Information about a written value set.</summary>
+        private struct WrittenValueSetInfo
+        {
+            internal string ClassName;
+            internal string ValueSetName;
         }
     }
 }

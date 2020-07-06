@@ -166,7 +166,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Writes a value, indented.</summary>
         /// <param name="value">The value.</param>
-        public void WriteI(string value)
+        public void WriteIndented(string value)
         {
             WriteIndentation();
             Write(value);
@@ -174,7 +174,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Writes a line, indented per current indentation level.</summary>
         /// <param name="value">The value.</param>
-        public void WriteLineI(string value)
+        public void WriteLineIndented(string value)
         {
             WriteIndentation();
             WriteLine(value);

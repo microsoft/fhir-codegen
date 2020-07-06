@@ -817,7 +817,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
-            HashSet<string> valueSets = restrictOutput ? new HashSet<string>() : null;
+            Dictionary<string, List<string>> valueSetReferences = new Dictionary<string, List<string>>();
 
             // check if we are exporting primitives
             if (copyPrimitives)
@@ -857,7 +857,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                             primitiveTypeMap,
                             copySlicing,
                             canHideParentFields,
-                            ref valueSets));
+                            ref valueSetReferences));
                 }
             }
 
@@ -878,7 +878,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                             primitiveTypeMap,
                             copySlicing,
                             canHideParentFields,
-                            ref valueSets));
+                            ref valueSetReferences));
                 }
             }
 
@@ -921,7 +921,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                             primitiveTypeMap,
                             copySlicing,
                             canHideParentFields,
-                            ref valueSets));
+                            ref valueSetReferences));
                 }
             }
 
@@ -960,8 +960,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                         // check for restricted output and not seeing this valueSet
                         if (restrictOutput &&
-                            (!valueSets.Contains(key)) &&
-                            (!valueSets.Contains(collectionKvp.Key)))
+                            (!valueSetReferences.ContainsKey(collectionKvp.Key)))
                         {
                             continue;
                         }
@@ -980,6 +979,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         }
 
                         FhirValueSet vs = (FhirValueSet)versionKvp.Value.Clone();
+
+                        if (valueSetReferences.ContainsKey(collectionKvp.Key))
+                        {
+                            vs.SetReferences(valueSetReferences[collectionKvp.Key]);
+                        }
 
                         info._valueSetsByUrl[collectionKvp.Key].AddValueSet(vs);
                     }

@@ -414,13 +414,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="primitiveTypeMap">   The primitive type map.</param>
         /// <param name="copySlicing">        True to copy slicing.</param>
         /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
-        /// <param name="valueSets">          [in,out] Sets the value belongs to.</param>
+        /// <param name="valueSetReferences"> [in,out] Value Set URLs and lists of FHIR paths that reference them.</param>
         /// <returns>A FhirComplex.</returns>
         public FhirComplex DeepCopy(
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
             bool canHideParentFields,
-            ref HashSet<string> valueSets)
+            ref Dictionary<string, List<string>> valueSetReferences)
         {
             List<string> contextElements = null;
 
@@ -475,7 +475,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         primitiveTypeMap,
                         copySlicing,
                         canHideParentFields,
-                        ref valueSets);
+                        ref valueSetReferences);
 
                 complex.Elements.Add(element.Path, copied);
             }
@@ -485,7 +485,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 complex.Components.Add(
                     kvp.Key,
-                    kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields, ref valueSets));
+                    kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields, ref valueSetReferences));
             }
 
             // search

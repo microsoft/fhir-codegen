@@ -15,6 +15,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     {
         private List<FhirConcept> _valueList = null;
         private HashSet<string> _codeSystems = new HashSet<string>();
+        private List<string> _referencedPaths = new List<string>();
 
         /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
         /// <param name="name">           The name.</param>
@@ -144,6 +145,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the referenced code systems.</summary>
         /// <value>The referenced code systems.</value>
         public HashSet<string> ReferencedCodeSystems => _codeSystems;
+
+        /// <summary>Gets the list of elements (by Path) that reference this value set.</summary>
+        public List<string> ReferencedByPaths => _referencedPaths;
+
+        /// <summary>Sets the references.</summary>
+        /// <param name="referencedByPaths">The list of elements (by Path) that reference this value set.</param>
+        public void SetReferences(List<string> referencedByPaths)
+        {
+            _referencedPaths = referencedByPaths.Select(p => (string)p.Clone()).ToList();
+        }
 
         /// <summary>Gets a list of FhirTriplets to cover all values in the value set.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>

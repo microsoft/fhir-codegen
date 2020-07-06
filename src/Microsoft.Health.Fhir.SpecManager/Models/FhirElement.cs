@@ -308,13 +308,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="primitiveTypeMap">   The primitive type map.</param>
         /// <param name="copySlicing">        True to copy slicing.</param>
         /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
-        /// <param name="valueSets">          [in,out] Sets the value belongs to.</param>
+        /// <param name="valueSetReferences"> [in,out] Value Set URLs and lists of FHIR paths that reference them.</param>
         /// <returns>A FhirElement.</returns>
         public FhirElement DeepCopy(
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
             bool canHideParentFields,
-            ref HashSet<string> valueSets)
+            ref Dictionary<string, List<string>> valueSetReferences)
         {
             // copy the element types
             Dictionary<string, FhirElementType> elementTypes = null;
@@ -376,18 +376,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                             primitiveTypeMap,
                             copySlicing,
                             canHideParentFields,
-                            ref valueSets);
+                            ref valueSetReferences);
 
                     element.AddSlicing(slicing);
                 }
             }
 
             // check for referenced value sets
-            if ((valueSets != null) &&
-                (!string.IsNullOrEmpty(ValueSet)) &&
-                (!valueSets.Contains(ValueSet)))
+            if ((valueSetReferences != null) &&
+                (!string.IsNullOrEmpty(ValueSet)))
             {
-                valueSets.Add(ValueSet);
+                string url;
+                int barIndex = ValueSet.IndexOf('|');
+
+                if (barIndex > 0)
+                {
+                    url = ValueSet.Substring(0, barIndex);
+                }
+                else
+                {
+                    url = ValueSet;
+                }
+
+                if (!valueSetReferences.ContainsKey(url))
+                {
+                    valueSetReferences.Add(url, new List<string>());
+                }
+
+                valueSetReferences[url].Add(Path);
             }
 
             return element;

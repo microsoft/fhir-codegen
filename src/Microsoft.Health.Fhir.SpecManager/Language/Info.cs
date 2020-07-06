@@ -1,4 +1,4 @@
-﻿// <copyright file="LanguageInfo.cs" company="Microsoft Corporation">
+﻿// <copyright file="Info.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -13,7 +13,7 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
     /// <summary>Export to an Information format - used to check parsing and dump FHIR version info.</summary>
-    public sealed class LanguageInfo : ILanguage
+    public sealed class Info : ILanguage
     {
         /// <summary>FHIR information we are exporting.</summary>
         private FhirVersionInfo _info;
@@ -157,20 +157,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             if (!string.IsNullOrEmpty(headerHint))
             {
-                _writer.WriteLineI($"{headerHint}: {valueSets.Count()} (unversioned)");
+                _writer.WriteLineIndented($"{headerHint}: {valueSets.Count()} (unversioned)");
             }
 
             foreach (FhirValueSetCollection collection in valueSets.OrderBy(c => c.URL))
             {
                 foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderBy(v => v.Version))
                 {
-                    _writer.WriteLineI($"- ValueSet: {vs.URL}|{vs.Version}");
+                    _writer.WriteLineIndented($"- ValueSet: {vs.URL}|{vs.Version}");
 
                     _writer.IncreaseIndent();
 
                     foreach (FhirConcept value in vs.Concepts)
                     {
-                        _writer.WriteLineI($"- #{value.Code}: {value.Display}");
+                        _writer.WriteLineIndented($"- #{value.Code}: {value.Display}");
                     }
 
                     _writer.DecreaseIndent();
@@ -183,13 +183,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteValueSet(
             FhirValueSet valueSet)
         {
-            _writer.WriteLineI($"- {valueSet.URL}|{valueSet.Version} ({valueSet.Name})");
+            _writer.WriteLineIndented($"- {valueSet.URL}|{valueSet.Version} ({valueSet.Name})");
 
             _writer.IncreaseIndent();
 
             foreach (FhirConcept concept in valueSet.Concepts.OrderBy(c => c.Code))
             {
-                _writer.WriteLineI($"- #{concept.Code}: {concept.Display}");
+                _writer.WriteLineIndented($"- #{concept.Code}: {concept.Display}");
             }
 
             _writer.DecreaseIndent();
@@ -204,7 +204,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             if (!string.IsNullOrEmpty(headerHint))
             {
-                _writer.WriteLineI($"{headerHint}: {complexes.Count()}");
+                _writer.WriteLineIndented($"{headerHint}: {complexes.Count()}");
             }
 
             foreach (FhirComplex complex in complexes)
@@ -218,7 +218,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WritePrimitiveTypes(
             IEnumerable<FhirPrimitive> primitives)
         {
-            _writer.WriteLineI($"Primitive Types: {primitives.Count()}");
+            _writer.WriteLineIndented($"Primitive Types: {primitives.Count()}");
 
             foreach (FhirPrimitive primitive in primitives)
             {
@@ -231,7 +231,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WritePrimitiveType(
             FhirPrimitive primitive)
         {
-            _writer.WriteLineI(
+            _writer.WriteLineIndented(
                 $"- {primitive.Name}:" +
                     $" {primitive.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}" +
                     $"::{primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap)}");
@@ -241,7 +241,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // check for regex
             if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
             {
-                _writer.WriteLineI($"[{primitive.ValidationRegEx}]");
+                _writer.WriteLineIndented($"[{primitive.ValidationRegEx}]");
             }
 
             if (_info.ExtensionsByPath.ContainsKey(primitive.Path))
@@ -257,7 +257,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteExtensions(
             IEnumerable<FhirComplex> extensions)
         {
-            _writer.WriteLineI($"Extensions: {extensions.Count()}");
+            _writer.WriteLineIndented($"Extensions: {extensions.Count()}");
 
             foreach (FhirComplex extension in extensions)
             {
@@ -270,7 +270,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteExtension(
             FhirComplex extension)
         {
-            _writer.WriteLineI($"+{extension.URL}");
+            _writer.WriteLineIndented($"+{extension.URL}");
 
             if (extension.Elements.Count > 0)
             {
@@ -340,7 +340,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (!string.IsNullOrEmpty(headerHint))
             {
-                _writer.WriteLineI($"{headerHint}: {operations.Count()}");
+                _writer.WriteLineIndented($"{headerHint}: {operations.Count()}");
                 _writer.IncreaseIndent();
                 indented = true;
             }
@@ -349,11 +349,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 if (isTypeLevel)
                 {
-                    _writer.WriteLineI($"${operation.Code}");
+                    _writer.WriteLineIndented($"${operation.Code}");
                 }
                 else
                 {
-                    _writer.WriteLineI($"/{{id}}${operation.Code}");
+                    _writer.WriteLineIndented($"/{{id}}${operation.Code}");
                 }
 
                 if (operation.Parameters != null)
@@ -363,7 +363,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // write operation parameters inline
                     foreach (FhirParameter parameter in operation.Parameters.OrderBy(p => p.FieldOrder))
                     {
-                        _writer.WriteLineI($"{parameter.Use}: {parameter.Name} ({parameter.FhirCardinality})");
+                        _writer.WriteLineIndented($"{parameter.Use}: {parameter.Name} ({parameter.FhirCardinality})");
                     }
 
                     _writer.DecreaseIndent();
@@ -387,14 +387,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (!string.IsNullOrEmpty(headerHint))
             {
-                _writer.WriteLineI($"{headerHint}: {searchParameters.Count()}");
+                _writer.WriteLineIndented($"{headerHint}: {searchParameters.Count()}");
                 _writer.IncreaseIndent();
                 indented = true;
             }
 
             foreach (FhirSearchParam searchParam in searchParameters)
             {
-                _writer.WriteLineI($"?{searchParam.Code}={searchParam.ValueType} ({searchParam.Name})");
+                _writer.WriteLineIndented($"?{searchParam.Code}={searchParam.ValueType} ({searchParam.Name})");
             }
 
             if (indented)
@@ -444,7 +444,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 propertyType = element.BaseTypeName;
             }
 
-            _writer.WriteLineI(
+            _writer.WriteLineIndented(
                 $"-" +
                 $" {element.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}[{element.FhirCardinality}]:" +
                 $" {propertyType}");
@@ -454,25 +454,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // check for regex
             if (!string.IsNullOrEmpty(element.ValidationRegEx))
             {
-                _writer.WriteLineI($"[{element.ValidationRegEx}]");
+                _writer.WriteLineIndented($"[{element.ValidationRegEx}]");
             }
 
             // check for default value
             if (!string.IsNullOrEmpty(element.DefaultFieldName))
             {
-                _writer.WriteLineI($".{element.DefaultFieldName} = {element.DefaultFieldValue}");
+                _writer.WriteLineIndented($".{element.DefaultFieldName} = {element.DefaultFieldValue}");
             }
 
             // check for fixed value
             if (!string.IsNullOrEmpty(element.FixedFieldName))
             {
-                _writer.WriteLineI($".{element.FixedFieldName} = {element.FixedFieldValue}");
+                _writer.WriteLineIndented($".{element.FixedFieldName} = {element.FixedFieldValue}");
             }
 
             if ((element.Codes != null) && (element.Codes.Count > 0))
             {
                 string codes = string.Join("|", element.Codes);
-                _writer.WriteLineI($"{{{codes}}}");
+                _writer.WriteLineIndented($"{{{codes}}}");
             }
 
             // either step into backbone definition OR extensions, don't write both
@@ -527,7 +527,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 rules += $"{rule.DiscriminatorTypeName}@{rule.Path}";
             }
 
-            _writer.WriteLineI($": {slicing.DefinedByUrl} - {slicing.SlicingRules} ({rules})");
+            _writer.WriteLineIndented($": {slicing.DefinedByUrl} - {slicing.SlicingRules} ({rules})");
 
             _writer.IncreaseIndent();
 
@@ -535,7 +535,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             int sliceNumber = 0;
             foreach (FhirComplex slice in slicing.Slices)
             {
-                _writer.WriteLineI($": Slice {sliceNumber++}:{slice.SliceName} - on {slice.Name}");
+                _writer.WriteLineIndented($": Slice {sliceNumber++}:{slice.SliceName} - on {slice.Name}");
 
                 _writer.IncreaseIndent();
 
