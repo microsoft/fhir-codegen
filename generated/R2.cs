@@ -29,28 +29,28 @@ namespace fhir
     [JsonProperty("_city")]
     public Element _City { get; set; }
     /// <summary>
-    /// ISO 3166 3 letter codes can be used in place of a full country name.
+    /// Country - a nation as commonly understood or generally accepted.
     /// </summary>
     [JsonProperty("country")]
     public string Country { get; set; }
     [JsonProperty("_country")]
     public Element _Country { get; set; }
     /// <summary>
-    /// District is sometimes known as county, but in some regions 'county' in used in place of city (municipality), so county name should be conveyed in city instead.
+    /// The name of the administrative area (county).
     /// </summary>
     [JsonProperty("district")]
     public string District { get; set; }
     [JsonProperty("_district")]
     public Element _District { get; set; }
     /// <summary>
-    /// This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.
+    /// home | work | temp | old - purpose of this address.
     /// </summary>
     [JsonProperty("line")]
     public string[] Line { get; set; }
     [JsonProperty("_line")]
     public Element[] _Line { get; set; }
     /// <summary>
-    /// Time period when address was/is in use.
+    /// Allows addresses to be placed in historical context.
     /// </summary>
     [JsonProperty("period")]
     public Period Period { get; set; }
@@ -69,7 +69,7 @@ namespace fhir
     [JsonProperty("_state")]
     public Element _State { get; set; }
     /// <summary>
-    /// Can provide both a text representation and parts.
+    /// A renderable, unencoded form.
     /// </summary>
     [JsonProperty("text")]
     public string Text { get; set; }
@@ -83,7 +83,7 @@ namespace fhir
     [JsonProperty("_type")]
     public Element _Type { get; set; }
     /// <summary>
-    /// This is labeled as "Is Modifier" because applications should not mistake a temporary or old address etc.for a current/permanent one. Applications can assume that an address is current unless it explicitly says that it is temporary or old.
+    /// Allows an appropriate address to be chosen from a list of many.
     /// </summary>
     [JsonProperty("use")]
     public string Use { get; set; }
@@ -148,54 +148,54 @@ namespace fhir
   /// </summary>
   public class Attachment : Element {
     /// <summary>
-    /// Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
+    /// Processors of the data need to be able to know how to interpret the data.
     /// </summary>
     [JsonProperty("contentType")]
     public string ContentType { get; set; }
     [JsonProperty("_contentType")]
     public Element _ContentType { get; set; }
     /// <summary>
-    /// The date that the attachment was first created.
+    /// This is often tracked as an integrity issue for use of the attachment.
     /// </summary>
     [JsonProperty("creation")]
     public string Creation { get; set; }
     [JsonProperty("_creation")]
     public Element _Creation { get; set; }
     /// <summary>
-    /// The base64-encoded data SHALL be expressed in the same character set as the base resource XML or JSON.
+    /// The data needs to able to be transmitted inline.
     /// </summary>
     [JsonProperty("data")]
     public string Data { get; set; }
     [JsonProperty("_data")]
     public Element _Data { get; set; }
     /// <summary>
-    /// The calculated hash of the data using SHA-1. Represented using base64.
+    /// Included so that applications can verify that the contents of a location have not changed and so that a signature of the content can implicitly sign the content of an image without having to include the data in the instance or reference the url in the signature.
     /// </summary>
     [JsonProperty("hash")]
     public string Hash { get; set; }
     [JsonProperty("_hash")]
     public Element _Hash { get; set; }
     /// <summary>
-    /// The human language of the content. The value can be any valid value according to BCP 47.
+    /// Users need to be able to choose between the languages in a set of attachments.
     /// </summary>
     [JsonProperty("language")]
     public string Language { get; set; }
     [JsonProperty("_language")]
     public Element _Language { get; set; }
     /// <summary>
-    /// The number of bytes is redundant if the data is provided as a base64binary, but is useful if the data is provided as a url reference.
+    /// Representing the size allows applications to determine whether they should fetch the content automatically in advance, or refuse to fetch it at all.
     /// </summary>
     [JsonProperty("size")]
     public uint? Size { get; set; }
     /// <summary>
-    /// A label or set of text to display in place of the data.
+    /// Applications need a label to display to a human user in place of the actual data if the data cannot be rendered or perceived by the viewer.
     /// </summary>
     [JsonProperty("title")]
     public string Title { get; set; }
     [JsonProperty("_title")]
     public Element _Title { get; set; }
     /// <summary>
-    /// If both data and url are provided, the url SHALL point to the same content as the data contains. Urls may be relative references or may reference transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures. Relative URLs are interpreted relative to the service url, like a resource reference, rather than relative to the resource itself. If a URL is provided, it SHALL resolve to actual data.
+    /// The data needs to be transmitted by reference.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
@@ -207,7 +207,7 @@ namespace fhir
   /// </summary>
   public class BackboneElement : Element {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
+    /// May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
     /// </summary>
     [JsonProperty("modifierExtension")]
     public Extension[] ModifierExtension { get; set; }
@@ -217,12 +217,12 @@ namespace fhir
   /// </summary>
   public class CodeableConcept : Element {
     /// <summary>
-    /// Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labelled as UserSelected = true.
+    /// Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings.
     /// </summary>
     [JsonProperty("coding")]
     public Coding[] Coding { get; set; }
     /// <summary>
-    /// Very often the text is the same as a displayName of one of the codings.
+    /// The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.
     /// </summary>
     [JsonProperty("text")]
     public string Text { get; set; }
@@ -234,33 +234,33 @@ namespace fhir
   /// </summary>
   public class Coding : Element {
     /// <summary>
-    /// A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).
+    /// Need to refer to a particular code in the system.
     /// </summary>
     [JsonProperty("code")]
     public string Code { get; set; }
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// A representation of the meaning of the code in the system, following the rules of the system.
+    /// Need to be able to carry a human-readable meaning of the code for readers that do not know  the system.
     /// </summary>
     [JsonProperty("display")]
     public string Display { get; set; }
     [JsonProperty("_display")]
     public Element _Display { get; set; }
     /// <summary>
-    /// The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously.
+    /// Need to be unambiguous about the source of the definition of the symbol.
     /// </summary>
     [JsonProperty("system")]
     public string System { get; set; }
     [JsonProperty("_system")]
     public Element _System { get; set; }
     /// <summary>
-    /// Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.
+    /// This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.
     /// </summary>
     [JsonProperty("userSelected")]
     public bool? UserSelected { get; set; }
     /// <summary>
-    /// Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.
+    /// The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -277,7 +277,7 @@ namespace fhir
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// Note that rank does not necessarily follow the order in which the contacts are represented in the instance.
+    /// Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values.
     /// </summary>
     [JsonProperty("rank")]
     public uint? Rank { get; set; }
@@ -289,14 +289,14 @@ namespace fhir
     [JsonProperty("_system")]
     public Element _System { get; set; }
     /// <summary>
-    /// This is labeled as "Is Modifier" because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old.
+    /// Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.
     /// </summary>
     [JsonProperty("use")]
     public string Use { get; set; }
     [JsonProperty("_use")]
     public Element _Use { get; set; }
     /// <summary>
-    /// Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value.
+    /// Need to support legacy numbers that are not in a tightly controlled format.
     /// </summary>
     [JsonProperty("value")]
     public string Value { get; set; }
@@ -343,7 +343,7 @@ namespace fhir
   /// </summary>
   public class Element {
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
+    /// May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
     /// </summary>
     [JsonProperty("extension")]
     public Extension[] Extension { get; set; }
@@ -356,30 +356,30 @@ namespace fhir
     public Element _Id { get; set; }
   }
   /// <summary>
-  /// The first element in the sequence, the one that carries the slicing, is the unconstrained element, for reference purposes . This may include the unconstrained children.
+  /// Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
   /// </summary>
   public class ElementDefinitionSlicing : Element {
     /// <summary>
-    /// If it's really not possible to differentiate them, the design should be re-evaluated to make the content usable.
+    /// A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// If there is no discriminator, the content is hard to process, so this should be avoided. If the base element has a cardinality of ..1, and there is a choice of types, the discriminator most be "@type".
+    /// Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
     /// </summary>
     [JsonProperty("discriminator")]
     public string[] Discriminator { get; set; }
     [JsonProperty("_discriminator")]
     public Element[] _Discriminator { get; set; }
     /// <summary>
-    /// Order should only be required when it is a pressing concern for presentation. Profile authors should consider making the order a feature of the rules about the narrative, not the rules about the data - requiring ordered data makes the profile much less re-usable.
+    /// If the matching elements have to occur in the same order as defined in the profile.
     /// </summary>
     [JsonProperty("ordered")]
     public bool? Ordered { get; set; }
     /// <summary>
-    /// Allowing additional elements makes for a much for flexible template - it's open for use in wider contexts, but also means that the content of the resource is not closed, and applications have to decide how to handle content not described by the profile.
+    /// Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.
     /// </summary>
     [JsonProperty("rules")]
     public string Rules { get; set; }
@@ -395,18 +395,18 @@ namespace fhir
     public const string OPENATEND = "openAtEnd";
   }
   /// <summary>
-  /// The base information does not carry any information that could not be determined from the path and related profiles, but making this determination requires both that the related profiles are available, and that the algorithm to determine them be available. So they are deformalised into this location for tooling convenience, and to ensure that the base information is available without dependencies.
+  /// Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
   /// </summary>
   public class ElementDefinitionBase : Element {
     /// <summary>
-    /// This is provided to code generation, since the wire representation in JSON differs depending on whether the base element has max > 1. Also, some forms of code generation may differ.
+    /// Maximum cardinality of the base element identified by the path.
     /// </summary>
     [JsonProperty("max")]
     public string Max { get; set; }
     [JsonProperty("_max")]
     public Element _Max { get; set; }
     /// <summary>
-    /// This is provided for consistency with max, and may affect code generation of mandatory elements of the base resource are generated differently (some reference implementations have done this).
+    /// Minimum cardinality of the base element identified by the path.
     /// </summary>
     [JsonProperty("min")]
     public int Min { get; set; }
@@ -419,7 +419,7 @@ namespace fhir
     public Element _Path { get; set; }
   }
   /// <summary>
-  /// The Type of the element can be left blank, in which case the type is inherited from the resource. The type can only be listed in this field if it is an allowed option in the base resource.
+  /// The data type or resource that the value of this element is permitted to be.
   /// </summary>
   public class ElementDefinitionType : Element {
     /// <summary>
@@ -430,7 +430,7 @@ namespace fhir
     [JsonProperty("_aggregation")]
     public Element[] _Aggregation { get; set; }
     /// <summary>
-    /// If the element is a reference to another resource, this element contains "Reference", and the profile element refers to the profile of the allowed target of the resource, which may be a reference to the general definition of a resource (e.g. http://hl7.org/fhir/StructureDefinition/Patient). There would be one pair of type/code for each allowed target resource type.
+    /// Name of Data type or Resource that is a(or the) type used for this element.
     /// </summary>
     [JsonProperty("code")]
     public string Code { get; set; }
@@ -453,11 +453,11 @@ namespace fhir
     public const string BUNDLED = "bundled";
   }
   /// <summary>
-  /// Constraints should be declared on the "context" element - the lowest element in the hierarchy that is common to all nodes referenced by the constraint.
+  /// Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
   /// </summary>
   public class ElementDefinitionConstraint : Element {
     /// <summary>
-    /// Should be expressed in business terms as much as possible.
+    /// Text that can be used to describe the constraint in messages identifying that the constraint has been violated.
     /// </summary>
     [JsonProperty("human")]
     public string Human { get; set; }
@@ -471,21 +471,21 @@ namespace fhir
     [JsonProperty("_key")]
     public Element _Key { get; set; }
     /// <summary>
-    /// To be used if the reason for the constraint may not be intuitive to all implementers.
+    /// Description of why this constraint is necessary or appropriate.
     /// </summary>
     [JsonProperty("requirements")]
     public string Requirements { get; set; }
     [JsonProperty("_requirements")]
     public Element _Requirements { get; set; }
     /// <summary>
-    /// This allows constraints to be asserted as "shall" (error) and "should" (warning).
+    /// Identifies the impact constraint violation has on the conformance of the instance.
     /// </summary>
     [JsonProperty("severity")]
     public string Severity { get; set; }
     [JsonProperty("_severity")]
     public Element _Severity { get; set; }
     /// <summary>
-    /// Elements SHALL use "f" as the namespace prefix for the FHIR namespace, and "x" for the xhtml namespace, and SHALL NOT use any other prefixes.
+    /// Used in Schematron tests of the validity of the resource.
     /// </summary>
     [JsonProperty("xpath")]
     public string Xpath { get; set; }
@@ -511,21 +511,21 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// For further discussion, see [[[Using Terminologies]]].
+    /// Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
     /// </summary>
     [JsonProperty("strength")]
     public string Strength { get; set; }
     [JsonProperty("_strength")]
     public Element _Strength { get; set; }
     /// <summary>
-    /// For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not.
+    /// Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
     /// </summary>
     [JsonProperty("valueSetUri")]
     public string ValueSetUri { get; set; }
     [JsonProperty("_valueSetUri")]
     public Element _ValueSetUri { get; set; }
     /// <summary>
-    /// For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not.
+    /// Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
     /// </summary>
     [JsonProperty("valueSetReference")]
     public Reference ValueSetReference { get; set; }
@@ -540,7 +540,7 @@ namespace fhir
     public const string EXAMPLE = "example";
   }
   /// <summary>
-  /// Mappings are not necessarily specific enough for safe translation.
+  /// Provides guidance to implementers familiar with or converting content from other specifications.
   /// </summary>
   public class ElementDefinitionMapping : Element {
     /// <summary>
@@ -551,14 +551,14 @@ namespace fhir
     [JsonProperty("_identity")]
     public Element _Identity { get; set; }
     /// <summary>
-    /// If omitted, then there can be no expectation of computational interpretation of the mapping.
+    /// Identifies the computable language in which mapping.map is expressed.
     /// </summary>
     [JsonProperty("language")]
     public string Language { get; set; }
     [JsonProperty("_language")]
     public Element _Language { get; set; }
     /// <summary>
-    /// For most mappings, the syntax is undefined.  Syntax will be provided for mappings to the RIM.  Multiple mappings may be possible and may include constraints on other resource elements that identify when a particular mapping applies.
+    /// Expresses what part of the target specification corresponds to this element.
     /// </summary>
     [JsonProperty("map")]
     public string Map { get; set; }
@@ -570,14 +570,14 @@ namespace fhir
   /// </summary>
   public class ElementDefinition : Element {
     /// <summary>
-    /// Identifies additional names by which this element might also be known.
+    /// Allows for better easier recognition of the element by multiple communities, including international communities.
     /// </summary>
     [JsonProperty("alias")]
     public string[] Alias { get; set; }
     [JsonProperty("_alias")]
     public Element[] _Alias { get; set; }
     /// <summary>
-    /// The base information does not carry any information that could not be determined from the path and related profiles, but making this determination requires both that the related profiles are available, and that the algorithm to determine them be available. So they are deformalised into this location for tooling convenience, and to ensure that the base information is available without dependencies.
+    /// Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
     /// </summary>
     [JsonProperty("base")]
     public ElementDefinitionBase Base { get; set; }
@@ -587,12 +587,12 @@ namespace fhir
     [JsonProperty("binding")]
     public ElementDefinitionBinding Binding { get; set; }
     /// <summary>
-    /// The data element definition and other constraints SHALL be a proper constraint on the meaning (as defined in the code system, including relationships) of any code listed here.  Where multiple codes exist in a terminology that could correspond to the data element, the most granular code(s) should be selected, so long as they are not more restrictive than the data element itself.
+    /// Links the meaning of an element to an external terminology.
     /// </summary>
     [JsonProperty("code")]
     public Coding[] Code { get; set; }
     /// <summary>
-    /// If it is possible to capture usage rules using constraints, that mechanism should be used in preference to this element.
+    /// Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.
     /// </summary>
     [JsonProperty("comments")]
     public string Comments { get; set; }
@@ -606,603 +606,603 @@ namespace fhir
     [JsonProperty("_condition")]
     public Element[] _Condition { get; set; }
     /// <summary>
-    /// Constraints should be declared on the "context" element - the lowest element in the hierarchy that is common to all nodes referenced by the constraint.
+    /// Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
     /// </summary>
     [JsonProperty("constraint")]
     public ElementDefinitionConstraint[] Constraint { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueBoolean")]
     public bool? DefaultValueBoolean { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueInteger")]
     public int? DefaultValueInteger { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueDecimal")]
     public decimal? DefaultValueDecimal { get; set; }
     [JsonProperty("_defaultValueDecimal")]
     public Element _DefaultValueDecimal { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueBase64Binary")]
     public string DefaultValueBase64Binary { get; set; }
     [JsonProperty("_defaultValueBase64Binary")]
     public Element _DefaultValueBase64Binary { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueInstant")]
     public string DefaultValueInstant { get; set; }
     [JsonProperty("_defaultValueInstant")]
     public Element _DefaultValueInstant { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueString")]
     public string DefaultValueString { get; set; }
     [JsonProperty("_defaultValueString")]
     public Element _DefaultValueString { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueUri")]
     public string DefaultValueUri { get; set; }
     [JsonProperty("_defaultValueUri")]
     public Element _DefaultValueUri { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueDate")]
     public string DefaultValueDate { get; set; }
     [JsonProperty("_defaultValueDate")]
     public Element _DefaultValueDate { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueDateTime")]
     public string DefaultValueDateTime { get; set; }
     [JsonProperty("_defaultValueDateTime")]
     public Element _DefaultValueDateTime { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueTime")]
     public string DefaultValueTime { get; set; }
     [JsonProperty("_defaultValueTime")]
     public Element _DefaultValueTime { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueCode")]
     public string DefaultValueCode { get; set; }
     [JsonProperty("_defaultValueCode")]
     public Element _DefaultValueCode { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueOid")]
     public string DefaultValueOid { get; set; }
     [JsonProperty("_defaultValueOid")]
     public Element _DefaultValueOid { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueId")]
     public string DefaultValueId { get; set; }
     [JsonProperty("_defaultValueId")]
     public Element _DefaultValueId { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueUnsignedInt")]
     public uint? DefaultValueUnsignedInt { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValuePositiveInt")]
     public uint? DefaultValuePositiveInt { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueMarkdown")]
     public string DefaultValueMarkdown { get; set; }
     [JsonProperty("_defaultValueMarkdown")]
     public Element _DefaultValueMarkdown { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueAnnotation")]
     public Annotation DefaultValueAnnotation { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueAttachment")]
     public Attachment DefaultValueAttachment { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueIdentifier")]
     public Identifier DefaultValueIdentifier { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueCodeableConcept")]
     public CodeableConcept DefaultValueCodeableConcept { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueCoding")]
     public Coding DefaultValueCoding { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueQuantity")]
     public Quantity DefaultValueQuantity { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueRange")]
     public Range DefaultValueRange { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValuePeriod")]
     public Period DefaultValuePeriod { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueRatio")]
     public Ratio DefaultValueRatio { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueSampledData")]
     public SampledData DefaultValueSampledData { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueSignature")]
     public Signature DefaultValueSignature { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueHumanName")]
     public HumanName DefaultValueHumanName { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueAddress")]
     public Address DefaultValueAddress { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueContactPoint")]
     public ContactPoint DefaultValueContactPoint { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueTiming")]
     public Timing DefaultValueTiming { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueReference")]
     public Reference DefaultValueReference { get; set; }
     /// <summary>
-    /// Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
+    /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
     [JsonProperty("defaultValueMeta")]
     public Meta DefaultValueMeta { get; set; }
     /// <summary>
-    /// It is easy for a different definition to change the meaning of an element and this can have nasty downstream consequences. Please be careful when providing definitions.
+    /// To allow a user to state the usage of an element in a particular context.
     /// </summary>
     [JsonProperty("definition")]
     public string Definition { get; set; }
     [JsonProperty("_definition")]
     public Element _Definition { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleBoolean")]
     public bool? ExampleBoolean { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleInteger")]
     public int? ExampleInteger { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleDecimal")]
     public decimal? ExampleDecimal { get; set; }
     [JsonProperty("_exampleDecimal")]
     public Element _ExampleDecimal { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleBase64Binary")]
     public string ExampleBase64Binary { get; set; }
     [JsonProperty("_exampleBase64Binary")]
     public Element _ExampleBase64Binary { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleInstant")]
     public string ExampleInstant { get; set; }
     [JsonProperty("_exampleInstant")]
     public Element _ExampleInstant { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleString")]
     public string ExampleString { get; set; }
     [JsonProperty("_exampleString")]
     public Element _ExampleString { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleUri")]
     public string ExampleUri { get; set; }
     [JsonProperty("_exampleUri")]
     public Element _ExampleUri { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleDate")]
     public string ExampleDate { get; set; }
     [JsonProperty("_exampleDate")]
     public Element _ExampleDate { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleDateTime")]
     public string ExampleDateTime { get; set; }
     [JsonProperty("_exampleDateTime")]
     public Element _ExampleDateTime { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleTime")]
     public string ExampleTime { get; set; }
     [JsonProperty("_exampleTime")]
     public Element _ExampleTime { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleCode")]
     public string ExampleCode { get; set; }
     [JsonProperty("_exampleCode")]
     public Element _ExampleCode { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleOid")]
     public string ExampleOid { get; set; }
     [JsonProperty("_exampleOid")]
     public Element _ExampleOid { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleId")]
     public string ExampleId { get; set; }
     [JsonProperty("_exampleId")]
     public Element _ExampleId { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleUnsignedInt")]
     public uint? ExampleUnsignedInt { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("examplePositiveInt")]
     public uint? ExamplePositiveInt { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleMarkdown")]
     public string ExampleMarkdown { get; set; }
     [JsonProperty("_exampleMarkdown")]
     public Element _ExampleMarkdown { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleAnnotation")]
     public Annotation ExampleAnnotation { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleAttachment")]
     public Attachment ExampleAttachment { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleIdentifier")]
     public Identifier ExampleIdentifier { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleCodeableConcept")]
     public CodeableConcept ExampleCodeableConcept { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleCoding")]
     public Coding ExampleCoding { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleQuantity")]
     public Quantity ExampleQuantity { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleRange")]
     public Range ExampleRange { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("examplePeriod")]
     public Period ExamplePeriod { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleRatio")]
     public Ratio ExampleRatio { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleSampledData")]
     public SampledData ExampleSampledData { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleSignature")]
     public Signature ExampleSignature { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleHumanName")]
     public HumanName ExampleHumanName { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleAddress")]
     public Address ExampleAddress { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleContactPoint")]
     public ContactPoint ExampleContactPoint { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleTiming")]
     public Timing ExampleTiming { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleReference")]
     public Reference ExampleReference { get; set; }
     /// <summary>
-    /// This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
+    /// A sample value for this element demonstrating the type of information that would typically be captured.
     /// </summary>
     [JsonProperty("exampleMeta")]
     public Meta ExampleMeta { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedBoolean")]
     public bool? FixedBoolean { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedInteger")]
     public int? FixedInteger { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedDecimal")]
     public decimal? FixedDecimal { get; set; }
     [JsonProperty("_fixedDecimal")]
     public Element _FixedDecimal { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedBase64Binary")]
     public string FixedBase64Binary { get; set; }
     [JsonProperty("_fixedBase64Binary")]
     public Element _FixedBase64Binary { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedInstant")]
     public string FixedInstant { get; set; }
     [JsonProperty("_fixedInstant")]
     public Element _FixedInstant { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedString")]
     public string FixedString { get; set; }
     [JsonProperty("_fixedString")]
     public Element _FixedString { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedUri")]
     public string FixedUri { get; set; }
     [JsonProperty("_fixedUri")]
     public Element _FixedUri { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedDate")]
     public string FixedDate { get; set; }
     [JsonProperty("_fixedDate")]
     public Element _FixedDate { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedDateTime")]
     public string FixedDateTime { get; set; }
     [JsonProperty("_fixedDateTime")]
     public Element _FixedDateTime { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedTime")]
     public string FixedTime { get; set; }
     [JsonProperty("_fixedTime")]
     public Element _FixedTime { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedCode")]
     public string FixedCode { get; set; }
     [JsonProperty("_fixedCode")]
     public Element _FixedCode { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedOid")]
     public string FixedOid { get; set; }
     [JsonProperty("_fixedOid")]
     public Element _FixedOid { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedId")]
     public string FixedId { get; set; }
     [JsonProperty("_fixedId")]
     public Element _FixedId { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedUnsignedInt")]
     public uint? FixedUnsignedInt { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedPositiveInt")]
     public uint? FixedPositiveInt { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedMarkdown")]
     public string FixedMarkdown { get; set; }
     [JsonProperty("_fixedMarkdown")]
     public Element _FixedMarkdown { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedAnnotation")]
     public Annotation FixedAnnotation { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedAttachment")]
     public Attachment FixedAttachment { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedIdentifier")]
     public Identifier FixedIdentifier { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedCodeableConcept")]
     public CodeableConcept FixedCodeableConcept { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedCoding")]
     public Coding FixedCoding { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedQuantity")]
     public Quantity FixedQuantity { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedRange")]
     public Range FixedRange { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedPeriod")]
     public Period FixedPeriod { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedRatio")]
     public Ratio FixedRatio { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedSampledData")]
     public SampledData FixedSampledData { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedSignature")]
     public Signature FixedSignature { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedHumanName")]
     public HumanName FixedHumanName { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedAddress")]
     public Address FixedAddress { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedContactPoint")]
     public ContactPoint FixedContactPoint { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedTiming")]
     public Timing FixedTiming { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedReference")]
     public Reference FixedReference { get; set; }
     /// <summary>
-    /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
+    /// Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
     /// </summary>
     [JsonProperty("fixedMeta")]
     public Meta FixedMeta { get; set; }
     /// <summary>
-    /// Only the definition of an element can set IsModifier true - either the specification itself or where an extension is originally defined. Once set, it cannot be changed in derived profiles. An element/extension that has isModifier=true SHOULD also have a minimum cardinality of 1, so that there is no lack of clarity about what to do if it is missing. If it can be missing, the definition SHALL make the meaning of a missing element clear.
+    /// Allows elements to be introduced into a specification that can't safely be ignored by applications that don't recognize them.
     /// </summary>
     [JsonProperty("isModifier")]
     public bool? IsModifier { get; set; }
     /// <summary>
-    /// Some resources include a set of simple metadata, and some very large data. This element is used to reduce the quantity of data returned in searches. Note that servers may pre-cache summarized resources for optimal performance, so servers may not support per-profile use of the isSummary flag.
+    /// Allow clients to search through large resources quickly.
     /// </summary>
     [JsonProperty("isSummary")]
     public bool? IsSummary { get; set; }
     /// <summary>
-    /// Question and label serve similar purposes in they both can be used to prompt for capturing a data element.  Whether the question form or label form should be used will depend on the type of instrument being used to capture the information.
+    /// The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.
     /// </summary>
     [JsonProperty("label")]
     public string Label { get; set; }
     [JsonProperty("_label")]
     public Element _Label { get; set; }
     /// <summary>
-    /// Mappings are not necessarily specific enough for safe translation.
+    /// Provides guidance to implementers familiar with or converting content from other specifications.
     /// </summary>
     [JsonProperty("mapping")]
     public ElementDefinitionMapping[] Mapping { get; set; }
@@ -1214,201 +1214,201 @@ namespace fhir
     [JsonProperty("_max")]
     public Element _Max { get; set; }
     /// <summary>
-    /// Receivers are not required to reject instances that exceed the maximum length.  The full length could be stored.  In some cases, data might be truncated, though truncation should be undertaken with care and an understanding of the consequences of doing so. If not specified, there is no conformance expectation for length support.
+    /// Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.
     /// </summary>
     [JsonProperty("maxLength")]
     public int? MaxLength { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueBoolean")]
     public bool? MaxValueBoolean { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueInteger")]
     public int? MaxValueInteger { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueDecimal")]
     public decimal? MaxValueDecimal { get; set; }
     [JsonProperty("_maxValueDecimal")]
     public Element _MaxValueDecimal { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueBase64Binary")]
     public string MaxValueBase64Binary { get; set; }
     [JsonProperty("_maxValueBase64Binary")]
     public Element _MaxValueBase64Binary { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueInstant")]
     public string MaxValueInstant { get; set; }
     [JsonProperty("_maxValueInstant")]
     public Element _MaxValueInstant { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueString")]
     public string MaxValueString { get; set; }
     [JsonProperty("_maxValueString")]
     public Element _MaxValueString { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueUri")]
     public string MaxValueUri { get; set; }
     [JsonProperty("_maxValueUri")]
     public Element _MaxValueUri { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueDate")]
     public string MaxValueDate { get; set; }
     [JsonProperty("_maxValueDate")]
     public Element _MaxValueDate { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueDateTime")]
     public string MaxValueDateTime { get; set; }
     [JsonProperty("_maxValueDateTime")]
     public Element _MaxValueDateTime { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueTime")]
     public string MaxValueTime { get; set; }
     [JsonProperty("_maxValueTime")]
     public Element _MaxValueTime { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueCode")]
     public string MaxValueCode { get; set; }
     [JsonProperty("_maxValueCode")]
     public Element _MaxValueCode { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueOid")]
     public string MaxValueOid { get; set; }
     [JsonProperty("_maxValueOid")]
     public Element _MaxValueOid { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueId")]
     public string MaxValueId { get; set; }
     [JsonProperty("_maxValueId")]
     public Element _MaxValueId { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueUnsignedInt")]
     public uint? MaxValueUnsignedInt { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValuePositiveInt")]
     public uint? MaxValuePositiveInt { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueMarkdown")]
     public string MaxValueMarkdown { get; set; }
     [JsonProperty("_maxValueMarkdown")]
     public Element _MaxValueMarkdown { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueAnnotation")]
     public Annotation MaxValueAnnotation { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueAttachment")]
     public Attachment MaxValueAttachment { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueIdentifier")]
     public Identifier MaxValueIdentifier { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueCodeableConcept")]
     public CodeableConcept MaxValueCodeableConcept { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueCoding")]
     public Coding MaxValueCoding { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueQuantity")]
     public Quantity MaxValueQuantity { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueRange")]
     public Range MaxValueRange { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValuePeriod")]
     public Period MaxValuePeriod { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueRatio")]
     public Ratio MaxValueRatio { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueSampledData")]
     public SampledData MaxValueSampledData { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueSignature")]
     public Signature MaxValueSignature { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueHumanName")]
     public HumanName MaxValueHumanName { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueAddress")]
     public Address MaxValueAddress { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueContactPoint")]
     public ContactPoint MaxValueContactPoint { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueTiming")]
     public Timing MaxValueTiming { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueReference")]
     public Reference MaxValueReference { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
+    /// The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("maxValueMeta")]
     public Meta MaxValueMeta { get; set; }
     /// <summary>
-    /// Implicit meanings for missing values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. An implicit meaning for a missing value can never be changed, and specifying one has the consequence that constraining its use in profiles eliminates use cases as possibilities, not merely moving them out of scope.
+    /// The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.
     /// </summary>
     [JsonProperty("meaningWhenMissing")]
     public string MeaningWhenMissing { get; set; }
@@ -1420,208 +1420,208 @@ namespace fhir
     [JsonProperty("min")]
     public int? Min { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueBoolean")]
     public bool? MinValueBoolean { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueInteger")]
     public int? MinValueInteger { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueDecimal")]
     public decimal? MinValueDecimal { get; set; }
     [JsonProperty("_minValueDecimal")]
     public Element _MinValueDecimal { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueBase64Binary")]
     public string MinValueBase64Binary { get; set; }
     [JsonProperty("_minValueBase64Binary")]
     public Element _MinValueBase64Binary { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueInstant")]
     public string MinValueInstant { get; set; }
     [JsonProperty("_minValueInstant")]
     public Element _MinValueInstant { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueString")]
     public string MinValueString { get; set; }
     [JsonProperty("_minValueString")]
     public Element _MinValueString { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueUri")]
     public string MinValueUri { get; set; }
     [JsonProperty("_minValueUri")]
     public Element _MinValueUri { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueDate")]
     public string MinValueDate { get; set; }
     [JsonProperty("_minValueDate")]
     public Element _MinValueDate { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueDateTime")]
     public string MinValueDateTime { get; set; }
     [JsonProperty("_minValueDateTime")]
     public Element _MinValueDateTime { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueTime")]
     public string MinValueTime { get; set; }
     [JsonProperty("_minValueTime")]
     public Element _MinValueTime { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueCode")]
     public string MinValueCode { get; set; }
     [JsonProperty("_minValueCode")]
     public Element _MinValueCode { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueOid")]
     public string MinValueOid { get; set; }
     [JsonProperty("_minValueOid")]
     public Element _MinValueOid { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueId")]
     public string MinValueId { get; set; }
     [JsonProperty("_minValueId")]
     public Element _MinValueId { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueUnsignedInt")]
     public uint? MinValueUnsignedInt { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValuePositiveInt")]
     public uint? MinValuePositiveInt { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueMarkdown")]
     public string MinValueMarkdown { get; set; }
     [JsonProperty("_minValueMarkdown")]
     public Element _MinValueMarkdown { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueAnnotation")]
     public Annotation MinValueAnnotation { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueAttachment")]
     public Attachment MinValueAttachment { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueIdentifier")]
     public Identifier MinValueIdentifier { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueCodeableConcept")]
     public CodeableConcept MinValueCodeableConcept { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueCoding")]
     public Coding MinValueCoding { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueQuantity")]
     public Quantity MinValueQuantity { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueRange")]
     public Range MinValueRange { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValuePeriod")]
     public Period MinValuePeriod { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueRatio")]
     public Ratio MinValueRatio { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueSampledData")]
     public SampledData MinValueSampledData { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueSignature")]
     public Signature MinValueSignature { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueHumanName")]
     public HumanName MinValueHumanName { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueAddress")]
     public Address MinValueAddress { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueContactPoint")]
     public ContactPoint MinValueContactPoint { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueTiming")]
     public Timing MinValueTiming { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueReference")]
     public Reference MinValueReference { get; set; }
     /// <summary>
-    /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
+    /// The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
     /// </summary>
     [JsonProperty("minValueMeta")]
     public Meta MinValueMeta { get; set; }
     /// <summary>
-    /// "Something useful" is context dependent and impossible to describe in the base FHIR specification. For this reason, tue mustSupport flag is never set to true by the FHIR specification itself - it is only set to true in profiles.   This is done in [Resource Profiles](profiling.html#mustsupport), where the profile labels an element as mustSupport=true. When a profile does this, it SHALL also make clear exactly what kind of "support" is required, as this can mean many things.  Note that an element that has the property IsModifier is not necessarily a "key" element (e.g. one of the important elements to make use of the resource), nor is it automatically mustSupport - however both of these things are more likely to be true for IsModifier elements than for other elements.
+    /// Allows a profile to set expectations for system capabilities beyond merely respecting cardinality constraints.
     /// </summary>
     [JsonProperty("mustSupport")]
     public bool? MustSupport { get; set; }
     /// <summary>
-    /// The name SHALL be unique within the structure within the context of the constrained resource element.  (Though to avoid confusion, uniqueness across all elements is recommended.).
+    /// Allows referencing a defined element.  May also be used for code generation purposes.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// If child components of this element are defined, they act as constraints on the referenced slice.
+    /// Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element.
     /// </summary>
     [JsonProperty("nameReference")]
     public string NameReference { get; set; }
@@ -1635,222 +1635,222 @@ namespace fhir
     [JsonProperty("_path")]
     public Element _Path { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternBoolean")]
     public bool? PatternBoolean { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternInteger")]
     public int? PatternInteger { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternDecimal")]
     public decimal? PatternDecimal { get; set; }
     [JsonProperty("_patternDecimal")]
     public Element _PatternDecimal { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternBase64Binary")]
     public string PatternBase64Binary { get; set; }
     [JsonProperty("_patternBase64Binary")]
     public Element _PatternBase64Binary { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternInstant")]
     public string PatternInstant { get; set; }
     [JsonProperty("_patternInstant")]
     public Element _PatternInstant { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternString")]
     public string PatternString { get; set; }
     [JsonProperty("_patternString")]
     public Element _PatternString { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternUri")]
     public string PatternUri { get; set; }
     [JsonProperty("_patternUri")]
     public Element _PatternUri { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternDate")]
     public string PatternDate { get; set; }
     [JsonProperty("_patternDate")]
     public Element _PatternDate { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternDateTime")]
     public string PatternDateTime { get; set; }
     [JsonProperty("_patternDateTime")]
     public Element _PatternDateTime { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternTime")]
     public string PatternTime { get; set; }
     [JsonProperty("_patternTime")]
     public Element _PatternTime { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternCode")]
     public string PatternCode { get; set; }
     [JsonProperty("_patternCode")]
     public Element _PatternCode { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternOid")]
     public string PatternOid { get; set; }
     [JsonProperty("_patternOid")]
     public Element _PatternOid { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternId")]
     public string PatternId { get; set; }
     [JsonProperty("_patternId")]
     public Element _PatternId { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternUnsignedInt")]
     public uint? PatternUnsignedInt { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternPositiveInt")]
     public uint? PatternPositiveInt { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternMarkdown")]
     public string PatternMarkdown { get; set; }
     [JsonProperty("_patternMarkdown")]
     public Element _PatternMarkdown { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternAnnotation")]
     public Annotation PatternAnnotation { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternAttachment")]
     public Attachment PatternAttachment { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternIdentifier")]
     public Identifier PatternIdentifier { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternCodeableConcept")]
     public CodeableConcept PatternCodeableConcept { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternCoding")]
     public Coding PatternCoding { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternQuantity")]
     public Quantity PatternQuantity { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternRange")]
     public Range PatternRange { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternPeriod")]
     public Period PatternPeriod { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternRatio")]
     public Ratio PatternRatio { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternSampledData")]
     public SampledData PatternSampledData { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternSignature")]
     public Signature PatternSignature { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternHumanName")]
     public HumanName PatternHumanName { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternAddress")]
     public Address PatternAddress { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternContactPoint")]
     public ContactPoint PatternContactPoint { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternTiming")]
     public Timing PatternTiming { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternReference")]
     public Reference PatternReference { get; set; }
     /// <summary>
-    /// Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
+    /// Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
     /// </summary>
     [JsonProperty("patternMeta")]
     public Meta PatternMeta { get; set; }
     /// <summary>
-    /// This is rarely used except for special cases where the representation deviates from the normal, which is done only very reluctantly, and can only be done in the base standard (and profiles must reproduce what the base standard does).
+    /// Codes that define how this element is represented in instances, when the deviation varies from the normal case.
     /// </summary>
     [JsonProperty("representation")]
     public string[] Representation { get; set; }
     [JsonProperty("_representation")]
     public Element[] _Representation { get; set; }
     /// <summary>
-    /// This element does not describe the usage of the element (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
+    /// This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.
     /// </summary>
     [JsonProperty("requirements")]
     public string Requirements { get; set; }
     [JsonProperty("_requirements")]
     public Element _Requirements { get; set; }
     /// <summary>
-    /// May change the term to provide language more appropriate to the context of the profile or to reflect slicing.
+    /// A concise description of what this element means (e.g. for use in autogenerated summaries).
     /// </summary>
     [JsonProperty("short")]
     public string Short { get; set; }
     [JsonProperty("_short")]
     public Element _Short { get; set; }
     /// <summary>
-    /// The first element in the sequence, the one that carries the slicing, is the unconstrained element, for reference purposes . This may include the unconstrained children.
+    /// Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
     /// </summary>
     [JsonProperty("slicing")]
     public ElementDefinitionSlicing Slicing { get; set; }
     /// <summary>
-    /// The Type of the element can be left blank, in which case the type is inherited from the resource. The type can only be listed in this field if it is an allowed option in the base resource.
+    /// The data type or resource that the value of this element is permitted to be.
     /// </summary>
     [JsonProperty("type")]
     public ElementDefinitionType[] Type { get; set; }
@@ -1860,7 +1860,7 @@ namespace fhir
   /// </summary>
   public class Extension : Element {
     /// <summary>
-    /// The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.
+    /// Source of the definition for the extension code - a logical name or a URL.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
@@ -2061,21 +2061,21 @@ namespace fhir
   /// </summary>
   public class HumanName : Element {
     /// <summary>
-    /// For family name, hyphenated names such as "Smith-Jones" are a single name, but names with spaces such as "Smith Jones" are broken into multiple parts.
+    /// The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
     /// </summary>
     [JsonProperty("family")]
     public string[] Family { get; set; }
     [JsonProperty("_family")]
     public Element[] _Family { get; set; }
     /// <summary>
-    /// If only initials are recorded, they may be used in place of the full name.  Not called "first name" since given names do not always come first.
+    /// Given name.
     /// </summary>
     [JsonProperty("given")]
     public string[] Given { get; set; }
     [JsonProperty("_given")]
     public Element[] _Given { get; set; }
     /// <summary>
-    /// Indicates the period of time when this name was valid for the named person.
+    /// Allows names to be placed in historical context.
     /// </summary>
     [JsonProperty("period")]
     public Period Period { get; set; }
@@ -2094,14 +2094,14 @@ namespace fhir
     [JsonProperty("_suffix")]
     public Element[] _Suffix { get; set; }
     /// <summary>
-    /// Can provide both a text representation and structured parts.
+    /// A renderable, unencoded form.
     /// </summary>
     [JsonProperty("text")]
     public string Text { get; set; }
     [JsonProperty("_text")]
     public Element _Text { get; set; }
     /// <summary>
-    /// This is labeled as "Is Modifier" because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old.
+    /// Allows the appropriate name for a particular context of use to be selected from among a set of names.
     /// </summary>
     [JsonProperty("use")]
     public string Use { get; set; }
@@ -2125,7 +2125,7 @@ namespace fhir
   /// </summary>
   public class Identifier : Element {
     /// <summary>
-    /// The reference may be just a text description of the assigner.
+    /// Organization that issued/manages the identifier.
     /// </summary>
     [JsonProperty("assigner")]
     public Reference Assigner { get; set; }
@@ -2135,26 +2135,26 @@ namespace fhir
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// Establishes the namespace in which set of possible id values is unique.
+    /// There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.
     /// </summary>
     [JsonProperty("system")]
     public string System { get; set; }
     [JsonProperty("_system")]
     public Element _System { get; set; }
     /// <summary>
-    /// This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.
+    /// Allows users to make use of identifiers when the identifier system is not known.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
     /// <summary>
-    /// This is labeled as "Is Modifier" because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.
+    /// Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.
     /// </summary>
     [JsonProperty("use")]
     public string Use { get; set; }
     [JsonProperty("_use")]
     public Element _Use { get; set; }
     /// <summary>
-    /// If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.
+    /// The portion of the identifier typically displayed to the user and which is unique within the context of the system.
     /// </summary>
     [JsonProperty("value")]
     public string Value { get; set; }
@@ -2175,31 +2175,31 @@ namespace fhir
   /// </summary>
   public class Meta : Element {
     /// <summary>
-    /// This value is always populated except when the resource is first being created. The server / resource manager sets this value; what a client provides is irrelevant.
+    /// When the resource last changed - e.g. when the version changed.
     /// </summary>
     [JsonProperty("lastUpdated")]
     public string LastUpdated { get; set; }
     [JsonProperty("_lastUpdated")]
     public Element _LastUpdated { get; set; }
     /// <summary>
-    /// It is up to the server and/or other infrastructure of policy to determine whether/how these claims are verified and/or updated over time.  The list of profile URLs is a set.
+    /// A list of profiles [[[StructureDefinition]]]s that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].
     /// </summary>
     [JsonProperty("profile")]
     public string[] Profile { get; set; }
     [JsonProperty("_profile")]
     public Element[] _Profile { get; set; }
     /// <summary>
-    /// The security labels can be updated without changing the stated version of the resource  The list of security labels is a set. Uniqueness is based the system/code, and version and display are ignored.
+    /// Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.
     /// </summary>
     [JsonProperty("security")]
     public Coding[] Security { get; set; }
     /// <summary>
-    /// The tags can be updated without changing the stated version of the resource.  The list of tags is a set. Uniqueness is based the system/code, and version and display are ignored.
+    /// Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.
     /// </summary>
     [JsonProperty("tag")]
     public Coding[] Tag { get; set; }
     /// <summary>
-    /// The server assigns this value, and ignores what the client specifies, except in the case that the server is imposing version integrity on updates/deletes.
+    /// The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.
     /// </summary>
     [JsonProperty("versionId")]
     public string VersionId { get; set; }
@@ -2216,7 +2216,7 @@ namespace fhir
   /// </summary>
   public class Narrative : Element {
     /// <summary>
-    /// The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained stylesheets. The XHTML content may not contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects.
+    /// The actual narrative content, a stripped down version of XHTML.
     /// </summary>
     [JsonProperty("div")]
     public string Div { get; set; }
@@ -2244,14 +2244,14 @@ namespace fhir
   /// </summary>
   public class Period : Element {
     /// <summary>
-    /// The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03.
+    /// The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
     /// </summary>
     [JsonProperty("end")]
     public string End { get; set; }
     [JsonProperty("_end")]
     public Element _End { get; set; }
     /// <summary>
-    /// If the low element is missing, the meaning is that the low boundary is not known.
+    /// The start of the period. The boundary is inclusive.
     /// </summary>
     [JsonProperty("start")]
     public string Start { get; set; }
@@ -2263,35 +2263,35 @@ namespace fhir
   /// </summary>
   public class Quantity : Element {
     /// <summary>
-    /// The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system.
+    /// Need a computable form of the unit that is fixed across all forms. UCUM provides this for quantities, but SNOMED CT provides many units of interest.
     /// </summary>
     [JsonProperty("code")]
     public string Code { get; set; }
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value.
+    /// Need a framework for handling measures where the value is <5ug/L or >400mg/L due to the limitations of measuring methodology.
     /// </summary>
     [JsonProperty("comparator")]
     public string Comparator { get; set; }
     [JsonProperty("_comparator")]
     public Element _Comparator { get; set; }
     /// <summary>
-    /// The identification of the system that provides the coded form of the unit.
+    /// Need to know the system that defines the coded form of the unit.
     /// </summary>
     [JsonProperty("system")]
     public string System { get; set; }
     [JsonProperty("_system")]
     public Element _System { get; set; }
     /// <summary>
-    /// A human-readable form of the unit.
+    /// There are many representations for units of measure and in many contexts, particular representations are fixed and required. I.e. mcg for micrograms.
     /// </summary>
     [JsonProperty("unit")]
     public string Unit { get; set; }
     [JsonProperty("_unit")]
     public Element _Unit { get; set; }
     /// <summary>
-    /// The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books).
+    /// Precision is handled implicitly in almost all cases of measurement.
     /// </summary>
     [JsonProperty("value")]
     public decimal? Value { get; set; }
@@ -2312,12 +2312,12 @@ namespace fhir
   /// </summary>
   public class Range : Element {
     /// <summary>
-    /// If the high element is missing, the high boundary is not known.
+    /// The high limit. The boundary is inclusive.
     /// </summary>
     [JsonProperty("high")]
     public Quantity High { get; set; }
     /// <summary>
-    /// If the low element is missing, the low boundary is not known.
+    /// The low limit. The boundary is inclusive.
     /// </summary>
     [JsonProperty("low")]
     public Quantity Low { get; set; }
@@ -2342,14 +2342,14 @@ namespace fhir
   /// </summary>
   public class Reference : Element {
     /// <summary>
-    /// This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.
+    /// Plain text narrative that identifies the resource in addition to the resource reference.
     /// </summary>
     [JsonProperty("display")]
     public string Display { get; set; }
     [JsonProperty("_display")]
     public Element _Display { get; set; }
     /// <summary>
-    /// Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the URL conforms to the structure "/[type]/[id]" then it should be assumed that the reference is to a FHIR RESTful server.
+    /// A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources.
     /// </summary>
     [JsonProperty("reference")]
     public string ReferenceField { get; set; }
@@ -2368,7 +2368,7 @@ namespace fhir
     [JsonProperty("_data")]
     public Element _Data { get; set; }
     /// <summary>
-    /// If there is more than one dimension, the code for the type of data will define the meaning of the dimensions (typically ECG data).
+    /// The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.
     /// </summary>
     [JsonProperty("dimensions")]
     public uint Dimensions { get; set; }
@@ -2392,7 +2392,7 @@ namespace fhir
     [JsonProperty("origin")]
     public Quantity Origin { get; set; }
     /// <summary>
-    /// This is usually a whole number.
+    /// The length of time between sampling times, measured in milliseconds.
     /// </summary>
     [JsonProperty("period")]
     public decimal Period { get; set; }
@@ -2411,7 +2411,7 @@ namespace fhir
   /// </summary>
   public class Signature : Element {
     /// <summary>
-    /// Where the signature type is an XML DigSig, the signed content is a FHIR Resource(s), the signature is of the XML form of the Resource(s) using  XML-Signature (XMLDIG) "Detached Signature" form.
+    /// The base64 encoding of the Signature content.
     /// </summary>
     [JsonProperty("blob")]
     public string Blob { get; set; }
@@ -2425,26 +2425,26 @@ namespace fhir
     [JsonProperty("_contentType")]
     public Element _ContentType { get; set; }
     /// <summary>
-    /// Examples include attesting to: authorship, correct transcription, and witness of specific event. Also known as a &quot;Commitment Type Indication&quot;.
+    /// An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.
     /// </summary>
     [JsonProperty("type")]
     public Coding[] Type { get; set; }
     /// <summary>
-    /// This should agree with the information in the signature.
+    /// When the digital signature was signed.
     /// </summary>
     [JsonProperty("when")]
     public string When { get; set; }
     [JsonProperty("_when")]
     public Element _When { get; set; }
     /// <summary>
-    /// This should agree with the information in the signature.
+    /// A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key).
     /// </summary>
     [JsonProperty("whoUri")]
     public string WhoUri { get; set; }
     [JsonProperty("_whoUri")]
     public Element _WhoUri { get; set; }
     /// <summary>
-    /// This should agree with the information in the signature.
+    /// A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key).
     /// </summary>
     [JsonProperty("whoReference")]
     public Reference WhoReference { get; set; }
@@ -2455,7 +2455,7 @@ namespace fhir
   public class SimpleQuantity : Quantity {
   }
   /// <summary>
-  /// A set of rules that describe when the event should occur.
+  /// Many timing schedules are determined by regular repetitions.
   /// </summary>
   public class TimingRepeat : Element {
     /// <summary>
@@ -2474,19 +2474,19 @@ namespace fhir
     [JsonProperty("boundsPeriod")]
     public Period BoundsPeriod { get; set; }
     /// <summary>
-    /// If you have both bounds and count, then this should be understood as within the bounds period, until count times happens.
+    /// Repetitions may be limited by end time or total occurrences.
     /// </summary>
     [JsonProperty("count")]
     public int? Count { get; set; }
     /// <summary>
-    /// For some events the duration is part of the definition of the event (e.g. IV infusions, where the duration is implicit in the specified quantity and rate). For others, it's part of the timing specification (e.g. exercise).
+    /// Some activities are not instantaneous and need to be maintained for a period of time.
     /// </summary>
     [JsonProperty("duration")]
     public decimal? Duration { get; set; }
     [JsonProperty("_duration")]
     public Element _Duration { get; set; }
     /// <summary>
-    /// For some events the duration is part of the definition of the event (e.g. IV infusions, where the duration is implicit in the specified quantity and rate). For others, it's part of the timing specification (e.g. exercise).
+    /// Some activities are not instantaneous and need to be maintained for a period of time.
     /// </summary>
     [JsonProperty("durationMax")]
     public decimal? DurationMax { get; set; }
@@ -2531,7 +2531,7 @@ namespace fhir
     [JsonProperty("_periodUnits")]
     public Element _PeriodUnits { get; set; }
     /// <summary>
-    /// A real world event that the occurrence of the event should be tied to.
+    /// Timings are frequently determined by occurrences such as waking, eating and sleep.
     /// </summary>
     [JsonProperty("when")]
     public string When { get; set; }
@@ -2567,19 +2567,19 @@ namespace fhir
   /// </summary>
   public class Timing : Element {
     /// <summary>
-    /// A repeat should always be defined except for the common codes BID, TID, QID, AM and PM, which all systems are required to understand.
+    /// A code for the timing pattern. Some codes such as BID are ubiquitous, but many institutions define their own additional codes.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// Identifies specific times when the event occurs.
+    /// In an MAR, for instance, you need to take a general specification, and turn it into a precise specification.
     /// </summary>
     [JsonProperty("event")]
     public string[] Event { get; set; }
     [JsonProperty("_event")]
     public Element[] _Event { get; set; }
     /// <summary>
-    /// A set of rules that describe when the event should occur.
+    /// Many timing schedules are determined by regular repetitions.
     /// </summary>
     [JsonProperty("repeat")]
     public TimingRepeat Repeat { get; set; }
@@ -2592,7 +2592,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Account";
     /// <summary>
-    /// Transactions cannot typically be posted to account outside of its "active" period.
+    /// Indicates the period of time over which the account is allowed.
     /// </summary>
     [JsonProperty("activePeriod")]
     public Period ActivePeriod { get; set; }
@@ -2602,12 +2602,12 @@ namespace fhir
     [JsonProperty("balance")]
     public Quantity Balance { get; set; }
     /// <summary>
-    /// It is possible for transactions relevant to a coverage period to be posted to the account before or after the coverage period.
+    /// Identifies the period of time the account applies to; e.g. accounts created per fiscal year, quarter, etc.
     /// </summary>
     [JsonProperty("coveragePeriod")]
     public Period CoveragePeriod { get; set; }
     /// <summary>
-    /// Tracked separately from balance because currency might be known when balance is not.  In some cases, balance might be expressed in a currency other than the base currency for the account.
+    /// Identifies the currency to which transactions must be converted when crediting or debiting the account.
     /// </summary>
     [JsonProperty("currency")]
     public Coding Currency { get; set; }
@@ -2672,24 +2672,24 @@ namespace fhir
     [JsonProperty("_certainty")]
     public Element _Certainty { get; set; }
     /// <summary>
-    /// Use the description to provide any details of a particular event of the occurred reaction such as circumstances, reaction specifics, what happened before/after. Information, related to the event, but not describing a particular care should be captured in the comment field. For example: at the age of four, the patient was given penicillin for strep throat and subsequently developed severe hives.
+    /// Text description about the reaction as a whole, including details of the manifestation if required.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// Coding of the route of exposure with a terminology should be used wherever possible.
+    /// Identification of the route by which the subject was exposed to the substance.
     /// </summary>
     [JsonProperty("exposureRoute")]
     public CodeableConcept ExposureRoute { get; set; }
     /// <summary>
-    /// Manifestation can be expressed as a single word, phrase or brief description. For example: nausea, rash or no reaction. It is preferable that manifestation should be coded with a terminology, where possible. The values entered here may be used to display on an application screen as part of a list of adverse reactions, as recommended in the UK NHS CUI guidelines.  Terminologies commonly used include, but are not limited to, SNOMED CT or ICD10.
+    /// Clinical symptoms and/or signs that are observed or associated with the adverse reaction event.
     /// </summary>
     [JsonProperty("manifestation")]
     public CodeableConcept[] Manifestation { get; set; }
     /// <summary>
-    /// Use this field to record information indirectly related to a particular event and not captured in the description. For example: Clinical records are no longer available, recorded based on information provided to the patient by her mother and her mother is deceased.
+    /// Additional text about the adverse reaction event not captured in other fields.
     /// </summary>
     [JsonProperty("note")]
     public Annotation Note { get; set; }
@@ -2701,14 +2701,14 @@ namespace fhir
     [JsonProperty("_onset")]
     public Element _Onset { get; set; }
     /// <summary>
-    /// It is acknowledged that this assessment is very subjective. There may be some some specific practice domains where objective scales have been applied. Objective scales can be included in this model as extensions.
+    /// Clinical assessment of the severity of the reaction event as a whole, potentially considering multiple different manifestations.
     /// </summary>
     [JsonProperty("severity")]
     public string Severity { get; set; }
     [JsonProperty("_severity")]
     public Element _Severity { get; set; }
     /// <summary>
-    /// Coding of the specific substance with a terminology capable of triggering decision support should be used wherever possible.  The substance field allows for the use of a specific substance or a group or class of substances, for example "Penicillins". The specific substance field could be used for Amoxycillin. Duplication is acceptable when a specific substance has been recorded in the 'substance' field.
+    /// Identification of the specific substance considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different to the substance identified as the cause of the risk, but must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite substance that includes the identified substance. It must be clinically safe to only process the AllergyIntolerance.substance and ignore the AllergyIntolerance.event.substance.
     /// </summary>
     [JsonProperty("substance")]
     public CodeableConcept Substance { get; set; }
@@ -2737,14 +2737,14 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "AllergyIntolerance";
     /// <summary>
-    /// This data element has been included because it is currently being captured in some clinical systems. This data can be derived from the Substance where coding systems are used, and is effectively redundant in that situation.
+    /// Category of the identified Substance.
     /// </summary>
     [JsonProperty("category")]
     public string Category { get; set; }
     [JsonProperty("_category")]
     public Element _Category { get; set; }
     /// <summary>
-    /// The default criticality value for any propensity to an adverse reaction should be 'Low Risk', indicating at the very least a relative contraindication to deliberate or voluntary exposure to the Substance. 'High Risk' is flagged if the clinician has identified a propensity for a more serious or potentially life-threatening reaction, such as anaphylaxis, and implies an absolute contraindication to deliberate or voluntary exposure to the substance. If this element is missing, the criticality is unknown (though it may be known elsewhere).
+    /// Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance.
     /// </summary>
     [JsonProperty("criticality")]
     public string Criticality { get; set; }
@@ -2756,14 +2756,14 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// This date may be replicated by one of the Onset of Reaction dates. Where a textual representation of the date of last occurrence is required e.g. 'In Childhood, '10 years ago' the Comment element should be used.
+    /// Represents the date and/or time of the last known occurrence of a reaction event.
     /// </summary>
     [JsonProperty("lastOccurence")]
     public string LastOccurence { get; set; }
     [JsonProperty("_lastOccurence")]
     public Element _LastOccurence { get; set; }
     /// <summary>
-    /// For example: including reason for flagging a seriousness of 'High Risk'; and instructions related to future exposure or administration of the Substance, such as administration within an Intensive Care Unit or under corticosteroid cover. The notes should be related to an allergy or intolerance as a condition in general and not related to any particular episode of it. For episode notes and descriptions, use AllergyIntolerance.event.description and  AllergyIntolerance.event.notes.
+    /// Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.
     /// </summary>
     [JsonProperty("note")]
     public Annotation Note { get; set; }
@@ -2797,24 +2797,24 @@ namespace fhir
     [JsonProperty("recorder")]
     public Reference Recorder { get; set; }
     /// <summary>
-    /// The recorder takes repsonsibility for the content, but can reference the source from where they got it.
+    /// The source of the information about the allergy that is recorded.
     /// </summary>
     [JsonProperty("reporter")]
     public Reference Reporter { get; set; }
     /// <summary>
-    /// Decision support would typically raise alerts for 'Unconfirmed', 'Confirmed', and 'Resolved' and ignore a 'Refuted' reaction. In particular, 'Refuted' may be useful for reconciliation of the Adverse Reaction List. Some implementations may choose to make this field mandatory.
+    /// Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// It is strongly recommended that the substance be coded with a terminology, where possible. For example, some terminologies used include RxNorm, SNOMED CT, DM+D, NDFRT, ICD-9, IDC-10, UNI, ATC and CPT. Plain text should only be used if there is no appropriate terminology available. Additional details about a substance can be specified in the text.
+    /// Identification of a substance, or a class of substances, that is considered to be responsible for the adverse reaction risk.
     /// </summary>
     [JsonProperty("substance")]
     public CodeableConcept Substance { get; set; }
     /// <summary>
-    /// Allergic (typically immune-mediated) reactions have been traditionally regarded as an indicator for potential escalation to significant future risk. Contemporary knowledge suggests that some reactions previously thought to be immune-mediated are, in fact, non-immune, but in some cases can still pose a life threatening risk. It is acknowledged that many clinicians may not be in a position to distinguish the mechanism of a particular reaction. Often the term "allergy" is used rather generically and may overlap with the use of "intolerance" - in practice the boundaries between these two concepts may not be well-defined or understood. This data element is included nevertheless, because many legacy systems have captured this attribute. Immunologic testing may provide supporting evidence for the basis of the reaction and the causative substance, but no tests are 100% sensitive or specific for sensitivity to a particular substance. If, as is commonly the case, it is unclear whether the reaction is due to an allergy or an intolerance, then the type element should be omitted from the resource.
+    /// Identification of the underlying physiological mechanism for the reaction risk.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -2881,7 +2881,7 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// The role of the participant can be used to declare what the actor will be doing in the scope of this appointment.  If the actor is not specified, then it is expected that the actor will be filled in at a later stage of planning.  This value MUST be the same when creating an AppointmentResponse so that they can be matched, and subsequently update the Appointment.
+    /// Role of participant in the appointment.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept[] Type { get; set; }
@@ -2911,7 +2911,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Appointment";
     /// <summary>
-    /// Additional text to aid in facilitating the appointment. For instance, a comment might be, "patient should proceed immediately to infusion room upon arrival"  Where this is a planned appointment and the start/end dates are not set then this field can be used to provide additional guidance on the details of the appointment request, including any restrictions on when to book it.
+    /// Additional comments about the appointment.
     /// </summary>
     [JsonProperty("comment")]
     public string Comment { get; set; }
@@ -2947,7 +2947,7 @@ namespace fhir
     [JsonProperty("participant")]
     public AppointmentParticipant[] Participant { get; set; }
     /// <summary>
-    /// Seeking implementer feedback on this property and how interoperable it is.  Using an extension to record a codeableconcept for named values may be tested at a future connectathon.
+    /// The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority).
     /// </summary>
     [JsonProperty("priority")]
     public uint? Priority { get; set; }
@@ -2969,7 +2969,7 @@ namespace fhir
     [JsonProperty("_start")]
     public Element _Start { get; set; }
     /// <summary>
-    /// If the Appointment's status is "cancelled" then all participants are expected to have their calendars released for the appointment period, and as such any Slots that were marked as BUSY can be re-set to FREE.
+    /// The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -3011,7 +3011,7 @@ namespace fhir
     [JsonProperty("appointment")]
     public Reference Appointment { get; set; }
     /// <summary>
-    /// This comment is particularly important when the responder is declining, tentatively accepting or requesting another time to indicate the reasons why.
+    /// Additional comments about the appointment.
     /// </summary>
     [JsonProperty("comment")]
     public string Comment { get; set; }
@@ -3037,12 +3037,12 @@ namespace fhir
     [JsonProperty("_participantStatus")]
     public Element _ParticipantStatus { get; set; }
     /// <summary>
-    /// The role of the participant can be used to declare what the actor will be doing in the scope of the referenced appointment.  If the actor is not specified, then it is expected that the actor will be filled in at a later stage of planning.  This value MUST be the same as specified on the referenced Appointment so that they can be matched, and subsequently updated.
+    /// Role of participant in the appointment.
     /// </summary>
     [JsonProperty("participantType")]
     public CodeableConcept[] ParticipantType { get; set; }
     /// <summary>
-    /// This may be either the same as the appointment request to confirm the details of the appointment, or alternately a new time to request a re-negotiation of the start time.
+    /// Date/Time that the appointment is to take place, or requested new start time.
     /// </summary>
     [JsonProperty("start")]
     public string Start { get; set; }
@@ -3061,25 +3061,25 @@ namespace fhir
     public const string NEEDS_ACTION = "needs-action";
   }
   /// <summary>
-  /// Identifies the name, action type, time, and disposition of the audited event.
+  /// The event must be identified.
   /// </summary>
   public class AuditEventEvent : BackboneElement {
     /// <summary>
-    /// Indicator for type of action performed during the event that generated the audit.
+    /// This broadly indicates what kind of action was done on the Participant Object.
     /// </summary>
     [JsonProperty("action")]
     public string Action { get; set; }
     [JsonProperty("_action")]
     public Element _Action { get; set; }
     /// <summary>
-    /// In a distributed system, some sort of common time base (e.g. an NTP [RFC1305] server) is a good implementation tactic.
+    /// This ties an event to a specific date and time. Security audits typically require a consistent time base (e.g. UTC), to eliminate time-zone issues arising from geographical distribution.
     /// </summary>
     [JsonProperty("dateTime")]
     public string DateTime { get; set; }
     [JsonProperty("_dateTime")]
     public Element _DateTime { get; set; }
     /// <summary>
-    /// In some cases a "success" may be partial, for example, an incomplete or interrupted transfer of a radiological study. For the purpose of establishing accountability, these distinctions are not relevant.
+    /// Indicates whether the event succeeded or failed.
     /// </summary>
     [JsonProperty("outcome")]
     public string Outcome { get; set; }
@@ -3093,17 +3093,17 @@ namespace fhir
     [JsonProperty("_outcomeDesc")]
     public Element _OutcomeDesc { get; set; }
     /// <summary>
-    /// Use participant.purposeOfUse when you know that is specific to the participant, otherwise use event.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.
+    /// The purposeOfUse (reason) that was used during the event being recorded.
     /// </summary>
     [JsonProperty("purposeOfEvent")]
     public Coding[] PurposeOfEvent { get; set; }
     /// <summary>
-    /// Identifier for the category of event.
+    /// This field enables queries of messages by implementation-defined event categories.
     /// </summary>
     [JsonProperty("subtype")]
     public Coding[] Subtype { get; set; }
     /// <summary>
-    /// Identifier for a family of the event.  For example, a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function.
+    /// This identifies the performed function. For "Execute" Event Action Code audit records, this identifies the application function performed.
     /// </summary>
     [JsonProperty("type")]
     public Coding Type { get; set; }
@@ -3113,14 +3113,14 @@ namespace fhir
   /// </summary>
   public class AuditEventParticipantNetwork : BackboneElement {
     /// <summary>
-    /// This could be a device id, IP address or some other identifier associated with a device.
+    /// This datum identifies the user's network access point, which may be distinct from the server that performed the action. It is an optional value that may be used to group events recorded on separate servers for analysis of a specific network access point's data access across all servers.
     /// </summary>
     [JsonProperty("address")]
     public string Address { get; set; }
     [JsonProperty("_address")]
     public Element _Address { get; set; }
     /// <summary>
-    /// An identifier for the type of network access point that originated the audit event.
+    /// This datum identifies the type of network access point identifier of the user device for the audit event. It is an optional value that may be used to group events recorded on separate servers for analysis of access according to a network access point's type.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -3128,11 +3128,11 @@ namespace fhir
     public Element _Type { get; set; }
   }
   /// <summary>
-  /// There may be more than one user per event, for example, in cases of actions initiated by one user for other users, or in events that involve more than one user, hardware device, or system process. However, only one user may be the initiator/requestor for the event.
+  /// The event has one or more active participants.
   /// </summary>
   public class AuditEventParticipant : BackboneElement {
     /// <summary>
-    /// Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g. single sign-on), if available.
+    /// In some situations a human user may authenticate with one identity but, to access a specific application system, may use a synonymous identify. For example, some "single sign on" implementations will do this. The alternative identifier would then be the original identify  used for authentication, and the User ID is the one known to and used by the application.
     /// </summary>
     [JsonProperty("altId")]
     public string AltId { get; set; }
@@ -3144,12 +3144,12 @@ namespace fhir
     [JsonProperty("location")]
     public Reference Location { get; set; }
     /// <summary>
-    /// Type of media involved. Used when the event is about exporting/importing onto media.
+    /// Usually, this is used instead of specifying a network address. This field is not used for Media Id (i.e. the serial number of a CD).
     /// </summary>
     [JsonProperty("media")]
     public Coding Media { get; set; }
     /// <summary>
-    /// Human-meaningful name for the user.
+    /// The User ID and Authorization User ID may be internal or otherwise obscure values. This field assists the auditor in identifying the actual user.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -3161,56 +3161,56 @@ namespace fhir
     [JsonProperty("network")]
     public AuditEventParticipantNetwork Network { get; set; }
     /// <summary>
-    /// For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.
+    /// This value is used retrospectively to determine the authorization policies.
     /// </summary>
     [JsonProperty("policy")]
     public string[] Policy { get; set; }
     [JsonProperty("_policy")]
     public Element[] _Policy { get; set; }
     /// <summary>
-    /// Use participant.purposeOfUse when you know that is specific to the participant, otherwise use event.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.
+    /// The reason (purpose of use), specific to this participant, that was used during the event being recorded.
     /// </summary>
     [JsonProperty("purposeOfUse")]
     public Coding[] PurposeOfUse { get; set; }
     /// <summary>
-    /// Direct reference to a resource that identifies the participant.
+    /// This field ties an audit event to a specific resource.
     /// </summary>
     [JsonProperty("reference")]
     public Reference Reference { get; set; }
     /// <summary>
-    /// There can only be one initiator. If the initiator is not clear, then do not choose any one participant as the initiator.
+    /// This value is used to distinguish between requestor-users and recipient-users. For example, one person may initiate a report-output to be sent to another user.
     /// </summary>
     [JsonProperty("requestor")]
     public bool Requestor { get; set; }
     /// <summary>
-    /// Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the role-based access control security system used in the local context.
+    /// This value ties an audited event to a user's role(s). It is an optional value that might be used to group events for analysis by user functional role categories.
     /// </summary>
     [JsonProperty("role")]
     public CodeableConcept[] Role { get; set; }
     /// <summary>
-    /// a unique value within the Audit Source ID. For node-based authentication -- where only the system hardware or process, but not a human user, is identified -- User ID would be the node name.
+    /// This field ties an audit event to a specific user.
     /// </summary>
     [JsonProperty("userId")]
     public Identifier UserId { get; set; }
   }
   /// <summary>
-  /// Since multi-tier, distributed, or composite applications make source identification ambiguous, this collection of fields may repeat for each application or process actively involved in the event. For example, multiple value-sets can identify participating web servers, application processes, and database server threads in an n-tier distributed application. Passive event participants (e.g. low-level network transports) need not be identified.
+  /// The event is reported by one source.
   /// </summary>
   public class AuditEventSource : BackboneElement {
     /// <summary>
-    /// Identifier of the source where the event was detected.
+    /// This field ties the event to a specific source system. It may be used to group events for analysis according to where the event was detected.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group.
+    /// This value differentiates among the sites in a multi-site enterprise health information system.
     /// </summary>
     [JsonProperty("site")]
     public string Site { get; set; }
     [JsonProperty("_site")]
     public Element _Site { get; set; }
     /// <summary>
-    /// Code specifying the type of source where event originated.
+    /// This field indicates which type of source is identified by the Audit Source ID. It is an optional value that may be used to group events for analysis according to the type of source where the event occurred.
     /// </summary>
     [JsonProperty("type")]
     public Coding[] Type { get; set; }
@@ -3235,7 +3235,7 @@ namespace fhir
     public Element _Value { get; set; }
   }
   /// <summary>
-  /// Required unless the values for Event Identification, Active Participant Identification, and Audit Source Identification are sufficient to document the entire auditable event. Because events may have more than one participant object, this group can be a repeating set of values.
+  /// The event may have other objects involved.
   /// </summary>
   public class AuditEventObject : BackboneElement {
     /// <summary>
@@ -3251,24 +3251,24 @@ namespace fhir
     [JsonProperty("detail")]
     public AuditEventObjectDetail[] Detail { get; set; }
     /// <summary>
-    /// Identifier detail depends on object type.
+    /// Identifies a specific instance of the participant object. The reference should always be version specific.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// This can be used to provide an audit trail for data, over time, as it passes through the system.
+    /// Institutional policies for privacy and security may optionally fall under different accountability rules based on data life cycle. This provides a differentiating value for those cases.
     /// </summary>
     [JsonProperty("lifecycle")]
     public Coding Lifecycle { get; set; }
     /// <summary>
-    /// This field may be used in a query/report to identify audit events for a specific person.  For example, where multiple synonymous Participant Object IDs (patient number, medical record number, encounter number, etc.) have been used.
+    /// An instance-specific descriptor of the Participant Object ID audited, such as a person's name.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// The actual query for a query-type participant object.
+    /// For query events it may be necessary to capture the actual query input to the query process in order to identify the specific event. Because of differences among query implementations and data encoding for them, this is a base 64 encoded data blob. It may be subsequently decoded or interpreted by downstream audit analysis processing.
     /// </summary>
     [JsonProperty("query")]
     public string Query { get; set; }
@@ -3280,17 +3280,17 @@ namespace fhir
     [JsonProperty("reference")]
     public Reference Reference { get; set; }
     /// <summary>
-    /// See RFC 3881 for rules concerning matches between role and type.
+    /// For some detailed audit analysis it may be necessary to indicate a more granular type of participant, based on the application role it serves.
     /// </summary>
     [JsonProperty("role")]
     public Coding Role { get; set; }
     /// <summary>
-    /// Denotes security labels for the identified object.
+    /// This field identifies the security labels for a specific instance of an object, such as a patient, to detect/track privacy and security issues.
     /// </summary>
     [JsonProperty("securityLabel")]
     public Coding[] SecurityLabel { get; set; }
     /// <summary>
-    /// This value is distinct from the user's role or any user relationship to the participant object.
+    /// To describe the object being acted upon. In addition to queries on the subject of the action in an auditable event, it is also important to be able to query on the object type for the action.
     /// </summary>
     [JsonProperty("type")]
     public Coding Type { get; set; }
@@ -3303,22 +3303,22 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "AuditEvent";
     /// <summary>
-    /// Identifies the name, action type, time, and disposition of the audited event.
+    /// The event must be identified.
     /// </summary>
     [JsonProperty("event")]
     public AuditEventEvent Event { get; set; }
     /// <summary>
-    /// Required unless the values for Event Identification, Active Participant Identification, and Audit Source Identification are sufficient to document the entire auditable event. Because events may have more than one participant object, this group can be a repeating set of values.
+    /// The event may have other objects involved.
     /// </summary>
     [JsonProperty("object")]
     public AuditEventObject[] Object { get; set; }
     /// <summary>
-    /// There may be more than one user per event, for example, in cases of actions initiated by one user for other users, or in events that involve more than one user, hardware device, or system process. However, only one user may be the initiator/requestor for the event.
+    /// The event has one or more active participants.
     /// </summary>
     [JsonProperty("participant")]
     public AuditEventParticipant[] Participant { get; set; }
     /// <summary>
-    /// Since multi-tier, distributed, or composite applications make source identification ambiguous, this collection of fields may repeat for each application or process actively involved in the event. For example, multiple value-sets can identify participating web servers, application processes, and database server threads in an n-tier distributed application. Passive event participants (e.g. low-level network transports) need not be identified.
+    /// The event is reported by one source.
     /// </summary>
     [JsonProperty("source")]
     public AuditEventSource Source { get; set; }
@@ -3331,17 +3331,17 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Basic";
     /// <summary>
-    /// Indicates who was responsible for creating the resource instance.
+    /// Needed for partitioning the resource.
     /// </summary>
     [JsonProperty("author")]
     public Reference Author { get; set; }
     /// <summary>
-    /// Because resource references will only be able to indicate 'Basic', the type of reference will need to be specified in a Profile identified as part of the resource.  Refer to the resource notes section for information on appropriate terminologies for this code.
+    /// Must be able to distinguish different types of "basic" resources.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// Identifies when the resource was first created.
+    /// Allows ordering resource instances by time.
     /// </summary>
     [JsonProperty("created")]
     public string Created { get; set; }
@@ -3353,7 +3353,7 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Optional as not all resources potential resources will have subjects.  Resources associated with multiple subjects can handle this via extension.
+    /// Needed for partitioning the resource by Patient.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
@@ -3366,7 +3366,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Binary";
     /// <summary>
-    /// If the content type is itself base64 encoding, then this will be base64 encoded twice - what is created by un-base64ing the content must be the specified content type.
+    /// The actual content, base64 encoded.
     /// </summary>
     [JsonProperty("content")]
     public string Content { get; set; }
@@ -3393,7 +3393,7 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This Description  could include any visual markings used to orientate the viewer e.g. external reference points, special sutures, ink markings.
+    /// Description of anatomical location.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
@@ -3444,14 +3444,14 @@ namespace fhir
   /// </summary>
   public class BundleEntrySearch : BackboneElement {
     /// <summary>
-    /// There is only one mode. In some corner cases, a resource may be included because it is both a match and an include. In these circumstances, 'match' takes precedence.
+    /// Why this entry is in the result set - whether it's included as a match or because of an _include requirement.
     /// </summary>
     [JsonProperty("mode")]
     public string Mode { get; set; }
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
     /// <summary>
-    /// Servers are not required to return a ranking score. 1 is most relevant, and 0 is least relevant. Often, search results are sorted by score, but the client may specify a different sort order.
+    /// When searching, the server's search ranking score for the entry.
     /// </summary>
     [JsonProperty("score")]
     public decimal? Score { get; set; }
@@ -3506,7 +3506,7 @@ namespace fhir
     [JsonProperty("_method")]
     public Element _Method { get; set; }
     /// <summary>
-    /// E.g. for a Patient Create, the method would be "POST" and the URL would be "Patient". For a Patient Update, the method would be PUT, and the URL would be "Patient/[id]".
+    /// The URL for this entry, relative to the root (the address to which the request is posted).
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
@@ -3527,14 +3527,14 @@ namespace fhir
   /// </summary>
   public class BundleEntryResponse : BackboneElement {
     /// <summary>
-    /// This has to match the version id in the header if a resource is included.
+    /// The etag for the resource, it the operation for the entry produced a versioned resource.
     /// </summary>
     [JsonProperty("etag")]
     public string Etag { get; set; }
     [JsonProperty("_etag")]
     public Element _Etag { get; set; }
     /// <summary>
-    /// This has to match the same time in the meta header if a resource is included.
+    /// The date/time that the resource was modified on the server.
     /// </summary>
     [JsonProperty("lastModified")]
     public string LastModified { get; set; }
@@ -3560,7 +3560,7 @@ namespace fhir
   /// </summary>
   public class BundleEntry : BackboneElement {
     /// <summary>
-    /// fullUrl may not be [unique in the context of a resource](bundle.html#bundle-unique). Note that since [FHIR resources do not need to be served through the FHIR API](references.html), the absolute URL may not end with the logical id of the resource (Resource.id), but if the fullUrl does look like a RESTful server URL (e.g. meets the [regex](references.html#regex), then it SHALL end with the Resource.id.
+    /// The Absolute URL for the resource. This must be provided for all resources. The fullUrl SHALL not disagree with the id in the resource. The fullUrl is a version independent reference to the resource.
     /// </summary>
     [JsonProperty("fullUrl")]
     public string FullUrl { get; set; }
@@ -3610,17 +3610,17 @@ namespace fhir
     [JsonProperty("link")]
     public BundleLink[] Link { get; set; }
     /// <summary>
-    /// The signature could be created by the "author" of the bundle or by the originating device.   Requirements around inclusion of a signature, verification of signatures and treatment of signed/non-signed bundles is implementation-environment specific.
+    /// This element allows capturing signatures on documents. It also allows signatures on messages, transactions or even query responses. It may support content-authentication, non-repudiation or other business cases. This is primarily relevant where the bundle may travel through multiple hops or via other mechanisms where HTTPS non-repudiation is insufficient.
     /// </summary>
     [JsonProperty("signature")]
     public Signature Signature { get; set; }
     /// <summary>
-    /// Only used if the bundle is a search result set.
+    /// If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).
     /// </summary>
     [JsonProperty("total")]
     public uint? Total { get; set; }
     /// <summary>
-    /// It's possible to use a bundle for other purposes (e.g. a document can be accepted as a transaction). This is primarily defined so that there can be specific rules for some of the bundle types.
+    /// Indicates the purpose of this bundle- how it was intended to be used.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -3642,11 +3642,11 @@ namespace fhir
     public const string COLLECTION = "collection";
   }
   /// <summary>
-  /// Relationships are uni-directional with the "newer" plan pointing to the older one.
+  /// Identifies CarePlans with some sort of formal relationship to the current plan.
   /// </summary>
   public class CarePlanRelatedPlan : BackboneElement {
     /// <summary>
-    /// Read the relationship as "this plan" [relatedPlan.code] "relatedPlan.plan"; e.g. This plan includes Plan B.  Additional relationship types can be proposed for future releases or handled as extensions.
+    /// Identifies the type of relationship this plan has to the target plan.
     /// </summary>
     [JsonProperty("code")]
     public string Code { get; set; }
@@ -3667,36 +3667,36 @@ namespace fhir
     public const string FULFILLS = "fulfills";
   }
   /// <summary>
-  /// Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.
+  /// Allows representation of care teams, helps scope care plan.  In some cases may be a determiner of access permissions.
   /// </summary>
   public class CarePlanParticipant : BackboneElement {
     /// <summary>
-    /// Patient only needs to be listed if they have a role other than "subject of care".  Member is optional because some participants may be known only by their role, particularly in draft plans.
+    /// The specific person or organization who is participating/expected to participate in the care plan.
     /// </summary>
     [JsonProperty("member")]
     public Reference Member { get; set; }
     /// <summary>
-    /// Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care plan.  General relationships should be handled as properties of the Patient resource directly.
+    /// Indicates specific responsibility of an individual within the care plan; e.g. "Primary physician", "Team coordinator", "Caregiver", etc.
     /// </summary>
     [JsonProperty("role")]
     public CodeableConcept Role { get; set; }
   }
   /// <summary>
-  /// A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc.
+  /// Details in a simple form for generic care plan systems.
   /// </summary>
   public class CarePlanActivityDetail : BackboneElement {
     /// <summary>
-    /// High-level categorization of the type of activity in a care plan.
+    /// May determine what types of extensions are permitted.
     /// </summary>
     [JsonProperty("category")]
     public CodeableConcept Category { get; set; }
     /// <summary>
-    /// Tends to be less relevant for activities involving particular products.  Codes should not convey negation - use "prohibited" instead.
+    /// Allows matching performed to planned as well as validation against protocols.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// Identifies the quantity expected to be consumed in a given day.
+    /// Allows rough dose checking.
     /// </summary>
     [JsonProperty("dailyAmount")]
     public Quantity DailyAmount { get; set; }
@@ -3708,17 +3708,17 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// Internal reference that identifies the goals that this activity is intended to contribute towards meeting.
+    /// So that participants know the link explicitly.
     /// </summary>
     [JsonProperty("goal")]
     public Reference[] Goal { get; set; }
     /// <summary>
-    /// May reference a specific clinical location or may identify a type of location.
+    /// Helps in planning of activity.
     /// </summary>
     [JsonProperty("location")]
     public Reference Location { get; set; }
     /// <summary>
-    /// A performer MAY also be a participant in the care plan.
+    /// Helps in planning of activity.
     /// </summary>
     [JsonProperty("performer")]
     public Reference[] Performer { get; set; }
@@ -3733,7 +3733,7 @@ namespace fhir
     [JsonProperty("productReference")]
     public Reference ProductReference { get; set; }
     /// <summary>
-    /// If true, indicates that the described activity is one that must NOT be engaged in when following the plan.
+    /// Captures intention to not do something that may have been previously typical.
     /// </summary>
     [JsonProperty("prohibited")]
     public bool Prohibited { get; set; }
@@ -3743,41 +3743,41 @@ namespace fhir
     [JsonProperty("quantity")]
     public Quantity Quantity { get; set; }
     /// <summary>
-    /// This could be a diagnosis code.  If a full condition record exists or additional detail is needed, use reasonCondition instead.
+    /// Provides the rationale that drove the inclusion of this particular activity as part of the plan.
     /// </summary>
     [JsonProperty("reasonCode")]
     public CodeableConcept[] ReasonCode { get; set; }
     /// <summary>
-    /// Conditions can be identified at the activity level that are not identified as reasons for the overall plan.
+    /// Provides the health condition(s) that drove the inclusion of this particular activity as part of the plan.
     /// </summary>
     [JsonProperty("reasonReference")]
     public Reference[] ReasonReference { get; set; }
     /// <summary>
-    /// The period, timing or frequency upon which the described activity is to occur.
+    /// Allows prompting for activities and detection of missed planned activities.
     /// </summary>
     [JsonProperty("scheduledTiming")]
     public Timing ScheduledTiming { get; set; }
     /// <summary>
-    /// The period, timing or frequency upon which the described activity is to occur.
+    /// Allows prompting for activities and detection of missed planned activities.
     /// </summary>
     [JsonProperty("scheduledPeriod")]
     public Period ScheduledPeriod { get; set; }
     /// <summary>
-    /// The period, timing or frequency upon which the described activity is to occur.
+    /// Allows prompting for activities and detection of missed planned activities.
     /// </summary>
     [JsonProperty("scheduledString")]
     public string ScheduledString { get; set; }
     [JsonProperty("_scheduledString")]
     public Element _ScheduledString { get; set; }
     /// <summary>
-    /// Some aspects of status can be inferred based on the resources linked in actionTaken.  Note that "status" is only as current as the plan was most recently updated.
+    /// Indicates progress against the plan, whether the activity is still relevant for the plan.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Will generally not be present if status is "complete".  Be sure to prompt to update this (or at least remove the existing value) if the status is changed.
+    /// Provides reason why the activity isn't yet started, is on hold, was cancelled, etc.
     /// </summary>
     [JsonProperty("statusReason")]
     public CodeableConcept StatusReason { get; set; }
@@ -3794,26 +3794,26 @@ namespace fhir
     public const string CANCELLED = "cancelled";
   }
   /// <summary>
-  /// Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
+  /// Allows systems to prompt for performance of planned activities, and validate plans against best practice.
   /// </summary>
   public class CarePlanActivity : BackboneElement {
     /// <summary>
-    /// Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.
+    /// Links plan to resulting actions.
     /// </summary>
     [JsonProperty("actionResulting")]
     public Reference[] ActionResulting { get; set; }
     /// <summary>
-    /// A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc.
+    /// Details in a simple form for generic care plan systems.
     /// </summary>
     [JsonProperty("detail")]
     public CarePlanActivityDetail Detail { get; set; }
     /// <summary>
-    /// This element should NOT be used to describe the activity to be performed - that occurs either within the resource pointed to by activity.detail.reference or in activity.detail.description.
+    /// Can be used to capture information about adherence, progress, concerns, etc.
     /// </summary>
     [JsonProperty("progress")]
     public Annotation[] Progress { get; set; }
     /// <summary>
-    /// The details of the proposed activity represented in a specific resource.
+    /// Details in a form consistent with other applications and contexts of use.
     /// </summary>
     [JsonProperty("reference")]
     public Reference Reference { get; set; }
@@ -3826,76 +3826,76 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "CarePlan";
     /// <summary>
-    /// Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
+    /// Allows systems to prompt for performance of planned activities, and validate plans against best practice.
     /// </summary>
     [JsonProperty("activity")]
     public CarePlanActivity[] Activity { get; set; }
     /// <summary>
-    /// Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.
+    /// Links plan to the conditions it manages.  Also scopes plans - multiple plans may exist addressing different concerns.
     /// </summary>
     [JsonProperty("addresses")]
     public Reference[] Addresses { get; set; }
     /// <summary>
-    /// Collaborative care plans may have multiple authors.
+    /// Identifies the individual(s) or ogranization who is responsible for the content of the care plan.
     /// </summary>
     [JsonProperty("author")]
     public Reference[] Author { get; set; }
     /// <summary>
-    /// There may be multiple axis of categorization and one plan may serve multiple purposes.  In some cases, this may be redundant with references to CarePlan.concern.
+    /// Used for filtering what plan(s) are retrieved and displayed to different types of users.
     /// </summary>
     [JsonProperty("category")]
     public CodeableConcept[] Category { get; set; }
     /// <summary>
-    /// Activities conducted as a result of the care plan may well occur as part of other encounters/episodes.
+    /// Identifies the context in which this particular CarePlan is defined.
     /// </summary>
     [JsonProperty("context")]
     public Reference Context { get; set; }
     /// <summary>
-    /// A description of the scope and nature of the plan.
+    /// Provides more detail than conveyed by category.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline.
+    /// Provides context for plan.  Allows plan effectiveness to be evaluated by clinicians.
     /// </summary>
     [JsonProperty("goal")]
     public Reference[] Goal { get; set; }
     /// <summary>
-    /// This records identifiers associated with this care plan that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Identifies the most recent date on which the plan has been revised.
+    /// Indicates how current the plan is.
     /// </summary>
     [JsonProperty("modified")]
     public string Modified { get; set; }
     [JsonProperty("_modified")]
     public Element _Modified { get; set; }
     /// <summary>
-    /// General notes about the care plan not covered elsewhere.
+    /// Used to capture information that applies to the plan as a whole that doesn't fit into discrete elements.
     /// </summary>
     [JsonProperty("note")]
     public Annotation Note { get; set; }
     /// <summary>
-    /// Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.
+    /// Allows representation of care teams, helps scope care plan.  In some cases may be a determiner of access permissions.
     /// </summary>
     [JsonProperty("participant")]
     public CarePlanParticipant[] Participant { get; set; }
     /// <summary>
-    /// Any activities scheduled as part of the plan should be constrained to the specified period.
+    /// Allows tracking what plan(s) are in effect at a particular time.
     /// </summary>
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// Relationships are uni-directional with the "newer" plan pointing to the older one.
+    /// Identifies CarePlans with some sort of formal relationship to the current plan.
     /// </summary>
     [JsonProperty("relatedPlan")]
     public CarePlanRelatedPlan[] RelatedPlan { get; set; }
     /// <summary>
-    /// Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.
+    /// Allows clinicians to determine whether the plan is actionable or not.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -3907,7 +3907,7 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Use "concern" to identify specific conditions addressed by the care plan.
+    /// Identifies barriers and other considerations associated with the care plan.
     /// </summary>
     [JsonProperty("support")]
     public Reference[] Support { get; set; }
@@ -3952,18 +3952,18 @@ namespace fhir
   /// </summary>
   public class ClaimDiagnosis : BackboneElement {
     /// <summary>
-    /// The diagnosis.
+    /// Required to adjudicate services rendered to condition presented.
     /// </summary>
     [JsonProperty("diagnosis")]
     public Coding Diagnosis { get; set; }
     /// <summary>
-    /// Sequence of diagnosis which serves to order and provide a link.
+    /// Required to maintain order of the diagnoses.
     /// </summary>
     [JsonProperty("sequence")]
     public uint Sequence { get; set; }
   }
   /// <summary>
-  /// Financial instrument by which payment information for health care.
+  /// Health care programs and insurers are significant payors of health service costs.
   /// </summary>
   public class ClaimCoverage : BackboneElement {
     /// <summary>
@@ -3974,39 +3974,39 @@ namespace fhir
     [JsonProperty("_businessArrangement")]
     public Element _BusinessArrangement { get; set; }
     /// <summary>
-    /// The Coverages adjudication details.
+    /// Used by downstream payers to determine what balance remains and the net payable.
     /// </summary>
     [JsonProperty("claimResponse")]
     public Reference ClaimResponse { get; set; }
     /// <summary>
-    /// Reference to the program or plan identification, underwriter or payor.
+    /// Need to identify the issuer to target for processing and for coordination of benefit processing.
     /// </summary>
     [JsonProperty("coverage")]
     public Reference Coverage { get; set; }
     /// <summary>
-    /// The instance number of the Coverage which is the focus for adjudication. The Coverage against which the claim is to be adjudicated.
+    /// To identify which coverage is being adjudicated.
     /// </summary>
     [JsonProperty("focal")]
     public bool Focal { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
     /// <summary>
-    /// A list of references from the Insurer to which these services pertain.
+    /// To provide any pre=determination or prior authorization reference.
     /// </summary>
     [JsonProperty("preAuthRef")]
     public string[] PreAuthRef { get; set; }
     [JsonProperty("_preAuthRef")]
     public Element[] _PreAuthRef { get; set; }
     /// <summary>
-    /// The relationship of the patient to the subscriber.
+    /// To determine the relationship between the patient and the subscriber.
     /// </summary>
     [JsonProperty("relationship")]
     public Coding Relationship { get; set; }
     /// <summary>
-    /// A service line item.
+    /// To maintain order of the coverages.
     /// </summary>
     [JsonProperty("sequence")]
     public uint Sequence { get; set; }
@@ -4016,19 +4016,19 @@ namespace fhir
   /// </summary>
   public class ClaimItemDetailSubDetail : BackboneElement {
     /// <summary>
-    /// A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("factor")]
     public decimal? Factor { get; set; }
     [JsonProperty("_factor")]
     public Element _Factor { get; set; }
     /// <summary>
-    /// The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("net")]
     public Quantity Net { get; set; }
     /// <summary>
-    /// An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("points")]
     public decimal? Points { get; set; }
@@ -4055,12 +4055,12 @@ namespace fhir
     [JsonProperty("type")]
     public Coding Type { get; set; }
     /// <summary>
-    /// List of Unique Device Identifiers associated with this line item.
+    /// The UDI code and issuer if applicable for the supplied product.
     /// </summary>
     [JsonProperty("udi")]
     public Coding Udi { get; set; }
     /// <summary>
-    /// The fee for an additional  service or product or charge.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("unitPrice")]
     public Quantity UnitPrice { get; set; }
@@ -4070,19 +4070,19 @@ namespace fhir
   /// </summary>
   public class ClaimItemDetail : BackboneElement {
     /// <summary>
-    /// A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("factor")]
     public decimal? Factor { get; set; }
     [JsonProperty("_factor")]
     public Element _Factor { get; set; }
     /// <summary>
-    /// The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("net")]
     public Quantity Net { get; set; }
     /// <summary>
-    /// An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("points")]
     public decimal? Points { get; set; }
@@ -4114,12 +4114,12 @@ namespace fhir
     [JsonProperty("type")]
     public Coding Type { get; set; }
     /// <summary>
-    /// List of Unique Device Identifiers associated with this line item.
+    /// The UDI code and issuer if applicable for the supplied product.
     /// </summary>
     [JsonProperty("udi")]
     public Coding Udi { get; set; }
     /// <summary>
-    /// If the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("unitPrice")]
     public Quantity UnitPrice { get; set; }
@@ -4129,19 +4129,19 @@ namespace fhir
   /// </summary>
   public class ClaimItemProsthesis : BackboneElement {
     /// <summary>
-    /// Indicates whether this is the initial placement of a fixed prosthesis.
+    /// May impact on adjudication.
     /// </summary>
     [JsonProperty("initial")]
     public bool? Initial { get; set; }
     /// <summary>
-    /// Date of the initial placement.
+    /// May impact on adjudication.
     /// </summary>
     [JsonProperty("priorDate")]
     public string PriorDate { get; set; }
     [JsonProperty("_priorDate")]
     public Element _PriorDate { get; set; }
     /// <summary>
-    /// Material of the prior denture or bridge prosthesis. (Oral).
+    /// May impact on adjudication.
     /// </summary>
     [JsonProperty("priorMaterial")]
     public Coding PriorMaterial { get; set; }
@@ -4166,24 +4166,24 @@ namespace fhir
     [JsonProperty("diagnosisLinkId")]
     public uint?[] DiagnosisLinkId { get; set; }
     /// <summary>
-    /// A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("factor")]
     public decimal? Factor { get; set; }
     [JsonProperty("_factor")]
     public Element _Factor { get; set; }
     /// <summary>
-    /// Item typification or modifiers codes, e.g. for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.
+    /// May impact on adjudication.
     /// </summary>
     [JsonProperty("modifier")]
     public Coding[] Modifier { get; set; }
     /// <summary>
-    /// The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("net")]
     public Quantity Net { get; set; }
     /// <summary>
-    /// An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
+    /// If a fee is present the associated product/service code must be present.
     /// </summary>
     [JsonProperty("points")]
     public decimal? Points { get; set; }
@@ -4232,7 +4232,7 @@ namespace fhir
     [JsonProperty("type")]
     public Coding Type { get; set; }
     /// <summary>
-    /// List of Unique Device Identifiers associated with this line item.
+    /// The UDI code and issuer if applicable for the supplied product.
     /// </summary>
     [JsonProperty("udi")]
     public Coding Udi { get; set; }
@@ -4243,23 +4243,23 @@ namespace fhir
     public Quantity UnitPrice { get; set; }
   }
   /// <summary>
-  /// A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons.
+  /// The list of missing teeth may influence the adjudication of services for example with Bridges.
   /// </summary>
   public class ClaimMissingTeeth : BackboneElement {
     /// <summary>
-    /// The date of the extraction either known from records or patient reported estimate.
+    /// Some services and adjudications require this information.
     /// </summary>
     [JsonProperty("extractionDate")]
     public string ExtractionDate { get; set; }
     [JsonProperty("_extractionDate")]
     public Element _ExtractionDate { get; set; }
     /// <summary>
-    /// Missing reason may be: E-extraction, O-other.
+    /// Provides the reason for the missing tooth.
     /// </summary>
     [JsonProperty("reason")]
     public Coding Reason { get; set; }
     /// <summary>
-    /// The code identifying which tooth is missing.
+    /// Provides the tooth number of the missing tooth.
     /// </summary>
     [JsonProperty("tooth")]
     public Coding Tooth { get; set; }
@@ -4272,14 +4272,14 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Claim";
     /// <summary>
-    /// Date of an accident which these services are addressing.
+    /// Coverage may be dependent on accidents.
     /// </summary>
     [JsonProperty("accident")]
     public string Accident { get; set; }
     [JsonProperty("_accident")]
     public Element _Accident { get; set; }
     /// <summary>
-    /// Type of accident: work, auto, etc.
+    /// Coverage may be dependent on the type of accident.
     /// </summary>
     [JsonProperty("accidentType")]
     public Coding AccidentType { get; set; }
@@ -4294,7 +4294,7 @@ namespace fhir
     [JsonProperty("condition")]
     public Coding[] Condition { get; set; }
     /// <summary>
-    /// Financial instrument by which payment information for health care.
+    /// Health care programs and insurers are significant payors of health service costs.
     /// </summary>
     [JsonProperty("coverage")]
     public ClaimCoverage[] Coverage { get; set; }
@@ -4316,7 +4316,7 @@ namespace fhir
     [JsonProperty("enterer")]
     public Reference Enterer { get; set; }
     /// <summary>
-    /// Factors which may influence the applicability of coverage.
+    /// To determine extenuating circumstances for coverage.
     /// </summary>
     [JsonProperty("exception")]
     public Coding[] Exception { get; set; }
@@ -4336,7 +4336,7 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// A list of intervention and exception codes which may influence the adjudication of the claim.
+    /// Coverage may be modified based on exception information provided.
     /// </summary>
     [JsonProperty("interventionException")]
     public Coding[] InterventionException { get; set; }
@@ -4346,7 +4346,7 @@ namespace fhir
     [JsonProperty("item")]
     public ClaimItem[] Item { get; set; }
     /// <summary>
-    /// A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons.
+    /// The list of missing teeth may influence the adjudication of services for example with Bridges.
     /// </summary>
     [JsonProperty("missingTeeth")]
     public ClaimMissingTeeth[] MissingTeeth { get; set; }
@@ -4376,7 +4376,7 @@ namespace fhir
     [JsonProperty("payee")]
     public ClaimPayee Payee { get; set; }
     /// <summary>
-    /// Prescription to support the dispensing of Pharmacy or Vision products.
+    /// For type=Pharmacy and Vision only.
     /// </summary>
     [JsonProperty("prescription")]
     public Reference Prescription { get; set; }
@@ -4401,7 +4401,7 @@ namespace fhir
     [JsonProperty("ruleset")]
     public Coding Ruleset { get; set; }
     /// <summary>
-    /// Name of school for over-aged dependents.
+    /// Often required for over-age dependents.
     /// </summary>
     [JsonProperty("school")]
     public string School { get; set; }
@@ -4413,7 +4413,7 @@ namespace fhir
     [JsonProperty("target")]
     public Reference Target { get; set; }
     /// <summary>
-    /// Affects which fields and value sets are used.
+    /// The category of claim this is.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -4719,7 +4719,7 @@ namespace fhir
     public Coding Type { get; set; }
   }
   /// <summary>
-  /// Financial instrument by which payment information for health care.
+  /// Health care programs and insurers are significant payors of health service costs.
   /// </summary>
   public class ClaimResponseCoverage : BackboneElement {
     /// <summary>
@@ -4730,39 +4730,39 @@ namespace fhir
     [JsonProperty("_businessArrangement")]
     public Element _BusinessArrangement { get; set; }
     /// <summary>
-    /// The Coverages adjudication details.
+    /// Used by downstream payers to determine what balance remains and the net payable.
     /// </summary>
     [JsonProperty("claimResponse")]
     public Reference ClaimResponse { get; set; }
     /// <summary>
-    /// Reference to the program or plan identification, underwriter or payor.
+    /// Need to identify the issuer to target for processing and for coordination of benefit processing.
     /// </summary>
     [JsonProperty("coverage")]
     public Reference Coverage { get; set; }
     /// <summary>
-    /// The instance number of the Coverage which is the focus for adjudication. The Coverage against which the claim is to be adjudicated.
+    /// To identify which coverage is being adjudicated.
     /// </summary>
     [JsonProperty("focal")]
     public bool Focal { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
     /// <summary>
-    /// A list of references from the Insurer to which these services pertain.
+    /// To provide any pre-determination or prior authorization reference.
     /// </summary>
     [JsonProperty("preAuthRef")]
     public string[] PreAuthRef { get; set; }
     [JsonProperty("_preAuthRef")]
     public Element[] _PreAuthRef { get; set; }
     /// <summary>
-    /// The relationship of the patient to the subscriber.
+    /// To determine the relationship between the patient and the subscriber.
     /// </summary>
     [JsonProperty("relationship")]
     public Coding Relationship { get; set; }
     /// <summary>
-    /// A service line item.
+    /// To maintain order of the coverages.
     /// </summary>
     [JsonProperty("sequence")]
     public uint Sequence { get; set; }
@@ -4780,7 +4780,7 @@ namespace fhir
     [JsonProperty("addItem")]
     public ClaimResponseAddItem[] AddItem { get; set; }
     /// <summary>
-    /// Financial instrument by which payment information for health care.
+    /// Health care programs and insurers are significant payors of health service costs.
     /// </summary>
     [JsonProperty("coverage")]
     public ClaimResponseCoverage[] Coverage { get; set; }
@@ -4829,7 +4829,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -4903,7 +4903,7 @@ namespace fhir
     [JsonProperty("totalBenefit")]
     public Quantity TotalBenefit { get; set; }
     /// <summary>
-    /// The total cost of the services reported.
+    /// This is a check value that the receiver calculates and returns.
     /// </summary>
     [JsonProperty("totalCost")]
     public Quantity TotalCost { get; set; }
@@ -4930,7 +4930,7 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// Most investigations are observations of one kind of or another but some other specific types of data collection resources can also be used.
+    /// A record of a specific investigation that was undertaken.
     /// </summary>
     [JsonProperty("item")]
     public Reference[] Item { get; set; }
@@ -4987,7 +4987,7 @@ namespace fhir
     [JsonProperty("assessor")]
     public Reference Assessor { get; set; }
     /// <summary>
-    /// This SHOULD be accurate to at least the minute, though some assessments only have a known date.
+    /// The point in time at which the assessment was concluded (not when it was recorded).
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
@@ -5021,12 +5021,12 @@ namespace fhir
     [JsonProperty("plan")]
     public Reference[] Plan { get; set; }
     /// <summary>
-    /// It is always likely that multiple previous assessments exist for a patient. The point of quoting a previous assessment is that this assessment is relative to it (see resolved).
+    /// A reference to the last assesment that was conducted bon this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes.
     /// </summary>
     [JsonProperty("previous")]
     public Reference Previous { get; set; }
     /// <summary>
-    /// e.g. The patient is a pregnant, and cardiac congestive failure, ‎Adenocarcinoma, and is allergic to penicillin.
+    /// This a list of the general problems/conditions for a patient.
     /// </summary>
     [JsonProperty("problem")]
     public Reference[] Problem { get; set; }
@@ -5325,23 +5325,23 @@ namespace fhir
     public const string FAILED = "failed";
   }
   /// <summary>
-  /// Only list each attester once.
+  /// Identifies responsibility for the accuracy of the composition content.
   /// </summary>
   public class CompositionAttester : BackboneElement {
     /// <summary>
-    /// Use more than one code where a single attester has more than one mode (professional and legal are often paired).
+    /// Indicates the level of authority of the attestation.
     /// </summary>
     [JsonProperty("mode")]
     public string[] Mode { get; set; }
     [JsonProperty("_mode")]
     public Element[] _Mode { get; set; }
     /// <summary>
-    /// Who attested the composition in the specified way.
+    /// Identifies who has taken on the responsibility for accuracy of the composition content.
     /// </summary>
     [JsonProperty("party")]
     public Reference Party { get; set; }
     /// <summary>
-    /// When composition was attested by the party.
+    /// Identifies when the information in the composition was deemed accurate.  (Things may have changed since then.).
     /// </summary>
     [JsonProperty("time")]
     public string Time { get; set; }
@@ -5358,11 +5358,11 @@ namespace fhir
     public const string OFFICIAL = "official";
   }
   /// <summary>
-  /// The event needs to be consistent with the type element, though can provide further information if desired.
+  /// Provides context for the composition and creates a linkage between a resource describing an event and the composition created describing the event.
   /// </summary>
   public class CompositionEvent : BackboneElement {
     /// <summary>
-    /// An event can further specialize the act inherent in the typeCode, such as where it is simply "Procedure Report" and the procedure was a "colonoscopy". If one or more eventCodes are included, they SHALL NOT conflict with the values inherent in the classCode, practiceSettingCode or typeCode, as such a conflict would create an ambiguous situation. This short list of codes is provided to be used as key words for certain types of queries.
+    /// This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept[] Code { get; set; }
@@ -5382,44 +5382,44 @@ namespace fhir
   /// </summary>
   public class CompositionSection : BackboneElement {
     /// <summary>
-    /// The code identifies the section for an automated processor of the document. This is particularly relevant when using profiles to control the structure of the document.   If the section has content (instead of sub-sections), the section.code does not change the meaning or interpretation of the resource that is the content of the section in the comments for the section.code.
+    /// Provides computable standardized labels to topics within the document.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// The various reasons for an empty section make a significant interpretation to its interpretation. Note that this code is for use when the entire section content has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases.
+    /// Allows capturing things like "none exist" or "not asked" which can be important for most lists.
     /// </summary>
     [JsonProperty("emptyReason")]
     public CodeableConcept EmptyReason { get; set; }
     /// <summary>
-    /// If there are no entries in the list, an emptyReason SHOULD be provided.
+    /// A reference to the actual resource from which the narrative in the section is derived.
     /// </summary>
     [JsonProperty("entry")]
     public Reference[] Entry { get; set; }
     /// <summary>
-    /// How the entry list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.
+    /// Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.
     /// </summary>
     [JsonProperty("mode")]
     public string Mode { get; set; }
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
     /// <summary>
-    /// Applications SHOULD render ordered lists in the order provided, but MAY allow users to re-order based on their own preferences as well. If there is no order specified, the order is unknown, though there may still be some order.
+    /// Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.
     /// </summary>
     [JsonProperty("orderedBy")]
     public CodeableConcept OrderedBy { get; set; }
     /// <summary>
-    /// Nested sections are primarily used to help human readers navigate to particular portions of the document.
+    /// A nested sub-section within this section.
     /// </summary>
     [JsonProperty("section")]
     public CompositionSection[] Section { get; set; }
     /// <summary>
-    /// Document profiles may define what content should be represented in the narrative to ensure clinical safety.
+    /// A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative.
     /// </summary>
     [JsonProperty("text")]
     public Narrative Text { get; set; }
     /// <summary>
-    /// The title identifies the section for a human reader. The title must be consistent with the narrative of the resource that is the target of the section.content reference. Generally, sections SHOULD have titles, but in some documents it is unnecessary or inappropriate. Typically, this is where a section has subsections that have their own adequately distinguishing title,  or documents that only have a single section. Most Implementation Guides will make section title to be a required element.
+    /// Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.
     /// </summary>
     [JsonProperty("title")]
     public string Title { get; set; }
@@ -5442,51 +5442,51 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Composition";
     /// <summary>
-    /// Only list each attester once.
+    /// Identifies responsibility for the accuracy of the composition content.
     /// </summary>
     [JsonProperty("attester")]
     public CompositionAttester[] Attester { get; set; }
     /// <summary>
-    /// Identifies who is responsible for the information in the composition, not necessarily who typed it in.
+    /// Identifies who is responsible for the content.
     /// </summary>
     [JsonProperty("author")]
     public Reference[] Author { get; set; }
     /// <summary>
-    /// This is a metadata field from [XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD)).
+    /// Helps humans to assess whether the composition is of interest when viewing an index of compositions or documents.
     /// </summary>
     [JsonProperty("class")]
     public CodeableConcept Class { get; set; }
     /// <summary>
-    /// The exact use of this element, and enforcement and issues related to highly sensitive documents are out of scope for the base specification, and delegated to implementation profiles (see security section).
+    /// The code specifying the level of confidentiality of the Composition.
     /// </summary>
     [JsonProperty("confidentiality")]
     public string Confidentiality { get; set; }
     [JsonProperty("_confidentiality")]
     public Element _Confidentiality { get; set; }
     /// <summary>
-    /// This is useful when documents are derived from a composition - provides guidance for how to get the latest version of the document. This is optional because this is sometimes not known by the authoring system, and can be inferred by context. However it is important that this information be known when working with a derived document, so providing a custodian is encouraged.
+    /// Identifies where to go to find the current version, where to report issues, etc.
     /// </summary>
     [JsonProperty("custodian")]
     public Reference Custodian { get; set; }
     /// <summary>
-    /// The Last Modified Date on the composition may be after the date of the document was attested without being changed.
+    /// dateTime is used for tracking, organizing versions and searching.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// Describes the clinical encounter or type of care this documentation is associated with.
+    /// Provides context for the composition and supports searching.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// The event needs to be consistent with the type element, though can provide further information if desired.
+    /// Provides context for the composition and creates a linkage between a resource describing an event and the composition created describing the event.
     /// </summary>
     [JsonProperty("event")]
     public CompositionEvent[] Event { get; set; }
     /// <summary>
-    /// See discussion in resource definition for how these relate.
+    /// Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
@@ -5496,26 +5496,26 @@ namespace fhir
     [JsonProperty("section")]
     public CompositionSection[] Section { get; set; }
     /// <summary>
-    /// If a composition is marked as withdrawn, the compositions/documents in the series, or data from the composition or document series, should never be displayed to a user without being clearly marked as untrustworthy. The flag "withdrawn" is why this element is labeled as a modifier of other elements.   Some reporting work flows require that the original narrative of a final document never be altered; instead, only new narrative can be added. The composition resource has no explicit status for explicitly noting whether this business rule is in effect. This would be handled by an extension if required.
+    /// Need to be able to mark interim, amended, or withdrawn compositions or documents.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// For clinical documents, this is usually the patient.
+    /// Essential metadata for searching for the composition. Identifies who and/or what the composition/document is about.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// For many compositions, the title is the same as the text or a display name of Composition.type (e.g. a "consultation" or "progress note"). Note that CDA does not make title mandatory, but there are no known cases where it is useful for title to be omitted, so it is mandatory here. Feedback on this requirement is welcome during the trial use period.
+    /// Official human-readable label for the composition.
     /// </summary>
     [JsonProperty("title")]
     public string Title { get; set; }
     [JsonProperty("_title")]
     public Element _Title { get; set; }
     /// <summary>
-    /// For Composition type, LOINC is ubiquitous and strongly endorsed by HL7. Most implementation guides will require a specific LOINC code, or use LOINC as an extensible binding.
+    /// Key metadata element describing the composition, used in searching/filtering.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
@@ -5530,11 +5530,11 @@ namespace fhir
     public const string ENTERED_IN_ERROR = "entered-in-error";
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number, etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class ConceptMapContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the concept map.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -5573,7 +5573,7 @@ namespace fhir
     public Element _Element { get; set; }
   }
   /// <summary>
-  /// Ideally there would only be one map, with equal or equivalent mapping. But multiple maps are allowed for several narrower options, or to assert that other concepts are unmatched.
+  /// A concept from the target value set that this concept maps to.
   /// </summary>
   public class ConceptMapElementTarget : BackboneElement {
     /// <summary>
@@ -5584,7 +5584,7 @@ namespace fhir
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// Should be a version specific reference.
+    /// An absolute URI that identifies the code system of the target code (if the target is a value set that cross code systems).
     /// </summary>
     [JsonProperty("codeSystem")]
     public string CodeSystem { get; set; }
@@ -5630,7 +5630,7 @@ namespace fhir
     public const string DISJOINT = "disjoint";
   }
   /// <summary>
-  /// Generally, the ideal is that there would only be one mapping for each concept in the source value set, but a given concept may be mapped multiple times with different comments or dependencies.
+  /// Mappings for an individual concept in the source to one or more concepts in the target.
   /// </summary>
   public class ConceptMapElement : BackboneElement {
     /// <summary>
@@ -5648,7 +5648,7 @@ namespace fhir
     [JsonProperty("_codeSystem")]
     public Element _CodeSystem { get; set; }
     /// <summary>
-    /// Ideally there would only be one map, with equal or equivalent mapping. But multiple maps are allowed for several narrower options, or to assert that other concepts are unmatched.
+    /// A concept from the target value set that this concept maps to.
     /// </summary>
     [JsonProperty("target")]
     public ConceptMapElementTarget[] Target { get; set; }
@@ -5661,95 +5661,95 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "ConceptMap";
     /// <summary>
-    /// May be a web site, an email address, a telephone number, etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public ConceptMapContact[] Contact { get; set; }
     /// <summary>
-    /// Frequently, the copyright differs between the concept map, and codes that are included. The copyright statement should clearly differentiate between these when required.
+    /// A copyright statement relating to the concept map and/or its contents.
     /// </summary>
     [JsonProperty("copyright")]
     public string Copyright { get; set; }
     [JsonProperty("_copyright")]
     public Element _Copyright { get; set; }
     /// <summary>
-    /// Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the concept map. Additional specific dates may be added as extensions.
+    /// Need to know when a concept map was first legal for use or became withdrawn or replaced.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// The description is not intended to describe the semantics of the concept map. The description should capture its intended use, which is needed for ensuring integrity for its use in models across future changes.
+    /// Human understandability.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// Generally, the ideal is that there would only be one mapping for each concept in the source value set, but a given concept may be mapped multiple times with different comments or dependencies.
+    /// Mappings for an individual concept in the source to one or more concepts in the target.
     /// </summary>
     [JsonProperty("element")]
     public ConceptMapElement[] Element { get; set; }
     /// <summary>
-    /// Allows filtering of ConceptMap resources that are appropriate for use.
+    /// This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// Typically, this is used for values that can go in a v3 II data type.
+    /// Formal identifier that is used to identify this concept map when it is represented in other formats, or referenced in a specification, model, design or an instance.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// Not expected to be unique.
+    /// Support human navigation.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the concept map.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
     [JsonProperty("_publisher")]
     public Element _Publisher { get; set; }
     /// <summary>
-    /// This element does not describe the usage of the concept map (that is done in comments), rather it's for traceability of ''why'' the element is either needed or ''why'' the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
+    /// Explains why this concept map is needed and why it has been constrained as it has.
     /// </summary>
     [JsonProperty("requirements")]
     public string Requirements { get; set; }
     [JsonProperty("_requirements")]
     public Element _Requirements { get; set; }
     /// <summary>
-    /// Should be a version specific reference. URIs SHOULD be absolute.
+    /// The source value set that specifies the concepts that are being mapped.
     /// </summary>
     [JsonProperty("sourceUri")]
     public string SourceUri { get; set; }
     [JsonProperty("_sourceUri")]
     public Element _SourceUri { get; set; }
     /// <summary>
-    /// Should be a version specific reference. URIs SHOULD be absolute.
+    /// The source value set that specifies the concepts that are being mapped.
     /// </summary>
     [JsonProperty("sourceReference")]
     public Reference SourceReference { get; set; }
     /// <summary>
-    /// Allows filtering of ConceptMap resources that are appropriate for use.
+    /// Identify when/if the concept map should be used.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Should be a version specific reference. URIs SHOULD be absolute.
+    /// The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.
     /// </summary>
     [JsonProperty("targetUri")]
     public string TargetUri { get; set; }
     [JsonProperty("_targetUri")]
     public Element _TargetUri { get; set; }
     /// <summary>
-    /// Should be a version specific reference. URIs SHOULD be absolute.
+    /// The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.
     /// </summary>
     [JsonProperty("targetReference")]
     public Reference TargetReference { get; set; }
@@ -5761,12 +5761,12 @@ namespace fhir
     [JsonProperty("_url")]
     public Element _Url { get; set; }
     /// <summary>
-    /// The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of concept map instances.
+    /// Assist in searching for appropriate concept map instances.
     /// </summary>
     [JsonProperty("useContext")]
     public CodeableConcept[] UseContext { get; set; }
     /// <summary>
-    /// There may be multiple resource versions of the concept map that have this same identifier.
+    /// The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -5797,7 +5797,7 @@ namespace fhir
     public CodeableConcept Summary { get; set; }
   }
   /// <summary>
-  /// The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both.
+  /// Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.
   /// </summary>
   public class ConditionEvidence : BackboneElement {
     /// <summary>
@@ -5819,34 +5819,34 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Condition";
     /// <summary>
-    /// There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
+    /// The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
     /// </summary>
     [JsonProperty("abatementDateTime")]
     public string AbatementDateTime { get; set; }
     [JsonProperty("_abatementDateTime")]
     public Element _AbatementDateTime { get; set; }
     /// <summary>
-    /// There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
+    /// The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
     /// </summary>
     [JsonProperty("abatementQuantity")]
     public Quantity AbatementQuantity { get; set; }
     /// <summary>
-    /// There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
+    /// The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
     /// </summary>
     [JsonProperty("abatementBoolean")]
     public bool? AbatementBoolean { get; set; }
     /// <summary>
-    /// There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
+    /// The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
     /// </summary>
     [JsonProperty("abatementPeriod")]
     public Period AbatementPeriod { get; set; }
     /// <summary>
-    /// There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
+    /// The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
     /// </summary>
     [JsonProperty("abatementRange")]
     public Range AbatementRange { get; set; }
     /// <summary>
-    /// There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
+    /// The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
     /// </summary>
     [JsonProperty("abatementString")]
     public string AbatementString { get; set; }
@@ -5858,12 +5858,12 @@ namespace fhir
     [JsonProperty("asserter")]
     public Reference Asserter { get; set; }
     /// <summary>
-    /// May be a summary code, or a reference to a very precise definition of the location, or both.
+    /// The anatomical location where this condition manifests itself.
     /// </summary>
     [JsonProperty("bodySite")]
     public CodeableConcept[] BodySite { get; set; }
     /// <summary>
-    /// The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts.
+    /// A category assigned to the condition.
     /// </summary>
     [JsonProperty("category")]
     public CodeableConcept Category { get; set; }
@@ -5880,24 +5880,24 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// The Date Recorded represents the date when this particular Condition record was created in the EHR, not the date of the most recent update in terms of when severity, abatement, etc. were specified.  The date of the last record modification can be retrieved from the resource metadata.
+    /// A date, when  the Condition statement was documented.
     /// </summary>
     [JsonProperty("dateRecorded")]
     public string DateRecorded { get; set; }
     [JsonProperty("_dateRecorded")]
     public Element _DateRecorded { get; set; }
     /// <summary>
-    /// This record indicates the encounter this particular record is associated with.  In the case of a "new" diagnosis reflecting ongoing/revised information about the condition, this might be distinct from the first encounter in which the underlying condition was first "known".
+    /// Encounter during which the condition was first asserted.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both.
+    /// Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.
     /// </summary>
     [JsonProperty("evidence")]
     public ConditionEvidence[] Evidence { get; set; }
     /// <summary>
-    /// This records identifiers associated with this condition that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
@@ -5909,29 +5909,29 @@ namespace fhir
     [JsonProperty("_notes")]
     public Element _Notes { get; set; }
     /// <summary>
-    /// Age is generally used when the patient reports an age at which the Condition began to occur.
+    /// Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
     /// </summary>
     [JsonProperty("onsetDateTime")]
     public string OnsetDateTime { get; set; }
     [JsonProperty("_onsetDateTime")]
     public Element _OnsetDateTime { get; set; }
     /// <summary>
-    /// Age is generally used when the patient reports an age at which the Condition began to occur.
+    /// Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
     /// </summary>
     [JsonProperty("onsetQuantity")]
     public Quantity OnsetQuantity { get; set; }
     /// <summary>
-    /// Age is generally used when the patient reports an age at which the Condition began to occur.
+    /// Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
     /// </summary>
     [JsonProperty("onsetPeriod")]
     public Period OnsetPeriod { get; set; }
     /// <summary>
-    /// Age is generally used when the patient reports an age at which the Condition began to occur.
+    /// Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
     /// </summary>
     [JsonProperty("onsetRange")]
     public Range OnsetRange { get; set; }
     /// <summary>
-    /// Age is generally used when the patient reports an age at which the Condition began to occur.
+    /// Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
     /// </summary>
     [JsonProperty("onsetString")]
     public string OnsetString { get; set; }
@@ -5943,7 +5943,7 @@ namespace fhir
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
     /// <summary>
-    /// Coding of the severity with a terminology is preferred, where possible.
+    /// A subjective assessment of the severity of the condition as evaluated by the clinician.
     /// </summary>
     [JsonProperty("severity")]
     public CodeableConcept Severity { get; set; }
@@ -5981,11 +5981,11 @@ namespace fhir
     public const string UNKNOWN = "unknown";
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number (tel:), etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class ConformanceContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the conformance.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -6016,7 +6016,7 @@ namespace fhir
     [JsonProperty("_releaseDate")]
     public Element _ReleaseDate { get; set; }
     /// <summary>
-    /// If possible, version should be specified, as statements are likely to be different for different versions of software.
+    /// The version identifier for the software covered by this statement.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -6071,7 +6071,7 @@ namespace fhir
     [JsonProperty("certificate")]
     public ConformanceRestSecurityCertificate[] Certificate { get; set; }
     /// <summary>
-    /// The easiest CORS headers to add are Access-Control-Allow-Origin: * & Access-Control-Request-Method: GET, POST, PUT, DELETE. All servers SHOULD support CORS.
+    /// Server adds CORS headers when responding to requests - this enables javascript applications to use the server.
     /// </summary>
     [JsonProperty("cors")]
     public bool? Cors { get; set; }
@@ -6100,7 +6100,7 @@ namespace fhir
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only'.
+    /// REST allows a degree of variability in the implementation of RESTful solutions that is useful for exchange partners to be aware of.
     /// </summary>
     [JsonProperty("documentation")]
     public string Documentation { get; set; }
@@ -6126,14 +6126,14 @@ namespace fhir
   /// </summary>
   public class ConformanceRestResourceSearchParam : BackboneElement {
     /// <summary>
-    /// Systems are not required to list all the chain names they support, but if they don't list them, clients may not know to use them.
+    /// Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference, and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from Conformance.rest.resource.searchParam.name on the target resource type.
     /// </summary>
     [JsonProperty("chain")]
     public string[] Chain { get; set; }
     [JsonProperty("_chain")]
     public Element[] _Chain { get; set; }
     /// <summary>
-    /// This SHOULD be present, and matches SearchParameter.url.
+    /// An absolute URI that is a formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter (a reference to [[[SearchParameter.url]]]).
     /// </summary>
     [JsonProperty("definition")]
     public string Definition { get; set; }
@@ -6154,21 +6154,21 @@ namespace fhir
     [JsonProperty("_modifier")]
     public Element[] _Modifier { get; set; }
     /// <summary>
-    /// Parameter names cannot overlap with standard parameter names, and standard parameters cannot be redefined.
+    /// The name of the search parameter used in the interface.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// This SHALL be the same as or a proper subset of the resources listed in the search parameter definition.
+    /// Types of resource (if a resource is referenced).
     /// </summary>
     [JsonProperty("target")]
     public string[] Target { get; set; }
     [JsonProperty("_target")]
     public Element[] _Target { get; set; }
     /// <summary>
-    /// While this can be looked up from the definition, it is included here as a convenience for systems that autogenerate a query interface based on the server conformance statement.  It SHALL be the same as the type in the search parameter definition.
+    /// The type of value a search parameter refers to, and how the content is interpreted.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -6204,23 +6204,23 @@ namespace fhir
     public const string URI = "uri";
   }
   /// <summary>
-  /// Max of one repetition per resource type.
+  /// A specification of the restful capabilities of the solution for a specific resource type.
   /// </summary>
   public class ConformanceRestResource : BackboneElement {
     /// <summary>
-    /// Conditional Create is mainly appropriate for interface engine scripts converting from other formats, such as v2.
+    /// A flag that indicates that the server supports conditional create.
     /// </summary>
     [JsonProperty("conditionalCreate")]
     public bool? ConditionalCreate { get; set; }
     /// <summary>
-    /// Conditional Delete is mainly appropriate for interface engine scripts converting from other formats, such as v2.
+    /// A code that indicates how the server supports conditional delete.
     /// </summary>
     [JsonProperty("conditionalDelete")]
     public string ConditionalDelete { get; set; }
     [JsonProperty("_conditionalDelete")]
     public Element _ConditionalDelete { get; set; }
     /// <summary>
-    /// Conditional Update is mainly appropriate for interface engine scripts converting from other formats, such as v2.
+    /// A flag that indicates that the server supports conditional update.
     /// </summary>
     [JsonProperty("conditionalUpdate")]
     public bool? ConditionalUpdate { get; set; }
@@ -6230,17 +6230,17 @@ namespace fhir
     [JsonProperty("interaction")]
     public ConformanceRestResourceInteraction[] Interaction { get; set; }
     /// <summary>
-    /// The profile applies to all  resources of this type - i.e. it is the superset of what is supported by the system.
+    /// A specification of the profile that describes the solution's overall support for the resource, including any constraints on cardinality, bindings, lengths or other limitations. See further discussion in [Using Profiles]{profiling.html#profile-uses}.
     /// </summary>
     [JsonProperty("profile")]
     public Reference Profile { get; set; }
     /// <summary>
-    /// It is useful to support the vRead operation for current operations, even if past versions aren't available.
+    /// A flag for whether the server is able to return past versions as part of the vRead operation.
     /// </summary>
     [JsonProperty("readHistory")]
     public bool? ReadHistory { get; set; }
     /// <summary>
-    /// If this list is empty, the server does not support includes.
+    /// A list of _include values supported by the server.
     /// </summary>
     [JsonProperty("searchInclude")]
     public string[] SearchInclude { get; set; }
@@ -6252,7 +6252,7 @@ namespace fhir
     [JsonProperty("searchParam")]
     public ConformanceRestResourceSearchParam[] SearchParam { get; set; }
     /// <summary>
-    /// If this list is empty, the server does not support includes.
+    /// A list of _revinclude (reverse include) values supported by the server.
     /// </summary>
     [JsonProperty("searchRevInclude")]
     public string[] SearchRevInclude { get; set; }
@@ -6266,12 +6266,12 @@ namespace fhir
     [JsonProperty("_type")]
     public Element _Type { get; set; }
     /// <summary>
-    /// Allowing the clients to create new identities on the server means that the system administrator needs to have confidence that the clients do not create clashing identities between them. Obviously, if there is only one client, this won't happen. While creating identities on the client means that the clients need to be managed, it's much more convenient for many scenarios if such management can be put in place.
+    /// A flag to indicate that the server allows or needs to allow the client to create new identities on the server (e.g. that is, the client PUTs to a location where there is no existing resource). Allowing this operation means that the server allows the client to create new identities on the server.
     /// </summary>
     [JsonProperty("updateCreate")]
     public bool? UpdateCreate { get; set; }
     /// <summary>
-    /// If a server supports versionIds correctly, it SHOULD support vread too, but is not required to do so.
+    /// This field is set to no-version to specify that the system does not support (server) or use (client) versioning for this resource type. If this has some other value, the server must at least correctly track and populate the versionId meta-property on resources. If the value is 'versioned-update', then the server supports all the versioning features, including using e-tags for version integrity in the API.
     /// </summary>
     [JsonProperty("versioning")]
     public string Versioning { get; set; }
@@ -6326,12 +6326,12 @@ namespace fhir
   /// </summary>
   public class ConformanceRestOperation : BackboneElement {
     /// <summary>
-    /// This can be used to build an HTML form to invoke the operation, for instance.
+    /// Where the formal definition can be found.
     /// </summary>
     [JsonProperty("definition")]
     public Reference Definition { get; set; }
     /// <summary>
-    /// The name here SHOULD be the same as the name in the definition, unless there is a name clash and the name cannot be used.
+    /// The name of a query, which is used in the _query parameter when the query is called.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -6339,11 +6339,11 @@ namespace fhir
     public Element _Name { get; set; }
   }
   /// <summary>
-  /// Multiple repetitions allow definition of both client and / or server behaviors or possibly behaviors under different configuration settings (for software or requirements statements).
+  /// A definition of the restful capabilities of the solution, if any.
   /// </summary>
   public class ConformanceRest : BackboneElement {
     /// <summary>
-    /// At present, the only defined compartments are at [[compartments.html]].
+    /// An absolute URI which is a reference to the definition of a compartment hosted by the system.
     /// </summary>
     [JsonProperty("compartment")]
     public string[] Compartment { get; set; }
@@ -6374,12 +6374,12 @@ namespace fhir
     [JsonProperty("operation")]
     public ConformanceRestOperation[] Operation { get; set; }
     /// <summary>
-    /// Max of one repetition per resource type.
+    /// A specification of the restful capabilities of the solution for a specific resource type.
     /// </summary>
     [JsonProperty("resource")]
     public ConformanceRestResource[] Resource { get; set; }
     /// <summary>
-    /// Typically, the only search parameters supported for all parameters are search parameters that apply to all resources - tags, profiles, text search etc.
+    /// Search parameters that are supported for searching all resources for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
     /// </summary>
     [JsonProperty("searchParam")]
     public ConformanceRestResourceSearchParam[] SearchParam { get; set; }
@@ -6430,7 +6430,7 @@ namespace fhir
     public Coding Protocol { get; set; }
   }
   /// <summary>
-  /// The same event may be listed up to two times - once as sender and once as receiver.
+  /// A description of the solution's support for an event at this end-point.
   /// </summary>
   public class ConformanceMessagingEvent : BackboneElement {
     /// <summary>
@@ -6453,7 +6453,7 @@ namespace fhir
     [JsonProperty("_documentation")]
     public Element _Documentation { get; set; }
     /// <summary>
-    /// This SHALL be provided if the event type supports multiple different resource types.
+    /// A resource associated with the event.  This is the resource that defines the event.
     /// </summary>
     [JsonProperty("focus")]
     public string Focus { get; set; }
@@ -6493,7 +6493,7 @@ namespace fhir
     public const string RECEIVER = "receiver";
   }
   /// <summary>
-  /// Multiple repetitions allow the documentation of multiple endpoints per solution.
+  /// A description of the messaging capabilities of the solution.
   /// </summary>
   public class ConformanceMessaging : BackboneElement {
     /// <summary>
@@ -6509,12 +6509,12 @@ namespace fhir
     [JsonProperty("endpoint")]
     public ConformanceMessagingEndpoint[] Endpoint { get; set; }
     /// <summary>
-    /// The same event may be listed up to two times - once as sender and once as receiver.
+    /// A description of the solution's support for an event at this end-point.
     /// </summary>
     [JsonProperty("event")]
     public ConformanceMessagingEvent[] Event { get; set; }
     /// <summary>
-    /// If this value is missing then the application does not implement (receiver) or depend on (sender) reliable messaging.
+    /// Length if the receiver's reliable messaging cache in minutes (if a receiver) or how long the cache length on the receiver should be (if a sender).
     /// </summary>
     [JsonProperty("reliableCache")]
     public uint? ReliableCache { get; set; }
@@ -6538,7 +6538,7 @@ namespace fhir
     [JsonProperty("_mode")]
     public Element _Mode { get; set; }
     /// <summary>
-    /// The first resource is the document resource.
+    /// A constraint on a resource used in the document.
     /// </summary>
     [JsonProperty("profile")]
     public Reference Profile { get; set; }
@@ -6558,14 +6558,14 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Conformance";
     /// <summary>
-    /// Unknown elements in a resource can only arise as later versions of the specification are published, because this is the only place where such elements can be defined. Hence accepting unknown elements is about inter-version compatibility.  Applications are recommended to accept unknown extensions and elements ('both'), but this is not always possible.
+    /// A code that indicates whether the application accepts unknown elements or extensions when reading resources.
     /// </summary>
     [JsonProperty("acceptUnknown")]
     public string AcceptUnknown { get; set; }
     [JsonProperty("_acceptUnknown")]
     public Element _AcceptUnknown { get; set; }
     /// <summary>
-    /// May be a web site, an email address, a telephone number (tel:), etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public ConformanceContact[] Contact { get; set; }
@@ -6577,14 +6577,14 @@ namespace fhir
     [JsonProperty("_copyright")]
     public Element _Copyright { get; set; }
     /// <summary>
-    /// Additional specific dates may be added as extensions.
+    /// The date  (and optionally time) when the conformance statement was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the conformance statement changes.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// This field may include the purpose of this conformance statement, comments about its context etc. This does not need to be populated if the description is adequately implied by the software or implementation details.
+    /// A free text natural language description of the conformance statement and its use. Typically, this is used when the conformance statement describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
@@ -6596,7 +6596,7 @@ namespace fhir
     [JsonProperty("document")]
     public ConformanceDocument[] Document { get; set; }
     /// <summary>
-    /// Allows filtering of conformance statements that are appropriate for use vs. not.
+    /// A flag to indicate that this conformance statement is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
@@ -6608,7 +6608,7 @@ namespace fhir
     [JsonProperty("_fhirVersion")]
     public Element _FhirVersion { get; set; }
     /// <summary>
-    /// "xml" or "json" are allowed, which describe the simple encodings described in the specification (and imply appropriate bundle support). Otherwise, mime types are legal here.
+    /// A list of the formats supported by this implementation using their content types.
     /// </summary>
     [JsonProperty("format")]
     public string[] Format { get; set; }
@@ -6620,45 +6620,45 @@ namespace fhir
     [JsonProperty("implementation")]
     public ConformanceImplementation Implementation { get; set; }
     /// <summary>
-    /// The way that this statement is intended to be used, to describe an actual running instance of software, a particular product (kind not instance of software) or a class of implementation (e.g. a desired purchase).
+    /// Allow searching the 3 modes.
     /// </summary>
     [JsonProperty("kind")]
     public string Kind { get; set; }
     [JsonProperty("_kind")]
     public Element _Kind { get; set; }
     /// <summary>
-    /// Multiple repetitions allow the documentation of multiple endpoints per solution.
+    /// A description of the messaging capabilities of the solution.
     /// </summary>
     [JsonProperty("messaging")]
     public ConformanceMessaging[] Messaging { get; set; }
     /// <summary>
-    /// The name is not expected to be globally unique.
+    /// A free text natural language name identifying the conformance statement.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Supported profiles are different to the profiles that apply to a particular resource in rest.resource.profile. The resource profile is a general statement of what features of the resource are supported overall by the system - the sum total of the facilities it supports. A supported profile is a deeper statement about the functionality of the data and services provided by the server (or used by the client). A typical case is a laboratory system that produces a set of different reports - this is the list of types of data that it publishes. A key aspect of declaring profiles here is the question of how the client converts knowledge that the server publishes this data into working with the data; the client can inspect individual resources to determine whether they conform to a particular profile, but how does it find the ones that does? It does so by searching using the _profile parameter, so any resources listed here must be valid values for the _profile resource (using the identifier in the target profile).  Typical supported profiles cross resource types to describe a network of related resources, so they are listed here rather than by resource. However, they do not need to describe more than one resource.
+    /// A list of profiles that represent different use cases supported by the system. For a server, "supported by the system" means the system hosts/produces a set of resources that are conformant to a particular profile, and allows clients that use its services to search using this profile and to find appropriate data. For a client, it means the system will search by this profile and process data according to the guidance implicit in the profile. See further discussion in [Using Profiles]{profiling.html#profile-uses}.
     /// </summary>
     [JsonProperty("profile")]
     public Reference[] Profile { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the conformance.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
     [JsonProperty("_publisher")]
     public Element _Publisher { get; set; }
     /// <summary>
-    /// This element does not describe the usage of the conformance statement (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
+    /// Explains why this conformance statement is needed and why it's been constrained as it has.
     /// </summary>
     [JsonProperty("requirements")]
     public string Requirements { get; set; }
     [JsonProperty("_requirements")]
     public Element _Requirements { get; set; }
     /// <summary>
-    /// Multiple repetitions allow definition of both client and / or server behaviors or possibly behaviors under different configuration settings (for software or requirements statements).
+    /// A definition of the restful capabilities of the solution, if any.
     /// </summary>
     [JsonProperty("rest")]
     public ConformanceRest[] Rest { get; set; }
@@ -6668,7 +6668,7 @@ namespace fhir
     [JsonProperty("software")]
     public ConformanceSoftware Software { get; set; }
     /// <summary>
-    /// This is not intended for use with actual conformance statements, but where conformance statements are used to describe possible or desired systems.
+    /// The status of this conformance statement.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -6682,7 +6682,7 @@ namespace fhir
     [JsonProperty("_url")]
     public Element _Url { get; set; }
     /// <summary>
-    /// There may be multiple different instances of a conformance statement that have the same identifier but different versions.
+    /// The identifier that is used to identify this version of the conformance statement when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -7123,7 +7123,7 @@ namespace fhir
     [JsonProperty("contract")]
     public Reference[] Contract { get; set; }
     /// <summary>
-    /// A unique identifier for a dependent under the coverage.
+    /// For some coverage a single identifier is issued to the PolicyHolder and dependent number issues to each to each of their dependents to track and manage the plan.
     /// </summary>
     [JsonProperty("dependent")]
     public uint? Dependent { get; set; }
@@ -7135,12 +7135,12 @@ namespace fhir
     [JsonProperty("_group")]
     public Element _Group { get; set; }
     /// <summary>
-    /// The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Subscriber Id, Certificate number or Personal Health Number or Case ID.
+    /// This value may uniquely identify the coverage or it may be used in conjunction with the additional identifiers below.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// The program or plan underwriter or payor.
+    /// Need to identify the issuer to target for processing and for coordination of benefit processing.
     /// </summary>
     [JsonProperty("issuer")]
     public Reference Issuer { get; set; }
@@ -7162,7 +7162,7 @@ namespace fhir
     [JsonProperty("_plan")]
     public Element _Plan { get; set; }
     /// <summary>
-    /// An optional counter for a particular instance of the identified coverage which increments upon each renewal.
+    /// Some coverage, for example social plans, may be offered in short time increments, for example for a week or a month at a time, so while the rest of the plan details and identifiers may remain constant over time, the instance is incremented with each renewal and provided to the covered party on their 'card'.
     /// </summary>
     [JsonProperty("sequence")]
     public uint? Sequence { get; set; }
@@ -7184,17 +7184,17 @@ namespace fhir
     [JsonProperty("subscriberId")]
     public Identifier SubscriberId { get; set; }
     /// <summary>
-    /// The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health.
+    /// The order of application of coverages is dependent on the types of coverage.
     /// </summary>
     [JsonProperty("type")]
     public Coding Type { get; set; }
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number (tel:), etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class DataElementContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the data element.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -7218,7 +7218,7 @@ namespace fhir
     [JsonProperty("_comments")]
     public Element _Comments { get; set; }
     /// <summary>
-    /// The specification is described once, with general comments, and then specific mappings are made that reference this declaration.
+    /// An internal id that is used to identify this mapping set when specific mappings are made on a per-element basis.
     /// </summary>
     [JsonProperty("identity")]
     public string Identity { get; set; }
@@ -7232,7 +7232,7 @@ namespace fhir
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// A formal identity for the specification being mapped to helps with identifying maps consistently.
+    /// An absolute URI that identifies the specification that this mapping is expressed to.
     /// </summary>
     [JsonProperty("uri")]
     public string Uri { get; set; }
@@ -7247,36 +7247,36 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "DataElement";
     /// <summary>
-    /// May be a web site, an email address, a telephone number (tel:), etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public DataElementContact[] Contact { get; set; }
     /// <summary>
-    /// The copyright statement does not apply to values for the data element, only to its definition.
+    /// A copyright statement relating to the definition of the data element. Copyright statements are generally legal restrictions on the use and publishing of the details of the definition of the data element.
     /// </summary>
     [JsonProperty("copyright")]
     public string Copyright { get; set; }
     [JsonProperty("_copyright")]
     public Element _Copyright { get; set; }
     /// <summary>
-    /// This refers to the "business" version, the DataElement.version which changes based on business processes.  It does not refer to the date of the RESTful version which is part of the resource metadata. Additional specific dates may be added as extensions.
+    /// The date this version of the data element was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the data element  changes.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// For simple data types there will only be one repetition.  For complex data types, multiple repetitions will be present defining a nested structure using the "path" element.
+    /// 1.
     /// </summary>
     [JsonProperty("element")]
     public ElementDefinition[] Element { get; set; }
     /// <summary>
-    /// Allows filtering of search data element definitions that are appropriate for use vs. not.
+    /// A flag to indicate that this search data element definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// Typically, this is used for values that can go in a v3 II data type.
+    /// Formal identifier that is used to identify this data element when it is represented in other formats, or referenced in a specification, model, design or an instance.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
@@ -7286,28 +7286,28 @@ namespace fhir
     [JsonProperty("mapping")]
     public DataElementMapping[] Mapping { get; set; }
     /// <summary>
-    /// This may be similar to the question used to prompt someone for a data element value, but the purpose is communicating about the data element, not asking the question.  (Refer to the 'question' element for the latter.).
+    /// The term used by humans to refer to the data element.  Should ideally be unique within the context in which the data element is expected to be used.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the data element.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
     [JsonProperty("_publisher")]
     public Element _Publisher { get; set; }
     /// <summary>
-    /// The status of the data element.
+    /// Allows filtering of data elements that are appropriate for use.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Identifies how precise the data element is in its definition.
+    /// Allows determining the degree of comparability of data element instances. Less granular data elements result in data that is less comparable (or at least requires more work to compare).
     /// </summary>
     [JsonProperty("stringency")]
     public string Stringency { get; set; }
@@ -7326,7 +7326,7 @@ namespace fhir
     [JsonProperty("useContext")]
     public CodeableConcept[] UseContext { get; set; }
     /// <summary>
-    /// N/A.
+    /// There may be multiple resource versions of the data element that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -7357,7 +7357,7 @@ namespace fhir
   /// </summary>
   public class DetectedIssueMitigation : BackboneElement {
     /// <summary>
-    /// The "text" component can be used for detail or when no appropriate code exists.
+    /// Describes the action that was taken or the observation that was made that reduces/eliminates the risk associated with the identified issue.
     /// </summary>
     [JsonProperty("action")]
     public CodeableConcept Action { get; set; }
@@ -7367,7 +7367,7 @@ namespace fhir
     [JsonProperty("author")]
     public Reference Author { get; set; }
     /// <summary>
-    /// This may not be the same as when the mitigating step was actually taken.
+    /// Indicates when the mitigating action was documented.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
@@ -7392,26 +7392,26 @@ namespace fhir
     [JsonProperty("category")]
     public CodeableConcept Category { get; set; }
     /// <summary>
-    /// The date or date-time when the detected issue was initially identified.
+    /// No-one can be responsible for mitigation prior to the issue being identified.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// Should focus on information not covered elsewhere as discrete data - no need to duplicate the narrative.
+    /// A textual explanation of the detected issue.
     /// </summary>
     [JsonProperty("detail")]
     public string Detail { get; set; }
     [JsonProperty("_detail")]
     public Element _Detail { get; set; }
     /// <summary>
-    /// Business identifier associated with the detected issue record.
+    /// Allows linking instances of the same detected issue found on different servers.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// There's an implicit constraint on the number of implicated resources based on DetectedIssue.type; e.g. For drug-drug, there would be more than one.  For timing, there would typically only be one.
+    /// Indicates the resource representing the current activity or proposed activity that is potentially problematic.
     /// </summary>
     [JsonProperty("implicated")]
     public Reference[] Implicated { get; set; }
@@ -7421,7 +7421,7 @@ namespace fhir
     [JsonProperty("mitigation")]
     public DetectedIssueMitigation[] Mitigation { get; set; }
     /// <summary>
-    /// Indicates the patient whose record the detected issue is associated with.
+    /// While the subject could be inferred by tracing the subject of the implicated resources, it's useful to have a direct link for query purposes.
     /// </summary>
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
@@ -7456,7 +7456,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Device";
     /// <summary>
-    /// used for troubleshooting etc.
+    /// Contact details for an organization or a particular human that is responsible for the device.
     /// </summary>
     [JsonProperty("contact")]
     public ContactPoint[] Contact { get; set; }
@@ -7468,7 +7468,7 @@ namespace fhir
     [JsonProperty("_expiry")]
     public Element _Expiry { get; set; }
     /// <summary>
-    /// Often fixed to the device as a barcode and may include names given to the device in local usage.  Note that some of the barcodes affixed to the device identify its type, not its instance.  For the FDA mandated Unique Device Identifier (UDI) use  the Device.udi element.
+    /// Unique instance identifiers assigned to a device by organizations like manufacturers or owners. If the identifier identifies the type of device, Device.type should be used.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
@@ -7478,7 +7478,7 @@ namespace fhir
     [JsonProperty("location")]
     public Reference Location { get; set; }
     /// <summary>
-    /// Alphanumeric Maximum 20.
+    /// Lot number assigned by the manufacturer.
     /// </summary>
     [JsonProperty("lotNumber")]
     public string LotNumber { get; set; }
@@ -7528,19 +7528,19 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// For the FDA mandated Unique Device Identifier (UDI) use  the Device.udi element.
+    /// Code or identifier to identify a kind of device.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
     /// <summary>
-    /// The unique identifier may identify an instance of a device uniquely, or it may only identify the type of the device. A portion of the UDI - the DI part - can be extracted from the UDI when required, and used to look up information about the device through the GUDID.
+    /// United States Food and Drug Administration mandated Unique Device Identifier (UDI). Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.
     /// </summary>
     [JsonProperty("udi")]
     public string Udi { get; set; }
     [JsonProperty("_udi")]
     public Element _Udi { get; set; }
     /// <summary>
-    /// If the device is running a FHIR server, the network address should  be the root URL from which a conformance statement may be retrieved.
+    /// A network address on which the device may be contacted directly.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
@@ -7616,7 +7616,7 @@ namespace fhir
     [JsonProperty("_measurementPrinciple")]
     public Element _MeasurementPrinciple { get; set; }
     /// <summary>
-    /// OperationalStatus for the MDS, VMD, or Channel will be bound to a specific ValueSet that is defined in its profile.
+    /// Indicates current operational status of the device. For example: On, Off, Standby, etc.
     /// </summary>
     [JsonProperty("operationalStatus")]
     public CodeableConcept[] OperationalStatus { get; set; }
@@ -7641,7 +7641,7 @@ namespace fhir
     [JsonProperty("source")]
     public Reference Source { get; set; }
     /// <summary>
-    /// DeviceComponent.type can be referred to either GDMN (nomenclature system supported by FDA Global UDI Database) or preferable RTMMS coding system.
+    /// Describes the specific component type as defined in the object-oriented or metric nomenclature partition.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
@@ -7760,12 +7760,12 @@ namespace fhir
     [JsonProperty("source")]
     public Reference Source { get; set; }
     /// <summary>
-    /// DeviceMetric.type can be referred to either GDMN (nomenclature system supported by FDA Global UDI Database) or preferable RTMMS coding system.
+    /// Describes the type of the metric. For example: Heart Rate, PEEP Setting, etc.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
     /// <summary>
-    /// DeviceMetric.unit can be referred to either UCUM or preferable RTMMS coding system.
+    /// Describes the unit that an observed value determined for this metric will have. For example: Percent, Seconds, etc.
     /// </summary>
     [JsonProperty("unit")]
     public CodeableConcept Unit { get; set; }
@@ -7808,12 +7808,12 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "DeviceUseRequest";
     /// <summary>
-    /// Indicates the site on the subject's body where the device should be used ( i.e. the target site).
+    /// Knowing where the device is targeted is important for tracking if multiple sites are possible.
     /// </summary>
     [JsonProperty("bodySiteCodeableConcept")]
     public CodeableConcept BodySiteCodeableConcept { get; set; }
     /// <summary>
-    /// Indicates the site on the subject's body where the device should be used ( i.e. the target site).
+    /// Knowing where the device is targeted is important for tracking if multiple sites are possible.
     /// </summary>
     [JsonProperty("bodySiteReference")]
     public Reference BodySiteReference { get; set; }
@@ -7932,12 +7932,12 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "DeviceUseStatement";
     /// <summary>
-    /// Indicates the site on the subject's body where the device was used ( i.e. the target site).
+    /// Knowing where the device is targeted is important for tracking if multiple sites are possible.
     /// </summary>
     [JsonProperty("bodySiteCodeableConcept")]
     public CodeableConcept BodySiteCodeableConcept { get; set; }
     /// <summary>
-    /// Indicates the site on the subject's body where the device was used ( i.e. the target site).
+    /// Knowing where the device is targeted is important for tracking if multiple sites are possible.
     /// </summary>
     [JsonProperty("bodySiteReference")]
     public Reference BodySiteReference { get; set; }
@@ -7999,7 +7999,7 @@ namespace fhir
     public Period WhenUsed { get; set; }
   }
   /// <summary>
-  /// This is not the same as an audit trail. It is a view of the important things that happened in the past. Typically, there would only be one entry for any given status, and systems may not record all the status events.
+  /// A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.
   /// </summary>
   public class DiagnosticOrderEvent : BackboneElement {
     /// <summary>
@@ -8046,16 +8046,16 @@ namespace fhir
     public const string FAILED = "failed";
   }
   /// <summary>
-  /// There would always be at least one item in normal usage, but this is optional so that a workflow can quote order details without having to list the items.
+  /// The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.
   /// </summary>
   public class DiagnosticOrderItem : BackboneElement {
     /// <summary>
-    /// If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately)  then use the standard extension [body-site-instance](extension-body-site-instance.html).
+    /// Anatomical location where the request test should be performed.  This is the target site.
     /// </summary>
     [JsonProperty("bodySite")]
     public CodeableConcept BodySite { get; set; }
     /// <summary>
-    /// Many laboratory tests and radiology tests embed the specimen/organ system in the test name, for example,  serum or serum/plasma glucose, or a chest xray. The specimen may not be recorded separately from the test code.
+    /// A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
@@ -8065,12 +8065,12 @@ namespace fhir
     [JsonProperty("event")]
     public DiagnosticOrderEvent[] Event { get; set; }
     /// <summary>
-    /// A single specimen should not appear in both DiagnosticOrder.specimen and DiagnosticOrder.item.specimen.
+    /// If the item is related to a specific specimen.
     /// </summary>
     [JsonProperty("specimen")]
     public Reference[] Specimen { get; set; }
     /// <summary>
-    /// If the request has multiple items that have their own life cycles, then the items will have their own status while the overall diagnostic order is (usually) "in-progress".
+    /// The status of this individual item within the order.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -8108,17 +8108,17 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// This is not the same as an audit trail. It is a view of the important things that happened in the past. Typically, there would only be one entry for any given status, and systems may not record all the status events.
+    /// A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.
     /// </summary>
     [JsonProperty("event")]
     public DiagnosticOrderEvent[] Event { get; set; }
     /// <summary>
-    /// The identifier.type element is used to distinguish between the identifiers assigned by the orderer (known as the 'Placer' in HL7 v2) and the producer of the observations in response to the order (known as the 'Filler' in HL7 v2). For further discussion and examples see the [notes section](diagnosticorder.html#4.22.4) below.
+    /// Identifiers assigned to this order instance by the orderer and/or  the receiver and/or order fulfiller.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// There would always be at least one item in normal usage, but this is optional so that a workflow can quote order details without having to list the items.
+    /// The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.
     /// </summary>
     [JsonProperty("item")]
     public DiagnosticOrderItem[] Item { get; set; }
@@ -8133,24 +8133,24 @@ namespace fhir
     [JsonProperty("orderer")]
     public Reference Orderer { get; set; }
     /// <summary>
-    /// The Order resource also has a priority. Generally, these should be the same, but they can be different. For instance, where the clinician indicates the order is urgent, but the subsequent workflow process overrules the priority for some reason. The effective default value is "normal".
+    /// The clinical priority associated with this order.
     /// </summary>
     [JsonProperty("priority")]
     public string Priority { get; set; }
     [JsonProperty("_priority")]
     public Element _Priority { get; set; }
     /// <summary>
-    /// This may be used to decide how the diagnostic investigation will be performed, or even if it will be performed at all.   Use CodeableConcept text element if the data is free (uncoded) text as shown in the [CT Scan example](diagnosticorder-example-di.html).
+    /// An explanation or justification for why this diagnostic investigation is being requested.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.
     /// </summary>
     [JsonProperty("reason")]
     public CodeableConcept[] Reason { get; set; }
     /// <summary>
-    /// Many investigation requests will create a need for specimens, but the request itself is not actually about the specimens. This is provided for when the diagnostic investigation is requested on already existing specimens.
+    /// One or more specimens that the diagnostic investigation is about.
     /// </summary>
     [JsonProperty("specimen")]
     public Reference[] Specimen { get; set; }
     /// <summary>
-    /// Typically the system placing the order sets the status to "requested". Thereafter, the order is maintained by the receiver that updates the status as the request is handled.
+    /// The status of the order.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -8162,7 +8162,7 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// This information includes diagnosis, clinical findings and other observations.  In laboratory ordering these are typically referred to as "ask at order entry questions (AOEs)". Examples include reporting the amount of inspired oxygen for blood gasses, the point in the menstrual cycle for cervical pap tests, and other conditions that influence test interpretations.
+    /// Additional clinical information about the patient or specimen that may influence test interpretations.  This includes observations explicitly requested by the producer(filler) to provide context or supporting information needed to complete the order.
     /// </summary>
     [JsonProperty("supportingInformation")]
     public Reference[] SupportingInformation { get; set; }
@@ -8195,11 +8195,11 @@ namespace fhir
     public const string FAILED = "failed";
   }
   /// <summary>
-  /// A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).
+  /// Many diagnostic services include images in the report as part of their service.
   /// </summary>
   public class DiagnosticReportImage : BackboneElement {
     /// <summary>
-    /// The comment should be displayed with the image. It would be common for the report to include additional discussion of the image contents in other sections such as the conclusion.
+    /// The provider of the report should make a comment about each image included in the report.
     /// </summary>
     [JsonProperty("comment")]
     public string Comment { get; set; }
@@ -8219,7 +8219,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "DiagnosticReport";
     /// <summary>
-    /// The level of granularity is defined by the category concepts in the value set. More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in DiagnosticReport.code.
+    /// A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.
     /// </summary>
     [JsonProperty("category")]
     public CodeableConcept Category { get; set; }
@@ -8234,21 +8234,21 @@ namespace fhir
     [JsonProperty("codedDiagnosis")]
     public CodeableConcept[] CodedDiagnosis { get; set; }
     /// <summary>
-    /// Typically, a report is either [all data, no narrative (e.g. Core lab)] or [a mix of data with some concluding narrative (e.g. Structured Pathology Report, Bone Density)], or [all narrative (e.g. typical imaging report, histopathology)]. In all of these cases, the narrative goes in "text".
+    /// Need to be able to provide a conclusion that is not lost among the basic result data.
     /// </summary>
     [JsonProperty("conclusion")]
     public string Conclusion { get; set; }
     [JsonProperty("_conclusion")]
     public Element _Conclusion { get; set; }
     /// <summary>
-    /// If the diagnostic procedure was performed on the patient, this is the time it was performed. If there are specimens, the diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship between the specimens and the diagnostically relevant time is not always automatic.
+    /// Need to know where in the patient history to file/present this report.
     /// </summary>
     [JsonProperty("effectiveDateTime")]
     public string EffectiveDateTime { get; set; }
     [JsonProperty("_effectiveDateTime")]
     public Element _EffectiveDateTime { get; set; }
     /// <summary>
-    /// If the diagnostic procedure was performed on the patient, this is the time it was performed. If there are specimens, the diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship between the specimens and the diagnostically relevant time is not always automatic.
+    /// Need to know where in the patient history to file/present this report.
     /// </summary>
     [JsonProperty("effectivePeriod")]
     public Period EffectivePeriod { get; set; }
@@ -8258,61 +8258,61 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// The local ID assigned to the report by the order filler, usually by the Information System of the diagnostic service provider.
+    /// Need to know what identifier to use when making queries about this report from the source laboratory, and for linking to the report outside FHIR context.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).
+    /// Many diagnostic services include images in the report as part of their service.
     /// </summary>
     [JsonProperty("image")]
     public DiagnosticReportImage[] Image { get; set; }
     /// <summary>
-    /// ImagingStudy and ImageObjectStudy and the image element are somewhat overlapping - typically, the list of image references in the image element will also be found in one of the imaging study resources. However each caters to different types of displays for different types of purposes. Neither, either, or both may be provided.
+    /// One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images.
     /// </summary>
     [JsonProperty("imagingStudy")]
     public Reference[] ImagingStudy { get; set; }
     /// <summary>
-    /// May be different from the update time of the resource itself, because that is the status of the record (potentially a secondary copy), not the actual release time of the report.
+    /// Clinicians need to be able to check the date that the report was released.
     /// </summary>
     [JsonProperty("issued")]
     public string Issued { get; set; }
     [JsonProperty("_issued")]
     public Element _Issued { get; set; }
     /// <summary>
-    /// This is not necessarily the source of the atomic data items. It is the entity that takes responsibility for the clinical report.
+    /// Need to know whom to contact if there are queries about the results. Also may need to track the source of reports for secondary data analysis.
     /// </summary>
     [JsonProperty("performer")]
     public Reference Performer { get; set; }
     /// <summary>
-    /// "application/pdf" is recommended as the most reliable and interoperable in this context.
+    /// Gives Laboratory the ability to provide its own fully formatted report for clinical fidelity.
     /// </summary>
     [JsonProperty("presentedForm")]
     public Attachment[] PresentedForm { get; set; }
     /// <summary>
-    /// Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single test result resource. Note that there are also cases where one request leads to multiple reports.
+    /// Need to be able to track completion of requests based on reports issued and also to report what diagnostic tests were requested (not always the same as what is delivered).
     /// </summary>
     [JsonProperty("request")]
     public Reference[] Request { get; set; }
     /// <summary>
-    /// Observations that are part of this diagnostic report. Observations can be simple name/value pairs (e.g. "atomic" results), or they can be grouping observations that include references to other members of the group (e.g. "panels").
+    /// Need to support individual results, or report groups of results, where the result grouping is arbitrary, but meaningful. This structure is recursive - observations can contain observations.
     /// </summary>
     [JsonProperty("result")]
     public Reference[] Result { get; set; }
     /// <summary>
-    /// If the specimen is sufficiently specified with a code in the test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per Observation or group.
+    /// Need to be able to report information about the collected specimens on which the report is based.
     /// </summary>
     [JsonProperty("specimen")]
     public Reference[] Specimen { get; set; }
     /// <summary>
-    /// This is labeled as "Is Modifier" because applications need to take appropriate action if a report is withdrawn.
+    /// Diagnostic services routinely issue provisional/incomplete reports, and sometimes withdraw previously released reports.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// The subject of the report. Usually, but not always, this is a patient. However diagnostic services also perform analyses on specimens collected from a variety of other sources.
+    /// SHALL know the subject context.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
@@ -8334,27 +8334,27 @@ namespace fhir
   /// </summary>
   public class DocumentManifestContent : BackboneElement {
     /// <summary>
-    /// The intended focus of the DocumentManifest is for the reference to target either DocumentReference or Media Resources, and most implementation guides will restrict to these resources. The reference is to "Any" to support EN 13606 usage, where an extract is DocumentManifest that references  List and Composition resources.
+    /// The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed.
     /// </summary>
     [JsonProperty("pAttachment")]
     public Attachment PAttachment { get; set; }
     /// <summary>
-    /// The intended focus of the DocumentManifest is for the reference to target either DocumentReference or Media Resources, and most implementation guides will restrict to these resources. The reference is to "Any" to support EN 13606 usage, where an extract is DocumentManifest that references  List and Composition resources.
+    /// The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed.
     /// </summary>
     [JsonProperty("pReference")]
     public Reference PReference { get; set; }
   }
   /// <summary>
-  /// May be identifiers or resources that caused the DocumentManifest to be created.
+  /// Related identifiers or resources associated with the DocumentManifest.
   /// </summary>
   public class DocumentManifestRelated : BackboneElement {
     /// <summary>
-    /// If both identifier and ref elements are present they shall refer to the same thing.
+    /// Related identifier to this DocumentManifest.  For example, Order numbers, accession numbers, XDW workflow numbers.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// If both identifier and ref elements are present they shall refer to the same thing.
+    /// Related Resource to this DocumentManifest. For example, Order, DiagnosticOrder,  Procedure, EligibilityRequest, etc.
     /// </summary>
     [JsonProperty("ref")]
     public Reference Ref { get; set; }
@@ -8367,7 +8367,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "DocumentManifest";
     /// <summary>
-    /// Not necessarily who did the actual data entry (i.e. typist) or who was the source (informant).
+    /// Identifies who is responsible for creating the manifest, and adding  documents to it.
     /// </summary>
     [JsonProperty("author")]
     public Reference[] Author { get; set; }
@@ -8377,14 +8377,14 @@ namespace fhir
     [JsonProperty("content")]
     public DocumentManifestContent[] Content { get; set; }
     /// <summary>
-    /// Creation time is used for tracking, organizing versions and searching. This is the creation time of the document set, not the documents on which it is based.
+    /// When the document manifest was created for submission to the server (not necessarily the same thing as the actual resource last modified time, since it may be modified, replicated, etc.).
     /// </summary>
     [JsonProperty("created")]
     public string Created { get; set; }
     [JsonProperty("_created")]
     public Element _Created { get; set; }
     /// <summary>
-    /// What the document is about, rather than a terse summary of the document. It is commonly the case that records do not have a title and are collectively referred to by the display name of Record code (e.g. a "consultation" or "progress note").
+    /// Helps humans to assess whether the document is of interest.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
@@ -8401,12 +8401,12 @@ namespace fhir
     [JsonProperty("masterIdentifier")]
     public Identifier MasterIdentifier { get; set; }
     /// <summary>
-    /// How the recipient receives the document set or is notified of it is up to the implementation. This element is just a statement of intent. If the recipient is a person, and it is not known whether the person is a patient or a practitioner, RelatedPerson would be the default choice.
+    /// A patient, practitioner, or organization for which this set of documents is intended.
     /// </summary>
     [JsonProperty("recipient")]
     public Reference[] Recipient { get; set; }
     /// <summary>
-    /// May be identifiers or resources that caused the DocumentManifest to be created.
+    /// Related identifiers or resources associated with the DocumentManifest.
     /// </summary>
     [JsonProperty("related")]
     public DocumentManifestRelated[] Related { get; set; }
@@ -8448,7 +8448,7 @@ namespace fhir
   /// </summary>
   public class DocumentReferenceRelatesTo : BackboneElement {
     /// <summary>
-    /// If this document appends another document, then the document cannot be fully understood without also accessing the referenced document.
+    /// The type of relationship that this document has with anther document.
     /// </summary>
     [JsonProperty("code")]
     public string Code { get; set; }
@@ -8479,28 +8479,28 @@ namespace fhir
     [JsonProperty("attachment")]
     public Attachment Attachment { get; set; }
     /// <summary>
-    /// Note that while IHE mostly issues URNs for format types, not all documents can be identified by a URI.
+    /// An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.
     /// </summary>
     [JsonProperty("format")]
     public Coding[] Format { get; set; }
   }
   /// <summary>
-  /// May be identifiers or resources that caused the DocumentReference or referenced Document to be created.
+  /// Related identifiers or resources associated with the DocumentReference.
   /// </summary>
   public class DocumentReferenceContextRelated : BackboneElement {
     /// <summary>
-    /// Order numbers, accession numbers, XDW workflow numbers.
+    /// Related identifier to this DocumentReference. If both id and ref are present they shall refer to the same thing.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// Order, DiagnosticOrder,  Procedure, EligibilityRequest, etc.
+    /// Related Resource to this DocumentReference. If both id and ref are present they shall refer to the same thing.
     /// </summary>
     [JsonProperty("ref")]
     public Reference Ref { get; set; }
   }
   /// <summary>
-  /// These values are primarily added to help with searching for interesting/relevant documents.
+  /// The clinical context in which the document was prepared.
   /// </summary>
   public class DocumentReferenceContext : BackboneElement {
     /// <summary>
@@ -8509,7 +8509,7 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// An event can further specialize the act inherent in the type, such as  where it is simply "Procedure Report" and the procedure was a "colonoscopy". If one or more event codes are included, they shall not conflict with the values inherent in the class or type elements as such a conflict would create an ambiguous situation.
+    /// This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
     /// </summary>
     [JsonProperty("event")]
     public CodeableConcept[] Event { get; set; }
@@ -8524,12 +8524,12 @@ namespace fhir
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// The value set for this content has an example binding because it is a value set decided by community policy. Other examples exist for consideration: * HITSP created the table HITSP/C80 Table 2-148 Clinical Specialty Value Set (a value set based upon SNOMED CT which is referenced by Direct (XDR and XDM for Direct Messaging Specification, Version 1), as well as Nationwide Health Information Network (NHIN).  Query for Documents, Web Service Interface Specification, V 3.0, 07/27/2011 * ELGA (Austria) (ELGA CDA Implementie-rungsleitfäden Registrierung von CDA Dokumenten für ELGA mit IHE Cross-Enterprise Document Sharing: XDS Metadaten (XDSDocumentEntry), [1.2.40.0.34.7.6.3] * XDS Connect-a-thon practiceSettingCode.
+    /// This is an important piece of metadata that providers often rely upon to quickly sort and/or filter out to find specific content.
     /// </summary>
     [JsonProperty("practiceSetting")]
     public CodeableConcept PracticeSetting { get; set; }
     /// <summary>
-    /// May be identifiers or resources that caused the DocumentReference or referenced Document to be created.
+    /// Related identifiers or resources associated with the DocumentReference.
     /// </summary>
     [JsonProperty("related")]
     public DocumentReferenceContextRelated[] Related { get; set; }
@@ -8547,17 +8547,17 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "DocumentReference";
     /// <summary>
-    /// Represents a participant within the author institution who has legally authenticated or attested the document. Legal authentication implies that a document has been signed manually or electronically by the legal Authenticator.
+    /// Which person or organization authenticates that this document is valid.
     /// </summary>
     [JsonProperty("authenticator")]
     public Reference Authenticator { get; set; }
     /// <summary>
-    /// Not necessarily who did the actual data entry (i.e. typist) it in or who was the source (informant).
+    /// Identifies who is responsible for adding the information to the document.
     /// </summary>
     [JsonProperty("author")]
     public Reference[] Author { get; set; }
     /// <summary>
-    /// This is a metadata field from [XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD)).
+    /// Helps humans to assess whether the document is of interest when viewing a list of documents.
     /// </summary>
     [JsonProperty("class")]
     public CodeableConcept Class { get; set; }
@@ -8567,31 +8567,31 @@ namespace fhir
     [JsonProperty("content")]
     public DocumentReferenceContent[] Content { get; set; }
     /// <summary>
-    /// These values are primarily added to help with searching for interesting/relevant documents.
+    /// The clinical context in which the document was prepared.
     /// </summary>
     [JsonProperty("context")]
     public DocumentReferenceContext Context { get; set; }
     /// <summary>
-    /// Creation time is used for tracking, organizing versions and searching. This is the creation time of the document, not the source material on which it is based.
+    /// When the document was created.
     /// </summary>
     [JsonProperty("created")]
     public string Created { get; set; }
     [JsonProperty("_created")]
     public Element _Created { get; set; }
     /// <summary>
-    /// Identifies the logical organization to go to find the current version, where to report issues, etc. This is different from the physical location of the document, which is the technical location of the document, which host may be delegated to the management of some other organization.
+    /// Identifies the organization or group who is responsible for ongoing maintenance of and access to the document.
     /// </summary>
     [JsonProperty("custodian")]
     public Reference Custodian { get; set; }
     /// <summary>
-    /// What the document is about, rather than a terse summary of the document. It is commonly the case that records do not have a title and are collectively referred to by the display name of Record code (e.g. a "consultation" or "progress note").
+    /// Helps humans to assess whether the document is of interest.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// The document that is pointed to might be in various lifecycle states.
+    /// The status of the underlying document.
     /// </summary>
     [JsonProperty("docStatus")]
     public CodeableConcept DocStatus { get; set; }
@@ -8601,14 +8601,14 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Referencing/indexing time is used for tracking, organizing versions and searching.
+    /// When the document reference was created.
     /// </summary>
     [JsonProperty("indexed")]
     public string Indexed { get; set; }
     [JsonProperty("_indexed")]
     public Element _Indexed { get; set; }
     /// <summary>
-    /// CDA Document Id extension and root.
+    /// The structure and format of this Id shall be consistent with the specification corresponding to the formatCode attribute. (e.g. for a DICOM standard document a 64 character numeric UID, for an HL7 CDA format a serialization of the CDA Document Id extension and root in the form "oid^extension", where OID is a 64 digits max, and the Id is a 16 UTF-8 char max. If the OID is coded without the extension then the '^' character shall not be included.).
     /// </summary>
     [JsonProperty("masterIdentifier")]
     public Identifier MasterIdentifier { get; set; }
@@ -8618,12 +8618,12 @@ namespace fhir
     [JsonProperty("relatesTo")]
     public DocumentReferenceRelatesTo[] RelatesTo { get; set; }
     /// <summary>
-    /// The confidentiality codes can carry multiple vocabulary items. HL7 has developed an understanding of security and privacy tags that might be desirable in a Document Sharing environment, called HL7 Healthcare Privacy and Security Classification System (HCS). The following specification is recommended but not mandated, as the vocabulary bindings are an administrative domain responsibility. The use of this method is up to the policy domain such as the XDS Affinity Domain or other Trust Domain where all parties including sender and recipients are trusted to appropriately tag and enforce.   In the HL7 Healthcare Privacy and Security Classification (HCS) there are code systems specific to Confidentiality, Sensitivity, Integrity, and Handling Caveats. Some values would come from a local vocabulary as they are related to workflow roles and special projects.
+    /// Use of the Health Care Privacy/Security Classification (HCS) system of security-tag use is recommended.
     /// </summary>
     [JsonProperty("securityLabel")]
     public CodeableConcept[] SecurityLabel { get; set; }
     /// <summary>
-    /// This is the status of the DocumentReference object, which might be independent from the docStatus element.
+    /// The status of this document reference.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -8635,7 +8635,7 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Key metadata element describing the document, used in searching/filtering.
+    /// Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
@@ -8653,22 +8653,22 @@ namespace fhir
   /// </summary>
   public class DomainResource : Resource {
     /// <summary>
-    /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
+    /// These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.
     /// </summary>
     [JsonProperty("contained")]
     public Resource[] Contained { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
+    /// May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
     /// </summary>
     [JsonProperty("extension")]
     public Extension[] Extension { get; set; }
     /// <summary>
-    /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
+    /// May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
     /// </summary>
     [JsonProperty("modifierExtension")]
     public Extension[] ModifierExtension { get; set; }
     /// <summary>
-    /// Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
+    /// A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.
     /// </summary>
     [JsonProperty("text")]
     public Narrative Text { get; set; }
@@ -8698,7 +8698,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -8750,7 +8750,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -8790,7 +8790,7 @@ namespace fhir
     public const string ERROR = "error";
   }
   /// <summary>
-  /// The current status is always found in the current version of the resource, not the status history.
+  /// The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
   /// </summary>
   public class EncounterStatusHistory : BackboneElement {
     /// <summary>
@@ -8832,13 +8832,13 @@ namespace fhir
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// The participant type indicates how an individual partitipates in an encounter. It includes non-practitioner participants, and for practitioners this is to describe the action type in the context of this encounter (e.g. Admitting Dr, Attending Dr, Translator, Consulting Dr). This is different to the practitioner roles which are functional roles, derived from terms of employment, education, licensing, etc.
+    /// Role of participant in encounter.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept[] Type { get; set; }
   }
   /// <summary>
-  /// An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.  The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.
+  /// Details about the admission to a healthcare service.
   /// </summary>
   public class EncounterHospitalization : BackboneElement {
     /// <summary>
@@ -8857,7 +8857,7 @@ namespace fhir
     [JsonProperty("destination")]
     public Reference Destination { get; set; }
     /// <summary>
-    /// For example a patient may request both a dairy-free and nut-free diet preference (not mutually exclusive).
+    /// Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter.
     /// </summary>
     [JsonProperty("dietPreference")]
     public CodeableConcept[] DietPreference { get; set; }
@@ -8898,7 +8898,7 @@ namespace fhir
     public CodeableConcept[] SpecialCourtesy { get; set; }
   }
   /// <summary>
-  /// Virtual encounters can be recorded in the Encounter by specifying a location reference to a location of type "kind" such as "client's home" and an encounter.class = "virtual".
+  /// List of locations where  the patient has been during this encounter.
   /// </summary>
   public class EncounterLocation : BackboneElement {
     /// <summary>
@@ -8912,7 +8912,7 @@ namespace fhir
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// When the patient is no longer active at a location, then the period end date is entered, and the status may be changed to completed.
+    /// The status of the participants' presence at the specified location during the period specified. If the participant is is no longer at the location, then the period will have an end date/time.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -8953,7 +8953,7 @@ namespace fhir
     [JsonProperty("episodeOfCare")]
     public Reference[] EpisodeOfCare { get; set; }
     /// <summary>
-    /// An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.  The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.
+    /// Details about the admission to a healthcare service.
     /// </summary>
     [JsonProperty("hospitalization")]
     public EncounterHospitalization Hospitalization { get; set; }
@@ -8968,17 +8968,17 @@ namespace fhir
     [JsonProperty("incomingReferral")]
     public Reference[] IncomingReferral { get; set; }
     /// <summary>
-    /// For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).
+    /// Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.
     /// </summary>
     [JsonProperty("indication")]
     public Reference[] Indication { get; set; }
     /// <summary>
-    /// May differ from the time the Encounter.period lasted because of leave of absence.
+    /// Quantity of time the encounter lasted. This excludes the time during leaves of absence.
     /// </summary>
     [JsonProperty("length")]
     public Quantity Length { get; set; }
     /// <summary>
-    /// Virtual encounters can be recorded in the Encounter by specifying a location reference to a location of type "kind" such as "client's home" and an encounter.class = "virtual".
+    /// List of locations where  the patient has been during this encounter.
     /// </summary>
     [JsonProperty("location")]
     public EncounterLocation[] Location { get; set; }
@@ -8993,12 +8993,12 @@ namespace fhir
     [JsonProperty("partOf")]
     public Reference PartOf { get; set; }
     /// <summary>
-    /// While the encounter is always about the patient, the patient may not actually be known in all contexts of use.
+    /// The patient present at the encounter.
     /// </summary>
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
     /// <summary>
-    /// If not (yet) known, the end of the Period may be omitted.
+    /// The start and end time of the encounter.
     /// </summary>
     [JsonProperty("period")]
     public Period Period { get; set; }
@@ -9008,7 +9008,7 @@ namespace fhir
     [JsonProperty("priority")]
     public CodeableConcept Priority { get; set; }
     /// <summary>
-    /// For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).
+    /// Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.
     /// </summary>
     [JsonProperty("reason")]
     public CodeableConcept[] Reason { get; set; }
@@ -9025,12 +9025,12 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// The current status is always found in the current version of the resource, not the status history.
+    /// The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
     /// </summary>
     [JsonProperty("statusHistory")]
     public EncounterStatusHistory[] StatusHistory { get; set; }
     /// <summary>
-    /// Since there are many ways to further classify encounters, this element is 0..*.
+    /// Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept[] Type { get; set; }
@@ -9063,7 +9063,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "EnrollmentRequest";
     /// <summary>
-    /// Reference to the program or plan identification, underwriter or payor.
+    /// Need to identify the issuer to target for processing and for coordination of benefit processing.
     /// </summary>
     [JsonProperty("coverage")]
     public Reference Coverage { get; set; }
@@ -9085,7 +9085,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -9095,7 +9095,7 @@ namespace fhir
     [JsonProperty("provider")]
     public Reference Provider { get; set; }
     /// <summary>
-    /// The relationship of the patient to the subscriber.
+    /// To determine the relationship between the patient and the subscriber.
     /// </summary>
     [JsonProperty("relationship")]
     public Coding Relationship { get; set; }
@@ -9147,7 +9147,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -9219,7 +9219,7 @@ namespace fhir
   /// </summary>
   public class EpisodeOfCareCareTeam : BackboneElement {
     /// <summary>
-    /// Where an Organization is included in the CareTeam, it is really providing some form of services to the EpisodeOfCare (e.g. Jim's Mowing Services) the details of the services would be included on a CarePlan.
+    /// The practitioner (or Organization) within the team.
     /// </summary>
     [JsonProperty("member")]
     public Reference Member { get; set; }
@@ -9294,7 +9294,7 @@ namespace fhir
     [JsonProperty("statusHistory")]
     public EpisodeOfCareStatusHistory[] StatusHistory { get; set; }
     /// <summary>
-    /// The type can be very important in processing as this could be used in determining if the EpisodeOfCare is relevant to specific government reporting, or other types of classifications.
+    /// A classification of the type of encounter; e.g. specialist referral, disease management, type of funded care.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept[] Type { get; set; }
@@ -9342,7 +9342,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -9382,7 +9382,7 @@ namespace fhir
     public const string ERROR = "error";
   }
   /// <summary>
-  /// If none of the conditions listed have an outcome of "death" specified, that indicates that none of the specified conditions are known to have been the primary cause of death.
+  /// The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
   /// </summary>
   public class FamilyMemberHistoryCondition : BackboneElement {
     /// <summary>
@@ -9396,22 +9396,22 @@ namespace fhir
     [JsonProperty("note")]
     public Annotation Note { get; set; }
     /// <summary>
-    /// Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
+    /// Age of onset of a condition in relatives is predictive of risk for the patient.
     /// </summary>
     [JsonProperty("onsetQuantity")]
     public Quantity OnsetQuantity { get; set; }
     /// <summary>
-    /// Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
+    /// Age of onset of a condition in relatives is predictive of risk for the patient.
     /// </summary>
     [JsonProperty("onsetRange")]
     public Range OnsetRange { get; set; }
     /// <summary>
-    /// Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
+    /// Age of onset of a condition in relatives is predictive of risk for the patient.
     /// </summary>
     [JsonProperty("onsetPeriod")]
     public Period OnsetPeriod { get; set; }
     /// <summary>
-    /// Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
+    /// Age of onset of a condition in relatives is predictive of risk for the patient.
     /// </summary>
     [JsonProperty("onsetString")]
     public string OnsetString { get; set; }
@@ -9431,48 +9431,48 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "FamilyMemberHistory";
     /// <summary>
-    /// The actual or approximate age of the relative at the time the family member history is recorded.
+    /// While age can be calculated from date of birth, sometimes recording age directly is more natureal for clinicians.
     /// </summary>
     [JsonProperty("ageQuantity")]
     public Quantity AgeQuantity { get; set; }
     /// <summary>
-    /// The actual or approximate age of the relative at the time the family member history is recorded.
+    /// While age can be calculated from date of birth, sometimes recording age directly is more natureal for clinicians.
     /// </summary>
     [JsonProperty("ageRange")]
     public Range AgeRange { get; set; }
     /// <summary>
-    /// The actual or approximate age of the relative at the time the family member history is recorded.
+    /// While age can be calculated from date of birth, sometimes recording age directly is more natureal for clinicians.
     /// </summary>
     [JsonProperty("ageString")]
     public string AgeString { get; set; }
     [JsonProperty("_ageString")]
     public Element _AgeString { get; set; }
     /// <summary>
-    /// The actual or approximate date of birth of the relative.
+    /// Allows calculation of the relative's age.
     /// </summary>
     [JsonProperty("bornPeriod")]
     public Period BornPeriod { get; set; }
     /// <summary>
-    /// The actual or approximate date of birth of the relative.
+    /// Allows calculation of the relative's age.
     /// </summary>
     [JsonProperty("bornDate")]
     public string BornDate { get; set; }
     [JsonProperty("_bornDate")]
     public Element _BornDate { get; set; }
     /// <summary>
-    /// The actual or approximate date of birth of the relative.
+    /// Allows calculation of the relative's age.
     /// </summary>
     [JsonProperty("bornString")]
     public string BornString { get; set; }
     [JsonProperty("_bornString")]
     public Element _BornString { get; set; }
     /// <summary>
-    /// If none of the conditions listed have an outcome of "death" specified, that indicates that none of the specified conditions are known to have been the primary cause of death.
+    /// The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
     /// </summary>
     [JsonProperty("condition")]
     public FamilyMemberHistoryCondition[] Condition { get; set; }
     /// <summary>
-    /// This should be captured even if the same as the date on the List aggregating the full family history.
+    /// Allows determination of how current the summary is.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
@@ -9508,19 +9508,19 @@ namespace fhir
     [JsonProperty("_deceasedString")]
     public Element _DeceasedString { get; set; }
     /// <summary>
-    /// Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes.
+    /// Not all relationship codes imply gender and the relative's gender can be relevant for risk assessments.
     /// </summary>
     [JsonProperty("gender")]
     public string Gender { get; set; }
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// This records identifiers associated with this family member history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// This will either be a name or a description; e.g. "Aunt Susan", "my cousin with the red hair".
+    /// Allows greater ease in ensuring the same person is being talked about.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -9626,7 +9626,7 @@ namespace fhir
     public const string ENTERED_IN_ERROR = "entered-in-error";
   }
   /// <summary>
-  /// Note that this should not duplicate the goal status.
+  /// Outcome tracking is a key aspect of care planning.
   /// </summary>
   public class GoalOutcome : BackboneElement {
     /// <summary>
@@ -9648,92 +9648,92 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Goal";
     /// <summary>
-    /// The identified conditions and other health record elements that are intended to be addressed by the goal.
+    /// Allows specific goals to explicitly linked to the concerns they're dealing with - makes the goal more understandable.
     /// </summary>
     [JsonProperty("addresses")]
     public Reference[] Addresses { get; set; }
     /// <summary>
-    /// This is the individual reponsible for establishing the goal, not necessarily who recorded it.  (For that, use the Provenance resource.).
+    /// Indicates whose goal this is - patient goal, practitioner goal, etc.
     /// </summary>
     [JsonProperty("author")]
     public Reference Author { get; set; }
     /// <summary>
-    /// Indicates a category the goal falls within.
+    /// Allows goals to be filtered and sorted.
     /// </summary>
     [JsonProperty("category")]
     public CodeableConcept[] Category { get; set; }
     /// <summary>
-    /// Human-readable description of a specific desired objective of care.
+    /// Without a description of what's trying to be achieved, element has no purpose.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// This records identifiers associated with this care plan that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// May be used for progress notes, concerns or other related information that doesn't actually describe the goal itself.
+    /// There's a need to capture information about the goal that doesn't actually describe the goal.
     /// </summary>
     [JsonProperty("note")]
     public Annotation[] Note { get; set; }
     /// <summary>
-    /// Note that this should not duplicate the goal status.
+    /// Outcome tracking is a key aspect of care planning.
     /// </summary>
     [JsonProperty("outcome")]
     public GoalOutcome[] Outcome { get; set; }
     /// <summary>
-    /// Extensions are available to track priorities as established by each participant (i.e. Priority from the patient's perspective, different practitioners' perspectives, family member's perspectives)  The ordinal extension on Coding can be used to convey a numerically comparable ranking to priority.  (Keep in mind that different coding systems may use a "low value=important".
+    /// Used for sorting and presenting goals.
     /// </summary>
     [JsonProperty("priority")]
     public CodeableConcept Priority { get; set; }
     /// <summary>
-    /// The date or event after which the goal should begin being pursued.
+    /// Goals can be established prior to there being an intention to start pursuing them; e.g. Goals for post-surgical recovery established prior to surgery.
     /// </summary>
     [JsonProperty("startDate")]
     public string StartDate { get; set; }
     [JsonProperty("_startDate")]
     public Element _StartDate { get; set; }
     /// <summary>
-    /// The date or event after which the goal should begin being pursued.
+    /// Goals can be established prior to there being an intention to start pursuing them; e.g. Goals for post-surgical recovery established prior to surgery.
     /// </summary>
     [JsonProperty("startCodeableConcept")]
     public CodeableConcept StartCodeableConcept { get; set; }
     /// <summary>
-    /// Indicates whether the goal has been reached and is still considered relevant.
+    /// Allows measuring outcome and whether goal needs to be further tracked.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// To see the date for past statuses, query history.
+    /// Identifies when the current status.  I.e. When initially created, when achieved, when cancelled, etc.
     /// </summary>
     [JsonProperty("statusDate")]
     public string StatusDate { get; set; }
     [JsonProperty("_statusDate")]
     public Element _StatusDate { get; set; }
     /// <summary>
-    /// This will typically be captured for statuses such as rejected, on-hold or cancelled, but could be present for others.
+    /// Captures the reason for the current status.
     /// </summary>
     [JsonProperty("statusReason")]
     public CodeableConcept StatusReason { get; set; }
     /// <summary>
-    /// Identifies the patient, group or organization for whom the goal is being established.
+    /// Subject is optional to support annonymized reporting.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Indicates either the date or the duration after start by which the goal should be met.
+    /// Identifies when the goal should be evaluated.
     /// </summary>
     [JsonProperty("targetDate")]
     public string TargetDate { get; set; }
     [JsonProperty("_targetDate")]
     public Element _TargetDate { get; set; }
     /// <summary>
-    /// Indicates either the date or the duration after start by which the goal should be met.
+    /// Identifies when the goal should be evaluated.
     /// </summary>
     [JsonProperty("targetQuantity")]
     public Quantity TargetQuantity { get; set; }
@@ -9753,16 +9753,16 @@ namespace fhir
     public const string CANCELLED = "cancelled";
   }
   /// <summary>
-  /// All the identified characteristics must be true for an entity to a member of the group.
+  /// Needs to be a generic mechanism for identifying what individuals can be part of a group.
   /// </summary>
   public class GroupCharacteristic : BackboneElement {
     /// <summary>
-    /// A code that identifies the kind of trait being asserted.
+    /// Need a formal way of identifying the characteristic being described.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// This is labeled as "Is Modifier" because applications cannot wrongly include excluded members as included or vice versa.
+    /// Sometimes group membership is determined by characteristics not possessed.
     /// </summary>
     [JsonProperty("exclude")]
     public bool Exclude { get; set; }
@@ -9772,28 +9772,28 @@ namespace fhir
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// For Range, it means members of the group have a value that falls somewhere within the specified range.
+    /// The value of the characteristic is what determines group membership.
     /// </summary>
     [JsonProperty("valueCodeableConcept")]
     public CodeableConcept ValueCodeableConcept { get; set; }
     /// <summary>
-    /// For Range, it means members of the group have a value that falls somewhere within the specified range.
+    /// The value of the characteristic is what determines group membership.
     /// </summary>
     [JsonProperty("valueBoolean")]
     public bool ValueBoolean { get; set; }
     /// <summary>
-    /// For Range, it means members of the group have a value that falls somewhere within the specified range.
+    /// The value of the characteristic is what determines group membership.
     /// </summary>
     [JsonProperty("valueQuantity")]
     public Quantity ValueQuantity { get; set; }
     /// <summary>
-    /// For Range, it means members of the group have a value that falls somewhere within the specified range.
+    /// The value of the characteristic is what determines group membership.
     /// </summary>
     [JsonProperty("valueRange")]
     public Range ValueRange { get; set; }
   }
   /// <summary>
-  /// Identifies the resource instances that are members of the group.
+  /// Often the only thing of interest about a group is "who's in it".
   /// </summary>
   public class GroupMember : BackboneElement {
     /// <summary>
@@ -9802,12 +9802,12 @@ namespace fhir
     [JsonProperty("entity")]
     public Reference Entity { get; set; }
     /// <summary>
-    /// A flag to indicate that the member is no longer in the group, but previously may have been a member.
+    /// Sometimes you don't know when someone stopped being in a group, but not when.
     /// </summary>
     [JsonProperty("inactive")]
     public bool? Inactive { get; set; }
     /// <summary>
-    /// The period that the member was in the group, if known.
+    /// Need to track who was in a group at a  particular time.
     /// </summary>
     [JsonProperty("period")]
     public Period Period { get; set; }
@@ -9820,44 +9820,44 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Group";
     /// <summary>
-    /// If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.
+    /// There are use-cases for groups that define specific collections of individuals, and other groups that define "types" of intended individuals.  The requirements for both kinds of groups are similar, so we use a single resource, distinguished by this flag.
     /// </summary>
     [JsonProperty("actual")]
     public bool Actual { get; set; }
     /// <summary>
-    /// All the identified characteristics must be true for an entity to a member of the group.
+    /// Needs to be a generic mechanism for identifying what individuals can be part of a group.
     /// </summary>
     [JsonProperty("characteristic")]
     public GroupCharacteristic[] Characteristic { get; set; }
     /// <summary>
-    /// This would generally be omitted for Person resources.
+    /// Provides a specific type of resource the group includes; e.g. "cow", "syringe", etc.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// A unique business identifier for this group.
+    /// Allows the group to be referenced from external specifications.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Identifies the resource instances that are members of the group.
+    /// Often the only thing of interest about a group is "who's in it".
     /// </summary>
     [JsonProperty("member")]
     public GroupMember[] Member { get; set; }
     /// <summary>
-    /// A label assigned to the group for human identification and communication.
+    /// Used to identify the group in human communication.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Note that the quantity may be less than the number of members if some of the members are not active.
+    /// Group size is a common defining characteristic.
     /// </summary>
     [JsonProperty("quantity")]
     public uint? Quantity { get; set; }
     /// <summary>
-    /// Group members SHALL be of the appropriate resource type (Patient for person or animal; or Practitioner, Device, Medicaiton or Substance for the other types.).
+    /// Identifies what type of resources the group is made up of.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -9885,13 +9885,13 @@ namespace fhir
     [JsonProperty("specialty")]
     public CodeableConcept[] Specialty { get; set; }
     /// <summary>
-    /// Change to serviceType?
+    /// The specific type of service being delivered or performed.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
   }
   /// <summary>
-  /// More detailed availability information may be provided in associated Schedule/Slot resources.
+  /// A collection of times that the Service Site is available.
   /// </summary>
   public class HealthcareServiceAvailableTime : BackboneElement {
     /// <summary>
@@ -9900,14 +9900,14 @@ namespace fhir
     [JsonProperty("allDay")]
     public bool? AllDay { get; set; }
     /// <summary>
-    /// The timezone is expected to be for where this HealthcareService is provided at.
+    /// The closing time of day. Note: If the AllDay flag is set, then this time is ignored.
     /// </summary>
     [JsonProperty("availableEndTime")]
     public string AvailableEndTime { get; set; }
     [JsonProperty("_availableEndTime")]
     public Element _AvailableEndTime { get; set; }
     /// <summary>
-    /// The timezone is expected to be for where this HealthcareService is provided at.
+    /// The opening time of day. Note: If the AllDay flag is set, then this time is ignored.
     /// </summary>
     [JsonProperty("availableStartTime")]
     public string AvailableStartTime { get; set; }
@@ -9970,24 +9970,24 @@ namespace fhir
     [JsonProperty("_availabilityExceptions")]
     public Element _AvailabilityExceptions { get; set; }
     /// <summary>
-    /// More detailed availability information may be provided in associated Schedule/Slot resources.
+    /// A collection of times that the Service Site is available.
     /// </summary>
     [JsonProperty("availableTime")]
     public HealthcareServiceAvailableTime[] AvailableTime { get; set; }
     /// <summary>
-    /// These could be such things as is wheelchair accessible.
+    /// Collection of characteristics (attributes).
     /// </summary>
     [JsonProperty("characteristic")]
     public CodeableConcept[] Characteristic { get; set; }
     /// <summary>
-    /// Would expect that a user would not see this information on a search results, and it would only be available when viewing the complete details of the service.
+    /// Any additional description of the service and/or any specific issues not covered by the other attributes, which can be displayed as further detail under the serviceName.
     /// </summary>
     [JsonProperty("comment")]
     public string Comment { get; set; }
     [JsonProperty("_comment")]
     public Element _Comment { get; set; }
     /// <summary>
-    /// The locations referenced by the coverage area can include both specific locations, including areas, and also conceptual domains too (mode = kind), such as a physical area (tri-state area) and some other attribute (covered by Example Care Organization). These types of Locations are often not managed by any specific organization. This could also include generic locations such as "in-home".
+    /// The location(s) that this service is available to (not where the service is provided).
     /// </summary>
     [JsonProperty("coverageArea")]
     public Reference[] CoverageArea { get; set; }
@@ -9997,7 +9997,7 @@ namespace fhir
     [JsonProperty("eligibility")]
     public CodeableConcept Eligibility { get; set; }
     /// <summary>
-    /// The description of service eligibility should, in general, not exceed one or two paragraphs. It should be sufficient for a prospective consumer to determine if they are likely to be eligible or not. Where eligibility requirements and conditions are complex, it may simply be noted that an eligibility assessment is required. Where eligibility is determined by an outside source, such as an Act of Parliament, this should be noted, preferably with a reference to a commonly available copy of the source document such as a web page.
+    /// Describes the eligibility conditions for the service.
     /// </summary>
     [JsonProperty("eligibilityNote")]
     public string EligibilityNote { get; set; }
@@ -10031,19 +10031,19 @@ namespace fhir
     [JsonProperty("photo")]
     public Attachment Photo { get; set; }
     /// <summary>
-    /// Programs are often defined externally to an Organization, commonly by governments; e.g. Home and Community Care Programs, Homeless Program, ….
+    /// Program Names that can be used to categorize the service.
     /// </summary>
     [JsonProperty("programName")]
     public string[] ProgramName { get; set; }
     [JsonProperty("_programName")]
     public Element[] _ProgramName { get; set; }
     /// <summary>
-    /// This property is recommended to be the same as the Location's managingOrganization, and if not provided should be interpreted as such. If the Location does not have a managing Organization, then this property should be populated.
+    /// The organization that provides this healthcare service.
     /// </summary>
     [JsonProperty("providedBy")]
     public Reference ProvidedBy { get; set; }
     /// <summary>
-    /// Note: This is a base64 encoded digital certificate.
+    /// The public part of the 'keys' allocated to an Organization by an accredited body to support secure exchange of data over the internet. To be provided by the Organization, where available.
     /// </summary>
     [JsonProperty("publicKey")]
     public string PublicKey { get; set; }
@@ -10055,7 +10055,7 @@ namespace fhir
     [JsonProperty("referralMethod")]
     public CodeableConcept[] ReferralMethod { get; set; }
     /// <summary>
-    /// Selecting a Service Category then determines the list of relevant service types that can be selected in the primary service type.
+    /// Identifies the broad category of service being performed or delivered.
     /// </summary>
     [JsonProperty("serviceCategory")]
     public CodeableConcept ServiceCategory { get; set; }
@@ -10067,7 +10067,7 @@ namespace fhir
     [JsonProperty("_serviceName")]
     public Element _ServiceName { get; set; }
     /// <summary>
-    /// The provision means being commissioned by, contractually obliged or financially sourced. Types of costings that may apply to this healthcare service, such if the service may be available for free, some discounts available, or fees apply.
+    /// The code(s) that detail the conditions under which the healthcare service is available/offered.
     /// </summary>
     [JsonProperty("serviceProvisionCode")]
     public CodeableConcept[] ServiceProvisionCode { get; set; }
@@ -10077,22 +10077,22 @@ namespace fhir
     [JsonProperty("serviceType")]
     public HealthcareServiceServiceType[] ServiceType { get; set; }
     /// <summary>
-    /// If this is empty, then refer to the location's contacts.
+    /// List of contacts related to this specific healthcare service.
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
   }
   /// <summary>
-  /// This component may be used if the referenced image SOP Instance is a multi-frame image.
+  /// The specific set of frames referenced in this imaging object selection. The URL retrieves the pixel data, and is encapsulated in a multipart MIME response.
   /// </summary>
   public class ImagingObjectSelectionStudySeriesInstanceFrames : BackboneElement {
     /// <summary>
-    /// The frame numbers in the frame set.
+    /// One or more non-duplicate frame numbers in the selected instance.
     /// </summary>
     [JsonProperty("frameNumbers")]
     public uint[] FrameNumbers { get; set; }
     /// <summary>
-    /// Frame level locator information is required.
+    /// WADO-RS URL enables retrieval of the frames using DICOM WADO-RS API.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
@@ -10100,30 +10100,30 @@ namespace fhir
     public Element _Url { get; set; }
   }
   /// <summary>
-  /// SOP Instance component identify the instance selected, along with the study and series identities to form the DICOM identity hierachy.
+  /// DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. This is the instance level identity of the instance in the selection.
   /// </summary>
   public class ImagingObjectSelectionStudySeriesInstance : BackboneElement {
     /// <summary>
-    /// This component may be used if the referenced image SOP Instance is a multi-frame image.
+    /// The specific set of frames referenced in this imaging object selection. The URL retrieves the pixel data, and is encapsulated in a multipart MIME response.
     /// </summary>
     [JsonProperty("frames")]
     public ImagingObjectSelectionStudySeriesInstanceFrames[] Frames { get; set; }
     /// <summary>
-    /// SOP class UID identifies the type of the selected instances, e.g. CT image, Gray scale softcopy presentation state, ECG waveform, etc.
+    /// DICOM SOP instances can be an image or other data object. The SOP class UID provide the accurate information about what type the instance is.
     /// </summary>
     [JsonProperty("sopClass")]
     public string SopClass { get; set; }
     [JsonProperty("_sopClass")]
     public Element _SopClass { get; set; }
     /// <summary>
-    /// SOP instance UID identifies the instance.
+    /// SOP instance UID is required to fully identify the DICOM SOP instance in the selection.
     /// </summary>
     [JsonProperty("uid")]
     public string Uid { get; set; }
     [JsonProperty("_uid")]
     public Element _Uid { get; set; }
     /// <summary>
-    /// Instance level locator information is required.
+    /// WADO-RS URL enables retrieval of the SOP instance using DICOM WADO-RS API.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
@@ -10131,23 +10131,23 @@ namespace fhir
     public Element _Url { get; set; }
   }
   /// <summary>
-  /// Series component represents the series level identity and locator information of the DICOM SOP instances in the selection.
+  /// DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. In addition, the locator at the series level provide a means of retrieving the entire series.
   /// </summary>
   public class ImagingObjectSelectionStudySeries : BackboneElement {
     /// <summary>
-    /// SOP Instance component identify the instance selected, along with the study and series identities to form the DICOM identity hierachy.
+    /// DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. This is the instance level identity of the instance in the selection.
     /// </summary>
     [JsonProperty("instance")]
     public ImagingObjectSelectionStudySeriesInstance[] Instance { get; set; }
     /// <summary>
-    /// Series instance UID of the SOP instances in the selection.
+    /// Series instance UID is required to fully identify the DICOM SOP instances in the selection.
     /// </summary>
     [JsonProperty("uid")]
     public string Uid { get; set; }
     [JsonProperty("_uid")]
     public Element _Uid { get; set; }
     /// <summary>
-    /// Series level locator information is optional. If provided, this is the URL to retrieve the entire series with WADO-RS interaction, though only a subset of these are selected in the selection.
+    /// WADO-RS URL enables retrieval of the entire series using DICOM WADO-RS API.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
@@ -10155,28 +10155,28 @@ namespace fhir
     public Element _Url { get; set; }
   }
   /// <summary>
-  /// Study component represents the study level identity and locator information of the DICOM SOP instances in the selection. It is the top level identity of the hierachical identification of the instances.
+  /// DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. In addition, the locator at the study level provide a means of retrieving the entire study.
   /// </summary>
   public class ImagingObjectSelectionStudy : BackboneElement {
     /// <summary>
-    /// Reference to the Imaging Study in FHIR form.
+    /// Used to retrieve the ImagingStudy that contain the images referenced in the Imaging ObjectSelection.study.
     /// </summary>
     [JsonProperty("imagingStudy")]
     public Reference ImagingStudy { get; set; }
     /// <summary>
-    /// Series component represents the series level identity and locator information of the DICOM SOP instances in the selection.
+    /// DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. In addition, the locator at the series level provide a means of retrieving the entire series.
     /// </summary>
     [JsonProperty("series")]
     public ImagingObjectSelectionStudySeries[] Series { get; set; }
     /// <summary>
-    /// Study instance UID of the SOP instances in the selection.
+    /// Study instance UID is required to fully identify the DICOM SOP instances in the selection.
     /// </summary>
     [JsonProperty("uid")]
     public string Uid { get; set; }
     [JsonProperty("_uid")]
     public Element _Uid { get; set; }
     /// <summary>
-    /// Study level locator information is optional. If provided, this is the URL to retrieve the entire study with WADO-RS interaction, though only a subset of these are selected in the selection.
+    /// WADO-RS URL enables retrieval of the entire study using DICOM WADO-RS API.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
@@ -10191,41 +10191,41 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "ImagingObjectSelection";
     /// <summary>
-    /// Author of ImagingObjectSelection. It can be a human author or a device which made the decision of the SOP instances selected. For example, a radiologist selected a set of imaging SOP instances to attach in a diagnostic report, and a CAD application may author a selection to describe SOP instances it used to generate a detection conclusion.
+    /// Track the selection decision maker.
     /// </summary>
     [JsonProperty("author")]
     public Reference Author { get; set; }
     /// <summary>
-    /// Date and time when the selection of the referenced instances were made. It is (typically) different from the creation date of the selection resource, and from dates associated with the referenced instances (e.g. capture time of the referenced image).
+    /// Date and time when the selection was made can be important to understand the content of selection.
     /// </summary>
     [JsonProperty("authoringTime")]
     public string AuthoringTime { get; set; }
     [JsonProperty("_authoringTime")]
     public Element _AuthoringTime { get; set; }
     /// <summary>
-    /// Free text narrative description of the ImagingObjectSelection.
+    /// Need to provide a narrative description of the SOP instances in the selection.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// SOP instances selected in the ImagingObjectSelection can be from different studies, but must be of the same patient.
+    /// SOP Instances in ImagingObjectSelection must be from the same patient.
     /// </summary>
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
     /// <summary>
-    /// Study component represents the study level identity and locator information of the DICOM SOP instances in the selection. It is the top level identity of the hierachical identification of the instances.
+    /// DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. In addition, the locator at the study level provide a means of retrieving the entire study.
     /// </summary>
     [JsonProperty("study")]
     public ImagingObjectSelectionStudy[] Study { get; set; }
     /// <summary>
-    /// Coded concept of kind of the ImagingObjectSelection. Value set is defined in the DICOM standard Part 16, CID-7010.
+    /// Need to represent the application purpose that the SOP instances in ImagingObjectSelection are selected for.
     /// </summary>
     [JsonProperty("title")]
     public CodeableConcept Title { get; set; }
     /// <summary>
-    /// Instance UID of the DICOM KOS SOP Instances represented in this resource.
+    /// DICOM SOP Instance is always assigned with a unique identifier (UID).
     /// </summary>
     [JsonProperty("uid")]
     public string Uid { get; set; }
@@ -10237,7 +10237,7 @@ namespace fhir
   /// </summary>
   public class ImagingStudySeriesInstance : BackboneElement {
     /// <summary>
-    /// Use of Attachment.data is discouraged.
+    /// Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.
     /// </summary>
     [JsonProperty("content")]
     public Attachment[] Content { get; set; }
@@ -10254,14 +10254,14 @@ namespace fhir
     [JsonProperty("_sopClass")]
     public Element _SopClass { get; set; }
     /// <summary>
-    /// Particularly for post-acquisition analytic objects, such as SR, presentation states, value mapping, etc.
+    /// The description of the instance.
     /// </summary>
     [JsonProperty("title")]
     public string Title { get; set; }
     [JsonProperty("_title")]
     public Element _Title { get; set; }
     /// <summary>
-    /// E.g. 'CT image', 'MR multi-frame', 'blending presentation'.
+    /// A human-friendly SOP Class name.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -10406,7 +10406,7 @@ namespace fhir
     [JsonProperty("numberOfSeries")]
     public uint NumberOfSeries { get; set; }
     /// <summary>
-    /// A list of the diagnostic orders that resulted in this imaging study being performed.
+    /// To support grouped procedures (one imaging study supporting multiple ordered procedures, e.g. chest/abdomen/pelvis CT).
     /// </summary>
     [JsonProperty("order")]
     public Reference[] Order { get; set; }
@@ -10416,7 +10416,7 @@ namespace fhir
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
     /// <summary>
-    /// For the Procedure.code, LOINC radiology orderables would be a good value set to use.
+    /// Type of procedure performed.
     /// </summary>
     [JsonProperty("procedure")]
     public Reference[] Procedure { get; set; }
@@ -10477,7 +10477,7 @@ namespace fhir
     public CodeableConcept[] ReasonNotGiven { get; set; }
   }
   /// <summary>
-  /// A reaction may be an indication of an allergy or intolerance and, if this is determined to be the case,  it should be recorded as a new [[[AllergyIntolerance]]] resource instance as most systems will not query against  past Immunization.reaction elements.
+  /// Categorical data indicating that an adverse event is associated in time to an immunization.
   /// </summary>
   public class ImmunizationReaction : BackboneElement {
     /// <summary>
@@ -10520,7 +10520,7 @@ namespace fhir
     [JsonProperty("doseSequence")]
     public uint DoseSequence { get; set; }
     /// <summary>
-    /// May need to differentiate between status declarations by a provider vs. a CDS engine.
+    /// Indicates if the immunization event should "count" against  the protocol.
     /// </summary>
     [JsonProperty("doseStatus")]
     public CodeableConcept DoseStatus { get; set; }
@@ -10555,7 +10555,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Immunization";
     /// <summary>
-    /// When immunizations are given a specific date and time should always be known.   When immunizations are patient reported, a specific date might not be known.  Although partial dates are allowed, an adult patient might not be able to recall the year a childhood immunization was given.
+    /// Date vaccine administered or was to be administered.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
@@ -10621,17 +10621,17 @@ namespace fhir
     [JsonProperty("performer")]
     public Reference Performer { get; set; }
     /// <summary>
-    /// A reaction may be an indication of an allergy or intolerance and, if this is determined to be the case,  it should be recorded as a new [[[AllergyIntolerance]]] resource instance as most systems will not query against  past Immunization.reaction elements.
+    /// Categorical data indicating that an adverse event is associated in time to an immunization.
     /// </summary>
     [JsonProperty("reaction")]
     public ImmunizationReaction[] Reaction { get; set; }
     /// <summary>
-    /// May need source of reported info (e.g. parent), but leave out for now.
+    /// True if this administration was reported rather than directly administered.
     /// </summary>
     [JsonProperty("reported")]
     public bool Reported { get; set; }
     /// <summary>
-    /// Other participants - delegate to Provenance resource.
+    /// Clinician who ordered the vaccination.
     /// </summary>
     [JsonProperty("requester")]
     public Reference Requester { get; set; }
@@ -10646,7 +10646,7 @@ namespace fhir
     [JsonProperty("site")]
     public CodeableConcept Site { get; set; }
     /// <summary>
-    /// Will generally be set to show that the immunization has been completed.
+    /// Indicates the current status of the vaccination event.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -10741,7 +10741,7 @@ namespace fhir
     [JsonProperty("dateCriterion")]
     public ImmunizationRecommendationRecommendationDateCriterion[] DateCriterion { get; set; }
     /// <summary>
-    /// May need other dose concepts such as administered vs. valid.
+    /// This indicates the next recommended dose number (e.g. dose 2 is the next recommended dose).
     /// </summary>
     [JsonProperty("doseNumber")]
     public uint? DoseNumber { get; set; }
@@ -10795,11 +10795,11 @@ namespace fhir
     public ImmunizationRecommendationRecommendation[] Recommendation { get; set; }
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number (tel:), etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class ImplementationGuideContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the implementation guide.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -10816,14 +10816,14 @@ namespace fhir
   /// </summary>
   public class ImplementationGuideDependency : BackboneElement {
     /// <summary>
-    /// For information about processing included guides, see [Including Guides]{implementationguide.html#include}.
+    /// How the dependency is represented when the guide is published.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
     [JsonProperty("_type")]
     public Element _Type { get; set; }
     /// <summary>
-    /// When a guide is published, and the type is 'include', this will be a relative reference within the guide.
+    /// Where the dependency is located.
     /// </summary>
     [JsonProperty("uri")]
     public string Uri { get; set; }
@@ -10842,21 +10842,21 @@ namespace fhir
   /// </summary>
   public class ImplementationGuidePackageResource : BackboneElement {
     /// <summary>
-    /// This is used when generating schematrons from profiles, for example, but has other uses. Publishing tooling may autogenerate this value, but a human assigned value is more useful. This value must be unique within an implementation guide (across included guides as well).
+    /// A short code that may be used to identify the resource throughout the implementation guide.
     /// </summary>
     [JsonProperty("acronym")]
     public string Acronym { get; set; }
     [JsonProperty("_acronym")]
     public Element _Acronym { get; set; }
     /// <summary>
-    /// This is mostly used with examples to explain why it is present (though they can have extensive comments in the examples).
+    /// A description of the reason that a resource has been included in the implementation guide.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// Examples: * StructureDefinition -> Any * ValueSet -> expansion * OperationDefinition -> Parameters * Questionnaire -> QuestionnaireResponse.
+    /// Another resource that this resource is an example for. This is mostly used for resources that are included as examples of StructureDefinitions.
     /// </summary>
     [JsonProperty("exampleFor")]
     public Reference ExampleFor { get; set; }
@@ -10868,21 +10868,21 @@ namespace fhir
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// The purpose alters the way that a resource is handled when a guide is built. At present, only value set and concept map resources are allowed for terminology resources, and only StructureDefinition, SearchParameter, and OperationDefinition for profile. Dictionaries must be bundles of DataElement or Medication at this time.
+    /// This element is provided so that implementation guide tooling does not have to guess the purpose of including a resource in the implementation guide based on the type or context.
     /// </summary>
     [JsonProperty("purpose")]
     public string Purpose { get; set; }
     [JsonProperty("_purpose")]
     public Element _Purpose { get; set; }
     /// <summary>
-    /// Usually this is a relative URL that locates the resource within the implementation guide. If you authoring an implementation guide, and will publish it using the FHIR publication tooling, use a URI that may point to a resource, or to one of various alternative representations (e.g. spreadsheet). The tooling will convert this when it publishes it.
+    /// Where this resource is found.
     /// </summary>
     [JsonProperty("sourceUri")]
     public string SourceUri { get; set; }
     [JsonProperty("_sourceUri")]
     public Element _SourceUri { get; set; }
     /// <summary>
-    /// Usually this is a relative URL that locates the resource within the implementation guide. If you authoring an implementation guide, and will publish it using the FHIR publication tooling, use a URI that may point to a resource, or to one of various alternative representations (e.g. spreadsheet). The tooling will convert this when it publishes it.
+    /// Where this resource is found.
     /// </summary>
     [JsonProperty("sourceReference")]
     public Reference SourceReference { get; set; }
@@ -10923,7 +10923,7 @@ namespace fhir
     public ImplementationGuidePackageResource[] Resource { get; set; }
   }
   /// <summary>
-  /// See [Default Profiles](implementationguide.html#default) for a discussion of which resources are 'covered' by an implementation guide.
+  /// A set of profiles that all resources covered by this implementation guide must conform to.
   /// </summary>
   public class ImplementationGuideGlobal : BackboneElement {
     /// <summary>
@@ -10932,7 +10932,7 @@ namespace fhir
     [JsonProperty("profile")]
     public Reference Profile { get; set; }
     /// <summary>
-    /// The type must match that of the profile that is referred to, but is made explicit here as a denormalization so that a system processing the implementation guide resource knows which resources the profile applies to even if the profile itself is not available.
+    /// The type of resource that all instances must conform to.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -10940,11 +10940,11 @@ namespace fhir
     public Element _Type { get; set; }
   }
   /// <summary>
-  /// Pages automatically become sections if they have sub-pages. By convention, the home page is called index.html.
+  /// A page / section in the implementation guide. The root page is the implementation guide home page.
   /// </summary>
   public class ImplementationGuidePage : BackboneElement {
     /// <summary>
-    /// This is primarily for the publishing tool, that will convert all pages to html format. HTML pages are pre-processed, see xxxx.
+    /// The format of the page.
     /// </summary>
     [JsonProperty("format")]
     public string Format { get; set; }
@@ -10972,12 +10972,12 @@ namespace fhir
     [JsonProperty("_package")]
     public Element[] _Package { get; set; }
     /// <summary>
-    /// The implementation guide breadcrumbs are generated from this structure.
+    /// Nested Pages/Sections under this page.
     /// </summary>
     [JsonProperty("page")]
     public ImplementationGuidePage[] Page { get; set; }
     /// <summary>
-    /// The publishing tool will autogenerate source for list (source = n/a), and inject included implementations for include (source = uri of guide to include).
+    /// The source address for the page.
     /// </summary>
     [JsonProperty("source")]
     public string Source { get; set; }
@@ -11012,14 +11012,14 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "ImplementationGuide";
     /// <summary>
-    /// This is principally included for the FHIR publishing tool, but may be useful when extracting and reusing content from the implementation guide.
+    /// A binary file that is included in the  implementation guide when it is published.
     /// </summary>
     [JsonProperty("binary")]
     public string[] Binary { get; set; }
     [JsonProperty("_binary")]
     public Element[] _Binary { get; set; }
     /// <summary>
-    /// May be a web site, an email address, a telephone number (tel:), etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public ImplementationGuideContact[] Contact { get; set; }
@@ -11031,7 +11031,7 @@ namespace fhir
     [JsonProperty("_copyright")]
     public Element _Copyright { get; set; }
     /// <summary>
-    /// Additional specific dates may be added as extensions.
+    /// The date this version of the implementation guide was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
@@ -11043,31 +11043,31 @@ namespace fhir
     [JsonProperty("dependency")]
     public ImplementationGuideDependency[] Dependency { get; set; }
     /// <summary>
-    /// This field can be used for things such as why the Implementation Guide was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the Implementation Guide as conveyed in Implementation Guide.text. This item SHOULD be populated unless the information is available from context.
+    /// A free text natural language description of the Implementation Guide and its use.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// This Implementation Guide was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /// Allows filtering of Implementation Guides that are appropriate for use vs. not.
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// An Implementation Guide should specify the target it applies to, as ImplementationGuides are rarely valid across multiple versions of FHIR.
+    /// The version of the FHIR specification on which this ImplementationGuide is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 1.0.2 for this version.
     /// </summary>
     [JsonProperty("fhirVersion")]
     public string FhirVersion { get; set; }
     [JsonProperty("_fhirVersion")]
     public Element _FhirVersion { get; set; }
     /// <summary>
-    /// See [Default Profiles](implementationguide.html#default) for a discussion of which resources are 'covered' by an implementation guide.
+    /// A set of profiles that all resources covered by this implementation guide must conform to.
     /// </summary>
     [JsonProperty("global")]
     public ImplementationGuideGlobal[] Global { get; set; }
     /// <summary>
-    /// Not expected to be globally unique.
+    /// A free text natural language name identifying the Implementation Guide.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -11079,38 +11079,38 @@ namespace fhir
     [JsonProperty("package")]
     public ImplementationGuidePackage[] Package { get; set; }
     /// <summary>
-    /// Pages automatically become sections if they have sub-pages. By convention, the home page is called index.html.
+    /// A page / section in the implementation guide. The root page is the implementation guide home page.
     /// </summary>
     [JsonProperty("page")]
     public ImplementationGuidePage Page { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the implementation guide.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
     [JsonProperty("_publisher")]
     public Element _Publisher { get; set; }
     /// <summary>
-    /// The status of the Implementation Guide.
+    /// Allows filtering of Implementation Guides that are appropriate for use vs. not.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// An absolute URL that is used to identify this implementation guide when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this implementation guide is (or will be) published.
+    /// This is required to allow hosting Implementation Guides on multiple different servers, and to allow for the editorial process.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
     [JsonProperty("_url")]
     public Element _Url { get; set; }
     /// <summary>
-    /// The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of implementation guides. The most common use of this element is to represent the country / jurisdiction for which this implementation guide was defined.
+    /// Assist in searching for appropriate implementation guide.
     /// </summary>
     [JsonProperty("useContext")]
     public CodeableConcept[] UseContext { get; set; }
     /// <summary>
-    /// The identifier that is used to identify this version of the Implementation Guide when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the Implementation Guide author manually.
+    /// There may be multiple resource versions of the Implementation Guide that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -11126,23 +11126,23 @@ namespace fhir
     public const string RETIRED = "retired";
   }
   /// <summary>
-  /// If there are no entries in the list, an emptyReason SHOULD be provided.
+  /// Entries in this list.
   /// </summary>
   public class ListEntry : BackboneElement {
     /// <summary>
-    /// This is only useful and meaningful when the mode is "working".
+    /// The date may be significant for understanding the meaning of items in a working list.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// If the flag means that the entry has actually been deleted from the list, the deleted element SHALL be true. Both flag and deleted can only be used if the List.mode is "changes". A deleted entry should be displayed in narrative as deleted.
+    /// The flag element may contain codes that an application processing the list does not understand. However there can be no ambiguity if a list item is actually marked as "deleted".
     /// </summary>
     [JsonProperty("deleted")]
     public bool? Deleted { get; set; }
     /// <summary>
-    /// The flag can only be understood in the context of the List.code. If the flag means that the entry has actually been deleted from the list, the deleted element SHALL be true. Deleted can only be used if the List.mode is "changes".
+    /// This field is present to support various clinical uses of lists, such as a discharge summary medication list, where flags specify whether the medication was added, modified, or deleted from the list.
     /// </summary>
     [JsonProperty("flag")]
     public CodeableConcept Flag { get; set; }
@@ -11160,19 +11160,19 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "List";
     /// <summary>
-    /// If there is no code, the purpose of the list is implied where it is used, such as in a document section using Document.section.code.
+    /// Lists often contain subsets of resources rather than an exhaustive list.  The code identifies what type of subset is included.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// The actual important date is the date of currency of the resources that were summarized, but it is usually assumed that these are current when the preparation occurs.
+    /// Identifies how current the list is which affects relevance.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// The various reasons for an empty list make a significant interpretation to its interpretation. Note that this code is for use when the entire list has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases.
+    /// Allows capturing things like "none exist" or "not asked" which can be important for most lists.
     /// </summary>
     [JsonProperty("emptyReason")]
     public CodeableConcept EmptyReason { get; set; }
@@ -11182,7 +11182,7 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// If there are no entries in the list, an emptyReason SHOULD be provided.
+    /// Entries in this list.
     /// </summary>
     [JsonProperty("entry")]
     public ListEntry[] Entry { get; set; }
@@ -11192,7 +11192,7 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.
+    /// Lists are used in various ways, and it must be known in what way it is safe to use them.
     /// </summary>
     [JsonProperty("mode")]
     public string Mode { get; set; }
@@ -11206,12 +11206,12 @@ namespace fhir
     [JsonProperty("_note")]
     public Element _Note { get; set; }
     /// <summary>
-    /// Applications SHOULD render ordered lists in the order provided, but MAY allow users to re-order based on their own preferences as well. If there is no order specified, the order is unknown, though there may still be some order.
+    /// Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.
     /// </summary>
     [JsonProperty("orderedBy")]
     public CodeableConcept OrderedBy { get; set; }
     /// <summary>
-    /// The primary source is the entity that made the decisions what items are in the list. This may be software or user.
+    /// Allows follow-up as well as context.
     /// </summary>
     [JsonProperty("source")]
     public Reference Source { get; set; }
@@ -11223,12 +11223,12 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Some purely arbitrary lists do not have a common subject, so this is optional.
+    /// The primary purpose of listing the subject explicitly is to help with finding the right list.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// A label for the list assigned by the author.
+    /// Allows customization beyond just the code identifying the kind of list.
     /// </summary>
     [JsonProperty("title")]
     public string Title { get; set; }
@@ -11252,7 +11252,7 @@ namespace fhir
     public const string ENTERED_IN_ERROR = "entered-in-error";
   }
   /// <summary>
-  /// The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
+  /// For mobile applications and automated route-finding knowing the exact location of the Location is required.
   /// </summary>
   public class LocationPosition : BackboneElement {
     /// <summary>
@@ -11285,29 +11285,29 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Location";
     /// <summary>
-    /// This was kept as 0..1 as there is no use property on the address, so wouldn't be able to identify different address types.
+    /// If locations can be visited, we need to keep track of their address.
     /// </summary>
     [JsonProperty("address")]
     public Address Address { get; set; }
     /// <summary>
-    /// Description of the Location, which helps in finding or referencing the place.
+    /// Humans need additional information to verify a correct location has been identified.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// Unique code or number identifying the location to its users.
+    /// Organization label locations in registries, need to keep track of those.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// This can also be used as the part of the organization hierarchy where this location provides services. These services can be defined through the HealthcareService resource.
+    /// Need to know who manages the location.
     /// </summary>
     [JsonProperty("managingOrganization")]
     public Reference ManagingOrganization { get; set; }
     /// <summary>
-    /// Indicates whether a resource instance represents a specific location or a class of locations.
+    /// When using a Location resource for scheduling or orders, we need to be able to refer to a class of Locations instead of a specific Location.
     /// </summary>
     [JsonProperty("mode")]
     public string Mode { get; set; }
@@ -11321,17 +11321,17 @@ namespace fhir
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Another Location which this Location is physically part of.
+    /// For purposes of location, display and identification, knowing which locations are located within other locations is important.
     /// </summary>
     [JsonProperty("partOf")]
     public Reference PartOf { get; set; }
     /// <summary>
-    /// Physical form of the location, e.g. building, room, vehicle, road.
+    /// For purposes of showing relevant locations in queries, we need to categorize locations.
     /// </summary>
     [JsonProperty("physicalType")]
     public CodeableConcept PhysicalType { get; set; }
     /// <summary>
-    /// The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
+    /// For mobile applications and automated route-finding knowing the exact location of the Location is required.
     /// </summary>
     [JsonProperty("position")]
     public LocationPosition Position { get; set; }
@@ -11376,7 +11376,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Media";
     /// <summary>
-    /// Recommended content types: image/jpeg, image/png, image/tiff, video/mpeg, audio/mp4, application/dicom. Application/dicom can contain the transfer syntax as a parameter.  For an media that covers a period of time (video/sound), the content.creationTime is the end time. Creation time is used for tracking, organizing versions and searching.
+    /// The actual content of the media - inline or by direct reference to the media source file.
     /// </summary>
     [JsonProperty("content")]
     public Attachment Content { get; set; }
@@ -11403,7 +11403,7 @@ namespace fhir
     [JsonProperty("height")]
     public uint? Height { get; set; }
     /// <summary>
-    /// The identifier label and use can be used to determine what kind of identifier it is.
+    /// Identifiers associated with the image - these may include identifiers for the image itself, identifiers for the context of its collection (e.g. series ids) and context ids such as accession numbers or other workflow identifiers.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
@@ -11449,7 +11449,7 @@ namespace fhir
     public const string AUDIO = "audio";
   }
   /// <summary>
-  /// The ingredients need not be a complete list; usually only active ingredients are listed.
+  /// Identifies a particular constituent of interest in the product.
   /// </summary>
   public class MedicationProductIngredient : BackboneElement {
     /// <summary>
@@ -11497,7 +11497,7 @@ namespace fhir
     [JsonProperty("form")]
     public CodeableConcept Form { get; set; }
     /// <summary>
-    /// The ingredients need not be a complete list; usually only active ingredients are listed.
+    /// Identifies a particular constituent of interest in the product.
     /// </summary>
     [JsonProperty("ingredient")]
     public MedicationProductIngredient[] Ingredient { get; set; }
@@ -11540,7 +11540,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Medication";
     /// <summary>
-    /// Depending on the context of use, the code that was actually selected by the user (prescriber, dispenser, etc.) should be marked as "primary". Other codes can only be literal translations to alternative code systems, or codes at a lower level of granularity (e.g. a generic code for a vendor-specific primary one).
+    /// A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
@@ -11570,22 +11570,22 @@ namespace fhir
   /// </summary>
   public class MedicationAdministrationDosage : BackboneElement {
     /// <summary>
-    /// One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.
+    /// A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
     /// <summary>
-    /// If the administration is not instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount administered over period of time of a single administration (as indicated by schedule).
+    /// The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.
     /// </summary>
     [JsonProperty("quantity")]
     public Quantity Quantity { get; set; }
     /// <summary>
-    /// If the rate changes over time, and you want to capture this in MedicationAdministration, then each change should be captured as a distinct MedicationAdministration, with a specific MedicationAdministration.dosage.rate, and the date time when the rate change occurred. Typically, the MedicationAdministration.dosage.rate element is not used to convey an average rate.
+    /// Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
     /// </summary>
     [JsonProperty("rateRatio")]
     public Ratio RateRatio { get; set; }
     /// <summary>
-    /// If the rate changes over time, and you want to capture this in MedicationAdministration, then each change should be captured as a distinct MedicationAdministration, with a specific MedicationAdministration.dosage.rate, and the date time when the rate change occurred. Typically, the MedicationAdministration.dosage.rate element is not used to convey an average rate.
+    /// Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
     /// </summary>
     [JsonProperty("rateRange")]
     public Range RateRange { get; set; }
@@ -11652,12 +11652,12 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the administered medication. When the only available information is a text description of the medication, Medication.code.text should be used.
+    /// Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationCodeableConcept")]
     public CodeableConcept MedicationCodeableConcept { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the administered medication. When the only available information is a text description of the medication, Medication.code.text should be used.
+    /// Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
@@ -11717,7 +11717,7 @@ namespace fhir
     public const string STOPPED = "stopped";
   }
   /// <summary>
-  /// When the dose or rate is intended to change over the entire administration period (e.g. Tapering dose prescriptions), multiple instances of dosage instructions will need to be supplied to convey the different doses/rates.
+  /// Indicates how the medication is to be used by the patient.
   /// </summary>
   public class MedicationDispenseDosageInstruction : BackboneElement {
     /// <summary>
@@ -11736,12 +11736,12 @@ namespace fhir
     [JsonProperty("asNeededCodeableConcept")]
     public CodeableConcept AsNeededCodeableConcept { get; set; }
     /// <summary>
-    /// Note that this specifies the quantity of the specified medication, not the quantity of active ingredient(s).  The prescribed strength can be calculated by multiplying the doseQuantity by the strength of each active ingredient in the prescribed Medication. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule.
+    /// The amount of therapeutic or other substance given at one administration event.
     /// </summary>
     [JsonProperty("doseRange")]
     public Range DoseRange { get; set; }
     /// <summary>
-    /// Note that this specifies the quantity of the specified medication, not the quantity of active ingredient(s).  The prescribed strength can be calculated by multiplying the doseQuantity by the strength of each active ingredient in the prescribed Medication. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule.
+    /// The amount of therapeutic or other substance given at one administration event.
     /// </summary>
     [JsonProperty("doseQuantity")]
     public Quantity DoseQuantity { get; set; }
@@ -11751,7 +11751,7 @@ namespace fhir
     [JsonProperty("maxDosePerPeriod")]
     public Ratio MaxDosePerPeriod { get; set; }
     /// <summary>
-    /// This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.  One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.
+    /// A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
@@ -11841,7 +11841,7 @@ namespace fhir
     [JsonProperty("dispenser")]
     public Reference Dispenser { get; set; }
     /// <summary>
-    /// When the dose or rate is intended to change over the entire administration period (e.g. Tapering dose prescriptions), multiple instances of dosage instructions will need to be supplied to convey the different doses/rates.
+    /// Indicates how the medication is to be used by the patient.
     /// </summary>
     [JsonProperty("dosageInstruction")]
     public MedicationDispenseDosageInstruction[] DosageInstruction { get; set; }
@@ -11851,12 +11851,12 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the dispensed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
+    /// Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationCodeableConcept")]
     public CodeableConcept MedicationCodeableConcept { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the dispensed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
+    /// Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
@@ -11868,7 +11868,7 @@ namespace fhir
     [JsonProperty("_note")]
     public Element _Note { get; set; }
     /// <summary>
-    /// SubstanceAdministration->subject->Patient.
+    /// A link to a resource representing the person to whom the medication will be given.
     /// </summary>
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
@@ -11925,7 +11925,7 @@ namespace fhir
     public const string STOPPED = "stopped";
   }
   /// <summary>
-  /// When the dose or rate is intended to change over the entire administration period, e.g. Tapering dose prescriptions, multiple instances of dosage instructions will need to be supplied to convey the different doses/rates. Another common example in institutional settings is 'titration' of an IV medication dose to maintain a specific stated hemodynamic value or range e.g. drug x to be administered to maintain AM (arterial mean) greater than 65.
+  /// Indicates how the medication is to be used by the patient.
   /// </summary>
   public class MedicationOrderDosageInstruction : BackboneElement {
     /// <summary>
@@ -11934,42 +11934,42 @@ namespace fhir
     [JsonProperty("additionalInstructions")]
     public CodeableConcept AdditionalInstructions { get; set; }
     /// <summary>
-    /// Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
+    /// Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).
     /// </summary>
     [JsonProperty("asNeededBoolean")]
     public bool? AsNeededBoolean { get; set; }
     /// <summary>
-    /// Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
+    /// Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).
     /// </summary>
     [JsonProperty("asNeededCodeableConcept")]
     public CodeableConcept AsNeededCodeableConcept { get; set; }
     /// <summary>
-    /// Note that this specifies the quantity of the specified medication, not the quantity for each active ingredient(s). Each ingredient amount can be communicated in the Medication resource. For example, if one wants to communicate that a tablet was 375 mg, where the dose was one tablet, you can use the Medication resource to document that the tablet was comprised of 375 mg of drug XYZ. Alternatively if the dose was 375 mg, then you may only need to use the Medication resource to indicate this was a tablet. If the example were an IV such as dopamine and you wanted to communicate that 400mg of dopamine was mixed in 500 ml of some IV solution, then this would all be communicated in the Medication resource. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule e.g. 500 ml in dose, with timing used to convey that this should be done over 4 hours.
+    /// The amount of therapeutic or other substance given at one administration event.
     /// </summary>
     [JsonProperty("doseRange")]
     public Range DoseRange { get; set; }
     /// <summary>
-    /// Note that this specifies the quantity of the specified medication, not the quantity for each active ingredient(s). Each ingredient amount can be communicated in the Medication resource. For example, if one wants to communicate that a tablet was 375 mg, where the dose was one tablet, you can use the Medication resource to document that the tablet was comprised of 375 mg of drug XYZ. Alternatively if the dose was 375 mg, then you may only need to use the Medication resource to indicate this was a tablet. If the example were an IV such as dopamine and you wanted to communicate that 400mg of dopamine was mixed in 500 ml of some IV solution, then this would all be communicated in the Medication resource. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule e.g. 500 ml in dose, with timing used to convey that this should be done over 4 hours.
+    /// The amount of therapeutic or other substance given at one administration event.
     /// </summary>
     [JsonProperty("doseQuantity")]
     public Quantity DoseQuantity { get; set; }
     /// <summary>
-    /// This is intended for use as an adjunct to the dosage when there is an upper cap.  For example "2 tablets every 4 hours to a maximum of 8/day".
+    /// The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time.  For example, 1000mg in 24 hours.
     /// </summary>
     [JsonProperty("maxDosePerPeriod")]
     public Ratio MaxDosePerPeriod { get; set; }
     /// <summary>
-    /// Terminologies used often pre-coordinate this term with the route and or form of administration.
+    /// A coded value indicating the method by which the medication is introduced into or onto the body. Most commonly used for injections.  For examples, Slow Push; Deep IV.
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
     /// <summary>
-    /// It is possible to supply both a rate and a doseQuantity to provide full details about how the medication is to be administered and supplied. If the rate is intended to change over time, depending on local rules/regulations, each change should be captured as a new version of the MedicationOrder with an updated rate, or captured with a new MedicationOrder with the new rate.
+    /// Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
     /// </summary>
     [JsonProperty("rateRatio")]
     public Ratio RateRatio { get; set; }
     /// <summary>
-    /// It is possible to supply both a rate and a doseQuantity to provide full details about how the medication is to be administered and supplied. If the rate is intended to change over time, depending on local rules/regulations, each change should be captured as a new version of the MedicationOrder with an updated rate, or captured with a new MedicationOrder with the new rate.
+    /// Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
     /// </summary>
     [JsonProperty("rateRange")]
     public Range RateRange { get; set; }
@@ -11996,7 +11996,7 @@ namespace fhir
     [JsonProperty("_text")]
     public Element _Text { get; set; }
     /// <summary>
-    /// This attribute may not always be populated while the DosageInstruction.text is expected to be populated.  If both are populated, then the DosageInstruction.text should reflect the content of the Dosage.timing.
+    /// The timing schedule for giving the medication to the patient. The Schedule data type allows many different expressions. For example: "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
     /// </summary>
     [JsonProperty("timing")]
     public Timing Timing { get; set; }
@@ -12006,22 +12006,22 @@ namespace fhir
   /// </summary>
   public class MedicationOrderDispenseRequest : BackboneElement {
     /// <summary>
-    /// In some situations, this attribute may be used instead of quantity to identify the amount supplied by how long it is expected to last, rather than the physical quantity issued, e.g. 90 days supply of medication (based on an ordered dosage) When possible, it is always better to specify quantity, as this tends to be more precise. expectedSupplyDuration will always be an estimate that can be influenced by external factors.
+    /// Identifies the period time over which the supplied product is expected to be used, or the length of time the dispense is expected to last.
     /// </summary>
     [JsonProperty("expectedSupplyDuration")]
     public Quantity ExpectedSupplyDuration { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.
+    /// Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationCodeableConcept")]
     public CodeableConcept MedicationCodeableConcept { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.
+    /// Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
     /// <summary>
-    /// If displaying "number of authorized refills", subtract 1 from this number.
+    /// An integer indicating the number of additional times (aka refills or repeats) the patient can receive the prescribed medication.   Usage Notes: This integer does NOT include the original order dispense.   This means that if an order indicates dispense 30 tablets plus  "3 repeats", then the order can be dispensed a total of 4 times and the patient can receive a total of 120 tablets.
     /// </summary>
     [JsonProperty("numberOfRepeatsAllowed")]
     public uint? NumberOfRepeatsAllowed { get; set; }
@@ -12031,7 +12031,7 @@ namespace fhir
     [JsonProperty("quantity")]
     public Quantity Quantity { get; set; }
     /// <summary>
-    /// It reflects the prescriber perspective for the validity of the prescription. Dispenses must not be made against the prescription outside of this period. The lower-bound of the Dispensing Window signifies the earliest date that the prescription can be filled for the first time. If an upper-bound is not specified then the Prescription is open-ended or will default to a stale-date based on regulations.
+    /// Indicates when the Prescription becomes valid, and when it ceases to be a dispensable Prescription.
     /// </summary>
     [JsonProperty("validityPeriod")]
     public Period ValidityPeriod { get; set; }
@@ -12078,12 +12078,12 @@ namespace fhir
     [JsonProperty("dispenseRequest")]
     public MedicationOrderDispenseRequest DispenseRequest { get; set; }
     /// <summary>
-    /// When the dose or rate is intended to change over the entire administration period, e.g. Tapering dose prescriptions, multiple instances of dosage instructions will need to be supplied to convey the different doses/rates. Another common example in institutional settings is 'titration' of an IV medication dose to maintain a specific stated hemodynamic value or range e.g. drug x to be administered to maintain AM (arterial mean) greater than 65.
+    /// Indicates how the medication is to be used by the patient.
     /// </summary>
     [JsonProperty("dosageInstruction")]
     public MedicationOrderDosageInstruction[] DosageInstruction { get; set; }
     /// <summary>
-    /// SubstanceAdministration->component->EncounterEvent.
+    /// A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
@@ -12093,12 +12093,12 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the prescribed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
+    /// Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationCodeableConcept")]
     public CodeableConcept MedicationCodeableConcept { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the prescribed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
+    /// Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
@@ -12110,7 +12110,7 @@ namespace fhir
     [JsonProperty("_note")]
     public Element _Note { get; set; }
     /// <summary>
-    /// SubstanceAdministration->subject->Patient.
+    /// A link to a resource representing the person to whom the medication will be given.
     /// </summary>
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
@@ -12183,7 +12183,7 @@ namespace fhir
     [JsonProperty("maxDosePerPeriod")]
     public Ratio MaxDosePerPeriod { get; set; }
     /// <summary>
-    /// One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.
+    /// A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
@@ -12255,14 +12255,14 @@ namespace fhir
     [JsonProperty("dosage")]
     public MedicationStatementDosage[] Dosage { get; set; }
     /// <summary>
-    /// If the medication is still being taken at the time the statement is recorded, the "end" date will be omitted.
+    /// The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).
     /// </summary>
     [JsonProperty("effectiveDateTime")]
     public string EffectiveDateTime { get; set; }
     [JsonProperty("_effectiveDateTime")]
     public Element _EffectiveDateTime { get; set; }
     /// <summary>
-    /// If the medication is still being taken at the time the statement is recorded, the "end" date will be omitted.
+    /// The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).
     /// </summary>
     [JsonProperty("effectivePeriod")]
     public Period EffectivePeriod { get; set; }
@@ -12277,12 +12277,12 @@ namespace fhir
     [JsonProperty("informationSource")]
     public Reference InformationSource { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used.
+    /// Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationCodeableConcept")]
     public CodeableConcept MedicationCodeableConcept { get; set; }
     /// <summary>
-    /// If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used.
+    /// Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
     [JsonProperty("medicationReference")]
     public Reference MedicationReference { get; set; }
@@ -12321,7 +12321,7 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Likely references would be to MedicationOrder, MedicationDispense, Claim, Observation or QuestionnaireAnswers.
+    /// Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports the MedicationStatement.
     /// </summary>
     [JsonProperty("supportingInformation")]
     public Reference[] SupportingInformation { get; set; }
@@ -12345,19 +12345,19 @@ namespace fhir
   /// </summary>
   public class MessageHeaderResponse : BackboneElement {
     /// <summary>
-    /// This is a generic response to the request message. Specific data for the response will be found in MessageHeader.data.
+    /// Allows the sender of the acknowledge message to know if the request was successful or if action is needed.
     /// </summary>
     [JsonProperty("code")]
     public string Code { get; set; }
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// This SHALL be contained in the bundle. If any of the issues are errors, the response code SHALL be an error.
+    /// Allows the sender of the message to determine what the specific issues are.
     /// </summary>
     [JsonProperty("details")]
     public Reference Details { get; set; }
     /// <summary>
-    /// The id of the message that this message is a response to.
+    /// Allows receiver to know what message is being responded to.
     /// </summary>
     [JsonProperty("identifier")]
     public string Identifier { get; set; }
@@ -12373,37 +12373,37 @@ namespace fhir
     public const string FATAL_ERROR = "fatal-error";
   }
   /// <summary>
-  /// The source application from which this message originated.
+  /// Allows replies, supports audit.
   /// </summary>
   public class MessageHeaderSource : BackboneElement {
     /// <summary>
-    /// An e-mail, phone, website or other contact point to use to resolve issues with message communications.
+    /// Allows escalation of technical issues.
     /// </summary>
     [JsonProperty("contact")]
     public ContactPoint Contact { get; set; }
     /// <summary>
-    /// The id may be a non-resolvable URI for systems that do not use standard network-based addresses.
+    /// Identifies where to send responses, may influence security permissions.
     /// </summary>
     [JsonProperty("endpoint")]
     public string Endpoint { get; set; }
     [JsonProperty("_endpoint")]
     public Element _Endpoint { get; set; }
     /// <summary>
-    /// Human-readable name for the source system.
+    /// May be used to support audit.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// May include configuration or other information useful in debugging.
+    /// Supports audit and possibly interface engine behavior.
     /// </summary>
     [JsonProperty("software")]
     public string Software { get; set; }
     [JsonProperty("_software")]
     public Element _Software { get; set; }
     /// <summary>
-    /// Can convey versions of multiple systems in situations where a message passes through multiple hands.
+    /// Supports audit and possibly interface engine behavior.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -12411,25 +12411,25 @@ namespace fhir
     public Element _Version { get; set; }
   }
   /// <summary>
-  /// There SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system.
+  /// Indicates where message is to be sent for routing purposes.  Allows verification of "am I the intended recipient".
   /// </summary>
   public class MessageHeaderDestination : BackboneElement {
     /// <summary>
-    /// The id may be a non-resolvable URI for systems that do not use standard network-based addresses.
+    /// Identifies where to route the message.
     /// </summary>
     [JsonProperty("endpoint")]
     public string Endpoint { get; set; }
     [JsonProperty("_endpoint")]
     public Element _Endpoint { get; set; }
     /// <summary>
-    /// Human-readable name for the target system.
+    /// May be used for routing of response and/or to support audit.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Identifies the target end system in situations where the initial message transmission is to an intermediary system.
+    /// Supports multi-hop routing.
     /// </summary>
     [JsonProperty("target")]
     public Reference Target { get; set; }
@@ -12442,37 +12442,37 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "MessageHeader";
     /// <summary>
-    /// Usually only for the request, but can be used in a response.
+    /// Need to know for audit/traceback requirements and possibly for authorization.
     /// </summary>
     [JsonProperty("author")]
     public Reference Author { get; set; }
     /// <summary>
-    /// The data is defined where the transaction type is defined. The transaction data is always included in the bundle that is the full message.  Only the root resource is specified.  The resources it references should be contained in the bundle but are not also listed here.  Multiple repetitions are allowed to cater for merges and other situations with multiple focal targets.
+    /// Every message event is about actual data, a single resource, that is identified in the definition of the event, and perhaps some or all linked resources.
     /// </summary>
     [JsonProperty("data")]
     public Reference[] Data { get; set; }
     /// <summary>
-    /// There SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system.
+    /// Indicates where message is to be sent for routing purposes.  Allows verification of "am I the intended recipient".
     /// </summary>
     [JsonProperty("destination")]
     public MessageHeaderDestination[] Destination { get; set; }
     /// <summary>
-    /// Usually only for the request, but can be used in a response.
+    /// Need to know for audit/traceback requirements and possibly for authorization.
     /// </summary>
     [JsonProperty("enterer")]
     public Reference Enterer { get; set; }
     /// <summary>
-    /// Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-events".
+    /// Drives the behavior associated with this message.
     /// </summary>
     [JsonProperty("event")]
     public Coding Event { get; set; }
     /// <summary>
-    /// Coded indication of the cause for the event - indicates  a reason for the occurrence of the event that is a focus of this message.
+    /// Need to be able to track why resources are being changed and report in the audit log/history of the resource.  May affect authorization.
     /// </summary>
     [JsonProperty("reason")]
     public CodeableConcept Reason { get; set; }
     /// <summary>
-    /// Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient.
+    /// Allows routing beyond just the application level.
     /// </summary>
     [JsonProperty("receiver")]
     public Reference Receiver { get; set; }
@@ -12482,17 +12482,17 @@ namespace fhir
     [JsonProperty("response")]
     public MessageHeaderResponse Response { get; set; }
     /// <summary>
-    /// Usually only for the request, but can be used in a response.
+    /// Need to know for audit/traceback requirements and possibly for authorization.
     /// </summary>
     [JsonProperty("responsible")]
     public Reference Responsible { get; set; }
     /// <summary>
-    /// The source application from which this message originated.
+    /// Allows replies, supports audit.
     /// </summary>
     [JsonProperty("source")]
     public MessageHeaderSource Source { get; set; }
     /// <summary>
-    /// The time that the message was sent.
+    /// Allows limited detection of out-of-order and delayed transmission.  Also supports audit.
     /// </summary>
     [JsonProperty("timestamp")]
     public string Timestamp { get; set; }
@@ -12500,11 +12500,11 @@ namespace fhir
     public Element _Timestamp { get; set; }
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number (tel:), etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class NamingSystemContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the naming system.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -12517,11 +12517,11 @@ namespace fhir
     public ContactPoint[] Telecom { get; set; }
   }
   /// <summary>
-  /// Multiple identifiers may exist, either due to duplicate registration, regional rules, needs of different communication technologies, etc.
+  /// Indicates how the system may be identified when referenced in electronic exchange.
   /// </summary>
   public class NamingSystemUniqueId : BackboneElement {
     /// <summary>
-    /// Within a registry, a given identifier should only be "active" for a single namespace at a time.  (Ideally, an identifier should only ever be associated with a single namespace across all time).
+    /// Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic.
     /// </summary>
     [JsonProperty("period")]
     public Period Period { get; set; }
@@ -12531,14 +12531,14 @@ namespace fhir
     [JsonProperty("preferred")]
     public bool? Preferred { get; set; }
     /// <summary>
-    /// Different identifier types may be used in different types of communications (OIDs for v3, URIs for FHIR, etc.).  Other includes RUIDs from v3, standard v2 code name strings, etc.
+    /// Identifies the unique identifier scheme used for this particular identifier.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
     [JsonProperty("_type")]
     public Element _Type { get; set; }
     /// <summary>
-    /// If the value is a URI intended for use as FHIR system identifier, the URI should not contain "\" or "?" or "," since this makes escaping very difficult.
+    /// The string that should be sent over the wire to identify the code system or identifier system.
     /// </summary>
     [JsonProperty("value")]
     public string Value { get; set; }
@@ -12562,12 +12562,12 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "NamingSystem";
     /// <summary>
-    /// May be a web site, an email address, a telephone number (tel:), etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public NamingSystemContact[] Contact { get; set; }
     /// <summary>
-    /// Additional specific dates may be added as extensions.
+    /// The date  (and optionally time) when the system was registered or published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the registration changes.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
@@ -12588,14 +12588,14 @@ namespace fhir
     [JsonProperty("_kind")]
     public Element _Kind { get; set; }
     /// <summary>
-    /// The"symbolic name" for an OID would be captured as an extension.
+    /// The descriptive name of this particular identifier type or code system.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the naming system.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
@@ -12607,7 +12607,7 @@ namespace fhir
     [JsonProperty("replacedBy")]
     public Reference ReplacedBy { get; set; }
     /// <summary>
-    /// This is the primary organization.  Responsibility for some aspects of a namespace may be delegated.
+    /// The name of the organization that is responsible for issuing identifiers or codes for this namespace and ensuring their non-collision.
     /// </summary>
     [JsonProperty("responsible")]
     public string Responsible { get; set; }
@@ -12621,12 +12621,12 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// This will most commonly be used for identifier namespaces, but categories could potentially be useful for code systems and authorities as well.
+    /// Categorizes a naming system for easier search by grouping related naming systems.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
     /// <summary>
-    /// Multiple identifiers may exist, either due to duplicate registration, regional rules, needs of different communication technologies, etc.
+    /// Indicates how the system may be identified when referenced in electronic exchange.
     /// </summary>
     [JsonProperty("uniqueId")]
     public NamingSystemUniqueId[] UniqueId { get; set; }
@@ -12638,7 +12638,7 @@ namespace fhir
     [JsonProperty("_usage")]
     public Element _Usage { get; set; }
     /// <summary>
-    /// The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of naming systems.
+    /// Assist in searching for appropriate content.
     /// </summary>
     [JsonProperty("useContext")]
     public CodeableConcept[] UseContext { get; set; }
@@ -12679,12 +12679,12 @@ namespace fhir
   /// </summary>
   public class NutritionOrderOralDietTexture : BackboneElement {
     /// <summary>
-    /// Coupled with the textureModifier; could be (All Foods).
+    /// The food type(s) (e.g. meats, all foods)  that the texture modification applies to.  This could be all foods types.
     /// </summary>
     [JsonProperty("foodType")]
     public CodeableConcept FoodType { get; set; }
     /// <summary>
-    /// Coupled with the foodType (Meat).
+    /// Any texture modifications (for solid foods) that should be made, e.g. easy to chew, chopped, ground, and pureed.
     /// </summary>
     [JsonProperty("modifier")]
     public CodeableConcept Modifier { get; set; }
@@ -12699,7 +12699,7 @@ namespace fhir
     [JsonProperty("fluidConsistencyType")]
     public CodeableConcept[] FluidConsistencyType { get; set; }
     /// <summary>
-    /// Free text dosage instructions can be used for cases where the instructions are too complex to code.
+    /// Free text or additional instructions or information pertaining to the oral diet.
     /// </summary>
     [JsonProperty("instruction")]
     public string Instruction { get; set; }
@@ -12731,7 +12731,7 @@ namespace fhir
   /// </summary>
   public class NutritionOrderSupplement : BackboneElement {
     /// <summary>
-    /// Free text dosage instructions can be used for cases where the instructions are too complex to code.
+    /// Free text or additional instructions or information pertaining to the oral supplement.
     /// </summary>
     [JsonProperty("instruction")]
     public string Instruction { get; set; }
@@ -12761,7 +12761,7 @@ namespace fhir
     public CodeableConcept Type { get; set; }
   }
   /// <summary>
-  /// See implementation notes below for further discussion on how to order continuous vs bolus enteral feeding using this resource.
+  /// Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
   /// </summary>
   public class NutritionOrderEnteralFormulaAdministration : BackboneElement {
     /// <summary>
@@ -12770,12 +12770,12 @@ namespace fhir
     [JsonProperty("quantity")]
     public Quantity Quantity { get; set; }
     /// <summary>
-    /// Ratio is used when the quantity value in the denominator is not "1", otherwise use Quantity. For example, the Ratio datatype is used for "200 mL/4 hrs" versus the Quantity datatype for "50 mL/hr".
+    /// The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule.
     /// </summary>
     [JsonProperty("rateQuantity")]
     public Quantity RateQuantity { get; set; }
     /// <summary>
-    /// Ratio is used when the quantity value in the denominator is not "1", otherwise use Quantity. For example, the Ratio datatype is used for "200 mL/4 hrs" versus the Quantity datatype for "50 mL/hr".
+    /// The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule.
     /// </summary>
     [JsonProperty("rateRatio")]
     public Ratio RateRatio { get; set; }
@@ -12802,12 +12802,12 @@ namespace fhir
     [JsonProperty("additiveType")]
     public CodeableConcept AdditiveType { get; set; }
     /// <summary>
-    /// See implementation notes below for further discussion on how to order continuous vs bolus enteral feeding using this resource.
+    /// Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
     /// </summary>
     [JsonProperty("administration")]
     public NutritionOrderEnteralFormulaAdministration[] Administration { get; set; }
     /// <summary>
-    /// Free text dosage instructions can be used for cases where the instructions are too complex to code.
+    /// Free text formula administration, feeding instructions or additional instructions or information.
     /// </summary>
     [JsonProperty("administrationInstruction")]
     public string AdministrationInstruction { get; set; }
@@ -12849,7 +12849,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "NutritionOrder";
     /// <summary>
-    /// Information on a patient's food allergies and intolerances, inform healthcare personnel about the type of foods that the patient should receive or consume.
+    /// A link to a record of allergies or intolerances  which should be included in the nutrition order.
     /// </summary>
     [JsonProperty("allergyIntolerance")]
     public Reference[] AllergyIntolerance { get; set; }
@@ -12871,12 +12871,12 @@ namespace fhir
     [JsonProperty("enteralFormula")]
     public NutritionOrderEnteralFormula EnteralFormula { get; set; }
     /// <summary>
-    /// Information on a patient's food allergies and intolerances, and preferences inform healthcare personnel about the type  of foods that the patient should receive or consume.
+    /// This modifier is used to convey order-specific modifiers about the type of food that should NOT be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free.  While it should not be necessary to repeat allergy or intolerance information captured in the referenced allergyIntolerance resource in the excludeFoodModifier, this element may be used to convey additional specificity related to foods that should be eliminated from the patient’s diet for any reason.  This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
     /// </summary>
     [JsonProperty("excludeFoodModifier")]
     public CodeableConcept[] ExcludeFoodModifier { get; set; }
     /// <summary>
-    /// Information on a patient's food preferences that inform healthcare personnel about the food that the patient should receive or consume.
+    /// This modifier is used to convey order-specific modifiers about the type of food that should be given. These can be derived from patient allergies, intolerances, or preferences such as Halal, Vegan or Kosher. This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
     /// </summary>
     [JsonProperty("foodPreferenceModifier")]
     public CodeableConcept[] FoodPreferenceModifier { get; set; }
@@ -12901,7 +12901,7 @@ namespace fhir
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
     /// <summary>
-    /// Typically the system placing the order sets the status to "requested". Thereafter, the order is maintained by the receiver that updates the status as the request is handled.
+    /// The workflow status of the nutrition order/request.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -12927,11 +12927,11 @@ namespace fhir
     public const string CANCELLED = "cancelled";
   }
   /// <summary>
-  /// Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
+  /// Knowing what values are considered "normal" can help evaluate the significance of a particular result. Need to be able to provide multiple reference ranges for different contexts.
   /// </summary>
   public class ObservationReferenceRange : BackboneElement {
     /// <summary>
-    /// The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.
+    /// Some analytes vary greatly over age.
     /// </summary>
     [JsonProperty("age")]
     public Range Age { get; set; }
@@ -12946,7 +12946,7 @@ namespace fhir
     [JsonProperty("low")]
     public Quantity Low { get; set; }
     /// <summary>
-    /// This SHOULD be populated if there is more than one range.
+    /// Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. age, hormonal cycles, etc.).
     /// </summary>
     [JsonProperty("meaning")]
     public CodeableConcept Meaning { get; set; }
@@ -12959,7 +12959,7 @@ namespace fhir
     public Element _Text { get; set; }
   }
   /// <summary>
-  /// For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
+  /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and a set of related observations or sometimes QuestionnaireResponse  from which the measure is derived.
   /// </summary>
   public class ObservationRelated : BackboneElement {
     /// <summary>
@@ -12968,7 +12968,7 @@ namespace fhir
     [JsonProperty("target")]
     public Reference Target { get; set; }
     /// <summary>
-    /// "derived-from" is only logical choice when referencing QuestionnaireAnswer resource.
+    /// A relationship type SHOULD be provided.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -12987,77 +12987,77 @@ namespace fhir
     public const string INTERFERED_BY = "interfered-by";
   }
   /// <summary>
-  /// For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
+  /// Component observations share the same attributes in the Observation resource as the primary observation and are always treated a part of a single observation (they are not separable).   However, the reference range for the primary observation value is not inherited by the component values and is required when appropriate for each component observation.
   /// </summary>
   public class ObservationComponent : BackboneElement {
     /// <summary>
-    /// Describes what was observed. Sometimes this is called the observation "code".
+    /// Knowing what kind of observation is being made is essential to understanding the observation.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// "Null" or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  "detected", "not detected", "inconclusive", or  "test not done".   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code "error" could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.
+    /// For many results it is necessary to handle exceptional values in measurements.
     /// </summary>
     [JsonProperty("dataAbsentReason")]
     public CodeableConcept DataAbsentReason { get; set; }
     /// <summary>
-    /// Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
+    /// Knowing what values are considered "normal" can help evaluate the significance of a particular result. Need to be able to provide multiple reference ranges for different contexts.
     /// </summary>
     [JsonProperty("referenceRange")]
     public ObservationReferenceRange[] ReferenceRange { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueQuantity")]
     public Quantity ValueQuantity { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueCodeableConcept")]
     public CodeableConcept ValueCodeableConcept { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueString")]
     public string ValueString { get; set; }
     [JsonProperty("_valueString")]
     public Element _ValueString { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueRange")]
     public Range ValueRange { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueRatio")]
     public Ratio ValueRatio { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueSampledData")]
     public SampledData ValueSampledData { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueAttachment")]
     public Attachment ValueAttachment { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueTime")]
     public string ValueTime { get; set; }
     [JsonProperty("_valueTime")]
     public Element _ValueTime { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueDateTime")]
     public string ValueDateTime { get; set; }
     [JsonProperty("_valueDateTime")]
     public Element _ValueDateTime { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valuePeriod")]
     public Period ValuePeriod { get; set; }
@@ -13070,166 +13070,166 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Observation";
     /// <summary>
-    /// Only used if not implicit in code found in Observation.code.  If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately) then use the standard extension[ body-site-instance](extension-body-site-instance.html).
+    /// Knowing where the observation is made is important for tracking if multiple sites are possible.
     /// </summary>
     [JsonProperty("bodySite")]
     public CodeableConcept BodySite { get; set; }
     /// <summary>
-    /// The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Observation.code.
+    /// A code that classifies the general type of observation being made.  This is used  for searching, sorting and display purposes.
     /// </summary>
     [JsonProperty("category")]
     public CodeableConcept Category { get; set; }
     /// <summary>
-    /// Describes what was observed. Sometimes this is called the observation "name".
+    /// Knowing what kind of observation is being made is essential to understanding the observation.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// May include statements about significant, unexpected or unreliable values, or information about the source of the value where this may be relevant to the interpretation of the result.
+    /// Need to be able to provide free text additional information.
     /// </summary>
     [JsonProperty("comments")]
     public string Comments { get; set; }
     [JsonProperty("_comments")]
     public Element _Comments { get; set; }
     /// <summary>
-    /// For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
+    /// Component observations share the same attributes in the Observation resource as the primary observation and are always treated a part of a single observation (they are not separable).   However, the reference range for the primary observation value is not inherited by the component values and is required when appropriate for each component observation.
     /// </summary>
     [JsonProperty("component")]
     public ObservationComponent[] Component { get; set; }
     /// <summary>
-    /// Null or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  "detected", "not detected", "inconclusive", or  "specimen unsatisfactory".   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code "error" could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.
+    /// For many results it is necessary to handle exceptional values in measurements.
     /// </summary>
     [JsonProperty("dataAbsentReason")]
     public CodeableConcept DataAbsentReason { get; set; }
     /// <summary>
-    /// An extension should be used if further typing of the device is needed.  Devices used to support obtaining an observation can be represented using either extension or through the Observation.related element.
+    /// The device used to generate the observation data.
     /// </summary>
     [JsonProperty("device")]
     public Reference Device { get; set; }
     /// <summary>
-    /// At least a date should be present unless this observation is a historical report.
+    /// Knowing when an observation was deemed true is important to its relevance as well as determining trends.
     /// </summary>
     [JsonProperty("effectiveDateTime")]
     public string EffectiveDateTime { get; set; }
     [JsonProperty("_effectiveDateTime")]
     public Element _EffectiveDateTime { get; set; }
     /// <summary>
-    /// At least a date should be present unless this observation is a historical report.
+    /// Knowing when an observation was deemed true is important to its relevance as well as determining trends.
     /// </summary>
     [JsonProperty("effectivePeriod")]
     public Period EffectivePeriod { get; set; }
     /// <summary>
-    /// The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made.
+    /// For some observations it may be important to know the link between an observation and a particular encounter.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// A unique identifier for the simple observation instance.
+    /// Allows observations to be distinguished and referenced.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// The assessment made based on the result of the observation.  Intended as a simple compact code often placed adjacent to the result value in reports and flow sheets to signal the meaning/normalcy status of the result. Otherwise known as abnormal flag.
+    /// For some results, particularly numeric results, an interpretation is necessary to fully understand the significance of a result.
     /// </summary>
     [JsonProperty("interpretation")]
     public CodeableConcept Interpretation { get; set; }
     /// <summary>
-    /// Updated when the result is updated.
+    /// The date and time this observation was made available to providers, typically after the results have been reviewed and verified.
     /// </summary>
     [JsonProperty("issued")]
     public string Issued { get; set; }
     [JsonProperty("_issued")]
     public Element _Issued { get; set; }
     /// <summary>
-    /// Only used if not implicit in code for Observation.code.
+    /// In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
     /// <summary>
-    /// Who was responsible for asserting the observed value as "true".
+    /// May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.
     /// </summary>
     [JsonProperty("performer")]
     public Reference[] Performer { get; set; }
     /// <summary>
-    /// Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
+    /// Knowing what values are considered "normal" can help evaluate the significance of a particular result. Need to be able to provide multiple reference ranges for different contexts.
     /// </summary>
     [JsonProperty("referenceRange")]
     public ObservationReferenceRange[] ReferenceRange { get; set; }
     /// <summary>
-    /// For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
+    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and a set of related observations or sometimes QuestionnaireResponse  from which the measure is derived.
     /// </summary>
     [JsonProperty("related")]
     public ObservationRelated[] Related { get; set; }
     /// <summary>
-    /// Observations are not made on specimens themselves; they are made on a subject, but usually by the means of a specimen. Note that although specimens are often involved, they are not always tracked and reported explicitly. Also note that observation resources may be used in contexts that track the specimen explicitly (e.g. Diagnostic Report).
+    /// The specimen that was used when this observation was made.
     /// </summary>
     [JsonProperty("specimen")]
     public Reference Specimen { get; set; }
     /// <summary>
-    /// The status of the result value.
+    /// Need to track the status of individual results. Some results are finalized before the whole report is finalized.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// One would expect this element to be a cardinality  of 1..1.  The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.  If the target of the observation is different than the subject, the general extension [observation-focal-subject](extension-observation-focal-subject.html).  may be used.  However, the distinction between the patient's own value for an observation versus that of the fetus, or the donor or blood product unit, etc., are often specified in the observation code.
+    /// Observations have no value if you don't know who or what they're about.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueQuantity")]
     public Quantity ValueQuantity { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueCodeableConcept")]
     public CodeableConcept ValueCodeableConcept { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueString")]
     public string ValueString { get; set; }
     [JsonProperty("_valueString")]
     public Element _ValueString { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueRange")]
     public Range ValueRange { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueRatio")]
     public Ratio ValueRatio { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueSampledData")]
     public SampledData ValueSampledData { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueAttachment")]
     public Attachment ValueAttachment { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueTime")]
     public string ValueTime { get; set; }
     [JsonProperty("_valueTime")]
     public Element _ValueTime { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valueDateTime")]
     public string ValueDateTime { get; set; }
     [JsonProperty("_valueDateTime")]
     public Element _ValueDateTime { get; set; }
     /// <summary>
-    /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
+    /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
     [JsonProperty("valuePeriod")]
     public Period ValuePeriod { get; set; }
@@ -13244,11 +13244,11 @@ namespace fhir
     public const string AMENDED = "amended";
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number (tel:), etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class OperationDefinitionContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the operation definition.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -13265,21 +13265,21 @@ namespace fhir
   /// </summary>
   public class OperationDefinitionParameterBinding : BackboneElement {
     /// <summary>
-    /// For further discussion, see [[[Using Terminologies]]].
+    /// Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
     /// </summary>
     [JsonProperty("strength")]
     public string Strength { get; set; }
     [JsonProperty("_strength")]
     public Element _Strength { get; set; }
     /// <summary>
-    /// For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not.
+    /// Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
     /// </summary>
     [JsonProperty("valueSetUri")]
     public string ValueSetUri { get; set; }
     [JsonProperty("_valueSetUri")]
     public Element _ValueSetUri { get; set; }
     /// <summary>
-    /// For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not.
+    /// Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
     /// </summary>
     [JsonProperty("valueSetReference")]
     public Reference ValueSetReference { get; set; }
@@ -13294,7 +13294,7 @@ namespace fhir
     public const string EXAMPLE = "example";
   }
   /// <summary>
-  /// Query Definitions only have one output parameter, named "result". This may not be described, but can be to allow a profile to be defined.
+  /// The parameters for the operation/query.
   /// </summary>
   public class OperationDefinitionParameter : BackboneElement {
     /// <summary>
@@ -13322,14 +13322,14 @@ namespace fhir
     [JsonProperty("min")]
     public int Min { get; set; }
     /// <summary>
-    /// This name must be a token (start with a letter in a..z, and only contain letters, numerals, and underscore.
+    /// The name of used to identify the parameter.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Query Definitions only have one output parameter, named "result". This may not be described, but can be to allow a profile to be defined.
+    /// The parts of a Tuple Parameter.
     /// </summary>
     [JsonProperty("part")]
     public OperationDefinitionParameter[] Part { get; set; }
@@ -13339,14 +13339,14 @@ namespace fhir
     [JsonProperty("profile")]
     public Reference Profile { get; set; }
     /// <summary>
-    /// if there is no stated parameter, then the parameter is a "Tuple" type and must have at least one part defined.
+    /// The type for this parameter.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
     [JsonProperty("_type")]
     public Element _Type { get; set; }
     /// <summary>
-    /// If a parameter name is used for both an input and an output parameter, the parameter should be defined twice.
+    /// Whether this is an input or an output parameter.
     /// </summary>
     [JsonProperty("use")]
     public string Use { get; set; }
@@ -13368,7 +13368,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "OperationDefinition";
     /// <summary>
-    /// A constrained profile can make optional parameters required or not used and clarify documentation.
+    /// Indicates that this operation definition is a constraining profile on the base.
     /// </summary>
     [JsonProperty("base")]
     public Reference Base { get; set; }
@@ -13380,26 +13380,26 @@ namespace fhir
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// May be a web site, an email address, a telephone number (tel:), etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public OperationDefinitionContact[] Contact { get; set; }
     /// <summary>
-    /// Additional specific dates may be added as extensions.
+    /// The date this version of the operation definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the Operation Definition changes.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// This field can be used for things such as why the profile was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the profile as conveyed in Profile.text. This item SHOULD be populated unless the information is available from context.
+    /// A free text natural language description of the profile and its use.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// This profile was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /// Allows filtering of profiles that are appropriate for use vs. not.
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
@@ -13414,14 +13414,14 @@ namespace fhir
     [JsonProperty("instance")]
     public bool Instance { get; set; }
     /// <summary>
-    /// Named queries are invoked differently, and have different capabilities.
+    /// Whether this is an operation or a named query.
     /// </summary>
     [JsonProperty("kind")]
     public string Kind { get; set; }
     [JsonProperty("_kind")]
     public Element _Kind { get; set; }
     /// <summary>
-    /// Not expected to be globally unique.
+    /// A free text natural language name identifying the operation.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -13435,26 +13435,26 @@ namespace fhir
     [JsonProperty("_notes")]
     public Element _Notes { get; set; }
     /// <summary>
-    /// Query Definitions only have one output parameter, named "result". This may not be described, but can be to allow a profile to be defined.
+    /// The parameters for the operation/query.
     /// </summary>
     [JsonProperty("parameter")]
     public OperationDefinitionParameter[] Parameter { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the operation definition.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
     [JsonProperty("_publisher")]
     public Element _Publisher { get; set; }
     /// <summary>
-    /// This element does not describe the usage of the operation definition (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
+    /// Explains why this operation definition is needed and why it's been constrained as it has.
     /// </summary>
     [JsonProperty("requirements")]
     public string Requirements { get; set; }
     [JsonProperty("_requirements")]
     public Element _Requirements { get; set; }
     /// <summary>
-    /// The status of the profile.
+    /// Allows filtering of profiles that are appropriate for use vs. not.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -13473,14 +13473,14 @@ namespace fhir
     [JsonProperty("_type")]
     public Element[] _Type { get; set; }
     /// <summary>
-    /// Can be a urn:uuid: or a urn:oid:.
+    /// An absolute URL that is used to identify this operation definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this operation definition is (or will be) published.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
     [JsonProperty("_url")]
     public Element _Url { get; set; }
     /// <summary>
-    /// The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
+    /// There may be multiple resource versions of the profile that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -13507,33 +13507,33 @@ namespace fhir
   /// </summary>
   public class OperationOutcomeIssue : BackboneElement {
     /// <summary>
-    /// Describes the type of the issue. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide its own code for the error in the details element.
+    /// Expresses the issue in a human and computer-friendly way, allowing the requesting system to behave differently based on the type of issue.
     /// </summary>
     [JsonProperty("code")]
     public string Code { get; set; }
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// A human readable description of the error issue SHOULD be placed in details.text.
+    /// Additional details about the error. This may be a text description of the error, or a system code that identifies the error.
     /// </summary>
     [JsonProperty("details")]
     public CodeableConcept Details { get; set; }
     /// <summary>
-    /// Typically this field is used to provide troubleshooting information about the error.
+    /// Additional diagnostic information about the issue.  Typically, this may be a description of how a value is erroneous, or a stack dump to help trace the issue.
     /// </summary>
     [JsonProperty("diagnostics")]
     public string Diagnostics { get; set; }
     [JsonProperty("_diagnostics")]
     public Element _Diagnostics { get; set; }
     /// <summary>
-    /// The root of the XPath is the resource or bundle that generated OperationOutcome.  Each XPath SHALL resolve to a single node.  The XPath syntax is used whether the referenced instance is expressed in XML or JSON.
+    /// Allows systems to highlight or otherwise guide users to elements implicated in issues to allow them to be fixed more easily.
     /// </summary>
     [JsonProperty("location")]
     public string[] Location { get; set; }
     [JsonProperty("_location")]
     public Element[] _Location { get; set; }
     /// <summary>
-    /// This is labeled as "Is Modifier" because applications should not confuse hints and warnings with errors.
+    /// Indicates how relevant the issue is to the overall success of the action.
     /// </summary>
     [JsonProperty("severity")]
     public string Severity { get; set; }
@@ -13567,7 +13567,7 @@ namespace fhir
   /// </summary>
   public class OrderWhen : BackboneElement {
     /// <summary>
-    /// This is usually a local code agreed in the context of the ordering workflow.
+    /// Code specifies when request should be done. The code may simply be a priority code.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
@@ -13617,7 +13617,7 @@ namespace fhir
     [JsonProperty("source")]
     public Reference Source { get; set; }
     /// <summary>
-    /// May be left blank if the request reference identifies the patient, or if the request is not associated with a patient.
+    /// Patient this order is about.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
@@ -13696,26 +13696,26 @@ namespace fhir
     public const string COMPLETED = "completed";
   }
   /// <summary>
-  /// Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.
+  /// Need to keep track of assigned contact points within bigger organization.
   /// </summary>
   public class OrganizationContact : BackboneElement {
     /// <summary>
-    /// Visiting or postal addresses for the contact.
+    /// May need to keep track of a contact party's address for contacting, billing or reporting requirements.
     /// </summary>
     [JsonProperty("address")]
     public Address Address { get; set; }
     /// <summary>
-    /// A name associated with the contact.
+    /// Need to be able to track the person by name.
     /// </summary>
     [JsonProperty("name")]
     public HumanName Name { get; set; }
     /// <summary>
-    /// Indicates a purpose for which the contact can be reached.
+    /// Need to distinguish between multiple contact persons.
     /// </summary>
     [JsonProperty("purpose")]
     public CodeableConcept Purpose { get; set; }
     /// <summary>
-    /// A contact detail (e.g. a telephone number or an email address) by which the party may be contacted.
+    /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
@@ -13728,44 +13728,44 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Organization";
     /// <summary>
-    /// Default is true.
+    /// Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI.
     /// </summary>
     [JsonProperty("active")]
     public bool? Active { get; set; }
     /// <summary>
-    /// Organization may have multiple addresses with different uses or applicable periods. The use code home is not to be used.
+    /// May need to keep track of the organization's addresses for contacting, billing or reporting requirements.
     /// </summary>
     [JsonProperty("address")]
     public Address[] Address { get; set; }
     /// <summary>
-    /// Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.
+    /// Need to keep track of assigned contact points within bigger organization.
     /// </summary>
     [JsonProperty("contact")]
     public OrganizationContact[] Contact { get; set; }
     /// <summary>
-    /// Identifier for the organization that is used to identify the organization across multiple disparate systems.
+    /// Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// A name associated with the organization.
+    /// Need to use the name as the label of the organization.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// The organization of which this organization forms a part.
+    /// Need to be able to track the hierarchy of organizations within an organization.
     /// </summary>
     [JsonProperty("partOf")]
     public Reference PartOf { get; set; }
     /// <summary>
-    /// The use code home is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself.
+    /// Human contact for the organization.
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
     /// <summary>
-    /// Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes.
+    /// Need to be able to track the kind of organization that this is - different organization types have different uses.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
@@ -13782,7 +13782,7 @@ namespace fhir
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Only one level of Tuples is allowed.
+    /// A named part of a parameter. In many implementation context, a set of named parts is known as a "Tuple".
     /// </summary>
     [JsonProperty("part")]
     public OperationDefinitionParameter[] Part { get; set; }
@@ -13995,28 +13995,28 @@ namespace fhir
     public ParametersParameter[] Parameter { get; set; }
   }
   /// <summary>
-  /// Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact.
+  /// Need to track people you can contact about the patient.
   /// </summary>
   public class PatientContact : BackboneElement {
     /// <summary>
-    /// Address for the contact person.
+    /// Need to keep track where the contact person can be contacted per postal mail or visited.
     /// </summary>
     [JsonProperty("address")]
     public Address Address { get; set; }
     /// <summary>
-    /// Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.
+    /// Needed to address the person correctly.
     /// </summary>
     [JsonProperty("gender")]
     public string Gender { get; set; }
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// A name associated with the contact person.
+    /// Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that contact person.
     /// </summary>
     [JsonProperty("name")]
     public HumanName Name { get; set; }
     /// <summary>
-    /// Organization on behalf of which the contact is acting or for which the contact is working.
+    /// For guardians or business related contacts, the organization is relevant.
     /// </summary>
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
@@ -14026,12 +14026,12 @@ namespace fhir
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// The nature of the relationship between the patient and the contact person.
+    /// Used to determine which contact person is the most relevant to approach, depending on circumstances.
     /// </summary>
     [JsonProperty("relationship")]
     public CodeableConcept[] Relationship { get; set; }
     /// <summary>
-    /// Contact may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
+    /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
@@ -14046,42 +14046,42 @@ namespace fhir
     public const string UNKNOWN = "unknown";
   }
   /// <summary>
-  /// The animal element is labeled "Is Modifier" since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal).
+  /// Many clinical systems are extended to care for animal patients as well as human.
   /// </summary>
   public class PatientAnimal : BackboneElement {
     /// <summary>
-    /// Breed MAY be used to provide further taxonomic or non-taxonomic classification.  It may involve local or proprietary designation--such as commercial strain--and/or additional information such as production type.
+    /// May need to know the specific kind within the species.
     /// </summary>
     [JsonProperty("breed")]
     public CodeableConcept Breed { get; set; }
     /// <summary>
-    /// Indicates the current state of the animal's reproductive organs.
+    /// Gender status can affect housing and animal behavior.
     /// </summary>
     [JsonProperty("genderStatus")]
     public CodeableConcept GenderStatus { get; set; }
     /// <summary>
-    /// If the patient is non-human, at least a species SHALL be specified. Species SHALL be a widely recognised taxonomic classification.  It may or may not be Linnaean taxonomy and may or may not be at the level of species. If the level is finer than species--such as a breed code--the code system used SHALL allow inference of the species.  (The common example is that the word "Hereford" does not allow inference of the species Bos taurus, because there is a Hereford pig breed, but the SNOMED CT code for "Hereford Cattle Breed" does.).
+    /// Need to know what kind of animal.
     /// </summary>
     [JsonProperty("species")]
     public CodeableConcept Species { get; set; }
   }
   /// <summary>
-  /// If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes then you need multiple Patient.Communication associations.   For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required.
+  /// If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest.
   /// </summary>
   public class PatientCommunication : BackboneElement {
     /// <summary>
-    /// The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
+    /// Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect.
     /// </summary>
     [JsonProperty("language")]
     public CodeableConcept Language { get; set; }
     /// <summary>
-    /// This language is specifically identified for communicating healthcare information.
+    /// People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fall back method.
     /// </summary>
     [JsonProperty("preferred")]
     public bool? Preferred { get; set; }
   }
   /// <summary>
-  /// There is no assumption that linked patient records have mutual links.
+  /// There are multiple usecases:   * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers.
   /// </summary>
   public class PatientLink : BackboneElement {
     /// <summary>
@@ -14113,103 +14113,103 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Patient";
     /// <summary>
-    /// Default is true. If a record is inactive, and linked to an active record, then future patient/record updates should occur on the other patient.
+    /// Need to be able to mark a patient record as not to be used because it was created in error.
     /// </summary>
     [JsonProperty("active")]
     public bool? Active { get; set; }
     /// <summary>
-    /// Patient may have multiple addresses with different uses or applicable periods.
+    /// May need to keep track of patient addresses for contacting, billing or reporting requirements and also to help with identification.
     /// </summary>
     [JsonProperty("address")]
     public Address[] Address { get; set; }
     /// <summary>
-    /// The animal element is labeled "Is Modifier" since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal).
+    /// Many clinical systems are extended to care for animal patients as well as human.
     /// </summary>
     [JsonProperty("animal")]
     public PatientAnimal Animal { get; set; }
     /// <summary>
-    /// At least an estimated year should be provided as a guess if the real DOB is unknown  There is a standard extension "patient-birthTime" available that should be used where Time is required (such as in maternaty/infant care systems).
+    /// Age of the individual drives many clinical processes.
     /// </summary>
     [JsonProperty("birthDate")]
     public string BirthDate { get; set; }
     [JsonProperty("_birthDate")]
     public Element _BirthDate { get; set; }
     /// <summary>
-    /// This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.  This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources.
+    /// Patient's nominated care provider.
     /// </summary>
     [JsonProperty("careProvider")]
     public Reference[] CareProvider { get; set; }
     /// <summary>
-    /// If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes then you need multiple Patient.Communication associations.   For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required.
+    /// If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest.
     /// </summary>
     [JsonProperty("communication")]
     public PatientCommunication[] Communication { get; set; }
     /// <summary>
-    /// Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact.
+    /// Need to track people you can contact about the patient.
     /// </summary>
     [JsonProperty("contact")]
     public PatientContact[] Contact { get; set; }
     /// <summary>
-    /// If there's no value in the instance it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
+    /// The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive.
     /// </summary>
     [JsonProperty("deceasedBoolean")]
     public bool? DeceasedBoolean { get; set; }
     /// <summary>
-    /// If there's no value in the instance it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
+    /// The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive.
     /// </summary>
     [JsonProperty("deceasedDateTime")]
     public string DeceasedDateTime { get; set; }
     [JsonProperty("_deceasedDateTime")]
     public Element _DeceasedDateTime { get; set; }
     /// <summary>
-    /// The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F.  Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific gender aspect of interest (anatomical, chromosonal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosonal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overrideable error, not a "hard" error.
+    /// Needed for identification of the individual, in combination with (at least) name and birth date. Gender of individual drives many clinical processes.
     /// </summary>
     [JsonProperty("gender")]
     public string Gender { get; set; }
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// An identifier for this patient.
+    /// Patients are almost always assigned specific numerical identifiers.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// There is no assumption that linked patient records have mutual links.
+    /// There are multiple usecases:   * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers.
     /// </summary>
     [JsonProperty("link")]
     public PatientLink[] Link { get; set; }
     /// <summary>
-    /// There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association).
+    /// Need to know who recognizes this patient record, manages and updates it.
     /// </summary>
     [JsonProperty("managingOrganization")]
     public Reference ManagingOrganization { get; set; }
     /// <summary>
-    /// This field contains a patient's most recent marital (civil) status.
+    /// Most, if not all systems capture it.
     /// </summary>
     [JsonProperty("maritalStatus")]
     public CodeableConcept MaritalStatus { get; set; }
     /// <summary>
-    /// Indicates whether the patient is part of a multiple or indicates the actual birth order.
+    /// For disambiguation of multiple-birth children, especially relevant where the care provider doesn't meet the patient, such as labs.
     /// </summary>
     [JsonProperty("multipleBirthBoolean")]
     public bool? MultipleBirthBoolean { get; set; }
     /// <summary>
-    /// Indicates whether the patient is part of a multiple or indicates the actual birth order.
+    /// For disambiguation of multiple-birth children, especially relevant where the care provider doesn't meet the patient, such as labs.
     /// </summary>
     [JsonProperty("multipleBirthInteger")]
     public int? MultipleBirthInteger { get; set; }
     /// <summary>
-    /// A patient may have multiple names with different uses or applicable periods. For animals, the name is a "HumanName" in the sense that is assigned and used by humans and has the same patterns.
+    /// Need to be able to track the patient by multiple names. Examples are your official name and a partner name.
     /// </summary>
     [JsonProperty("name")]
     public HumanName[] Name { get; set; }
     /// <summary>
-    /// Image of the patient.
+    /// Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too.
     /// </summary>
     [JsonProperty("photo")]
     public Attachment[] Photo { get; set; }
     /// <summary>
-    /// A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner's phone).
+    /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
@@ -14248,7 +14248,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -14389,7 +14389,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -14472,31 +14472,31 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Person";
     /// <summary>
-    /// Whether this person's record is in active use.
+    /// Need to be able to mark a person record as not to be used because it was created in error.
     /// </summary>
     [JsonProperty("active")]
     public bool? Active { get; set; }
     /// <summary>
-    /// Person may have multiple addresses with different uses or applicable periods.
+    /// May need to keep track of person's addresses for contacting, billing or reporting requirements and also to help with identification.
     /// </summary>
     [JsonProperty("address")]
     public Address[] Address { get; set; }
     /// <summary>
-    /// At least an estimated year should be provided as a guess if the real DOB is unknown.
+    /// Age of person drives many clinical processes, and is often used in performing identification of the person. Times are not included so as to not confuse things with potential timezone issues.
     /// </summary>
     [JsonProperty("birthDate")]
     public string BirthDate { get; set; }
     [JsonProperty("_birthDate")]
     public Element _BirthDate { get; set; }
     /// <summary>
-    /// The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F.
+    /// Needed for identification of the person, in combination with (at least) name and birth date. Gender of person drives many clinical processes.
     /// </summary>
     [JsonProperty("gender")]
     public string Gender { get; set; }
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// Identifier for a person within a particular scope.
+    /// People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the person. Examples are national person identifier and local identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
@@ -14506,12 +14506,12 @@ namespace fhir
     [JsonProperty("link")]
     public PersonLink[] Link { get; set; }
     /// <summary>
-    /// The organization that is the custodian of the person record.
+    /// Need to know who recognizes this person record, manages and updates it.
     /// </summary>
     [JsonProperty("managingOrganization")]
     public Reference ManagingOrganization { get; set; }
     /// <summary>
-    /// Person may have multiple names with different uses or applicable periods.
+    /// Need to be able to track the person by multiple names. Examples are your official name and a partner name.
     /// </summary>
     [JsonProperty("name")]
     public HumanName[] Name { get; set; }
@@ -14521,7 +14521,7 @@ namespace fhir
     [JsonProperty("photo")]
     public Attachment Photo { get; set; }
     /// <summary>
-    /// Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
+    /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
@@ -14555,12 +14555,12 @@ namespace fhir
     [JsonProperty("managingOrganization")]
     public Reference ManagingOrganization { get; set; }
     /// <summary>
-    /// The period during which the person is authorized to act as a practitioner in these role(s) for the organization.
+    /// Even after the agencies is revoked, the fact that it existed must still be recorded.
     /// </summary>
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// A person may have more than one role. At least one role is required.
+    /// Need to know what authority the practitioner has - what can they do?
     /// </summary>
     [JsonProperty("role")]
     public CodeableConcept Role { get; set; }
@@ -14580,7 +14580,7 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// An identifier that applies to this person's qualification in this role.
+    /// Often, specific identities are assigned for the qualification.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
@@ -14590,7 +14590,7 @@ namespace fhir
     [JsonProperty("issuer")]
     public Reference Issuer { get; set; }
     /// <summary>
-    /// Period during which the qualification is valid.
+    /// Qualifications are often for a limited period of time, and can be revoked.
     /// </summary>
     [JsonProperty("period")]
     public Period Period { get; set; }
@@ -14603,46 +14603,46 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Practitioner";
     /// <summary>
-    /// Default is true.   If the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role.
+    /// Need to be able to mark a practitioner record as not to be used because it was created in error.
     /// </summary>
     [JsonProperty("active")]
     public bool? Active { get; set; }
     /// <summary>
-    /// The postal address where the practitioner can be found or visited or to which mail can be delivered.
+    /// Need to keep track where the practitioner can found during work or for directing mail.
     /// </summary>
     [JsonProperty("address")]
     public Address[] Address { get; set; }
     /// <summary>
-    /// The date of birth for the practitioner.
+    /// Needed for identification.
     /// </summary>
     [JsonProperty("birthDate")]
     public string BirthDate { get; set; }
     [JsonProperty("_birthDate")]
     public Element _BirthDate { get; set; }
     /// <summary>
-    /// The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
+    /// Knowing which language a practitioner speaks can help in facilitating communication with patients.
     /// </summary>
     [JsonProperty("communication")]
     public CodeableConcept[] Communication { get; set; }
     /// <summary>
-    /// Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
+    /// Needed to address the person correctly.
     /// </summary>
     [JsonProperty("gender")]
     public string Gender { get; set; }
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// An identifier that applies to this person in this role.
+    /// Often, specific identities are assigned for the agent.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// A name associated with the person.
+    /// Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that person.
     /// </summary>
     [JsonProperty("name")]
     public HumanName Name { get; set; }
     /// <summary>
-    /// Image of the person.
+    /// Many EHR systems have the capability to capture an image of patients and personnel. Fits with newer social media usage too.
     /// </summary>
     [JsonProperty("photo")]
     public Attachment[] Photo { get; set; }
@@ -14657,7 +14657,7 @@ namespace fhir
     [JsonProperty("qualification")]
     public PractitionerQualification[] Qualification { get; set; }
     /// <summary>
-    /// Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
+    /// Need to know how to reach a practitioner.
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
@@ -14724,7 +14724,7 @@ namespace fhir
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
     /// <summary>
-    /// If complications are only expressed by the narrative text, they can be captured using the CodeableConcept.text.
+    /// Any complications that occurred during the procedure, or in the immediate post-performance period. These are generally tracked separately from the notes, which will typically describe the procedure itself rather than any 'post procedure' issues.
     /// </summary>
     [JsonProperty("complication")]
     public CodeableConcept[] Complication { get; set; }
@@ -14744,12 +14744,12 @@ namespace fhir
     [JsonProperty("followUp")]
     public CodeableConcept[] FollowUp { get; set; }
     /// <summary>
-    /// This records identifiers associated with this procedure that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// The location where the procedure actually happened.  E.g. a newborn at home, a tracheostomy at a restaurant.
+    /// Ties a procedure to where the records are likely kept.
     /// </summary>
     [JsonProperty("location")]
     public Reference Location { get; set; }
@@ -14764,7 +14764,7 @@ namespace fhir
     [JsonProperty("notPerformed")]
     public bool? NotPerformed { get; set; }
     /// <summary>
-    /// If outcome contains narrative text only, it can be captured using the CodeableConcept.text.
+    /// The outcome of the procedure - did it resolve reasons for the procedure being performed?
     /// </summary>
     [JsonProperty("outcome")]
     public CodeableConcept Outcome { get; set; }
@@ -14786,12 +14786,12 @@ namespace fhir
     [JsonProperty("performer")]
     public ProcedurePerformer[] Performer { get; set; }
     /// <summary>
-    /// e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapeutic.
+    /// The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text.
     /// </summary>
     [JsonProperty("reasonCodeableConcept")]
     public CodeableConcept ReasonCodeableConcept { get; set; }
     /// <summary>
-    /// e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapeutic.
+    /// The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text.
     /// </summary>
     [JsonProperty("reasonReference")]
     public Reference ReasonReference { get; set; }
@@ -14801,7 +14801,7 @@ namespace fhir
     [JsonProperty("reasonNotPerformed")]
     public CodeableConcept[] ReasonNotPerformed { get; set; }
     /// <summary>
-    /// There could potentially be multiple reports - e.g. if this was a procedure which took multiple biopsies resulting in a number of anatomical pathology reports.
+    /// This could be a histology result, pathology report, surgical report, etc..
     /// </summary>
     [JsonProperty("report")]
     public Reference[] Report { get; set; }
@@ -14823,7 +14823,7 @@ namespace fhir
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// For devices actually implanted or removed, use Procedure.device.
+    /// Used for tracking contamination, etc.
     /// </summary>
     [JsonProperty("used")]
     public Reference[] Used { get; set; }
@@ -14855,7 +14855,7 @@ namespace fhir
     [JsonProperty("asNeededCodeableConcept")]
     public CodeableConcept AsNeededCodeableConcept { get; set; }
     /// <summary>
-    /// Only used if not implicit in the code found in ProcedureRequest.type.
+    /// Knowing where the procedure is made is important for tracking if multiple sites are possible.
     /// </summary>
     [JsonProperty("bodySite")]
     public CodeableConcept[] BodySite { get; set; }
@@ -15023,7 +15023,7 @@ namespace fhir
     [JsonProperty("item")]
     public ProcessRequestItem[] Item { get; set; }
     /// <summary>
-    /// If true remove all history excluding audit.
+    /// Some resources must not simply be reversed in a processing or accounting sense but rather must have all history removed, such as the accidental submission of sensitive and/or wrong information. If the receiver cannot comply with a Nullify request then they must reject the request.
     /// </summary>
     [JsonProperty("nullify")]
     public bool? Nullify { get; set; }
@@ -15033,7 +15033,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -15148,7 +15148,7 @@ namespace fhir
     [JsonProperty("organization")]
     public Reference Organization { get; set; }
     /// <summary>
-    /// The style (standard) and version of the original material which was converted into this resource.
+    /// Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
     /// </summary>
     [JsonProperty("originalRuleset")]
     public Coding OriginalRuleset { get; set; }
@@ -15183,7 +15183,7 @@ namespace fhir
   /// </summary>
   public class ProvenanceAgentRelatedAgent : BackboneElement {
     /// <summary>
-    /// The uri has the form #[id] where [id] is on another Provenance.agent in this same resource.
+    /// An internal reference to another agent listed in this provenance by its identifier.
     /// </summary>
     [JsonProperty("target")]
     public string Target { get; set; }
@@ -15196,7 +15196,7 @@ namespace fhir
     public CodeableConcept Type { get; set; }
   }
   /// <summary>
-  /// Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa.
+  /// An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility.
   /// </summary>
   public class ProvenanceAgent : BackboneElement {
     /// <summary>
@@ -15210,7 +15210,7 @@ namespace fhir
     [JsonProperty("relatedAgent")]
     public ProvenanceAgentRelatedAgent[] RelatedAgent { get; set; }
     /// <summary>
-    /// For example, author, performer, enterer, attester, etc.
+    /// The function of the agent with respect to the activity.
     /// </summary>
     [JsonProperty("role")]
     public Coding Role { get; set; }
@@ -15221,7 +15221,7 @@ namespace fhir
     public Identifier UserId { get; set; }
   }
   /// <summary>
-  /// Multiple userIds may be associated with the same Practitioner or other individual across various appearances, each with distinct privileges.
+  /// An entity used in this activity.
   /// </summary>
   public class ProvenanceEntity : BackboneElement {
     /// <summary>
@@ -15237,7 +15237,7 @@ namespace fhir
     [JsonProperty("_display")]
     public Element _Display { get; set; }
     /// <summary>
-    /// Identity may be a reference to a resource or to something else, depending on the type.
+    /// Identity of the  Entity used. May be a logical or physical uri and maybe absolute or relative.
     /// </summary>
     [JsonProperty("reference")]
     public string Reference { get; set; }
@@ -15251,7 +15251,7 @@ namespace fhir
     [JsonProperty("_role")]
     public Element _Role { get; set; }
     /// <summary>
-    /// The type of the entity. If the entity is a resource, then this is a resource type.
+    /// If the type is "resource" then the resource itself was the participant. If the type is a type of resource, then the entity identified by the resource is the participant.
     /// </summary>
     [JsonProperty("type")]
     public Coding Type { get; set; }
@@ -15278,12 +15278,12 @@ namespace fhir
     [JsonProperty("activity")]
     public CodeableConcept Activity { get; set; }
     /// <summary>
-    /// Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa.
+    /// An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility.
     /// </summary>
     [JsonProperty("agent")]
     public ProvenanceAgent[] Agent { get; set; }
     /// <summary>
-    /// Multiple userIds may be associated with the same Practitioner or other individual across various appearances, each with distinct privileges.
+    /// An entity used in this activity.
     /// </summary>
     [JsonProperty("entity")]
     public ProvenanceEntity[] Entity { get; set; }
@@ -15293,12 +15293,12 @@ namespace fhir
     [JsonProperty("location")]
     public Reference Location { get; set; }
     /// <summary>
-    /// The period can be a little arbitrary; where possible, the time should correspond to human assessment of the activity time.
+    /// The period during which the activity occurred.
     /// </summary>
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.
+    /// Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.
     /// </summary>
     [JsonProperty("policy")]
     public string[] Policy { get; set; }
@@ -15310,7 +15310,7 @@ namespace fhir
     [JsonProperty("reason")]
     public CodeableConcept[] Reason { get; set; }
     /// <summary>
-    /// This can be a little different from the time stamp on the resource if there is a delay between recording the event and updating the provenance and target resource.
+    /// The instant of time at which the activity was recorded.
     /// </summary>
     [JsonProperty("recorded")]
     public string Recorded { get; set; }
@@ -15322,27 +15322,27 @@ namespace fhir
     [JsonProperty("signature")]
     public Signature[] Signature { get; set; }
     /// <summary>
-    /// Target references are usually version specific, but may not be, if a version has not been assigned or if the provenance information is part of the set of resources being maintained (i.e. a document). When using the RESTful API, the identity of the resource may not be known (especially not the version specific one); the client may either submit the resource first, and then the provenance, or it may submit both using a single transaction. See the notes on transaction for further discussion.
+    /// The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.
     /// </summary>
     [JsonProperty("target")]
     public Reference[] Target { get; set; }
   }
   /// <summary>
-  /// Set of questions within this group. The order of questions within the group is relevant.
+  /// Must register answers to questions.
   /// </summary>
   public class QuestionnaireGroupQuestion : BackboneElement {
     /// <summary>
-    /// Identifies a how this question is known in a particular terminology such as LOINC.
+    /// Allows linking of questions (and their answers) to formal terminologies.
     /// </summary>
     [JsonProperty("concept")]
     public Coding[] Concept { get; set; }
     /// <summary>
-    /// Nested group, containing nested question for this question. The order of groups within the question is relevant.
+    /// It is useful to have "sub-questions", questions which normally appear when certain answers are given and which collect additional details.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup[] Group { get; set; }
     /// <summary>
-    /// May be omitted if there is no expectation to link answers back to a questionnaire.  This *can* be a meaningful identifier (e.g. a LOINC code) but is not intended to have any meaning.  GUIDs or sequential numbers are appropriate here.
+    /// [[[QuestionnaireResponse]]] does not require omitted groups to be included and may have some groups that repeat, so linkage based on position alone is not sufficient.
     /// </summary>
     [JsonProperty("linkId")]
     public string LinkId { get; set; }
@@ -15354,12 +15354,12 @@ namespace fhir
     [JsonProperty("option")]
     public Coding[] Option { get; set; }
     /// <summary>
-    /// LOINC defines many useful value sets for questionnaire response. See [LOINC Answer Lists](loinc.html#alist).
+    /// Reference to a value set containing a list of codes representing permitted answers for the question.
     /// </summary>
     [JsonProperty("options")]
     public Reference Options { get; set; }
     /// <summary>
-    /// Whether the question itself will be displayed for each answer is a rendering choice typically based on whether there are nested groups.
+    /// Used for "check all that apply" types of questions or "list your top 3", etc.
     /// </summary>
     [JsonProperty("repeats")]
     public bool? Repeats { get; set; }
@@ -15369,14 +15369,14 @@ namespace fhir
     [JsonProperty("required")]
     public bool? Required { get; set; }
     /// <summary>
-    /// Common extensions are defined for more specialized types of display text.
+    /// When including text for the questionnaire, each question may contain its actual question display text.
     /// </summary>
     [JsonProperty("text")]
     public string Text { get; set; }
     [JsonProperty("_text")]
     public Element _Text { get; set; }
     /// <summary>
-    /// Additional constraints on the type of answer can be conveyed by extensions.
+    /// Defines the format in which the user is to be prompted for the answer.
     /// </summary>
     [JsonProperty("type")]
     public string Type { get; set; }
@@ -15394,33 +15394,33 @@ namespace fhir
     public const string DATETIME = "dateTime";
   }
   /// <summary>
-  /// The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.  Information on this root group applies to the questionnaire as a whole.
+  /// Need to be able to logically group answers to grouped questions.
   /// </summary>
   public class QuestionnaireGroup : BackboneElement {
     /// <summary>
-    /// The code(s) for the "root" group apply to the questionnaire as a whole.
+    /// Allows linking of groups of questions (and complete Questionnaire resources) to formal terminologies.
     /// </summary>
     [JsonProperty("concept")]
     public Coding[] Concept { get; set; }
     /// <summary>
-    /// A sub-group within a group. The ordering of groups within this group is relevant.
+    /// Reports can consist of complex nested groups.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup[] Group { get; set; }
     /// <summary>
-    /// May be omitted if there is no expectation to link answers back to a questionnaire.  This ''can'' be a meaningful identifier (e.g. a LOINC code) but is not intended to have any meaning.  GUIDs or sequential numbers are appropriate here.
+    /// [[[QuestionnaireResponse]]] does not require omitted groups to be included and may have some groups that repeat, so linkage based on position alone is not sufficient.
     /// </summary>
     [JsonProperty("linkId")]
     public string LinkId { get; set; }
     [JsonProperty("_linkId")]
     public Element _LinkId { get; set; }
     /// <summary>
-    /// Set of questions within this group. The order of questions within the group is relevant.
+    /// Must register answers to questions.
     /// </summary>
     [JsonProperty("question")]
     public QuestionnaireGroupQuestion[] Question { get; set; }
     /// <summary>
-    /// Whether the group may occur multiple times in the instance, containing multiple sets of answers.
+    /// Groups may be used to create set of (related) questions that can be repeated to give multiple answers to such a set.
     /// </summary>
     [JsonProperty("repeats")]
     public bool? Repeats { get; set; }
@@ -15430,14 +15430,14 @@ namespace fhir
     [JsonProperty("required")]
     public bool? Required { get; set; }
     /// <summary>
-    /// Common extensions are defined for more specialized types of display text.
+    /// When including text for the questionnaire, each section may contain additional explanations are background text.
     /// </summary>
     [JsonProperty("text")]
     public string Text { get; set; }
     [JsonProperty("_text")]
     public Element _Text { get; set; }
     /// <summary>
-    /// The title of the "root" group is the title for the questionnaire.
+    /// When including text for the questionnaire with the answers, sections may have a section header.
     /// </summary>
     [JsonProperty("title")]
     public string Title { get; set; }
@@ -15459,17 +15459,17 @@ namespace fhir
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.  Information on this root group applies to the questionnaire as a whole.
+    /// Need to be able to logically group answers to grouped questions.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup Group { get; set; }
     /// <summary>
-    /// This records identifiers associated with this question set that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Organization or person responsible for developing and maintaining the questionnaire.
+    /// Conveys responsibility for the questions and their organization and also helps evaluate the questionnaire's "authority".
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
@@ -15483,7 +15483,7 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// If none are specified, then the subject is unlimited.
+    /// Identifies the types of subjects that can be the subject of the questionnaire.
     /// </summary>
     [JsonProperty("subjectType")]
     public string[] SubjectType { get; set; }
@@ -15495,7 +15495,7 @@ namespace fhir
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
     /// <summary>
-    /// The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated.
+    /// In some cases, separate resource instances might be created for each version (if an older version can be maintained once a new version exists).
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -15511,112 +15511,112 @@ namespace fhir
     public const string RETIRED = "retired";
   }
   /// <summary>
-  /// The value is nested because we cannot have a repeating structure that has variable type.
+  /// The respondent's answer(s) to the question.
   /// </summary>
   public class QuestionnaireResponseGroupQuestionAnswer : BackboneElement {
     /// <summary>
-    /// Nested group, containing nested question for this question. The order of groups within the question is relevant.
+    /// It is useful to have "sub-questions", questions which normally appear when certain answers are given and which collect additional details.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup[] Group { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueBoolean")]
     public bool? ValueBoolean { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueDecimal")]
     public decimal? ValueDecimal { get; set; }
     [JsonProperty("_valueDecimal")]
     public Element _ValueDecimal { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueInteger")]
     public int? ValueInteger { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueDate")]
     public string ValueDate { get; set; }
     [JsonProperty("_valueDate")]
     public Element _ValueDate { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueDateTime")]
     public string ValueDateTime { get; set; }
     [JsonProperty("_valueDateTime")]
     public Element _ValueDateTime { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueInstant")]
     public string ValueInstant { get; set; }
     [JsonProperty("_valueInstant")]
     public Element _ValueInstant { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueTime")]
     public string ValueTime { get; set; }
     [JsonProperty("_valueTime")]
     public Element _ValueTime { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueString")]
     public string ValueString { get; set; }
     [JsonProperty("_valueString")]
     public Element _ValueString { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueUri")]
     public string ValueUri { get; set; }
     [JsonProperty("_valueUri")]
     public Element _ValueUri { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueAttachment")]
     public Attachment ValueAttachment { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueCoding")]
     public Coding ValueCoding { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueQuantity")]
     public Quantity ValueQuantity { get; set; }
     /// <summary>
-    /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
+    /// Ability to retain a single-valued answer to a question.
     /// </summary>
     [JsonProperty("valueReference")]
     public Reference ValueReference { get; set; }
   }
   /// <summary>
-  /// Set of questions within this group. The order of questions within the group is relevant.
+  /// Must register answers to questions.
   /// </summary>
   public class QuestionnaireResponseGroupQuestion : BackboneElement {
     /// <summary>
-    /// The value is nested because we cannot have a repeating structure that has variable type.
+    /// The respondent's answer(s) to the question.
     /// </summary>
     [JsonProperty("answer")]
     public QuestionnaireResponseGroupQuestionAnswer[] Answer { get; set; }
     /// <summary>
-    /// Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireResponse resource.
+    /// Groups can repeat in the answers, so a direct 1..1 correspondence may not exist - requiring correspondence by id.
     /// </summary>
     [JsonProperty("linkId")]
     public string LinkId { get; set; }
     [JsonProperty("_linkId")]
     public Element _LinkId { get; set; }
     /// <summary>
-    /// The actual question as shown to the user to prompt them for an answer.
+    /// When including text for the questionnaire, each question may contain its actual question display text.
     /// </summary>
     [JsonProperty("text")]
     public string Text { get; set; }
@@ -15624,40 +15624,40 @@ namespace fhir
     public Element _Text { get; set; }
   }
   /// <summary>
-  /// The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.
+  /// Need to be able to logically group answers to grouped questions.
   /// </summary>
   public class QuestionnaireResponseGroup : BackboneElement {
     /// <summary>
-    /// A sub-group within a group. The ordering of groups within this group is relevant.
+    /// Reports can consist of complex nested groups.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireGroup[] Group { get; set; }
     /// <summary>
-    /// Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireResponse resource.
+    /// Groups can repeat in the answers, so a direct 1..1 correspondence may not exist - requiring correspondence by identifier.
     /// </summary>
     [JsonProperty("linkId")]
     public string LinkId { get; set; }
     [JsonProperty("_linkId")]
     public Element _LinkId { get; set; }
     /// <summary>
-    /// Set of questions within this group. The order of questions within the group is relevant.
+    /// Must register answers to questions.
     /// </summary>
     [JsonProperty("question")]
     public QuestionnaireResponseGroupQuestion[] Question { get; set; }
     /// <summary>
-    /// More specific subject this section's answers are about, details the subject given in QuestionnaireResponse.
+    /// Sometimes a group of answers is about a specific participant, artifact or piece of information in the patient's care or record, e.g. a specific Problem, RelatedPerson, Allergy etc.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
     /// <summary>
-    /// Additional text for the group, used for display purposes.
+    /// When including text for the questionnaire, each section may contain additional explanations are background text.
     /// </summary>
     [JsonProperty("text")]
     public string Text { get; set; }
     [JsonProperty("_text")]
     public Element _Text { get; set; }
     /// <summary>
-    /// On the root group, this is the title of the questionnaire.
+    /// When including text for the questionnaire with the answers, sections may have a section header.
     /// </summary>
     [JsonProperty("title")]
     public string Title { get; set; }
@@ -15672,51 +15672,51 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "QuestionnaireResponse";
     /// <summary>
-    /// Mapping a subject's answers to multiple choice options and determining what to put in the textual answer is a matter of interpretation.  Authoring by device would indicate that some portion of the questionnaire had been auto-populated.
+    /// Need to know who interpreted the subject's answers to the questions in the questionnaire, and selected the appropriate options for answers.
     /// </summary>
     [JsonProperty("author")]
     public Reference Author { get; set; }
     /// <summary>
-    /// May be different from the update time of the resource itself, because that is the status of the collection and authoring.  This element is optional to allow for systems that may not know the value, however it SHOULD be populated if possible.
+    /// Clinicians need to be able to check the date that the information in the questionnaire was collected, to derive the context of the answers.
     /// </summary>
     [JsonProperty("authored")]
     public string Authored { get; set; }
     [JsonProperty("_authored")]
     public Element _Authored { get; set; }
     /// <summary>
-    /// Encounter during which this set of questionnaire response were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers.
+    /// Some institutions track questionnaires under a specific encounter.
     /// </summary>
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.
+    /// Need to be able to logically group answers to grouped questions.
     /// </summary>
     [JsonProperty("group")]
     public QuestionnaireResponseGroup Group { get; set; }
     /// <summary>
-    /// A business identifier assigned to a particular completed (or partially completed) questionnaire.
+    /// Used for tracking, registration and other business purposes.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// Indicates the Questionnaire resource that defines the form for which answers are being provided.
+    /// Needed to allow editing of the questionnaire in a manner that enforces the constraints of the original form.
     /// </summary>
     [JsonProperty("questionnaire")]
     public Reference Questionnaire { get; set; }
     /// <summary>
-    /// If not specified, no inference can be made about who provided the data.
+    /// When answering questions about a subject that is minor, incapable of answering or an animal, another human source is used to answer the questions.
     /// </summary>
     [JsonProperty("source")]
     public Reference Source { get; set; }
     /// <summary>
-    /// The lifecycle status of the questionnaire response as a whole.
+    /// The information on Questionnaire resources  may possibly be gathered during multiple sessions and altered after considered being finished. Questionnaire resources with just questions may serve as template forms, with the applicable publication statuses.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// The subject of the questionnaire response.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information.
+    /// The subject context must be known.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
@@ -15763,7 +15763,7 @@ namespace fhir
     [JsonProperty("encounter")]
     public Reference Encounter { get; set; }
     /// <summary>
-    /// The period of time within which the services identified in the referral/transfer of care is specified or required to occur.
+    /// Use cases: (1) to indicate that the requested service is not to happen before a specified date, and saving the start date in Period.start; (2) to indicate that the requested service must happen before a specified date, and saving the end date in Period.end; (3) to indicate that the requested service must happen during the specified dates ("start" and "end" values).
     /// </summary>
     [JsonProperty("fulfillmentTime")]
     public Period FulfillmentTime { get; set; }
@@ -15773,7 +15773,7 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// Referral of family, group or community is to be catered for by profiles.
+    /// The patient who is the subject of a referral or transfer of care request.
     /// </summary>
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
@@ -15788,7 +15788,7 @@ namespace fhir
     [JsonProperty("reason")]
     public CodeableConcept Reason { get; set; }
     /// <summary>
-    /// There will be a primary receiver. But the request can be received by any number of "copied to" providers or organizations.
+    /// The healthcare provider(s) or provider organization(s) who/which is to receive the referral/transfer of care request.
     /// </summary>
     [JsonProperty("recipient")]
     public Reference[] Recipient { get; set; }
@@ -15820,7 +15820,7 @@ namespace fhir
     [JsonProperty("supportingInformation")]
     public Reference[] SupportingInformation { get; set; }
     /// <summary>
-    /// Examples of referral type: - consultation;         second opinion;          third opinion - Assume management - Request for procedure(s)  HL7 v2.8 Example - Table 0336: S = second opinion p = patient preference o = provider ordered w = work load.
+    /// An indication of the type of referral (or where applicable the type of transfer of care) request.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
@@ -15845,7 +15845,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "RelatedPerson";
     /// <summary>
-    /// Address where the related person can be contacted or visited.
+    /// Need to keep track where the related person can be contacted per postal mail or visited.
     /// </summary>
     [JsonProperty("address")]
     public Address[] Address { get; set; }
@@ -15857,24 +15857,24 @@ namespace fhir
     [JsonProperty("_birthDate")]
     public Element _BirthDate { get; set; }
     /// <summary>
-    /// Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
+    /// Needed for identification of the person, in combination with (at least) name and birth date.
     /// </summary>
     [JsonProperty("gender")]
     public string Gender { get; set; }
     [JsonProperty("_gender")]
     public Element _Gender { get; set; }
     /// <summary>
-    /// Identifier for a person within a particular scope.
+    /// People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the patient. Examples are national person identifier and local identifier.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// A name associated with the person.
+    /// Related persons need to be identified by name, but it is uncommon to need details about multiple other names for that person.
     /// </summary>
     [JsonProperty("name")]
     public HumanName Name { get; set; }
     /// <summary>
-    /// The patient this person is related to.
+    /// We need to know which patient this RelatedPerson is related to.
     /// </summary>
     [JsonProperty("patient")]
     public Reference Patient { get; set; }
@@ -15884,17 +15884,17 @@ namespace fhir
     [JsonProperty("period")]
     public Period Period { get; set; }
     /// <summary>
-    /// Image of the person.
+    /// Many EHR systems have the capability to capture an image of persons. Fits with newer social media usage too.
     /// </summary>
     [JsonProperty("photo")]
     public Attachment[] Photo { get; set; }
     /// <summary>
-    /// The nature of the relationship between a patient and the related person.
+    /// We need to know the relationship with the patient since it influences the interpretation of the information attributed to this person.
     /// </summary>
     [JsonProperty("relationship")]
     public CodeableConcept Relationship { get; set; }
     /// <summary>
-    /// Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
+    /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
     public ContactPoint[] Telecom { get; set; }
@@ -15913,21 +15913,21 @@ namespace fhir
   /// </summary>
   public class Resource {
     /// <summary>
-    /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
+    /// The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
     /// </summary>
     [JsonProperty("id")]
     public string Id { get; set; }
     [JsonProperty("_id")]
     public Element _Id { get; set; }
     /// <summary>
-    /// Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
+    /// A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.
     /// </summary>
     [JsonProperty("implicitRules")]
     public string ImplicitRules { get; set; }
     [JsonProperty("_implicitRules")]
     public Element _ImplicitRules { get; set; }
     /// <summary>
-    /// Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
+    /// The base language in which the resource is written.
     /// </summary>
     [JsonProperty("language")]
     public string Language { get; set; }
@@ -15940,7 +15940,7 @@ namespace fhir
     public Meta Meta { get; set; }
   }
   /// <summary>
-  /// Multiple repetitions can be used to identify the same type of outcome in different timeframes as well as different types of outcomes.
+  /// Describes the expected outcome for the subject.
   /// </summary>
   public class RiskAssessmentPrediction : BackboneElement {
     /// <summary>
@@ -15949,19 +15949,19 @@ namespace fhir
     [JsonProperty("outcome")]
     public CodeableConcept Outcome { get; set; }
     /// <summary>
-    /// If range is used, it represents the lower and upper bounds of certainty; e.g. 40-60%  Decimal values are expressed as percentages as well (max = 100).
+    /// How likely is the outcome (in the specified timeframe).
     /// </summary>
     [JsonProperty("probabilityDecimal")]
     public decimal? ProbabilityDecimal { get; set; }
     [JsonProperty("_probabilityDecimal")]
     public Element _ProbabilityDecimal { get; set; }
     /// <summary>
-    /// If range is used, it represents the lower and upper bounds of certainty; e.g. 40-60%  Decimal values are expressed as percentages as well (max = 100).
+    /// How likely is the outcome (in the specified timeframe).
     /// </summary>
     [JsonProperty("probabilityRange")]
     public Range ProbabilityRange { get; set; }
     /// <summary>
-    /// If range is used, it represents the lower and upper bounds of certainty; e.g. 40-60%  Decimal values are expressed as percentages as well (max = 100).
+    /// How likely is the outcome (in the specified timeframe).
     /// </summary>
     [JsonProperty("probabilityCodeableConcept")]
     public CodeableConcept ProbabilityCodeableConcept { get; set; }
@@ -15973,19 +15973,19 @@ namespace fhir
     [JsonProperty("_rationale")]
     public Element _Rationale { get; set; }
     /// <summary>
-    /// Indicates the risk for this particular subject (with their specific characteristics) divided by the risk of the population in general.  (Numbers greater than 1 = higher risk than the population, numbers less than 1 = lower risk.).
+    /// Absolute risk is less meaningful than relative risk.
     /// </summary>
     [JsonProperty("relativeRisk")]
     public decimal? RelativeRisk { get; set; }
     [JsonProperty("_relativeRisk")]
     public Element _RelativeRisk { get; set; }
     /// <summary>
-    /// If not specified, the risk applies "over the subject's lifespan".
+    /// Indicates the period of time or age range of the subject to which the specified probability applies.
     /// </summary>
     [JsonProperty("whenPeriod")]
     public Period WhenPeriod { get; set; }
     /// <summary>
-    /// If not specified, the risk applies "over the subject's lifespan".
+    /// Indicates the period of time or age range of the subject to which the specified probability applies.
     /// </summary>
     [JsonProperty("whenRange")]
     public Range WhenRange { get; set; }
@@ -16008,7 +16008,7 @@ namespace fhir
     [JsonProperty("condition")]
     public Reference Condition { get; set; }
     /// <summary>
-    /// The date (and possibly time) the risk assessment was performed.
+    /// The assessment results lose validity the more time elapses from when they are first made.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
@@ -16025,12 +16025,12 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// The algorithm, process or mechanism used to evaluate the risk.
+    /// The method can influence the results of the assessment.
     /// </summary>
     [JsonProperty("method")]
     public CodeableConcept Method { get; set; }
     /// <summary>
-    /// A description of the steps that might be taken to reduce the identified risk(s).
+    /// One of the main reasons for assessing risks is to identify whether interventional steps are needed to reduce risk.
     /// </summary>
     [JsonProperty("mitigation")]
     public string Mitigation { get; set; }
@@ -16042,7 +16042,7 @@ namespace fhir
     [JsonProperty("performer")]
     public Reference Performer { get; set; }
     /// <summary>
-    /// Multiple repetitions can be used to identify the same type of outcome in different timeframes as well as different types of outcomes.
+    /// Describes the expected outcome for the subject.
     /// </summary>
     [JsonProperty("prediction")]
     public RiskAssessmentPrediction[] Prediction { get; set; }
@@ -16088,11 +16088,11 @@ namespace fhir
     public CodeableConcept[] Type { get; set; }
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number (tel:), etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class SearchParameterContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the search parameter.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -16119,19 +16119,19 @@ namespace fhir
     [JsonProperty("_base")]
     public Element _Base { get; set; }
     /// <summary>
-    /// For maximum compatibility, use only lowercase ASCII characters.
+    /// The code used in the URL or the parameter name in a parameters resource for this search parameter.
     /// </summary>
     [JsonProperty("code")]
     public string Code { get; set; }
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// May be a web site, an email address, a telephone number (tel:), etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public SearchParameterContact[] Contact { get; set; }
     /// <summary>
-    /// Additional specific dates may be added as extensions.
+    /// The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
@@ -16145,19 +16145,19 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// Allows filtering of search parameter definitions that are appropriate for use vs. not.
+    /// A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// This is often the same as the code for the parameter, but does not need to be.
+    /// A free text natural language name identifying the search parameter.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the search parameter.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
@@ -16171,7 +16171,7 @@ namespace fhir
     [JsonProperty("_requirements")]
     public Element _Requirements { get; set; }
     /// <summary>
-    /// This is not intended for use with actual conformance statements, but where conformance statements are used to describe possible or desired systems.
+    /// The status of this search parameter definition.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -16192,14 +16192,14 @@ namespace fhir
     [JsonProperty("_type")]
     public Element _Type { get; set; }
     /// <summary>
-    /// An absolute URL that is used to identify this search parameter when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this search parameter is (or will be) published.
+    /// To allow referencing and reusing search parameter definitions under other names on operational systems (in case of name clash).
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
     [JsonProperty("_url")]
     public Element _Url { get; set; }
     /// <summary>
-    /// Note that the elements returned by the XPath are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system.
+    /// An XPath expression that returns a set of elements for the search parameter.
     /// </summary>
     [JsonProperty("xpath")]
     public string Xpath { get; set; }
@@ -16314,7 +16314,7 @@ namespace fhir
   /// </summary>
   public class SpecimenCollection : BackboneElement {
     /// <summary>
-    /// If the use case requires  BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately)  then use the standard extension [body-site-instance](extension-body-site-instance.html).
+    /// Anatomical location from which the specimen was collected (if subject is a patient). This is the target site.  This element is not used for environmental specimens.
     /// </summary>
     [JsonProperty("bodySite")]
     public CodeableConcept BodySite { get; set; }
@@ -16445,7 +16445,7 @@ namespace fhir
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
     /// <summary>
-    /// The parent specimen could be the source from which the current specimen is derived by some processing step (e.g. an aliquot or isolate or extracted nucleic acids from clinical samples) or one of many specimens that were combined to create a pooled sample.
+    /// Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.
     /// </summary>
     [JsonProperty("parent")]
     public Reference[] Parent { get; set; }
@@ -16464,7 +16464,7 @@ namespace fhir
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// Where the specimen came from. This may be from the patient(s) or from the environment or a device.
+    /// Must know the subject context.
     /// </summary>
     [JsonProperty("subject")]
     public Reference Subject { get; set; }
@@ -16474,7 +16474,7 @@ namespace fhir
     [JsonProperty("treatment")]
     public SpecimenTreatment[] Treatment { get; set; }
     /// <summary>
-    /// The type can change the way that a specimen is handled, and drives what kind of analyses can properly be performed on the specimen. It is frequently used in diagnostic work flow decision making systems.
+    /// The kind of material that forms the specimen.
     /// </summary>
     [JsonProperty("type")]
     public CodeableConcept Type { get; set; }
@@ -16489,11 +16489,11 @@ namespace fhir
     public const string ENTERED_IN_ERROR = "entered-in-error";
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number (tel:), etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class StructureDefinitionContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the structure definition.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -16517,7 +16517,7 @@ namespace fhir
     [JsonProperty("_comments")]
     public Element _Comments { get; set; }
     /// <summary>
-    /// The specification is described once, with general comments, and then specific mappings are made that reference this declaration.
+    /// An Internal id that is used to identify this mapping set when specific mappings are made.
     /// </summary>
     [JsonProperty("identity")]
     public string Identity { get; set; }
@@ -16531,7 +16531,7 @@ namespace fhir
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// A formal identity for the specification being mapped to helps with identifying maps consistently.
+    /// An absolute URI that identifies the specification that this mapping is expressed to.
     /// </summary>
     [JsonProperty("uri")]
     public string Uri { get; set; }
@@ -16566,36 +16566,36 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "StructureDefinition";
     /// <summary>
-    /// Abstract Resources cannot be instantiated - a concrete sub-type must be used. Abstract datatypes and extensions cannot be used in an instance. Flagging a constraint structure as abstract conveys design intent but makes no difference to how the structure definition is handled. Note that inline declared elements that are given the type "Element" in the profile, but have children described, are anonymous concrete types that specialise Element. Abstract is not relevant for logical models.
+    /// Whether structure this definition describes is abstract or not  - that is, whether an actual exchanged item can ever be of this type.
     /// </summary>
     [JsonProperty("abstract")]
     public bool Abstract { get; set; }
     /// <summary>
-    /// If differential constraints are specified in this structure, they are applied to the base in a "differential" fashion. If there is no base, then the differential constraints cannot be provided (snapshot only). Differential structures are useful for the editing perspective, and snapshot structures are suitable for operational use. The FHIR Project provides a number of tools/services to populate snapshots from differential constraints. Logical Models have a base of "Element" or another logical model.
+    /// An absolute URI that is the base structure from which this set of constraints is derived.
     /// </summary>
     [JsonProperty("base")]
     public string Base { get; set; }
     [JsonProperty("_base")]
     public Element _Base { get; set; }
     /// <summary>
-    /// A set of terms from external terminologies that may be used to assist with indexing and searching of templates.
+    /// Assist in searching for appropriate StructureDefinitions.
     /// </summary>
     [JsonProperty("code")]
     public Coding[] Code { get; set; }
     /// <summary>
-    /// if a constrained type is present, then there SHALL be a base resource as well. Note that the constrained type could be determined by chasing through the base references until the base definition is reached, or by looking at the path of the first element in the snapshot - if present - but providing the constrainedType directly makes for simpler tooling and indexing.
+    /// The type of type that is being constrained - a data type, an extension, a resource, including abstract ones. If this field is present, it indicates that the structure definition is a constraint. If it is not present, then the structure definition is the definition of a base structure.
     /// </summary>
     [JsonProperty("constrainedType")]
     public string ConstrainedType { get; set; }
     [JsonProperty("_constrainedType")]
     public Element _ConstrainedType { get; set; }
     /// <summary>
-    /// May be a web site, an email address, a telephone number (tel:), etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public StructureDefinitionContact[] Contact { get; set; }
     /// <summary>
-    /// If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not. Note that a context of "string" doesn't mean that the extension can be used with one of the string patterns such as "id" etc.
+    /// Identifies the types of resource or data type elements to which the extension can be applied.
     /// </summary>
     [JsonProperty("context")]
     public string[] Context { get; set; }
@@ -16616,14 +16616,14 @@ namespace fhir
     [JsonProperty("_copyright")]
     public Element _Copyright { get; set; }
     /// <summary>
-    /// Additional specific dates may be added as extensions.
+    /// The date this version of the structure definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure definition changes.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// This field can be used for things such as why the StructureDefinition was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the StructureDefinition as conveyed in StructureDefinition.text. This item SHOULD be populated unless the information is available from context.
+    /// A free text natural language description of the StructureDefinition and its use.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
@@ -16635,19 +16635,19 @@ namespace fhir
     [JsonProperty("differential")]
     public StructureDefinitionDifferential Differential { get; set; }
     /// <summary>
-    /// Applications don't have to use this name, but can always fall back to it. In the absence of a value for this element, use the name.
+    /// Defined so that applications can use this name when displaying the value of the extension to the user.
     /// </summary>
     [JsonProperty("display")]
     public string Display { get; set; }
     [JsonProperty("_display")]
     public Element _Display { get; set; }
     /// <summary>
-    /// This StructureDefinition was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /// Allows filtering of StructureDefinitions that are appropriate for use vs. not.
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// A StructureDefinition does not need to specify the target it applies to,as StructureDefinitions will often be valid across multiple versions of FHIR. FHIR tooling can determine whether a StructureDefinition is consistent with a particular StructureDefinition if desired.
+    /// The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 1.0.2 for this version.
     /// </summary>
     [JsonProperty("fhirVersion")]
     public string FhirVersion { get; set; }
@@ -16671,21 +16671,21 @@ namespace fhir
     [JsonProperty("mapping")]
     public StructureDefinitionMapping[] Mapping { get; set; }
     /// <summary>
-    /// Not expected to be globally unique.
+    /// A free text natural language name identifying the StructureDefinition.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the structure definition.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
     [JsonProperty("_publisher")]
     public Element _Publisher { get; set; }
     /// <summary>
-    /// This element does not describe the usage of the structure definition (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
+    /// Explains why this structure definition is needed and why it's been constrained as it has.
     /// </summary>
     [JsonProperty("requirements")]
     public string Requirements { get; set; }
@@ -16697,26 +16697,26 @@ namespace fhir
     [JsonProperty("snapshot")]
     public StructureDefinitionSnapshot Snapshot { get; set; }
     /// <summary>
-    /// The status of the StructureDefinition.
+    /// Allows filtering of StructureDefinitions that are appropriate for use vs. not.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// An absolute URL that is used to identify this structure definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure definition is (or will be) published.
+    /// So you can say, in a StructureDefinition, what the full extension URLs should be. This is required to allow hosting StructureDefinitions on multiple different servers, and to allow for the editorial process.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
     [JsonProperty("_url")]
     public Element _Url { get; set; }
     /// <summary>
-    /// The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of structure definitions.
+    /// Assist in searching for appropriate content.
     /// </summary>
     [JsonProperty("useContext")]
     public CodeableConcept[] UseContext { get; set; }
     /// <summary>
-    /// The identifier that is used to identify this version of the StructureDefinition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureDefinition author manually.
+    /// There may be multiple resource versions of the StructureDefinition that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -16753,21 +16753,21 @@ namespace fhir
   /// </summary>
   public class SubscriptionChannel : BackboneElement {
     /// <summary>
-    /// For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since their may be more than one, clients should avoid using relative URIs).
+    /// The uri that describes the actual end-point to send messages to.
     /// </summary>
     [JsonProperty("endpoint")]
     public string Endpoint { get; set; }
     [JsonProperty("_endpoint")]
     public Element _Endpoint { get; set; }
     /// <summary>
-    /// Exactly what these mean depend on the channel type. The can convey additional information to the recipient and/or meet security requirements.
+    /// Additional headers / information to send as part of the notification.
     /// </summary>
     [JsonProperty("header")]
     public string Header { get; set; }
     [JsonProperty("_header")]
     public Element _Header { get; set; }
     /// <summary>
-    /// Sending the payload has obvious security consequences. The server is responsible for ensuring that the content is appropriately secured.
+    /// The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification.
     /// </summary>
     [JsonProperty("payload")]
     public string Payload { get; set; }
@@ -16809,14 +16809,14 @@ namespace fhir
     [JsonProperty("contact")]
     public ContactPoint[] Contact { get; set; }
     /// <summary>
-    /// The rules are a search criteria (without the [base] part). Like Bundle.entry.request.url, it has no leading "/".
+    /// The rules that the server should use to determine when to generate notifications for this subscription.
     /// </summary>
     [JsonProperty("criteria")]
     public string Criteria { get; set; }
     [JsonProperty("_criteria")]
     public Element _Criteria { get; set; }
     /// <summary>
-    /// The server is permitted to deviate from this time, but should observe it.
+    /// The time for the server to turn the subscription off.
     /// </summary>
     [JsonProperty("end")]
     public string End { get; set; }
@@ -16837,14 +16837,14 @@ namespace fhir
     [JsonProperty("_reason")]
     public Element _Reason { get; set; }
     /// <summary>
-    /// A client can only submit subscription resources in the requested or off state. Only the server can  move a subscription from requested to active, and then to error. Either the server or the client can turn a subscription off.
+    /// The status of the subscription, which marks the server state for managing the subscription.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
     [JsonProperty("_status")]
     public Element _Status { get; set; }
     /// <summary>
-    /// So that other systems can tell which resources have been the subject of a notification.
+    /// A tag to add to any resource that matches the criteria, after the subscription is processed.
     /// </summary>
     [JsonProperty("tag")]
     public Coding[] Tag { get; set; }
@@ -16903,12 +16903,12 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "Substance";
     /// <summary>
-    /// The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Substance.code.
+    /// A code that classifies the general type of substance.  This is used  for searching, sorting and display purposes.
     /// </summary>
     [JsonProperty("category")]
     public CodeableConcept[] Category { get; set; }
     /// <summary>
-    /// This could be a reference to an externally defined code.  It could also be a locally assigned code (e.g. a formulary),  optionally with translations to the standard drug codes.
+    /// A code (or set of codes) that identify this substance.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
@@ -16920,7 +16920,7 @@ namespace fhir
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// This identifier is associated with the kind of substance in contrast to the  Substance.instance.identifier which is associated with the package/container.
+    /// Unique identifier for the substance.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier[] Identifier { get; set; }
@@ -16948,7 +16948,7 @@ namespace fhir
     [JsonProperty("destination")]
     public Reference Destination { get; set; }
     /// <summary>
-    /// This is assigned by the dispenser, and used to refer to this order in other external standards.
+    /// Identifier assigned by the dispensing facility when the item(s) is dispensed.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
@@ -17015,7 +17015,7 @@ namespace fhir
   /// </summary>
   public class SupplyRequestWhen : BackboneElement {
     /// <summary>
-    /// Code may simply be a priority code.
+    /// Code indicating when the request should be fulfilled.
     /// </summary>
     [JsonProperty("code")]
     public CodeableConcept Code { get; set; }
@@ -17040,7 +17040,7 @@ namespace fhir
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// This is assigned by the orderer, and used to refer to this order in other external standards.
+    /// Unique identifier for this supply request.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
@@ -17050,7 +17050,7 @@ namespace fhir
     [JsonProperty("kind")]
     public CodeableConcept Kind { get; set; }
     /// <summary>
-    /// Note that there's a difference between a prescription - an instruction to take a medication, along with a (sometimes) implicit supply, and an explicit request to supply, with no explicit instructions.
+    /// The item that is requested to be supplied.
     /// </summary>
     [JsonProperty("orderedItem")]
     public Reference OrderedItem { get; set; }
@@ -17102,11 +17102,11 @@ namespace fhir
     public const string CANCELLED = "cancelled";
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number (tel:), etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class TestScriptContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the Test Script.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -17138,11 +17138,11 @@ namespace fhir
     public Element _Url { get; set; }
   }
   /// <summary>
-  /// When the metadata capabilities section is defined at TestScript.metadata or at TestScript.setup.metadata, and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then all the tests in the TestScript are skipped.  When the metadata capabilities section is defined at TestScript.test.metadata and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then only that test is skipped.  The "metadata.capabilities.required" and "metadata.capabilities.validated" elements only indicate whether the capabilities are the primary focus of the test script or not.  The do not impact the skipping logic.  Capabilities whose "metadata.capabilities.validated" flag is true are the primary focus of the test script.
+  /// Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
   /// </summary>
   public class TestScriptMetadataCapability : BackboneElement {
     /// <summary>
-    /// The conformance statement of the server has to contain at a minimum the contents of the reference pointed to by this element.
+    /// Minimum conformance required of server for test script to execute successfully.   If server does not meet at a minimum the reference conformance definition, then all tests in this script are skipped.
     /// </summary>
     [JsonProperty("conformance")]
     public Reference Conformance { get; set; }
@@ -17181,7 +17181,7 @@ namespace fhir
   /// </summary>
   public class TestScriptMetadata : BackboneElement {
     /// <summary>
-    /// When the metadata capabilities section is defined at TestScript.metadata or at TestScript.setup.metadata, and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then all the tests in the TestScript are skipped.  When the metadata capabilities section is defined at TestScript.test.metadata and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then only that test is skipped.  The "metadata.capabilities.required" and "metadata.capabilities.validated" elements only indicate whether the capabilities are the primary focus of the test script or not.  The do not impact the skipping logic.  Capabilities whose "metadata.capabilities.validated" flag is true are the primary focus of the test script.
+    /// Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
     /// </summary>
     [JsonProperty("capability")]
     public TestScriptMetadataCapability[] Capability { get; set; }
@@ -17206,38 +17206,38 @@ namespace fhir
     [JsonProperty("autodelete")]
     public bool? Autodelete { get; set; }
     /// <summary>
-    /// See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types.
+    /// Reference to the resource (containing the contents of the resource needed for operations).
     /// </summary>
     [JsonProperty("resource")]
     public Reference Resource { get; set; }
   }
   /// <summary>
-  /// Variables would be set based either on XPath/JsonPath expressions against fixtures (static and response), or headerField evaluations against response headers. If variable evaluates to nodelist or anything other than a primitive value, then test engine would report error.  Variables would be used to perform clean replacements in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations. This limits the places that test engines would need to look for placeholders "${}".  Variables are scoped to the whole script. They are NOT evaluated at declaration. They are evaluated by test engine when used for substitutions in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations.  See example testscript-search.xml.
+  /// Variable is set based either on element value in response body or on header field value in the response headers.
   /// </summary>
   public class TestScriptVariable : BackboneElement {
     /// <summary>
-    /// If headerField is defined, then the variable will be evaluated against the headers that sourceId is pointing to.  If path is defined, then the variable will be evaluated against the fixture body that sourceId is pointing to.  It is an error to define both headerField and path.
+    /// Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.
     /// </summary>
     [JsonProperty("headerField")]
     public string HeaderField { get; set; }
     [JsonProperty("_headerField")]
     public Element _HeaderField { get; set; }
     /// <summary>
-    /// Placeholders would contain the variable name wrapped in ${} in "operation.params", "operation.requestHeader.value", and "operation.url" elements.  These placeholders would need to be replaced by the variable value before the operation is executed.
+    /// Descriptive name for this variable.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// If headerField is defined, then the variable will be evaluated against the headers that sourceId is pointing to.  If path is defined, then the variable will be evaluated against the fixture body that sourceId is pointing to.  It is an error to define both headerField and path.
+    /// XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.
     /// </summary>
     [JsonProperty("path")]
     public string Path { get; set; }
     [JsonProperty("_path")]
     public Element _Path { get; set; }
     /// <summary>
-    /// This can be a statically defined fixture (at the top of the testscript) or a dynamically set fixture created by responseId of the action.operation element.
+    /// Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.
     /// </summary>
     [JsonProperty("sourceId")]
     public string SourceId { get; set; }
@@ -17245,18 +17245,18 @@ namespace fhir
     public Element _SourceId { get; set; }
   }
   /// <summary>
-  /// This gives control to test-script writers to set headers explicitly based on test requirements.  It will allow for testing using:  - "If-Modified-Since" and "If-None-Match" headers.  See http://hl7-fhir.github.io/http.html#2.1.0.5.1 - "If-Match" header.  See http://hl7-fhir.github.io/http.html#2.1.0.11 - Conditional Create using "If-None-Exist".  See http://hl7-fhir.github.io/http.html#2.1.0.13.1 - Invalid "Content-Type" header for negative testing. - etc.
+  /// Header elements would be used to set HTTP headers.
   /// </summary>
   public class TestScriptSetupActionOperationRequestHeader : BackboneElement {
     /// <summary>
-    /// If header element is specified, then field is required.
+    /// The HTTP header field e.g. "Accept".
     /// </summary>
     [JsonProperty("field")]
     public string Field { get; set; }
     [JsonProperty("_field")]
     public Element _Field { get; set; }
     /// <summary>
-    /// If header element is specified, then value is required.  No conversions will be done by Test Engine e.g. "xml" to "application/xml+fhir".  The values will be set in HTTP headers "as-is".  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before sending the request.
+    /// The value of the header e.g. "application/xml".
     /// </summary>
     [JsonProperty("value")]
     public string Value { get; set; }
@@ -17268,21 +17268,21 @@ namespace fhir
   /// </summary>
   public class TestScriptSetupActionOperation : BackboneElement {
     /// <summary>
-    /// If this is specified, then test engine shall set the 'Accept' header to the corresponding value.    If 'xml' is specified, then 'Accept' header of 'application/xml+fhir' will be set.  If 'json' is specified, then 'application/json+fhir' will be used.    If you'd like to explicitly set the 'Accept' to some other value then use the 'requestHeader' element.
+    /// The content-type or mime-type to use for RESTful operation in the 'Accept' header.
     /// </summary>
     [JsonProperty("accept")]
     public string Accept { get; set; }
     [JsonProperty("_accept")]
     public Element _Accept { get; set; }
     /// <summary>
-    /// If this is specified, then test engine shall set the 'Content-Type' header to the corresponding value.    If 'xml' is specified, then 'Content-Type' header of 'application/xml+fhir' will be set.    If 'json' is specified, then 'application/json+fhir' will be used.    If you'd like to explicitly set the 'Content-Type' to some other value then use the 'requestHeader' element.
+    /// The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
     /// </summary>
     [JsonProperty("contentType")]
     public string ContentType { get; set; }
     [JsonProperty("_contentType")]
     public Element _ContentType { get; set; }
     /// <summary>
-    /// This has no impact on the verification itself.
+    /// The description would be used by test engines for tracking and reporting purposes.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
@@ -17299,33 +17299,33 @@ namespace fhir
     [JsonProperty("encodeRequestUrl")]
     public bool? EncodeRequestUrl { get; set; }
     /// <summary>
-    /// This has no impact on the verification itself.
+    /// The label would be used for tracking/logging purposes by test engines.
     /// </summary>
     [JsonProperty("label")]
     public string Label { get; set; }
     [JsonProperty("_label")]
     public Element _Label { get; set; }
     /// <summary>
-    /// If "url" element is specified, then "targetId", "params", and "resource" elements will be ignored as "url" element will have everything needed for constructing the request url.  If "params" element is specified, then "targetId" element is ignored.  For FHIR operations that require a resource (e.g. "read" and "vread" operations), the "resource" element must be specified when "params" element is specified.  If "url" and "params" elements are absent, then the request url will be constructed from "targetId" fixture if present.  For "read" operation, the resource and id values will be extracted from "targetId" fixture and used to construct the url.  For "vread" and "history" operations, the versionId value will also be used.   Test engines would append whatever is specified for "params" to the URL after the resource type without tampering with the string (beyond encoding the URL for HTTP).  The "params" element does not correspond exactly to "search parameters".  Nor is it the "path".  It corresponds to the part of the URL that comes after the [type] (when "resource" element is specified); e.g. It corresponds to "/[id]/_history/[vid] {?_format=[mime-type]}" in the following operation: GET [base]/[type]/[id]/_history/[vid] {?_format=[mime-type]}  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before sending the request.
+    /// Path plus parameters after [type].  Used to set parts of the request URL explicitly.
     /// </summary>
     [JsonProperty("params")]
     public string Params { get; set; }
     [JsonProperty("_params")]
     public Element _Params { get; set; }
     /// <summary>
-    /// This gives control to test-script writers to set headers explicitly based on test requirements.  It will allow for testing using:  - "If-Modified-Since" and "If-None-Match" headers.  See http://hl7-fhir.github.io/http.html#2.1.0.5.1 - "If-Match" header.  See http://hl7-fhir.github.io/http.html#2.1.0.11 - Conditional Create using "If-None-Exist".  See http://hl7-fhir.github.io/http.html#2.1.0.13.1 - Invalid "Content-Type" header for negative testing. - etc.
+    /// Header elements would be used to set HTTP headers.
     /// </summary>
     [JsonProperty("requestHeader")]
     public TestScriptSetupActionOperationRequestHeader[] RequestHeader { get; set; }
     /// <summary>
-    /// If "url" element is specified, then "targetId", "params", and "resource" elements will be ignored as "url" element will have everything needed for constructing the request url.  If "params" element is specified, then "targetId" element is ignored. For FHIR operations that require a resource (e.g. "read" and "vread" operations), the "resource" element must be specified when "params" element is specified.  If "url" and "params" elements are absent, then the request url will be constructed from "targetId" fixture if present. For "read" operation, the resource and id values will be extracted from "targetId" fixture and used to construct the url. For "vread" and "history" operations, the versionId value will also be used.
+    /// The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.
     /// </summary>
     [JsonProperty("resource")]
     public string Resource { get; set; }
     [JsonProperty("_resource")]
     public Element _Resource { get; set; }
     /// <summary>
-    /// If a responseId is supplied, and the server responds, then the resulting response (both headers and body) is mapped to the fixture ID (which may be entirely new and previously undeclared) designated by "responseId".  If responseId is not specified, it is the Test Engine's responsibility to store the response and use it as sourceId in subsequent assertions when assertion path and/or headerField is specified and sourceId is not specified.
+    /// The fixture id (maybe new) to map to the response.
     /// </summary>
     [JsonProperty("responseId")]
     public string ResponseId { get; set; }
@@ -17339,19 +17339,19 @@ namespace fhir
     [JsonProperty("_sourceId")]
     public Element _SourceId { get; set; }
     /// <summary>
-    /// If "url" element is specified, then "targetId", "params", and "resource" elements will be ignored as "url" element will have everything needed for constructing the request url.  If "params" element is specified, then "targetId" element is ignored.  For FHIR operations that require a resource (e.g. "read" and "vread" operations), the "resource" element must be specified when "params" element is specified.  If "url" and "params" elements are absent, then the request url will be constructed from "targetId" fixture if present.  For "read" operation, the resource and id values will be extracted from "targetId" fixture and used to construct the url.  For "vread" and "history" operations, the versionId value will also be used.
+    /// Id of fixture used for extracting the [id],  [type], and [vid] for GET requests.
     /// </summary>
     [JsonProperty("targetId")]
     public string TargetId { get; set; }
     [JsonProperty("_targetId")]
     public Element _TargetId { get; set; }
     /// <summary>
-    /// See http://hl7-fhir.github.io/http.html for list of server interactions.
+    /// Server interaction or operation type.
     /// </summary>
     [JsonProperty("type")]
     public Coding Type { get; set; }
     /// <summary>
-    /// Used to set the request URL explicitly.  If "url" element is defined, then "targetId", "resource", and "params" elements will be ignored.  Test engines would use whatever is specified in "url" without tampering with the string (beyond encoding the URL for HTTP).  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before sending the request.
+    /// Complete request URL.
     /// </summary>
     [JsonProperty("url")]
     public string Url { get; set; }
@@ -17373,32 +17373,32 @@ namespace fhir
     public const string JSON = "json";
   }
   /// <summary>
-  /// In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
+  /// Evaluates the results of previous operations to determine if the server under test behaves appropriately.
   /// </summary>
   public class TestScriptSetupActionAssert : BackboneElement {
     /// <summary>
-    /// The id of the fixture used to make comparisons to.
+    /// Id of fixture used to compare the "sourceId/path" evaluations to.
     /// </summary>
     [JsonProperty("compareToSourceId")]
     public string CompareToSourceId { get; set; }
     [JsonProperty("_compareToSourceId")]
     public Element _CompareToSourceId { get; set; }
     /// <summary>
-    /// The XPath or JSONPath expression to be evaluated against the expected fixture to compare to. Ignored if "assert.value" is used. The evaluation will be done before the assertion is evaluated.
+    /// XPath or JSONPath expression against fixture used to compare the "sourceId/path" evaluations to.
     /// </summary>
     [JsonProperty("compareToSourcePath")]
     public string CompareToSourcePath { get; set; }
     [JsonProperty("_compareToSourcePath")]
     public Element _CompareToSourcePath { get; set; }
     /// <summary>
-    /// If this is specified, then test engine shall confirm that the content-type of the last operation's headers is set to this value.  If "assert.sourceId" element is specified, then the evaluation will be done against the headers mapped to that sourceId (and not the last operation's headers).    If 'xml' is specified, then 'Content-Type' header of 'application/xml+fhir' will be confirmed. If 'json' is specified, then 'application/json+fhir' will be used. If you'd like to have more control over the string, then use 'assert.headerField' instead.
+    /// The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
     /// </summary>
     [JsonProperty("contentType")]
     public string ContentType { get; set; }
     [JsonProperty("_contentType")]
     public Element _ContentType { get; set; }
     /// <summary>
-    /// This has no impact on the verification itself.
+    /// The description would be used by test engines for tracking and reporting purposes.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
@@ -17412,89 +17412,89 @@ namespace fhir
     [JsonProperty("_direction")]
     public Element _Direction { get; set; }
     /// <summary>
-    /// If "headerField" is specified then "value" must be specified.  If "sourceId" is not specified, then "headerField" will be evaluated against the last operation's response headers.  Test engines are to keep track of the last operation's response body and response headers.
+    /// The HTTP header field name e.g. 'Location'.
     /// </summary>
     [JsonProperty("headerField")]
     public string HeaderField { get; set; }
     [JsonProperty("_headerField")]
     public Element _HeaderField { get; set; }
     /// <summary>
-    /// This has no impact on the verification itself.
+    /// The label would be used for tracking/logging purposes by test engines.
     /// </summary>
     [JsonProperty("label")]
     public string Label { get; set; }
     [JsonProperty("_label")]
     public Element _Label { get; set; }
     /// <summary>
-    /// Asserts that the response contains all the element/content in another fixture pointed to by minimumId.  This can be a statically defined fixture or one that is dynamically set via responseId.
+    /// The ID of a fixture.  Asserts that the response contains at a minimumId the fixture specified by minimumId.
     /// </summary>
     [JsonProperty("minimumId")]
     public string MinimumId { get; set; }
     [JsonProperty("_minimumId")]
     public Element _MinimumId { get; set; }
     /// <summary>
-    /// Asserts that the Bundle contains first, last, and next links.
+    /// Whether or not the test execution performs validation on the bundle navigation links.
     /// </summary>
     [JsonProperty("navigationLinks")]
     public bool? NavigationLinks { get; set; }
     /// <summary>
-    /// Operators come handy especially for negative testing.  If operator is not specified, then the "equals" operator is assumed; e.g. <code>   <assert>  <operator value="in" />  <responseCode value="200,201,204" />    </assert>    <assert>  <operator value="notEquals" />  <response value="okay"/>   </assert>    <assert>  <operator value="greaterThan" />    <responseHeader>     <field value="Content-Length" />     <value value="0" />    <responseHeader>   </assert> </code>.
+    /// The operator type.
     /// </summary>
     [JsonProperty("operator")]
     public string Operator { get; set; }
     [JsonProperty("_operator")]
     public Element _Operator { get; set; }
     /// <summary>
-    /// If both "path" and "fixtureId" are specified, then the path will be evaluated against the responseBody mapped to the fixtureId.  If "path" is specified and "fixtureId" is not, then the path will be evaluated against the responseBody of the last operation.  Test engines are to store the response body and headers of the last operation at all times for subsequent assertions.
+    /// The XPath or JSONPath expression to be evaluated against the fixture representing the response received from server.
     /// </summary>
     [JsonProperty("path")]
     public string Path { get; set; }
     [JsonProperty("_path")]
     public Element _Path { get; set; }
     /// <summary>
-    /// This will be expected resource type in response body e.g. in read, vread, search, etc.  See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types; e.g. <assert > <resourceType value="Patient" </assert>.
+    /// The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.
     /// </summary>
     [JsonProperty("resource")]
     public string Resource { get; set; }
     [JsonProperty("_resource")]
     public Element _Resource { get; set; }
     /// <summary>
-    /// This is a shorter way of achieving similar verifications via "assert.responseCode".  If you need more control, then use "assert.responseCode"  e.g. <assert>  <contentType value="json" />  <response value="okay"/> </assert>.
+    /// okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable.
     /// </summary>
     [JsonProperty("response")]
     public string Response { get; set; }
     [JsonProperty("_response")]
     public Element _Response { get; set; }
     /// <summary>
-    /// To be used with "operator" attribute value. Asserts that the response code equals this value if "operator" is not specified.   If the operator is "in" or "notIn" then the responseCode would be a comma-separated list of values e.g. "200,201". Otherwise, it's expected to be a numeric value.   If "fixture" is not specified, then the "responseBodyId" value of the last operation is assumed.
+    /// The value of the HTTP response code to be tested.
     /// </summary>
     [JsonProperty("responseCode")]
     public string ResponseCode { get; set; }
     [JsonProperty("_responseCode")]
     public Element _ResponseCode { get; set; }
     /// <summary>
-    /// This can be a statically defined fixture (at the top of the testscript) or a dynamically set fixture created by responseId of the action.operation element.
+    /// Fixture to evaluate the XPath/JSONPath expression or the headerField  against.
     /// </summary>
     [JsonProperty("sourceId")]
     public string SourceId { get; set; }
     [JsonProperty("_sourceId")]
     public Element _SourceId { get; set; }
     /// <summary>
-    /// The ID of a Profile fixture. Asserts that the response is valid according to the Profile specified by validateProfileId.
+    /// The ID of the Profile to validate against.
     /// </summary>
     [JsonProperty("validateProfileId")]
     public string ValidateProfileId { get; set; }
     [JsonProperty("_validateProfileId")]
     public Element _ValidateProfileId { get; set; }
     /// <summary>
-    /// The string-representation of a number, string, or boolean that is expected.  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before comparing this value to the actual value.
+    /// The value to compare to.
     /// </summary>
     [JsonProperty("value")]
     public string Value { get; set; }
     [JsonProperty("_value")]
     public Element _Value { get; set; }
     /// <summary>
-    /// If this element is specified and it is true, then assertion failures can be logged by test engine but should not stop the test script execution from proceeding.  There are likely cases where the spec is not clear on what should happen. If the spec says something is optional (maybe a response header for example), but a server doesn’t do it, we could choose to issue a warning.
+    /// Whether or not the test execution will produce a warning only on error for this assert.
     /// </summary>
     [JsonProperty("warningOnly")]
     public bool? WarningOnly { get; set; }
@@ -17546,11 +17546,11 @@ namespace fhir
     public const string UNPROCESSABLE = "unprocessable";
   }
   /// <summary>
-  /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
+  /// Action would contain either an operation or an assertion.
   /// </summary>
   public class TestScriptSetupAction : BackboneElement {
     /// <summary>
-    /// In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
+    /// Evaluates the results of previous operations to determine if the server under test behaves appropriately.
     /// </summary>
     [JsonProperty("assert")]
     public TestScriptSetupActionAssert Assert { get; set; }
@@ -17565,7 +17565,7 @@ namespace fhir
   /// </summary>
   public class TestScriptSetup : BackboneElement {
     /// <summary>
-    /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
+    /// Action would contain either an operation or an assertion.
     /// </summary>
     [JsonProperty("action")]
     public TestScriptSetupAction[] Action { get; set; }
@@ -17576,11 +17576,11 @@ namespace fhir
     public TestScriptMetadata Metadata { get; set; }
   }
   /// <summary>
-  /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
+  /// Action would contain either an operation or an assertion.
   /// </summary>
   public class TestScriptTestAction : BackboneElement {
     /// <summary>
-    /// In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
+    /// Evaluates the results of previous operations to determine if the server under test behaves appropriately.
     /// </summary>
     [JsonProperty("assert")]
     public TestScriptSetupActionAssert Assert { get; set; }
@@ -17595,7 +17595,7 @@ namespace fhir
   /// </summary>
   public class TestScriptTest : BackboneElement {
     /// <summary>
-    /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
+    /// Action would contain either an operation or an assertion.
     /// </summary>
     [JsonProperty("action")]
     public TestScriptTestAction[] Action { get; set; }
@@ -17620,7 +17620,7 @@ namespace fhir
     public Element _Name { get; set; }
   }
   /// <summary>
-  /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
+  /// The teardown action will only contain an operation.
   /// </summary>
   public class TestScriptTeardownAction : BackboneElement {
     /// <summary>
@@ -17634,7 +17634,7 @@ namespace fhir
   /// </summary>
   public class TestScriptTeardown : BackboneElement {
     /// <summary>
-    /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
+    /// The teardown action will only contain an operation.
     /// </summary>
     [JsonProperty("action")]
     public TestScriptTeardownAction[] Action { get; set; }
@@ -17647,7 +17647,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "TestScript";
     /// <summary>
-    /// May be a web site, an email address, a telephone number (tel:), etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public TestScriptContact[] Contact { get; set; }
@@ -17659,21 +17659,21 @@ namespace fhir
     [JsonProperty("_copyright")]
     public Element _Copyright { get; set; }
     /// <summary>
-    /// Additional specific dates may be added as extensions.
+    /// The date this version of the test tcript was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the test cases change.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// This field can be used for things such as why the TestScript was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the TestScript as conveyed in TestScript.text. This item SHOULD be populated unless the information is available from context.
+    /// A free text natural language description of the TestScript and its use.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// This TestScript was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /// Allows filtering of TestScripts that are appropriate for use vs. not.
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
@@ -17698,26 +17698,26 @@ namespace fhir
     [JsonProperty("multiserver")]
     public bool? Multiserver { get; set; }
     /// <summary>
-    /// Not expected to be globally unique.
+    /// A free text natural language name identifying the TestScript.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types.
+    /// Reference to the profile to be used for validation.
     /// </summary>
     [JsonProperty("profile")]
     public Reference[] Profile { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the Test Script.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
     [JsonProperty("_publisher")]
     public Element _Publisher { get; set; }
     /// <summary>
-    /// This element does not describe the usage of the Test Script (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
+    /// Explains why this Test Script is needed and why it's been constrained as it has.
     /// </summary>
     [JsonProperty("requirements")]
     public string Requirements { get; set; }
@@ -17729,7 +17729,7 @@ namespace fhir
     [JsonProperty("setup")]
     public TestScriptSetup Setup { get; set; }
     /// <summary>
-    /// The status of the TestScript.
+    /// Allows filtering of TestScripts that are appropriate for use vs. not.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -17753,17 +17753,17 @@ namespace fhir
     [JsonProperty("_url")]
     public Element _Url { get; set; }
     /// <summary>
-    /// The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of Test Scripts.
+    /// Assist in searching for appropriate content.
     /// </summary>
     [JsonProperty("useContext")]
     public CodeableConcept[] UseContext { get; set; }
     /// <summary>
-    /// Variables would be set based either on XPath/JsonPath expressions against fixtures (static and response), or headerField evaluations against response headers. If variable evaluates to nodelist or anything other than a primitive value, then test engine would report error.  Variables would be used to perform clean replacements in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations. This limits the places that test engines would need to look for placeholders "${}".  Variables are scoped to the whole script. They are NOT evaluated at declaration. They are evaluated by test engine when used for substitutions in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations.  See example testscript-search.xml.
+    /// Variable is set based either on element value in response body or on header field value in the response headers.
     /// </summary>
     [JsonProperty("variable")]
     public TestScriptVariable[] Variable { get; set; }
     /// <summary>
-    /// The identifier that is used to identify this version of the TestScript. This is an arbitrary value managed by the TestScript author manually.
+    /// There may be multiple resource versions of the TestScript that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -17779,11 +17779,11 @@ namespace fhir
     public const string RETIRED = "retired";
   }
   /// <summary>
-  /// May be a web site, an email address, a telephone number, etc.
+  /// Contacts to assist a user in finding and communicating with the publisher.
   /// </summary>
   public class ValueSetContact : BackboneElement {
     /// <summary>
-    /// If there is no named individual, the telecom is for the organization as a whole.
+    /// The name of an individual to contact regarding the value set.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -17796,18 +17796,18 @@ namespace fhir
     public ContactPoint[] Telecom { get; set; }
   }
   /// <summary>
-  /// Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.
+  /// Many concept definition systems support multiple representations, in multiple languages, and for multiple purposes.
   /// </summary>
   public class ValueSetCodeSystemConceptDesignation : BackboneElement {
     /// <summary>
-    /// In the absence of a language, the resource language applies.
+    /// The language this designation is defined for.
     /// </summary>
     [JsonProperty("language")]
     public string Language { get; set; }
     [JsonProperty("_language")]
     public Element _Language { get; set; }
     /// <summary>
-    /// If no use is provided, the designation can be assumed to be suitable for general display to a human user.
+    /// A code that details how this designation would be used.
     /// </summary>
     [JsonProperty("use")]
     public Coding Use { get; set; }
@@ -17848,7 +17848,7 @@ namespace fhir
     [JsonProperty("_definition")]
     public Element _Definition { get; set; }
     /// <summary>
-    /// Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.
+    /// Many concept definition systems support multiple representations, in multiple languages, and for multiple purposes.
     /// </summary>
     [JsonProperty("designation")]
     public ValueSetCodeSystemConceptDesignation[] Designation { get; set; }
@@ -17861,11 +17861,11 @@ namespace fhir
     public Element _Display { get; set; }
   }
   /// <summary>
-  /// All code systems defined as part of a FHIR value set have an implicit valueset that includes all of the codes in the code system - the value set in which they are defined.
+  /// A definition of a code system, inlined into the value set (as a packaging convenience). Note that the inline code system may be used from other value sets by referring to its (codeSystem.system) directly.
   /// </summary>
   public class ValueSetCodeSystem : BackboneElement {
     /// <summary>
-    /// If this value is missing, then it is not specified whether a code system is case sensitive or not. When the rule is not known, Postel's law should be followed: produce codes with the correct case, and accept codes in any case. This element is primarily provided to support validation software.
+    /// If code comparison is case sensitive when codes within this system are compared to each other.
     /// </summary>
     [JsonProperty("caseSensitive")]
     public bool? CaseSensitive { get; set; }
@@ -17875,7 +17875,7 @@ namespace fhir
     [JsonProperty("concept")]
     public ValueSetCodeSystemConcept[] Concept { get; set; }
     /// <summary>
-    /// The reference is not required to point to any specific kind of definition, but the more information that can be provided, the more useful it is for implementers. Best practice is to resolve to a computable definition of the code system (either a value set, or some other format). Terminology servers MAY validate this reference (e.g. when accepting PUT/POST), and MAY make additional rules about what kind of content it refers to.
+    /// An absolute URI that is used to reference this code system, including in [Coding]{datatypes.html#Coding}.system.
     /// </summary>
     [JsonProperty("system")]
     public string System { get; set; }
@@ -17890,11 +17890,11 @@ namespace fhir
     public Element _Version { get; set; }
   }
   /// <summary>
-  /// The list of concepts is considered ordered, though the order may not have any particular significance. Typically, the order of an expansion follows that defined in the compose element.
+  /// Specifies a concept to be included or excluded.
   /// </summary>
   public class ValueSetComposeIncludeConcept : BackboneElement {
     /// <summary>
-    /// Expressions are allowed if defined by the underlying code system.
+    /// Specifies a code for the concept to be included or excluded.
     /// </summary>
     [JsonProperty("code")]
     public string Code { get; set; }
@@ -17906,7 +17906,7 @@ namespace fhir
     [JsonProperty("designation")]
     public ValueSetCodeSystemConceptDesignation[] Designation { get; set; }
     /// <summary>
-    /// The value set resource allows for an alternative display to be specified for when this concept is used in this particular value set. See notes in the value set narrative about the correct use of this element.
+    /// The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.
     /// </summary>
     [JsonProperty("display")]
     public string Display { get; set; }
@@ -17914,7 +17914,7 @@ namespace fhir
     public Element _Display { get; set; }
   }
   /// <summary>
-  /// Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party.
+  /// Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
   /// </summary>
   public class ValueSetComposeIncludeFilter : BackboneElement {
     /// <summary>
@@ -17932,7 +17932,7 @@ namespace fhir
     [JsonProperty("_property")]
     public Element _Property { get; set; }
     /// <summary>
-    /// Use regex matching with care - full regex matching on every SNOMED CT term is prohibitive, for example.
+    /// The match value may be either a code defined by the system, or a string value, which is a regex match on the literal string of the property value.
     /// </summary>
     [JsonProperty("value")]
     public string Value { get; set; }
@@ -17951,28 +17951,28 @@ namespace fhir
     public const string NOT_IN = "not-in";
   }
   /// <summary>
-  /// If there are no codes or filters, the entire code system is included. Note that the set of codes that are included may contain abstract codes.
+  /// Include one or more codes from a code system.
   /// </summary>
   public class ValueSetComposeInclude : BackboneElement {
     /// <summary>
-    /// The list of concepts is considered ordered, though the order may not have any particular significance. Typically, the order of an expansion follows that defined in the compose element.
+    /// Specifies a concept to be included or excluded.
     /// </summary>
     [JsonProperty("concept")]
     public ValueSetComposeIncludeConcept[] Concept { get; set; }
     /// <summary>
-    /// Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party.
+    /// Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
     /// </summary>
     [JsonProperty("filter")]
     public ValueSetComposeIncludeFilter[] Filter { get; set; }
     /// <summary>
-    /// See ''Coding.system'' for further documentation.
+    /// An absolute URI which is the code system from which the selected codes come from.
     /// </summary>
     [JsonProperty("system")]
     public string System { get; set; }
     [JsonProperty("_system")]
     public Element _System { get; set; }
     /// <summary>
-    /// This is used when selecting the descendants of a concept - they may change between versions. If no version is specified, then the exact contents of the value set may not be known until a context of use binds it to a particular version.
+    /// The version of the code system that the codes are selected from.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -17984,29 +17984,29 @@ namespace fhir
   /// </summary>
   public class ValueSetCompose : BackboneElement {
     /// <summary>
-    /// Usually this is used to selectively exclude codes that were included by subsumption in the inclusions. Any display names specified for the codes are ignored.
+    /// Exclude one or more codes from the value set.
     /// </summary>
     [JsonProperty("exclude")]
     public ValueSetComposeInclude[] Exclude { get; set; }
     /// <summary>
-    /// The value set URI is either a logical reference to a defined value set such as a [SNOMED CT reference set]{snomedct.html#implicit}, or a direct reference to a value set definition using ValueSet.url. The reference may also not reference an actual FHIR ValueSet resource; in this case, whatever is referenced is an implicit definition of a value set that needs to be clear about how versions are resolved.
+    /// Includes the contents of the referenced value set as a part of the contents of this value set. This is an absolute URI that is a reference to ValueSet.uri.
     /// </summary>
     [JsonProperty("import")]
     public string[] Import { get; set; }
     [JsonProperty("_import")]
     public Element[] _Import { get; set; }
     /// <summary>
-    /// If there are no codes or filters, the entire code system is included. Note that the set of codes that are included may contain abstract codes.
+    /// Include one or more codes from a code system.
     /// </summary>
     [JsonProperty("include")]
     public ValueSetComposeInclude[] Include { get; set; }
   }
   /// <summary>
-  /// The server decides which parameters to include here, but at a minimum, the list SHOULD include the date, filter, and profile parameters passed to the $expand operation (if any).
+  /// A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
   /// </summary>
   public class ValueSetExpansionParameter : BackboneElement {
     /// <summary>
-    /// The names are assigned at the discretion of the server.
+    /// The name of the parameter.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
@@ -18056,7 +18056,7 @@ namespace fhir
   /// </summary>
   public class ValueSetExpansionContains : BackboneElement {
     /// <summary>
-    /// This should not be understood to exclude its use for searching (e.g. by subsumption testing). The client should know whether it is appropriate for the user to select an abstract code or not.
+    /// If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.
     /// </summary>
     [JsonProperty("abstract")]
     public bool? Abstract { get; set; }
@@ -18068,7 +18068,7 @@ namespace fhir
     [JsonProperty("_code")]
     public Element _Code { get; set; }
     /// <summary>
-    /// If the expansion uses this element, there is  no implication about the logical relationship between them, and the  structure cannot be used for logical inferencing. The structure  exists to provide navigational assistance for helping human users to  locate codes in the expansion.
+    /// Other codes and entries contained under this entry in the hierarchy.
     /// </summary>
     [JsonProperty("contains")]
     public ValueSetExpansionContains[] Contains { get; set; }
@@ -18087,7 +18087,7 @@ namespace fhir
     [JsonProperty("_system")]
     public Element _System { get; set; }
     /// <summary>
-    /// The exact value of the version string is specified by the system from which the code is derived.
+    /// The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
@@ -18095,7 +18095,7 @@ namespace fhir
     public Element _Version { get; set; }
   }
   /// <summary>
-  /// Expansion is performed to produce a collection of codes that are ready to use for data entry or validation.
+  /// A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.
   /// </summary>
   public class ValueSetExpansion : BackboneElement {
     /// <summary>
@@ -18104,31 +18104,31 @@ namespace fhir
     [JsonProperty("contains")]
     public ValueSetExpansionContains[] Contains { get; set; }
     /// <summary>
-    /// Typically, this uri is a UUID (e.g. urn:uuid:8230ff20-c97a-4167-a59d-dc2cb9df16dd).
+    /// An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so.
     /// </summary>
     [JsonProperty("identifier")]
     public string Identifier { get; set; }
     [JsonProperty("_identifier")]
     public Element _Identifier { get; set; }
     /// <summary>
-    /// Paging only applies to flat expansions. If a filter is applied, the count is the number of concepts that matched the filter, not the number of concepts in an unfiltered view of the expansion.
+    /// If paging is being used, the offset at which this resource starts.  I.e. this resource is a partial view into the expansion. If paging is not being used, this element SHALL not be present.
     /// </summary>
     [JsonProperty("offset")]
     public int? Offset { get; set; }
     /// <summary>
-    /// The server decides which parameters to include here, but at a minimum, the list SHOULD include the date, filter, and profile parameters passed to the $expand operation (if any).
+    /// A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
     /// </summary>
     [JsonProperty("parameter")]
     public ValueSetExpansionParameter[] Parameter { get; set; }
     /// <summary>
-    /// This SHOULD be a fully populated instant, but in some circumstances, value sets are expanded by hand, and the expansion is published without that precision.
+    /// The time at which the expansion was produced by the expanding system.
     /// </summary>
     [JsonProperty("timestamp")]
     public string Timestamp { get; set; }
     [JsonProperty("_timestamp")]
     public Element _Timestamp { get; set; }
     /// <summary>
-    /// Paging only applies to flat expansions.
+    /// The total number of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter.
     /// </summary>
     [JsonProperty("total")]
     public int? Total { get; set; }
@@ -18141,7 +18141,7 @@ namespace fhir
     [JsonProperty("resourceType")]
     public string ResourceType => "ValueSet";
     /// <summary>
-    /// All code systems defined as part of a FHIR value set have an implicit valueset that includes all of the codes in the code system - the value set in which they are defined.
+    /// A definition of a code system, inlined into the value set (as a packaging convenience). Note that the inline code system may be used from other value sets by referring to its (codeSystem.system) directly.
     /// </summary>
     [JsonProperty("codeSystem")]
     public ValueSetCodeSystem CodeSystem { get; set; }
@@ -18151,86 +18151,86 @@ namespace fhir
     [JsonProperty("compose")]
     public ValueSetCompose Compose { get; set; }
     /// <summary>
-    /// May be a web site, an email address, a telephone number, etc.
+    /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
     public ValueSetContact[] Contact { get; set; }
     /// <summary>
-    /// Frequently, the copyright differs between the value set and the codes that are included. The copyright statement should clearly differentiate between these when required.
+    /// A copyright statement relating to the value set and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the value set.
     /// </summary>
     [JsonProperty("copyright")]
     public string Copyright { get; set; }
     [JsonProperty("_copyright")]
     public Element _Copyright { get; set; }
     /// <summary>
-    /// Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the value set. Additional specific dates may be added as extensions.
+    /// Need to know when a value set was first legal for use or became withdrawn or replaced.
     /// </summary>
     [JsonProperty("date")]
     public string Date { get; set; }
     [JsonProperty("_date")]
     public Element _Date { get; set; }
     /// <summary>
-    /// The description is not intended to describe the semantics of the Value Set - there are no intrinsic semantics separate from the codes contained in its expansion. The description should capture its intended use, which is needed for ensuring integrity for its use in models across future changes. A description should be provided unless the value set is a contained resource (e.g. an anonymous value set in a profile). Most registries will require a description.
+    /// Human understandability.
     /// </summary>
     [JsonProperty("description")]
     public string Description { get; set; }
     [JsonProperty("_description")]
     public Element _Description { get; set; }
     /// <summary>
-    /// Expansion is performed to produce a collection of codes that are ready to use for data entry or validation.
+    /// A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.
     /// </summary>
     [JsonProperty("expansion")]
     public ValueSetExpansion Expansion { get; set; }
     /// <summary>
-    /// Allows filtering of value sets that are appropriate for use vs. not.
+    /// This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
     /// </summary>
     [JsonProperty("experimental")]
     public bool? Experimental { get; set; }
     /// <summary>
-    /// Whether this is intended to be used with an extensible binding or not.
+    /// It is not required to say whether this intent applies.
     /// </summary>
     [JsonProperty("extensible")]
     public bool? Extensible { get; set; }
     /// <summary>
-    /// Typically, this is used for values that can go in an HL7 v3 II data type.
+    /// Formal identifier that is used to identify this value set when it is represented in other formats, or referenced in a specification, model, design or an instance.
     /// </summary>
     [JsonProperty("identifier")]
     public Identifier Identifier { get; set; }
     /// <summary>
-    /// Normally immutability is set to 'false', which is the default assumption if it is not populated.  Note that the implication is that if this is set to 'true', there may be only one ValueSet version for this definition. Immutability tends to be set to 'true' in one of two cases: - Where the value set, by the nature of its usage, cannot change.  For example "All specializations of ACT in ActClassCode" - Where there's no safe way to express the "Purpose" such that someone else could safely make changes to the value set definition. Source workflow control must guarantee that the same URI always yields the same definition.
+    /// If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
     /// </summary>
     [JsonProperty("immutable")]
     public bool? Immutable { get; set; }
     /// <summary>
-    /// With a defined lockedDate the value set is considered "Locked". Otherwise, the value set may have different expansions as underlying code systems and/or value sets evolve.  The interpretation of lockedDate is often dependent on the context - e.g. a SNOMED CT derived value set with a lockedDate will have a different expansion in USA than in UK.  If a value set specifies a version for include and exclude statements, and also specifies a locked date, the specified versions need to be available that date, or the value set will not be usable.
+    /// If a locked date is defined, then the Content Logical Definition must be evaluated using the current version of all referenced code system(s) and value set instances as of the locked date.
     /// </summary>
     [JsonProperty("lockedDate")]
     public string LockedDate { get; set; }
     [JsonProperty("_lockedDate")]
     public Element _LockedDate { get; set; }
     /// <summary>
-    /// The name is not expected to be unique. A name should be provided unless the value set is a contained resource (e.g. an anonymous value set in a profile). Most registries will require a name.
+    /// Support human navigation.
     /// </summary>
     [JsonProperty("name")]
     public string Name { get; set; }
     [JsonProperty("_name")]
     public Element _Name { get; set; }
     /// <summary>
-    /// Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
+    /// Helps establish the "authority/credibility" of the value set.  May also allow for contact.
     /// </summary>
     [JsonProperty("publisher")]
     public string Publisher { get; set; }
     [JsonProperty("_publisher")]
     public Element _Publisher { get; set; }
     /// <summary>
-    /// This element does not describe the usage of the value set (that is done in comments), rather it's for traceability of ''why'' the element is either needed or ''why'' the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
+    /// Explains why this value set is needed and why it has been constrained as it has.
     /// </summary>
     [JsonProperty("requirements")]
     public string Requirements { get; set; }
     [JsonProperty("_requirements")]
     public Element _Requirements { get; set; }
     /// <summary>
-    /// Allows filtering of value set instances that are appropriate (or not) for use.
+    /// Identify when/if the value set should be used.
     /// </summary>
     [JsonProperty("status")]
     public string Status { get; set; }
@@ -18244,12 +18244,12 @@ namespace fhir
     [JsonProperty("_url")]
     public Element _Url { get; set; }
     /// <summary>
-    /// The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of value set definitions.
+    /// Assist in searching for appropriate content.
     /// </summary>
     [JsonProperty("useContext")]
     public CodeableConcept[] UseContext { get; set; }
     /// <summary>
-    /// There may be multiple resource versions of the value set that have the same identifier.
+    /// Used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
     /// </summary>
     [JsonProperty("version")]
     public string Version { get; set; }
