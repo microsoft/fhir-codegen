@@ -153,7 +153,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="referencedByPaths">The list of elements (by Path) that reference this value set.</param>
         public void SetReferences(List<string> referencedByPaths)
         {
-            _referencedPaths = referencedByPaths.Select(p => (string)p.Clone()).ToList();
+            if (referencedByPaths == null)
+            {
+                return;
+            }
+
+            HashSet<string> paths = new HashSet<string>();
+
+            foreach (string path in referencedByPaths)
+            {
+                if (paths.Contains(path))
+                {
+                    continue;
+                }
+
+                _referencedPaths.Add((string)path.Clone());
+                paths.Add(path);
+            }
         }
 
         /// <summary>Gets a list of FhirTriplets to cover all values in the value set.</summary>
