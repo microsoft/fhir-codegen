@@ -1276,6 +1276,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
         }
 
+        /// <summary>Writes a constrained quantity.</summary>
+        /// <param name="complex">   The complex data type.</param>
+        /// <param name="exportName">Name of the export.</param>
+        private void WriteConstrainedQuantity(
+            FhirComplex complex,
+            string exportName)
+        {
+            _writer.WriteLineIndented(
+                $"public partial class" +
+                    $" {exportName}" +
+                    $" : Quantity");
+
+            // open class
+            OpenScope();
+
+            WritePropertyTypeName(complex.Name);
+
+            _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
+            OpenScope();
+            _writer.WriteLineIndented($"return CopyTo(new {exportName}());");
+            CloseScope();
+
+            _writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
+            WriteIndentedComment(complex.Purpose, false);
+
+            // close class
+            CloseScope();
+        }
+
         /// <summary>Writes a component.</summary>
         /// <param name="complex">              The complex data type.</param>
         /// <param name="exportName">           Name of the export.</param>
