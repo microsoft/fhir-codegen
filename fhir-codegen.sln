@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen-cli", "src\fhi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.SpecManager", "src\Microsoft.Health.Fhir.SpecManager\Microsoft.Health.Fhir.SpecManager.csproj", "{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen-test-cli", "src\fhir-codegen-test-cli\fhir-codegen-test-cli.csproj", "{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEDC62AC-A6D6-40A1-94B6-99948C45E51D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F142E5-33F1-44A2-8F41-9AA8BB2EF795}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

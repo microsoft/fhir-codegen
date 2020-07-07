@@ -48,6 +48,14 @@ Options:
 * Download and parse FHIR R4 (latest published version) into ./fhir, then build a C# file in the current directory using the namespace: MyOrg.MyProject.Fhir
   * `fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language CSharpBasic --output-file ./cs/R4.cs --language-options CSharpBasic|namespace=MyOrg.MyProject.Fhir`
 
+## Testing
+
+Running `dotnet run -p src/fhir-codegen-test-cli/fhir-codegen-test-cli.csproj` launches a full build and test.
+
+It will generate updated CSharpBasic and TypeScript files for FHIR Versions DSTU2, STU3, R4, and R5 (May 2020).  It will then run each through a build process (requires `dotnet` and `tsc`) to validate there are no syntax errors in any of the generated files.
+
+Note that this test takes several minutes to run, and more tests will be added in the future.
+
 ## Langauge Information
 
   * Info
