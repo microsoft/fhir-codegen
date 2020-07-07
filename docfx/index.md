@@ -1,16 +1,16 @@
-# fhir-codegen
+# FHIR CodeGen
 
 A .Net Core library and utility to generate various computer language outputs from FHIR specifications.
 
-# Usage
+## Usage
 
 Detailed usage information is available [here](/articles/cli.html).
 
-# Extending
+## Extending
 
 Documentation for developers interested in extending the tooling to include additional langauges or add other features is available [here](/articles/extending.html).
 
-# Contributing
+## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us

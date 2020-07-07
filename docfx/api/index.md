@@ -6,6 +6,10 @@ This section contains source code information for:
 
 A command-line tool for downloading, parsing, and exporting various versions of the FHIR specifications to other computer languages.
 
+## Executable: [FhirCodegenTestCli](FhirCodegenTestCli.html)
+
+A command-line tool for exercising the code generation functionality.
+
 ## Library: [Microsoft.Health.Fhir.SpecManager](http://localhost:8080/api/Microsoft.Health.Fhir.SpecManager.html)
 
 Main library to handling downloading, parsing, and exporting various versions of the FHIR specifications.

@@ -2,5 +2,7 @@
   href: intro.md
 - name: CLI
   href: cli.md
+- name: Testing
+  href: test.md
 - name: Extending
   href: extending.md

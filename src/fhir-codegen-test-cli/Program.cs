@@ -6,54 +6,190 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace fhir_codegen_test_cli
+namespace FhirCodegenTestCli
 {
     /// <summary>The FHIR CodeGen Test CLI</summary>
     public static class Program
     {
         private const string CodegenCsproj = "src/fhir-codegen-cli/fhir-codegen-cli.csproj";
 
+        /// <summary>The FHIR version minimum.</summary>
+        private const int FhirVersionMin = 2;
+
+        /// <summary>The FHIR version maximum.</summary>
+        private const int FhirVersionMax = 5;
+
         /// <summary>True to verbose.</summary>
         private static bool _verbose = false;
 
+        /// <summary>The tests run.</summary>
+        private static int _testsRun = 0;
+
+        /// <summary>The tests skipped.</summary>
+        private static int _testsSkipped = 0;
+
+        /// <summary>The tests passed.</summary>
+        private static int _testsPassed = 0;
+
+        /// <summary>The tests failed.</summary>
+        private static int _testsFailed = 0;
+
+        /// <summary>True to fixed format statistics.</summary>
+        private static bool _fixedFormatStats = false;
+
+        /// <summary>True to use standard error.</summary>
+        private static bool _useStdErr = false;
+
         /// <summary>The FHIR CodeGen Test CLI.</summary>
-        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
-        /// <param name="repoRootPath">The path to the repository root (if not CWD).</param>
-        /// <param name="verbose">     True to display all output.</param>
+        /// <param name="repoRootPath">         The path to the repository root (if not CWD).</param>
+        /// <param name="verbose">              True to display all output.</param>
+        /// <param name="fixedFormatStatistics">True to output *only* test run statistics:
+        ///  #run[tab]#passed[tab]#failed[tab]#skipped.</param>
+        /// <param name="errorsToStdError">     True to write errors to stderr instead of stdout.</param>
+        /// <returns>Exit-code for the process - returns the number of errors detected (0 for success).</returns>
         public static int Main(
             string repoRootPath = "",
-            bool verbose = false)
+            bool verbose = false,
+            bool fixedFormatStatistics = false,
+            bool errorsToStdError = false)
         {
             if (string.IsNullOrEmpty(repoRootPath))
             {
                 repoRootPath = Directory.GetCurrentDirectory();
             }
 
+            _fixedFormatStats = fixedFormatStatistics;
+            _useStdErr = errorsToStdError;
+
             if (!TryFindRepoRoot(repoRootPath, out string path))
             {
-                Console.WriteLine($"Failed to find repository root: {repoRootPath}!");
-                return -1;
+                _testsFailed++;
+                WriteTestInfo($"Failed to find repository root: {repoRootPath}!");
+                return 1;
             }
 
             _verbose = verbose;
 
             try
             {
-                RunCodeGen(path);
-
-                for (int version = 2; version <= 5; version++)
-                {
-                    RunCSharpBasicTest(path, version);
-                    RunTypeScriptTest(path, version);
-                }
+                _testsRun++;
+                //RunCodeGen(path);
+                _testsPassed++;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Test failed! {ex.Message}");
-                return -1;
+                _testsFailed++;
+                WriteTestInfo($"Failed during Code Generation! {ex.Message}");
+
+                return 1;
             }
 
-            return 0;
+            for (int version = FhirVersionMin; version <= FhirVersionMax; version++)
+            {
+                try
+                {
+                    _testsRun++;
+                    RunCSharpBasicTest(path, version);
+                    _testsPassed++;
+                }
+                catch (Exception ex)
+                {
+                    _testsFailed++;
+                    WriteTestInfo(ex.Message);
+                }
+            }
+
+            if (CanCompileTypeScript())
+            {
+                for (int version = FhirVersionMin; version <= FhirVersionMax; version++)
+                {
+                    try
+                    {
+                        _testsRun++;
+                        RunTypeScriptTest(path, version);
+                        _testsPassed++;
+                    }
+                    catch (Exception ex)
+                    {
+                        _testsFailed++;
+                        WriteTestInfo(ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                _testsSkipped += (FhirVersionMax - FhirVersionMin);
+            }
+
+            WriteTestInfo();
+
+            return _testsFailed;
+        }
+
+        /// <summary>Writes the test information.</summary>
+        /// <param name="message">(Optional) The message.</param>
+        private static void WriteTestInfo(string message = "")
+        {
+            float passed = (float)_testsPassed / (float)_testsRun;
+            float failed = (float)_testsFailed / (float)_testsRun;
+            float skipped = (float)_testsSkipped / (float)_testsRun;
+
+            if ((_testsFailed > 0) && (_useStdErr))
+            {
+                if (_fixedFormatStats)
+                {
+                    Console.Error.WriteLine($"{_testsRun}\t{_testsPassed}\t{_testsFailed}\t{_testsSkipped}");
+                    return;
+                }
+
+                if (!string.IsNullOrEmpty(message))
+                {
+                    Console.Error.WriteLine(message);
+                }
+
+                Console.Error.WriteLine("Test Statistics:");
+                Console.Error.WriteLine($"Run:     {_testsRun,4}");
+                Console.Error.WriteLine($"Passed:  {_testsPassed,4} ({passed:P})");
+                Console.Error.WriteLine($"Failed:  {_testsFailed,4} ({failed:P})");
+                Console.Error.WriteLine($"Skipped: {_testsSkipped,4} ({skipped:P})");
+
+                return;
+            }
+
+            if (_fixedFormatStats)
+            {
+                Console.WriteLine($"{_testsRun}\t{_testsPassed}\t{_testsFailed}\t{_testsSkipped}");
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(message))
+            {
+                Console.WriteLine(message);
+            }
+
+            Console.WriteLine("Test Statistics:");
+            Console.WriteLine($"Run:     {_testsRun,4}");
+            Console.WriteLine($"Passed:  {_testsPassed,4} ({passed:P})");
+            Console.WriteLine($"Failed:  {_testsFailed,4} ({failed:P})");
+            Console.WriteLine($"Skipped: {_testsSkipped,4} ({skipped:P})");
+        }
+
+        /// <summary>Determine if we can compile type script.</summary>
+        /// <returns>True if we can compile type script, false if not.</returns>
+        private static bool CanCompileTypeScript()
+        {
+            RunAndWait(
+                "tsc",
+                "--version",
+                true,
+                out int status);
+
+            if (status == 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>Executes the TypeScript test operation.</summary>
@@ -68,7 +204,10 @@ namespace fhir_codegen_test_cli
                 $"--diagnostics" +
                 $" -p \"{project}\"";
 
-            Console.WriteLine($"Testing TypeScript_R{version}, this may take a few minutes...");
+            if (!_fixedFormatStats)
+            {
+                Console.WriteLine($"Testing TypeScript_R{version}, this may take a few minutes...");
+            }
 
             RunAndWait(
                 "tsc",
@@ -81,7 +220,10 @@ namespace fhir_codegen_test_cli
                 throw new Exception($"Testing TypeScript_R{version} failed! Returned: {status}");
             }
 
-            Console.WriteLine($"Test of TypeScript_R{version} successful!");
+            if (!_fixedFormatStats)
+            {
+                Console.WriteLine($"Test of TypeScript_R{version} successful!");
+            }
         }
 
         /// <summary>Executes the C# basic test operation.</summary>
@@ -97,7 +239,10 @@ namespace fhir_codegen_test_cli
                 $" --no-incremental" +
                 $" \"{project}\"";
 
-            Console.WriteLine($"Testing CSharpBasic_R{version}, this may take a few minutes...");
+            if (!_fixedFormatStats)
+            {
+                Console.WriteLine($"Testing CSharpBasic_R{version}, this may take a few minutes...");
+            }
 
             RunAndWait(
                 "dotnet",
@@ -110,7 +255,10 @@ namespace fhir_codegen_test_cli
                 throw new Exception($"Testing CSharpBasic_R{version} failed! Returned: {status}");
             }
 
-            Console.WriteLine($"Test of CSharpBasic_R{version} successful!");
+            if (!_fixedFormatStats)
+            {
+                Console.WriteLine($"Test of CSharpBasic_R{version} successful!");
+            }
         }
 
         /// <summary>Attempts to find repo root a string from the given string.</summary>
@@ -156,7 +304,10 @@ namespace fhir_codegen_test_cli
                 $" --load-r5 latest" +
                 $" --language TypeScript|CSharpBasic";
 
-            Console.WriteLine("Running code generation, this may take a few minutes...");
+            if (!_fixedFormatStats)
+            {
+                Console.WriteLine("Running code generation, this may take a few minutes...");
+            }
 
             RunAndWait(
                 "dotnet",
@@ -169,7 +320,10 @@ namespace fhir_codegen_test_cli
                 throw new Exception($"Code Generation Failed! Returned: {status}");
             }
 
-            Console.WriteLine("Code generation successful!");
+            if (!_fixedFormatStats)
+            {
+                Console.WriteLine("Code generation successful!");
+            }
         }
 
         /// <summary>Executes the and wait operation.</summary>
@@ -215,7 +369,7 @@ namespace fhir_codegen_test_cli
 
             retVal = proc.ExitCode;
 
-            if ((retVal != 0) || (_verbose))
+            if (((retVal != 0) || (_verbose)) && (!_fixedFormatStats))
             {
                 if (!string.IsNullOrEmpty(stdout))
                 {

@@ -37,24 +37,16 @@ Options:
 ## Examples
 
 * Download and parse FHIR R4 (latest published version) into ./fhir, then build a TypeScript file in the current directory
-  * `fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language TypeScript --output-file ./R4.ts`
+  * `fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language TypeScript --output-path ./R4.ts`
 
 * Download and parse FHIR R4 (latest published version) into ./fhir, then build a TypeScript file in the current directory, restricted to just the Resources: Patient, Encounter, and Observation
-  * `fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language TypeScript --output-file ./R4.ts --export-keys Patient|Encounter|Observation`
+  * `fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language TypeScript --output-path ./R4.ts --export-keys Patient|Encounter|Observation`
 
 * Download and parse the latest published version of each FHIR release into ./fhir, then build a C# file for each in ./cs
-  * `fhir-codegen-cli --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ./fhir --language CSharpBasic --output-file ./cs`
+  * `fhir-codegen-cli --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ./fhir --language CSharpBasic --output-path ./cs`
 
 * Download and parse FHIR R4 (latest published version) into ./fhir, then build a C# file in the current directory using the namespace: MyOrg.MyProject.Fhir
-  * `fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language CSharpBasic --output-file ./cs/R4.cs --language-options CSharpBasic|namespace=MyOrg.MyProject.Fhir`
-
-## Testing
-
-Running `dotnet run -p src/fhir-codegen-test-cli/fhir-codegen-test-cli.csproj` launches a full build and test.
-
-It will generate updated CSharpBasic and TypeScript files for FHIR Versions DSTU2, STU3, R4, and R5 (May 2020).  It will then run each through a build process (requires `dotnet` and `tsc`) to validate there are no syntax errors in any of the generated files.
-
-Note that this test takes several minutes to run, and more tests will be added in the future.
+  * `fhir-codegen-cli --load-r4 latest --fhir-spec-directory ./fhir --language CSharpBasic --output-path ./cs/R4.cs --language-options CSharpBasic|namespace=MyOrg.MyProject.Fhir`
 
 ## Langauge Information
 
@@ -73,6 +65,36 @@ Note that this test takes several minutes to run, and more tests will be added i
   * CSharpFirely **EXPERIMENTAL**
 
     Export base C# classes needed for the Firely-maintained C# API ([FHIR-Net-API](https://github.com/FirelyTeam/fhir-net-api/)).
+
+
+# Testing
+
+Running `dotnet run -p src/fhir-codegen-test-cli/fhir-codegen-test-cli.csproj` launches a full build and test.
+
+It will generate updated CSharpBasic and TypeScript files for FHIR Versions DSTU2, STU3, R4, and R5 (May 2020).  It will then run each through a build process (requires `dotnet` for C# and `tsc` for TypeScript) to validate there are no syntax errors in any of the generated files.
+
+Note that this test takes several minutes to run.
+
+## Usage
+```
+fhir-codegen-test-cli:
+  The FHIR CodeGen Test CLI.
+
+Usage:
+  fhir-codegen-test-cli [options]
+
+Options:
+  --repo-root-path <repo-root-path>    The path to the repository root (if not CWD).
+  --verbose                            True to display all output
+                                         (default: false)
+  --fixed-format-statistics            True to output *only* test run statistics:
+                                         #run[tab]#passed[tab]#failed[tab]#skipped
+                                         (default: false)
+  --errors-to-std-error                True to write errors to stderr instead of stdout.
+                                         (default: False)
+  --version                            Show version information
+  -?, -h, --help                       Show help and usage information
+```
 
 # Pre-Generated Files
 

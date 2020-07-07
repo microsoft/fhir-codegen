@@ -22,13 +22,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="sourceFhirInfo">Information describing the source FHIR version information.</param>
         /// <param name="exportLanguage">The export language.</param>
         /// <param name="options">       Options for controlling the operation.</param>
-        /// <param name="outputFile">    The output filename.</param>
+        /// <param name="outputPath">    The output filename.</param>
         /// <returns>A List of files written by the export operation.</returns>
         public static List<string> Export(
             FhirVersionInfo sourceFhirInfo,
             ILanguage exportLanguage,
             ExporterOptions options,
-            string outputFile)
+            string outputPath)
         {
             List<string> filesWritten = new List<string>();
 
@@ -47,18 +47,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 throw new ArgumentNullException(nameof(options));
             }
 
-            if (string.IsNullOrEmpty(outputFile))
+            if (string.IsNullOrEmpty(outputPath))
             {
-                throw new ArgumentNullException(nameof(outputFile));
+                throw new ArgumentNullException(nameof(outputPath));
             }
 
             // check for rooted vs relative
-            if (!Path.IsPathRooted(outputFile))
+            if (!Path.IsPathRooted(outputPath))
             {
-                outputFile = Path.Combine(Directory.GetCurrentDirectory(), outputFile);
+                outputPath = Path.Combine(Directory.GetCurrentDirectory(), outputPath);
             }
 
-            string outputDir = Path.GetDirectoryName(outputFile);
+            string outputDir;
+
+            if (Path.HasExtension(outputPath))
+            {
+                outputDir = Path.GetDirectoryName(outputPath);
+            }
+            else
+            {
+                outputDir = outputPath;
+            }
+
             string exportDir = Path.Combine(outputDir, $"{exportLanguage.LanguageName}-{DateTime.Now.Ticks}");
 
             if (!Directory.Exists(outputDir))
@@ -111,14 +121,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 options,
                 exportDir);
 
-            // check for being a directory - just copy our process files
-            if (Directory.Exists(outputFile))
-            {
-                string[] exportedFiles = Directory.GetFiles(exportDir);
+            string[] exportedFiles = Directory.GetFiles(exportDir);
 
+            // check for being a directory - just copy our process files
+            if (Directory.Exists(outputPath))
+            {
                 foreach (string file in exportedFiles)
                 {
-                    string exportName = Path.Combine(outputFile, Path.GetFileName(file));
+                    string exportName = Path.Combine(outputPath, Path.GetFileName(file));
 
                     if (File.Exists(exportName))
                     {
@@ -136,25 +146,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
 
             // make sure our destination is clear
-            if (File.Exists(outputFile))
+            if (File.Exists(outputPath))
             {
-                File.Delete(outputFile);
+                File.Delete(outputPath);
             }
 
             // check for single file
-            string[] files = Directory.GetFiles(exportDir);
-
-            if (files.Length == 1)
+            if (exportedFiles.Length == 1)
             {
-                File.Move(files[0], outputFile);
-                filesWritten.Add(outputFile);
+                File.Move(exportedFiles[0], outputPath);
+                filesWritten.Add(outputPath);
 
                 DeleteDirectory(exportDir);
 
                 return filesWritten;
             }
 
-            string zipName = outputFile;
+            string zipName = outputPath;
 
             if (!zipName.ToUpperInvariant().EndsWith(".ZIP", StringComparison.Ordinal))
             {

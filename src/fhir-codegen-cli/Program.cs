@@ -121,7 +121,16 @@ namespace FhirCodegenCli
 
             if (!string.IsNullOrEmpty(outputPath))
             {
-                string baseDirectory = Path.GetDirectoryName(outputPath);
+                string baseDirectory;
+
+                if (Path.HasExtension(outputPath))
+                {
+                    baseDirectory = Path.GetDirectoryName(outputPath);
+                }
+                else
+                {
+                    baseDirectory = outputPath;
+                }
 
                 if (!Directory.Exists(Path.GetDirectoryName(baseDirectory)))
                 {
