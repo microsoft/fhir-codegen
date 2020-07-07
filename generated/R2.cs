@@ -46,9 +46,9 @@ namespace fhir
     /// home | work | temp | old - purpose of this address.
     /// </summary>
     [JsonProperty("line")]
-    public string[] Line { get; set; }
+    public List<string> Line { get; set; }
     [JsonProperty("_line")]
-    public Element[] _Line { get; set; }
+    public List<Element> _Line { get; set; }
     /// <summary>
     /// Allows addresses to be placed in historical context.
     /// </summary>
@@ -210,7 +210,7 @@ namespace fhir
     /// May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
     /// </summary>
     [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
+    public List<Extension> ModifierExtension { get; set; }
   }
   /// <summary>
   /// A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.
@@ -220,7 +220,7 @@ namespace fhir
     /// Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings.
     /// </summary>
     [JsonProperty("coding")]
-    public Coding[] Coding { get; set; }
+    public List<Coding> Coding { get; set; }
     /// <summary>
     /// The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.
     /// </summary>
@@ -346,7 +346,7 @@ namespace fhir
     /// May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
     /// </summary>
     [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
+    public List<Extension> Extension { get; set; }
     /// <summary>
     /// unique id for the element within a resource (for internal references).
     /// </summary>
@@ -370,9 +370,9 @@ namespace fhir
     /// Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
     /// </summary>
     [JsonProperty("discriminator")]
-    public string[] Discriminator { get; set; }
+    public List<string> Discriminator { get; set; }
     [JsonProperty("_discriminator")]
-    public Element[] _Discriminator { get; set; }
+    public List<Element> _Discriminator { get; set; }
     /// <summary>
     /// If the matching elements have to occur in the same order as defined in the profile.
     /// </summary>
@@ -426,9 +426,9 @@ namespace fhir
     /// If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.
     /// </summary>
     [JsonProperty("aggregation")]
-    public string[] Aggregation { get; set; }
+    public List<string> Aggregation { get; set; }
     [JsonProperty("_aggregation")]
-    public Element[] _Aggregation { get; set; }
+    public List<Element> _Aggregation { get; set; }
     /// <summary>
     /// Name of Data type or Resource that is a(or the) type used for this element.
     /// </summary>
@@ -440,9 +440,9 @@ namespace fhir
     /// Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
     /// </summary>
     [JsonProperty("profile")]
-    public string[] Profile { get; set; }
+    public List<string> Profile { get; set; }
     [JsonProperty("_profile")]
-    public Element[] _Profile { get; set; }
+    public List<Element> _Profile { get; set; }
   }
   /// <summary>
   /// Code Values for the ElementDefinition.type.aggregation field
@@ -573,9 +573,9 @@ namespace fhir
     /// Allows for better easier recognition of the element by multiple communities, including international communities.
     /// </summary>
     [JsonProperty("alias")]
-    public string[] Alias { get; set; }
+    public List<string> Alias { get; set; }
     [JsonProperty("_alias")]
-    public Element[] _Alias { get; set; }
+    public List<Element> _Alias { get; set; }
     /// <summary>
     /// Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
     /// </summary>
@@ -590,7 +590,7 @@ namespace fhir
     /// Links the meaning of an element to an external terminology.
     /// </summary>
     [JsonProperty("code")]
-    public Coding[] Code { get; set; }
+    public List<Coding> Code { get; set; }
     /// <summary>
     /// Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.
     /// </summary>
@@ -602,14 +602,14 @@ namespace fhir
     /// A reference to an invariant that may make additional statements about the cardinality or value in the instance.
     /// </summary>
     [JsonProperty("condition")]
-    public string[] Condition { get; set; }
+    public List<string> Condition { get; set; }
     [JsonProperty("_condition")]
-    public Element[] _Condition { get; set; }
+    public List<Element> _Condition { get; set; }
     /// <summary>
     /// Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
     /// </summary>
     [JsonProperty("constraint")]
-    public ElementDefinitionConstraint[] Constraint { get; set; }
+    public List<ElementDefinitionConstraint> Constraint { get; set; }
     /// <summary>
     /// The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
     /// </summary>
@@ -1205,7 +1205,7 @@ namespace fhir
     /// Provides guidance to implementers familiar with or converting content from other specifications.
     /// </summary>
     [JsonProperty("mapping")]
-    public ElementDefinitionMapping[] Mapping { get; set; }
+    public List<ElementDefinitionMapping> Mapping { get; set; }
     /// <summary>
     /// The maximum number of times this element is permitted to appear in the instance.
     /// </summary>
@@ -1827,9 +1827,9 @@ namespace fhir
     /// Codes that define how this element is represented in instances, when the deviation varies from the normal case.
     /// </summary>
     [JsonProperty("representation")]
-    public string[] Representation { get; set; }
+    public List<string> Representation { get; set; }
     [JsonProperty("_representation")]
-    public Element[] _Representation { get; set; }
+    public List<Element> _Representation { get; set; }
     /// <summary>
     /// This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.
     /// </summary>
@@ -1853,7 +1853,7 @@ namespace fhir
     /// The data type or resource that the value of this element is permitted to be.
     /// </summary>
     [JsonProperty("type")]
-    public ElementDefinitionType[] Type { get; set; }
+    public List<ElementDefinitionType> Type { get; set; }
   }
   /// <summary>
   /// Optional Extensions Element - found in all resources.
@@ -2064,16 +2064,16 @@ namespace fhir
     /// The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
     /// </summary>
     [JsonProperty("family")]
-    public string[] Family { get; set; }
+    public List<string> Family { get; set; }
     [JsonProperty("_family")]
-    public Element[] _Family { get; set; }
+    public List<Element> _Family { get; set; }
     /// <summary>
     /// Given name.
     /// </summary>
     [JsonProperty("given")]
-    public string[] Given { get; set; }
+    public List<string> Given { get; set; }
     [JsonProperty("_given")]
-    public Element[] _Given { get; set; }
+    public List<Element> _Given { get; set; }
     /// <summary>
     /// Allows names to be placed in historical context.
     /// </summary>
@@ -2083,16 +2083,16 @@ namespace fhir
     /// Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.
     /// </summary>
     [JsonProperty("prefix")]
-    public string[] Prefix { get; set; }
+    public List<string> Prefix { get; set; }
     [JsonProperty("_prefix")]
-    public Element[] _Prefix { get; set; }
+    public List<Element> _Prefix { get; set; }
     /// <summary>
     /// Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.
     /// </summary>
     [JsonProperty("suffix")]
-    public string[] Suffix { get; set; }
+    public List<string> Suffix { get; set; }
     [JsonProperty("_suffix")]
-    public Element[] _Suffix { get; set; }
+    public List<Element> _Suffix { get; set; }
     /// <summary>
     /// A renderable, unencoded form.
     /// </summary>
@@ -2185,19 +2185,19 @@ namespace fhir
     /// A list of profiles [[[StructureDefinition]]]s that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].
     /// </summary>
     [JsonProperty("profile")]
-    public string[] Profile { get; set; }
+    public List<string> Profile { get; set; }
     [JsonProperty("_profile")]
-    public Element[] _Profile { get; set; }
+    public List<Element> _Profile { get; set; }
     /// <summary>
     /// Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.
     /// </summary>
     [JsonProperty("security")]
-    public Coding[] Security { get; set; }
+    public List<Coding> Security { get; set; }
     /// <summary>
     /// Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.
     /// </summary>
     [JsonProperty("tag")]
-    public Coding[] Tag { get; set; }
+    public List<Coding> Tag { get; set; }
     /// <summary>
     /// The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.
     /// </summary>
@@ -2428,7 +2428,7 @@ namespace fhir
     /// An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.
     /// </summary>
     [JsonProperty("type")]
-    public Coding[] Type { get; set; }
+    public List<Coding> Type { get; set; }
     /// <summary>
     /// When the digital signature was signed.
     /// </summary>
@@ -2575,9 +2575,9 @@ namespace fhir
     /// In an MAR, for instance, you need to take a general specification, and turn it into a precise specification.
     /// </summary>
     [JsonProperty("event")]
-    public string[] Event { get; set; }
+    public List<string> Event { get; set; }
     [JsonProperty("_event")]
-    public Element[] _Event { get; set; }
+    public List<Element> _Event { get; set; }
     /// <summary>
     /// Many timing schedules are determined by regular repetitions.
     /// </summary>
@@ -2622,7 +2622,7 @@ namespace fhir
     /// Unique identifier used to reference the account.  May or may not be intended for human use (e.g. credit card number).
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Name used for the account when displaying it to humans in reports, etc.
     /// </summary>
@@ -2687,7 +2687,7 @@ namespace fhir
     /// Clinical symptoms and/or signs that are observed or associated with the adverse reaction event.
     /// </summary>
     [JsonProperty("manifestation")]
-    public CodeableConcept[] Manifestation { get; set; }
+    public List<CodeableConcept> Manifestation { get; set; }
     /// <summary>
     /// Additional text about the adverse reaction event not captured in other fields.
     /// </summary>
@@ -2754,7 +2754,7 @@ namespace fhir
     /// This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Represents the date and/or time of the last known occurrence of a reaction event.
     /// </summary>
@@ -2783,7 +2783,7 @@ namespace fhir
     /// Details about each adverse reaction event linked to exposure to the identified Substance.
     /// </summary>
     [JsonProperty("reaction")]
-    public AllergyIntoleranceReaction[] Reaction { get; set; }
+    public List<AllergyIntoleranceReaction> Reaction { get; set; }
     /// <summary>
     /// Date when the sensitivity was recorded.
     /// </summary>
@@ -2884,7 +2884,7 @@ namespace fhir
     /// Role of participant in the appointment.
     /// </summary>
     [JsonProperty("type")]
-    public CodeableConcept[] Type { get; set; }
+    public List<CodeableConcept> Type { get; set; }
   }
   /// <summary>
   /// Code Values for the Appointment.participant.required field
@@ -2935,7 +2935,7 @@ namespace fhir
     /// This records identifiers associated with this appointment concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Number of minutes that the appointment is to take. This can be less than the duration between the start and end times (where actual time of appointment is only an estimate or is a planned appointment request).
     /// </summary>
@@ -2945,7 +2945,7 @@ namespace fhir
     /// List of participants involved in the appointment.
     /// </summary>
     [JsonProperty("participant")]
-    public AppointmentParticipant[] Participant { get; set; }
+    public List<AppointmentParticipant> Participant { get; set; }
     /// <summary>
     /// The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority).
     /// </summary>
@@ -2960,7 +2960,7 @@ namespace fhir
     /// The slot that this appointment is filling. If provided then the schedule will not be provided as slots are not recursive, and the start/end values MUST be the same as from the slot.
     /// </summary>
     [JsonProperty("slot")]
-    public Reference[] Slot { get; set; }
+    public List<Reference> Slot { get; set; }
     /// <summary>
     /// Date/Time that the appointment is to take place.
     /// </summary>
@@ -3028,7 +3028,7 @@ namespace fhir
     /// This records identifiers associated with this appointment response concern that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Participation status of the participant. When the status is declined or tentative if the start/end times are different to the appointment, then these times should be interpreted as a requested time change. When the status is accepted, the times can either be the time of the appointment (as a confirmation of the time) or can be empty.
     /// </summary>
@@ -3040,7 +3040,7 @@ namespace fhir
     /// Role of participant in the appointment.
     /// </summary>
     [JsonProperty("participantType")]
-    public CodeableConcept[] ParticipantType { get; set; }
+    public List<CodeableConcept> ParticipantType { get; set; }
     /// <summary>
     /// Date/Time that the appointment is to take place, or requested new start time.
     /// </summary>
@@ -3096,12 +3096,12 @@ namespace fhir
     /// The purposeOfUse (reason) that was used during the event being recorded.
     /// </summary>
     [JsonProperty("purposeOfEvent")]
-    public Coding[] PurposeOfEvent { get; set; }
+    public List<Coding> PurposeOfEvent { get; set; }
     /// <summary>
     /// This field enables queries of messages by implementation-defined event categories.
     /// </summary>
     [JsonProperty("subtype")]
-    public Coding[] Subtype { get; set; }
+    public List<Coding> Subtype { get; set; }
     /// <summary>
     /// This identifies the performed function. For "Execute" Event Action Code audit records, this identifies the application function performed.
     /// </summary>
@@ -3164,14 +3164,14 @@ namespace fhir
     /// This value is used retrospectively to determine the authorization policies.
     /// </summary>
     [JsonProperty("policy")]
-    public string[] Policy { get; set; }
+    public List<string> Policy { get; set; }
     [JsonProperty("_policy")]
-    public Element[] _Policy { get; set; }
+    public List<Element> _Policy { get; set; }
     /// <summary>
     /// The reason (purpose of use), specific to this participant, that was used during the event being recorded.
     /// </summary>
     [JsonProperty("purposeOfUse")]
-    public Coding[] PurposeOfUse { get; set; }
+    public List<Coding> PurposeOfUse { get; set; }
     /// <summary>
     /// This field ties an audit event to a specific resource.
     /// </summary>
@@ -3186,7 +3186,7 @@ namespace fhir
     /// This value ties an audited event to a user's role(s). It is an optional value that might be used to group events for analysis by user functional role categories.
     /// </summary>
     [JsonProperty("role")]
-    public CodeableConcept[] Role { get; set; }
+    public List<CodeableConcept> Role { get; set; }
     /// <summary>
     /// This field ties an audit event to a specific user.
     /// </summary>
@@ -3213,7 +3213,7 @@ namespace fhir
     /// This field indicates which type of source is identified by the Audit Source ID. It is an optional value that may be used to group events for analysis according to the type of source where the event occurred.
     /// </summary>
     [JsonProperty("type")]
-    public Coding[] Type { get; set; }
+    public List<Coding> Type { get; set; }
   }
   /// <summary>
   /// Additional Information about the Object.
@@ -3249,7 +3249,7 @@ namespace fhir
     /// Additional Information about the Object.
     /// </summary>
     [JsonProperty("detail")]
-    public AuditEventObjectDetail[] Detail { get; set; }
+    public List<AuditEventObjectDetail> Detail { get; set; }
     /// <summary>
     /// Identifies a specific instance of the participant object. The reference should always be version specific.
     /// </summary>
@@ -3288,7 +3288,7 @@ namespace fhir
     /// This field identifies the security labels for a specific instance of an object, such as a patient, to detect/track privacy and security issues.
     /// </summary>
     [JsonProperty("securityLabel")]
-    public Coding[] SecurityLabel { get; set; }
+    public List<Coding> SecurityLabel { get; set; }
     /// <summary>
     /// To describe the object being acted upon. In addition to queries on the subject of the action in an auditable event, it is also important to be able to query on the object type for the action.
     /// </summary>
@@ -3311,12 +3311,12 @@ namespace fhir
     /// The event may have other objects involved.
     /// </summary>
     [JsonProperty("object")]
-    public AuditEventObject[] Object { get; set; }
+    public List<AuditEventObject> Object { get; set; }
     /// <summary>
     /// The event has one or more active participants.
     /// </summary>
     [JsonProperty("participant")]
-    public AuditEventParticipant[] Participant { get; set; }
+    public List<AuditEventParticipant> Participant { get; set; }
     /// <summary>
     /// The event is reported by one source.
     /// </summary>
@@ -3351,7 +3351,7 @@ namespace fhir
     /// Identifier assigned to the resource for business purposes, outside the context of FHIR.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Needed for partitioning the resource by Patient.
     /// </summary>
@@ -3403,17 +3403,17 @@ namespace fhir
     /// Identifier for this instance of the anatomical location.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Image or images used to identify a location.
     /// </summary>
     [JsonProperty("image")]
-    public Attachment[] Image { get; set; }
+    public List<Attachment> Image { get; set; }
     /// <summary>
     /// Modifier to refine the anatomical location.  These include modifiers for laterality, relative location, directionality, number, and plane.
     /// </summary>
     [JsonProperty("modifier")]
-    public CodeableConcept[] Modifier { get; set; }
+    public List<CodeableConcept> Modifier { get; set; }
     /// <summary>
     /// The person to which the body site belongs.
     /// </summary>
@@ -3570,7 +3570,7 @@ namespace fhir
     /// A series of links that provide context to this entry.
     /// </summary>
     [JsonProperty("link")]
-    public BundleLink[] Link { get; set; }
+    public List<BundleLink> Link { get; set; }
     /// <summary>
     /// Additional information about how this entry should be processed as part of a transaction.
     /// </summary>
@@ -3603,12 +3603,12 @@ namespace fhir
     /// An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).
     /// </summary>
     [JsonProperty("entry")]
-    public BundleEntry[] Entry { get; set; }
+    public List<BundleEntry> Entry { get; set; }
     /// <summary>
     /// A series of links that provide context to this bundle.
     /// </summary>
     [JsonProperty("link")]
-    public BundleLink[] Link { get; set; }
+    public List<BundleLink> Link { get; set; }
     /// <summary>
     /// This element allows capturing signatures on documents. It also allows signatures on messages, transactions or even query responses. It may support content-authentication, non-repudiation or other business cases. This is primarily relevant where the bundle may travel through multiple hops or via other mechanisms where HTTPS non-repudiation is insufficient.
     /// </summary>
@@ -3711,7 +3711,7 @@ namespace fhir
     /// So that participants know the link explicitly.
     /// </summary>
     [JsonProperty("goal")]
-    public Reference[] Goal { get; set; }
+    public List<Reference> Goal { get; set; }
     /// <summary>
     /// Helps in planning of activity.
     /// </summary>
@@ -3721,7 +3721,7 @@ namespace fhir
     /// Helps in planning of activity.
     /// </summary>
     [JsonProperty("performer")]
-    public Reference[] Performer { get; set; }
+    public List<Reference> Performer { get; set; }
     /// <summary>
     /// Identifies the food, drug or other product to be consumed or supplied in the activity.
     /// </summary>
@@ -3746,12 +3746,12 @@ namespace fhir
     /// Provides the rationale that drove the inclusion of this particular activity as part of the plan.
     /// </summary>
     [JsonProperty("reasonCode")]
-    public CodeableConcept[] ReasonCode { get; set; }
+    public List<CodeableConcept> ReasonCode { get; set; }
     /// <summary>
     /// Provides the health condition(s) that drove the inclusion of this particular activity as part of the plan.
     /// </summary>
     [JsonProperty("reasonReference")]
-    public Reference[] ReasonReference { get; set; }
+    public List<Reference> ReasonReference { get; set; }
     /// <summary>
     /// Allows prompting for activities and detection of missed planned activities.
     /// </summary>
@@ -3801,7 +3801,7 @@ namespace fhir
     /// Links plan to resulting actions.
     /// </summary>
     [JsonProperty("actionResulting")]
-    public Reference[] ActionResulting { get; set; }
+    public List<Reference> ActionResulting { get; set; }
     /// <summary>
     /// Details in a simple form for generic care plan systems.
     /// </summary>
@@ -3811,7 +3811,7 @@ namespace fhir
     /// Can be used to capture information about adherence, progress, concerns, etc.
     /// </summary>
     [JsonProperty("progress")]
-    public Annotation[] Progress { get; set; }
+    public List<Annotation> Progress { get; set; }
     /// <summary>
     /// Details in a form consistent with other applications and contexts of use.
     /// </summary>
@@ -3829,22 +3829,22 @@ namespace fhir
     /// Allows systems to prompt for performance of planned activities, and validate plans against best practice.
     /// </summary>
     [JsonProperty("activity")]
-    public CarePlanActivity[] Activity { get; set; }
+    public List<CarePlanActivity> Activity { get; set; }
     /// <summary>
     /// Links plan to the conditions it manages.  Also scopes plans - multiple plans may exist addressing different concerns.
     /// </summary>
     [JsonProperty("addresses")]
-    public Reference[] Addresses { get; set; }
+    public List<Reference> Addresses { get; set; }
     /// <summary>
     /// Identifies the individual(s) or ogranization who is responsible for the content of the care plan.
     /// </summary>
     [JsonProperty("author")]
-    public Reference[] Author { get; set; }
+    public List<Reference> Author { get; set; }
     /// <summary>
     /// Used for filtering what plan(s) are retrieved and displayed to different types of users.
     /// </summary>
     [JsonProperty("category")]
-    public CodeableConcept[] Category { get; set; }
+    public List<CodeableConcept> Category { get; set; }
     /// <summary>
     /// Identifies the context in which this particular CarePlan is defined.
     /// </summary>
@@ -3861,12 +3861,12 @@ namespace fhir
     /// Provides context for plan.  Allows plan effectiveness to be evaluated by clinicians.
     /// </summary>
     [JsonProperty("goal")]
-    public Reference[] Goal { get; set; }
+    public List<Reference> Goal { get; set; }
     /// <summary>
     /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Indicates how current the plan is.
     /// </summary>
@@ -3883,7 +3883,7 @@ namespace fhir
     /// Allows representation of care teams, helps scope care plan.  In some cases may be a determiner of access permissions.
     /// </summary>
     [JsonProperty("participant")]
-    public CarePlanParticipant[] Participant { get; set; }
+    public List<CarePlanParticipant> Participant { get; set; }
     /// <summary>
     /// Allows tracking what plan(s) are in effect at a particular time.
     /// </summary>
@@ -3893,7 +3893,7 @@ namespace fhir
     /// Identifies CarePlans with some sort of formal relationship to the current plan.
     /// </summary>
     [JsonProperty("relatedPlan")]
-    public CarePlanRelatedPlan[] RelatedPlan { get; set; }
+    public List<CarePlanRelatedPlan> RelatedPlan { get; set; }
     /// <summary>
     /// Allows clinicians to determine whether the plan is actionable or not.
     /// </summary>
@@ -3910,7 +3910,7 @@ namespace fhir
     /// Identifies barriers and other considerations associated with the care plan.
     /// </summary>
     [JsonProperty("support")]
-    public Reference[] Support { get; set; }
+    public List<Reference> Support { get; set; }
   }
   /// <summary>
   /// Code Values for the CarePlan.status field
@@ -3997,9 +3997,9 @@ namespace fhir
     /// To provide any pre=determination or prior authorization reference.
     /// </summary>
     [JsonProperty("preAuthRef")]
-    public string[] PreAuthRef { get; set; }
+    public List<string> PreAuthRef { get; set; }
     [JsonProperty("_preAuthRef")]
-    public Element[] _PreAuthRef { get; set; }
+    public List<Element> _PreAuthRef { get; set; }
     /// <summary>
     /// To determine the relationship between the patient and the subscriber.
     /// </summary>
@@ -4107,7 +4107,7 @@ namespace fhir
     /// Third tier of goods and services.
     /// </summary>
     [JsonProperty("subDetail")]
-    public ClaimItemDetailSubDetail[] SubDetail { get; set; }
+    public List<ClaimItemDetailSubDetail> SubDetail { get; set; }
     /// <summary>
     /// The type of product or service.
     /// </summary>
@@ -4159,12 +4159,12 @@ namespace fhir
     /// Second tier of goods and services.
     /// </summary>
     [JsonProperty("detail")]
-    public ClaimItemDetail[] Detail { get; set; }
+    public List<ClaimItemDetail> Detail { get; set; }
     /// <summary>
     /// Diagnosis applicable for this service or product line.
     /// </summary>
     [JsonProperty("diagnosisLinkId")]
-    public uint?[] DiagnosisLinkId { get; set; }
+    public List<uint?> DiagnosisLinkId { get; set; }
     /// <summary>
     /// If a fee is present the associated product/service code must be present.
     /// </summary>
@@ -4176,7 +4176,7 @@ namespace fhir
     /// May impact on adjudication.
     /// </summary>
     [JsonProperty("modifier")]
-    public Coding[] Modifier { get; set; }
+    public List<Coding> Modifier { get; set; }
     /// <summary>
     /// If a fee is present the associated product/service code must be present.
     /// </summary>
@@ -4225,7 +4225,7 @@ namespace fhir
     /// A region or surface of the site, e.g. limb region or tooth surface(s).
     /// </summary>
     [JsonProperty("subSite")]
-    public Coding[] SubSite { get; set; }
+    public List<Coding> SubSite { get; set; }
     /// <summary>
     /// The type of product or service.
     /// </summary>
@@ -4287,17 +4287,17 @@ namespace fhir
     /// Code to indicate that Xrays, images, emails, documents, models or attachments are being sent in support of this submission.
     /// </summary>
     [JsonProperty("additionalMaterials")]
-    public Coding[] AdditionalMaterials { get; set; }
+    public List<Coding> AdditionalMaterials { get; set; }
     /// <summary>
     /// List of patient conditions for which care is sought.
     /// </summary>
     [JsonProperty("condition")]
-    public Coding[] Condition { get; set; }
+    public List<Coding> Condition { get; set; }
     /// <summary>
     /// Health care programs and insurers are significant payors of health service costs.
     /// </summary>
     [JsonProperty("coverage")]
-    public ClaimCoverage[] Coverage { get; set; }
+    public List<ClaimCoverage> Coverage { get; set; }
     /// <summary>
     /// The date when the enclosed suite of services were performed or completed.
     /// </summary>
@@ -4309,7 +4309,7 @@ namespace fhir
     /// Ordered list of patient diagnosis for which care is sought.
     /// </summary>
     [JsonProperty("diagnosis")]
-    public ClaimDiagnosis[] Diagnosis { get; set; }
+    public List<ClaimDiagnosis> Diagnosis { get; set; }
     /// <summary>
     /// Person who created the invoice/claim/pre-determination or pre-authorization.
     /// </summary>
@@ -4319,7 +4319,7 @@ namespace fhir
     /// To determine extenuating circumstances for coverage.
     /// </summary>
     [JsonProperty("exception")]
-    public Coding[] Exception { get; set; }
+    public List<Coding> Exception { get; set; }
     /// <summary>
     /// Facility where the services were provided.
     /// </summary>
@@ -4334,22 +4334,22 @@ namespace fhir
     /// The business identifier for the instance: invoice number, claim number, pre-determination or pre-authorization number.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Coverage may be modified based on exception information provided.
     /// </summary>
     [JsonProperty("interventionException")]
-    public Coding[] InterventionException { get; set; }
+    public List<Coding> InterventionException { get; set; }
     /// <summary>
     /// First tier of goods and services.
     /// </summary>
     [JsonProperty("item")]
-    public ClaimItem[] Item { get; set; }
+    public List<ClaimItem> Item { get; set; }
     /// <summary>
     /// The list of missing teeth may influence the adjudication of services for example with Bridges.
     /// </summary>
     [JsonProperty("missingTeeth")]
-    public ClaimMissingTeeth[] MissingTeeth { get; set; }
+    public List<ClaimMissingTeeth> MissingTeeth { get; set; }
     /// <summary>
     /// The organization which is responsible for the bill, claim pre-determination, pre-authorization.
     /// </summary>
@@ -4520,7 +4520,7 @@ namespace fhir
     /// The adjudications results.
     /// </summary>
     [JsonProperty("adjudication")]
-    public ClaimResponseItemDetailSubDetailAdjudication[] Adjudication { get; set; }
+    public List<ClaimResponseItemDetailSubDetailAdjudication> Adjudication { get; set; }
     /// <summary>
     /// A service line number.
     /// </summary>
@@ -4535,7 +4535,7 @@ namespace fhir
     /// The adjudications results.
     /// </summary>
     [JsonProperty("adjudication")]
-    public ClaimResponseItemDetailAdjudication[] Adjudication { get; set; }
+    public List<ClaimResponseItemDetailAdjudication> Adjudication { get; set; }
     /// <summary>
     /// A service line number.
     /// </summary>
@@ -4545,7 +4545,7 @@ namespace fhir
     /// The third tier service adjudications for submitted services.
     /// </summary>
     [JsonProperty("subDetail")]
-    public ClaimResponseItemDetailSubDetail[] SubDetail { get; set; }
+    public List<ClaimResponseItemDetailSubDetail> SubDetail { get; set; }
   }
   /// <summary>
   /// The first tier service adjudications for submitted services.
@@ -4555,17 +4555,17 @@ namespace fhir
     /// The adjudications results.
     /// </summary>
     [JsonProperty("adjudication")]
-    public ClaimResponseItemAdjudication[] Adjudication { get; set; }
+    public List<ClaimResponseItemAdjudication> Adjudication { get; set; }
     /// <summary>
     /// The second tier service adjudications for submitted services.
     /// </summary>
     [JsonProperty("detail")]
-    public ClaimResponseItemDetail[] Detail { get; set; }
+    public List<ClaimResponseItemDetail> Detail { get; set; }
     /// <summary>
     /// A list of note references to the notes provided below.
     /// </summary>
     [JsonProperty("noteNumber")]
-    public uint?[] NoteNumber { get; set; }
+    public List<uint?> NoteNumber { get; set; }
     /// <summary>
     /// A service line number.
     /// </summary>
@@ -4624,7 +4624,7 @@ namespace fhir
     /// The adjudications results.
     /// </summary>
     [JsonProperty("adjudication")]
-    public ClaimResponseAddItemDetailAdjudication[] Adjudication { get; set; }
+    public List<ClaimResponseAddItemDetailAdjudication> Adjudication { get; set; }
     /// <summary>
     /// The fee charged for the professional service or product..
     /// </summary>
@@ -4644,12 +4644,12 @@ namespace fhir
     /// The adjudications results.
     /// </summary>
     [JsonProperty("adjudication")]
-    public ClaimResponseAddItemAdjudication[] Adjudication { get; set; }
+    public List<ClaimResponseAddItemAdjudication> Adjudication { get; set; }
     /// <summary>
     /// The second tier service adjudications for payor added services.
     /// </summary>
     [JsonProperty("detail")]
-    public ClaimResponseAddItemDetail[] Detail { get; set; }
+    public List<ClaimResponseAddItemDetail> Detail { get; set; }
     /// <summary>
     /// The fee charged for the professional service or product..
     /// </summary>
@@ -4659,12 +4659,12 @@ namespace fhir
     /// A list of note references to the notes provided below.
     /// </summary>
     [JsonProperty("noteNumberLinkId")]
-    public uint?[] NoteNumberLinkId { get; set; }
+    public List<uint?> NoteNumberLinkId { get; set; }
     /// <summary>
     /// List of input service items which this service line is intended to replace.
     /// </summary>
     [JsonProperty("sequenceLinkId")]
-    public uint?[] SequenceLinkId { get; set; }
+    public List<uint?> SequenceLinkId { get; set; }
     /// <summary>
     /// A code to indicate the Professional Service or Product supplied.
     /// </summary>
@@ -4753,9 +4753,9 @@ namespace fhir
     /// To provide any pre-determination or prior authorization reference.
     /// </summary>
     [JsonProperty("preAuthRef")]
-    public string[] PreAuthRef { get; set; }
+    public List<string> PreAuthRef { get; set; }
     [JsonProperty("_preAuthRef")]
-    public Element[] _PreAuthRef { get; set; }
+    public List<Element> _PreAuthRef { get; set; }
     /// <summary>
     /// To determine the relationship between the patient and the subscriber.
     /// </summary>
@@ -4778,12 +4778,12 @@ namespace fhir
     /// The first tier service adjudications for payor added services.
     /// </summary>
     [JsonProperty("addItem")]
-    public ClaimResponseAddItem[] AddItem { get; set; }
+    public List<ClaimResponseAddItem> AddItem { get; set; }
     /// <summary>
     /// Health care programs and insurers are significant payors of health service costs.
     /// </summary>
     [JsonProperty("coverage")]
-    public ClaimResponseCoverage[] Coverage { get; set; }
+    public List<ClaimResponseCoverage> Coverage { get; set; }
     /// <summary>
     /// The date when the enclosed suite of services were performed or completed.
     /// </summary>
@@ -4802,7 +4802,7 @@ namespace fhir
     /// Mutually exclusive with Services Provided (Item).
     /// </summary>
     [JsonProperty("error")]
-    public ClaimResponseError[] Error { get; set; }
+    public List<ClaimResponseError> Error { get; set; }
     /// <summary>
     /// The form to be used for printing the content.
     /// </summary>
@@ -4812,17 +4812,17 @@ namespace fhir
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The first tier service adjudications for submitted services.
     /// </summary>
     [JsonProperty("item")]
-    public ClaimResponseItem[] Item { get; set; }
+    public List<ClaimResponseItem> Item { get; set; }
     /// <summary>
     /// Note text.
     /// </summary>
     [JsonProperty("note")]
-    public ClaimResponseNote[] Note { get; set; }
+    public List<ClaimResponseNote> Note { get; set; }
     /// <summary>
     /// The Insurer who produced this adjudicated response.
     /// </summary>
@@ -4933,7 +4933,7 @@ namespace fhir
     /// A record of a specific investigation that was undertaken.
     /// </summary>
     [JsonProperty("item")]
-    public Reference[] Item { get; set; }
+    public List<Reference> Item { get; set; }
   }
   /// <summary>
   /// Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.
@@ -4980,7 +4980,7 @@ namespace fhir
     /// Actions taken during assessment.
     /// </summary>
     [JsonProperty("action")]
-    public Reference[] Action { get; set; }
+    public List<Reference> Action { get; set; }
     /// <summary>
     /// The clinician performing the assessment.
     /// </summary>
@@ -5004,12 +5004,12 @@ namespace fhir
     /// Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.
     /// </summary>
     [JsonProperty("finding")]
-    public ClinicalImpressionFinding[] Finding { get; set; }
+    public List<ClinicalImpressionFinding> Finding { get; set; }
     /// <summary>
     /// One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
     /// </summary>
     [JsonProperty("investigations")]
-    public ClinicalImpressionInvestigations[] Investigations { get; set; }
+    public List<ClinicalImpressionInvestigations> Investigations { get; set; }
     /// <summary>
     /// The patient being assessed.
     /// </summary>
@@ -5019,7 +5019,7 @@ namespace fhir
     /// Plan of action after assessment.
     /// </summary>
     [JsonProperty("plan")]
-    public Reference[] Plan { get; set; }
+    public List<Reference> Plan { get; set; }
     /// <summary>
     /// A reference to the last assesment that was conducted bon this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes.
     /// </summary>
@@ -5029,7 +5029,7 @@ namespace fhir
     /// This a list of the general problems/conditions for a patient.
     /// </summary>
     [JsonProperty("problem")]
-    public Reference[] Problem { get; set; }
+    public List<Reference> Problem { get; set; }
     /// <summary>
     /// Estimate of likely outcome.
     /// </summary>
@@ -5048,12 +5048,12 @@ namespace fhir
     /// Diagnoses/conditions resolved since the last assessment.
     /// </summary>
     [JsonProperty("resolved")]
-    public CodeableConcept[] Resolved { get; set; }
+    public List<CodeableConcept> Resolved { get; set; }
     /// <summary>
     /// Diagnosis considered not possible.
     /// </summary>
     [JsonProperty("ruledOut")]
-    public ClinicalImpressionRuledOut[] RuledOut { get; set; }
+    public List<ClinicalImpressionRuledOut> RuledOut { get; set; }
     /// <summary>
     /// Identifies the workflow status of the assessment.
     /// </summary>
@@ -5130,22 +5130,22 @@ namespace fhir
     /// Identifiers associated with this Communication that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// A channel that was used for this communication (e.g. email, fax).
     /// </summary>
     [JsonProperty("medium")]
-    public CodeableConcept[] Medium { get; set; }
+    public List<CodeableConcept> Medium { get; set; }
     /// <summary>
     /// Text, attachment(s), or resource(s) that was communicated to the recipient.
     /// </summary>
     [JsonProperty("payload")]
-    public CommunicationPayload[] Payload { get; set; }
+    public List<CommunicationPayload> Payload { get; set; }
     /// <summary>
     /// The reason or justification for the communication.
     /// </summary>
     [JsonProperty("reason")]
-    public CodeableConcept[] Reason { get; set; }
+    public List<CodeableConcept> Reason { get; set; }
     /// <summary>
     /// The time when this communication arrived at the destination.
     /// </summary>
@@ -5157,7 +5157,7 @@ namespace fhir
     /// The entity (e.g. person, organization, clinical information system, or device) which was the target of the communication. If receipts need to be tracked by individual, a separate resource instance will need to be created for each recipient.  Multiple recipient communications are intended where either a receipt(s) is not tracked (e.g. a mass mail-out) or is captured in aggregate (all emails confirmed received by a particular time).
     /// </summary>
     [JsonProperty("recipient")]
-    public Reference[] Recipient { get; set; }
+    public List<Reference> Recipient { get; set; }
     /// <summary>
     /// The communication request that was responsible for producing this communication.
     /// </summary>
@@ -5241,17 +5241,17 @@ namespace fhir
     /// A unique ID of this request for reference purposes. It must be provided if user wants it returned as part of any output, otherwise it will be autogenerated, if needed, by CDS system. Does not need to be the actual ID of the source system.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// A channel that was used for this communication (e.g. email, fax).
     /// </summary>
     [JsonProperty("medium")]
-    public CodeableConcept[] Medium { get; set; }
+    public List<CodeableConcept> Medium { get; set; }
     /// <summary>
     /// Text, attachment(s), or resource(s) to be communicated to the recipient.
     /// </summary>
     [JsonProperty("payload")]
-    public CommunicationRequestPayload[] Payload { get; set; }
+    public List<CommunicationRequestPayload> Payload { get; set; }
     /// <summary>
     /// Characterizes how quickly the proposed act must be initiated. Includes concepts such as stat, urgent, routine.
     /// </summary>
@@ -5261,12 +5261,12 @@ namespace fhir
     /// The reason or justification for the communication request.
     /// </summary>
     [JsonProperty("reason")]
-    public CodeableConcept[] Reason { get; set; }
+    public List<CodeableConcept> Reason { get; set; }
     /// <summary>
     /// The entity (e.g. person, organization, clinical information system, or device) which is the intended target of the communication.
     /// </summary>
     [JsonProperty("recipient")]
-    public Reference[] Recipient { get; set; }
+    public List<Reference> Recipient { get; set; }
     /// <summary>
     /// The time when the request was made.
     /// </summary>
@@ -5332,9 +5332,9 @@ namespace fhir
     /// Indicates the level of authority of the attestation.
     /// </summary>
     [JsonProperty("mode")]
-    public string[] Mode { get; set; }
+    public List<string> Mode { get; set; }
     [JsonProperty("_mode")]
-    public Element[] _Mode { get; set; }
+    public List<Element> _Mode { get; set; }
     /// <summary>
     /// Identifies who has taken on the responsibility for accuracy of the composition content.
     /// </summary>
@@ -5365,12 +5365,12 @@ namespace fhir
     /// This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
     /// </summary>
     [JsonProperty("code")]
-    public CodeableConcept[] Code { get; set; }
+    public List<CodeableConcept> Code { get; set; }
     /// <summary>
     /// The description and/or reference of the event(s) being documented. For example, this could be used to document such a colonoscopy or an appendectomy.
     /// </summary>
     [JsonProperty("detail")]
-    public Reference[] Detail { get; set; }
+    public List<Reference> Detail { get; set; }
     /// <summary>
     /// The period of time covered by the documentation. There is no assertion that the documentation is a complete representation for this period, only that it documents events during this time.
     /// </summary>
@@ -5395,7 +5395,7 @@ namespace fhir
     /// A reference to the actual resource from which the narrative in the section is derived.
     /// </summary>
     [JsonProperty("entry")]
-    public Reference[] Entry { get; set; }
+    public List<Reference> Entry { get; set; }
     /// <summary>
     /// Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.
     /// </summary>
@@ -5412,7 +5412,7 @@ namespace fhir
     /// A nested sub-section within this section.
     /// </summary>
     [JsonProperty("section")]
-    public CompositionSection[] Section { get; set; }
+    public List<CompositionSection> Section { get; set; }
     /// <summary>
     /// A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative.
     /// </summary>
@@ -5445,12 +5445,12 @@ namespace fhir
     /// Identifies responsibility for the accuracy of the composition content.
     /// </summary>
     [JsonProperty("attester")]
-    public CompositionAttester[] Attester { get; set; }
+    public List<CompositionAttester> Attester { get; set; }
     /// <summary>
     /// Identifies who is responsible for the content.
     /// </summary>
     [JsonProperty("author")]
-    public Reference[] Author { get; set; }
+    public List<Reference> Author { get; set; }
     /// <summary>
     /// Helps humans to assess whether the composition is of interest when viewing an index of compositions or documents.
     /// </summary>
@@ -5484,7 +5484,7 @@ namespace fhir
     /// Provides context for the composition and creates a linkage between a resource describing an event and the composition created describing the event.
     /// </summary>
     [JsonProperty("event")]
-    public CompositionEvent[] Event { get; set; }
+    public List<CompositionEvent> Event { get; set; }
     /// <summary>
     /// Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.
     /// </summary>
@@ -5494,7 +5494,7 @@ namespace fhir
     /// The root of the sections that make up the composition.
     /// </summary>
     [JsonProperty("section")]
-    public CompositionSection[] Section { get; set; }
+    public List<CompositionSection> Section { get; set; }
     /// <summary>
     /// Need to be able to mark interim, amended, or withdrawn compositions or documents.
     /// </summary>
@@ -5544,7 +5544,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.
@@ -5601,7 +5601,7 @@ namespace fhir
     /// A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.
     /// </summary>
     [JsonProperty("dependsOn")]
-    public ConceptMapElementTargetDependsOn[] DependsOn { get; set; }
+    public List<ConceptMapElementTargetDependsOn> DependsOn { get; set; }
     /// <summary>
     /// The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from target to source (e.g. the target is 'wider' than the source).
     /// </summary>
@@ -5613,7 +5613,7 @@ namespace fhir
     /// A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the equivalence cannot be relied on.
     /// </summary>
     [JsonProperty("product")]
-    public ConceptMapElementTargetDependsOn[] Product { get; set; }
+    public List<ConceptMapElementTargetDependsOn> Product { get; set; }
   }
   /// <summary>
   /// Code Values for the ConceptMap.element.target.equivalence field
@@ -5651,7 +5651,7 @@ namespace fhir
     /// A concept from the target value set that this concept maps to.
     /// </summary>
     [JsonProperty("target")]
-    public ConceptMapElementTarget[] Target { get; set; }
+    public List<ConceptMapElementTarget> Target { get; set; }
   }
   /// <summary>
   /// A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.
@@ -5664,7 +5664,7 @@ namespace fhir
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public ConceptMapContact[] Contact { get; set; }
+    public List<ConceptMapContact> Contact { get; set; }
     /// <summary>
     /// A copyright statement relating to the concept map and/or its contents.
     /// </summary>
@@ -5690,7 +5690,7 @@ namespace fhir
     /// Mappings for an individual concept in the source to one or more concepts in the target.
     /// </summary>
     [JsonProperty("element")]
-    public ConceptMapElement[] Element { get; set; }
+    public List<ConceptMapElement> Element { get; set; }
     /// <summary>
     /// This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
     /// </summary>
@@ -5764,7 +5764,7 @@ namespace fhir
     /// Assist in searching for appropriate concept map instances.
     /// </summary>
     [JsonProperty("useContext")]
-    public CodeableConcept[] UseContext { get; set; }
+    public List<CodeableConcept> UseContext { get; set; }
     /// <summary>
     /// The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
     /// </summary>
@@ -5789,7 +5789,7 @@ namespace fhir
     /// Reference to a formal record of the evidence on which the staging assessment is based.
     /// </summary>
     [JsonProperty("assessment")]
-    public Reference[] Assessment { get; set; }
+    public List<Reference> Assessment { get; set; }
     /// <summary>
     /// A simple summary of the stage such as "Stage 3". The determination of the stage is disease-specific.
     /// </summary>
@@ -5809,7 +5809,7 @@ namespace fhir
     /// Links to other relevant information, including pathology reports.
     /// </summary>
     [JsonProperty("detail")]
-    public Reference[] Detail { get; set; }
+    public List<Reference> Detail { get; set; }
   }
   /// <summary>
   /// Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.
@@ -5861,7 +5861,7 @@ namespace fhir
     /// The anatomical location where this condition manifests itself.
     /// </summary>
     [JsonProperty("bodySite")]
-    public CodeableConcept[] BodySite { get; set; }
+    public List<CodeableConcept> BodySite { get; set; }
     /// <summary>
     /// A category assigned to the condition.
     /// </summary>
@@ -5895,12 +5895,12 @@ namespace fhir
     /// Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.
     /// </summary>
     [JsonProperty("evidence")]
-    public ConditionEvidence[] Evidence { get; set; }
+    public List<ConditionEvidence> Evidence { get; set; }
     /// <summary>
     /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis.
     /// </summary>
@@ -5995,7 +5995,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Software that is covered by this conformance statement.  It is used when the conformance statement describes the capabilities of a particular software version, independent of an installation.
@@ -6069,7 +6069,7 @@ namespace fhir
     /// Certificates associated with security profiles.
     /// </summary>
     [JsonProperty("certificate")]
-    public ConformanceRestSecurityCertificate[] Certificate { get; set; }
+    public List<ConformanceRestSecurityCertificate> Certificate { get; set; }
     /// <summary>
     /// Server adds CORS headers when responding to requests - this enables javascript applications to use the server.
     /// </summary>
@@ -6086,7 +6086,7 @@ namespace fhir
     /// Types of security services are supported/required by the system.
     /// </summary>
     [JsonProperty("service")]
-    public CodeableConcept[] Service { get; set; }
+    public List<CodeableConcept> Service { get; set; }
   }
   /// <summary>
   /// Identifies a restful operation supported by the solution.
@@ -6129,9 +6129,9 @@ namespace fhir
     /// Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference, and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from Conformance.rest.resource.searchParam.name on the target resource type.
     /// </summary>
     [JsonProperty("chain")]
-    public string[] Chain { get; set; }
+    public List<string> Chain { get; set; }
     [JsonProperty("_chain")]
-    public Element[] _Chain { get; set; }
+    public List<Element> _Chain { get; set; }
     /// <summary>
     /// An absolute URI that is a formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter (a reference to [[[SearchParameter.url]]]).
     /// </summary>
@@ -6150,9 +6150,9 @@ namespace fhir
     /// A modifier supported for the search parameter.
     /// </summary>
     [JsonProperty("modifier")]
-    public string[] Modifier { get; set; }
+    public List<string> Modifier { get; set; }
     [JsonProperty("_modifier")]
-    public Element[] _Modifier { get; set; }
+    public List<Element> _Modifier { get; set; }
     /// <summary>
     /// The name of the search parameter used in the interface.
     /// </summary>
@@ -6164,9 +6164,9 @@ namespace fhir
     /// Types of resource (if a resource is referenced).
     /// </summary>
     [JsonProperty("target")]
-    public string[] Target { get; set; }
+    public List<string> Target { get; set; }
     [JsonProperty("_target")]
-    public Element[] _Target { get; set; }
+    public List<Element> _Target { get; set; }
     /// <summary>
     /// The type of value a search parameter refers to, and how the content is interpreted.
     /// </summary>
@@ -6228,7 +6228,7 @@ namespace fhir
     /// Identifies a restful operation supported by the solution.
     /// </summary>
     [JsonProperty("interaction")]
-    public ConformanceRestResourceInteraction[] Interaction { get; set; }
+    public List<ConformanceRestResourceInteraction> Interaction { get; set; }
     /// <summary>
     /// A specification of the profile that describes the solution's overall support for the resource, including any constraints on cardinality, bindings, lengths or other limitations. See further discussion in [Using Profiles]{profiling.html#profile-uses}.
     /// </summary>
@@ -6243,21 +6243,21 @@ namespace fhir
     /// A list of _include values supported by the server.
     /// </summary>
     [JsonProperty("searchInclude")]
-    public string[] SearchInclude { get; set; }
+    public List<string> SearchInclude { get; set; }
     [JsonProperty("_searchInclude")]
-    public Element[] _SearchInclude { get; set; }
+    public List<Element> _SearchInclude { get; set; }
     /// <summary>
     /// Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
     /// </summary>
     [JsonProperty("searchParam")]
-    public ConformanceRestResourceSearchParam[] SearchParam { get; set; }
+    public List<ConformanceRestResourceSearchParam> SearchParam { get; set; }
     /// <summary>
     /// A list of _revinclude (reverse include) values supported by the server.
     /// </summary>
     [JsonProperty("searchRevInclude")]
-    public string[] SearchRevInclude { get; set; }
+    public List<string> SearchRevInclude { get; set; }
     [JsonProperty("_searchRevInclude")]
-    public Element[] _SearchRevInclude { get; set; }
+    public List<Element> _SearchRevInclude { get; set; }
     /// <summary>
     /// A type of resource exposed via the restful interface.
     /// </summary>
@@ -6346,9 +6346,9 @@ namespace fhir
     /// An absolute URI which is a reference to the definition of a compartment hosted by the system.
     /// </summary>
     [JsonProperty("compartment")]
-    public string[] Compartment { get; set; }
+    public List<string> Compartment { get; set; }
     [JsonProperty("_compartment")]
-    public Element[] _Compartment { get; set; }
+    public List<Element> _Compartment { get; set; }
     /// <summary>
     /// Information about the system's restful capabilities that apply across all applications, such as security.
     /// </summary>
@@ -6360,7 +6360,7 @@ namespace fhir
     /// A specification of restful operations supported by the system.
     /// </summary>
     [JsonProperty("interaction")]
-    public ConformanceRestInteraction[] Interaction { get; set; }
+    public List<ConformanceRestInteraction> Interaction { get; set; }
     /// <summary>
     /// Identifies whether this portion of the statement is describing ability to initiate or receive restful operations.
     /// </summary>
@@ -6372,17 +6372,17 @@ namespace fhir
     /// Definition of an operation or a named query and with its parameters and their meaning and type.
     /// </summary>
     [JsonProperty("operation")]
-    public ConformanceRestOperation[] Operation { get; set; }
+    public List<ConformanceRestOperation> Operation { get; set; }
     /// <summary>
     /// A specification of the restful capabilities of the solution for a specific resource type.
     /// </summary>
     [JsonProperty("resource")]
-    public ConformanceRestResource[] Resource { get; set; }
+    public List<ConformanceRestResource> Resource { get; set; }
     /// <summary>
     /// Search parameters that are supported for searching all resources for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
     /// </summary>
     [JsonProperty("searchParam")]
-    public ConformanceRestResourceSearchParam[] SearchParam { get; set; }
+    public List<ConformanceRestResourceSearchParam> SearchParam { get; set; }
     /// <summary>
     /// Information about security implementation from an interface perspective - what a client needs to know.
     /// </summary>
@@ -6507,12 +6507,12 @@ namespace fhir
     /// An endpoint (network accessible address) to which messages and/or replies are to be sent.
     /// </summary>
     [JsonProperty("endpoint")]
-    public ConformanceMessagingEndpoint[] Endpoint { get; set; }
+    public List<ConformanceMessagingEndpoint> Endpoint { get; set; }
     /// <summary>
     /// A description of the solution's support for an event at this end-point.
     /// </summary>
     [JsonProperty("event")]
-    public ConformanceMessagingEvent[] Event { get; set; }
+    public List<ConformanceMessagingEvent> Event { get; set; }
     /// <summary>
     /// Length if the receiver's reliable messaging cache in minutes (if a receiver) or how long the cache length on the receiver should be (if a sender).
     /// </summary>
@@ -6568,7 +6568,7 @@ namespace fhir
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public ConformanceContact[] Contact { get; set; }
+    public List<ConformanceContact> Contact { get; set; }
     /// <summary>
     /// A copyright statement relating to the conformance statement and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the system described by the conformance statement.
     /// </summary>
@@ -6594,7 +6594,7 @@ namespace fhir
     /// A document definition.
     /// </summary>
     [JsonProperty("document")]
-    public ConformanceDocument[] Document { get; set; }
+    public List<ConformanceDocument> Document { get; set; }
     /// <summary>
     /// A flag to indicate that this conformance statement is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
     /// </summary>
@@ -6611,9 +6611,9 @@ namespace fhir
     /// A list of the formats supported by this implementation using their content types.
     /// </summary>
     [JsonProperty("format")]
-    public string[] Format { get; set; }
+    public List<string> Format { get; set; }
     [JsonProperty("_format")]
-    public Element[] _Format { get; set; }
+    public List<Element> _Format { get; set; }
     /// <summary>
     /// Identifies a specific implementation instance that is described by the conformance statement - i.e. a particular installation, rather than the capabilities of a software program.
     /// </summary>
@@ -6630,7 +6630,7 @@ namespace fhir
     /// A description of the messaging capabilities of the solution.
     /// </summary>
     [JsonProperty("messaging")]
-    public ConformanceMessaging[] Messaging { get; set; }
+    public List<ConformanceMessaging> Messaging { get; set; }
     /// <summary>
     /// A free text natural language name identifying the conformance statement.
     /// </summary>
@@ -6642,7 +6642,7 @@ namespace fhir
     /// A list of profiles that represent different use cases supported by the system. For a server, "supported by the system" means the system hosts/produces a set of resources that are conformant to a particular profile, and allows clients that use its services to search using this profile and to find appropriate data. For a client, it means the system will search by this profile and process data according to the guidance implicit in the profile. See further discussion in [Using Profiles]{profiling.html#profile-uses}.
     /// </summary>
     [JsonProperty("profile")]
-    public Reference[] Profile { get; set; }
+    public List<Reference> Profile { get; set; }
     /// <summary>
     /// Helps establish the "authority/credibility" of the conformance.  May also allow for contact.
     /// </summary>
@@ -6661,7 +6661,7 @@ namespace fhir
     /// A definition of the restful capabilities of the solution, if any.
     /// </summary>
     [JsonProperty("rest")]
-    public ConformanceRest[] Rest { get; set; }
+    public List<ConformanceRest> Rest { get; set; }
     /// <summary>
     /// Software that is covered by this conformance statement.  It is used when the conformance statement describes the capabilities of a particular software version, independent of an installation.
     /// </summary>
@@ -6735,7 +6735,7 @@ namespace fhir
     /// Role type of actors assigned roles in this Contract.
     /// </summary>
     [JsonProperty("role")]
-    public CodeableConcept[] Role { get; set; }
+    public List<CodeableConcept> Role { get; set; }
   }
   /// <summary>
   /// Contract Valued Item List.
@@ -6828,7 +6828,7 @@ namespace fhir
     /// Role played by the actor assigned this role in this Contract Provision.
     /// </summary>
     [JsonProperty("role")]
-    public CodeableConcept[] Role { get; set; }
+    public List<CodeableConcept> Role { get; set; }
   }
   /// <summary>
   /// Contract Provision Valued Item List.
@@ -6894,17 +6894,17 @@ namespace fhir
     /// Action stipulated by this Contract Provision.
     /// </summary>
     [JsonProperty("action")]
-    public CodeableConcept[] Action { get; set; }
+    public List<CodeableConcept> Action { get; set; }
     /// <summary>
     /// Reason or purpose for the action stipulated by this Contract Provision.
     /// </summary>
     [JsonProperty("actionReason")]
-    public CodeableConcept[] ActionReason { get; set; }
+    public List<CodeableConcept> ActionReason { get; set; }
     /// <summary>
     /// List of actors participating in this Contract Provision.
     /// </summary>
     [JsonProperty("actor")]
-    public ContractTermActor[] Actor { get; set; }
+    public List<ContractTermActor> Actor { get; set; }
     /// <summary>
     /// Relevant time or time-period when this Contract Provision is applicable.
     /// </summary>
@@ -6914,7 +6914,7 @@ namespace fhir
     /// Nested group of Contract Provisions.
     /// </summary>
     [JsonProperty("group")]
-    public ContractTerm[] Group { get; set; }
+    public List<ContractTerm> Group { get; set; }
     /// <summary>
     /// Unique identifier for this particular Contract Provision.
     /// </summary>
@@ -6953,7 +6953,7 @@ namespace fhir
     /// Contract Provision Valued Item List.
     /// </summary>
     [JsonProperty("valuedItem")]
-    public ContractTermValuedItem[] ValuedItem { get; set; }
+    public List<ContractTermValuedItem> ValuedItem { get; set; }
   }
   /// <summary>
   /// The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
@@ -7011,17 +7011,17 @@ namespace fhir
     /// Action stipulated by this Contract.
     /// </summary>
     [JsonProperty("action")]
-    public CodeableConcept[] Action { get; set; }
+    public List<CodeableConcept> Action { get; set; }
     /// <summary>
     /// Reason for action stipulated by this Contract.
     /// </summary>
     [JsonProperty("actionReason")]
-    public CodeableConcept[] ActionReason { get; set; }
+    public List<CodeableConcept> ActionReason { get; set; }
     /// <summary>
     /// List of Contract actors.
     /// </summary>
     [JsonProperty("actor")]
-    public ContractActor[] Actor { get; set; }
+    public List<ContractActor> Actor { get; set; }
     /// <summary>
     /// Relevant time or time-period when this Contract is applicable.
     /// </summary>
@@ -7031,7 +7031,7 @@ namespace fhir
     /// A formally or informally recognized grouping of people, principals, organizations, or jurisdictions formed for the purpose of achieving some form of collective action such as the promulgation, administration and enforcement of contracts and policies.
     /// </summary>
     [JsonProperty("authority")]
-    public Reference[] Authority { get; set; }
+    public List<Reference> Authority { get; set; }
     /// <summary>
     /// Legally binding Contract: This is the signed and legally recognized representation of the Contract, which is considered the "source of truth" and which would be the basis for legal action related to enforcement of this Contract.
     /// </summary>
@@ -7046,12 +7046,12 @@ namespace fhir
     /// Recognized governance framework or system operating with a circumscribed scope in accordance with specified principles, policies, processes or procedures for managing rights, actions, or behaviors of parties or principals relative to resources.
     /// </summary>
     [JsonProperty("domain")]
-    public Reference[] Domain { get; set; }
+    public List<Reference> Domain { get; set; }
     /// <summary>
     /// The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
     /// </summary>
     [JsonProperty("friendly")]
-    public ContractFriendly[] Friendly { get; set; }
+    public List<ContractFriendly> Friendly { get; set; }
     /// <summary>
     /// Unique identifier for this Contract.
     /// </summary>
@@ -7068,32 +7068,32 @@ namespace fhir
     /// List of Legal expressions or representations of this Contract.
     /// </summary>
     [JsonProperty("legal")]
-    public ContractLegal[] Legal { get; set; }
+    public List<ContractLegal> Legal { get; set; }
     /// <summary>
     /// List of Computable Policy Rule Language Representations of this Contract.
     /// </summary>
     [JsonProperty("rule")]
-    public ContractRule[] Rule { get; set; }
+    public List<ContractRule> Rule { get; set; }
     /// <summary>
     /// Party signing this Contract.
     /// </summary>
     [JsonProperty("signer")]
-    public ContractSigner[] Signer { get; set; }
+    public List<ContractSigner> Signer { get; set; }
     /// <summary>
     /// Who and/or what this Contract is about: typically a Patient, Organization, or valued items such as goods and services.
     /// </summary>
     [JsonProperty("subject")]
-    public Reference[] Subject { get; set; }
+    public List<Reference> Subject { get; set; }
     /// <summary>
     /// More specific type or specialization of an overarching or more general contract such as auto insurance, home owner  insurance, prenupial agreement, Advanced-Directive, or privacy consent.
     /// </summary>
     [JsonProperty("subType")]
-    public CodeableConcept[] SubType { get; set; }
+    public List<CodeableConcept> SubType { get; set; }
     /// <summary>
     /// One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
     /// </summary>
     [JsonProperty("term")]
-    public ContractTerm[] Term { get; set; }
+    public List<ContractTerm> Term { get; set; }
     /// <summary>
     /// Type of Contract such as an insurance policy, real estate contract, a will, power of attorny, Privacy or Security policy , trust framework agreement, etc.
     /// </summary>
@@ -7103,7 +7103,7 @@ namespace fhir
     /// Contract Valued Item List.
     /// </summary>
     [JsonProperty("valuedItem")]
-    public ContractValuedItem[] ValuedItem { get; set; }
+    public List<ContractValuedItem> ValuedItem { get; set; }
   }
   /// <summary>
   /// Financial instrument which may be used to pay for or reimburse health care products and services.
@@ -7121,7 +7121,7 @@ namespace fhir
     /// The policy(s) which constitute this insurance coverage.
     /// </summary>
     [JsonProperty("contract")]
-    public Reference[] Contract { get; set; }
+    public List<Reference> Contract { get; set; }
     /// <summary>
     /// For some coverage a single identifier is issued to the PolicyHolder and dependent number issues to each to each of their dependents to track and manage the plan.
     /// </summary>
@@ -7138,7 +7138,7 @@ namespace fhir
     /// This value may uniquely identify the coverage or it may be used in conjunction with the additional identifiers below.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Need to identify the issuer to target for processing and for coordination of benefit processing.
     /// </summary>
@@ -7204,7 +7204,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with.
@@ -7250,7 +7250,7 @@ namespace fhir
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public DataElementContact[] Contact { get; set; }
+    public List<DataElementContact> Contact { get; set; }
     /// <summary>
     /// A copyright statement relating to the definition of the data element. Copyright statements are generally legal restrictions on the use and publishing of the details of the definition of the data element.
     /// </summary>
@@ -7269,7 +7269,7 @@ namespace fhir
     /// 1.
     /// </summary>
     [JsonProperty("element")]
-    public ElementDefinition[] Element { get; set; }
+    public List<ElementDefinition> Element { get; set; }
     /// <summary>
     /// A flag to indicate that this search data element definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
     /// </summary>
@@ -7279,12 +7279,12 @@ namespace fhir
     /// Formal identifier that is used to identify this data element when it is represented in other formats, or referenced in a specification, model, design or an instance.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with.
     /// </summary>
     [JsonProperty("mapping")]
-    public DataElementMapping[] Mapping { get; set; }
+    public List<DataElementMapping> Mapping { get; set; }
     /// <summary>
     /// The term used by humans to refer to the data element.  Should ideally be unique within the context in which the data element is expected to be used.
     /// </summary>
@@ -7324,7 +7324,7 @@ namespace fhir
     /// The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of data element definitions.
     /// </summary>
     [JsonProperty("useContext")]
-    public CodeableConcept[] UseContext { get; set; }
+    public List<CodeableConcept> UseContext { get; set; }
     /// <summary>
     /// There may be multiple resource versions of the data element that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control.
     /// </summary>
@@ -7414,12 +7414,12 @@ namespace fhir
     /// Indicates the resource representing the current activity or proposed activity that is potentially problematic.
     /// </summary>
     [JsonProperty("implicated")]
-    public Reference[] Implicated { get; set; }
+    public List<Reference> Implicated { get; set; }
     /// <summary>
     /// Indicates an action that has been taken or is committed to to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.
     /// </summary>
     [JsonProperty("mitigation")]
-    public DetectedIssueMitigation[] Mitigation { get; set; }
+    public List<DetectedIssueMitigation> Mitigation { get; set; }
     /// <summary>
     /// While the subject could be inferred by tracing the subject of the implicated resources, it's useful to have a direct link for query purposes.
     /// </summary>
@@ -7459,7 +7459,7 @@ namespace fhir
     /// Contact details for an organization or a particular human that is responsible for the device.
     /// </summary>
     [JsonProperty("contact")]
-    public ContactPoint[] Contact { get; set; }
+    public List<ContactPoint> Contact { get; set; }
     /// <summary>
     /// The date and time beyond which this device is no longer valid or should not be used (if applicable).
     /// </summary>
@@ -7471,7 +7471,7 @@ namespace fhir
     /// Unique instance identifiers assigned to a device by organizations like manufacturers or owners. If the identifier identifies the type of device, Device.type should be used.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The place where the device can be found.
     /// </summary>
@@ -7509,7 +7509,7 @@ namespace fhir
     /// Descriptive information, usage information or implantation information that is not captured in an existing element.
     /// </summary>
     [JsonProperty("note")]
-    public Annotation[] Note { get; set; }
+    public List<Annotation> Note { get; set; }
     /// <summary>
     /// An organization that is responsible for the provision and ongoing maintenance of the device.
     /// </summary>
@@ -7619,7 +7619,7 @@ namespace fhir
     /// Indicates current operational status of the device. For example: On, Off, Standby, etc.
     /// </summary>
     [JsonProperty("operationalStatus")]
-    public CodeableConcept[] OperationalStatus { get; set; }
+    public List<CodeableConcept> OperationalStatus { get; set; }
     /// <summary>
     /// Describes the parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular.
     /// </summary>
@@ -7634,7 +7634,7 @@ namespace fhir
     /// Describes the production specification such as component revision, serial number, etc.
     /// </summary>
     [JsonProperty("productionSpecification")]
-    public DeviceComponentProductionSpecification[] ProductionSpecification { get; set; }
+    public List<DeviceComponentProductionSpecification> ProductionSpecification { get; set; }
     /// <summary>
     /// Describes the link to the source Device that contains administrative device information such as manufacture, serial number, etc.
     /// </summary>
@@ -7717,7 +7717,7 @@ namespace fhir
     /// Describes the calibrations that have been performed or that are required to be performed.
     /// </summary>
     [JsonProperty("calibration")]
-    public DeviceMetricCalibration[] Calibration { get; set; }
+    public List<DeviceMetricCalibration> Calibration { get; set; }
     /// <summary>
     /// Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.
     /// </summary>
@@ -7831,19 +7831,19 @@ namespace fhir
     /// Identifiers assigned to this order by the orderer or by the receiver.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Reason or justification for the use of this device.
     /// </summary>
     [JsonProperty("indication")]
-    public CodeableConcept[] Indication { get; set; }
+    public List<CodeableConcept> Indication { get; set; }
     /// <summary>
     /// Details about this request that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement.
     /// </summary>
     [JsonProperty("notes")]
-    public string[] Notes { get; set; }
+    public List<string> Notes { get; set; }
     [JsonProperty("_notes")]
-    public Element[] _Notes { get; set; }
+    public List<Element> _Notes { get; set; }
     /// <summary>
     /// The time when the request was made.
     /// </summary>
@@ -7862,7 +7862,7 @@ namespace fhir
     /// The proposed act must be performed if the indicated conditions occur, e.g.., shortness of breath, SpO2 less than x%.
     /// </summary>
     [JsonProperty("prnReason")]
-    public CodeableConcept[] PrnReason { get; set; }
+    public List<CodeableConcept> PrnReason { get; set; }
     /// <summary>
     /// The time at which the request was made/recorded.
     /// </summary>
@@ -7950,19 +7950,19 @@ namespace fhir
     /// An external identifier for this statement such as an IRI.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Reason or justification for the use of the device.
     /// </summary>
     [JsonProperty("indication")]
-    public CodeableConcept[] Indication { get; set; }
+    public List<CodeableConcept> Indication { get; set; }
     /// <summary>
     /// Details about the device statement that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement.
     /// </summary>
     [JsonProperty("notes")]
-    public string[] Notes { get; set; }
+    public List<string> Notes { get; set; }
     [JsonProperty("_notes")]
-    public Element[] _Notes { get; set; }
+    public List<Element> _Notes { get; set; }
     /// <summary>
     /// The time at which the statement was made/recorded.
     /// </summary>
@@ -8063,12 +8063,12 @@ namespace fhir
     /// A summary of the events of interest that have occurred as this item of the request is processed.
     /// </summary>
     [JsonProperty("event")]
-    public DiagnosticOrderEvent[] Event { get; set; }
+    public List<DiagnosticOrderEvent> Event { get; set; }
     /// <summary>
     /// If the item is related to a specific specimen.
     /// </summary>
     [JsonProperty("specimen")]
-    public Reference[] Specimen { get; set; }
+    public List<Reference> Specimen { get; set; }
     /// <summary>
     /// The status of this individual item within the order.
     /// </summary>
@@ -8111,22 +8111,22 @@ namespace fhir
     /// A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.
     /// </summary>
     [JsonProperty("event")]
-    public DiagnosticOrderEvent[] Event { get; set; }
+    public List<DiagnosticOrderEvent> Event { get; set; }
     /// <summary>
     /// Identifiers assigned to this order instance by the orderer and/or  the receiver and/or order fulfiller.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.
     /// </summary>
     [JsonProperty("item")]
-    public DiagnosticOrderItem[] Item { get; set; }
+    public List<DiagnosticOrderItem> Item { get; set; }
     /// <summary>
     /// Any other notes associated with this patient, specimen or order (e.g. "patient hates needles").
     /// </summary>
     [JsonProperty("note")]
-    public Annotation[] Note { get; set; }
+    public List<Annotation> Note { get; set; }
     /// <summary>
     /// The practitioner that holds legal responsibility for ordering the investigation.
     /// </summary>
@@ -8143,12 +8143,12 @@ namespace fhir
     /// An explanation or justification for why this diagnostic investigation is being requested.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.
     /// </summary>
     [JsonProperty("reason")]
-    public CodeableConcept[] Reason { get; set; }
+    public List<CodeableConcept> Reason { get; set; }
     /// <summary>
     /// One or more specimens that the diagnostic investigation is about.
     /// </summary>
     [JsonProperty("specimen")]
-    public Reference[] Specimen { get; set; }
+    public List<Reference> Specimen { get; set; }
     /// <summary>
     /// The status of the order.
     /// </summary>
@@ -8165,7 +8165,7 @@ namespace fhir
     /// Additional clinical information about the patient or specimen that may influence test interpretations.  This includes observations explicitly requested by the producer(filler) to provide context or supporting information needed to complete the order.
     /// </summary>
     [JsonProperty("supportingInformation")]
-    public Reference[] SupportingInformation { get; set; }
+    public List<Reference> SupportingInformation { get; set; }
   }
   /// <summary>
   /// Code Values for the DiagnosticOrder.priority field
@@ -8232,7 +8232,7 @@ namespace fhir
     /// Codes for the conclusion.
     /// </summary>
     [JsonProperty("codedDiagnosis")]
-    public CodeableConcept[] CodedDiagnosis { get; set; }
+    public List<CodeableConcept> CodedDiagnosis { get; set; }
     /// <summary>
     /// Need to be able to provide a conclusion that is not lost among the basic result data.
     /// </summary>
@@ -8261,17 +8261,17 @@ namespace fhir
     /// Need to know what identifier to use when making queries about this report from the source laboratory, and for linking to the report outside FHIR context.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Many diagnostic services include images in the report as part of their service.
     /// </summary>
     [JsonProperty("image")]
-    public DiagnosticReportImage[] Image { get; set; }
+    public List<DiagnosticReportImage> Image { get; set; }
     /// <summary>
     /// One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images.
     /// </summary>
     [JsonProperty("imagingStudy")]
-    public Reference[] ImagingStudy { get; set; }
+    public List<Reference> ImagingStudy { get; set; }
     /// <summary>
     /// Clinicians need to be able to check the date that the report was released.
     /// </summary>
@@ -8288,22 +8288,22 @@ namespace fhir
     /// Gives Laboratory the ability to provide its own fully formatted report for clinical fidelity.
     /// </summary>
     [JsonProperty("presentedForm")]
-    public Attachment[] PresentedForm { get; set; }
+    public List<Attachment> PresentedForm { get; set; }
     /// <summary>
     /// Need to be able to track completion of requests based on reports issued and also to report what diagnostic tests were requested (not always the same as what is delivered).
     /// </summary>
     [JsonProperty("request")]
-    public Reference[] Request { get; set; }
+    public List<Reference> Request { get; set; }
     /// <summary>
     /// Need to support individual results, or report groups of results, where the result grouping is arbitrary, but meaningful. This structure is recursive - observations can contain observations.
     /// </summary>
     [JsonProperty("result")]
-    public Reference[] Result { get; set; }
+    public List<Reference> Result { get; set; }
     /// <summary>
     /// Need to be able to report information about the collected specimens on which the report is based.
     /// </summary>
     [JsonProperty("specimen")]
-    public Reference[] Specimen { get; set; }
+    public List<Reference> Specimen { get; set; }
     /// <summary>
     /// Diagnostic services routinely issue provisional/incomplete reports, and sometimes withdraw previously released reports.
     /// </summary>
@@ -8370,12 +8370,12 @@ namespace fhir
     /// Identifies who is responsible for creating the manifest, and adding  documents to it.
     /// </summary>
     [JsonProperty("author")]
-    public Reference[] Author { get; set; }
+    public List<Reference> Author { get; set; }
     /// <summary>
     /// The list of Documents included in the manifest.
     /// </summary>
     [JsonProperty("content")]
-    public DocumentManifestContent[] Content { get; set; }
+    public List<DocumentManifestContent> Content { get; set; }
     /// <summary>
     /// When the document manifest was created for submission to the server (not necessarily the same thing as the actual resource last modified time, since it may be modified, replicated, etc.).
     /// </summary>
@@ -8394,7 +8394,7 @@ namespace fhir
     /// Other identifiers associated with the document manifest, including version independent  identifiers.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// A single identifier that uniquely identifies this manifest. Principally used to refer to the manifest in non-FHIR contexts.
     /// </summary>
@@ -8404,12 +8404,12 @@ namespace fhir
     /// A patient, practitioner, or organization for which this set of documents is intended.
     /// </summary>
     [JsonProperty("recipient")]
-    public Reference[] Recipient { get; set; }
+    public List<Reference> Recipient { get; set; }
     /// <summary>
     /// Related identifiers or resources associated with the DocumentManifest.
     /// </summary>
     [JsonProperty("related")]
-    public DocumentManifestRelated[] Related { get; set; }
+    public List<DocumentManifestRelated> Related { get; set; }
     /// <summary>
     /// Identifies the source system, application, or software that produced the document manifest.
     /// </summary>
@@ -8482,7 +8482,7 @@ namespace fhir
     /// An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.
     /// </summary>
     [JsonProperty("format")]
-    public Coding[] Format { get; set; }
+    public List<Coding> Format { get; set; }
   }
   /// <summary>
   /// Related identifiers or resources associated with the DocumentReference.
@@ -8512,7 +8512,7 @@ namespace fhir
     /// This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
     /// </summary>
     [JsonProperty("event")]
-    public CodeableConcept[] Event { get; set; }
+    public List<CodeableConcept> Event { get; set; }
     /// <summary>
     /// The kind of facility where the patient was seen.
     /// </summary>
@@ -8532,7 +8532,7 @@ namespace fhir
     /// Related identifiers or resources associated with the DocumentReference.
     /// </summary>
     [JsonProperty("related")]
-    public DocumentReferenceContextRelated[] Related { get; set; }
+    public List<DocumentReferenceContextRelated> Related { get; set; }
     /// <summary>
     /// The Patient Information as known when the document was published. May be a reference to a version specific, or contained.
     /// </summary>
@@ -8555,7 +8555,7 @@ namespace fhir
     /// Identifies who is responsible for adding the information to the document.
     /// </summary>
     [JsonProperty("author")]
-    public Reference[] Author { get; set; }
+    public List<Reference> Author { get; set; }
     /// <summary>
     /// Helps humans to assess whether the document is of interest when viewing a list of documents.
     /// </summary>
@@ -8565,7 +8565,7 @@ namespace fhir
     /// The document and format referenced. There may be multiple content element repetitions, each with a different format.
     /// </summary>
     [JsonProperty("content")]
-    public DocumentReferenceContent[] Content { get; set; }
+    public List<DocumentReferenceContent> Content { get; set; }
     /// <summary>
     /// The clinical context in which the document was prepared.
     /// </summary>
@@ -8599,7 +8599,7 @@ namespace fhir
     /// Other identifiers associated with the document, including version independent identifiers.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// When the document reference was created.
     /// </summary>
@@ -8616,12 +8616,12 @@ namespace fhir
     /// Relationships that this document has with other document references that already exist.
     /// </summary>
     [JsonProperty("relatesTo")]
-    public DocumentReferenceRelatesTo[] RelatesTo { get; set; }
+    public List<DocumentReferenceRelatesTo> RelatesTo { get; set; }
     /// <summary>
     /// Use of the Health Care Privacy/Security Classification (HCS) system of security-tag use is recommended.
     /// </summary>
     [JsonProperty("securityLabel")]
-    public CodeableConcept[] SecurityLabel { get; set; }
+    public List<CodeableConcept> SecurityLabel { get; set; }
     /// <summary>
     /// The status of this document reference.
     /// </summary>
@@ -8656,17 +8656,17 @@ namespace fhir
     /// These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.
     /// </summary>
     [JsonProperty("contained")]
-    public Resource[] Contained { get; set; }
+    public List<Resource> Contained { get; set; }
     /// <summary>
     /// May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
     /// </summary>
     [JsonProperty("extension")]
-    public Extension[] Extension { get; set; }
+    public List<Extension> Extension { get; set; }
     /// <summary>
     /// May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
     /// </summary>
     [JsonProperty("modifierExtension")]
-    public Extension[] ModifierExtension { get; set; }
+    public List<Extension> ModifierExtension { get; set; }
     /// <summary>
     /// A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.
     /// </summary>
@@ -8691,7 +8691,7 @@ namespace fhir
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The organization which is responsible for the services rendered to the patient.
     /// </summary>
@@ -8743,7 +8743,7 @@ namespace fhir
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The Insurer who produced this adjudicated response.
     /// </summary>
@@ -8835,7 +8835,7 @@ namespace fhir
     /// Role of participant in encounter.
     /// </summary>
     [JsonProperty("type")]
-    public CodeableConcept[] Type { get; set; }
+    public List<CodeableConcept> Type { get; set; }
   }
   /// <summary>
   /// Details about the admission to a healthcare service.
@@ -8850,7 +8850,7 @@ namespace fhir
     /// The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.
     /// </summary>
     [JsonProperty("admittingDiagnosis")]
-    public Reference[] AdmittingDiagnosis { get; set; }
+    public List<Reference> AdmittingDiagnosis { get; set; }
     /// <summary>
     /// Location to which the patient is discharged.
     /// </summary>
@@ -8860,12 +8860,12 @@ namespace fhir
     /// Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter.
     /// </summary>
     [JsonProperty("dietPreference")]
-    public CodeableConcept[] DietPreference { get; set; }
+    public List<CodeableConcept> DietPreference { get; set; }
     /// <summary>
     /// The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete.
     /// </summary>
     [JsonProperty("dischargeDiagnosis")]
-    public Reference[] DischargeDiagnosis { get; set; }
+    public List<Reference> DischargeDiagnosis { get; set; }
     /// <summary>
     /// Category or kind of location after discharge.
     /// </summary>
@@ -8890,12 +8890,12 @@ namespace fhir
     /// Wheelchair, translator, stretcher, etc.
     /// </summary>
     [JsonProperty("specialArrangement")]
-    public CodeableConcept[] SpecialArrangement { get; set; }
+    public List<CodeableConcept> SpecialArrangement { get; set; }
     /// <summary>
     /// Special courtesies (VIP, board member).
     /// </summary>
     [JsonProperty("specialCourtesy")]
-    public CodeableConcept[] SpecialCourtesy { get; set; }
+    public List<CodeableConcept> SpecialCourtesy { get; set; }
   }
   /// <summary>
   /// List of locations where  the patient has been during this encounter.
@@ -8951,7 +8951,7 @@ namespace fhir
     /// Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).
     /// </summary>
     [JsonProperty("episodeOfCare")]
-    public Reference[] EpisodeOfCare { get; set; }
+    public List<Reference> EpisodeOfCare { get; set; }
     /// <summary>
     /// Details about the admission to a healthcare service.
     /// </summary>
@@ -8961,17 +8961,17 @@ namespace fhir
     /// Identifier(s) by which this encounter is known.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The referral request this encounter satisfies (incoming referral).
     /// </summary>
     [JsonProperty("incomingReferral")]
-    public Reference[] IncomingReferral { get; set; }
+    public List<Reference> IncomingReferral { get; set; }
     /// <summary>
     /// Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.
     /// </summary>
     [JsonProperty("indication")]
-    public Reference[] Indication { get; set; }
+    public List<Reference> Indication { get; set; }
     /// <summary>
     /// Quantity of time the encounter lasted. This excludes the time during leaves of absence.
     /// </summary>
@@ -8981,12 +8981,12 @@ namespace fhir
     /// List of locations where  the patient has been during this encounter.
     /// </summary>
     [JsonProperty("location")]
-    public EncounterLocation[] Location { get; set; }
+    public List<EncounterLocation> Location { get; set; }
     /// <summary>
     /// The list of people responsible for providing the service.
     /// </summary>
     [JsonProperty("participant")]
-    public EncounterParticipant[] Participant { get; set; }
+    public List<EncounterParticipant> Participant { get; set; }
     /// <summary>
     /// Another Encounter of which this encounter is a part of (administratively or in time).
     /// </summary>
@@ -9011,7 +9011,7 @@ namespace fhir
     /// Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.
     /// </summary>
     [JsonProperty("reason")]
-    public CodeableConcept[] Reason { get; set; }
+    public List<CodeableConcept> Reason { get; set; }
     /// <summary>
     /// An organization that is in charge of maintaining the information of this Encounter (e.g. who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization.
     /// </summary>
@@ -9028,12 +9028,12 @@ namespace fhir
     /// The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
     /// </summary>
     [JsonProperty("statusHistory")]
-    public EncounterStatusHistory[] StatusHistory { get; set; }
+    public List<EncounterStatusHistory> StatusHistory { get; set; }
     /// <summary>
     /// Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).
     /// </summary>
     [JsonProperty("type")]
-    public CodeableConcept[] Type { get; set; }
+    public List<CodeableConcept> Type { get; set; }
   }
   /// <summary>
   /// Code Values for the Encounter.class field
@@ -9078,7 +9078,7 @@ namespace fhir
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The organization which is responsible for the services rendered to the patient.
     /// </summary>
@@ -9140,7 +9140,7 @@ namespace fhir
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The Insurer who produced this adjudicated response.
     /// </summary>
@@ -9232,7 +9232,7 @@ namespace fhir
     /// The role this team member is taking within this episode of care.
     /// </summary>
     [JsonProperty("role")]
-    public CodeableConcept[] Role { get; set; }
+    public List<CodeableConcept> Role { get; set; }
   }
   /// <summary>
   /// An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.
@@ -9250,17 +9250,17 @@ namespace fhir
     /// The list of practitioners that may be facilitating this episode of care for specific purposes.
     /// </summary>
     [JsonProperty("careTeam")]
-    public EpisodeOfCareCareTeam[] CareTeam { get; set; }
+    public List<EpisodeOfCareCareTeam> CareTeam { get; set; }
     /// <summary>
     /// A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.
     /// </summary>
     [JsonProperty("condition")]
-    public Reference[] Condition { get; set; }
+    public List<Reference> Condition { get; set; }
     /// <summary>
     /// Identifier(s) by which this EpisodeOfCare is known.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The organization that has assumed the specific responsibilities for the specified duration.
     /// </summary>
@@ -9280,7 +9280,7 @@ namespace fhir
     /// Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals.
     /// </summary>
     [JsonProperty("referralRequest")]
-    public Reference[] ReferralRequest { get; set; }
+    public List<Reference> ReferralRequest { get; set; }
     /// <summary>
     /// planned | waitlist | active | onhold | finished | cancelled.
     /// </summary>
@@ -9292,12 +9292,12 @@ namespace fhir
     /// The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).
     /// </summary>
     [JsonProperty("statusHistory")]
-    public EpisodeOfCareStatusHistory[] StatusHistory { get; set; }
+    public List<EpisodeOfCareStatusHistory> StatusHistory { get; set; }
     /// <summary>
     /// A classification of the type of encounter; e.g. specialist referral, disease management, type of funded care.
     /// </summary>
     [JsonProperty("type")]
-    public CodeableConcept[] Type { get; set; }
+    public List<CodeableConcept> Type { get; set; }
   }
   /// <summary>
   /// Code Values for the EpisodeOfCare.status field
@@ -9335,7 +9335,7 @@ namespace fhir
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The Insurer who produced this adjudicated response.
     /// </summary>
@@ -9470,7 +9470,7 @@ namespace fhir
     /// The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
     /// </summary>
     [JsonProperty("condition")]
-    public FamilyMemberHistoryCondition[] Condition { get; set; }
+    public List<FamilyMemberHistoryCondition> Condition { get; set; }
     /// <summary>
     /// Allows determination of how current the summary is.
     /// </summary>
@@ -9518,7 +9518,7 @@ namespace fhir
     /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Allows greater ease in ensuring the same person is being talked about.
     /// </summary>
@@ -9598,7 +9598,7 @@ namespace fhir
     /// Identifier assigned to the flag for external use (outside the FHIR environment).
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The period of time from the activation of the flag to inactivation of the flag. If the flag is active, the end of the period should be unspecified.
     /// </summary>
@@ -9651,7 +9651,7 @@ namespace fhir
     /// Allows specific goals to explicitly linked to the concerns they're dealing with - makes the goal more understandable.
     /// </summary>
     [JsonProperty("addresses")]
-    public Reference[] Addresses { get; set; }
+    public List<Reference> Addresses { get; set; }
     /// <summary>
     /// Indicates whose goal this is - patient goal, practitioner goal, etc.
     /// </summary>
@@ -9661,7 +9661,7 @@ namespace fhir
     /// Allows goals to be filtered and sorted.
     /// </summary>
     [JsonProperty("category")]
-    public CodeableConcept[] Category { get; set; }
+    public List<CodeableConcept> Category { get; set; }
     /// <summary>
     /// Without a description of what's trying to be achieved, element has no purpose.
     /// </summary>
@@ -9673,17 +9673,17 @@ namespace fhir
     /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// There's a need to capture information about the goal that doesn't actually describe the goal.
     /// </summary>
     [JsonProperty("note")]
-    public Annotation[] Note { get; set; }
+    public List<Annotation> Note { get; set; }
     /// <summary>
     /// Outcome tracking is a key aspect of care planning.
     /// </summary>
     [JsonProperty("outcome")]
-    public GoalOutcome[] Outcome { get; set; }
+    public List<GoalOutcome> Outcome { get; set; }
     /// <summary>
     /// Used for sorting and presenting goals.
     /// </summary>
@@ -9828,7 +9828,7 @@ namespace fhir
     /// Needs to be a generic mechanism for identifying what individuals can be part of a group.
     /// </summary>
     [JsonProperty("characteristic")]
-    public GroupCharacteristic[] Characteristic { get; set; }
+    public List<GroupCharacteristic> Characteristic { get; set; }
     /// <summary>
     /// Provides a specific type of resource the group includes; e.g. "cow", "syringe", etc.
     /// </summary>
@@ -9838,12 +9838,12 @@ namespace fhir
     /// Allows the group to be referenced from external specifications.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Often the only thing of interest about a group is "who's in it".
     /// </summary>
     [JsonProperty("member")]
-    public GroupMember[] Member { get; set; }
+    public List<GroupMember> Member { get; set; }
     /// <summary>
     /// Used to identify the group in human communication.
     /// </summary>
@@ -9883,7 +9883,7 @@ namespace fhir
     /// Collection of specialties handled by the service site. This is more of a medical term.
     /// </summary>
     [JsonProperty("specialty")]
-    public CodeableConcept[] Specialty { get; set; }
+    public List<CodeableConcept> Specialty { get; set; }
     /// <summary>
     /// The specific type of service being delivered or performed.
     /// </summary>
@@ -9917,9 +9917,9 @@ namespace fhir
     /// Indicates which days of the week are available between the start and end Times.
     /// </summary>
     [JsonProperty("daysOfWeek")]
-    public string[] DaysOfWeek { get; set; }
+    public List<string> DaysOfWeek { get; set; }
     [JsonProperty("_daysOfWeek")]
-    public Element[] _DaysOfWeek { get; set; }
+    public List<Element> _DaysOfWeek { get; set; }
   }
   /// <summary>
   /// Code Values for the HealthcareService.availableTime.daysOfWeek field
@@ -9973,12 +9973,12 @@ namespace fhir
     /// A collection of times that the Service Site is available.
     /// </summary>
     [JsonProperty("availableTime")]
-    public HealthcareServiceAvailableTime[] AvailableTime { get; set; }
+    public List<HealthcareServiceAvailableTime> AvailableTime { get; set; }
     /// <summary>
     /// Collection of characteristics (attributes).
     /// </summary>
     [JsonProperty("characteristic")]
-    public CodeableConcept[] Characteristic { get; set; }
+    public List<CodeableConcept> Characteristic { get; set; }
     /// <summary>
     /// Any additional description of the service and/or any specific issues not covered by the other attributes, which can be displayed as further detail under the serviceName.
     /// </summary>
@@ -9990,7 +9990,7 @@ namespace fhir
     /// The location(s) that this service is available to (not where the service is provided).
     /// </summary>
     [JsonProperty("coverageArea")]
-    public Reference[] CoverageArea { get; set; }
+    public List<Reference> CoverageArea { get; set; }
     /// <summary>
     /// Does this service have specific eligibility requirements that need to be met in order to use the service?
     /// </summary>
@@ -10014,7 +10014,7 @@ namespace fhir
     /// External identifiers for this item.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The location where this healthcare service may be provided.
     /// </summary>
@@ -10024,7 +10024,7 @@ namespace fhir
     /// The HealthcareService is not available during this period of time due to the provided reason.
     /// </summary>
     [JsonProperty("notAvailable")]
-    public HealthcareServiceNotAvailable[] NotAvailable { get; set; }
+    public List<HealthcareServiceNotAvailable> NotAvailable { get; set; }
     /// <summary>
     /// If there is a photo/symbol associated with this HealthcareService, it may be included here to facilitate quick identification of the service in a list.
     /// </summary>
@@ -10034,9 +10034,9 @@ namespace fhir
     /// Program Names that can be used to categorize the service.
     /// </summary>
     [JsonProperty("programName")]
-    public string[] ProgramName { get; set; }
+    public List<string> ProgramName { get; set; }
     [JsonProperty("_programName")]
-    public Element[] _ProgramName { get; set; }
+    public List<Element> _ProgramName { get; set; }
     /// <summary>
     /// The organization that provides this healthcare service.
     /// </summary>
@@ -10053,7 +10053,7 @@ namespace fhir
     /// Ways that the service accepts referrals, if this is not provided then it is implied that no referral is required.
     /// </summary>
     [JsonProperty("referralMethod")]
-    public CodeableConcept[] ReferralMethod { get; set; }
+    public List<CodeableConcept> ReferralMethod { get; set; }
     /// <summary>
     /// Identifies the broad category of service being performed or delivered.
     /// </summary>
@@ -10070,17 +10070,17 @@ namespace fhir
     /// The code(s) that detail the conditions under which the healthcare service is available/offered.
     /// </summary>
     [JsonProperty("serviceProvisionCode")]
-    public CodeableConcept[] ServiceProvisionCode { get; set; }
+    public List<CodeableConcept> ServiceProvisionCode { get; set; }
     /// <summary>
     /// A specific type of service that may be delivered or performed.
     /// </summary>
     [JsonProperty("serviceType")]
-    public HealthcareServiceServiceType[] ServiceType { get; set; }
+    public List<HealthcareServiceServiceType> ServiceType { get; set; }
     /// <summary>
     /// List of contacts related to this specific healthcare service.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// The specific set of frames referenced in this imaging object selection. The URL retrieves the pixel data, and is encapsulated in a multipart MIME response.
@@ -10090,7 +10090,7 @@ namespace fhir
     /// One or more non-duplicate frame numbers in the selected instance.
     /// </summary>
     [JsonProperty("frameNumbers")]
-    public uint[] FrameNumbers { get; set; }
+    public List<uint> FrameNumbers { get; set; }
     /// <summary>
     /// WADO-RS URL enables retrieval of the frames using DICOM WADO-RS API.
     /// </summary>
@@ -10107,7 +10107,7 @@ namespace fhir
     /// The specific set of frames referenced in this imaging object selection. The URL retrieves the pixel data, and is encapsulated in a multipart MIME response.
     /// </summary>
     [JsonProperty("frames")]
-    public ImagingObjectSelectionStudySeriesInstanceFrames[] Frames { get; set; }
+    public List<ImagingObjectSelectionStudySeriesInstanceFrames> Frames { get; set; }
     /// <summary>
     /// DICOM SOP instances can be an image or other data object. The SOP class UID provide the accurate information about what type the instance is.
     /// </summary>
@@ -10138,7 +10138,7 @@ namespace fhir
     /// DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. This is the instance level identity of the instance in the selection.
     /// </summary>
     [JsonProperty("instance")]
-    public ImagingObjectSelectionStudySeriesInstance[] Instance { get; set; }
+    public List<ImagingObjectSelectionStudySeriesInstance> Instance { get; set; }
     /// <summary>
     /// Series instance UID is required to fully identify the DICOM SOP instances in the selection.
     /// </summary>
@@ -10167,7 +10167,7 @@ namespace fhir
     /// DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. In addition, the locator at the series level provide a means of retrieving the entire series.
     /// </summary>
     [JsonProperty("series")]
-    public ImagingObjectSelectionStudySeries[] Series { get; set; }
+    public List<ImagingObjectSelectionStudySeries> Series { get; set; }
     /// <summary>
     /// Study instance UID is required to fully identify the DICOM SOP instances in the selection.
     /// </summary>
@@ -10218,7 +10218,7 @@ namespace fhir
     /// DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. In addition, the locator at the study level provide a means of retrieving the entire study.
     /// </summary>
     [JsonProperty("study")]
-    public ImagingObjectSelectionStudy[] Study { get; set; }
+    public List<ImagingObjectSelectionStudy> Study { get; set; }
     /// <summary>
     /// Need to represent the application purpose that the SOP instances in ImagingObjectSelection are selected for.
     /// </summary>
@@ -10240,7 +10240,7 @@ namespace fhir
     /// Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.
     /// </summary>
     [JsonProperty("content")]
-    public Attachment[] Content { get; set; }
+    public List<Attachment> Content { get; set; }
     /// <summary>
     /// The number of instance in the series.
     /// </summary>
@@ -10302,7 +10302,7 @@ namespace fhir
     /// A single SOP Instance within the series, e.g. an image, or presentation state.
     /// </summary>
     [JsonProperty("instance")]
-    public ImagingStudySeriesInstance[] Instance { get; set; }
+    public List<ImagingStudySeriesInstance> Instance { get; set; }
     /// <summary>
     /// Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.
     /// </summary>
@@ -10384,7 +10384,7 @@ namespace fhir
     /// Other identifiers for the study.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Who read the study and interpreted the images or other content.
     /// </summary>
@@ -10394,7 +10394,7 @@ namespace fhir
     /// A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).
     /// </summary>
     [JsonProperty("modalityList")]
-    public Coding[] ModalityList { get; set; }
+    public List<Coding> ModalityList { get; set; }
     /// <summary>
     /// Number of SOP Instances in Study.
     /// </summary>
@@ -10409,7 +10409,7 @@ namespace fhir
     /// To support grouped procedures (one imaging study supporting multiple ordered procedures, e.g. chest/abdomen/pelvis CT).
     /// </summary>
     [JsonProperty("order")]
-    public Reference[] Order { get; set; }
+    public List<Reference> Order { get; set; }
     /// <summary>
     /// The patient imaged in the study.
     /// </summary>
@@ -10419,7 +10419,7 @@ namespace fhir
     /// Type of procedure performed.
     /// </summary>
     [JsonProperty("procedure")]
-    public Reference[] Procedure { get; set; }
+    public List<Reference> Procedure { get; set; }
     /// <summary>
     /// The requesting/referring physician.
     /// </summary>
@@ -10429,7 +10429,7 @@ namespace fhir
     /// Each study has one or more series of images or other content.
     /// </summary>
     [JsonProperty("series")]
-    public ImagingStudySeries[] Series { get; set; }
+    public List<ImagingStudySeries> Series { get; set; }
     /// <summary>
     /// Date and Time the study started.
     /// </summary>
@@ -10469,12 +10469,12 @@ namespace fhir
     /// Reasons why a vaccine was administered.
     /// </summary>
     [JsonProperty("reason")]
-    public CodeableConcept[] Reason { get; set; }
+    public List<CodeableConcept> Reason { get; set; }
     /// <summary>
     /// Reason why a vaccine was not administered.
     /// </summary>
     [JsonProperty("reasonNotGiven")]
-    public CodeableConcept[] ReasonNotGiven { get; set; }
+    public List<CodeableConcept> ReasonNotGiven { get; set; }
   }
   /// <summary>
   /// Categorical data indicating that an adverse event is associated in time to an immunization.
@@ -10545,7 +10545,7 @@ namespace fhir
     /// The targeted disease.
     /// </summary>
     [JsonProperty("targetDisease")]
-    public CodeableConcept[] TargetDisease { get; set; }
+    public List<CodeableConcept> TargetDisease { get; set; }
   }
   /// <summary>
   /// Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
@@ -10587,7 +10587,7 @@ namespace fhir
     /// A unique identifier assigned to this immunization record.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The service delivery location where the vaccine administration occurred.
     /// </summary>
@@ -10609,7 +10609,7 @@ namespace fhir
     /// Extra information about the immunization that is not conveyed by the other attributes.
     /// </summary>
     [JsonProperty("note")]
-    public Annotation[] Note { get; set; }
+    public List<Annotation> Note { get; set; }
     /// <summary>
     /// The patient who either received or did not receive the immunization.
     /// </summary>
@@ -10624,7 +10624,7 @@ namespace fhir
     /// Categorical data indicating that an adverse event is associated in time to an immunization.
     /// </summary>
     [JsonProperty("reaction")]
-    public ImmunizationReaction[] Reaction { get; set; }
+    public List<ImmunizationReaction> Reaction { get; set; }
     /// <summary>
     /// True if this administration was reported rather than directly administered.
     /// </summary>
@@ -10656,7 +10656,7 @@ namespace fhir
     /// Contains information about the protocol(s) under which the vaccine was administered.
     /// </summary>
     [JsonProperty("vaccinationProtocol")]
-    public ImmunizationVaccinationProtocol[] VaccinationProtocol { get; set; }
+    public List<ImmunizationVaccinationProtocol> VaccinationProtocol { get; set; }
     /// <summary>
     /// Vaccine that was administered or was to be administered.
     /// </summary>
@@ -10739,7 +10739,7 @@ namespace fhir
     /// Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.
     /// </summary>
     [JsonProperty("dateCriterion")]
-    public ImmunizationRecommendationRecommendationDateCriterion[] DateCriterion { get; set; }
+    public List<ImmunizationRecommendationRecommendationDateCriterion> DateCriterion { get; set; }
     /// <summary>
     /// This indicates the next recommended dose number (e.g. dose 2 is the next recommended dose).
     /// </summary>
@@ -10759,12 +10759,12 @@ namespace fhir
     /// Immunization event history that supports the status and recommendation.
     /// </summary>
     [JsonProperty("supportingImmunization")]
-    public Reference[] SupportingImmunization { get; set; }
+    public List<Reference> SupportingImmunization { get; set; }
     /// <summary>
     /// Patient Information that supports the status and recommendation.  This includes patient observations, adverse reactions and allergy/intolerance information.
     /// </summary>
     [JsonProperty("supportingPatientInformation")]
-    public Reference[] SupportingPatientInformation { get; set; }
+    public List<Reference> SupportingPatientInformation { get; set; }
     /// <summary>
     /// Vaccine that pertains to the recommendation.
     /// </summary>
@@ -10782,7 +10782,7 @@ namespace fhir
     /// A unique identifier assigned to this particular recommendation record.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The patient for whom the recommendations are for.
     /// </summary>
@@ -10792,7 +10792,7 @@ namespace fhir
     /// Vaccine administration recommendations.
     /// </summary>
     [JsonProperty("recommendation")]
-    public ImmunizationRecommendationRecommendation[] Recommendation { get; set; }
+    public List<ImmunizationRecommendationRecommendation> Recommendation { get; set; }
   }
   /// <summary>
   /// Contacts to assist a user in finding and communicating with the publisher.
@@ -10809,7 +10809,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.
@@ -10920,7 +10920,7 @@ namespace fhir
     /// A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
     /// </summary>
     [JsonProperty("resource")]
-    public ImplementationGuidePackageResource[] Resource { get; set; }
+    public List<ImplementationGuidePackageResource> Resource { get; set; }
   }
   /// <summary>
   /// A set of profiles that all resources covered by this implementation guide must conform to.
@@ -10968,14 +10968,14 @@ namespace fhir
     /// For constructed pages, a list of packages to include in the page (or else empty for everything).
     /// </summary>
     [JsonProperty("package")]
-    public string[] Package { get; set; }
+    public List<string> Package { get; set; }
     [JsonProperty("_package")]
-    public Element[] _Package { get; set; }
+    public List<Element> _Package { get; set; }
     /// <summary>
     /// Nested Pages/Sections under this page.
     /// </summary>
     [JsonProperty("page")]
-    public ImplementationGuidePage[] Page { get; set; }
+    public List<ImplementationGuidePage> Page { get; set; }
     /// <summary>
     /// The source address for the page.
     /// </summary>
@@ -10987,9 +10987,9 @@ namespace fhir
     /// For constructed pages, what kind of resources to include in the list.
     /// </summary>
     [JsonProperty("type")]
-    public string[] Type { get; set; }
+    public List<string> Type { get; set; }
     [JsonProperty("_type")]
-    public Element[] _Type { get; set; }
+    public List<Element> _Type { get; set; }
   }
   /// <summary>
   /// Code Values for the ImplementationGuide.page.kind field
@@ -11015,14 +11015,14 @@ namespace fhir
     /// A binary file that is included in the  implementation guide when it is published.
     /// </summary>
     [JsonProperty("binary")]
-    public string[] Binary { get; set; }
+    public List<string> Binary { get; set; }
     [JsonProperty("_binary")]
-    public Element[] _Binary { get; set; }
+    public List<Element> _Binary { get; set; }
     /// <summary>
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public ImplementationGuideContact[] Contact { get; set; }
+    public List<ImplementationGuideContact> Contact { get; set; }
     /// <summary>
     /// A copyright statement relating to the implementation guide and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.
     /// </summary>
@@ -11041,7 +11041,7 @@ namespace fhir
     /// Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.
     /// </summary>
     [JsonProperty("dependency")]
-    public ImplementationGuideDependency[] Dependency { get; set; }
+    public List<ImplementationGuideDependency> Dependency { get; set; }
     /// <summary>
     /// A free text natural language description of the Implementation Guide and its use.
     /// </summary>
@@ -11065,7 +11065,7 @@ namespace fhir
     /// A set of profiles that all resources covered by this implementation guide must conform to.
     /// </summary>
     [JsonProperty("global")]
-    public ImplementationGuideGlobal[] Global { get; set; }
+    public List<ImplementationGuideGlobal> Global { get; set; }
     /// <summary>
     /// A free text natural language name identifying the Implementation Guide.
     /// </summary>
@@ -11077,7 +11077,7 @@ namespace fhir
     /// A logical group of resources. Logical groups can be used when building pages.
     /// </summary>
     [JsonProperty("package")]
-    public ImplementationGuidePackage[] Package { get; set; }
+    public List<ImplementationGuidePackage> Package { get; set; }
     /// <summary>
     /// A page / section in the implementation guide. The root page is the implementation guide home page.
     /// </summary>
@@ -11108,7 +11108,7 @@ namespace fhir
     /// Assist in searching for appropriate implementation guide.
     /// </summary>
     [JsonProperty("useContext")]
-    public CodeableConcept[] UseContext { get; set; }
+    public List<CodeableConcept> UseContext { get; set; }
     /// <summary>
     /// There may be multiple resource versions of the Implementation Guide that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control.
     /// </summary>
@@ -11185,12 +11185,12 @@ namespace fhir
     /// Entries in this list.
     /// </summary>
     [JsonProperty("entry")]
-    public ListEntry[] Entry { get; set; }
+    public List<ListEntry> Entry { get; set; }
     /// <summary>
     /// Identifier for the List assigned for business purposes outside the context of FHIR.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Lists are used in various ways, and it must be known in what way it is safe to use them.
     /// </summary>
@@ -11300,7 +11300,7 @@ namespace fhir
     /// Organization label locations in registries, need to keep track of those.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Need to know who manages the location.
     /// </summary>
@@ -11346,7 +11346,7 @@ namespace fhir
     /// The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
     /// <summary>
     /// Indicates the type of function performed at the location.
     /// </summary>
@@ -11406,7 +11406,7 @@ namespace fhir
     /// Identifiers associated with the image - these may include identifiers for the image itself, identifiers for the context of its collection (e.g. series ids) and context ids such as accession numbers or other workflow identifiers.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The person who administered the collection of the image.
     /// </summary>
@@ -11490,7 +11490,7 @@ namespace fhir
     /// Information about a group of medication produced or packaged from one production run.
     /// </summary>
     [JsonProperty("batch")]
-    public MedicationProductBatch[] Batch { get; set; }
+    public List<MedicationProductBatch> Batch { get; set; }
     /// <summary>
     /// Describes the form of the item.  Powder; tablets; carton.
     /// </summary>
@@ -11500,7 +11500,7 @@ namespace fhir
     /// Identifies a particular constituent of interest in the product.
     /// </summary>
     [JsonProperty("ingredient")]
-    public MedicationProductIngredient[] Ingredient { get; set; }
+    public List<MedicationProductIngredient> Ingredient { get; set; }
   }
   /// <summary>
   /// A set of components that go to make up the described item.
@@ -11530,7 +11530,7 @@ namespace fhir
     /// A set of components that go to make up the described item.
     /// </summary>
     [JsonProperty("content")]
-    public MedicationPackageContent[] Content { get; set; }
+    public List<MedicationPackageContent> Content { get; set; }
   }
   /// <summary>
   /// This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
@@ -11623,7 +11623,7 @@ namespace fhir
     /// The device used in administering the medication to the patient.  For example, a particular infusion pump.
     /// </summary>
     [JsonProperty("device")]
-    public Reference[] Device { get; set; }
+    public List<Reference> Device { get; set; }
     /// <summary>
     /// Describes the medication dosage information details e.g. dose, rate, site, route, etc.
     /// </summary>
@@ -11650,7 +11650,7 @@ namespace fhir
     /// External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
@@ -11687,12 +11687,12 @@ namespace fhir
     /// A code indicating why the medication was given.
     /// </summary>
     [JsonProperty("reasonGiven")]
-    public CodeableConcept[] ReasonGiven { get; set; }
+    public List<CodeableConcept> ReasonGiven { get; set; }
     /// <summary>
     /// A code indicating why the administration was not performed.
     /// </summary>
     [JsonProperty("reasonNotGiven")]
-    public CodeableConcept[] ReasonNotGiven { get; set; }
+    public List<CodeableConcept> ReasonNotGiven { get; set; }
     /// <summary>
     /// Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.
     /// </summary>
@@ -11801,12 +11801,12 @@ namespace fhir
     /// Indicates the reason for the substitution of (or lack of substitution) from what was prescribed.
     /// </summary>
     [JsonProperty("reason")]
-    public CodeableConcept[] Reason { get; set; }
+    public List<CodeableConcept> Reason { get; set; }
     /// <summary>
     /// The person or organization that has primary responsibility for the substitution.
     /// </summary>
     [JsonProperty("responsibleParty")]
-    public Reference[] ResponsibleParty { get; set; }
+    public List<Reference> ResponsibleParty { get; set; }
     /// <summary>
     /// A code signifying whether a different drug was dispensed from what was prescribed.
     /// </summary>
@@ -11824,7 +11824,7 @@ namespace fhir
     /// Indicates the medication order that is being dispensed against.
     /// </summary>
     [JsonProperty("authorizingPrescription")]
-    public Reference[] AuthorizingPrescription { get; set; }
+    public List<Reference> AuthorizingPrescription { get; set; }
     /// <summary>
     /// The amount of medication expressed as a timing amount.
     /// </summary>
@@ -11844,7 +11844,7 @@ namespace fhir
     /// Indicates how the medication is to be used by the patient.
     /// </summary>
     [JsonProperty("dosageInstruction")]
-    public MedicationDispenseDosageInstruction[] DosageInstruction { get; set; }
+    public List<MedicationDispenseDosageInstruction> DosageInstruction { get; set; }
     /// <summary>
     /// Identifier assigned by the dispensing facility - this is an identifier assigned outside FHIR.
     /// </summary>
@@ -11881,7 +11881,7 @@ namespace fhir
     /// Identifies the person who picked up the medication.  This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional.
     /// </summary>
     [JsonProperty("receiver")]
-    public Reference[] Receiver { get; set; }
+    public List<Reference> Receiver { get; set; }
     /// <summary>
     /// A code specifying the state of the set of dispense events.
     /// </summary>
@@ -12081,7 +12081,7 @@ namespace fhir
     /// Indicates how the medication is to be used by the patient.
     /// </summary>
     [JsonProperty("dosageInstruction")]
-    public MedicationOrderDosageInstruction[] DosageInstruction { get; set; }
+    public List<MedicationOrderDosageInstruction> DosageInstruction { get; set; }
     /// <summary>
     /// A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
     /// </summary>
@@ -12091,7 +12091,7 @@ namespace fhir
     /// External identifier - one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an entire workflow process where records have to be tracked through an entire system.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
     /// </summary>
@@ -12253,7 +12253,7 @@ namespace fhir
     /// Indicates how the medication is/was used by the patient.
     /// </summary>
     [JsonProperty("dosage")]
-    public MedicationStatementDosage[] Dosage { get; set; }
+    public List<MedicationStatementDosage> Dosage { get; set; }
     /// <summary>
     /// The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).
     /// </summary>
@@ -12270,7 +12270,7 @@ namespace fhir
     /// External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The person who provided the information about the taking of this medication.
     /// </summary>
@@ -12312,7 +12312,7 @@ namespace fhir
     /// A code indicating why the medication was not taken.
     /// </summary>
     [JsonProperty("reasonNotTaken")]
-    public CodeableConcept[] ReasonNotTaken { get; set; }
+    public List<CodeableConcept> ReasonNotTaken { get; set; }
     /// <summary>
     /// A code representing the patient or other source's judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.
     /// </summary>
@@ -12324,7 +12324,7 @@ namespace fhir
     /// Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports the MedicationStatement.
     /// </summary>
     [JsonProperty("supportingInformation")]
-    public Reference[] SupportingInformation { get; set; }
+    public List<Reference> SupportingInformation { get; set; }
     /// <summary>
     /// Set this to true if the record is saying that the medication was NOT taken.
     /// </summary>
@@ -12450,12 +12450,12 @@ namespace fhir
     /// Every message event is about actual data, a single resource, that is identified in the definition of the event, and perhaps some or all linked resources.
     /// </summary>
     [JsonProperty("data")]
-    public Reference[] Data { get; set; }
+    public List<Reference> Data { get; set; }
     /// <summary>
     /// Indicates where message is to be sent for routing purposes.  Allows verification of "am I the intended recipient".
     /// </summary>
     [JsonProperty("destination")]
-    public MessageHeaderDestination[] Destination { get; set; }
+    public List<MessageHeaderDestination> Destination { get; set; }
     /// <summary>
     /// Need to know for audit/traceback requirements and possibly for authorization.
     /// </summary>
@@ -12514,7 +12514,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Indicates how the system may be identified when referenced in electronic exchange.
@@ -12565,7 +12565,7 @@ namespace fhir
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public NamingSystemContact[] Contact { get; set; }
+    public List<NamingSystemContact> Contact { get; set; }
     /// <summary>
     /// The date  (and optionally time) when the system was registered or published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the registration changes.
     /// </summary>
@@ -12629,7 +12629,7 @@ namespace fhir
     /// Indicates how the system may be identified when referenced in electronic exchange.
     /// </summary>
     [JsonProperty("uniqueId")]
-    public NamingSystemUniqueId[] UniqueId { get; set; }
+    public List<NamingSystemUniqueId> UniqueId { get; set; }
     /// <summary>
     /// Provides guidance on the use of the namespace, including the handling of formatting characters, use of upper vs. lower case, etc.
     /// </summary>
@@ -12641,7 +12641,7 @@ namespace fhir
     /// Assist in searching for appropriate content.
     /// </summary>
     [JsonProperty("useContext")]
-    public CodeableConcept[] UseContext { get; set; }
+    public List<CodeableConcept> UseContext { get; set; }
   }
   /// <summary>
   /// Code Values for the NamingSystem.kind field
@@ -12697,7 +12697,7 @@ namespace fhir
     /// The required consistency (e.g. honey-thick, nectar-thick, thin, thickened.) of liquids or fluids served to the patient.
     /// </summary>
     [JsonProperty("fluidConsistencyType")]
-    public CodeableConcept[] FluidConsistencyType { get; set; }
+    public List<CodeableConcept> FluidConsistencyType { get; set; }
     /// <summary>
     /// Free text or additional instructions or information pertaining to the oral diet.
     /// </summary>
@@ -12709,22 +12709,22 @@ namespace fhir
     /// Class that defines the quantity and type of nutrient modifications required for the oral diet.
     /// </summary>
     [JsonProperty("nutrient")]
-    public NutritionOrderOralDietNutrient[] Nutrient { get; set; }
+    public List<NutritionOrderOralDietNutrient> Nutrient { get; set; }
     /// <summary>
     /// The time period and frequency at which the diet should be given.
     /// </summary>
     [JsonProperty("schedule")]
-    public Timing[] Schedule { get; set; }
+    public List<Timing> Schedule { get; set; }
     /// <summary>
     /// Class that describes any texture modifications required for the patient to safely consume various types of solid foods.
     /// </summary>
     [JsonProperty("texture")]
-    public NutritionOrderOralDietTexture[] Texture { get; set; }
+    public List<NutritionOrderOralDietTexture> Texture { get; set; }
     /// <summary>
     /// The kind of diet or dietary restriction such as fiber restricted diet or diabetic diet.
     /// </summary>
     [JsonProperty("type")]
-    public CodeableConcept[] Type { get; set; }
+    public List<CodeableConcept> Type { get; set; }
   }
   /// <summary>
   /// Oral nutritional products given in order to add further nutritional value to the patient's diet.
@@ -12753,7 +12753,7 @@ namespace fhir
     /// The time period and frequency at which the supplement(s) should be given.
     /// </summary>
     [JsonProperty("schedule")]
-    public Timing[] Schedule { get; set; }
+    public List<Timing> Schedule { get; set; }
     /// <summary>
     /// The kind of nutritional supplement product required such as a high protein or pediatric clear liquid supplement.
     /// </summary>
@@ -12805,7 +12805,7 @@ namespace fhir
     /// Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
     /// </summary>
     [JsonProperty("administration")]
-    public NutritionOrderEnteralFormulaAdministration[] Administration { get; set; }
+    public List<NutritionOrderEnteralFormulaAdministration> Administration { get; set; }
     /// <summary>
     /// Free text formula administration, feeding instructions or additional instructions or information.
     /// </summary>
@@ -12852,7 +12852,7 @@ namespace fhir
     /// A link to a record of allergies or intolerances  which should be included in the nutrition order.
     /// </summary>
     [JsonProperty("allergyIntolerance")]
-    public Reference[] AllergyIntolerance { get; set; }
+    public List<Reference> AllergyIntolerance { get; set; }
     /// <summary>
     /// The date and time that this nutrition order was requested.
     /// </summary>
@@ -12874,17 +12874,17 @@ namespace fhir
     /// This modifier is used to convey order-specific modifiers about the type of food that should NOT be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free.  While it should not be necessary to repeat allergy or intolerance information captured in the referenced allergyIntolerance resource in the excludeFoodModifier, this element may be used to convey additional specificity related to foods that should be eliminated from the patient’s diet for any reason.  This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
     /// </summary>
     [JsonProperty("excludeFoodModifier")]
-    public CodeableConcept[] ExcludeFoodModifier { get; set; }
+    public List<CodeableConcept> ExcludeFoodModifier { get; set; }
     /// <summary>
     /// This modifier is used to convey order-specific modifiers about the type of food that should be given. These can be derived from patient allergies, intolerances, or preferences such as Halal, Vegan or Kosher. This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
     /// </summary>
     [JsonProperty("foodPreferenceModifier")]
-    public CodeableConcept[] FoodPreferenceModifier { get; set; }
+    public List<CodeableConcept> FoodPreferenceModifier { get; set; }
     /// <summary>
     /// Identifiers assigned to this order by the order sender or by the order receiver.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Diet given orally in contrast to enteral (tube) feeding.
     /// </summary>
@@ -12911,7 +12911,7 @@ namespace fhir
     /// Oral nutritional products given in order to add further nutritional value to the patient's diet.
     /// </summary>
     [JsonProperty("supplement")]
-    public NutritionOrderSupplement[] Supplement { get; set; }
+    public List<NutritionOrderSupplement> Supplement { get; set; }
   }
   /// <summary>
   /// Code Values for the NutritionOrder.status field
@@ -13004,7 +13004,7 @@ namespace fhir
     /// Knowing what values are considered "normal" can help evaluate the significance of a particular result. Need to be able to provide multiple reference ranges for different contexts.
     /// </summary>
     [JsonProperty("referenceRange")]
-    public ObservationReferenceRange[] ReferenceRange { get; set; }
+    public List<ObservationReferenceRange> ReferenceRange { get; set; }
     /// <summary>
     /// An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.
     /// </summary>
@@ -13095,7 +13095,7 @@ namespace fhir
     /// Component observations share the same attributes in the Observation resource as the primary observation and are always treated a part of a single observation (they are not separable).   However, the reference range for the primary observation value is not inherited by the component values and is required when appropriate for each component observation.
     /// </summary>
     [JsonProperty("component")]
-    public ObservationComponent[] Component { get; set; }
+    public List<ObservationComponent> Component { get; set; }
     /// <summary>
     /// For many results it is necessary to handle exceptional values in measurements.
     /// </summary>
@@ -13127,7 +13127,7 @@ namespace fhir
     /// Allows observations to be distinguished and referenced.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// For some results, particularly numeric results, an interpretation is necessary to fully understand the significance of a result.
     /// </summary>
@@ -13149,17 +13149,17 @@ namespace fhir
     /// May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.
     /// </summary>
     [JsonProperty("performer")]
-    public Reference[] Performer { get; set; }
+    public List<Reference> Performer { get; set; }
     /// <summary>
     /// Knowing what values are considered "normal" can help evaluate the significance of a particular result. Need to be able to provide multiple reference ranges for different contexts.
     /// </summary>
     [JsonProperty("referenceRange")]
-    public ObservationReferenceRange[] ReferenceRange { get; set; }
+    public List<ObservationReferenceRange> ReferenceRange { get; set; }
     /// <summary>
     /// Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and a set of related observations or sometimes QuestionnaireResponse  from which the measure is derived.
     /// </summary>
     [JsonProperty("related")]
-    public ObservationRelated[] Related { get; set; }
+    public List<ObservationRelated> Related { get; set; }
     /// <summary>
     /// The specimen that was used when this observation was made.
     /// </summary>
@@ -13258,7 +13258,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
@@ -13332,7 +13332,7 @@ namespace fhir
     /// The parts of a Tuple Parameter.
     /// </summary>
     [JsonProperty("part")]
-    public OperationDefinitionParameter[] Part { get; set; }
+    public List<OperationDefinitionParameter> Part { get; set; }
     /// <summary>
     /// A profile the specifies the rules that this parameter must conform to.
     /// </summary>
@@ -13383,7 +13383,7 @@ namespace fhir
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public OperationDefinitionContact[] Contact { get; set; }
+    public List<OperationDefinitionContact> Contact { get; set; }
     /// <summary>
     /// The date this version of the operation definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the Operation Definition changes.
     /// </summary>
@@ -13438,7 +13438,7 @@ namespace fhir
     /// The parameters for the operation/query.
     /// </summary>
     [JsonProperty("parameter")]
-    public OperationDefinitionParameter[] Parameter { get; set; }
+    public List<OperationDefinitionParameter> Parameter { get; set; }
     /// <summary>
     /// Helps establish the "authority/credibility" of the operation definition.  May also allow for contact.
     /// </summary>
@@ -13469,9 +13469,9 @@ namespace fhir
     /// Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a resource type for the context).
     /// </summary>
     [JsonProperty("type")]
-    public string[] Type { get; set; }
+    public List<string> Type { get; set; }
     [JsonProperty("_type")]
-    public Element[] _Type { get; set; }
+    public List<Element> _Type { get; set; }
     /// <summary>
     /// An absolute URL that is used to identify this operation definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this operation definition is (or will be) published.
     /// </summary>
@@ -13529,9 +13529,9 @@ namespace fhir
     /// Allows systems to highlight or otherwise guide users to elements implicated in issues to allow them to be fixed more easily.
     /// </summary>
     [JsonProperty("location")]
-    public string[] Location { get; set; }
+    public List<string> Location { get; set; }
     [JsonProperty("_location")]
-    public Element[] _Location { get; set; }
+    public List<Element> _Location { get; set; }
     /// <summary>
     /// Indicates how relevant the issue is to the overall success of the action.
     /// </summary>
@@ -13560,7 +13560,7 @@ namespace fhir
     /// An error, warning or information message that results from a system action.
     /// </summary>
     [JsonProperty("issue")]
-    public OperationOutcomeIssue[] Issue { get; set; }
+    public List<OperationOutcomeIssue> Issue { get; set; }
   }
   /// <summary>
   /// When order should be fulfilled.
@@ -13595,12 +13595,12 @@ namespace fhir
     /// What action is being ordered.
     /// </summary>
     [JsonProperty("detail")]
-    public Reference[] Detail { get; set; }
+    public List<Reference> Detail { get; set; }
     /// <summary>
     /// Identifiers assigned to this order by the orderer or by the receiver.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Text - why the order was made.
     /// </summary>
@@ -13657,12 +13657,12 @@ namespace fhir
     /// Links to resources that provide details of the outcome of performing the order; e.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.
     /// </summary>
     [JsonProperty("fulfillment")]
-    public Reference[] Fulfillment { get; set; }
+    public List<Reference> Fulfillment { get; set; }
     /// <summary>
     /// Identifiers assigned to this order. The identifiers are usually assigned by the system responding to the order, but they may be provided or added to by other systems.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// What this response says about the status of the original order.
     /// </summary>
@@ -13718,7 +13718,7 @@ namespace fhir
     /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc.
@@ -13736,17 +13736,17 @@ namespace fhir
     /// May need to keep track of the organization's addresses for contacting, billing or reporting requirements.
     /// </summary>
     [JsonProperty("address")]
-    public Address[] Address { get; set; }
+    public List<Address> Address { get; set; }
     /// <summary>
     /// Need to keep track of assigned contact points within bigger organization.
     /// </summary>
     [JsonProperty("contact")]
-    public OrganizationContact[] Contact { get; set; }
+    public List<OrganizationContact> Contact { get; set; }
     /// <summary>
     /// Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Need to use the name as the label of the organization.
     /// </summary>
@@ -13763,7 +13763,7 @@ namespace fhir
     /// Human contact for the organization.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
     /// <summary>
     /// Need to be able to track the kind of organization that this is - different organization types have different uses.
     /// </summary>
@@ -13785,7 +13785,7 @@ namespace fhir
     /// A named part of a parameter. In many implementation context, a set of named parts is known as a "Tuple".
     /// </summary>
     [JsonProperty("part")]
-    public OperationDefinitionParameter[] Part { get; set; }
+    public List<OperationDefinitionParameter> Part { get; set; }
     /// <summary>
     /// If the parameter is a whole resource.
     /// </summary>
@@ -13992,7 +13992,7 @@ namespace fhir
     /// A parameter passed to or received from the operation.
     /// </summary>
     [JsonProperty("parameter")]
-    public ParametersParameter[] Parameter { get; set; }
+    public List<ParametersParameter> Parameter { get; set; }
   }
   /// <summary>
   /// Need to track people you can contact about the patient.
@@ -14029,12 +14029,12 @@ namespace fhir
     /// Used to determine which contact person is the most relevant to approach, depending on circumstances.
     /// </summary>
     [JsonProperty("relationship")]
-    public CodeableConcept[] Relationship { get; set; }
+    public List<CodeableConcept> Relationship { get; set; }
     /// <summary>
     /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Code Values for the Patient.contact.gender field
@@ -14121,7 +14121,7 @@ namespace fhir
     /// May need to keep track of patient addresses for contacting, billing or reporting requirements and also to help with identification.
     /// </summary>
     [JsonProperty("address")]
-    public Address[] Address { get; set; }
+    public List<Address> Address { get; set; }
     /// <summary>
     /// Many clinical systems are extended to care for animal patients as well as human.
     /// </summary>
@@ -14138,17 +14138,17 @@ namespace fhir
     /// Patient's nominated care provider.
     /// </summary>
     [JsonProperty("careProvider")]
-    public Reference[] CareProvider { get; set; }
+    public List<Reference> CareProvider { get; set; }
     /// <summary>
     /// If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest.
     /// </summary>
     [JsonProperty("communication")]
-    public PatientCommunication[] Communication { get; set; }
+    public List<PatientCommunication> Communication { get; set; }
     /// <summary>
     /// Need to track people you can contact about the patient.
     /// </summary>
     [JsonProperty("contact")]
-    public PatientContact[] Contact { get; set; }
+    public List<PatientContact> Contact { get; set; }
     /// <summary>
     /// The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive.
     /// </summary>
@@ -14172,12 +14172,12 @@ namespace fhir
     /// Patients are almost always assigned specific numerical identifiers.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// There are multiple usecases:   * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers.
     /// </summary>
     [JsonProperty("link")]
-    public PatientLink[] Link { get; set; }
+    public List<PatientLink> Link { get; set; }
     /// <summary>
     /// Need to know who recognizes this patient record, manages and updates it.
     /// </summary>
@@ -14202,17 +14202,17 @@ namespace fhir
     /// Need to be able to track the patient by multiple names. Examples are your official name and a partner name.
     /// </summary>
     [JsonProperty("name")]
-    public HumanName[] Name { get; set; }
+    public List<HumanName> Name { get; set; }
     /// <summary>
     /// Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too.
     /// </summary>
     [JsonProperty("photo")]
-    public Attachment[] Photo { get; set; }
+    public List<Attachment> Photo { get; set; }
     /// <summary>
     /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Code Values for the Patient.gender field
@@ -14241,7 +14241,7 @@ namespace fhir
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The organization which is responsible for the services rendered to the patient.
     /// </summary>
@@ -14360,7 +14360,7 @@ namespace fhir
     /// List of individual settlement amounts and the corresponding transaction.
     /// </summary>
     [JsonProperty("detail")]
-    public PaymentReconciliationDetail[] Detail { get; set; }
+    public List<PaymentReconciliationDetail> Detail { get; set; }
     /// <summary>
     /// A description of the status of the adjudication.
     /// </summary>
@@ -14377,12 +14377,12 @@ namespace fhir
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Suite of notes.
     /// </summary>
     [JsonProperty("note")]
-    public PaymentReconciliationNote[] Note { get; set; }
+    public List<PaymentReconciliationNote> Note { get; set; }
     /// <summary>
     /// The Insurer who produced this adjudicated response.
     /// </summary>
@@ -14480,7 +14480,7 @@ namespace fhir
     /// May need to keep track of person's addresses for contacting, billing or reporting requirements and also to help with identification.
     /// </summary>
     [JsonProperty("address")]
-    public Address[] Address { get; set; }
+    public List<Address> Address { get; set; }
     /// <summary>
     /// Age of person drives many clinical processes, and is often used in performing identification of the person. Times are not included so as to not confuse things with potential timezone issues.
     /// </summary>
@@ -14499,12 +14499,12 @@ namespace fhir
     /// People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the person. Examples are national person identifier and local identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Link to a resource that concerns the same actual person.
     /// </summary>
     [JsonProperty("link")]
-    public PersonLink[] Link { get; set; }
+    public List<PersonLink> Link { get; set; }
     /// <summary>
     /// Need to know who recognizes this person record, manages and updates it.
     /// </summary>
@@ -14514,7 +14514,7 @@ namespace fhir
     /// Need to be able to track the person by multiple names. Examples are your official name and a partner name.
     /// </summary>
     [JsonProperty("name")]
-    public HumanName[] Name { get; set; }
+    public List<HumanName> Name { get; set; }
     /// <summary>
     /// An image that can be displayed as a thumbnail of the person to enhance the identification of the individual.
     /// </summary>
@@ -14524,7 +14524,7 @@ namespace fhir
     /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Code Values for the Person.gender field
@@ -14543,12 +14543,12 @@ namespace fhir
     /// The list of healthcare services that this worker provides for this role's Organization/Location(s).
     /// </summary>
     [JsonProperty("healthcareService")]
-    public Reference[] HealthcareService { get; set; }
+    public List<Reference> HealthcareService { get; set; }
     /// <summary>
     /// The location(s) at which this practitioner provides care.
     /// </summary>
     [JsonProperty("location")]
-    public Reference[] Location { get; set; }
+    public List<Reference> Location { get; set; }
     /// <summary>
     /// The organization where the Practitioner performs the roles associated.
     /// </summary>
@@ -14568,7 +14568,7 @@ namespace fhir
     /// Specific specialty of the practitioner.
     /// </summary>
     [JsonProperty("specialty")]
-    public CodeableConcept[] Specialty { get; set; }
+    public List<CodeableConcept> Specialty { get; set; }
   }
   /// <summary>
   /// Qualifications obtained by training and certification.
@@ -14583,7 +14583,7 @@ namespace fhir
     /// Often, specific identities are assigned for the qualification.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Organization that regulates and issues the qualification.
     /// </summary>
@@ -14611,7 +14611,7 @@ namespace fhir
     /// Need to keep track where the practitioner can found during work or for directing mail.
     /// </summary>
     [JsonProperty("address")]
-    public Address[] Address { get; set; }
+    public List<Address> Address { get; set; }
     /// <summary>
     /// Needed for identification.
     /// </summary>
@@ -14623,7 +14623,7 @@ namespace fhir
     /// Knowing which language a practitioner speaks can help in facilitating communication with patients.
     /// </summary>
     [JsonProperty("communication")]
-    public CodeableConcept[] Communication { get; set; }
+    public List<CodeableConcept> Communication { get; set; }
     /// <summary>
     /// Needed to address the person correctly.
     /// </summary>
@@ -14635,7 +14635,7 @@ namespace fhir
     /// Often, specific identities are assigned for the agent.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that person.
     /// </summary>
@@ -14645,22 +14645,22 @@ namespace fhir
     /// Many EHR systems have the capability to capture an image of patients and personnel. Fits with newer social media usage too.
     /// </summary>
     [JsonProperty("photo")]
-    public Attachment[] Photo { get; set; }
+    public List<Attachment> Photo { get; set; }
     /// <summary>
     /// The list of roles/organizations that the practitioner is associated with.
     /// </summary>
     [JsonProperty("practitionerRole")]
-    public PractitionerPractitionerRole[] PractitionerRole { get; set; }
+    public List<PractitionerPractitionerRole> PractitionerRole { get; set; }
     /// <summary>
     /// Qualifications obtained by training and certification.
     /// </summary>
     [JsonProperty("qualification")]
-    public PractitionerQualification[] Qualification { get; set; }
+    public List<PractitionerQualification> Qualification { get; set; }
     /// <summary>
     /// Need to know how to reach a practitioner.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Code Values for the Practitioner.gender field
@@ -14712,7 +14712,7 @@ namespace fhir
     /// Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion.
     /// </summary>
     [JsonProperty("bodySite")]
-    public CodeableConcept[] BodySite { get; set; }
+    public List<CodeableConcept> BodySite { get; set; }
     /// <summary>
     /// A code that classifies the procedure for searching, sorting and display purposes (e.g. "Surgical Procedure").
     /// </summary>
@@ -14727,7 +14727,7 @@ namespace fhir
     /// Any complications that occurred during the procedure, or in the immediate post-performance period. These are generally tracked separately from the notes, which will typically describe the procedure itself rather than any 'post procedure' issues.
     /// </summary>
     [JsonProperty("complication")]
-    public CodeableConcept[] Complication { get; set; }
+    public List<CodeableConcept> Complication { get; set; }
     /// <summary>
     /// The encounter during which the procedure was performed.
     /// </summary>
@@ -14737,17 +14737,17 @@ namespace fhir
     /// A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure.
     /// </summary>
     [JsonProperty("focalDevice")]
-    public ProcedureFocalDevice[] FocalDevice { get; set; }
+    public List<ProcedureFocalDevice> FocalDevice { get; set; }
     /// <summary>
     /// If the procedure required specific follow up - e.g. removal of sutures. The followup may be represented as a simple note, or could potentially be more complex in which case the CarePlan resource can be used.
     /// </summary>
     [JsonProperty("followUp")]
-    public CodeableConcept[] FollowUp { get; set; }
+    public List<CodeableConcept> FollowUp { get; set; }
     /// <summary>
     /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Ties a procedure to where the records are likely kept.
     /// </summary>
@@ -14757,7 +14757,7 @@ namespace fhir
     /// Any other notes about the procedure.  E.g. the operative notes.
     /// </summary>
     [JsonProperty("notes")]
-    public Annotation[] Notes { get; set; }
+    public List<Annotation> Notes { get; set; }
     /// <summary>
     /// Set this to true if the record is saying that the procedure was NOT performed.
     /// </summary>
@@ -14784,7 +14784,7 @@ namespace fhir
     /// Limited to 'real' people rather than equipment.
     /// </summary>
     [JsonProperty("performer")]
-    public ProcedurePerformer[] Performer { get; set; }
+    public List<ProcedurePerformer> Performer { get; set; }
     /// <summary>
     /// The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text.
     /// </summary>
@@ -14799,12 +14799,12 @@ namespace fhir
     /// A code indicating why the procedure was not performed.
     /// </summary>
     [JsonProperty("reasonNotPerformed")]
-    public CodeableConcept[] ReasonNotPerformed { get; set; }
+    public List<CodeableConcept> ReasonNotPerformed { get; set; }
     /// <summary>
     /// This could be a histology result, pathology report, surgical report, etc..
     /// </summary>
     [JsonProperty("report")]
-    public Reference[] Report { get; set; }
+    public List<Reference> Report { get; set; }
     /// <summary>
     /// A reference to a resource that contains details of the request for this procedure.
     /// </summary>
@@ -14826,7 +14826,7 @@ namespace fhir
     /// Used for tracking contamination, etc.
     /// </summary>
     [JsonProperty("used")]
-    public Reference[] Used { get; set; }
+    public List<Reference> Used { get; set; }
   }
   /// <summary>
   /// Code Values for the Procedure.status field
@@ -14858,7 +14858,7 @@ namespace fhir
     /// Knowing where the procedure is made is important for tracking if multiple sites are possible.
     /// </summary>
     [JsonProperty("bodySite")]
-    public CodeableConcept[] BodySite { get; set; }
+    public List<CodeableConcept> BodySite { get; set; }
     /// <summary>
     /// The specific procedure that is ordered. Use text if the exact nature of the procedure cannot be coded.
     /// </summary>
@@ -14873,12 +14873,12 @@ namespace fhir
     /// Identifiers assigned to this order by the order or by the receiver.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Any other notes associated with this proposal or order - e.g. provider instructions.
     /// </summary>
     [JsonProperty("notes")]
-    public Annotation[] Notes { get; set; }
+    public List<Annotation> Notes { get; set; }
     /// <summary>
     /// The time when the request was made.
     /// </summary>
@@ -15002,26 +15002,26 @@ namespace fhir
     /// Names of resource types to exclude.
     /// </summary>
     [JsonProperty("exclude")]
-    public string[] Exclude { get; set; }
+    public List<string> Exclude { get; set; }
     [JsonProperty("_exclude")]
-    public Element[] _Exclude { get; set; }
+    public List<Element> _Exclude { get; set; }
     /// <summary>
     /// The ProcessRequest business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Names of resource types to include.
     /// </summary>
     [JsonProperty("include")]
-    public string[] Include { get; set; }
+    public List<string> Include { get; set; }
     [JsonProperty("_include")]
-    public Element[] _Include { get; set; }
+    public List<Element> _Include { get; set; }
     /// <summary>
     /// List of top level items to be re-adjudicated, if none specified then the entire submission is re-adjudicated.
     /// </summary>
     [JsonProperty("item")]
-    public ProcessRequestItem[] Item { get; set; }
+    public List<ProcessRequestItem> Item { get; set; }
     /// <summary>
     /// Some resources must not simply be reversed in a processing or accounting sense but rather must have all history removed, such as the accidental submission of sensitive and/or wrong information. If the receiver cannot comply with a Nullify request then they must reject the request.
     /// </summary>
@@ -15126,7 +15126,7 @@ namespace fhir
     /// Processing errors.
     /// </summary>
     [JsonProperty("error")]
-    public Coding[] Error { get; set; }
+    public List<Coding> Error { get; set; }
     /// <summary>
     /// The form to be used for printing the content.
     /// </summary>
@@ -15136,12 +15136,12 @@ namespace fhir
     /// The Response business identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Suite of processing note or additional requirements is the processing has been held.
     /// </summary>
     [JsonProperty("notes")]
-    public ProcessResponseNotes[] Notes { get; set; }
+    public List<ProcessResponseNotes> Notes { get; set; }
     /// <summary>
     /// The organization who produced this adjudicated response.
     /// </summary>
@@ -15208,7 +15208,7 @@ namespace fhir
     /// A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest.
     /// </summary>
     [JsonProperty("relatedAgent")]
-    public ProvenanceAgentRelatedAgent[] RelatedAgent { get; set; }
+    public List<ProvenanceAgentRelatedAgent> RelatedAgent { get; set; }
     /// <summary>
     /// The function of the agent with respect to the activity.
     /// </summary>
@@ -15281,12 +15281,12 @@ namespace fhir
     /// An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility.
     /// </summary>
     [JsonProperty("agent")]
-    public ProvenanceAgent[] Agent { get; set; }
+    public List<ProvenanceAgent> Agent { get; set; }
     /// <summary>
     /// An entity used in this activity.
     /// </summary>
     [JsonProperty("entity")]
-    public ProvenanceEntity[] Entity { get; set; }
+    public List<ProvenanceEntity> Entity { get; set; }
     /// <summary>
     /// Where the activity occurred, if relevant.
     /// </summary>
@@ -15301,14 +15301,14 @@ namespace fhir
     /// Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.
     /// </summary>
     [JsonProperty("policy")]
-    public string[] Policy { get; set; }
+    public List<string> Policy { get; set; }
     [JsonProperty("_policy")]
-    public Element[] _Policy { get; set; }
+    public List<Element> _Policy { get; set; }
     /// <summary>
     /// The reason that the activity was taking place.
     /// </summary>
     [JsonProperty("reason")]
-    public CodeableConcept[] Reason { get; set; }
+    public List<CodeableConcept> Reason { get; set; }
     /// <summary>
     /// The instant of time at which the activity was recorded.
     /// </summary>
@@ -15320,12 +15320,12 @@ namespace fhir
     /// A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated.
     /// </summary>
     [JsonProperty("signature")]
-    public Signature[] Signature { get; set; }
+    public List<Signature> Signature { get; set; }
     /// <summary>
     /// The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.
     /// </summary>
     [JsonProperty("target")]
-    public Reference[] Target { get; set; }
+    public List<Reference> Target { get; set; }
   }
   /// <summary>
   /// Must register answers to questions.
@@ -15335,12 +15335,12 @@ namespace fhir
     /// Allows linking of questions (and their answers) to formal terminologies.
     /// </summary>
     [JsonProperty("concept")]
-    public Coding[] Concept { get; set; }
+    public List<Coding> Concept { get; set; }
     /// <summary>
     /// It is useful to have "sub-questions", questions which normally appear when certain answers are given and which collect additional details.
     /// </summary>
     [JsonProperty("group")]
-    public QuestionnaireGroup[] Group { get; set; }
+    public List<QuestionnaireGroup> Group { get; set; }
     /// <summary>
     /// [[[QuestionnaireResponse]]] does not require omitted groups to be included and may have some groups that repeat, so linkage based on position alone is not sufficient.
     /// </summary>
@@ -15352,7 +15352,7 @@ namespace fhir
     /// For a "choice" question, identifies one of the permitted answers for the question.
     /// </summary>
     [JsonProperty("option")]
-    public Coding[] Option { get; set; }
+    public List<Coding> Option { get; set; }
     /// <summary>
     /// Reference to a value set containing a list of codes representing permitted answers for the question.
     /// </summary>
@@ -15401,12 +15401,12 @@ namespace fhir
     /// Allows linking of groups of questions (and complete Questionnaire resources) to formal terminologies.
     /// </summary>
     [JsonProperty("concept")]
-    public Coding[] Concept { get; set; }
+    public List<Coding> Concept { get; set; }
     /// <summary>
     /// Reports can consist of complex nested groups.
     /// </summary>
     [JsonProperty("group")]
-    public QuestionnaireGroup[] Group { get; set; }
+    public List<QuestionnaireGroup> Group { get; set; }
     /// <summary>
     /// [[[QuestionnaireResponse]]] does not require omitted groups to be included and may have some groups that repeat, so linkage based on position alone is not sufficient.
     /// </summary>
@@ -15418,7 +15418,7 @@ namespace fhir
     /// Must register answers to questions.
     /// </summary>
     [JsonProperty("question")]
-    public QuestionnaireGroupQuestion[] Question { get; set; }
+    public List<QuestionnaireGroupQuestion> Question { get; set; }
     /// <summary>
     /// Groups may be used to create set of (related) questions that can be repeated to give multiple answers to such a set.
     /// </summary>
@@ -15467,7 +15467,7 @@ namespace fhir
     /// Need to allow connection to a wider workflow.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Conveys responsibility for the questions and their organization and also helps evaluate the questionnaire's "authority".
     /// </summary>
@@ -15486,14 +15486,14 @@ namespace fhir
     /// Identifies the types of subjects that can be the subject of the questionnaire.
     /// </summary>
     [JsonProperty("subjectType")]
-    public string[] SubjectType { get; set; }
+    public List<string> SubjectType { get; set; }
     [JsonProperty("_subjectType")]
-    public Element[] _SubjectType { get; set; }
+    public List<Element> _SubjectType { get; set; }
     /// <summary>
     /// Contact details to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
     /// <summary>
     /// In some cases, separate resource instances might be created for each version (if an older version can be maintained once a new version exists).
     /// </summary>
@@ -15518,7 +15518,7 @@ namespace fhir
     /// It is useful to have "sub-questions", questions which normally appear when certain answers are given and which collect additional details.
     /// </summary>
     [JsonProperty("group")]
-    public QuestionnaireGroup[] Group { get; set; }
+    public List<QuestionnaireGroup> Group { get; set; }
     /// <summary>
     /// Ability to retain a single-valued answer to a question.
     /// </summary>
@@ -15607,7 +15607,7 @@ namespace fhir
     /// The respondent's answer(s) to the question.
     /// </summary>
     [JsonProperty("answer")]
-    public QuestionnaireResponseGroupQuestionAnswer[] Answer { get; set; }
+    public List<QuestionnaireResponseGroupQuestionAnswer> Answer { get; set; }
     /// <summary>
     /// Groups can repeat in the answers, so a direct 1..1 correspondence may not exist - requiring correspondence by id.
     /// </summary>
@@ -15631,7 +15631,7 @@ namespace fhir
     /// Reports can consist of complex nested groups.
     /// </summary>
     [JsonProperty("group")]
-    public QuestionnaireGroup[] Group { get; set; }
+    public List<QuestionnaireGroup> Group { get; set; }
     /// <summary>
     /// Groups can repeat in the answers, so a direct 1..1 correspondence may not exist - requiring correspondence by identifier.
     /// </summary>
@@ -15643,7 +15643,7 @@ namespace fhir
     /// Must register answers to questions.
     /// </summary>
     [JsonProperty("question")]
-    public QuestionnaireResponseGroupQuestion[] Question { get; set; }
+    public List<QuestionnaireResponseGroupQuestion> Question { get; set; }
     /// <summary>
     /// Sometimes a group of answers is about a specific participant, artifact or piece of information in the patient's care or record, e.g. a specific Problem, RelatedPerson, Allergy etc.
     /// </summary>
@@ -15771,7 +15771,7 @@ namespace fhir
     /// Business identifier that uniquely identifies the referral/care transfer request instance.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The patient who is the subject of a referral or transfer of care request.
     /// </summary>
@@ -15791,7 +15791,7 @@ namespace fhir
     /// The healthcare provider(s) or provider organization(s) who/which is to receive the referral/transfer of care request.
     /// </summary>
     [JsonProperty("recipient")]
-    public Reference[] Recipient { get; set; }
+    public List<Reference> Recipient { get; set; }
     /// <summary>
     /// The healthcare provider or provider organization who/which initiated the referral/transfer of care request. Can also be  Patient (a self referral).
     /// </summary>
@@ -15801,7 +15801,7 @@ namespace fhir
     /// The service(s) that is/are requested to be provided to the patient.  For example: cardiac pacemaker insertion.
     /// </summary>
     [JsonProperty("serviceRequested")]
-    public CodeableConcept[] ServiceRequested { get; set; }
+    public List<CodeableConcept> ServiceRequested { get; set; }
     /// <summary>
     /// Indication of the clinical domain or discipline to which the referral or transfer of care request is sent.  For example: Cardiology Gastroenterology Diabetology.
     /// </summary>
@@ -15818,7 +15818,7 @@ namespace fhir
     /// Any additional (administrative, financial or clinical) information required to support request for referral or transfer of care.  For example: Presenting problems/chief complaints Medical History Family History Alerts Allergy/Intolerance and Adverse Reactions Medications Observations/Assessments (may include cognitive and fundtional assessments) Diagnostic Reports Care Plan.
     /// </summary>
     [JsonProperty("supportingInformation")]
-    public Reference[] SupportingInformation { get; set; }
+    public List<Reference> SupportingInformation { get; set; }
     /// <summary>
     /// An indication of the type of referral (or where applicable the type of transfer of care) request.
     /// </summary>
@@ -15848,7 +15848,7 @@ namespace fhir
     /// Need to keep track where the related person can be contacted per postal mail or visited.
     /// </summary>
     [JsonProperty("address")]
-    public Address[] Address { get; set; }
+    public List<Address> Address { get; set; }
     /// <summary>
     /// The date on which the related person was born.
     /// </summary>
@@ -15867,7 +15867,7 @@ namespace fhir
     /// People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the patient. Examples are national person identifier and local identifier.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Related persons need to be identified by name, but it is uncommon to need details about multiple other names for that person.
     /// </summary>
@@ -15887,7 +15887,7 @@ namespace fhir
     /// Many EHR systems have the capability to capture an image of persons. Fits with newer social media usage too.
     /// </summary>
     [JsonProperty("photo")]
-    public Attachment[] Photo { get; set; }
+    public List<Attachment> Photo { get; set; }
     /// <summary>
     /// We need to know the relationship with the patient since it influences the interpretation of the information attributed to this person.
     /// </summary>
@@ -15897,7 +15897,7 @@ namespace fhir
     /// People have (primary) ways to contact them in some way such as phone, email.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Code Values for the RelatedPerson.gender field
@@ -16001,7 +16001,7 @@ namespace fhir
     /// Indicates the source data considered as part of the assessment (FamilyHistory, Observations, Procedures, Conditions, etc.).
     /// </summary>
     [JsonProperty("basis")]
-    public Reference[] Basis { get; set; }
+    public List<Reference> Basis { get; set; }
     /// <summary>
     /// For assessments or prognosis specific to a particular condition, indicates the condition being assessed.
     /// </summary>
@@ -16045,7 +16045,7 @@ namespace fhir
     /// Describes the expected outcome for the subject.
     /// </summary>
     [JsonProperty("prediction")]
-    public RiskAssessmentPrediction[] Prediction { get; set; }
+    public List<RiskAssessmentPrediction> Prediction { get; set; }
     /// <summary>
     /// The patient or group the risk assessment applies to.
     /// </summary>
@@ -16075,7 +16075,7 @@ namespace fhir
     /// External Ids for this item.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The period of time that the slots that are attached to this Schedule resource cover (even if none exist). These  cover the amount of time that an organization's planning horizon; the interval for which they are currently accepting appointments. This does not define a "template" for planning outside these dates.
     /// </summary>
@@ -16085,7 +16085,7 @@ namespace fhir
     /// The schedule type can be used for the categorization of healthcare services or other appointment types.
     /// </summary>
     [JsonProperty("type")]
-    public CodeableConcept[] Type { get; set; }
+    public List<CodeableConcept> Type { get; set; }
   }
   /// <summary>
   /// Contacts to assist a user in finding and communicating with the publisher.
@@ -16102,7 +16102,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// A search parameter that defines a named search item that can be used to search/filter on a resource.
@@ -16129,7 +16129,7 @@ namespace fhir
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public SearchParameterContact[] Contact { get; set; }
+    public List<SearchParameterContact> Contact { get; set; }
     /// <summary>
     /// The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes.
     /// </summary>
@@ -16181,9 +16181,9 @@ namespace fhir
     /// Types of resource (if a resource is referenced).
     /// </summary>
     [JsonProperty("target")]
-    public string[] Target { get; set; }
+    public List<string> Target { get; set; }
     [JsonProperty("_target")]
-    public Element[] _Target { get; set; }
+    public List<Element> _Target { get; set; }
     /// <summary>
     /// The type of value a search parameter refers to, and how the content is interpreted.
     /// </summary>
@@ -16276,7 +16276,7 @@ namespace fhir
     /// External Ids for this item.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// This slot has already been overbooked, appointments are unlikely to be accepted for this time.
     /// </summary>
@@ -16339,9 +16339,9 @@ namespace fhir
     /// To communicate any details or issues encountered during the specimen collection procedure.
     /// </summary>
     [JsonProperty("comment")]
-    public string[] Comment { get; set; }
+    public List<string> Comment { get; set; }
     [JsonProperty("_comment")]
-    public Element[] _Comment { get; set; }
+    public List<Element> _Comment { get; set; }
     /// <summary>
     /// A coded value specifying the technique that is used to perform the procedure.
     /// </summary>
@@ -16361,7 +16361,7 @@ namespace fhir
     /// Material used in the processing step.
     /// </summary>
     [JsonProperty("additive")]
-    public Reference[] Additive { get; set; }
+    public List<Reference> Additive { get; set; }
     /// <summary>
     /// Textual description of procedure.
     /// </summary>
@@ -16405,7 +16405,7 @@ namespace fhir
     /// Id for container. There may be multiple; a manufacturer's bar code, lab assigned identifier, etc. The container ID may differ from the specimen id in some circumstances.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// The quantity of specimen in the container; may be volume, dimensions, or other appropriate measurements, depending on the specimen type.
     /// </summary>
@@ -16438,17 +16438,17 @@ namespace fhir
     /// The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.
     /// </summary>
     [JsonProperty("container")]
-    public SpecimenContainer[] Container { get; set; }
+    public List<SpecimenContainer> Container { get; set; }
     /// <summary>
     /// Id for specimen.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.
     /// </summary>
     [JsonProperty("parent")]
-    public Reference[] Parent { get; set; }
+    public List<Reference> Parent { get; set; }
     /// <summary>
     /// Time when specimen was received for processing or testing.
     /// </summary>
@@ -16472,7 +16472,7 @@ namespace fhir
     /// Details concerning treatment and processing steps for the specimen.
     /// </summary>
     [JsonProperty("treatment")]
-    public SpecimenTreatment[] Treatment { get; set; }
+    public List<SpecimenTreatment> Treatment { get; set; }
     /// <summary>
     /// The kind of material that forms the specimen.
     /// </summary>
@@ -16503,7 +16503,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// An external specification that the content is mapped to.
@@ -16546,7 +16546,7 @@ namespace fhir
     /// Captures constraints on each element within the resource.
     /// </summary>
     [JsonProperty("element")]
-    public ElementDefinition[] Element { get; set; }
+    public List<ElementDefinition> Element { get; set; }
   }
   /// <summary>
   /// A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies.
@@ -16556,7 +16556,7 @@ namespace fhir
     /// Captures constraints on each element within the resource.
     /// </summary>
     [JsonProperty("element")]
-    public ElementDefinition[] Element { get; set; }
+    public List<ElementDefinition> Element { get; set; }
   }
   /// <summary>
   /// A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions, and constraints on resources and data types.
@@ -16581,7 +16581,7 @@ namespace fhir
     /// Assist in searching for appropriate StructureDefinitions.
     /// </summary>
     [JsonProperty("code")]
-    public Coding[] Code { get; set; }
+    public List<Coding> Code { get; set; }
     /// <summary>
     /// The type of type that is being constrained - a data type, an extension, a resource, including abstract ones. If this field is present, it indicates that the structure definition is a constraint. If it is not present, then the structure definition is the definition of a base structure.
     /// </summary>
@@ -16593,14 +16593,14 @@ namespace fhir
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public StructureDefinitionContact[] Contact { get; set; }
+    public List<StructureDefinitionContact> Contact { get; set; }
     /// <summary>
     /// Identifies the types of resource or data type elements to which the extension can be applied.
     /// </summary>
     [JsonProperty("context")]
-    public string[] Context { get; set; }
+    public List<string> Context { get; set; }
     [JsonProperty("_context")]
-    public Element[] _Context { get; set; }
+    public List<Element> _Context { get; set; }
     /// <summary>
     /// If this is an extension, Identifies the context within FHIR resources where the extension can be used.
     /// </summary>
@@ -16657,7 +16657,7 @@ namespace fhir
     /// Formal identifier that is used to identify this StructureDefinition when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI).
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// Defines the kind of structure that this definition is describing.
     /// </summary>
@@ -16669,7 +16669,7 @@ namespace fhir
     /// An external specification that the content is mapped to.
     /// </summary>
     [JsonProperty("mapping")]
-    public StructureDefinitionMapping[] Mapping { get; set; }
+    public List<StructureDefinitionMapping> Mapping { get; set; }
     /// <summary>
     /// A free text natural language name identifying the StructureDefinition.
     /// </summary>
@@ -16714,7 +16714,7 @@ namespace fhir
     /// Assist in searching for appropriate content.
     /// </summary>
     [JsonProperty("useContext")]
-    public CodeableConcept[] UseContext { get; set; }
+    public List<CodeableConcept> UseContext { get; set; }
     /// <summary>
     /// There may be multiple resource versions of the StructureDefinition that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control.
     /// </summary>
@@ -16807,7 +16807,7 @@ namespace fhir
     /// Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting.
     /// </summary>
     [JsonProperty("contact")]
-    public ContactPoint[] Contact { get; set; }
+    public List<ContactPoint> Contact { get; set; }
     /// <summary>
     /// The rules that the server should use to determine when to generate notifications for this subscription.
     /// </summary>
@@ -16847,7 +16847,7 @@ namespace fhir
     /// A tag to add to any resource that matches the criteria, after the subscription is processed.
     /// </summary>
     [JsonProperty("tag")]
-    public Coding[] Tag { get; set; }
+    public List<Coding> Tag { get; set; }
   }
   /// <summary>
   /// Code Values for the Subscription.status field
@@ -16906,7 +16906,7 @@ namespace fhir
     /// A code that classifies the general type of substance.  This is used  for searching, sorting and display purposes.
     /// </summary>
     [JsonProperty("category")]
-    public CodeableConcept[] Category { get; set; }
+    public List<CodeableConcept> Category { get; set; }
     /// <summary>
     /// A code (or set of codes) that identify this substance.
     /// </summary>
@@ -16923,17 +16923,17 @@ namespace fhir
     /// Unique identifier for the substance.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// A substance can be composed of other substances.
     /// </summary>
     [JsonProperty("ingredient")]
-    public SubstanceIngredient[] Ingredient { get; set; }
+    public List<SubstanceIngredient> Ingredient { get; set; }
     /// <summary>
     /// Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance.
     /// </summary>
     [JsonProperty("instance")]
-    public SubstanceInstance[] Instance { get; set; }
+    public List<SubstanceInstance> Instance { get; set; }
   }
   /// <summary>
   /// Record of delivery of what is supplied.
@@ -16966,7 +16966,7 @@ namespace fhir
     /// Identifies the person who picked up the Supply.
     /// </summary>
     [JsonProperty("receiver")]
-    public Reference[] Receiver { get; set; }
+    public List<Reference> Receiver { get; set; }
     /// <summary>
     /// A code specifying the state of the dispense event.
     /// </summary>
@@ -17085,7 +17085,7 @@ namespace fhir
     /// Who is intended to fulfill the request.
     /// </summary>
     [JsonProperty("supplier")]
-    public Reference[] Supplier { get; set; }
+    public List<Reference> Supplier { get; set; }
     /// <summary>
     /// When the request should be fulfilled.
     /// </summary>
@@ -17116,7 +17116,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// A link to the FHIR specification that this test is covering.
@@ -17162,9 +17162,9 @@ namespace fhir
     /// Links to the FHIR specification that describes this interaction and the resources involved in more detail.
     /// </summary>
     [JsonProperty("link")]
-    public string[] Link { get; set; }
+    public List<string> Link { get; set; }
     [JsonProperty("_link")]
-    public Element[] _Link { get; set; }
+    public List<Element> _Link { get; set; }
     /// <summary>
     /// Whether or not the test execution will require the given capabilities of the server in order for this test script to execute.
     /// </summary>
@@ -17184,12 +17184,12 @@ namespace fhir
     /// Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
     /// </summary>
     [JsonProperty("capability")]
-    public TestScriptMetadataCapability[] Capability { get; set; }
+    public List<TestScriptMetadataCapability> Capability { get; set; }
     /// <summary>
     /// A link to the FHIR specification that this test is covering.
     /// </summary>
     [JsonProperty("link")]
-    public TestScriptMetadataLink[] Link { get; set; }
+    public List<TestScriptMetadataLink> Link { get; set; }
   }
   /// <summary>
   /// Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
@@ -17316,7 +17316,7 @@ namespace fhir
     /// Header elements would be used to set HTTP headers.
     /// </summary>
     [JsonProperty("requestHeader")]
-    public TestScriptSetupActionOperationRequestHeader[] RequestHeader { get; set; }
+    public List<TestScriptSetupActionOperationRequestHeader> RequestHeader { get; set; }
     /// <summary>
     /// The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.
     /// </summary>
@@ -17568,7 +17568,7 @@ namespace fhir
     /// Action would contain either an operation or an assertion.
     /// </summary>
     [JsonProperty("action")]
-    public TestScriptSetupAction[] Action { get; set; }
+    public List<TestScriptSetupAction> Action { get; set; }
     /// <summary>
     /// Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
     /// </summary>
@@ -17598,7 +17598,7 @@ namespace fhir
     /// Action would contain either an operation or an assertion.
     /// </summary>
     [JsonProperty("action")]
-    public TestScriptTestAction[] Action { get; set; }
+    public List<TestScriptTestAction> Action { get; set; }
     /// <summary>
     /// A short description of the test used by test engines for tracking and reporting purposes.
     /// </summary>
@@ -17637,7 +17637,7 @@ namespace fhir
     /// The teardown action will only contain an operation.
     /// </summary>
     [JsonProperty("action")]
-    public TestScriptTeardownAction[] Action { get; set; }
+    public List<TestScriptTeardownAction> Action { get; set; }
   }
   /// <summary>
   /// TestScript is a resource that specifies a suite of tests against a FHIR server implementation to determine compliance against the FHIR specification.
@@ -17650,7 +17650,7 @@ namespace fhir
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public TestScriptContact[] Contact { get; set; }
+    public List<TestScriptContact> Contact { get; set; }
     /// <summary>
     /// A copyright statement relating to the Test Script and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.
     /// </summary>
@@ -17681,7 +17681,7 @@ namespace fhir
     /// Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
     /// </summary>
     [JsonProperty("fixture")]
-    public TestScriptFixture[] Fixture { get; set; }
+    public List<TestScriptFixture> Fixture { get; set; }
     /// <summary>
     /// Identifier for the TestScript assigned for external purposes outside the context of FHIR.
     /// </summary>
@@ -17708,7 +17708,7 @@ namespace fhir
     /// Reference to the profile to be used for validation.
     /// </summary>
     [JsonProperty("profile")]
-    public Reference[] Profile { get; set; }
+    public List<Reference> Profile { get; set; }
     /// <summary>
     /// Helps establish the "authority/credibility" of the Test Script.  May also allow for contact.
     /// </summary>
@@ -17744,7 +17744,7 @@ namespace fhir
     /// A test in this script.
     /// </summary>
     [JsonProperty("test")]
-    public TestScriptTest[] Test { get; set; }
+    public List<TestScriptTest> Test { get; set; }
     /// <summary>
     /// An absolute URL that is used to identify this Test Script. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this Test Script is (or will be) published.
     /// </summary>
@@ -17756,12 +17756,12 @@ namespace fhir
     /// Assist in searching for appropriate content.
     /// </summary>
     [JsonProperty("useContext")]
-    public CodeableConcept[] UseContext { get; set; }
+    public List<CodeableConcept> UseContext { get; set; }
     /// <summary>
     /// Variable is set based either on element value in response body or on header field value in the response headers.
     /// </summary>
     [JsonProperty("variable")]
-    public TestScriptVariable[] Variable { get; set; }
+    public List<TestScriptVariable> Variable { get; set; }
     /// <summary>
     /// There may be multiple resource versions of the TestScript that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control.
     /// </summary>
@@ -17793,7 +17793,7 @@ namespace fhir
     /// Contact details for individual (if a name was provided) or the publisher.
     /// </summary>
     [JsonProperty("telecom")]
-    public ContactPoint[] Telecom { get; set; }
+    public List<ContactPoint> Telecom { get; set; }
   }
   /// <summary>
   /// Many concept definition systems support multiple representations, in multiple languages, and for multiple purposes.
@@ -17839,7 +17839,7 @@ namespace fhir
     /// Defines children of a concept to produce a hierarchy of concepts. The nature of the relationships is variable (is-a/contains/categorizes) and can only be determined by examining the definitions of the concepts.
     /// </summary>
     [JsonProperty("concept")]
-    public ValueSetCodeSystemConcept[] Concept { get; set; }
+    public List<ValueSetCodeSystemConcept> Concept { get; set; }
     /// <summary>
     /// The formal definition of the concept. The value set resource does not make formal definitions required, because of the prevalence of legacy systems. However, they are highly recommended, as without them there is no formal meaning associated with the concept.
     /// </summary>
@@ -17851,7 +17851,7 @@ namespace fhir
     /// Many concept definition systems support multiple representations, in multiple languages, and for multiple purposes.
     /// </summary>
     [JsonProperty("designation")]
-    public ValueSetCodeSystemConceptDesignation[] Designation { get; set; }
+    public List<ValueSetCodeSystemConceptDesignation> Designation { get; set; }
     /// <summary>
     /// A human readable string that is the recommended default way to present this concept to a user.
     /// </summary>
@@ -17873,7 +17873,7 @@ namespace fhir
     /// Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meaning of the hierarchical relationships are.
     /// </summary>
     [JsonProperty("concept")]
-    public ValueSetCodeSystemConcept[] Concept { get; set; }
+    public List<ValueSetCodeSystemConcept> Concept { get; set; }
     /// <summary>
     /// An absolute URI that is used to reference this code system, including in [Coding]{datatypes.html#Coding}.system.
     /// </summary>
@@ -17904,7 +17904,7 @@ namespace fhir
     /// Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.
     /// </summary>
     [JsonProperty("designation")]
-    public ValueSetCodeSystemConceptDesignation[] Designation { get; set; }
+    public List<ValueSetCodeSystemConceptDesignation> Designation { get; set; }
     /// <summary>
     /// The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.
     /// </summary>
@@ -17958,12 +17958,12 @@ namespace fhir
     /// Specifies a concept to be included or excluded.
     /// </summary>
     [JsonProperty("concept")]
-    public ValueSetComposeIncludeConcept[] Concept { get; set; }
+    public List<ValueSetComposeIncludeConcept> Concept { get; set; }
     /// <summary>
     /// Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
     /// </summary>
     [JsonProperty("filter")]
-    public ValueSetComposeIncludeFilter[] Filter { get; set; }
+    public List<ValueSetComposeIncludeFilter> Filter { get; set; }
     /// <summary>
     /// An absolute URI which is the code system from which the selected codes come from.
     /// </summary>
@@ -17987,19 +17987,19 @@ namespace fhir
     /// Exclude one or more codes from the value set.
     /// </summary>
     [JsonProperty("exclude")]
-    public ValueSetComposeInclude[] Exclude { get; set; }
+    public List<ValueSetComposeInclude> Exclude { get; set; }
     /// <summary>
     /// Includes the contents of the referenced value set as a part of the contents of this value set. This is an absolute URI that is a reference to ValueSet.uri.
     /// </summary>
     [JsonProperty("import")]
-    public string[] Import { get; set; }
+    public List<string> Import { get; set; }
     [JsonProperty("_import")]
-    public Element[] _Import { get; set; }
+    public List<Element> _Import { get; set; }
     /// <summary>
     /// Include one or more codes from a code system.
     /// </summary>
     [JsonProperty("include")]
-    public ValueSetComposeInclude[] Include { get; set; }
+    public List<ValueSetComposeInclude> Include { get; set; }
   }
   /// <summary>
   /// A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
@@ -18071,7 +18071,7 @@ namespace fhir
     /// Other codes and entries contained under this entry in the hierarchy.
     /// </summary>
     [JsonProperty("contains")]
-    public ValueSetExpansionContains[] Contains { get; set; }
+    public List<ValueSetExpansionContains> Contains { get; set; }
     /// <summary>
     /// The recommended display for this item in the expansion.
     /// </summary>
@@ -18102,7 +18102,7 @@ namespace fhir
     /// The codes that are contained in the value set expansion.
     /// </summary>
     [JsonProperty("contains")]
-    public ValueSetExpansionContains[] Contains { get; set; }
+    public List<ValueSetExpansionContains> Contains { get; set; }
     /// <summary>
     /// An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so.
     /// </summary>
@@ -18119,7 +18119,7 @@ namespace fhir
     /// A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
     /// </summary>
     [JsonProperty("parameter")]
-    public ValueSetExpansionParameter[] Parameter { get; set; }
+    public List<ValueSetExpansionParameter> Parameter { get; set; }
     /// <summary>
     /// The time at which the expansion was produced by the expanding system.
     /// </summary>
@@ -18154,7 +18154,7 @@ namespace fhir
     /// Contacts to assist a user in finding and communicating with the publisher.
     /// </summary>
     [JsonProperty("contact")]
-    public ValueSetContact[] Contact { get; set; }
+    public List<ValueSetContact> Contact { get; set; }
     /// <summary>
     /// A copyright statement relating to the value set and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the value set.
     /// </summary>
@@ -18247,7 +18247,7 @@ namespace fhir
     /// Assist in searching for appropriate content.
     /// </summary>
     [JsonProperty("useContext")]
-    public CodeableConcept[] UseContext { get; set; }
+    public List<CodeableConcept> UseContext { get; set; }
     /// <summary>
     /// Used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
     /// </summary>
@@ -18402,7 +18402,7 @@ namespace fhir
     /// Deals with details of the dispense part of the supply specification.
     /// </summary>
     [JsonProperty("dispense")]
-    public VisionPrescriptionDispense[] Dispense { get; set; }
+    public List<VisionPrescriptionDispense> Dispense { get; set; }
     /// <summary>
     /// A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
     /// </summary>
@@ -18412,7 +18412,7 @@ namespace fhir
     /// Business identifier which may be used by other parties to reference or identify the prescription.
     /// </summary>
     [JsonProperty("identifier")]
-    public Identifier[] Identifier { get; set; }
+    public List<Identifier> Identifier { get; set; }
     /// <summary>
     /// A link to a resource representing the person to whom the vision products will be supplied.
     /// </summary>

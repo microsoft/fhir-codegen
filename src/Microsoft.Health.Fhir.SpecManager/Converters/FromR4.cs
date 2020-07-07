@@ -53,7 +53,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if ((vs.Compose != null) &&
                 (vs.Compose.Include != null) &&
-                (vs.Compose.Include.Length > 0))
+                (vs.Compose.Include.Count > 0))
             {
                 includes = new List<FhirValueSetComposition>();
 
@@ -65,7 +65,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if ((vs.Compose != null) &&
                 (vs.Compose.Exclude != null) &&
-                (vs.Compose.Exclude.Length > 0))
+                (vs.Compose.Exclude.Count > 0))
             {
                 excludes = new List<FhirValueSetComposition>();
 
@@ -79,7 +79,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 Dictionary<string, dynamic> parameters = null;
 
-                if ((vs.Expansion.Parameter != null) && (vs.Expansion.Parameter.Length > 0))
+                if ((vs.Expansion.Parameter != null) && (vs.Expansion.Parameter.Count > 0))
                 {
                     parameters = new Dictionary<string, dynamic>();
 
@@ -136,7 +136,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                 List<FhirConcept> expansionContains = null;
 
-                if ((vs.Expansion.Contains != null) && (vs.Expansion.Contains.Length > 0))
+                if ((vs.Expansion.Contains != null) && (vs.Expansion.Contains.Count > 0))
                 {
                     foreach (fhir_4.ValueSetExpansionContains contains in vs.Expansion.Contains)
                     {
@@ -200,7 +200,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     ec.Version));
             }
 
-            if ((ec.Contains != null) && (ec.Contains.Length > 0))
+            if ((ec.Contains != null) && (ec.Contains.Count > 0))
             {
                 foreach (fhir_4.ValueSetExpansionContains subContains in ec.Contains)
                 {
@@ -223,7 +223,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             List<FhirValueSetFilter> filters = null;
             List<string> linkedValueSets = null;
 
-            if ((compose.Concept != null) && (compose.Concept.Length > 0))
+            if ((compose.Concept != null) && (compose.Concept.Count > 0))
             {
                 concepts = new List<FhirConcept>();
 
@@ -236,7 +236,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
             }
 
-            if ((compose.Filter != null) && (compose.Filter.Length > 0))
+            if ((compose.Filter != null) && (compose.Filter.Count > 0))
             {
                 filters = new List<FhirValueSetFilter>();
 
@@ -249,7 +249,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
             }
 
-            if ((compose.ValueSet != null) && (compose.ValueSet.Length > 0))
+            if ((compose.ValueSet != null) && (compose.ValueSet.Count > 0))
             {
                 linkedValueSets = new List<string>();
 
@@ -318,11 +318,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         private void AddConceptTree(
             string codeSystemUrl,
             string codeSystemId,
-            fhir_4.CodeSystemConcept[] concepts,
+            List<fhir_4.CodeSystemConcept> concepts,
             ref FhirConceptTreeNode parent,
             ref Dictionary<string, FhirConceptTreeNode> nodeLookup)
         {
-            if (concepts == null)
+            if ((concepts == null) ||
+                (concepts.Count == 0) ||
+                (parent == null))
             {
                 return;
             }
@@ -432,12 +434,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
-            string[] resources = sp.Base;
+            List<string> resources = sp.Base;
 
             // check for parameters with no base resource
             if (sp.Base == null)
             {
-                List<string> resourceList = new List<string>();
+                resources = new List<string>();
 
                 // see if we can determine the resource based on id
                 string[] components = sp.Id.Split('-');
@@ -446,17 +448,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     if (fhirVersionInfo.Resources.ContainsKey(component))
                     {
-                        resourceList.Add(component);
+                        resources.Add(component);
                     }
                 }
 
                 // don't know where to put this, could try parsing XPath in the future
-                if (resourceList.Count == 0)
+                if (resources.Count == 0)
                 {
                     return;
                 }
-
-                resources = resourceList.ToArray();
             }
 
             // create the search parameter
@@ -537,7 +537,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if ((sd.Snapshot != null) &&
                 (sd.Snapshot.Element != null) &&
-                (sd.Snapshot.Element.Length > 0))
+                (sd.Snapshot.Element.Count > 0))
             {
                 foreach (fhir_4.ElementDefinition element in sd.Snapshot.Element)
                 {
@@ -668,7 +668,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElements(
             string structureName,
-            fhir_4.ElementDefinition[] elements,
+            List<fhir_4.ElementDefinition> elements,
             out Dictionary<string, FhirElementType> elementTypes,
             out string regex)
         {
@@ -744,7 +744,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     }
                 }
 
-                if (sd.Snapshot.Element.Length > 0)
+                if (sd.Snapshot.Element.Count > 0)
                 {
                     descriptionShort = sd.Snapshot.Element[0].Short;
                     definition = sd.Snapshot.Element[0].Definition;

@@ -185,18 +185,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "while",
         };
 
-        /// <summary>This language does not allow configuration of name styles.</summary>
-        private static readonly HashSet<FhirTypeBase.NamingConvention> _supportedStyles = new HashSet<FhirTypeBase.NamingConvention>()
-        {
-            FhirTypeBase.NamingConvention.LanguageControlled,
-        };
-
-        /// <summary>The not supported style.</summary>
-        private static readonly HashSet<FhirTypeBase.NamingConvention> _notSupportedStyle = new HashSet<FhirTypeBase.NamingConvention>()
-        {
-            FhirTypeBase.NamingConvention.None,
-        };
-
         /// <summary>Gets the name of the language.</summary>
         /// <value>The name of the language.</value>
         string ILanguage.LanguageName => _languageName;
@@ -737,7 +725,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented($"get {{ return _{pascal}Element; }}");
             _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
             CloseScope();
-
         }
 
         /// <summary>Writes a property type name.</summary>

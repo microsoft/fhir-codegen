@@ -427,8 +427,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes a value set.</summary>
-        /// <param name="vs">         The value set.</param>
-        /// <param name="indentation">The indentation.</param>
+        /// <param name="vs">The value set.</param>
         private void WriteValueSet(
             FhirValueSet vs)
         {
@@ -730,8 +729,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex complex,
             FhirElement element)
         {
-            string arrayFlagString = element.IsArray ? "[]" : string.Empty;
-
             Dictionary<string, string> values = element.NamesAndTypesForExport(
                 FhirTypeBase.NamingConvention.PascalCase,
                 FhirTypeBase.NamingConvention.PascalCase,
@@ -758,16 +755,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteIndentedComment(element.Comment);
                 }
 
+                string elementType = element.IsArray
+                    ? $"List<{kvp.Value}{optionalFlagString}>"
+                    : $"{kvp.Value}{optionalFlagString}";
+
                 string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
 
                 _writer.WriteLineIndented($"[JsonProperty(\"{camel}\")]");
 
-                _writer.WriteLineIndented($"public {kvp.Value}{optionalFlagString}{arrayFlagString} {elementName} {{ get; set; }}");
+                _writer.WriteLineIndented($"public {elementType} {elementName} {{ get; set; }}");
 
                 if (RequiresExtension(kvp.Value))
                 {
                     _writer.WriteLineIndented($"[JsonProperty(\"_{camel}\")]");
-                    _writer.WriteLineIndented($"public Element{arrayFlagString} _{elementName} {{ get; set; }}");
+
+                    if (element.IsArray)
+                    {
+                        _writer.WriteLineIndented($"public List<Element> _{elementName} {{ get; set; }}");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"public Element _{elementName} {{ get; set; }}");
+                    }
                 }
             }
         }
