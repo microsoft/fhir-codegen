@@ -1,0 +1,2361 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SecurityRoleTypeValueSet
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SecurityRoleTypeValueSet
+   ">
+    <meta name="generator" content="docfx 2.56.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet">
+  
+  
+  <h1 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet" class="text-break">Class SecurityRoleTypeValueSet
+  </h1>
+  <div class="markdown level0 summary"><p>This example FHIR value set is comprised of example Actor Type codes, which can be used to value FHIR agents, actors, and other role         elements such as those specified in financial transactions. The FHIR Actor value set is based on    DICOM Audit Message, C402;   ASTM Standard, E1762-95 [2013]; selected codes and          derived actor roles from HL7 RoleClass OID 2.16.840.1.113883.5.110;    HL7 Role Code 2.16.840.1.113883.5.111, including AgentRoleType;          HL7 ParticipationType OID: 2.16.840.1.113883.5.90; and    HL7 ParticipationFunction codes OID: 2.16.840.1.113883.5.88.           This value set includes, by reference, role codes from external code systems: NUCC Health Care Provider Taxonomy OID: 2.16.840.1.113883.6.101;          North American Industry Classification System [NAICS]OID: 2.16.840.1.113883.6.85; IndustryClassificationSystem 2.16.840.1.113883.1.11.16039;          and US Census Occupation Code OID: 2.16.840.1.113883.6.243 for relevant recipient or custodian codes not included in this value set.            If no source is indicated in the definition comments, then these are example FHIR codes.          It can be extended with appropriate roles described by SNOMED as well as those described in the HL7 Role Based Access Control Catalog and the          HL7 Healthcare (Security and Privacy) Access Control Catalog.            In Role-Based Access Control (RBAC), permissions are operations on an object that a user wishes to access. Permissions are grouped into roles.          A role characterizes the functions a user is allowed to perform. Roles are assigned to users. If the user's role has the appropriate permissions          to access an object, then that user is granted access to the object. FHIR readily enables RBAC, as FHIR Resources are object types and the CRUDE          events (the FHIR equivalent to permissions in the RBAC scheme) are operations on those objects.          In Attribute-Based Access Control (ABAC), a user requests to perform operations on objects. That user's access request is granted or denied          based on a set of access control policies that are specified in terms of attributes and conditions. FHIR readily enables ABAC, as instances of          a Resource in FHIR (again, Resources are object types) can have attributes associated with them. These attributes include security tags,          environment conditions, and a host of user and object characteristics, which are the same attributes as those used in ABAC. Attributes help          define the access control policies that determine the operations a user may perform on a Resource (in FHIR) or object (in ABAC). For example,          a tag (or attribute) may specify that the identified Resource (object) is not to be further disclosed without explicit consent from the patient.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">SecurityRoleTypeValueSet</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.html">Microsoft.Health.Fhir.SpecManager.fhir.r4</a></h6>
+  <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.SpecManager.dll</h6>
+  <h5 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class SecurityRoleTypeValueSet</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Affiliate_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Affiliate_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21943">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Affiliate_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Affiliate_v3_RoleClass">Affiliate_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Affiliate_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Agent_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Agent_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21949">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Agent_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Agent_v3_RoleClass">Agent_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Agent_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Amender_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Amender_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21955">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Amender_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Amender_contract_signer_type">Amender_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Amender_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Application_dicom_dcim.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Application_dicom_dcim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21907">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Application_dicom_dcim" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Application_dicom_dcim">Application_dicom_dcim</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Application_dicom_dcim</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_ApplicationLauncher_dicom_dcim.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.ApplicationLauncher_dicom_dcim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21913">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_ApplicationLauncher_dicom_dcim" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.ApplicationLauncher_dicom_dcim">ApplicationLauncher_dicom_dcim</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding ApplicationLauncher_dicom_dcim</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AssignedEntity_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AssignedEntity_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21961">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AssignedEntity_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AssignedEntity_v3_RoleClass">AssignedEntity_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding AssignedEntity_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AsylumSeeker_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AsylumSeeker_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22003">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AsylumSeeker_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AsylumSeeker_v3_RoleCode">AsylumSeeker_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding AsylumSeeker_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AuthorizationServer_extra_security_role_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AuthorizationServer_extra_security_role_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21985">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AuthorizationServer_extra_security_role_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AuthorizationServer_extra_security_role_type">AuthorizationServer_extra_security_role_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding AuthorizationServer_extra_security_role_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AuthorizedProviderMaskingAuthor_v3_ParticipationFunction.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AuthorizedProviderMaskingAuthor_v3_ParticipationFunction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22291">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AuthorizedProviderMaskingAuthor_v3_ParticipationFunction" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AuthorizedProviderMaskingAuthor_v3_ParticipationFunction">AuthorizedProviderMaskingAuthor_v3_ParticipationFunction</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding AuthorizedProviderMaskingAuthor_v3_ParticipationFunction</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AuthorOriginator_v3_ParticipationType.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AuthorOriginator_v3_ParticipationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21979">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_AuthorOriginator_v3_ParticipationType" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.AuthorOriginator_v3_ParticipationType">AuthorOriginator_v3_ParticipationType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding AuthorOriginator_v3_ParticipationType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CaregiverInformationReceiver_v3_ParticipationFunction.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CaregiverInformationReceiver_v3_ParticipationFunction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21967">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CaregiverInformationReceiver_v3_ParticipationFunction" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CaregiverInformationReceiver_v3_ParticipationFunction">CaregiverInformationReceiver_v3_ParticipationFunction</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding CaregiverInformationReceiver_v3_ParticipationFunction</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CareTeamInformationReceiver_v3_ParticipationFunction.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CareTeamInformationReceiver_v3_ParticipationFunction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21991">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CareTeamInformationReceiver_v3_ParticipationFunction" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CareTeamInformationReceiver_v3_ParticipationFunction">CareTeamInformationReceiver_v3_ParticipationFunction</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding CareTeamInformationReceiver_v3_ParticipationFunction</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CitizenRoleType_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CitizenRoleType_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21901">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CitizenRoleType_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CitizenRoleType_v3_RoleCode">CitizenRoleType_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding CitizenRoleType_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Claimant_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Claimant_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22015">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Claimant_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Claimant_v3_RoleClass">Claimant_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Claimant_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Classifier_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Classifier_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22021">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Classifier_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Classifier_v3_RoleCode">Classifier_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Classifier_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CoAuthor_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CoAuthor_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22045">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CoAuthor_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CoAuthor_contract_signer_type">CoAuthor_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding CoAuthor_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Consenter_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Consenter_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22051">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Consenter_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Consenter_v3_RoleCode">Consenter_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Consenter_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_ConsentWitness_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.ConsentWitness_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22057">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_ConsentWitness_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.ConsentWitness_v3_RoleCode">ConsentWitness_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding ConsentWitness_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Contact_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Contact_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22063">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Contact_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Contact_contract_signer_type">Contact_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Contact_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CoParticipant_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CoParticipant_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22069">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CoParticipant_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CoParticipant_v3_RoleCode">CoParticipant_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding CoParticipant_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CoveredParty_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CoveredParty_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22075">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_CoveredParty_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.CoveredParty_v3_RoleClass">CoveredParty_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding CoveredParty_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Custodian_v3_ParticipationType.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Custodian_v3_ParticipationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22099">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Custodian_v3_ParticipationType" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Custodian_v3_ParticipationType">Custodian_v3_ParticipationType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Custodian_v3_ParticipationType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DataCollector_extra_security_role_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DataCollector_extra_security_role_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22105">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DataCollector_extra_security_role_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DataCollector_extra_security_role_type">DataCollector_extra_security_role_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding DataCollector_extra_security_role_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DataProcessor_extra_security_role_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DataProcessor_extra_security_role_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22111">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DataProcessor_extra_security_role_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DataProcessor_extra_security_role_type">DataProcessor_extra_security_role_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding DataProcessor_extra_security_role_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DataSubject_extra_security_role_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DataSubject_extra_security_role_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22117">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DataSubject_extra_security_role_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DataSubject_extra_security_role_type">DataSubject_extra_security_role_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding DataSubject_extra_security_role_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Declassifier_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Declassifier_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22123">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Declassifier_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Declassifier_v3_RoleCode">Declassifier_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Declassifier_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Delegatee_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Delegatee_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22129">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Delegatee_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Delegatee_v3_RoleCode">Delegatee_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Delegatee_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Delegator_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Delegator_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22135">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Delegator_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Delegator_v3_RoleCode">Delegator_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Delegator_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Dependent_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Dependent_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22141">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Dependent_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Dependent_v3_RoleClass">Dependent_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Dependent_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DestinationMedia_dicom_dcim.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DestinationMedia_dicom_dcim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21931">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DestinationMedia_dicom_dcim" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DestinationMedia_dicom_dcim">DestinationMedia_dicom_dcim</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding DestinationMedia_dicom_dcim</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DestinationRoleID_dicom_dcim.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DestinationRoleID_dicom_dcim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21919">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DestinationRoleID_dicom_dcim" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DestinationRoleID_dicom_dcim">DestinationRoleID_dicom_dcim</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding DestinationRoleID_dicom_dcim</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Downgrader_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Downgrader_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22147">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Downgrader_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Downgrader_v3_RoleCode">Downgrader_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Downgrader_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DurablePowerOfAttorney_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DurablePowerOfAttorney_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22153">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_DurablePowerOfAttorney_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.DurablePowerOfAttorney_v3_RoleCode">DurablePowerOfAttorney_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding DurablePowerOfAttorney_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_EmergencyContact_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.EmergencyContact_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22159">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_EmergencyContact_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.EmergencyContact_v3_RoleClass">EmergencyContact_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding EmergencyContact_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Employee_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Employee_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22165">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Employee_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Employee_v3_RoleClass">Employee_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Employee_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_EventWitness_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.EventWitness_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22171">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_EventWitness_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.EventWitness_contract_signer_type">EventWitness_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding EventWitness_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_ExecutorOfEstate_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.ExecutorOfEstate_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22177">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_ExecutorOfEstate_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.ExecutorOfEstate_v3_RoleCode">ExecutorOfEstate_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding ExecutorOfEstate_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Grantee_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Grantee_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22183">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Grantee_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Grantee_v3_RoleCode">Grantee_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Grantee_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Grantor_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Grantor_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22189">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Grantor_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Grantor_v3_RoleCode">Grantor_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Grantor_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Guarantor_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Guarantor_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22195">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Guarantor_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Guarantor_v3_RoleCode">Guarantor_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Guarantor_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Guardian_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Guardian_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22207">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Guardian_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Guardian_v3_RoleClass">Guardian_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Guardian_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_GuardianAdLidem_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.GuardianAdLidem_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22201">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_GuardianAdLidem_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.GuardianAdLidem_v3_RoleCode">GuardianAdLidem_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding GuardianAdLidem_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_HealthcarePowerOfAttorney_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.HealthcarePowerOfAttorney_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22213">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_HealthcarePowerOfAttorney_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.HealthcarePowerOfAttorney_v3_RoleCode">HealthcarePowerOfAttorney_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding HealthcarePowerOfAttorney_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_HealthcareProvider_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.HealthcareProvider_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22297">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_HealthcareProvider_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.HealthcareProvider_v3_RoleClass">HealthcareProvider_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding HealthcareProvider_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_HumanUser_extra_security_role_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.HumanUser_extra_security_role_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22219">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_HumanUser_extra_security_role_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.HumanUser_extra_security_role_type">HumanUser_extra_security_role_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding HumanUser_extra_security_role_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Informant_v3_ParticipationType.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Informant_v3_ParticipationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22225">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Informant_v3_ParticipationType" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Informant_v3_ParticipationType">Informant_v3_ParticipationType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Informant_v3_ParticipationType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_InformationRecipient_v3_ParticipationType.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.InformationRecipient_v3_ParticipationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22243">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_InformationRecipient_v3_ParticipationType" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.InformationRecipient_v3_ParticipationType">InformationRecipient_v3_ParticipationType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding InformationRecipient_v3_ParticipationType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Interpreter_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Interpreter_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22231">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Interpreter_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Interpreter_v3_RoleCode">Interpreter_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Interpreter_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_InvestigationSubject_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.InvestigationSubject_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22237">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_InvestigationSubject_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.InvestigationSubject_v3_RoleClass">InvestigationSubject_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding InvestigationSubject_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_LegalAuthenticator_v3_ParticipationType.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.LegalAuthenticator_v3_ParticipationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22249">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_LegalAuthenticator_v3_ParticipationType" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.LegalAuthenticator_v3_ParticipationType">LegalAuthenticator_v3_ParticipationType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding LegalAuthenticator_v3_ParticipationType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_LegitimateRelationshipInformationReceiver_v3_ParticipationFunction.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.LegitimateRelationshipInformationReceiver_v3_ParticipationFunction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21973">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_LegitimateRelationshipInformationReceiver_v3_ParticipationFunction" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.LegitimateRelationshipInformationReceiver_v3_ParticipationFunction">LegitimateRelationshipInformationReceiver_v3_ParticipationFunction</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding LegitimateRelationshipInformationReceiver_v3_ParticipationFunction</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NamedInsured_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NamedInsured_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22255">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NamedInsured_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NamedInsured_v3_RoleClass">NamedInsured_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding NamedInsured_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_National_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.National_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22027">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_National_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.National_v3_RoleCode">National_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding National_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NextOfKin_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NextOfKin_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22261">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NextOfKin_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NextOfKin_v3_RoleClass">NextOfKin_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding NextOfKin_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22039">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode">NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NonCountryMemberMinorWithResidencePermit_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NonCountryMemberMinorWithResidencePermit_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22093">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NonCountryMemberMinorWithResidencePermit_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NonCountryMemberMinorWithResidencePermit_v3_RoleCode">NonCountryMemberMinorWithResidencePermit_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding NonCountryMemberMinorWithResidencePermit_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NonCountryMemberWithoutResidencePermit_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NonCountryMemberWithoutResidencePermit_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22033">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NonCountryMemberWithoutResidencePermit_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NonCountryMemberWithoutResidencePermit_v3_RoleCode">NonCountryMemberWithoutResidencePermit_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding NonCountryMemberWithoutResidencePermit_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NonCountryMemberWithResidencePermit_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NonCountryMemberWithResidencePermit_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22087">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NonCountryMemberWithResidencePermit_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NonCountryMemberWithResidencePermit_v3_RoleCode">NonCountryMemberWithResidencePermit_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding NonCountryMemberWithResidencePermit_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NotaryPublic_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NotaryPublic_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22267">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_NotaryPublic_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.NotaryPublic_v3_RoleClass">NotaryPublic_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding NotaryPublic_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Patient_v3_RoleClass.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Patient_v3_RoleClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22273">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Patient_v3_RoleClass" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Patient_v3_RoleClass">Patient_v3_RoleClass</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Patient_v3_RoleClass</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_PermitCardApplicant_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.PermitCardApplicant_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22081">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_PermitCardApplicant_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.PermitCardApplicant_v3_RoleCode">PermitCardApplicant_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding PermitCardApplicant_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_PowerOfAttorney_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.PowerOfAttorney_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22279">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_PowerOfAttorney_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.PowerOfAttorney_v3_RoleCode">PowerOfAttorney_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding PowerOfAttorney_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_PrimaryAuthor_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.PrimaryAuthor_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22285">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_PrimaryAuthor_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.PrimaryAuthor_contract_signer_type">PrimaryAuthor_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding PrimaryAuthor_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_ResponsibleParty_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.ResponsibleParty_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22303">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_ResponsibleParty_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.ResponsibleParty_v3_RoleCode">ResponsibleParty_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding ResponsibleParty_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Reviewer_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Reviewer_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22309">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Reviewer_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Reviewer_contract_signer_type">Reviewer_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Reviewer_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_SingleMinorAsylumSeeker_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.SingleMinorAsylumSeeker_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22009">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_SingleMinorAsylumSeeker_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.SingleMinorAsylumSeeker_v3_RoleCode">SingleMinorAsylumSeeker_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding SingleMinorAsylumSeeker_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Source_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Source_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22315">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Source_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Source_contract_signer_type">Source_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Source_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_SourceMedia_dicom_dcim.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.SourceMedia_dicom_dcim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21937">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_SourceMedia_dicom_dcim" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.SourceMedia_dicom_dcim">SourceMedia_dicom_dcim</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding SourceMedia_dicom_dcim</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_SourceRoleID_dicom_dcim.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.SourceRoleID_dicom_dcim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21925">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_SourceRoleID_dicom_dcim" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.SourceRoleID_dicom_dcim">SourceRoleID_dicom_dcim</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding SourceRoleID_dicom_dcim</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_SpecialPowerOfAttorney_v3_RoleCode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.SpecialPowerOfAttorney_v3_RoleCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22321">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_SpecialPowerOfAttorney_v3_RoleCode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.SpecialPowerOfAttorney_v3_RoleCode">SpecialPowerOfAttorney_v3_RoleCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding SpecialPowerOfAttorney_v3_RoleCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Tracker_v3_ParticipationType.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Tracker_v3_ParticipationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22333">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Tracker_v3_ParticipationType" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Tracker_v3_ParticipationType">Tracker_v3_ParticipationType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Tracker_v3_ParticipationType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Transcriber_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Transcriber_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22327">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Transcriber_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Transcriber_contract_signer_type">Transcriber_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Transcriber_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Validator_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Validator_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22339">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Validator_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Validator_contract_signer_type">Validator_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Validator_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Verifier_contract_signer_type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Verifier_contract_signer_type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22345">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Verifier_contract_signer_type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Verifier_contract_signer_type">Verifier_contract_signer_type</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Verifier_contract_signer_type</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Witness_v3_ParticipationType.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Witness_v3_ParticipationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L22351">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_Witness_v3_ParticipationType" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.Witness_v3_ParticipationType">Witness_v3_ParticipationType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding Witness_v3_ParticipationType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_WorkAreaInformationReceiver_v3_ParticipationFunction.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.WorkAreaInformationReceiver_v3_ParticipationFunction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21997">View Source</a>
+  </span>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet_WorkAreaInformationReceiver_v3_ParticipationFunction" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet.WorkAreaInformationReceiver_v3_ParticipationFunction">WorkAreaInformationReceiver_v3_ParticipationFunction</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Coding WorkAreaInformationReceiver_v3_ParticipationFunction</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r4.Coding.html">Coding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r4_SecurityRoleTypeValueSet.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r4.SecurityRoleTypeValueSet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_4_0_1.cs/#L21899" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

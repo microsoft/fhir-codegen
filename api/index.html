@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>API Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="API Documentation ">
+    <meta name="generator" content="docfx 2.56.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="api-documentation">API Documentation</h1>
+
+<p>This section contains source code information for:</p>
+<h2 id="executable-fhircodegencli">Executable: <a href="FhirCodegenCli.html">FhirCodegenCli</a></h2>
+<p>A command-line tool for downloading, parsing, and exporting various versions of the FHIR specifications to other computer languages.</p>
+<h2 id="executable-fhircodegentestcli">Executable: <a href="FhirCodegenTestCli.html">FhirCodegenTestCli</a></h2>
+<p>A command-line tool for exercising the code generation functionality.</p>
+<h2 id="library-microsofthealthfhirspecmanager">Library: <a href="http://localhost:8080/api/Microsoft.Health.Fhir.SpecManager.html">Microsoft.Health.Fhir.SpecManager</a></h2>
+<p>Main library to handling downloading, parsing, and exporting various versions of the FHIR specifications.</p>
+<p>Parent namespace for all library functionality.</p>
+<h2 id="library-namespace-microsofthealthfhirspecmanagerconverters">Library Namespace: <a href="Microsoft.Health.Fhir.SpecManager.Converters.html">Microsoft.Health.Fhir.SpecManager.Converters</a></h2>
+<p>Classes to convert from various FHIR versions into the internal structures used in the library.</p>
+<p>Each version-specific loader implements <code>IFhirConverter</code>.</p>
+<h2 id="library-namespaces-for-specific-fhir-versions">Library Namespaces for Specific FHIR Versions</h2>
+<ul>
+<li><p><a href="Microsoft.Health.Fhir.SpecManager.fhir.r2.html">Microsoft.Health.Fhir.SpecManager.fhir.r2</a></p>
+<p>Classes for parsing FHIR DSTU2 (R2) JSON files.  Validated against version 1.0.2.</p>
+</li>
+<li><p><a href="Microsoft.Health.Fhir.SpecManager.fhir.r3.html">Microsoft.Health.Fhir.SpecManager.fhir.r3</a></p>
+<p>Classes for parsing FHIR STU3 (R3) JSON files.  Validated against version 3.0.2.</p>
+</li>
+<li><p><a href="Microsoft.Health.Fhir.SpecManager.fhir.r4.html">Microsoft.Health.Fhir.SpecManager.fhir.r4</a></p>
+<p>Classes for parsing FHIR R4 JSON files.  Validated against version 4.0.1.</p>
+</li>
+<li><p><a href="Microsoft.Health.Fhir.SpecManager.fhir.r5.html">Microsoft.Health.Fhir.SpecManager.fhir.r5</a></p>
+<p>Classes for parsing FHIR R5 JSON files.  Validated against version 4.4.0 (May 2020).</p>
+</li>
+</ul>
+<h2 id="library-namespace-microsofthealthfhirspecmanagerlanguage">Library Namespace: <a href="Microsoft.Health.Fhir.SpecManager.Language.html">Microsoft.Health.Fhir.SpecManager.Language</a></h2>
+<p>Classes used to export different languages from a loaded version of FHIR.</p>
+<ul>
+<li><p>Interface <a href="Microsoft.Health.Fhir.SpecManager.Language.ILanguage.html">ILanguage</a></p>
+<p>Interface used to define a language available for export.</p>
+</li>
+<li><p>Class <a href="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.html">ExportStreamWriter</a></p>
+<p>Extended <code>System.IO.StreamWriter</code> used for internally-defined languages.  Includes convenience functions to ease exporting code files.</p>
+</li>
+<li><p>Class <a href="Microsoft.Health.Fhir.SpecManager.Language.LanguageHelper.html">LanguageHelper</a></p>
+<p>Utilities for working with Languages for export.</p>
+</li>
+<li><p>Internally Defined Langauges</p>
+<ul>
+<li><p><a href="Microsoft.Health.Fhir.SpecManager.Language.Info.html">Info</a></p>
+<p>Basic text output of a version of FHIR for information and testing.</p>
+</li>
+<li><p><a href="Microsoft.Health.Fhir.SpecManager.Language.CSharpBasic.html">CSharpBasic</a></p>
+<p>Basic C# language bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.</p>
+</li>
+<li><p><a href="Microsoft.Health.Fhir.SpecManager.Language.TypeScript.html">TypeScript</a></p>
+<p>Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.</p>
+</li>
+<li><p><a href="http://localhost:8080/api/Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely.html">CSharpFirely</a> <strong>EXPERIMENTAL</strong></p>
+<p>Export base C# classes needed for the Firely-maintained C# API (<a href="https://github.com/FirelyTeam/fhir-net-api/">FHIR-Net-API</a>).</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="library-namespace-microsofthealthfhirspecmanagermanager">Library Namespace: <a href="Microsoft.Health.Fhir.SpecManager.Manager.html">Microsoft.Health.Fhir.SpecManager.Manager</a></h2>
+<p>Classes used to manage FHIR versions.</p>
+<h2 id="library-namespace-microsofthealthfhirspecmanagermodels">Library Namespace: <a href="Microsoft.Health.Fhir.SpecManager.Models.html">Microsoft.Health.Fhir.SpecManager.Models</a></h2>
+<p>Model classes used in the library.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/docfx/api/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
