@@ -245,7 +245,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string exportDirectory)
         {
             // set internal vars so we don't pass them to every function
-            // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info
             _info = info;
             _options = options;
             _exportDirectory = exportDirectory;
@@ -381,6 +380,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             switch (complex.BaseTypeName)
             {
+                case "Quantity":
+                    WriteConstrainedQuantity(complex, exportName);
+                    return;
+
                 case "BackboneType":
                     _writer.WriteLineIndented(
                         $"public partial class" +
@@ -435,6 +438,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteEnums(complex, exportName);
             WriteElements(complex);
+
+            // close class
+            CloseScope();
+        }
+
+        /// <summary>Writes a constrained quantity.</summary>
+        /// <param name="complex">   The complex data type.</param>
+        /// <param name="exportName">Name of the export.</param>
+        private void WriteConstrainedQuantity(
+            FhirComplex complex,
+            string exportName)
+        {
+            _writer.WriteLineIndented(
+                $"public partial class" +
+                    $" {exportName}" +
+                    $" : Quantity");
+
+            // open class
+            OpenScope();
+
+            WritePropertyTypeName(complex.Name);
+
+            _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
+            OpenScope();
+            _writer.WriteLineIndented($"return CopyTo(new {exportName}());");
+            CloseScope();
+
+            _writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
+            WriteIndentedComment(complex.Purpose, false);
 
             // close class
             CloseScope();
@@ -1040,7 +1072,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("/// <summary>");
             }
 
-            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n");
+            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n").Replace("&", "&amp;");
 
             string[] lines = comment.Split('\n');
             foreach (string line in lines)
