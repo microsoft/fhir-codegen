@@ -73,7 +73,7 @@
   
   <h1 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact" class="text-break">Class ConceptMapContact
   </h1>
-  <div class="markdown level0 summary"><p>May be a web site, an email address, a telephone number, etc.</p>
+  <div class="markdown level0 summary"><p>Contacts to assist a user in finding and communicating with the publisher.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -132,7 +132,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact__Name.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact._Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2611">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2567">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact__Name_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact._Name*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact__Name" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact._Name">_Name</h4>
@@ -163,11 +163,11 @@ public Element _Name { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact_Name.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2609">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2565">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact_Name_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact.Name*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact_Name" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact.Name">Name</h4>
-  <div class="markdown level1 summary"><p>If there is no named individual, the telecom is for the organization as a whole.</p>
+  <div class="markdown level1 summary"><p>The name of an individual to contact regarding the concept map.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -195,7 +195,7 @@ public string Name { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact_Telecom.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact.Telecom%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2616">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2572">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact_Telecom_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact.Telecom*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact_Telecom" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact.Telecom">Telecom</h4>
@@ -205,7 +205,7 @@ public string Name { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;telecom&quot;)]
-public ContactPoint[] Telecom { get; set; }</code></pre>
+public List&lt;ContactPoint&gt; Telecom { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -217,7 +217,7 @@ public ContactPoint[] Telecom { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ContactPoint.html">ContactPoint</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ContactPoint.html">ContactPoint</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -233,7 +233,7 @@ public ContactPoint[] Telecom { get; set; }</code></pre>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConceptMapContact.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConceptMapContact%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2604" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2561" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

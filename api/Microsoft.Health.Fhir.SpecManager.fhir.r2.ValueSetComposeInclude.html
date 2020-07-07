@@ -73,7 +73,7 @@
   
   <h1 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude" class="text-break">Class ValueSetComposeInclude
   </h1>
-  <div class="markdown level0 summary"><p>If there are no codes or filters, the entire code system is included. Note that the set of codes that are included may contain abstract codes.</p>
+  <div class="markdown level0 summary"><p>Include one or more codes from a code system.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -132,7 +132,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude__System.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude._System%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3980">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3893">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude__System_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude._System*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude__System" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude._System">_System</h4>
@@ -163,7 +163,7 @@ public Element _System { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude__Version.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude._Version%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3987">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3900">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude__Version_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude._Version*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude__Version" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude._Version">_Version</h4>
@@ -194,17 +194,17 @@ public Element _Version { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_Concept.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.Concept%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3968">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3881">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_Concept_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.Concept*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_Concept" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.Concept">Concept</h4>
-  <div class="markdown level1 summary"><p>The list of concepts is considered ordered, though the order may not have any particular significance. Typically, the order of an expansion follows that defined in the compose element.</p>
+  <div class="markdown level1 summary"><p>Specifies a concept to be included or excluded.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;concept&quot;)]
-public ValueSetComposeIncludeConcept[] Concept { get; set; }</code></pre>
+public List&lt;ValueSetComposeIncludeConcept&gt; Concept { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -216,7 +216,7 @@ public ValueSetComposeIncludeConcept[] Concept { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeIncludeConcept.html">ValueSetComposeIncludeConcept</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeIncludeConcept.html">ValueSetComposeIncludeConcept</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -226,17 +226,17 @@ public ValueSetComposeIncludeConcept[] Concept { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_Filter.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.Filter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3973">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3886">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_Filter_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.Filter*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_Filter" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.Filter">Filter</h4>
-  <div class="markdown level1 summary"><p>Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party.</p>
+  <div class="markdown level1 summary"><p>Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;filter&quot;)]
-public ValueSetComposeIncludeFilter[] Filter { get; set; }</code></pre>
+public List&lt;ValueSetComposeIncludeFilter&gt; Filter { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -248,7 +248,7 @@ public ValueSetComposeIncludeFilter[] Filter { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeIncludeFilter.html">ValueSetComposeIncludeFilter</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeIncludeFilter.html">ValueSetComposeIncludeFilter</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -258,11 +258,11 @@ public ValueSetComposeIncludeFilter[] Filter { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_System.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.System%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3978">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3891">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_System_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.System*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_System" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.System">System</h4>
-  <div class="markdown level1 summary"><p>See ''Coding.system'' for further documentation.</p>
+  <div class="markdown level1 summary"><p>An absolute URI which is the code system from which the selected codes come from.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -290,11 +290,11 @@ public string System { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_Version.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.Version%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3985">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3898">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_Version_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.Version*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude_Version" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude.Version">Version</h4>
-  <div class="markdown level1 summary"><p>This is used when selecting the descendants of a concept - they may change between versions. If no version is specified, then the exact contents of the value set may not be known until a context of use binds it to a particular version.</p>
+  <div class="markdown level1 summary"><p>The version of the code system that the codes are selected from.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -328,7 +328,7 @@ public string Version { get; set; }</code></pre>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetComposeInclude.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetComposeInclude%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3963" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3877" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

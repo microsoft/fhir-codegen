@@ -73,7 +73,7 @@
   
   <h1 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId" class="text-break">Class NamingSystemUniqueId
   </h1>
-  <div class="markdown level0 summary"><p>Multiple identifiers may exist, either due to duplicate registration, regional rules, needs of different communication technologies, etc.</p>
+  <div class="markdown level0 summary"><p>Indicates how the system may be identified when referenced in electronic exchange.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -132,7 +132,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId__Type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId._Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2924">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2871">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId__Type_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId._Type*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId__Type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId._Type">_Type</h4>
@@ -163,7 +163,7 @@ public Element _Type { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId__Value.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId._Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2931">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2878">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId__Value_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId._Value*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId__Value" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId._Value">_Value</h4>
@@ -194,11 +194,11 @@ public Element _Value { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Period.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Period%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2912">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2859">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Period_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Period*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Period" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Period">Period</h4>
-  <div class="markdown level1 summary"><p>Within a registry, a given identifier should only be &quot;active&quot; for a single namespace at a time.  (Ideally, an identifier should only ever be associated with a single namespace across all time).</p>
+  <div class="markdown level1 summary"><p>Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -226,7 +226,7 @@ public Period Period { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Preferred.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Preferred%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2917">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2864">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Preferred_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Preferred*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Preferred" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Preferred">Preferred</h4>
@@ -258,11 +258,11 @@ public bool? Preferred { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Type.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2922">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2869">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Type_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Type*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Type" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Type">Type</h4>
-  <div class="markdown level1 summary"><p>Different identifier types may be used in different types of communications (OIDs for v3, URIs for FHIR, etc.).  Other includes RUIDs from v3, standard v2 code name strings, etc.</p>
+  <div class="markdown level1 summary"><p>Identifies the unique identifier scheme used for this particular identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -290,11 +290,11 @@ public string Type { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Value.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2929">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2876">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Value_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Value*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId_Value" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId.Value">Value</h4>
-  <div class="markdown level1 summary"><p>If the value is a URI intended for use as FHIR system identifier, the URI should not contain &quot;&amp;quot; or &quot;?&quot; or &quot;,&quot; since this makes escaping very difficult.</p>
+  <div class="markdown level1 summary"><p>The string that should be sent over the wire to identify the code system or identifier system.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -328,7 +328,7 @@ public string Value { get; set; }</code></pre>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_NamingSystemUniqueId.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.NamingSystemUniqueId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2907" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L2855" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

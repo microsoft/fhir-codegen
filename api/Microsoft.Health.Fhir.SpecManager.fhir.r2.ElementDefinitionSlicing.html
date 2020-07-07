@@ -73,7 +73,7 @@
   
   <h1 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing" class="text-break">Class ElementDefinitionSlicing
   </h1>
-  <div class="markdown level0 summary"><p>The first element in the sequence, the one that carries the slicing, is the unconstrained element, for reference purposes . This may include the unconstrained children.</p>
+  <div class="markdown level0 summary"><p>Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -128,7 +128,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing__Description.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing._Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L361">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L348">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing__Description_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing._Description*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing__Description" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing._Description">_Description</h4>
@@ -159,7 +159,7 @@ public Element _Description { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing__Discriminator.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing._Discriminator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L368">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L355">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing__Discriminator_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing._Discriminator*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing__Discriminator" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing._Discriminator">_Discriminator</h4>
@@ -168,7 +168,7 @@ public Element _Description { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;_discriminator&quot;)]
-public Element[] _Discriminator { get; set; }</code></pre>
+public List&lt;Element&gt; _Discriminator { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -180,7 +180,7 @@ public Element[] _Discriminator { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -190,7 +190,7 @@ public Element[] _Discriminator { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing__Rules.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing._Rules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L380">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L367">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing__Rules_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing._Rules*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing__Rules" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing._Rules">_Rules</h4>
@@ -221,11 +221,11 @@ public Element _Rules { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Description.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L359">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L346">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Description_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Description*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Description" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Description">Description</h4>
-  <div class="markdown level1 summary"><p>If it's really not possible to differentiate them, the design should be re-evaluated to make the content usable.</p>
+  <div class="markdown level1 summary"><p>A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -253,17 +253,17 @@ public string Description { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Discriminator.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Discriminator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L366">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L353">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Discriminator_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Discriminator*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Discriminator" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Discriminator">Discriminator</h4>
-  <div class="markdown level1 summary"><p>If there is no discriminator, the content is hard to process, so this should be avoided. If the base element has a cardinality of ..1, and there is a choice of types, the discriminator most be &quot;@type&amp;quot;.</p>
+  <div class="markdown level1 summary"><p>Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;discriminator&quot;)]
-public string[] Discriminator { get; set; }</code></pre>
+public List&lt;string&gt; Discriminator { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -275,7 +275,7 @@ public string[] Discriminator { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -285,11 +285,11 @@ public string[] Discriminator { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Ordered.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Ordered%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L373">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L360">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Ordered_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Ordered*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Ordered" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Ordered">Ordered</h4>
-  <div class="markdown level1 summary"><p>Order should only be required when it is a pressing concern for presentation. Profile authors should consider making the order a feature of the rules about the narrative, not the rules about the data - requiring ordered data makes the profile much less re-usable.</p>
+  <div class="markdown level1 summary"><p>If the matching elements have to occur in the same order as defined in the profile.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -317,11 +317,11 @@ public bool? Ordered { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Rules.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Rules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L378">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L365">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Rules_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Rules*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing_Rules" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing.Rules">Rules</h4>
-  <div class="markdown level1 summary"><p>Allowing additional elements makes for a much for flexible template - it's open for use in wider contexts, but also means that the content of the resource is not closed, and applications have to decide how to handle content not described by the profile.</p>
+  <div class="markdown level1 summary"><p>Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -355,7 +355,7 @@ public string Rules { get; set; }</code></pre>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionSlicing.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionSlicing%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L354" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L342" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

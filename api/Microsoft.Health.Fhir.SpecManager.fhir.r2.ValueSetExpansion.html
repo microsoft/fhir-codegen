@@ -73,7 +73,7 @@
   
   <h1 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion" class="text-break">Class ValueSetExpansion
   </h1>
-  <div class="markdown level0 summary"><p>Expansion is performed to produce a collection of codes that are ready to use for data entry or validation.</p>
+  <div class="markdown level0 summary"><p>A value set can also be &quot;expanded&quot;, where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -132,7 +132,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion__Identifier.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion._Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4123">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4032">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion__Identifier_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion._Identifier*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion__Identifier" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion._Identifier">_Identifier</h4>
@@ -163,7 +163,7 @@ public Element _Identifier { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion__Timestamp.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion._Timestamp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4140">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4049">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion__Timestamp_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion._Timestamp*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion__Timestamp" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion._Timestamp">_Timestamp</h4>
@@ -194,7 +194,7 @@ public Element _Timestamp { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Contains.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Contains%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4116">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4025">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Contains_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Contains*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Contains" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Contains">Contains</h4>
@@ -204,7 +204,7 @@ public Element _Timestamp { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;contains&quot;)]
-public ValueSetExpansionContains[] Contains { get; set; }</code></pre>
+public List&lt;ValueSetExpansionContains&gt; Contains { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -216,7 +216,7 @@ public ValueSetExpansionContains[] Contains { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansionContains.html">ValueSetExpansionContains</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansionContains.html">ValueSetExpansionContains</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -226,11 +226,11 @@ public ValueSetExpansionContains[] Contains { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Identifier.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Identifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4121">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4030">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Identifier_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Identifier*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Identifier" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Identifier">Identifier</h4>
-  <div class="markdown level1 summary"><p>Typically, this uri is a UUID (e.g. urn:uuid:8230ff20-c97a-4167-a59d-dc2cb9df16dd).</p>
+  <div class="markdown level1 summary"><p>An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -258,11 +258,11 @@ public string Identifier { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Offset.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Offset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4128">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4037">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Offset_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Offset*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Offset" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Offset">Offset</h4>
-  <div class="markdown level1 summary"><p>Paging only applies to flat expansions. If a filter is applied, the count is the number of concepts that matched the filter, not the number of concepts in an unfiltered view of the expansion.</p>
+  <div class="markdown level1 summary"><p>If paging is being used, the offset at which this resource starts.  I.e. this resource is a partial view into the expansion. If paging is not being used, this element SHALL not be present.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -290,17 +290,17 @@ public int? Offset { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Parameter.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Parameter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4133">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4042">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Parameter_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Parameter*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Parameter" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Parameter">Parameter</h4>
-  <div class="markdown level1 summary"><p>The server decides which parameters to include here, but at a minimum, the list SHOULD include the date, filter, and profile parameters passed to the $expand operation (if any).</p>
+  <div class="markdown level1 summary"><p>A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;parameter&quot;)]
-public ValueSetExpansionParameter[] Parameter { get; set; }</code></pre>
+public List&lt;ValueSetExpansionParameter&gt; Parameter { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -312,7 +312,7 @@ public ValueSetExpansionParameter[] Parameter { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansionParameter.html">ValueSetExpansionParameter</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansionParameter.html">ValueSetExpansionParameter</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -322,11 +322,11 @@ public ValueSetExpansionParameter[] Parameter { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Timestamp.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Timestamp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4138">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4047">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Timestamp_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Timestamp*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Timestamp" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Timestamp">Timestamp</h4>
-  <div class="markdown level1 summary"><p>This SHOULD be a fully populated instant, but in some circumstances, value sets are expanded by hand, and the expansion is published without that precision.</p>
+  <div class="markdown level1 summary"><p>The time at which the expansion was produced by the expanding system.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -354,11 +354,11 @@ public string Timestamp { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Total.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Total%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4145">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4054">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Total_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Total*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion_Total" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion.Total">Total</h4>
-  <div class="markdown level1 summary"><p>Paging only applies to flat expansions.</p>
+  <div class="markdown level1 summary"><p>The total number of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -392,7 +392,7 @@ public int? Total { get; set; }</code></pre>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetExpansion.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetExpansion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4111" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L4021" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

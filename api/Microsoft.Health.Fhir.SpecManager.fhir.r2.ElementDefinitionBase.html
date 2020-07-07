@@ -73,7 +73,7 @@
   
   <h1 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase" class="text-break">Class ElementDefinitionBase
   </h1>
-  <div class="markdown level0 summary"><p>The base information does not carry any information that could not be determined from the path and related profiles, but making this determination requires both that the related profiles are available, and that the algorithm to determine them be available. So they are deformalised into this location for tooling convenience, and to ensure that the base information is available without dependencies.</p>
+  <div class="markdown level0 summary"><p>Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -128,7 +128,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase__Max.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase._Max%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L402">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L387">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase__Max_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase._Max*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase__Max" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase._Max">_Max</h4>
@@ -159,7 +159,7 @@ public Element _Max { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase__Path.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase._Path%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L414">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L399">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase__Path_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase._Path*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase__Path" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase._Path">_Path</h4>
@@ -190,11 +190,11 @@ public Element _Path { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase_Max.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase.Max%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L400">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L385">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase_Max_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase.Max*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase_Max" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase.Max">Max</h4>
-  <div class="markdown level1 summary"><p>This is provided to code generation, since the wire representation in JSON differs depending on whether the base element has max &gt; 1. Also, some forms of code generation may differ.</p>
+  <div class="markdown level1 summary"><p>Maximum cardinality of the base element identified by the path.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -222,11 +222,11 @@ public string Max { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase_Min.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase.Min%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L407">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L392">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase_Min_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase.Min*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase_Min" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase.Min">Min</h4>
-  <div class="markdown level1 summary"><p>This is provided for consistency with max, and may affect code generation of mandatory elements of the base resource are generated differently (some reference implementations have done this).</p>
+  <div class="markdown level1 summary"><p>Minimum cardinality of the base element identified by the path.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -254,7 +254,7 @@ public int Min { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase_Path.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase.Path%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L412">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L397">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase_Path_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase.Path*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase_Path" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase.Path">Path</h4>
@@ -292,7 +292,7 @@ public string Path { get; set; }</code></pre>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ElementDefinitionBase.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ElementDefinitionBase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L395" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L381" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

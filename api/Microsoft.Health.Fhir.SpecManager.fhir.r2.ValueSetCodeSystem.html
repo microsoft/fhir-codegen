@@ -73,7 +73,7 @@
   
   <h1 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem" class="text-break">Class ValueSetCodeSystem
   </h1>
-  <div class="markdown level0 summary"><p>All code systems defined as part of a FHIR value set have an implicit valueset that includes all of the codes in the code system - the value set in which they are defined.</p>
+  <div class="markdown level0 summary"><p>A definition of a code system, inlined into the value set (as a packaging convenience). Note that the inline code system may be used from other value sets by referring to its (codeSystem.system) directly.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -132,7 +132,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem__System.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem._System%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3886">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3803">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem__System_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem._System*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem__System" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem._System">_System</h4>
@@ -163,7 +163,7 @@ public Element _System { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem__Version.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem._Version%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3893">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3810">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem__Version_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem._Version*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem__Version" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem._Version">_Version</h4>
@@ -194,11 +194,11 @@ public Element _Version { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_CaseSensitive.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.CaseSensitive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3874">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3791">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_CaseSensitive_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.CaseSensitive*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_CaseSensitive" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.CaseSensitive">CaseSensitive</h4>
-  <div class="markdown level1 summary"><p>If this value is missing, then it is not specified whether a code system is case sensitive or not. When the rule is not known, Postel's law should be followed: produce codes with the correct case, and accept codes in any case. This element is primarily provided to support validation software.</p>
+  <div class="markdown level1 summary"><p>If code comparison is case sensitive when codes within this system are compared to each other.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -226,7 +226,7 @@ public bool? CaseSensitive { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_Concept.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.Concept%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3879">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3796">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_Concept_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.Concept*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_Concept" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.Concept">Concept</h4>
@@ -236,7 +236,7 @@ public bool? CaseSensitive { get; set; }</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;concept&quot;)]
-public ValueSetCodeSystemConcept[] Concept { get; set; }</code></pre>
+public List&lt;ValueSetCodeSystemConcept&gt; Concept { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -248,7 +248,7 @@ public ValueSetCodeSystemConcept[] Concept { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystemConcept.html">ValueSetCodeSystemConcept</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystemConcept.html">ValueSetCodeSystemConcept</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -258,11 +258,11 @@ public ValueSetCodeSystemConcept[] Concept { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_System.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.System%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3884">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3801">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_System_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.System*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_System" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.System">System</h4>
-  <div class="markdown level1 summary"><p>The reference is not required to point to any specific kind of definition, but the more information that can be provided, the more useful it is for implementers. Best practice is to resolve to a computable definition of the code system (either a value set, or some other format). Terminology servers MAY validate this reference (e.g. when accepting PUT/POST), and MAY make additional rules about what kind of content it refers to.</p>
+  <div class="markdown level1 summary"><p>An absolute URI that is used to reference this code system, including in [Coding]{datatypes.html#Coding}.system.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -290,7 +290,7 @@ public string System { get; set; }</code></pre>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_Version.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.Version%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3891">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3808">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_Version_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.Version*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem_Version" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem.Version">Version</h4>
@@ -328,7 +328,7 @@ public string Version { get; set; }</code></pre>
                     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ValueSetCodeSystem.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ValueSetCodeSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3869" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3787" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
