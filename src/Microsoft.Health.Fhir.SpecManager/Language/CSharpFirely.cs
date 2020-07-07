@@ -862,6 +862,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string abstractFlag = isAbstract ? " abstract" : string.Empty;
 
+            string abstractFlag = complex.IsAbstract ? " abstract" : string.Empty;
+
             switch (complex.BaseTypeName)
             {
                 case "Quantity":
