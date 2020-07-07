@@ -1,0 +1,16 @@
+{
+  "name": "hl7.fhir.r2.expansions",
+  "version": "1.0.2",
+  "type": "fhir.expansions",
+  "license": "CC0-1.0",
+  "title": "FHIR R2 package : Expansions",
+  "description": "Expansions for the R2 version of the FHIR standard",
+  "author": "HL7 Inc",
+  "url": "http://hl7.org/fhir/DSTU2",
+  "fhirVersions": [
+    "1.0.2"
+  ],
+  "tools-version": 3,
+  "canonical": "http://hl7.org/fhir",
+  "homepage": "http://hl7.org/fhir"
+}

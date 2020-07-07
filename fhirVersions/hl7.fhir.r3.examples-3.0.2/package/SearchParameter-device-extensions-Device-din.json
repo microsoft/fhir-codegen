@@ -1,0 +1,1 @@
+{"resourceType":"SearchParameter","id":"device-extensions-Device-din","url":"http://hl7.org/fhir/SearchParameter/device-extensions-Device-din","name":"din","status":"draft","experimental":true,"code":"din","base":["Device"],"type":"token","description":"The donation identification number (DIN)","xpathUsage":"normal"}
