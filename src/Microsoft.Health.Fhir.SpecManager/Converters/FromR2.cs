@@ -177,6 +177,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     foreach (fhir_2.ValueSetExpansionParameter param in vs.Expansion.Parameter)
                     {
+                        if (parameters.ContainsKey(param.Name))
+                        {
+                            continue;
+                        }
+
                         if (param.ValueBoolean != null)
                         {
                             parameters.Add(param.Name, param.ValueBoolean);

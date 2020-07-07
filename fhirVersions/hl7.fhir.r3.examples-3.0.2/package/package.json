@@ -1,0 +1,16 @@
+{
+  "name": "hl7.fhir.r3.examples",
+  "version": "3.0.2",
+  "fhir-version-list": [
+    "3.0.2"
+  ],
+  "type": "fhir.examples",
+  "license": "CC0-1.0",
+  "title": "FHIR R3 package : Examples",
+  "description": "Example resources in the R3 version of the FHIR standard",
+  "author": "HL7 Inc",
+  "url": "http://hl7.org/fhir/STU3",
+  "tools-version": 3,
+  "canonical": "http://hl7.org/fhir",
+  "homepage": "http://hl7.org/fhir"
+}

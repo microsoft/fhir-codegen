@@ -32,6 +32,76 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>The HTTP client.</summary>
         private static HttpClient _httpClient = new HttpClient();
 
+        /// <summary>Downloads either a Package or Published version of the requested type.</summary>
+        /// <param name="releaseName">      The release name (e.g., R4, DSTU2).</param>
+        /// <param name="packageName">      Name of the package.</param>
+        /// <param name="version">          The version string (e.g., 4.0.1).</param>
+        /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public static bool Download(
+            string releaseName,
+            string packageName,
+            string version,
+            string fhirSpecDirectory)
+        {
+            bool loaded = false;
+
+            try
+            {
+                Console.WriteLine($" <<< downloading PACKAGE {packageName}:{version}");
+
+                // download from the package manager
+                loaded = FhirPackageDownloader.DownloadPackage(
+                    releaseName,
+                    packageName,
+                    version,
+                    fhirSpecDirectory);
+
+                if (loaded)
+                {
+                    return true;
+                }
+            }
+            catch (HttpRequestException)
+            {
+                Console.WriteLine($"Failed to download Package: {packageName}:{version}");
+            }
+            catch (AggregateException)
+            {
+                Console.WriteLine($"Failed to download Published: {packageName}:{version}");
+            }
+            catch (System.Threading.Tasks.TaskCanceledException)
+            {
+                Console.WriteLine($"Failed to download Published: {packageName}:{version}");
+            }
+
+            try
+            {
+                Console.WriteLine($" <<< downloading PUBLISHED {packageName}:{version}");
+
+                // download from publish URL
+                loaded = FhirPackageDownloader.DownloadPublished(
+                    releaseName,
+                    packageName,
+                    version,
+                    fhirSpecDirectory);
+            }
+            catch (HttpRequestException)
+            {
+                Console.WriteLine($"Failed to download Published: {packageName}:{version}");
+            }
+            catch (AggregateException)
+            {
+                Console.WriteLine($"Failed to download Published: {packageName}:{version}");
+            }
+            catch (System.Threading.Tasks.TaskCanceledException)
+            {
+                Console.WriteLine($"Failed to download Published: {packageName}:{version}");
+            }
+
+            return loaded;
+        }
+
         /// <summary>Downloads a published FHIR package.</summary>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
         /// <exception cref="InvalidDataException"> Thrown when an Invalid Data error condition occurs.</exception>

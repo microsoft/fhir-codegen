@@ -227,6 +227,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <value>The name of the package.</value>
         public string PackageName { get; set; }
 
+        /// <summary>Gets or sets the name of the examples package.</summary>
+        public string ExamplesPackageName { get; set; }
+
+        /// <summary>Gets or sets the name of the expansions package.</summary>
+        public string ExpansionsPackageName { get; set; }
+
         /// <summary>Gets or sets the version string.</summary>
         /// <value>The version string.</value>
         public string VersionString { get; set; }

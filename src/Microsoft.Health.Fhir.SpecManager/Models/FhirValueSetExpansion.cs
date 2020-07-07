@@ -72,6 +72,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 parameters = new Dictionary<string, dynamic>();
                 foreach (KeyValuePair<string, dynamic> kvp in Parameters)
                 {
+                    Type type = kvp.Value.GetType();
+
+                    if (type.IsValueType)
+                    {
+                        parameters.Add(kvp.Key, kvp.Value);
+                        continue;
+                    }
+
                     parameters.Add(kvp.Key, kvp.Value.Clone());
                 }
             }

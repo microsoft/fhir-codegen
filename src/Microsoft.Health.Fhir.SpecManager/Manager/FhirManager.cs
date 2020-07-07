@@ -59,6 +59,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         ReleaseName = "DSTU2",
                         PackageName = "hl7.fhir.r2.core",
+                        ExamplesPackageName = "hl7.fhir.r2.examples",
+                        ExpansionsPackageName = "hl7.fhir.r2.expansions",
                         VersionString = "1.0.2",
                         IsDevBuild = false,
                         IsLocalBuild = false,
@@ -71,6 +73,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         ReleaseName = "STU3",
                         PackageName = "hl7.fhir.r3.core",
+                        ExamplesPackageName = "hl7.fhir.r3.examples",
+                        ExpansionsPackageName = "hl7.fhir.r3.expansions",
                         VersionString = "3.0.2",
                         IsDevBuild = false,
                         IsLocalBuild = false,
@@ -83,6 +87,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         ReleaseName = "R4",
                         PackageName = "hl7.fhir.r4.core",
+                        ExamplesPackageName = "hl7.fhir.r4.examples",
+                        ExpansionsPackageName = "hl7.fhir.r4.expansions",
                         VersionString = "4.0.1",
                         IsDevBuild = false,
                         IsLocalBuild = false,
@@ -95,6 +101,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         ReleaseName = "2020May",
                         PackageName = "hl7.fhir.r5.core",
+                        ExamplesPackageName = "hl7.fhir.r5.examples",
+                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
                         VersionString = "4.4.0",
                         IsDevBuild = false,
                         IsLocalBuild = false,
@@ -112,6 +120,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         ReleaseName = string.Empty,
                         PackageName = "hl7.fhir.r5.core",
+                        ExamplesPackageName = "hl7.fhir.r5.examples",
+                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
                         VersionString = "4.4.0",
                         IsDevBuild = true,
                         DevBranch = string.Empty,
@@ -227,59 +237,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // grab the correct basic version info
             FhirVersionInfo info = _publishedVersionDict[versionToLoad];
 
-            // check for local package
-            if (!Loader.TryFindPackage(_fhirSpecDirectory, info, out _))
-            {
-                if (offlineMode)
-                {
-                    throw new DirectoryNotFoundException(
-                        $"Failed to find FHIR R{info.MajorVersion}" +
-                        $" ({info.ReleaseName})" +
-                        $" in {_fhirSpecDirectory}");
-                }
+            // grab the packages we need
+            FindOrDownload(
+                info.ReleaseName,
+                info.PackageName,
+                info.VersionString,
+                offlineMode);
 
-                bool loaded = false;
+            FindOrDownload(
+                info.ReleaseName,
+                info.ExpansionsPackageName,
+                info.VersionString,
+                offlineMode);
 
-                try
-                {
-                    Console.WriteLine($"FhirManager.Load <<< downloading PACKAGE R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
-
-                    // download from the package manager
-                    loaded = FhirPackageDownloader.DownloadPackage(
-                        info.ReleaseName,
-                        info.PackageName,
-                        info.VersionString,
-                        _fhirSpecDirectory);
-                }
-                catch (HttpRequestException)
-                {
-                    Console.WriteLine($"Failed to download Package: R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
-                }
-
-                if (!loaded)
-                {
-                    try
-                    {
-                        Console.WriteLine($"FhirManager.Load <<< downloading PUBLISHED R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
-
-                        // download from publish URL
-                        loaded = FhirPackageDownloader.DownloadPublished(
-                            info.ReleaseName,
-                            info.PackageName,
-                            info.VersionString,
-                            _fhirSpecDirectory);
-                    }
-                    catch (HttpRequestException)
-                    {
-                        Console.WriteLine($"Failed to download Published: R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
-                    }
-                }
-
-                if (!loaded)
-                {
-                    throw new Exception($"Could not download: R{info.MajorVersion}: {info.PackageName}-{info.VersionString}");
-                }
-            }
+            FindOrDownload(
+                info.ReleaseName,
+                info.ExamplesPackageName,
+                info.VersionString,
+                offlineMode,
+                true);
 
             // load the package
             Loader.LoadPackage(_fhirSpecDirectory, ref info);
@@ -289,6 +265,65 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             // return this record
             return info;
+        }
+
+        /// <summary>Searches for the first or download.</summary>
+        /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
+        ///  present.</exception>
+        /// <exception cref="Exception">                 Thrown when an exception error condition occurs.</exception>
+        /// <param name="releaseName">The release name (e.g., R4, DSTU2).</param>
+        /// <param name="packageName">Name of the package.</param>
+        /// <param name="version">    The version string (e.g., 4.0.1).</param>
+        /// <param name="offlineMode">True to allow, false to suppress the download.</param>
+        /// <param name="isOptional"> (Optional) True if is optional, false if not.</param>
+        private void FindOrDownload(
+            string releaseName,
+            string packageName,
+            string version,
+            bool offlineMode,
+            bool isOptional = false)
+        {
+            if (!Loader.TryFindPackage(
+                releaseName,
+                packageName,
+                version,
+                _fhirSpecDirectory,
+                out _))
+            {
+                if (offlineMode)
+                {
+                    if (isOptional)
+                    {
+                        Console.WriteLine(
+                            $"Failed to find OPTIONAL {packageName}-{version}" +
+                            $" in {_fhirSpecDirectory}");
+                        return;
+                    }
+
+                    throw new DirectoryNotFoundException(
+                        $"Failed to find FHIR {packageName}" +
+                        $" ({releaseName})" +
+                        $" in {_fhirSpecDirectory}");
+                }
+
+                Console.WriteLine($" <<< downloading {packageName}-{version}...");
+
+                if (!FhirPackageDownloader.Download(
+                        releaseName,
+                        packageName,
+                        version,
+                        _fhirSpecDirectory))
+                {
+                    if (isOptional)
+                    {
+                        Console.WriteLine(
+                            $"Failed to download OPTIONAL {packageName}-{version}");
+                        return;
+                    }
+
+                    throw new Exception($"Could not download: {packageName}-{version}");
+                }
+            }
         }
     }
 }

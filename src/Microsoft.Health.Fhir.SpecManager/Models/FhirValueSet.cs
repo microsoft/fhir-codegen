@@ -230,6 +230,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 }
             }
 
+            if ((Expansion != null) && (Expansion.Contains != null))
+            {
+                AddConcepts(ref values, Expansion.Contains, codeSystems);
+            }
+
             _valueList = values.Values.ToList<FhirConcept>();
             _valueList.Sort((a, b) => string.CompareOrdinal(a.SystemAndCode(), b.SystemAndCode()));
         }

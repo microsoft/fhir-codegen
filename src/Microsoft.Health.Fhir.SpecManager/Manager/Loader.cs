@@ -17,37 +17,56 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
     public abstract class Loader
     {
         /// <summary>Searches for the currently specified package.</summary>
-        /// <param name="fhirSpecDirectory">    Pathname of the FHIR spec directory.</param>
-        /// <param name="versionInfo">     Information describing the version.</param>
-        /// <param name="versionDirectory">[out] Pathname of the version directory.</param>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+        /// <param name="releaseName">      The release name (e.g., R4, DSTU2).</param>
+        /// <param name="packageName">      Name of the package.</param>
+        /// <param name="version">          The version string (e.g., 4.0.1).</param>
+        /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
+        /// <param name="versionDirectory"> [out] Pathname of the version directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public static bool TryFindPackage(
+            string releaseName,
+            string packageName,
+            string version,
             string fhirSpecDirectory,
-            FhirVersionInfo versionInfo,
             out string versionDirectory)
         {
             versionDirectory = null;
 
-            // sanity checks
-            if (versionInfo == null)
+            if (string.IsNullOrEmpty(fhirSpecDirectory))
             {
-                throw new ArgumentNullException(nameof(versionInfo));
+                throw new ArgumentNullException(nameof(fhirSpecDirectory));
+            }
+
+            if (string.IsNullOrEmpty(releaseName))
+            {
+                throw new ArgumentNullException(nameof(releaseName));
+            }
+
+            if (string.IsNullOrEmpty(packageName))
+            {
+                throw new ArgumentNullException(nameof(packageName));
+            }
+
+            if (string.IsNullOrEmpty(version))
+            {
+                throw new ArgumentNullException(nameof(version));
             }
 
             // check for finding the directory
             string packageDir = Path.Combine(
                 fhirSpecDirectory,
-                $"{versionInfo.PackageName}-{versionInfo.VersionString}",
+                $"{packageName}-{version}",
                 "package");
 
             if (!Directory.Exists(packageDir))
             {
                 // check for NPM installed version
-                packageDir = Path.Combine(fhirSpecDirectory, "node_modules", versionInfo.PackageName);
+                packageDir = Path.Combine(fhirSpecDirectory, "node_modules", packageName);
 
                 if (!Directory.Exists(packageDir))
                 {
-                    Console.WriteLine($"Cannot find R{versionInfo.ReleaseName}-{versionInfo.PackageName} in {fhirSpecDirectory}");
+                    Console.WriteLine($"Cannot find R{releaseName}-{packageName} in {fhirSpecDirectory}");
                     return false;
                 }
             }
@@ -72,11 +91,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 throw new ArgumentNullException(nameof(fhirVersionInfo));
             }
 
-            // find the package
-            if (!TryFindPackage(fhirSpecDirectory, fhirVersionInfo, out string packageDir))
+            // first load value sets
+            if (!TryFindPackage(
+                fhirVersionInfo.ReleaseName,
+                fhirVersionInfo.ExpansionsPackageName,
+                fhirVersionInfo.VersionString,
+                fhirSpecDirectory,
+                out string expansionDir))
             {
-                Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}!");
-                throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}");
+                Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.ExpansionsPackageName}!");
+                throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.ExpansionsPackageName}");
+            }
+
+            // load package info
+            FhirPackageInfo expansionPackageInfo = FhirPackageInfo.Load(expansionDir);
+
+            // tell the user what's going on
+            Console.WriteLine($"LoadPackage <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
+
+            // find the package
+            if (!TryFindPackage(
+                    fhirVersionInfo.ReleaseName,
+                    fhirVersionInfo.PackageName,
+                    fhirVersionInfo.VersionString,
+                    fhirSpecDirectory,
+                    out string packageDir))
+            {
+                Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.PackageName}!");
+                throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.PackageName}");
             }
 
             // load package info
@@ -88,11 +130,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // update our structure
             fhirVersionInfo.VersionString = packageInfo.Version;
 
-            // process Code Systems
-            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo);
-
-            // process Value Sets
-            ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo);
+            // process Value Set expansions
+            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo);
 
             // process structure definitions
             ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);
