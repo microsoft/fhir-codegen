@@ -69,6 +69,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="comment">         The comment.</param>
         /// <param name="validationRegEx"> The validation RegEx.</param>
         /// <param name="contextElements"> The context elements.</param>
+        /// <param name="isAbstract">      If the complex structure is an abstract type.</param>
         public FhirComplex(
             string id,
             string path,
@@ -78,7 +79,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string purpose,
             string comment,
             string validationRegEx,
-            List<string> contextElements)
+            List<string> contextElements,
+            bool isAbstract)
             : this(
                 id,
                 path,
@@ -90,6 +92,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 validationRegEx)
         {
             _contextElements = contextElements;
+            IsAbstract = isAbstract;
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
@@ -140,6 +143,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             /// <summary>An enum constant representing the profile option.</summary>
             Profile,
         }
+
+        /// <summary>Gets a value indicating whether this object is abstract.</summary>
+        public bool IsAbstract { get; }
 
         /// <summary>Gets or sets a value indicating whether this object is placeholder.</summary>
         /// <value>True if this object is placeholder, false if not.</value>
@@ -443,7 +449,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     Purpose,
                     Comment,
                     ValidationRegEx,
-                    ContextElements);
+                    ContextElements,
+                    IsAbstract);
 
             if (!string.IsNullOrEmpty(SliceName))
             {
