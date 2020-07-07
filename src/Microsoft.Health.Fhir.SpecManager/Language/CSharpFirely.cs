@@ -378,6 +378,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
             _writer.WriteLineIndented("[DataContract]");
 
+            string abstractFlag = complex.IsAbstract ? " abstract" : string.Empty;
+
             switch (complex.BaseTypeName)
             {
                 case "Quantity":
@@ -386,7 +388,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 case "BackboneType":
                     _writer.WriteLineIndented(
-                        $"public partial class" +
+                        $"public{abstractFlag} partial class" +
                             $" {exportName}" +
                             $" : {_namespace}.BackboneElement," +
                             $" System.ComponentModel.INotifyPropertyChanged");
@@ -394,7 +396,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 case "DataType":
                     _writer.WriteLineIndented(
-                        $"public partial class" +
+                        $"public{abstractFlag} partial class" +
                             $" {exportName}" +
                             $" : {_namespace}.Element," +
                             $" System.ComponentModel.INotifyPropertyChanged");
@@ -404,7 +406,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     if (_info.HasComplex(complex.BaseTypeName))
                     {
                         _writer.WriteLineIndented(
-                            $"public partial class" +
+                            $"public{abstractFlag} partial class" +
                                 $" {exportName}" +
                                 $" : {_namespace}.{complex.BaseTypeName}," +
                                 $" System.ComponentModel.INotifyPropertyChanged");
@@ -412,7 +414,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     else
                     {
                         _writer.WriteLineIndented(
-                            $"public partial class" +
+                            $"public{abstractFlag} partial class" +
                                 $" {exportName}" +
                                 $" : {_namespace}.Element," +
                                 $" System.ComponentModel.INotifyPropertyChanged");

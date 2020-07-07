@@ -740,7 +740,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     definition,
                     string.Empty,
                     null,
-                    contextElements);
+                    contextElements,
+                    sd.Abstract);
 
                 // check for a base definition
                 if (!string.IsNullOrEmpty(sd.BaseDefinition))
