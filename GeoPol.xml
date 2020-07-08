@@ -21,5 +21,6 @@
     <ExcludeFolder>GeoPol.xml</ExcludeFolder>
       <ExcludeFolder>fhirVersions</ExcludeFolder>
       <ExcludeFolder>generated</ExcludeFolder>
+      <ExcludeFolder>src\Microsoft.Health.Fhir.SpecManager\fhir</ExcludeFolder>
     </Component>
 </GeoPol_Folders>
