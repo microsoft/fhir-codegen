@@ -140,7 +140,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the cardinality maximum, -1 for unbounded (e.g., *).</summary>
         /// <value>The cardinality maximum.</value>
-        public int? CardinalityMax { get; }
+        public int CardinalityMax { get; }
 
         /// <summary>Gets the cardinality maximum string.</summary>
         /// <value>The cardinality maximum string.</value>
@@ -148,12 +148,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         {
             get
             {
-                if ((CardinalityMax == null) || (CardinalityMax == -1))
+                if (CardinalityMax == -1)
                 {
                     return "*";
                 }
 
-                return CardinalityMax.ToString();
+                return $"{CardinalityMax}";
             }
         }
 
@@ -227,7 +227,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets a value indicating whether this property is an array.</summary>
         /// <value>True if this object is array, false if not.</value>
-        public bool IsArray => (CardinalityMax == -1) || (CardinalityMax > 1) || (CardinalityMax == null);
+        public bool IsArray => (CardinalityMax == -1) || (CardinalityMax > 1);
 
         /// <summary>Gets a value indicating whether this object is optional.</summary>
         /// <value>True if this object is optional, false if not.</value>
@@ -235,17 +235,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Maximum cardinality.</summary>
         /// <param name="max">The maximum.</param>
-        /// <returns>Null for unbounded cardinality, value for a specific maximum.</returns>
-        private static int? MaxCardinality(string max)
+        /// <returns>-1 for unbounded cardinality, value for a specific maximum.</returns>
+        private static int MaxCardinality(string max)
         {
             if (string.IsNullOrEmpty(max))
             {
-                return null;
+                return -1;
             }
 
             if (max.Equals("*", StringComparison.Ordinal))
             {
-                return null;
+                return -1;
             }
 
             if (int.TryParse(max, out int parsed))
@@ -253,7 +253,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 return parsed;
             }
 
-            return null;
+            return -1;
         }
 
         /// <summary>Adds a slicing.</summary>
@@ -342,7 +342,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 BaseTypeName,
                 elementTypes,
                 CardinalityMin,
-                CardinalityMax == null ? "*" : CardinalityMax.ToString(),
+                CardinalityMax == -1 ? "*" : $"{CardinalityMax}",
                 IsModifier,
                 IsSummary,
                 DefaultFieldName,

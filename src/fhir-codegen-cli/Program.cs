@@ -20,25 +20,30 @@ namespace FhirCodegenCli
     {
         private static HashSet<string> _extensionsOutputted;
 
-        /// <summary>Command-line utility for processing the FHIR specification into other computer languages.</summary>
-        /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are downloaded and cached.</param>
-        /// <param name="outputPath">       File or directory to write output.</param>
-        /// <param name="verbose">          Show verbose output.</param>
-        /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
-        /// <param name="language">         Name of the language to export (default:
+        /// <summary>
+        /// Command-line utility for processing the FHIR specification into other computer languages.
+        /// </summary>
+        /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
+        ///  are downloaded and cached.</param>
+        /// <param name="outputPath">            File or directory to write output.</param>
+        /// <param name="verbose">               Show verbose output.</param>
+        /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
+        /// <param name="language">              Name of the language to export (default:
         ///  Info|TypeScript|CSharpBasic).</param>
-        /// <param name="exportKeys">       '|' separated list of items to export (not present to export
-        ///  everything).</param>
-        /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or
-        ///  latest).</param>
-        /// <param name="loadR3">           If FHIR R3 should be loaded, which version (e.g., 3.0.2 or
-        ///  latest).</param>
-        /// <param name="loadR4">           If FHIR R4 should be loaded, which version (e.g., 4.0.1 or
-        ///  latest).</param>
-        /// <param name="loadR5">           If FHIR R5 should be loaded, which version (e.g., 4.4.0 or
-        ///  latest).</param>
-        /// <param name="languageOptions">  Language specific options, see documentation for more
+        /// <param name="exportKeys">            '|' separated list of items to export (not present to
+        ///  export everything).</param>
+        /// <param name="loadR2">                If FHIR R2 should be loaded, which version (e.g., 1.0.2
+        ///  or latest).</param>
+        /// <param name="loadR3">                If FHIR R3 should be loaded, which version (e.g., 3.0.2
+        ///  or latest).</param>
+        /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
+        ///  or latest).</param>
+        /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
+        ///  or latest).</param>
+        /// <param name="languageOptions">       Language specific options, see documentation for more
         ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
+        /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
+        ///  expansions (default: false).</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -50,7 +55,8 @@ namespace FhirCodegenCli
             string loadR3 = "",
             string loadR4 = "",
             string loadR5 = "",
-            string languageOptions = "")
+            string languageOptions = "",
+            bool officialExpansionsOnly = false)
         {
             List<string> filesWritten = new List<string>();
 
@@ -89,6 +95,7 @@ namespace FhirCodegenCli
             Process(
                 fhirSpecDirectory,
                 offlineMode,
+                officialExpansionsOnly,
                 loadR2,
                 out FhirVersionInfo r2,
                 loadR3,
@@ -285,23 +292,27 @@ namespace FhirCodegenCli
         }
 
         /// <summary>Main processing function.</summary>
-        /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are.</param>
-        /// <param name="offlineMode">      Offline mode (will not download missing specs).</param>
-        /// <param name="loadR2">           If FHIR R2 should be loaded, which version (e.g., 1.0.2 or
-        ///  latest).</param>
-        /// <param name="r2">               [out] The FhirVersionInfo for R2 (if loaded).</param>
-        /// <param name="loadR3">           If FHIR R3 should be loaded, which version (e.g., 3.0.2 or
-        ///  latest).</param>
-        /// <param name="r3">               [out] The FhirVersionInfo for R3 (if loaded).</param>
-        /// <param name="loadR4">           If FHIR R4 should be loaded, which version (e.g., 4.0.1 or
-        ///  latest).</param>
-        /// <param name="r4">               [out] The FhirVersionInfo for R4 (if loaded).</param>
-        /// <param name="loadR5">           If FHIR R5 should be loaded, which version (e.g., 4.4.0 or
-        ///  latest).</param>
-        /// <param name="r5">               [out] The FhirVersionInfo for R5 (if loaded).</param>
+        /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
+        ///  are.</param>
+        /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
+        /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
+        ///  expansions.</param>
+        /// <param name="loadR2">                If FHIR R2 should be loaded, which version (e.g., 1.0.2
+        ///  or latest).</param>
+        /// <param name="r2">                    [out] The FhirVersionInfo for R2 (if loaded).</param>
+        /// <param name="loadR3">                If FHIR R3 should be loaded, which version (e.g., 3.0.2
+        ///  or latest).</param>
+        /// <param name="r3">                    [out] The FhirVersionInfo for R3 (if loaded).</param>
+        /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
+        ///  or latest).</param>
+        /// <param name="r4">                    [out] The FhirVersionInfo for R4 (if loaded).</param>
+        /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
+        ///  or latest).</param>
+        /// <param name="r5">                    [out] The FhirVersionInfo for R5 (if loaded).</param>
         public static void Process(
             string fhirSpecDirectory,
             bool offlineMode,
+            bool officialExpansionsOnly,
             string loadR2,
             out FhirVersionInfo r2,
             string loadR3,
@@ -459,7 +470,7 @@ namespace FhirCodegenCli
             // traverse properties for this type
             foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.FieldOrder))
             {
-                string max = (element.CardinalityMax == null) ? "*" : element.CardinalityMax.ToString();
+                string max = (element.CardinalityMax == -1) ? "*" : $"{element.CardinalityMax}";
 
                 string propertyType = string.Empty;
 
