@@ -1,0 +1,58 @@
+﻿// <copyright file="FhirConstraint.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation. All rights reserved.
+//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// </copyright>
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Microsoft.Health.Fhir.SpecManager.Models
+{
+    /// <summary>A FHIR constraint.</summary>
+    public class FhirConstraint : ICloneable
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FhirConstraint"/> class.
+        /// </summary>
+        /// <param name="key">        The constraint key (id).</param>
+        /// <param name="severity">   The severity for violating the constraint.</param>
+        /// <param name="description">The human-readable description of the constraint.</param>
+        /// <param name="expression"> The FHIR Query-style validation expression.</param>
+        /// <param name="xPath">      The XPath-style validation expression.</param>
+        public FhirConstraint(
+            string key,
+            string severity,
+            string description,
+            string expression,
+            string xPath)
+        {
+            Key = key;
+            Severity = severity;
+            Description = description;
+            Expression = expression;
+            XPath = xPath;
+        }
+
+        /// <summary>Gets the constraint key (id).</summary>
+        public string Key { get; }
+
+        /// <summary>Gets the severity for violating the constraint.</summary>
+        public string Severity { get; }
+
+        /// <summary>Gets the human-readable description of the constraint.</summary>
+        public string Description { get; }
+
+        /// <summary>Gets the FHIR Query-style validation expression.</summary>
+        public string Expression { get; }
+
+        /// <summary>Gets the XPath-style validation expression.</summary>
+        public string XPath { get; }
+
+        /// <summary>Creates a new object that is a copy of the current instance.</summary>
+        /// <returns>A new object that is a copy of this instance.</returns>
+        public object Clone()
+        {
+            return new FhirConstraint(Key, Severity, Description, Expression, XPath);
+        }
+    }
+}

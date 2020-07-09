@@ -1216,6 +1216,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     }
                 }
 
+                if ((sd.Differential != null) &&
+                    (sd.Differential.Element != null) &&
+                    (sd.Differential.Element.Count > 0) &&
+                    (sd.Differential.Element[0].Constraint != null) &&
+                    (sd.Differential.Element[0].Constraint.Count > 0))
+                {
+                    foreach (fhir_2.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
+                    {
+                        complex.AddConstraint(new FhirConstraint(
+                            con.Key,
+                            con.Severity,
+                            con.Human,
+                            string.Empty,
+                            con.Xpath));
+                    }
+                }
+
                 switch (definitionComplexType)
                 {
                     case FhirComplex.FhirComplexType.DataType:

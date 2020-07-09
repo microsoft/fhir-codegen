@@ -21,6 +21,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private Dictionary<string, FhirOperation> _typeOperations;
         private Dictionary<string, FhirOperation> _instanceOperations;
         private List<string> _contextElements;
+        private List<FhirConstraint> _constraints;
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
         /// <param name="id">              The id of this resource/datatype/extension.</param>
@@ -178,6 +179,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the context elements.</summary>
         /// <value>The context elements.</value>
         public List<string> ContextElements { get => _contextElements; }
+
+        /// <summary>Gets the constraints.</summary>
+        public List<FhirConstraint> Constraints { get => _constraints; }
+
+        /// <summary>Adds a constraint.</summary>
+        /// <param name="constraint">The constraint.</param>
+        internal void AddConstraint(FhirConstraint constraint)
+        {
+            _constraints.Add(constraint);
+        }
 
         /// <summary>Adds a search parameter.</summary>
         /// <param name="searchParam">The search parameter.</param>
@@ -511,6 +522,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
             {
                 complex.InstanceOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+            }
+
+            if (_constraints != null)
+            {
+                complex._constraints = _constraints.Select(c => (FhirConstraint)c.Clone()).ToList();
             }
 
             return complex;
