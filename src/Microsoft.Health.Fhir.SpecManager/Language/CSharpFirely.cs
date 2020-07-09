@@ -1281,9 +1281,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a constrained quantity.</summary>
         /// <param name="complex">   The complex data type.</param>
         /// <param name="exportName">Name of the export.</param>
+        /// <param name="depth">     The depth.</param>
         private void WriteConstrainedQuantity(
             FhirComplex complex,
-            string exportName)
+            string exportName,
+            int depth)
         {
             _writer.WriteLineIndented(
                 $"public partial class" +
@@ -1293,7 +1295,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // open class
             OpenScope();
 
-            WritePropertyTypeName(complex.Name);
+            WritePropertyTypeName(complex.Name, false, depth);
 
             _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
             OpenScope();
