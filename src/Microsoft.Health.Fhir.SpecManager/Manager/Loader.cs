@@ -79,10 +79,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Loads a package.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
-        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
-        /// <param name="fhirSpecDirectory">   Pathname of the FHIR spec directory.</param>
-        /// <param name="fhirVersionInfo">[in,out] Information describing the FHIR version.</param>
-        public static void LoadPackage(string fhirSpecDirectory, ref FhirVersionInfo fhirVersionInfo)
+        /// <param name="fhirSpecDirectory">     Pathname of the FHIR spec directory.</param>
+        /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>
+        /// <param name="officialExpansionsOnly">True to official expansions only.</param>
+        public static void LoadPackage(
+            string fhirSpecDirectory,
+            ref FhirVersionInfo fhirVersionInfo,
+            bool officialExpansionsOnly)
         {
             // sanity checks
             if (fhirVersionInfo == null)
@@ -130,8 +133,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // update our structure
             fhirVersionInfo.VersionString = packageInfo.Version;
 
+            // process Code Systems
+            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo);
+
             // process Value Set expansions
-            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo);
+            if (officialExpansionsOnly)
+            {
+                ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo);
+            }
+            else
+            {
+                ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo);
+            }
 
             // process structure definitions
             ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);

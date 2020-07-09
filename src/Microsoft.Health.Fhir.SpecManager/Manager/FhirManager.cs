@@ -101,7 +101,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         ReleaseName = "2020May",
                         PackageName = "hl7.fhir.r5.core",
-                        ExamplesPackageName = "hl7.fhir.r5.examples",
+                        ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
                         ExpansionsPackageName = "hl7.fhir.r5.expansions",
                         VersionString = "4.4.0",
                         IsDevBuild = false,
@@ -120,7 +120,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     {
                         ReleaseName = string.Empty,
                         PackageName = "hl7.fhir.r5.core",
-                        ExamplesPackageName = "hl7.fhir.r5.examples",
+                        ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
                         ExpansionsPackageName = "hl7.fhir.r5.expansions",
                         VersionString = "4.4.0",
                         IsDevBuild = true,
@@ -176,16 +176,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Loads a published version of FHIR.</summary>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
         ///  required range.</exception>
-        /// <exception cref="DirectoryNotFoundException"> Thrown when the requested directory is not
-        ///  present.</exception>
-        /// <param name="majorRelease">The release number of FHIR to load (e.g., 2 for DSTU2).</param>
-        /// <param name="versions">    The specific version of FHIR to load, or 'latest' for highest known version.</param>
-        /// <param name="offlineMode"> (Optional) True to allow, false to suppress the download.</param>
+        /// <exception cref="ArgumentException">          Thrown when one or more arguments have
+        ///  unsupported or illegal values.</exception>
+        /// <param name="majorRelease">          The release number of FHIR to load (e.g., 2 for DSTU2).</param>
+        /// <param name="versions">              The specific version of FHIR to load, or 'latest' for
+        ///  highest known version.</param>
+        /// <param name="offlineMode">           (Optional) True to allow, false to suppress the download.</param>
+        /// <param name="officialExpansionsOnly">(Optional) True to official expansions only.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public FhirVersionInfo LoadPublished(
             int majorRelease,
             string versions,
-            bool offlineMode = false)
+            bool offlineMode = false,
+            bool officialExpansionsOnly = false)
         {
             HashSet<string> versionsToLoad = new HashSet<string>();
 
@@ -258,7 +261,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 true);
 
             // load the package
-            Loader.LoadPackage(_fhirSpecDirectory, ref info);
+            Loader.LoadPackage(_fhirSpecDirectory, ref info, officialExpansionsOnly);
 
             // update our version information
             _publishedVersionDict[versionToLoad] = info;
@@ -283,6 +286,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             bool offlineMode,
             bool isOptional = false)
         {
+            if (string.IsNullOrEmpty(packageName))
+            {
+                if (isOptional)
+                {
+                    return;
+                }
+
+                throw new ArgumentNullException(nameof(packageName));
+            }
+
             if (!Loader.TryFindPackage(
                 releaseName,
                 packageName,
