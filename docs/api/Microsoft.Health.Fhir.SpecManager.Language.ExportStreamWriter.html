@@ -1,0 +1,1008 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ExportStreamWriter
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ExportStreamWriter
+   ">
+    <meta name="generator" content="docfx 2.56.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter">
+  
+  
+  <h1 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter" class="text-break">Class ExportStreamWriter
+  </h1>
+  <div class="markdown level0 summary"><p>An extended StreamWriter implementation to simplify language export writing.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">System.MarshalByRefObject</span></div>
+    <div class="level2"><span class="xref">System.IO.TextWriter</span></div>
+    <div class="level3"><span class="xref">System.IO.StreamWriter</span></div>
+    <div class="level4"><span class="xref">ExportStreamWriter</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.IO.StreamWriter.Null</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.Close()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.Dispose(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.Flush()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.FlushAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.Write(System.Char)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.Write(System.Char[])</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.Write(System.Char[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.Write(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.WriteAsync(System.Char)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.WriteAsync(System.Char[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.WriteAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.WriteLineAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.WriteLineAsync(System.Char)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.WriteLineAsync(System.Char[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.WriteLineAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.AutoFlush</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.BaseStream</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.StreamWriter.Encoding</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.CoreNewLine</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Dispose()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Synchronized(System.IO.TextWriter)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.Decimal)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.Double)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.Int64)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.Single)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.String, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.String, System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.String, System.Object, System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.String, System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.UInt32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.Write(System.UInt64)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteAsync(System.Char[])</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Char)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Char[])</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Char[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Decimal)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Double)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Int64)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.Single)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.String, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.String, System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.String, System.Object, System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.String, System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.UInt32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLine(System.UInt64)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.WriteLineAsync(System.Char[])</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.FormatProvider</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.TextWriter.NewLine</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.GetLifetimeService()</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.InitializeLifetimeService()</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.MemberwiseClone(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.html">Microsoft.Health.Fhir.SpecManager.Language</a></h6>
+  <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.SpecManager.dll</h6>
+  <h5 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ExportStreamWriter : StreamWriter, IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_IO_Stream_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.%23ctor(System.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L28">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_IO_Stream_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor(System.IO.Stream)">ExportStreamWriter(Stream)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.html">ExportStreamWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExportStreamWriter(Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_IO_Stream_System_Text_Encoding_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.%23ctor(System.IO.Stream%2CSystem.Text.Encoding)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L47">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_IO_Stream_System_Text_Encoding_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor(System.IO.Stream,System.Text.Encoding)">ExportStreamWriter(Stream, Encoding)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.html">ExportStreamWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExportStreamWriter(Stream stream, Encoding encoding)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>The encoding.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_IO_Stream_System_Text_Encoding_System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.%23ctor(System.IO.Stream%2CSystem.Text.Encoding%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L68">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_IO_Stream_System_Text_Encoding_System_Int32_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor(System.IO.Stream,System.Text.Encoding,System.Int32)">ExportStreamWriter(Stream, Encoding, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.html">ExportStreamWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExportStreamWriter(Stream stream, Encoding encoding, int bufferSize)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>The encoding.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bufferSize</span></td>
+        <td><p>Size of the buffer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_IO_Stream_System_Text_Encoding_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.%23ctor(System.IO.Stream%2CSystem.Text.Encoding%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L91">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_IO_Stream_System_Text_Encoding_System_Int32_System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor(System.IO.Stream,System.Text.Encoding,System.Int32,System.Boolean)">ExportStreamWriter(Stream, Encoding, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.html">ExportStreamWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExportStreamWriter(Stream stream, Encoding encoding, int bufferSize, bool leaveOpen)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>The encoding.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bufferSize</span></td>
+        <td><p>Size of the buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">leaveOpen</span></td>
+        <td><p>True to leave open.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L37">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor(System.String)">ExportStreamWriter(String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.html">ExportStreamWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExportStreamWriter(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Full pathname of the file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.%23ctor(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L57">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_String_System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor(System.String,System.Boolean)">ExportStreamWriter(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.html">ExportStreamWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExportStreamWriter(string path, bool append)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Full pathname of the file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">append</span></td>
+        <td><p>True to append.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_String_System_Boolean_System_Text_Encoding_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.%23ctor(System.String%2CSystem.Boolean%2CSystem.Text.Encoding)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L79">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_String_System_Boolean_System_Text_Encoding_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor(System.String,System.Boolean,System.Text.Encoding)">ExportStreamWriter(String, Boolean, Encoding)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.html">ExportStreamWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExportStreamWriter(string path, bool append, Encoding encoding)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Full pathname of the file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">append</span></td>
+        <td><p>True to append.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>The encoding.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_String_System_Boolean_System_Text_Encoding_System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.%23ctor(System.String%2CSystem.Boolean%2CSystem.Text.Encoding%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L103">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter__ctor_System_String_System_Boolean_System_Text_Encoding_System_Int32_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.#ctor(System.String,System.Boolean,System.Text.Encoding,System.Int32)">ExportStreamWriter(String, Boolean, Encoding, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.html">ExportStreamWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExportStreamWriter(string path, bool append, Encoding encoding, int bufferSize)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Full pathname of the file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">append</span></td>
+        <td><p>True to append.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>The encoding.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bufferSize</span></td>
+        <td><p>Size of the buffer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_CharactersPerIndentation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.CharactersPerIndentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L115">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_CharactersPerIndentation_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.CharactersPerIndentation*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_CharactersPerIndentation" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.CharactersPerIndentation">CharactersPerIndentation</h4>
+  <div class="markdown level1 summary"><p>Gets the characters per indentation level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CharactersPerIndentation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_Indentation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.Indentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L109">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_Indentation_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.Indentation*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_Indentation" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.Indentation">Indentation</h4>
+  <div class="markdown level1 summary"><p>Gets the current level of indentation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Indentation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_IndentationChar.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.IndentationChar%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L112">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_IndentationChar_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.IndentationChar*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_IndentationChar" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.IndentationChar">IndentationChar</h4>
+  <div class="markdown level1 summary"><p>Gets the indentation character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char IndentationChar { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_DecreaseIndent.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.DecreaseIndent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L124">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_DecreaseIndent_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.DecreaseIndent*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_DecreaseIndent" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.DecreaseIndent">DecreaseIndent()</h4>
+  <div class="markdown level1 summary"><p>Decrease indent.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DecreaseIndent()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_IncreaseIndent.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.IncreaseIndent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L118">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_IncreaseIndent_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.IncreaseIndent*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_IncreaseIndent" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.IncreaseIndent">IncreaseIndent()</h4>
+  <div class="markdown level1 summary"><p>Increase indent.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void IncreaseIndent()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_SetCharsPerIndentation_System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.SetCharsPerIndentation(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L157">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_SetCharsPerIndentation_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.SetCharsPerIndentation*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_SetCharsPerIndentation_System_Int32_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.SetCharsPerIndentation(System.Int32)">SetCharsPerIndentation(Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets characters per indentation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCharsPerIndentation(int charsPerIndentLevel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">charsPerIndentLevel</span></td>
+        <td><p>The characters per indent level.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when one or more arguments are outside the
+required range.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_SetIndent_System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.SetIndent(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L136">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_SetIndent_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.SetIndent*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_SetIndent_System_Int32_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.SetIndent(System.Int32)">SetIndent(Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets an indent.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetIndent(int level)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">level</span></td>
+        <td><p>The level.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_SetIndentationChar_System_Char_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.SetIndentationChar(System.Char)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L148">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_SetIndentationChar_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.SetIndentationChar*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_SetIndentationChar_System_Char_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.SetIndentationChar(System.Char)">SetIndentationChar(Char)</h4>
+  <div class="markdown level1 summary"><p>Sets indentation character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetIndentationChar(char indentChar)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td><span class="parametername">indentChar</span></td>
+        <td><p>The indent character.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_WriteIndented_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.WriteIndented(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L169">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_WriteIndented_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.WriteIndented*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_WriteIndented_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.WriteIndented(System.String)">WriteIndented(String)</h4>
+  <div class="markdown level1 summary"><p>Writes a value, indented.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteIndented(string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_WriteLineIndented_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.WriteLineIndented(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L177">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_WriteLineIndented_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.WriteLineIndented*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter_WriteLineIndented_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter.WriteLineIndented(System.String)">WriteLineIndented(String)</h4>
+  <div class="markdown level1 summary"><p>Writes a line, indented per current indentation level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteLineIndented(string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_ExportStreamWriter.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.ExportStreamWriter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/ExportStreamWriter.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
