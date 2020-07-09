@@ -445,6 +445,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteConstrainedQuantity(complex, exportName, depth);
                     return;
 
+                case "BackboneElement":
                 case "BackboneType":
                     _writer.WriteLineIndented("[DataContract]");
                     _writer.WriteLineIndented(
@@ -511,6 +512,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLine(string.Empty);
             }
 
+            WriteEnums(complex, exportName);
+
             // check for nested components
             if (complex.Components != null)
             {
@@ -521,7 +524,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            WriteEnums(complex, exportName);
             WriteElements(complex, isResource);
 
             // close class
@@ -578,7 +580,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented(
                 $"public partial class" +
                     $" {exportName}" +
-                    $" : {_namespace}.Element," +
+                    $" : {_namespace}.BackboneElement," +
                     $" System.ComponentModel.INotifyPropertyChanged," +
                     $" IBackboneElement");
 
@@ -597,7 +599,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            WriteEnums(complex, exportName);
             WriteElements(complex, isResource);
 
             // close class
@@ -611,14 +612,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex complex,
             string className)
         {
-            foreach (FhirElement element in complex.Elements.Values)
+            if (complex.Elements != null)
             {
-                if ((!string.IsNullOrEmpty(element.ValueSet)) &&
-                    _info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+                foreach (FhirElement element in complex.Elements.Values)
                 {
-                    WriteEnum(vs, className);
+                    if ((!string.IsNullOrEmpty(element.ValueSet)) &&
+                        _info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+                    {
+                        WriteEnum(vs, className);
 
-                    continue;
+                        continue;
+                    }
+                }
+            }
+
+            if (complex.Components != null)
+            {
+                foreach (FhirComplex component in complex.Components.Values)
+                {
+                    WriteEnums(component, className);
                 }
             }
         }
@@ -688,6 +700,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
         }
 
+        /// <summary>Gets an order.</summary>
+        /// <param name="element">The element.</param>
+        private static int GetOrder(FhirElement element)
+        {
+            return (element.FieldOrder * 10) + 10;
+        }
+
         /// <summary>Writes the elements.</summary>
         /// <param name="complex">   The complex data type.</param>
         /// <param name="isResource">True if is resource, false if not.</param>
@@ -695,8 +714,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex complex,
             bool isResource)
         {
-            int order = 30;
-
             foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.FieldOrder))
             {
                 if (element.IsInherited)
@@ -704,26 +721,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                if (!string.IsNullOrEmpty(element.ValueSet))
+                string typeName = element.BaseTypeName;
+
+                if (string.IsNullOrEmpty(typeName))
                 {
-                    WriteCodedElement(complex, element, order);
-                    order += 10;
+                    typeName = element.ElementTypes.Values.First().Name;
+                }
+
+                // if (!string.IsNullOrEmpty(element.ValueSet))
+                if (typeName == "code")
+                {
+                    WriteCodedElement(element, isResource);
                     continue;
                 }
 
-                WriteElement(complex, element, order, isResource);
-                order += 10;
+                WriteElement(complex, element, isResource);
             }
         }
 
         /// <summary>Writes an element.</summary>
-        /// <param name="complex">The complex data type.</param>
-        /// <param name="element">The element.</param>
-        /// <param name="order">  The order.</param>
+        /// <param name="element">   The element.</param>
+        /// <param name="isResource">True if is resource, false if not.</param>
         private void WriteCodedElement(
-            FhirComplex complex,
             FhirElement element,
-            int order)
+            bool isResource)
         {
             bool hasDefinedEnum = true;
             if (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
@@ -731,86 +752,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 hasDefinedEnum = false;
             }
 
-            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
-
-            WriteIndentedComment(element.ShortDescription);
-
-            string inSummary = element.IsSummary ? ", InSummary=true" : string.Empty;
-
-            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{inSummary}, Order={order})]");
-            _writer.WriteLineIndented("[DataMember]");
-
-            if (element.Path == "Address.use")
-            {
-                Console.Write(string.Empty);
-            }
-
-            string codeLiteral;
-
-            if (hasDefinedEnum)
-            {
-                string vsClass = _writtenValueSets[vs.URL].ClassName;
-                string vsName = _writtenValueSets[vs.URL].ValueSetName;
-
-                if (string.IsNullOrEmpty(vsClass))
-                {
-                    codeLiteral = $"Code<{_namespace}.{vsName}>";
-                }
-                else
-                {
-                    codeLiteral = $"Code<{_namespace}.{vsClass}.{vsName}>";
-                }
-            }
-            else
-            {
-                codeLiteral = $"{_namespace}.Code";
-            }
-
-            _writer.WriteLineIndented($"public {codeLiteral} {pascal}Element");
-
-            OpenScope();
-            _writer.WriteLineIndented($"get {{ return _{pascal}Element; }}");
-            _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
-            CloseScope();
-
-            _writer.WriteLineIndented($"private {codeLiteral} _{pascal}Element;");
-
-            if (!hasDefinedEnum)
-            {
-                WriteIndentedComment(element.ShortDescription);
-                _writer.WriteLineIndented("[NotMapped]");
-                _writer.WriteLineIndented("[IgnoreDataMember]");
-
-                _writer.WriteLineIndented($"public string {pascal}");
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Value : null; }}");
-                _writer.WriteLineIndented("set");
-                OpenScope();
-                _writer.WriteLineIndented("if (value == null)");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = null;");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("else");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = new {_namespace}.Code(value);");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
-                CloseScope();
-                CloseScope();
-            }
-        }
-
-        /// <summary>Writes an element.</summary>
-        /// <param name="complex">   The complex data type.</param>
-        /// <param name="element">   The element.</param>
-        /// <param name="order">     The order.</param>
-        /// <param name="isResource">True if is resource, false if not.</param>
-        private void WriteElement(
-            FhirComplex complex,
-            FhirElement element,
-            int order,
-            bool isResource)
-        {
             string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
 
             WriteIndentedComment(element.ShortDescription);
@@ -823,7 +764,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 out string allowedTypes,
                 out string resourceReferences);
 
-            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={order}{choice})]");
+            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice})]");
 
             if (!string.IsNullOrEmpty(resourceReferences))
             {
@@ -845,39 +786,369 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _writer.WriteLineIndented("[DataMember]");
 
-            if (element.ElementTypes == null)
-            {
-                _writer.WriteLineIndented($"public {_namespace}.{element.BaseTypeName} {pascal}Element");
-            }
-            else if (element.ElementTypes.Count == 1)
-            {
-                string name = element.ElementTypes.First().Value.Name;
+            string codeLiteral;
+            string enumClass;
+            string optional;
 
-                if (_typeNameMappings.ContainsKey(name))
+            if (hasDefinedEnum)
+            {
+                string vsClass = _writtenValueSets[vs.URL].ClassName;
+                string vsName = _writtenValueSets[vs.URL].ValueSetName;
+
+                if (string.IsNullOrEmpty(vsClass))
                 {
-                    name = _typeNameMappings[name];
+                    codeLiteral = $"Code<{_namespace}.{vsName}>";
+                    enumClass = $"{_namespace}.{vsName}";
                 }
                 else
                 {
-                    name = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+                    codeLiteral = $"Code<{_namespace}.{vsClass}.{vsName}>";
+                    enumClass = $"{_namespace}.{vsClass}.{vsName}";
                 }
 
-                if (name == "Code")
-                {
-                    // TODO: left off here - next step is adding the generic to the code
-                }
-
-                _writer.WriteLineIndented($"public {_namespace}.{name} {pascal}Element");
+                optional = "?";
             }
             else
             {
-                _writer.WriteLineIndented($"public {_namespace}.object {pascal}Element");
+                codeLiteral = $"{_namespace}.Code";
+                enumClass = "string";
+                optional = string.Empty;
             }
 
-            OpenScope();
-            _writer.WriteLineIndented($"get {{ return _{pascal}Element; }}");
-            _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
-            CloseScope();
+            if (element.CardinalityMax == 1)
+            {
+                _writer.WriteLineIndented($"public {codeLiteral} {pascal}Element");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return _{pascal}Element; }}");
+                _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
+                CloseScope();
+
+                _writer.WriteLineIndented($"private {codeLiteral} _{pascal}Element;");
+                _writer.WriteLine(string.Empty);
+            }
+            else
+            {
+                _writer.WriteLineIndented($"public List<{codeLiteral}> {pascal}Element");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ if (_{pascal}Element==null) _{pascal}Element = new List<{codeLiteral}>(); return _{pascal}Element; }}");
+                _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
+                CloseScope();
+
+                _writer.WriteLineIndented($"private List<{codeLiteral}> _{pascal}Element;");
+                _writer.WriteLine(string.Empty);
+            }
+
+            WriteIndentedComment(element.ShortDescription);
+            _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
+
+            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("[IgnoreDataMemberAttribute]");
+
+            if (element.CardinalityMax == 1)
+            {
+                _writer.WriteLineIndented($"public {enumClass}{optional} {pascal}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Value : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
+
+                if (string.IsNullOrEmpty(optional))
+                {
+                    _writer.WriteLineIndented($"if (value == null)");
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"if (!value.HasValue)");
+                }
+
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{pascal}Element = null;");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented("else");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{pascal}Element = new {codeLiteral}(value);");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
+                CloseScope();
+                CloseScope();
+            }
+            else
+            {
+                _writer.WriteLineIndented($"public IEnumerable<{enumClass}{optional}> {pascal}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Select(elem => elem.Value) : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
+
+                if (element.CardinalityMin == 0)
+                {
+                    _writer.WriteLineIndented($"if (!value.HasValue)");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = new List<{enumClass}>(value.Select(elem => new {enumClass}(elem)));");
+                    _writer.DecreaseIndent();
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"if (value == null)");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = new {codeLiteral}(value);");
+                    _writer.DecreaseIndent();
+                }
+
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
+                CloseScope();
+                CloseScope();
+            }
+        }
+
+        /// <summary>Writes an element.</summary>
+        /// <param name="element">   The element.</param>
+        /// <param name="isResource">True if is resource, false if not.</param>
+        private void WriteElement(
+            FhirComplex complex,
+            FhirElement element,
+            bool isResource)
+        {
+            string name = element.Name;
+
+            if (name.Contains("[x]"))
+            {
+                name = name.Replace("[x]", string.Empty);
+            }
+
+            string pascal = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+
+            WriteIndentedComment(element.ShortDescription);
+
+            BuildElementOptionals(
+                element,
+                isResource,
+                out string summary,
+                out string choice,
+                out string allowedTypes,
+                out string resourceReferences);
+
+            _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice})]");
+
+            if ((!string.IsNullOrEmpty(resourceReferences)) && string.IsNullOrEmpty(allowedTypes))
+            {
+                _writer.WriteLineIndented("[CLSCompliant(false)]");
+                _writer.WriteLineIndented(resourceReferences);
+            }
+
+            if (!string.IsNullOrEmpty(allowedTypes))
+            {
+                _writer.WriteLineIndented("[CLSCompliant(false)]");
+                _writer.WriteLineIndented(allowedTypes);
+            }
+
+            if ((element.CardinalityMin != 0) ||
+                (element.CardinalityMax != 1))
+            {
+                _writer.WriteLineIndented($"[Cardinality(Min={element.CardinalityMin},Max={element.CardinalityMax})]");
+            }
+
+            _writer.WriteLineIndented("[DataMember]");
+
+            string type = string.Empty;
+
+            if (!string.IsNullOrEmpty(element.BaseTypeName))
+            {
+                type = element.BaseTypeName;
+            }
+            else if (!string.IsNullOrEmpty(choice))
+            {
+                type = "Element";
+            }
+            else if (element.ElementTypes.Count == 1)
+            {
+                type = element.ElementTypes.First().Value.Name;
+            }
+            else
+            {
+                type = "object";
+            }
+
+            bool noElement = true;
+
+            if (complex.Components.ContainsKey(type))
+            {
+                StringBuilder sb = new StringBuilder();
+
+                string[] components = type.Split('.');
+
+                for (int i = 0; i < components.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        sb.Append(components[i]);
+                        continue;
+                    }
+
+                    sb.Append(".");
+                    sb.Append(FhirUtils.SanitizedToConvention(components[i], FhirTypeBase.NamingConvention.PascalCase));
+                    sb.Append("Component");
+                }
+
+                type = sb.ToString();
+            }
+
+            string nativeType = type;
+            string optional = string.Empty;
+
+            if (_primitiveTypeMap.ContainsKey(nativeType))
+            {
+                nativeType = _primitiveTypeMap[nativeType];
+
+                if (IsNullable(nativeType))
+                {
+                    optional = "?";
+                }
+
+                noElement = false;
+            }
+            else
+            {
+                nativeType = $"{_namespace}.{type}";
+            }
+
+            if (_typeNameMappings.ContainsKey(type))
+            {
+                type = _typeNameMappings[type];
+            }
+
+            string elementTag = noElement ? string.Empty : "Element";
+
+            if (element.CardinalityMax == 1)
+            {
+                _writer.WriteLineIndented($"public {_namespace}.{type} {pascal}{elementTag}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return _{pascal}{elementTag}; }}");
+                _writer.WriteLineIndented($"set {{ _{pascal}{elementTag} = value; OnPropertyChanged(\"{pascal}{elementTag}\"); }}");
+                CloseScope();
+
+                _writer.WriteLineIndented($"private {_namespace}.{type} _{pascal}{elementTag};");
+                _writer.WriteLine(string.Empty);
+            }
+            else
+            {
+                _writer.WriteLineIndented($"public List<{_namespace}.{type}> {pascal}{elementTag}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ if (_{pascal}{elementTag}==null) _{pascal}{elementTag} = new List<{_namespace}.{type}>(); return _{pascal}{elementTag}; }}");
+                _writer.WriteLineIndented($"set {{ _{pascal}{elementTag} = value; OnPropertyChanged(\"{pascal}{elementTag}\"); }}");
+                CloseScope();
+
+                _writer.WriteLineIndented($"private List<{_namespace}.{type}> _{pascal}{elementTag};");
+                _writer.WriteLine(string.Empty);
+            }
+
+            if (noElement)
+            {
+                // only write the one field
+                return;
+            }
+
+            WriteIndentedComment(element.ShortDescription);
+            _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
+
+            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("[IgnoreDataMemberAttribute]");
+
+            if (element.CardinalityMax == 1)
+            {
+                _writer.WriteLineIndented($"public {nativeType}{optional} {pascal}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Value : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
+
+                if (string.IsNullOrEmpty(optional))
+                {
+                    _writer.WriteLineIndented($"if (value == null)");
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"if (!value.HasValue)");
+                }
+
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{pascal}Element = null;");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented("else");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{pascal}Element = new {nativeType}(value);");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
+                CloseScope();
+                CloseScope();
+            }
+            else
+            {
+                _writer.WriteLineIndented($"public IEnumerable<{nativeType}{optional}> {pascal}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Select(elem => elem.Value) : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
+
+                if (element.CardinalityMin == 0)
+                {
+                    if (string.IsNullOrEmpty(optional))
+                    {
+                        _writer.WriteLineIndented($"if (value == null)");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"if (!value.HasValue)");
+                    }
+
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = new List<{_namespace}.{type}>(value.Select(elem => new {_namespace}{type}(elem)));");
+                    _writer.DecreaseIndent();
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(optional))
+                    {
+                        _writer.WriteLineIndented($"if (value == null)");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"if (!value.HasValue)");
+                    }
+
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = new {_namespace}{type}(value);");
+                    _writer.DecreaseIndent();
+                }
+
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
+                CloseScope();
+                CloseScope();
+            }
         }
 
         /// <summary>Builds element optional flags.</summary>
@@ -924,7 +1195,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     sb.Append("typeof(");
                     sb.Append(_namespace);
                     sb.Append(".");
-                    sb.Append(elementType.Name);
+
+                    if (elementType.Name == "Reference")
+                    {
+                        sb.Append("ResourceReference");
+                    }
+                    else
+                    {
+                        sb.Append(elementType.Name);
+                    }
+
                     sb.Append(")");
                 }
 
@@ -975,6 +1255,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment("FHIR Resource Type");
                 _writer.WriteLineIndented("[NotMapped]");
                 _writer.WriteLineIndented($"public override ResourceType ResourceType {{ get {{ return ResourceType.{name}; }} }}");
+                _writer.WriteLine(string.Empty);
             }
 
             WriteIndentedComment("FHIR Type Name");
@@ -1274,6 +1555,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             _writer.DecreaseIndent();
             _writer.WriteLineIndented("}");
+            _writer.WriteLine(string.Empty);
         }
 
         /// <summary>Writes an indented comment.</summary>
