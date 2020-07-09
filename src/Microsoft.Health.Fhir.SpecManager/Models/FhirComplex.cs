@@ -56,6 +56,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _searchParameters = new Dictionary<string, FhirSearchParam>();
             _typeOperations = new Dictionary<string, FhirOperation>();
             _instanceOperations = new Dictionary<string, FhirOperation>();
+            _constraints = new List<FhirConstraint>();
         }
 
         /// <summary>

@@ -526,7 +526,77 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteElements(complex, isResource);
 
+            if (isResource)
+            {
+                WriteConstraints(complex, exportName);
+            }
+
             // close class
+            CloseScope();
+        }
+
+        /// <summary>Sanitize for quoting.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>A string.</returns>
+        private static string SanitizeForQuote(string value)
+        {
+            return value.Replace("\\", "\\\\").Replace("\"", "\\\"");
+        }
+
+        /// <summary>Writes the constraints.</summary>
+        /// <param name="complex">   The complex data type.</param>
+        /// <param name="exportName">Name of the export.</param>
+        private void WriteConstraints(
+            FhirComplex complex,
+            string exportName)
+        {
+            List<string> constraintNames = new List<string>();
+
+            if (complex.Constraints != null)
+            {
+                foreach (FhirConstraint constraint in complex.Constraints)
+                {
+                    string name = $"{exportName}_{constraint.Key.Replace('-', '_').ToUpperInvariant()}";
+
+                    constraintNames.Add(name);
+
+                    _writer.WriteLineIndented($"public static" +
+                        $" ElementDefinition.ConstraintComponent {name}" +
+                        $" = new ElementDefinition.ConstraintComponent()");
+
+                    OpenScope();
+                    _writer.WriteLineIndented($"Expression = \"{SanitizeForQuote(constraint.Expression)}\",");
+                    _writer.WriteLineIndented($"Key = \"{constraint.Key}\",");
+
+                    if (constraint.Severity == "Error")
+                    {
+                        _writer.WriteLineIndented("Severity = ElementDefinition.ConstraintSeverity.Error,");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented("Severity = ElementDefinition.ConstraintSeverity.Warning,");
+                    }
+
+                    _writer.WriteLineIndented($"Human = \"{SanitizeForQuote(constraint.Description)}\",");
+                    _writer.WriteLineIndented($"Xpath = \"{SanitizeForQuote(constraint.XPath)}\"");
+
+                    CloseScope(true);
+                }
+            }
+
+            _writer.WriteLineIndented("public override void AddDefaultConstraints()");
+            OpenScope();
+            _writer.WriteLineIndented("base.AddDefaultConstraints();");
+            _writer.WriteLine(string.Empty);
+
+            if (constraintNames.Count > 0)
+            {
+                foreach (string name in constraintNames)
+                {
+                    _writer.WriteLineIndented($"InvariantConstraints.Add({name});");
+                }
+            }
+
             CloseScope();
         }
 
@@ -1200,6 +1270,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     {
                         sb.Append("ResourceReference");
                     }
+                    else if (_typeNameMappings.ContainsKey(elementType.Name))
+                    {
+                        sb.Append(_typeNameMappings[elementType.Name]);
+                    }
                     else
                     {
                         sb.Append(elementType.Name);
@@ -1551,10 +1625,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Closes the scope.</summary>
-        private void CloseScope()
+        private void CloseScope(bool includeSemicolon = false)
         {
             _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
+
+            if (includeSemicolon)
+            {
+                _writer.WriteLineIndented("};");
+            }
+            else
+            {
+                _writer.WriteLineIndented("}");
+            }
+
             _writer.WriteLine(string.Empty);
         }
 
