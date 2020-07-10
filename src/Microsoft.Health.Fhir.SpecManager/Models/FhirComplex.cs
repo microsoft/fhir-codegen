@@ -21,6 +21,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private Dictionary<string, FhirOperation> _typeOperations;
         private Dictionary<string, FhirOperation> _instanceOperations;
         private List<string> _contextElements;
+        private List<FhirConstraint> _constraints;
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
         /// <param name="id">              The id of this resource/datatype/extension.</param>
@@ -55,6 +56,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _searchParameters = new Dictionary<string, FhirSearchParam>();
             _typeOperations = new Dictionary<string, FhirOperation>();
             _instanceOperations = new Dictionary<string, FhirOperation>();
+            _constraints = new List<FhirConstraint>();
         }
 
         /// <summary>
@@ -69,6 +71,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="comment">         The comment.</param>
         /// <param name="validationRegEx"> The validation RegEx.</param>
         /// <param name="contextElements"> The context elements.</param>
+        /// <param name="isAbstract">      If the complex structure is an abstract type.</param>
         public FhirComplex(
             string id,
             string path,
@@ -78,7 +81,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string purpose,
             string comment,
             string validationRegEx,
-            List<string> contextElements)
+            List<string> contextElements,
+            bool isAbstract)
             : this(
                 id,
                 path,
@@ -90,6 +94,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 validationRegEx)
         {
             _contextElements = contextElements;
+            IsAbstract = isAbstract;
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
@@ -141,6 +146,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Profile,
         }
 
+        /// <summary>Gets a value indicating whether this object is abstract.</summary>
+        public bool IsAbstract { get; }
+
         /// <summary>Gets or sets a value indicating whether this object is placeholder.</summary>
         /// <value>True if this object is placeholder, false if not.</value>
         public bool IsPlaceholder { get; set; }
@@ -172,6 +180,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the context elements.</summary>
         /// <value>The context elements.</value>
         public List<string> ContextElements { get => _contextElements; }
+
+        /// <summary>Gets the constraints.</summary>
+        public List<FhirConstraint> Constraints { get => _constraints; }
+
+        /// <summary>Adds a constraint.</summary>
+        /// <param name="constraint">The constraint.</param>
+        internal void AddConstraint(FhirConstraint constraint)
+        {
+            _constraints.Add(constraint);
+        }
 
         /// <summary>Adds a search parameter.</summary>
         /// <param name="searchParam">The search parameter.</param>
@@ -443,7 +461,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     Purpose,
                     Comment,
                     ValidationRegEx,
-                    ContextElements);
+                    ContextElements,
+                    IsAbstract);
 
             if (!string.IsNullOrEmpty(SliceName))
             {
@@ -504,6 +523,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
             {
                 complex.InstanceOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+            }
+
+            if (_constraints != null)
+            {
+                complex._constraints = _constraints.Select(c => (FhirConstraint)c.Clone()).ToList();
             }
 
             return complex;

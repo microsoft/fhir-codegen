@@ -168,7 +168,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     _writer.IncreaseIndent();
 
-                    foreach (FhirConcept value in vs.Concepts)
+                    foreach (FhirConcept value in vs.Concepts.OrderBy(c => c.Code))
                     {
                         _writer.WriteLineIndented($"- #{value.Code}: {value.Display}");
                     }
@@ -207,7 +207,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"{headerHint}: {complexes.Count()}");
             }
 
-            foreach (FhirComplex complex in complexes)
+            foreach (FhirComplex complex in complexes.OrderBy(c => c.Id))
             {
                 WriteComplex(complex);
             }
@@ -220,7 +220,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             _writer.WriteLineIndented($"Primitive Types: {primitives.Count()}");
 
-            foreach (FhirPrimitive primitive in primitives)
+            foreach (FhirPrimitive primitive in primitives.OrderBy(p => p.Id))
             {
                 WritePrimitiveType(primitive);
             }
@@ -259,7 +259,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             _writer.WriteLineIndented($"Extensions: {extensions.Count()}");
 
-            foreach (FhirComplex extension in extensions)
+            foreach (FhirComplex extension in extensions.OrderBy(e => e.Id))
             {
                 WriteExtension(extension);
             }
@@ -345,7 +345,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 indented = true;
             }
 
-            foreach (FhirOperation operation in operations)
+            foreach (FhirOperation operation in operations.OrderBy(o => o.Code))
             {
                 if (isTypeLevel)
                 {
@@ -392,7 +392,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 indented = true;
             }
 
-            foreach (FhirSearchParam searchParam in searchParameters)
+            foreach (FhirSearchParam searchParam in searchParameters.OrderBy(s => s.Code))
             {
                 _writer.WriteLineIndented($"?{searchParam.Code}={searchParam.ValueType} ({searchParam.Name})");
             }
@@ -425,7 +425,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (element.ElementTypes != null)
             {
-                foreach (FhirElementType elementType in element.ElementTypes.Values)
+                foreach (FhirElementType elementType in element.ElementTypes.Values.OrderBy(e => e.Name))
                 {
                     string joiner = string.IsNullOrEmpty(propertyType) ? string.Empty : "|";
 
@@ -499,7 +499,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteSlicings(
             IEnumerable<FhirSlicing> slicings)
         {
-            foreach (FhirSlicing slicing in slicings)
+            foreach (FhirSlicing slicing in slicings.OrderBy(s => s.FieldOrder))
             {
                 if (slicing.Slices.Count == 0)
                 {

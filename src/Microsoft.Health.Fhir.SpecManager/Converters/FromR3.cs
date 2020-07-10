@@ -463,9 +463,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 sp.Purpose,
                 sp.Code,
                 resources,
+                sp.Target,
                 sp.Type,
                 sp.Status,
-                sp.Experimental == true);
+                sp.Experimental == true,
+                sp.Xpath,
+                sp.XpathUsage,
+                sp.Expression);
 
             // add our parameter
             fhirVersionInfo.AddSearchParameter(param);
@@ -492,7 +496,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     break;
 
                 case "complex-type":
-                    if (sd.Derivation == "constraint")
+                    if ((sd.Derivation == "constraint") &&
+                        (sd.Type != "Quantity"))
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
                     }
@@ -504,7 +509,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     break;
 
                 case "resource":
-                    if (sd.Derivation == "constraint")
+                    if ((sd.Derivation == "constraint") &&
+                        (sd.Type != "Quantity"))
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
                     }
@@ -740,7 +746,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     definition,
                     string.Empty,
                     null,
-                    contextElements);
+                    contextElements,
+                    sd.Abstract);
 
                 // check for a base definition
                 if (!string.IsNullOrEmpty(sd.BaseDefinition))
@@ -1013,6 +1020,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         Console.WriteLine(string.Empty);
                         Console.WriteLine($"FromR4.ProcessComplex <<< element: {element.Path} ({element.Id}) - exception: {ex.Message}");
                         throw;
+                    }
+                }
+
+                if ((sd.Differential != null) &&
+                    (sd.Differential.Element != null) &&
+                    (sd.Differential.Element.Count > 0) &&
+                    (sd.Differential.Element[0].Constraint != null) &&
+                    (sd.Differential.Element[0].Constraint.Count > 0))
+                {
+                    foreach (fhir_3.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
+                    {
+                        complex.AddConstraint(new FhirConstraint(
+                            con.Key,
+                            con.Severity,
+                            con.Human,
+                            con.Expression,
+                            con.Xpath));
                     }
                 }
 

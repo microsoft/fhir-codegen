@@ -236,7 +236,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             _valueList = values.Values.ToList<FhirConcept>();
-            _valueList.Sort((a, b) => string.CompareOrdinal(a.SystemAndCode(), b.SystemAndCode()));
         }
 
         /// <summary>Removes the code system.</summary>

@@ -657,9 +657,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     string.Empty,
                     name,
                     null,
+                    null,
                     type,
                     string.Empty,
-                    false));
+                    false,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty));
         }
 
         /// <summary>Recursively adds a resource or type to the export set.</summary>

@@ -239,6 +239,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     expansionContains);
             }
 
+            if ((includes == null) &&
+                (expansion == null) &&
+                (vs.CodeSystem != null) &&
+                (vs.CodeSystem.Concept != null))
+            {
+                includes = new List<FhirValueSetComposition>();
+
+                List<FhirConcept> concepts = new List<FhirConcept>();
+
+                foreach (fhir_2.ValueSetCodeSystemConcept concept in vs.CodeSystem.Concept)
+                {
+                    concepts.Add(new FhirConcept(
+                        vs.CodeSystem.System,
+                        concept.Code,
+                        concept.Display,
+                        vs.CodeSystem.Version,
+                        concept.Definition));
+                }
+
+                FhirValueSetComposition comp = new FhirValueSetComposition(
+                    vs.CodeSystem.System,
+                    vs.CodeSystem.Version,
+                    concepts,
+                    null,
+                    null);
+
+                includes.Add(comp);
+            }
+
             if (string.IsNullOrEmpty(vs.Url))
             {
                 return;
@@ -557,9 +586,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string.Empty,
                 sp.Code,
                 resourceList,
+                sp.Target,
                 sp.Type,
                 sp.Status,
-                sp.Experimental == true);
+                sp.Experimental == true,
+                sp.Xpath,
+                sp.XpathUsage,
+                string.Empty);
 
             // add our parameter
             fhirVersionInfo.AddSearchParameter(param);
@@ -602,7 +635,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     break;
 
                 case "resource":
-                    if (string.IsNullOrEmpty(sd.ConstrainedType))
+                    if (string.IsNullOrEmpty(sd.ConstrainedType) ||
+                        (sd.ConstrainedType == "Quantity"))
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Resource);
                     }
@@ -844,7 +878,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     definition,
                     string.Empty,
                     null,
-                    contextElements);
+                    contextElements,
+                    sd.Abstract);
 
                 // check for a base definition
                 if (!string.IsNullOrEmpty(sd.Base))
@@ -1212,6 +1247,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         Console.WriteLine(string.Empty);
                         Console.WriteLine($"FromR4.ProcessComplex <<< element: {element.Path} ({element.Id}) - exception: {ex.Message}");
                         throw;
+                    }
+                }
+
+                if ((sd.Differential != null) &&
+                    (sd.Differential.Element != null) &&
+                    (sd.Differential.Element.Count > 0) &&
+                    (sd.Differential.Element[0].Constraint != null) &&
+                    (sd.Differential.Element[0].Constraint.Count > 0))
+                {
+                    foreach (fhir_2.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
+                    {
+                        complex.AddConstraint(new FhirConstraint(
+                            con.Key,
+                            con.Severity,
+                            con.Human,
+                            string.Empty,
+                            con.Xpath));
                     }
                 }
 

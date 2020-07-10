@@ -30,16 +30,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
 
-        /// <summary>List of types of the exported resource names ands.</summary>
-        private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
-
         /// <summary>Keep track of information about written value sets.</summary>
         private Dictionary<string, WrittenValueSetInfo> _writtenValueSets = new Dictionary<string, WrittenValueSetInfo>();
+
+        /// <summary>The split characters.</summary>
+        private static readonly char[] _splitChars = { '|', ' ' };
 
         /// <summary>The currently in-use text writer.</summary>
         private ExportStreamWriter _writer;
 
-        /// <summary>The information writer (Template-Model.cs).</summary>
+        /// <summary>The model writer.</summary>
         private ExportStreamWriter _modelWriter;
 
         /// <summary>Pathname of the export directory.</summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "integer", "int?" },
             { "integer64", "long" },
             { "markdown", "string" },
-            { "narrative", "string" },
+            { "Narrative", "string" },
             { "oid", "string" },
             { "positiveInt", "int?" },
             { "string", "string" },
@@ -99,6 +99,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Narrative",
             "Resource",
             "xhtml",
+        };
+
+        /// <summary>List of types which cannot be found for ModelInfo.cs (not exported elsewhere).</summary>
+        private static readonly List<string> _dictionaryMissingTypes = new List<string>()
+        {
+            "Element",
+            "Extension",
+            "Narrative",
+            "xhtml",
+        };
+
+        /// <summary>List of resources which cannot be found for ModelInfo.cs (not exported elsewhere).</summary>
+        private static readonly List<string> _dictionaryMissingResources = new List<string>()
+        {
+            "DomainResource",
+            "Resource",
         };
 
         /// <summary>Gets the reserved words.</summary>
@@ -245,7 +261,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string exportDirectory)
         {
             // set internal vars so we don't pass them to every function
-            // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info
             _info = info;
             _options = options;
             _exportDirectory = exportDirectory;
@@ -253,6 +268,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _headerUserName = Environment.UserName;
             _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
+
+            Dictionary<string, WrittenModelInfo> writtenPrimitives = new Dictionary<string, WrittenModelInfo>();
+            Dictionary<string, WrittenModelInfo> writtenComplexTypes = new Dictionary<string, WrittenModelInfo>();
+            Dictionary<string, WrittenModelInfo> writtenResources = new Dictionary<string, WrittenModelInfo>();
 
             string infoFilename = Path.Combine(_exportDirectory, "Template-Model.cs");
 
@@ -267,10 +286,383 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _modelWriter.WriteLineIndented("// Generated items");
 
-                WritePrimitiveTypes(_info.PrimitiveTypes.Values);
+                WritePrimitiveTypes(_info.PrimitiveTypes.Values, ref writtenPrimitives);
 
-                WriteComplexDataTypes(_info.ComplexTypes.Values);
+                WriteComplexDataTypes(_info.ComplexTypes.Values, ref writtenComplexTypes);
+
+                WriteResources(_info.Resources.Values, ref writtenResources);
             }
+
+            WriteModelInfo(writtenPrimitives, writtenComplexTypes, writtenResources);
+        }
+
+        /// <summary>Writes a model information.</summary>
+        /// <param name="writtenPrimitives">   The written primitives.</param>
+        /// <param name="writtenComplexTypes">List of types of the written complexes.</param>
+        /// <param name="writtenResources">   The written resources.</param>
+        private void WriteModelInfo(
+            Dictionary<string, WrittenModelInfo> writtenPrimitives,
+            Dictionary<string, WrittenModelInfo> writtenComplexTypes,
+            Dictionary<string, WrittenModelInfo> writtenResources)
+        {
+            string filename = Path.Combine(_exportDirectory, "Template-ModelInfo.cs");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteGenerationComment();
+
+                _writer.WriteLineIndented("using System;");
+                _writer.WriteLineIndented("using System.Collections.Generic;");
+                _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
+                _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
+                _writer.WriteLineIndented("using System.Linq;");
+                _writer.WriteLineIndented("using System.Runtime.Serialization;");
+                _writer.WriteLine(string.Empty);
+
+                WriteCopyright();
+
+                WriteNamespaceOpen();
+
+                WriteIndentedComment(
+                    "A class with methods to retrieve information about the\n" +
+                    "FHIR definitions based on which this assembly was generated.");
+
+                _writer.WriteLineIndented("public static partial class ModelInfo");
+
+                // open class
+                OpenScope();
+
+                WriteSupportedResources(writtenResources);
+
+                WriteFhirVersion();
+
+                WriteFhirToCs(writtenPrimitives, writtenComplexTypes, writtenResources);
+                WriteCsToFhir(writtenPrimitives, writtenComplexTypes, writtenResources);
+
+                WriteSearchParameters();
+
+                // close class
+                CloseScope();
+
+                WriteNamespaceClose();
+            }
+        }
+
+        /// <summary>Writes the search parameters.</summary>
+        private void WriteSearchParameters()
+        {
+            _writer.WriteLineIndented("public static List<SearchParamDefinition> SearchParameters = new List<SearchParamDefinition>()");
+            OpenScope();
+
+            foreach (FhirComplex complex in _info.Resources.Values)
+            {
+                if (complex.SearchParameters == null)
+                {
+                    continue;
+                }
+
+                foreach (FhirSearchParam sp in complex.SearchParameters.Values.OrderBy(s => s.Name))
+                {
+                    string description;
+
+                    if ((!string.IsNullOrEmpty(sp.Description)) &&
+                        sp.Description.StartsWith("Multiple", StringComparison.Ordinal))
+                    {
+                        description = string.Empty;
+                    }
+                    else
+                    {
+                        description = sp.Description;
+                    }
+
+                    string searchType = sp.ValueType;
+
+                    switch (searchType)
+                    {
+                        case "number":
+                            searchType = "Number";
+                            break;
+                        case "date":
+                            searchType = "Date";
+                            break;
+                        case "string":
+                            searchType = "String";
+                            break;
+                        case "token":
+                            searchType = "Token";
+                            break;
+                        case "reference":
+                            searchType = "Reference";
+                            break;
+                        case "composite":
+                            searchType = "Composite";
+                            break;
+                        case "quantity":
+                            searchType = "Quantity";
+                            break;
+                        case "uri":
+                            searchType = "Uri";
+                            break;
+                        case "special":
+                            searchType = "Special";
+                            break;
+                    }
+
+                    string path = string.Empty;
+
+                    if (!string.IsNullOrEmpty(sp.XPath))
+                    {
+                        string temp = sp.XPath.Replace("f:", string.Empty).Replace('/', '.').Replace('(', '[').Replace(')', ']');
+
+                        IEnumerable<string> split = temp
+                            .Split(_splitChars, StringSplitOptions.RemoveEmptyEntries)
+                            .Where(s => s.StartsWith(complex.Name + ".", StringComparison.Ordinal));
+
+                        path = "\"" + string.Join("\", \"", split) + "\", ";
+                    }
+
+                    string target;
+
+                    if ((sp.Targets == null) || (sp.Targets.Count == 0))
+                    {
+                        target = string.Empty;
+                    }
+                    else
+                    {
+                        SortedSet<string> sc = new SortedSet<string>();
+
+                        foreach (string t in sp.Targets)
+                        {
+                            sc.Add("ResourceType." + t);
+                        }
+
+                        target = ", Target = new ResourceType[] { " + string.Join(", ", sc) + ", }";
+                    }
+
+                    string xpath;
+                    if (string.IsNullOrEmpty(sp.XPath))
+                    {
+                        xpath = string.Empty;
+                    }
+                    else
+                    {
+                        xpath = ", XPath = \"" + sp.XPath + "\"";
+                    }
+
+                    string expression;
+
+                    if (string.IsNullOrEmpty(sp.Expression))
+                    {
+                        expression = string.Empty;
+                    }
+                    else
+                    {
+                        expression = ", Expression = \"" + sp.Expression + "\"";
+                    }
+
+                    _writer.WriteLineIndented(
+                        $"new SearchParamDefinition() " +
+                            $"{{" +
+                            $" Resource = \"{complex.Name}\"," +
+                            $" Name = \"{sp.Name}\"," +
+                            $" Description = new Markdown(@\"{SanitizeForMarkdown(description)}\")," +
+                            $" Type = SearchParamType.{searchType}," +
+                            $" Path = new string[] {{ {path}}}" +
+                            target +
+                            xpath +
+                            expression +
+                            $", Url = \"{sp.URL}\"" +
+                            $" }},");
+                }
+            }
+
+            CloseScope(true);
+        }
+
+        /// <summary>Sanitize for markdown.</summary>
+        /// <param name="value">The value.</param>
+        private static string SanitizeForMarkdown(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+
+            return value.Replace("\"", "\"\"").Replace("\r", @"\r").Replace("\n", @"\n");
+        }
+
+        /// <summary>Writes the C# to FHIR map dictionary.</summary>
+        /// <param name="writtenPrimitives">  The written primitives.</param>
+        /// <param name="writtenComplexTypes">List of types of the written complexes.</param>
+        /// <param name="writtenResources">   The written resources.</param>
+        private void WriteCsToFhir(
+            Dictionary<string, WrittenModelInfo> writtenPrimitives,
+            Dictionary<string, WrittenModelInfo> writtenComplexTypes,
+            Dictionary<string, WrittenModelInfo> writtenResources)
+        {
+            Dictionary<string, WrittenModelInfo> types = new Dictionary<string, WrittenModelInfo>();
+
+            _writer.WriteLineIndented("public static Dictionary<Type,string> FhirCsTypeToFhir = new Dictionary<Type,string>()");
+            OpenScope();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenPrimitives)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenComplexTypes)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            AddMissingModels(ref types, _dictionaryMissingTypes);
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
+            {
+                if (kvp.Value.FhirName == "xhtml")
+                {
+                    continue;
+                }
+
+                _writer.WriteLineIndented($"{{ typeof({kvp.Value.CsName}), \"{kvp.Value.FhirName}\" }},");
+            }
+
+            _writer.WriteLine(string.Empty);
+
+            types.Clear();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenResources)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            AddMissingModels(ref types, _dictionaryMissingResources);
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
+            {
+                _writer.WriteLineIndented($"{{ typeof({kvp.Value.CsName}), \"{kvp.Value.FhirName}\" }},");
+            }
+
+            CloseScope(true);
+        }
+
+        /// <summary>Information for FHIR type.</summary>
+        /// <param name="fhirName">Name of the FHIR.</param>
+        /// <returns>A WrittenModelInfo.</returns>
+        private static WrittenModelInfo InfoForFhirType(string fhirName)
+        {
+            string csName;
+
+            if (_typeNameMappings.ContainsKey(fhirName))
+            {
+                csName = $"{_namespace}.{_typeNameMappings[fhirName]}";
+            }
+            else
+            {
+                csName = $"{_namespace}.{fhirName}";
+            }
+
+            return new WrittenModelInfo()
+            {
+                FhirName = fhirName,
+                CsName = csName,
+            };
+        }
+
+        /// <summary>Adds a missing models to a dictionary.</summary>
+        /// <param name="types">        [in,out] The types.</param>
+        /// <param name="missingModels">The missing models.</param>
+        private static void AddMissingModels(
+            ref Dictionary<string, WrittenModelInfo> types,
+            List<string> missingModels)
+        {
+            foreach (string type in missingModels)
+            {
+                if (types.ContainsKey(type))
+                {
+                    continue;
+                }
+
+                types.Add(type, InfoForFhirType(type));
+            }
+        }
+
+        /// <summary>Writes the FHIR to C# map dictionary.</summary>
+        /// <param name="writtenPrimitives">  The written primitives.</param>
+        /// <param name="writtenComplexTypes">List of types of the written complexes.</param>
+        /// <param name="writtenResources">   The written resources.</param>
+        private void WriteFhirToCs(
+            Dictionary<string, WrittenModelInfo> writtenPrimitives,
+            Dictionary<string, WrittenModelInfo> writtenComplexTypes,
+            Dictionary<string, WrittenModelInfo> writtenResources)
+        {
+            Dictionary<string, WrittenModelInfo> types = new Dictionary<string, WrittenModelInfo>();
+
+            _writer.WriteLineIndented("public static Dictionary<string,Type> FhirTypeToCsType = new Dictionary<string,Type>()");
+            OpenScope();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenPrimitives)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenComplexTypes)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            AddMissingModels(ref types, _dictionaryMissingTypes);
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
+            {
+                _writer.WriteLineIndented($"{{ \"{kvp.Value.FhirName}\", typeof({kvp.Value.CsName}) }},");
+            }
+
+            _writer.WriteLine(string.Empty);
+
+            types.Clear();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenResources)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            AddMissingModels(ref types, _dictionaryMissingResources);
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
+            {
+                _writer.WriteLineIndented($"{{ \"{kvp.Value.FhirName}\", typeof({kvp.Value.CsName}) }},");
+            }
+
+            CloseScope(true);
+        }
+
+        /// <summary>Writes the FHIR version.</summary>
+        private void WriteFhirVersion()
+        {
+            _writer.WriteLineIndented("public static string Version");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return \"{_info.VersionString}\"; }}");
+            CloseScope();
+        }
+
+        /// <summary>Writes the supported resources dictionary.</summary>
+        /// <param name="writtenResources">The written resources.</param>
+        private void WriteSupportedResources(
+            Dictionary<string, WrittenModelInfo> writtenResources)
+        {
+            _writer.WriteLineIndented("public static List<string> SupportedResources = new List<string>()");
+            OpenScope();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenResources.OrderBy(s => s.Key))
+            {
+                _writer.WriteLineIndented($"\"{kvp.Value.FhirName}\",");
+            }
+
+            CloseScope(true);
         }
 
         /// <summary>Writes the common enums.</summary>
@@ -296,7 +688,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             continue;
                         }
 
-                        WriteValueSet(vs, string.Empty);
+                        WriteEnum(vs, string.Empty);
 
                         _modelWriter.WriteLineIndented($"// Generated Shared Enumeration: {_writtenValueSets[vs.URL].ValueSetName} ({vs.URL})");
                         _modelWriter.IncreaseIndent();
@@ -324,9 +716,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes the complex data types.</summary>
-        /// <param name="complexes">The complex data types.</param>
-        private void WriteComplexDataTypes(
-            IEnumerable<FhirComplex> complexes)
+        /// <param name="complexes">    The complex data types.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
+        private void WriteResources(
+            IEnumerable<FhirComplex> complexes,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             foreach (FhirComplex complex in complexes.OrderBy(c => c.Name))
             {
@@ -335,16 +729,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WriteComplexDataType(complex);
+                WriteResource(complex, ref writtenModels);
             }
         }
 
         /// <summary>Writes a complex data type.</summary>
-        /// <param name="complex">The complex data type.</param>
-        private void WriteComplexDataType(
-            FhirComplex complex)
+        /// <param name="complex">      The complex data type.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
+        private void WriteResource(
+            FhirComplex complex,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+
+            writtenModels.Add(
+                complex.Name,
+                new WrittenModelInfo()
+                {
+                    FhirName = complex.Name,
+                    CsName = $"{_namespace}.{exportName}",
+                });
 
             string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
 
@@ -359,7 +763,68 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteNamespaceOpen();
 
-                WriteComponent(complex, exportName);
+                WriteComponent(complex, exportName, true, 0);
+
+                WriteNamespaceClose();
+
+                WriteFooter();
+            }
+        }
+
+        /// <summary>Writes the complex data types.</summary>
+        /// <param name="complexes">    The complex data types.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
+        private void WriteComplexDataTypes(
+            IEnumerable<FhirComplex> complexes,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
+        {
+            foreach (FhirComplex complex in complexes.OrderBy(c => c.Name))
+            {
+                if (_exclusionSet.Contains(complex.Name))
+                {
+                    continue;
+                }
+
+                WriteComplexDataType(complex, ref writtenModels);
+            }
+        }
+
+        /// <summary>Writes a complex data type.</summary>
+        /// <param name="complex">      The complex data type.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
+        private void WriteComplexDataType(
+            FhirComplex complex,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
+        {
+            string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+
+            if (_typeNameMappings.ContainsKey(exportName))
+            {
+                exportName = _typeNameMappings[exportName];
+            }
+
+            writtenModels.Add(
+                complex.Name,
+                new WrittenModelInfo()
+                {
+                    FhirName = complex.Name,
+                    CsName = $"{_namespace}.{exportName}",
+                });
+
+            string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
+
+            _modelWriter.WriteLineIndented($"// {exportName}.cs");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteHeaderComplexDataType();
+
+                WriteNamespaceOpen();
+
+                WriteComponent(complex, exportName, false, 0);
 
                 WriteNamespaceClose();
 
@@ -370,38 +835,73 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a component.</summary>
         /// <param name="complex">   The complex data type.</param>
         /// <param name="exportName">Name of the export.</param>
+        /// <param name="isResource">True if is resource, false if not.</param>
+        /// <param name="depth">     The depth.</param>
         private void WriteComponent(
             FhirComplex complex,
-            string exportName)
+            string exportName,
+            bool isResource,
+            int depth)
         {
+            List<WrittenElementInfo> exportedElements = new List<WrittenElementInfo>();
+
             WriteIndentedComment($"{complex.ShortDescription}");
 
-            _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
-            _writer.WriteLineIndented("[DataContract]");
+            if (!complex.IsAbstract)
+            {
+                if (isResource)
+                {
+                    _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\", IsResource=true)]");
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
+                }
+            }
+
+            string abstractFlag = complex.IsAbstract ? " abstract" : string.Empty;
 
             switch (complex.BaseTypeName)
             {
+                case "Quantity":
+                    WriteConstrainedQuantity(complex, exportName, depth);
+                    return;
+
+                case "BackboneElement":
                 case "BackboneType":
+                    _writer.WriteLineIndented("[DataContract]");
                     _writer.WriteLineIndented(
-                        $"public partial class" +
+                        $"public{abstractFlag} partial class" +
                             $" {exportName}" +
                             $" : {_namespace}.BackboneElement," +
                             $" System.ComponentModel.INotifyPropertyChanged");
                     break;
 
                 case "DataType":
+                    _writer.WriteLineIndented("[DataContract]");
                     _writer.WriteLineIndented(
-                        $"public partial class" +
+                        $"public{abstractFlag} partial class" +
                             $" {exportName}" +
                             $" : {_namespace}.Element," +
                             $" System.ComponentModel.INotifyPropertyChanged");
                     break;
 
+                case "Resource":
+                case "DomainResource":
+                    _writer.WriteLineIndented("[DataContract]");
+                    _writer.WriteLineIndented(
+                        $"public{abstractFlag} partial class" +
+                            $" {exportName}" +
+                            $" : {_namespace}.{complex.BaseTypeName}," +
+                            $" System.ComponentModel.INotifyPropertyChanged");
+                    break;
+
                 default:
+                    _writer.WriteLineIndented("[DataContract]");
                     if (_info.HasComplex(complex.BaseTypeName))
                     {
                         _writer.WriteLineIndented(
-                            $"public partial class" +
+                            $"public{abstractFlag} partial class" +
                                 $" {exportName}" +
                                 $" : {_namespace}.{complex.BaseTypeName}," +
                                 $" System.ComponentModel.INotifyPropertyChanged");
@@ -409,7 +909,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     else
                     {
                         _writer.WriteLineIndented(
-                            $"public partial class" +
+                            $"public{abstractFlag} partial class" +
                                 $" {exportName}" +
                                 $" : {_namespace}.Element," +
                                 $" System.ComponentModel.INotifyPropertyChanged");
@@ -421,7 +921,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // open class
             OpenScope();
 
-            WritePropertyTypeName(complex.Name);
+            WritePropertyTypeName(complex.Name, isResource, depth);
+
+            if (!string.IsNullOrEmpty(complex.ValidationRegEx))
+            {
+                WriteIndentedComment(
+                    $"Must conform to pattern \"{complex.ValidationRegEx}\"",
+                    false);
+
+                _writer.WriteLineIndented($"public const string PATTERN = @\"{complex.ValidationRegEx}\";");
+
+                _writer.WriteLine(string.Empty);
+            }
+
+            WriteEnums(complex, exportName);
 
             // check for nested components
             if (complex.Components != null)
@@ -429,12 +942,297 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 foreach (FhirComplex component in complex.Components.Values)
                 {
                     string componentName = $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
-                    WriteBackboneComponent(component, componentName);
+                    WriteBackboneComponent(component, componentName, isResource, depth + 1);
                 }
             }
 
-            WriteEnums(complex, exportName);
-            WriteElements(complex);
+            WriteElements(complex, isResource, ref exportedElements);
+
+            if (isResource)
+            {
+                WriteConstraints(complex, exportName);
+            }
+
+            if (exportedElements.Count > 0)
+            {
+                WriteCopyTo(exportName, exportedElements);
+                WriteDeepCopy(exportName);
+                WriteMatches(exportName, exportedElements);
+                WriteIsExactly(exportName, exportedElements);
+                WriteChildren(exportedElements);
+                WriteNamedChildren(exportedElements);
+            }
+
+            // close class
+            CloseScope();
+        }
+
+        /// <summary>Writes the children of this item.</summary>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteNamedChildren(
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("public override IEnumerable<ElementValue> NamedChildren");
+            OpenScope();
+            _writer.WriteLineIndented("get");
+            OpenScope();
+            _writer.WriteLineIndented($"foreach (var item in base.NamedChildren) yield return item;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                if (info.IsList)
+                {
+                    _writer.WriteLineIndented(
+                        $"foreach (var elem in {info.ExportedName})" +
+                            $" {{ if (elem != null)" +
+                            $" yield return new ElementValue(\"{info.FhirElementName}\", elem);" +
+                            $" }}");
+                }
+                else
+                {
+                    _writer.WriteLineIndented(
+                        $"if ({info.ExportedName} != null)" +
+                            $" yield return new ElementValue(\"{info.FhirElementName}\", {info.ExportedName});");
+                }
+            }
+
+            CloseScope();
+            CloseScope();
+        }
+
+        /// <summary>Writes the children of this item.</summary>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteChildren(
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("public override IEnumerable<Base> Children");
+            OpenScope();
+            _writer.WriteLineIndented("get");
+            OpenScope();
+            _writer.WriteLineIndented($"foreach (var item in base.Children) yield return item;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                if (info.IsList)
+                {
+                    _writer.WriteLineIndented(
+                        $"foreach (var elem in {info.ExportedName})" +
+                            $" {{ if (elem != null) yield return elem; }}");
+                }
+                else
+                {
+                    _writer.WriteLineIndented(
+                        $"if ({info.ExportedName} != null)" +
+                            $" yield return {info.ExportedName};");
+                }
+            }
+
+            CloseScope();
+            CloseScope();
+        }
+
+        /// <summary>Writes the matches.</summary>
+        /// <param name="exportName">      Name of the export.</param>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteMatches(
+            string exportName,
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("public override bool Matches(IDeepComparable other)");
+            OpenScope();
+            _writer.WriteLineIndented($"var otherT = other as {exportName};");
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("if (otherT == null) return false;");
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("if (!base.Matches(otherT)) return false;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                _writer.WriteLineIndented(
+                    $"if (!DeepComparable.Matches({info.ExportedName}, otherT.{info.ExportedName}))" +
+                        $" return false;");
+            }
+
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("return true;");
+
+            CloseScope();
+        }
+
+        /// <summary>Writes the is exactly.</summary>
+        /// <param name="exportName">      Name of the export.</param>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteIsExactly(
+            string exportName,
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("public override bool IsExactly(IDeepComparable other)");
+            OpenScope();
+            _writer.WriteLineIndented($"var otherT = other as {exportName};");
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("if (otherT == null) return false;");
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("if (!base.IsExactly(otherT)) return false;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                _writer.WriteLineIndented(
+                    $"if (!DeepComparable.IsExactly({info.ExportedName}, otherT.{info.ExportedName}))" +
+                        $" return false;");
+            }
+
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("return true;");
+
+            CloseScope();
+        }
+
+        /// <summary>Writes a copy to.</summary>
+        /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+        ///  illegal values.</exception>
+        /// <param name="exportName">      Name of the export.</param>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteCopyTo(
+            string exportName,
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("public override IDeepCopyable CopyTo(IDeepCopyable other)");
+            OpenScope();
+            _writer.WriteLineIndented($"var dest = other as {exportName};");
+            _writer.WriteLine(string.Empty);
+
+            _writer.WriteLineIndented("if (dest == null)");
+            OpenScope();
+            _writer.WriteLineIndented("throw new ArgumentException(\"Can only copy to an object of the same type\", \"other\");");
+            CloseScope();
+
+            _writer.WriteLineIndented("base.CopyTo(dest);");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                if (info.IsList)
+                {
+                    _writer.WriteLineIndented(
+                        $"if ({info.ExportedName} != null)" +
+                            $" dest.{info.ExportedName} = new {info.ExportedType}({info.ExportedName}.DeepCopy());");
+                }
+                else
+                {
+                    _writer.WriteLineIndented(
+                        $"if ({info.ExportedName} != null)" +
+                            $" dest.{info.ExportedName} = ({info.ExportedType}){info.ExportedName}.DeepCopy();");
+                }
+            }
+
+            _writer.WriteLineIndented("return dest;");
+
+            CloseScope();
+        }
+
+        /// <summary>Writes a deep copy.</summary>
+        /// <param name="exportName">Name of the export.</param>
+        private void WriteDeepCopy(
+            string exportName)
+        {
+            _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
+            OpenScope();
+            _writer.WriteLineIndented($"return CopyTo(new {exportName}());");
+            CloseScope();
+        }
+
+        /// <summary>Sanitize for quoting.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>A string.</returns>
+        private static string SanitizeForQuote(string value)
+        {
+            return value.Replace("\\", "\\\\").Replace("\"", "\\\"");
+        }
+
+        /// <summary>Writes the constraints.</summary>
+        /// <param name="complex">   The complex data type.</param>
+        /// <param name="exportName">Name of the export.</param>
+        private void WriteConstraints(
+            FhirComplex complex,
+            string exportName)
+        {
+            List<string> constraintNames = new List<string>();
+
+            if (complex.Constraints != null)
+            {
+                foreach (FhirConstraint constraint in complex.Constraints)
+                {
+                    string name = $"{exportName}_{constraint.Key.Replace('-', '_').ToUpperInvariant()}";
+
+                    constraintNames.Add(name);
+
+                    _writer.WriteLineIndented($"public static" +
+                        $" ElementDefinition.ConstraintComponent {name}" +
+                        $" = new ElementDefinition.ConstraintComponent()");
+
+                    OpenScope();
+                    _writer.WriteLineIndented($"Expression = \"{SanitizeForQuote(constraint.Expression)}\",");
+                    _writer.WriteLineIndented($"Key = \"{constraint.Key}\",");
+
+                    if (constraint.Severity == "Error")
+                    {
+                        _writer.WriteLineIndented("Severity = ElementDefinition.ConstraintSeverity.Error,");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented("Severity = ElementDefinition.ConstraintSeverity.Warning,");
+                    }
+
+                    _writer.WriteLineIndented($"Human = \"{SanitizeForQuote(constraint.Description)}\",");
+                    _writer.WriteLineIndented($"Xpath = \"{SanitizeForQuote(constraint.XPath)}\"");
+
+                    CloseScope(true);
+                }
+            }
+
+            _writer.WriteLineIndented("public override void AddDefaultConstraints()");
+            OpenScope();
+            _writer.WriteLineIndented("base.AddDefaultConstraints();");
+            _writer.WriteLine(string.Empty);
+
+            if (constraintNames.Count > 0)
+            {
+                foreach (string name in constraintNames)
+                {
+                    _writer.WriteLineIndented($"InvariantConstraints.Add({name});");
+                }
+            }
+
+            CloseScope();
+        }
+
+        /// <summary>Writes a constrained quantity.</summary>
+        /// <param name="complex">   The complex data type.</param>
+        /// <param name="exportName">Name of the export.</param>
+        /// <param name="depth">     The depth.</param>
+        private void WriteConstrainedQuantity(
+            FhirComplex complex,
+            string exportName,
+            int depth)
+        {
+            _writer.WriteLineIndented(
+                $"public partial class" +
+                    $" {exportName}" +
+                    $" : Quantity");
+
+            // open class
+            OpenScope();
+
+            WritePropertyTypeName(complex.Name, false, depth);
+
+            _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
+            OpenScope();
+            _writer.WriteLineIndented($"return CopyTo(new {exportName}());");
+            CloseScope();
+
+            _writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
+            WriteIndentedComment(complex.Purpose, false);
 
             // close class
             CloseScope();
@@ -443,10 +1241,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a component.</summary>
         /// <param name="complex">   The complex data type.</param>
         /// <param name="exportName">Name of the export.</param>
+        /// <param name="isResource">True if is resource, false if not.</param>
+        /// <param name="depth">     The depth.</param>
         private void WriteBackboneComponent(
             FhirComplex complex,
-            string exportName)
+            string exportName,
+            bool isResource,
+            int depth)
         {
+            List<WrittenElementInfo> exportedElements = new List<WrittenElementInfo>();
+
             WriteIndentedComment($"{complex.ShortDescription}");
 
             _writer.WriteLineIndented($"[FhirType(\"{exportName}\", NamedBackboneElement=true)]");
@@ -455,14 +1259,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented(
                 $"public partial class" +
                     $" {exportName}" +
-                    $" : {_namespace}.Element," +
+                    $" : {_namespace}.BackboneElement," +
                     $" System.ComponentModel.INotifyPropertyChanged," +
                     $" IBackboneElement");
 
             // open class
             OpenScope();
 
-            WritePropertyTypeName(exportName);
+            WritePropertyTypeName(exportName, false, depth);
 
             // check for nested components
             if (complex.Components != null)
@@ -470,12 +1274,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 foreach (FhirComplex component in complex.Components.Values)
                 {
                     string componentName = $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
-                    WriteBackboneComponent(component, componentName);
+                    WriteBackboneComponent(component, componentName, isResource, depth + 1);
                 }
             }
 
-            WriteEnums(complex, exportName);
-            WriteElements(complex);
+            WriteElements(complex, isResource, ref exportedElements);
+
+            WriteDeepCopy(exportName);
+
+            if (exportedElements.Count > 0)
+            {
+                WriteCopyTo(exportName, exportedElements);
+                WriteMatches(exportName, exportedElements);
+                WriteIsExactly(exportName, exportedElements);
+                WriteChildren(exportedElements);
+                WriteNamedChildren(exportedElements);
+            }
 
             // close class
             CloseScope();
@@ -488,22 +1302,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex complex,
             string className)
         {
-            foreach (FhirElement element in complex.Elements.Values)
+            if (complex.Elements != null)
             {
-                if ((!string.IsNullOrEmpty(element.ValueSet)) &&
-                    _info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+                foreach (FhirElement element in complex.Elements.Values)
                 {
-                    WriteValueSet(vs, className);
+                    if ((!string.IsNullOrEmpty(element.ValueSet)) &&
+                        _info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+                    {
+                        WriteEnum(vs, className);
 
-                    continue;
+                        continue;
+                    }
+                }
+            }
+
+            if (complex.Components != null)
+            {
+                foreach (FhirComplex component in complex.Components.Values)
+                {
+                    WriteEnums(component, className);
                 }
             }
         }
 
-        /// <summary>Writes a value set.</summary>
+        /// <summary>Writes a value set as an enum.</summary>
         /// <param name="vs">       The vs.</param>
         /// <param name="className">Name of the class this enum is being written in.</param>
-        private void WriteValueSet(
+        private void WriteEnum(
             FhirValueSet vs,
             string className)
         {
@@ -534,13 +1359,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             HashSet<string> usedValues = new HashSet<string>();
 
-            foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
+            foreach (FhirConcept concept in vs.Concepts)
             {
                 string codeName = FhirUtils.SanitizeForProperty(concept.Code, _reservedWords);
-                string pascal = FhirUtils.ToConvention(codeName, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+                string pascal = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
-                string comment = concept.Definition ?? "MISSING DESCRIPTION";
+                string comment = concept.Definition;
+                if (string.IsNullOrEmpty(comment))
+                {
+                    comment = "MISSING DESCRIPTION";
+                }
 
                 string display = FhirUtils.SanitizeForValue(concept.Display);
 
@@ -561,13 +1390,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
         }
 
-        /// <summary>Writes the elements.</summary>
-        /// <param name="complex">The complex data type.</param>
-        private void WriteElements(
-            FhirComplex complex)
+        /// <summary>Gets an order.</summary>
+        /// <param name="element">The element.</param>
+        private static int GetOrder(FhirElement element)
         {
-            int order = 30;
+            return (element.FieldOrder * 10) + 10;
+        }
 
+        /// <summary>Writes the elements.</summary>
+        /// <param name="complex">         The complex data type.</param>
+        /// <param name="isResource">      True if is resource, false if not.</param>
+        /// <param name="exportedElements">[in,out] The exported elements.</param>
+        private void WriteElements(
+            FhirComplex complex,
+            bool isResource,
+            ref List<WrittenElementInfo> exportedElements)
+        {
             foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.FieldOrder))
             {
                 if (element.IsInherited)
@@ -575,26 +1413,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                if (!string.IsNullOrEmpty(element.ValueSet))
+                string typeName = element.BaseTypeName;
+
+                if (string.IsNullOrEmpty(typeName) &&
+                    (element.ElementTypes.Count == 1))
                 {
-                    WriteCodedElement(complex, element, order);
-                    order += 10;
+                    typeName = element.ElementTypes.Values.First().Name;
+                }
+
+                // if (!string.IsNullOrEmpty(element.ValueSet))
+                if (typeName == "code")
+                {
+                    WriteCodedElement(element, ref exportedElements);
                     continue;
                 }
 
-                WriteElement(complex, element, order);
-                order += 10;
+                WriteElement(complex, element, ref exportedElements);
             }
         }
 
         /// <summary>Writes an element.</summary>
-        /// <param name="complex">The complex data type.</param>
-        /// <param name="element">The element.</param>
-        /// <param name="order">  The order.</param>
+        /// <param name="element">         The element.</param>
+        /// <param name="exportedElements">[in,out] The exported elements.</param>
         private void WriteCodedElement(
-            FhirComplex complex,
             FhirElement element,
-            int order)
+            ref List<WrittenElementInfo> exportedElements)
         {
             bool hasDefinedEnum = true;
             if (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
@@ -606,17 +1449,38 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteIndentedComment(element.ShortDescription);
 
-            string inSummary = element.IsSummary ? ", InSummary=true" : string.Empty;
+            BuildElementOptionals(
+                element,
+                out string summary,
+                out string choice,
+                out string allowedTypes,
+                out string resourceReferences);
 
-            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{inSummary}, Order={order})]");
-            _writer.WriteLineIndented("[DataMember]");
+            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice})]");
 
-            if (element.Path == "Address.use")
+            if (!string.IsNullOrEmpty(resourceReferences))
             {
-                Console.Write(string.Empty);
+                _writer.WriteLineIndented("[CLSCompliant(false)]");
+                _writer.WriteLineIndented(resourceReferences);
             }
 
+            if (!string.IsNullOrEmpty(allowedTypes))
+            {
+                _writer.WriteLineIndented("[CLSCompliant(false)]");
+                _writer.WriteLineIndented(allowedTypes);
+            }
+
+            if ((element.CardinalityMin != 0) ||
+                (element.CardinalityMax != 1))
+            {
+                _writer.WriteLineIndented($"[Cardinality(Min={element.CardinalityMin},Max={element.CardinalityMax})]");
+            }
+
+            _writer.WriteLineIndented("[DataMember]");
+
             string codeLiteral;
+            string enumClass;
+            string optional;
 
             if (hasDefinedEnum)
             {
@@ -626,45 +1490,133 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if (string.IsNullOrEmpty(vsClass))
                 {
                     codeLiteral = $"Code<{_namespace}.{vsName}>";
+                    enumClass = $"{_namespace}.{vsName}";
                 }
                 else
                 {
                     codeLiteral = $"Code<{_namespace}.{vsClass}.{vsName}>";
+                    enumClass = $"{_namespace}.{vsClass}.{vsName}";
                 }
+
+                optional = "?";
             }
             else
             {
                 codeLiteral = $"{_namespace}.Code";
+                enumClass = "string";
+                optional = string.Empty;
             }
 
-            _writer.WriteLineIndented($"public {codeLiteral} {pascal}Element");
-
-            OpenScope();
-            _writer.WriteLineIndented($"get {{ return _{pascal}Element; }}");
-            _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
-            CloseScope();
-
-            _writer.WriteLineIndented($"private {codeLiteral} _{pascal}Element;");
-
-            if (!hasDefinedEnum)
+            if (element.CardinalityMax == 1)
             {
-                WriteIndentedComment(element.ShortDescription);
-                _writer.WriteLineIndented("[NotMapped]");
-                _writer.WriteLineIndented("[IgnoreDataMember]");
+                exportedElements.Add(
+                    new WrittenElementInfo()
+                    {
+                        FhirElementName = element.Name,
+                        ExportedName = $"{pascal}Element",
+                        ExportedType = codeLiteral,
+                        IsList = false,
+                    });
 
-                _writer.WriteLineIndented($"public string {pascal}");
+                _writer.WriteLineIndented($"public {codeLiteral} {pascal}Element");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return _{pascal}Element; }}");
+                _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
+                CloseScope();
+
+                _writer.WriteLineIndented($"private {codeLiteral} _{pascal}Element;");
+                _writer.WriteLine(string.Empty);
+            }
+            else
+            {
+                exportedElements.Add(
+                    new WrittenElementInfo()
+                    {
+                        FhirElementName = element.Name,
+                        ExportedName = $"{pascal}Element",
+                        ExportedType = $"List<{codeLiteral}>",
+                        IsList = true,
+                    });
+
+                _writer.WriteLineIndented($"public List<{codeLiteral}> {pascal}Element");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ if (_{pascal}Element==null) _{pascal}Element = new List<{codeLiteral}>(); return _{pascal}Element; }}");
+                _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
+                CloseScope();
+
+                _writer.WriteLineIndented($"private List<{codeLiteral}> _{pascal}Element;");
+                _writer.WriteLine(string.Empty);
+            }
+
+            WriteIndentedComment(element.ShortDescription);
+            _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
+
+            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("[IgnoreDataMemberAttribute]");
+
+            if (element.CardinalityMax == 1)
+            {
+                _writer.WriteLineIndented($"public {enumClass}{optional} {pascal}");
+
                 OpenScope();
                 _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Value : null; }}");
                 _writer.WriteLineIndented("set");
                 OpenScope();
-                _writer.WriteLineIndented("if (value == null)");
+
+                if (string.IsNullOrEmpty(optional))
+                {
+                    _writer.WriteLineIndented($"if (value == null)");
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"if (!value.HasValue)");
+                }
+
                 _writer.IncreaseIndent();
                 _writer.WriteLineIndented($"{pascal}Element = null;");
                 _writer.DecreaseIndent();
                 _writer.WriteLineIndented("else");
                 _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = new {_namespace}.Code(value);");
+                _writer.WriteLineIndented($"{pascal}Element = new {codeLiteral}(value);");
                 _writer.DecreaseIndent();
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
+                CloseScope();
+                CloseScope();
+            }
+            else
+            {
+                _writer.WriteLineIndented($"public IEnumerable<{enumClass}{optional}> {pascal}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Select(elem => elem.Value) : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
+
+                if (element.CardinalityMin == 0)
+                {
+                    _writer.WriteLineIndented($"if (!value.HasValue)");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = new List<{enumClass}>(value.Select(elem => new {enumClass}(elem)));");
+                    _writer.DecreaseIndent();
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"if (value == null)");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = new {codeLiteral}(value);");
+                    _writer.DecreaseIndent();
+                }
+
                 _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
                 CloseScope();
                 CloseScope();
@@ -672,65 +1624,380 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes an element.</summary>
-        /// <param name="complex">The complex data type.</param>
-        /// <param name="element">The element.</param>
-        /// <param name="order">  The order.</param>
+        /// <param name="complex">         The complex data type.</param>
+        /// <param name="element">         The element.</param>
+        /// <param name="exportedElements">[in,out] The exported elements.</param>
         private void WriteElement(
             FhirComplex complex,
             FhirElement element,
-            int order)
+            ref List<WrittenElementInfo> exportedElements)
         {
-            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+            if (element.Path == "CodeSystem.concept.property.value")
+            {
+                Console.Write(string.Empty);
+            }
 
-            Dictionary<string, string> values = element.NamesAndTypesForExport(
-                FhirTypeBase.NamingConvention.PascalCase,
-                FhirTypeBase.NamingConvention.PascalCase,
-                false,
-                string.Empty,
-                complex.Components.ContainsKey(element.Path));
+            string name = element.Name;
+
+            if (name.Contains("[x]"))
+            {
+                name = name.Replace("[x]", string.Empty);
+            }
+
+            string pascal = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
 
             WriteIndentedComment(element.ShortDescription);
 
-            string inSummary = element.IsSummary ? ", InSummary=true" : string.Empty;
+            BuildElementOptionals(
+                element,
+                out string summary,
+                out string choice,
+                out string allowedTypes,
+                out string resourceReferences);
 
-            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{inSummary}, Order={order})]");
+            _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice})]");
+
+            if ((!string.IsNullOrEmpty(resourceReferences)) && string.IsNullOrEmpty(allowedTypes))
+            {
+                _writer.WriteLineIndented("[CLSCompliant(false)]");
+                _writer.WriteLineIndented(resourceReferences);
+            }
+
+            if (!string.IsNullOrEmpty(allowedTypes))
+            {
+                _writer.WriteLineIndented("[CLSCompliant(false)]");
+                _writer.WriteLineIndented(allowedTypes);
+            }
+
+            if ((element.CardinalityMin != 0) ||
+                (element.CardinalityMax != 1))
+            {
+                _writer.WriteLineIndented($"[Cardinality(Min={element.CardinalityMin},Max={element.CardinalityMax})]");
+            }
+
             _writer.WriteLineIndented("[DataMember]");
 
-            if (element.ElementTypes.Count == 1)
+            string type = string.Empty;
+
+            if (!string.IsNullOrEmpty(element.BaseTypeName))
             {
-                string name = element.ElementTypes.First().Value.Name;
-
-                if (_typeNameMappings.ContainsKey(name))
-                {
-                    name = _typeNameMappings[name];
-                }
-                else
-                {
-                    name = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
-                }
-
-                if (name == "Code")
-                {
-                    // TODO: left off here - next step is adding the generic to the code
-                }
-
-                _writer.WriteLineIndented($"public {_namespace}.{name} {pascal}Element");
+                type = element.BaseTypeName;
+            }
+            else if (!string.IsNullOrEmpty(choice))
+            {
+                type = "Element";
+            }
+            else if (element.ElementTypes.Count == 1)
+            {
+                type = element.ElementTypes.First().Value.Name;
             }
             else
             {
-                _writer.WriteLineIndented($"public {_namespace}.object {pascal}Element");
+                type = "object";
             }
 
-            OpenScope();
-            _writer.WriteLineIndented($"get {{ return _{pascal}Element; }}");
-            _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
-            CloseScope();
+            bool noElement = true;
+
+            if (complex.Components.ContainsKey(type))
+            {
+                StringBuilder sb = new StringBuilder();
+
+                string[] components = type.Split('.');
+
+                for (int i = 0; i < components.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        sb.Append(components[i]);
+                        continue;
+                    }
+
+                    sb.Append(".");
+                    sb.Append(FhirUtils.SanitizedToConvention(components[i], FhirTypeBase.NamingConvention.PascalCase));
+                    sb.Append("Component");
+                }
+
+                type = sb.ToString();
+            }
+
+            string nativeType = type;
+            string optional = string.Empty;
+
+            if (_primitiveTypeMap.ContainsKey(nativeType))
+            {
+                nativeType = _primitiveTypeMap[nativeType];
+
+                if (IsNullable(nativeType))
+                {
+                    optional = "?";
+                }
+
+                noElement = false;
+            }
+            else
+            {
+                nativeType = $"{_namespace}.{type}";
+            }
+
+            if (_typeNameMappings.ContainsKey(type))
+            {
+                type = _typeNameMappings[type];
+            }
+
+            string elementTag = noElement ? string.Empty : "Element";
+
+            if (element.CardinalityMax == 1)
+            {
+                exportedElements.Add(
+                    new WrittenElementInfo()
+                    {
+                        FhirElementName = element.Name,
+                        ExportedName = $"{pascal}{elementTag}",
+                        ExportedType = $"{_namespace}.{type}",
+                        IsList = false,
+                    });
+
+                _writer.WriteLineIndented($"public {_namespace}.{type} {pascal}{elementTag}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return _{pascal}{elementTag}; }}");
+                _writer.WriteLineIndented($"set {{ _{pascal}{elementTag} = value; OnPropertyChanged(\"{pascal}{elementTag}\"); }}");
+                CloseScope();
+
+                _writer.WriteLineIndented($"private {_namespace}.{type} _{pascal}{elementTag};");
+                _writer.WriteLine(string.Empty);
+            }
+            else
+            {
+                exportedElements.Add(
+                    new WrittenElementInfo()
+                    {
+                        FhirElementName = element.Name,
+                        ExportedName = $"{pascal}{elementTag}",
+                        ExportedType = $"List<{_namespace}.{type}>",
+                        IsList = true,
+                    });
+
+                _writer.WriteLineIndented($"public List<{_namespace}.{type}> {pascal}{elementTag}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ if (_{pascal}{elementTag}==null) _{pascal}{elementTag} = new List<{_namespace}.{type}>(); return _{pascal}{elementTag}; }}");
+                _writer.WriteLineIndented($"set {{ _{pascal}{elementTag} = value; OnPropertyChanged(\"{pascal}{elementTag}\"); }}");
+                CloseScope();
+
+                _writer.WriteLineIndented($"private List<{_namespace}.{type}> _{pascal}{elementTag};");
+                _writer.WriteLine(string.Empty);
+            }
+
+            if (noElement)
+            {
+                // only write the one field
+                return;
+            }
+
+            WriteIndentedComment(element.ShortDescription);
+            _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
+
+            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("[IgnoreDataMemberAttribute]");
+
+            if (element.CardinalityMax == 1)
+            {
+                _writer.WriteLineIndented($"public {nativeType}{optional} {pascal}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Value : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
+
+                if (string.IsNullOrEmpty(optional))
+                {
+                    _writer.WriteLineIndented($"if (value == null)");
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"if (!value.HasValue)");
+                }
+
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{pascal}Element = null;");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented("else");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{pascal}Element = new {nativeType}(value);");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
+                CloseScope();
+                CloseScope();
+            }
+            else
+            {
+                _writer.WriteLineIndented($"public IEnumerable<{nativeType}{optional}> {pascal}");
+
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Select(elem => elem.Value) : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
+
+                if (element.CardinalityMin == 0)
+                {
+                    if (string.IsNullOrEmpty(optional))
+                    {
+                        _writer.WriteLineIndented($"if (value == null)");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"if (!value.HasValue)");
+                    }
+
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = new List<{_namespace}.{type}>(value.Select(elem => new {_namespace}{type}(elem)));");
+                    _writer.DecreaseIndent();
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(optional))
+                    {
+                        _writer.WriteLineIndented($"if (value == null)");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"if (!value.HasValue)");
+                    }
+
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = null;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLineIndented("else");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"{pascal}Element = new {_namespace}{type}(value);");
+                    _writer.DecreaseIndent();
+                }
+
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
+                CloseScope();
+                CloseScope();
+            }
+        }
+
+        /// <summary>Builds element optional flags.</summary>
+        /// <param name="element">           The element.</param>
+        /// <param name="summary">           [out] The summary.</param>
+        /// <param name="choice">            [out] The choice.</param>
+        /// <param name="allowedTypes">      [out] List of types of the allowed.</param>
+        /// <param name="resourceReferences">[out] The resource references.</param>
+        private void BuildElementOptionals(
+            FhirElement element,
+            out string summary,
+            out string choice,
+            out string allowedTypes,
+            out string resourceReferences)
+        {
+            choice = string.Empty;
+            allowedTypes = string.Empty;
+            resourceReferences = string.Empty;
+
+            summary = element.IsSummary ? ", InSummary=true" : string.Empty;
+
+            if ((element.ElementTypes != null) &&
+                (element.ElementTypes.Count > 1))
+            {
+                string firstType = element.ElementTypes.First().Key;
+
+                if (_info.PrimitiveTypes.ContainsKey(firstType) ||
+                    _info.ComplexTypes.ContainsKey(firstType))
+                {
+                    choice = ", Choice=ChoiceType.DatatypeChoice";
+                }
+
+                if (_info.Resources.ContainsKey(firstType))
+                {
+                    choice = ", Choice=ChoiceType.ResourceChoice";
+                }
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append("[AllowedTypes(");
+
+                bool needsSep = false;
+                foreach (FhirElementType elementType in element.ElementTypes.Values)
+                {
+                    if (needsSep)
+                    {
+                        sb.Append(",");
+                    }
+
+                    needsSep = true;
+
+                    sb.Append("typeof(");
+                    sb.Append(_namespace);
+                    sb.Append(".");
+
+                    if (_typeNameMappings.ContainsKey(elementType.Name))
+                    {
+                        sb.Append(_typeNameMappings[elementType.Name]);
+                    }
+                    else
+                    {
+                        sb.Append(FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase));
+                    }
+
+                    sb.Append(")");
+                }
+
+                sb.Append(")]");
+                allowedTypes = sb.ToString();
+            }
+
+            if (element.ElementTypes != null)
+            {
+                foreach (FhirElementType elementType in element.ElementTypes.Values)
+                {
+                    if (elementType.Name == "Reference")
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("[References(");
+
+                        bool needsSep = false;
+                        foreach (FhirElementProfile profile in elementType.Profiles.Values)
+                        {
+                            if (needsSep)
+                            {
+                                sb.Append(",");
+                            }
+
+                            needsSep = true;
+
+                            sb.Append("\"");
+                            sb.Append(profile.Name);
+                            sb.Append("\"");
+                        }
+
+                        sb.Append(")]");
+                        resourceReferences = sb.ToString();
+
+                        break;
+                    }
+                }
+            }
         }
 
         /// <summary>Writes a property type name.</summary>
-        /// <param name="name">The name.</param>
-        private void WritePropertyTypeName(string name)
+        /// <param name="name">      The name.</param>
+        /// <param name="isResource">True if is resource, false if not.</param>
+        private void WritePropertyTypeName(string name, bool isResource, int depth)
         {
+            if (isResource && (depth == 0))
+            {
+                WriteIndentedComment("FHIR Resource Type");
+                _writer.WriteLineIndented("[NotMapped]");
+                _writer.WriteLineIndented($"public override ResourceType ResourceType {{ get {{ return ResourceType.{name}; }} }}");
+                _writer.WriteLine(string.Empty);
+            }
+
             WriteIndentedComment("FHIR Type Name");
 
             _writer.WriteLineIndented("[NotMapped]");
@@ -778,9 +2045,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes a primitive types.</summary>
-        /// <param name="primitives">The primitives.</param>
+        /// <param name="primitives">   The primitives.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
         private void WritePrimitiveTypes(
-            IEnumerable<FhirPrimitive> primitives)
+            IEnumerable<FhirPrimitive> primitives,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             foreach (FhirPrimitive primitive in primitives)
             {
@@ -789,14 +2058,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WritePrimitiveType(primitive);
+                WritePrimitiveType(primitive, ref writtenModels);
             }
         }
 
         /// <summary>Writes a primitive type.</summary>
-        /// <param name="primitive">The primitive.</param>
+        /// <param name="primitive">    The primitive.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
         private void WritePrimitiveType(
-            FhirPrimitive primitive)
+            FhirPrimitive primitive,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             string exportName;
             string typeName = primitive.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
@@ -809,6 +2080,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 exportName = primitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
             }
+
+            writtenModels.Add(
+                primitive.Name,
+                new WrittenModelInfo()
+                {
+                    FhirName = primitive.Name,
+                    CsName = $"{_namespace}.{exportName}",
+                });
 
             string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
 
@@ -844,7 +2123,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // open class
                 OpenScope();
 
-                WritePropertyTypeName(primitive.Name);
+                WritePropertyTypeName(primitive.Name, false, 0);
 
                 _writer.WriteLine(string.Empty);
 
@@ -1024,10 +2303,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Closes the scope.</summary>
-        private void CloseScope()
+        private void CloseScope(bool includeSemicolon = false)
         {
             _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
+
+            if (includeSemicolon)
+            {
+                _writer.WriteLineIndented("};");
+            }
+            else
+            {
+                _writer.WriteLineIndented("}");
+            }
+
+            _writer.WriteLine(string.Empty);
         }
 
         /// <summary>Writes an indented comment.</summary>
@@ -1040,7 +2329,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("/// <summary>");
             }
 
-            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n");
+            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n").Replace("&", "&amp;");
 
             string[] lines = comment.Split('\n');
             foreach (string line in lines)
@@ -1060,6 +2349,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             internal string ClassName;
             internal string ValueSetName;
+        }
+
+        /// <summary>Information about the written element.</summary>
+        private struct WrittenElementInfo
+        {
+            internal string FhirElementName;
+            internal string ExportedName;
+            internal string ExportedType;
+            internal bool IsList;
+        }
+
+        /// <summary>Information about the written model.</summary>
+        private struct WrittenModelInfo
+        {
+            internal string FhirName;
+            internal string CsName;
         }
     }
 }
