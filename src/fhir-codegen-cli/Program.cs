@@ -334,7 +334,7 @@ namespace FhirCodegenCli
             {
                 try
                 {
-                    r2 = FhirManager.Current.LoadPublished(2, loadR2, offlineMode);
+                    r2 = FhirManager.Current.LoadPublished(2, loadR2, offlineMode, officialExpansionsOnly);
                 }
                 catch (Exception ex)
                 {
@@ -347,7 +347,7 @@ namespace FhirCodegenCli
             {
                 try
                 {
-                    r3 = FhirManager.Current.LoadPublished(3, loadR3, offlineMode);
+                    r3 = FhirManager.Current.LoadPublished(3, loadR3, offlineMode, officialExpansionsOnly);
                 }
                 catch (Exception ex)
                 {
@@ -360,7 +360,7 @@ namespace FhirCodegenCli
             {
                 try
                 {
-                    r4 = FhirManager.Current.LoadPublished(4, loadR4, offlineMode);
+                    r4 = FhirManager.Current.LoadPublished(4, loadR4, offlineMode, officialExpansionsOnly);
                 }
                 catch (Exception ex)
                 {
@@ -373,7 +373,7 @@ namespace FhirCodegenCli
             {
                 try
                 {
-                    r5 = FhirManager.Current.LoadPublished(5, loadR5, offlineMode);
+                    r5 = FhirManager.Current.LoadPublished(5, loadR5, offlineMode, officialExpansionsOnly);
                 }
                 catch (Exception ex)
                 {

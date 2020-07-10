@@ -239,6 +239,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     expansionContains);
             }
 
+            if ((includes == null) &&
+                (expansion == null) &&
+                (vs.CodeSystem != null) &&
+                (vs.CodeSystem.Concept != null))
+            {
+                includes = new List<FhirValueSetComposition>();
+
+                List<FhirConcept> concepts = new List<FhirConcept>();
+
+                foreach (fhir_2.ValueSetCodeSystemConcept concept in vs.CodeSystem.Concept)
+                {
+                    concepts.Add(new FhirConcept(
+                        vs.CodeSystem.System,
+                        concept.Code,
+                        concept.Display,
+                        vs.CodeSystem.Version,
+                        concept.Definition));
+                }
+
+                FhirValueSetComposition comp = new FhirValueSetComposition(
+                    vs.CodeSystem.System,
+                    vs.CodeSystem.Version,
+                    concepts,
+                    null,
+                    null);
+
+                includes.Add(comp);
+            }
+
             if (string.IsNullOrEmpty(vs.Url))
             {
                 return;
