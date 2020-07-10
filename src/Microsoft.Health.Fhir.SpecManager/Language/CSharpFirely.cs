@@ -423,6 +423,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             bool isResource,
             int depth)
         {
+            List<WrittenElementInfo> exportedElements = new List<WrittenElementInfo>();
+
             WriteIndentedComment($"{complex.ShortDescription}");
 
             if (!complex.IsAbstract)
@@ -524,14 +526,199 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            WriteElements(complex, isResource);
+            WriteElements(complex, isResource, ref exportedElements);
 
             if (isResource)
             {
                 WriteConstraints(complex, exportName);
             }
 
+            if (exportedElements.Count > 0)
+            {
+                WriteCopyTo(exportName, exportedElements);
+                WriteDeepCopy(exportName);
+                WriteMatches(exportName, exportedElements);
+                WriteIsExactly(exportName, exportedElements);
+                WriteChildren(exportedElements);
+                WriteNamedChildren(exportedElements);
+            }
+
             // close class
+            CloseScope();
+        }
+
+        /// <summary>Writes the children of this item.</summary>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteNamedChildren(
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("public override IEnumerable<ElementValue> NamedChildren");
+            OpenScope();
+            _writer.WriteLineIndented("get");
+            OpenScope();
+            _writer.WriteLineIndented($"foreach (var item in base.NamedChildren) yield return item;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                if (info.IsList)
+                {
+                    _writer.WriteLineIndented(
+                        $"foreach (var elem in {info.ExportedName})" +
+                            $" {{ if (elem != null)" +
+                            $" yield return new ElementValue(\"{info.FhirElementName}\", elem);" +
+                            $" }}");
+                }
+                else
+                {
+                    _writer.WriteLineIndented(
+                        $"if ({info.ExportedName} != null)" +
+                            $" yield return new ElementValue(\"{info.FhirElementName}\", {info.ExportedName});");
+                }
+            }
+
+            CloseScope();
+            CloseScope();
+        }
+
+        /// <summary>Writes the children of this item.</summary>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteChildren(
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("public override IEnumerable<Base> Children");
+            OpenScope();
+            _writer.WriteLineIndented("get");
+            OpenScope();
+            _writer.WriteLineIndented($"foreach (var item in base.Children) yield return item;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                if (info.IsList)
+                {
+                    _writer.WriteLineIndented(
+                        $"foreach (var elem in {info.ExportedName})" +
+                            $" {{ if (elem != null) yield return elem; }}");
+                }
+                else
+                {
+                    _writer.WriteLineIndented(
+                        $"if ({info.ExportedName} != null)" +
+                            $" yield return {info.ExportedName};");
+                }
+            }
+
+            CloseScope();
+            CloseScope();
+        }
+
+        /// <summary>Writes the matches.</summary>
+        /// <param name="exportName">      Name of the export.</param>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteMatches(
+            string exportName,
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("public override bool Matches(IDeepComparable other)");
+            OpenScope();
+            _writer.WriteLineIndented($"var otherT = other as {exportName};");
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("if (otherT == null) return false;");
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("if (!base.Matches(otherT)) return false;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                _writer.WriteLineIndented(
+                    $"if (!DeepComparable.Matches({info.ExportedName}, otherT.{info.ExportedName}))" +
+                        $" return false;");
+            }
+
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("return true;");
+
+            CloseScope();
+        }
+
+        /// <summary>Writes the is exactly.</summary>
+        /// <param name="exportName">      Name of the export.</param>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteIsExactly(
+            string exportName,
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("public override bool IsExactly(IDeepComparable other)");
+            OpenScope();
+            _writer.WriteLineIndented($"var otherT = other as {exportName};");
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("if (otherT == null) return false;");
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("if (!base.IsExactly(otherT)) return false;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                _writer.WriteLineIndented(
+                    $"if (!DeepComparable.IsExactly({info.ExportedName}, otherT.{info.ExportedName}))" +
+                        $" return false;");
+            }
+
+            _writer.WriteLine(string.Empty);
+            _writer.WriteLineIndented("return true;");
+
+            CloseScope();
+        }
+
+        /// <summary>Writes a copy to.</summary>
+        /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+        ///  illegal values.</exception>
+        /// <param name="exportName">      Name of the export.</param>
+        /// <param name="exportedElements">The exported elements.</param>
+        private void WriteCopyTo(
+            string exportName,
+            List<WrittenElementInfo> exportedElements)
+        {
+            _writer.WriteLineIndented("public override IDeepCopyable CopyTo(IDeepCopyable other)");
+            OpenScope();
+            _writer.WriteLineIndented($"var dest = other as {exportName};");
+            _writer.WriteLine(string.Empty);
+
+            _writer.WriteLineIndented("if (dest == null)");
+            OpenScope();
+            _writer.WriteLineIndented("throw new ArgumentException(\"Can only copy to an object of the same type\", \"other\");");
+            CloseScope();
+
+            _writer.WriteLineIndented("base.CopyTo(dest);");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                if (info.IsList)
+                {
+                    _writer.WriteLineIndented(
+                        $"if ({info.ExportedName} != null)" +
+                            $" dest.{info.ExportedName} = new {info.ExportedType}({info.ExportedName}.DeepCopy());");
+                }
+                else
+                {
+                    _writer.WriteLineIndented(
+                        $"if ({info.ExportedName} != null)" +
+                            $" dest.{info.ExportedName} = ({info.ExportedType}){info.ExportedName}.DeepCopy();");
+                }
+            }
+
+            _writer.WriteLineIndented("return dest;");
+
+            CloseScope();
+        }
+
+        /// <summary>Writes a deep copy.</summary>
+        /// <param name="exportName">Name of the export.</param>
+        private void WriteDeepCopy(
+            string exportName)
+        {
+            _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
+            OpenScope();
+            _writer.WriteLineIndented($"return CopyTo(new {exportName}());");
             CloseScope();
         }
 
@@ -642,6 +829,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             bool isResource,
             int depth)
         {
+            List<WrittenElementInfo> exportedElements = new List<WrittenElementInfo>();
+
             WriteIndentedComment($"{complex.ShortDescription}");
 
             _writer.WriteLineIndented($"[FhirType(\"{exportName}\", NamedBackboneElement=true)]");
@@ -669,7 +858,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            WriteElements(complex, isResource);
+            WriteElements(complex, isResource, ref exportedElements);
+
+            WriteDeepCopy(exportName);
+
+            if (exportedElements.Count > 0)
+            {
+                WriteCopyTo(exportName, exportedElements);
+                WriteMatches(exportName, exportedElements);
+                WriteIsExactly(exportName, exportedElements);
+                WriteChildren(exportedElements);
+                WriteNamedChildren(exportedElements);
+            }
 
             // close class
             CloseScope();
@@ -778,11 +978,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes the elements.</summary>
-        /// <param name="complex">   The complex data type.</param>
-        /// <param name="isResource">True if is resource, false if not.</param>
+        /// <param name="complex">         The complex data type.</param>
+        /// <param name="isResource">      True if is resource, false if not.</param>
+        /// <param name="exportedElements">[in,out] The exported elements.</param>
         private void WriteElements(
             FhirComplex complex,
-            bool isResource)
+            bool isResource,
+            ref List<WrittenElementInfo> exportedElements)
         {
             foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.FieldOrder))
             {
@@ -801,11 +1003,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // if (!string.IsNullOrEmpty(element.ValueSet))
                 if (typeName == "code")
                 {
-                    WriteCodedElement(element, isResource);
+                    WriteCodedElement(element, isResource, ref exportedElements);
                     continue;
                 }
 
-                WriteElement(complex, element, isResource);
+                WriteElement(complex, element, isResource, ref exportedElements);
             }
         }
 
@@ -814,7 +1016,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="isResource">True if is resource, false if not.</param>
         private void WriteCodedElement(
             FhirElement element,
-            bool isResource)
+            bool isResource,
+            ref List<WrittenElementInfo> exportedElements)
         {
             bool hasDefinedEnum = true;
             if (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
@@ -887,6 +1090,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (element.CardinalityMax == 1)
             {
+                exportedElements.Add(
+                    new WrittenElementInfo()
+                    {
+                        FhirElementName = element.Name,
+                        ExportedName = $"{pascal}Element",
+                        ExportedType = codeLiteral,
+                        IsList = false,
+                    });
+
                 _writer.WriteLineIndented($"public {codeLiteral} {pascal}Element");
 
                 OpenScope();
@@ -899,6 +1111,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
+                exportedElements.Add(
+                    new WrittenElementInfo()
+                    {
+                        FhirElementName = element.Name,
+                        ExportedName = $"{pascal}Element",
+                        ExportedType = $"List<{codeLiteral}>",
+                        IsList = true,
+                    });
+
                 _writer.WriteLineIndented($"public List<{codeLiteral}> {pascal}Element");
 
                 OpenScope();
@@ -984,12 +1205,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes an element.</summary>
-        /// <param name="element">   The element.</param>
-        /// <param name="isResource">True if is resource, false if not.</param>
+        /// <param name="complex">         The complex data type.</param>
+        /// <param name="element">         The element.</param>
+        /// <param name="isResource">      True if is resource, false if not.</param>
+        /// <param name="exportedElements">[in,out] The exported elements.</param>
         private void WriteElement(
             FhirComplex complex,
             FhirElement element,
-            bool isResource)
+            bool isResource,
+            ref List<WrittenElementInfo> exportedElements)
         {
             string name = element.Name;
 
@@ -1103,6 +1327,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (element.CardinalityMax == 1)
             {
+                exportedElements.Add(
+                    new WrittenElementInfo()
+                    {
+                        FhirElementName = element.Name,
+                        ExportedName = $"{pascal}{elementTag}",
+                        ExportedType = $"{_namespace}.{type}",
+                        IsList = false,
+                    });
+
                 _writer.WriteLineIndented($"public {_namespace}.{type} {pascal}{elementTag}");
 
                 OpenScope();
@@ -1115,6 +1348,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
+                exportedElements.Add(
+                    new WrittenElementInfo()
+                    {
+                        FhirElementName = element.Name,
+                        ExportedName = $"{pascal}{elementTag}",
+                        ExportedType = $"List<{_namespace}.{type}>",
+                        IsList = true,
+                    });
+
                 _writer.WriteLineIndented($"public List<{_namespace}.{type}> {pascal}{elementTag}");
 
                 OpenScope();
@@ -1671,6 +1913,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             internal string ClassName;
             internal string ValueSetName;
+        }
+
+        /// <summary>Information about the written element.</summary>
+        private struct WrittenElementInfo
+        {
+            internal string FhirElementName;
+            internal string ExportedName;
+            internal string ExportedType;
+            internal bool IsList;
         }
     }
 }
