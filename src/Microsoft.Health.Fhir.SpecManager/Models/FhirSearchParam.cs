@@ -21,9 +21,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="purpose">       The purpose.</param>
         /// <param name="code">          The code.</param>
         /// <param name="resourceTypes"> The type of the resource.</param>
+        /// <param name="targets">       The targets.</param>
         /// <param name="valueType">     The type of the value.</param>
         /// <param name="standardStatus">The standard status.</param>
         /// <param name="isExperimental">True if is experimental, false if not.</param>
+        /// <param name="xpath">         The xpath.</param>
+        /// <param name="xpathUsage">    The xpath usage.</param>
+        /// <param name="expression">    The expression.</param>
         public FhirSearchParam(
             string id,
             Uri url,
@@ -32,25 +36,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string description,
             string purpose,
             string code,
-            IEnumerable<string> resourceTypes,
+            List<string> resourceTypes,
+            List<string> targets,
             string valueType,
             string standardStatus,
-            bool isExperimental)
+            bool isExperimental,
+            string xpath,
+            string xpathUsage,
+            string expression)
         {
             Id = id;
             Version = version;
             Name = name;
-            Description = description;
+            Description = description ?? string.Empty;
             Purpose = purpose;
             Code = code;
             ValueType = valueType;
             URL = url;
             StandardStatus = standardStatus;
             IsExperimental = isExperimental;
+            XPath = xpath ?? string.Empty;
+            XPathUsage = xpathUsage;
+            Expression = expression ?? string.Empty;
 
             if (resourceTypes != null)
             {
-                ResourceTypes = resourceTypes.ToList();
+                ResourceTypes = resourceTypes.Select(s => (string)s.Clone()).ToList();
+            }
+
+            if (targets != null)
+            {
+                Targets = targets.Select(s => (string)s.Clone()).ToList();
             }
         }
 
@@ -86,6 +102,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The type of the resource.</value>
         public List<string> ResourceTypes { get; }
 
+        /// <summary>Gets the resource (e.g., reference) targets.</summary>
+        public List<string> Targets { get; }
+
         /// <summary>Gets the type of the value.</summary>
         /// <value>The type of the value.</value>
         public string ValueType { get; }
@@ -97,6 +116,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets a value indicating whether this object is experimental.</summary>
         /// <value>True if this object is experimental, false if not.</value>
         public bool IsExperimental { get; }
+
+        /// <summary>Gets the XPath specification for this search parameter.</summary>
+        public string XPath { get; }
+
+        /// <summary>Gets the XPath usage information.</summary>
+        public string XPathUsage { get; }
+
+        /// <summary>Gets the expression.</summary>
+        public string Expression { get; }
 
         /// <summary>Deep copy.</summary>
         /// <returns>A FhirSearchParam.</returns>
@@ -111,9 +139,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 Purpose,
                 Code,
                 ResourceTypes,
+                Targets,
                 ValueType,
                 StandardStatus,
-                IsExperimental);
+                IsExperimental,
+                XPath,
+                XPathUsage,
+                Expression);
         }
     }
 }

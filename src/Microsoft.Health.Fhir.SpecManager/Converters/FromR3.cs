@@ -463,9 +463,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 sp.Purpose,
                 sp.Code,
                 resources,
+                sp.Target,
                 sp.Type,
                 sp.Status,
-                sp.Experimental == true);
+                sp.Experimental == true,
+                sp.Xpath,
+                sp.XpathUsage,
+                sp.Expression);
 
             // add our parameter
             fhirVersionInfo.AddSearchParameter(param);
@@ -492,7 +496,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     break;
 
                 case "complex-type":
-                    if (sd.Derivation == "constraint")
+                    if ((sd.Derivation == "constraint") &&
+                        (sd.Type != "Quantity"))
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
                     }
@@ -504,7 +509,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     break;
 
                 case "resource":
-                    if (sd.Derivation == "constraint")
+                    if ((sd.Derivation == "constraint") &&
+                        (sd.Type != "Quantity"))
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
                     }

@@ -30,16 +30,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
 
-        /// <summary>List of types of the exported resource names ands.</summary>
-        private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
-
         /// <summary>Keep track of information about written value sets.</summary>
         private Dictionary<string, WrittenValueSetInfo> _writtenValueSets = new Dictionary<string, WrittenValueSetInfo>();
+
+        /// <summary>The split characters.</summary>
+        private static readonly char[] _splitChars = { '|', ' ' };
 
         /// <summary>The currently in-use text writer.</summary>
         private ExportStreamWriter _writer;
 
-        /// <summary>The information writer (Template-Model.cs).</summary>
+        /// <summary>The model writer.</summary>
         private ExportStreamWriter _modelWriter;
 
         /// <summary>Pathname of the export directory.</summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "integer", "int?" },
             { "integer64", "long" },
             { "markdown", "string" },
-            { "narrative", "string" },
+            { "Narrative", "string" },
             { "oid", "string" },
             { "positiveInt", "int?" },
             { "string", "string" },
@@ -99,6 +99,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Narrative",
             "Resource",
             "xhtml",
+        };
+
+        /// <summary>List of types which cannot be found for ModelInfo.cs (not exported elsewhere).</summary>
+        private static readonly List<string> _dictionaryMissingTypes = new List<string>()
+        {
+            "Element",
+            "Extension",
+            "Narrative",
+            "xhtml",
+        };
+
+        /// <summary>List of resources which cannot be found for ModelInfo.cs (not exported elsewhere).</summary>
+        private static readonly List<string> _dictionaryMissingResources = new List<string>()
+        {
+            "DomainResource",
+            "Resource",
         };
 
         /// <summary>Gets the reserved words.</summary>
@@ -253,6 +269,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _headerUserName = Environment.UserName;
             _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
 
+            Dictionary<string, WrittenModelInfo> writtenPrimitives = new Dictionary<string, WrittenModelInfo>();
+            Dictionary<string, WrittenModelInfo> writtenComplexTypes = new Dictionary<string, WrittenModelInfo>();
+            Dictionary<string, WrittenModelInfo> writtenResources = new Dictionary<string, WrittenModelInfo>();
+
             string infoFilename = Path.Combine(_exportDirectory, "Template-Model.cs");
 
             using (FileStream infoStream = new FileStream(infoFilename, FileMode.Create))
@@ -266,12 +286,383 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _modelWriter.WriteLineIndented("// Generated items");
 
-                WritePrimitiveTypes(_info.PrimitiveTypes.Values);
+                WritePrimitiveTypes(_info.PrimitiveTypes.Values, ref writtenPrimitives);
 
-                WriteComplexDataTypes(_info.ComplexTypes.Values);
+                WriteComplexDataTypes(_info.ComplexTypes.Values, ref writtenComplexTypes);
 
-                WriteResources(_info.Resources.Values);
+                WriteResources(_info.Resources.Values, ref writtenResources);
             }
+
+            WriteModelInfo(writtenPrimitives, writtenComplexTypes, writtenResources);
+        }
+
+        /// <summary>Writes a model information.</summary>
+        /// <param name="writtenPrimitives">   The written primitives.</param>
+        /// <param name="writtenComplexTypes">List of types of the written complexes.</param>
+        /// <param name="writtenResources">   The written resources.</param>
+        private void WriteModelInfo(
+            Dictionary<string, WrittenModelInfo> writtenPrimitives,
+            Dictionary<string, WrittenModelInfo> writtenComplexTypes,
+            Dictionary<string, WrittenModelInfo> writtenResources)
+        {
+            string filename = Path.Combine(_exportDirectory, "Template-ModelInfo.cs");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteGenerationComment();
+
+                _writer.WriteLineIndented("using System;");
+                _writer.WriteLineIndented("using System.Collections.Generic;");
+                _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
+                _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
+                _writer.WriteLineIndented("using System.Linq;");
+                _writer.WriteLineIndented("using System.Runtime.Serialization;");
+                _writer.WriteLine(string.Empty);
+
+                WriteCopyright();
+
+                WriteNamespaceOpen();
+
+                WriteIndentedComment(
+                    "A class with methods to retrieve information about the\n" +
+                    "FHIR definitions based on which this assembly was generated.");
+
+                _writer.WriteLineIndented("public static partial class ModelInfo");
+
+                // open class
+                OpenScope();
+
+                WriteSupportedResources(writtenResources);
+
+                WriteFhirVersion();
+
+                WriteFhirToCs(writtenPrimitives, writtenComplexTypes, writtenResources);
+                WriteCsToFhir(writtenPrimitives, writtenComplexTypes, writtenResources);
+
+                WriteSearchParameters();
+
+                // close class
+                CloseScope();
+
+                WriteNamespaceClose();
+            }
+        }
+
+        /// <summary>Writes the search parameters.</summary>
+        private void WriteSearchParameters()
+        {
+            _writer.WriteLineIndented("public static List<SearchParamDefinition> SearchParameters = new List<SearchParamDefinition>()");
+            OpenScope();
+
+            foreach (FhirComplex complex in _info.Resources.Values)
+            {
+                if (complex.SearchParameters == null)
+                {
+                    continue;
+                }
+
+                foreach (FhirSearchParam sp in complex.SearchParameters.Values.OrderBy(s => s.Name))
+                {
+                    string description;
+
+                    if ((!string.IsNullOrEmpty(sp.Description)) &&
+                        sp.Description.StartsWith("Multiple", StringComparison.Ordinal))
+                    {
+                        description = string.Empty;
+                    }
+                    else
+                    {
+                        description = sp.Description;
+                    }
+
+                    string searchType = sp.ValueType;
+
+                    switch (searchType)
+                    {
+                        case "number":
+                            searchType = "Number";
+                            break;
+                        case "date":
+                            searchType = "Date";
+                            break;
+                        case "string":
+                            searchType = "String";
+                            break;
+                        case "token":
+                            searchType = "Token";
+                            break;
+                        case "reference":
+                            searchType = "Reference";
+                            break;
+                        case "composite":
+                            searchType = "Composite";
+                            break;
+                        case "quantity":
+                            searchType = "Quantity";
+                            break;
+                        case "uri":
+                            searchType = "Uri";
+                            break;
+                        case "special":
+                            searchType = "Special";
+                            break;
+                    }
+
+                    string path = string.Empty;
+
+                    if (!string.IsNullOrEmpty(sp.XPath))
+                    {
+                        string temp = sp.XPath.Replace("f:", string.Empty).Replace('/', '.').Replace('(', '[').Replace(')', ']');
+
+                        IEnumerable<string> split = temp
+                            .Split(_splitChars, StringSplitOptions.RemoveEmptyEntries)
+                            .Where(s => s.StartsWith(complex.Name + ".", StringComparison.Ordinal));
+
+                        path = "\"" + string.Join("\", \"", split) + "\", ";
+                    }
+
+                    string target;
+
+                    if ((sp.Targets == null) || (sp.Targets.Count == 0))
+                    {
+                        target = string.Empty;
+                    }
+                    else
+                    {
+                        SortedSet<string> sc = new SortedSet<string>();
+
+                        foreach (string t in sp.Targets)
+                        {
+                            sc.Add("ResourceType." + t);
+                        }
+
+                        target = ", Target = new ResourceType[] { " + string.Join(", ", sc) + ", }";
+                    }
+
+                    string xpath;
+                    if (string.IsNullOrEmpty(sp.XPath))
+                    {
+                        xpath = string.Empty;
+                    }
+                    else
+                    {
+                        xpath = ", XPath = \"" + sp.XPath + "\"";
+                    }
+
+                    string expression;
+
+                    if (string.IsNullOrEmpty(sp.Expression))
+                    {
+                        expression = string.Empty;
+                    }
+                    else
+                    {
+                        expression = ", Expression = \"" + sp.Expression + "\"";
+                    }
+
+                    _writer.WriteLineIndented(
+                        $"new SearchParamDefinition() " +
+                            $"{{" +
+                            $" Resource = \"{complex.Name}\"," +
+                            $" Name = \"{sp.Name}\"," +
+                            $" Description = new Markdown(@\"{SanitizeForMarkdown(description)}\")," +
+                            $" Type = SearchParamType.{searchType}," +
+                            $" Path = new string[] {{ {path}}}" +
+                            target +
+                            xpath +
+                            expression +
+                            $", Url = \"{sp.URL}\"" +
+                            $" }},");
+                }
+            }
+
+            CloseScope(true);
+        }
+
+        /// <summary>Sanitize for markdown.</summary>
+        /// <param name="value">The value.</param>
+        private static string SanitizeForMarkdown(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+
+            return value.Replace("\"", "\"\"").Replace("\r", @"\r").Replace("\n", @"\n");
+        }
+
+        /// <summary>Writes the C# to FHIR map dictionary.</summary>
+        /// <param name="writtenPrimitives">  The written primitives.</param>
+        /// <param name="writtenComplexTypes">List of types of the written complexes.</param>
+        /// <param name="writtenResources">   The written resources.</param>
+        private void WriteCsToFhir(
+            Dictionary<string, WrittenModelInfo> writtenPrimitives,
+            Dictionary<string, WrittenModelInfo> writtenComplexTypes,
+            Dictionary<string, WrittenModelInfo> writtenResources)
+        {
+            Dictionary<string, WrittenModelInfo> types = new Dictionary<string, WrittenModelInfo>();
+
+            _writer.WriteLineIndented("public static Dictionary<Type,string> FhirCsTypeToFhir = new Dictionary<Type,string>()");
+            OpenScope();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenPrimitives)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenComplexTypes)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            AddMissingModels(ref types, _dictionaryMissingTypes);
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
+            {
+                if (kvp.Value.FhirName == "xhtml")
+                {
+                    continue;
+                }
+
+                _writer.WriteLineIndented($"{{ typeof({kvp.Value.CsName}), \"{kvp.Value.FhirName}\" }},");
+            }
+
+            _writer.WriteLine(string.Empty);
+
+            types.Clear();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenResources)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            AddMissingModels(ref types, _dictionaryMissingResources);
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
+            {
+                _writer.WriteLineIndented($"{{ typeof({kvp.Value.CsName}), \"{kvp.Value.FhirName}\" }},");
+            }
+
+            CloseScope(true);
+        }
+
+        /// <summary>Information for FHIR type.</summary>
+        /// <param name="fhirName">Name of the FHIR.</param>
+        /// <returns>A WrittenModelInfo.</returns>
+        private static WrittenModelInfo InfoForFhirType(string fhirName)
+        {
+            string csName;
+
+            if (_typeNameMappings.ContainsKey(fhirName))
+            {
+                csName = $"{_namespace}.{_typeNameMappings[fhirName]}";
+            }
+            else
+            {
+                csName = $"{_namespace}.{fhirName}";
+            }
+
+            return new WrittenModelInfo()
+            {
+                FhirName = fhirName,
+                CsName = csName,
+            };
+        }
+
+        /// <summary>Adds a missing models to a dictionary.</summary>
+        /// <param name="types">        [in,out] The types.</param>
+        /// <param name="missingModels">The missing models.</param>
+        private static void AddMissingModels(
+            ref Dictionary<string, WrittenModelInfo> types,
+            List<string> missingModels)
+        {
+            foreach (string type in missingModels)
+            {
+                if (types.ContainsKey(type))
+                {
+                    continue;
+                }
+
+                types.Add(type, InfoForFhirType(type));
+            }
+        }
+
+        /// <summary>Writes the FHIR to C# map dictionary.</summary>
+        /// <param name="writtenPrimitives">  The written primitives.</param>
+        /// <param name="writtenComplexTypes">List of types of the written complexes.</param>
+        /// <param name="writtenResources">   The written resources.</param>
+        private void WriteFhirToCs(
+            Dictionary<string, WrittenModelInfo> writtenPrimitives,
+            Dictionary<string, WrittenModelInfo> writtenComplexTypes,
+            Dictionary<string, WrittenModelInfo> writtenResources)
+        {
+            Dictionary<string, WrittenModelInfo> types = new Dictionary<string, WrittenModelInfo>();
+
+            _writer.WriteLineIndented("public static Dictionary<string,Type> FhirTypeToCsType = new Dictionary<string,Type>()");
+            OpenScope();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenPrimitives)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenComplexTypes)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            AddMissingModels(ref types, _dictionaryMissingTypes);
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
+            {
+                _writer.WriteLineIndented($"{{ \"{kvp.Value.FhirName}\", typeof({kvp.Value.CsName}) }},");
+            }
+
+            _writer.WriteLine(string.Empty);
+
+            types.Clear();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenResources)
+            {
+                types.Add(kvp.Key, kvp.Value);
+            }
+
+            AddMissingModels(ref types, _dictionaryMissingResources);
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
+            {
+                _writer.WriteLineIndented($"{{ \"{kvp.Value.FhirName}\", typeof({kvp.Value.CsName}) }},");
+            }
+
+            CloseScope(true);
+        }
+
+        /// <summary>Writes the FHIR version.</summary>
+        private void WriteFhirVersion()
+        {
+            _writer.WriteLineIndented("public static string Version");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return \"{_info.VersionString}\"; }}");
+            CloseScope();
+        }
+
+        /// <summary>Writes the supported resources dictionary.</summary>
+        /// <param name="writtenResources">The written resources.</param>
+        private void WriteSupportedResources(
+            Dictionary<string, WrittenModelInfo> writtenResources)
+        {
+            _writer.WriteLineIndented("public static List<string> SupportedResources = new List<string>()");
+            OpenScope();
+
+            foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenResources.OrderBy(s => s.Key))
+            {
+                _writer.WriteLineIndented($"\"{kvp.Value.FhirName}\",");
+            }
+
+            CloseScope(true);
         }
 
         /// <summary>Writes the common enums.</summary>
@@ -325,9 +716,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes the complex data types.</summary>
-        /// <param name="complexes">The complex data types.</param>
+        /// <param name="complexes">    The complex data types.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
         private void WriteResources(
-            IEnumerable<FhirComplex> complexes)
+            IEnumerable<FhirComplex> complexes,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             foreach (FhirComplex complex in complexes.OrderBy(c => c.Name))
             {
@@ -336,16 +729,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WriteResource(complex);
+                WriteResource(complex, ref writtenModels);
             }
         }
 
         /// <summary>Writes a complex data type.</summary>
-        /// <param name="complex">The complex data type.</param>
+        /// <param name="complex">      The complex data type.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
         private void WriteResource(
-            FhirComplex complex)
+            FhirComplex complex,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+
+            writtenModels.Add(
+                complex.Name,
+                new WrittenModelInfo()
+                {
+                    FhirName = complex.Name,
+                    CsName = $"{_namespace}.{exportName}",
+                });
 
             string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
 
@@ -369,9 +772,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes the complex data types.</summary>
-                 /// <param name="complexes">The complex data types.</param>
+        /// <param name="complexes">    The complex data types.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
         private void WriteComplexDataTypes(
-            IEnumerable<FhirComplex> complexes)
+            IEnumerable<FhirComplex> complexes,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             foreach (FhirComplex complex in complexes.OrderBy(c => c.Name))
             {
@@ -380,16 +785,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WriteComplexDataType(complex);
+                WriteComplexDataType(complex, ref writtenModels);
             }
         }
 
         /// <summary>Writes a complex data type.</summary>
-        /// <param name="complex">The complex data type.</param>
+        /// <param name="complex">      The complex data type.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
         private void WriteComplexDataType(
-            FhirComplex complex)
+            FhirComplex complex,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+
+            if (_typeNameMappings.ContainsKey(exportName))
+            {
+                exportName = _typeNameMappings[exportName];
+            }
+
+            writtenModels.Add(
+                complex.Name,
+                new WrittenModelInfo()
+                {
+                    FhirName = complex.Name,
+                    CsName = $"{_namespace}.{exportName}",
+                });
 
             string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
 
@@ -1516,11 +1936,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     sb.Append(_namespace);
                     sb.Append(".");
 
-                    if (elementType.Name == "Reference")
-                    {
-                        sb.Append("ResourceReference");
-                    }
-                    else if (_typeNameMappings.ContainsKey(elementType.Name))
+                    if (_typeNameMappings.ContainsKey(elementType.Name))
                     {
                         sb.Append(_typeNameMappings[elementType.Name]);
                     }
@@ -1629,9 +2045,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes a primitive types.</summary>
-        /// <param name="primitives">The primitives.</param>
+        /// <param name="primitives">   The primitives.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
         private void WritePrimitiveTypes(
-            IEnumerable<FhirPrimitive> primitives)
+            IEnumerable<FhirPrimitive> primitives,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             foreach (FhirPrimitive primitive in primitives)
             {
@@ -1640,14 +2058,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WritePrimitiveType(primitive);
+                WritePrimitiveType(primitive, ref writtenModels);
             }
         }
 
         /// <summary>Writes a primitive type.</summary>
-        /// <param name="primitive">The primitive.</param>
+        /// <param name="primitive">    The primitive.</param>
+        /// <param name="writtenModels">[in,out] The written models.</param>
         private void WritePrimitiveType(
-            FhirPrimitive primitive)
+            FhirPrimitive primitive,
+            ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             string exportName;
             string typeName = primitive.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
@@ -1660,6 +2080,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 exportName = primitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
             }
+
+            writtenModels.Add(
+                primitive.Name,
+                new WrittenModelInfo()
+                {
+                    FhirName = primitive.Name,
+                    CsName = $"{_namespace}.{exportName}",
+                });
 
             string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
 
@@ -1930,6 +2358,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             internal string ExportedName;
             internal string ExportedType;
             internal bool IsList;
+        }
+
+        /// <summary>Information about the written model.</summary>
+        private struct WrittenModelInfo
+        {
+            internal string FhirName;
+            internal string CsName;
         }
     }
 }

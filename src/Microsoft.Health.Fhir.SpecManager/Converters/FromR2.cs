@@ -557,9 +557,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 string.Empty,
                 sp.Code,
                 resourceList,
+                sp.Target,
                 sp.Type,
                 sp.Status,
-                sp.Experimental == true);
+                sp.Experimental == true,
+                sp.Xpath,
+                sp.XpathUsage,
+                string.Empty);
 
             // add our parameter
             fhirVersionInfo.AddSearchParameter(param);
@@ -602,7 +606,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     break;
 
                 case "resource":
-                    if (string.IsNullOrEmpty(sd.ConstrainedType))
+                    if (string.IsNullOrEmpty(sd.ConstrainedType) ||
+                        (sd.ConstrainedType == "Quantity"))
                     {
                         ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Resource);
                     }
