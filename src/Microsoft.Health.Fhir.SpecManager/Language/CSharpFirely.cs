@@ -995,7 +995,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 string typeName = element.BaseTypeName;
 
-                if (string.IsNullOrEmpty(typeName))
+                if (string.IsNullOrEmpty(typeName) &&
+                    (element.ElementTypes.Count == 1))
                 {
                     typeName = element.ElementTypes.Values.First().Name;
                 }
@@ -1003,20 +1004,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // if (!string.IsNullOrEmpty(element.ValueSet))
                 if (typeName == "code")
                 {
-                    WriteCodedElement(element, isResource, ref exportedElements);
+                    WriteCodedElement(element, ref exportedElements);
                     continue;
                 }
 
-                WriteElement(complex, element, isResource, ref exportedElements);
+                WriteElement(complex, element, ref exportedElements);
             }
         }
 
         /// <summary>Writes an element.</summary>
-        /// <param name="element">   The element.</param>
-        /// <param name="isResource">True if is resource, false if not.</param>
+        /// <param name="element">         The element.</param>
+        /// <param name="exportedElements">[in,out] The exported elements.</param>
         private void WriteCodedElement(
             FhirElement element,
-            bool isResource,
             ref List<WrittenElementInfo> exportedElements)
         {
             bool hasDefinedEnum = true;
@@ -1031,7 +1031,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             BuildElementOptionals(
                 element,
-                isResource,
                 out string summary,
                 out string choice,
                 out string allowedTypes,
@@ -1207,14 +1206,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes an element.</summary>
         /// <param name="complex">         The complex data type.</param>
         /// <param name="element">         The element.</param>
-        /// <param name="isResource">      True if is resource, false if not.</param>
         /// <param name="exportedElements">[in,out] The exported elements.</param>
         private void WriteElement(
             FhirComplex complex,
             FhirElement element,
-            bool isResource,
             ref List<WrittenElementInfo> exportedElements)
         {
+            if (element.Path == "CodeSystem.concept.property.value")
+            {
+                Console.Write(string.Empty);
+            }
+
             string name = element.Name;
 
             if (name.Contains("[x]"))
@@ -1228,7 +1230,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             BuildElementOptionals(
                 element,
-                isResource,
                 out string summary,
                 out string choice,
                 out string allowedTypes,
@@ -1465,14 +1466,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Builds element optional flags.</summary>
         /// <param name="element">           The element.</param>
-        /// <param name="isResource">        True if is resource, false if not.</param>
         /// <param name="summary">           [out] The summary.</param>
         /// <param name="choice">            [out] The choice.</param>
         /// <param name="allowedTypes">      [out] List of types of the allowed.</param>
         /// <param name="resourceReferences">[out] The resource references.</param>
-        private static void BuildElementOptionals(
+        private void BuildElementOptionals(
             FhirElement element,
-            bool isResource,
             out string summary,
             out string choice,
             out string allowedTypes,
@@ -1487,9 +1486,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if ((element.ElementTypes != null) &&
                 (element.ElementTypes.Count > 1))
             {
-                choice = isResource
-                    ? ", Choice=ChoiceType.ResourceChoice"
-                    : ", Choice=ChoiceType.DatatypeChoice";
+                string firstType = element.ElementTypes.First().Key;
+
+                if (_info.PrimitiveTypes.ContainsKey(firstType) ||
+                    _info.ComplexTypes.ContainsKey(firstType))
+                {
+                    choice = ", Choice=ChoiceType.DatatypeChoice";
+                }
+
+                if (_info.Resources.ContainsKey(firstType))
+                {
+                    choice = ", Choice=ChoiceType.ResourceChoice";
+                }
 
                 StringBuilder sb = new StringBuilder();
                 sb.Append("[AllowedTypes(");
@@ -1518,7 +1526,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     }
                     else
                     {
-                        sb.Append(elementType.Name);
+                        sb.Append(FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase));
                     }
 
                     sb.Append(")");
