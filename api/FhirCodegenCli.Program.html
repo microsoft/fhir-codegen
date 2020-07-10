@@ -115,19 +115,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program_Main_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.Main(System.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=FhirCodegenCli_Program_Main_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.Main(System.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L42">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/fhir-codegen-cli/Program.cs/#L47">View Source</a>
   </span>
   <a id="FhirCodegenCli_Program_Main_" data-uid="FhirCodegenCli.Program.Main*"></a>
-  <h4 id="FhirCodegenCli_Program_Main_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_String_System_String_System_String_" data-uid="FhirCodegenCli.Program.Main(System.String,System.String,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">Main(String, String, Boolean, Boolean, String, String, String, String, String, String, String)</h4>
+  <h4 id="FhirCodegenCli_Program_Main_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Boolean_" data-uid="FhirCodegenCli.Program.Main(System.String,System.String,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean)">Main(String, String, Boolean, Boolean, String, String, String, String, String, String, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Command-line utility for processing the FHIR specification into other computer languages.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Main(string fhirSpecDirectory = &quot;&quot;, string outputPath = &quot;&quot;, bool verbose = false, bool offlineMode = false, string language = &quot;&quot;, string exportKeys = &quot;&quot;, string loadR2 = &quot;&quot;, string loadR3 = &quot;&quot;, string loadR4 = &quot;&quot;, string loadR5 = &quot;&quot;, string languageOptions = &quot;&quot;)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void Main(string fhirSpecDirectory = &quot;&quot;, string outputPath = &quot;&quot;, bool verbose = false, bool offlineMode = false, string language = &quot;&quot;, string exportKeys = &quot;&quot;, string loadR2 = &quot;&quot;, string loadR3 = &quot;&quot;, string loadR4 = &quot;&quot;, string loadR5 = &quot;&quot;, string languageOptions = &quot;&quot;, bool officialExpansionsOnly = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -142,7 +142,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">fhirSpecDirectory</span></td>
-        <td><p>The full path to the directory where FHIR specifications are downloaded and cached.</p>
+        <td><p>The full path to the directory where FHIR specifications
+are downloaded and cached.</p>
 </td>
       </tr>
       <tr>
@@ -166,43 +167,48 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">language</span></td>
-        <td><p>Name of the language to export (default:
-Info|TypeScript|CSharpBasic).</p>
+        <td><pre><code> Name of the language to export (default:
+</code></pre>
+<p>Info|TypeScript|CSharpBasic).</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">exportKeys</span></td>
-        <td><p>'|' separated list of items to export (not present to export
-everything).</p>
+        <td><p>'|' separated list of items to export (not present to
+export everything).</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">loadR2</span></td>
-        <td><p>If FHIR R2 should be loaded, which version (e.g., 1.0.2 or
-latest).</p>
+        <td><pre><code>   If FHIR R2 should be loaded, which version (e.g., 1.0.2
+</code></pre>
+<p>or latest).</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">loadR3</span></td>
-        <td><p>If FHIR R3 should be loaded, which version (e.g., 3.0.2 or
-latest).</p>
+        <td><pre><code>   If FHIR R3 should be loaded, which version (e.g., 3.0.2
+</code></pre>
+<p>or latest).</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">loadR4</span></td>
-        <td><p>If FHIR R4 should be loaded, which version (e.g., 4.0.1 or
-latest).</p>
+        <td><pre><code>   If FHIR R4 should be loaded, which version (e.g., 4.0.1
+</code></pre>
+<p>or latest).</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">loadR5</span></td>
-        <td><p>If FHIR R5 should be loaded, which version (e.g., 4.4.0 or
-latest).</p>
+        <td><pre><code>   If FHIR R5 should be loaded, which version (e.g., 4.4.0
+</code></pre>
+<p>or latest).</p>
 </td>
       </tr>
       <tr>
@@ -212,23 +218,30 @@ latest).</p>
 details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">officialExpansionsOnly</span></td>
+        <td><p>True to restrict value-sets exported to only official
+expansions (default: false).</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program_Process_System_String_System_Boolean_System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.Process(System.String%2CSystem.Boolean%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%40%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%40%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%40%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=FhirCodegenCli_Program_Process_System_String_System_Boolean_System_Boolean_System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program.Process(System.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%40%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%40%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%40%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L302">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/fhir-codegen-cli/Program.cs/#L312">View Source</a>
   </span>
   <a id="FhirCodegenCli_Program_Process_" data-uid="FhirCodegenCli.Program.Process*"></a>
-  <h4 id="FhirCodegenCli_Program_Process_System_String_System_Boolean_System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__" data-uid="FhirCodegenCli.Program.Process(System.String,System.Boolean,System.String,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo@,System.String,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo@,System.String,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo@,System.String,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo@)">Process(String, Boolean, String, out FhirVersionInfo, String, out FhirVersionInfo, String, out FhirVersionInfo, String, out FhirVersionInfo)</h4>
+  <h4 id="FhirCodegenCli_Program_Process_System_String_System_Boolean_System_Boolean_System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__System_String_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo__" data-uid="FhirCodegenCli.Program.Process(System.String,System.Boolean,System.Boolean,System.String,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo@,System.String,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo@,System.String,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo@,System.String,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo@)">Process(String, Boolean, Boolean, String, out FhirVersionInfo, String, out FhirVersionInfo, String, out FhirVersionInfo, String, out FhirVersionInfo)</h4>
   <div class="markdown level1 summary"><p>Main processing function.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Process(string fhirSpecDirectory, bool offlineMode, string loadR2, out FhirVersionInfo r2, string loadR3, out FhirVersionInfo r3, string loadR4, out FhirVersionInfo r4, string loadR5, out FhirVersionInfo r5)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void Process(string fhirSpecDirectory, bool offlineMode, bool officialExpansionsOnly, string loadR2, out FhirVersionInfo r2, string loadR3, out FhirVersionInfo r3, string loadR4, out FhirVersionInfo r4, string loadR5, out FhirVersionInfo r5)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -243,7 +256,8 @@ details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">fhirSpecDirectory</span></td>
-        <td><p>The full path to the directory where FHIR specifications are.</p>
+        <td><p>The full path to the directory where FHIR specifications
+are.</p>
 </td>
       </tr>
       <tr>
@@ -253,10 +267,18 @@ details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</p>
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">officialExpansionsOnly</span></td>
+        <td><p>True to restrict value-sets exported to only official
+expansions.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">loadR2</span></td>
-        <td><p>If FHIR R2 should be loaded, which version (e.g., 1.0.2 or
-latest).</p>
+        <td><pre><code>   If FHIR R2 should be loaded, which version (e.g., 1.0.2
+</code></pre>
+<p>or latest).</p>
 </td>
       </tr>
       <tr>
@@ -268,8 +290,9 @@ latest).</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">loadR3</span></td>
-        <td><p>If FHIR R3 should be loaded, which version (e.g., 3.0.2 or
-latest).</p>
+        <td><pre><code>   If FHIR R3 should be loaded, which version (e.g., 3.0.2
+</code></pre>
+<p>or latest).</p>
 </td>
       </tr>
       <tr>
@@ -281,8 +304,9 @@ latest).</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">loadR4</span></td>
-        <td><p>If FHIR R4 should be loaded, which version (e.g., 4.0.1 or
-latest).</p>
+        <td><pre><code>   If FHIR R4 should be loaded, which version (e.g., 4.0.1
+</code></pre>
+<p>or latest).</p>
 </td>
       </tr>
       <tr>
@@ -294,8 +318,9 @@ latest).</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">loadR5</span></td>
-        <td><p>If FHIR R5 should be loaded, which version (e.g., 4.4.0 or
-latest).</p>
+        <td><pre><code>   If FHIR R5 should be loaded, which version (e.g., 4.4.0
+</code></pre>
+<p>or latest).</p>
 </td>
       </tr>
       <tr>
@@ -314,10 +339,10 @@ latest).</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=FhirCodegenCli_Program.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=FhirCodegenCli_Program.md&amp;value=---%0Auid%3A%20FhirCodegenCli.Program%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/fhir-codegen-cli/Program.cs/#L19" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/fhir-codegen-cli/Program.cs/#L19" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
