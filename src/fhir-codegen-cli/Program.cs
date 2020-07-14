@@ -44,6 +44,8 @@ namespace FhirCodegenCli
         ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
         /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
         ///  expansions (default: false).</param>
+        /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
+        ///  Conformance) from.  Requires application/fhir+json.</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -56,7 +58,8 @@ namespace FhirCodegenCli
             string loadR4 = "",
             string loadR5 = "",
             string languageOptions = "",
-            bool officialExpansionsOnly = false)
+            bool officialExpansionsOnly = false,
+            string fhirServerUrl = "")
         {
             List<string> filesWritten = new List<string>();
 
