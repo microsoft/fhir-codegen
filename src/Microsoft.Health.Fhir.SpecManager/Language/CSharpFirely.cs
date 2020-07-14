@@ -305,7 +305,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             Dictionary<string, WrittenModelInfo> writtenComplexTypes,
             Dictionary<string, WrittenModelInfo> writtenResources)
         {
-            string filename = Path.Combine(_exportDirectory, "Template-ModelInfo.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated", "Template-ModelInfo.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -668,7 +668,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the common enums.</summary>
         private void WriteCommonValueSets()
         {
-            string filename = Path.Combine(_exportDirectory, "Template-Bindings.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated",, "Template-Bindings.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -750,7 +750,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     CsName = $"{_namespace}.{exportName}",
                 });
 
-            string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated",, $"{exportName}.cs");
 
             _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
@@ -811,7 +811,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     CsName = $"{_namespace}.{exportName}",
                 });
 
-            string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated",, $"{exportName}.cs");
 
             _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
@@ -2089,7 +2089,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     CsName = $"{_namespace}.{exportName}",
                 });
 
-            string filename = Path.Combine(_exportDirectory, $"{exportName}.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated",, $"{exportName}.cs");
 
             _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
