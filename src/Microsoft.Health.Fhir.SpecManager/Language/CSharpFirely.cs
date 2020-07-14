@@ -668,7 +668,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the common enums.</summary>
         private void WriteCommonValueSets()
         {
-            string filename = Path.Combine(_exportDirectory, "Generated",, "Template-Bindings.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated", "Template-Bindings.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -750,7 +750,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     CsName = $"{_namespace}.{exportName}",
                 });
 
-            string filename = Path.Combine(_exportDirectory, "Generated",, $"{exportName}.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
 
             _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
@@ -811,7 +811,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     CsName = $"{_namespace}.{exportName}",
                 });
 
-            string filename = Path.Combine(_exportDirectory, "Generated",, $"{exportName}.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
 
             _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
