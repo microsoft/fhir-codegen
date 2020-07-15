@@ -27775,7 +27775,6 @@ Value Sets: 930 (unversioned)
   - #planned: Planned
   - #reserved: Reserved
 - ValueSet: http://hl7.org/fhir/ValueSet/encounter-participant-type|1.0.2
-  - #_ParticipationAncillary: ParticipationAncillary
   - #ADM: admitter
   - #ATND: attender
   - #CALLBCK: callback contact
@@ -40309,7 +40308,6 @@ Value Sets: 930 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActExposureLevelCode|2015-07-31
   - #_ActExposureLevelCode: ActExposureLevelCode
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActIncidentCode|2014-03-26
-  - #_ActIncidentCode: ActIncidentCode
   - #MVA: Motor vehicle accident
   - #SCHOOL: School Accident
   - #SPT: Sporting Accident
@@ -40320,7 +40318,6 @@ Value Sets: 930 (unversioned)
   - #LINV: Last Invoice
   - #PAPER: Paper Documentation To Follow
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActInvoiceGroupCode|2014-03-26
-  - #_ActInvoiceGroupCode: ActInvoiceGroupCode
   - #_ActInvoiceInterGroupCode: ActInvoiceInterGroupCode
   - #_ActInvoiceRootGroupCode: ActInvoiceRootGroupCode
   - #CPINV: clinical product invoice
@@ -40344,7 +40341,6 @@ Value Sets: 930 (unversioned)
   - #_ActMoodCompletionTrack: ActMoodCompletionTrack
   - #_ActMoodPredicate: ActMoodPredicate
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType|2014-03-26
-  - #_ActPharmacySupplyType: ActPharmacySupplyType
   - #DF: Daily Fill
   - #EM: Emergency Supply
   - #FF: First Fill
@@ -40458,7 +40454,6 @@ Value Sets: 930 (unversioned)
   - #nullified: nullified
   - #obsolete: obsolete
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActSubstanceAdminSubstitutionCode|2014-03-26
-  - #_ActSubstanceAdminSubstitutionCode: ActSubstanceAdminSubstitutionCode
   - #BC: brand composition
   - #E: equivalent
   - #EC: equivalent composition
@@ -41643,7 +41638,6 @@ Value Sets: 930 (unversioned)
   - #N60: Net 60 days
   - #N90: Net 90 days
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-PersonalRelationshipRoleType|2014-03-26
-  - #_PersonalRelationshipRoleType: PersonalRelationshipRoleType
   - #ADOPTF: adoptive father
   - #ADOPTM: adoptive mother
   - #ADOPTP: adoptive parent
@@ -42051,7 +42045,6 @@ Value Sets: 930 (unversioned)
   - #_SECALTINTOBV: alteration integrity
   - #_SECDATINTOBV: data integrity
   - #_SECINTCONOBV: integrity confidence
-  - #_SECINTOBV: security integrity
   - #_SECINTPRVABOBV: provenance asserted by
   - #_SECINTPRVOBV: provenance
   - #_SECINTPRVRBOBV: provenance reported by
@@ -42140,7 +42133,6 @@ Value Sets: 930 (unversioned)
   - #_DedicatedNonClinicalLocationRoleType: DedicatedNonClinicalLocationRoleType
   - #_DedicatedServiceDeliveryLocationRoleType: DedicatedServiceDeliveryLocationRoleType
   - #_IncidentalServiceDeliveryLocationRoleType: IncidentalServiceDeliveryLocationRoleType
-  - #_ServiceDeliveryLocationRoleType: ServiceDeliveryLocationRoleType
   - #ACC: accident site
   - #ALL: Allergy clinic
   - #AMB: Ambulance
@@ -42270,7 +42262,6 @@ Value Sets: 930 (unversioned)
   - #H: convex hull
   - #P: periodic hull
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SeverityObservation|2014-03-26
-  - #_SeverityObservation: SeverityObservation
   - #H: High
   - #L: Low
   - #M: Moderate
@@ -42279,7 +42270,6 @@ Value Sets: 930 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-substanceAdminSubstitution|2015-07-31
   - #_ActSubstanceAdminSubstitutionCode: ActSubstanceAdminSubstitutionCode
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SubstanceAdminSubstitutionReason|2014-03-26
-  - #_SubstanceAdminSubstitutionReason: SubstanceAdminSubstitutionReason
   - #CT: continuing therapy
   - #FP: formulary policy
   - #OS: out of stock

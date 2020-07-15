@@ -845,7 +845,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     // update type to reflect language
                     if (primitiveTypeMap.ContainsKey(kvp.Value.Name))
                     {
-                        info._primitiveTypesByName[kvp.Key].BaseTypeName = primitiveTypeMap[kvp.Value.BaseTypeName];
+                        info._primitiveTypesByName[kvp.Key].BaseTypeName = primitiveTypeMap[kvp.Value.Name];
                     }
                 }
             }

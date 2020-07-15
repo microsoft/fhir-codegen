@@ -25229,7 +25229,6 @@ Value Sets: 1082 (unversioned)
   - #planned: Planned
   - #reserved: Reserved
 - ValueSet: http://hl7.org/fhir/ValueSet/encounter-participant-type|3.0.2
-  - #_ParticipationAncillary: ParticipationAncillary
   - #ADM: admitter
   - #ATND: attender
   - #CALLBCK: callback contact
@@ -29749,17 +29748,25 @@ Value Sets: 1082 (unversioned)
   - #requested: Requested
 - ValueSet: http://hl7.org/fhir/ValueSet/object-lifecycle-events|1.1.0
   - #1: Origination / Creation
+  - #1: Originate/Retain - Record Lifecyle Event
   - #10: Export
+  - #10: De-Identify (Anononymize) - Lifecycle Event
   - #11: Disclosure
+  - #11: Pseudonymize - Lifecycle Event
   - #12: Receipt of disclosure
+  - #12: Re-identify - Lifecycle Event
   - #13: Archiving
+  - #13: Extract - Lifecycle Event
   - #14: Logical deletion
+  - #14: Archive - Lifeycle Event
   - #15: Permanent erasure / Physical destruction
+  - #15: Restore - Lifecycle Event
   - #16: Destroy/Delete - Lifecycle Event
   - #17: Deprecate - Lifecycle Event
   - #18: Re-activate - Lifecycle Event
   - #19: Merge - Lifecycle Event
   - #2: Import / Copy
+  - #2: Amend (Update) - Lifeycle Event
   - #20: Unmerge - Lifecycle Event
   - #21: Link - Lifecycle Event
   - #22: Unlink - Lifecycle Event
@@ -29768,12 +29775,18 @@ Value Sets: 1082 (unversioned)
   - #26: Encrypt - Lifecycle Event
   - #27: Decrypt - Lifecycle Event
   - #3: Amendment
+  - #3: Transform/Translate - Lifecycle Event
   - #4: Verification
+  - #4: Attest - Lifecycle Event
   - #5: Translation
   - #6: Access / Use
+  - #6: Report (Output) - Lifecycle Event
   - #7: De-identification
+  - #7: Disclose - Lifecycle Event
   - #8: Aggregation / summarization / derivation
+  - #8: Transmit - Lifecycle Event
   - #9: Report
+  - #9: Receive/Retain - Lifecycle Event
 - ValueSet: http://hl7.org/fhir/ValueSet/object-role|3.0.2
   - #1: Patient
   - #10: Guarantor
@@ -38969,7 +38982,6 @@ Value Sets: 1082 (unversioned)
   - #SBEXT: Substance Extraction
   - #SPECCOLLECT: Specimen Collection
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActClassROI|2014-03-26
-  - #_ActClassROI: ActClassROI
   - #ROIBND: bounded ROI
   - #ROIOVL: overlay ROI
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActClassSupply|2014-03-26
@@ -40152,7 +40164,6 @@ Value Sets: 1082 (unversioned)
   - #VISPOL: vision care policy
   - #WCBPOL: worker's compensation
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActEncounterCode|2014-03-26
-  - #_ActEncounterCode: ActEncounterCode
   - #ACUTE: inpatient acute
   - #AMB: ambulatory
   - #EMER: emergency
@@ -40169,7 +40180,6 @@ Value Sets: 1082 (unversioned)
   - #LOW: low
   - #MEDIUM: medium
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActIncidentCode|2014-03-26
-  - #_ActIncidentCode: ActIncidentCode
   - #MVA: Motor vehicle accident
   - #SCHOOL: School Accident
   - #SPT: Sporting Accident
@@ -40180,7 +40190,6 @@ Value Sets: 1082 (unversioned)
   - #LINV: Last Invoice
   - #PAPER: Paper Documentation To Follow
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActInvoiceGroupCode|2014-03-26
-  - #_ActInvoiceGroupCode: ActInvoiceGroupCode
   - #_ActInvoiceInterGroupCode: ActInvoiceInterGroupCode
   - #_ActInvoiceRootGroupCode: ActInvoiceRootGroupCode
   - #CPINV: clinical product invoice
@@ -40241,7 +40250,6 @@ Value Sets: 1082 (unversioned)
   - #RMD: recommendation
   - #RQO: request
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActMoodPredicate|2014-03-26
-  - #_ActMoodPredicate: ActMoodPredicate
   - #CRT: criterion
   - #EVN.CRT: event criterion
   - #EXPEC: expectation
@@ -40254,7 +40262,6 @@ Value Sets: 1082 (unversioned)
   - #RSK: risk
   - #RSK.CRT: risk criterion
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType|2014-03-26
-  - #_ActPharmacySupplyType: ActPharmacySupplyType
   - #DF: Daily Fill
   - #EM: Emergency Supply
   - #FF: First Fill
@@ -40563,7 +40570,6 @@ Value Sets: 1082 (unversioned)
   - #T: through
   - #X: exit
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActRelationshipConditional|2014-03-26
-  - #_ActRelationshipConditional: ActRelationshipConditional
   - #ACTIMM: active immunization against
   - #ADJUNCT: adjunctive treatment
   - #BLOCK: blocks
@@ -40826,7 +40832,6 @@ Value Sets: 1082 (unversioned)
   - #obsolete: obsolete
   - #suspended: suspended
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActSubstanceAdminSubstitutionCode|2014-03-26
-  - #_ActSubstanceAdminSubstitutionCode: ActSubstanceAdminSubstitutionCode
   - #BC: brand composition
   - #E: equivalent
   - #EC: equivalent composition
@@ -43302,7 +43307,6 @@ Value Sets: 1082 (unversioned)
   - #RCT: record target
   - #RCV: receiver
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ParticipationInformationGenerator|2014-03-26
-  - #_ParticipationInformationGenerator: ParticipationInformationGenerator
   - #AUT: author (originator)
   - #ENT: data entry person
   - #INF: informant
@@ -43446,7 +43450,6 @@ Value Sets: 1082 (unversioned)
   - #N60: Net 60 days
   - #N90: Net 90 days
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-PersonalRelationshipRoleType|2014-03-26
-  - #_PersonalRelationshipRoleType: PersonalRelationshipRoleType
   - #ADOPTF: adoptive father
   - #ADOPTM: adoptive mother
   - #ADOPTP: adoptive parent
@@ -44853,7 +44856,6 @@ Value Sets: 1082 (unversioned)
   - #NOK: next of kin
   - #SGNOFF: signing authority or officer
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassAssociative|2014-03-26
-  - #_RoleClassAssociative: RoleClassAssociative
   - #_RoleClassMutualRelationship: RoleClassMutualRelationship
   - #_RoleClassPassive: RoleClassPassive
   - #_RoleClassRelationshipFormal: RoleClassRelationshipFormal
@@ -44926,7 +44928,6 @@ Value Sets: 1082 (unversioned)
   - #MANU: manufactured product
   - #THER: therapeutic agent
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassMutualRelationship|2014-03-26
-  - #_RoleClassMutualRelationship: RoleClassMutualRelationship
   - #_RoleClassRelationshipFormal: RoleClassRelationshipFormal
   - #AFFL: affiliate
   - #AGNT: agent
@@ -44968,7 +44969,6 @@ Value Sets: 1082 (unversioned)
   - #SUBSCR: subscriber
   - #UNDWRT: underwriter
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassPartitive|2014-03-26
-  - #_RoleClassPartitive: RoleClassPartitive
   - #ACTI: active ingredient
   - #ACTIB: active ingredient - basis of strength
   - #ACTIM: active ingredient - moiety is basis of strength
@@ -44997,7 +44997,6 @@ Value Sets: 1082 (unversioned)
   - #STBL: stabilizer
   - #STOR: stored entity
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassPassive|2014-03-26
-  - #_RoleClassPassive: RoleClassPassive
   - #ACCESS: access
   - #ADJY: adjacency
   - #ADMM: Administerable Material
@@ -45025,7 +45024,6 @@ Value Sets: 1082 (unversioned)
   - #USED: used entity
   - #WRTE: warranted product
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassRelationshipFormal|2014-03-26
-  - #_RoleClassRelationshipFormal: RoleClassRelationshipFormal
   - #AFFL: affiliate
   - #AGNT: agent
   - #ASSIGNED: assigned entity
@@ -45990,7 +45988,6 @@ Value Sets: 1082 (unversioned)
   - #_SECALTINTOBV: alteration integrity
   - #_SECDATINTOBV: data integrity
   - #_SECINTCONOBV: integrity confidence
-  - #_SECINTOBV: security integrity
   - #_SECINTPRVABOBV: provenance asserted by
   - #_SECINTPRVOBV: provenance
   - #_SECINTPRVRBOBV: provenance reported by
@@ -46085,7 +46082,6 @@ Value Sets: 1082 (unversioned)
   - #_DedicatedNonClinicalLocationRoleType: DedicatedNonClinicalLocationRoleType
   - #_DedicatedServiceDeliveryLocationRoleType: DedicatedServiceDeliveryLocationRoleType
   - #_IncidentalServiceDeliveryLocationRoleType: IncidentalServiceDeliveryLocationRoleType
-  - #_ServiceDeliveryLocationRoleType: ServiceDeliveryLocationRoleType
   - #ACC: accident site
   - #ALL: Allergy clinic
   - #AMB: Ambulance
@@ -46217,7 +46213,6 @@ Value Sets: 1082 (unversioned)
   - #I: include
   - #P: periodic hull
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SeverityObservation|2014-03-26
-  - #_SeverityObservation: SeverityObservation
   - #H: High
   - #L: Low
   - #M: Moderate
@@ -46358,7 +46353,6 @@ Value Sets: 1082 (unversioned)
   - #TE: therapeutic alternative
   - #TG: therapeutic generic
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SubstanceAdminSubstitutionReason|2014-03-26
-  - #_SubstanceAdminSubstitutionReason: SubstanceAdminSubstitutionReason
   - #CT: continuing therapy
   - #FP: formulary policy
   - #OS: out of stock

@@ -534,6 +534,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             string descriptionShort = sd.Description;
             string definition = sd.Purpose;
             string comment = string.Empty;
+            string baseTypeName = string.Empty;
 
             if ((sd.Snapshot != null) &&
                 (sd.Snapshot.Element != null) &&
@@ -546,15 +547,49 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         descriptionShort = element.Short;
                         definition = element.Definition;
                         comment = element.Comment;
-                        break;
+                        continue;
+                    }
+
+                    if (element.Id != $"{sd.Id}.value")
+                    {
+                        continue;
+                    }
+
+                    if (element.Type == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (fhir_3.ElementDefinitionType type in element.Type)
+                    {
+                        if ((type._Code == null) ||
+                            (type._Code.Extension == null))
+                        {
+                            continue;
+                        }
+
+                        foreach (fhir_3.Extension ext in type._Code.Extension)
+                        {
+                            if ((ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type") &&
+                                FhirElementType.IsXmlType(ext.ValueString, out string fhirType))
+                            {
+                                baseTypeName = fhirType;
+                            }
+                        }
                     }
                 }
+            }
+
+            if (string.IsNullOrEmpty(baseTypeName))
+            {
+                baseTypeName = sd.Name;
             }
 
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Id,
                 sd.Name,
+                baseTypeName,
                 new Uri(sd.Url),
                 sd.Status,
                 descriptionShort,

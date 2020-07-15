@@ -540,6 +540,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             string descriptionShort = sd.Description;
             string definition = sd.Purpose;
             string comment = string.Empty;
+            string baseTypeName = string.Empty;
 
             if ((sd.Snapshot != null) &&
                 (sd.Snapshot.Element != null) &&
@@ -567,6 +568,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     foreach (fhir_4.ElementDefinitionType type in element.Type)
                     {
+                        if (!string.IsNullOrEmpty(type.Code))
+                        {
+                            if (FhirElementType.IsFhirPathType(type.Code, out string fhirType))
+                            {
+                                baseTypeName = fhirType;
+                            }
+                            else if (FhirElementType.IsXmlType(type.Code, out string xmlFhirType))
+                            {
+                                baseTypeName = xmlFhirType;
+                            }
+                        }
+
                         if (type.Extension == null)
                         {
                             continue;
@@ -584,10 +597,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 }
             }
 
+            if (string.IsNullOrEmpty(baseTypeName))
+            {
+                baseTypeName = sd.Name;
+            }
+
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Id,
                 sd.Name,
+                baseTypeName,
                 new Uri(sd.Url),
                 sd.Status,
                 descriptionShort,

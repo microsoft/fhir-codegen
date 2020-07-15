@@ -264,7 +264,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="fhirPathType">Type in FHIRPath.</param>
         /// <param name="fhirType">    [out] Type in FHIR.</param>
         /// <returns>A string.</returns>
-        private static bool IsFhirPathType(string fhirPathType, out string fhirType)
+        public static bool IsFhirPathType(string fhirPathType, out string fhirType)
         {
             fhirType = string.Empty;
 

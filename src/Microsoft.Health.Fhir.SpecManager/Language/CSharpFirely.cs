@@ -63,7 +63,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "instant", "DateTimeOffset?" },
             { "integer", "int?" },
             { "integer64", "long" },
-            { "markdown", "string" },
+            //{ "markdown", "string" },
             { "Narrative", "string" },
             { "oid", "string" },
             { "positiveInt", "int?" },
@@ -1267,12 +1267,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented($"[FhirType(\"{exportName}\", NamedBackboneElement=true)]");
             _writer.WriteLineIndented("[DataContract]");
 
-            _writer.WriteLineIndented(
-                $"public partial class" +
-                    $" {exportName}" +
-                    $" : {_namespace}.BackboneElement," +
-                    $" System.ComponentModel.INotifyPropertyChanged," +
-                    $" IBackboneElement");
+            if (isResource)
+            {
+                _writer.WriteLineIndented(
+                    $"public partial class" +
+                        $" {exportName}" +
+                        $" : {_namespace}.BackboneElement," +
+                        $" System.ComponentModel.INotifyPropertyChanged");
+            }
+            else
+            {
+                _writer.WriteLineIndented(
+                    $"public partial class" +
+                        $" {exportName}" +
+                        $" : {_namespace}.Element," +
+                        $" System.ComponentModel.INotifyPropertyChanged," +
+                        $" IBackboneElement");
+            }
 
             // open class
             OpenScope();
@@ -1363,7 +1374,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string name = vs.Name ?? vs.Id;
             string nameSanitized = FhirUtils.SanitizeForProperty(name, _reservedWords);
 
-            nameSanitized = FhirUtils.SanitizedToConvention(nameSanitized, FhirTypeBase.NamingConvention.PascalCase);
+            //nameSanitized = FhirUtils.SanitizedToConvention(nameSanitized, FhirTypeBase.NamingConvention.PascalCase);
 
             if (usedEnumNames.Contains(nameSanitized))
             {
@@ -1592,7 +1603,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"public List<{codeLiteral}> {pascal}Element");
 
                 OpenScope();
-                _writer.WriteLineIndented($"get {{ if (_{pascal}Element==null) _{pascal}Element = new List<{codeLiteral}>(); return _{pascal}Element; }}");
+                _writer.WriteLineIndented($"get {{ if (_{pascal}Element == null) _{pascal}Element = new List<{codeLiteral}>(); return _{pascal}Element; }}");
                 _writer.WriteLineIndented($"set {{ _{pascal}Element = value; OnPropertyChanged(\"{pascal}Element\"); }}");
                 CloseScope();
 
@@ -1724,7 +1735,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _writer.WriteLineIndented("[DataMember]");
 
-            string type = string.Empty;
+            string type;
 
             if (!string.IsNullOrEmpty(element.BaseTypeName))
             {
@@ -1836,7 +1847,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"public List<{_namespace}.{type}> {pascal}{elementTag}");
 
                 OpenScope();
-                _writer.WriteLineIndented($"get {{ if (_{pascal}{elementTag}==null) _{pascal}{elementTag} = new List<{_namespace}.{type}>(); return _{pascal}{elementTag}; }}");
+                _writer.WriteLineIndented($"get {{ if (_{pascal}{elementTag} == null) _{pascal}{elementTag} = new List<{_namespace}.{type}>(); return _{pascal}{elementTag}; }}");
                 _writer.WriteLineIndented($"set {{ _{pascal}{elementTag} = value; OnPropertyChanged(\"{pascal}{elementTag}\"); }}");
                 CloseScope();
 
@@ -2134,26 +2145,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirPrimitive primitive,
             ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
-            string exportName;
-            string typeName = primitive.Name;   // primitive.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
-
-            if (_typeNameMappings.ContainsKey(typeName))
+            if (primitive.Name == "markdown")
             {
-                exportName = _typeNameMappings[typeName];
+                Console.Write(string.Empty);
+            }
+
+            string exportName;
+            string typeName;                    // primitive.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
+
+            if (_typeNameMappings.ContainsKey(primitive.Name))
+            {
+                exportName = _typeNameMappings[primitive.Name];
             }
             else
             {
                 exportName = primitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
             }
 
-            if (_primitiveTypeMap.ContainsKey(typeName))
+            if (_primitiveTypeMap.ContainsKey(primitive.Name))
             {
-                typeName = _primitiveTypeMap[typeName];
+                typeName = _primitiveTypeMap[primitive.Name];
             }
-            //else
-            //{
-            //    typeName = FhirUtils.SanitizedToConvention(typeName, FhirTypeBase.NamingConvention.PascalCase);
-            //}
+            else
+            {
+                typeName = primitive.BaseTypeName;
+                //typeName = FhirUtils.SanitizedToConvention(primitive.Name, FhirTypeBase.NamingConvention.PascalCase);
+            }
 
             writtenModels.Add(
                 primitive.Name,
