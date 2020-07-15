@@ -69,7 +69,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 outputDir = outputPath;
             }
 
-            string exportDir = Path.Combine(outputDir, $"{exportLanguage.LanguageName}-{DateTime.Now.Ticks}");
+            string exportDir = Path.Combine(Path.GetFullPath(outputDir), $"{exportLanguage.LanguageName}-{DateTime.Now.Ticks}");
 
             if (!Directory.Exists(outputDir))
             {
@@ -121,18 +121,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 options,
                 exportDir);
 
-            string[] exportedFiles = Directory.GetFiles(exportDir);
+            string[] exportedFiles = Directory.GetFiles(exportDir, string.Empty, SearchOption.AllDirectories);
 
             // check for being a directory - just copy our process files
             if (Directory.Exists(outputPath))
             {
+                int duplicateLen = exportDir.Length + 1;
+
                 foreach (string file in exportedFiles)
                 {
-                    string exportName = Path.Combine(outputPath, Path.GetFileName(file));
+                    string exportName = Path.Combine(outputPath, file.Substring(duplicateLen));
 
                     if (File.Exists(exportName))
                     {
                         File.Delete(exportName);
+                    }
+
+                    if (!Directory.Exists(Path.GetDirectoryName(exportName)))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(exportName));
                     }
 
                     File.Move(file, exportName);

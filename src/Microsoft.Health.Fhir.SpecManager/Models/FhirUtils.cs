@@ -392,7 +392,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         break;
 
                     case '/':
-                        sb.Append("_");     // sb.Append("_slash_");
+                        if (i == 0)
+                        {
+                            sb.Append("Per");
+                        }
+                        else
+                        {
+                            sb.Append("_");     // sb.Append("_slash_");
+                        }
+
                         break;
 
                     case '|':

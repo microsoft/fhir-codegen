@@ -624,7 +624,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 ((inclusionSet == null) || inclusionSet.Contains(node.Concept.Code)) &&
                 ((exclusionSet == null) || (!exclusionSet.Contains(node.Concept.Code))))
             {
-                values.Add(node.Concept.Code, node.Concept);
+                string key = node.Concept.Key();
+
+                if (!values.ContainsKey(key))
+                {
+                    values.Add(node.Concept.Key(), node.Concept);
+                }
             }
 
             if (includeChildren &&
@@ -704,11 +709,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 string key = concept.Key();
 
-                if (values.ContainsKey(key))
-                {
-                    continue;
-                }
-
                 if ((codeSystems != null) &&
                     codeSystems.ContainsKey(concept.System) &&
                     codeSystems[concept.System].ContainsConcept(concept.Code))
@@ -718,7 +718,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         _codeSystems.Add(concept.System);
                     }
 
+                    if (values.ContainsKey(key))
+                    {
+                        values.Remove(key);
+                    }
+
                     values.Add(key, codeSystems[concept.System][concept.Code].Concept);
+                    continue;
+                }
+
+                if (values.ContainsKey(key))
+                {
                     continue;
                 }
 

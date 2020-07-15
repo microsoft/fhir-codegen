@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -92,7 +93,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             "Base",
             "CanonicalResource",
-            "DomainResource",
             "Element",
             "Extension",
             "MetadataResource",
@@ -113,7 +113,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>List of resources which cannot be found for ModelInfo.cs (not exported elsewhere).</summary>
         private static readonly List<string> _dictionaryMissingResources = new List<string>()
         {
-            "DomainResource",
             "Resource",
         };
 
@@ -265,6 +264,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _options = options;
             _exportDirectory = exportDirectory;
             _writtenValueSets = new Dictionary<string, WrittenValueSetInfo>();
+
+            if (!Directory.Exists(exportDirectory))
+            {
+                Directory.CreateDirectory(exportDirectory);
+            }
+
+            if (!Directory.Exists(Path.Combine(exportDirectory, "Generated")))
+            {
+                Directory.CreateDirectory(Path.Combine(exportDirectory, "Generated"));
+            }
 
             _headerUserName = Environment.UserName;
             _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
@@ -668,6 +677,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the common enums.</summary>
         private void WriteCommonValueSets()
         {
+            HashSet<string> usedEnumNames = new HashSet<string>();
+
             string filename = Path.Combine(_exportDirectory, "Generated", "Template-Bindings.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
@@ -688,7 +699,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             continue;
                         }
 
-                        WriteEnum(vs, string.Empty);
+                        WriteEnum(vs, string.Empty, usedEnumNames);
 
                         _modelWriter.WriteLineIndented($"// Generated Shared Enumeration: {_writtenValueSets[vs.URL].ValueSetName} ({vs.URL})");
                         _modelWriter.IncreaseIndent();
@@ -946,7 +957,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            WriteElements(complex, isResource, ref exportedElements);
+            WriteElements(complex, exportName, ref exportedElements);
 
             if (isResource)
             {
@@ -1268,17 +1279,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WritePropertyTypeName(exportName, false, depth);
 
-            // check for nested components
-            if (complex.Components != null)
-            {
-                foreach (FhirComplex component in complex.Components.Values)
-                {
-                    string componentName = $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
-                    WriteBackboneComponent(component, componentName, isResource, depth + 1);
-                }
-            }
-
-            WriteElements(complex, isResource, ref exportedElements);
+            WriteElements(complex, exportName, ref exportedElements);
 
             WriteDeepCopy(exportName);
 
@@ -1293,23 +1294,44 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             // close class
             CloseScope();
+
+            // check for nested components
+            if (complex.Components != null)
+            {
+                // prefix with current name less 'component'
+                string prefix = exportName.Substring(0, exportName.Length - 9);
+
+                foreach (FhirComplex component in complex.Components.Values)
+                {
+                    string componentName = $"{prefix}{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
+                    WriteBackboneComponent(component, componentName, isResource, depth + 1);
+                }
+            }
         }
 
         /// <summary>Writes the enums.</summary>
-        /// <param name="complex">  The complex data type.</param>
-        /// <param name="className">Name of the class this enum is being written in.</param>
+        /// <param name="complex">      The complex data type.</param>
+        /// <param name="className">    Name of the class this enum is being written in.</param>
+        /// <param name="usedEnumNames">(Optional) List of names of the used enums.</param>
         private void WriteEnums(
             FhirComplex complex,
-            string className)
+            string className,
+            HashSet<string> usedEnumNames = null)
         {
+            if (usedEnumNames == null)
+            {
+                usedEnumNames = new HashSet<string>();
+            }
+
             if (complex.Elements != null)
             {
                 foreach (FhirElement element in complex.Elements.Values)
                 {
                     if ((!string.IsNullOrEmpty(element.ValueSet)) &&
+                        (element.BindingStrength == "required") &&
                         _info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
                     {
-                        WriteEnum(vs, className);
+                        WriteEnum(vs, className, usedEnumNames);
 
                         continue;
                     }
@@ -1320,7 +1342,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {
-                    WriteEnums(component, className);
+                    WriteEnums(component, className, usedEnumNames);
                 }
             }
         }
@@ -1330,7 +1352,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="className">Name of the class this enum is being written in.</param>
         private void WriteEnum(
             FhirValueSet vs,
-            string className)
+            string className,
+            HashSet<string> usedEnumNames)
         {
             if (_writtenValueSets.ContainsKey(vs.URL))
             {
@@ -1341,6 +1364,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string nameSanitized = FhirUtils.SanitizeForProperty(name, _reservedWords);
 
             nameSanitized = FhirUtils.SanitizedToConvention(nameSanitized, FhirTypeBase.NamingConvention.PascalCase);
+
+            if (usedEnumNames.Contains(nameSanitized))
+            {
+                return;
+            }
+
+            usedEnumNames.Add(nameSanitized);
 
             if (vs.ReferencedCodeSystems.Count == 1)
             {
@@ -1357,7 +1387,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             OpenScope();
 
-            HashSet<string> usedValues = new HashSet<string>();
+            HashSet<string> usedLiterals = new HashSet<string>();
 
             foreach (FhirConcept concept in vs.Concepts)
             {
@@ -1376,6 +1406,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment(comment);
 
                 _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+
+                if (usedLiterals.Contains(pascal))
+                {
+                    // start at 2 so that the unadorned version makes sense as v1
+                    for (int i = 2; i < 1000; i++)
+                    {
+                        if (usedLiterals.Contains($"{pascal}_{i}"))
+                        {
+                            continue;
+                        }
+
+                        pascal = $"{pascal}_{i}";
+                        break;
+                    }
+                }
+
+                usedLiterals.Add(pascal);
+
                 _writer.WriteLineIndented($"{pascal},");
             }
 
@@ -1398,12 +1446,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes the elements.</summary>
-        /// <param name="complex">         The complex data type.</param>
-        /// <param name="isResource">      True if is resource, false if not.</param>
-        /// <param name="exportedElements">[in,out] The exported elements.</param>
+        /// <param name="complex">            The complex data type.</param>
+        /// <param name="exportedComplexName">Name of the exported complex parent.</param>
+        /// <param name="exportedElements">   [in,out] The exported elements.</param>
         private void WriteElements(
             FhirComplex complex,
-            bool isResource,
+            string exportedComplexName,
             ref List<WrittenElementInfo> exportedElements)
         {
             foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.FieldOrder))
@@ -1428,7 +1476,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WriteElement(complex, element, ref exportedElements);
+                WriteElement(complex, exportedComplexName, element, ref exportedElements);
             }
         }
 
@@ -1440,9 +1488,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ref List<WrittenElementInfo> exportedElements)
         {
             bool hasDefinedEnum = true;
-            if (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+            if ((element.BindingStrength != "required") ||
+                (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs)))
             {
                 hasDefinedEnum = false;
+                vs = null;
             }
 
             string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
@@ -1624,19 +1674,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes an element.</summary>
-        /// <param name="complex">         The complex data type.</param>
-        /// <param name="element">         The element.</param>
-        /// <param name="exportedElements">[in,out] The exported elements.</param>
+        /// <param name="complex">            The complex data type.</param>
+        /// <param name="exportedComplexName">Name of the exported complex parent.</param>
+        /// <param name="element">            The element.</param>
+        /// <param name="exportedElements">   [in,out] The exported elements.</param>
         private void WriteElement(
             FhirComplex complex,
+            string exportedComplexName,
             FhirElement element,
             ref List<WrittenElementInfo> exportedElements)
         {
-            if (element.Path == "CodeSystem.concept.property.value")
-            {
-                Console.Write(string.Empty);
-            }
-
             string name = element.Name;
 
             if (name.Contains("[x]"))
@@ -1698,7 +1745,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             bool noElement = true;
 
-            if (complex.Components.ContainsKey(type))
+            if (type.Contains('.'))
             {
                 StringBuilder sb = new StringBuilder();
 
@@ -1712,11 +1759,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         continue;
                     }
 
-                    sb.Append(".");
+                    if (i == 1)
+                    {
+                        sb.Append(".");
+                    }
+
                     sb.Append(FhirUtils.SanitizedToConvention(components[i], FhirTypeBase.NamingConvention.PascalCase));
-                    sb.Append("Component");
                 }
 
+                sb.Append("Component");
                 type = sb.ToString();
             }
 
@@ -1742,6 +1793,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (_typeNameMappings.ContainsKey(type))
             {
                 type = _typeNameMappings[type];
+            }
+            else
+            {
+                type = FhirUtils.SanitizedToConvention(type, FhirTypeBase.NamingConvention.PascalCase);
             }
 
             string elementTag = noElement ? string.Empty : "Element";
@@ -1795,6 +1850,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return;
             }
 
+            string matchTrailer = string.Empty;
+
+            if (pascal == exportedComplexName)
+            {
+                matchTrailer = "_";
+            }
+
             WriteIndentedComment(element.ShortDescription);
             _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
 
@@ -1803,14 +1865,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (element.CardinalityMax == 1)
             {
-                _writer.WriteLineIndented($"public {nativeType}{optional} {pascal}");
+                _writer.WriteLineIndented($"public {nativeType}{optional} {pascal}{matchTrailer}");
 
                 OpenScope();
                 _writer.WriteLineIndented($"get {{ return {pascal}Element != null ? {pascal}Element.Value : null; }}");
                 _writer.WriteLineIndented("set");
                 OpenScope();
 
-                if (string.IsNullOrEmpty(optional))
+                if (string.IsNullOrEmpty(optional) &&
+                    (!nativeType.EndsWith("?", StringComparison.Ordinal)))
                 {
                     _writer.WriteLineIndented($"if (value == null)");
                 }
@@ -1824,9 +1887,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.DecreaseIndent();
                 _writer.WriteLineIndented("else");
                 _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = new {nativeType}(value);");
+                _writer.WriteLineIndented($"{pascal}Element = new {_namespace}.{type}(value);");
+                //_writer.WriteLineIndented($"{pascal}Element = new {nativeType}(value);");
                 _writer.DecreaseIndent();
-                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}\");");
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
                 CloseScope();
                 CloseScope();
             }
@@ -1855,12 +1919,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.DecreaseIndent();
                     _writer.WriteLineIndented("else");
                     _writer.IncreaseIndent();
-                    _writer.WriteLineIndented($"{pascal}Element = new List<{_namespace}.{type}>(value.Select(elem => new {_namespace}{type}(elem)));");
+                    _writer.WriteLineIndented($"{pascal}Element = new List<{_namespace}.{type}>(value.Select(elem => new {_namespace}.{type}(elem)));");
                     _writer.DecreaseIndent();
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(optional))
+                    if (string.IsNullOrEmpty(optional) &&
+                        (!nativeType.EndsWith("?", StringComparison.Ordinal)))
                     {
                         _writer.WriteLineIndented($"if (value == null)");
                     }
@@ -1874,7 +1939,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.DecreaseIndent();
                     _writer.WriteLineIndented("else");
                     _writer.IncreaseIndent();
-                    _writer.WriteLineIndented($"{pascal}Element = new {_namespace}{type}(value);");
+                    _writer.WriteLineIndented($"{pascal}Element = new {_namespace}.{type}(value);");
                     _writer.DecreaseIndent();
                 }
 
@@ -2070,16 +2135,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ref Dictionary<string, WrittenModelInfo> writtenModels)
         {
             string exportName;
-            string typeName = primitive.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
+            string typeName = primitive.Name;   // primitive.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
 
-            if (_typeNameMappings.ContainsKey(primitive.Name))
+            if (_typeNameMappings.ContainsKey(typeName))
             {
-                exportName = _typeNameMappings[primitive.Name];
+                exportName = _typeNameMappings[typeName];
             }
             else
             {
                 exportName = primitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
             }
+
+            if (_primitiveTypeMap.ContainsKey(typeName))
+            {
+                typeName = _primitiveTypeMap[typeName];
+            }
+            //else
+            //{
+            //    typeName = FhirUtils.SanitizedToConvention(typeName, FhirTypeBase.NamingConvention.PascalCase);
+            //}
 
             writtenModels.Add(
                 primitive.Name,
@@ -2089,7 +2163,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     CsName = $"{_namespace}.{exportName}",
                 });
 
-            string filename = Path.Combine(_exportDirectory, "Generated",, $"{exportName}.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
 
             _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
@@ -2130,7 +2204,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
                 {
                     WriteIndentedComment(
-                        $"Must conform to pattern \"{primitive.ValidationRegEx}\"",
+                        $"Must conform to the pattern \"{primitive.ValidationRegEx}\"",
                         false);
 
                     _writer.WriteLineIndented($"public const string PATTERN = @\"{primitive.ValidationRegEx}\";");
@@ -2150,7 +2224,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment("Primitive value of the element");
 
                 _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
-                _writer.WriteLineIndented("[DataMemeber]");
+                _writer.WriteLineIndented("[DataMember]");
                 _writer.WriteLineIndented($"public {typeName} Value");
                 OpenScope();
                 _writer.WriteLineIndented($"get {{ return ({typeName})ObjectValue; }}");
