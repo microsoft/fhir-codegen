@@ -26,6 +26,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Initializes a new instance of the <see cref="FhirComplex"/> class.</summary>
         /// <param name="id">              The id of this resource/datatype/extension.</param>
         /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
+        /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">Information describing the short.</param>
@@ -35,6 +36,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public FhirComplex(
             string id,
             string path,
+            string explicitName,
             Uri url,
             string standardStatus,
             string shortDescription,
@@ -57,6 +59,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _typeOperations = new Dictionary<string, FhirOperation>();
             _instanceOperations = new Dictionary<string, FhirOperation>();
             _constraints = new List<FhirConstraint>();
+            ExplicitName = explicitName;
         }
 
         /// <summary>
@@ -64,6 +67,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// </summary>
         /// <param name="id">              The id of this resource/data type/extension.</param>
         /// <param name="path">            The dot-notation path to this resource/data type/extension.</param>
+        /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">Information describing the short.</param>
@@ -75,6 +79,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public FhirComplex(
             string id,
             string path,
+            string explicitName,
             Uri url,
             string standardStatus,
             string shortDescription,
@@ -86,6 +91,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             : this(
                 id,
                 path,
+                explicitName,
                 url,
                 standardStatus,
                 shortDescription,
@@ -101,6 +107,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="id">              The id of this resource/datatype/extension.</param>
         /// <param name="path">            The dot-notation path to this resource/datatype/extension.</param>
         /// <param name="url">             URL of the resource.</param>
+        /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">Information describing the short.</param>
         /// <param name="purpose">         The purpose.</param>
@@ -110,6 +117,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public FhirComplex(
             string id,
             string path,
+            string explicitName,
             Uri url,
             string standardStatus,
             string shortDescription,
@@ -120,6 +128,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             : this(
                 id,
                 path,
+                explicitName,
                 url,
                 standardStatus,
                 shortDescription,
@@ -145,6 +154,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             /// <summary>An enum constant representing the profile option.</summary>
             Profile,
         }
+
+        /// <summary>Gets the explicit name of this structure, if provided.</summary>
+        public string ExplicitName { get; }
 
         /// <summary>Gets a value indicating whether this object is abstract.</summary>
         public bool IsAbstract { get; }
@@ -263,6 +275,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 new FhirComplex(
                     property.Id,
                     property.Path,
+                    property.ExplicitName,
                     property.URL,
                     property.StandardStatus,
                     property.ShortDescription,
@@ -275,6 +288,70 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             _elements[path].BaseTypeName = property.Path;
 
             return true;
+        }
+
+        /// <summary>Attempts to get an explicit name for a component path.</summary>
+        /// <param name="path">        Name of the element.</param>
+        /// <param name="explicitName">[out] Explicit name for this complex structure, if provided.</param>
+        /// <param name="startIndex">  (Optional) The start index.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public bool TryGetExplicitName(
+            string path,
+            out string explicitName,
+            int startIndex = 0)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                explicitName = string.Empty;
+                return false;
+            }
+
+            int index = path.IndexOf('.', startIndex + 1);
+
+            string currentPath;
+
+            if (index != -1)
+            {
+                currentPath = path.Substring(0, index);
+            }
+            else
+            {
+                currentPath = path;
+            }
+
+            if (_components.ContainsKey(currentPath))
+            {
+                if (index == -1)
+                {
+                    explicitName = _components[currentPath].ExplicitName;
+
+                    if (string.IsNullOrEmpty(explicitName))
+                    {
+                        explicitName = string.Empty;
+                        return false;
+                    }
+
+                    return true;
+                }
+
+                return _components[currentPath].TryGetExplicitName(path, out explicitName, index);
+            }
+
+            if (_elements.ContainsKey(currentPath))
+            {
+                explicitName = _elements[currentPath].ExplicitName;
+
+                if (string.IsNullOrEmpty(explicitName))
+                {
+                    explicitName = string.Empty;
+                    return false;
+                }
+
+                return true;
+            }
+
+            explicitName = string.Empty;
+            return false;
         }
 
         /// <summary>Gets the parent and field name.</summary>
@@ -455,6 +532,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             FhirComplex complex = new FhirComplex(
                     Id,
                     Path,
+                    ExplicitName,
                     URL,
                     StandardStatus,
                     ShortDescription,

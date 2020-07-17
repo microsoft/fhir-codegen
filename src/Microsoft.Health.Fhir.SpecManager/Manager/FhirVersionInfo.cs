@@ -590,6 +590,46 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return false;
         }
 
+        /// <summary>Attempts to get explicit name a string from the given string.</summary>
+        /// <param name="path">        Full pathname of the file.</param>
+        /// <param name="explicitName">[out] Name of the explicit.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public bool TryGetExplicitName(string path, out string explicitName)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                explicitName = string.Empty;
+                return false;
+            }
+
+            int index = path.IndexOf('.');
+
+            string currentPath;
+
+            if (index != -1)
+            {
+                currentPath = path.Substring(0, index);
+            }
+            else
+            {
+                currentPath = path;
+                index = 0;
+            }
+
+            if (_complexTypesByName.ContainsKey(currentPath))
+            {
+                return _complexTypesByName[currentPath].TryGetExplicitName(path, out explicitName, index);
+            }
+
+            if (_resourcesByName.ContainsKey(currentPath))
+            {
+                return _resourcesByName[currentPath].TryGetExplicitName(path, out explicitName, index);
+            }
+
+            explicitName = string.Empty;
+            return false;
+        }
+
         /// <summary>Parses resource an object from the given string.</summary>
         /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
         /// <param name="json">The JSON.</param>
