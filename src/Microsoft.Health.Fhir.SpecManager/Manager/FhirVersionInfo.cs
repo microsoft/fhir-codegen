@@ -819,9 +819,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="copyExtensions">       (Optional) True to copy extensions.</param>
         /// <param name="extensionUrls">        (Optional) The extension urls.</param>
         /// <param name="extensionElementPaths">(Optional) The extension paths.</param>
-        /// <param name="copySlicing">          (Optional) True to copy slicing.</param>
-        /// <param name="canHideParentFields">  (Optional) True if can hide parent fields, false if not.</param>
-        /// <param name="copyValueSets">        (Optional) True to copy value sets.</param>
         /// <returns>A FhirVersionInfo.</returns>
         internal FhirVersionInfo CopyForExport(
             Dictionary<string, string> primitiveTypeMap,
@@ -831,10 +828,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             bool copyResources = true,
             bool copyExtensions = true,
             HashSet<string> extensionUrls = null,
-            HashSet<string> extensionElementPaths = null,
-            bool copySlicing = true,
-            bool canHideParentFields = true,
-            bool copyValueSets = true)
+            HashSet<string> extensionElementPaths = null)
         {
             // create our return object
             FhirVersionInfo info = new FhirVersionInfo(MajorVersion)
@@ -905,8 +899,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         kvp.Key,
                         kvp.Value.DeepCopy(
                             primitiveTypeMap,
-                            copySlicing,
-                            canHideParentFields,
+                            true,
+                            false,
                             ref valueSetReferences));
                 }
             }
@@ -926,8 +920,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         kvp.Key,
                         kvp.Value.DeepCopy(
                             primitiveTypeMap,
-                            copySlicing,
-                            canHideParentFields,
+                            true,
+                            false,
                             ref valueSetReferences));
                 }
             }
@@ -969,8 +963,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     info.AddExtension(
                         extension.DeepCopy(
                             primitiveTypeMap,
-                            copySlicing,
-                            canHideParentFields,
+                            true,
+                            false,
                             ref valueSetReferences));
                 }
             }
@@ -995,48 +989,45 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 info._allInteractionParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
             }
 
-            if (copyValueSets)
+            foreach (KeyValuePair<string, FhirValueSetCollection> collectionKvp in _valueSetsByUrl)
             {
-                foreach (KeyValuePair<string, FhirValueSetCollection> collectionKvp in _valueSetsByUrl)
+                foreach (KeyValuePair<string, FhirValueSet> versionKvp in collectionKvp.Value.ValueSetsByVersion)
                 {
-                    foreach (KeyValuePair<string, FhirValueSet> versionKvp in collectionKvp.Value.ValueSetsByVersion)
+                    string key = $"{collectionKvp.Key}|{versionKvp.Key}";
+
+                    if (info.HasValueSet(key))
                     {
-                        string key = $"{collectionKvp.Key}|{versionKvp.Key}";
-
-                        if (info.HasValueSet(key))
-                        {
-                            continue;
-                        }
-
-                        // check for restricted output and not seeing this valueSet
-                        if (restrictOutput &&
-                            (!valueSetReferences.ContainsKey(collectionKvp.Key)))
-                        {
-                            continue;
-                        }
-
-                        versionKvp.Value.Resolve(_codeSystemsByUrl);
-
-                        if ((versionKvp.Value.Concepts == null) ||
-                            (versionKvp.Value.Concepts.Count == 0))
-                        {
-                            continue;
-                        }
-
-                        if (!info._valueSetsByUrl.ContainsKey(collectionKvp.Key))
-                        {
-                            info._valueSetsByUrl.Add(collectionKvp.Key, new FhirValueSetCollection(collectionKvp.Key));
-                        }
-
-                        FhirValueSet vs = (FhirValueSet)versionKvp.Value.Clone();
-
-                        if (valueSetReferences.ContainsKey(collectionKvp.Key))
-                        {
-                            vs.SetReferences(valueSetReferences[collectionKvp.Key]);
-                        }
-
-                        info._valueSetsByUrl[collectionKvp.Key].AddValueSet(vs);
+                        continue;
                     }
+
+                    // check for restricted output and not seeing this valueSet
+                    if (restrictOutput &&
+                        (!valueSetReferences.ContainsKey(collectionKvp.Key)))
+                    {
+                        continue;
+                    }
+
+                    versionKvp.Value.Resolve(_codeSystemsByUrl);
+
+                    if ((versionKvp.Value.Concepts == null) ||
+                        (versionKvp.Value.Concepts.Count == 0))
+                    {
+                        continue;
+                    }
+
+                    if (!info._valueSetsByUrl.ContainsKey(collectionKvp.Key))
+                    {
+                        info._valueSetsByUrl.Add(collectionKvp.Key, new FhirValueSetCollection(collectionKvp.Key));
+                    }
+
+                    FhirValueSet vs = (FhirValueSet)versionKvp.Value.Clone();
+
+                    if (valueSetReferences.ContainsKey(collectionKvp.Key))
+                    {
+                        vs.SetReferences(valueSetReferences[collectionKvp.Key]);
+                    }
+
+                    info._valueSetsByUrl[collectionKvp.Key].AddValueSet(vs);
                 }
             }
 

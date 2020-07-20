@@ -19,18 +19,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The name of the language.</value>
         string LanguageName { get; }
 
-        /// <summary>Gets a value indicating whether the language supports model inheritance.</summary>
-        bool SupportsModelInheritance { get; }
-
-        /// <summary>Gets a value indicating whether the supports hiding parent field.</summary>
-        bool SupportsHidingParentField { get; }
-
-        /// <summary>Gets a value indicating whether the language supports nested type definitions.</summary>
-        /// <value>True if the language supports nested type definitions, false if not.</value>
-        bool SupportsNestedTypeDefinitions { get; }
-
-        /// <summary>Gets a value indicating whether the supports slicing.</summary>
-        bool SupportsSlicing { get; }
+        /// <summary>
+        /// Gets the single file extension for this language - null or empty indicates a multi-file
+        /// export (exporter should copy the contents of the directory).
+        /// </summary>
+        string SingleFileExportExtension { get; }
 
         /// <summary>Gets the FHIR primitive type map.</summary>
         Dictionary<string, string> FhirPrimitiveTypeMap { get; }

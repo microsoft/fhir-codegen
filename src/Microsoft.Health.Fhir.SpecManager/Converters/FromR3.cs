@@ -562,18 +562,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                     foreach (fhir_3.ElementDefinitionType type in element.Type)
                     {
-                        if ((type._Code == null) ||
-                            (type._Code.Extension == null))
+                        if (type.Extension != null)
                         {
-                            continue;
+                            foreach (fhir_3.Extension ext in type.Extension)
+                            {
+                                if (ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex")
+                                {
+                                    regex = ext.ValueString;
+                                    break;
+                                }
+                            }
                         }
 
-                        foreach (fhir_3.Extension ext in type._Code.Extension)
+                        if ((type._Code != null) &&
+                            (type._Code.Extension != null))
                         {
-                            if ((ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type") &&
-                                FhirElementType.IsXmlType(ext.ValueString, out string fhirType))
+                            foreach (fhir_3.Extension ext in type._Code.Extension)
                             {
-                                baseTypeName = fhirType;
+                                if ((ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type") &&
+                                    FhirElementType.IsXmlBaseType(ext.ValueString, out string fhirType))
+                                {
+                                    baseTypeName = fhirType;
+                                }
                             }
                         }
                     }

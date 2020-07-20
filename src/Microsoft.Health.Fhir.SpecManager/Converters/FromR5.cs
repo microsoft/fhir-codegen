@@ -575,7 +575,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             {
                                 baseTypeName = fhirType;
                             }
-                            else if (FhirElementType.IsXmlType(type.Code, out string xmlFhirType))
+                            else if (FhirElementType.IsXmlBaseType(type.Code, out string xmlFhirType))
                             {
                                 baseTypeName = xmlFhirType;
                             }
