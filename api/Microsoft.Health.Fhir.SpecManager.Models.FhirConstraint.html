@@ -119,19 +119,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint__ctor_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint__ctor_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L22">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L23">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.#ctor*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint__ctor_System_String_System_String_System_String_System_String_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.#ctor(System.String,System.String,System.String,System.String,System.String)">FhirConstraint(String, String, String, String, String)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint__ctor_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.#ctor(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.String)">FhirConstraint(String, String, String, String, String, Boolean, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.html">FhirConstraint</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FhirConstraint(string key, string severity, string description, string expression, string xPath)</code></pre>
+    <pre><code class="lang-csharp hljs">public FhirConstraint(string key, string severity, string description, string expression, string xPath, bool isBestPractice, string bestPracticeExplanation)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,16 +173,60 @@
         <td><p>The XPath-style validation expression.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isBestPractice</span></td>
+        <td><p>A value indicating whether this constraint is a best
+practice.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">bestPracticeExplanation</span></td>
+        <td><p>A value indicating why this constraint is a best practice.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Description.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_BestPracticeExplanation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.BestPracticeExplanation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L43">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L60">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_BestPracticeExplanation_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.BestPracticeExplanation*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_BestPracticeExplanation" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.BestPracticeExplanation">BestPracticeExplanation</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating why this constraint is a best practice.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string BestPracticeExplanation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Description.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L48">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Description_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Description*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Description" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Description">Description</h4>
@@ -210,10 +254,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Expression.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Expression%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Expression.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Expression%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L46">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L51">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Expression_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Expression*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Expression" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Expression">Expression</h4>
@@ -241,10 +285,41 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Key.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Key%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_IsBestPractice.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.IsBestPractice%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L37">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L57">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_IsBestPractice_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.IsBestPractice*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_IsBestPractice" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.IsBestPractice">IsBestPractice</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether this constraint is a best practice.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBestPractice { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Key.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Key%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L42">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Key_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Key*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Key" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Key">Key</h4>
@@ -272,10 +347,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Severity.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Severity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Severity.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Severity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L40">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L45">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Severity_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Severity*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Severity" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Severity">Severity</h4>
@@ -303,10 +378,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_XPath.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.XPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_XPath.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.XPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L49">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L54">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_XPath_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.XPath*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_XPath" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.XPath">XPath</h4>
@@ -336,10 +411,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Clone.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Clone.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L53">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L64">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Clone_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Clone*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint_Clone" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint.Clone">Clone()</h4>
@@ -378,10 +453,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirConstraint.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirConstraint.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -79,17 +79,17 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Base.html">Base</a></div>
-    <div class="level2"><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a></div>
+    <div class="level1"><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a></div>
+    <div class="level2"><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.BackboneElement.html">BackboneElement</a></div>
     <div class="level3"><span class="xref">ConformanceRest</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html#Microsoft_Health_Fhir_SpecManager_fhir_r2_Element_Extension">Element.Extension</a>
+      <a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.BackboneElement.html#Microsoft_Health_Fhir_SpecManager_fhir_r2_BackboneElement_ModifierExtension">BackboneElement.ModifierExtension</a>
     </div>
     <div>
-      <a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html#Microsoft_Health_Fhir_SpecManager_fhir_r2_Element__Extension">Element._Extension</a>
+      <a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html#Microsoft_Health_Fhir_SpecManager_fhir_r2_Element_Extension">Element.Extension</a>
     </div>
     <div>
       <a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html#Microsoft_Health_Fhir_SpecManager_fhir_r2_Element_Id">Element.Id</a>
@@ -123,26 +123,25 @@
   <h6><strong>Assembly</strong>: Microsoft.Health.Fhir.SpecManager.dll</h6>
   <h5 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ConformanceRest : Element</code></pre>
+    <pre><code class="lang-csharp hljs">public class ConformanceRest : BackboneElement</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Compartment.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Compartment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Compartment.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Compartment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L692">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3244">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Compartment_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Compartment*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Compartment" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Compartment">_Compartment</h4>
-  <div class="markdown level1 summary"><p>May contain extended information for property: 'Compartment'</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;_compartment&quot;)]
-public Element[] _Compartment { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;_compartment&quot;)]
+public List&lt;Element&gt; _Compartment { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -154,26 +153,25 @@ public Element[] _Compartment { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Documentation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Documentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Documentation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Documentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L698">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3251">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Documentation_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Documentation*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Documentation" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Documentation">_Documentation</h4>
-  <div class="markdown level1 summary"><p>May contain extended information for property: 'Documentation'</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;_documentation&quot;)]
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;_documentation&quot;)]
 public Element _Documentation { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -193,51 +191,18 @@ public Element _Documentation { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Interaction.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Interaction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Mode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Mode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L704">View Source</a>
-  </span>
-  <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Interaction_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Interaction*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Interaction" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Interaction">_Interaction</h4>
-  <div class="markdown level1 summary"><p>May contain extended information for property: 'Interaction'</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;_interaction&quot;)]
-public Element[] _Interaction { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Mode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Mode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L710">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3263">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Mode_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Mode*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Mode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Mode">_Mode</h4>
-  <div class="markdown level1 summary"><p>May contain extended information for property: 'Mode'</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;_mode&quot;)]
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;_mode&quot;)]
 public Element _Mode { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -257,116 +222,19 @@ public Element _Mode { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Operation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Operation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__TransactionMode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._TransactionMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L716">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3290">View Source</a>
   </span>
-  <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Operation_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Operation*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Operation" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Operation">_Operation</h4>
-  <div class="markdown level1 summary"><p>May contain extended information for property: 'Operation'</p>
-</div>
+  <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__TransactionMode_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._TransactionMode*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__TransactionMode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._TransactionMode">_TransactionMode</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;_operation&quot;)]
-public Element[] _Operation { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Resource.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Resource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L722">View Source</a>
-  </span>
-  <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Resource_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Resource*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Resource" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Resource">_Resource</h4>
-  <div class="markdown level1 summary"><p>May contain extended information for property: 'Resource'</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;_resource&quot;)]
-public Element[] _Resource { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__SearchParam.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._SearchParam%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L728">View Source</a>
-  </span>
-  <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__SearchParam_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._SearchParam*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__SearchParam" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._SearchParam">_SearchParam</h4>
-  <div class="markdown level1 summary"><p>May contain extended information for property: 'SearchParam'</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;_searchParam&quot;)]
-public Element[] _SearchParam { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.Element.html">Element</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Security.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Security%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L734">View Source</a>
-  </span>
-  <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Security_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Security*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest__Security" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest._Security">_Security</h4>
-  <div class="markdown level1 summary"><p>May contain extended information for property: 'Security'</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;_security&quot;)]
-public Element _Security { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;_transactionMode&quot;)]
+public Element _TransactionMode { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -385,20 +253,20 @@ public Element _Security { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Compartment.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Compartment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Compartment.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Compartment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L689">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3242">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Compartment_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Compartment*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Compartment" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Compartment">Compartment</h4>
-  <div class="markdown level1 summary"><p>An absolute URI which is a reference to the definition of a compartment that the system supports. The reference is to a CompartmentDefinition resource by its canonical URL .</p>
+  <div class="markdown level1 summary"><p>An absolute URI which is a reference to the definition of a compartment hosted by the system.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;compartment&quot;)]
-public string[] Compartment { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;compartment&quot;)]
+public List&lt;string&gt; Compartment { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -410,17 +278,17 @@ public string[] Compartment { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Documentation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Documentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Documentation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Documentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L695">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3249">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Documentation_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Documentation*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Documentation" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Documentation">Documentation</h4>
@@ -429,7 +297,7 @@ public string[] Compartment { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;documentation&quot;)]
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;documentation&quot;)]
 public string Documentation { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -449,10 +317,10 @@ public string Documentation { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Interaction.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Interaction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Interaction.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Interaction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L701">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3256">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Interaction_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Interaction*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Interaction" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Interaction">Interaction</h4>
@@ -461,8 +329,8 @@ public string Documentation { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;interaction&quot;)]
-public ConformanceRestInteraction[] Interaction { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;interaction&quot;)]
+public List&lt;ConformanceRestInteraction&gt; Interaction { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -474,26 +342,26 @@ public ConformanceRestInteraction[] Interaction { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRestInteraction.html">ConformanceRestInteraction</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRestInteraction.html">ConformanceRestInteraction</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Mode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Mode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Mode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Mode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L707">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3261">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Mode_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Mode*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Mode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Mode">Mode</h4>
-  <div class="markdown level1 summary"><p>Identifies whether this portion of the statement is describing the ability to initiate or receive restful operations.</p>
+  <div class="markdown level1 summary"><p>Identifies whether this portion of the statement is describing ability to initiate or receive restful operations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;mode&quot;)]
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;mode&quot;)]
 public string Mode { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -513,20 +381,20 @@ public string Mode { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Operation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Operation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Operation.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Operation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L713">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3268">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Operation_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Operation*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Operation" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Operation">Operation</h4>
-  <div class="markdown level1 summary"><p>Definition of an operation or a named query together with its parameters and their meaning and type.</p>
+  <div class="markdown level1 summary"><p>Definition of an operation or a named query and with its parameters and their meaning and type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;operation&quot;)]
-public CapabilityStatementRestOperation[] Operation { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;operation&quot;)]
+public List&lt;ConformanceRestOperation&gt; Operation { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -538,17 +406,17 @@ public CapabilityStatementRestOperation[] Operation { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.CapabilityStatementRestOperation.html">CapabilityStatementRestOperation</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRestOperation.html">ConformanceRestOperation</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Resource.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Resource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Resource.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Resource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L719">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3273">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Resource_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Resource*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Resource" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Resource">Resource</h4>
@@ -557,8 +425,8 @@ public CapabilityStatementRestOperation[] Operation { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;resource&quot;)]
-public ConformanceRestResource[] Resource { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;resource&quot;)]
+public List&lt;ConformanceRestResource&gt; Resource { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -570,17 +438,17 @@ public ConformanceRestResource[] Resource { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRestResource.html">ConformanceRestResource</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRestResource.html">ConformanceRestResource</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_SearchParam.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.SearchParam%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_SearchParam.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.SearchParam%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L725">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3278">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_SearchParam_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.SearchParam*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_SearchParam" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.SearchParam">SearchParam</h4>
@@ -589,8 +457,8 @@ public ConformanceRestResource[] Resource { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;searchParam&quot;)]
-public ConformanceRestResourceSearchParam[] SearchParam { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;searchParam&quot;)]
+public List&lt;ConformanceRestResourceSearchParam&gt; SearchParam { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -602,17 +470,17 @@ public ConformanceRestResourceSearchParam[] SearchParam { get; set; }</code></pr
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRestResourceSearchParam.html">ConformanceRestResourceSearchParam</a>[]</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRestResourceSearchParam.html">ConformanceRestResourceSearchParam</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Security.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Security%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Security.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Security%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L731">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3283">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Security_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Security*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_Security" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.Security">Security</h4>
@@ -621,7 +489,7 @@ public ConformanceRestResourceSearchParam[] SearchParam { get; set; }</code></pr
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;security&quot;)]
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;security&quot;)]
 public ConformanceRestSecurity Security { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -639,6 +507,38 @@ public ConformanceRestSecurity Security { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_TransactionMode.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.TransactionMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3288">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_TransactionMode_" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.TransactionMode*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest_TransactionMode" data-uid="Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest.TransactionMode">TransactionMode</h4>
+  <div class="markdown level1 summary"><p>A code that indicates how transactions are supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;transactionMode&quot;)]
+public string TransactionMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -647,10 +547,10 @@ public ConformanceRestSecurity Security { get; set; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/new/dev/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_fhir_r2_ConformanceRest.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.fhir.r2.ConformanceRest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/microsoft/fhir-codegen/blob/dev/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L686" class="contribution-link">View Source</a>
+                    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/fhir/fhir_1_0_2.cs/#L3237" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
