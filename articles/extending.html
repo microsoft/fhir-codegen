@@ -70,11 +70,11 @@
 <h1 id="adding-new-langauges">Adding new langauges</h1>
 
 <p>The system is designed to allow developers to add additional languages to be exported.</p>
-<p>Language files must be added to the <code>src/Microsoft.Health.Fhir.SpecManager/Langauge</code> directory, and implement the <a href="/api/Microsoft.Health.Fhir.SpecManager.Language.ILanguage.html">ILanguage</a> interface present in the same directory.</p>
+<p>Language files must be added to the <code>src/Microsoft.Health.Fhir.SpecManager/Langauge</code> directory, and implement the <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.ILanguage.html">ILanguage</a> interface present in the same directory.</p>
 <p>The library loads and parses all FHIR versions into a consistent local model.</p>
 <p>During export, the interface function <code>Export</code> is called, with a <code>FhirVersionInfo</code> already set to all user options (e.g., the requested version of FHIR has been loaded, filtering has been applied, etc.).</p>
 <p>The <code>Export</code> function may write as many files as desired in the <code>exportDirectory</code>.  The exporter will move those files into the user-requested directory, and will bundle them together in an archive if necessary (relative paths are preserved).</p>
-<p>The <a href="/api/Microsoft.Health.Fhir.SpecManager.Language.Info.html">Info</a>, <a href="/api/Microsoft.Health.Fhir.SpecManager.Language.CSharpBasic.html">CSharpBasic</a>, and <a href="/api/Microsoft.Health.Fhir.SpecManager.Language.TypeScript.html">TypeScript</a> languages are all available as references on how to traverse the various structures.</p>
+<p>The <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.Info.html">Info</a>, <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.CSharpBasic.html">CSharpBasic</a>, and <a href="/fhir-codegen/api/Microsoft.Health.Fhir.SpecManager.Language.TypeScript.html">TypeScript</a> languages are all available as references on how to traverse the various structures.</p>
 </article>
           </div>
           
