@@ -120,7 +120,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             IsModifier = isModifier == true;
-            IsSummary = isSummary == true;
+            IsSummary = (isSummary == true) || IsModifier;
 
             DefaultFieldName = defaultFieldName;
             DefaultFieldValue = defaultFieldValue;

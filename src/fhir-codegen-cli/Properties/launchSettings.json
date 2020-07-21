@@ -70,6 +70,11 @@
             "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language Info|TypeScript|CSharpBasic",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Firely2": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r2 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Firely3": {
             "commandName": "Project",
             "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r3 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
@@ -77,7 +82,12 @@
         },
         "Firely4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\firely\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Firely5": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "FirelyAll": {

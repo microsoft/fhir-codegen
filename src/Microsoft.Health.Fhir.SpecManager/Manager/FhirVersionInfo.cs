@@ -889,6 +889,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             {
                 foreach (KeyValuePair<string, FhirComplex> kvp in _complexTypesByName)
                 {
+                    if (kvp.Key == "Parameters")
+                    {
+                        Console.Write("");
+                    }
+
+
                     // check for restricting output
                     if (restrictOutput && (!exportSet.Contains(kvp.Key)))
                     {

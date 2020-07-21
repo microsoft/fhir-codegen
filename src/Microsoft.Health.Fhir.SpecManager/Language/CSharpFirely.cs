@@ -189,6 +189,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 Directory.CreateDirectory(Path.Combine(exportDirectory, "Generated"));
             }
 
+            if (info.MajorVersion == 2)
+            {
+                if (_exclusionSet.Contains("http://hl7.org/fhir/ValueSet/defined-types"))
+                {
+                    _exclusionSet.Remove("http://hl7.org/fhir/ValueSet/defined-types");
+                }
+            }
+            else
+            {
+                if (!_exclusionSet.Contains("http://hl7.org/fhir/ValueSet/defined-types"))
+                {
+                    _exclusionSet.Add("http://hl7.org/fhir/ValueSet/defined-types");
+                }
+            }
+
             _headerUserName = Environment.UserName;
             _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
 
@@ -395,6 +410,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         expression = ", Expression = \"" + sp.Expression + "\"";
                     }
 
+                    string urlComponent = $", Url = \"{sp.URL}\"";
+
                     if (_info.MajorVersion > 3)
                     {
                         _writer.WriteLineIndented(
@@ -408,10 +425,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 target +
                                 xpath +
                                 expression +
-                                $", Url = \"{sp.URL}\"" +
+                                urlComponent +
                                 $" }},");
                     }
-                    else
+                    else if (_info.MajorVersion == 3)
                     {
                         _writer.WriteLineIndented(
                             $"new SearchParamDefinition() " +
@@ -424,7 +441,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 target +
                                 xpath +
                                 expression +
-                                $", Url = \"{sp.URL}\"" +
+                                urlComponent +
+                                $" }},");
+                    }
+                    else if (_info.MajorVersion == 2)
+                    {
+                        _writer.WriteLineIndented(
+                            $"new SearchParamDefinition() " +
+                                $"{{" +
+                                $" Resource = \"{complex.Name}\"," +
+                                $" Name = \"{sp.Name}\"," +
+                                $" Description = @\"{SanitizeForMarkdown(description)}\"," +
+                                $" Type = SearchParamType.{searchType}," +
+                                $" Path = new string[] {{ {path}}}" +
+                                target +
+                                xpath +
                                 $" }},");
                     }
                 }
@@ -801,23 +832,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             bool isResource,
             int depth)
         {
+            bool isAbstract = complex.IsAbstract;
+
             List<WrittenElementInfo> exportedElements = new List<WrittenElementInfo>();
 
             WriteIndentedComment($"{complex.ShortDescription}");
 
-            if (!complex.IsAbstract)
+            if ((_info.MajorVersion == 2) &&
+                (complex.Name == "BackboneElement"))
             {
-                if (isResource)
+                isAbstract = true;
+            }
+
+            if ((_info.MajorVersion != 2) ||
+                (complex.Name != "BackboneElement"))
+            {
+                if (!isAbstract)
                 {
-                    _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\", IsResource=true)]");
-                }
-                else
-                {
-                    _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
+                    if (isResource)
+                    {
+                        _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\", IsResource=true)]");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
+                    }
                 }
             }
 
-            string abstractFlag = complex.IsAbstract ? " abstract" : string.Empty;
+            string abstractFlag = isAbstract ? " abstract" : string.Empty;
 
             switch (complex.BaseTypeName)
             {
@@ -934,7 +977,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 WriteCopyTo(exportName, exportedElements);
 
-                if (!complex.IsAbstract)
+                if (!isAbstract)
                 {
                     WriteDeepCopy(exportName);
                 }
@@ -1163,7 +1206,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _writer.WriteLineIndented("Extension = new List<Extension>() { new Extension { Value = new FhirBoolean(true), Url = \"http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice\"} },");
                     }
 
-                    _writer.WriteLineIndented($"Expression = \"{SanitizeForQuote(constraint.Expression)}\",");
+                    if (_info.MajorVersion > 2)
+                    {
+                        _writer.WriteLineIndented($"Expression = \"{SanitizeForQuote(constraint.Expression)}\",");
+                    }
+
                     _writer.WriteLineIndented($"Key = \"{constraint.Key}\",");
 
                     if (constraint.Severity == "Error")
@@ -1303,9 +1350,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // check for nested components
             if (complex.Components != null)
             {
-                // prefix with current name less 'component'
-                string prefix = exportName.Substring(0, exportName.Length - 9);
-
                 foreach (FhirComplex component in complex.Components.Values)
                 {
                     string componentName;
@@ -1321,6 +1365,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         componentName =
                             $"{component.ExplicitName}" +
                             $"Component";
+                    }
+
+                    if ((_info.MajorVersion == 2) &&
+                        (parentExportName == "TestScript"))
+                    {
+                        // prefix with current name less 'component'
+                        string prefix = exportName.Substring(0, exportName.Length - 9);
+
+                        switch (component.Path)
+                        {
+                            case "TestScript.setup.action":
+                                componentName = "SetupActionComponent";
+                                break;
+
+                            case "TestScript.test.action":
+                                componentName = "TestActionComponent";
+                                break;
+
+                            case "TestScript.teardown.action":
+                                componentName = "TearDownActionComponent";
+                                break;
+                        }
                     }
 
                     WriteBackboneComponent(
@@ -2001,6 +2067,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A string.</returns>
         private string BuildTypeFromPath(string type)
         {
+            if (_info.MajorVersion == 2)
+            {
+                switch (type)
+                {
+                    case "TestScript.setup.action":
+                        return $"TestScript.SetupActionComponent";
+
+                    case "TestScript.test.action":
+                        return $"TestScript.TestActionComponent";
+
+                    case "TestScript.teardown.action":
+                        return $"TestScript.TearDownActionComponent";
+                }
+            }
+
             if (_info.TryGetExplicitName(type, out string explicitTypeName))
             {
                 string parentName = type.Substring(0, type.IndexOf('.'));
