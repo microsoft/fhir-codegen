@@ -27,6 +27,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Name of the language.</summary>
         private const string _languageName = "Info";
 
+        /// <summary>The single file export extension.</summary>
+        private const string _singleFileExportExtension = ".txt";
+
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
@@ -62,23 +65,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <value>The name of the language.</value>
         string ILanguage.LanguageName => _languageName;
 
-        /// <summary>Gets a value indicating whether the language supports model inheritance.</summary>
-        /// <value>True if the language supports model inheritance, false if not.</value>
-        bool ILanguage.SupportsModelInheritance => true;
-
-        /// <summary>Gets a value indicating whether the supports hiding parent field.</summary>
-        /// <value>True if the language supports hiding parent field, false if not.</value>
-        bool ILanguage.SupportsHidingParentField => true;
-
         /// <summary>
-        /// Gets a value indicating whether the language supports nested type definitions.
+        /// Gets the single file extension for this language - null or empty indicates a multi-file
+        /// export (exporter should copy the contents of the directory).
         /// </summary>
-        /// <value>True if the language supports nested type definitions, false if not.</value>
-        bool ILanguage.SupportsNestedTypeDefinitions => true;
-
-        /// <summary>Gets a value indicating whether the supports slicing.</summary>
-        /// <value>True if supports slicing, false if not.</value>
-        bool ILanguage.SupportsSlicing => true;
+        string ILanguage.SingleFileExportExtension => _singleFileExportExtension;
 
         /// <summary>Gets the FHIR primitive type map.</summary>
         /// <value>The FHIR primitive type map.</value>
@@ -552,9 +543,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteHeader()
         {
             _writer.WriteLine($"Contents of: {_info.PackageName} version: {_info.VersionString}");
-            _writer.WriteLine($"  Using Model Inheritance: {_options.UseModelInheritance}");
-            _writer.WriteLine($"  Hiding Removed Parent Fields: {_options.HideRemovedParentFields}");
-            _writer.WriteLine($"  Nesting Type Definitions: {_options.NestTypeDefinitions}");
             _writer.WriteLine($"  Primitive Naming Style: {FhirTypeBase.NamingConvention.CamelCase}");
             _writer.WriteLine($"  Element Naming Style: {FhirTypeBase.NamingConvention.CamelCase}");
             _writer.WriteLine($"  Complex Type / Resource Naming Style: {FhirTypeBase.NamingConvention.PascalCase}");

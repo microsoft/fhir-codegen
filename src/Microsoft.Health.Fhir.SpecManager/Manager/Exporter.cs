@@ -23,12 +23,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="exportLanguage">The export language.</param>
         /// <param name="options">       Options for controlling the operation.</param>
         /// <param name="outputPath">    The output filename.</param>
+        /// <param name="isPartOfBatch"> True if is part of batch, false if not.</param>
         /// <returns>A List of files written by the export operation.</returns>
         public static List<string> Export(
             FhirVersionInfo sourceFhirInfo,
             ILanguage exportLanguage,
             ExporterOptions options,
-            string outputPath)
+            string outputPath,
+            bool isPartOfBatch)
         {
             List<string> filesWritten = new List<string>();
 
@@ -58,27 +60,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 outputPath = Path.Combine(Directory.GetCurrentDirectory(), outputPath);
             }
 
-            string outputDir;
+            // resolve directory oddness (e.g., follow ..'s, etc.)
+            outputPath = Path.GetFullPath(outputPath);
 
+            string tempDir;
             if (Path.HasExtension(outputPath))
             {
-                outputDir = Path.GetDirectoryName(outputPath);
+                tempDir = Path.Combine(Path.GetDirectoryName(outputPath), $"{exportLanguage.LanguageName}-{DateTime.Now.Ticks}");
             }
             else
             {
-                outputDir = outputPath;
+                tempDir = Path.Combine(outputPath, $"{exportLanguage.LanguageName}-{DateTime.Now.Ticks}");
             }
 
-            string exportDir = Path.Combine(outputDir, $"{exportLanguage.LanguageName}-{DateTime.Now.Ticks}");
-
-            if (!Directory.Exists(outputDir))
+            if (!Directory.Exists(tempDir))
             {
-                Directory.CreateDirectory(outputDir);
-            }
-
-            if (!Directory.Exists(exportDir))
-            {
-                Directory.CreateDirectory(exportDir);
+                Directory.CreateDirectory(tempDir);
             }
 
             bool copyPrimitives = false;
@@ -111,71 +108,113 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 copyResources,
                 true,
                 options.ExtensionUrls,
-                options.ExtensionElementPaths,
-                exportLanguage.SupportsSlicing,
-                options.HideRemovedParentFields);
+                options.ExtensionElementPaths);
 
             // perform our export
             exportLanguage.Export(
                 info,
                 options,
-                exportDir);
+                tempDir);
 
-            string[] exportedFiles = Directory.GetFiles(exportDir);
+            string[] exportedFiles = Directory.GetFiles(tempDir, string.Empty, SearchOption.AllDirectories);
 
-            // check for being a directory - just copy our process files
-            if (Directory.Exists(outputPath))
+            string requestedExtension = string.Empty;
+
+            if (Path.HasExtension(outputPath))
             {
-                foreach (string file in exportedFiles)
+                requestedExtension = Path.GetExtension(outputPath).ToUpperInvariant();
+            }
+
+            if (requestedExtension == ".ZIP")
+            {
+                if (File.Exists(outputPath))
                 {
-                    string exportName = Path.Combine(outputPath, Path.GetFileName(file));
-
-                    if (File.Exists(exportName))
-                    {
-                        File.Delete(exportName);
-                    }
-
-                    File.Move(file, exportName);
-
-                    filesWritten.Add(exportName);
+                    File.Delete(outputPath);
                 }
 
-                DeleteDirectory(exportDir);
+                // zip the files in the directory for download/output
+                CreateZip(outputPath, tempDir);
+
+                // tell the caller the file we wrote
+                filesWritten.Add(outputPath);
+
+                // clean up
+                DeleteDirectory(tempDir);
 
                 return filesWritten;
             }
 
-            // make sure our destination is clear
-            if (File.Exists(outputPath))
+            if ((exportedFiles.Length == 1) &&
+                (!string.IsNullOrEmpty(requestedExtension)))
             {
-                File.Delete(outputPath);
-            }
+                if (File.Exists(outputPath))
+                {
+                    File.Delete(outputPath);
+                }
 
-            // check for single file
-            if (exportedFiles.Length == 1)
-            {
                 File.Move(exportedFiles[0], outputPath);
                 filesWritten.Add(outputPath);
 
-                DeleteDirectory(exportDir);
+                DeleteDirectory(tempDir);
 
                 return filesWritten;
             }
 
-            string zipName = outputPath;
-
-            if (!zipName.ToUpperInvariant().EndsWith(".ZIP", StringComparison.Ordinal))
+            if (exportedFiles.Length == 1)
             {
-                zipName = $"{zipName}.zip";
+                string filename = Path.Combine(
+                    outputPath,
+                    $"{exportLanguage.LanguageName}_R{info.MajorVersion}");
+
+                filename = Path.ChangeExtension(filename, exportLanguage.SingleFileExportExtension);
+
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                }
+
+                File.Move(exportedFiles[0], filename);
+                filesWritten.Add(filename);
+
+                DeleteDirectory(tempDir);
+
+                return filesWritten;
             }
 
-            // zip the files in the directory for download/output
-            CreateZip(zipName, exportDir);
+            string path = outputPath;
 
-            filesWritten.Add(zipName);
+            if (isPartOfBatch)
+            {
+                path = Path.Combine(outputPath, $"{exportLanguage.LanguageName}_R{info.MajorVersion}");
+            }
 
-            // clean up
-            DeleteDirectory(exportDir);
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            int duplicateLen = tempDir.Length + 1;
+
+            foreach (string file in exportedFiles)
+            {
+                string exportName = Path.Combine(path, file.Substring(duplicateLen));
+
+                if (File.Exists(exportName))
+                {
+                    File.Delete(exportName);
+                }
+
+                if (!Directory.Exists(Path.GetDirectoryName(exportName)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(exportName));
+                }
+
+                File.Move(file, exportName);
+
+                filesWritten.Add(exportName);
+            }
+
+            DeleteDirectory(tempDir);
 
             return filesWritten;
         }

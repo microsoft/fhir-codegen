@@ -17,6 +17,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Initializes a new instance of the <see cref="FhirPrimitive"/> class.</summary>
         /// <param name="id">              The identifier.</param>
         /// <param name="path">            Full pathname of the file.</param>
+        /// <param name="baseTypeName">    The base type name for this primitive type.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
         /// <param name="shortDescription">Information describing the short.</param>
@@ -26,6 +27,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public FhirPrimitive(
             string id,
             string path,
+            string baseTypeName,
             Uri url,
             string standardStatus,
             string shortDescription,
@@ -41,7 +43,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 purpose,
                 comment,
                 validationRegEx,
-                path)
+                baseTypeName)
         {
         }
 
@@ -53,6 +55,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             FhirPrimitive primitive = new FhirPrimitive(
                 Id,
                 Path,
+                BaseTypeName,
                 URL,
                 StandardStatus,
                 ShortDescription,

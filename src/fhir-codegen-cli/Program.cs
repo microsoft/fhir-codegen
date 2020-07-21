@@ -44,6 +44,8 @@ namespace FhirCodegenCli
         ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
         /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
         ///  expansions (default: false).</param>
+        /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
+        ///  Conformance) from.  Requires application/fhir+json.</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -56,8 +58,10 @@ namespace FhirCodegenCli
             string loadR4 = "",
             string loadR5 = "",
             string languageOptions = "",
-            bool officialExpansionsOnly = false)
+            bool officialExpansionsOnly = false,
+            string fhirServerUrl = "")
         {
+            bool isBatch = false;
             List<string> filesWritten = new List<string>();
 
             _extensionsOutputted = new HashSet<string>();
@@ -108,6 +112,32 @@ namespace FhirCodegenCli
             // done loading
             long loadMS = timingWatch.ElapsedMilliseconds;
 
+            int fhirVersionCount = 0;
+            if (r2 != null)
+            {
+                fhirVersionCount++;
+            }
+
+            if (r3 != null)
+            {
+                fhirVersionCount++;
+            }
+
+            if (r4 != null)
+            {
+                fhirVersionCount++;
+            }
+
+            if (r5 != null)
+            {
+                fhirVersionCount++;
+            }
+
+            if (fhirVersionCount > 1)
+            {
+                isBatch = true;
+            }
+
             if (string.IsNullOrEmpty(outputPath))
             {
                 if ((verbose == true) && (r2 != null))
@@ -150,6 +180,11 @@ namespace FhirCodegenCli
                     languageOptions,
                     languages);
 
+                if (languages.Count > 1)
+                {
+                    isBatch = true;
+                }
+
                 foreach (ILanguage lang in languages)
                 {
                     string[] exportList = null;
@@ -163,9 +198,6 @@ namespace FhirCodegenCli
                     ExporterOptions options = new ExporterOptions(
                         lang.LanguageName,
                         exportList,
-                        lang.SupportsModelInheritance,
-                        lang.SupportsHidingParentField,
-                        lang.SupportsNestedTypeDefinitions,
                         lang.OptionalExportClassTypes,
                         ExporterOptions.ExtensionSupportLevel.NonPrimitives,
                         null,
@@ -174,22 +206,22 @@ namespace FhirCodegenCli
 
                     if (r2 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r2, lang, options, outputPath));
+                        filesWritten.AddRange(Exporter.Export(r2, lang, options, outputPath, isBatch));
                     }
 
                     if (r3 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r3, lang, options, outputPath));
+                        filesWritten.AddRange(Exporter.Export(r3, lang, options, outputPath, isBatch));
                     }
 
                     if (r4 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r4, lang, options, outputPath));
+                        filesWritten.AddRange(Exporter.Export(r4, lang, options, outputPath, isBatch));
                     }
 
                     if (r5 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r5, lang, options, outputPath));
+                        filesWritten.AddRange(Exporter.Export(r5, lang, options, outputPath, isBatch));
                     }
                 }
             }

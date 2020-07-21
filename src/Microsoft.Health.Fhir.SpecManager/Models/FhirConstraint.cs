@@ -11,26 +11,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A FHIR constraint.</summary>
     public class FhirConstraint : ICloneable
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FhirConstraint"/> class.
-        /// </summary>
-        /// <param name="key">        The constraint key (id).</param>
-        /// <param name="severity">   The severity for violating the constraint.</param>
-        /// <param name="description">The human-readable description of the constraint.</param>
-        /// <param name="expression"> The FHIR Query-style validation expression.</param>
-        /// <param name="xPath">      The XPath-style validation expression.</param>
+        /// <summary>Initializes a new instance of the <see cref="FhirConstraint"/> class.</summary>
+        /// <param name="key">                    The constraint key (id).</param>
+        /// <param name="severity">               The severity for violating the constraint.</param>
+        /// <param name="description">            The human-readable description of the constraint.</param>
+        /// <param name="expression">             The FHIR Query-style validation expression.</param>
+        /// <param name="xPath">                  The XPath-style validation expression.</param>
+        /// <param name="isBestPractice">         A value indicating whether this constraint is a best
+        ///  practice.</param>
+        /// <param name="bestPracticeExplanation">A value indicating why this constraint is a best practice.</param>
         public FhirConstraint(
             string key,
             string severity,
             string description,
             string expression,
-            string xPath)
+            string xPath,
+            bool isBestPractice,
+            string bestPracticeExplanation)
         {
             Key = key;
             Severity = severity;
             Description = description;
             Expression = expression;
             XPath = xPath;
+            IsBestPractice = isBestPractice;
+            BestPracticeExplanation = bestPracticeExplanation;
         }
 
         /// <summary>Gets the constraint key (id).</summary>
@@ -48,11 +53,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the XPath-style validation expression.</summary>
         public string XPath { get; }
 
+        /// <summary>Gets a value indicating whether this constraint is a best practice.</summary>
+        public bool IsBestPractice { get; }
+
+        /// <summary>Gets a value indicating why this constraint is a best practice.</summary>
+        public string BestPracticeExplanation { get; }
+
         /// <summary>Creates a new object that is a copy of the current instance.</summary>
         /// <returns>A new object that is a copy of this instance.</returns>
         public object Clone()
         {
-            return new FhirConstraint(Key, Severity, Description, Expression, XPath);
+            return new FhirConstraint(
+                Key,
+                Severity,
+                Description,
+                Expression,
+                XPath,
+                IsBestPractice,
+                BestPracticeExplanation);
         }
     }
 }

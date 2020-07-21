@@ -260,11 +260,79 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             return !string.IsNullOrEmpty(fhirType);
         }
 
+        /// <summary>Query if 'xmlType' is XML base type.</summary>
+        /// <param name="xmlType"> Type of the XML.</param>
+        /// <param name="fhirType">[out] Type in FHIR.</param>
+        /// <returns>True if XML base type, false if not.</returns>
+        public static bool IsXmlBaseType(string xmlType, out string fhirType)
+        {
+            fhirType = string.Empty;
+
+            switch (xmlType)
+            {
+                case "xsd:token":
+                case "xs:token":
+                    fhirType = "code";
+                    break;
+
+                case "xsd:base64Binary":
+                case "base64Binary":
+                case "xs:anyURI+":
+                case "xsd:anyURI":
+                case "xs:anyURI":
+                case "anyURI":
+                case "xsd:string":
+                case "xs:string":
+                case "xs:string+":
+                case "xhtml:div":
+                    fhirType = "string";
+                    break;
+
+                case "xsd:int":
+                case "xsd:positiveInteger":
+                case "xs:positiveInteger":
+                case "xsd:nonNegativeInteger":
+                case "xs:nonNegativeInteger":
+                    fhirType = "int";
+                    break;
+
+                case "xsd:gYear OR xsd:gYearMonth OR xsd:date":
+                case "xs:gYear, xs:gYearMonth, xs:date":
+                case "xsd:date":
+                    fhirType = "date";
+                    break;
+
+                case "xsd:gYear OR xsd:gYearMonth OR xsd:date OR xsd:dateTime":
+                case "xs:gYear, xs:gYearMonth, xs:date, xs:dateTime":
+                case "xsd:dateTime":
+                    fhirType = "dateTime";
+                    break;
+
+                case "xsd:time":
+                case "time":
+                    fhirType = "time";
+                    break;
+
+                case "xsd:boolean":
+                    fhirType = "boolean";
+                    break;
+
+                case "xsd:decimal":
+                    fhirType = "decimal";
+                    break;
+
+                default:
+                    break;
+            }
+
+            return !string.IsNullOrEmpty(fhirType);
+        }
+
         /// <summary>Check if a type is listed in FHIRPath notation, and return the FHIR type if it is.</summary>
         /// <param name="fhirPathType">Type in FHIRPath.</param>
         /// <param name="fhirType">    [out] Type in FHIR.</param>
         /// <returns>A string.</returns>
-        private static bool IsFhirPathType(string fhirPathType, out string fhirType)
+        public static bool IsFhirPathType(string fhirPathType, out string fhirType)
         {
             fhirType = string.Empty;
 

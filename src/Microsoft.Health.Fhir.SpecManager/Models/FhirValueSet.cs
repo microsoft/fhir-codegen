@@ -16,6 +16,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private List<FhirConcept> _valueList = null;
         private HashSet<string> _codeSystems = new HashSet<string>();
         private List<string> _referencedPaths = new List<string>();
+        private List<string> _referencedResources = new List<string>();
 
         /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
         /// <param name="name">           The name.</param>
@@ -149,6 +150,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the list of elements (by Path) that reference this value set.</summary>
         public List<string> ReferencedByPaths => _referencedPaths;
 
+        /// <summary>Gets the list of resources or complex types that reference this value set.</summary>
+        public List<string> ReferencedByComplexes => _referencedResources;
+
         /// <summary>Sets the references.</summary>
         /// <param name="referencedByPaths">The list of elements (by Path) that reference this value set.</param>
         public void SetReferences(List<string> referencedByPaths)
@@ -158,6 +162,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 return;
             }
 
+            HashSet<string> resources = new HashSet<string>();
             HashSet<string> paths = new HashSet<string>();
 
             foreach (string path in referencedByPaths)
@@ -165,6 +170,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 if (paths.Contains(path))
                 {
                     continue;
+                }
+
+                string resource = path.Substring(0, path.IndexOf('.'));
+                if (!resources.Contains(resource))
+                {
+                    resources.Add(resource);
+                    _referencedResources.Add(resource);
                 }
 
                 _referencedPaths.Add((string)path.Clone());
@@ -624,7 +636,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 ((inclusionSet == null) || inclusionSet.Contains(node.Concept.Code)) &&
                 ((exclusionSet == null) || (!exclusionSet.Contains(node.Concept.Code))))
             {
-                values.Add(node.Concept.Code, node.Concept);
+                string key = node.Concept.Key();
+
+                if (!values.ContainsKey(key))
+                {
+                    values.Add(node.Concept.Key(), node.Concept);
+                }
             }
 
             if (includeChildren &&
@@ -704,11 +721,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 string key = concept.Key();
 
-                if (values.ContainsKey(key))
-                {
-                    continue;
-                }
-
                 if ((codeSystems != null) &&
                     codeSystems.ContainsKey(concept.System) &&
                     codeSystems[concept.System].ContainsConcept(concept.Code))
@@ -718,7 +730,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         _codeSystems.Add(concept.System);
                     }
 
+                    if (values.ContainsKey(key))
+                    {
+                        values.Remove(key);
+                    }
+
                     values.Add(key, codeSystems[concept.System][concept.Code].Concept);
+                    continue;
+                }
+
+                if (values.ContainsKey(key))
+                {
                     continue;
                 }
 

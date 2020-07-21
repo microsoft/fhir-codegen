@@ -24,6 +24,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// </summary>
         /// <param name="id">               Id for this element.</param>
         /// <param name="path">             Dot notation path for this element.</param>
+        /// <param name="explicitName">     Explicit name of this element, if present.</param>
         /// <param name="url">              URL of this element (if present).</param>
         /// <param name="fieldOrder">       The field order.</param>
         /// <param name="shortDescription"> Information describing the short.</param>
@@ -47,6 +48,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public FhirElement(
             string id,
             string path,
+            string explicitName,
             Uri url,
             int fieldOrder,
             string shortDescription,
@@ -103,6 +105,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 }
             }
 
+            ExplicitName = explicitName;
+
             CardinalityMin = cardinalityMin;
             CardinalityMax = MaxCardinality(cardinalityMax);
 
@@ -116,7 +120,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             IsModifier = isModifier == true;
-            IsSummary = isSummary == true;
+            IsSummary = (isSummary == true) || IsModifier;
 
             DefaultFieldName = defaultFieldName;
             DefaultFieldValue = defaultFieldValue;
@@ -132,6 +136,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             BindingStrength = bindingStrength;
             ValueSet = valueSet;
         }
+
+        /// <summary>Gets the explicit name of this element, if one was specified.</summary>
+        public string ExplicitName { get; }
 
         /// <summary>Gets the cardinality minimum.</summary>
         ///
@@ -287,6 +294,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             FhirComplex slice = new FhirComplex(
                     Id,
                     Path,
+                    ExplicitName,
                     URL,
                     StandardStatus,
                     ShortDescription,
@@ -333,6 +341,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             FhirElement element = new FhirElement(
                 Id,
                 Path,
+                ExplicitName,
                 URL,
                 FieldOrder,
                 ShortDescription,
@@ -383,7 +392,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             // check for referenced value sets
-            if ((valueSetReferences != null) &&
+            if ((!IsInherited) &&
+                (valueSetReferences != null) &&
                 (!string.IsNullOrEmpty(ValueSet)))
             {
                 string url;

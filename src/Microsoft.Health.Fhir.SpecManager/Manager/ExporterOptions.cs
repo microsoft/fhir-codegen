@@ -20,9 +20,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Initializes a new instance of the <see cref="ExporterOptions"/> class.</summary>
         /// <param name="languageName">           Name of the language.</param>
         /// <param name="exportList">             List of exports.</param>
-        /// <param name="useModelInheritance">    True to use model inheritance.</param>
-        /// <param name="hideRemovedParentFields">True to hide, false to show the parent fields.</param>
-        /// <param name="nestTypeDefinitions">    True to nest definitions.</param>
         /// <param name="optionalClassesToExport">Language optional class types to export (e.g., Enums).</param>
         /// <param name="extensionSupport">       The extension support.</param>
         /// <param name="extensionUrls">          Manually supported extension URLs that should be added.</param>
@@ -32,9 +29,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public ExporterOptions(
             string languageName,
             IEnumerable<string> exportList,
-            bool useModelInheritance,
-            bool hideRemovedParentFields,
-            bool nestTypeDefinitions,
             List<FhirExportClassType> optionalClassesToExport,
             ExtensionSupportLevel extensionSupport,
             IEnumerable<string> extensionUrls,
@@ -43,9 +37,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             LanguageName = languageName;
             ExportList = exportList;
-            UseModelInheritance = useModelInheritance;
-            HideRemovedParentFields = hideRemovedParentFields;
-            NestTypeDefinitions = nestTypeDefinitions;
             ExtensionSupport = extensionSupport;
 
             OptionalClassTypesToExport = optionalClassesToExport;
@@ -142,18 +133,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Gets a list of exports.</summary>
         /// <value>A list of exports.</value>
         public IEnumerable<string> ExportList { get; }
-
-        /// <summary>Gets a value indicating whether this object use model inheritance.</summary>
-        /// <value>True if use model inheritance, false if not.</value>
-        public bool UseModelInheritance { get; }
-
-        /// <summary>Gets a value indicating whether the parent fields is hidden.</summary>
-        /// <value>True if hide parent fields, false if not.</value>
-        public bool HideRemovedParentFields { get; }
-
-        /// <summary>Gets a value indicating whether the nest definitions.</summary>
-        /// <value>True if nest definitions, false if not.</value>
-        public bool NestTypeDefinitions { get; }
 
         /// <summary>Gets the optional class types to export.</summary>
         public List<FhirExportClassType> OptionalClassTypesToExport { get; }

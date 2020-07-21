@@ -41,11 +41,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             _jsonConverter = new fhir_2.ResourceConverter();
             _namedReferenceLinks = new Dictionary<string, string>()
             {
-                { "extension", "Extension.extension" },
-                { "link", "Bundle.link" },
-                { "section", "Composition.section" },
-                { "dependsOn", "ConceptMap.element.target.dependsOn" },
-                { "searchParam", "Conformance.rest.resource.searchParam" },
+                { "Extension.extension", "Extension.extension" },
+                { "Bundle.link", "Bundle.link" },
+                { "Composition.section", "Composition.section" },
+                { "ConceptMap.dependsOn", "ConceptMap.element.target.dependsOn" },
+                { "Conformance.searchParam", "Conformance.rest.resource.searchParam" },
                 { "ConsentDirective.identifier", "Contract.identifier" },
                 { "ConsentDirective.issued", "Contract.issued" },
                 { "ConsentDirective.applies", "Contract.applies" },
@@ -94,30 +94,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 { "ConsentDirective.term.valuedItem.factor", "Contract.term.valuedItem.factor" },
                 { "ConsentDirective.term.valuedItem.points", "Contract.term.valuedItem.points" },
                 { "ConsentDirective.term.valuedItem.net", "Contract.term.valuedItem.net" },
-                { "term", "Contract.term" },
-                { "onsetquantity", "Condition.onsetQuantity" },
-                { "onsetdatetime", "Condition.onsetDateTime" },
-                { "USLabLOINCCoding", "DiagnosticReport.code.coding" },
-                { "medicationcodeableconcept", "MedicationAdministration.medicationCodeableConcept" },
-                { "medicationreference", "MedicationAdministration.medicationReference" },
-                { "referenceRange", "Observation.referenceRange" },
-                { "USLabPlacerSID", "Specimen.identifier" },
-                { "event", "DiagnosticOrder.event" },
-                { "page", "ImplementationGuide.page" },
-                { "parameter", "OperationDefinition.parameter" },
-                { "agent", "Provenance.agent" },
+                { "Contract.term", "Contract.term" },
+                { "Condition.onsetquantity", "Condition.onsetQuantity" },
+                { "Condition.onsetdatetime", "Condition.onsetDateTime" },
+                { "DiagnosticReport.USLabLOINCCoding", "DiagnosticReport.code.coding" },
+                { "MedicationAdministration.medicationcodeableconcept", "MedicationAdministration.medicationCodeableConcept" },
+                { "MedicationAdministration.medicationreference", "MedicationAdministration.medicationReference" },
+                { "Observation.referenceRange", "Observation.referenceRange" },
+                { "Specimen.USLabPlacerSID", "Specimen.identifier" },
+                { "DiagnosticOrder.event", "DiagnosticOrder.event" },
+                { "ImplementationGuide.page", "ImplementationGuide.page" },
+                { "OperationDefinition.parameter", "OperationDefinition.parameter" },
+                { "Parameters.parameter", "Parameters.parameter" },
+                { "Provenance.agent", "Provenance.agent" },
                 { "DiagnosticReport.locationPerformed.valueReference", "DiagnosticReport.extension.valueReference" },
-                { "group", "Questionnaire.group" },
-                { "designation", "ValueSet.codeSystem.concept.designation" },
-                { "l", "DataElement.element.maxValue[x]" },
-                { "MappingEquivalence", "DataElement.element.mapping.extension" },
-                { "concept", "ValueSet.codeSystem.concept" },
-                { "include", "ValueSet.compose.include" },
-                { "contains", "ValueSet.expansion.contains" },
-                { "metadata", "TestScript.metadata" },
-                { "operation", "TestScript.setup.action.operation" },
-                { "assert", "TestScript.setup.action.assert" },
-                { "USLabDOPlacerID", "DiagnosticOrder.identifier" },
+                { "Questionnaire.group", "Questionnaire.group" },
+                { "QuestionnaireResponse.group", "Questionnaire.group" },
+                { "ValueSet.designation", "ValueSet.codeSystem.concept.designation" },
+                { "DataElement.l", "DataElement.element.maxValue[x]" },
+                { "DataElement.MappingEquivalence", "DataElement.element.mapping.extension" },
+                { "ValueSet.concept", "ValueSet.codeSystem.concept" },
+                { "ValueSet.include", "ValueSet.compose.include" },
+                { "ValueSet.contains", "ValueSet.expansion.contains" },
+                { "TestScript.metadata", "TestScript.metadata" },
+                { "TestScript.operation", "TestScript.setup.action.operation" },
+                { "TestScript.assert", "TestScript.setup.action.assert" },
+                { "DiagnosticOrder.USLabDOPlacerID", "DiagnosticOrder.identifier" },
             };
         }
 
@@ -660,6 +662,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             string descriptionShort = sd.Description;
             string definition = sd.Requirements;
             string comment = string.Empty;
+            string baseTypeName = string.Empty;
 
             if ((sd.Snapshot != null) &&
                 (sd.Snapshot.Element != null) &&
@@ -667,20 +670,71 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 foreach (fhir_2.ElementDefinition element in sd.Snapshot.Element)
                 {
-                    if (element.Id == sd.Id)
+                    if (!element.Path.Contains('.'))
                     {
                         descriptionShort = element.Short;
                         definition = element.Definition;
                         comment = element.Requirements;
-                        break;
+                        continue;
+                    }
+
+                    string[] components = element.Path.Split('.');
+
+                    if (components.Length != 2)
+                    {
+                        continue;
+                    }
+
+                    if (components[1] != "value")
+                    {
+                        continue;
+                    }
+
+                    if (element.Type == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (fhir_2.ElementDefinitionType type in element.Type)
+                    {
+                        if (type.Extension != null)
+                        {
+                            foreach (fhir_2.Extension ext in type.Extension)
+                            {
+                                if (ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex")
+                                {
+                                    regex = ext.ValueString;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ((type._Code != null) &&
+                            (type._Code.Extension != null))
+                        {
+                            foreach (fhir_2.Extension ext in type._Code.Extension)
+                            {
+                                if ((ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type") &&
+                                    FhirElementType.IsXmlBaseType(ext.ValueString, out string fhirType))
+                                {
+                                    baseTypeName = fhirType;
+                                }
+                            }
+                        }
                     }
                 }
+            }
+
+            if (string.IsNullOrEmpty(baseTypeName))
+            {
+                baseTypeName = sd.Name;
             }
 
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Id,
                 sd.Name,
+                baseTypeName,
                 new Uri(sd.Url),
                 sd.Status,
                 descriptionShort,
@@ -872,6 +926,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 FhirComplex complex = new FhirComplex(
                     sd.Id,
                     sd.Name,
+                    string.Empty,
                     new Uri(sd.Url),
                     sd.Status,
                     descriptionShort,
@@ -1042,6 +1097,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                     new FhirElement(
                                         path,
                                         path,
+                                        string.Empty,
                                         null,
                                         parent.Elements.Count,
                                         ExtensionShort,
@@ -1122,14 +1178,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
                         else if (!string.IsNullOrEmpty(element.NameReference))
                         {
+                            string lookupName;
+
+                            if (element.NameReference.Contains('.'))
+                            {
+                                lookupName = element.NameReference;
+                            }
+                            else
+                            {
+                                lookupName = $"{element.Path.Split('.')[0]}.{element.NameReference}";
+                            }
+
                             // look up the named reference in the alias table
-                            if (!_namedReferenceLinks.ContainsKey(element.NameReference))
+                            if (!_namedReferenceLinks.ContainsKey(lookupName))
                             {
                                 throw new InvalidDataException($"Could not resolve NameReference {element.NameReference} in {sd.Name} field {element.Path}");
                             }
 
                             // use the named type
-                            elementType = _namedReferenceLinks[element.NameReference];
+                            elementType = _namedReferenceLinks[lookupName];
                             elementTypes = null;
                         }
 
@@ -1179,6 +1246,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             }
                         }
 
+                        string explicitName = string.Empty;
+                        if (element.Extension != null)
+                        {
+                            foreach (fhir_2.Extension ext in element.Extension)
+                            {
+                                if (ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name")
+                                {
+                                    explicitName = ext.ValueString;
+                                }
+                            }
+                        }
+
                         // elements can repeat in R2 due to the way slicing was done
                         if (!parent.Elements.ContainsKey(path))
                         {
@@ -1188,6 +1267,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 new FhirElement(
                                     id,
                                     path,
+                                    explicitName,
                                     null,
                                     parent.Elements.Count,
                                     element.Short,
@@ -1258,12 +1338,42 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     foreach (fhir_2.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
                     {
+                        bool isBestPractice = false;
+                        string explanation = string.Empty;
+
+                        if (con.Extension != null)
+                        {
+                            foreach (fhir_2.Extension ext in con.Extension)
+                            {
+                                switch (ext.Url)
+                                {
+                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                        isBestPractice = ext.ValueBoolean == true;
+                                        break;
+
+                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                        if (!string.IsNullOrEmpty(ext.ValueMarkdown))
+                                        {
+                                            explanation = ext.ValueMarkdown;
+                                        }
+                                        else
+                                        {
+                                            explanation = ext.ValueString;
+                                        }
+
+                                        break;
+                                }
+                            }
+                        }
+
                         complex.AddConstraint(new FhirConstraint(
                             con.Key,
                             con.Severity,
                             con.Human,
                             string.Empty,
-                            con.Xpath));
+                            con.Xpath,
+                            isBestPractice,
+                            explanation));
                     }
                 }
 

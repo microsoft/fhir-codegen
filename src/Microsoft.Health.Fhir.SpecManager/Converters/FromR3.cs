@@ -534,6 +534,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             string descriptionShort = sd.Description;
             string definition = sd.Purpose;
             string comment = string.Empty;
+            string baseTypeName = string.Empty;
 
             if ((sd.Snapshot != null) &&
                 (sd.Snapshot.Element != null) &&
@@ -546,15 +547,59 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         descriptionShort = element.Short;
                         definition = element.Definition;
                         comment = element.Comment;
-                        break;
+                        continue;
+                    }
+
+                    if (element.Id != $"{sd.Id}.value")
+                    {
+                        continue;
+                    }
+
+                    if (element.Type == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (fhir_3.ElementDefinitionType type in element.Type)
+                    {
+                        if (type.Extension != null)
+                        {
+                            foreach (fhir_3.Extension ext in type.Extension)
+                            {
+                                if (ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex")
+                                {
+                                    regex = ext.ValueString;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ((type._Code != null) &&
+                            (type._Code.Extension != null))
+                        {
+                            foreach (fhir_3.Extension ext in type._Code.Extension)
+                            {
+                                if ((ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type") &&
+                                    FhirElementType.IsXmlBaseType(ext.ValueString, out string fhirType))
+                                {
+                                    baseTypeName = fhirType;
+                                }
+                            }
+                        }
                     }
                 }
+            }
+
+            if (string.IsNullOrEmpty(baseTypeName))
+            {
+                baseTypeName = sd.Name;
             }
 
             // create a new primitive type object
             FhirPrimitive primitive = new FhirPrimitive(
                 sd.Id,
                 sd.Name,
+                baseTypeName,
                 new Uri(sd.Url),
                 sd.Status,
                 descriptionShort,
@@ -740,6 +785,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 FhirComplex complex = new FhirComplex(
                     sd.Id,
                     sd.Name,
+                    string.Empty,
                     new Uri(sd.Url),
                     sd.Status,
                     descriptionShort,
@@ -828,6 +874,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                     new FhirElement(
                                         path,
                                         path,
+                                        string.Empty,
                                         null,
                                         parent.Elements.Count,
                                         ExtensionShort,
@@ -961,12 +1008,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             }
                         }
 
+                        string explicitName = string.Empty;
+                        if (element.Extension != null)
+                        {
+                            foreach (fhir_3.Extension ext in element.Extension)
+                            {
+                                if (ext.Url == "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name")
+                                {
+                                    explicitName = ext.ValueString;
+                                }
+                            }
+                        }
+
                         // add this field to the parent type
                         parent.Elements.Add(
                             path,
                             new FhirElement(
                                 id,
                                 path,
+                                explicitName,
                                 null,
                                 parent.Elements.Count,
                                 element.Short,
@@ -1031,12 +1091,42 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 {
                     foreach (fhir_3.ElementDefinitionConstraint con in sd.Differential.Element[0].Constraint)
                     {
+                        bool isBestPractice = false;
+                        string explanation = string.Empty;
+
+                        if (con.Extension != null)
+                        {
+                            foreach (fhir_3.Extension ext in con.Extension)
+                            {
+                                switch (ext.Url)
+                                {
+                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice":
+                                        isBestPractice = ext.ValueBoolean == true;
+                                        break;
+
+                                    case "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation":
+                                        if (!string.IsNullOrEmpty(ext.ValueMarkdown))
+                                        {
+                                            explanation = ext.ValueMarkdown;
+                                        }
+                                        else
+                                        {
+                                            explanation = ext.ValueString;
+                                        }
+
+                                        break;
+                                }
+                            }
+                        }
+
                         complex.AddConstraint(new FhirConstraint(
                             con.Key,
                             con.Severity,
                             con.Human,
                             con.Expression,
-                            con.Xpath));
+                            con.Xpath,
+                            isBestPractice,
+                            explanation));
                     }
                 }
 

@@ -4,11 +4,11 @@ A .Net Core library and utility to generate various computer language outputs fr
 
 ## Usage
 
-Detailed usage information is available [here](/articles/cli.html).
+Detailed usage information is available [here](articles/cli.html).
 
 ## Extending
 
-Documentation for developers interested in extending the tooling to include additional langauges or add other features is available [here](/articles/extending.html).
+Documentation for developers interested in extending the tooling to include additional langauges or add other features is available [here](articles/extending.html).
 
 ## Contributing
 
