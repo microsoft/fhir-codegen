@@ -169,22 +169,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // copy required fields
             MajorVersion = majorVersion;
 
-            // create our JSON converter
-            switch (majorVersion)
-            {
-                case 2:
-                    _fhirConverter = new FromR2();
-                    break;
-                case 3:
-                    _fhirConverter = new FromR3();
-                    break;
-                case 4:
-                    _fhirConverter = new FromR4();
-                    break;
-                case 5:
-                    _fhirConverter = new FromR5();
-                    break;
-            }
+            _fhirConverter = ConverterHelper.ConverterForVersion(majorVersion);
 
             // create our info dictionaries
             _primitiveTypesByName = new Dictionary<string, FhirPrimitive>();

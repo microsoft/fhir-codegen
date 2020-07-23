@@ -94,6 +94,21 @@
             "commandName": "Project",
             "commandLineArgs": "--output-path ..\\..\\firely --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "server2": {
+            "commandName": "Project",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseDstu2/ --output-path ..\\..\\test --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "server3": {
+            "commandName": "Project",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseStu3/ --output-path ..\\..\\test --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "server4": {
+            "commandName": "Project",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --output-path ..\\..\\test --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }
 }
