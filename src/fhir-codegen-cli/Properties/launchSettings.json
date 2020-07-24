@@ -107,7 +107,12 @@
         },
         "server4": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|explicitfhirjson=true|explicitfhirxml=true|Responses=multiple --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "azure4": {
+            "commandName": "Project",
+            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --output-path ..\\..\\temp\\OpenApi_R4_AZ.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }

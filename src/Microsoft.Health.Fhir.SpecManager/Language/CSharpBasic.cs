@@ -12,7 +12,7 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
-    /// <summary>A language C# prototype.</summary>
+    /// <summary>A basic C# language - useful for testing, simple projects, and prototypes.</summary>
     public sealed class CSharpBasic : ILanguage
     {
         /// <summary>The systems named by display.</summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>The namespace, default to 'fhir'.</summary>
         private string _namespace = "fhir";
 
-        /// <summary>List of types of the exported resource names ands.</summary>
+        /// <summary>List of types of the exported resource names and types.</summary>
         private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
 
         /// <summary>The exported codes.</summary>
