@@ -12,8 +12,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>Information about a supported FHIR server resource.</summary>
     public class FhirServerResourceInfo
     {
-        private readonly int _interactionFlags;
-        private readonly int _referencePolicies;
+        private readonly List<FhirInteraction> _interactions;
+        private readonly List<ReferenceHandlingPolicy> _referencePolicies;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirServerResourceInfo"/> class.
@@ -62,13 +62,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             SearchParameters = searchParameters ?? new Dictionary<string, FhirServerSearchParam>();
             Operations = operations ?? new Dictionary<string, FhirServerOperation>();
 
-            _interactionFlags = 0;
+            _interactions = new List<FhirInteraction>();
 
             if (interactions != null)
             {
                 foreach (string interaction in interactions)
                 {
-                    _interactionFlags += (int)interaction.ToFhirEnum<FhirInteractions>();
+                    _interactions.Add(interaction.ToFhirEnum<FhirInteraction>());
                 }
             }
 
@@ -87,56 +87,55 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 ConditionalDelete = conditionalDelete.ToFhirEnum<ConditionalDeletePolicy>();
             }
 
-            _referencePolicies = 0;
+            _referencePolicies = new List<ReferenceHandlingPolicy>();
 
             if (referencePolicies != null)
             {
                 foreach (string policy in referencePolicies)
                 {
-                    _referencePolicies += (int)policy.ToFhirEnum<ReferenceHandlingPolicies>();
+                    _referencePolicies.Add(policy.ToFhirEnum<ReferenceHandlingPolicy>());
                 }
             }
         }
 
-        /// <summary>A bit-field of flags for specifying resource interactions.</summary>
-        [Flags]
-        public enum FhirInteractions : int
+        /// <summary>Values that represent FHIR resource interactions.</summary>
+        public enum FhirInteraction
         {
             /// <summary>Read the current state of the resource..</summary>
             [FhirLiteral("read")]
-            Read = 0x0001,
+            Read,
 
             /// <summary>Read the state of a specific version of the resource.</summary>
             [FhirLiteral("vread")]
-            VRead = 0x0002,
+            VRead,
 
             /// <summary>Update an existing resource by its id (or create it if it is new).</summary>
             [FhirLiteral("update")]
-            Update = 0x0004,
+            Update,
 
             /// <summary>Update an existing resource by posting a set of changes to it.</summary>
             [FhirLiteral("patch")]
-            Patch = 0x0008,
+            Patch,
 
             /// <summary>Delete a resource.</summary>
             [FhirLiteral("delete")]
-            Delete = 0x0010,
+            Delete,
 
             /// <summary>Retrieve the change history for a particular resource.</summary>
             [FhirLiteral("history-instance")]
-            HistoryInstance = 0x0020,
+            HistoryInstance,
 
             /// <summary>Retrieve the change history for all resources of a particular type.</summary>
             [FhirLiteral("history-type")]
-            HistoryType = 0x0040,
+            HistoryType,
 
             /// <summary>Create a new resource with a server assigned id.</summary>
             [FhirLiteral("create")]
-            Create = 0x0080,
+            Create,
 
             /// <summary>Search all resources of the specified type based on some filter criteria.</summary>
             [FhirLiteral("search-type")]
-            SearchType = 0x0100,
+            SearchType,
         }
 
         /// <summary>Values that represent versioning policies.</summary>
@@ -194,28 +193,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Values that represent reference handling policies.</summary>
-        [Flags]
-        public enum ReferenceHandlingPolicies
+        public enum ReferenceHandlingPolicy
         {
             /// <summary>The server supports and populates Literal references (i.e. using Reference.reference) where they are known (this code does not guarantee that all references are literal; see 'enforced').</summary>
             [FhirLiteral("literal")]
-            Literal = 0x0001,
+            Literal,
 
             /// <summary>The server allows logical references (i.e. using Reference.identifier).</summary>
             [FhirLiteral("logical")]
-            Logical = 0x0002,
+            Logical,
 
             /// <summary>The server will attempt to resolve logical references to literal references - i.e. converting Reference.identifier to Reference.reference (if resolution fails, the server may still accept resources; see logical).</summary>
             [FhirLiteral("resolves")]
-            Resolves = 0x0004,
+            Resolves,
 
             /// <summary>The server enforces that references have integrity - e.g. it ensures that references can always be resolved. This is typically the case for clinical record systems, but often not the case for middleware/proxy systems.</summary>
             [FhirLiteral("enforced")]
-            Enforced = 0x0008,
+            Enforced,
 
             /// <summary>The server does not support references that point to other servers.</summary>
             [FhirLiteral("local")]
-            Local = 0x0010,
+            Local,
         }
 
         /// <summary>Gets the resource type.</summary>
@@ -224,8 +222,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the list of supported profile URLs.</summary>
         public List<string> SupportedProfiles { get; }
 
-        /// <summary>Gets the interaction flags.</summary>
-        public int InteractionFlags => _interactionFlags;
+        /// <summary>Gets the supported interactions.</summary>
+        public List<FhirInteraction> Interactions => _interactions;
 
         /// <summary>Gets the supported version policy.</summary>
         public VersioningPolicy? VersionSupport { get; }
@@ -249,7 +247,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public ConditionalDeletePolicy? ConditionalDelete { get; }
 
         /// <summary>Gets the reference policy.</summary>
-        public int ReferencePolicies => _referencePolicies;
+        public List<ReferenceHandlingPolicy> ReferencePolicies => _referencePolicies;
 
         /// <summary>Gets the _include values supported by the server.</summary>
         public List<string> SearchIncludes { get; }
@@ -262,32 +260,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the operations supported by implementation.</summary>
         public Dictionary<string, FhirServerOperation> Operations { get; }
-
-        /// <summary>Check if a specific interaction is supported by this resource.</summary>
-        /// <param name="interaction">The interaction.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public bool SupportsInteraction(FhirInteractions interaction)
-        {
-            if ((_interactionFlags & (int)interaction) == (int)interaction)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>Supports policy.</summary>
-        /// <param name="policy">The policy.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public bool SupportsPolicy(ReferenceHandlingPolicies policy)
-        {
-            if ((_referencePolicies & (int)policy) == (int)policy)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
     }
 }

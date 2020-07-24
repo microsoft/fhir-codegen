@@ -12,7 +12,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A FHIR server.</summary>
     public class FhirServerInfo
     {
-        private readonly int _serverInteractionFlags;
+        private readonly List<SystemRestfulInteraction> _serverInteractions;
         private readonly int _fhirMajorVersion;
 
         /// <summary>Initializes a new instance of the <see cref="FhirServerInfo"/> class.</summary>
@@ -88,36 +88,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             ServerSearchParameters = serverSearchParameters;
             ServerOperations = serverOperations;
 
-            _serverInteractionFlags = 0;
+            _serverInteractions = new List<SystemRestfulInteraction>();
 
             if (serverInteractions != null)
             {
                 foreach (string interaction in serverInteractions)
                 {
-                    _serverInteractionFlags += (int)interaction.ToFhirEnum<SystemRestfulInteractions>();
+                    _serverInteractions.Add(interaction.ToFhirEnum<SystemRestfulInteraction>());
                 }
             }
         }
 
-        /// <summary>A bit-field of flags for specifying system restful interactions.</summary>
-        [Flags]
-        public enum SystemRestfulInteractions : int
+        /// <summary>Values that represent system restful interactions.</summary>
+        public enum SystemRestfulInteraction : int
         {
             /// <summary>Update, create or delete a set of resources as a single transaction.</summary>
             [FhirLiteral("transaction")]
-            Transaction = 0x0001,
+            Transaction,
 
             /// <summary>Perform a set of a separate interactions in a single http operation.</summary>
             [FhirLiteral("batch")]
-            Batch = 0x0002,
+            Batch,
 
             /// <summary>Search all resources based on some filter criteria.</summary>
             [FhirLiteral("search-system")]
-            SearchSystem = 0x0004,
+            SearchSystem,
 
             /// <summary>Retrieve the change history for all resources on a system.</summary>
             [FhirLiteral("history-system")]
-            HistorySystem = 0x0008,
+            HistorySystem,
         }
 
         /// <summary>Gets FHIR Base URL for the server.</summary>
@@ -147,26 +146,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the server interactions by resource.</summary>
         public Dictionary<string, FhirServerResourceInfo> ResourceInteractions { get; }
 
-        /// <summary>Gets the server interaction flags.</summary>
-        public int ServerInteractionFlags => _serverInteractionFlags;
+        /// <summary>Gets the server interactions.</summary>
+        public List<SystemRestfulInteraction> ServerInteractions => _serverInteractions;
 
         /// <summary>Gets the search parameters for searching all resources.</summary>
         public Dictionary<string, FhirServerSearchParam> ServerSearchParameters { get; }
 
         /// <summary>Gets the operations defined at the system level operation.</summary>
         public Dictionary<string, FhirServerOperation> ServerOperations { get; }
-
-        /// <summary>Check if a specific server interaction is supported by this implementation.</summary>
-        /// <param name="interaction">The interaction.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public bool SupportsServerInteraction(SystemRestfulInteractions interaction)
-        {
-            if ((_serverInteractionFlags & (int)interaction) == (int)interaction)
-            {
-                return true;
-            }
-
-            return false;
-        }
     }
 }
