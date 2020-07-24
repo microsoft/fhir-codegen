@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.OpenApi;
@@ -55,6 +56,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>True to include, false to exclude the summaries.</summary>
         private bool _includeSummaries = true;
+
+        /// <summary>True to include, false to exclude the schemas.</summary>
+        private bool _includeSchemas = true;
 
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
@@ -132,6 +136,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "ExplicitFhirXml", "If paths should explicitly support FHIR+XML (true|false)." },
             { "Responses", "Response inclusion style (single|multiple)." },
             { "Summaries", "If responses should include summaries (true|false)." },
+            { "Schemas", "If schemas should be included (true|false)" },
         };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
@@ -207,6 +212,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _includeSummaries = false;
             }
 
+            if (_parameters.ContainsKey("SCHEMAS") &&
+                (!string.IsNullOrEmpty(_parameters["SCHEMAS"])) &&
+                _parameters["SCHEMAS"].StartsWith("F", StringComparison.OrdinalIgnoreCase))
+            {
+                _includeSchemas = false;
+            }
+
             OpenApiDocument document = new OpenApiDocument();
 
             document.Info = BuildInfo();
@@ -217,6 +229,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 ["id"] = BuildPathIdParameter(),
             };
+
+            if (_includeSchemas)
+            {
+                document.Components.Schemas = BuildSchemas();
+            }
 
             if (!string.IsNullOrEmpty(_options.ServerUrl))
             {
@@ -242,6 +259,189 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     document.Serialize(writer, OpenApiSpecVersion.OpenApi3_0);
                 }
             }
+        }
+
+        /// <summary>Builds the schemas.</summary>
+        /// <returns>A Dictionary&lt;string,OpenApiSchema&gt;</returns>
+        private Dictionary<string, OpenApiSchema> BuildSchemas()
+        {
+            Dictionary<string, OpenApiSchema> schemas = new Dictionary<string, OpenApiSchema>();
+
+            foreach (FhirComplex complex in _info.ComplexTypes.Values.OrderBy(c => c.Name))
+            {
+                schemas.Add(complex.Name, BuildSchema(complex));
+            }
+
+            foreach (FhirComplex complex in _info.Resources.Values.OrderBy(c => c.Name))
+            {
+                schemas.Add(complex.Name, BuildSchema(complex));
+            }
+
+            return schemas;
+        }
+
+        /// <summary>Builds a schema.</summary>
+        /// <param name="complex">The complex.</param>
+        /// <returns>An OpenApiSchema.</returns>
+        private OpenApiSchema BuildSchema(
+            FhirComplex complex,
+            FhirComplex root = null)
+        {
+            OpenApiSchema schema = new OpenApiSchema()
+            {
+                Type = "object",
+                Properties = new Dictionary<string, OpenApiSchema>(),
+            };
+
+            if (root == null)
+            {
+                root = complex;
+            }
+
+            if (complex.Elements != null)
+            {
+                foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.Name))
+                {
+                    if (complex.Components.ContainsKey(element.Path))
+                    {
+                        schema.Properties.Add(
+                            GetElementName(element), // GetComponentName(component),
+                            BuildSchema(complex.Components[element.Path], root));
+                    }
+                    else
+                    {
+                        schema.Properties.Add(
+                            GetElementName(element),
+                            BuildElementSchema(element));
+                    }
+                }
+            }
+
+            return schema;
+        }
+
+        /// <summary>Builds element schema.</summary>
+        /// <param name="element">The element.</param>
+        /// <returns>An OpenApiSchema.</returns>
+        private OpenApiSchema BuildElementSchema(
+            FhirElement element)
+        {
+            OpenApiSchema schema = new OpenApiSchema();
+
+            string type;
+
+            if (!string.IsNullOrEmpty(element.BaseTypeName))
+            {
+                type = element.BaseTypeName;
+            }
+            else if (element.ElementTypes.Count == 1)
+            {
+                type = element.ElementTypes.First().Value.Name;
+            }
+            else
+            {
+                type = "Element";
+            }
+
+            if (type.Contains('.'))
+            {
+                schema.Reference = new OpenApiReference()
+                {
+                    Id = BuildTypeFromPath(type),
+                    Type = ReferenceType.Schema,
+                };
+
+                return schema;
+            }
+
+            if (_primitiveTypeMap.ContainsKey(type))
+            {
+                type = _primitiveTypeMap[type];
+
+                if (type.Contains(':'))
+                {
+                    string[] parts = type.Split(':');
+
+                    schema.Type = parts[0];
+                    schema.Format = parts[1];
+                }
+                else
+                {
+                    schema.Type = type;
+                }
+
+                return schema;
+            }
+
+            return schema;
+        }
+
+        /// <summary>Builds type from path.</summary>
+        /// <param name="path">Full pathname of the file.</param>
+        /// <returns>A string.</returns>
+        private static string BuildTypeFromPath(string path)
+        {
+            StringBuilder sb = new StringBuilder();
+            string[] components = path.Split('.');
+
+            for (int i = 0; i < components.Length; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        sb.Append(components[i]);
+                        break;
+
+                    case 1:
+                        sb.Append("/properties");
+                        sb.Append(components[i]);
+                        break;
+
+                    default:
+                        sb.Append(components[i]);
+                        break;
+                }
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>Gets element name.</summary>
+        /// <param name="element">The element.</param>
+        /// <returns>The element name.</returns>
+        private static string GetElementName(FhirElement element)
+        {
+            string name = element.Name.Replace("[x]", string.Empty);
+
+            return FhirUtils.SanitizedToConvention(
+                name,
+                FhirTypeBase.NamingConvention.CamelCase);
+        }
+
+        /// <summary>Gets component name.</summary>
+        /// <param name="component">The component.</param>
+        /// <returns>The component name.</returns>
+        private static string GetComponentName(FhirComplex component)
+        {
+            string name;
+
+            if (string.IsNullOrEmpty(component.ExplicitName))
+            {
+                name = FhirUtils.ToConvention(
+                    component.Name,
+                    component.Path,
+                    FhirTypeBase.NamingConvention.PascalCase);
+            }
+            else
+            {
+                name = FhirUtils.SanitizedToConvention(
+                    component.ExplicitName,
+                    FhirTypeBase.NamingConvention.PascalCase);
+            }
+
+            name += "Component";
+
+            return name;
         }
 
         /// <summary>Builds the OpenAPI paths object based on a known server.</summary>
