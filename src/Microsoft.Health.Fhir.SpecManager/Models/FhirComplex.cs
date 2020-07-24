@@ -506,16 +506,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Deep copy - cannot use Clone because of needed parameters.</summary>
-        /// <param name="primitiveTypeMap">   The primitive type map.</param>
-        /// <param name="copySlicing">        True to copy slicing.</param>
-        /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
-        /// <param name="valueSetReferences"> [in,out] Value Set URLs and lists of FHIR paths that reference them.</param>
+        /// <param name="primitiveTypeMap">     The primitive type map.</param>
+        /// <param name="copySlicing">          True to copy slicing.</param>
+        /// <param name="canHideParentFields">  True if can hide parent fields, false if not.</param>
+        /// <param name="valueSetReferences">   [in,out] Value Set URLs and lists of FHIR paths that
+        ///  reference them.</param>
+        /// <param name="supportedSearchParams">(Optional) Options for controlling the supported search.</param>
+        /// <param name="serverSearchParams">   (Optional) Options for controlling the server search.</param>
+        /// <param name="supportedOperations">  (Optional) The supported operations.</param>
+        /// <param name="serverOperations">     (Optional) The server operations.</param>
         /// <returns>A FhirComplex.</returns>
         public FhirComplex DeepCopy(
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
             bool canHideParentFields,
-            ref Dictionary<string, List<string>> valueSetReferences)
+            ref Dictionary<string, List<string>> valueSetReferences,
+            Dictionary<string, FhirServerSearchParam> supportedSearchParams = null,
+            Dictionary<string, FhirServerSearchParam> serverSearchParams = null,
+            Dictionary<string, FhirServerOperation> supportedOperations = null,
+            Dictionary<string, FhirServerOperation> serverOperations = null)
         {
             List<string> contextElements = null;
 
@@ -582,25 +591,100 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 complex.Components.Add(
                     kvp.Key,
-                    kvp.Value.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields, ref valueSetReferences));
+                    kvp.Value.DeepCopy(
+                        primitiveTypeMap,
+                        copySlicing,
+                        canHideParentFields,
+                        ref valueSetReferences));
             }
 
             // search
-            foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchParameters)
+            if (supportedSearchParams == null)
             {
-                complex.SearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
+                foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchParameters)
+                {
+                    complex.SearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
+                }
+            }
+            else if (serverSearchParams == null)
+            {
+                foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchParameters)
+                {
+                    if (!supportedSearchParams.ContainsKey(kvp.Key))
+                    {
+                        continue;
+                    }
+
+                    complex.SearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchParameters)
+                {
+                    if ((!supportedSearchParams.ContainsKey(kvp.Key)) &&
+                        (!serverSearchParams.ContainsKey(kvp.Key)))
+                    {
+                        continue;
+                    }
+
+                    complex.SearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
+                }
             }
 
             // type operations
-            foreach (KeyValuePair<string, FhirOperation> kvp in _typeOperations)
+            if (supportedOperations == null)
             {
-                complex.TypeOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                foreach (KeyValuePair<string, FhirOperation> kvp in _typeOperations)
+                {
+                    complex.TypeOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<string, FhirOperation> kvp in _typeOperations)
+                {
+                    if (!supportedOperations.ContainsKey(kvp.Key))
+                    {
+                        continue;
+                    }
+
+                    complex.TypeOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                }
             }
 
             // instance operations
-            foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
+            if (supportedOperations == null)
             {
-                complex.InstanceOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
+                {
+                    complex.InstanceOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                }
+            }
+            else if (serverOperations == null)
+            {
+                foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
+                {
+                    if (!supportedOperations.ContainsKey(kvp.Key))
+                    {
+                        continue;
+                    }
+
+                    complex.InstanceOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
+                {
+                    if ((!supportedOperations.ContainsKey(kvp.Key)) &&
+                        (!serverOperations.ContainsKey(kvp.Key)))
+                    {
+                        continue;
+                    }
+
+                    complex.InstanceOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                }
             }
 
             if (_constraints != null)

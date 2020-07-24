@@ -97,17 +97,17 @@
         },
         "server2": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseDstu2/ --output-path ..\\..\\test --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseDstu2/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "server3": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseStu3/ --output-path ..\\..\\test --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseStu3/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "server4": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --output-path ..\\..\\test --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }

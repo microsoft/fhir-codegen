@@ -119,6 +119,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Extensions
         }
 
         /// <summary>
+        /// A string extension method that attempts to to FHIR enum a T from the given string.
+        /// </summary>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <param name="literal">The literal.</param>
+        /// <param name="value">  [out] The value.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public static bool TryFhirEnum<T>(this string literal, out object value)
+            where T : struct
+        {
+            if (string.IsNullOrEmpty(literal))
+            {
+                value = default(T);
+                return false;
+            }
+
+            return TryParseFhir<T>(literal, out value);
+        }
+
+        /// <summary>
         /// A Type extension method that attempts to parse a FHIR string literal to a FHIR-Literal tagged
         /// enum value.
         /// </summary>
@@ -131,7 +150,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Extensions
         {
             if (string.IsNullOrEmpty(literal))
             {
-                value = null;
+                value = default(T);
                 return false;
             }
 
@@ -149,64 +168,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Extensions
             }
 
             value = _typeLookups[enumType].StringToEnum[literal];
-            return true;
-        }
-
-        /// <summary>A Type extension method that parse literal.</summary>
-        /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-        /// <param name="enumType">The enumType to act on.</param>
-        /// <param name="literal"> The literal.</param>
-        /// <returns>An Enum.</returns>
-        public static object ParseLiteral(this Type enumType, string literal)
-        {
-            if ((enumType == null) ||
-                string.IsNullOrEmpty(literal))
-            {
-                return null;
-            }
-
-            if (!_typeLookups.ContainsKey(enumType))
-            {
-                LoadTypeLookup(enumType);
-            }
-
-            if (!_typeLookups[enumType].StringToEnum.ContainsKey(literal))
-            {
-                throw new Exception($"Unknown enum requested: {literal}");
-            }
-
-            return _typeLookups[enumType].StringToEnum[literal];
-        }
-
-        /// <summary>A Type extension method that attempts to parse literal.</summary>
-        /// <param name="enumType">The enumType to act on.</param>
-        /// <param name="literal"> The literal.</param>
-        /// <param name="result">  [out] The result.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool TryParseLiteral(
-            this Type enumType,
-            string literal,
-            out object result)
-        {
-            if ((enumType == null) ||
-                string.IsNullOrEmpty(literal))
-            {
-                result = null;
-                return false;
-            }
-
-            if (!_typeLookups.ContainsKey(enumType))
-            {
-                LoadTypeLookup(enumType);
-            }
-
-            if (!_typeLookups[enumType].StringToEnum.ContainsKey(literal))
-            {
-                result = null;
-                return false;
-            }
-
-            result = _typeLookups[enumType].StringToEnum[literal];
             return true;
         }
 

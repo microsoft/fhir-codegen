@@ -237,7 +237,8 @@ namespace FhirCodegenCli
                         null,
                         null,
                         languageOptsByLang[lang.LanguageName],
-                        fhirServerUrl);
+                        fhirServerUrl,
+                        serverInfo);
 
                     if (r2 != null)
                     {

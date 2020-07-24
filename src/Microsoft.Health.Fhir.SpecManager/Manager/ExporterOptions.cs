@@ -27,8 +27,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="extensionElementPaths">  Manually supported element paths that should have
         ///  extensions.</param>
         /// <param name="languageOptions">        Options for controlling the language.</param>
-        /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
+        /// <param name="fhirServerUrl">          FHIR Server URL to pull a CapabilityStatement (or
         ///  Conformance) from.  Requires application/fhir+json.</param>
+        /// <param name="serverInfo">             Information describing the server (if specified).</param>
         public ExporterOptions(
             string languageName,
             IEnumerable<string> exportList,
@@ -37,7 +38,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             IEnumerable<string> extensionUrls,
             IEnumerable<string> extensionElementPaths,
             Dictionary<string, string> languageOptions,
-            string fhirServerUrl)
+            string fhirServerUrl,
+            FhirServerInfo serverInfo)
         {
             LanguageName = languageName;
             ExportList = exportList;
@@ -70,7 +72,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
 
             _languageOptions = languageOptions;
-            FhirServerUrl = fhirServerUrl;
+            ServerUrl = fhirServerUrl;
+            ServerInfo = serverInfo;
         }
 
         /// <summary>Values that represent FHIR export class types.</summary>
@@ -157,7 +160,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Gets options for controlling the language.</summary>
         public Dictionary<string, string> LanguageOptions => _languageOptions;
 
-        /// <summary>Gets URL of the FHIR server.</summary>
-        public string FhirServerUrl { get; }
+        /// <summary>Gets URL of the FHIR server (if specified).</summary>
+        public string ServerUrl { get; }
+
+        /// <summary>Gets information about a FHIR server (if specified).</summary>
+        public FhirServerInfo ServerInfo { get; }
     }
 }
