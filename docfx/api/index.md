@@ -69,13 +69,17 @@ Classes used to export different languages from a loaded version of FHIR.
 
     Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.
 
-  * [CSharpFirely](Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely.html) **EXPERIMENTAL**
+  * [CSharpFirely](Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely.html)
 
     Export base C# classes needed for the Firely-maintained C# API ([FHIR-Net-API](https://github.com/FirelyTeam/fhir-net-api/)).
 
+  * [OpenAPI](Microsoft.Health.Fhir.SpecManager.Language.LangOpenApi.html) **EXPERIMENTAL**
+
+    Export an OpenAPI version 2 or 3 JSON document for the selected options.
+
 ## Library Namespace: [Microsoft.Health.Fhir.SpecManager.Manager](Microsoft.Health.Fhir.SpecManager.Manager.html)
 
-Classes used to manage FHIR versions.
+Classes used to load and manage FHIR versions.  Includes functionality to connect to a FHIR server and pull metadata.
 
 ## Library Namespace: [Microsoft.Health.Fhir.SpecManager.Models](Microsoft.Health.Fhir.SpecManager.Models.html)
 
