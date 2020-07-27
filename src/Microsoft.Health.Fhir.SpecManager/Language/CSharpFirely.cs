@@ -65,7 +65,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "id", "string" },
             { "instant", "DateTimeOffset?" },
             { "integer", "int?" },
-            { "integer64", "long" },
+            { "integer64", "long?" },
             { "oid", "string" },
             { "positiveInt", "int?" },
             { "string", "string" },
@@ -97,9 +97,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Element",
             "Extension",
             "MetadataResource",
+            "DataType",
+            "BackboneType",
+            "PrimitiveType",
             "Narrative",
             "Resource",
             "xhtml",
+            "Citation",
             "http://hl7.org/fhir/ValueSet/defined-types",
             "http://hl7.org/fhir/ValueSet/ucum-units",
             "http://hl7.org/fhir/ValueSet/consent-content-class",
@@ -313,6 +317,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 foreach (FhirSearchParam sp in complex.SearchParameters.Values.OrderBy(s => s.Name))
                 {
+                    if (sp.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     string description;
 
                     if ((!string.IsNullOrEmpty(sp.Description)) &&
@@ -391,6 +400,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         // Procedure and DeviceRequest. There is no way you can see this from the
                         // source data we generate this from, afaik, so we need to make
                         // a special case here.
+                        // Brian P reported that there are many such exceptions - but this one
+                        // was reported as a bug. Again, there is no way to know this from our
+                        // inputs, so this will remain manually maintained input.
                         if (sp.Id == "clinical-encounter")
                         {
                             if (complex.Name != "Procedure" && complex.Name != "DeviceRequest")
@@ -693,7 +705,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         {
                             continue;
                         }
-
+                     
                         if (_exclusionSet.Contains(vs.URL))
                         {
                             continue;
@@ -869,7 +881,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if ((_info.MajorVersion != 2) ||
                 (complex.Name != "BackboneElement"))
             {
-                if (!isAbstract || complex.Name == "DomainResource")
+                if (!isAbstract || (complex.Name == "DomainResource" && _info.MajorVersion == 3))
                 {
                     if (isResource)
                     {
@@ -916,6 +928,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"public{abstractFlag} partial class" +
                             $" {exportName}" +
                             $" : {_namespace}.{complex.BaseTypeName}," +
+                            $" System.ComponentModel.INotifyPropertyChanged");
+                    break;
+
+                case "MetadataResource":
+                case "CanonicalResource":
+                    _writer.WriteLineIndented("[DataContract]");
+                    _writer.WriteLineIndented(
+                        $"public{abstractFlag} partial class" +
+                            $" {exportName}" +
+                            $" : {_namespace}.DomainResource," +
                             $" System.ComponentModel.INotifyPropertyChanged");
                     break;
 
@@ -1609,6 +1631,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             result = result.Replace(".", "_");
+            result = result.Replace(")", "_");
+            result = result.Replace("(", "_");
 
             if (char.IsDigit(result[0]))
             {
@@ -2216,7 +2240,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirElementType elementType in element.ElementTypes.Values)
                 {
-                    if (elementType.Name == "Reference")
+                    if (elementType.Name == "Reference" && elementType.Profiles.Values.Any())
                     {
                         StringBuilder sb = new StringBuilder();
                         sb.Append("[References(");
@@ -2420,21 +2444,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
 
-                (int v, string p, string n)[] primitivePattern =
+                if (_info.MajorVersion >= 3)
+                {
+                    (string p, string n)[] primitivePattern =
                     {
-                        (3, "uri", "UriPattern"),
-                        (3, "uuid", "UuidPattern"),
-                        (3, "id", "IdPattern"),
-                        (3, "date", "DatePattern"),
-                        (3, "dateTime", "DateTimePattern"),
-                        (3, "oid", "OidPattern"),
+                        ("uri", "UriPattern"),
+                        ("uuid", "UuidPattern"),
+                        ("id", "IdPattern"),
+                        ("date", "DatePattern"),
+                        ("dateTime", "DateTimePattern"),
+                        ("oid", "OidPattern"),
                     };
 
-                foreach ((int v, string p, string n) in primitivePattern)
-                {
-                    if (_info.MajorVersion == v && p == primitive.Name)
+                    foreach ((string p, string n) in primitivePattern)
                     {
-                        _writer.WriteLineIndented($"[{n}]");
+                        if (p == primitive.Name)
+                        {
+                            _writer.WriteLineIndented($"[{n}]");
+                        }
                     }
                 }
 
