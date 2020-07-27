@@ -29,6 +29,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
+        /// <param name="isExperimental">  If this complex resource is flagged as experimental.</param>
         /// <param name="shortDescription">Information describing the short.</param>
         /// <param name="purpose">         The purpose.</param>
         /// <param name="comment">         The comment.</param>
@@ -39,6 +40,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string explicitName,
             Uri url,
             string standardStatus,
+            bool isExperimental,
             string shortDescription,
             string purpose,
             string comment,
@@ -48,6 +50,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 path,
                 url,
                 standardStatus,
+                isExperimental,
                 shortDescription,
                 purpose,
                 comment,
@@ -70,6 +73,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="explicitName">    Explicit name for this complex structure, if provided.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
+        /// <param name="isExperimental">  If this complex type is marked experimental.</param>
         /// <param name="shortDescription">Information describing the short.</param>
         /// <param name="purpose">         The purpose.</param>
         /// <param name="comment">         The comment.</param>
@@ -82,6 +86,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string explicitName,
             Uri url,
             string standardStatus,
+            bool isExperimental,
             string shortDescription,
             string purpose,
             string comment,
@@ -94,6 +99,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 explicitName,
                 url,
                 standardStatus,
+                isExperimental,
                 shortDescription,
                 purpose,
                 comment,
@@ -120,6 +126,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string explicitName,
             Uri url,
             string standardStatus,
+            bool isExperimental,
             string shortDescription,
             string purpose,
             string comment,
@@ -131,6 +138,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 explicitName,
                 url,
                 standardStatus,
+                isExperimental,
                 shortDescription,
                 purpose,
                 comment,
@@ -278,6 +286,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     property.ExplicitName,
                     property.URL,
                     property.StandardStatus,
+                    property.IsExperimental,
                     property.ShortDescription,
                     property.Purpose,
                     property.Comment,
@@ -544,6 +553,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     ExplicitName,
                     URL,
                     StandardStatus,
+                    IsExperimental,
                     ShortDescription,
                     Purpose,
                     Comment,

@@ -751,7 +751,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     _complexTypesByName.ContainsKey("BackboneElement") &&
                     (!set.Contains("BackboneElement")))
                 {
-                    set.Add("BackboneElement")
+                    set.Add("BackboneElement");
                 }
             }
 
@@ -804,7 +804,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     _complexTypesByName.ContainsKey("BackboneElement") &&
                     (!set.Contains("BackboneElement")))
                 {
-                    set.Add("BackboneElement")
+                    set.Add("BackboneElement");
                 }
             }
         }
