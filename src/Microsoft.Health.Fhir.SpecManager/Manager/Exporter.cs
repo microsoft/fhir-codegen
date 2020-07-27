@@ -109,7 +109,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 true,
                 options.ExtensionUrls,
                 options.ExtensionElementPaths,
-                options.ServerInfo);
+                options.ServerInfo,
+                options.IncludeExperimental);
 
             // perform our export
             exportLanguage.Export(

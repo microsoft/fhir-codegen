@@ -4,6 +4,7 @@
 // </copyright>
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -222,10 +223,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WritePrimitiveType(
             FhirPrimitive primitive)
         {
+            string experimental = primitive.IsExperimental ? " (experimental)" : string.Empty;
+
             _writer.WriteLineIndented(
                 $"- {primitive.Name}:" +
                     $" {primitive.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}" +
-                    $"::{primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap)}");
+                    $"::{primitive.TypeForExport(FhirTypeBase.NamingConvention.CamelCase, _primitiveTypeMap)}" +
+                    $"{experimental}");
 
             _writer.IncreaseIndent();
 
@@ -280,7 +284,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // (sub-properties are written with cardinality in the prior loop)
             if (_writer.Indentation == 0)
             {
-                _writer.WriteLine($"- {complex.Name}: {complex.BaseTypeName}");
+                string experimental = complex.IsExperimental ? " (experimental)" : string.Empty;
+
+                _writer.WriteLine($"- {complex.Name}: {complex.BaseTypeName}{experimental}");
                 _writer.IncreaseIndent();
                 indented = true;
             }
@@ -338,6 +344,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirOperation operation in operations.OrderBy(o => o.Code))
             {
+                string experimental = operation.IsExperimental ? $" (experimental)" : string.Empty;
+
                 if (isTypeLevel)
                 {
                     _writer.WriteLineIndented($"${operation.Code}");
@@ -354,7 +362,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // write operation parameters inline
                     foreach (FhirParameter parameter in operation.Parameters.OrderBy(p => p.FieldOrder))
                     {
-                        _writer.WriteLineIndented($"{parameter.Use}: {parameter.Name} ({parameter.FhirCardinality})");
+                        _writer.WriteLineIndented($"{parameter.Use}: {parameter.Name} ({parameter.FhirCardinality}){experimental}");
                     }
 
                     _writer.DecreaseIndent();
@@ -385,7 +393,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirSearchParam searchParam in searchParameters.OrderBy(s => s.Code))
             {
-                _writer.WriteLineIndented($"?{searchParam.Code}={searchParam.ValueType} ({searchParam.Name})");
+                string experimental = searchParam.IsExperimental ? $" (experimental)" : string.Empty;
+
+                _writer.WriteLineIndented($"?{searchParam.Code}={searchParam.ValueType} ({searchParam.Name}){experimental}");
             }
 
             if (indented)

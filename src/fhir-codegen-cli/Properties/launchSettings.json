@@ -17,7 +17,7 @@
         },
         "r4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r5": {

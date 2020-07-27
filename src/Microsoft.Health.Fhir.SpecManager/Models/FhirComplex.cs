@@ -524,6 +524,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="serverSearchParams">   (Optional) Options for controlling the server search.</param>
         /// <param name="supportedOperations">  (Optional) The supported operations.</param>
         /// <param name="serverOperations">     (Optional) The server operations.</param>
+        /// <param name="includeExperimental">  (Optional) True to include, false to exclude the
+        ///  experimental.</param>
         /// <returns>A FhirComplex.</returns>
         public FhirComplex DeepCopy(
             Dictionary<string, string> primitiveTypeMap,
@@ -533,7 +535,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Dictionary<string, FhirServerSearchParam> supportedSearchParams = null,
             Dictionary<string, FhirServerSearchParam> serverSearchParams = null,
             Dictionary<string, FhirServerOperation> supportedOperations = null,
-            Dictionary<string, FhirServerOperation> serverOperations = null)
+            Dictionary<string, FhirServerOperation> serverOperations = null,
+            bool includeExperimental = false)
         {
             List<string> contextElements = null;
 
@@ -613,6 +616,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchParameters)
                 {
+                    if ((!includeExperimental) && kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     complex.SearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
                 }
             }
@@ -621,6 +629,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchParameters)
                 {
                     if (!supportedSearchParams.ContainsKey(kvp.Key))
+                    {
+                        continue;
+                    }
+
+                    if ((!includeExperimental) && kvp.Value.IsExperimental)
                     {
                         continue;
                     }
@@ -647,6 +660,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 foreach (KeyValuePair<string, FhirOperation> kvp in _typeOperations)
                 {
+                    if ((!includeExperimental) && kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     complex.TypeOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
                 }
             }
@@ -668,6 +686,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
                 {
+                    if ((!includeExperimental) && kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     complex.InstanceOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
                 }
             }
@@ -676,6 +699,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 foreach (KeyValuePair<string, FhirOperation> kvp in _instanceOperations)
                 {
                     if (!supportedOperations.ContainsKey(kvp.Key))
+                    {
+                        continue;
+                    }
+
+                    if ((!includeExperimental) && kvp.Value.IsExperimental)
                     {
                         continue;
                     }

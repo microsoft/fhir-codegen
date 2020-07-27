@@ -819,6 +819,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="extensionUrls">        (Optional) The extension urls.</param>
         /// <param name="extensionElementPaths">(Optional) The extension paths.</param>
         /// <param name="serverInfo">           (Optional) Information describing the server.</param>
+        /// <param name="includeExperimental">  (Optional) True to include, false to exclude the
+        ///  experimental.</param>
         /// <returns>A FhirVersionInfo.</returns>
         internal FhirVersionInfo CopyForExport(
             Dictionary<string, string> primitiveTypeMap,
@@ -829,7 +831,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             bool copyExtensions = true,
             HashSet<string> extensionUrls = null,
             HashSet<string> extensionElementPaths = null,
-            FhirServerInfo serverInfo = null)
+            FhirServerInfo serverInfo = null,
+            bool includeExperimental = false)
         {
             // create our return object
             FhirVersionInfo info = new FhirVersionInfo(MajorVersion)
@@ -892,6 +895,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         continue;
                     }
 
+                    // check for experimental - unless this is specifically included
+                    if ((!restrictOutput) &&
+                        (!includeExperimental) &&
+                        kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     info._primitiveTypesByName.Add(kvp.Key, (FhirPrimitive)kvp.Value.Clone());
 
                     // update type to reflect language
@@ -913,13 +924,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         continue;
                     }
 
+                    // check for experimental - unless this is specifically included
+                    if ((!restrictOutput) &&
+                        (!includeExperimental) &&
+                        kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     info._complexTypesByName.Add(
                         kvp.Key,
                         kvp.Value.DeepCopy(
                             primitiveTypeMap,
                             true,
                             false,
-                            ref valueSetReferences));
+                            ref valueSetReferences,
+                            null,
+                            null,
+                            null,
+                            null,
+                            includeExperimental));
                 }
             }
 
@@ -939,6 +963,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         continue;
                     }
 
+                    // check for experimental - unless this is specifically included
+                    if (((!restrictOutput) || (!restrictResources)) &&
+                        (!includeExperimental) &&
+                        kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     if ((serverInfo == null) ||
                         (!serverInfo.ResourceInteractions.ContainsKey(kvp.Key)))
                     {
@@ -948,7 +980,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                                 primitiveTypeMap,
                                 true,
                                 false,
-                                ref valueSetReferences));
+                                ref valueSetReferences,
+                                null,
+                                null,
+                                null,
+                                null,
+                                includeExperimental));
                     }
                     else
                     {
@@ -962,7 +999,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                                 serverInfo.ResourceInteractions[kvp.Key].SearchParameters,
                                 serverInfo.ServerSearchParameters,
                                 serverInfo.ResourceInteractions[kvp.Key].Operations,
-                                serverInfo.ServerOperations));
+                                serverInfo.ServerOperations,
+                                includeExperimental));
                     }
                 }
             }
@@ -1048,7 +1086,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                             kvp.Value.Name,
                             kvp.Value.Documentation,
                             null,
-                            new List<FhirParameter>()));
+                            new List<FhirParameter>(),
+                            false));
                 }
             }
 
@@ -1056,6 +1095,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             {
                 foreach (KeyValuePair<string, FhirSearchParam> kvp in _globalSearchParameters)
                 {
+                    if ((!includeExperimental) && kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     info._globalSearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
                 }
             }
@@ -1072,11 +1116,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchResultParameters)
             {
+                if ((!includeExperimental) && kvp.Value.IsExperimental)
+                {
+                    continue;
+                }
+
                 info._searchResultParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
             }
 
             foreach (KeyValuePair<string, FhirSearchParam> kvp in _allInteractionParameters)
             {
+                if ((!includeExperimental) && kvp.Value.IsExperimental)
+                {
+                    continue;
+                }
+
                 info._allInteractionParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
             }
 

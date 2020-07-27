@@ -12,9 +12,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A fhir operation.</summary>
     public class FhirOperation : ICloneable
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FhirOperation"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="FhirOperation"/> class.</summary>
         /// <param name="id">               The identifier.</param>
         /// <param name="url">              The URL.</param>
         /// <param name="version">          The version.</param>
@@ -27,6 +25,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="comment">          The comment.</param>
         /// <param name="resourceTypes">    A list of types of the resources.</param>
         /// <param name="parameters">       The allowed parameters to this operation.</param>
+        /// <param name="isExperimental">   True if is experimental, false if not.</param>
         internal FhirOperation(
             string id,
             Uri url,
@@ -39,7 +38,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string code,
             string comment,
             IEnumerable<string> resourceTypes,
-            List<FhirParameter> parameters)
+            List<FhirParameter> parameters,
+            bool isExperimental)
         {
             Id = id;
             URL = url;
@@ -52,6 +52,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Code = code;
             Comment = comment;
             Parameters = parameters;
+            IsExperimental = isExperimental;
 
             if (resourceTypes != null)
             {
@@ -107,6 +108,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The allowed parameters to this operation.</value>
         public List<FhirParameter> Parameters { get; }
 
+        /// <summary>Gets a value indicating whether this object is experimental.</summary>
+        public bool IsExperimental { get; }
+
         /// <summary>Deep copy.</summary>
         /// <returns>A FhirOperation.</returns>
         public object Clone()
@@ -143,7 +147,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 Code,
                 Comment,
                 resourceTypes,
-                parameters);
+                parameters,
+                IsExperimental);
         }
     }
 }

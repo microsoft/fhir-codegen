@@ -531,7 +531,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 op.Code,
                 op.Requirements,
                 op.Type,
-                parameters);
+                parameters,
+                op.Experimental == true);
 
             // add our parameter
             fhirVersionInfo.AddOperation(operation);

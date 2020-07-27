@@ -47,6 +47,7 @@ namespace FhirCodegenCli
         ///  expansions (default: false).</param>
         /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
         ///  Conformance) from.  Requires application/fhir+json.</param>
+        /// <param name="includeExperimental">   If the output should include structures marked experimental (false|true).</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -60,7 +61,8 @@ namespace FhirCodegenCli
             string loadR5 = "",
             string languageOptions = "",
             bool officialExpansionsOnly = false,
-            string fhirServerUrl = "")
+            string fhirServerUrl = "",
+            bool includeExperimental = false)
         {
             bool isBatch = false;
             List<string> filesWritten = new List<string>();
@@ -238,7 +240,8 @@ namespace FhirCodegenCli
                         null,
                         languageOptsByLang[lang.LanguageName],
                         fhirServerUrl,
-                        serverInfo);
+                        serverInfo,
+                        includeExperimental);
 
                     if (r2 != null)
                     {

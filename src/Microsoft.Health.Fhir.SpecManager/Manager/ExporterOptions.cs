@@ -30,6 +30,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="fhirServerUrl">          FHIR Server URL to pull a CapabilityStatement (or
         ///  Conformance) from.  Requires application/fhir+json.</param>
         /// <param name="serverInfo">             Information describing the server (if specified).</param>
+        /// <param name="includeExperimental">    A value indicating whether structures marked experimental
+        ///  should be included.</param>
         public ExporterOptions(
             string languageName,
             IEnumerable<string> exportList,
@@ -39,7 +41,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             IEnumerable<string> extensionElementPaths,
             Dictionary<string, string> languageOptions,
             string fhirServerUrl,
-            FhirServerInfo serverInfo)
+            FhirServerInfo serverInfo,
+            bool includeExperimental)
         {
             LanguageName = languageName;
             ExportList = exportList;
@@ -74,6 +77,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _languageOptions = languageOptions;
             ServerUrl = fhirServerUrl;
             ServerInfo = serverInfo;
+            IncludeExperimental = includeExperimental;
         }
 
         /// <summary>Values that represent FHIR export class types.</summary>
@@ -165,5 +169,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets information about a FHIR server (if specified).</summary>
         public FhirServerInfo ServerInfo { get; }
+
+        /// <summary>Gets a value indicating whether structures marked experimental should be included.</summary>
+        public bool IncludeExperimental { get; }
     }
 }
