@@ -17,6 +17,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private HashSet<string> _codeSystems = new HashSet<string>();
         private List<string> _referencedPaths = new List<string>();
         private List<string> _referencedResources = new List<string>();
+        private FhirElement.ElementDefinitionBindingStrength? _strongestBinding;
 
         /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
         /// <param name="name">           The name.</param>
@@ -51,6 +52,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             ComposeIncludes = composeIncludes;
             ComposeExcludes = composeExcludes;
             Expansion = expansion;
+            _strongestBinding = null;
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirValueSet"/> class.</summary>
@@ -78,7 +80,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             List<FhirValueSetComposition> composeExcludes,
             FhirValueSetExpansion expansion,
             List<FhirConcept> concepts,
-            HashSet<string> referencedCodeSystems)
+            HashSet<string> referencedCodeSystems,
+            FhirElement.ElementDefinitionBindingStrength? strongestBinding)
             : this(
                 name,
                 id,
@@ -93,6 +96,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         {
             _valueList = concepts;
             _codeSystems = referencedCodeSystems;
+            _strongestBinding = strongestBinding;
         }
 
         /// <summary>Gets the name.</summary>
@@ -153,11 +157,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets the list of resources or complex types that reference this value set.</summary>
         public List<string> ReferencedByComplexes => _referencedResources;
 
+        /// <summary>Gets the strongest binding this value set is referenced as (null for unreferenced).</summary>
+        public FhirElement.ElementDefinitionBindingStrength? StrongestBinding => _strongestBinding;
+
         /// <summary>Sets the references.</summary>
-        /// <param name="referencedByPaths">The list of elements (by Path) that reference this value set.</param>
-        public void SetReferences(List<string> referencedByPaths)
+        /// <param name="referenceInfo">Reference information for this value set.</param>
+        public void SetReferences(ValueSetReferenceInfo referenceInfo)
         {
-            if (referencedByPaths == null)
+            if (referenceInfo == null)
             {
                 return;
             }
@@ -165,7 +172,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             HashSet<string> resources = new HashSet<string>();
             HashSet<string> paths = new HashSet<string>();
 
-            foreach (string path in referencedByPaths)
+            foreach (string path in referenceInfo.Paths)
             {
                 if (paths.Contains(path))
                 {
@@ -182,6 +189,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 _referencedPaths.Add((string)path.Clone());
                 paths.Add(path);
             }
+
+            _strongestBinding = referenceInfo.StrongestBinding;
         }
 
         /// <summary>Gets a list of FhirTriplets to cover all values in the value set.</summary>
@@ -802,7 +811,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 excludes,
                 expansion,
                 concepts,
-                codeSystems);
+                codeSystems,
+                _strongestBinding);
         }
     }
 }

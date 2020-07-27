@@ -20,6 +20,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="baseTypeName">    The base type name for this primitive type.</param>
         /// <param name="url">             URL of the resource.</param>
         /// <param name="standardStatus">  The standard status.</param>
+        /// <param name="isExperimental">  If this primitive type is marked experimental.</param>
         /// <param name="shortDescription">Information describing the short.</param>
         /// <param name="purpose">         The purpose of this definition.</param>
         /// <param name="comment">         The comment.</param>
@@ -30,6 +31,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string baseTypeName,
             Uri url,
             string standardStatus,
+            bool isExperimental,
             string shortDescription,
             string purpose,
             string comment,
@@ -39,6 +41,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 path,
                 url,
                 standardStatus,
+                isExperimental,
                 shortDescription,
                 purpose,
                 comment,
@@ -58,6 +61,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 BaseTypeName,
                 URL,
                 StandardStatus,
+                IsExperimental,
                 ShortDescription,
                 Purpose,
                 Comment,

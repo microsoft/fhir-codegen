@@ -22,10 +22,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         object ParseResource(string json);
 
         /// <summary>Attempts to process resource.</summary>
-        /// <param name="resourceToParse">[out] The resource object.</param>
+        /// <param name="resourceToParse">The resource object.</param>
         /// <param name="fhirVersionInfo">Primitive types.</param>
         void ProcessResource(
             object resourceToParse,
             FhirVersionInfo fhirVersionInfo);
+
+        /// <summary>Process a FHIR metadata resource into Server Information.</summary>
+        /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+        /// <param name="serverUrl"> URL of the server.</param>
+        /// <param name="serverInfo">[out] Information describing the server.</param>
+        void ProcessMetadata(
+            object metadata,
+            string serverUrl,
+            out FhirServerInfo serverInfo);
     }
 }
