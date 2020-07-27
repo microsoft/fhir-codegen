@@ -9,6 +9,7 @@ Primitive Types: 18
 - base64Binary: base64Binary::base64Binary
 - boolean: boolean::boolean
 - code: code::code
+  [[^\s]+([\s]?[^\s]+)*]
   Extensions: 2
   +http://hl7.org/fhir/StructureDefinition/rendered-value
   - id[0..1]: string
@@ -35,6 +36,7 @@ Primitive Types: 18
   - url[1..1]: uri
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/translation
 - date: date::date
+  [-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?]
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/rendered-value
   - id[0..1]: string
@@ -43,6 +45,7 @@ Primitive Types: 18
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/rendered-value
   - valueString[0..1]: string
 - dateTime: dateTime::dateTime
+  [-?([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?]
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/rendered-value
   - id[0..1]: string
@@ -51,6 +54,7 @@ Primitive Types: 18
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/rendered-value
   - valueString[0..1]: string
 - decimal: decimal::decimal
+  [-?([0]|([1-9][0-9]*))(\.[0-9]+)?]
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/rendered-value
   - id[0..1]: string
@@ -59,7 +63,9 @@ Primitive Types: 18
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/rendered-value
   - valueString[0..1]: string
 - id: id::id
+  [[A-Za-z0-9\-\.]{1,64}]
 - instant: instant::instant
+  [([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))]
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/rendered-value
   - id[0..1]: string
@@ -68,6 +74,7 @@ Primitive Types: 18
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/rendered-value
   - valueString[0..1]: string
 - integer: integer::integer
+  [-?([0]|([1-9][0-9]*))]
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/rendered-value
   - id[0..1]: string
@@ -96,7 +103,9 @@ Primitive Types: 18
   - url[1..1]: uri
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/translation
 - oid: oid::oid
+  [urn:oid:(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*]
 - positiveInt: positiveInt::positiveInt
+  [[1-9][0-9]*]
 - string: string::string
   Extensions: 5
   +http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding
@@ -161,6 +170,7 @@ Primitive Types: 18
   - url[1..1]: uri
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/translation
 - time: time::time
+  [([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?]
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/rendered-value
   - id[0..1]: string
@@ -169,8 +179,10 @@ Primitive Types: 18
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/rendered-value
   - valueString[0..1]: string
 - unsignedInt: unsignedInt::unsignedInt
+  [[0]|([1-9][0-9]*)]
 - uri: uri::uri
 - uuid: uuid::uuid
+  [urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}]
 - xhtml: xhtml::xhtml
 Complex Types: 36
 - Address: Element
@@ -3341,16 +3353,16 @@ Resources: 119
     - url[1..1]: uri
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/codesystem-subsumes
     - valueCode[0..1]: code
-  ?author=string (author)
+  ?author=string (author) (experimental)
   ?code=token (code)
   ?content-mode=token (content-mode)
   ?date=date (date)
   ?description=string (description)
-  ?effective=date (effective)
-  ?end=date (end)
+  ?effective=date (effective) (experimental)
+  ?end=date (end) (experimental)
   ?identifier=token (identifier)
   ?jurisdiction=token (jurisdiction)
-  ?keyword=string (keyword)
+  ?keyword=string (keyword) (experimental)
   ?language=token (language)
   ?name=string (name)
   ?publisher=string (publisher)
@@ -3359,7 +3371,7 @@ Resources: 119
   ?title=string (title)
   ?url=uri (url)
   ?version=token (version)
-  ?workflow=token (workflow)
+  ?workflow=token (workflow) (experimental)
   $compose
     in: system (0..1)
     in: version (0..1)
@@ -4009,13 +4021,13 @@ Resources: 119
   ?abatement-string=string (abatement-string)
   ?asserted-date=date (asserted-date)
   ?asserter=reference (asserter)
-  ?based-on=reference (based-on)
+  ?based-on=reference (based-on) (experimental)
   ?body-site=token (body-site)
   ?category=token (category)
   ?clinical-status=token (clinical-status)
   ?code=token (code)
   ?context=reference (context)
-  ?definition=reference (definition)
+  ?definition=reference (definition) (experimental)
   ?encounter=reference (encounter)
   ?evidence=token (evidence)
   ?evidence-detail=reference (evidence-detail)
@@ -4023,7 +4035,7 @@ Resources: 119
   ?onset-age=quantity (onset-age)
   ?onset-date=date (onset-date)
   ?onset-info=string (onset-info)
-  ?part-of=reference (part-of)
+  ?part-of=reference (part-of) (experimental)
   ?patient=reference (patient)
   ?severity=token (severity)
   ?stage=token (stage)
@@ -4480,8 +4492,8 @@ Resources: 119
   ?identifier=token (identifier)
   ?jurisdiction=token (jurisdiction)
   ?name=string (name)
-  ?objectClass=token (objectClass)
-  ?objectClassProperty=token (objectClassProperty)
+  ?objectClass=token (objectClass) (experimental)
+  ?objectClassProperty=token (objectClassProperty) (experimental)
   ?publisher=string (publisher)
   ?status=token (status)
   ?stringency=token (stringency)
@@ -4574,7 +4586,7 @@ Resources: 119
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/device-implant-status
   - valueCode[0..1]: code
   ?device-name=string (device-name)
-  ?din=token (din)
+  ?din=token (din) (experimental)
   ?identifier=token (identifier)
   ?location=reference (location)
   ?manufacturer=string (manufacturer)
@@ -5198,7 +5210,7 @@ Resources: 119
         - valueCode[0..1]: code
   - url[1..1]: uri
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/procedurerequest-geneticsItem
-  ?assessed-condition=reference (assessed-condition)
+  ?assessed-condition=reference (assessed-condition) (experimental)
   ?based-on=reference (based-on)
   ?category=token (category)
   ?code=token (code)
@@ -6950,7 +6962,7 @@ Resources: 119
   ?address-postalcode=string (address-postalcode)
   ?address-state=string (address-state)
   ?address-use=token (address-use)
-  ?alias=string (alias)
+  ?alias=string (alias) (experimental)
   ?endpoint=reference (endpoint)
   ?identifier=token (identifier)
   ?name=string (name)
@@ -9826,7 +9838,7 @@ Resources: 119
     - url[1..1]: uri
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-time-offset
     - valueInteger[0..1]: integer
-  ?amino-acid-change=string (amino-acid-change)
+  ?amino-acid-change=string (amino-acid-change) (experimental)
   ?based-on=reference (based-on)
   ?category=token (category)
   ?code=token (code)
@@ -9850,11 +9862,11 @@ Resources: 119
   ?data-absent-reason=token (data-absent-reason)
   ?date=date (date)
   ?device=reference (device)
-  ?dna-variant=string (dna-variant)
+  ?dna-variant=string (dna-variant) (experimental)
   ?encounter=reference (encounter)
-  ?gene-amino-acid-change=string (gene-amino-acid-change)
-  ?gene-dnavariant=string (gene-dnavariant)
-  ?gene-identifier=token (gene-identifier)
+  ?gene-amino-acid-change=string (gene-amino-acid-change) (experimental)
+  ?gene-dnavariant=string (gene-dnavariant) (experimental)
+  ?gene-identifier=token (gene-identifier) (experimental)
   ?identifier=token (identifier)
   ?method=token (method)
   ?patient=reference (patient)
@@ -10085,7 +10097,7 @@ Resources: 119
   ?address-postalcode=string (address-postalcode)
   ?address-state=string (address-state)
   ?address-use=token (address-use)
-  ?alias=string (alias)
+  ?alias=string (alias) (experimental)
   ?endpoint=reference (endpoint)
   ?identifier=token (identifier)
   ?name=string (name)
@@ -10289,11 +10301,11 @@ Resources: 119
   ?address-postalcode=string (address-postalcode)
   ?address-state=string (address-state)
   ?address-use=token (address-use)
-  ?age=number (age)
+  ?age=number (age) (experimental)
   ?animal-breed=token (animal-breed)
   ?animal-species=token (animal-species)
   ?birthdate=date (birthdate)
-  ?birthOrderBoolean=token (birthOrderBoolean)
+  ?birthOrderBoolean=token (birthOrderBoolean) (experimental)
   ?death-date=date (death-date)
   ?deceased=token (deceased)
   ?email=token (email)
@@ -10304,10 +10316,10 @@ Resources: 119
   ?identifier=token (identifier)
   ?language=token (language)
   ?link=reference (link)
-  ?mothersMaidenName=string (mothersMaidenName)
+  ?mothersMaidenName=string (mothersMaidenName) (experimental)
   ?name=string (name)
   ?organization=reference (organization)
-  ?part-agree=reference (Example Search Parameter on an extension)
+  ?part-agree=reference (Example Search Parameter on an extension) (experimental)
   ?phone=token (phone)
   ?phonetic=string (phonetic)
   ?telecom=token (telecom)
@@ -13998,15 +14010,15 @@ Resources: 119
   - url[1..1]: uri
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-workflowStatus
   - valueString[0..1]: string
-  ?author=string (author)
+  ?author=string (author) (experimental)
   ?date=date (date)
   ?description=string (description)
-  ?effective=date (effective)
-  ?end=date (end)
+  ?effective=date (effective) (experimental)
+  ?end=date (end) (experimental)
   ?expansion=uri (expansion)
   ?identifier=token (identifier)
   ?jurisdiction=token (jurisdiction)
-  ?keyword=string (keyword)
+  ?keyword=string (keyword) (experimental)
   ?name=string (name)
   ?publisher=string (publisher)
   ?reference=uri (reference)
@@ -14014,7 +14026,7 @@ Resources: 119
   ?title=string (title)
   ?url=uri (url)
   ?version=token (version)
-  ?workflow=token (workflow)
+  ?workflow=token (workflow) (experimental)
   $expand
     in: url (0..1)
     in: valueSet (0..1)
@@ -14145,7 +14157,7 @@ System Operations: 4
 All Resource Parameters: 11
   ?_content=string (_content)
   ?_has=string (_has)
-  ?_id=token (ID-SEARCH-PARAMETER)
+  ?_id=token (ID-SEARCH-PARAMETER) (experimental)
   ?_lastUpdated=date (_lastUpdated)
   ?_list=string (_list)
   ?_profile=uri (_profile)

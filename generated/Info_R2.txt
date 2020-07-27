@@ -9,15 +9,23 @@ Primitive Types: 18
 - base64Binary: base64Binary::base64Binary
 - boolean: boolean::boolean
 - code: code::code
+  [[^\s]+([\s][^\s]+)*]
 - date: date::date
+  [-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?]
 - dateTime: dateTime::dateTime
+  [-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?]
 - decimal: decimal::decimal
+  [-?([0]|([1-9][0-9]*))(\.[0-9]+)?]
 - id: id::id
+  [[A-Za-z0-9\-\.]{1,64}]
 - instant: instant::instant
 - integer: integer::integer
+  [-?([0]|([1-9][0-9]*))]
 - markdown: markdown::markdown
 - oid: oid::oid
+  [urn:oid:(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*]
 - positiveInt: positiveInt::positiveInt
+  [[1-9][0-9]*]
 - string: string::string
   Extensions: 4
   +http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding
@@ -41,9 +49,12 @@ Primitive Types: 18
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/markup
   - valueString[1..1]: string
 - time: time::time
+  [([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?]
 - unsignedInt: unsignedInt::unsignedInt
+  [[0]|([1-9][0-9]*)]
 - uri: uri::uri
 - uuid: uuid::uuid
+  [urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}]
 - xhtml: xhtml::xhtml
 Complex Types: 28
 - Address: Element
@@ -9501,7 +9512,7 @@ Resources: 96
     - name[1..1]: string
     - value[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
     - resource[0..1]: Resource
-    - part[0..*]: OperationDefinition.parameter
+    - part[0..*]: Parameters.parameter
 - Patient: DomainResource
   - id[0..1]: id
   - meta[0..1]: Meta
