@@ -103,6 +103,9 @@
       <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirTypeBase.html#Microsoft_Health_Fhir_SpecManager_Models_FhirTypeBase_StandardStatus">FhirTypeBase.StandardStatus</a>
     </div>
     <div>
+      <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirTypeBase.html#Microsoft_Health_Fhir_SpecManager_Models_FhirTypeBase_IsExperimental">FhirTypeBase.IsExperimental</a>
+    </div>
+    <div>
       <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirTypeBase.html#Microsoft_Health_Fhir_SpecManager_Models_FhirTypeBase_BaseTypeName">FhirTypeBase.BaseTypeName</a>
     </div>
     <div>
@@ -155,19 +158,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.Uri%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_Boolean_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.Uri%2CSystem.String%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L36">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L37">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.#ctor*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_String_System_String_System_String_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.#ctor(System.String,System.String,System.String,System.Uri,System.String,System.String,System.String,System.String,System.String)">FhirComplex(String, String, String, Uri, String, String, String, String, String)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_Boolean_System_String_System_String_System_String_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.#ctor(System.String,System.String,System.String,System.Uri,System.String,System.Boolean,System.String,System.String,System.String,System.String)">FhirComplex(String, String, String, Uri, String, Boolean, String, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.html">FhirComplex</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FhirComplex(string id, string path, string explicitName, Uri url, string standardStatus, string shortDescription, string purpose, string comment, string validationRegEx)</code></pre>
+    <pre><code class="lang-csharp hljs">public FhirComplex(string id, string path, string explicitName, Uri url, string standardStatus, bool isExperimental, string shortDescription, string purpose, string comment, string validationRegEx)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -210,6 +213,12 @@
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isExperimental</span></td>
+        <td><p>If this complex resource is flagged as experimental.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">shortDescription</span></td>
         <td><p>Information describing the short.</p>
@@ -237,19 +246,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_List_System_String__System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.Uri%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Collections.Generic.List%7BSystem.String%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_Boolean_System_String_System_String_System_String_System_String_System_Collections_Generic_List_System_String__System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.Uri%2CSystem.String%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Collections.Generic.List%7BSystem.String%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L79">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L83">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.#ctor*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_List_System_String__System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.#ctor(System.String,System.String,System.String,System.Uri,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.List{System.String},System.Boolean)">FhirComplex(String, String, String, Uri, String, String, String, String, String, List&lt;String&gt;, Boolean)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_Boolean_System_String_System_String_System_String_System_String_System_Collections_Generic_List_System_String__System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.#ctor(System.String,System.String,System.String,System.Uri,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Collections.Generic.List{System.String},System.Boolean)">FhirComplex(String, String, String, Uri, String, Boolean, String, String, String, String, List&lt;String&gt;, Boolean)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.html">FhirComplex</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FhirComplex(string id, string path, string explicitName, Uri url, string standardStatus, string shortDescription, string purpose, string comment, string validationRegEx, List&lt;string&gt; contextElements, bool isAbstract)</code></pre>
+    <pre><code class="lang-csharp hljs">public FhirComplex(string id, string path, string explicitName, Uri url, string standardStatus, bool isExperimental, string shortDescription, string purpose, string comment, string validationRegEx, List&lt;string&gt; contextElements, bool isAbstract)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -292,6 +301,12 @@
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isExperimental</span></td>
+        <td><p>If this complex type is marked experimental.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">shortDescription</span></td>
         <td><p>Information describing the short.</p>
@@ -331,19 +346,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.Uri%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_Boolean_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.Uri%2CSystem.String%2CSystem.Boolean%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L117">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L123">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.#ctor*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_String_System_String_System_String_System_String_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.#ctor(System.String,System.String,System.String,System.Uri,System.String,System.String,System.String,System.String,System.String,System.String)">FhirComplex(String, String, String, Uri, String, String, String, String, String, String)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__ctor_System_String_System_String_System_String_System_Uri_System_String_System_Boolean_System_String_System_String_System_String_System_String_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.#ctor(System.String,System.String,System.String,System.Uri,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.String)">FhirComplex(String, String, String, Uri, String, Boolean, String, String, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.html">FhirComplex</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FhirComplex(string id, string path, string explicitName, Uri url, string standardStatus, string shortDescription, string purpose, string comment, string validationRegEx, string baseTypeName)</code></pre>
+    <pre><code class="lang-csharp hljs">public FhirComplex(string id, string path, string explicitName, Uri url, string standardStatus, bool isExperimental, string shortDescription, string purpose, string comment, string validationRegEx, string baseTypeName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -386,6 +401,11 @@
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isExperimental</span></td>
+        <td></td>
+      </tr>
+      <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">shortDescription</span></td>
         <td><p>Information describing the short.</p>
@@ -424,7 +444,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_Components.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.Components%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L178">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L186">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_Components_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.Components*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_Components" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.Components">Components</h4>
@@ -456,7 +476,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_Constraints.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.Constraints%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L197">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L205">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_Constraints_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.Constraints*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_Constraints" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.Constraints">Constraints</h4>
@@ -487,7 +507,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_ContextElements.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.ContextElements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L194">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L202">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_ContextElements_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.ContextElements*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_ContextElements" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.ContextElements">ContextElements</h4>
@@ -519,7 +539,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_Elements.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.Elements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L174">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L182">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_Elements_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.Elements*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_Elements" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.Elements">Elements</h4>
@@ -551,7 +571,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_ExplicitName.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.ExplicitName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L159">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L167">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_ExplicitName_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.ExplicitName*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_ExplicitName" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.ExplicitName">ExplicitName</h4>
@@ -582,7 +602,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_InstanceOperations.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.InstanceOperations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L190">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L198">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_InstanceOperations_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.InstanceOperations*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_InstanceOperations" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.InstanceOperations">InstanceOperations</h4>
@@ -614,7 +634,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_IsAbstract.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.IsAbstract%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L162">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L170">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_IsAbstract_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.IsAbstract*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_IsAbstract" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.IsAbstract">IsAbstract</h4>
@@ -645,7 +665,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_IsPlaceholder.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.IsPlaceholder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L166">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L174">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_IsPlaceholder_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.IsPlaceholder*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_IsPlaceholder" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.IsPlaceholder">IsPlaceholder</h4>
@@ -677,7 +697,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_SearchParameters.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.SearchParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L182">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L190">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_SearchParameters_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.SearchParameters*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_SearchParameters" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.SearchParameters">SearchParameters</h4>
@@ -709,7 +729,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_SliceName.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.SliceName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L170">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L178">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_SliceName_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.SliceName*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_SliceName" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.SliceName">SliceName</h4>
@@ -741,7 +761,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_TypeOperations.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.TypeOperations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L186">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L194">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_TypeOperations_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.TypeOperations*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_TypeOperations" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.TypeOperations">TypeOperations</h4>
@@ -775,7 +795,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_AddComponentFromElement_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.AddComponentFromElement(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L255">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L263">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_AddComponentFromElement_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.AddComponentFromElement*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_AddComponentFromElement_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.AddComponentFromElement(System.String)">AddComponentFromElement(String)</h4>
@@ -822,19 +842,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_DeepCopy_System_Collections_Generic_Dictionary_System_String_System_String__System_Boolean_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String____.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.DeepCopy(System.Collections.Generic.Dictionary%7BSystem.String%2CSystem.String%7D%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CSystem.Collections.Generic.List%7BSystem.String%7D%7D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_DeepCopy_System_Collections_Generic_Dictionary_System_String_System_String__System_Boolean_System_Boolean_System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_ValueSetReferenceInfo___System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerSearchParam__System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerSearchParam__System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerOperation__System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerOperation__System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.DeepCopy(System.Collections.Generic.Dictionary%7BSystem.String%2CSystem.String%7D%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Models.ValueSetReferenceInfo%7D%40%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Models.FhirServerSearchParam%7D%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Models.FhirServerSearchParam%7D%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Models.FhirServerOperation%7D%2CSystem.Collections.Generic.Dictionary%7BSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Models.FhirServerOperation%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L514">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L530">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_DeepCopy_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.DeepCopy*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_DeepCopy_System_Collections_Generic_Dictionary_System_String_System_String__System_Boolean_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String____" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.DeepCopy(System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}}@)">DeepCopy(Dictionary&lt;String, String&gt;, Boolean, Boolean, ref Dictionary&lt;String, List&lt;String&gt;&gt;)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_DeepCopy_System_Collections_Generic_Dictionary_System_String_System_String__System_Boolean_System_Boolean_System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_ValueSetReferenceInfo___System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerSearchParam__System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerSearchParam__System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerOperation__System_Collections_Generic_Dictionary_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerOperation__System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.DeepCopy(System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean,System.Boolean,System.Collections.Generic.Dictionary{System.String,Microsoft.Health.Fhir.SpecManager.Models.ValueSetReferenceInfo}@,System.Collections.Generic.Dictionary{System.String,Microsoft.Health.Fhir.SpecManager.Models.FhirServerSearchParam},System.Collections.Generic.Dictionary{System.String,Microsoft.Health.Fhir.SpecManager.Models.FhirServerSearchParam},System.Collections.Generic.Dictionary{System.String,Microsoft.Health.Fhir.SpecManager.Models.FhirServerOperation},System.Collections.Generic.Dictionary{System.String,Microsoft.Health.Fhir.SpecManager.Models.FhirServerOperation},System.Boolean)">DeepCopy(Dictionary&lt;String, String&gt;, Boolean, Boolean, ref Dictionary&lt;String, ValueSetReferenceInfo&gt;, Dictionary&lt;String, FhirServerSearchParam&gt;, Dictionary&lt;String, FhirServerSearchParam&gt;, Dictionary&lt;String, FhirServerOperation&gt;, Dictionary&lt;String, FhirServerOperation&gt;, Boolean)</h4>
   <div class="markdown level1 summary"><p>Deep copy - cannot use Clone because of needed parameters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FhirComplex DeepCopy(Dictionary&lt;string, string&gt; primitiveTypeMap, bool copySlicing, bool canHideParentFields, ref Dictionary&lt;string, List&lt;string&gt;&gt; valueSetReferences)</code></pre>
+    <pre><code class="lang-csharp hljs">public FhirComplex DeepCopy(Dictionary&lt;string, string&gt; primitiveTypeMap, bool copySlicing, bool canHideParentFields, ref Dictionary&lt;string, ValueSetReferenceInfo&gt; valueSetReferences, Dictionary&lt;string, FhirServerSearchParam&gt; supportedSearchParams = null, Dictionary&lt;string, FhirServerSearchParam&gt; serverSearchParams = null, Dictionary&lt;string, FhirServerOperation&gt; supportedOperations = null, Dictionary&lt;string, FhirServerOperation&gt; serverOperations = null, bool includeExperimental = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -865,9 +885,41 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.ValueSetReferenceInfo.html">ValueSetReferenceInfo</a>&gt;</td>
         <td><span class="parametername">valueSetReferences</span></td>
-        <td><p>[in,out] Value Set URLs and lists of FHIR paths that reference them.</p>
+        <td><p>[in,out] Value Set URLs and lists of FHIR paths that
+reference them.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerSearchParam.html">FhirServerSearchParam</a>&gt;</td>
+        <td><span class="parametername">supportedSearchParams</span></td>
+        <td><p>(Optional) Options for controlling the supported search.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerSearchParam.html">FhirServerSearchParam</a>&gt;</td>
+        <td><span class="parametername">serverSearchParams</span></td>
+        <td><p>(Optional) Options for controlling the server search.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerOperation.html">FhirServerOperation</a>&gt;</td>
+        <td><span class="parametername">supportedOperations</span></td>
+        <td><p>(Optional) The supported operations.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerOperation.html">FhirServerOperation</a>&gt;</td>
+        <td><span class="parametername">serverOperations</span></td>
+        <td><p>(Optional) The server operations.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeExperimental</span></td>
+        <td><p>(Optional) True to include, false to exclude the
+experimental.</p>
 </td>
       </tr>
     </tbody>
@@ -893,7 +945,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_GetParentAndFieldName_System_String_System_String___System_String___Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__System_String__System_String__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.GetParentAndFieldName(System.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CMicrosoft.Health.Fhir.SpecManager.Models.FhirComplex%40%2CSystem.String%40%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L365">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L374">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_GetParentAndFieldName_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.GetParentAndFieldName*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_GetParentAndFieldName_System_String_System_String___System_String___Microsoft_Health_Fhir_SpecManager_Models_FhirComplex__System_String__System_String__" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.GetParentAndFieldName(System.String,System.String[],System.String[],Microsoft.Health.Fhir.SpecManager.Models.FhirComplex@,System.String@,System.String@)">GetParentAndFieldName(String, String[], String[], out FhirComplex, out String, out String)</h4>
@@ -973,7 +1025,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_TryGetExplicitName_System_String_System_String__System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.TryGetExplicitName(System.String%2CSystem.String%40%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L298">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Models/FhirComplex.cs/#L307">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_TryGetExplicitName_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.TryGetExplicitName*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Models_FhirComplex_TryGetExplicitName_System_String_System_String__System_Int32_" data-uid="Microsoft.Health.Fhir.SpecManager.Models.FhirComplex.TryGetExplicitName(System.String,System.String@,System.Int32)">TryGetExplicitName(String, out String, Int32)</h4>

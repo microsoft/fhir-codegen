@@ -74,30 +74,39 @@
 
 Options:
   --fhir-spec-directory &lt;fhir-spec-directory&gt;    The full path to the directory where FHIR 
-                                                   specifications are downloaded and cached.
+                                                    specifications are downloaded and cached.
   --output-path &lt;output-path&gt;                    File or directory to write output.
   --verbose                                      Show verbose output.
-  --offline-mode                                 Offline mode.
-                                                   (will not download missing specs).
+  --offline-mode                                 Offline mode .
+                                                    (will not download missing specs)
   --language &lt;language&gt;                          Name of the language to export.
-                                                   (default: Info|TypeScript|CSharpBasic).
+                                                    (default: Info|TypeScript|CSharpBasic)
   --export-keys &lt;export-keys&gt;                    '|' separated list of items to export.
-                                                   (not present to export everything)
+                                                    (not present to export everything)
   --load-r2 &lt;load-r2&gt;                            If FHIR R2 should be loaded, which version.
-                                                   (e.g., 1.0.2 or latest)
+                                                    (e.g., 1.0.2 or latest)
   --load-r3 &lt;load-r3&gt;                            If FHIR R3 should be loaded, which version.
-                                                   (e.g., 3.0.2 or latest)
+                                                    (e.g., 3.0.2 or latest)
   --load-r4 &lt;load-r4&gt;                            If FHIR R4 should be loaded, which version.
-                                                   (e.g., 4.0.1 or latest)
+                                                    (e.g., 4.0.1 or latest).
   --load-r5 &lt;load-r5&gt;                            If FHIR R5 should be loaded, which version.
-                                                   (e.g., 4.4.0 or latest)
+                                                    (e.g., 4.4.0 or latest)
   --language-options &lt;language-options&gt;          Language specific options, see documentation
                                                    for more details.
                                                    (e.g., CSharpBasic|namespace=myorg.fhir)
-  --version                                      Show version information.
-  -?, -h, --help                                 Show help and usage information.
+  --official-expansions-only                     True to restrict value-sets exported to only
+                                                    official expansions.
+                                                    (default: false)
+  --fhir-server-url &lt;fhir-server-url&gt;            FHIR Server URL to pull a CapabilityStatement
+                                                    (or Conformance) from. Only supports
+                                                    application/fhir+json.
+  --include-experimental                         If the output should include structures
+                                                    marked experimental.
+                                                    (default: false)
+  --version                                      Show version information
+  -?, -h, --help                                 Show help and usage information
 </code></pre>
-<h2 id="langauge-information">Langauge Information</h2>
+<h2 id="language-information">Language Information</h2>
 <ul>
 <li><p>Info</p>
 <p>Basic text output of a version of FHIR for information and testing.</p>
@@ -108,8 +117,11 @@ Options:
 <li><p>TypeScript</p>
 <p>Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.</p>
 </li>
-<li><p>CSharpFirely <strong>EXPERIMENTAL</strong></p>
+<li><p>CSharpFirely</p>
 <p>Export base C# classes needed for the Firely-maintained C# API (<a href="https://github.com/FirelyTeam/fhir-net-api/">FHIR-Net-API</a>).</p>
+</li>
+<li><p>OpenAPI <strong>EXPERIMENTAL</strong></p>
+<p>Export an OpenAPI 2 or 3 JSON version of the standard.</p>
 </li>
 </ul>
 <h2 id="cli-examples">CLI Examples</h2>

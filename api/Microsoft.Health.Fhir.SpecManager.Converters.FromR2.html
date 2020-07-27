@@ -140,7 +140,7 @@
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromR2_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_ParseResource_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromR2.Microsoft%23Health%23Fhir%23SpecManager%23Converters%23IFhirConverter%23ParseResource(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromR2.cs/#L1405">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromR2.cs/#L1408">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Converters_FromR2_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_ParseResource_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromR2.Microsoft#Health#Fhir#SpecManager#Converters#IFhirConverter#ParseResource*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromR2_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_ParseResource_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromR2.Microsoft#Health#Fhir#SpecManager#Converters#IFhirConverter#ParseResource(System.String)">IFhirConverter.ParseResource(String)</h4>
@@ -203,10 +203,56 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromR2_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_ProcessMetadata_System_Object_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerInfo__.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromR2.Microsoft%23Health%23Fhir%23SpecManager%23Converters%23IFhirConverter%23ProcessMetadata(System.Object%2CSystem.String%2CMicrosoft.Health.Fhir.SpecManager.Models.FhirServerInfo%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromR2.cs/#L1462">View Source</a>
+  </span>
+  <a id="Microsoft_Health_Fhir_SpecManager_Converters_FromR2_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_ProcessMetadata_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromR2.Microsoft#Health#Fhir#SpecManager#Converters#IFhirConverter#ProcessMetadata*"></a>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromR2_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_ProcessMetadata_System_Object_System_String_Microsoft_Health_Fhir_SpecManager_Models_FhirServerInfo__" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromR2.Microsoft#Health#Fhir#SpecManager#Converters#IFhirConverter#ProcessMetadata(System.Object,System.String,Microsoft.Health.Fhir.SpecManager.Models.FhirServerInfo@)">IFhirConverter.ProcessMetadata(Object, String, out FhirServerInfo)</h4>
+  <div class="markdown level1 summary"><p>Process a FHIR metadata resource into Server Information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void IFhirConverter.ProcessMetadata(object metadata, string serverUrl, out FhirServerInfo serverInfo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">metadata</span></td>
+        <td><p>The metadata resource object (e.g., r4.CapabilitiesStatement).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">serverUrl</span></td>
+        <td><p>URL of the server.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerInfo.html">FhirServerInfo</a></td>
+        <td><span class="parametername">serverInfo</span></td>
+        <td><p>[out] Information describing the server.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Converters_FromR2_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_ProcessResource_System_Object_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Converters.FromR2.Microsoft%23Health%23Fhir%23SpecManager%23Converters%23IFhirConverter%23ProcessResource(System.Object%2CMicrosoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromR2.cs/#L1422">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Converters/FromR2.cs/#L1425">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Converters_FromR2_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_ProcessResource_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromR2.Microsoft#Health#Fhir#SpecManager#Converters#IFhirConverter#ProcessResource*"></a>
   <h4 id="Microsoft_Health_Fhir_SpecManager_Converters_FromR2_Microsoft_Health_Fhir_SpecManager_Converters_IFhirConverter_ProcessResource_System_Object_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_" data-uid="Microsoft.Health.Fhir.SpecManager.Converters.FromR2.Microsoft#Health#Fhir#SpecManager#Converters#IFhirConverter#ProcessResource(System.Object,Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo)">IFhirConverter.ProcessResource(Object, FhirVersionInfo)</h4>
