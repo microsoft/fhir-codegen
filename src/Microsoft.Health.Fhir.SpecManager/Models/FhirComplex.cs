@@ -531,7 +531,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
             bool canHideParentFields,
-            ref Dictionary<string, List<string>> valueSetReferences,
+            ref Dictionary<string, ValueSetReferenceInfo> valueSetReferences,
             Dictionary<string, FhirServerSearchParam> supportedSearchParams = null,
             Dictionary<string, FhirServerSearchParam> serverSearchParams = null,
             Dictionary<string, FhirServerOperation> supportedOperations = null,

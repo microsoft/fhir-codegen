@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 using Microsoft.Health.Fhir.SpecManager.Language;
@@ -882,7 +883,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
-            Dictionary<string, List<string>> valueSetReferences = new Dictionary<string, List<string>>();
+            Dictionary<string, ValueSetReferenceInfo> valueSetReferences = new Dictionary<string, ValueSetReferenceInfo>();
 
             // check if we are exporting primitives
             if (copyPrimitives)

@@ -160,6 +160,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     _writer.IncreaseIndent();
 
+                    _writer.WriteLineIndented(
+                        $"  references: {vs.ReferencedByPaths.Count}," +
+                        $" strongest binding: {vs.StrongestBinding}");
+
                     foreach (FhirConcept value in vs.Concepts.OrderBy(c => c.Code))
                     {
                         _writer.WriteLineIndented($"- #{value.Code}: {value.Display}");
@@ -175,7 +179,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteValueSet(
             FhirValueSet valueSet)
         {
-            _writer.WriteLineIndented($"- {valueSet.URL}|{valueSet.Version} ({valueSet.Name})");
+            _writer.WriteLineIndented(
+                $"- {valueSet.URL}|{valueSet.Version}" +
+                $" ({valueSet.Name})" +
+                $" {valueSet.ReferencedByPaths.Count} references," +
+                $" strongest: {valueSet.StrongestBinding}");
 
             _writer.IncreaseIndent();
 
