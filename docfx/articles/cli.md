@@ -30,7 +30,7 @@ Options:
   -?, -h, --help                                 Show help and usage information.
 ```
 
-## Langauge Information
+## Language Information
 
   * Info
     
