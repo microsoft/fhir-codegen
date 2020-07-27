@@ -746,6 +746,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         }
                     }
                 }
+
+                if ((_complexTypesByName[name].Components != null) &&
+                    _complexTypesByName.ContainsKey("BackboneElement") &&
+                    (!set.Contains("BackboneElement")))
+                {
+                    set.Add("BackboneElement")
+                }
             }
 
             // check for this being a resource
@@ -791,6 +798,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                             }
                         }
                     }
+                }
+
+                if ((_resourcesByName[name].Components != null) &&
+                    _complexTypesByName.ContainsKey("BackboneElement") &&
+                    (!set.Contains("BackboneElement")))
+                {
+                    set.Add("BackboneElement")
                 }
             }
         }
