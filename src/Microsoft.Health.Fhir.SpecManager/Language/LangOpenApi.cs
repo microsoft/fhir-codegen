@@ -548,6 +548,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             OpenApiPaths paths = new OpenApiPaths();
 
+            if (_info.Resources.ContainsKey("CapabilityStatement"))
+            {
+                OpenApiPathItem metadataPath = new OpenApiPathItem()
+                {
+                    Operations = new Dictionary<OperationType, OpenApiOperation>(),
+                };
+
+                metadataPath.Operations.Add(
+                    OperationType.Get,
+                    BuildMetadataPathOperation("CapabilityStatement"));
+
+                paths.Add($"/metadata", metadataPath);
+            }
+            else if (_info.Resources.ContainsKey("Conformance"))
+            {
+                OpenApiPathItem metadataPath = new OpenApiPathItem()
+                {
+                    Operations = new Dictionary<OperationType, OpenApiOperation>(),
+                };
+
+                metadataPath.Operations.Add(
+                    OperationType.Get,
+                    BuildMetadataPathOperation("Conformance"));
+
+                paths.Add($"/metadata", metadataPath);
+            }
+
             foreach (FhirServerResourceInfo resource in _options.ServerInfo.ResourceInteractions.Values)
             {
                 OpenApiPathItem typePath = new OpenApiPathItem()
@@ -1012,6 +1039,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 return null;
             }
+
+            return operation;
+        }
+
+        /// <summary>Builds metadata path operation.</summary>
+        /// <param name="resourceName">Name of the resource.</param>
+        /// <returns>An OpenApiOperation.</returns>
+        private OpenApiOperation BuildMetadataPathOperation(
+            string resourceName)
+        {
+            OpenApiOperation operation = new OpenApiOperation();
+
+            operation.OperationId = $"getMetadata";
+
+            if (_includeSummaries)
+            {
+                operation.Summary = $"Gets metadata information about this server.";
+            }
+
+            operation.OperationId = $"getMetadata";
+
+            operation.Responses = new OpenApiResponses()
+            {
+                ["200"] = new OpenApiResponse()
+                {
+                    Description = "OK",
+                    Content = BuildContentMap(resourceName),
+                },
+            };
 
             return operation;
         }
