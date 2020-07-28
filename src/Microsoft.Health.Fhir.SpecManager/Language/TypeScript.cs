@@ -159,10 +159,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="info">           The information.</param>
         /// <param name="options">        Options for controlling the operation.</param>
         /// <param name="exportDirectory">Directory to write files.</param>
+        /// <param name="serverInfo">     Information describing the server.</param>
         void ILanguage.Export(
             FhirVersionInfo info,
             ExporterOptions options,
-            string exportDirectory)
+            string exportDirectory,
+            FhirServerInfo serverInfo)
         {
             // set internal vars so we don't pass them to every function
             // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info

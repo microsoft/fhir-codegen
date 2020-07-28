@@ -240,27 +240,26 @@ namespace FhirCodegenCli
                         null,
                         languageOptsByLang[lang.LanguageName],
                         fhirServerUrl,
-                        serverInfo,
                         includeExperimental);
 
                     if (r2 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r2, lang, options, outputPath, isBatch));
+                        filesWritten.AddRange(Exporter.Export(r2, serverInfo, lang, options, outputPath, isBatch));
                     }
 
                     if (r3 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r3, lang, options, outputPath, isBatch));
+                        filesWritten.AddRange(Exporter.Export(r3, serverInfo, lang, options, outputPath, isBatch));
                     }
 
                     if (r4 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r4, lang, options, outputPath, isBatch));
+                        filesWritten.AddRange(Exporter.Export(r4, serverInfo, lang, options, outputPath, isBatch));
                     }
 
                     if (r5 != null)
                     {
-                        filesWritten.AddRange(Exporter.Export(r5, lang, options, outputPath, isBatch));
+                        filesWritten.AddRange(Exporter.Export(r5, serverInfo, lang, options, outputPath, isBatch));
                     }
                 }
             }

@@ -7,16 +7,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Health.Fhir.SpecManager.fhir.r5;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
+using Newtonsoft.Json;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -25,6 +23,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
     {
         /// <summary>FHIR information we are exporting.</summary>
         private FhirVersionInfo _info;
+
+        /// <summary>Information describing the server.</summary>
+        private FhirServerInfo _serverInfo;
 
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
@@ -67,6 +68,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>True to generate read only.</summary>
         private bool _generateReadOnly = false;
+
+        /// <summary>True to include, false to exclude the metadata.</summary>
+        private bool _includeMetadata = false;
 
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
@@ -148,21 +152,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "SchemaDescriptions", "If schemas should include descriptions (true|false)" },
             { "ExpandProfiles", "If types should expand based on allowed profiles (true|false)" },
             { "ReadOnly", "If the output should only contain GET operations (false|true)" },
+            { "Minify", "If the output JSON should be minified (false|true)" },
+            { "Metadata", "If the JSON should include a link to /metadata (false|true)" },
         };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
         /// <param name="options">        Options for controlling the operation.</param>
         /// <param name="exportDirectory">Directory to write files.</param>
+        /// <param name="serverInfo">     Information describing the server.</param>
         void ILanguage.Export(
             FhirVersionInfo info,
             ExporterOptions options,
-            string exportDirectory)
+            string exportDirectory,
+            FhirServerInfo serverInfo)
         {
             // set internal vars so we don't pass them to every function
             // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info
             _info = info;
             _options = options;
+            _serverInfo = serverInfo;
 
             if (_options.LanguageOptions != null)
             {
@@ -175,14 +184,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _exportedResourceNamesAndTypes = new Dictionary<string, string>();
             _exportedCodes = new HashSet<string>();
 
-            int openApiVersion = 3;
+            int openApiVersion = 2;
 
             if (_parameters.ContainsKey("OPENAPIVERSION"))
             {
-                if ((_parameters["OPENAPIVERSION"] == "2") ||
-                    (_parameters["OPENAPIVERSION"] == "2.0"))
+                if ((_parameters["OPENAPIVERSION"] == "3") ||
+                    (_parameters["OPENAPIVERSION"] == "3.0"))
                 {
-                    openApiVersion = 2;
+                    openApiVersion = 3;
                 }
             }
 
@@ -242,6 +251,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _generateReadOnly = true;
             }
 
+            bool minify = false;
+
+            if (_parameters.ContainsKey("MINIFY") &&
+                (!string.IsNullOrEmpty(_parameters["MINIFY"])) &&
+                _parameters["MINIFY"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
+            {
+                minify = true;
+            }
+
+            if (_parameters.ContainsKey("METADATA") &&
+                (!string.IsNullOrEmpty(_parameters["METADATA"])) &&
+                _parameters["METADATA"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
+            {
+                _includeMetadata = true;
+            }
+
             OpenApiDocument document = new OpenApiDocument();
 
             document.Info = BuildInfo();
@@ -258,7 +283,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 document.Components.Schemas = BuildSchemas();
             }
 
-            if (!string.IsNullOrEmpty(_options.ServerUrl))
+            if (_serverInfo != null)
             {
                 document.Servers = BuildServers();
 
@@ -271,6 +296,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (StreamWriter sw = new StreamWriter(stream))
             {
+                // OpenApiYamlWriter writer = new OpenApiYamlWriter(sw);
                 OpenApiJsonWriter writer = new OpenApiJsonWriter(sw);
 
                 if (openApiVersion == 2)
@@ -281,6 +307,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     document.Serialize(writer, OpenApiSpecVersion.OpenApi3_0);
                 }
+            }
+
+            if (minify)
+            {
+                object obj = JsonConvert.DeserializeObject(File.ReadAllText(filename));
+
+                File.Delete(filename);
+
+                File.WriteAllText(filename, JsonConvert.SerializeObject(obj, Formatting.None));
             }
         }
 
@@ -541,41 +576,44 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>The OpenApiPaths.</returns>
         private OpenApiPaths BuildPathsForServer()
         {
-            if (_options.ServerInfo == null)
+            if (_serverInfo == null)
             {
                 return null;
             }
 
             OpenApiPaths paths = new OpenApiPaths();
 
-            if (_info.Resources.ContainsKey("CapabilityStatement"))
+            if (_includeMetadata)
             {
-                OpenApiPathItem metadataPath = new OpenApiPathItem()
+                if (_info.Resources.ContainsKey("CapabilityStatement"))
                 {
-                    Operations = new Dictionary<OperationType, OpenApiOperation>(),
-                };
+                    OpenApiPathItem metadataPath = new OpenApiPathItem()
+                    {
+                        Operations = new Dictionary<OperationType, OpenApiOperation>(),
+                    };
 
-                metadataPath.Operations.Add(
-                    OperationType.Get,
-                    BuildMetadataPathOperation("CapabilityStatement"));
+                    metadataPath.Operations.Add(
+                        OperationType.Get,
+                        BuildMetadataPathOperation("CapabilityStatement"));
 
-                paths.Add($"/metadata", metadataPath);
-            }
-            else if (_info.Resources.ContainsKey("Conformance"))
-            {
-                OpenApiPathItem metadataPath = new OpenApiPathItem()
+                    paths.Add($"/metadata", metadataPath);
+                }
+                else if (_info.Resources.ContainsKey("Conformance"))
                 {
-                    Operations = new Dictionary<OperationType, OpenApiOperation>(),
-                };
+                    OpenApiPathItem metadataPath = new OpenApiPathItem()
+                    {
+                        Operations = new Dictionary<OperationType, OpenApiOperation>(),
+                    };
 
-                metadataPath.Operations.Add(
-                    OperationType.Get,
-                    BuildMetadataPathOperation("Conformance"));
+                    metadataPath.Operations.Add(
+                        OperationType.Get,
+                        BuildMetadataPathOperation("Conformance"));
 
-                paths.Add($"/metadata", metadataPath);
+                    paths.Add($"/metadata", metadataPath);
+                }
             }
 
-            foreach (FhirServerResourceInfo resource in _options.ServerInfo.ResourceInteractions.Values)
+            foreach (FhirServerResourceInfo resource in _serverInfo.ResourceInteractions.Values)
             {
                 OpenApiPathItem typePath = new OpenApiPathItem()
                 {
@@ -684,8 +722,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (instancePath.Operations.Count > 0)
                 {
-                    instancePath.Parameters.Add(BuildReferencedPathIdParameter());
-
                     paths.Add($"/{resource.ResourceType}/{{id}}", instancePath);
                 }
             }
@@ -697,8 +733,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>An OpenApiParameter.</returns>
         private static OpenApiParameter BuildReferencedPathIdParameter()
         {
+            //return new OpenApiParameter()
+            //{
+            //    Name = "id",
+            //    In = ParameterLocation.Path,
+            //    Required = true,
+            //    Schema = new OpenApiSchema()
+            //    {
+            //        Type = "string",
+            //    },
+            //};
+
             return new OpenApiParameter()
             {
+                Name = "id",
                 Reference = new OpenApiReference()
                 {
                     Id = "id",
@@ -796,6 +844,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (isInstanceLevel)
             {
                 operation.OperationId = $"{pathOpType}{resourceName}I";
+                operation.Parameters.Add(BuildReferencedPathIdParameter());
             }
             else
             {
@@ -819,12 +868,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case OperationType.Get:
                     if (isInstanceLevel)
                     {
-                        operation.OperationId = $"get{resourceName}";
+                        operation.OperationId = $"Get{resourceName}";
                         contentResourceName = resourceName;
                     }
                     else
                     {
-                        operation.OperationId = $"list{resourceName}s";
+                        operation.OperationId = $"List{resourceName}s";
                         contentResourceName = "Bundle";
                     }
 
@@ -865,12 +914,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case OperationType.Put:
                     if (isInstanceLevel)
                     {
-                        operation.OperationId = $"replace{resourceName}";
+                        operation.OperationId = $"Replace{resourceName}";
                         contentResourceName = resourceName;
                     }
                     else
                     {
-                        operation.OperationId = $"replace{resourceName}s";
+                        operation.OperationId = $"Replace{resourceName}s";
                         contentResourceName = resourceName;
                     }
 
@@ -940,12 +989,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case OperationType.Post:
                     if (isInstanceLevel)
                     {
-                        operation.OperationId = $"create{resourceName}";
+                        operation.OperationId = $"Create{resourceName}";
                         contentResourceName = resourceName;
                     }
                     else
                     {
-                        operation.OperationId = $"create{resourceName}s";
+                        operation.OperationId = $"Create{resourceName}s";
                         contentResourceName = resourceName;
                     }
 
@@ -1007,11 +1056,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case OperationType.Delete:
                     if (isInstanceLevel)
                     {
-                        operation.OperationId = $"delete{resourceName}";
+                        operation.OperationId = $"Delete{resourceName}";
                     }
                     else
                     {
-                        operation.OperationId = $"delete{resourceName}s";
+                        operation.OperationId = $"Delete{resourceName}s";
                     }
 
                     operation.Responses = new OpenApiResponses()
@@ -1051,14 +1100,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             OpenApiOperation operation = new OpenApiOperation();
 
-            operation.OperationId = $"getMetadata";
+            operation.OperationId = $"GetMetadata";
 
             if (_includeSummaries)
             {
                 operation.Summary = $"Gets metadata information about this server.";
             }
 
-            operation.OperationId = $"getMetadata";
+            operation.OperationId = $"GetMetadata";
 
             operation.Responses = new OpenApiResponses()
             {
@@ -1076,20 +1125,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A List of OpenApiServers.</returns>
         private List<OpenApiServer> BuildServers()
         {
-            if (_options.ServerInfo == null)
+            if (_serverInfo == null)
             {
                 return null;
             }
 
             string description;
 
-            if (!string.IsNullOrEmpty(_options.ServerInfo.ImplementationDescription))
+            if (!string.IsNullOrEmpty(_serverInfo.ImplementationDescription))
             {
-                description = _options.ServerInfo.ImplementationDescription;
+                description = _serverInfo.ImplementationDescription;
             }
-            else if (!string.IsNullOrEmpty(_options.ServerInfo.SoftwareName))
+            else if (!string.IsNullOrEmpty(_serverInfo.SoftwareName))
             {
-                description = _options.ServerInfo.SoftwareName;
+                description = _serverInfo.SoftwareName;
             }
             else
             {
@@ -1100,7 +1149,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 new OpenApiServer()
                 {
-                    Url = _options.ServerInfo.Url,
+                    Url = _serverInfo.Url,
                     Description = description,
                 },
             };

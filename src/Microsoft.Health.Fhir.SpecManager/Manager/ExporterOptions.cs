@@ -41,7 +41,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             IEnumerable<string> extensionElementPaths,
             Dictionary<string, string> languageOptions,
             string fhirServerUrl,
-            FhirServerInfo serverInfo,
             bool includeExperimental)
         {
             LanguageName = languageName;
@@ -76,7 +75,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             _languageOptions = languageOptions;
             ServerUrl = fhirServerUrl;
-            ServerInfo = serverInfo;
             IncludeExperimental = includeExperimental;
         }
 
@@ -166,9 +164,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets URL of the FHIR server (if specified).</summary>
         public string ServerUrl { get; }
-
-        /// <summary>Gets information about a FHIR server (if specified).</summary>
-        public FhirServerInfo ServerInfo { get; }
 
         /// <summary>Gets a value indicating whether structures marked experimental should be included.</summary>
         public bool IncludeExperimental { get; }
