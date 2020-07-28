@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Microsoft.Health.Fhir.SpecManager.Extensions;
 using Microsoft.Health.Fhir.SpecManager.fhir.r2;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
@@ -46,6 +47,7 @@ namespace FhirCodegenCli
         ///  expansions (default: false).</param>
         /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
         ///  Conformance) from.  Requires application/fhir+json.</param>
+        /// <param name="includeExperimental">   If the output should include structures marked experimental (false|true).</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -59,7 +61,8 @@ namespace FhirCodegenCli
             string loadR5 = "",
             string languageOptions = "",
             bool officialExpansionsOnly = false,
-            string fhirServerUrl = "")
+            string fhirServerUrl = "",
+            bool includeExperimental = false)
         {
             bool isBatch = false;
             List<string> filesWritten = new List<string>();
@@ -76,17 +79,6 @@ namespace FhirCodegenCli
                 outputPath = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\generated");
             }
 
-            if (string.IsNullOrEmpty(loadR2) &&
-                string.IsNullOrEmpty(loadR3) &&
-                string.IsNullOrEmpty(loadR4) &&
-                string.IsNullOrEmpty(loadR5))
-            {
-                loadR2 = "latest";
-                loadR3 = "latest";
-                loadR4 = "latest";
-                loadR5 = "latest";
-            }
-
             if (string.IsNullOrEmpty(language))
             {
                 language = "Info|TypeScript|CSharpBasic";
@@ -95,41 +87,82 @@ namespace FhirCodegenCli
             // start timing
             Stopwatch timingWatch = Stopwatch.StartNew();
 
-            // process
-            Process(
-                fhirSpecDirectory,
-                offlineMode,
-                officialExpansionsOnly,
-                loadR2,
-                out FhirVersionInfo r2,
-                loadR3,
-                out FhirVersionInfo r3,
-                loadR4,
-                out FhirVersionInfo r4,
-                loadR5,
-                out FhirVersionInfo r5);
+            // initialize the FHIR version manager with our requested directory
+            FhirManager.Init(fhirSpecDirectory);
 
-            // done loading
-            long loadMS = timingWatch.ElapsedMilliseconds;
+            FhirVersionInfo r2 = null;
+            FhirVersionInfo r3 = null;
+            FhirVersionInfo r4 = null;
+            FhirVersionInfo r5 = null;
+
+            FhirServerInfo serverInfo = null;
+
+            if (!string.IsNullOrEmpty(fhirServerUrl))
+            {
+                if (!ServerConnector.TryGetServerInfo(fhirServerUrl, out serverInfo))
+                {
+                    Console.WriteLine($"Failed to get server information from {fhirServerUrl}!");
+                    return;
+                }
+            }
+
+            if (string.IsNullOrEmpty(loadR2) &&
+                string.IsNullOrEmpty(loadR3) &&
+                string.IsNullOrEmpty(loadR4) &&
+                string.IsNullOrEmpty(loadR5))
+            {
+                if (serverInfo == null)
+                {
+                    loadR2 = "latest";
+                    loadR3 = "latest";
+                    loadR4 = "latest";
+                    loadR5 = "latest";
+                }
+                else
+                {
+                    switch (serverInfo.MajorVersion)
+                    {
+                        case 2:
+                            loadR2 = "latest";
+                            break;
+
+                        case 3:
+                            loadR3 = "latest";
+                            break;
+
+                        case 4:
+                            loadR4 = "latest";
+                            break;
+
+                        case 5:
+                            loadR5 = "latest";
+                            break;
+                    }
+                }
+            }
 
             int fhirVersionCount = 0;
-            if (r2 != null)
+            if (!string.IsNullOrEmpty(loadR2))
             {
+                r2 = FhirManager.Current.LoadPublished(2, loadR2, offlineMode, officialExpansionsOnly);
                 fhirVersionCount++;
             }
 
-            if (r3 != null)
+            if (!string.IsNullOrEmpty(loadR3))
             {
+                r3 = FhirManager.Current.LoadPublished(3, loadR3, offlineMode, officialExpansionsOnly);
                 fhirVersionCount++;
             }
 
-            if (r4 != null)
+            if (!string.IsNullOrEmpty(loadR4))
             {
+                r4 = FhirManager.Current.LoadPublished(4, loadR4, offlineMode, officialExpansionsOnly);
                 fhirVersionCount++;
             }
 
-            if (r5 != null)
+            if (!string.IsNullOrEmpty(loadR5))
             {
+                r5 = FhirManager.Current.LoadPublished(5, loadR5, offlineMode, officialExpansionsOnly);
                 fhirVersionCount++;
             }
 
@@ -137,6 +170,9 @@ namespace FhirCodegenCli
             {
                 isBatch = true;
             }
+
+            // done loading
+            long loadMS = timingWatch.ElapsedMilliseconds;
 
             if (string.IsNullOrEmpty(outputPath))
             {
@@ -202,7 +238,10 @@ namespace FhirCodegenCli
                         ExporterOptions.ExtensionSupportLevel.NonPrimitives,
                         null,
                         null,
-                        languageOptsByLang[lang.LanguageName]);
+                        languageOptsByLang[lang.LanguageName],
+                        fhirServerUrl,
+                        serverInfo,
+                        includeExperimental);
 
                     if (r2 != null)
                     {
@@ -234,10 +273,6 @@ namespace FhirCodegenCli
             foreach (string file in filesWritten)
             {
                 Console.WriteLine($"+ {file}");
-
-                if (file.EndsWith(".cs", StringComparison.Ordinal))
-                {
-                }
             }
         }
 
@@ -321,98 +356,6 @@ namespace FhirCodegenCli
             }
 
             return optionsByLanguage;
-        }
-
-        /// <summary>Main processing function.</summary>
-        /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
-        ///  are.</param>
-        /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
-        /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
-        ///  expansions.</param>
-        /// <param name="loadR2">                If FHIR R2 should be loaded, which version (e.g., 1.0.2
-        ///  or latest).</param>
-        /// <param name="r2">                    [out] The FhirVersionInfo for R2 (if loaded).</param>
-        /// <param name="loadR3">                If FHIR R3 should be loaded, which version (e.g., 3.0.2
-        ///  or latest).</param>
-        /// <param name="r3">                    [out] The FhirVersionInfo for R3 (if loaded).</param>
-        /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
-        ///  or latest).</param>
-        /// <param name="r4">                    [out] The FhirVersionInfo for R4 (if loaded).</param>
-        /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
-        ///  or latest).</param>
-        /// <param name="r5">                    [out] The FhirVersionInfo for R5 (if loaded).</param>
-        public static void Process(
-            string fhirSpecDirectory,
-            bool offlineMode,
-            bool officialExpansionsOnly,
-            string loadR2,
-            out FhirVersionInfo r2,
-            string loadR3,
-            out FhirVersionInfo r3,
-            string loadR4,
-            out FhirVersionInfo r4,
-            string loadR5,
-            out FhirVersionInfo r5)
-        {
-            // initialize the FHIR version manager with our requested directory
-            FhirManager.Init(fhirSpecDirectory);
-
-            r2 = null;
-            r3 = null;
-            r4 = null;
-            r5 = null;
-
-            if (!string.IsNullOrEmpty(loadR2))
-            {
-                try
-                {
-                    r2 = FhirManager.Current.LoadPublished(2, loadR2, offlineMode, officialExpansionsOnly);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Loading R2 ({loadR2}) failed: {ex}");
-                    throw;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(loadR3))
-            {
-                try
-                {
-                    r3 = FhirManager.Current.LoadPublished(3, loadR3, offlineMode, officialExpansionsOnly);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Loading R3 ({loadR3}) failed: {ex}");
-                    throw;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(loadR4))
-            {
-                try
-                {
-                    r4 = FhirManager.Current.LoadPublished(4, loadR4, offlineMode, officialExpansionsOnly);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Loading R4 ({loadR4}) failed: {ex}");
-                    throw;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(loadR5))
-            {
-                try
-                {
-                    r5 = FhirManager.Current.LoadPublished(5, loadR5, offlineMode, officialExpansionsOnly);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Loading R5 ({loadR5}) failed: {ex}");
-                    throw;
-                }
-            }
         }
 
         /// <summary>Dumps information about a FHIR version to the console.</summary>

@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Converters;
 using Microsoft.Health.Fhir.SpecManager.Language;
@@ -169,22 +170,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // copy required fields
             MajorVersion = majorVersion;
 
-            // create our JSON converter
-            switch (majorVersion)
-            {
-                case 2:
-                    _fhirConverter = new FromR2();
-                    break;
-                case 3:
-                    _fhirConverter = new FromR3();
-                    break;
-                case 4:
-                    _fhirConverter = new FromR4();
-                    break;
-                case 5:
-                    _fhirConverter = new FromR5();
-                    break;
-            }
+            _fhirConverter = ConverterHelper.ConverterForVersion(majorVersion);
 
             // create our info dictionaries
             _primitiveTypesByName = new Dictionary<string, FhirPrimitive>();
@@ -761,6 +747,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         }
                     }
                 }
+
+                if ((_complexTypesByName[name].Components != null) &&
+                    _complexTypesByName.ContainsKey("BackboneElement") &&
+                    (!set.Contains("BackboneElement")))
+                {
+                    set.Add("BackboneElement");
+                }
             }
 
             // check for this being a resource
@@ -807,6 +800,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         }
                     }
                 }
+
+                if ((_resourcesByName[name].Components != null) &&
+                    _complexTypesByName.ContainsKey("BackboneElement") &&
+                    (!set.Contains("BackboneElement")))
+                {
+                    set.Add("BackboneElement");
+                }
             }
         }
 
@@ -819,6 +819,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="copyExtensions">       (Optional) True to copy extensions.</param>
         /// <param name="extensionUrls">        (Optional) The extension urls.</param>
         /// <param name="extensionElementPaths">(Optional) The extension paths.</param>
+        /// <param name="serverInfo">           (Optional) Information describing the server.</param>
+        /// <param name="includeExperimental">  (Optional) True to include, false to exclude the
+        ///  experimental.</param>
         /// <returns>A FhirVersionInfo.</returns>
         internal FhirVersionInfo CopyForExport(
             Dictionary<string, string> primitiveTypeMap,
@@ -828,7 +831,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             bool copyResources = true,
             bool copyExtensions = true,
             HashSet<string> extensionUrls = null,
-            HashSet<string> extensionElementPaths = null)
+            HashSet<string> extensionElementPaths = null,
+            FhirServerInfo serverInfo = null,
+            bool includeExperimental = false)
         {
             // create our return object
             FhirVersionInfo info = new FhirVersionInfo(MajorVersion)
@@ -845,6 +850,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             };
 
             bool restrictOutput = false;
+            bool restrictResources = false;
+
             HashSet<string> exportSet = new HashSet<string>();
 
             // figure out all the the dependencies we need to include based on requests
@@ -861,7 +868,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
-            Dictionary<string, List<string>> valueSetReferences = new Dictionary<string, List<string>>();
+            // only want server restrictions if there is not an explicit one
+            if ((serverInfo != null) &&
+                (exportSet.Count == 0))
+            {
+                foreach (FhirServerResourceInfo resource in serverInfo.ResourceInteractions.Values)
+                {
+                    AddToExportSet(resource.ResourceType, ref exportSet);
+                }
+
+                if (exportSet.Count > 0)
+                {
+                    restrictResources = true;
+                }
+            }
+
+            Dictionary<string, ValueSetReferenceInfo> valueSetReferences = new Dictionary<string, ValueSetReferenceInfo>();
 
             // check if we are exporting primitives
             if (copyPrimitives)
@@ -870,6 +892,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 {
                     // check for restricting output
                     if (restrictOutput && (!exportSet.Contains(kvp.Key)))
+                    {
+                        continue;
+                    }
+
+                    // check for experimental - unless this is specifically included
+                    if ((!restrictOutput) &&
+                        (!includeExperimental) &&
+                        kvp.Value.IsExperimental)
                     {
                         continue;
                     }
@@ -895,13 +925,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         continue;
                     }
 
+                    // check for experimental - unless this is specifically included
+                    if ((!restrictOutput) &&
+                        (!includeExperimental) &&
+                        kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     info._complexTypesByName.Add(
                         kvp.Key,
                         kvp.Value.DeepCopy(
                             primitiveTypeMap,
                             true,
                             false,
-                            ref valueSetReferences));
+                            ref valueSetReferences,
+                            null,
+                            null,
+                            null,
+                            null,
+                            includeExperimental));
                 }
             }
 
@@ -916,13 +959,50 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         continue;
                     }
 
-                    info._resourcesByName.Add(
-                        kvp.Key,
-                        kvp.Value.DeepCopy(
-                            primitiveTypeMap,
-                            true,
-                            false,
-                            ref valueSetReferences));
+                    if (restrictResources && (!exportSet.Contains(kvp.Key)))
+                    {
+                        continue;
+                    }
+
+                    // check for experimental - unless this is specifically included
+                    if (((!restrictOutput) || (!restrictResources)) &&
+                        (!includeExperimental) &&
+                        kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
+                    if ((serverInfo == null) ||
+                        (!serverInfo.ResourceInteractions.ContainsKey(kvp.Key)))
+                    {
+                        info._resourcesByName.Add(
+                            kvp.Key,
+                            kvp.Value.DeepCopy(
+                                primitiveTypeMap,
+                                true,
+                                false,
+                                ref valueSetReferences,
+                                null,
+                                null,
+                                null,
+                                null,
+                                includeExperimental));
+                    }
+                    else
+                    {
+                        info._resourcesByName.Add(
+                            kvp.Key,
+                            kvp.Value.DeepCopy(
+                                primitiveTypeMap,
+                                true,
+                                false,
+                                ref valueSetReferences,
+                                serverInfo.ResourceInteractions[kvp.Key].SearchParameters,
+                                serverInfo.ServerSearchParameters,
+                                serverInfo.ResourceInteractions[kvp.Key].Operations,
+                                serverInfo.ServerOperations,
+                                includeExperimental));
+                    }
                 }
             }
 
@@ -969,23 +1049,89 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
-            foreach (KeyValuePair<string, FhirOperation> kvp in _systemOperations)
+            if (serverInfo == null)
             {
-                info._systemOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                foreach (KeyValuePair<string, FhirOperation> kvp in _systemOperations)
+                {
+                    info._systemOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<string, FhirOperation> kvp in _systemOperations)
+                {
+                    if (serverInfo.ServerOperations.ContainsKey(kvp.Value.Code))
+                    {
+                        info._systemOperations.Add(kvp.Key, (FhirOperation)kvp.Value.Clone());
+                    }
+                }
+
+                foreach (KeyValuePair<string, FhirServerOperation> kvp in serverInfo.ServerOperations)
+                {
+                    if (info._systemOperations.ContainsKey(kvp.Key))
+                    {
+                        continue;
+                    }
+
+                    info._systemOperations.Add(
+                        kvp.Key,
+                        new FhirOperation(
+                            kvp.Key,
+                            new Uri(kvp.Value.DefinitionCanonical),
+                            string.Empty,
+                            kvp.Value.Name,
+                            kvp.Value.Documentation,
+                            true,
+                            false,
+                            false,
+                            kvp.Value.Name,
+                            kvp.Value.Documentation,
+                            null,
+                            new List<FhirParameter>(),
+                            false));
+                }
             }
 
-            foreach (KeyValuePair<string, FhirSearchParam> kvp in _globalSearchParameters)
+            if (serverInfo == null)
             {
-                info._globalSearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
+                foreach (KeyValuePair<string, FhirSearchParam> kvp in _globalSearchParameters)
+                {
+                    if ((!includeExperimental) && kvp.Value.IsExperimental)
+                    {
+                        continue;
+                    }
+
+                    info._globalSearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<string, FhirSearchParam> kvp in _globalSearchParameters)
+                {
+                    if (serverInfo.ServerSearchParameters.ContainsKey(kvp.Value.Code))
+                    {
+                        info._globalSearchParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
+                    }
+                }
             }
 
             foreach (KeyValuePair<string, FhirSearchParam> kvp in _searchResultParameters)
             {
+                if ((!includeExperimental) && kvp.Value.IsExperimental)
+                {
+                    continue;
+                }
+
                 info._searchResultParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
             }
 
             foreach (KeyValuePair<string, FhirSearchParam> kvp in _allInteractionParameters)
             {
+                if ((!includeExperimental) && kvp.Value.IsExperimental)
+                {
+                    continue;
+                }
+
                 info._allInteractionParameters.Add(kvp.Key, (FhirSearchParam)kvp.Value.Clone());
             }
 

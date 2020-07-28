@@ -201,13 +201,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="primitiveTypeMap">   The primitive type map.</param>
         /// <param name="copySlicing">        True to copy slicing.</param>
         /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
-        /// <param name="valueSetReferences"> [in,out] Value Set URLs and lists of FHIR paths that reference them.</param>
+        /// <param name="valueSetReferences"> [in,out] Value Set URLs and lists of FHIR paths that
+        ///  reference them.</param>
         /// <returns>A FhirSlicing.</returns>
         public FhirSlicing DeepCopy(
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
             bool canHideParentFields,
-            ref Dictionary<string, List<string>> valueSetReferences)
+            ref Dictionary<string, ValueSetReferenceInfo> valueSetReferences)
         {
             Dictionary<string, FhirSliceDiscriminatorRule> rules = new Dictionary<string, FhirSliceDiscriminatorRule>();
 

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using Microsoft.Health.Fhir.SpecManager.Extensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
@@ -28,6 +29,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="path">            The dot-notation path to this element/resource/datatype.</param>
         /// <param name="url">             The URL.</param>
         /// <param name="standardStatus">  The standard status.</param>
+        /// <param name="isExperimental">  A value indicating whether this object is experimental.</param>
         /// <param name="shortDescription">The description.</param>
         /// <param name="purpose">         The purpose of this definition.</param>
         /// <param name="comment">         The comment.</param>
@@ -37,6 +39,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string path,
             Uri url,
             string standardStatus,
+            bool isExperimental,
             string shortDescription,
             string purpose,
             string comment,
@@ -52,6 +55,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Id = id;
             _path = path;
             StandardStatus = standardStatus;
+            IsExperimental = isExperimental;
             ShortDescription = shortDescription;
             Purpose = purpose;
 
@@ -78,6 +82,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="path">            The dot-notation path to this element/resource/datatype/extension.</param>
         /// <param name="url">             The URL.</param>
         /// <param name="standardStatus">  The standard status.</param>
+        /// <param name="isExperimental">  If this object is marked experimental.</param>
         /// <param name="shortDescription">The description.</param>
         /// <param name="purpose">         The purpose of this definition.</param>
         /// <param name="comment">         The comment.</param>
@@ -88,6 +93,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string path,
             Uri url,
             string standardStatus,
+            bool isExperimental,
             string shortDescription,
             string purpose,
             string comment,
@@ -98,6 +104,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 path,
                 url,
                 standardStatus,
+                isExperimental,
                 shortDescription,
                 purpose,
                 comment,
@@ -160,11 +167,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public Uri URL { get; }
 
         /// <summary>
-        /// Gets status of this type in the standards process - use FhirCommon.StandardStatusCodes
+        /// Gets status of this type in the standards process
         /// see: http://hl7.org/fhir/valueset-standards-status.html.
         /// </summary>
         /// <value>The standard status.</value>
         public string StandardStatus { get; }
+
+        /// <summary>Gets a value indicating whether this object is experimental.</summary>
+        public bool IsExperimental { get; }
 
         /// <summary>Gets or sets the Name of the type this type inherits from (null if none).</summary>
         /// <value>The name of the base type.</value>
