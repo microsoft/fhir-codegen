@@ -48,13 +48,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the export.</summary>
         /// <param name="info">           The information.</param>
+        /// <param name="serverInfo">     Information describing the server.</param>
         /// <param name="options">        Options for controlling the operation.</param>
         /// <param name="exportDirectory">Directory to write files.</param>
-        /// <param name="serverInfo">     Information describing the server.</param>
         void Export(
             FhirVersionInfo info,
+            FhirServerInfo serverInfo,
             ExporterOptions options,
-            string exportDirectory,
-            FhirServerInfo serverInfo);
+            string exportDirectory);
     }
 }
