@@ -416,7 +416,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 op.Code,
                 op.Comment,
                 op.Resource,
-                parameters);
+                parameters,
+                op.Experimental == true);
 
             // add our operation
             fhirVersionInfo.AddOperation(operation);
@@ -610,6 +611,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 baseTypeName,
                 new Uri(sd.Url),
                 sd.Status,
+                sd.Experimental == true,
                 descriptionShort,
                 definition,
                 comment,
@@ -783,6 +785,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     string.Empty,
                     new Uri(sd.Url),
                     sd.Status,
+                    sd.Experimental == true,
                     descriptionShort,
                     definition,
                     string.Empty,
@@ -1209,6 +1212,214 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 Console.WriteLine($"FromR5.TryProcessResource <<< Failed to process resource:\n{ex}\n--------------");
                 throw;
             }
+        }
+
+        /// <summary>Process a FHIR metadata resource into Server Information.</summary>
+        /// <param name="metadata">  The metadata resource object (e.g., r4.CapabilitiesStatement).</param>
+        /// <param name="serverUrl"> URL of the server.</param>
+        /// <param name="serverInfo">[out] Information describing the server.</param>
+        void IFhirConverter.ProcessMetadata(
+            object metadata,
+            string serverUrl,
+            out FhirServerInfo serverInfo)
+        {
+            if (metadata == null)
+            {
+                serverInfo = null;
+                return;
+            }
+
+            fhir_5.CapabilityStatement caps = metadata as fhir_5.CapabilityStatement;
+
+            string swName = string.Empty;
+            string swVersion = string.Empty;
+            string swReleaseDate = string.Empty;
+
+            if (caps.Software != null)
+            {
+                swName = caps.Software.Name ?? string.Empty;
+                swVersion = caps.Software.Version ?? string.Empty;
+                swReleaseDate = caps.Software.ReleaseDate ?? string.Empty;
+            }
+
+            string impDescription = string.Empty;
+            string impUrl = string.Empty;
+
+            if (caps.Implementation != null)
+            {
+                impDescription = caps.Implementation.Description ?? string.Empty;
+                impUrl = caps.Implementation.Url ?? string.Empty;
+            }
+
+            List<string> serverInteractions = new List<string>();
+            Dictionary<string, FhirServerResourceInfo> resourceInteractions = new Dictionary<string, FhirServerResourceInfo>();
+            Dictionary<string, FhirServerSearchParam> serverSearchParams = new Dictionary<string, FhirServerSearchParam>();
+            Dictionary<string, FhirServerOperation> serverOperations = new Dictionary<string, FhirServerOperation>();
+
+            if ((caps.Rest != null) && (caps.Rest.Count > 0))
+            {
+                fhir_5.CapabilityStatementRest rest = caps.Rest[0];
+
+                if (rest.Interaction != null)
+                {
+                    foreach (fhir_5.CapabilityStatementRestInteraction interaction in rest.Interaction)
+                    {
+                        if (string.IsNullOrEmpty(interaction.Code))
+                        {
+                            continue;
+                        }
+
+                        serverInteractions.Add(interaction.Code);
+                    }
+                }
+
+                if (rest.Resource != null)
+                {
+                    foreach (fhir_5.CapabilityStatementRestResource resource in rest.Resource)
+                    {
+                        FhirServerResourceInfo resourceInfo = ParseServerRestResource(resource);
+
+                        if (resourceInteractions.ContainsKey(resourceInfo.ResourceType))
+                        {
+                            continue;
+                        }
+
+                        resourceInteractions.Add(
+                            resourceInfo.ResourceType,
+                            resourceInfo);
+                    }
+                }
+
+                if (rest.SearchParam != null)
+                {
+                    foreach (fhir_5.CapabilityStatementRestResourceSearchParam sp in rest.SearchParam)
+                    {
+                        if (serverSearchParams.ContainsKey(sp.Name))
+                        {
+                            continue;
+                        }
+
+                        serverSearchParams.Add(
+                            sp.Name,
+                            new FhirServerSearchParam(
+                                sp.Name,
+                                sp.Definition,
+                                sp.Type,
+                                sp.Documentation));
+                    }
+                }
+
+                if (rest.Operation != null)
+                {
+                    foreach (fhir_5.CapabilityStatementRestResourceOperation operation in rest.Operation)
+                    {
+                        if (serverOperations.ContainsKey(operation.Name))
+                        {
+                            serverOperations[operation.Name].AddDefinition(operation.Definition);
+                            continue;
+                        }
+
+                        serverOperations.Add(
+                            operation.Name,
+                            new FhirServerOperation(
+                                operation.Name,
+                                operation.Definition,
+                                operation.Documentation));
+                    }
+                }
+            }
+
+            serverInfo = new FhirServerInfo(
+                serverInteractions,
+                serverUrl,
+                caps.FhirVersion,
+                swName,
+                swVersion,
+                swReleaseDate,
+                impDescription,
+                impUrl,
+                resourceInteractions,
+                serverSearchParams,
+                serverOperations);
+        }
+
+        /// <summary>Parse server REST resource.</summary>
+        /// <param name="resource">The resource.</param>
+        /// <returns>A FhirServerResourceInfo.</returns>
+        private static FhirServerResourceInfo ParseServerRestResource(
+            fhir_5.CapabilityStatementRestResource resource)
+        {
+            List<string> interactions = new List<string>();
+            Dictionary<string, FhirServerSearchParam> searchParams = new Dictionary<string, FhirServerSearchParam>();
+            Dictionary<string, FhirServerOperation> operations = new Dictionary<string, FhirServerOperation>();
+
+            if (resource.Interaction != null)
+            {
+                foreach (fhir_5.CapabilityStatementRestResourceInteraction interaction in resource.Interaction)
+                {
+                    if (string.IsNullOrEmpty(interaction.Code))
+                    {
+                        continue;
+                    }
+
+                    interactions.Add(interaction.Code);
+                }
+            }
+
+            if (resource.SearchParam != null)
+            {
+                foreach (fhir_5.CapabilityStatementRestResourceSearchParam sp in resource.SearchParam)
+                {
+                    if (searchParams.ContainsKey(sp.Name))
+                    {
+                        continue;
+                    }
+
+                    searchParams.Add(
+                        sp.Name,
+                        new FhirServerSearchParam(
+                            sp.Name,
+                            sp.Definition,
+                            sp.Type,
+                            sp.Documentation));
+                }
+            }
+
+            if (resource.Operation != null)
+            {
+                foreach (fhir_5.CapabilityStatementRestResourceOperation operation in resource.Operation)
+                {
+                    if (operations.ContainsKey(operation.Name))
+                    {
+                        operations[operation.Name].AddDefinition(operation.Definition);
+                        continue;
+                    }
+
+                    operations.Add(
+                        operation.Name,
+                        new FhirServerOperation(
+                            operation.Name,
+                            operation.Definition,
+                            operation.Documentation));
+                }
+            }
+
+            return new FhirServerResourceInfo(
+                interactions,
+                resource.Type,
+                resource.SupportedProfile,
+                resource.Versioning,
+                resource.ReadHistory,
+                resource.UpdateCreate,
+                resource.ConditionalCreate,
+                resource.ConditionalRead,
+                resource.ConditionalUpdate,
+                resource.ConditionalDelete,
+                resource.ReferencePolicy,
+                resource.SearchInclude,
+                resource.SearchRevInclude,
+                searchParams,
+                operations);
         }
 
         /// <summary>Gets default value if present.</summary>

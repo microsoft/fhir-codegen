@@ -6,31 +6,40 @@ Usage:
 
 Options:
   --fhir-spec-directory <fhir-spec-directory>    The full path to the directory where FHIR 
-                                                   specifications are downloaded and cached.
+                                                    specifications are downloaded and cached.
   --output-path <output-path>                    File or directory to write output.
   --verbose                                      Show verbose output.
-  --offline-mode                                 Offline mode.
-                                                   (will not download missing specs).
+  --offline-mode                                 Offline mode .
+                                                    (will not download missing specs)
   --language <language>                          Name of the language to export.
-                                                   (default: Info|TypeScript|CSharpBasic).
+                                                    (default: Info|TypeScript|CSharpBasic)
   --export-keys <export-keys>                    '|' separated list of items to export.
-                                                   (not present to export everything)
+                                                    (not present to export everything)
   --load-r2 <load-r2>                            If FHIR R2 should be loaded, which version.
-                                                   (e.g., 1.0.2 or latest)
+                                                    (e.g., 1.0.2 or latest)
   --load-r3 <load-r3>                            If FHIR R3 should be loaded, which version.
-                                                   (e.g., 3.0.2 or latest)
+                                                    (e.g., 3.0.2 or latest)
   --load-r4 <load-r4>                            If FHIR R4 should be loaded, which version.
-                                                   (e.g., 4.0.1 or latest)
+                                                    (e.g., 4.0.1 or latest).
   --load-r5 <load-r5>                            If FHIR R5 should be loaded, which version.
-                                                   (e.g., 4.4.0 or latest)
+                                                    (e.g., 4.4.0 or latest)
   --language-options <language-options>          Language specific options, see documentation
                                                    for more details.
                                                    (e.g., CSharpBasic|namespace=myorg.fhir)
-  --version                                      Show version information.
-  -?, -h, --help                                 Show help and usage information.
-```
+  --official-expansions-only                     True to restrict value-sets exported to only
+                                                    official expansions.
+                                                    (default: false)
+  --fhir-server-url <fhir-server-url>            FHIR Server URL to pull a CapabilityStatement
+                                                    (or Conformance) from. Only supports
+                                                    application/fhir+json.
+  --include-experimental                         If the output should include structures
+                                                    marked experimental.
+                                                    (default: false)
+  --version                                      Show version information
+  -?, -h, --help                                 Show help and usage information
+  ```
 
-## Langauge Information
+## Language Information
 
   * Info
     
@@ -44,9 +53,13 @@ Options:
 
     Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.
 
-  * CSharpFirely **EXPERIMENTAL**
+  * CSharpFirely
 
     Export base C# classes needed for the Firely-maintained C# API ([FHIR-Net-API](https://github.com/FirelyTeam/fhir-net-api/)).
+
+  * OpenAPI **EXPERIMENTAL**
+
+    Export an OpenAPI 2 or 3 JSON version of the standard.
 
 
 ## CLI Examples

@@ -19,6 +19,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>True if initialized.</summary>
         private static bool _initialized = false;
 
+        /// <summary>Initializes the Language helper by loading all classes implementing the ILanguage interface.</summary>
         private static void Init()
         {
             if (_initialized)

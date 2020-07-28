@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Health.Fhir.SpecManager.Extensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
@@ -74,6 +75,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 path,
                 url,
                 string.Empty,
+                false,
                 shortDescription,
                 purpose,
                 comment,
@@ -135,6 +137,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             BindingStrength = bindingStrength;
             ValueSet = valueSet;
+
+            if (string.IsNullOrEmpty(bindingStrength))
+            {
+                ValueSetBindingStrength = null;
+            }
+            else
+            {
+                ValueSetBindingStrength = bindingStrength.ToFhirEnum<ElementDefinitionBindingStrength>();
+            }
+        }
+
+        /// <summary>Values that represent element definition binding strengths.</summary>
+        public enum ElementDefinitionBindingStrength : int
+        {
+            /// <summary>To be conformant, the concept in this element SHALL be from the specified value set.</summary>
+            [FhirLiteral("required")]
+            Required = 1,
+
+            /// <summary>To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated. If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead.</summary>
+            [FhirLiteral("extensible")]
+            Extensible,
+
+            /// <summary>Instances are encouraged to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant.</summary>
+            [FhirLiteral("preferred")]
+            Preferred,
+
+            /// <summary>Instances are not expected or even encouraged to draw from the specified value set. The value set merely provides examples of the types of concepts intended to be included.</summary>
+            [FhirLiteral("example")]
+            Example,
         }
 
         /// <summary>Gets the explicit name of this element, if one was specified.</summary>
@@ -165,79 +196,64 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Gets the FHIR cardinality string: min..max.</summary>
-        /// <value>The FHIR cardinality.</value>
         public string FhirCardinality => $"{CardinalityMin}..{CardinalityMaxString}";
 
         /// <summary>Gets a value indicating whether this object is inherited.</summary>
-        /// <value>True if this object is inherited, false if not.</value>
         public bool IsInherited { get; }
 
         /// <summary>Gets a value indicating whether the modifies parent.</summary>
-        /// <value>True if modifies parent, false if not.</value>
         public bool ModifiesParent { get; }
 
         /// <summary>Gets a value indicating whether this field hides a parent field.</summary>
-        /// <value>True if it hides a parent field, false if not.</value>
         public bool HidesParent { get; }
 
         /// <summary>Gets a value indicating whether this object is modifier.</summary>
-        /// <value>True if this object is modifier, false if not.</value>
         public bool IsModifier { get; }
 
         /// <summary>Gets a value indicating whether this object is summary.</summary>
-        /// <value>True if this object is summary, false if not.</value>
         public bool IsSummary { get; }
 
         /// <summary>Gets the field order.</summary>
-        /// <value>The field order.</value>
         public int FieldOrder { get; }
 
         /// <summary>Gets or sets Code Values allowed for this property.</summary>
-        /// <value>The code values.</value>
         public string CodesName { get; set; }
 
         /// <summary>Gets the codes.</summary>
-        /// <value>The codes.</value>
         public List<string> Codes => _codes;
 
         /// <summary>Gets the value set this element is bound to.</summary>
-        /// <value>The value set.</value>
         public string ValueSet { get; }
 
         /// <summary>Gets the binding strength for a value set binding to this element.</summary>
-        /// <value>The binding strength.</value>
         public string BindingStrength { get; }
+
+        /// <summary>Gets the element binding strength.</summary>
+        public ElementDefinitionBindingStrength? ValueSetBindingStrength { get; }
 
         /// <summary>Gets types and their associated profiles for this element.</summary>
         /// <value>Types and their associated profiles for this element.</value>
         public Dictionary<string, FhirElementType> ElementTypes { get => _elementTypes; }
 
         /// <summary>Gets the name of the default field.</summary>
-        /// <value>The name of the default field.</value>
         public string DefaultFieldName { get; }
 
         /// <summary>Gets the default field value.</summary>
-        /// <value>The default field value.</value>
         public object DefaultFieldValue { get; }
 
         /// <summary>Gets the slicing information.</summary>
-        /// <value>The slicing.</value>
         public Dictionary<string, FhirSlicing> Slicing => _slicing;
 
         /// <summary>Gets the name of the fixed field.</summary>
-        /// <value>The name of the fixed field.</value>
         public string FixedFieldName { get; }
 
         /// <summary>Gets the fixed field value.</summary>
-        /// <value>The fixed field value.</value>
         public object FixedFieldValue { get; }
 
         /// <summary>Gets a value indicating whether this property is an array.</summary>
-        /// <value>True if this object is array, false if not.</value>
         public bool IsArray => (CardinalityMax == -1) || (CardinalityMax > 1);
 
         /// <summary>Gets a value indicating whether this object is optional.</summary>
-        /// <value>True if this object is optional, false if not.</value>
         public bool IsOptional => CardinalityMin == 0;
 
         /// <summary>Maximum cardinality.</summary>
@@ -297,6 +313,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     ExplicitName,
                     URL,
                     StandardStatus,
+                    false,
                     ShortDescription,
                     Purpose,
                     Comment,
@@ -316,13 +333,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="primitiveTypeMap">   The primitive type map.</param>
         /// <param name="copySlicing">        True to copy slicing.</param>
         /// <param name="canHideParentFields">True if can hide parent fields, false if not.</param>
-        /// <param name="valueSetReferences"> [in,out] Value Set URLs and lists of FHIR paths that reference them.</param>
+        /// <param name="valueSetReferences"> [in,out] Value Set URLs and lists of FHIR paths that
+        ///  reference them.</param>
         /// <returns>A FhirElement.</returns>
         public FhirElement DeepCopy(
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
             bool canHideParentFields,
-            ref Dictionary<string, List<string>> valueSetReferences)
+            ref Dictionary<string, ValueSetReferenceInfo> valueSetReferences)
         {
             // copy the element types
             Dictionary<string, FhirElementType> elementTypes = null;
@@ -410,10 +428,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
                 if (!valueSetReferences.ContainsKey(url))
                 {
-                    valueSetReferences.Add(url, new List<string>());
+                    valueSetReferences.Add(url, new ValueSetReferenceInfo());
                 }
 
-                valueSetReferences[url].Add(Path);
+                valueSetReferences[url].AddPath(Path, ValueSetBindingStrength);
             }
 
             return element;
