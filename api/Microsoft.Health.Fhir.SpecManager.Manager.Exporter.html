@@ -115,19 +115,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_Exporter_Export_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_Microsoft_Health_Fhir_SpecManager_Language_ILanguage_Microsoft_Health_Fhir_SpecManager_Manager_ExporterOptions_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.Exporter.Export(Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%2CMicrosoft.Health.Fhir.SpecManager.Language.ILanguage%2CMicrosoft.Health.Fhir.SpecManager.Manager.ExporterOptions%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Manager_Exporter_Export_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_Microsoft_Health_Fhir_SpecManager_Models_FhirServerInfo_Microsoft_Health_Fhir_SpecManager_Language_ILanguage_Microsoft_Health_Fhir_SpecManager_Manager_ExporterOptions_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Manager.Exporter.Export(Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%2CMicrosoft.Health.Fhir.SpecManager.Models.FhirServerInfo%2CMicrosoft.Health.Fhir.SpecManager.Language.ILanguage%2CMicrosoft.Health.Fhir.SpecManager.Manager.ExporterOptions%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/Exporter.cs/#L28">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Manager/Exporter.cs/#L29">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Manager_Exporter_Export_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.Exporter.Export*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_Exporter_Export_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_Microsoft_Health_Fhir_SpecManager_Language_ILanguage_Microsoft_Health_Fhir_SpecManager_Manager_ExporterOptions_System_String_System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.Exporter.Export(Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo,Microsoft.Health.Fhir.SpecManager.Language.ILanguage,Microsoft.Health.Fhir.SpecManager.Manager.ExporterOptions,System.String,System.Boolean)">Export(FhirVersionInfo, ILanguage, ExporterOptions, String, Boolean)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Manager_Exporter_Export_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_Microsoft_Health_Fhir_SpecManager_Models_FhirServerInfo_Microsoft_Health_Fhir_SpecManager_Language_ILanguage_Microsoft_Health_Fhir_SpecManager_Manager_ExporterOptions_System_String_System_Boolean_" data-uid="Microsoft.Health.Fhir.SpecManager.Manager.Exporter.Export(Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo,Microsoft.Health.Fhir.SpecManager.Models.FhirServerInfo,Microsoft.Health.Fhir.SpecManager.Language.ILanguage,Microsoft.Health.Fhir.SpecManager.Manager.ExporterOptions,System.String,System.Boolean)">Export(FhirVersionInfo, FhirServerInfo, ILanguage, ExporterOptions, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Exports.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;string&gt; Export(FhirVersionInfo sourceFhirInfo, ILanguage exportLanguage, ExporterOptions options, string outputPath, bool isPartOfBatch)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;string&gt; Export(FhirVersionInfo sourceFhirInfo, FhirServerInfo sourceServerInfo, ILanguage exportLanguage, ExporterOptions options, string outputPath, bool isPartOfBatch)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -143,6 +143,12 @@
         <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo.html">FhirVersionInfo</a></td>
         <td><span class="parametername">sourceFhirInfo</span></td>
         <td><p>Information describing the source FHIR version information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerInfo.html">FhirServerInfo</a></td>
+        <td><span class="parametername">sourceServerInfo</span></td>
+        <td><p>Information describing the source server.</p>
 </td>
       </tr>
       <tr>

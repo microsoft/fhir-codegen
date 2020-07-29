@@ -119,19 +119,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_TypeScript_Microsoft_Health_Fhir_SpecManager_Language_ILanguage_Export_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_Microsoft_Health_Fhir_SpecManager_Manager_ExporterOptions_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.TypeScript.Microsoft%23Health%23Fhir%23SpecManager%23Language%23ILanguage%23Export(Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%2CMicrosoft.Health.Fhir.SpecManager.Manager.ExporterOptions%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/microsoft/fhir-codegen/new/main/apiSpec/new?filename=Microsoft_Health_Fhir_SpecManager_Language_TypeScript_Microsoft_Health_Fhir_SpecManager_Language_ILanguage_Export_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_Microsoft_Health_Fhir_SpecManager_Models_FhirServerInfo_Microsoft_Health_Fhir_SpecManager_Manager_ExporterOptions_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.Health.Fhir.SpecManager.Language.TypeScript.Microsoft%23Health%23Fhir%23SpecManager%23Language%23ILanguage%23Export(Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo%2CMicrosoft.Health.Fhir.SpecManager.Models.FhirServerInfo%2CMicrosoft.Health.Fhir.SpecManager.Manager.ExporterOptions%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/TypeScript.cs/#L162">View Source</a>
+    <a href="https://github.com/microsoft/fhir-codegen/blob/main/src/Microsoft.Health.Fhir.SpecManager/Language/TypeScript.cs/#L163">View Source</a>
   </span>
   <a id="Microsoft_Health_Fhir_SpecManager_Language_TypeScript_Microsoft_Health_Fhir_SpecManager_Language_ILanguage_Export_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.TypeScript.Microsoft#Health#Fhir#SpecManager#Language#ILanguage#Export*"></a>
-  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_TypeScript_Microsoft_Health_Fhir_SpecManager_Language_ILanguage_Export_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_Microsoft_Health_Fhir_SpecManager_Manager_ExporterOptions_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.TypeScript.Microsoft#Health#Fhir#SpecManager#Language#ILanguage#Export(Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo,Microsoft.Health.Fhir.SpecManager.Manager.ExporterOptions,System.String)">ILanguage.Export(FhirVersionInfo, ExporterOptions, String)</h4>
+  <h4 id="Microsoft_Health_Fhir_SpecManager_Language_TypeScript_Microsoft_Health_Fhir_SpecManager_Language_ILanguage_Export_Microsoft_Health_Fhir_SpecManager_Manager_FhirVersionInfo_Microsoft_Health_Fhir_SpecManager_Models_FhirServerInfo_Microsoft_Health_Fhir_SpecManager_Manager_ExporterOptions_System_String_" data-uid="Microsoft.Health.Fhir.SpecManager.Language.TypeScript.Microsoft#Health#Fhir#SpecManager#Language#ILanguage#Export(Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo,Microsoft.Health.Fhir.SpecManager.Models.FhirServerInfo,Microsoft.Health.Fhir.SpecManager.Manager.ExporterOptions,System.String)">ILanguage.Export(FhirVersionInfo, FhirServerInfo, ExporterOptions, String)</h4>
   <div class="markdown level1 summary"><p>Export the passed FHIR version into the specified directory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void ILanguage.Export(FhirVersionInfo info, ExporterOptions options, string exportDirectory)</code></pre>
+    <pre><code class="lang-csharp hljs">void ILanguage.Export(FhirVersionInfo info, FhirServerInfo serverInfo, ExporterOptions options, string exportDirectory)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -147,6 +147,12 @@
         <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Manager.FhirVersionInfo.html">FhirVersionInfo</a></td>
         <td><span class="parametername">info</span></td>
         <td><p>The information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Microsoft.Health.Fhir.SpecManager.Models.FhirServerInfo.html">FhirServerInfo</a></td>
+        <td><span class="parametername">serverInfo</span></td>
+        <td><p>Information describing the server.</p>
 </td>
       </tr>
       <tr>
