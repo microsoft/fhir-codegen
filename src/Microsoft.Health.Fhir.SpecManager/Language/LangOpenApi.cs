@@ -31,9 +31,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Options for controlling the export.</summary>
         private ExporterOptions _options;
 
-        /// <summary>List of types of the exported resource names and types.</summary>
-        private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
-
         /// <summary>The exported codes.</summary>
         private HashSet<string> _exportedCodes = new HashSet<string>();
 
@@ -189,7 +186,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            _exportedResourceNamesAndTypes = new Dictionary<string, string>();
             _exportedCodes = new HashSet<string>();
 
             if (_parameters.ContainsKey("OPENAPIVERSION"))
@@ -340,27 +336,102 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirComplex complex in _info.ComplexTypes.Values.OrderBy(c => c.Name))
             {
-                schemas.Add(complex.Name, BuildSchema(complex, null, false));
+                BuildSchema(
+                    schemas,
+                    complex,
+                    null,
+                    false);
             }
 
             foreach (FhirComplex complex in _info.Resources.Values.OrderBy(c => c.Name))
             {
-                schemas.Add(complex.Name, BuildSchema(complex, null, true));
+                BuildSchema(
+                    schemas,
+                    complex,
+                    null,
+                    true);
             }
 
             return schemas;
         }
 
+        /// <summary>Builds type name from path.</summary>
+        /// <param name="type">The type.</param>
+        /// <returns>A string.</returns>
+        private string BuildTypeNameFromPath(string type)
+        {
+            if (_info.MajorVersion == 2)
+            {
+                switch (type)
+                {
+                    case "TestScript.setup.action":
+                        return $"TestScriptSetupActionComponent";
+
+                    case "TestScript.test.action":
+                        return $"TestScriptTestActionComponent";
+
+                    case "TestScript.teardown.action":
+                        return $"TestScriptTearDownActionComponent";
+                }
+            }
+
+            if (_info.TryGetExplicitName(type, out string explicitTypeName))
+            {
+                string parentName = type.Substring(0, type.IndexOf('.'));
+                type = $"{parentName}" +
+                    $"{explicitTypeName}" +
+                    $"Component";
+            }
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+
+                string[] components = type.Split('.');
+
+                for (int i = 0; i < components.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        sb.Append(components[i]);
+                        continue;
+                    }
+
+                    // AdverseEvent.suspectEntity.Causality does not prefix?
+                    if (i == components.Length - 1)
+                    {
+                        sb.Append(FhirUtils.SanitizedToConvention(components[i], FhirTypeBase.NamingConvention.PascalCase));
+                    }
+                }
+
+                if (components.Length > 1)
+                {
+                    sb.Append("Component");
+                }
+
+                type = sb.ToString();
+            }
+
+            return type;
+        }
+
         /// <summary>Builds a schema.</summary>
+        /// <param name="schemas">   The schemas.</param>
         /// <param name="complex">   The complex.</param>
         /// <param name="root">      (Optional) The root.</param>
         /// <param name="isResource">(Optional) True if is resource, false if not.</param>
-        /// <returns>An OpenApiSchema.</returns>
-        private OpenApiSchema BuildSchema(
+        private void BuildSchema(
+            Dictionary<string, OpenApiSchema> schemas,
             FhirComplex complex,
             FhirComplex root = null,
             bool isResource = false)
         {
+            string typeName = BuildTypeNameFromPath(complex.Path);
+
+            if (schemas.ContainsKey(typeName))
+            {
+                return;
+            }
+
             OpenApiSchema schema = new OpenApiSchema()
             {
                 Type = "object",
@@ -389,7 +460,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         {
                             Reference = new OpenApiReference()
                             {
-                                Id = BuildTypeFromPath(complex.BaseTypeName),
+                                //Id = BuildTypeReferenceFromPath(complex.BaseTypeName),
+                                Id = BuildTypeNameFromPath(complex.BaseTypeName),
                                 Type = ReferenceType.Schema,
                             },
                         },
@@ -433,18 +505,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     if (complex.Components.ContainsKey(element.Path))
                     {
-                        schema.Properties.Add(
-                            GetElementName(element), // GetComponentName(component),
-                            BuildSchema(complex.Components[element.Path], root));
+                        BuildSchema(
+                            schemas,
+                            complex.Components[element.Path],
+                            root);
                     }
-                    else
-                    {
-                        BuildElementSchema(ref schema, element);
-                    }
+
+                    BuildElementSchema(ref schema, element);
                 }
             }
 
-            return schema;
+            schemas.Add(typeName, schema);
         }
 
         /// <summary>Builds element schema.</summary>
@@ -454,11 +525,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ref OpenApiSchema parentSchema,
             FhirElement element)
         {
-            if (element.Path == "Bundle.entry")
-            {
-                Console.Write("");
-            }
-
             string name = GetElementName(element);
             OpenApiSchema schema = new OpenApiSchema();
 
@@ -557,7 +623,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="baseType">Type of the base.</param>
         /// <param name="schema">  [in,out] The schema.</param>
         /// <param name="isArray"> (Optional) True if is array, false if not.</param>
-        private static void SetSchemaType(
+        private void SetSchemaType(
             string baseType,
             ref OpenApiSchema schema,
             bool isArray = false)
@@ -611,7 +677,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     Reference = new OpenApiReference()
                     {
-                        Id = BuildTypeFromPath(baseType),
+                        //Id = BuildTypeReferenceFromPath(baseType),
+                        Id = BuildTypeNameFromPath(baseType),
                         Type = ReferenceType.Schema,
                     },
                 };
@@ -620,7 +687,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 schema.Reference = new OpenApiReference()
                 {
-                    Id = BuildTypeFromPath(baseType),
+                    //Id = BuildTypeReferenceFromPath(baseType),
+                    Id = BuildTypeNameFromPath(baseType),
                     Type = ReferenceType.Schema,
                 };
             }
@@ -629,7 +697,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Builds type from path.</summary>
         /// <param name="path">Full pathname of the file.</param>
         /// <returns>A string.</returns>
-        private static string BuildTypeFromPath(string path)
+        private static string BuildTypeReferenceFromPath(string path)
         {
             StringBuilder sb = new StringBuilder();
             string[] components = path.Split('.');
