@@ -16,6 +16,6 @@
       "noEmit": true
   },
   "files": [
-      "../../generated/R3.ts"
+      "../../generated/TypeScript_R3.ts"
   ]
 }
