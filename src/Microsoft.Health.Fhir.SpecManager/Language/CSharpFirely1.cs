@@ -1556,69 +1556,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Convert enum value - see Template-Model.tt#2061.</summary>
         /// <param name="name">The name.</param>
         /// <returns>The enum converted value.</returns>
-        private static string ConvertEnumValue(string name)
-        {
-            if (name.StartsWith("_", StringComparison.Ordinal))
-            {
-                name = name.Substring(1);
-            }
-
-            if (name == "=")
-            {
-                return "Equal";
-            }
-
-            if (name == "!=")
-            {
-                return "NotEqual";
-            }
-
-            if (name == "<")
-            {
-                return "LessThan";
-            }
-
-            if (name == "<=")
-            {
-                return "LessOrEqual";
-            }
-
-            if (name == ">=")
-            {
-                return "GreaterOrEqual";
-            }
-
-            if (name == ">")
-            {
-                return "GreaterThan";
-            }
-
-            string[] bits = name.Split(new char[] { ' ', '-' });
-            string result = null;
-            foreach (string bit in bits)
-            {
-                result += bit.Substring(0, 1).ToUpperInvariant();
-                result += bit.Substring(1);
-            }
-
-            result = result.Replace(".", "_");
-            result = result.Replace(")", "_");
-            result = result.Replace("(", "_");
-
-            if (char.IsDigit(result[0]))
-            {
-                result = "N" + result;
-            }
-
-            return result;
-        }
+        private static string ConvertEnumValue(string name) => CSharpFirelyCommon.ConvertEnumValue(name);
 
         /// <summary>Gets an order.</summary>
         /// <param name="element">The element.</param>
-        private static int GetOrder(FhirElement element)
-        {
-            return (element.FieldOrder * 10) + 10;
-        }
+        private static int GetOrder(FhirElement element) => CSharpFirelyCommon.GetOrder(element);
 
         /// <summary>Writes the elements.</summary>
         /// <param name="complex">              The complex data type.</param>
@@ -2570,27 +2512,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Opens the scope.</summary>
         private void OpenScope()
-        {
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-        }
+            => CSharpFirelyCommon.OpenScope(_writer);
 
         /// <summary>Closes the scope.</summary>
-        private void CloseScope(bool includeSemicolon = false)
-        {
-            _writer.DecreaseIndent();
-
-            if (includeSemicolon)
-            {
-                _writer.WriteLineIndented("};");
-            }
-            else
-            {
-                _writer.WriteLineIndented("}");
-            }
-
-            _writer.WriteLine(string.Empty);
-        }
+        private void CloseScope(bool includeSemicolon = false, bool suppressNewline = false)
+            => CSharpFirelyCommon.CloseScope(_writer, includeSemicolon, suppressNewline);
 
         /// <summary>Writes an indented comment.</summary>
         /// <param name="value">    The value.</param>

@@ -11,7 +11,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Microsoft.Health.Fhir.SpecManager.fhir.r2;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Newtonsoft.Json;
@@ -628,6 +627,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="regex">        [out] The RegEx.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElement(
+
             string structureName,
             fhir_5.ElementDefinition element,
             out Dictionary<string, FhirElementType> elementTypes,
@@ -636,8 +636,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             elementTypes = new Dictionary<string, FhirElementType>();
             regex = string.Empty;
 
+            /* Correct some mistakes in the spec. Need to discuss this with Gino.
+             */
+            if (element.Path == "Resource.id")
+            {
+                elementTypes.Add("id", new FhirElementType("id"));
+            }
+
             // check for declared type
-            if (element.Type != null)
+            else if (element.Type != null)
             {
                 foreach (fhir_5.ElementDefinitionType edType in element.Type)
                 {

@@ -2,7 +2,9 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
+using System;
 using System.Collections.Generic;
+using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
@@ -97,5 +99,98 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
+        /// <summary>Opens the scope.</summary>
+        public static void OpenScope(ExportStreamWriter writer)
+        {
+            writer.WriteLineIndented("{");
+            writer.IncreaseIndent();
+        }
+
+        /// <summary>Closes the scope.</summary>
+        public static void CloseScope(ExportStreamWriter writer, bool includeSemicolon = false, bool suppressNewline = false)
+        {
+            writer.DecreaseIndent();
+
+            if (includeSemicolon)
+            {
+                writer.WriteLineIndented("};");
+            }
+            else
+            {
+                writer.WriteLineIndented("}");
+            }
+
+            if (!suppressNewline)
+            {
+                writer.WriteLine(string.Empty);
+            }
+        }
+
+        /// <summary>Convert enum value - see Template-Model.tt#2061.</summary>
+        /// <param name="name">The name.</param>
+        /// <returns>The enum converted value.</returns>
+        public static string ConvertEnumValue(string name)
+        {
+            if (name.StartsWith("_", StringComparison.Ordinal))
+            {
+                name = name.Substring(1);
+            }
+
+            if (name == "=")
+            {
+                return "Equal";
+            }
+
+            if (name == "!=")
+            {
+                return "NotEqual";
+            }
+
+            if (name == "<")
+            {
+                return "LessThan";
+            }
+
+            if (name == "<=")
+            {
+                return "LessOrEqual";
+            }
+
+            if (name == ">=")
+            {
+                return "GreaterOrEqual";
+            }
+
+            if (name == ">")
+            {
+                return "GreaterThan";
+            }
+
+            string[] bits = name.Split(new char[] { ' ', '-' });
+            string result = null;
+            foreach (string bit in bits)
+            {
+                result += bit.Substring(0, 1).ToUpperInvariant();
+                result += bit.Substring(1);
+            }
+
+            result = result.Replace(".", "_");
+            result = result.Replace(")", "_");
+            result = result.Replace("(", "_");
+
+            if (char.IsDigit(result[0]))
+            {
+                result = "N" + result;
+            }
+
+            return result;
+        }
+
+        /// <summary>Gets an order.</summary>
+        /// <param name="element">The element.</param>
+        public static int GetOrder(FhirElement element)
+        {
+            return (element.FieldOrder * 10) + 10;
+        }
     }
 }

@@ -4,6 +4,7 @@
 // </copyright>
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -56,17 +57,39 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Structures to skip writing (Template-Model.tt#1334).</summary>
         private static HashSet<string> _exclusionSet = new HashSet<string>()
         {
+            /* Since Base defines its methods abstractly, the pattern for generating it
+             * is sufficiently different from derived classes that it makes sense not
+             * to generate the methods (it's pretty empty too - no members on this abstract class) */
             "Base",
-            "CanonicalResource",
-            "Element",
-            "Extension",
-            "MetadataResource",
-            "DataType",
-            "BackboneType",
+
+            /* PrimitiveType defines the magic `ObjectValue` member used by all derived
+             * primitives to store their value. This makes the CopyTo(), IsExact() methods
+             * different enough that it does not make sense to generate them. */
             "PrimitiveType",
-            "Narrative",
-            "Resource",
+
+            /* Element has the special `id` element, that is both an attribute in the
+             * XML serialization and is not using a FHIR primitive for representation. Consequently,
+             * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
+            "Element",
+
+            /* Extension has the special `url` element, that is both an attribute in the
+             * XML serialization and is not using a FHIR primitive for representation. Consequently,
+             * the generated CopyTo() and IsExact() methods diverge too much to be useful.
+             * Also, is uses the special `IsOpen` argument to `AllowedTypes` to account for open
+             * types *not* defined in common. */
+            "Extension",
+
+           /* "CanonicalResource",
+            "MetadataResource",
+            "Narrative", */
+
+            /* Citation somehow generates incorrect code - there must be something new
+             * going on with this resource type. For now, it has been disabled so we can
+             * take a look at it later, before R5 ships. */
             "Citation",
+
+            /* TODO: This list below should be irrelevant now we only generate enums for
+             * that are actually used in a required binding - verify later. */
             "http://hl7.org/fhir/ValueSet/defined-types",
             "http://hl7.org/fhir/ValueSet/ucum-units",
             "http://hl7.org/fhir/ValueSet/consent-content-class",
@@ -77,14 +100,40 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>List of types which cannot be found for ModelInfo.cs (not exported elsewhere).</summary>
         private static readonly List<string> _dictionaryMissingTypes = new List<string>()
         {
+            "Base",
+            "PrimitiveType",
             "Element",
             "Extension",
-            "Narrative",
-            "xhtml",
+            /* "Narrative",
+            "xhtml", */
         };
 
         /// <summary>List of resources which cannot be found for ModelInfo.cs (not exported elsewhere).</summary>
         private static readonly List<string> _dictionaryMissingResources = new List<string>()
+        {
+            // "Resource",
+        };
+
+        /// <summary>
+        /// List of complex datatype classes that are part of the 'common' subset. See <see cref="GenSubset"/>.
+        /// </summary>
+        private static readonly List<string> _commmonComplexTypes = new List<string>()
+        {
+            "BackboneElement",
+            "BackboneType",
+            "Base",
+            "Coding",
+            "DataType",
+            "Element",
+            "Extension",
+            "Meta",
+            "PrimitiveType",
+        };
+
+        /// <summary>
+        /// List of resource classes that are part of the 'common' subset. See <see cref="GenSubset"/>.
+        /// </summary>
+        private static readonly List<string> _commmonResourceTypes = new List<string>()
         {
             "Resource",
         };
@@ -116,7 +165,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// Used to provide information to users.
         /// </summary>
         List<ExporterOptions.FhirExportClassType> ILanguage.RequiredExportClassTypes => new List<ExporterOptions.FhirExportClassType>();
-        
+
         /// <summary>
         /// Gets a list of FHIR class types that the language CAN export, depending on user choices.
         /// </summary>
@@ -140,6 +189,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ExporterOptions options,
             string exportDirectory)
         {
+            /* For the ExporterOptions.LanguageOptions we accept:
+             *    subset=common|main        'common' will generate code for 'common' repo of the library,
+             *                              'main' will genreate code for the version-specific 'api' (main) repo of the library
+             */
+            GenSubset subset = GenSubset.All;
+
+            if (options.LanguageOptions.TryGetValue("subset", out string ss))
+            {
+                subset = ss == "common" ? GenSubset.Common : ss == "main" ? GenSubset.Main : GenSubset.All;
+            }
+
             // set internal vars so we don't pass them to every function
             _info = info;
             _options = options;
@@ -156,21 +216,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 Directory.CreateDirectory(Path.Combine(exportDirectory, "Generated"));
             }
 
-            if (info.MajorVersion == 2)
-            {
-                if (_exclusionSet.Contains("http://hl7.org/fhir/ValueSet/defined-types"))
-                {
-                    _exclusionSet.Remove("http://hl7.org/fhir/ValueSet/defined-types");
-                }
-            }
-            else
-            {
-                if (!_exclusionSet.Contains("http://hl7.org/fhir/ValueSet/defined-types"))
-                {
-                    _exclusionSet.Add("http://hl7.org/fhir/ValueSet/defined-types");
-                }
-            }
-
             _headerUserName = Environment.UserName;
             _headerGenerationDateTime = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss", null);
 
@@ -178,16 +223,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             Dictionary<string, WrittenModelInfo> writtenComplexTypes = new Dictionary<string, WrittenModelInfo>();
             Dictionary<string, WrittenModelInfo> writtenResources = new Dictionary<string, WrittenModelInfo>();
 
-            string infoFilename;
-
-            if (_info.MajorVersion > 3)
-            {
-                infoFilename = Path.Combine(_exportDirectory, "Template-Model.cs");
-            }
-            else
-            {
-                infoFilename = Path.Combine(_exportDirectory, "Generated", "Template-Model.cs");
-            }
+            string infoFilename = Path.Combine(_exportDirectory, "Generated", "_GeneratorLog.cs");
 
             using (FileStream infoStream = new FileStream(infoFilename, FileMode.Create))
             using (ExportStreamWriter infoWriter = new ExportStreamWriter(infoStream))
@@ -196,27 +232,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteGenerationComment(infoWriter);
 
-                if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Enum))
+                if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Enum) && subset.HasFlag(GenSubset.Main))
                 {
                     WriteCommonValueSets();
                 }
 
                 _modelWriter.WriteLineIndented("// Generated items");
 
-                if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.PrimitiveType))
+                if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.PrimitiveType) && subset.HasFlag(GenSubset.Common))
                 {
                     WritePrimitiveTypes(_info.PrimitiveTypes.Values, ref writtenPrimitives);
                 }
 
                 if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.ComplexType))
                 {
-                    WriteComplexDataTypes(_info.ComplexTypes.Values, ref writtenComplexTypes);
+                    WriteComplexDataTypes(_info.ComplexTypes.Values, ref writtenComplexTypes, subset);
                 }
 
                 if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Resource))
                 {
-                    WriteResources(_info.Resources.Values, ref writtenResources);
-                    WriteModelInfo(writtenPrimitives, writtenComplexTypes, writtenResources);
+                    WriteResources(_info.Resources.Values, ref writtenResources, subset);
+
+                    if (subset.HasFlag(GenSubset.Main))
+                    {
+                        WriteModelInfo(writtenPrimitives, writtenComplexTypes, writtenResources);
+                    }
                 }
             }
         }
@@ -503,13 +543,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
             {
-                // 20200723EK - At least in latest (1.9), xhtml *is* part of the FhirCsTypeToString dictionary
-                /* if (kvp.Value.FhirName == "xhtml")
-                 {
-                    continue;
-                 }
-                 */
-
                 _writer.WriteLineIndented($"{{ typeof({kvp.Value.CsName}), \"{kvp.Value.FhirName}\" }},");
             }
 
@@ -679,7 +712,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         {
                             continue;
                         }
-                     
+
                         if (_exclusionSet.Contains(vs.URL))
                         {
                             continue;
@@ -717,7 +750,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="writtenModels">[in,out] The written models.</param>
         private void WriteResources(
             IEnumerable<FhirComplex> complexes,
-            ref Dictionary<string, WrittenModelInfo> writtenModels)
+            ref Dictionary<string, WrittenModelInfo> writtenModels,
+            GenSubset subset)
         {
             foreach (FhirComplex complex in complexes.OrderBy(c => c.Name))
             {
@@ -726,7 +760,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WriteResource(complex, ref writtenModels);
+                if ((subset.HasFlag(GenSubset.Common) && _commmonResourceTypes.Contains(complex.Name)) ||
+                    (subset.HasFlag(GenSubset.Main) && !_commmonResourceTypes.Contains(complex.Name)))
+                {
+                    WriteResource(complex, ref writtenModels);
+                }
             }
         }
 
@@ -773,7 +811,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="writtenModels">[in,out] The written models.</param>
         private void WriteComplexDataTypes(
             IEnumerable<FhirComplex> complexes,
-            ref Dictionary<string, WrittenModelInfo> writtenModels)
+            ref Dictionary<string, WrittenModelInfo> writtenModels,
+            GenSubset subset)
         {
             foreach (FhirComplex complex in complexes.OrderBy(c => c.Name))
             {
@@ -782,7 +821,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
-                WriteComplexDataType(complex, ref writtenModels);
+                if ((subset.HasFlag(GenSubset.Common) && _commmonComplexTypes.Contains(complex.Name)) ||
+                    (subset.HasFlag(GenSubset.Main) && !_commmonComplexTypes.Contains(complex.Name)))
+                {
+                    WriteComplexDataType(complex, ref writtenModels);
+                }
             }
         }
 
@@ -846,99 +889,58 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteIndentedComment($"{complex.ShortDescription}");
 
-            if ((_info.MajorVersion == 2) &&
-                (complex.Name == "BackboneElement"))
+            WriteSerializable();
+            if (isResource)
             {
-                isAbstract = true;
+                _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\", IsResource=true)]");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
             }
 
-            if ((_info.MajorVersion != 2) ||
-                (complex.Name != "BackboneElement"))
+            if (complex.BaseTypeName == "Quantity")
             {
-                if (!isAbstract || (complex.Name == "DomainResource" && _info.MajorVersion == 3))
-                {
-                    if (isResource)
-                    {
-                        _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\", IsResource=true)]");
-                    }
-                    else
-                    {
-                        _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
-                    }
-                }
+                // Constrained quantities are handled differently (if at all in 2.0?)
+                WriteConstrainedQuantity(complex, exportName, depth);
+                return;
             }
 
             string abstractFlag = isAbstract ? " abstract" : string.Empty;
 
+            _writer.WriteLineIndented("[DataContract]");
+
+            List<string> interfaces = new List<string>();
+
+            if (complex.Elements.Keys.Any(k => k.EndsWith(".modifierExtension", StringComparison.InvariantCulture)))
+            {
+                interfaces.Add($"{Namespace}.IModifierExtendable");
+            }
+
+            string interfacesSuffix = interfaces.Any() ? $", {string.Join(", ", interfaces)}" : string.Empty;
+
             switch (complex.BaseTypeName)
             {
-                case "Quantity":
-                    WriteConstrainedQuantity(complex, exportName, depth);
-                    return;
-
-                case "BackboneElement":
-                case "BackboneType":
-                    _writer.WriteLineIndented("[DataContract]");
-                    _writer.WriteLineIndented(
-                        $"public{abstractFlag} partial class" +
-                            $" {exportName}" +
-                            $" : {Namespace}.BackboneElement," +
-                            $" System.ComponentModel.INotifyPropertyChanged");
-                    break;
-
-                case "DataType":
-                    _writer.WriteLineIndented("[DataContract]");
-                    _writer.WriteLineIndented(
-                        $"public{abstractFlag} partial class" +
-                            $" {exportName}" +
-                            $" : {Namespace}.Element," +
-                            $" System.ComponentModel.INotifyPropertyChanged");
-                    break;
-
-                case "Resource":
-                case "DomainResource":
-                    _writer.WriteLineIndented("[DataContract]");
-                    _writer.WriteLineIndented(
-                        $"public{abstractFlag} partial class" +
-                            $" {exportName}" +
-                            $" : {Namespace}.{complex.BaseTypeName}," +
-                            $" System.ComponentModel.INotifyPropertyChanged");
-                    break;
-
                 case "MetadataResource":
                 case "CanonicalResource":
-                    _writer.WriteLineIndented("[DataContract]");
                     _writer.WriteLineIndented(
                         $"public{abstractFlag} partial class" +
                             $" {exportName}" +
-                            $" : {Namespace}.DomainResource," +
-                            $" System.ComponentModel.INotifyPropertyChanged");
+                            $" : {Namespace}.DomainResource{interfacesSuffix}");
                     break;
 
                 default:
-                    _writer.WriteLineIndented("[DataContract]");
-                    if (_info.HasComplex(complex.BaseTypeName))
-                    {
-                        _writer.WriteLineIndented(
-                            $"public{abstractFlag} partial class" +
-                                $" {exportName}" +
-                                $" : {Namespace}.{complex.BaseTypeName}");
-                    }
-                    else
-                    {
-                        _writer.WriteLineIndented(
-                            $"public{abstractFlag} partial class" +
-                                $" {exportName}" +
-                                $" : {Namespace}.Element");
-                    }
-
+                    _writer.WriteLineIndented(
+                        $"public{abstractFlag} partial class" +
+                            $" {exportName}" +
+                            $" : {Namespace}.{complex.BaseTypeName}{interfacesSuffix}");
                     break;
             }
 
             // open class
             OpenScope();
 
-            WritePropertyTypeName(complex.Name, isResource, depth);
+            WritePropertyTypeName(complex.Name);
 
             if (!string.IsNullOrEmpty(complex.ValidationRegEx))
             {
@@ -984,13 +986,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteElements(complex, exportName, ref exportedElements);
 
-            if (isResource)
-            {
-                WriteConstraints(complex, exportName);
-            }
-
-            if (exportedElements.Count > 0)
-            {
+//            if (exportedElements.Count > 0)
+//            {
                 WriteCopyTo(exportName, exportedElements);
 
                 if (!isAbstract)
@@ -1002,7 +999,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIsExactly(exportName, exportedElements);
                 WriteChildren(exportedElements);
                 WriteNamedChildren(exportedElements);
-            }
+//            }
 
             // close class
             CloseScope();
@@ -1013,7 +1010,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteNamedChildren(
             List<WrittenElementInfo> exportedElements)
         {
-            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("[IgnoreDataMember]");
             _writer.WriteLineIndented("public override IEnumerable<ElementValue> NamedChildren");
             OpenScope();
             _writer.WriteLineIndented("get");
@@ -1047,7 +1044,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteChildren(
             List<WrittenElementInfo> exportedElements)
         {
-            _writer.WriteLineIndented("[NotMapped]");
+            _writer.WriteLineIndented("[IgnoreDataMember]");
             _writer.WriteLineIndented("public override IEnumerable<Base> Children");
             OpenScope();
             _writer.WriteLineIndented("get");
@@ -1189,77 +1186,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             return value.Replace("\\", "\\\\").Replace("\"", "\\\"");
         }
 
-        /// <summary>Writes the constraints.</summary>
-        /// <param name="complex">   The complex data type.</param>
-        /// <param name="exportName">Name of the export.</param>
-        private void WriteConstraints(
-            FhirComplex complex,
-            string exportName)
-        {
-            List<string> constraintNames = new List<string>();
-
-            if (complex.Constraints != null)
-            {
-                foreach (FhirConstraint constraint in complex.Constraints)
-                {
-                    string name = $"{exportName}_{constraint.Key.Replace('-', '_').ToUpperInvariant()}";
-
-                    constraintNames.Add(name);
-
-                    _writer.WriteLineIndented($"public static" +
-                        $" ElementDefinition.ConstraintComponent {name}" +
-                        $" = new ElementDefinition.ConstraintComponent()");
-
-                    OpenScope();
-
-                    if (constraint.IsBestPractice)
-                    {
-                        if (!string.IsNullOrEmpty(constraint.BestPracticeExplanation))
-                        {
-                            WriteIndentedComment(constraint.BestPracticeExplanation);
-                        }
-
-                        _writer.WriteLineIndented("Extension = new List<Extension>() { new Extension { Value = new FhirBoolean(true), Url = \"http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice\"} },");
-                    }
-
-                    if (_info.MajorVersion > 2)
-                    {
-                        _writer.WriteLineIndented($"Expression = \"{SanitizeForQuote(constraint.Expression)}\",");
-                    }
-
-                    _writer.WriteLineIndented($"Key = \"{constraint.Key}\",");
-
-                    if (constraint.Severity == "Error")
-                    {
-                        _writer.WriteLineIndented("Severity = ElementDefinition.ConstraintSeverity.Error,");
-                    }
-                    else
-                    {
-                        _writer.WriteLineIndented("Severity = ElementDefinition.ConstraintSeverity.Warning,");
-                    }
-
-                    _writer.WriteLineIndented($"Human = \"{SanitizeForQuote(constraint.Description)}\",");
-                    _writer.WriteLineIndented($"Xpath = \"{SanitizeForQuote(constraint.XPath)}\"");
-
-                    CloseScope(true);
-                }
-            }
-
-            _writer.WriteLineIndented("public override void AddDefaultConstraints()");
-            OpenScope();
-            _writer.WriteLineIndented("base.AddDefaultConstraints();");
-            _writer.WriteLine(string.Empty);
-
-            if (constraintNames.Count > 0)
-            {
-                foreach (string name in constraintNames)
-                {
-                    _writer.WriteLineIndented($"InvariantConstraints.Add({name});");
-                }
-            }
-
-            CloseScope();
-        }
 
         /// <summary>Writes a constrained quantity.</summary>
         /// <param name="complex">   The complex data type.</param>
@@ -1278,7 +1204,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // open class
             OpenScope();
 
-            WritePropertyTypeName(complex.Name, false, depth);
+            WritePropertyTypeName(complex.Name);
 
             _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
             OpenScope();
@@ -1341,7 +1267,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // open class
             OpenScope();
 
-            WritePropertyTypeName(exportName, false, depth);
+            WritePropertyTypeName(exportName);
 
             WriteElements(complex, exportName, ref exportedElements);
 
@@ -1557,69 +1483,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Convert enum value - see Template-Model.tt#2061.</summary>
         /// <param name="name">The name.</param>
         /// <returns>The enum converted value.</returns>
-        private static string ConvertEnumValue(string name)
-        {
-            if (name.StartsWith("_", StringComparison.Ordinal))
-            {
-                name = name.Substring(1);
-            }
-
-            if (name == "=")
-            {
-                return "Equal";
-            }
-
-            if (name == "!=")
-            {
-                return "NotEqual";
-            }
-
-            if (name == "<")
-            {
-                return "LessThan";
-            }
-
-            if (name == "<=")
-            {
-                return "LessOrEqual";
-            }
-
-            if (name == ">=")
-            {
-                return "GreaterOrEqual";
-            }
-
-            if (name == ">")
-            {
-                return "GreaterThan";
-            }
-
-            string[] bits = name.Split(new char[] { ' ', '-' });
-            string result = null;
-            foreach (string bit in bits)
-            {
-                result += bit.Substring(0, 1).ToUpperInvariant();
-                result += bit.Substring(1);
-            }
-
-            result = result.Replace(".", "_");
-            result = result.Replace(")", "_");
-            result = result.Replace("(", "_");
-
-            if (char.IsDigit(result[0]))
-            {
-                result = "N" + result;
-            }
-
-            return result;
-        }
+        private static string ConvertEnumValue(string name) => CSharpFirelyCommon.ConvertEnumValue(name);
 
         /// <summary>Gets an order.</summary>
         /// <param name="element">The element.</param>
-        private static int GetOrder(FhirElement element)
-        {
-            return (element.FieldOrder * 10) + 10;
-        }
+        private static int GetOrder(FhirElement element) => CSharpFirelyCommon.GetOrder(element);
 
         /// <summary>Writes the elements.</summary>
         /// <param name="complex">              The complex data type.</param>
@@ -1796,8 +1664,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteIndentedComment(element.ShortDescription);
             _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
 
-            _writer.WriteLineIndented("[NotMapped]");
-            _writer.WriteLineIndented("[IgnoreDataMemberAttribute]");
+            _writer.WriteLineIndented("[IgnoreDataMember]");
 
             if (element.CardinalityMax == 1)
             {
@@ -1819,7 +1686,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"{pascal}{matchTrailer}Element = new {codeLiteral}(value);");
                 _writer.DecreaseIndent();
                 _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
-                CloseScope();
+                CloseScope(suppressNewline: true);
                 CloseScope();
             }
             else
@@ -1841,7 +1708,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.DecreaseIndent();
 
                 _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
-                CloseScope();
+                CloseScope(suppressNewline: true);
                 CloseScope();
             }
         }
@@ -1873,7 +1740,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 out string allowedTypes,
                 out string resourceReferences);
 
-            _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice})]");
+            /* Exceptions:
+             *  o Meta.source only exists since R5, it is still present in the common version.
+             *  o Meta.profile has changed types from `uri` to `canonical`, but we stick to Uri for the common version
+             *
+             * If we start to include more classes like this, we might need to
+             * automate this, by scanning differences between 3/4/5/6/7 etc.. */
+            if (element.Path == "Meta.source")
+            {
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=\"3.2.0\")]");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice})]");
+            }
+
+            if (element.Path == "Meta.profile")
+            {
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, TypeRedirect=typeof(Canonical), Since=\"3.3.0\")]");
+            }
+
 
             if ((!string.IsNullOrEmpty(resourceReferences)) && string.IsNullOrEmpty(allowedTypes))
             {
@@ -1909,7 +1795,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
+                Debug.Fail($"No type can be derived for element {element.Name}");
                 type = "object";
+            }
+
+            /* This is an exception - we want to share Meta across different FHIR versions
+             * in the common library, so we use the "most common" type to the versions, which
+             * is uri rather than the more specific canonical. */
+            if (element.Path == "Meta.profile")
+            {
+                type = "uri";
             }
 
             _writer.WriteLineIndented("[DataMember]");
@@ -2018,8 +1913,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteIndentedComment(element.ShortDescription);
             _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
 
-            _writer.WriteLineIndented("[NotMapped]");
-            _writer.WriteLineIndented("[IgnoreDataMemberAttribute]");
+            _writer.WriteLineIndented("[IgnoreDataMember]");
 
             if (element.CardinalityMax == 1)
             {
@@ -2040,7 +1934,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"{pascal}Element = new {Namespace}.{type}(value);");
                 _writer.DecreaseIndent();
                 _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
-                CloseScope();
+                CloseScope(suppressNewline: true);
                 CloseScope();
             }
             else
@@ -2063,7 +1957,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.DecreaseIndent();
 
                 _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
-                CloseScope();
+                CloseScope(suppressNewline: true);
                 CloseScope();
             }
         }
@@ -2244,30 +2138,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a property type name.</summary>
         /// <param name="name">      The name.</param>
         /// <param name="isResource">True if is resource, false if not.</param>
-        private void WritePropertyTypeName(string name, bool isResource, int depth)
+        private void WritePropertyTypeName(string name)
         {
             WriteIndentedComment("FHIR Type Name");
 
             _writer.WriteLineIndented($"public override string TypeName {{ get {{ return \"{name}\"; }} }}");
 
             _writer.WriteLine(string.Empty);
-        }
-
-        /// <summary>Determine if we should write resource name.</summary>
-        /// <param name="name">The name.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ShouldWriteResourceName(string name)
-        {
-            switch (name)
-            {
-                case "Resource":
-                case "DomainResource":
-                case "MetadataResource":
-                case "CanonicalResource":
-                    return false;
-            }
-
-            return true;
         }
 
         /// <summary>Query if 'typeName' is nullable.</summary>
@@ -2367,9 +2244,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteIndentedComment($"Primitive Type {primitive.Name}");
                 }
 
-                _writer.WriteLine("#if !NETSTANDARD1_1");
-                _writer.WriteLineIndented("[Serializable]");
-                _writer.WriteLine("#endif");
+                WriteSerializable();
                 _writer.WriteLineIndented("[System.Diagnostics.DebuggerDisplay(@\"\\{Value={Value}}\")]");
                 _writer.WriteLineIndented($"[FhirType(\"{primitive.Name}\")]");
                 _writer.WriteLineIndented("[DataContract]");
@@ -2383,7 +2258,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // open class
                 OpenScope();
 
-                WritePropertyTypeName(primitive.Name, false, 0);
+                WritePropertyTypeName(primitive.Name);
 
                 if (!string.IsNullOrEmpty(primitive.ValidationRegEx))
                 {
@@ -2438,6 +2313,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
+        private void WriteSerializable()
+        {
+            _writer.WriteLine("#if !NETSTANDARD1_1");
+            _writer.WriteLineIndented("[Serializable]");
+            _writer.WriteLine("#endif");
+        }
+
         private static string PrimitiveValueInterface(string valueType)
         {
             if (valueType.EndsWith("?", StringComparison.InvariantCulture))
@@ -2445,10 +2327,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string nullableType = valueType.TrimEnd('?');
                 return $"INullableValue<{nullableType}>";
             }
-            //else if (valueType == "string")
-            //{
-            //    return "IStringValue";
-            //}
             else
             {
                 return $"IValue<{valueType}>";
@@ -2509,14 +2387,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteGenerationComment();
 
             _writer.WriteLineIndented("using System;");
-           // _writer.WriteLineIndented("using System.Collections.Generic;");
-           // _writer.WriteLineIndented("using System.Linq;");
             _writer.WriteLineIndented("using System.Runtime.Serialization;");
             _writer.WriteLineIndented("using System.Text.RegularExpressions;");
             _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
-            //_writer.WriteLineIndented("using Hl7.Fhir.Serialization;");
             _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
-            //_writer.WriteLineIndented("using Hl7.Fhir.Utility;");
             _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
             _writer.WriteLine(string.Empty);
 
@@ -2534,8 +2408,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             writer.WriteLineIndented("// <auto-generated/>");
             writer.WriteLineIndented($"// Contents of: {_info.PackageName} version: {_info.VersionString}");
+#if !DEBUG
             writer.WriteLineIndented($"// Generated by {_headerUserName} on {_headerGenerationDateTime}");
-
+#endif
             if ((_options.ExportList != null) && _options.ExportList.Any())
             {
                 string restrictions = string.Join("|", _options.ExportList);
@@ -2587,33 +2462,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Opens the scope.</summary>
         private void OpenScope()
-        {
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-        }
+            => CSharpFirelyCommon.OpenScope(_writer);
 
         /// <summary>Closes the scope.</summary>
-        private void CloseScope(bool includeSemicolon = false)
-        {
-            _writer.DecreaseIndent();
-
-            if (includeSemicolon)
-            {
-                _writer.WriteLineIndented("};");
-            }
-            else
-            {
-                _writer.WriteLineIndented("}");
-            }
-
-            _writer.WriteLine(string.Empty);
-        }
+        private void CloseScope(bool includeSemicolon = false, bool suppressNewline = false)
+            => CSharpFirelyCommon.CloseScope(_writer, includeSemicolon, suppressNewline);
 
         /// <summary>Writes an indented comment.</summary>
         /// <param name="value">    The value.</param>
         /// <param name="isSummary">(Optional) True if is summary, false if not.</param>
         private void WriteIndentedComment(string value, bool isSummary = true, bool singleLine = false)
             => CSharpFirelyCommon.WriteIndentedComment(_writer, value, isSummary, singleLine);
+
+        /// <summary>
+        /// Determines the subset of code to generate.
+        /// </summary>
+        [Flags]
+        private enum GenSubset
+        {
+            // Subset of generated output for the 'fhir-net-common' repo
+            Common = 1,
+
+            // Subset of generated output for the 'fhir-net-api' repo
+            Main = 2,
+
+            // No subsetting, generate all
+            All = Common | Main,
+        }
 
         /// <summary>Information about a written value set.</summary>
         private struct WrittenValueSetInfo
