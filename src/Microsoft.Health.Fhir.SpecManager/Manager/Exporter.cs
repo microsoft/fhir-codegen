@@ -19,14 +19,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
     {
         /// <summary>Exports.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-        /// <param name="sourceFhirInfo">Information describing the source FHIR version information.</param>
-        /// <param name="exportLanguage">The export language.</param>
-        /// <param name="options">       Options for controlling the operation.</param>
-        /// <param name="outputPath">    The output filename.</param>
-        /// <param name="isPartOfBatch"> True if is part of batch, false if not.</param>
+        /// <param name="sourceFhirInfo">  Information describing the source FHIR version information.</param>
+        /// <param name="sourceServerInfo">Information describing the source server.</param>
+        /// <param name="exportLanguage">  The export language.</param>
+        /// <param name="options">         Options for controlling the operation.</param>
+        /// <param name="outputPath">      The output filename.</param>
+        /// <param name="isPartOfBatch">   True if is part of batch, false if not.</param>
         /// <returns>A List of files written by the export operation.</returns>
         public static List<string> Export(
             FhirVersionInfo sourceFhirInfo,
+            FhirServerInfo sourceServerInfo,
             ILanguage exportLanguage,
             ExporterOptions options,
             string outputPath,
@@ -109,12 +111,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 true,
                 options.ExtensionUrls,
                 options.ExtensionElementPaths,
-                options.ServerInfo,
+                sourceServerInfo,
                 options.IncludeExperimental);
+
+            FhirServerInfo serverInfo = null;
+
+            if (sourceServerInfo != null)
+            {
+                serverInfo = sourceServerInfo.CopyForExport(info);
+            }
 
             // perform our export
             exportLanguage.Export(
                 info,
+                serverInfo,
                 options,
                 tempDir);
 

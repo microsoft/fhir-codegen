@@ -107,5 +107,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the documentation.</summary>
         public string Documentation { get; }
+
+        /// <summary>Makes a deep copy of this object.</summary>
+        /// <returns>A copy of this object.</returns>
+        public object Clone()
+        {
+            return new FhirServerSearchParam(
+                Name,
+                DefinitionCanonical,
+                ParameterType,
+                Documentation);
+        }
     }
 }

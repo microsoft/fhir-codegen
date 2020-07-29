@@ -695,7 +695,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Recursively adds a resource or type to the export set.</summary>
         /// <param name="name">The name.</param>
         /// <param name="set"> [in,out] The set.</param>
-        private void AddToExportSet(string name, ref HashSet<string> set)
+        internal void AddToExportSet(string name, ref HashSet<string> set)
         {
             // if we've already added this, we're done
             if (set.Contains(name))
@@ -1184,6 +1184,43 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
 
             return info;
+        }
+
+        /// <summary>Gets major version.</summary>
+        /// <param name="versionString">The version string.</param>
+        /// <returns>The major version.</returns>
+        internal static int GetMajorVersion(string versionString)
+        {
+            if (string.IsNullOrEmpty(versionString))
+            {
+                return 0;
+            }
+            else
+            {
+                // create our JSON converter
+                switch (versionString[0])
+                {
+                    case '1':
+                    case '2':
+                        return 2;
+
+                    case '3':
+                        return 3;
+
+                    case '4':
+                        if (versionString.StartsWith("4.4", StringComparison.Ordinal))
+                        {
+                            return 5;
+                        }
+
+                        return 4;
+
+                    case '5':
+                        return 5;
+                }
+            }
+
+            return 0;
         }
     }
 }

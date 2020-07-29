@@ -170,10 +170,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
+        /// <param name="serverInfo">     Information describing the server.</param>
         /// <param name="options">        Options for controlling the operation.</param>
         /// <param name="exportDirectory">Directory to write files.</param>
         void ILanguage.Export(
             FhirVersionInfo info,
+            FhirServerInfo serverInfo,
             ExporterOptions options,
             string exportDirectory)
         {

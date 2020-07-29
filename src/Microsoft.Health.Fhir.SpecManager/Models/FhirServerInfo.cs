@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Extensions;
+using Microsoft.Health.Fhir.SpecManager.Manager;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
@@ -29,6 +30,56 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="serverOperations">         The operations defined at the system level operation.</param>
         public FhirServerInfo(
             List<string> serverInteractions,
+            string url,
+            string fhirVersion,
+            string softwareName,
+            string softwareVersion,
+            string softwareReleaseDate,
+            string implementationDescription,
+            string implementationUrl,
+            Dictionary<string, FhirServerResourceInfo> resourceInteractions,
+            Dictionary<string, FhirServerSearchParam> serverSearchParameters,
+            Dictionary<string, FhirServerOperation> serverOperations)
+        {
+            Url = url;
+            FhirVersion = fhirVersion;
+
+            _fhirMajorVersion = FhirVersionInfo.GetMajorVersion(fhirVersion);
+
+            SoftwareName = softwareName;
+            SoftwareVersion = softwareVersion;
+            SoftwareReleaseDate = softwareReleaseDate;
+            ImplementationDescription = implementationDescription;
+            ImplementationUrl = implementationUrl;
+            ResourceInteractions = resourceInteractions;
+            ServerSearchParameters = serverSearchParameters;
+            ServerOperations = serverOperations;
+
+            _serverInteractions = new List<SystemRestfulInteraction>();
+
+            if (serverInteractions != null)
+            {
+                foreach (string interaction in serverInteractions)
+                {
+                    _serverInteractions.Add(interaction.ToFhirEnum<SystemRestfulInteraction>());
+                }
+            }
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="FhirServerInfo"/> class.</summary>
+        /// <param name="serverInteractions">       The server interaction flags.</param>
+        /// <param name="url">                      FHIR Base URL for the server.</param>
+        /// <param name="fhirVersion">              The server-reported FHIR version.</param>
+        /// <param name="softwareName">             The FHIR Server software name.</param>
+        /// <param name="softwareVersion">          The FHIR Server software version.</param>
+        /// <param name="softwareReleaseDate">      The FHIR Server software release date.</param>
+        /// <param name="implementationDescription">Information describing the implementation.</param>
+        /// <param name="implementationUrl">        URL of the implementation.</param>
+        /// <param name="resourceInteractions">     The server interactions by resource.</param>
+        /// <param name="serverSearchParameters">   The search parameters for searching all resources.</param>
+        /// <param name="serverOperations">         The operations defined at the system level operation.</param>
+        public FhirServerInfo(
+            List<SystemRestfulInteraction> serverInteractions,
             string url,
             string fhirVersion,
             string softwareName,
@@ -88,15 +139,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             ServerSearchParameters = serverSearchParameters;
             ServerOperations = serverOperations;
 
-            _serverInteractions = new List<SystemRestfulInteraction>();
-
-            if (serverInteractions != null)
-            {
-                foreach (string interaction in serverInteractions)
-                {
-                    _serverInteractions.Add(interaction.ToFhirEnum<SystemRestfulInteraction>());
-                }
-            }
+            _serverInteractions = serverInteractions;
         }
 
         /// <summary>Values that represent system restful interactions.</summary>
@@ -154,5 +197,58 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the operations defined at the system level operation.</summary>
         public Dictionary<string, FhirServerOperation> ServerOperations { get; }
+
+        /// <summary>Filter for export.</summary>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+        /// <param name="info">An already-filtered FhirVersionInfo.</param>
+        /// <returns>A FhirServerInfo.</returns>
+        public FhirServerInfo CopyForExport(
+            FhirVersionInfo info)
+        {
+            if (info == null)
+            {
+                throw new ArgumentNullException(nameof(info));
+            }
+
+            Dictionary<string, FhirServerResourceInfo> resourceInteractions = new Dictionary<string, FhirServerResourceInfo>();
+
+            foreach (KeyValuePair<string, FhirServerResourceInfo> kvp in ResourceInteractions)
+            {
+                if (!info.Resources.ContainsKey(kvp.Key))
+                {
+                    continue;
+                }
+
+                resourceInteractions.Add(kvp.Key, (FhirServerResourceInfo)kvp.Value.Clone());
+            }
+
+            List<SystemRestfulInteraction> serverInteractions = new List<SystemRestfulInteraction>();
+            _serverInteractions.ForEach(i => serverInteractions.Add(i));
+
+            Dictionary<string, FhirServerSearchParam> serverSearchParameters = new Dictionary<string, FhirServerSearchParam>();
+            foreach (KeyValuePair<string, FhirServerSearchParam> kvp in ServerSearchParameters)
+            {
+                serverSearchParameters.Add(kvp.Key, (FhirServerSearchParam)kvp.Value.Clone());
+            }
+
+            Dictionary<string, FhirServerOperation> serverOperations = new Dictionary<string, FhirServerOperation>();
+            foreach (KeyValuePair<string, FhirServerOperation> kvp in ServerOperations)
+            {
+                serverOperations.Add(kvp.Key, (FhirServerOperation)kvp.Value.Clone());
+            }
+
+            return new FhirServerInfo(
+                serverInteractions,
+                Url,
+                FhirVersion,
+                SoftwareName,
+                SoftwareVersion,
+                SoftwareReleaseDate,
+                ImplementationDescription,
+                ImplementationUrl,
+                resourceInteractions,
+                serverSearchParameters,
+                serverOperations);
+        }
     }
 }
