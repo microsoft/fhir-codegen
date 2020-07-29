@@ -75,6 +75,11 @@
             "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r2 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Firely2": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r2 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Firely3": {
             "commandName": "Project",
             "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r3 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",

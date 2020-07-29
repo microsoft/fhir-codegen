@@ -65,7 +65,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "id", "string" },
             { "instant", "DateTimeOffset?" },
             { "integer", "int?" },
-            { "integer64", "long" },
+            { "integer64", "long?" },
             { "oid", "string" },
             { "positiveInt", "int?" },
             { "string", "string" },
@@ -97,9 +97,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Element",
             "Extension",
             "MetadataResource",
+            "DataType",
+            "BackboneType",
+            "PrimitiveType",
             "Narrative",
             "Resource",
             "xhtml",
+            "Citation",
             "http://hl7.org/fhir/ValueSet/defined-types",
             "http://hl7.org/fhir/ValueSet/ucum-units",
             "http://hl7.org/fhir/ValueSet/consent-content-class",
@@ -313,6 +317,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 foreach (FhirSearchParam sp in complex.SearchParameters.Values.OrderBy(s => s.Name))
                 {
+                    if (sp.IsExperimental)
+                    {
+                        continue;
+                    }
+
                     string description;
 
                     if ((!string.IsNullOrEmpty(sp.Description)) &&
@@ -384,6 +393,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         foreach (string t in sp.Targets)
                         {
                             sc.Add("ResourceType." + t);
+                        }
+
+                        // HACK: for http://hl7.org/fhir/SearchParameter/clinical-encounter,
+                        // none of the base resources have EpisodeOfCare as target, except
+                        // Procedure and DeviceRequest. There is no way you can see this from the
+                        // source data we generate this from, afaik, so we need to make
+                        // a special case here.
+                        // Brian P reported that there are many such exceptions - but this one
+                        // was reported as a bug. Again, there is no way to know this from our
+                        // inputs, so this will remain manually maintained input.
+                        if (sp.Id == "clinical-encounter")
+                        {
+                            if (complex.Name != "Procedure" && complex.Name != "DeviceRequest")
+                            {
+                                sc.Remove("ResourceType.EpisodeOfCare");
+                            }
                         }
 
                         target = ", Target = new ResourceType[] { " + string.Join(", ", sc) + ", }";
@@ -504,10 +529,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (KeyValuePair<string, WrittenModelInfo> kvp in types.OrderBy(s => s.Key))
             {
-                if (kvp.Value.FhirName == "xhtml")
-                {
+                // 20200723EK - At least in latest (1.9), xhtml *is* part of the FhirCsTypeToString dictionary
+                /* if (kvp.Value.FhirName == "xhtml")
+                 {
                     continue;
-                }
+                 }
+                 */
 
                 _writer.WriteLineIndented($"{{ typeof({kvp.Value.CsName}), \"{kvp.Value.FhirName}\" }},");
             }
@@ -641,6 +668,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (KeyValuePair<string, WrittenModelInfo> kvp in writtenResources.OrderBy(s => s.Key))
             {
+                // This list should not contain abstract resources. We don't have that information
+                // here, so we'll just go for the known two suspects here.
+                if (kvp.Key == "DomainResource" || kvp.Key == "Resource")
+                {
+                    continue;
+                }
+
                 _writer.WriteLineIndented($"\"{kvp.Value.FhirName}\",");
             }
 
@@ -671,7 +705,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         {
                             continue;
                         }
-
+                     
                         if (_exclusionSet.Contains(vs.URL))
                         {
                             continue;
@@ -847,7 +881,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if ((_info.MajorVersion != 2) ||
                 (complex.Name != "BackboneElement"))
             {
-                if (!isAbstract)
+                if (!isAbstract || (complex.Name == "DomainResource" && _info.MajorVersion == 3))
                 {
                     if (isResource)
                     {
@@ -861,6 +895,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             string abstractFlag = isAbstract ? " abstract" : string.Empty;
+
+            string abstractFlag = complex.IsAbstract ? " abstract" : string.Empty;
 
             switch (complex.BaseTypeName)
             {
@@ -894,6 +930,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"public{abstractFlag} partial class" +
                             $" {exportName}" +
                             $" : {_namespace}.{complex.BaseTypeName}," +
+                            $" System.ComponentModel.INotifyPropertyChanged");
+                    break;
+
+                case "MetadataResource":
+                case "CanonicalResource":
+                    _writer.WriteLineIndented("[DataContract]");
+                    _writer.WriteLineIndented(
+                        $"public{abstractFlag} partial class" +
+                            $" {exportName}" +
+                            $" : {_namespace}.DomainResource," +
                             $" System.ComponentModel.INotifyPropertyChanged");
                     break;
 
@@ -1276,6 +1322,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
         }
 
+        /// <summary>Writes a constrained quantity.</summary>
+        /// <param name="complex">   The complex data type.</param>
+        /// <param name="exportName">Name of the export.</param>
+        /// <param name="depth">     The depth.</param>
+        private void WriteConstrainedQuantity(
+            FhirComplex complex,
+            string exportName,
+            int depth)
+        {
+            _writer.WriteLineIndented(
+                $"public partial class" +
+                    $" {exportName}" +
+                    $" : Quantity");
+
+            // open class
+            OpenScope();
+
+            WritePropertyTypeName(complex.Name, false, depth);
+
+            _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
+            OpenScope();
+            _writer.WriteLineIndented($"return CopyTo(new {exportName}());");
+            CloseScope();
+
+            _writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
+            WriteIndentedComment(complex.Purpose, false);
+
+            // close class
+            CloseScope();
+        }
+
         /// <summary>Writes a component.</summary>
         /// <param name="complex">              The complex data type.</param>
         /// <param name="exportName">           Name of the export.</param>
@@ -1587,6 +1664,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             result = result.Replace(".", "_");
+            result = result.Replace(")", "_");
+            result = result.Replace("(", "_");
 
             if (char.IsDigit(result[0]))
             {
@@ -1894,18 +1973,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 type = "object";
             }
 
-            if ((_info.MajorVersion == 3) &&
-                IsUriType(type))
-            {
-                _writer.WriteLineIndented("[UriPattern]");
-            }
-
-            if ((_info.MajorVersion == 3) &&
-                IsUuidType(type))
-            {
-                _writer.WriteLineIndented("[UuidPattern]");
-            }
-
             _writer.WriteLineIndented("[DataMember]");
 
             bool noElement = true;
@@ -2206,7 +2273,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirElementType elementType in element.ElementTypes.Values)
                 {
-                    if (elementType.Name == "Reference")
+                    if (elementType.Name == "Reference" && elementType.Profiles.Values.Any())
                     {
                         StringBuilder sb = new StringBuilder();
                         sb.Append("[References(");
@@ -2410,16 +2477,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
 
-                if ((_info.MajorVersion == 3) &&
-                    IsUriType(primitive.Name))
+                if (_info.MajorVersion >= 3)
                 {
-                    _writer.WriteLineIndented("[UriPattern]");
-                }
+                    (string p, string n)[] primitivePattern =
+                    {
+                        ("uri", "UriPattern"),
+                        ("uuid", "UuidPattern"),
+                        ("id", "IdPattern"),
+                        ("date", "DatePattern"),
+                        ("dateTime", "DateTimePattern"),
+                        ("oid", "OidPattern"),
+                    };
 
-                if ((_info.MajorVersion == 3) &&
-                    IsUuidType(primitive.Name))
-                {
-                    _writer.WriteLineIndented("[UuidPattern]");
+                    foreach ((string p, string n) in primitivePattern)
+                    {
+                        if (p == primitive.Name)
+                        {
+                            _writer.WriteLineIndented($"[{n}]");
+                        }
+                    }
                 }
 
                 _writer.WriteLineIndented("[DataMember]");
@@ -2436,38 +2512,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteFooter();
             }
-        }
-
-        /// <summary>Query if 'type' is URI type.</summary>
-        /// <param name="type">The type.</param>
-        /// <returns>True if URI type, false if not.</returns>
-        private static bool IsUriType(string type)
-        {
-            switch (type)
-            {
-                case "Uri":
-                case "uri":
-                case "Url":
-                case "url":
-                    return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>Query if 'type' is uuid type.</summary>
-        /// <param name="type">The type.</param>
-        /// <returns>True if uuid type, false if not.</returns>
-        private static bool IsUuidType(string type)
-        {
-            switch (type)
-            {
-                case "Uuid":
-                case "uuid":
-                    return true;
-            }
-
-            return false;
         }
 
         /// <summary>Writes the namespace open.</summary>
@@ -2596,7 +2640,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a footer.</summary>
         private void WriteFooter()
         {
-            WriteIndentedComment("end of file");
+            WriteIndentedComment("end of file", singleLine: true);
         }
 
         /// <summary>Opens the scope.</summary>
@@ -2626,28 +2670,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes an indented comment.</summary>
         /// <param name="value">    The value.</param>
         /// <param name="isSummary">(Optional) True if is summary, false if not.</param>
-        private void WriteIndentedComment(string value, bool isSummary = true)
+        private void WriteIndentedComment(string value, bool isSummary = true, bool singleLine = false)
         {
             if (string.IsNullOrEmpty(value))
             {
                 return;
             }
 
-            if (isSummary)
+            if (isSummary && !singleLine)
             {
                 _writer.WriteLineIndented("/// <summary>");
             }
 
-            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n").Replace("&", "&amp;");
+            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n")
+                .Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
 
             string[] lines = comment.Split('\n');
             foreach (string line in lines)
             {
-                _writer.WriteIndented("/// ");
+                _writer.WriteIndented(singleLine ? "// " : "/// ");
                 _writer.WriteLine(line);
             }
 
-            if (isSummary)
+            if (isSummary && !singleLine)
             {
                 _writer.WriteLineIndented("/// </summary>");
             }
