@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\generated\R3.cs" Link="R3.cs" />
+    <Compile Include="..\..\generated\CSharpBasic_R3.cs" Link="R3.cs" />
   </ItemGroup>
 
   <ItemGroup>
