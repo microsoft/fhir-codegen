@@ -35,6 +35,9 @@ Options:
   --include-experimental                         If the output should include structures
                                                     marked experimental.
                                                     (default: false)
+  --export-types                                 Which FHIR classes types to export:
+                                                    primitive|complex|resource|interaction|enum
+                                                    (default: all types)
   --version                                      Show version information
   -?, -h, --help                                 Show help and usage information
   ```
