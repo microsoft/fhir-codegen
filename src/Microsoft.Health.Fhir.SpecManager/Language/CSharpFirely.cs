@@ -898,8 +898,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string abstractFlag = isAbstract ? " abstract" : string.Empty;
 
-            string abstractFlag = complex.IsAbstract ? " abstract" : string.Empty;
-
             switch (complex.BaseTypeName)
             {
                 case "Quantity":
@@ -1290,37 +1288,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            CloseScope();
-        }
-
-        /// <summary>Writes a constrained quantity.</summary>
-        /// <param name="complex">   The complex data type.</param>
-        /// <param name="exportName">Name of the export.</param>
-        /// <param name="depth">     The depth.</param>
-        private void WriteConstrainedQuantity(
-            FhirComplex complex,
-            string exportName,
-            int depth)
-        {
-            _writer.WriteLineIndented(
-                $"public partial class" +
-                    $" {exportName}" +
-                    $" : Quantity");
-
-            // open class
-            OpenScope();
-
-            WritePropertyTypeName(complex.Name, false, depth);
-
-            _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
-            OpenScope();
-            _writer.WriteLineIndented($"return CopyTo(new {exportName}());");
-            CloseScope();
-
-            _writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
-            WriteIndentedComment(complex.Purpose, false);
-
-            // close class
             CloseScope();
         }
 
