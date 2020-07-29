@@ -9,7 +9,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Health.Fhir.SpecManager.Extensions;
-using Microsoft.Health.Fhir.SpecManager.fhir.r2;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -48,6 +47,7 @@ namespace FhirCodegenCli
         /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
         ///  Conformance) from.  Requires application/fhir+json.</param>
         /// <param name="includeExperimental">   If the output should include structures marked experimental (false|true).</param>
+        /// <param name="exportTypes">           Which FHIR classes types to export (primitive|complex|resource|interaction|enum). Default is all.</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -62,7 +62,8 @@ namespace FhirCodegenCli
             string languageOptions = "",
             bool officialExpansionsOnly = false,
             string fhirServerUrl = "",
-            bool includeExperimental = false)
+            bool includeExperimental = false,
+            string exportTypes = "")
         {
             bool isBatch = false;
             List<string> filesWritten = new List<string>();
@@ -82,6 +83,28 @@ namespace FhirCodegenCli
             if (string.IsNullOrEmpty(language))
             {
                 language = "Info|TypeScript|CSharpBasic";
+            }
+
+            exportTypes ??= string.Empty;
+
+            List<ExporterOptions.FhirExportClassType> typesToExport = exportTypes
+                .Split('|', StringSplitOptions.RemoveEmptyEntries)
+                .Select(et => GetExportClass(et))
+                .Where(et => et != null)
+                .Select(et => et.Value)
+                .ToList();
+
+            static ExporterOptions.FhirExportClassType? GetExportClass(string val)
+            {
+                return val.ToLowerInvariant() switch
+                {
+                    "primitive" => ExporterOptions.FhirExportClassType.PrimitiveType,
+                    "complex" => ExporterOptions.FhirExportClassType.ComplexType,
+                    "resource" => ExporterOptions.FhirExportClassType.Resource,
+                    "interaction" => ExporterOptions.FhirExportClassType.Interaction,
+                    "enum" => ExporterOptions.FhirExportClassType.Enum,
+                    _ => null
+                };
             }
 
             // start timing
@@ -234,7 +257,7 @@ namespace FhirCodegenCli
                     ExporterOptions options = new ExporterOptions(
                         lang.LanguageName,
                         exportList,
-                        lang.OptionalExportClassTypes,
+                        typesToExport.Any() ? typesToExport : lang.OptionalExportClassTypes,
                         ExporterOptions.ExtensionSupportLevel.NonPrimitives,
                         null,
                         null,
