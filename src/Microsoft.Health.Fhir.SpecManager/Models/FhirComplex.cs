@@ -520,6 +520,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="canHideParentFields">  True if can hide parent fields, false if not.</param>
         /// <param name="valueSetReferences">   [in,out] Value Set URLs and lists of FHIR paths that
         ///  reference them.</param>
+        /// <param name="typeMapByPath">        [in,out] Type mappings by path.</param>
         /// <param name="supportedSearchParams">(Optional) Options for controlling the supported search.</param>
         /// <param name="serverSearchParams">   (Optional) Options for controlling the server search.</param>
         /// <param name="supportedOperations">  (Optional) The supported operations.</param>
@@ -531,7 +532,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
             bool canHideParentFields,
-            ref Dictionary<string, ValueSetReferenceInfo> valueSetReferences,
+            Dictionary<string, ValueSetReferenceInfo> valueSetReferences,
+            Dictionary<string, FhirTypeEdge> typeMapByPath,
             Dictionary<string, FhirServerSearchParam> supportedSearchParams = null,
             Dictionary<string, FhirServerSearchParam> serverSearchParams = null,
             Dictionary<string, FhirServerOperation> supportedOperations = null,
@@ -594,7 +596,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         primitiveTypeMap,
                         copySlicing,
                         canHideParentFields,
-                        ref valueSetReferences);
+                        valueSetReferences);
 
                 complex.Elements.Add(element.Path, copied);
             }
@@ -602,13 +604,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             // copy backbone elements (unordered)
             foreach (KeyValuePair<string, FhirComplex> kvp in _components)
             {
+                FhirComplex node = kvp.Value.DeepCopy(
+                    primitiveTypeMap,
+                    copySlicing,
+                    canHideParentFields,
+                    valueSetReferences,
+                    typeMapByPath);
+
+                if (typeMapByPath != null)
+                {
+                    typeMapByPath.Add(
+                        node.Path,
+                        new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.Component, node));
+                }
+
                 complex.Components.Add(
                     kvp.Key,
-                    kvp.Value.DeepCopy(
-                        primitiveTypeMap,
-                        copySlicing,
-                        canHideParentFields,
-                        ref valueSetReferences));
+                    node);
             }
 
             // search

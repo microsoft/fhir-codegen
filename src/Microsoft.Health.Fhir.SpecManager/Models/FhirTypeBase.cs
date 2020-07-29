@@ -22,6 +22,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private readonly string _nameCapitalized;
         private readonly string _path;
         private string _baseTypeName;
+        //private FhirTypeEdge _typeEdge;
 
         /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
@@ -75,6 +76,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             string[] components = path.Split('.');
             _name = components[components.Length - 1];
             _nameCapitalized = ToPascal(_name);
+
+            //_typeEdge = null;
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirTypeBase"/> class.</summary>

@@ -208,7 +208,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
             bool canHideParentFields,
-            ref Dictionary<string, ValueSetReferenceInfo> valueSetReferences)
+            Dictionary<string, ValueSetReferenceInfo> valueSetReferences)
         {
             Dictionary<string, FhirSliceDiscriminatorRule> rules = new Dictionary<string, FhirSliceDiscriminatorRule>();
 
@@ -221,7 +221,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             foreach (FhirComplex slice in _slices)
             {
-                slices.Add(slice.DeepCopy(primitiveTypeMap, copySlicing, canHideParentFields, ref valueSetReferences));
+                slices.Add(
+                    slice.DeepCopy(
+                        primitiveTypeMap,
+                        copySlicing,
+                        canHideParentFields,
+                        valueSetReferences,
+                        null));
             }
 
             return new FhirSlicing(

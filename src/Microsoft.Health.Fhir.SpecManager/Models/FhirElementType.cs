@@ -119,7 +119,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="name">    The code.</param>
         /// <param name="url">     The URL.</param>
         /// <param name="profiles">The profiles.</param>
-        private FhirElementType(string name, string type, Uri url, Dictionary<string, FhirElementProfile> profiles)
+        private FhirElementType(
+            string name,
+            string type,
+            Uri url,
+            Dictionary<string, FhirElementProfile> profiles)
         {
             Name = name;
             Type = type;

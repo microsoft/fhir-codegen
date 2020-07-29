@@ -153,6 +153,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirSearchParam> _allInteractionParameters;
         private Dictionary<string, FhirCodeSystem> _codeSystemsByUrl;
         private Dictionary<string, FhirValueSetCollection> _valueSetsByUrl;
+        private Dictionary<string, FhirTypeEdge> _typeMapByPath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class. Require major version
@@ -184,6 +185,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _allInteractionParameters = new Dictionary<string, FhirSearchParam>();
             _codeSystemsByUrl = new Dictionary<string, FhirCodeSystem>();
             _valueSetsByUrl = new Dictionary<string, FhirValueSetCollection>();
+            _typeMapByPath = new Dictionary<string, FhirTypeEdge>();
         }
 
         /// <summary>Values that represent search magic parameters.</summary>
@@ -294,6 +296,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Gets options for controlling all interaction.</summary>
         /// <value>Options that control all interaction.</value>
         public Dictionary<string, FhirSearchParam> AllInteractionParameters { get => _allInteractionParameters; }
+
+        /// <summary>Gets the type lookup.</summary>
+        public Dictionary<string, FhirTypeEdge> PathTypeLookup { get => _typeMapByPath; }
+
+        /// <summary>Attempts to get path type a FhirTypeEdge from the given string.</summary>
+        /// <param name="path">Full pathname of the file.</param>
+        /// <param name="edge">[out] The edge.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public bool TryGetPathType(string path, out FhirTypeEdge edge)
+        {
+            if (_typeMapByPath.ContainsKey(path))
+            {
+                edge = _typeMapByPath[path];
+                return true;
+            }
+
+            edge = null;
+            return false;
+        }
 
         /// <summary>Adds a primitive.</summary>
         /// <param name="primitive">The primitive.</param>
@@ -904,12 +925,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         continue;
                     }
 
-                    info._primitiveTypesByName.Add(kvp.Key, (FhirPrimitive)kvp.Value.Clone());
+                    FhirPrimitive node = (FhirPrimitive)kvp.Value.Clone();
+
+                    info._typeMapByPath.Add(
+                        node.Path,
+                        new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.Primitive, node));
+
+                    info._primitiveTypesByName.Add(kvp.Key, node);
 
                     // update type to reflect language
                     if (primitiveTypeMap.ContainsKey(kvp.Value.Name))
                     {
-                        info._primitiveTypesByName[kvp.Key].BaseTypeName = primitiveTypeMap[kvp.Value.Name];
+                        node.BaseTypeName = primitiveTypeMap[kvp.Value.Name];
                     }
                 }
             }
@@ -919,12 +946,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             {
                 foreach (KeyValuePair<string, FhirComplex> kvp in _complexTypesByName)
                 {
-                    if (kvp.Key == "Parameters")
-                    {
-                        Console.Write("");
-                    }
-
-
                     // check for restricting output
                     if (restrictOutput && (!exportSet.Contains(kvp.Key)))
                     {
@@ -939,18 +960,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         continue;
                     }
 
+                    FhirComplex node = kvp.Value.DeepCopy(
+                        primitiveTypeMap,
+                        true,
+                        false,
+                        valueSetReferences,
+                        info._typeMapByPath,
+                        null,
+                        null,
+                        null,
+                        null,
+                        includeExperimental);
+
+                    info._typeMapByPath.Add(
+                        node.Path,
+                        new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.DataType, node));
+
                     info._complexTypesByName.Add(
                         kvp.Key,
-                        kvp.Value.DeepCopy(
-                            primitiveTypeMap,
-                            true,
-                            false,
-                            ref valueSetReferences,
-                            null,
-                            null,
-                            null,
-                            null,
-                            includeExperimental));
+                        node);
                 }
             }
 
@@ -981,33 +1009,47 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     if ((serverInfo == null) ||
                         (!serverInfo.ResourceInteractions.ContainsKey(kvp.Key)))
                     {
+                        FhirComplex node = kvp.Value.DeepCopy(
+                            primitiveTypeMap,
+                            true,
+                            false,
+                            valueSetReferences,
+                            info._typeMapByPath,
+                            null,
+                            null,
+                            null,
+                            null,
+                            includeExperimental);
+
+                        info._typeMapByPath.Add(
+                            node.Path,
+                            new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.Resource, node));
+
                         info._resourcesByName.Add(
                             kvp.Key,
-                            kvp.Value.DeepCopy(
-                                primitiveTypeMap,
-                                true,
-                                false,
-                                ref valueSetReferences,
-                                null,
-                                null,
-                                null,
-                                null,
-                                includeExperimental));
+                            node);
                     }
                     else
                     {
+                        FhirComplex node = kvp.Value.DeepCopy(
+                            primitiveTypeMap,
+                            true,
+                            false,
+                            valueSetReferences,
+                            info._typeMapByPath,
+                            serverInfo.ResourceInteractions[kvp.Key].SearchParameters,
+                            serverInfo.ServerSearchParameters,
+                            serverInfo.ResourceInteractions[kvp.Key].Operations,
+                            serverInfo.ServerOperations,
+                            includeExperimental);
+
+                        info._typeMapByPath.Add(
+                            node.Path,
+                            new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.Resource, node));
+
                         info._resourcesByName.Add(
                             kvp.Key,
-                            kvp.Value.DeepCopy(
-                                primitiveTypeMap,
-                                true,
-                                false,
-                                ref valueSetReferences,
-                                serverInfo.ResourceInteractions[kvp.Key].SearchParameters,
-                                serverInfo.ServerSearchParameters,
-                                serverInfo.ResourceInteractions[kvp.Key].Operations,
-                                serverInfo.ServerOperations,
-                                includeExperimental));
+                            node);
                     }
                 }
             }
@@ -1051,7 +1093,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                             primitiveTypeMap,
                             true,
                             false,
-                            ref valueSetReferences));
+                            valueSetReferences,
+                            null));
                 }
             }
 
