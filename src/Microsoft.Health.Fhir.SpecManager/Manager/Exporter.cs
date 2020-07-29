@@ -124,9 +124,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // perform our export
             exportLanguage.Export(
                 info,
+                serverInfo,
                 options,
-                tempDir,
-                serverInfo);
+                tempDir);
 
             string[] exportedFiles = Directory.GetFiles(tempDir, string.Empty, SearchOption.AllDirectories);
 

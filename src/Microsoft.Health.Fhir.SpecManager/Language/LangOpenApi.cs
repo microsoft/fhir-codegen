@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Schema;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.OpenApi;
@@ -61,7 +62,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private bool _includeSchemas = true;
 
         /// <summary>True to include, false to exclude the schema descriptions.</summary>
-        private bool _includeSchemaDescriptions = true;
+        private bool _includeDescriptions = true;
 
         /// <summary>True to expand references based on allowed profiles.</summary>
         private bool _expandProfiles = true;
@@ -71,6 +72,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>True to include, false to exclude the metadata.</summary>
         private bool _includeMetadata = false;
+
+        /// <summary>Depth of the circular expand.</summary>
+        private int _circularExpandDepth = 1;
+
+        /// <summary>The open API version.</summary>
+        private int _openApiVersion = 2;
 
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
@@ -149,11 +156,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "Responses", "Response inclusion style (single|multiple)." },
             { "Summaries", "If responses should include summaries (true|false)." },
             { "Schemas", "If schemas should be included (true|false)" },
-            { "SchemaDescriptions", "If schemas should include descriptions (true|false)" },
+            { "Descriptions", "If properties should include descriptions (true|false)" },
             { "ExpandProfiles", "If types should expand based on allowed profiles (true|false)" },
             { "ReadOnly", "If the output should only contain GET operations (false|true)" },
             { "Minify", "If the output JSON should be minified (false|true)" },
             { "Metadata", "If the JSON should include a link to /metadata (false|true)" },
+            { "ExpandDepth", "Depth to expand links that cause circular references (1)" },
         };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
@@ -170,8 +178,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // set internal vars so we don't pass them to every function
             // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info
             _info = info;
-            _options = options;
             _serverInfo = serverInfo;
+            _options = options;
 
             if (_options.LanguageOptions != null)
             {
@@ -184,14 +192,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _exportedResourceNamesAndTypes = new Dictionary<string, string>();
             _exportedCodes = new HashSet<string>();
 
-            int openApiVersion = 2;
-
             if (_parameters.ContainsKey("OPENAPIVERSION"))
             {
                 if ((_parameters["OPENAPIVERSION"] == "3") ||
                     (_parameters["OPENAPIVERSION"] == "3.0"))
                 {
-                    openApiVersion = 3;
+                    _openApiVersion = 3;
                 }
             }
 
@@ -230,11 +236,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _includeSchemas = false;
             }
 
-            if (_parameters.ContainsKey("SCHEMADESCRIPTIONS") &&
-                (!string.IsNullOrEmpty(_parameters["SCHEMADESCRIPTIONS"])) &&
-                _parameters["SCHEMADESCRIPTIONS"].StartsWith("F", StringComparison.OrdinalIgnoreCase))
+            if (_parameters.ContainsKey("DESCRIPTIONS") &&
+                (!string.IsNullOrEmpty(_parameters["DESCRIPTIONS"])) &&
+                _parameters["DESCRIPTIONS"].StartsWith("F", StringComparison.OrdinalIgnoreCase))
             {
-                _includeSchemaDescriptions = false;
+                _includeDescriptions = false;
             }
 
             if (_parameters.ContainsKey("EXPANDPROFILES") &&
@@ -267,6 +273,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _includeMetadata = true;
             }
 
+            if (_parameters.ContainsKey("EXPANDDEPTH") &&
+                (!string.IsNullOrEmpty(_parameters["EXPANDDEPTH"])) &&
+                int.TryParse(_parameters["EXPANDDEPTH"], out int value))
+            {
+                _circularExpandDepth = value;
+            }
+
             OpenApiDocument document = new OpenApiDocument();
 
             document.Info = BuildInfo();
@@ -291,7 +304,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             // create a filename for writing (single file for now)
-            string filename = Path.Combine(exportDirectory, $"OpenApi_R{info.MajorVersion}_v{openApiVersion}.json");
+            string filename = Path.Combine(exportDirectory, $"OpenApi_R{info.MajorVersion}_v{_openApiVersion}.json");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (StreamWriter sw = new StreamWriter(stream))
@@ -299,7 +312,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // OpenApiYamlWriter writer = new OpenApiYamlWriter(sw);
                 OpenApiJsonWriter writer = new OpenApiJsonWriter(sw);
 
-                if (openApiVersion == 2)
+                if (_openApiVersion == 2)
                 {
                     document.Serialize(writer, OpenApiSpecVersion.OpenApi2_0);
                 }
@@ -327,23 +340,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirComplex complex in _info.ComplexTypes.Values.OrderBy(c => c.Name))
             {
-                schemas.Add(complex.Name, BuildSchema(complex));
+                schemas.Add(complex.Name, BuildSchema(complex, null, false));
             }
 
             foreach (FhirComplex complex in _info.Resources.Values.OrderBy(c => c.Name))
             {
-                schemas.Add(complex.Name, BuildSchema(complex));
+                schemas.Add(complex.Name, BuildSchema(complex, null, true));
             }
 
             return schemas;
         }
 
         /// <summary>Builds a schema.</summary>
-        /// <param name="complex">The complex.</param>
+        /// <param name="complex">   The complex.</param>
+        /// <param name="root">      (Optional) The root.</param>
+        /// <param name="isResource">(Optional) True if is resource, false if not.</param>
         /// <returns>An OpenApiSchema.</returns>
         private OpenApiSchema BuildSchema(
             FhirComplex complex,
-            FhirComplex root = null)
+            FhirComplex root = null,
+            bool isResource = false)
         {
             OpenApiSchema schema = new OpenApiSchema()
             {
@@ -351,9 +367,59 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 Properties = new Dictionary<string, OpenApiSchema>(),
             };
 
-            if (_includeSchemaDescriptions)
+            if (string.IsNullOrEmpty(complex.BaseTypeName) ||
+                complex.Name.Equals("Element", StringComparison.Ordinal))
+            {
+                schema.Type = "object";
+            }
+            else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
+            {
+                schema.Type = "object";
+            }
+            else
+            {
+                schema.Type = "object";
+
+                if ((complex.Path != "Resource") &&
+                    (complex.Path != "Element"))
+                {
+                    schema.AllOf = new List<OpenApiSchema>()
+                    {
+                        new OpenApiSchema()
+                        {
+                            Reference = new OpenApiReference()
+                            {
+                                Id = BuildTypeFromPath(complex.BaseTypeName),
+                                Type = ReferenceType.Schema,
+                            },
+                        },
+                    };
+                }
+            }
+
+            if (_includeDescriptions)
             {
                 schema.Description = complex.ShortDescription;
+            }
+
+            if (complex.Path == "Resource")
+            {
+                schema.Properties.Add(
+                    "resourceType",
+                    new OpenApiSchema()
+                    {
+                        Type = "string",
+                    });
+
+                schema.Discriminator = new OpenApiDiscriminator()
+                {
+                    PropertyName = "resourceType",
+                };
+
+                schema.Required = new HashSet<string>()
+                {
+                    "resourceType",
+                };
             }
 
             if (root == null)
@@ -388,10 +454,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ref OpenApiSchema parentSchema,
             FhirElement element)
         {
+            if (element.Path == "Bundle.entry")
+            {
+                Console.Write("");
+            }
+
             string name = GetElementName(element);
             OpenApiSchema schema = new OpenApiSchema();
 
-            if (_includeSchemaDescriptions)
+            if (_includeDescriptions)
             {
                 schema.Description = element.ShortDescription;
             }
@@ -405,7 +476,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     OpenApiSchema subSchema = new OpenApiSchema();
 
-                    if (_includeSchemaDescriptions)
+                    if (_includeDescriptions)
                     {
                         subSchema.Description = element.ShortDescription;
                     }
@@ -434,25 +505,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (_expandProfiles && (type == "Resource"))
                 {
-                    schema.OneOf = new List<OpenApiSchema>();
-
-                    if ((elementType.Profiles == null) ||
-                        (elementType.Profiles.Count == 0))
+                    if (_openApiVersion == 2)
                     {
-                        foreach (FhirComplex resource in _info.Resources.Values)
-                        {
-                            OpenApiSchema subSchema = new OpenApiSchema();
-                            SetSchemaType(resource.Name, ref subSchema);
-                            schema.OneOf.Add(subSchema);
-                        }
+                        SetSchemaType(type, ref schema, element.IsArray);
                     }
                     else
                     {
-                        foreach (FhirElementProfile profile in elementType.Profiles.Values)
+                        schema.OneOf = new List<OpenApiSchema>();
+
+                        if ((elementType.Profiles == null) ||
+                            (elementType.Profiles.Count == 0))
                         {
-                            OpenApiSchema subSchema = new OpenApiSchema();
-                            SetSchemaType(profile.Name, ref subSchema);
-                            schema.OneOf.Add(subSchema);
+                            foreach (FhirComplex resource in _info.Resources.Values)
+                            {
+                                OpenApiSchema subSchema = new OpenApiSchema();
+                                SetSchemaType(resource.Name, ref subSchema, element.IsArray);
+                                schema.OneOf.Add(subSchema);
+                            }
+                        }
+                        else
+                        {
+                            foreach (FhirElementProfile profile in elementType.Profiles.Values)
+                            {
+                                OpenApiSchema subSchema = new OpenApiSchema();
+                                SetSchemaType(profile.Name, ref subSchema, element.IsArray);
+                                schema.OneOf.Add(subSchema);
+                            }
                         }
                     }
 
@@ -468,7 +546,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 type = "Element";
             }
 
-            SetSchemaType(type, ref schema);
+            SetSchemaType(type, ref schema, element.IsArray);
 
             parentSchema.Properties.Add(
                 GetElementName(element),
@@ -478,9 +556,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Sets a type.</summary>
         /// <param name="baseType">Type of the base.</param>
         /// <param name="schema">  [in,out] The schema.</param>
+        /// <param name="isArray"> (Optional) True if is array, false if not.</param>
         private static void SetSchemaType(
             string baseType,
-            ref OpenApiSchema schema)
+            ref OpenApiSchema schema,
+            bool isArray = false)
         {
             if (_primitiveTypeMap.ContainsKey(baseType))
             {
@@ -490,22 +570,60 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     string[] parts = type.Split(':');
 
-                    schema.Type = parts[0];
-                    schema.Format = parts[1];
+                    if (isArray)
+                    {
+                        schema.Type = "array";
+                        schema.Items = new OpenApiSchema()
+                        {
+                            Type = parts[0],
+                            Format = parts[1],
+                        };
+                    }
+                    else
+                    {
+                        schema.Type = parts[0];
+                        schema.Format = parts[1];
+                    }
                 }
                 else
                 {
-                    schema.Type = type;
+                    if (isArray)
+                    {
+                        schema.Type = "array";
+                        schema.Items = new OpenApiSchema()
+                        {
+                            Type = type,
+                        };
+                    }
+                    else
+                    {
+                        schema.Type = type;
+                    }
                 }
 
                 return;
             }
 
-            schema.Reference = new OpenApiReference()
+            if (isArray)
             {
-                Id = BuildTypeFromPath(baseType),
-                Type = ReferenceType.Schema,
-            };
+                schema.Type = "array";
+                schema.Items = new OpenApiSchema()
+                {
+                    Reference = new OpenApiReference()
+                    {
+                        Id = BuildTypeFromPath(baseType),
+                        Type = ReferenceType.Schema,
+                    },
+                };
+            }
+            else
+            {
+                schema.Reference = new OpenApiReference()
+                {
+                    Id = BuildTypeFromPath(baseType),
+                    Type = ReferenceType.Schema,
+                };
+            }
         }
 
         /// <summary>Builds type from path.</summary>
@@ -930,6 +1048,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             Content = BuildContentMap(contentResourceName),
                         };
 
+                        if (_includeDescriptions)
+                        {
+                            operation.RequestBody.Description = $"A {resourceName}";
+                        }
+
                         operation.Responses = new OpenApiResponses()
                         {
                             ["200"] = new OpenApiResponse()
@@ -1004,6 +1127,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         {
                             Content = BuildContentMap(contentResourceName),
                         };
+
+                        if (_includeDescriptions)
+                        {
+                            operation.RequestBody.Description = $"A {resourceName}";
+                        }
 
                         operation.Responses = new OpenApiResponses()
                         {
