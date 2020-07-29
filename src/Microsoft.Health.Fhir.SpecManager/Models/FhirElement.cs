@@ -518,7 +518,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             values.Add(
-                FhirUtils.ToConvention(Name, Path, typeConvention, concatenatePath, concatenationDelimiter),
+                FhirUtils.ToConvention(Name, Path, nameConvention, concatenatePath, concatenationDelimiter),
                 FhirUtils.ToConvention(BaseTypeName, string.Empty, typeConvention));
 
             return values;
