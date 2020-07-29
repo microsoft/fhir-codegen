@@ -281,11 +281,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 foreach (FhirSearchParam sp in complex.SearchParameters.Values.OrderBy(s => s.Name))
                 {
-                    if (sp.IsExperimental)
-                    {
-                        continue;
-                    }
-
                     string description;
 
                     if ((!string.IsNullOrEmpty(sp.Description)) &&
@@ -650,7 +645,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             HashSet<string> usedEnumNames = new HashSet<string>();
 
-            string filename = Path.Combine(_exportDirectory, "Generated", "Template-Bindings.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated", "CommonValueSets.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -667,9 +662,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     {
                         if (vs.ReferencedByComplexes.Count < 2)
                         {
+                            /* ValueSets that are used in a single POCO are generated as a nested enum inside that
+                             * POCO, not here in the shared valuesets */
                             continue;
                         }
-                     
+
+                        if (vs.StrongestBinding != FhirElement.ElementDefinitionBindingStrength.Required)
+                        {
+                            /* Since required bindings cannot be extended, those are the only bindings that
+                               can be represented using enums in the POCO classes (using <c>Code&lt;T&gt;</c>). All other coded members
+                               use <c>Code</c>, <c>Coding</c> or <c>CodeableConcept</c>.
+                               Consequently, we only need to generate enums for valuesets that are used as
+                               required bindings anywhere in the datamodel. */
+                            continue;
+                        }
+
                         if (_exclusionSet.Contains(vs.URL))
                         {
                             continue;
