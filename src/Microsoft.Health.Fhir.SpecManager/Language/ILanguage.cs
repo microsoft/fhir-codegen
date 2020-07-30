@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Manager;
+using Microsoft.Health.Fhir.SpecManager.Models;
 using static Microsoft.Health.Fhir.SpecManager.Models.FhirTypeBase;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
@@ -47,10 +48,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the export.</summary>
         /// <param name="info">           The information.</param>
+        /// <param name="serverInfo">     Information describing the server.</param>
         /// <param name="options">        Options for controlling the operation.</param>
         /// <param name="exportDirectory">Directory to write files.</param>
         void Export(
             FhirVersionInfo info,
+            FhirServerInfo serverInfo,
             ExporterOptions options,
             string exportDirectory);
     }

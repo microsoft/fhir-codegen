@@ -340,7 +340,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Dictionary<string, string> primitiveTypeMap,
             bool copySlicing,
             bool canHideParentFields,
-            ref Dictionary<string, ValueSetReferenceInfo> valueSetReferences)
+            Dictionary<string, ValueSetReferenceInfo> valueSetReferences)
         {
             // copy the element types
             Dictionary<string, FhirElementType> elementTypes = null;
@@ -403,7 +403,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                             primitiveTypeMap,
                             copySlicing,
                             canHideParentFields,
-                            ref valueSetReferences);
+                            valueSetReferences);
 
                     element.AddSlicing(slicing);
                 }
@@ -518,7 +518,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             values.Add(
-                FhirUtils.ToConvention(Name, Path, typeConvention, concatenatePath, concatenationDelimiter),
+                FhirUtils.ToConvention(Name, Path, nameConvention, concatenatePath, concatenationDelimiter),
                 FhirUtils.ToConvention(BaseTypeName, string.Empty, typeConvention));
 
             return values;

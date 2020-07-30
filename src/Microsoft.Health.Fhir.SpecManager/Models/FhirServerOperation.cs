@@ -50,5 +50,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             _additionalDefinitions.Add(definitionCanonical);
         }
+
+        /// <summary>Makes a deep copy of this object.</summary>
+        /// <returns>A copy of this object.</returns>
+        public object Clone()
+        {
+            return new FhirServerOperation(
+                Name,
+                DefinitionCanonical,
+                Documentation);
+        }
     }
 }

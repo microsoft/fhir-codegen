@@ -16,6 +16,6 @@
       "noEmit": true
   },
   "files": [
-      "../../generated/R2.ts"
+      "../../generated/TypeScript_R2.ts"
   ]
 }

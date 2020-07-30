@@ -120,14 +120,19 @@
             "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|explicitfhirjson=true|explicitfhirxml=true|Responses=multiple --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "healthApis": {
+        "server4Min": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://fhirsampdev.azurehealthcareapis.com/ --language-options OpenApi|explicitfhirjson=true|Responses=multiple --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|explicitfhirjson=true|Responses=single|Summaries=false|SchemaDescriptions=false|ReadOnly=true|ExpandProfiles=false --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "azure4": {
+        "healthApis": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --output-path ..\\..\\temp\\OpenApi_R4_AZ.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+            "commandLineArgs": "--fhir-server-url https://fhirsampdev.azurehealthcareapis.com/ --language-options OpenApi|explicitfhirjson=true|Responses=single --export-keys Patient|Bundle --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "healthApisMin": {
+            "commandName": "Project",
+            "commandLineArgs": "--fhir-server-url https://fhirsampdev.azurehealthcareapis.com/ --language-options OpenApi|explicitfhirjson=true|Responses=single|SchemaDescriptions=false|Minify=true --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }

@@ -4,6 +4,7 @@
 // </copyright>
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Extensions;
 
@@ -96,6 +97,62 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     _referencePolicies.Add(policy.ToFhirEnum<ReferenceHandlingPolicy>());
                 }
             }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FhirServerResourceInfo"/> class.
+        /// </summary>
+        /// <param name="interactions">     The interactions.</param>
+        /// <param name="resourceType">     The resource type.</param>
+        /// <param name="supportedProfiles">The list of supported profile URLs.</param>
+        /// <param name="versionSupport">   The supported version policy.</param>
+        /// <param name="readHistory">      A value indicating whether vRead can return past versions.</param>
+        /// <param name="updateCreate">     A value indicating whether update can commit to a new
+        ///  identity.</param>
+        /// <param name="conditionalCreate">A value indicating whether allows/uses conditional create.</param>
+        /// <param name="conditionalRead">  The conditional read policy for this resource.</param>
+        /// <param name="conditionalUpdate">A value indicating whether the conditional update.</param>
+        /// <param name="conditionalDelete">The conditional delete.</param>
+        /// <param name="referencePolicies">The reference policy.</param>
+        /// <param name="searchIncludes">   The _include values supported by the server.</param>
+        /// <param name="searchRevIncludes">The _revinclude values supported by the server.</param>
+        /// <param name="searchParameters"> The search parameters supported by implementation.</param>
+        /// <param name="operations">       The operations supported by implementation.</param>
+        public FhirServerResourceInfo(
+            List<FhirInteraction> interactions,
+            string resourceType,
+            List<string> supportedProfiles,
+            VersioningPolicy? versionSupport,
+            bool? readHistory,
+            bool? updateCreate,
+            bool? conditionalCreate,
+            ConditionalReadPolicy? conditionalRead,
+            bool? conditionalUpdate,
+            ConditionalDeletePolicy? conditionalDelete,
+            List<ReferenceHandlingPolicy> referencePolicies,
+            List<string> searchIncludes,
+            List<string> searchRevIncludes,
+            Dictionary<string, FhirServerSearchParam> searchParameters,
+            Dictionary<string, FhirServerOperation> operations)
+        {
+            ResourceType = resourceType;
+            SupportedProfiles = supportedProfiles ?? new List<string>();
+            ReadHistory = readHistory;
+            UpdateCreate = updateCreate;
+            ConditionalCreate = conditionalCreate;
+            ConditionalUpdate = conditionalUpdate;
+            SearchIncludes = searchIncludes ?? new List<string>();
+            SearchRevIncludes = searchRevIncludes ?? new List<string>();
+            SearchParameters = searchParameters ?? new Dictionary<string, FhirServerSearchParam>();
+            Operations = operations ?? new Dictionary<string, FhirServerOperation>();
+
+            _interactions = interactions;
+
+            VersionSupport = versionSupport;
+            ConditionalRead = conditionalRead;
+            ConditionalDelete = conditionalDelete;
+
+            _referencePolicies = referencePolicies;
         }
 
         /// <summary>Values that represent FHIR resource interactions.</summary>
@@ -260,5 +317,48 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the operations supported by implementation.</summary>
         public Dictionary<string, FhirServerOperation> Operations { get; }
+
+        /// <summary>Makes a deep copy of this object.</summary>
+        /// <returns>A copy of this object.</returns>
+        public object Clone()
+        {
+            List<FhirInteraction> interactions = new List<FhirInteraction>();
+            _interactions.ForEach(i => interactions.Add(i));
+
+            List<ReferenceHandlingPolicy> referencePolicy = new List<ReferenceHandlingPolicy>();
+            _referencePolicies.ForEach(r => referencePolicy.Add(r));
+
+            List<string> searchIncludes = SearchIncludes.Select(s => (string)s.Clone()).ToList();
+            List<string> searchRevIncludes = SearchRevIncludes.Select(s => (string)s.Clone()).ToList();
+
+            Dictionary<string, FhirServerSearchParam> searchParameters = new Dictionary<string, FhirServerSearchParam>();
+            foreach (KeyValuePair<string, FhirServerSearchParam> kvp in SearchParameters)
+            {
+                searchParameters.Add(kvp.Key, (FhirServerSearchParam)kvp.Value.Clone());
+            }
+
+            Dictionary<string, FhirServerOperation> operations = new Dictionary<string, FhirServerOperation>();
+            foreach (KeyValuePair<string, FhirServerOperation> kvp in Operations)
+            {
+                operations.Add(kvp.Key, (FhirServerOperation)kvp.Value.Clone());
+            }
+
+            return new FhirServerResourceInfo(
+                interactions,
+                ResourceType,
+                SupportedProfiles,
+                VersionSupport,
+                ReadHistory,
+                UpdateCreate,
+                ConditionalCreate,
+                ConditionalRead,
+                ConditionalUpdate,
+                ConditionalDelete,
+                referencePolicy,
+                searchIncludes,
+                searchRevIncludes,
+                searchParameters,
+                operations);
+        }
     }
 }
