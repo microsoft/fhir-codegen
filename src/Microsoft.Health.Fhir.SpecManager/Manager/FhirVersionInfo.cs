@@ -960,7 +960,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     info._typeMapByPath.Add(
                         node.Path,
-                        new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.Primitive, node));
+                        new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.Primitive, node));
 
                     info._primitiveTypesByName.Add(kvp.Key, node);
 
@@ -1005,7 +1005,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     info._typeMapByPath.Add(
                         node.Path,
-                        new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.DataType, node));
+                        new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.DataType, node));
 
                     info._complexTypesByName.Add(
                         kvp.Key,
@@ -1054,7 +1054,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                         info._typeMapByPath.Add(
                             node.Path,
-                            new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.Resource, node));
+                            new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.Resource, node));
 
                         info._resourcesByName.Add(
                             kvp.Key,
@@ -1076,7 +1076,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                         info._typeMapByPath.Add(
                             node.Path,
-                            new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.Resource, node));
+                            new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.Resource, node));
 
                         info._resourcesByName.Add(
                             kvp.Key,
