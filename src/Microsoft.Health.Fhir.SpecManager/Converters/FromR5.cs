@@ -502,28 +502,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     ProcessDataTypePrimitive(sd, fhirVersionInfo);
                     break;
 
-                case "complex-type":
-                    if ((sd.Derivation == "constraint") &&
-                        (sd.Type != "Quantity"))
-                    {
-                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
-                    }
-                    else
-                    {
-                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.DataType);
-                    }
-
-                    break;
-
                 case "resource":
-                    if ((sd.Derivation == "constraint") &&
-                        (sd.Type != "Quantity"))
+                case "complex-type":
+                    if (sd.Derivation == "constraint")
                     {
-                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
+                        if (sd.Type == "Extension")
+                        {
+                            ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Extension);
+                        }
+                        else
+                        {
+                            ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Profile);
+                        }
                     }
                     else
                     {
-                        ProcessComplex(sd, fhirVersionInfo, FhirComplex.FhirComplexType.Resource);
+                        ProcessComplex(sd, fhirVersionInfo, sd.Kind == "complex-type" ? FhirComplex.FhirComplexType.DataType : FhirComplex.FhirComplexType.Resource);
                     }
 
                     break;

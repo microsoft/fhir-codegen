@@ -75,13 +75,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             /* Extension has the special `url` element, that is both an attribute in the
              * XML serialization and is not using a FHIR primitive for representation. Consequently,
              * the generated CopyTo() and IsExact() methods diverge too much to be useful.
-             * Also, is uses the special `IsOpen` argument to `AllowedTypes` to account for open
+             * Also, it uses the special `IsOpen` argument to `AllowedTypes` to account for open
              * types *not* defined in common. */
             "Extension",
 
+            /* Narrative has a special `div` element, serialized as an element frm the
+             * XHTML namespace, not using a normal FHIR primitive. This makes this class
+             * deviate in ways we cannot achieve with the generator. */
+            "Narrative",
+
            /* "CanonicalResource",
-            "MetadataResource",
-            "Narrative", */
+            "MetadataResource", */
 
             /* Citation somehow generates incorrect code - there must be something new
              * going on with this resource type. For now, it has been disabled so we can
@@ -104,8 +108,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "PrimitiveType",
             "Element",
             "Extension",
-            /* "Narrative",
-            "xhtml", */
+            "Narrative",
+            /* "xhtml", */
         };
 
         /// <summary>List of resources which cannot be found for ModelInfo.cs (not exported elsewhere).</summary>
@@ -128,6 +132,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Extension",
             "Meta",
             "PrimitiveType",
+            "Narrative",
         };
 
         /// <summary>
@@ -195,11 +200,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              *    subset=common|main        'common' will generate code for 'common' repo of the library,
              *                              'main' will genreate code for the version-specific 'api' (main) repo of the library
              */
-            GenSubset subset = GenSubset.All;
+            GenSubset subset = GenSubset.Main;
 
             if (options.LanguageOptions.TryGetValue("subset", out string ss))
             {
                 subset = ss == "common" ? GenSubset.Common : ss == "main" ? GenSubset.Main : GenSubset.All;
+            }
+
+            if (subset.HasFlag(GenSubset.Common) && info.MajorVersion != 5)
+            {
+                Console.WriteLine($"Aborting {_languageName}: code generation for the 'common' subset should be run on r5 only.");
+                return;
             }
 
             // set internal vars so we don't pass them to every function
@@ -903,7 +914,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (complex.BaseTypeName == "Quantity")
             {
-                // Constrained quantities are handled differently (if at all in 2.0?)
+                // Constrained quantities are handled differently
                 WriteConstrainedQuantity(complex, exportName, depth);
                 return;
             }
@@ -914,30 +925,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             List<string> interfaces = new List<string>();
 
-            if (complex.Elements.Keys.Any(k => k.EndsWith(".modifierExtension", StringComparison.InvariantCulture)))
+            string modifierElementName = complex.Elements.Keys.SingleOrDefault(k => k.EndsWith(".modifierExtension", StringComparison.InvariantCulture));
+            if (modifierElementName != null)
             {
-                interfaces.Add($"{Namespace}.IModifierExtendable");
+                FhirElement modifierElement = complex.Elements[modifierElementName];
+                if (!modifierElement.IsInherited)
+                {
+                    interfaces.Add($"{Namespace}.IModifierExtendable");
+                }
             }
 
             string interfacesSuffix = interfaces.Any() ? $", {string.Join(", ", interfaces)}" : string.Empty;
 
-            switch (complex.BaseTypeName)
-            {
-                case "MetadataResource":
-                case "CanonicalResource":
-                    _writer.WriteLineIndented(
-                        $"public{abstractFlag} partial class" +
-                            $" {exportName}" +
-                            $" : {Namespace}.DomainResource{interfacesSuffix}");
-                    break;
-
-                default:
-                    _writer.WriteLineIndented(
-                        $"public{abstractFlag} partial class" +
-                            $" {exportName}" +
-                            $" : {Namespace}.{complex.BaseTypeName}{interfacesSuffix}");
-                    break;
-            }
+            _writer.WriteLineIndented(
+                $"public{abstractFlag} partial class" +
+                    $" {exportName}" +
+                    $" : {Namespace}.{DetermineExportedBaseTypeName(complex.BaseTypeName, isDatatype: !isResource)}{interfacesSuffix}");
 
             // open class
             OpenScope();
@@ -962,24 +965,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {
-                    string componentName;
+                    string componentExportName;
 
                     if (string.IsNullOrEmpty(component.ExplicitName))
                     {
-                        componentName =
+                        componentExportName =
                             $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}Component";
                     }
                     else
                     {
                         // Consent.provisionActorComponent is explicit lower case...
-                        componentName =
+                        componentExportName =
                             $"{component.ExplicitName}" +
                             $"Component";
                     }
 
                     WriteBackboneComponent(
                         component,
-                        componentName,
+                        componentExportName,
                         exportName,
                         isResource,
                         depth + 1);
@@ -1006,6 +1009,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // close class
             CloseScope();
         }
+
+        private string DetermineExportedBaseTypeName(string baseTypeName, bool isDatatype)
+        {
+            // These two classes are more like interfaces, we treat their subclasses
+            // as subclasses of DomainResource instead.
+            if (baseTypeName == "MetadataResource" || baseTypeName == "CanonicalResource")
+            {
+                return "DomainResource";
+            }
+
+            if (isDatatype)
+            {
+                return "DataType";
+            }
+
+            return baseTypeName;
+        }
+
 
         /// <summary>Writes the children of this item.</summary>
         /// <param name="exportedElements">The exported elements.</param>
@@ -1037,7 +1058,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            CloseScope();
+            CloseScope(suppressNewline: true);
             CloseScope();
         }
 
@@ -1069,7 +1090,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            CloseScope();
+            CloseScope(suppressNewline: true);
             CloseScope();
         }
 
@@ -1237,39 +1258,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteIndentedComment($"{complex.ShortDescription}");
 
-            if (_info.MajorVersion > 3)
-            {
-                _writer.WriteLineIndented($"[FhirType(\"{exportName}\", NamedBackboneElement=true)]");
-            }
-            else
-            {
-                _writer.WriteLineIndented($"[FhirType(\"{exportName}\")]");
-            }
+            string componentName = parentExportName + "#" + (string.IsNullOrEmpty(complex.ExplicitName) ?
+                complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
+                complex.ExplicitName);
+
+            Debug.Assert(!string.IsNullOrEmpty(componentName), $"Found a type at element {complex.Path} without a name or explicit name.");
+
+            _writer.WriteLineIndented($"[FhirType(\"{componentName}\", IsNestedType=true)]");
 
             _writer.WriteLineIndented("[DataContract]");
 
-            if (isResource)
-            {
-                _writer.WriteLineIndented(
-                    $"public partial class" +
-                        $" {exportName}" +
-                        $" : {Namespace}.BackboneElement," +
-                        $" System.ComponentModel.INotifyPropertyChanged");
-            }
-            else
-            {
-                _writer.WriteLineIndented(
-                    $"public partial class" +
-                        $" {exportName}" +
-                        $" : {Namespace}.Element," +
-                        $" System.ComponentModel.INotifyPropertyChanged," +
-                        $" IBackboneElement");
-            }
+            _writer.WriteLineIndented(
+                $"public partial class" +
+                    $" {exportName}" +
+                    $" : {Namespace}.{complex.BaseTypeName}");
 
             // open class
             OpenScope();
 
-            WritePropertyTypeName(exportName);
+            WritePropertyTypeName(componentName);
 
             WriteElements(complex, exportName, ref exportedElements);
 
@@ -1296,46 +1303,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirComplex component in complex.Components.Values)
                 {
-                    string componentName;
+                    string componentExportName;
 
                     if (string.IsNullOrEmpty(component.ExplicitName))
                     {
-                        componentName =
+                        componentExportName =
                             $"{component.NameForExport(FhirTypeBase.NamingConvention.PascalCase)}" +
                             $"Component";
                     }
                     else
                     {
-                        componentName =
+                        componentExportName =
                             $"{component.ExplicitName}" +
                             $"Component";
                     }
 
-                    if ((_info.MajorVersion == 2) &&
-                        (parentExportName == "TestScript"))
-                    {
-                        // prefix with current name less 'component'
-                        string prefix = exportName.Substring(0, exportName.Length - 9);
-
-                        switch (component.Path)
-                        {
-                            case "TestScript.setup.action":
-                                componentName = "SetupActionComponent";
-                                break;
-
-                            case "TestScript.test.action":
-                                componentName = "TestActionComponent";
-                                break;
-
-                            case "TestScript.teardown.action":
-                                componentName = "TearDownActionComponent";
-                                break;
-                        }
-                    }
-
                     WriteBackboneComponent(
                         component,
-                        componentName,
+                        componentExportName,
                         parentExportName,
                         isResource,
                         depth + 1);
@@ -1752,6 +1737,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=\"3.2.0\")]");
             }
+            else if (element.Path == "Reference.type")
+            {
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=\"4.4.0\")]");
+            }
             else
             {
                 _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice})]");
@@ -1793,7 +1782,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else if (!string.IsNullOrEmpty(choice))
             {
-                type = "Element";
+                type = "DataType";
             }
             else
             {
@@ -1969,21 +1958,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A string.</returns>
         private string BuildTypeFromPath(string type)
         {
-            if (_info.MajorVersion == 2)
-            {
-                switch (type)
-                {
-                    case "TestScript.setup.action":
-                        return $"TestScript.SetupActionComponent";
-
-                    case "TestScript.test.action":
-                        return $"TestScript.TestActionComponent";
-
-                    case "TestScript.teardown.action":
-                        return $"TestScript.TearDownActionComponent";
-                }
-            }
-
             if (_info.TryGetExplicitName(type, out string explicitTypeName))
             {
                 string parentName = type.Substring(0, type.IndexOf('.'));
