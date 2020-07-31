@@ -11,46 +11,116 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A FHIR type edge.</summary>
     public class FhirTypeEdge
     {
-        private FhirPrimitive _primitive;
-        private FhirComplex _complex;
+        private FhirPrimitive _sourcePrimitive;
+        private FhirComplex _sourceComplex;
+
+        private FhirPrimitive _destinationPrimitive;
+        private FhirComplex _destinationComplex;
 
         /// <summary>Initializes a new instance of the <see cref="FhirTypeEdge"/> class.</summary>
-        /// <param name="edgeType">   The type of the edge.</param>
-        /// <param name="destination">Destination for the edge.</param>
+        /// <param name="sourceType">     Type of the source.</param>
+        /// <param name="sourceNode">     Source node.</param>
+        /// <param name="destinationType">The type of the edge.</param>
+        /// <param name="destinationNode">Destination for the edge.</param>
         public FhirTypeEdge(
-            DestinationNodeType edgeType,
-            object destination)
+            EdgeNodeType sourceType,
+            object sourceNode)
         {
-            EdgeType = edgeType;
-
-            if (destination != null)
+            if (sourceNode != null)
             {
-                switch (edgeType)
+                switch (sourceType)
                 {
-                    case DestinationNodeType.Primitive:
-                        _primitive = (FhirPrimitive)destination;
-                        _complex = null;
+                    case EdgeNodeType.Primitive:
+                        _sourcePrimitive = (FhirPrimitive)sourceNode;
+                        _sourceComplex = null;
                         break;
 
-                    case DestinationNodeType.DataType:
-                    case DestinationNodeType.Resource:
-                    case DestinationNodeType.Component:
-                        _primitive = null;
-                        _complex = (FhirComplex)destination;
+                    case EdgeNodeType.DataType:
+                    case EdgeNodeType.Resource:
+                    case EdgeNodeType.Component:
+                        _sourcePrimitive = null;
+                        _sourceComplex = (FhirComplex)sourceNode;
                         break;
 
-                    case DestinationNodeType.Unknown:
-                    case DestinationNodeType.Self:
+                    case EdgeNodeType.Unknown:
+                    case EdgeNodeType.Self:
                     default:
-                        _primitive = null;
-                        _complex = null;
+                        throw new ArgumentException($"Invalid source node type: {sourceType}");
+                }
+            }
+
+            SourceType = sourceType;
+            DestinationType = EdgeNodeType.Unknown;
+            _destinationPrimitive = null;
+            _destinationComplex = null;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="FhirTypeEdge"/> class.</summary>
+        /// <param name="sourceType">     Type of the source.</param>
+        /// <param name="sourceNode">     Source node.</param>
+        /// <param name="destinationType">The type of the edge.</param>
+        /// <param name="destinationNode">Destination for the edge.</param>
+        public FhirTypeEdge(
+            EdgeNodeType sourceType,
+            object sourceNode,
+            EdgeNodeType destinationType,
+            object destinationNode)
+        {
+            SourceType = sourceType;
+
+            if (sourceNode != null)
+            {
+                switch (sourceType)
+                {
+                    case EdgeNodeType.Primitive:
+                        _sourcePrimitive = (FhirPrimitive)sourceNode;
+                        _sourceComplex = null;
+                        break;
+
+                    case EdgeNodeType.DataType:
+                    case EdgeNodeType.Resource:
+                    case EdgeNodeType.Component:
+                        _sourcePrimitive = null;
+                        _sourceComplex = (FhirComplex)sourceNode;
+                        break;
+
+                    case EdgeNodeType.Unknown:
+                    case EdgeNodeType.Self:
+                    default:
+                        throw new ArgumentException($"Invalid source node type: {sourceType}");
+                }
+            }
+
+            DestinationType = destinationType;
+
+            if (destinationNode != null)
+            {
+                switch (destinationType)
+                {
+                    case EdgeNodeType.Primitive:
+                        _destinationPrimitive = (FhirPrimitive)destinationNode;
+                        _destinationComplex = null;
+                        break;
+
+                    case EdgeNodeType.DataType:
+                    case EdgeNodeType.Resource:
+                    case EdgeNodeType.Component:
+                        _destinationPrimitive = null;
+                        _destinationComplex = (FhirComplex)destinationNode;
+                        break;
+
+                    case EdgeNodeType.Unknown:
+                    case EdgeNodeType.Self:
+                    default:
+                        _destinationPrimitive = null;
+                        _destinationComplex = null;
                         break;
                 }
             }
         }
 
         /// <summary>Values that represent destination node types.</summary>
-        public enum DestinationNodeType
+        public enum EdgeNodeType
         {
             /// <summary>Could not determine edge linking type.</summary>
             Unknown,
@@ -71,21 +141,62 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Component,
         }
 
+        /// <summary>Gets the type of the source node.</summary>
+        public EdgeNodeType SourceType { get; }
+
         /// <summary>Gets the type of the edge.</summary>
-        public DestinationNodeType EdgeType { get; }
+        public EdgeNodeType DestinationType { get; }
 
         /// <summary>Follows the edge to it's type node.</summary>
         /// <returns>An object.</returns>
-        public object GetNode()
+        public object GetSource()
         {
-            if (_primitive != null)
+            if (_sourcePrimitive != null)
             {
-                return _primitive;
+                return _sourcePrimitive;
             }
 
-            if (_complex != null)
+            if (_sourceComplex != null)
             {
-                return _complex;
+                return _sourceComplex;
+            }
+
+            return null;
+        }
+
+        /// <summary>Grabs the edge source node.</summary>
+        /// <typeparam name="T">Type of node expected to return.</typeparam>
+        /// <returns>An object.</returns>
+        public T GetSource<T>()
+            where T : FhirTypeBase
+        {
+            if ((_sourcePrimitive != null) &&
+                (typeof(T) == typeof(FhirPrimitive)))
+            {
+                return _sourcePrimitive as T;
+            }
+
+            if ((_sourceComplex != null) &&
+                (typeof(T) == typeof(FhirComplex)))
+            {
+                return _sourceComplex as T;
+            }
+
+            return null;
+        }
+
+        /// <summary>Follows the edge to it's type node.</summary>
+        /// <returns>An object.</returns>
+        public object GetDestination()
+        {
+            if (_destinationPrimitive != null)
+            {
+                return _destinationPrimitive;
+            }
+
+            if (_destinationComplex != null)
+            {
+                return _destinationComplex;
             }
 
             return null;
@@ -94,19 +205,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Follows the edge to it's type node.</summary>
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <returns>An object.</returns>
-        public T GetNode<T>()
+        public T GetDestination<T>()
             where T : FhirTypeBase
         {
-            if ((_primitive != null) &&
+            if ((_destinationPrimitive != null) &&
                 (typeof(T) == typeof(FhirPrimitive)))
             {
-                return _primitive as T;
+                return _destinationPrimitive as T;
             }
 
-            if ((_complex != null) &&
+            if ((_destinationComplex != null) &&
                 (typeof(T) == typeof(FhirComplex)))
             {
-                return _complex as T;
+                return _destinationComplex as T;
             }
 
             return null;

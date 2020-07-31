@@ -615,7 +615,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 {
                     typeMapByPath.Add(
                         node.Path,
-                        new FhirTypeEdge(FhirTypeEdge.DestinationNodeType.Component, node));
+                        new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.Component, node));
                 }
 
                 complex.Components.Add(

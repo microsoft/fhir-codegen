@@ -9,9 +9,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Schema;
+using Microsoft.Health.Fhir.SpecManager.fhir.r4;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.OpenApi;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
@@ -43,6 +45,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Options for controlling the operation.</summary>
         private Dictionary<string, string> _parameters = new Dictionary<string, string>();
 
+        /// <summary>The instance operation prefixes.</summary>
+        private Dictionary<OperationType, string> _instanceOpPrefixes;
+
+        /// <summary>The type operation prefixes.</summary>
+        private Dictionary<OperationType, string> _typeOpPrefixes;
+
+        /// <summary>Dictionary of cycle matches.</summary>
+        private HashSet<string> _knownCycles = new HashSet<string>();
+
         /// <summary>True to explicit FHIR JSON.</summary>
         private bool _explicitFhirJson = false;
 
@@ -60,6 +71,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>True to include, false to exclude the schema descriptions.</summary>
         private bool _includeDescriptions = true;
+
+        /// <summary>True to validate descriptions.</summary>
+        private bool _validateDescriptions = false;
+
+        /// <summary>Length of the description maximum.</summary>
+        private int _descriptionMaxLen = 60;
 
         /// <summary>True to expand references based on allowed profiles.</summary>
         private bool _expandProfiles = true;
@@ -152,13 +169,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "ExplicitFhirXml", "If paths should explicitly support FHIR+XML (true|false)." },
             { "Responses", "Response inclusion style (single|multiple)." },
             { "Summaries", "If responses should include summaries (true|false)." },
-            { "Schemas", "If schemas should be included (true|false)" },
-            { "Descriptions", "If properties should include descriptions (true|false)" },
-            { "ExpandProfiles", "If types should expand based on allowed profiles (true|false)" },
-            { "ReadOnly", "If the output should only contain GET operations (false|true)" },
-            { "Minify", "If the output JSON should be minified (false|true)" },
-            { "Metadata", "If the JSON should include a link to /metadata (false|true)" },
-            { "ExpandDepth", "Depth to expand links that cause circular references (1)" },
+            { "Schemas", "If schemas should be included (true|false)." },
+            { "Descriptions", "If properties should include descriptions (true|false)." },
+            { "ValidateDescriptions", "If descriptions are required and should be validated (false|true)." },
+            { "DescriptionMaxLen", "Maximum length of descriptions, if being validated (60)." },
+            { "ExpandProfiles", "If types should expand based on allowed profiles (true|false)." },
+            { "ReadOnly", "If the output should only contain GET operations (false|true)." },
+            { "Minify", "If the output JSON should be minified (false|true)." },
+            { "Metadata", "If the JSON should include a link to /metadata (false|true)." },
+            { "ExpandDepth", "Depth to expand links that cause circular references (1)." },
+            { "OperationCase", "Case of the first letter of Operation IDs (upper|lower)." },
         };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
@@ -239,6 +259,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _includeDescriptions = false;
             }
 
+            if (_parameters.ContainsKey("VALIDATEDESCRIPTIONS") &&
+                (!string.IsNullOrEmpty(_parameters["VALIDATEDESCRIPTIONS"])) &&
+                _parameters["VALIDATEDESCRIPTIONS"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
+            {
+                _validateDescriptions = true;
+            }
+
+            if (_parameters.ContainsKey("DESCRIPTIONMAXLEN") &&
+                (!string.IsNullOrEmpty(_parameters["DESCRIPTIONMAXLEN"])) &&
+                int.TryParse(_parameters["DESCRIPTIONMAXLEN"], out int val))
+            {
+                _descriptionMaxLen = val;
+            }
+
             if (_parameters.ContainsKey("EXPANDPROFILES") &&
                 (!string.IsNullOrEmpty(_parameters["EXPANDPROFILES"])) &&
                 _parameters["EXPANDPROFILES"].StartsWith("F", StringComparison.OrdinalIgnoreCase))
@@ -276,6 +310,61 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _circularExpandDepth = value;
             }
 
+            if (_parameters.ContainsKey("OPERATIONCASE") &&
+                (!string.IsNullOrEmpty(_parameters["OPERATIONCASE"])) &&
+                _parameters["OPERATIONCASE"].StartsWith("L", StringComparison.OrdinalIgnoreCase))
+            {
+                _instanceOpPrefixes = new Dictionary<OperationType, string>()
+                {
+                    [OperationType.Delete] = "delete",
+                    [OperationType.Get] = "get",
+                    [OperationType.Head] = "head",
+                    [OperationType.Options] = "options",
+                    [OperationType.Patch] = "update",
+                    [OperationType.Post] = "create",
+                    [OperationType.Put] = "update",
+                    [OperationType.Trace] = "trace",
+                };
+
+                _typeOpPrefixes = new Dictionary<OperationType, string>()
+                {
+                    [OperationType.Delete] = "delete",
+                    [OperationType.Get] = "list",
+                    [OperationType.Head] = "head",
+                    [OperationType.Options] = "options",
+                    [OperationType.Patch] = "update",
+                    [OperationType.Post] = "create",
+                    [OperationType.Put] = "update",
+                    [OperationType.Trace] = "trace",
+                };
+            }
+            else
+            {
+                _instanceOpPrefixes = new Dictionary<OperationType, string>()
+                {
+                    [OperationType.Delete] = "Delete",
+                    [OperationType.Get] = "Get",
+                    [OperationType.Head] = "Head",
+                    [OperationType.Options] = "Options",
+                    [OperationType.Patch] = "Update",
+                    [OperationType.Post] = "Create",
+                    [OperationType.Put] = "Update",
+                    [OperationType.Trace] = "Trace",
+                };
+
+                _typeOpPrefixes = new Dictionary<OperationType, string>()
+                {
+                    [OperationType.Delete] = "Delete",
+                    [OperationType.Get] = "List",
+                    [OperationType.Head] = "Head",
+                    [OperationType.Options] = "Options",
+                    [OperationType.Patch] = "Update",
+                    [OperationType.Post] = "Create",
+                    [OperationType.Put] = "Update",
+                    [OperationType.Trace] = "Trace",
+                };
+            }
+
             OpenApiDocument document = new OpenApiDocument();
 
             document.Info = BuildInfo();
@@ -285,10 +374,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             document.Components.Parameters = new Dictionary<string, OpenApiParameter>()
             {
                 ["id"] = BuildPathIdParameter(),
+                ["_format"] = BuildFormatParameter(),
             };
 
             if (_includeSchemas)
             {
+                //CheckForCycles();
                 document.Components.Schemas = BuildSchemas();
             }
 
@@ -353,6 +444,320 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return schemas;
+        }
+
+        /// <summary>Check for cycles.</summary>
+        private void CheckForCycles()
+        {
+            List<CycleInfo> allCycles = new List<CycleInfo>();
+            _knownCycles = new HashSet<string>();
+
+            foreach (FhirComplex complex in _info.ComplexTypes.Values)
+            {
+                List<string> treePath = new List<string>();
+                CheckForCycle(
+                    treePath,
+                    complex,
+                    out List<CycleInfo> cycles);
+
+                if ((cycles == null) || (cycles.Count == 0))
+                {
+                    continue;
+                }
+
+                allCycles.AddRange(cycles);
+            }
+
+            foreach (FhirComplex complex in _info.Resources.Values)
+            {
+                List<string> treePath = new List<string>();
+                CheckForCycle(
+                    treePath,
+                    complex,
+                    out List<CycleInfo> cycles);
+
+                if ((cycles == null) || (cycles.Count == 0))
+                {
+                    continue;
+                }
+
+                allCycles.AddRange(cycles);
+            }
+
+            if (allCycles.Count == 0)
+            {
+                return;
+            }
+
+            int i = 0;
+            foreach (CycleInfo cycle in allCycles)
+            {
+                if (i++ > 200)
+                {
+                    break;
+                }
+
+                Console.WriteLine($"Found cycle: {string.Join("->", cycle.PathToCycle)}");
+            }
+
+            Console.Write("");
+        }
+
+        /// <summary>Check for cycle.</summary>
+        /// <param name="treePath">          Full pathname of the tree file.</param>
+        /// <param name="complex">           The complex.</param>
+        /// <param name="cycles">            [out] The cycles.</param>
+        /// <param name="includedPaths">     (Optional) The included paths.</param>
+        /// <param name="topLevelRecursions">(Optional) The top level recursions.</param>
+        private void CheckForCycle(
+            List<string> treePath,
+            FhirComplex complex,
+            out List<CycleInfo> cycles,
+            HashSet<string> includedPaths = null,
+            int topLevelRecursions = 0)
+        {
+            if (complex.Path == "Address")
+            {
+                Console.Write("");
+            }
+
+            if (topLevelRecursions > 1)
+            {
+                cycles = null;
+                return;
+            }
+
+            if (includedPaths == null)
+            {
+                includedPaths = new HashSet<string>();
+            }
+
+            cycles = new List<CycleInfo>();
+            treePath.Add(complex.Path);
+
+            if (includedPaths.Contains(complex.Path))
+            {
+                cycles.Add(new CycleInfo()
+                {
+                    PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
+                });
+
+                return;
+            }
+
+            includedPaths.Add(complex.Path);
+
+            if (complex.Path != complex.BaseTypeName)
+            {
+                if (includedPaths.Contains(complex.BaseTypeName))
+                {
+                    cycles.Add(new CycleInfo()
+                    {
+                        PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
+                    });
+
+                    return;
+                }
+
+                if (_info.TryGetPathType(complex.BaseTypeName, out FhirTypeEdge edge))
+                {
+                    CheckEdgeCycles(treePath, cycles, includedPaths, topLevelRecursions, edge);
+                }
+            }
+
+            if ((complex.Components != null) && (complex.Components.Count > 0))
+            {
+                foreach (FhirComplex component in complex.Components.Values)
+                {
+                    CheckForCycle(
+                        treePath.Select(s => (string)s.Clone()).ToList(),
+                        component,
+                        out List<CycleInfo> subCycles,
+                        CloneHashSet(includedPaths),
+                        topLevelRecursions);
+
+                    if ((subCycles == null) || (subCycles.Count == 0))
+                    {
+                        continue;
+                    }
+
+                    cycles.AddRange(subCycles);
+                }
+            }
+
+            if ((complex.Elements != null) && (complex.Elements.Count > 0))
+            {
+                foreach (FhirElement element in complex.Elements.Values)
+                {
+                    if (complex.Components.ContainsKey(element.Path))
+                    {
+                        continue;
+                    }
+
+                    CheckForCycle(
+                        treePath.Select(s => (string)s.Clone()).ToList(),
+                        element,
+                        out List<CycleInfo> subCycles,
+                        CloneHashSet(includedPaths),
+                        topLevelRecursions);
+
+                    if ((subCycles == null) || (subCycles.Count == 0))
+                    {
+                        continue;
+                    }
+
+                    cycles.AddRange(subCycles);
+                }
+            }
+        }
+
+        /// <summary>Check edge cycles.</summary>
+        /// <param name="treePath">          Full pathname of the tree file.</param>
+        /// <param name="cycles">            [out] The cycles.</param>
+        /// <param name="includedPaths">     The included paths.</param>
+        /// <param name="topLevelRecursions">The top level recursions.</param>
+        /// <param name="edge">              The edge.</param>
+        private void CheckEdgeCycles(
+            List<string> treePath,
+            List<CycleInfo> cycles,
+            HashSet<string> includedPaths,
+            int topLevelRecursions,
+            FhirTypeEdge edge)
+        {
+            switch (edge.SourceType)
+            {
+                case FhirTypeEdge.EdgeNodeType.DataType:
+                case FhirTypeEdge.EdgeNodeType.Resource:
+                    {
+                        CheckForCycle(
+                            treePath.Select(s => (string)s.Clone()).ToList(),
+                            edge.GetSource<FhirComplex>(),
+                            out List<CycleInfo> subCycles,
+                            CloneHashSet(includedPaths),
+                            topLevelRecursions + 1);
+
+                        if ((subCycles != null) && (subCycles.Count != 0))
+                        {
+                            cycles.AddRange(subCycles);
+                        }
+                    }
+
+                    break;
+
+                case FhirTypeEdge.EdgeNodeType.Component:
+                    {
+                        CheckForCycle(
+                            treePath.Select(s => (string)s.Clone()).ToList(),
+                            edge.GetSource<FhirComplex>(),
+                            out List<CycleInfo> subCycles,
+                            CloneHashSet(includedPaths),
+                            topLevelRecursions);
+
+                        if ((subCycles != null) && (subCycles.Count != 0))
+                        {
+                            cycles.AddRange(subCycles);
+                        }
+                    }
+
+                    break;
+
+                case FhirTypeEdge.EdgeNodeType.Primitive:
+                case FhirTypeEdge.EdgeNodeType.Unknown:
+                case FhirTypeEdge.EdgeNodeType.Self:
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>Check for cycle.</summary>
+        /// <param name="treePath">          Full pathname of the tree file.</param>
+        /// <param name="element">           The element.</param>
+        /// <param name="cycles">            [out] The cycles.</param>
+        /// <param name="includedPaths">     The included paths.</param>
+        /// <param name="topLevelRecursions">The top level recursions.</param>
+        private void CheckForCycle(
+            List<string> treePath,
+            FhirElement element,
+            out List<CycleInfo> cycles,
+            HashSet<string> includedPaths,
+            int topLevelRecursions)
+        {
+            cycles = new List<CycleInfo>();
+            treePath.Add(element.Path);
+
+            if (includedPaths.Contains(element.Path))
+            {
+                cycles.Add(new CycleInfo()
+                {
+                    PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
+                });
+
+                return;
+            }
+
+            includedPaths.Add(element.Path);
+
+            if (!string.IsNullOrEmpty(element.BaseTypeName))
+            {
+                if (_info.PrimitiveTypes.ContainsKey(element.BaseTypeName))
+                {
+                    return;
+                }
+
+                if (includedPaths.Contains(element.BaseTypeName))
+                {
+                    cycles.Add(new CycleInfo()
+                    {
+                        PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
+                    });
+
+                    return;
+                }
+
+                if (_info.TryGetPathType(element.BaseTypeName, out FhirTypeEdge edge))
+                {
+                    CheckEdgeCycles(treePath, cycles, includedPaths, topLevelRecursions, edge);
+                }
+
+                return;
+            }
+
+            if ((element.ElementTypes != null) && (element.ElementTypes.Count > 0))
+            {
+                foreach (FhirElementType elementType in element.ElementTypes.Values)
+                {
+                    if (includedPaths.Contains(elementType.Type))
+                    {
+                        cycles.Add(new CycleInfo()
+                        {
+                            PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
+                        });
+
+                        continue;
+                    }
+
+                    if (_info.TryGetPathType(elementType.Type, out FhirTypeEdge edge))
+                    {
+                        CheckEdgeCycles(treePath, cycles, includedPaths, topLevelRecursions, edge);
+                    }
+                }
+
+                return;
+            }
+        }
+
+        /// <summary>Initializes this object from the given hash set.</summary>
+        /// <param name="hs">The hs.</param>
+        /// <returns>A HashSet&lt;string&gt;</returns>
+        private static HashSet<string> CloneHashSet(HashSet<string> hs)
+        {
+            HashSet<string> set = new HashSet<string>();
+            foreach (string val in hs)
+            {
+                set.Add(val);
+            }
+
+            return set;
         }
 
         /// <summary>Builds type name from path.</summary>
@@ -436,7 +841,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>(),
+                Description =
+                    _includeDescriptions
+                    ? SanitizeDescription(complex.ShortDescription)
+                    : null,
             };
+
+            if (complex.Name == "Extension")
+            {
+                schemas.Add(typeName, schema);
+                return;
+            }
 
             if (string.IsNullOrEmpty(complex.BaseTypeName) ||
                 complex.Name.Equals("Element", StringComparison.Ordinal))
@@ -460,18 +875,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         {
                             Reference = new OpenApiReference()
                             {
-                                //Id = BuildTypeReferenceFromPath(complex.BaseTypeName),
                                 Id = BuildTypeNameFromPath(complex.BaseTypeName),
                                 Type = ReferenceType.Schema,
                             },
                         },
                     };
                 }
-            }
-
-            if (_includeDescriptions)
-            {
-                schema.Description = complex.ShortDescription;
             }
 
             if (complex.Path == "Resource")
@@ -481,17 +890,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     new OpenApiSchema()
                     {
                         Type = "string",
+                        Description = _includeDescriptions ? "Resource type name" : null,
                     });
 
                 schema.Discriminator = new OpenApiDiscriminator()
                 {
                     PropertyName = "resourceType",
+                    Mapping = new Dictionary<string, string>(),
                 };
+
+                foreach (string resourceName in _info.Resources.Keys.OrderBy(s => s))
+                {
+                    if (resourceName == "Resource")
+                    {
+                        continue;
+                    }
+
+                    schema.Discriminator.Mapping.Add(resourceName, resourceName);
+                }
 
                 schema.Required = new HashSet<string>()
                 {
                     "resourceType",
                 };
+            }
+            else if (isResource)
+            {
+                schema.Pattern = complex.Path;
             }
 
             if (root == null)
@@ -526,11 +951,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element)
         {
             string name = GetElementName(element);
-            OpenApiSchema schema = new OpenApiSchema();
-
-            if (_includeDescriptions)
+            OpenApiSchema schema = new OpenApiSchema()
             {
-                schema.Description = element.ShortDescription;
+                Description =
+                    _includeDescriptions
+                    ? SanitizeDescription(element.ShortDescription)
+                    : null,
+            };
+
+            if (element.Path == "Reference.identifier")
+            {
+                schema.Type = "object";
+                parentSchema.Properties.Add(
+                    GetElementName(element),
+                    schema);
+                return;
             }
 
             if ((element.ElementTypes != null) &&
@@ -540,12 +975,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     string pascal = FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase);
 
-                    OpenApiSchema subSchema = new OpenApiSchema();
-
-                    if (_includeDescriptions)
+                    OpenApiSchema subSchema = new OpenApiSchema()
                     {
-                        subSchema.Description = element.ShortDescription;
-                    }
+                        Description =
+                            _includeDescriptions
+                            ? SanitizeDescription(element.ShortDescription)
+                            : null,
+                    };
 
                     SetSchemaType(elementType.Name, ref subSchema);
 
@@ -677,7 +1113,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     Reference = new OpenApiReference()
                     {
-                        //Id = BuildTypeReferenceFromPath(baseType),
                         Id = BuildTypeNameFromPath(baseType),
                         Type = ReferenceType.Schema,
                     },
@@ -687,7 +1122,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 schema.Reference = new OpenApiReference()
                 {
-                    //Id = BuildTypeReferenceFromPath(baseType),
                     Id = BuildTypeNameFromPath(baseType),
                     Type = ReferenceType.Schema,
                 };
@@ -818,12 +1252,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         case FhirServerResourceInfo.FhirInteraction.Read:
                         case FhirServerResourceInfo.FhirInteraction.VRead:
                         case FhirServerResourceInfo.FhirInteraction.HistoryInstance:
-
-                            if (!instancePath.Operations.ContainsKey(OperationType.Get))
                             {
+                                if (instancePath.Operations.ContainsKey(OperationType.Get))
+                                {
+                                    continue;
+                                }
+
+                                OpenApiOperation op = BuildPathOperation(
+                                    OperationType.Get,
+                                    resource.ResourceType,
+                                    true);
+
+                                AddOperationParameters(_serverInfo.ServerSearchParameters.Values, op);
+                                AddOperationParameters(resource.SearchParameters.Values, op);
+
                                 instancePath.Operations.Add(
                                     OperationType.Get,
-                                    BuildPathOperation(OperationType.Get, resource.ResourceType, true));
+                                    op);
                             }
 
                             break;
@@ -915,21 +1360,60 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             return paths;
         }
 
+        /// <summary>Adds requested operation parameters to a given OpenApiOperation.</summary>
+        /// <param name="searchParameters">Options for controlling the search.</param>
+        /// <param name="op">              The operation.</param>
+        private void AddOperationParameters(
+            IEnumerable<FhirServerSearchParam> searchParameters,
+            OpenApiOperation op)
+        {
+            foreach (FhirServerSearchParam sp in searchParameters)
+            {
+                OpenApiParameter opParam = new OpenApiParameter()
+                {
+                    Name = sp.Name,
+                    In = ParameterLocation.Query,
+                    Description =
+                            _includeDescriptions
+                            ? SanitizeDescription(sp.Documentation)
+                            : null,
+                };
+
+                switch (sp.ParameterType)
+                {
+                    case FhirServerSearchParam.SearchParameterType.Number:
+                        opParam.Schema = new OpenApiSchema()
+                        {
+                            Type = "number",
+                        };
+                        break;
+
+                    case FhirServerSearchParam.SearchParameterType.Date:
+                    case FhirServerSearchParam.SearchParameterType.String:
+                    case FhirServerSearchParam.SearchParameterType.Token:
+                    case FhirServerSearchParam.SearchParameterType.Reference:
+                    case FhirServerSearchParam.SearchParameterType.Composite:
+                    case FhirServerSearchParam.SearchParameterType.Quantity:
+                    case FhirServerSearchParam.SearchParameterType.Uri:
+                    case FhirServerSearchParam.SearchParameterType.Special:
+                    default:
+
+                        opParam.Schema = new OpenApiSchema()
+                        {
+                            Type = "string",
+                        };
+
+                        break;
+                }
+
+                op.Parameters.Add(opParam);
+            }
+        }
+
         /// <summary>Builds path identifier parameter.</summary>
         /// <returns>An OpenApiParameter.</returns>
         private static OpenApiParameter BuildReferencedPathIdParameter()
         {
-            //return new OpenApiParameter()
-            //{
-            //    Name = "id",
-            //    In = ParameterLocation.Path,
-            //    Required = true,
-            //    Schema = new OpenApiSchema()
-            //    {
-            //        Type = "string",
-            //    },
-            //};
-
             return new OpenApiParameter()
             {
                 Name = "id",
@@ -937,6 +1421,50 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     Id = "id",
                     Type = ReferenceType.Parameter,
+                },
+            };
+        }
+
+        /// <summary>Builds referenced format parameter.</summary>
+        /// <returns>An OpenApiParameter.</returns>
+        private static OpenApiParameter BuildReferencedFormatParameter()
+        {
+            return new OpenApiParameter()
+            {
+                Name = "_format",
+                Reference = new OpenApiReference()
+                {
+                    Id = "_format",
+                    Type = ReferenceType.Parameter,
+                },
+            };
+        }
+
+        /// <summary>Builds format parameter.</summary>
+        /// <returns>An OpenApiParameter.</returns>
+        private OpenApiParameter BuildFormatParameter()
+        {
+            OpenApiString value;
+
+            if (_explicitFhirJson || (!_explicitFhirXml))
+            {
+                value = new OpenApiString("application/fhir+json");
+            }
+            else
+            {
+                value = new OpenApiString("application/fhir+xml");
+            }
+
+            return new OpenApiParameter()
+            {
+                Name = "_format",
+                In = ParameterLocation.Query,
+                Description = "Requested content type",
+                Required = true,
+                Schema = new OpenApiSchema()
+                {
+                    Type = "string",
+                    Default = value,
                 },
             };
         }
@@ -1027,14 +1555,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string contentResourceName;
 
+            operation.Parameters.Add(BuildReferencedFormatParameter());
+
             if (isInstanceLevel)
             {
-                operation.OperationId = $"{pathOpType}{resourceName}I";
+                operation.OperationId = $"{pathOpType}{resourceName}";
                 operation.Parameters.Add(BuildReferencedPathIdParameter());
             }
             else
             {
-                operation.OperationId = $"{pathOpType}{resourceName}";
+                operation.OperationId = $"{pathOpType}{resourceName}s";
             }
 
             if (_includeSummaries)
@@ -1049,17 +1579,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
+            if (_includeDescriptions)
+            {
+                if (isInstanceLevel)
+                {
+                    operation.Description = $"{_instanceOpPrefixes[pathOpType]} a {resourceName}";
+                }
+                else
+                {
+                    operation.Description = $"{_typeOpPrefixes[pathOpType]} {resourceName}s at the type level.";
+                }
+            }
+
             switch (pathOpType)
             {
                 case OperationType.Get:
                     if (isInstanceLevel)
                     {
-                        operation.OperationId = $"Get{resourceName}";
+                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
                         contentResourceName = resourceName;
                     }
                     else
                     {
-                        operation.OperationId = $"List{resourceName}s";
+                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
                         contentResourceName = "Bundle";
                     }
 
@@ -1100,12 +1642,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case OperationType.Put:
                     if (isInstanceLevel)
                     {
-                        operation.OperationId = $"Replace{resourceName}";
+                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
                         contentResourceName = resourceName;
                     }
                     else
                     {
-                        operation.OperationId = $"Replace{resourceName}s";
+                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
                         contentResourceName = resourceName;
                     }
 
@@ -1114,12 +1656,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         operation.RequestBody = new OpenApiRequestBody()
                         {
                             Content = BuildContentMap(contentResourceName),
+                            Description =
+                                _includeDescriptions
+                                ? $"A {resourceName}"
+                                : null,
                         };
-
-                        if (_includeDescriptions)
-                        {
-                            operation.RequestBody.Description = $"A {resourceName}";
-                        }
 
                         operation.Responses = new OpenApiResponses()
                         {
@@ -1180,12 +1721,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case OperationType.Post:
                     if (isInstanceLevel)
                     {
-                        operation.OperationId = $"Create{resourceName}";
+                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
                         contentResourceName = resourceName;
                     }
                     else
                     {
-                        operation.OperationId = $"Create{resourceName}s";
+                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
                         contentResourceName = resourceName;
                     }
 
@@ -1194,12 +1735,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         operation.RequestBody = new OpenApiRequestBody()
                         {
                             Content = BuildContentMap(contentResourceName),
+                            Description =
+                                _includeDescriptions
+                                ? $"A {resourceName}"
+                                : null,
                         };
-
-                        if (_includeDescriptions)
-                        {
-                            operation.RequestBody.Description = $"A {resourceName}";
-                        }
 
                         operation.Responses = new OpenApiResponses()
                         {
@@ -1252,11 +1792,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case OperationType.Delete:
                     if (isInstanceLevel)
                     {
-                        operation.OperationId = $"Delete{resourceName}";
+                        operation.OperationId = $"{_instanceOpPrefixes[pathOpType]}{resourceName}";
                     }
                     else
                     {
-                        operation.OperationId = $"Delete{resourceName}s";
+                        operation.OperationId = $"{_typeOpPrefixes[pathOpType]}{resourceName}s";
                     }
 
                     operation.Responses = new OpenApiResponses()
@@ -1288,22 +1828,41 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             return operation;
         }
 
+        private void AddAcceptHeader(ref OpenApiOperation op)
+        {
+            if (op.Parameters == null)
+            {
+                op.Parameters = new List<OpenApiParameter>();
+            }
+
+            if (_explicitFhirJson)
+            {
+                op.Parameters.Add(new OpenApiParameter()
+                {
+                    Name = "Accept",
+                    In = ParameterLocation.Header,
+                });
+            }
+        }
+
         /// <summary>Builds metadata path operation.</summary>
         /// <param name="resourceName">Name of the resource.</param>
         /// <returns>An OpenApiOperation.</returns>
         private OpenApiOperation BuildMetadataPathOperation(
             string resourceName)
         {
-            OpenApiOperation operation = new OpenApiOperation();
-
-            operation.OperationId = $"GetMetadata";
-
-            if (_includeSummaries)
+            OpenApiOperation operation = new OpenApiOperation()
             {
-                operation.Summary = $"Gets metadata information about this server.";
-            }
-
-            operation.OperationId = $"GetMetadata";
+                OperationId = $"{_instanceOpPrefixes[OperationType.Get]}Metadata",
+                Summary =
+                    _includeSummaries
+                    ? $"{_instanceOpPrefixes[OperationType.Get]} metadata information about this server."
+                    : null,
+                Description =
+                    _includeDescriptions
+                    ? $"{_instanceOpPrefixes[OperationType.Get]} metadata."
+                    : null,
+            };
 
             operation.Responses = new OpenApiResponses()
             {
@@ -1330,11 +1889,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (!string.IsNullOrEmpty(_serverInfo.ImplementationDescription))
             {
-                description = _serverInfo.ImplementationDescription;
+                description = SanitizeDescription(_serverInfo.ImplementationDescription);
             }
             else if (!string.IsNullOrEmpty(_serverInfo.SoftwareName))
             {
-                description = _serverInfo.SoftwareName;
+                description = SanitizeDescription(_serverInfo.SoftwareName);
             }
             else
             {
@@ -1371,6 +1930,54 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 Version = "1.0.0",
                 Title = title,
             };
+        }
+
+        /// <summary>Sanitize description.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>A string.</returns>
+        private string SanitizeDescription(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return _validateDescriptions ? "N/A." : string.Empty;
+            }
+
+            if (!_validateDescriptions)
+            {
+                return value.Replace("\r", string.Empty).Replace("\n", string.Empty);
+            }
+
+            value = value.Replace("\r", string.Empty).Replace("\n", string.Empty);
+
+            if (!value.EndsWith(".", StringComparison.Ordinal))
+            {
+                value += ".";
+            }
+
+            if (!char.IsUpper(value[0]))
+            {
+                if (value.Contains('|'))
+                {
+                    value = "Values: " + value;
+                }
+                else
+                {
+                    value = value.Substring(0, 1).ToUpperInvariant() + value.Substring(1);
+                }
+            }
+
+            if (value.Length > _descriptionMaxLen)
+            {
+                value = value.Substring(0, _descriptionMaxLen - 3) + "...";
+            }
+
+            return value;
+        }
+
+        /// <summary>Information about a detected cycle.</summary>
+        private struct CycleInfo
+        {
+            internal List<string> PathToCycle;
         }
     }
 }
