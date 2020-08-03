@@ -1137,6 +1137,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     case FhirComplex.FhirComplexType.Extension:
                         fhirVersionInfo.AddExtension(complex);
                         break;
+                    case FhirComplex.FhirComplexType.Profile:
+                        fhirVersionInfo.AddProfile(complex);
+                        break;
                 }
             }
             catch (Exception ex)

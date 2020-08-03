@@ -109,6 +109,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             /// Enumerations (e.g., instances of Codes and Value Sets).
             /// </summary>
             Enum,
+
+            /// <summary>A resource or data type profile.</summary>
+            Profile,
         }
 
         /// <summary>Values that represent extension support requests.</summary>

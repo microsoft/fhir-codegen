@@ -147,6 +147,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirComplex> _resourcesByName;
         private Dictionary<string, FhirComplex> _extensionsByUrl;
         private Dictionary<string, Dictionary<string, FhirComplex>> _extensionsByPath;
+        private Dictionary<string, FhirComplex> _profilesById;
+        private Dictionary<string, Dictionary<string, FhirComplex>> _profilesByBaseType;
         private Dictionary<string, FhirOperation> _systemOperations;
         private Dictionary<string, FhirSearchParam> _globalSearchParameters;
         private Dictionary<string, FhirSearchParam> _searchResultParameters;
@@ -179,6 +181,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _resourcesByName = new Dictionary<string, FhirComplex>();
             _extensionsByUrl = new Dictionary<string, FhirComplex>();
             _extensionsByPath = new Dictionary<string, Dictionary<string, FhirComplex>>();
+            _profilesById = new Dictionary<string, FhirComplex>();
+            _profilesByBaseType = new Dictionary<string, Dictionary<string, FhirComplex>>();
             _systemOperations = new Dictionary<string, FhirOperation>();
             _globalSearchParameters = new Dictionary<string, FhirSearchParam>();
             _searchResultParameters = new Dictionary<string, FhirSearchParam>();
@@ -265,6 +269,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <value>A dictionary of the resources.</value>
         public Dictionary<string, FhirComplex> Resources { get => _resourcesByName; }
 
+        /// <summary>Gets the profiles.</summary>
+        public Dictionary<string, FhirComplex> Profiles { get => _profilesById; }
+
+        /// <summary>Gets the type of the profiles by base.</summary>
+        public Dictionary<string, Dictionary<string, FhirComplex>> ProfilesByBaseType { get => _profilesByBaseType; }
+
         /// <summary>Gets URL of the extensions by.</summary>
         /// <value>The extensions by URL.</value>
         public Dictionary<string, FhirComplex> ExtensionsByUrl { get => _extensionsByUrl; }
@@ -335,6 +345,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         internal void AddResource(FhirComplex resource)
         {
             _resourcesByName.Add(resource.Path, resource);
+        }
+
+        /// <summary>Adds a profile.</summary>
+        /// <param name="complex">The complex.</param>
+        internal void AddProfile(FhirComplex complex)
+        {
+            _profilesById.Add(complex.Id, complex);
+
+            if (string.IsNullOrEmpty(complex.BaseTypeName))
+            {
+                return;
+            }
+
+            if (!_profilesByBaseType.ContainsKey(complex.BaseTypeName))
+            {
+                _profilesByBaseType.Add(complex.BaseTypeName, new Dictionary<string, FhirComplex>());
+            }
+
+            _profilesByBaseType[complex.BaseTypeName].Add(complex.Id, complex);
         }
 
         /// <summary>Adds a search parameter.</summary>
@@ -838,6 +867,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="copyComplexTypes">     (Optional) True to copy complex types.</param>
         /// <param name="copyResources">        (Optional) True to copy resources.</param>
         /// <param name="copyExtensions">       (Optional) True to copy extensions.</param>
+        /// <param name="copyProfiles">         (Optional) True to copy profiles.</param>
         /// <param name="extensionUrls">        (Optional) The extension urls.</param>
         /// <param name="extensionElementPaths">(Optional) The extension paths.</param>
         /// <param name="serverInfo">           (Optional) Information describing the server.</param>
@@ -851,6 +881,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             bool copyComplexTypes = true,
             bool copyResources = true,
             bool copyExtensions = true,
+            bool copyProfiles = true,
             HashSet<string> extensionUrls = null,
             HashSet<string> extensionElementPaths = null,
             FhirServerInfo serverInfo = null,
@@ -1050,6 +1081,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         info._resourcesByName.Add(
                             kvp.Key,
                             node);
+                    }
+                }
+            }
+
+            if (copyProfiles)
+            {
+                foreach (FhirComplex profile in _profilesById.Values)
+                {
+                    if (info._resourcesByName.ContainsKey(profile.BaseTypeName) ||
+                        info._complexTypesByName.ContainsKey(profile.BaseTypeName) ||
+                        info._primitiveTypesByName.ContainsKey(profile.BaseTypeName))
+                    {
+                        FhirComplex node = profile.DeepCopy(
+                            primitiveTypeMap,
+                            true,
+                            false,
+                            valueSetReferences,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            includeExperimental);
+
+                        info.AddProfile(node);
                     }
                 }
             }
