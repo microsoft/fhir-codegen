@@ -4,12 +4,9 @@
 // </copyright>
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Xml.Schema;
-using Microsoft.Health.Fhir.SpecManager.fhir.r4;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Microsoft.OpenApi;
@@ -55,10 +52,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private HashSet<string> _knownCycles = new HashSet<string>();
 
         /// <summary>True to explicit FHIR JSON.</summary>
-        private bool _explicitFhirJson = false;
+        private bool _fhirJson = false;
 
         /// <summary>True to explicit FHIR XML.</summary>
-        private bool _explicitFhirXml = false;
+        private bool _fhirXml = false;
 
         /// <summary>True to single response code.</summary>
         private bool _singleResponseCode = false;
@@ -73,7 +70,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private bool _includeDescriptions = true;
 
         /// <summary>True to validate descriptions.</summary>
-        private bool _validateDescriptions = false;
+        private bool _descriptionValidation = false;
 
         /// <summary>Length of the description maximum.</summary>
         private int _descriptionMaxLen = 60;
@@ -84,6 +81,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>True to generate read only.</summary>
         private bool _generateReadOnly = false;
 
+        /// <summary>True to generate write only.</summary>
+        private bool _generateWriteOnly = false;
+
         /// <summary>True to include, false to exclude the metadata.</summary>
         private bool _includeMetadata = false;
 
@@ -93,8 +93,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>True to include, false to exclude the history.</summary>
         private bool _includeHistory = false;
 
-        /// <summary>Maximum depth to expand to.</summary>
-        private int _maxDepth = 5;
+        /// <summary>Maximum number of times to recurse.</summary>
+        private int _maxRecursions = 0;
 
         /// <summary>The open API version.</summary>
         private int _openApiVersion = 2;
@@ -169,24 +169,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Gets language-specific options and their descriptions.</summary>
         Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
         {
-            { "Title", "Title to use in the Info section." },
-            { "OpenApiVersion", "Open API version to use (2, 3)." },
-            { "ExplicitFhirJson", "If paths should explicitly support FHIR+JSON (true|false)." },
-            { "ExplicitFhirXml", "If paths should explicitly support FHIR+XML (true|false)." },
-            { "Responses", "Response inclusion style (single|multiple)." },
-            { "Summaries", "If responses should include summaries (true|false)." },
-            { "Schemas", "If schemas should be included (true|false)." },
             { "Descriptions", "If properties should include descriptions (true|false)." },
-            { "ValidateDescriptions", "If descriptions are required and should be validated (false|true)." },
             { "DescriptionMaxLen", "Maximum length of descriptions, if being validated (60)." },
+            { "DescriptionValidation", "If descriptions are required and should be validated (false|true)." },
             { "ExpandProfiles", "If types should expand based on allowed profiles (true|false)." },
-            { "ReadOnly", "If the output should only contain GET operations (false|true)." },
-            { "Minify", "If the output JSON should be minified (false|true)." },
-            { "Metadata", "If the JSON should include a link to /metadata (false|true)." },
-            { "MaxDepth", "Maximum depth to expand type schemas (5)." },
-            { "OperationCase", "Case of the first letter of Operation IDs (upper|lower)." },
-            { "InlineSchemas", "If the output should inline all schemas (no inheritance) (false|true)." },
+            { "FhirJson", "If paths should explicitly support FHIR+JSON (true|false)." },
+            { "FhirXml", "If paths should explicitly support FHIR+XML (false|true)." },
             { "History", "If _history GET operations should be included (false|true)" },
+            { "MaxRecurisions", "Maximum depth to expand recursions (0)." },
+            { "Metadata", "If the JSON should include a link to /metadata (false|true)." },
+            { "Minify", "If the output JSON should be minified (false|true)." },
+            { "OpenApiVersion", "Open API version to use (2, 3)." },
+            { "OperationCase", "Case of the first letter of Operation IDs (upper|lower)." },
+            { "ReadOnly", "If the output should only contain GET operations (false|true)." },
+            { "Schemas", "If schemas should be included (true|false)." },
+            { "SchemasInline", "If the output should inline all schemas (no inheritance) (false|true)." },
+            { "SingleResponses", "If operations should only include a single response (fale|true)." },
+            { "Summaries", "If responses should include summaries (true|false)." },
+            { "Title", "Title to use in the Info section." },
+            { "WriteOnly", "If the output should only contain POST/PUT/DELETE operations (false|true)." },
         };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
@@ -216,125 +217,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _exportedCodes = new HashSet<string>();
 
-            if (_parameters.ContainsKey("OPENAPIVERSION"))
-            {
-                if ((_parameters["OPENAPIVERSION"] == "3") ||
-                    (_parameters["OPENAPIVERSION"] == "3.0"))
-                {
-                    _openApiVersion = 3;
-                }
-            }
+            _includeDescriptions = GetLanguageParam("Descriptions", true);
+            _descriptionMaxLen = GetLanguageParam("DescriptionMaxLen", 60);
+            _descriptionValidation = GetLanguageParam("DescriptionValidation", false);
+            _expandProfiles = GetLanguageParam("ExpandProfiles", true);
+            _fhirJson = GetLanguageParam("FhirJson", true);
+            _fhirXml = GetLanguageParam("FhirXml", false);
+            _includeHistory = GetLanguageParam("History", false);
+            _maxRecursions = GetLanguageParam("MaxRecursions", 0);
+            _includeMetadata = GetLanguageParam("Metadata", false);
+            bool minify = GetLanguageParam("Minify", false);
+            _openApiVersion = GetLanguageParam("OpenApiVersion", 2);
+            _generateReadOnly = GetLanguageParam("ReadOnly", false);
+            _includeSchemas = GetLanguageParam("Schemas", true);
+            _inlineSchemas = GetLanguageParam("SchemasInline", false);
+            _singleResponseCode = GetLanguageParam("SingleResponses", false);
+            _includeSummaries = GetLanguageParam("Summaries", true);
+            _generateWriteOnly = GetLanguageParam("WriteOnly", false);
 
-            if (_parameters.ContainsKey("EXPLICITFHIRJSON") &&
-                (!string.IsNullOrEmpty(_parameters["EXPLICITFHIRJSON"])) &&
-                _parameters["EXPLICITFHIRJSON"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
-            {
-                _explicitFhirJson = true;
-            }
-
-            if (_parameters.ContainsKey("EXPLICITFHIRXML") &&
-                (!string.IsNullOrEmpty(_parameters["EXPLICITFHIRXML"])) &&
-                _parameters["EXPLICITFHIRXML"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
-            {
-                _explicitFhirXml = true;
-            }
-
-            if (_parameters.ContainsKey("RESPONSES") &&
-                (!string.IsNullOrEmpty(_parameters["RESPONSES"])) &&
-                _parameters["RESPONSES"].StartsWith("S", StringComparison.OrdinalIgnoreCase))
-            {
-                _singleResponseCode = true;
-            }
-
-            if (_parameters.ContainsKey("SUMMARIES") &&
-                (!string.IsNullOrEmpty(_parameters["SUMMARIES"])) &&
-                _parameters["SUMMARIES"].StartsWith("F", StringComparison.OrdinalIgnoreCase))
-            {
-                _includeSummaries = false;
-            }
-
-            if (_parameters.ContainsKey("SCHEMAS") &&
-                (!string.IsNullOrEmpty(_parameters["SCHEMAS"])) &&
-                _parameters["SCHEMAS"].StartsWith("F", StringComparison.OrdinalIgnoreCase))
-            {
-                _includeSchemas = false;
-            }
-
-            if (_parameters.ContainsKey("DESCRIPTIONS") &&
-                (!string.IsNullOrEmpty(_parameters["DESCRIPTIONS"])) &&
-                _parameters["DESCRIPTIONS"].StartsWith("F", StringComparison.OrdinalIgnoreCase))
-            {
-                _includeDescriptions = false;
-            }
-
-            if (_parameters.ContainsKey("VALIDATEDESCRIPTIONS") &&
-                (!string.IsNullOrEmpty(_parameters["VALIDATEDESCRIPTIONS"])) &&
-                _parameters["VALIDATEDESCRIPTIONS"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
-            {
-                _validateDescriptions = true;
-            }
-
-            if (_parameters.ContainsKey("DESCRIPTIONMAXLEN") &&
-                (!string.IsNullOrEmpty(_parameters["DESCRIPTIONMAXLEN"])) &&
-                int.TryParse(_parameters["DESCRIPTIONMAXLEN"], out int val))
-            {
-                _descriptionMaxLen = val;
-            }
-
-            if (_parameters.ContainsKey("EXPANDPROFILES") &&
-                (!string.IsNullOrEmpty(_parameters["EXPANDPROFILES"])) &&
-                _parameters["EXPANDPROFILES"].StartsWith("F", StringComparison.OrdinalIgnoreCase))
-            {
-                _expandProfiles = false;
-            }
-
-            if (_parameters.ContainsKey("READONLY") &&
-                (!string.IsNullOrEmpty(_parameters["READONLY"])) &&
-                _parameters["READONLY"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
-            {
-                _generateReadOnly = true;
-            }
-
-            bool minify = false;
-
-            if (_parameters.ContainsKey("MINIFY") &&
-                (!string.IsNullOrEmpty(_parameters["MINIFY"])) &&
-                _parameters["MINIFY"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
-            {
-                minify = true;
-            }
-
-            if (_parameters.ContainsKey("METADATA") &&
-                (!string.IsNullOrEmpty(_parameters["METADATA"])) &&
-                _parameters["METADATA"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
-            {
-                _includeMetadata = true;
-            }
-
-            if (_parameters.ContainsKey("MAXDEPTH") &&
-                (!string.IsNullOrEmpty(_parameters["MAXDEPTH"])) &&
-                int.TryParse(_parameters["MAXDEPTH"], out int value))
-            {
-                _maxDepth = value;
-            }
-
-            if (_parameters.ContainsKey("INLINESCHEMAS") &&
-                (!string.IsNullOrEmpty(_parameters["INLINESCHEMAS"])) &&
-                _parameters["INLINESCHEMAS"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
-            {
-                _inlineSchemas = true;
-            }
-
-            if (_parameters.ContainsKey("HISTORY") &&
-                (!string.IsNullOrEmpty(_parameters["HISTORY"])) &&
-                _parameters["HISTORY"].StartsWith("T", StringComparison.OrdinalIgnoreCase))
-            {
-                _includeHistory = true;
-            }
-
-            if (_parameters.ContainsKey("OPERATIONCASE") &&
-                (!string.IsNullOrEmpty(_parameters["OPERATIONCASE"])) &&
-                _parameters["OPERATIONCASE"].StartsWith("L", StringComparison.OrdinalIgnoreCase))
+            string opCase = GetLanguageParam("OperationCase", "Upper");
+            if (opCase.StartsWith("L", StringComparison.OrdinalIgnoreCase))
             {
                 _instanceOpPrefixes = new Dictionary<OperationType, string>()
                 {
@@ -401,7 +303,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_includeSchemas && (!_inlineSchemas))
             {
-                //CheckForCycles();
                 document.Components.Schemas = BuildSchemas();
             }
 
@@ -441,6 +342,68 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
+        /// <summary>Gets language parameter.</summary>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <param name="field">       The field.</param>
+        /// <param name="valueDefault">(Optional) The value default.</param>
+        /// <returns>The language parameter.</returns>
+        private bool GetLanguageParam(string field, bool valueDefault)
+        {
+            string name = field.ToUpperInvariant();
+
+            if (!_parameters.ContainsKey(name) ||
+                string.IsNullOrEmpty(_parameters[name]))
+            {
+                return valueDefault;
+            }
+
+            if (bool.TryParse(_parameters[name], out bool bValue))
+            {
+                return bValue;
+            }
+
+            return valueDefault;
+        }
+
+        /// <summary>Gets language parameter.</summary>
+        /// <param name="field">       The field.</param>
+        /// <param name="valueDefault">The value default.</param>
+        /// <returns>The language parameter.</returns>
+        private int GetLanguageParam(string field, int valueDefault)
+        {
+            string name = field.ToUpperInvariant();
+
+            if (!_parameters.ContainsKey(name) ||
+                string.IsNullOrEmpty(_parameters[name]))
+            {
+                return valueDefault;
+            }
+
+            if (int.TryParse(_parameters[name], out int iValue))
+            {
+                return iValue;
+            }
+
+            return valueDefault;
+        }
+
+        /// <summary>Gets language parameter.</summary>
+        /// <param name="field">       The field.</param>
+        /// <param name="valueDefault">The value default.</param>
+        /// <returns>The language parameter.</returns>
+        private string GetLanguageParam(string field, string valueDefault)
+        {
+            string name = field.ToUpperInvariant();
+
+            if (!_parameters.ContainsKey(name) ||
+                string.IsNullOrEmpty(_parameters[name]))
+            {
+                return valueDefault;
+            }
+
+            return _parameters[name];
+        }
+
         /// <summary>Builds the schemas.</summary>
         /// <returns>A Dictionary&lt;string,OpenApiSchema&gt;</returns>
         private Dictionary<string, OpenApiSchema> BuildSchemas()
@@ -466,318 +429,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return schemas;
-        }
-
-        /// <summary>Check for cycles.</summary>
-        private void CheckForCycles()
-        {
-            List<CycleInfo> allCycles = new List<CycleInfo>();
-            _knownCycles = new HashSet<string>();
-
-            foreach (FhirComplex complex in _info.ComplexTypes.Values)
-            {
-                List<string> treePath = new List<string>();
-                CheckForCycle(
-                    treePath,
-                    complex,
-                    out List<CycleInfo> cycles);
-
-                if ((cycles == null) || (cycles.Count == 0))
-                {
-                    continue;
-                }
-
-                allCycles.AddRange(cycles);
-            }
-
-            foreach (FhirComplex complex in _info.Resources.Values)
-            {
-                List<string> treePath = new List<string>();
-                CheckForCycle(
-                    treePath,
-                    complex,
-                    out List<CycleInfo> cycles);
-
-                if ((cycles == null) || (cycles.Count == 0))
-                {
-                    continue;
-                }
-
-                allCycles.AddRange(cycles);
-            }
-
-            if (allCycles.Count == 0)
-            {
-                return;
-            }
-
-            int i = 0;
-            foreach (CycleInfo cycle in allCycles)
-            {
-                if (i++ > 200)
-                {
-                    break;
-                }
-
-                Console.WriteLine($"Found cycle: {string.Join("->", cycle.PathToCycle)}");
-            }
-        }
-
-        /// <summary>Check for cycle.</summary>
-        /// <param name="treePath">          Full pathname of the tree file.</param>
-        /// <param name="complex">           The complex.</param>
-        /// <param name="cycles">            [out] The cycles.</param>
-        /// <param name="includedPaths">     (Optional) The included paths.</param>
-        /// <param name="topLevelRecursions">(Optional) The top level recursions.</param>
-        private void CheckForCycle(
-            List<string> treePath,
-            FhirComplex complex,
-            out List<CycleInfo> cycles,
-            HashSet<string> includedPaths = null,
-            int topLevelRecursions = 0)
-        {
-            if (complex.Path == "Address")
-            {
-                Console.Write("");
-            }
-
-            if (topLevelRecursions > 1)
-            {
-                cycles = null;
-                return;
-            }
-
-            if (includedPaths == null)
-            {
-                includedPaths = new HashSet<string>();
-            }
-
-            cycles = new List<CycleInfo>();
-            treePath.Add(complex.Path);
-
-            if (includedPaths.Contains(complex.Path))
-            {
-                cycles.Add(new CycleInfo()
-                {
-                    PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
-                });
-
-                return;
-            }
-
-            includedPaths.Add(complex.Path);
-
-            if (complex.Path != complex.BaseTypeName)
-            {
-                if (includedPaths.Contains(complex.BaseTypeName))
-                {
-                    cycles.Add(new CycleInfo()
-                    {
-                        PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
-                    });
-
-                    return;
-                }
-
-                if (_info.TryGetPathType(complex.BaseTypeName, out FhirTypeEdge edge))
-                {
-                    CheckEdgeCycles(treePath, cycles, includedPaths, topLevelRecursions, edge);
-                }
-            }
-
-            if ((complex.Components != null) && (complex.Components.Count > 0))
-            {
-                foreach (FhirComplex component in complex.Components.Values)
-                {
-                    CheckForCycle(
-                        treePath.Select(s => (string)s.Clone()).ToList(),
-                        component,
-                        out List<CycleInfo> subCycles,
-                        CloneHashSet(includedPaths),
-                        topLevelRecursions);
-
-                    if ((subCycles == null) || (subCycles.Count == 0))
-                    {
-                        continue;
-                    }
-
-                    cycles.AddRange(subCycles);
-                }
-            }
-
-            if ((complex.Elements != null) && (complex.Elements.Count > 0))
-            {
-                foreach (FhirElement element in complex.Elements.Values)
-                {
-                    if (complex.Components.ContainsKey(element.Path))
-                    {
-                        continue;
-                    }
-
-                    CheckForCycle(
-                        treePath.Select(s => (string)s.Clone()).ToList(),
-                        element,
-                        out List<CycleInfo> subCycles,
-                        CloneHashSet(includedPaths),
-                        topLevelRecursions);
-
-                    if ((subCycles == null) || (subCycles.Count == 0))
-                    {
-                        continue;
-                    }
-
-                    cycles.AddRange(subCycles);
-                }
-            }
-        }
-
-        /// <summary>Check edge cycles.</summary>
-        /// <param name="treePath">          Full pathname of the tree file.</param>
-        /// <param name="cycles">            [out] The cycles.</param>
-        /// <param name="includedPaths">     The included paths.</param>
-        /// <param name="topLevelRecursions">The top level recursions.</param>
-        /// <param name="edge">              The edge.</param>
-        private void CheckEdgeCycles(
-            List<string> treePath,
-            List<CycleInfo> cycles,
-            HashSet<string> includedPaths,
-            int topLevelRecursions,
-            FhirTypeEdge edge)
-        {
-            switch (edge.SourceType)
-            {
-                case FhirTypeEdge.EdgeNodeType.DataType:
-                case FhirTypeEdge.EdgeNodeType.Resource:
-                    {
-                        CheckForCycle(
-                            treePath.Select(s => (string)s.Clone()).ToList(),
-                            edge.GetSource<FhirComplex>(),
-                            out List<CycleInfo> subCycles,
-                            CloneHashSet(includedPaths),
-                            topLevelRecursions + 1);
-
-                        if ((subCycles != null) && (subCycles.Count != 0))
-                        {
-                            cycles.AddRange(subCycles);
-                        }
-                    }
-
-                    break;
-
-                case FhirTypeEdge.EdgeNodeType.Component:
-                    {
-                        CheckForCycle(
-                            treePath.Select(s => (string)s.Clone()).ToList(),
-                            edge.GetSource<FhirComplex>(),
-                            out List<CycleInfo> subCycles,
-                            CloneHashSet(includedPaths),
-                            topLevelRecursions);
-
-                        if ((subCycles != null) && (subCycles.Count != 0))
-                        {
-                            cycles.AddRange(subCycles);
-                        }
-                    }
-
-                    break;
-
-                case FhirTypeEdge.EdgeNodeType.Primitive:
-                case FhirTypeEdge.EdgeNodeType.Unknown:
-                case FhirTypeEdge.EdgeNodeType.Self:
-                default:
-                    break;
-            }
-        }
-
-        /// <summary>Check for cycle.</summary>
-        /// <param name="treePath">          Full pathname of the tree file.</param>
-        /// <param name="element">           The element.</param>
-        /// <param name="cycles">            [out] The cycles.</param>
-        /// <param name="includedPaths">     The included paths.</param>
-        /// <param name="topLevelRecursions">The top level recursions.</param>
-        private void CheckForCycle(
-            List<string> treePath,
-            FhirElement element,
-            out List<CycleInfo> cycles,
-            HashSet<string> includedPaths,
-            int topLevelRecursions)
-        {
-            cycles = new List<CycleInfo>();
-            treePath.Add(element.Path);
-
-            if (includedPaths.Contains(element.Path))
-            {
-                cycles.Add(new CycleInfo()
-                {
-                    PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
-                });
-
-                return;
-            }
-
-            includedPaths.Add(element.Path);
-
-            if (!string.IsNullOrEmpty(element.BaseTypeName))
-            {
-                if (_info.PrimitiveTypes.ContainsKey(element.BaseTypeName))
-                {
-                    return;
-                }
-
-                if (includedPaths.Contains(element.BaseTypeName))
-                {
-                    cycles.Add(new CycleInfo()
-                    {
-                        PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
-                    });
-
-                    return;
-                }
-
-                if (_info.TryGetPathType(element.BaseTypeName, out FhirTypeEdge edge))
-                {
-                    CheckEdgeCycles(treePath, cycles, includedPaths, topLevelRecursions, edge);
-                }
-
-                return;
-            }
-
-            if ((element.ElementTypes != null) && (element.ElementTypes.Count > 0))
-            {
-                foreach (FhirElementType elementType in element.ElementTypes.Values)
-                {
-                    if (includedPaths.Contains(elementType.Type))
-                    {
-                        cycles.Add(new CycleInfo()
-                        {
-                            PathToCycle = treePath.Select(s => (string)s.Clone()).ToList(),
-                        });
-
-                        continue;
-                    }
-
-                    if (_info.TryGetPathType(elementType.Type, out FhirTypeEdge edge))
-                    {
-                        CheckEdgeCycles(treePath, cycles, includedPaths, topLevelRecursions, edge);
-                    }
-                }
-
-                return;
-            }
-        }
-
-        /// <summary>Initializes this object from the given hash set.</summary>
-        /// <param name="hs">The hs.</param>
-        /// <returns>A HashSet&lt;string&gt;</returns>
-        private static HashSet<string> CloneHashSet(HashSet<string> hs)
-        {
-            HashSet<string> set = new HashSet<string>();
-            foreach (string val in hs)
-            {
-                set.Add(val);
-            }
-
-            return set;
         }
 
         /// <summary>Builds type name from path.</summary>
@@ -1471,7 +1122,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             OpenApiString value;
 
-            if (_explicitFhirJson || (!_explicitFhirXml))
+            if (_fhirJson || (!_fhirXml))
             {
                 value = new OpenApiString("application/fhir+json");
             }
@@ -1513,15 +1164,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Builds a content map.</summary>
         /// <param name="resourceName">   Name of the resource.</param>
-        /// <param name="IsInstanceLevel">True if is instance level, false if not.</param>
+        /// <param name="isInstanceLevel">True if is instance level, false if not.</param>
         /// <returns>A Dictionary of MIME Types and matching ApiOpenMeidaTypes.</returns>
         private Dictionary<string, OpenApiMediaType> BuildContentMap(
             string resourceName,
-            bool IsInstanceLevel)
+            bool isInstanceLevel)
         {
             Dictionary<string, OpenApiMediaType> mediaTypes = new Dictionary<string, OpenApiMediaType>();
 
-            if (_explicitFhirJson)
+            if (_fhirJson)
             {
                 if (string.IsNullOrEmpty(resourceName))
                 {
@@ -1535,7 +1186,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     if (_inlineSchemas)
                     {
-                        BuildInlineSchema(ref schema, resourceName, !IsInstanceLevel);
+                        BuildInlineSchema(ref schema, resourceName, !isInstanceLevel);
                     }
                     else
                     {
@@ -1551,7 +1202,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            if (_explicitFhirXml)
+            if (_fhirXml)
             {
                 if (string.IsNullOrEmpty(resourceName))
                 {
@@ -1565,7 +1216,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     if (_inlineSchemas)
                     {
-                        BuildInlineSchema(ref schema, resourceName, !IsInstanceLevel);
+                        BuildInlineSchema(ref schema, resourceName, !isInstanceLevel);
                     }
                     else
                     {
@@ -1596,15 +1247,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (!_info.Resources.ContainsKey(resourceName))
             {
                 schema.Type = "object";
-                schema.Description =
-                        _includeDescriptions
-                        ? "N/A."
-                        : null;
-
+                schema.Description = _includeDescriptions ? "N/A." : null;
                 return;
             }
 
-            List<string> paths = new List<string>();
+            Dictionary<string, int> pathReferenceCounts = new Dictionary<string, int>();
 
             if (wrapInBundle)
             {
@@ -1612,7 +1259,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     ref schema,
                     _info.Resources["Bundle"],
                     resourceName,
-                    paths);
+                    pathReferenceCounts);
             }
             else
             {
@@ -1620,39 +1267,103 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     ref schema,
                     _info.Resources[resourceName],
                     resourceName,
-                    paths);
+                    pathReferenceCounts);
             }
         }
 
+        private bool ShouldAddExtension(
+            string path,
+            string parentPath)
+        {
+            if (_info.ExtensionsByPath.ContainsKey(path))
+            {
+                Console.WriteLine($"Found extensions for path: {path}");
+
+                foreach (FhirComplex extension in _info.ExtensionsByPath[path].Values)
+                {
+                    Console.WriteLine($"  {extension.Name}:{extension.URL}");
+                }
+
+                return true;
+            }
+
+            if (_info.ExtensionsByPath.ContainsKey(parentPath))
+            {
+                Console.WriteLine($"Found extensions for path: {parentPath}");
+
+                foreach (FhirComplex extension in _info.ExtensionsByPath[parentPath].Values)
+                {
+                    Console.WriteLine($"  {extension.Name}:{extension.URL}");
+                }
+
+                return true;
+            }
+
+            switch (_options.ExtensionSupport)
+            {
+                case ExporterOptions.ExtensionSupportLevel.NoExtensions:
+                    return false;
+
+                case ExporterOptions.ExtensionSupportLevel.OfficialExtensions:
+                case ExporterOptions.ExtensionSupportLevel.OfficialNonPrimitive:
+                    if (_info.ExtensionsByPath.ContainsKey(path))
+                    {
+                        return true;
+                    }
+
+                    break;
+
+                case ExporterOptions.ExtensionSupportLevel.EveryField:
+                case ExporterOptions.ExtensionSupportLevel.NonPrimitives:
+                    return true;
+
+                // TODO: add support for this option
+                case ExporterOptions.ExtensionSupportLevel.IncludeByExtensionUrlLookup:
+                    break;
+
+                // TODO: add support for this option
+                case ExporterOptions.ExtensionSupportLevel.IncludeByElementPathLookup:
+                    break;
+            }
+
+            return false;
+        }
+
         /// <summary>Builds inline schema.</summary>
-        /// <param name="schema">          [in,out] The schema.</param>
-        /// <param name="complex">         The complex.</param>
-        /// <param name="rootResourceName">Name of the root resource.</param>
-        /// <param name="paths">           The path tracker.</param>
+        /// <param name="schema">             [in,out] The schema.</param>
+        /// <param name="complex">            The complex.</param>
+        /// <param name="rootResourceName">   Name of the root resource.</param>
+        /// <param name="pathReferenceCounts">The path tracker.</param>
+        /// <param name="parentPath">         (Optional) Path to the parent element.</param>
         private void BuildInlineSchemaRecurse(
             ref OpenApiSchema schema,
             FhirComplex complex,
             string rootResourceName,
-            List<string> paths)
+            Dictionary<string, int> pathReferenceCounts,
+            string parentPath = "")
         {
             schema.Type = "object";
             schema.Properties = new Dictionary<string, OpenApiSchema>();
-            schema.Description =
-                    _includeDescriptions
-                    ? SanitizeDescription(complex.ShortDescription)
-                    : null;
+
+            if (string.IsNullOrEmpty(schema.Description))
+            {
+                schema.Description =
+                        _includeDescriptions
+                        ? SanitizeDescription(complex.ShortDescription)
+                        : null;
+            }
 
             if (complex.Path == "Extension")
             {
                 return;
             }
 
-            if (paths.Contains(complex.Path))
+            if (pathReferenceCounts.ContainsKey(complex.Path))
             {
                 return;
             }
 
-            paths.Add(complex.Path);
+            pathReferenceCounts.Add(complex.Path, 1);
 
             if (string.IsNullOrEmpty(complex.BaseTypeName))
             {
@@ -1664,13 +1375,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else if (_info.ComplexTypes.ContainsKey(complex.BaseTypeName))
             {
-                List<string> subPaths = paths.Select(s => (string)s.Clone()).ToList();
+                Dictionary<string, int> subPaths = pathReferenceCounts.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
                 BuildInlineSchemaRecurse(
                     ref schema,
                     _info.ComplexTypes[complex.BaseTypeName],
                     rootResourceName,
-                    subPaths);
+                    subPaths,
+                    string.IsNullOrEmpty(parentPath) ? complex.Path : parentPath);
             }
             else
             {
@@ -1682,7 +1394,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if ((complex.Path == "Resource") ||
                     (complex.Path == "DomainResource"))
                 {
-                    List<string> subPaths = paths.Select(s => (string)s.Clone()).ToList();
+                    Dictionary<string, int> subPaths = pathReferenceCounts.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
                     BuildInlineSchemaRecurse(
                         ref schema,
@@ -1709,7 +1421,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 foreach (FhirElement element in complex.Elements.Values.OrderBy(e => e.Name))
                 {
-                    List<string> subPaths = paths.Select(s => (string)s.Clone()).ToList();
+                    if (element.Path == "Observation.performer")
+                    {
+                        Console.Write("");
+                    }
+
+                    if ((element.Name == "extension") &&
+                        (!ShouldAddExtension(complex.Path, parentPath)))
+                    {
+                        continue;
+                    }
+
+                    Dictionary<string, int> subPaths = pathReferenceCounts.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
                     BuildInlineElementSchema(
                         ref schema,
@@ -1722,18 +1445,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Builds element schema.</summary>
-        /// <param name="schema">          [in,out] The parent schema.</param>
-        /// <param name="complex">         The complex.</param>
-        /// <param name="element">         The element.</param>
-        /// <param name="rootResourceName">Name of the root resource.</param>
-        /// <param name="paths">           The path tracker.</param>
+        /// <param name="schema">             [in,out] The parent schema.</param>
+        /// <param name="complex">            The complex.</param>
+        /// <param name="element">            The element.</param>
+        /// <param name="rootResourceName">   Name of the root resource.</param>
+        /// <param name="pathReferenceCounts">The path tracker.</param>
         private void BuildInlineElementSchema(
             ref OpenApiSchema schema,
             FhirComplex complex,
             FhirElement element,
             string rootResourceName,
-            List<string> paths)
+            Dictionary<string, int> pathReferenceCounts)
         {
+            if (element.Path == "Observation.performer")
+            {
+                Console.Write("");
+            }
+
             string name = GetElementName(element);
 
             if (schema.Properties.ContainsKey(name))
@@ -1783,7 +1511,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 ref subSchema,
                                 _info.Resources[rootResourceName],
                                 rootResourceName,
-                                paths);
+                                pathReferenceCounts,
+                                element.Path);
                         }
                         else
                         {
@@ -1791,7 +1520,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 ref subSchema,
                                 elementEdge.GetSource<FhirComplex>(),
                                 rootResourceName,
-                                paths);
+                                pathReferenceCounts,
+                                element.Path);
                         }
                     }
                     else
@@ -1834,7 +1564,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ref elementSchema,
                         _info.Resources[rootResourceName],
                         rootResourceName,
-                        paths);
+                        pathReferenceCounts,
+                        element.Path);
                 }
                 else
                 {
@@ -1842,7 +1573,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ref elementSchema,
                         edge.GetSource<FhirComplex>(),
                         rootResourceName,
-                        paths);
+                        pathReferenceCounts,
+                        element.Path);
                 }
             }
             else
@@ -2147,7 +1879,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 op.Parameters = new List<OpenApiParameter>();
             }
 
-            if (_explicitFhirJson)
+            if (_fhirJson)
             {
                 op.Parameters.Add(new OpenApiParameter()
                 {
@@ -2251,10 +1983,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             if (string.IsNullOrEmpty(value))
             {
-                return _validateDescriptions ? "N/A." : string.Empty;
+                return _descriptionValidation ? "N/A." : string.Empty;
             }
 
-            if (!_validateDescriptions)
+            if (!_descriptionValidation)
             {
                 return value.Replace("\r", string.Empty).Replace("\n", string.Empty);
             }
@@ -2270,7 +2002,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 if (value.Contains('|'))
                 {
-                    value = "Values: " + value;
+                    value = "Values: " + value.Replace(" | ", "|");
                 }
                 else
                 {
