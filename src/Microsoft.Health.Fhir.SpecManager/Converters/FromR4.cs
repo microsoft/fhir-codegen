@@ -634,8 +634,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             elementTypes = new Dictionary<string, FhirElementType>();
             regex = string.Empty;
 
+            /* Correct some mistakes in the spec. Need to discuss this with Gino.
+             */
+            if (element.Path == "Resource.id")
+            {
+                elementTypes.Add("id", new FhirElementType("id"));
+            }
+
             // check for declared type
-            if (element.Type != null)
+            else if (element.Type != null)
             {
                 foreach (fhir_4.ElementDefinitionType edType in element.Type)
                 {
