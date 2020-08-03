@@ -93,6 +93,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              * going on with this resource type. For now, it has been disabled so we can
              * take a look at it later, before R5 ships. */
             "Citation",
+
+            /* UCUM is used as a required binding in a codeable concept. Since we do not
+             * use enums in this situation, it is not useful to generate this valueset
+             */
+            "http://hl7.org/fhir/ValueSet/ucum-units",
         };
 
 
@@ -434,27 +439,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         target = ", Target = new ResourceType[] { " + string.Join(", ", sc) + ", }";
                     }
 
-                    string xpath;
-                    if (string.IsNullOrEmpty(sp.XPath))
-                    {
-                        xpath = string.Empty;
-                    }
-                    else
-                    {
-                        xpath = ", XPath = \"" + sp.XPath + "\"";
-                    }
-
-                    string expression;
-
-                    if (string.IsNullOrEmpty(sp.Expression))
-                    {
-                        expression = string.Empty;
-                    }
-                    else
-                    {
-                        expression = ", Expression = \"" + sp.Expression + "\"";
-                    }
-
+                    string xpath = string.IsNullOrEmpty(sp.XPath) ? xpath = string.Empty : ", XPath = \"" + sp.XPath + "\"";
+                    string expression = string.IsNullOrEmpty(sp.Expression) ? string.Empty : ", Expression = \"" + sp.Expression + "\"";
                     string urlComponent = $", Url = \"{sp.URL}\"";
 
                     _writer.WriteLineIndented(
