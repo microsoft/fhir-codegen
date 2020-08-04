@@ -132,17 +132,17 @@
         },
         "azTest": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|DescriptionValidation=true|SchemasInline=true --export-keys Patient|Observation|Bundle --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "azTestFull": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|DescriptionValidation=true|SchemasInline=true --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|RemoveUncommonFields=true|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|BundleOperations=false|descriptions=true|DescriptionValidation=true|SchemasInline=true --extension-support none --export-keys Bundle|Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --output-path ..\\..\\temp\\OpenApi_R4.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "azTestMin": {
             "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|Minify=true|fhirjson=true|SingleResponses=true|ReadOnly=true|DescriptionValidation=true|SchemasInline=true --export-keys Bundle|Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|ServiceRequest|DiagnosticReport|Coverage --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|RemoveUncommonFields=true|Minify=true|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|BundleOperations=false|descriptions=true|DescriptionValidation=true|SchemasInline=true --extension-support none --export-keys Bundle|Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --output-path ..\\..\\temp\\OpenApi_R4_min.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "azTestFull": {
+            "commandName": "Project",
+            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|OpenApiVersion=3|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|descriptions=true|DescriptionValidation=true --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }

@@ -780,7 +780,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         {
                             foreach (string profile in edType.Profile)
                             {
-                                elementTypes[elementType.Name].AddProfile(profile);
+                                elementTypes[elementType.Name].AddTypeProfile(profile);
                             }
                         }
 
@@ -831,7 +831,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 element.Name.Equals(structureName, StringComparison.Ordinal))
             {
                 // base type is here
-                FhirElementType elementType = new FhirElementType(element.Path, null);
+                FhirElementType elementType = new FhirElementType(element.Path);
 
                 // add to our dictionary
                 elementTypes.Add(elementType.Name, elementType);

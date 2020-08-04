@@ -118,25 +118,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public enum ExtensionSupportLevel
         {
             /// <summary>No extensions should be included.</summary>
-            NoExtensions,
+            None,
 
             /// <summary>Official (core) extensions should be included.</summary>
-            OfficialExtensions,
+            Official,
 
             /// <summary>An enum constant representing the official non primitive option.</summary>
             OfficialNonPrimitive,
 
             /// <summary>Every field should have a mockup for extensions.</summary>
-            EveryField,
+            All,
 
             /// <summary>Non-primitive type fields should have extensions.</summary>
-            NonPrimitives,
+            NonPrimitive,
 
             /// <summary>Only extensions with a URL in the provided list should be included.</summary>
-            IncludeByExtensionUrlLookup,
+            ByExtensionUrl,
 
             /// <summary>Only elements with a path in the provided list should have extensions.</summary>
-            IncludeByElementPathLookup,
+            ByElementPath,
         }
 
         /// <summary>Gets the name of the language.</summary>

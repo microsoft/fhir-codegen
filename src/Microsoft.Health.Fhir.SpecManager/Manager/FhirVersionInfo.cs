@@ -932,6 +932,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 if (exportSet.Count > 0)
                 {
                     restrictResources = true;
+
+                    // make sure Bundle is included so we can search, etc.
+                    AddToExportSet("Bundle", ref exportSet);
                 }
             }
 
@@ -1104,6 +1107,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                             null,
                             null,
                             includeExperimental);
+
+                        info._nodeInfoByPath.Add(
+                            node.Id,
+                            new FhirNodeInfo(FhirNodeInfo.FhirNodeType.Profile, node));
 
                         info.AddProfile(node);
                     }

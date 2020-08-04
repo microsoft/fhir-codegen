@@ -38,6 +38,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     case FhirNodeType.DataType:
                     case FhirNodeType.Resource:
                     case FhirNodeType.Component:
+                    case FhirNodeType.Profile:
                         _sourcePrimitive = null;
                         _sourceComplex = (FhirComplex)sourceNode;
                         break;
@@ -80,6 +81,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     case FhirNodeType.DataType:
                     case FhirNodeType.Resource:
                     case FhirNodeType.Component:
+                    case FhirNodeType.Profile:
                         _sourcePrimitive = null;
                         _sourceComplex = (FhirComplex)sourceNode;
                         break;
@@ -105,6 +107,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     case FhirNodeType.DataType:
                     case FhirNodeType.Resource:
                     case FhirNodeType.Component:
+                    case FhirNodeType.Profile:
                         _destinationPrimitive = null;
                         _destinationComplex = (FhirComplex)destinationNode;
                         break;
@@ -139,6 +142,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             /// <summary>This edge links to a component definition (BackboneElement).</summary>
             Component,
+
+            /// <summary>This edge links to a profile data type.</summary>
+            Profile,
         }
 
         /// <summary>Gets the type of the source node.</summary>
