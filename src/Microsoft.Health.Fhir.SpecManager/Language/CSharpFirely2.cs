@@ -430,9 +430,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         // inputs, so this will remain manually maintained input.
                         if (sp.Id == "clinical-encounter")
                         {
-                            if (complex.Name != "Procedure" && complex.Name != "DeviceRequest")
+                            if (_info.MajorVersion == 3)
                             {
-                                sc.Remove("ResourceType.EpisodeOfCare");
+                                if (complex.Name != "Procedure" && complex.Name != "DeviceRequest")
+                                {
+                                    sc.Remove("ResourceType.EpisodeOfCare");
+                                }
+                            }
+                            else
+                            {
+                                if (complex.Name != "DocumentReference")
+                                {
+                                    sc.Remove("ResourceType.EpisodeOfCare");
+                                }
                             }
                         }
 
