@@ -4,7 +4,7 @@ Contents of: hl7.fhir.r5.core version: 4.4.0
   Complex Type / Resource Naming Style: PascalCase
   Enum Naming Style: FhirDotNotation
   Interaction Naming Style: PascalCase
-  Extension Support: NonPrimitives
+  Extension Support: NonPrimitive
 Primitive Types: 21
 - base64Binary: base64Binary::base64Binary
   [(\s*([0-9a-zA-Z\+/=]){4}\s*)+]

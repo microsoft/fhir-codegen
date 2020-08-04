@@ -861,14 +861,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Copies for export.</summary>
-        /// <param name="primitiveTypeMap">     The fhir to language primitve map.</param>
+        /// <param name="primitiveTypeMap">     The FHIR to language primitive map.</param>
         /// <param name="exportList">           List of exports.</param>
         /// <param name="copyPrimitives">       (Optional) True to copy primitives.</param>
         /// <param name="copyComplexTypes">     (Optional) True to copy complex types.</param>
         /// <param name="copyResources">        (Optional) True to copy resources.</param>
         /// <param name="copyExtensions">       (Optional) True to copy extensions.</param>
         /// <param name="copyProfiles">         (Optional) True to copy profiles.</param>
-        /// <param name="extensionUrls">        (Optional) The extension urls.</param>
+        /// <param name="extensionUrls">        (Optional) The extension URLs.</param>
         /// <param name="extensionElementPaths">(Optional) The extension paths.</param>
         /// <param name="serverInfo">           (Optional) Information describing the server.</param>
         /// <param name="includeExperimental">  (Optional) True to include, false to exclude the
