@@ -1619,7 +1619,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else if (element.Path == "Reference.type")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=\"4.4.0\")]");
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=\"3.3.0\")]");
             }
             else
             {
