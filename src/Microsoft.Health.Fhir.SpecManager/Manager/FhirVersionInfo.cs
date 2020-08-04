@@ -155,7 +155,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private Dictionary<string, FhirSearchParam> _allInteractionParameters;
         private Dictionary<string, FhirCodeSystem> _codeSystemsByUrl;
         private Dictionary<string, FhirValueSetCollection> _valueSetsByUrl;
-        private Dictionary<string, FhirTypeEdge> _typeMapByPath;
+        private Dictionary<string, FhirNodeInfo> _nodeInfoByPath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class. Require major version
@@ -189,7 +189,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _allInteractionParameters = new Dictionary<string, FhirSearchParam>();
             _codeSystemsByUrl = new Dictionary<string, FhirCodeSystem>();
             _valueSetsByUrl = new Dictionary<string, FhirValueSetCollection>();
-            _typeMapByPath = new Dictionary<string, FhirTypeEdge>();
+            _nodeInfoByPath = new Dictionary<string, FhirNodeInfo>();
         }
 
         /// <summary>Values that represent search magic parameters.</summary>
@@ -307,18 +307,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <value>Options that control all interaction.</value>
         public Dictionary<string, FhirSearchParam> AllInteractionParameters { get => _allInteractionParameters; }
 
-        /// <summary>Gets the type lookup.</summary>
-        public Dictionary<string, FhirTypeEdge> PathTypeLookup { get => _typeMapByPath; }
+        /// <summary>Gets the node info by path dictionary.</summary>
+        public Dictionary<string, FhirNodeInfo> NodeByPath { get => _nodeInfoByPath; }
 
-        /// <summary>Attempts to get path type a FhirTypeEdge from the given string.</summary>
+        /// <summary>Attempts to get node information about the node described by the path.</summary>
         /// <param name="path">Full pathname of the file.</param>
         /// <param name="edge">[out] The edge.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public bool TryGetPathType(string path, out FhirTypeEdge edge)
+        public bool TryGetNodeInfo(string path, out FhirNodeInfo edge)
         {
-            if (_typeMapByPath.ContainsKey(path))
+            if (_nodeInfoByPath.ContainsKey(path))
             {
-                edge = _typeMapByPath[path];
+                edge = _nodeInfoByPath[path];
                 return true;
             }
 
@@ -958,9 +958,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     FhirPrimitive node = (FhirPrimitive)kvp.Value.Clone();
 
-                    info._typeMapByPath.Add(
+                    info._nodeInfoByPath.Add(
                         node.Path,
-                        new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.Primitive, node));
+                        new FhirNodeInfo(FhirNodeInfo.FhirNodeType.Primitive, node));
 
                     info._primitiveTypesByName.Add(kvp.Key, node);
 
@@ -996,16 +996,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         true,
                         false,
                         valueSetReferences,
-                        info._typeMapByPath,
+                        info._nodeInfoByPath,
                         null,
                         null,
                         null,
                         null,
                         includeExperimental);
 
-                    info._typeMapByPath.Add(
+                    info._nodeInfoByPath.Add(
                         node.Path,
-                        new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.DataType, node));
+                        new FhirNodeInfo(FhirNodeInfo.FhirNodeType.DataType, node));
 
                     info._complexTypesByName.Add(
                         kvp.Key,
@@ -1045,16 +1045,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                             true,
                             false,
                             valueSetReferences,
-                            info._typeMapByPath,
+                            info._nodeInfoByPath,
                             null,
                             null,
                             null,
                             null,
                             includeExperimental);
 
-                        info._typeMapByPath.Add(
+                        info._nodeInfoByPath.Add(
                             node.Path,
-                            new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.Resource, node));
+                            new FhirNodeInfo(FhirNodeInfo.FhirNodeType.Resource, node));
 
                         info._resourcesByName.Add(
                             kvp.Key,
@@ -1067,16 +1067,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                             true,
                             false,
                             valueSetReferences,
-                            info._typeMapByPath,
+                            info._nodeInfoByPath,
                             serverInfo.ResourceInteractions[kvp.Key].SearchParameters,
                             serverInfo.ServerSearchParameters,
                             serverInfo.ResourceInteractions[kvp.Key].Operations,
                             serverInfo.ServerOperations,
                             includeExperimental);
 
-                        info._typeMapByPath.Add(
+                        info._nodeInfoByPath.Add(
                             node.Path,
-                            new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.Resource, node));
+                            new FhirNodeInfo(FhirNodeInfo.FhirNodeType.Resource, node));
 
                         info._resourcesByName.Add(
                             kvp.Key,

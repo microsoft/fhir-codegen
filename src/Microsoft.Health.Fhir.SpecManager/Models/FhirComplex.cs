@@ -533,7 +533,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             bool copySlicing,
             bool canHideParentFields,
             Dictionary<string, ValueSetReferenceInfo> valueSetReferences,
-            Dictionary<string, FhirTypeEdge> typeMapByPath,
+            Dictionary<string, FhirNodeInfo> typeMapByPath,
             Dictionary<string, FhirServerSearchParam> supportedSearchParams = null,
             Dictionary<string, FhirServerSearchParam> serverSearchParams = null,
             Dictionary<string, FhirServerOperation> supportedOperations = null,
@@ -615,7 +615,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 {
                     typeMapByPath.Add(
                         node.Path,
-                        new FhirTypeEdge(FhirTypeEdge.EdgeNodeType.Component, node));
+                        new FhirNodeInfo(FhirNodeInfo.FhirNodeType.Component, node));
                 }
 
                 complex.Components.Add(

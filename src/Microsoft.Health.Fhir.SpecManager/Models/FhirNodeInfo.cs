@@ -1,4 +1,4 @@
-﻿// <copyright file="FhirTypeEdge.cs" company="Microsoft Corporation">
+﻿// <copyright file="FhirNodeInfo.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -8,8 +8,8 @@ using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
-    /// <summary>A FHIR type edge.</summary>
-    public class FhirTypeEdge
+    /// <summary>A FHIR node information class.</summary>
+    public class FhirNodeInfo
     {
         private FhirPrimitive _sourcePrimitive;
         private FhirComplex _sourceComplex;
@@ -17,53 +17,53 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         private FhirPrimitive _destinationPrimitive;
         private FhirComplex _destinationComplex;
 
-        /// <summary>Initializes a new instance of the <see cref="FhirTypeEdge"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="FhirNodeInfo"/> class.</summary>
         /// <param name="sourceType">     Type of the source.</param>
         /// <param name="sourceNode">     Source node.</param>
         /// <param name="destinationType">The type of the edge.</param>
         /// <param name="destinationNode">Destination for the edge.</param>
-        public FhirTypeEdge(
-            EdgeNodeType sourceType,
+        public FhirNodeInfo(
+            FhirNodeType sourceType,
             object sourceNode)
         {
             if (sourceNode != null)
             {
                 switch (sourceType)
                 {
-                    case EdgeNodeType.Primitive:
+                    case FhirNodeType.Primitive:
                         _sourcePrimitive = (FhirPrimitive)sourceNode;
                         _sourceComplex = null;
                         break;
 
-                    case EdgeNodeType.DataType:
-                    case EdgeNodeType.Resource:
-                    case EdgeNodeType.Component:
+                    case FhirNodeType.DataType:
+                    case FhirNodeType.Resource:
+                    case FhirNodeType.Component:
                         _sourcePrimitive = null;
                         _sourceComplex = (FhirComplex)sourceNode;
                         break;
 
-                    case EdgeNodeType.Unknown:
-                    case EdgeNodeType.Self:
+                    case FhirNodeType.Unknown:
+                    case FhirNodeType.Self:
                     default:
                         throw new ArgumentException($"Invalid source node type: {sourceType}");
                 }
             }
 
             SourceType = sourceType;
-            DestinationType = EdgeNodeType.Unknown;
+            DestinationType = FhirNodeType.Unknown;
             _destinationPrimitive = null;
             _destinationComplex = null;
         }
 
-        /// <summary>Initializes a new instance of the <see cref="FhirTypeEdge"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="FhirNodeInfo"/> class.</summary>
         /// <param name="sourceType">     Type of the source.</param>
         /// <param name="sourceNode">     Source node.</param>
         /// <param name="destinationType">The type of the edge.</param>
         /// <param name="destinationNode">Destination for the edge.</param>
-        public FhirTypeEdge(
-            EdgeNodeType sourceType,
+        public FhirNodeInfo(
+            FhirNodeType sourceType,
             object sourceNode,
-            EdgeNodeType destinationType,
+            FhirNodeType destinationType,
             object destinationNode)
         {
             SourceType = sourceType;
@@ -72,20 +72,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 switch (sourceType)
                 {
-                    case EdgeNodeType.Primitive:
+                    case FhirNodeType.Primitive:
                         _sourcePrimitive = (FhirPrimitive)sourceNode;
                         _sourceComplex = null;
                         break;
 
-                    case EdgeNodeType.DataType:
-                    case EdgeNodeType.Resource:
-                    case EdgeNodeType.Component:
+                    case FhirNodeType.DataType:
+                    case FhirNodeType.Resource:
+                    case FhirNodeType.Component:
                         _sourcePrimitive = null;
                         _sourceComplex = (FhirComplex)sourceNode;
                         break;
 
-                    case EdgeNodeType.Unknown:
-                    case EdgeNodeType.Self:
+                    case FhirNodeType.Unknown:
+                    case FhirNodeType.Self:
                     default:
                         throw new ArgumentException($"Invalid source node type: {sourceType}");
                 }
@@ -97,20 +97,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             {
                 switch (destinationType)
                 {
-                    case EdgeNodeType.Primitive:
+                    case FhirNodeType.Primitive:
                         _destinationPrimitive = (FhirPrimitive)destinationNode;
                         _destinationComplex = null;
                         break;
 
-                    case EdgeNodeType.DataType:
-                    case EdgeNodeType.Resource:
-                    case EdgeNodeType.Component:
+                    case FhirNodeType.DataType:
+                    case FhirNodeType.Resource:
+                    case FhirNodeType.Component:
                         _destinationPrimitive = null;
                         _destinationComplex = (FhirComplex)destinationNode;
                         break;
 
-                    case EdgeNodeType.Unknown:
-                    case EdgeNodeType.Self:
+                    case FhirNodeType.Unknown:
+                    case FhirNodeType.Self:
                     default:
                         _destinationPrimitive = null;
                         _destinationComplex = null;
@@ -120,7 +120,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Values that represent destination node types.</summary>
-        public enum EdgeNodeType
+        public enum FhirNodeType
         {
             /// <summary>Could not determine edge linking type.</summary>
             Unknown,
@@ -142,10 +142,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Gets the type of the source node.</summary>
-        public EdgeNodeType SourceType { get; }
+        public FhirNodeType SourceType { get; }
 
         /// <summary>Gets the type of the edge.</summary>
-        public EdgeNodeType DestinationType { get; }
+        public FhirNodeType DestinationType { get; }
 
         /// <summary>Follows the edge to it's type node.</summary>
         /// <returns>An object.</returns>

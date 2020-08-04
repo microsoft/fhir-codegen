@@ -1501,8 +1501,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             : null,
                     };
 
-                    if (_info.TryGetPathType(elementType.Name, out FhirTypeEdge elementEdge) &&
-                        (elementEdge.SourceType != FhirTypeEdge.EdgeNodeType.Primitive))
+                    if (_info.TryGetNodeInfo(elementType.Name, out FhirNodeInfo elementEdge) &&
+                        (elementEdge.SourceType != FhirNodeInfo.FhirNodeType.Primitive))
                     {
                         if ((elementType.Name == "Resource") &&
                             (!string.IsNullOrEmpty(rootResourceName)))
@@ -1554,8 +1554,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 type = "Element";
             }
 
-            if (_info.TryGetPathType(type, out FhirTypeEdge edge) &&
-                (edge.SourceType != FhirTypeEdge.EdgeNodeType.Primitive))
+            if (_info.TryGetNodeInfo(type, out FhirNodeInfo edge) &&
+                (edge.SourceType != FhirNodeInfo.FhirNodeType.Primitive))
             {
                 if ((type == "Resource") &&
                     (!string.IsNullOrEmpty(rootResourceName)))
