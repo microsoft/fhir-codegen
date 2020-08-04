@@ -101,6 +101,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 copyResources = true;
             }
 
+            bool copyProfiles = false;
+            if (exportLanguage.RequiredExportClassTypes.Contains(ExporterOptions.FhirExportClassType.Profile) ||
+                options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Profile))
+            {
+                copyProfiles = true;
+            }
+
             // create a copy of the FHIR information for use in this export
             FhirVersionInfo info = sourceFhirInfo.CopyForExport(
                 exportLanguage.FhirPrimitiveTypeMap,
@@ -108,6 +115,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 copyPrimitives,
                 copyComplexTypes,
                 copyResources,
+                copyProfiles,
                 true,
                 options.ExtensionUrls,
                 options.ExtensionElementPaths,

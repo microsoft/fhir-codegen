@@ -996,6 +996,171 @@ Complex Types: 41
   - url[1..1]: string
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name
   - value[x][1..1]: string
+  Profiles: 1
+  - DataElement constraint on ElementDefinition data type (elementdefinition-de)
+    - id[0..1]: string
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/elementdefinition-de - Open (value@url)
+        : Slice 0:Question - on extension
+          - id[0..1]: string
+          - url[1..1]: string
+            .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-question
+          - value[x][1..1]: string
+        : Slice 1:AllowedUnits - on extension
+          - id[0..1]: string
+          - url[1..1]: string
+            .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits
+          - value[x][1..1]: canonical(ValueSet)|CodeableConcept
+    - modifierExtension[0..*]: Extension
+    - path[1..1]: string
+    - sliceName[0..1]: string
+    - sliceIsConstraining[0..1]: boolean
+    - label[0..1]: string
+    - code[0..*]: Coding
+    - definition[0..1]: markdown
+    - comment[0..1]: markdown
+    - requirements[0..1]: markdown
+    - alias[0..*]: string
+    - min[0..1]: unsignedInt
+    - max[0..1]: string
+    - base[0..1]: Element
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - path[1..1]: string
+      - min[1..1]: unsignedInt
+      - max[1..1]: string
+    - type[0..*]: Element
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - code[1..1]: uri
+        Extensions: 4
+        +http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type
+        - value[x][1..1]: url
+        +http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type
+        - id[0..1]: Element
+        - url[1..1]: Element
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type
+        - value[x][0..1]: string
+          : http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type - Closed (type@$this)
+            : Slice 0:valueString - on value[x]
+        +http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type
+        - id[0..1]: Element
+        - url[1..1]: Element
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type
+        - value[x][0..1]: string
+          : http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type - Closed (type@$this)
+            : Slice 0:valueString - on value[x]
+        +http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type
+        - id[0..1]: Element
+        - url[1..1]: Element
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type
+        - value[x][0..1]: string
+          : http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type - Closed (type@$this)
+            : Slice 0:valueString - on value[x]
+      - targetProfile[0..*]: canonical(StructureDefinition|ImplementationGuide)
+      - versioning[0..1]: code
+        {either|independent|specific}
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy
+      - value[x][1..1]: boolean
+    - defaultValue[x][0..1]: Address|Age|Annotation|Attachment|base64Binary|boolean|canonical|code|CodeableConcept|Coding|ContactDetail|ContactPoint|Contributor|Count|DataRequirement|date|dateTime|decimal|Distance|Dosage|Duration|Expression|HumanName|id|Identifier|instant|integer|markdown|Meta|Money|oid|ParameterDefinition|Period|positiveInt|Quantity|Range|Ratio|Reference|RelatedArtifact|SampledData|Signature|string|time|Timing|TriggerDefinition|unsignedInt|uri|url|UsageContext|uuid
+    - meaningWhenMissing[0..1]: markdown
+    - orderMeaning[0..1]: string
+    - example[0..*]: Element
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - label[1..1]: string
+      - value[x][1..1]: Address|Age|Annotation|Attachment|base64Binary|boolean|canonical|code|CodeableConcept|Coding|ContactDetail|ContactPoint|Contributor|Count|DataRequirement|date|dateTime|decimal|Distance|Dosage|Duration|Expression|HumanName|id|Identifier|instant|integer|markdown|Meta|Money|oid|ParameterDefinition|Period|positiveInt|Quantity|Range|Ratio|Reference|RelatedArtifact|SampledData|Signature|string|time|Timing|TriggerDefinition|unsignedInt|uri|url|UsageContext|uuid
+    - minValue[x][0..1]: date|dateTime|decimal|instant|integer|positiveInt|Quantity|time|unsignedInt
+    - maxValue[x][0..1]: date|dateTime|decimal|instant|integer|positiveInt|Quantity|time|unsignedInt
+    - maxLength[0..1]: integer
+    - condition[0..*]: id
+    - constraint[0..*]: Element
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - key[1..1]: id
+      - requirements[0..1]: string
+      - severity[1..1]: code
+        {error|warning}
+      - human[1..1]: string
+      - expression[0..1]: string
+      - xpath[0..1]: string
+      - source[0..1]: canonical(StructureDefinition)
+      Extensions: 2
+      +http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice
+      - value[x][1..1]: boolean|CodeableConcept
+      +http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation
+      - value[x][1..1]: markdown
+    - mustSupport[0..1]: boolean
+    - isModifierReason[0..1]: string
+    - binding[0..1]: Element
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - strength[1..1]: code
+        {required|extensible|preferred|example}
+      - description[0..1]: string
+      - valueSet[0..1]: canonical(ValueSet)
+      Extensions: 5
+      +http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName
+      - value[x][1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/elementdefinition-inheritedExtensibleValueSet
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-inheritedExtensibleValueSet
+      - value[x][1..1]: canonical(ValueSet)|uri
+      +http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding
+      - value[x][1..1]: boolean
+      +http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet
+      - value[x][1..1]: canonical(ValueSet)|uri
+      +http://hl7.org/fhir/StructureDefinition/elementdefinition-minValueSet
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-minValueSet
+      - value[x][1..1]: canonical(ValueSet)|uri
+    - mapping[0..*]: Element
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - identity[1..1]: id
+      - language[0..1]: code
+      - map[1..1]: string
+      - comment[0..1]: string
+      Extensions: 3
+      +http://hl7.org/fhir/StructureDefinition/11179-objectClass
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-objectClass
+      - value[x][1..1]: Coding
+      +http://hl7.org/fhir/StructureDefinition/11179-objectClassProperty
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-objectClassProperty
+      - value[x][1..1]: Coding
+      +http://hl7.org/fhir/StructureDefinition/elementdefinition-equivalence
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-equivalence
+      - value[x][1..1]: code
 - Expression: Element
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -1219,6 +1384,23 @@ Complex Types: 41
   - url[1..1]: string
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
   - value[x][1..1]: code
+  Profiles: 2
+  - MoneyQuantity (MoneyQuantity)
+    - id[0..1]: string
+    - extension[0..*]: Extension
+    - value[0..1]: decimal
+    - comparator[0..1]: code
+      {<|<=|>=|>}
+    - unit[0..1]: string
+    - system[0..1]: uri
+    - code[0..1]: code
+  - SimpleQuantity (SimpleQuantity)
+    - id[0..1]: string
+    - extension[0..*]: Extension
+    - value[0..1]: decimal
+    - unit[0..1]: string
+    - system[0..1]: uri
+    - code[0..1]: code
 - Range: Element
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -1499,6 +1681,76 @@ Resources: 148
     in: setting (0..1)
     in: settingContext (0..1)
     out: return (1..1)
+  Profiles: 1
+  - Shareable ActivityDefinition (shareableactivitydefinition)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[1..1]: uri
+    - identifier[0..*]: Identifier
+    - version[1..1]: string
+    - name[1..1]: string
+    - title[0..1]: string
+    - subtitle[0..1]: string
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[1..1]: boolean
+    - subject[x][0..1]: CodeableConcept|Reference(Group)
+    - date[0..1]: dateTime
+    - publisher[1..1]: string
+    - contact[0..*]: ContactDetail
+    - description[1..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - purpose[0..1]: markdown
+    - usage[0..1]: string
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - topic[0..*]: CodeableConcept
+    - author[0..*]: ContactDetail
+    - editor[0..*]: ContactDetail
+    - reviewer[0..*]: ContactDetail
+    - endorser[0..*]: ContactDetail
+    - relatedArtifact[0..*]: RelatedArtifact
+    - library[0..*]: canonical(Library)
+    - kind[0..1]: code
+    - profile[0..1]: canonical(StructureDefinition)
+    - code[0..1]: CodeableConcept
+    - intent[0..1]: code
+      {proposal|plan|directive|order|original-order|reflex-order|filler-order|instance-order|option}
+    - priority[0..1]: code
+      {routine|urgent|asap|stat}
+    - doNotPerform[0..1]: boolean
+    - timing[x][0..1]: Age|dateTime|Duration|Period|Range|Timing
+    - location[0..1]: Reference(Location)
+    - participant[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - type[1..1]: code
+        {patient|practitioner|related-person|device}
+      - role[0..1]: CodeableConcept
+    - product[x][0..1]: CodeableConcept|Reference(Medication|Substance)
+    - quantity[0..1]: Quantity
+    - dosage[0..*]: Dosage
+    - bodySite[0..*]: CodeableConcept
+    - specimenRequirement[0..*]: Reference(SpecimenDefinition)
+    - observationRequirement[0..*]: Reference(ObservationDefinition)
+    - observationResultRequirement[0..*]: Reference(ObservationDefinition)
+    - transform[0..1]: canonical(StructureMap)
+    - dynamicValue[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - path[1..1]: string
+      - expression[1..1]: Expression
 - AdverseEvent: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -1902,6 +2154,110 @@ Resources: 148
   ?source=reference (source)
   ?subtype=token (subtype)
   ?type=token (type)
+  Profiles: 1
+  - EHRS FM Record Lifecycle Event - Audit Event (ehrsrle-auditevent)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - type[1..1]: Coding
+    - subtype[0..*]: Coding
+    - action[0..1]: code
+    - period[0..1]: Period
+    - recorded[1..1]: instant
+    - outcome[0..1]: code
+    - outcomeDesc[0..1]: string
+    - purposeOfEvent[0..*]: CodeableConcept
+    - agent[1..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - type[0..1]: CodeableConcept
+      - role[0..*]: CodeableConcept
+      - who[0..1]: Reference(PractitionerRole|Practitioner|Organization|Device|Patient|RelatedPerson)
+      - altId[0..1]: string
+      - name[0..1]: string
+      - requestor[1..1]: boolean
+      - location[0..1]: Reference(Location)
+      - policy[0..*]: uri
+      - media[0..1]: Coding
+      - network[0..1]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - address[0..1]: string
+        - type[0..1]: code
+      - purposeOfUse[0..*]: CodeableConcept
+    - source[1..1]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - site[0..1]: string
+      - observer[1..1]: Reference(PractitionerRole|Practitioner|Organization|Device|Patient|RelatedPerson)
+      - type[0..*]: Coding
+    - entity[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - what[0..1]: Reference(Resource)
+      - type[0..1]: Coding
+      - role[0..1]: Coding
+      - lifecycle[0..1]: Coding
+      - securityLabel[0..*]: Coding
+      - name[0..1]: string
+      - description[0..1]: string
+      - query[0..1]: base64Binary
+      - detail[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - type[1..1]: string
+        - value[x][1..1]: base64Binary|string
+      Extensions: 8
+      +http://hl7.org/fhir/StructureDefinition/auditevent-Accession
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/auditevent-Accession
+      - value[x][1..1]: Identifier
+      +http://hl7.org/fhir/StructureDefinition/auditevent-Anonymized
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/auditevent-Anonymized
+      - value[x][1..1]: boolean
+      +http://hl7.org/fhir/StructureDefinition/auditevent-Encrypted
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/auditevent-Encrypted
+      - value[x][1..1]: boolean
+      +http://hl7.org/fhir/StructureDefinition/auditevent-Instance
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/auditevent-Instance
+      - value[x][1..1]: Identifier
+      +http://hl7.org/fhir/StructureDefinition/auditevent-MPPS
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/auditevent-MPPS
+      - value[x][1..1]: Identifier
+      +http://hl7.org/fhir/StructureDefinition/auditevent-NumberOfInstances
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/auditevent-NumberOfInstances
+      - value[x][1..1]: integer
+      +http://hl7.org/fhir/StructureDefinition/auditevent-ParticipantObjectContainsStudy
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/auditevent-ParticipantObjectContainsStudy
+      - value[x][1..1]: Identifier
+      +http://hl7.org/fhir/StructureDefinition/auditevent-SOPClass
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/auditevent-SOPClass
+      - value[x][1..1]: Reference(ImagingStudy)
 - Basic: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -3520,6 +3876,123 @@ Resources: 148
     out: result (1..1)
     out: message (0..1)
     out: display (0..1)
+  Profiles: 1
+  - Shareable CodeSystem (shareablecodesystem)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[1..1]: uri
+    - identifier[0..*]: Identifier
+    - version[1..1]: string
+    - name[1..1]: string
+    - title[0..1]: string
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[1..1]: boolean
+    - date[0..1]: dateTime
+    - publisher[1..1]: string
+    - contact[0..*]: ContactDetail
+    - description[1..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - purpose[0..1]: markdown
+    - copyright[0..1]: markdown
+    - caseSensitive[0..1]: boolean
+    - valueSet[0..1]: canonical(ValueSet)
+    - hierarchyMeaning[0..1]: code
+      {grouped-by|is-a|part-of|classified-with}
+    - compositional[0..1]: boolean
+    - versionNeeded[0..1]: boolean
+    - content[1..1]: code
+      {not-present|example|fragment|complete|supplement}
+    - supplements[0..1]: canonical(CodeSystem)
+    - count[0..1]: unsignedInt
+    - filter[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: code
+      - description[0..1]: string
+      - operator[1..*]: code
+        {=|is-a|descendent-of|is-not-a|regex|in|not-in|generalizes|exists}
+      - value[1..1]: string
+    - property[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: code
+      - uri[0..1]: uri
+      - description[0..1]: string
+      - type[1..1]: code
+        {code|Coding|string|integer|boolean|dateTime|decimal}
+    - concept[1..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: code
+      - display[0..1]: string
+      - definition[0..1]: string
+      - designation[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - language[0..1]: code
+        - use[0..1]: Coding
+        - value[1..1]: string
+      - property[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - code[1..1]: code
+        - value[x][1..1]: boolean|code|Coding|dateTime|decimal|integer|string
+      - concept[0..*]: CodeSystem.concept
+      Extensions: 6
+      +http://hl7.org/fhir/StructureDefinition/codesystem-alternate
+      - id[0..1]: string
+      - extension[0..*]: Extension
+        : http://hl7.org/fhir/StructureDefinition/codesystem-alternate - Open (value@url)
+          : Slice 0:code - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = code
+            - value[x][1..1]: code
+          : Slice 1:use - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = use
+            - value[x][1..1]: Coding
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/codesystem-alternate
+      +http://hl7.org/fhir/StructureDefinition/codesystem-concept-comments
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/codesystem-concept-comments
+      - value[x][1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/codesystem-conceptOrder
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/codesystem-conceptOrder
+      - value[x][1..1]: integer
+      +http://hl7.org/fhir/StructureDefinition/codesystem-label
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/codesystem-label
+      - value[x][1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/codesystem-replacedby
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/codesystem-replacedby
+      - value[x][1..1]: Coding
+      +http://hl7.org/fhir/StructureDefinition/ordinalValue
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/ordinalValue
+      - value[x][1..1]: decimal
 - Communication: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -3845,6 +4318,137 @@ Resources: 148
     in: id (0..1)
     in: persist (0..1)
     in: graph (0..1)
+  Profiles: 2
+  - Profile for Catalog (catalog)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/catalog - Open (value@url)
+        : Slice 0:ValidityPeriod - on extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..1]: Identifier
+    - status[1..1]: code
+      {preliminary|final|amended|entered-in-error}
+    - type[1..1]: CodeableConcept
+    - category[1..1]: CodeableConcept
+    - encounter[0..1]: Reference(Encounter)
+    - author[1..*]: Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson|Organization)
+    - title[1..1]: string
+    - confidentiality[0..1]: code
+    - attester[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - mode[1..1]: code
+        {personal|professional|legal|official}
+      - time[0..1]: dateTime
+      - party[0..1]: Reference(Patient|RelatedPerson|Practitioner|PractitionerRole|Organization)
+    - custodian[0..1]: Reference(Organization)
+    - relatesTo[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: code
+        {replaces|transforms|signs|appends}
+      - target[x][1..1]: Identifier|Reference(Composition)
+    - event[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[0..*]: CodeableConcept
+      - period[0..1]: Period
+      - detail[0..*]: Reference(Resource)
+    - section[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - title[0..1]: string
+      - code[0..1]: CodeableConcept
+      - author[0..*]: Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson|Organization)
+      - focus[0..1]: Reference(Resource)
+      - text[0..1]: Narrative
+      - mode[0..1]: code
+        {working|snapshot|changes}
+      - orderedBy[0..1]: CodeableConcept
+      - entry[1..*]: Reference(CatalogEntry)
+      - emptyReason[0..1]: CodeableConcept
+      - section[0..*]: Composition.section
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/composition-section-subject
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/composition-section-subject
+      - value[x][1..1]: string
+  - Clinical Document (clinicaldocument)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/clinicaldocument - Open (value@url)
+        : Slice 0:versionNumber - on extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..1]: Identifier
+    - status[1..1]: code
+      {preliminary|final|amended|entered-in-error}
+    - type[1..1]: CodeableConcept
+    - category[0..*]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Practitioner|Group|Device|Location)
+    - encounter[0..1]: Reference(Encounter)
+    - date[1..1]: dateTime
+    - author[1..*]: Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson|Organization)
+    - title[1..1]: string
+    - confidentiality[0..1]: code
+    - attester[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - mode[1..1]: code
+        {personal|professional|legal|official}
+      - time[0..1]: dateTime
+      - party[0..1]: Reference(Patient|RelatedPerson|Practitioner|PractitionerRole|Organization)
+    - custodian[0..1]: Reference(Organization)
+    - relatesTo[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: code
+        {replaces|transforms|signs|appends}
+      - target[x][1..1]: Identifier|Reference(Composition)
+    - event[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[0..*]: CodeableConcept
+      - period[0..1]: Period
+      - detail[0..*]: Reference(Resource)
+    - section[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - title[0..1]: string
+      - code[0..1]: CodeableConcept
+      - author[0..*]: Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson|Organization)
+      - focus[0..1]: Reference(Resource)
+      - text[0..1]: Narrative
+      - mode[0..1]: code
+        {working|snapshot|changes}
+      - orderedBy[0..1]: CodeableConcept
+      - entry[0..*]: Reference(Resource)
+      - emptyReason[0..1]: CodeableConcept
+      - section[0..*]: Composition.section
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/composition-section-subject
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/composition-section-subject
+      - value[x][1..1]: string
 - ConceptMap: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5106,6 +5710,33 @@ Resources: 148
   - url[1..1]: string
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/workflow-researchStudy
   - value[x][1..1]: Reference(ResearchStudy)
+  Profiles: 1
+  - Family member history for genetics analysis (familymemberhistory-genetic)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic - Open (value@url)
+        : Slice 0:Parent - on extension
+        : Slice 1:Sibling - on extension
+        : Slice 2:Observation - on extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - instantiatesCanonical[0..*]: canonical(PlanDefinition|Questionnaire|ActivityDefinition|Measure|OperationDefinition)
+    - instantiatesUri[0..*]: uri
+    - status[1..1]: code
+      {partial|completed|entered-in-error|health-unknown}
+    - dataAbsentReason[0..1]: CodeableConcept
+    - patient[1..1]: Reference(Patient)
+    - date[0..1]: dateTime
+    - name[0..1]: string
+    - estimatedAge[0..1]: boolean
+    - reasonCode[0..*]: CodeableConcept
+    - reasonReference[0..*]: Reference(Condition|Observation|AllergyIntolerance|QuestionnaireResponse|DiagnosticReport|DocumentReference)
+    - note[0..*]: Annotation
   +http://hl7.org/fhir/StructureDefinition/DiagnosticReport-geneticsReferences
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -5297,6 +5928,137 @@ Resources: 148
   ?specimen=reference (specimen)
   ?status=token (status)
   ?subject=reference (subject)
+  Profiles: 3
+  - DiagnosticReport-Genetics (diagnosticreport-genetics)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/diagnosticreport-genetics - Open (value@url)
+        : Slice 0:AssessedCondition - on extension
+        : Slice 1:FamilyMemberHistory - on extension
+        : Slice 2:Analysis - on extension
+        : Slice 3:References - on extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - status[1..1]: code
+      {registered|partial|preliminary|final}
+    - category[0..*]: CodeableConcept
+    - code[1..1]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Group|Device|Location)
+    - encounter[0..1]: Reference(Encounter)
+    - effective[x][0..1]: dateTime|Period
+    - issued[0..1]: instant
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - resultsInterpreter[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam)
+    - specimen[0..*]: Reference(Specimen)
+    - result[0..*]: Reference(Observation)
+    - imagingStudy[0..*]: Reference(ImagingStudy)
+    - media[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - comment[0..1]: string
+      - link[1..1]: Reference(Media)
+    - conclusion[0..1]: string
+    - presentedForm[0..*]: Attachment
+  - Profile for HLA Genotyping Results (hlaresult)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/hlaresult - Open (value@url)
+        : Slice 0:allele-database - on extension
+        : Slice 1:glstring - on extension
+        : Slice 2:haploid - on extension
+        : Slice 3:method - on extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - status[1..1]: code
+      {registered|partial|preliminary|final}
+    - category[0..*]: CodeableConcept
+    - code[1..1]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Group|Device|Location)
+    - encounter[0..1]: Reference(Encounter)
+    - effective[x][0..1]: dateTime|Period
+    - issued[0..1]: instant
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - resultsInterpreter[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam)
+    - specimen[0..*]: Reference(Specimen)
+    - result[0..*]: Reference(Observation)
+    - imagingStudy[0..*]: Reference(ImagingStudy)
+    - media[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - comment[0..1]: string
+      - link[1..1]: Reference(Media)
+    - conclusion[0..1]: string
+    - conclusionCode[0..*]: CodeableConcept
+    - presentedForm[0..*]: Attachment
+  - Example Lipid Profile (lipidprofile)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - status[1..1]: code
+      {registered|partial|preliminary|final}
+    - category[0..*]: CodeableConcept
+    - code[1..1]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Group|Device|Location)
+    - encounter[0..1]: Reference(Encounter)
+    - effective[x][0..1]: dateTime|Period
+    - issued[0..1]: instant
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - resultsInterpreter[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam)
+    - specimen[0..*]: Reference(Specimen)
+    - result[3..4]: Reference(Observation)
+      : http://hl7.org/fhir/StructureDefinition/lipidprofile - Closed (value@resolve().code)
+        : Slice 0:Cholesterol - on result
+        : Slice 1:Triglyceride - on result
+        : Slice 2:HDLCholesterol - on result
+        : Slice 3:LDLCholesterol - on result
+    - imagingStudy[0..*]: Reference(ImagingStudy)
+    - media[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - comment[0..1]: string
+      - link[1..1]: Reference(Media)
+    - conclusion[0..1]: string
+    - presentedForm[0..*]: Attachment
 - DocumentManifest: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5892,6 +6654,45 @@ Resources: 148
   ?topic=token (topic)
   ?url=uri (url)
   ?version=token (version)
+  Profiles: 1
+  - Evidence Synthesis Profile (synthesis)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[0..1]: uri
+    - identifier[0..*]: Identifier
+    - version[0..1]: string
+    - name[0..1]: string
+    - title[0..1]: string
+    - shortTitle[0..1]: string
+    - subtitle[0..1]: string
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - date[0..1]: dateTime
+    - publisher[0..1]: string
+    - contact[0..*]: ContactDetail
+    - description[0..1]: markdown
+    - note[0..*]: Annotation
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - topic[0..*]: CodeableConcept
+    - author[0..*]: ContactDetail
+    - editor[0..*]: ContactDetail
+    - reviewer[0..*]: ContactDetail
+    - endorser[0..*]: ContactDetail
+    - relatedArtifact[0..*]: RelatedArtifact
+    - exposureBackground[1..1]: Reference(EvidenceVariable)
+    - exposureVariant[1..2]: Reference(EvidenceVariable)
+    - outcome[1..*]: Reference(EvidenceVariable)
 - EvidenceVariable: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -5969,6 +6770,56 @@ Resources: 148
   ?topic=token (topic)
   ?url=uri (url)
   ?version=token (version)
+  Profiles: 1
+  - PICO Element Profile (picoelement)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[0..1]: uri
+    - identifier[0..*]: Identifier
+    - version[0..1]: string
+    - name[0..1]: string
+    - title[0..1]: string
+    - shortTitle[0..1]: string
+    - subtitle[0..1]: string
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - date[0..1]: dateTime
+    - publisher[0..1]: string
+    - contact[0..*]: ContactDetail
+    - description[0..1]: markdown
+    - note[0..*]: Annotation
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - topic[0..*]: CodeableConcept
+    - author[0..*]: ContactDetail
+    - editor[0..*]: ContactDetail
+    - reviewer[0..*]: ContactDetail
+    - endorser[0..*]: ContactDetail
+    - relatedArtifact[0..*]: RelatedArtifact
+    - type[0..1]: code
+      {dichotomous|continuous|descriptive}
+    - characteristic[1..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - description[0..1]: string
+      - definition[x][1..1]: canonical(ActivityDefinition)|CodeableConcept|DataRequirement|Expression|Reference(Group)|TriggerDefinition
+      - usageContext[0..*]: UsageContext
+      - exclude[0..1]: boolean
+      - participantEffective[x][0..1]: dateTime|Duration|Period|Timing
+      - timeFromStart[0..1]: Duration
+      - groupMeasure[0..1]: code
+        {mean|median|mean-of-mean|mean-of-median|median-of-mean|median-of-median}
 - ExampleScenario: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6462,6 +7313,33 @@ Resources: 148
   ?relationship=token (relationship)
   ?sex=token (sex)
   ?status=token (status)
+  Profiles: 1
+  - Family member history for genetics analysis (familymemberhistory-genetic)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic - Open (value@url)
+        : Slice 0:Parent - on extension
+        : Slice 1:Sibling - on extension
+        : Slice 2:Observation - on extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - instantiatesCanonical[0..*]: canonical(PlanDefinition|Questionnaire|ActivityDefinition|Measure|OperationDefinition)
+    - instantiatesUri[0..*]: uri
+    - status[1..1]: code
+      {partial|completed|entered-in-error|health-unknown}
+    - dataAbsentReason[0..1]: CodeableConcept
+    - patient[1..1]: Reference(Patient)
+    - date[0..1]: dateTime
+    - name[0..1]: string
+    - estimatedAge[0..1]: boolean
+    - reasonCode[0..*]: CodeableConcept
+    - reasonReference[0..*]: Reference(Condition|Observation|AllergyIntolerance|QuestionnaireResponse|DiagnosticReport|DocumentReference)
+    - note[0..*]: Annotation
 - Flag: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6696,6 +7574,58 @@ Resources: 148
   ?member=reference (member)
   ?type=token (type)
   ?value=token (value)
+  Profiles: 2
+  - Actual Group (actualgroup)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - active[0..1]: boolean
+    - type[1..1]: code
+      {person|animal|practitioner|device|medication|substance}
+    - actual[1..1]: boolean
+    - code[0..1]: CodeableConcept
+    - name[0..1]: string
+    - quantity[0..1]: unsignedInt
+    - managingEntity[0..1]: Reference(Organization|RelatedPerson|Practitioner|PractitionerRole)
+    - member[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - entity[1..1]: Reference(Patient|Practitioner|PractitionerRole|Device|Medication|Substance|Group)
+      - period[0..1]: Period
+      - inactive[0..1]: boolean
+  - Group Definition (groupdefinition)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - active[0..1]: boolean
+    - type[1..1]: code
+      {person|animal|practitioner|device|medication|substance}
+    - actual[1..1]: boolean
+    - code[0..1]: CodeableConcept
+    - name[0..1]: string
+    - quantity[0..1]: unsignedInt
+    - managingEntity[0..1]: Reference(Organization|RelatedPerson|Practitioner|PractitionerRole)
+    - characteristic[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: CodeableConcept
+      - value[x][1..1]: boolean|CodeableConcept|Quantity|Range|Reference
+      - exclude[1..1]: boolean
+      - period[0..1]: Period
 - GuidanceResponse: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -6725,6 +7655,36 @@ Resources: 148
   ?patient=reference (patient)
   ?request=token (request)
   ?subject=reference (subject)
+  Profiles: 1
+  - CDS Hooks GuidanceResponse (cdshooksguidanceresponse)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/cdshooksguidanceresponse - Open (value@url)
+        : Slice 0:cdsHooksEndpoint - on extension
+    - modifierExtension[0..*]: Extension
+    - requestIdentifier[1..1]: Identifier
+    - identifier[1..1]: Identifier
+    - module[x][1..1]: uri
+      : http://hl7.org/fhir/StructureDefinition/cdshooksguidanceresponse - Closed (type@$this)
+        : Slice 0:moduleUri - on module[x]
+    - status[1..1]: code
+      {success|data-requested|data-required|in-progress|failure|entered-in-error}
+    - subject[0..1]: Reference(Patient|Group)
+    - encounter[0..1]: Reference(Encounter)
+    - occurrenceDateTime[0..1]: dateTime
+    - performer[0..1]: Reference(Device)
+    - reasonCode[0..*]: CodeableConcept
+    - reasonReference[0..*]: Reference(Condition|Observation|DiagnosticReport|DocumentReference)
+    - note[0..*]: Annotation
+    - evaluationMessage[0..*]: Reference(OperationOutcome)
+    - outputParameters[0..1]: Reference(Parameters)
+    - result[0..1]: Reference(CarePlan|RequestGroup)
+    - dataRequirement[0..*]: DataRequirement
 - HealthcareService: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7386,6 +8346,89 @@ Resources: 148
   ?type=token (type)
   ?url=uri (url)
   ?version=token (version)
+  Profiles: 2
+  - CQL Library (cqllibrary)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[0..1]: uri
+    - identifier[0..*]: Identifier
+    - version[0..1]: string
+    - name[0..1]: string
+    - title[0..1]: string
+    - subtitle[0..1]: string
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[0..1]: boolean
+    - type[1..1]: CodeableConcept
+    - subject[x][0..1]: CodeableConcept|Reference(Group)
+    - date[0..1]: dateTime
+    - publisher[0..1]: string
+    - contact[0..*]: ContactDetail
+    - description[0..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - purpose[0..1]: markdown
+    - usage[0..1]: string
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - topic[0..*]: CodeableConcept
+    - author[0..*]: ContactDetail
+    - editor[0..*]: ContactDetail
+    - reviewer[0..*]: ContactDetail
+    - endorser[0..*]: ContactDetail
+    - relatedArtifact[0..*]: RelatedArtifact
+    - parameter[0..*]: ParameterDefinition
+    - dataRequirement[0..*]: DataRequirement
+    - content[0..*]: Attachment
+  - Shareable Library (shareablelibrary)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[1..1]: uri
+    - identifier[0..*]: Identifier
+    - version[1..1]: string
+    - name[1..1]: string
+    - title[0..1]: string
+    - subtitle[0..1]: string
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[1..1]: boolean
+    - type[1..1]: CodeableConcept
+    - subject[x][0..1]: CodeableConcept|Reference(Group)
+    - date[0..1]: dateTime
+    - publisher[1..1]: string
+    - contact[0..*]: ContactDetail
+    - description[1..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - purpose[0..1]: markdown
+    - usage[0..1]: string
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - topic[0..*]: CodeableConcept
+    - author[0..*]: ContactDetail
+    - editor[0..*]: ContactDetail
+    - reviewer[0..*]: ContactDetail
+    - endorser[0..*]: ContactDetail
+    - relatedArtifact[0..*]: RelatedArtifact
+    - parameter[0..*]: ParameterDefinition
+    - dataRequirement[0..*]: DataRequirement
+    - content[0..*]: Attachment
 - Linkage: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -7691,6 +8734,91 @@ Resources: 148
   /{id}$submit-data
     in: measureReport (1..1)
     in: resource (0..*)
+  Profiles: 1
+  - Shareable Measure (shareablemeasure)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[1..1]: uri
+    - identifier[0..*]: Identifier
+    - version[1..1]: string
+    - name[1..1]: string
+    - title[0..1]: string
+    - subtitle[0..1]: string
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[1..1]: boolean
+    - subject[x][0..1]: CodeableConcept|Reference(Group)
+    - date[0..1]: dateTime
+    - publisher[1..1]: string
+    - contact[0..*]: ContactDetail
+    - description[1..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - purpose[0..1]: markdown
+    - usage[0..1]: string
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - topic[0..*]: CodeableConcept
+    - author[0..*]: ContactDetail
+    - editor[0..*]: ContactDetail
+    - reviewer[0..*]: ContactDetail
+    - endorser[0..*]: ContactDetail
+    - relatedArtifact[0..*]: RelatedArtifact
+    - library[0..*]: canonical(Library)
+    - disclaimer[0..1]: markdown
+    - scoring[0..1]: CodeableConcept
+    - compositeScoring[0..1]: CodeableConcept
+    - type[0..*]: CodeableConcept
+    - riskAdjustment[0..1]: string
+    - rateAggregation[0..1]: string
+    - rationale[0..1]: markdown
+    - clinicalRecommendationStatement[0..1]: markdown
+    - improvementNotation[0..1]: CodeableConcept
+    - definition[0..*]: markdown
+    - guidance[0..1]: markdown
+    - group[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[0..1]: CodeableConcept
+      - description[0..1]: string
+      - population[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - code[0..1]: CodeableConcept
+        - description[0..1]: string
+        - criteria[1..1]: Expression
+      - stratifier[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - code[0..1]: CodeableConcept
+        - description[0..1]: string
+        - criteria[0..1]: Expression
+        - component[0..*]: BackboneElement
+          - id[0..1]: string
+          - extension[0..*]: Extension
+          - modifierExtension[0..*]: Extension
+          - code[0..1]: CodeableConcept
+          - description[0..1]: string
+          - criteria[1..1]: Expression
+    - supplementalData[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[0..1]: CodeableConcept
+      - usage[0..*]: CodeableConcept
+      - description[0..1]: string
+      - criteria[1..1]: Expression
 - MeasureReport: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -9459,6 +10587,465 @@ Resources: 148
     in: limit (0..1)
     out: statistics (1..*)
     out: source (0..*)
+  Profiles: 7
+  - Example Lipid Profile (cholesterol)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
+    - status[1..1]: code
+      {registered|preliminary|final|amended}
+    - category[0..*]: CodeableConcept
+    - code[1..1]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Group|Device|Location)
+    - focus[0..*]: Reference(Resource)
+    - encounter[0..1]: Reference(Encounter)
+    - effective[x][0..1]: dateTime|instant|Period|Timing
+    - issued[0..1]: instant
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam|Patient|RelatedPerson)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - value[x][0..1]: Quantity
+      : http://hl7.org/fhir/StructureDefinition/cholesterol - Closed (type@$this)
+        : Slice 0:valueQuantity - on value[x]
+          - id[0..1]: string
+          - extension[0..*]: Extension
+          - value[0..1]: decimal
+          - unit[1..1]: string
+            .fixedValueString = mmol/L
+          - system[1..1]: uri
+            .fixedValueUri = http://unitsofmeasure.org
+          - code[1..1]: code
+            .fixedValueCode = mmol/L
+    - dataAbsentReason[0..1]: CodeableConcept
+    - interpretation[0..1]: CodeableConcept
+    - note[0..*]: Annotation
+    - bodySite[0..1]: CodeableConcept
+    - method[0..1]: CodeableConcept
+    - specimen[0..1]: Reference(Specimen)
+    - device[0..1]: Reference(Device|DeviceMetric)
+    - referenceRange[1..1]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - high[1..1]: Quantity
+      - text[0..1]: string
+    - component[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: CodeableConcept
+      - value[x][0..1]: boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|SampledData|string|time
+      - dataAbsentReason[0..1]: CodeableConcept
+      - interpretation[0..*]: CodeableConcept
+      - referenceRange[0..*]: Observation.referenceRange
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - value[x][1..1]: integer
+  - Device Metric Observation Profile (devicemetricobservation)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
+    - status[1..1]: code
+      {registered|preliminary|final|amended}
+    - category[0..*]: CodeableConcept
+    - code[1..1]: CodeableConcept
+    - subject[1..1]: Reference(Patient|Device)
+    - focus[0..*]: Reference(Resource)
+    - effective[x][0..1]: dateTime
+      : http://hl7.org/fhir/StructureDefinition/devicemetricobservation - Closed (type@$this)
+        : Slice 0:effectiveDateTime - on effective[x]
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam|Patient|RelatedPerson)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - value[x][0..1]: CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
+    - interpretation[0..1]: CodeableConcept
+    - note[0..*]: Annotation
+    - bodySite[0..1]: CodeableConcept
+    - method[0..1]: CodeableConcept
+    - device[1..1]: Reference(DeviceMetric)
+    - referenceRange[0..1]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - low[0..1]: Quantity
+      - high[0..1]: Quantity
+      - type[0..1]: CodeableConcept
+      - appliesTo[0..*]: CodeableConcept
+      - age[0..1]: Range
+      - text[0..1]: string
+    - hasMember[0..*]: Reference(Observation)
+    - derivedFrom[0..*]: Reference(Observation)
+    - component[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: CodeableConcept
+      - value[x][0..1]: boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|SampledData|string|time
+      - dataAbsentReason[0..1]: CodeableConcept
+      - interpretation[0..*]: CodeableConcept
+      - referenceRange[0..*]: Observation.referenceRange
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - value[x][1..1]: integer
+  - Example Lipid Profile (hdlcholesterol)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
+    - status[1..1]: code
+      {registered|preliminary|final|amended}
+    - category[0..*]: CodeableConcept
+    - code[1..1]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Group|Device|Location)
+    - focus[0..*]: Reference(Resource)
+    - encounter[0..1]: Reference(Encounter)
+    - effective[x][0..1]: dateTime|instant|Period|Timing
+    - issued[0..1]: instant
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam|Patient|RelatedPerson)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - value[x][0..1]: Quantity
+      : http://hl7.org/fhir/StructureDefinition/hdlcholesterol - Closed (type@$this)
+        : Slice 0:valueQuantity - on value[x]
+    - dataAbsentReason[0..1]: CodeableConcept
+    - interpretation[0..1]: CodeableConcept
+    - note[0..*]: Annotation
+    - bodySite[0..1]: CodeableConcept
+    - method[0..1]: CodeableConcept
+    - specimen[0..1]: Reference(Specimen)
+    - device[0..1]: Reference(Device|DeviceMetric)
+    - referenceRange[1..1]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - low[1..1]: Quantity
+      - text[0..1]: string
+    - component[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: CodeableConcept
+      - value[x][0..1]: boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|SampledData|string|time
+      - dataAbsentReason[0..1]: CodeableConcept
+      - interpretation[0..*]: CodeableConcept
+      - referenceRange[0..*]: Observation.referenceRange
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - value[x][1..1]: integer
+  - Example Lipid Profile (ldlcholesterol)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
+    - status[1..1]: code
+      {registered|preliminary|final|amended}
+    - category[0..*]: CodeableConcept
+    - code[1..1]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Group|Device|Location)
+    - focus[0..*]: Reference(Resource)
+    - encounter[0..1]: Reference(Encounter)
+    - effective[x][0..1]: dateTime|instant|Period|Timing
+    - issued[0..1]: instant
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam|Patient|RelatedPerson)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - value[x][0..1]: Quantity
+      : http://hl7.org/fhir/StructureDefinition/ldlcholesterol - Closed (type@$this)
+        : Slice 0:valueQuantity - on value[x]
+    - dataAbsentReason[0..1]: CodeableConcept
+    - interpretation[0..1]: CodeableConcept
+    - note[0..*]: Annotation
+    - bodySite[0..1]: CodeableConcept
+    - method[0..1]: CodeableConcept
+    - specimen[0..1]: Reference(Specimen)
+    - device[0..1]: Reference(Device|DeviceMetric)
+    - referenceRange[1..1]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - high[1..1]: Quantity
+      - text[0..1]: string
+    - component[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: CodeableConcept
+      - value[x][0..1]: boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|SampledData|string|time
+      - dataAbsentReason[0..1]: CodeableConcept
+      - interpretation[0..*]: CodeableConcept
+      - referenceRange[0..*]: Observation.referenceRange
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - value[x][1..1]: integer
+  - Observation-genetics (observation-genetics)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/observation-genetics - Open (value@url)
+        : Slice 0:Gene - on extension
+        : Slice 1:DNARegionName - on extension
+        : Slice 2:CopyNumberEvent - on extension
+        : Slice 3:GenomicSourceClass - on extension
+        : Slice 4:Interpretation - on extension
+        : Slice 5:Variant - on extension
+        : Slice 6:AminoAcidChange - on extension
+        : Slice 7:Allele - on extension
+        : Slice 8:Ancestry - on extension
+        : Slice 9:PhaseSet - on extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
+    - status[1..1]: code
+      {registered|preliminary|final|amended}
+    - category[0..*]: CodeableConcept
+    - code[1..1]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Group|Device|Location)
+    - focus[0..*]: Reference(Resource)
+    - encounter[0..1]: Reference(Encounter)
+    - effective[x][0..1]: dateTime|instant|Period|Timing
+    - issued[0..1]: instant
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam|Patient|RelatedPerson)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - value[x][0..1]: boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|SampledData|string|time
+    - dataAbsentReason[0..1]: CodeableConcept
+    - interpretation[0..*]: CodeableConcept
+    - note[0..*]: Annotation
+    - bodySite[0..1]: CodeableConcept
+    - method[0..1]: CodeableConcept
+    - specimen[0..1]: Reference(Specimen)
+    - device[0..1]: Reference(Device|DeviceMetric)
+    - referenceRange[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - low[0..1]: Quantity
+      - high[0..1]: Quantity
+      - type[0..1]: CodeableConcept
+      - appliesTo[0..*]: CodeableConcept
+      - age[0..1]: Range
+      - text[0..1]: string
+    - hasMember[0..*]: Reference(Observation|QuestionnaireResponse|MolecularSequence)
+    - derivedFrom[0..*]: Reference(DocumentReference|ImagingStudy|Media|QuestionnaireResponse|Observation|MolecularSequence)
+    - component[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: CodeableConcept
+      - value[x][0..1]: boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|SampledData|string|time
+      - dataAbsentReason[0..1]: CodeableConcept
+      - interpretation[0..*]: CodeableConcept
+      - referenceRange[0..*]: Observation.referenceRange
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - value[x][1..1]: integer
+  - Example Lipid Profile (triglyceride)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
+    - status[1..1]: code
+      {registered|preliminary|final|amended}
+    - category[0..*]: CodeableConcept
+    - code[1..1]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Group|Device|Location)
+    - focus[0..*]: Reference(Resource)
+    - encounter[0..1]: Reference(Encounter)
+    - effective[x][0..1]: dateTime|instant|Period|Timing
+    - issued[0..1]: instant
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam|Patient|RelatedPerson)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - value[x][0..1]: Quantity
+      : http://hl7.org/fhir/StructureDefinition/triglyceride - Closed (type@$this)
+        : Slice 0:valueQuantity - on value[x]
+    - dataAbsentReason[0..1]: CodeableConcept
+    - interpretation[0..1]: CodeableConcept
+    - note[0..*]: Annotation
+    - bodySite[0..1]: CodeableConcept
+    - method[0..1]: CodeableConcept
+    - specimen[0..1]: Reference(Specimen)
+    - device[0..1]: Reference(Device|DeviceMetric)
+    - referenceRange[1..1]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - high[1..1]: Quantity
+      - text[0..1]: string
+    - component[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: CodeableConcept
+      - value[x][0..1]: boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|SampledData|string|time
+      - dataAbsentReason[0..1]: CodeableConcept
+      - interpretation[0..*]: CodeableConcept
+      - referenceRange[0..*]: Observation.referenceRange
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - value[x][1..1]: integer
+  - observation-vitalsigns (vitalsigns)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - basedOn[0..*]: Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|MedicationRequest|NutritionOrder|ServiceRequest)
+    - partOf[0..*]: Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Immunization|ImagingStudy)
+    - status[1..1]: code
+      {registered|preliminary|final|amended}
+    - category[1..*]: CodeableConcept
+      : http://hl7.org/fhir/StructureDefinition/vitalsigns - Open (value@coding.code, value@coding.system)
+        : Slice 0:VSCat - on category
+          - id[0..1]: string
+          - extension[0..*]: Extension
+          - coding[1..*]: Coding
+            - id[0..1]: string
+            - extension[0..*]: Extension
+            - system[1..1]: uri
+              .fixedValueUri = http://terminology.hl7.org/CodeSystem/observation-category
+            - version[0..1]: string
+            - code[1..1]: code
+              .fixedValueCode = vital-signs
+            - display[0..1]: string
+            - userSelected[0..1]: boolean
+          - text[0..1]: string
+    - code[1..1]: CodeableConcept
+    - subject[1..1]: Reference(Patient)
+    - focus[0..*]: Reference(Resource)
+    - encounter[0..1]: Reference(Encounter)
+    - effective[x][1..1]: dateTime|Period
+    - issued[0..1]: instant
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam|Patient|RelatedPerson)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/event-performerFunction
+      - value[x][1..1]: CodeableConcept
+    - value[x][0..1]: boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|SampledData|string|time
+    - dataAbsentReason[0..1]: CodeableConcept
+    - interpretation[0..*]: CodeableConcept
+    - note[0..*]: Annotation
+    - bodySite[0..1]: CodeableConcept
+    - method[0..1]: CodeableConcept
+    - specimen[0..1]: Reference(Specimen)
+    - device[0..1]: Reference(Device|DeviceMetric)
+    - referenceRange[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - low[0..1]: Quantity
+      - high[0..1]: Quantity
+      - type[0..1]: CodeableConcept
+      - appliesTo[0..*]: CodeableConcept
+      - age[0..1]: Range
+      - text[0..1]: string
+    - hasMember[0..*]: Reference(QuestionnaireResponse|MolecularSequence|vitalsigns)
+    - derivedFrom[0..*]: Reference(DocumentReference|ImagingStudy|Media|QuestionnaireResponse|MolecularSequence|vitalsigns)
+    - component[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: CodeableConcept
+      - value[x][0..1]: boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|SampledData|string|time
+      - dataAbsentReason[0..1]: CodeableConcept
+      - interpretation[0..*]: CodeableConcept
+      - referenceRange[0..*]: Observation.referenceRange
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/observation-timeOffset
+      - value[x][1..1]: integer
 - ObservationDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -10325,6 +11912,396 @@ Resources: 148
     in: setting (0..1)
     in: settingContext (0..1)
     out: return (1..1)
+  Profiles: 3
+  - CDS Hooks Service PlanDefinition (cdshooksserviceplandefinition)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/cdshooksserviceplandefinition - Open (value@url)
+        : Slice 0:cdsHooksEndpoint - on extension
+    - modifierExtension[0..*]: Extension
+    - url[0..1]: uri
+    - identifier[0..*]: Identifier
+    - version[0..1]: string
+    - name[0..1]: string
+    - title[0..1]: string
+    - subtitle[0..1]: string
+    - type[0..1]: CodeableConcept
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[0..1]: boolean
+    - subject[x][0..1]: CodeableConcept|Reference(Group)
+    - date[0..1]: dateTime
+    - publisher[0..1]: string
+    - contact[0..*]: ContactDetail
+    - description[0..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - purpose[0..1]: markdown
+    - usage[0..1]: string
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - topic[0..*]: CodeableConcept
+    - author[0..*]: ContactDetail
+    - editor[0..*]: ContactDetail
+    - reviewer[0..*]: ContactDetail
+    - endorser[0..*]: ContactDetail
+    - relatedArtifact[0..*]: RelatedArtifact
+    - library[0..*]: canonical(Library)
+    - goal[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - category[0..1]: CodeableConcept
+      - description[1..1]: CodeableConcept
+      - priority[0..1]: CodeableConcept
+      - start[0..1]: CodeableConcept
+      - addresses[0..*]: CodeableConcept
+      - documentation[0..*]: RelatedArtifact
+      - target[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - measure[0..1]: CodeableConcept
+        - detail[x][0..1]: CodeableConcept|Quantity|Range
+        - due[0..1]: Duration
+    - action[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - prefix[0..1]: string
+      - title[0..1]: string
+      - description[0..1]: string
+      - textEquivalent[0..1]: string
+      - priority[0..1]: code
+        {routine|urgent|asap|stat}
+      - code[0..*]: CodeableConcept
+      - reason[0..*]: CodeableConcept
+      - documentation[0..*]: RelatedArtifact
+      - goalId[0..*]: id
+      - subject[x][0..1]: CodeableConcept|Reference(Group)
+      - trigger[0..*]: TriggerDefinition
+      - condition[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - kind[1..1]: code
+          {applicability|start|stop}
+        - expression[0..1]: Expression
+      - input[0..*]: DataRequirement
+      - output[0..*]: DataRequirement
+      - relatedAction[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - actionId[1..1]: id
+        - relationship[1..1]: code
+          {before-start|before|before-end|concurrent-with-start|concurrent|concurrent-with-end|after-start|after|after-end}
+        - offset[x][0..1]: Duration|Range
+      - timing[x][0..1]: Age|dateTime|Duration|Period|Range|Timing
+      - participant[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - type[1..1]: code
+          {patient|practitioner|related-person|device}
+        - role[0..1]: CodeableConcept
+      - type[0..1]: CodeableConcept
+      - groupingBehavior[0..1]: code
+        {visual-group|logical-group|sentence-group}
+      - selectionBehavior[0..1]: code
+        {any|all|all-or-none|exactly-one|at-most-one|one-or-more}
+      - requiredBehavior[0..1]: code
+        {must|could|must-unless-documented}
+      - precheckBehavior[0..1]: code
+        {yes|no}
+      - cardinalityBehavior[0..1]: code
+        {single|multiple}
+      - definition[x][0..1]: canonical(ActivityDefinition|PlanDefinition|Questionnaire)|uri
+      - transform[0..1]: canonical(StructureMap)
+      - dynamicValue[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - path[0..1]: string
+        - expression[0..1]: Expression
+      - action[0..*]: PlanDefinition.action
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
+      - id[0..1]: string
+      - extension[0..*]: Extension
+        : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+          : Slice 0:day - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = day
+            - value[x][1..1]: integer
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
+  - Computable PlanDefinition (computableplandefinition)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[0..1]: uri
+    - identifier[0..*]: Identifier
+    - version[0..1]: string
+    - name[0..1]: string
+    - title[0..1]: string
+    - subtitle[0..1]: string
+    - type[0..1]: CodeableConcept
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[0..1]: boolean
+    - subject[x][0..1]: CodeableConcept|Reference(Group)
+    - date[0..1]: dateTime
+    - publisher[0..1]: string
+    - contact[0..*]: ContactDetail
+    - description[0..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - purpose[0..1]: markdown
+    - usage[0..1]: string
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - topic[0..*]: CodeableConcept
+    - author[0..*]: ContactDetail
+    - editor[0..*]: ContactDetail
+    - reviewer[0..*]: ContactDetail
+    - endorser[0..*]: ContactDetail
+    - relatedArtifact[0..*]: RelatedArtifact
+    - library[1..1]: canonical(Library)
+    - goal[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - category[0..1]: CodeableConcept
+      - description[1..1]: CodeableConcept
+      - priority[0..1]: CodeableConcept
+      - start[0..1]: CodeableConcept
+      - addresses[0..*]: CodeableConcept
+      - documentation[0..*]: RelatedArtifact
+      - target[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - measure[0..1]: CodeableConcept
+        - detail[x][0..1]: CodeableConcept|Quantity|Range
+        - due[0..1]: Duration
+    - action[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - prefix[0..1]: string
+      - title[0..1]: string
+      - description[0..1]: string
+      - textEquivalent[0..1]: string
+      - priority[0..1]: code
+        {routine|urgent|asap|stat}
+      - code[0..*]: CodeableConcept
+      - reason[0..*]: CodeableConcept
+      - documentation[0..*]: RelatedArtifact
+      - goalId[0..*]: id
+      - subject[x][0..1]: CodeableConcept|Reference(Group)
+      - trigger[0..*]: TriggerDefinition
+      - condition[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - kind[1..1]: code
+          {applicability|start|stop}
+        - expression[0..1]: Expression
+      - input[0..*]: DataRequirement
+      - output[0..*]: DataRequirement
+      - relatedAction[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - actionId[1..1]: id
+        - relationship[1..1]: code
+          {before-start|before|before-end|concurrent-with-start|concurrent|concurrent-with-end|after-start|after|after-end}
+        - offset[x][0..1]: Duration|Range
+      - timing[x][0..1]: Age|dateTime|Duration|Period|Range|Timing
+      - participant[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - type[1..1]: code
+          {patient|practitioner|related-person|device}
+        - role[0..1]: CodeableConcept
+      - type[0..1]: CodeableConcept
+      - groupingBehavior[0..1]: code
+        {visual-group|logical-group|sentence-group}
+      - selectionBehavior[0..1]: code
+        {any|all|all-or-none|exactly-one|at-most-one|one-or-more}
+      - requiredBehavior[0..1]: code
+        {must|could|must-unless-documented}
+      - precheckBehavior[0..1]: code
+        {yes|no}
+      - cardinalityBehavior[0..1]: code
+        {single|multiple}
+      - definition[x][0..1]: canonical(ActivityDefinition|PlanDefinition|Questionnaire)|uri
+      - transform[0..1]: canonical(StructureMap)
+      - dynamicValue[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - path[0..1]: string
+        - expression[0..1]: Expression
+      - action[0..*]: PlanDefinition.action
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
+      - id[0..1]: string
+      - extension[0..*]: Extension
+        : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+          : Slice 0:day - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = day
+            - value[x][1..1]: integer
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
+  - Shareable PlanDefinition (shareableplandefinition)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[1..1]: uri
+    - identifier[0..*]: Identifier
+    - version[1..1]: string
+    - name[1..1]: string
+    - title[0..1]: string
+    - subtitle[0..1]: string
+    - type[0..1]: CodeableConcept
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[1..1]: boolean
+    - subject[x][0..1]: CodeableConcept|Reference(Group)
+    - date[0..1]: dateTime
+    - publisher[1..1]: string
+    - contact[0..*]: ContactDetail
+    - description[1..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - purpose[0..1]: markdown
+    - usage[0..1]: string
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - topic[0..*]: CodeableConcept
+    - author[0..*]: ContactDetail
+    - editor[0..*]: ContactDetail
+    - reviewer[0..*]: ContactDetail
+    - endorser[0..*]: ContactDetail
+    - relatedArtifact[0..*]: RelatedArtifact
+    - library[0..*]: canonical(Library)
+    - goal[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - category[0..1]: CodeableConcept
+      - description[1..1]: CodeableConcept
+      - priority[0..1]: CodeableConcept
+      - start[0..1]: CodeableConcept
+      - addresses[0..*]: CodeableConcept
+      - documentation[0..*]: RelatedArtifact
+      - target[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - measure[0..1]: CodeableConcept
+        - detail[x][0..1]: CodeableConcept|Quantity|Range
+        - due[0..1]: Duration
+    - action[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - prefix[0..1]: string
+      - title[0..1]: string
+      - description[0..1]: string
+      - textEquivalent[0..1]: string
+      - priority[0..1]: code
+        {routine|urgent|asap|stat}
+      - code[0..*]: CodeableConcept
+      - reason[0..*]: CodeableConcept
+      - documentation[0..*]: RelatedArtifact
+      - goalId[0..*]: id
+      - subject[x][0..1]: CodeableConcept|Reference(Group)
+      - trigger[0..*]: TriggerDefinition
+      - condition[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - kind[1..1]: code
+          {applicability|start|stop}
+        - expression[0..1]: Expression
+      - input[0..*]: DataRequirement
+      - output[0..*]: DataRequirement
+      - relatedAction[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - actionId[1..1]: id
+        - relationship[1..1]: code
+          {before-start|before|before-end|concurrent-with-start|concurrent|concurrent-with-end|after-start|after|after-end}
+        - offset[x][0..1]: Duration|Range
+      - timing[x][0..1]: Age|dateTime|Duration|Period|Range|Timing
+      - participant[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - type[1..1]: code
+          {patient|practitioner|related-person|device}
+        - role[0..1]: CodeableConcept
+      - type[0..1]: CodeableConcept
+      - groupingBehavior[0..1]: code
+        {visual-group|logical-group|sentence-group}
+      - selectionBehavior[0..1]: code
+        {any|all|all-or-none|exactly-one|at-most-one|one-or-more}
+      - requiredBehavior[0..1]: code
+        {must|could|must-unless-documented}
+      - precheckBehavior[0..1]: code
+        {yes|no}
+      - cardinalityBehavior[0..1]: code
+        {single|multiple}
+      - definition[x][0..1]: canonical(ActivityDefinition|PlanDefinition|Questionnaire)|uri
+      - transform[0..1]: canonical(StructureMap)
+      - dynamicValue[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - path[0..1]: string
+        - expression[0..1]: Expression
+      - action[0..*]: PlanDefinition.action
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
+      - id[0..1]: string
+      - extension[0..*]: Extension
+        : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+          : Slice 0:day - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = day
+            - value[x][1..1]: integer
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
 - Practitioner: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -10589,6 +12566,82 @@ Resources: 148
   ?signature-type=token (signature-type)
   ?target=reference (target)
   ?when=date (when)
+  Profiles: 2
+  - EHRS FM Record Lifecycle Event - Provenance (ehrsrle-provenance)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - target[1..*]: Reference(Resource)
+    - occurred[x][0..1]: dateTime|Period
+    - recorded[1..1]: instant
+    - policy[0..*]: uri
+    - location[0..1]: Reference(Location)
+    - reason[0..*]: CodeableConcept
+    - activity[0..1]: CodeableConcept
+    - agent[1..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - type[0..1]: CodeableConcept
+      - role[0..*]: CodeableConcept
+      - who[1..1]: Reference(Practitioner|PractitionerRole|RelatedPerson|Patient|Device|Organization)
+      - onBehalfOf[0..1]: Reference(Practitioner|PractitionerRole|RelatedPerson|Patient|Device|Organization)
+    - entity[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - role[1..1]: code
+        {derivation|revision|quotation|source|removal}
+      - what[1..1]: Reference(Resource)
+      - agent[0..*]: Provenance.agent
+    - signature[0..*]: Signature
+  - Provenance Relevant History (provenance-relevant-history)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - target[1..*]: Reference(Resource)
+    - occurred[x][1..1]: dateTime
+    - recorded[1..1]: instant
+    - policy[0..*]: uri
+    - location[0..1]: Reference(Location)
+    - reason[0..*]: CodeableConcept
+    - activity[1..1]: CodeableConcept
+    - agent[1..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - type[1..1]: CodeableConcept
+      - role[0..*]: CodeableConcept
+      - who[1..1]: Reference(Practitioner|PractitionerRole|RelatedPerson|Patient|Device|Organization)
+      - onBehalfOf[0..1]: Reference(Practitioner|PractitionerRole|RelatedPerson|Patient|Device|Organization)
+      : http://hl7.org/fhir/StructureDefinition/provenance-relevant-history - Open (value@type)
+        : Slice 0:Author - on agent
+          - id[0..1]: string
+          - extension[0..*]: Extension
+          - modifierExtension[0..*]: Extension
+          - type[1..1]: CodeableConcept
+          - role[0..*]: CodeableConcept
+          - who[1..1]: Reference(Practitioner|PractitionerRole|RelatedPerson|Patient|Device|Organization)
+          - onBehalfOf[0..1]: Reference(Practitioner|PractitionerRole|RelatedPerson|Patient|Device|Organization)
+    - entity[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - role[1..1]: code
+        {derivation|revision|quotation|source|removal}
+      - what[1..1]: Reference(Resource)
+      - agent[0..*]: Provenance.agent:Author
+    - signature[0..*]: Signature
 - Questionnaire: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -11075,6 +13128,419 @@ Resources: 148
   ?title=string (title)
   ?url=uri (url)
   ?version=token (version)
+  Profiles: 1
+  - CQF-Questionnaire (cqf-questionnaire)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/cqf-questionnaire - Open (value@url)
+        : Slice 0:library - on extension
+    - modifierExtension[0..*]: Extension
+    - url[0..1]: uri
+    - identifier[0..*]: Identifier
+    - version[0..1]: string
+    - name[0..1]: string
+    - title[0..1]: string
+    - derivedFrom[0..*]: canonical(Questionnaire)
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[0..1]: boolean
+    - subjectType[0..*]: code
+    - date[0..1]: dateTime
+    - publisher[0..1]: string
+    - contact[0..*]: ContactDetail
+    - description[0..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - purpose[0..1]: markdown
+    - copyright[0..1]: markdown
+    - approvalDate[0..1]: date
+    - lastReviewDate[0..1]: date
+    - effectivePeriod[0..1]: Period
+    - code[0..*]: Coding
+    - item[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - linkId[1..1]: string
+      - definition[0..1]: uri
+      - code[0..*]: Coding
+      - prefix[0..1]: string
+      - text[0..1]: string
+      - type[1..1]: code
+        {group|display|boolean|decimal|integer|date|dateTime}
+      - enableWhen[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - question[1..1]: string
+        - operator[1..1]: code
+          {exists|=|!=|>|<|>=|<=}
+        - answer[x][1..1]: boolean|Coding|date|dateTime|decimal|integer|Quantity|Reference(Resource)|string|time
+      - enableBehavior[0..1]: code
+        {all|any}
+      - required[0..1]: boolean
+      - repeats[0..1]: boolean
+      - readOnly[0..1]: boolean
+      - maxLength[0..1]: integer
+      - answerValueSet[0..1]: canonical(ValueSet)
+        Extensions: 2
+        +http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap
+        - value[x][1..1]: canonical(ConceptMap)
+        +http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
+        - value[x][1..1]: canonical(ValueSet)
+      - answerOption[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - value[x][1..1]: Coding|date|integer|Reference(Resource)|string|time
+        - initialSelected[0..1]: boolean
+        Extensions: 3
+        +http://hl7.org/fhir/StructureDefinition/ordinalValue
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/ordinalValue
+        - value[x][1..1]: decimal
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-optionExclusive
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-optionExclusive
+        - value[x][1..1]: boolean
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-optionPrefix
+        - value[x][1..1]: string
+      - initial[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - value[x][1..1]: Attachment|boolean|Coding|date|dateTime|decimal|integer|Quantity|Reference(Resource)|string|time|uri
+      - item[0..*]: Questionnaire.item
+        Extensions: 21
+        +http://hl7.org/fhir/StructureDefinition/designNote
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/designNote
+        - value[x][1..1]: markdown
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-baseType
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-baseType
+        - value[x][1..1]: code
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation
+        - value[x][1..1]: code
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-constraint
+        - id[0..1]: string
+        - extension[0..*]: Extension
+          : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint - Open (value@url)
+            : Slice 0:key - on extension
+              - id[0..1]: string
+              - url[1..1]: uri
+                .fixedValueUri = key
+              - value[x][1..1]: id
+            : Slice 1:requirements - on extension
+              - id[0..1]: string
+              - url[1..1]: uri
+                .fixedValueUri = requirements
+              - value[x][1..1]: string
+            : Slice 2:severity - on extension
+              - id[0..1]: string
+              - url[1..1]: uri
+                .fixedValueUri = severity
+              - value[x][1..1]: code
+            : Slice 3:expression - on extension
+              - id[0..1]: string
+              - url[1..1]: uri
+                .fixedValueUri = expression
+              - value[x][1..1]: string
+            : Slice 4:human - on extension
+              - id[0..1]: string
+              - url[1..1]: uri
+                .fixedValueUri = human
+              - value[x][1..1]: string
+            : Slice 5:location - on extension
+              - id[0..1]: string
+              - url[1..1]: uri
+                .fixedValueUri = location
+              - value[x][1..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-constraint
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory
+        - value[x][1..1]: CodeableConcept
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType
+        - value[x][1..1]: string
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-hidden
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-hidden
+        - value[x][1..1]: boolean
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl
+        - value[x][1..1]: CodeableConcept
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
+        - value[x][1..1]: integer
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
+        - value[x][1..1]: integer
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter
+        - value[x][1..1]: string
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile
+        - value[x][1..1]: canonical(StructureDefinition)
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource
+        - value[x][1..1]: code
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired
+        - value[x][1..1]: CodeableConcept
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-sliderStepValue
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-sliderStepValue
+        - value[x][1..1]: integer
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink
+        - value[x][1..1]: uri
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-unit
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-unit
+        - value[x][1..1]: Coding
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption
+        - value[x][1..1]: Coding
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet
+        - value[x][1..1]: canonical(ValueSet)
+        +http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode
+        - value[x][1..1]: code
+        +http://hl7.org/fhir/StructureDefinition/variable
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/variable
+        - value[x][1..1]: Expression
+      Extensions: 29
+      +http://hl7.org/fhir/StructureDefinition/designNote
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/designNote
+      - value[x][1..1]: markdown
+      +http://hl7.org/fhir/StructureDefinition/entryFormat
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/entryFormat
+      - value[x][1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces
+      - value[x][1..1]: integer
+      +http://hl7.org/fhir/StructureDefinition/maxSize
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/maxSize
+      - value[x][1..1]: decimal
+      +http://hl7.org/fhir/StructureDefinition/maxValue
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/maxValue
+      - value[x][1..1]: date|dateTime|decimal|instant|integer|time
+      +http://hl7.org/fhir/StructureDefinition/mimeType
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/mimeType
+      - value[x][1..1]: code
+      +http://hl7.org/fhir/StructureDefinition/minLength
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/minLength
+      - value[x][1..1]: integer
+      +http://hl7.org/fhir/StructureDefinition/minValue
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/minValue
+      - value[x][1..1]: date|dateTime|decimal|integer|time
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-baseType
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-baseType
+      - value[x][1..1]: code
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation
+      - value[x][1..1]: code
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-constraint
+      - id[0..1]: string
+      - extension[0..*]: Extension
+        : http://hl7.org/fhir/StructureDefinition/questionnaire-constraint - Open (value@url)
+          : Slice 0:key - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = key
+            - value[x][1..1]: id
+          : Slice 1:requirements - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = requirements
+            - value[x][1..1]: string
+          : Slice 2:severity - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = severity
+            - value[x][1..1]: code
+          : Slice 3:expression - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = expression
+            - value[x][1..1]: string
+          : Slice 4:human - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = human
+            - value[x][1..1]: string
+          : Slice 5:location - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = location
+            - value[x][1..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-constraint
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-displayCategory
+      - value[x][1..1]: CodeableConcept
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType
+      - value[x][1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-hidden
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-hidden
+      - value[x][1..1]: boolean
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl
+      - value[x][1..1]: CodeableConcept
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
+      - value[x][1..1]: integer
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
+      - value[x][1..1]: integer
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter
+      - value[x][1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-referenceProfile
+      - value[x][1..1]: canonical(StructureDefinition)
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource
+      - value[x][1..1]: code
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-signatureRequired
+      - value[x][1..1]: CodeableConcept
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-sliderStepValue
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-sliderStepValue
+      - value[x][1..1]: integer
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-supportLink
+      - value[x][1..1]: uri
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-unit
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-unit
+      - value[x][1..1]: Coding
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption
+      - value[x][1..1]: Coding
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet
+      - value[x][1..1]: canonical(ValueSet)
+      +http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/questionnaire-usageMode
+      - value[x][1..1]: code
+      +http://hl7.org/fhir/StructureDefinition/regex
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/regex
+      - value[x][1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/variable
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/variable
+      - value[x][1..1]: Expression
 - QuestionnaireResponse: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -11321,6 +13787,90 @@ Resources: 148
   ?priority=token (priority)
   ?status=token (status)
   ?subject=reference (subject)
+  Profiles: 1
+  - CDS Hooks RequestGroup (cdshooksrequestgroup)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[1..1]: Identifier
+    - instantiatesCanonical[0..*]: canonical
+    - instantiatesUri[1..1]: uri
+    - basedOn[0..*]: Reference(Resource)
+    - replaces[0..*]: Reference(Resource)
+    - groupIdentifier[0..1]: Identifier
+    - status[1..1]: code
+      {draft|active|on-hold|revoked|completed|entered-in-error|unknown}
+    - intent[1..1]: code
+      {proposal|plan|directive|order|original-order|reflex-order|filler-order|instance-order|option}
+    - priority[0..1]: code
+      {routine|urgent|asap|stat}
+    - code[0..1]: CodeableConcept
+    - subject[0..1]: Reference(Patient|Group)
+    - encounter[0..1]: Reference(Encounter)
+    - authoredOn[0..1]: dateTime
+    - author[0..1]: Reference(Device|Practitioner|PractitionerRole)
+    - reasonCode[0..*]: CodeableConcept
+    - reasonReference[0..*]: Reference(Condition|Observation|DiagnosticReport|DocumentReference)
+    - note[0..*]: Annotation
+    - action[0..*]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - prefix[0..1]: string
+      - title[0..1]: string
+      - description[0..1]: string
+      - textEquivalent[0..1]: string
+      - priority[0..1]: code
+        {routine|urgent|asap|stat}
+      - code[0..*]: CodeableConcept
+      - documentation[0..*]: RelatedArtifact
+      - condition[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - kind[1..1]: code
+          {applicability|start|stop}
+        - expression[0..1]: Expression
+      - relatedAction[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - actionId[1..1]: id
+        - relationship[1..1]: code
+          {before-start|before|before-end|concurrent-with-start|concurrent|concurrent-with-end|after-start|after|after-end}
+        - offset[x][0..1]: Duration|Range
+      - timing[x][0..1]: Age|dateTime|Duration|Period|Range|Timing
+      - participant[0..*]: Reference(Patient|Practitioner|PractitionerRole|RelatedPerson|Device)
+      - type[0..1]: CodeableConcept
+      - groupingBehavior[0..1]: code
+        {visual-group|logical-group|sentence-group}
+      - selectionBehavior[0..1]: code
+        {any|all|all-or-none|exactly-one|at-most-one|one-or-more}
+      - requiredBehavior[0..1]: code
+        {must|could|must-unless-documented}
+      - precheckBehavior[0..1]: code
+        {yes|no}
+      - cardinalityBehavior[0..1]: code
+        {single|multiple}
+      - resource[0..1]: Reference(Resource)
+      - action[0..*]: RequestGroup.action
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
+      - id[0..1]: string
+      - extension[0..*]: Extension
+        : http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle - Open (value@url)
+          : Slice 0:day - on extension
+            - id[0..1]: string
+            - url[1..1]: uri
+              .fixedValueUri = day
+            - value[x][1..1]: integer
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle
 - ResearchDefinition: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -11957,6 +14507,60 @@ Resources: 148
   ?specimen=reference (specimen)
   ?status=token (status)
   ?subject=reference (subject)
+  Profiles: 1
+  - ServiceRequest-Genetics (servicerequest-genetics)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/servicerequest-genetics - Open (value@url)
+        : Slice 0:Item - on extension
+    - modifierExtension[0..*]: Extension
+    - identifier[0..*]: Identifier
+    - instantiatesCanonical[0..*]: canonical(ActivityDefinition|PlanDefinition)
+    - instantiatesUri[0..*]: uri
+    - basedOn[0..*]: Reference(CarePlan|ServiceRequest|MedicationRequest)
+    - replaces[0..*]: Reference(ServiceRequest)
+    - requisition[0..1]: Identifier
+    - status[1..1]: code
+      {draft|active|on-hold|revoked|completed|entered-in-error|unknown}
+    - intent[1..1]: code
+      {proposal|plan|directive|order|original-order|reflex-order|filler-order|instance-order|option}
+    - category[0..*]: CodeableConcept
+    - priority[0..1]: code
+      {routine|urgent|asap|stat}
+    - doNotPerform[0..1]: boolean
+    - code[0..1]: CodeableConcept
+    - orderDetail[0..*]: CodeableConcept
+    - quantity[x][0..1]: Quantity|Range|Ratio
+    - subject[1..1]: Reference(Patient|Group|Location|Device)
+    - encounter[0..1]: Reference(Encounter)
+    - occurrence[x][0..1]: dateTime|Period|Timing
+    - asNeeded[x][0..1]: boolean|CodeableConcept
+    - authoredOn[0..1]: dateTime
+    - requester[0..1]: Reference(Practitioner|PractitionerRole|Organization|Patient|RelatedPerson|Device)
+    - performerType[0..1]: CodeableConcept
+    - performer[0..*]: Reference(Practitioner|PractitionerRole|Organization|CareTeam|HealthcareService|Patient|Device|RelatedPerson)
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/request-performerOrder
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/request-performerOrder
+      - value[x][1..1]: integer
+    - locationCode[0..*]: CodeableConcept
+    - locationReference[0..*]: Reference(Location)
+    - reasonCode[0..*]: CodeableConcept
+    - reasonReference[0..*]: Reference(Condition|Observation|DiagnosticReport|DocumentReference)
+    - insurance[0..*]: Reference(Coverage|ClaimResponse)
+    - supportingInfo[0..*]: Reference(Resource)
+    - specimen[0..*]: Reference(Specimen)
+    - bodySite[0..*]: CodeableConcept
+    - note[0..*]: Annotation
+    - patientInstruction[0..1]: string
+    - relevantHistory[0..*]: Reference(Provenance)
 - Slot: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -13912,6 +16516,211 @@ Resources: 148
     out: result (1..1)
     out: message (0..1)
     out: display (0..1)
+  Profiles: 1
+  - Shareable ValueSet (shareablevalueset)
+    - id[0..1]: string
+    - meta[0..1]: Meta
+    - implicitRules[0..1]: uri
+    - language[0..1]: code
+    - text[0..1]: Narrative
+    - contained[0..*]: Resource
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - url[1..1]: uri
+    - identifier[0..*]: Identifier
+    - version[1..1]: string
+    - name[1..1]: string
+    - title[0..1]: string
+    - status[1..1]: code
+      {draft|active|retired|unknown}
+    - experimental[1..1]: boolean
+    - date[0..1]: dateTime
+    - publisher[1..1]: string
+    - contact[0..*]: ContactDetail
+    - description[1..1]: markdown
+    - useContext[0..*]: UsageContext
+    - jurisdiction[0..*]: CodeableConcept
+    - immutable[0..1]: boolean
+    - purpose[0..1]: markdown
+    - copyright[0..1]: markdown
+    - compose[0..1]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - lockedDate[0..1]: date
+      - inactive[0..1]: boolean
+      - include[1..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - system[0..1]: uri
+          Extensions: 1
+          +http://hl7.org/fhir/StructureDefinition/valueset-system
+          - id[0..1]: string
+          - url[1..1]: string
+            .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-system
+          - value[x][1..1]: canonical(CodeSystem)
+        - version[0..1]: string
+        - concept[0..*]: BackboneElement
+          - id[0..1]: string
+          - extension[0..*]: Extension
+          - modifierExtension[0..*]: Extension
+          - code[1..1]: code
+          - display[0..1]: string
+          - designation[0..*]: BackboneElement
+            - id[0..1]: string
+            - extension[0..*]: Extension
+            - modifierExtension[0..*]: Extension
+            - language[0..1]: code
+            - use[0..1]: Coding
+            - value[1..1]: string
+          Extensions: 6
+          +http://hl7.org/fhir/StructureDefinition/ordinalValue
+          - id[0..1]: string
+          - url[1..1]: string
+            .fixedValueUri = http://hl7.org/fhir/StructureDefinition/ordinalValue
+          - value[x][1..1]: decimal
+          +http://hl7.org/fhir/StructureDefinition/valueset-concept-comments
+          - id[0..1]: string
+          - url[1..1]: string
+            .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-concept-comments
+          - value[x][1..1]: string
+          +http://hl7.org/fhir/StructureDefinition/valueset-concept-definition
+          - id[0..1]: string
+          - url[1..1]: string
+            .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-concept-definition
+          - value[x][1..1]: string
+          +http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+          - id[0..1]: string
+          - url[1..1]: string
+            .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+          - value[x][1..1]: integer
+          +http://hl7.org/fhir/StructureDefinition/valueset-deprecated
+          - id[0..1]: string
+          - url[1..1]: string
+            .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-deprecated
+          - value[x][1..1]: boolean
+          +http://hl7.org/fhir/StructureDefinition/valueset-label
+          - id[0..1]: string
+          - url[1..1]: string
+            .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-label
+          - value[x][1..1]: string
+        - filter[0..*]: BackboneElement
+          - id[0..1]: string
+          - extension[0..*]: Extension
+          - modifierExtension[0..*]: Extension
+          - property[1..1]: code
+          - op[1..1]: code
+            {=|is-a|descendent-of|is-not-a|regex|in|not-in|generalizes|exists}
+          - value[1..1]: string
+        - valueSet[0..*]: canonical(ValueSet)
+        Extensions: 4
+        +http://hl7.org/fhir/StructureDefinition/valueset-expand-group
+        - id[0..1]: string
+        - extension[0..*]: Extension
+          : http://hl7.org/fhir/StructureDefinition/valueset-expand-group - Open (value@url)
+            : Slice 0:code - on extension
+              - id[0..1]: string
+              - url[1..1]: uri
+                .fixedValueUri = code
+              - value[x][1..1]: code
+            : Slice 1:display - on extension
+              - id[0..1]: string
+              - url[1..1]: uri
+                .fixedValueUri = display
+              - value[x][1..1]: string
+            : Slice 2:member - on extension
+              - id[0..1]: string
+              - url[1..1]: uri
+                .fixedValueUri = member
+              - value[x][1..1]: code
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-expand-group
+        +http://hl7.org/fhir/StructureDefinition/valueset-expand-rules
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-expand-rules
+        - value[x][1..1]: code
+        +http://hl7.org/fhir/StructureDefinition/valueset-systemName
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemName
+        - value[x][1..1]: string
+        +http://hl7.org/fhir/StructureDefinition/valueset-systemRef
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemRef
+        - value[x][1..1]: uri
+      - exclude[0..*]: ValueSet.compose.include
+    - expansion[0..1]: BackboneElement
+      - id[0..1]: string
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - identifier[0..1]: uri
+      - timestamp[1..1]: dateTime
+      - total[0..1]: integer
+      - offset[0..1]: integer
+      - parameter[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - name[1..1]: string
+        - value[x][0..1]: boolean|code|dateTime|decimal|integer|string|uri
+        Extensions: 1
+        +http://hl7.org/fhir/StructureDefinition/valueset-parameterSource
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-parameterSource
+        - value[x][1..1]: code
+      - contains[0..*]: BackboneElement
+        - id[0..1]: string
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - system[0..1]: uri
+        - abstract[0..1]: boolean
+        - inactive[0..1]: boolean
+        - version[0..1]: string
+        - code[0..1]: code
+        - display[0..1]: string
+        - designation[0..*]: ValueSet.compose.include.concept.designation
+        - contains[0..*]: ValueSet.expansion.contains
+        Extensions: 4
+        +http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
+        - value[x][1..1]: boolean
+        +http://hl7.org/fhir/StructureDefinition/valueset-concept-definition
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-concept-definition
+        - value[x][1..1]: string
+        +http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+        - value[x][1..1]: integer
+        +http://hl7.org/fhir/StructureDefinition/valueset-label
+        - id[0..1]: string
+        - url[1..1]: string
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-label
+        - value[x][1..1]: string
+      Extensions: 3
+      +http://hl7.org/fhir/StructureDefinition/valueset-expansionSource
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-expansionSource
+      - value[x][1..1]: uri
+      +http://hl7.org/fhir/StructureDefinition/valueset-toocostly
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-toocostly
+      - value[x][1..1]: boolean
+      +http://hl7.org/fhir/StructureDefinition/valueset-unclosed
+      - id[0..1]: string
+      - url[1..1]: string
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-unclosed
+      - value[x][1..1]: boolean
 - VerificationResult: DomainResource
   - id[0..1]: string
   - meta[0..1]: Meta
@@ -23956,7 +26765,7 @@ Value Sets: 1193 (unversioned)
   - #proposed: Proposed
   - #suspended: Suspended
 - ValueSet: http://hl7.org/fhir/ValueSet/catalogType|4.0.1
-    references: 0, strongest binding: 
+    references: 1, strongest binding: Example
   - #device: Device Catalog
   - #medication: Medication Catalog
   - #protocol: Protocol List
@@ -26925,7 +29734,7 @@ Value Sets: 1193 (unversioned)
   - #zh-SG: Chinese (Singapore)
   - #zh-TW: Chinese (Taiwan)
 - ValueSet: http://hl7.org/fhir/ValueSet/ldlcholesterol-codes|4.0.1
-    references: 0, strongest binding: 
+    references: 1, strongest binding: Required
   - #13457-7: Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation
   - #18262-6: LDL Cholesterol (Assay)
 - ValueSet: http://hl7.org/fhir/ValueSet/library-type|4.0.1
@@ -27664,7 +30473,7 @@ Value Sets: 1193 (unversioned)
   - #registered: Registered
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-vitalsignresult|4.0.1
-    references: 0, strongest binding: 
+    references: 2, strongest binding: Extensible
   - #2708-6: 
   - #29463-7: 
   - #39156-5: 
@@ -28205,13 +31014,13 @@ Value Sets: 1193 (unversioned)
   - #revision: Revision
   - #source: Source
 - ValueSet: http://hl7.org/fhir/ValueSet/provenance-history-agent-type|4.0.1
-    references: 0, strongest binding: 
+    references: 1, strongest binding: Extensible
   - #AUT: author (originator)
   - #ENT: data entry person
   - #INF: informant
   - #VRF: verifier
 - ValueSet: http://hl7.org/fhir/ValueSet/provenance-history-record-activity|4.0.1
-    references: 0, strongest binding: 
+    references: 1, strongest binding: Extensible
   - #ABORT: abort
   - #ACTIVATE: activate
   - #CANCEL: cancel
@@ -32047,7 +34856,7 @@ Value Sets: 1193 (unversioned)
   - #Wb: Weber
   - #wk: week
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-vitals-common|4.0.1
-    references: 0, strongest binding: 
+    references: 1, strongest binding: Required
   - #%: percent
   - #/min: per minute
   - #[degF]: degree Fahrenheit

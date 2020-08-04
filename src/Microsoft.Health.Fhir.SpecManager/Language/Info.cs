@@ -91,6 +91,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ExporterOptions.FhirExportClassType.Resource,
             ExporterOptions.FhirExportClassType.Interaction,
             ExporterOptions.FhirExportClassType.Enum,
+            ExporterOptions.FhirExportClassType.Profile,
         };
 
         /// <summary>
@@ -251,10 +252,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_info.ExtensionsByPath.ContainsKey(primitive.Path))
             {
-                WriteExtensions(_info.ExtensionsByPath[primitive.Name].Values);
+                WriteExtensions(_info.ExtensionsByPath[primitive.Path].Values);
+            }
+
+            if (_info.ProfilesByBaseType.ContainsKey(primitive.Path))
+            {
+                WriteProfiles(_info.ProfilesByBaseType[primitive.Path].Values);
             }
 
             _writer.DecreaseIndent();
+        }
+
+        /// <summary>Writes the profiles.</summary>
+        /// <param name="profiles">The profiles.</param>
+        private void WriteProfiles(
+            IEnumerable<FhirComplex> profiles)
+        {
+            _writer.WriteLineIndented($"Profiles: {profiles.Count()}");
+
+            foreach (FhirComplex profile in profiles.OrderBy(e => e.Id))
+            {
+                _writer.WriteLineIndented($"- {profile.Name} ({profile.Id})");
+                _writer.IncreaseIndent();
+                WriteComplex(profile);
+                _writer.DecreaseIndent();
+            }
         }
 
         /// <summary>Writes the extensions.</summary>
@@ -326,6 +348,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (complex.InstanceOperations != null)
             {
                 WriteOperations(complex.TypeOperations.Values, false);
+            }
+
+            if (_info.ProfilesByBaseType.ContainsKey(complex.Path))
+            {
+                WriteProfiles(_info.ProfilesByBaseType[complex.Path].Values);
             }
 
             if (indented)
