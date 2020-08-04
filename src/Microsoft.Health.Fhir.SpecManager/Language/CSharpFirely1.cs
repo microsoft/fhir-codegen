@@ -1,4 +1,4 @@
-﻿// <copyright file="CSharpFirely.cs" company="Microsoft Corporation">
+﻿// <copyright file="CSharpFirely1.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -13,11 +13,12 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
+
     /// <summary>A language exporter for Firely-compliant C# FHIR output.</summary>
-    public sealed class CSharpFirely : ILanguage
+    public sealed class CSharpFirely1 : ILanguage
     {
         /// <summary>The namespace to use during export.</summary>
-        private const string _namespace = "Hl7.Fhir.Model";
+        private const string Namespace = "Hl7.Fhir.Model";
 
         /// <summary>Name of the header user.</summary>
         private string _headerUserName;
@@ -47,47 +48,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private string _exportDirectory;
 
         /// <summary>Name of the language.</summary>
-        private const string _languageName = "CSharpFirely";
+        private const string _languageName = "CSharpFirely1";
 
         /// <summary>The single file export extension (uses directory export).</summary>
         private const string _singleFileExportExtension = null;
-
-        /// <summary>Dictionary mapping FHIR primitive types to language equivalents (see Template-Model.tt#1252).</summary>
-        private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
-        {
-            { "base64Binary", "byte[]" },
-            { "boolean", "bool?" },
-            { "canonical", "string" },
-            { "code", "string" },
-            { "date", "string" },
-            { "dateTime", "string" },
-            { "decimal", "decimal?" },
-            { "id", "string" },
-            { "instant", "DateTimeOffset?" },
-            { "integer", "int?" },
-            { "integer64", "long?" },
-            { "oid", "string" },
-            { "positiveInt", "int?" },
-            { "string", "string" },
-            { "time", "string" },
-            { "unsignedInt", "int?" },
-            { "uri", "string" },
-            { "url", "string" },
-            { "xhtml", "string" },
-        };
-
-        /// <summary>Types that have non-standard names or formatting (see Template-Model.tt#1252).</summary>
-        private static Dictionary<string, string> _typeNameMappings = new Dictionary<string, string>()
-        {
-            { "boolean", "FhirBoolean" },
-            { "dateTime", "FhirDateTime" },
-            { "decimal", "FhirDecimal" },
-            { "Reference", "ResourceReference" },
-            { "string", "FhirString" },
-            { "uri", "FhirUri" },
-            { "url", "FhirUrl" },
-            { "xhtml", "XHtml" },
-        };
 
         /// <summary>Structures to skip writing (Template-Model.tt#1334).</summary>
         private static HashSet<string> _exclusionSet = new HashSet<string>()
@@ -142,7 +106,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the FHIR primitive type map.</summary>
         /// <value>The FHIR primitive type map.</value>
-        Dictionary<string, string> ILanguage.FhirPrimitiveTypeMap => _primitiveTypeMap;
+        Dictionary<string, string> ILanguage.FhirPrimitiveTypeMap => CSharpFirelyCommon.PrimitiveTypeMap;
 
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
@@ -319,11 +283,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 foreach (FhirSearchParam sp in complex.SearchParameters.Values.OrderBy(s => s.Name))
                 {
-                    if (sp.IsExperimental)
-                    {
-                        continue;
-                    }
-
                     string description;
 
                     if ((!string.IsNullOrEmpty(sp.Description)) &&
@@ -567,13 +526,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             string csName;
 
-            if (_typeNameMappings.ContainsKey(fhirName))
+            if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(fhirName))
             {
-                csName = $"{_namespace}.{_typeNameMappings[fhirName]}";
+                csName = $"{Namespace}.{CSharpFirelyCommon.TypeNameMappings[fhirName]}";
             }
             else
             {
-                csName = $"{_namespace}.{fhirName}";
+                csName = $"{Namespace}.{fhirName}";
             }
 
             return new WrittenModelInfo()
@@ -688,7 +647,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             HashSet<string> usedEnumNames = new HashSet<string>();
 
-            string filename = Path.Combine(_exportDirectory, "Generated", "Template-Bindings.cs");
+            string filename = Path.Combine(_exportDirectory, "Generated", "CommonValueSets.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -705,9 +664,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     {
                         if (vs.ReferencedByComplexes.Count < 2)
                         {
+                            /* ValueSets that are used in a single POCO are generated as a nested enum inside that
+                             * POCO, not here in the shared valuesets */
                             continue;
                         }
-                     
+
+                        if (vs.StrongestBinding != FhirElement.ElementDefinitionBindingStrength.Required)
+                        {
+                            /* Since required bindings cannot be extended, those are the only bindings that
+                               can be represented using enums in the POCO classes (using <c>Code&lt;T&gt;</c>). All other coded members
+                               use <c>Code</c>, <c>Coding</c> or <c>CodeableConcept</c>.
+                               Consequently, we only need to generate enums for valuesets that are used as
+                               required bindings anywhere in the datamodel. */
+                            continue;
+                        }
+
                         if (_exclusionSet.Contains(vs.URL))
                         {
                             continue;
@@ -772,7 +743,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 new WrittenModelInfo()
                 {
                     FhirName = complex.Name,
-                    CsName = $"{_namespace}.{exportName}",
+                    CsName = $"{Namespace}.{exportName}",
                 });
 
             string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
@@ -823,9 +794,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
 
-            if (_typeNameMappings.ContainsKey(exportName))
+            if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(exportName))
             {
-                exportName = _typeNameMappings[exportName];
+                exportName = CSharpFirelyCommon.TypeNameMappings[exportName];
             }
 
             writtenModels.Add(
@@ -833,7 +804,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 new WrittenModelInfo()
                 {
                     FhirName = complex.Name,
-                    CsName = $"{_namespace}.{exportName}",
+                    CsName = $"{Namespace}.{exportName}",
                 });
 
             string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
@@ -910,7 +881,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.WriteLineIndented(
                         $"public{abstractFlag} partial class" +
                             $" {exportName}" +
-                            $" : {_namespace}.BackboneElement," +
+                            $" : {Namespace}.BackboneElement," +
                             $" System.ComponentModel.INotifyPropertyChanged");
                     break;
 
@@ -919,7 +890,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.WriteLineIndented(
                         $"public{abstractFlag} partial class" +
                             $" {exportName}" +
-                            $" : {_namespace}.Element," +
+                            $" : {Namespace}.Element," +
                             $" System.ComponentModel.INotifyPropertyChanged");
                     break;
 
@@ -929,7 +900,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.WriteLineIndented(
                         $"public{abstractFlag} partial class" +
                             $" {exportName}" +
-                            $" : {_namespace}.{complex.BaseTypeName}," +
+                            $" : {Namespace}.{complex.BaseTypeName}," +
                             $" System.ComponentModel.INotifyPropertyChanged");
                     break;
 
@@ -939,7 +910,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.WriteLineIndented(
                         $"public{abstractFlag} partial class" +
                             $" {exportName}" +
-                            $" : {_namespace}.DomainResource," +
+                            $" : {Namespace}.DomainResource," +
                             $" System.ComponentModel.INotifyPropertyChanged");
                     break;
 
@@ -950,7 +921,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _writer.WriteLineIndented(
                             $"public{abstractFlag} partial class" +
                                 $" {exportName}" +
-                                $" : {_namespace}.{complex.BaseTypeName}," +
+                                $" : {Namespace}.{complex.BaseTypeName}," +
                                 $" System.ComponentModel.INotifyPropertyChanged");
                     }
                     else
@@ -958,7 +929,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _writer.WriteLineIndented(
                             $"public{abstractFlag} partial class" +
                                 $" {exportName}" +
-                                $" : {_namespace}.Element," +
+                                $" : {Namespace}.Element," +
                                 $" System.ComponentModel.INotifyPropertyChanged");
                     }
 
@@ -1355,7 +1326,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented(
                     $"public partial class" +
                         $" {exportName}" +
-                        $" : {_namespace}.BackboneElement," +
+                        $" : {Namespace}.BackboneElement," +
                         $" System.ComponentModel.INotifyPropertyChanged");
             }
             else
@@ -1363,7 +1334,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented(
                     $"public partial class" +
                         $" {exportName}" +
-                        $" : {_namespace}.Element," +
+                        $" : {Namespace}.Element," +
                         $" System.ComponentModel.INotifyPropertyChanged," +
                         $" IBackboneElement");
             }
@@ -1587,69 +1558,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Convert enum value - see Template-Model.tt#2061.</summary>
         /// <param name="name">The name.</param>
         /// <returns>The enum converted value.</returns>
-        private static string ConvertEnumValue(string name)
-        {
-            if (name.StartsWith("_", StringComparison.Ordinal))
-            {
-                name = name.Substring(1);
-            }
-
-            if (name == "=")
-            {
-                return "Equal";
-            }
-
-            if (name == "!=")
-            {
-                return "NotEqual";
-            }
-
-            if (name == "<")
-            {
-                return "LessThan";
-            }
-
-            if (name == "<=")
-            {
-                return "LessOrEqual";
-            }
-
-            if (name == ">=")
-            {
-                return "GreaterOrEqual";
-            }
-
-            if (name == ">")
-            {
-                return "GreaterThan";
-            }
-
-            string[] bits = name.Split(new char[] { ' ', '-' });
-            string result = null;
-            foreach (string bit in bits)
-            {
-                result += bit.Substring(0, 1).ToUpperInvariant();
-                result += bit.Substring(1);
-            }
-
-            result = result.Replace(".", "_");
-            result = result.Replace(")", "_");
-            result = result.Replace("(", "_");
-
-            if (char.IsDigit(result[0]))
-            {
-                result = "N" + result;
-            }
-
-            return result;
-        }
+        private static string ConvertEnumValue(string name) => CSharpFirelyCommon.ConvertEnumValue(name);
 
         /// <summary>Gets an order.</summary>
         /// <param name="element">The element.</param>
-        private static int GetOrder(FhirElement element)
-        {
-            return (element.FieldOrder * 10) + 10;
-        }
+        private static int GetOrder(FhirElement element) => CSharpFirelyCommon.GetOrder(element);
 
         /// <summary>Writes the elements.</summary>
         /// <param name="complex">              The complex data type.</param>
@@ -1754,15 +1667,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (string.IsNullOrEmpty(vsClass))
                 {
-                    codeLiteral = $"Code<{_namespace}.{vsName}>";
-                    namespacedCodeLiteral = $"{_namespace}.Code<{_namespace}.{vsName}>";
-                    enumClass = $"{_namespace}.{vsName}";
+                    codeLiteral = $"Code<{Namespace}.{vsName}>";
+                    namespacedCodeLiteral = $"{Namespace}.Code<{Namespace}.{vsName}>";
+                    enumClass = $"{Namespace}.{vsName}";
                 }
                 else
                 {
-                    codeLiteral = $"Code<{_namespace}.{vsClass}.{vsName}>";
-                    namespacedCodeLiteral = $"{_namespace}.Code<{_namespace}.{vsClass}.{vsName}>";
-                    enumClass = $"{_namespace}.{vsClass}.{vsName}";
+                    codeLiteral = $"Code<{Namespace}.{vsClass}.{vsName}>";
+                    namespacedCodeLiteral = $"{Namespace}.Code<{Namespace}.{vsClass}.{vsName}>";
+                    enumClass = $"{Namespace}.{vsClass}.{vsName}";
 
                     if (vsName.ToUpperInvariant() == pascal.ToUpperInvariant())
                     {
@@ -1774,8 +1687,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                codeLiteral = $"{_namespace}.Code";
-                namespacedCodeLiteral = $"{_namespace}.Code";
+                codeLiteral = $"{Namespace}.Code";
+                namespacedCodeLiteral = $"{Namespace}.Code";
                 enumClass = "string";
                 optional = string.Empty;
             }
@@ -1954,9 +1867,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string nativeType = type;
             string optional = string.Empty;
 
-            if (_primitiveTypeMap.ContainsKey(nativeType))
+            if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(nativeType))
             {
-                nativeType = _primitiveTypeMap[nativeType];
+                nativeType = CSharpFirelyCommon.PrimitiveTypeMap[nativeType];
 
                 if (IsNullable(nativeType))
                 {
@@ -1967,7 +1880,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                nativeType = $"{_namespace}.{type}";
+                nativeType = $"{Namespace}.{type}";
             }
 
             if ((_info.MajorVersion < 4) &&
@@ -1978,9 +1891,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 noElement = false;
             }
 
-            if (_typeNameMappings.ContainsKey(type))
+            if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(type))
             {
-                type = _typeNameMappings[type];
+                type = CSharpFirelyCommon.TypeNameMappings[type];
             }
             else
             {
@@ -1996,18 +1909,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     {
                         FhirElementName = element.Name.Replace("[x]", string.Empty),
                         ExportedName = $"{pascal}{elementTag}",
-                        ExportedType = $"{_namespace}.{type}",
+                        ExportedType = $"{Namespace}.{type}",
                         IsList = false,
                     });
 
-                _writer.WriteLineIndented($"public {_namespace}.{type} {pascal}{elementTag}");
+                _writer.WriteLineIndented($"public {Namespace}.{type} {pascal}{elementTag}");
 
                 OpenScope();
                 _writer.WriteLineIndented($"get {{ return _{pascal}{elementTag}; }}");
                 _writer.WriteLineIndented($"set {{ _{pascal}{elementTag} = value; OnPropertyChanged(\"{pascal}{elementTag}\"); }}");
                 CloseScope();
 
-                _writer.WriteLineIndented($"private {_namespace}.{type} _{pascal}{elementTag};");
+                _writer.WriteLineIndented($"private {Namespace}.{type} _{pascal}{elementTag};");
                 _writer.WriteLine(string.Empty);
             }
             else
@@ -2017,18 +1930,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     {
                         FhirElementName = element.Name.Replace("[x]", string.Empty),
                         ExportedName = $"{pascal}{elementTag}",
-                        ExportedType = $"List<{_namespace}.{type}>",
+                        ExportedType = $"List<{Namespace}.{type}>",
                         IsList = true,
                     });
 
-                _writer.WriteLineIndented($"public List<{_namespace}.{type}> {pascal}{elementTag}");
+                _writer.WriteLineIndented($"public List<{Namespace}.{type}> {pascal}{elementTag}");
 
                 OpenScope();
-                _writer.WriteLineIndented($"get {{ if(_{pascal}{elementTag}==null) _{pascal}{elementTag} = new List<{_namespace}.{type}>(); return _{pascal}{elementTag}; }}");
+                _writer.WriteLineIndented($"get {{ if(_{pascal}{elementTag}==null) _{pascal}{elementTag} = new List<{Namespace}.{type}>(); return _{pascal}{elementTag}; }}");
                 _writer.WriteLineIndented($"set {{ _{pascal}{elementTag} = value; OnPropertyChanged(\"{pascal}{elementTag}\"); }}");
                 CloseScope();
 
-                _writer.WriteLineIndented($"private List<{_namespace}.{type}> _{pascal}{elementTag};");
+                _writer.WriteLineIndented($"private List<{Namespace}.{type}> _{pascal}{elementTag};");
                 _writer.WriteLine(string.Empty);
             }
 
@@ -2067,7 +1980,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.DecreaseIndent();
                 _writer.WriteLineIndented("else");
                 _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = new {_namespace}.{type}(value);");
+                _writer.WriteLineIndented($"{pascal}Element = new {Namespace}.{type}(value);");
                 _writer.DecreaseIndent();
                 _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
                 CloseScope();
@@ -2089,7 +2002,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.DecreaseIndent();
                 _writer.WriteLineIndented("else");
                 _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{pascal}Element = new List<{_namespace}.{type}>(value.Select(elem=>new {_namespace}.{type}(elem)));");
+                _writer.WriteLineIndented($"{pascal}Element = new List<{Namespace}.{type}>(value.Select(elem=>new {Namespace}.{type}(elem)));");
                 _writer.DecreaseIndent();
 
                 _writer.WriteLineIndented($"OnPropertyChanged(\"{pascal}{matchTrailer}\");");
@@ -2186,7 +2099,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     if (elementType == "Resource")
                     {
                         choice = ", Choice=ChoiceType.ResourceChoice";
-                        allowedTypes = $"[AllowedTypes(typeof({_namespace}.Resource))]";
+                        allowedTypes = $"[AllowedTypes(typeof({Namespace}.Resource))]";
                     }
                 }
                 else
@@ -2218,12 +2131,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         needsSep = true;
 
                         sb.Append("typeof(");
-                        sb.Append(_namespace);
+                        sb.Append(Namespace);
                         sb.Append(".");
 
-                        if (_typeNameMappings.ContainsKey(elementType.Name))
+                        if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(elementType.Name))
                         {
-                            sb.Append(_typeNameMappings[elementType.Name]);
+                            sb.Append(CSharpFirelyCommon.TypeNameMappings[elementType.Name]);
                         }
                         else
                         {
@@ -2358,18 +2271,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string exportName;
             string typeName;
 
-            if (_typeNameMappings.ContainsKey(primitive.Name))
+            if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(primitive.Name))
             {
-                exportName = _typeNameMappings[primitive.Name];
+                exportName = CSharpFirelyCommon.TypeNameMappings[primitive.Name];
             }
             else
             {
                 exportName = primitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
             }
 
-            if (_primitiveTypeMap.ContainsKey(primitive.Name))
+            if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(primitive.Name))
             {
-                typeName = _primitiveTypeMap[primitive.Name];
+                typeName = CSharpFirelyCommon.PrimitiveTypeMap[primitive.Name];
             }
             else
             {
@@ -2381,7 +2294,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 new WrittenModelInfo()
                 {
                     FhirName = primitive.Name,
-                    CsName = $"{_namespace}.{exportName}",
+                    CsName = $"{Namespace}.{exportName}",
                 });
 
             string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
@@ -2412,7 +2325,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented(
                     $"public partial class" +
                         $" {exportName}" +
-                        $" : {_namespace}.Primitive<{typeName}>," +
+                        $" : {Namespace}.Primitive<{typeName}>," +
                         $" System.ComponentModel.INotifyPropertyChanged");
 
                 // open class
@@ -2448,22 +2361,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (_info.MajorVersion >= 3)
                 {
-                    (string p, string n)[] primitivePattern =
+                    if (CSharpFirelyCommon.PrimitiveValidationPatterns.ContainsKey(primitive.Name))
                     {
-                        ("uri", "UriPattern"),
-                        ("uuid", "UuidPattern"),
-                        ("id", "IdPattern"),
-                        ("date", "DatePattern"),
-                        ("dateTime", "DateTimePattern"),
-                        ("oid", "OidPattern"),
-                    };
-
-                    foreach ((string p, string n) in primitivePattern)
-                    {
-                        if (p == primitive.Name)
-                        {
-                            _writer.WriteLineIndented($"[{n}]");
-                        }
+                        _writer.WriteLineIndented($"[{CSharpFirelyCommon.PrimitiveValidationPatterns[primitive.Name]}]");
                     }
                 }
 
@@ -2486,7 +2386,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the namespace open.</summary>
         private void WriteNamespaceOpen()
         {
-            _writer.WriteLineIndented($"namespace {_namespace}");
+            _writer.WriteLineIndented($"namespace {Namespace}");
             OpenScope();
         }
 
@@ -2614,58 +2514,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Opens the scope.</summary>
         private void OpenScope()
-        {
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-        }
+            => CSharpFirelyCommon.OpenScope(_writer);
 
         /// <summary>Closes the scope.</summary>
-        private void CloseScope(bool includeSemicolon = false)
-        {
-            _writer.DecreaseIndent();
-
-            if (includeSemicolon)
-            {
-                _writer.WriteLineIndented("};");
-            }
-            else
-            {
-                _writer.WriteLineIndented("}");
-            }
-
-            _writer.WriteLine(string.Empty);
-        }
+        private void CloseScope(bool includeSemicolon = false, bool suppressNewline = false)
+            => CSharpFirelyCommon.CloseScope(_writer, includeSemicolon, suppressNewline);
 
         /// <summary>Writes an indented comment.</summary>
         /// <param name="value">    The value.</param>
         /// <param name="isSummary">(Optional) True if is summary, false if not.</param>
         private void WriteIndentedComment(string value, bool isSummary = true, bool singleLine = false)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return;
-            }
-
-            if (isSummary && !singleLine)
-            {
-                _writer.WriteLineIndented("/// <summary>");
-            }
-
-            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n")
-                .Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
-
-            string[] lines = comment.Split('\n');
-            foreach (string line in lines)
-            {
-                _writer.WriteIndented(singleLine ? "// " : "/// ");
-                _writer.WriteLine(line);
-            }
-
-            if (isSummary && !singleLine)
-            {
-                _writer.WriteLineIndented("/// </summary>");
-            }
-        }
+                        => CSharpFirelyCommon.WriteIndentedComment(_writer, value, isSummary, singleLine);
 
         /// <summary>Information about a written value set.</summary>
         private struct WrittenValueSetInfo
