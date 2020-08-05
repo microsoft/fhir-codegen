@@ -13,7 +13,6 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
-
     /// <summary>A language exporter for Firely-compliant C# FHIR output.</summary>
     public sealed class CSharpFirely1 : ILanguage
     {

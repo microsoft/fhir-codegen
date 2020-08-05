@@ -100,7 +100,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "http://hl7.org/fhir/ValueSet/ucum-units",
         };
 
-
         /// <summary>
         /// List of types introduced in R5 that are retrospectively introduced in R3 and R4.
         /// </summary>
@@ -151,7 +150,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "MetadataResource",
             "Citation",
         };
-
 
         /// <summary>
         /// Determines the subset of code to generate.
@@ -231,7 +229,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (subset.HasFlag(GenSubset.Common) && info.MajorVersion != 5)
             {
-                Console.WriteLine($"Aborting {_languageName}: code generation for the 'common' subset should be run on r5 only.");
+                Console.WriteLine($"Aborting {_languageName} for {info.MajorVersion}: code generation for the 'common' subset should be run on r5 only.");
                 return;
             }
 
@@ -1090,7 +1088,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             return value.Replace("\\", "\\\\").Replace("\"", "\\\"");
         }
-
 
         /// <summary>Writes a constrained quantity.</summary>
         /// <param name="complex">   The complex data type.</param>
