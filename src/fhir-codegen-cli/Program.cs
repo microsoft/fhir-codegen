@@ -400,13 +400,15 @@ namespace FhirCodegenCli
                     continue;
                 }
 
-                if (optionsByLanguage[currentName].ContainsKey(kvp[0]))
+                string key = kvp[0].ToUpperInvariant();
+
+                if (optionsByLanguage[currentName].ContainsKey(key))
                 {
                     Console.WriteLine($"Invalid language option redefinition: {segment} for language: {currentName}");
                     continue;
                 }
 
-                optionsByLanguage[currentName].Add(kvp[0], kvp[1]);
+                optionsByLanguage[currentName].Add(key, kvp[1]);
             }
 
             return optionsByLanguage;

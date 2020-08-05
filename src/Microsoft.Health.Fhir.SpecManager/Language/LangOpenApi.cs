@@ -235,35 +235,32 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (_options.LanguageOptions != null)
             {
-                foreach (KeyValuePair<string, string> kvp in _options.LanguageOptions)
-                {
-                    _parameters.Add(kvp.Key.ToUpperInvariant(), kvp.Value);
-                }
+                _parameters = _options.LanguageOptions;
             }
 
             _exportedCodes = new HashSet<string>();
 
-            _includeBundleOperations = GetLanguageParam("BundleOperations", true);
-            _includeDescriptions = GetLanguageParam("Descriptions", true);
-            _descriptionMaxLen = GetLanguageParam("DescriptionMaxLen", 60);
-            _descriptionValidation = GetLanguageParam("DescriptionValidation", false);
-            _expandProfiles = GetLanguageParam("ExpandProfiles", true);
-            _fhirJson = GetLanguageParam("FhirJson", true);
-            _fhirXml = GetLanguageParam("FhirXml", false);
-            _includeHistory = GetLanguageParam("History", false);
-            _maxRecursions = GetLanguageParam("MaxRecursions", 0);
-            _includeMetadata = GetLanguageParam("Metadata", false);
-            bool minify = GetLanguageParam("Minify", false);
-            _openApiVersion = GetLanguageParam("OpenApiVersion", 2);
-            _generateReadOnly = GetLanguageParam("ReadOnly", false);
-            _removeUncommonFields = GetLanguageParam("RemoveUncommonFields", false);
-            _includeSchemas = GetLanguageParam("Schemas", true);
-            _inlineSchemas = GetLanguageParam("SchemasInline", false);
-            _singleResponseCode = GetLanguageParam("SingleResponses", false);
-            _includeSummaries = GetLanguageParam("Summaries", true);
-            _generateWriteOnly = GetLanguageParam("WriteOnly", false);
+            _includeBundleOperations = _options.GetParam("BundleOperations", true);
+            _includeDescriptions = _options.GetParam("Descriptions", true);
+            _descriptionMaxLen = _options.GetParam("DescriptionMaxLen", 60);
+            _descriptionValidation = _options.GetParam("DescriptionValidation", false);
+            _expandProfiles = _options.GetParam("ExpandProfiles", true);
+            _fhirJson = _options.GetParam("FhirJson", true);
+            _fhirXml = _options.GetParam("FhirXml", false);
+            _includeHistory = _options.GetParam("History", false);
+            _maxRecursions = _options.GetParam("MaxRecursions", 0);
+            _includeMetadata = _options.GetParam("Metadata", false);
+            bool minify = _options.GetParam("Minify", false);
+            _openApiVersion = _options.GetParam("OpenApiVersion", 2);
+            _generateReadOnly = _options.GetParam("ReadOnly", false);
+            _removeUncommonFields = _options.GetParam("RemoveUncommonFields", false);
+            _includeSchemas = _options.GetParam("Schemas", true);
+            _inlineSchemas = _options.GetParam("SchemasInline", false);
+            _singleResponseCode = _options.GetParam("SingleResponses", false);
+            _includeSummaries = _options.GetParam("Summaries", true);
+            _generateWriteOnly = _options.GetParam("WriteOnly", false);
 
-            string opCase = GetLanguageParam("OperationCase", "Upper");
+            string opCase = _options.GetParam("OperationCase", "Upper");
             if (opCase.StartsWith("L", StringComparison.OrdinalIgnoreCase))
             {
                 _instanceOpPrefixes = new Dictionary<OperationType, string>()
@@ -368,68 +365,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 File.WriteAllText(filename, JsonConvert.SerializeObject(obj, Formatting.None));
             }
-        }
-
-        /// <summary>Gets language parameter.</summary>
-        /// <typeparam name="T">Generic type parameter.</typeparam>
-        /// <param name="field">       The field.</param>
-        /// <param name="valueDefault">(Optional) The value default.</param>
-        /// <returns>The language parameter.</returns>
-        private bool GetLanguageParam(string field, bool valueDefault)
-        {
-            string name = field.ToUpperInvariant();
-
-            if (!_parameters.ContainsKey(name) ||
-                string.IsNullOrEmpty(_parameters[name]))
-            {
-                return valueDefault;
-            }
-
-            if (bool.TryParse(_parameters[name], out bool bValue))
-            {
-                return bValue;
-            }
-
-            return valueDefault;
-        }
-
-        /// <summary>Gets language parameter.</summary>
-        /// <param name="field">       The field.</param>
-        /// <param name="valueDefault">The value default.</param>
-        /// <returns>The language parameter.</returns>
-        private int GetLanguageParam(string field, int valueDefault)
-        {
-            string name = field.ToUpperInvariant();
-
-            if (!_parameters.ContainsKey(name) ||
-                string.IsNullOrEmpty(_parameters[name]))
-            {
-                return valueDefault;
-            }
-
-            if (int.TryParse(_parameters[name], out int iValue))
-            {
-                return iValue;
-            }
-
-            return valueDefault;
-        }
-
-        /// <summary>Gets language parameter.</summary>
-        /// <param name="field">       The field.</param>
-        /// <param name="valueDefault">The value default.</param>
-        /// <returns>The language parameter.</returns>
-        private string GetLanguageParam(string field, string valueDefault)
-        {
-            string name = field.ToUpperInvariant();
-
-            if (!_parameters.ContainsKey(name) ||
-                string.IsNullOrEmpty(_parameters[name]))
-            {
-                return valueDefault;
-            }
-
-            return _parameters[name];
         }
 
         /// <summary>Builds the schemas.</summary>

@@ -72,7 +72,7 @@
         },
         "GenerateFirely": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely1|CSharpFirely2 --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely1|CSharpFirely2 --official-expansions-only true --language-options CSharpFirely1|DetailedHeader=false",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely2 API 1.x": {

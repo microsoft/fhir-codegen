@@ -73,7 +73,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
-            _languageOptions = languageOptions;
+            if (languageOptions != null)
+            {
+                _languageOptions = languageOptions;
+            }
+            else
+            {
+                _languageOptions = new Dictionary<string, string>();
+            }
+
             ServerUrl = fhirServerUrl;
             IncludeExperimental = includeExperimental;
         }
@@ -170,5 +178,87 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets a value indicating whether structures marked experimental should be included.</summary>
         public bool IncludeExperimental { get; }
+
+        /// <summary>Gets a language parameter.</summary>
+        /// <param name="field">       The field.</param>
+        /// <param name="valueDefault">The value default.</param>
+        /// <returns>The language parameter.</returns>
+        public bool GetParam(
+            string field,
+            bool valueDefault)
+        {
+            if (string.IsNullOrEmpty(field))
+            {
+                return valueDefault;
+            }
+
+            string name = field.ToUpperInvariant();
+
+            if (!_languageOptions.ContainsKey(name) ||
+                string.IsNullOrEmpty(_languageOptions[name]))
+            {
+                return valueDefault;
+            }
+
+            if (bool.TryParse(_languageOptions[name], out bool bValue))
+            {
+                return bValue;
+            }
+
+            return valueDefault;
+        }
+
+        /// <summary>Gets language parameter.</summary>
+        /// <param name="field">       The field.</param>
+        /// <param name="valueDefault">The value default.</param>
+        /// <returns>The language parameter.</returns>
+        public int GetParam(
+            string field,
+            int valueDefault)
+        {
+            if (string.IsNullOrEmpty(field))
+            {
+                return valueDefault;
+            }
+
+            string name = field.ToUpperInvariant();
+
+            if (!_languageOptions.ContainsKey(name) ||
+                string.IsNullOrEmpty(_languageOptions[name]))
+            {
+                return valueDefault;
+            }
+
+            if (int.TryParse(_languageOptions[name], out int iValue))
+            {
+                return iValue;
+            }
+
+            return valueDefault;
+        }
+
+        /// <summary>Gets language parameter.</summary>
+        /// <param name="field">       The field.</param>
+        /// <param name="valueDefault">The value default.</param>
+        /// <returns>The language parameter.</returns>
+        public string GetParam(
+            string field,
+            string valueDefault)
+        {
+            if (string.IsNullOrEmpty(field))
+            {
+                return valueDefault;
+            }
+
+            string name = field.ToUpperInvariant();
+
+            if (!_languageOptions.ContainsKey(name) ||
+                string.IsNullOrEmpty(_languageOptions[name]))
+            {
+                return valueDefault;
+            }
+
+            return _languageOptions[name];
+        }
     }
 }
