@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.Health.Fhir.SpecManager.Language;
@@ -17,6 +18,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
     /// <summary>An exporter.</summary>
     public abstract class Exporter
     {
+        /// <summary>The random.</summary>
+        private static Random _rand = new Random();
+
         /// <summary>Exports.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="sourceFhirInfo">  Information describing the source FHIR version information.</param>
@@ -219,17 +223,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             {
                 string exportName = Path.Combine(path, file.Substring(duplicateLen));
 
-                if (File.Exists(exportName))
+                if (!TryMoveFile(file, exportName))
                 {
-                    File.Delete(exportName);
+                    throw new Exception($"Failed to move file {file} into the requested export location!");
                 }
-
-                if (!Directory.Exists(Path.GetDirectoryName(exportName)))
-                {
-                    Directory.CreateDirectory(Path.GetDirectoryName(exportName));
-                }
-
-                File.Move(file, exportName);
 
                 filesWritten.Add(exportName);
             }
@@ -237,6 +234,54 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             DeleteDirectory(tempDir);
 
             return filesWritten;
+        }
+
+        /// <summary>Attempts to move file.</summary>
+        /// <param name="source">    Source for the.</param>
+        /// <param name="dest">      Destination for the.</param>
+        /// <param name="maxRetries">(Optional) The maximum retries.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private static bool TryMoveFile(
+            string source,
+            string dest,
+            int maxRetries = 3)
+        {
+            bool success = false;
+
+            for (int i = 0; (i < maxRetries) && (!success); i++)
+            {
+                try
+                {
+                    if (File.Exists(dest))
+                    {
+                        File.Delete(dest);
+                    }
+
+                    if (!Directory.Exists(Path.GetDirectoryName(dest)))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(dest));
+                    }
+
+                    File.Move(source, dest);
+
+                    success = true;
+                }
+                catch (IOException)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            Thread.Sleep(0);
+                            break;
+
+                        default:
+                            Thread.Sleep(_rand.Next(0, 1000));
+                            break;
+                    }
+                }
+            }
+
+            return success;
         }
 
         /// <summary>Deletes the directory described by dir.</summary>
