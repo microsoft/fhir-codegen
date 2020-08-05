@@ -778,9 +778,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                         if (edType.Profile != null)
                         {
-                            foreach (string profile in edType.Profile)
+                            if (elementType.Name == "Reference")
                             {
-                                elementTypes[elementType.Name].AddProfile(profile);
+                                foreach (string profile in edType.Profile)
+                                {
+                                    elementTypes[elementType.Name].AddProfile(profile);
+                                }
+                            }
+                            else
+                            {
+                                foreach (string profile in edType.Profile)
+                                {
+                                    elementTypes[elementType.Name].AddTypeProfile(profile);
+                                }
                             }
                         }
 
@@ -805,9 +815,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
                                 if (edType.Profile != null)
                                 {
-                                    foreach (string profile in edType.Profile)
+                                    if (elementType.Name == "Reference")
                                     {
-                                        elementTypes[elementType.Name].AddProfile(profile);
+                                        foreach (string profile in edType.Profile)
+                                        {
+                                            elementTypes[elementType.Name].AddProfile(profile);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (string profile in edType.Profile)
+                                        {
+                                            elementTypes[elementType.Name].AddTypeProfile(profile);
+                                        }
                                     }
                                 }
 
@@ -831,7 +851,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 element.Name.Equals(structureName, StringComparison.Ordinal))
             {
                 // base type is here
-                FhirElementType elementType = new FhirElementType(element.Path, null);
+                FhirElementType elementType = new FhirElementType(element.Path);
 
                 // add to our dictionary
                 elementTypes.Add(elementType.Name, elementType);
@@ -1006,7 +1026,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         // base definition, already processed
                         if (pathComponents.Length < 2)
                         {
-                            // check for this component being different from primar
+                            // check for this component being different from primary
                             if ((pathComponents[0] != sd.Name) && (contextElements.Count == 0))
                             {
                                 // add to our context

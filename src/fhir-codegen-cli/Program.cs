@@ -46,8 +46,12 @@ namespace FhirCodegenCli
         ///  expansions (default: false).</param>
         /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
         ///  Conformance) from.  Requires application/fhir+json.</param>
-        /// <param name="includeExperimental">   If the output should include structures marked experimental (false|true).</param>
-        /// <param name="exportTypes">           Which FHIR classes types to export (primitive|complex|resource|interaction|enum). Default is all.</param>
+        /// <param name="includeExperimental">   If the output should include structures marked
+        ///  experimental (false|true).</param>
+        /// <param name="exportTypes">           Which FHIR classes types to export
+        ///  (primitive|complex|resource|interaction|enum), default is all.</param>
+        /// <param name="extensionSupport">      The level of extensions to include
+        ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -63,7 +67,8 @@ namespace FhirCodegenCli
             bool officialExpansionsOnly = false,
             string fhirServerUrl = "",
             bool includeExperimental = false,
-            string exportTypes = "")
+            string exportTypes = "",
+            string extensionSupport = "")
         {
             bool isBatch = false;
             List<string> filesWritten = new List<string>();
@@ -96,14 +101,36 @@ namespace FhirCodegenCli
 
             static ExporterOptions.FhirExportClassType? GetExportClass(string val)
             {
-                return val.ToLowerInvariant() switch
+                return val.ToUpperInvariant() switch
                 {
-                    "primitive" => ExporterOptions.FhirExportClassType.PrimitiveType,
-                    "complex" => ExporterOptions.FhirExportClassType.ComplexType,
-                    "resource" => ExporterOptions.FhirExportClassType.Resource,
-                    "interaction" => ExporterOptions.FhirExportClassType.Interaction,
-                    "enum" => ExporterOptions.FhirExportClassType.Enum,
+                    "PRIMITIVE" => ExporterOptions.FhirExportClassType.PrimitiveType,
+                    "COMPLEX" => ExporterOptions.FhirExportClassType.ComplexType,
+                    "RESOURCE" => ExporterOptions.FhirExportClassType.Resource,
+                    "INTERACTION" => ExporterOptions.FhirExportClassType.Interaction,
+                    "ENUM" => ExporterOptions.FhirExportClassType.Enum,
                     _ => null
+                };
+            }
+
+            ExporterOptions.ExtensionSupportLevel extensionSupportLevel = GetExtensionSupport(extensionSupport);
+
+            static ExporterOptions.ExtensionSupportLevel GetExtensionSupport(string val)
+            {
+                if (string.IsNullOrEmpty(val))
+                {
+                    return ExporterOptions.ExtensionSupportLevel.NonPrimitive;
+                }
+
+                return val.ToUpperInvariant() switch
+                {
+                    "NONE" => ExporterOptions.ExtensionSupportLevel.None,
+                    "OFFICIAL" => ExporterOptions.ExtensionSupportLevel.Official,
+                    "OFFICIALNONPRIMITIVE" => ExporterOptions.ExtensionSupportLevel.OfficialNonPrimitive,
+                    "ALL" => ExporterOptions.ExtensionSupportLevel.All,
+                    "NONPRIMITIVE" => ExporterOptions.ExtensionSupportLevel.NonPrimitive,
+                    "BYEXTENSIONURL" => ExporterOptions.ExtensionSupportLevel.ByExtensionUrl,
+                    "BYELEMENTPATH" => ExporterOptions.ExtensionSupportLevel.ByElementPath,
+                    _ => ExporterOptions.ExtensionSupportLevel.NonPrimitive,
                 };
             }
 
@@ -258,7 +285,7 @@ namespace FhirCodegenCli
                         lang.LanguageName,
                         exportList,
                         typesToExport.Any() ? typesToExport : lang.OptionalExportClassTypes,
-                        ExporterOptions.ExtensionSupportLevel.NonPrimitives,
+                        extensionSupportLevel,
                         null,
                         null,
                         languageOptsByLang[lang.LanguageName],
@@ -335,6 +362,11 @@ namespace FhirCodegenCli
 
             foreach (string segment in segments)
             {
+                if (string.IsNullOrEmpty(segment))
+                {
+                    continue;
+                }
+
                 string[] kvp = segment.Split('=');
 
                 // segment without '=' is a language name
