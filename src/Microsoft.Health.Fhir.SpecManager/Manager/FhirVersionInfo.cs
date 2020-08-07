@@ -312,17 +312,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Attempts to get node information about the node described by the path.</summary>
         /// <param name="path">Full pathname of the file.</param>
-        /// <param name="edge">[out] The edge.</param>
+        /// <param name="node">[out] The node information.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public bool TryGetNodeInfo(string path, out FhirNodeInfo edge)
+        public bool TryGetNodeInfo(string path, out FhirNodeInfo node)
         {
             if (_nodeInfoByPath.ContainsKey(path))
             {
-                edge = _nodeInfoByPath[path];
+                node = _nodeInfoByPath[path];
                 return true;
             }
 
-            edge = null;
+            node = null;
             return false;
         }
 
@@ -742,6 +742,79 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     string.Empty));
         }
 
+        internal void AddComplexToExportSet(
+            FhirComplex complex,
+            ref HashSet<string> set,
+            bool isResource)
+        {
+            // add this item
+            set.Add(complex.Name);
+
+            // check for a parent type
+            if (!string.IsNullOrEmpty(complex.BaseTypeName))
+            {
+                // add the parent
+                AddToExportSet(complex.BaseTypeName, ref set);
+
+                if (isResource)
+                {
+                    // Resources cannot inherit patterns, but they are listed that way today
+                    // see https://chat.fhir.org/#narrow/stream/179177-conformance/topic/Inheritance.20and.20Cardinality.20Changes
+                    switch (complex.BaseTypeName)
+                    {
+                        case "CanonicalResource":
+                        case "MetadataResource":
+                            AddToExportSet("DomainResource", ref set);
+                            break;
+                    }
+                }
+            }
+
+            // check for element types
+            if (complex.Elements != null)
+            {
+                foreach (KeyValuePair<string, FhirElement> kvp in complex.Elements)
+                {
+                    if (!string.IsNullOrEmpty(kvp.Value.BaseTypeName))
+                    {
+                        // add the element type
+                        AddToExportSet(kvp.Value.BaseTypeName, ref set);
+                    }
+
+                    if (kvp.Value.ElementTypes != null)
+                    {
+                        foreach (FhirElementType elementType in kvp.Value.ElementTypes.Values)
+                        {
+                            // add the element type
+                            AddToExportSet(elementType.Name, ref set);
+
+                            if (elementType.Profiles != null)
+                            {
+                                foreach (FhirElementProfile profile in elementType.Profiles.Values)
+                                {
+                                    AddToExportSet(profile.Name, ref set);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (complex.Components != null)
+            {
+                if (_complexTypesByName.ContainsKey("BackboneElement") &&
+                    (!set.Contains("BackboneElement")))
+                {
+                    set.Add("BackboneElement");
+                }
+
+                foreach (FhirComplex component in complex.Components.Values)
+                {
+                    AddComplexToExportSet(component, ref set, false);
+                }
+            }
+        }
+
         /// <summary>Recursively adds a resource or type to the export set.</summary>
         /// <param name="name">The name.</param>
         /// <param name="set"> [in,out] The set.</param>
@@ -766,97 +839,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // check for this being a type
             if (_complexTypesByName.ContainsKey(name))
             {
-                // add this item
-                set.Add(name);
-
-                // check for a parent type
-                if (!string.IsNullOrEmpty(_complexTypesByName[name].BaseTypeName))
-                {
-                    // add the parent
-                    AddToExportSet(_complexTypesByName[name].BaseTypeName, ref set);
-                }
-
-                // check for element types
-                if (_complexTypesByName[name].Elements != null)
-                {
-                    foreach (KeyValuePair<string, FhirElement> kvp in _complexTypesByName[name].Elements)
-                    {
-                        if (!string.IsNullOrEmpty(kvp.Value.BaseTypeName))
-                        {
-                            // add the element type
-                            AddToExportSet(kvp.Value.BaseTypeName, ref set);
-                        }
-
-                        if (kvp.Value.ElementTypes != null)
-                        {
-                            foreach (string elementTypeName in kvp.Value.ElementTypes.Keys)
-                            {
-                                // add the element type
-                                AddToExportSet(elementTypeName, ref set);
-                            }
-                        }
-                    }
-                }
-
-                if ((_complexTypesByName[name].Components != null) &&
-                    _complexTypesByName.ContainsKey("BackboneElement") &&
-                    (!set.Contains("BackboneElement")))
-                {
-                    set.Add("BackboneElement");
-                }
+                AddComplexToExportSet(_complexTypesByName[name], ref set, false);
             }
 
             // check for this being a resource
             if (_resourcesByName.ContainsKey(name))
             {
-                // add this item
-                set.Add(name);
-
-                // check for a parent type
-                if (!string.IsNullOrEmpty(_resourcesByName[name].BaseTypeName))
-                {
-                    // add the parent
-                    AddToExportSet(_resourcesByName[name].BaseTypeName, ref set);
-
-                    // Resources cannot inherit patterns, but they are listed that way today
-                    // see https://chat.fhir.org/#narrow/stream/179177-conformance/topic/Inheritance.20and.20Cardinality.20Changes
-                    switch (_resourcesByName[name].BaseTypeName)
-                    {
-                        case "CanonicalResource":
-                        case "MetadataResource":
-                            AddToExportSet("DomainResource", ref set);
-                            break;
-                    }
-                }
-
-                // check for element types
-                if (_resourcesByName[name].Elements != null)
-                {
-                    foreach (KeyValuePair<string, FhirElement> kvp in _resourcesByName[name].Elements)
-                    {
-                        if (!string.IsNullOrEmpty(kvp.Value.BaseTypeName))
-                        {
-                            // add the element type
-                            AddToExportSet(kvp.Value.BaseTypeName, ref set);
-                        }
-
-                        if (kvp.Value.ElementTypes != null)
-                        {
-                            foreach (string elementTypeName in kvp.Value.ElementTypes.Keys)
-                            {
-                                // add the element type
-                                AddToExportSet(elementTypeName, ref set);
-                            }
-                        }
-                    }
-                }
-
-                if ((_resourcesByName[name].Components != null) &&
-                    _complexTypesByName.ContainsKey("BackboneElement") &&
-                    (!set.Contains("BackboneElement")))
-                {
-                    set.Add("BackboneElement");
-                }
+                AddComplexToExportSet(_resourcesByName[name], ref set, true);
             }
         }
 
