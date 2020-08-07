@@ -149,6 +149,11 @@
             "commandName": "Project",
             "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|OpenApiVersion=3|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|descriptions=true|DescriptionValidation=true --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
             "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "cyto4": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\cytoscape --load-r4 latest --export-keys Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --fhir-spec-directory ..\\..\\fhirVersions --language Cytoscape",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }
 }

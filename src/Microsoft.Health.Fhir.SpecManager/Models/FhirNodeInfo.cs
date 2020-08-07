@@ -122,28 +122,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
         }
 
-        /// <summary>Values that represent destination node types.</summary>
+        /// <summary>Values that represent node and link types.</summary>
         public enum FhirNodeType
         {
             /// <summary>Could not determine edge linking type.</summary>
             Unknown,
 
-            /// <summary>This edge links to itself (will return null pointer for simplicity).</summary>
+            /// <summary>This node links to itself (will return null pointer for simplicity).</summary>
             Self,
 
-            /// <summary>This edge links to a primitive data type.</summary>
+            /// <summary>This node is a primitive data type.</summary>
             Primitive,
 
-            /// <summary>This edge links to a non-primitive data type.</summary>
+            /// <summary>This node is a non-primitive data type.</summary>
             DataType,
 
-            /// <summary>This edge links to a resource.</summary>
+            /// <summary>This node is a resource.</summary>
             Resource,
 
-            /// <summary>This edge links to a component definition (BackboneElement).</summary>
+            /// <summary>This node is a component definition (BackboneElement).</summary>
             Component,
 
-            /// <summary>This edge links to a profile data type.</summary>
+            /// <summary>This node is a profile data type.</summary>
             Profile,
         }
 
