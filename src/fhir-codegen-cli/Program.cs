@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.CommandLine.Builder;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -52,6 +53,7 @@ namespace FhirCodegenCli
         ///  (primitive|complex|resource|interaction|enum), default is all.</param>
         /// <param name="extensionSupport">      The level of extensions to include
         ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
+        /// <param name="languageHelp">         Display languages and their options.</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -68,8 +70,15 @@ namespace FhirCodegenCli
             string fhirServerUrl = "",
             bool includeExperimental = false,
             string exportTypes = "",
-            string extensionSupport = "")
+            string extensionSupport = "",
+            bool languageHelp = false)
         {
+            if (languageHelp)
+            {
+                ShowLanguageHelp(language);
+                return;
+            }
+
             bool isBatch = false;
             List<string> filesWritten = new List<string>();
 
@@ -322,6 +331,36 @@ namespace FhirCodegenCli
             foreach (string file in filesWritten)
             {
                 Console.WriteLine($"+ {file}");
+            }
+        }
+
+        /// <summary>Shows the language help.</summary>
+        /// <param name="languageName">(Optional) Name of the language.</param>
+        private static void ShowLanguageHelp(string languageName = "")
+        {
+            if (string.IsNullOrEmpty(languageName))
+            {
+                languageName = "*";
+            }
+
+            List<ILanguage> languages = LanguageHelper.GetLanguages(languageName);
+
+            foreach (ILanguage language in languages.OrderBy(l => l.LanguageName))
+            {
+                Console.WriteLine($"- {language.LanguageName}");
+
+                if ((language.LanguageOptions == null) || (language.LanguageOptions.Count == 0))
+                {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+                    Console.WriteLine("\t- No extended options are available.");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
+                    continue;
+                }
+
+                foreach (KeyValuePair<string, string> kvp in language.LanguageOptions)
+                {
+                    Console.WriteLine($"\t- {kvp.Key}\n\t\t{kvp.Value}");
+                }
             }
         }
 
