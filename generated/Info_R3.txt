@@ -4,7 +4,7 @@ Contents of: hl7.fhir.r3.core version: 3.0.2
   Complex Type / Resource Naming Style: PascalCase
   Enum Naming Style: FhirDotNotation
   Interaction Naming Style: PascalCase
-  Extension Support: NonPrimitives
+  Extension Support: NonPrimitive
 Primitive Types: 18
 - base64Binary: base64Binary::base64Binary
 - boolean: boolean::boolean
@@ -529,11 +529,11 @@ Complex Types: 35
   - site[0..1]: CodeableConcept
   - route[0..1]: CodeableConcept
   - method[0..1]: CodeableConcept
-  - dose[x][0..1]: Quantity|Range
+  - dose[x][0..1]: Quantity(SimpleQuantity)|Range
   - maxDosePerPeriod[0..1]: Ratio
-  - maxDosePerAdministration[0..1]: Quantity
-  - maxDosePerLifetime[0..1]: Quantity
-  - rate[x][0..1]: Quantity|Range|Ratio
+  - maxDosePerAdministration[0..1]: Quantity(SimpleQuantity)
+  - maxDosePerLifetime[0..1]: Quantity(SimpleQuantity)
+  - rate[x][0..1]: Quantity(SimpleQuantity)|Range|Ratio
 - Duration: Quantity
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -1154,8 +1154,8 @@ Complex Types: 35
 - Range: Element
   - id[0..1]: string
   - extension[0..*]: Extension
-  - low[0..1]: Quantity
-  - high[0..1]: Quantity
+  - low[0..1]: Quantity(SimpleQuantity)
+  - high[0..1]: Quantity(SimpleQuantity)
 - Ratio: Element
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -1180,7 +1180,7 @@ Complex Types: 35
 - SampledData: Element
   - id[0..1]: string
   - extension[0..*]: Extension
-  - origin[1..1]: Quantity
+  - origin[1..1]: Quantity(SimpleQuantity)
   - period[1..1]: decimal
   - factor[0..1]: decimal
     .defaultValueDecimal = 1
@@ -1339,7 +1339,7 @@ Resources: 119
       {patient|practitioner|related-person}
     - role[0..1]: CodeableConcept
   - product[x][0..1]: CodeableConcept|Reference(Medication|Substance)
-  - quantity[0..1]: Quantity
+  - quantity[0..1]: Quantity(SimpleQuantity)
   - dosage[0..*]: Dosage
   - bodySite[0..*]: CodeableConcept
   - transform[0..1]: Reference(StructureMap)
@@ -2479,8 +2479,8 @@ Resources: 119
       - location[0..1]: Reference(Location)
       - performer[0..*]: Reference(Practitioner|Organization|RelatedPerson|Patient|CareTeam)
       - product[x][0..1]: CodeableConcept|Reference(Medication|Substance)
-      - dailyAmount[0..1]: Quantity
-      - quantity[0..1]: Quantity
+      - dailyAmount[0..1]: Quantity(SimpleQuantity)
+      - quantity[0..1]: Quantity(SimpleQuantity)
       - description[0..1]: string
     Extensions: 1
     +http://hl7.org/fhir/StructureDefinition/careplan-activity-title
@@ -2715,7 +2715,7 @@ Resources: 119
     - programCode[0..*]: CodeableConcept
     - serviced[x][0..1]: date|Period
     - location[x][0..1]: Address|CodeableConcept|Reference(Location)
-    - quantity[0..1]: Quantity
+    - quantity[0..1]: Quantity(SimpleQuantity)
     - unitPrice[0..1]: Money
     - factor[0..1]: decimal
     - net[0..1]: Money
@@ -2733,7 +2733,7 @@ Resources: 119
       - service[0..1]: CodeableConcept
       - modifier[0..*]: CodeableConcept
       - programCode[0..*]: CodeableConcept
-      - quantity[0..1]: Quantity
+      - quantity[0..1]: Quantity(SimpleQuantity)
       - unitPrice[0..1]: Money
       - factor[0..1]: decimal
       - net[0..1]: Money
@@ -2748,7 +2748,7 @@ Resources: 119
         - service[0..1]: CodeableConcept
         - modifier[0..*]: CodeableConcept
         - programCode[0..*]: CodeableConcept
-        - quantity[0..1]: Quantity
+        - quantity[0..1]: Quantity(SimpleQuantity)
         - unitPrice[0..1]: Money
         - factor[0..1]: decimal
         - net[0..1]: Money
@@ -4193,7 +4193,7 @@ Resources: 119
     - entity[x][0..1]: CodeableConcept|Reference(Resource)
     - identifier[0..1]: Identifier
     - effectiveTime[0..1]: dateTime
-    - quantity[0..1]: Quantity
+    - quantity[0..1]: Quantity(SimpleQuantity)
     - unitPrice[0..1]: Money
     - factor[0..1]: decimal
     - points[0..1]: decimal
@@ -4225,7 +4225,7 @@ Resources: 119
       - entity[x][0..1]: CodeableConcept|Reference(Resource)
       - identifier[0..1]: Identifier
       - effectiveTime[0..1]: dateTime
-      - quantity[0..1]: Quantity
+      - quantity[0..1]: Quantity(SimpleQuantity)
       - unitPrice[0..1]: Money
       - factor[0..1]: decimal
       - points[0..1]: decimal
@@ -5897,7 +5897,7 @@ Resources: 119
     - programCode[0..*]: CodeableConcept
     - serviced[x][0..1]: date|Period
     - location[x][0..1]: Address|CodeableConcept|Reference(Location)
-    - quantity[0..1]: Quantity
+    - quantity[0..1]: Quantity(SimpleQuantity)
     - unitPrice[0..1]: Money
     - factor[0..1]: decimal
     - net[0..1]: Money
@@ -5925,7 +5925,7 @@ Resources: 119
       - service[0..1]: CodeableConcept
       - modifier[0..*]: CodeableConcept
       - programCode[0..*]: CodeableConcept
-      - quantity[0..1]: Quantity
+      - quantity[0..1]: Quantity(SimpleQuantity)
       - unitPrice[0..1]: Money
       - factor[0..1]: decimal
       - net[0..1]: Money
@@ -5943,7 +5943,7 @@ Resources: 119
         - service[0..1]: CodeableConcept
         - modifier[0..*]: CodeableConcept
         - programCode[0..*]: CodeableConcept
-        - quantity[0..1]: Quantity
+        - quantity[0..1]: Quantity(SimpleQuantity)
         - unitPrice[0..1]: Money
         - factor[0..1]: decimal
         - net[0..1]: Money
@@ -6605,7 +6605,7 @@ Resources: 119
   - expirationDate[0..1]: date
   - site[0..1]: CodeableConcept
   - route[0..1]: CodeableConcept
-  - doseQuantity[0..1]: Quantity
+  - doseQuantity[0..1]: Quantity(SimpleQuantity)
   - practitioner[0..*]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -7222,7 +7222,7 @@ Resources: 119
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
       - item[x][1..1]: CodeableConcept|Reference(Medication)
-      - amount[0..1]: Quantity
+      - amount[0..1]: Quantity(SimpleQuantity)
     - batch[0..*]: BackboneElement
       - id[0..1]: string
       - extension[0..*]: Extension
@@ -7288,8 +7288,8 @@ Resources: 119
     - site[0..1]: CodeableConcept
     - route[0..1]: CodeableConcept
     - method[0..1]: CodeableConcept
-    - dose[0..1]: Quantity
-    - rate[x][0..1]: Quantity|Ratio
+    - dose[0..1]: Quantity(SimpleQuantity)
+    - rate[x][0..1]: Quantity(SimpleQuantity)|Ratio
   - eventHistory[0..*]: Reference(Provenance)
   ?code=token (code)
   ?context=reference (context)
@@ -7331,8 +7331,8 @@ Resources: 119
     - onBehalfOf[0..1]: Reference(Organization)
   - authorizingPrescription[0..*]: Reference(MedicationRequest)
   - type[0..1]: CodeableConcept
-  - quantity[0..1]: Quantity
-  - daysSupply[0..1]: Quantity
+  - quantity[0..1]: Quantity(SimpleQuantity)
+  - daysSupply[0..1]: Quantity(SimpleQuantity)
   - whenPrepared[0..1]: dateTime
   - whenHandedOver[0..1]: dateTime
   - destination[0..1]: Reference(Location)
@@ -7519,7 +7519,7 @@ Resources: 119
     - modifierExtension[0..*]: Extension
     - validityPeriod[0..1]: Period
     - numberOfRepeatsAllowed[0..1]: positiveInt
-    - quantity[0..1]: Quantity
+    - quantity[0..1]: Quantity(SimpleQuantity)
     - expectedSupplyDuration[0..1]: Duration
     - performer[0..1]: Reference(Organization)
     Extensions: 1
@@ -7821,7 +7821,7 @@ Resources: 119
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
       - modifier[0..1]: CodeableConcept
-      - amount[0..1]: Quantity
+      - amount[0..1]: Quantity(SimpleQuantity)
     - texture[0..*]: BackboneElement
       - id[0..1]: string
       - extension[0..*]: Extension
@@ -7837,7 +7837,7 @@ Resources: 119
     - type[0..1]: CodeableConcept
     - productName[0..1]: string
     - schedule[0..*]: Timing
-    - quantity[0..1]: Quantity
+    - quantity[0..1]: Quantity(SimpleQuantity)
     - instruction[0..1]: string
   - enteralFormula[0..1]: BackboneElement
     - id[0..1]: string
@@ -7847,16 +7847,16 @@ Resources: 119
     - baseFormulaProductName[0..1]: string
     - additiveType[0..1]: CodeableConcept
     - additiveProductName[0..1]: string
-    - caloricDensity[0..1]: Quantity
+    - caloricDensity[0..1]: Quantity(SimpleQuantity)
     - routeofAdministration[0..1]: CodeableConcept
     - administration[0..*]: BackboneElement
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
       - schedule[0..1]: Timing
-      - quantity[0..1]: Quantity
-      - rate[x][0..1]: Quantity|Ratio
-    - maxVolumeToDeliver[0..1]: Quantity
+      - quantity[0..1]: Quantity(SimpleQuantity)
+      - rate[x][0..1]: Quantity(SimpleQuantity)|Ratio
+    - maxVolumeToDeliver[0..1]: Quantity(SimpleQuantity)
     - administrationInstruction[0..1]: string
   ?additive=token (additive)
   ?datetime=date (datetime)
@@ -7913,8 +7913,8 @@ Resources: 119
     - id[0..1]: string
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - low[0..1]: Quantity
-    - high[0..1]: Quantity
+    - low[0..1]: Quantity(SimpleQuantity)
+    - high[0..1]: Quantity(SimpleQuantity)
     - type[0..1]: CodeableConcept
     - appliesTo[0..*]: CodeableConcept
     - age[0..1]: Range
@@ -8221,7 +8221,7 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - high[1..1]: Quantity
+      - high[1..1]: Quantity(SimpleQuantity)
       - text[0..1]: string
     - component[0..*]: BackboneElement
       - id[0..1]: string
@@ -8280,8 +8280,8 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - low[0..1]: Quantity
-      - high[0..1]: Quantity
+      - low[0..1]: Quantity(SimpleQuantity)
+      - high[0..1]: Quantity(SimpleQuantity)
       - type[0..1]: CodeableConcept
       - appliesTo[0..*]: CodeableConcept
       - age[0..1]: Range
@@ -8354,7 +8354,7 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - low[1..1]: Quantity
+      - low[1..1]: Quantity(SimpleQuantity)
       - text[0..1]: string
     - component[0..*]: BackboneElement
       - id[0..1]: string
@@ -8417,7 +8417,7 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - high[1..1]: Quantity
+      - high[1..1]: Quantity(SimpleQuantity)
       - text[0..1]: string
     - component[0..*]: BackboneElement
       - id[0..1]: string
@@ -8496,8 +8496,8 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - low[0..1]: Quantity
-      - high[0..1]: Quantity
+      - low[0..1]: Quantity(SimpleQuantity)
+      - high[0..1]: Quantity(SimpleQuantity)
       - type[0..1]: CodeableConcept
       - appliesTo[0..*]: CodeableConcept
       - age[0..1]: Range
@@ -8570,7 +8570,7 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - high[1..1]: Quantity
+      - high[1..1]: Quantity(SimpleQuantity)
       - text[0..1]: string
     - component[0..*]: BackboneElement
       - id[0..1]: string
@@ -8642,8 +8642,8 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - low[0..1]: Quantity
-      - high[0..1]: Quantity
+      - low[0..1]: Quantity(SimpleQuantity)
+      - high[0..1]: Quantity(SimpleQuantity)
       - type[0..1]: CodeableConcept
       - appliesTo[0..*]: CodeableConcept
       - age[0..1]: Range
@@ -11326,7 +11326,7 @@ Resources: 119
     - modifierExtension[0..*]: Extension
     - collector[0..1]: Reference(Practitioner)
     - collected[x][0..1]: dateTime|Period
-    - quantity[0..1]: Quantity
+    - quantity[0..1]: Quantity(SimpleQuantity)
       Extensions: 1
       +http://hl7.org/fhir/StructureDefinition/specimen-isDryWeight
       - id[0..1]: string
@@ -11371,8 +11371,8 @@ Resources: 119
     - identifier[0..*]: Identifier
     - description[0..1]: string
     - type[0..1]: CodeableConcept
-    - capacity[0..1]: Quantity
-    - specimenQuantity[0..1]: Quantity
+    - capacity[0..1]: Quantity(SimpleQuantity)
+    - specimenQuantity[0..1]: Quantity(SimpleQuantity)
     - additive[x][0..1]: CodeableConcept|Reference(Substance)
     Extensions: 1
     +http://hl7.org/fhir/StructureDefinition/specimen-sequenceNumber
@@ -11749,7 +11749,7 @@ Resources: 119
     - modifierExtension[0..*]: Extension
     - identifier[0..1]: Identifier
     - expiry[0..1]: dateTime
-    - quantity[0..1]: Quantity
+    - quantity[0..1]: Quantity(SimpleQuantity)
   - ingredient[0..*]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -11784,7 +11784,7 @@ Resources: 119
     - id[0..1]: string
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - quantity[0..1]: Quantity
+    - quantity[0..1]: Quantity(SimpleQuantity)
     - item[x][0..1]: CodeableConcept|Reference(Medication|Substance|Device)
   - occurrence[x][0..1]: dateTime|Period|Timing
   - supplier[0..1]: Reference(Practitioner|Organization)
@@ -12902,7 +12902,7 @@ Resources: 119
     - power[0..1]: decimal
     - backCurve[0..1]: decimal
     - diameter[0..1]: decimal
-    - duration[0..1]: Quantity
+    - duration[0..1]: Quantity(SimpleQuantity)
     - color[0..1]: string
     - brand[0..1]: string
     - note[0..*]: Annotation
