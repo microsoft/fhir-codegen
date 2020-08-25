@@ -91,6 +91,7 @@ Options:
                                                     (e.g., 4.0.1 or latest).
   --load-r5 &lt;load-r5&gt;                            If FHIR R5 should be loaded, which version.
                                                     (e.g., 4.4.0 or latest)
+  --language-help                                Show supported languages and their options.
   --language-options &lt;language-options&gt;          Language specific options, see documentation
                                                    for more details.
                                                    (e.g., CSharpBasic|namespace=myorg.fhir)
@@ -110,23 +111,168 @@ Options:
   -?, -h, --help                                 Show help and usage information
 </code></pre>
 <h2 id="language-information">Language Information</h2>
-<ul>
-<li><p>Info</p>
-<p>Basic text output of a version of FHIR for information and testing.</p>
-</li>
-<li><p>CSharpBasic</p>
+<h3 id="csharpbasic">CSharpBasic</h3>
 <p>Basic C# language bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.</p>
-</li>
-<li><p>TypeScript</p>
-<p>Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.</p>
-</li>
-<li><p>CSharpFirely</p>
-<p>Export base C# classes needed for the Firely-maintained C# API (<a href="https://github.com/FirelyTeam/fhir-net-api/">FHIR-Net-API</a>).</p>
-</li>
-<li><p>OpenAPI <strong>EXPERIMENTAL</strong></p>
+<table>
+<thead>
+<tr>
+<th>Language Option</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>namespace</td>
+<td>Namespace to use when exporting C# files.</td>
+<td>fhir</td>
+</tr>
+</tbody>
+</table>
+<h3 id="csharpfirely1">CSharpFirely1</h3>
+<p>Export base C# classes needed for the Firely-maintained C# API (<a href="https://github.com/FirelyTeam/fhir-net-api/">FHIR-Net-API</a>), v1.</p>
+<table>
+<thead>
+<tr>
+<th>Language Option</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DetailedHeader</td>
+<td>If the generator should include the user and date/time information in the header (true|false).</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<h3 id="csharpfirely2">CSharpFirely2</h3>
+<p>Export base C# classes needed for the Firely-maintained C# API (<a href="https://github.com/FirelyTeam/fhir-net-api/">FHIR-Net-API</a>), v2.</p>
+<h3 id="cytoscape-experimental">Cytoscape <strong>EXPERIMENTAL</strong></h3>
+<p>Export a <a href="https://js.cytoscape.org/">cytoscape</a> data file (JSON).</p>
+<h3 id="info">Info</h3>
+<p>Basic text output of a version of FHIR for information and testing.</p>
+<h3 id="openapi-experimental">OpenAPI <strong>EXPERIMENTAL</strong></h3>
 <p>Export an OpenAPI 2 or 3 JSON version of the standard.</p>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Language Option</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BundleOperations</td>
+<td>If the generator should include /Bundle, etc. (true|false).</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Descriptions</td>
+<td>If properties should include descriptions (true|false).</td>
+<td>true</td>
+</tr>
+<tr>
+<td>DescriptionMaxLen</td>
+<td>Maximum length of descriptions, if being validated.</td>
+<td>60</td>
+</tr>
+<tr>
+<td>DescriptionValidation</td>
+<td>If descriptions are required and should be validated (false|true).</td>
+<td>false</td>
+</tr>
+<tr>
+<td>ExpandProfiles</td>
+<td>If types should expand based on allowed profiles (true|false).</td>
+<td>true</td>
+</tr>
+<tr>
+<td>FhirJson</td>
+<td>If paths should explicitly support FHIR+JSON (true|false).</td>
+<td>true</td>
+</tr>
+<tr>
+<td>FhirXml</td>
+<td>If paths should explicitly support FHIR+XML (false|true).</td>
+<td>false</td>
+</tr>
+<tr>
+<td>History</td>
+<td>If _history GET operations should be included (false|true)</td>
+<td>false</td>
+</tr>
+<tr>
+<td>MaxRecurisions</td>
+<td>Maximum depth to expand recursions.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td>If the JSON should include a link to /metadata (false|true).</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Minify</td>
+<td>If the output JSON should be minified (false|true).</td>
+<td>false</td>
+</tr>
+<tr>
+<td>OpenApiVersion</td>
+<td>Open API version to use (2, 3).</td>
+<td>2</td>
+</tr>
+<tr>
+<td>OperationCase</td>
+<td>Case of the first letter of Operation IDs (upper|lower).</td>
+<td>upper</td>
+</tr>
+<tr>
+<td>ReadOnly</td>
+<td>If the output should only contain GET operations (false|true).</td>
+<td>false</td>
+</tr>
+<tr>
+<td>RemoveUncommonFields</td>
+<td>If the generator should remove some uncommon fields (false|true)</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Schemas</td>
+<td>If schemas should be included (true|false).</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SchemasInline</td>
+<td>If the output should inline all schemas (no inheritance) (false|true).</td>
+<td>false</td>
+</tr>
+<tr>
+<td>SingleResponses</td>
+<td>If operations should only include a single response (false|true).</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Summaries</td>
+<td>If responses should include summaries (true|false).</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>Title to use in the Info section.</td>
+<td>`FHIR {FHIR Release Name}:{FHIR Version String}</td>
+</tr>
+<tr>
+<td>WriteOnly</td>
+<td>If the output should only contain POST/PUT/DELETE operations (false|true).</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="typescript">TypeScript</h3>
+<p>Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.</p>
 <h2 id="cli-examples">CLI Examples</h2>
 <ul>
 <li><p>Download and parse FHIR R4 (latest published version) into ./fhir, then build a TypeScript file in the current directory</p>
