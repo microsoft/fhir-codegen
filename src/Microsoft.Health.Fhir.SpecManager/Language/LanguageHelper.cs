@@ -56,6 +56,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return null;
             }
 
+            if (name == "*")
+            {
+                languages.AddRange(_languagesByName.Values);
+                return languages;
+            }
+
             if (_languagesByName.ContainsKey(name.ToUpperInvariant()))
             {
                 languages.Add(_languagesByName[name.ToUpperInvariant()]);
