@@ -210,7 +210,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "RemoveUncommonFields", "If the generator should remove some uncommon fields (false|true)" },
             { "Schemas", "If schemas should be included (true|false)." },
             { "SchemasInline", "If the output should inline all schemas (no inheritance) (false|true)." },
-            { "SingleResponses", "If operations should only include a single response (fale|true)." },
+            { "SingleResponses", "If operations should only include a single response (false|true)." },
             { "Summaries", "If responses should include summaries (true|false)." },
             { "Title", "Title to use in the Info section." },
             { "WriteOnly", "If the output should only contain POST/PUT/DELETE operations (false|true)." },
