@@ -9,8 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
@@ -47,7 +45,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 { 2, new SortedSet<string>() { "1.0.2" } },
                 { 3, new SortedSet<string>() { "3.0.2" } },
                 { 4, new SortedSet<string>() { "4.0.1" } },
-                { 5, new SortedSet<string>() { "4.4.0" } },
+                { 5, new SortedSet<string>() { "4.4.0", "4.5.0" } },
             };
 
             // build the dictionary of published versions*
@@ -104,6 +102,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
                         ExpansionsPackageName = "hl7.fhir.r5.expansions",
                         VersionString = "4.4.0",
+                        IsDevBuild = false,
+                        IsLocalBuild = false,
+                        IsOnDisk = false,
+                    }
+                },
+                {
+                    "4.5.0",
+                    new FhirVersionInfo(5)
+                    {
+                        ReleaseName = "2020Sep",
+                        PackageName = "hl7.fhir.r5.core",
+                        ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
+                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
+                        VersionString = "4.5.0",
                         IsDevBuild = false,
                         IsLocalBuild = false,
                         IsOnDisk = false,
@@ -201,7 +213,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // figure out which version(s) we are loading
             if (string.IsNullOrEmpty(versions) || (versions == "latest"))
             {
-                versionsToLoad.Add(_knownVersions[majorRelease].ElementAt(0));
+                versionsToLoad.Add(_knownVersions[majorRelease].Max);
             }
             else
             {
@@ -212,9 +224,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 {
                     if (version == "latest")
                     {
-                        if (!versionsToLoad.Contains(_knownVersions[majorRelease].ElementAt(0)))
+                        if (!versionsToLoad.Contains(_knownVersions[majorRelease].Max))
                         {
-                            versionsToLoad.Add(_knownVersions[majorRelease].ElementAt(0));
+                            versionsToLoad.Add(_knownVersions[majorRelease].Max);
                         }
 
                         continue;
