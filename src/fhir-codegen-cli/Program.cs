@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Microsoft.Health.Fhir.SpecManager.Extensions;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -342,7 +341,7 @@ namespace FhirCodegenCli
 
             foreach (ILanguage lang in languages)
             {
-                optionsByLanguage.Add(lang.LanguageName, new Dictionary<string, string>());
+                optionsByLanguage.Add(lang.LanguageName, new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase));
             }
 
             if (string.IsNullOrEmpty(languageOptions))
