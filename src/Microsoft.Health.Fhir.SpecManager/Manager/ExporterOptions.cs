@@ -5,9 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.Health.Fhir.SpecManager.Models;
-using static Microsoft.Health.Fhir.SpecManager.Models.FhirTypeBase;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
@@ -79,7 +76,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
             else
             {
-                _languageOptions = new Dictionary<string, string>();
+                _languageOptions = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
             }
 
             ServerUrl = fhirServerUrl;
