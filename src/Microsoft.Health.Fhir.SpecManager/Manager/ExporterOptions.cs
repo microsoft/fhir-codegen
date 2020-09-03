@@ -5,9 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.Health.Fhir.SpecManager.Models;
-using static Microsoft.Health.Fhir.SpecManager.Models.FhirTypeBase;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
@@ -73,7 +70,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
-            _languageOptions = languageOptions;
+            if (languageOptions != null)
+            {
+                _languageOptions = languageOptions;
+            }
+            else
+            {
+                _languageOptions = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+            }
+
             ServerUrl = fhirServerUrl;
             IncludeExperimental = includeExperimental;
         }
@@ -118,25 +123,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public enum ExtensionSupportLevel
         {
             /// <summary>No extensions should be included.</summary>
-            NoExtensions,
+            None,
 
             /// <summary>Official (core) extensions should be included.</summary>
-            OfficialExtensions,
+            Official,
 
             /// <summary>An enum constant representing the official non primitive option.</summary>
             OfficialNonPrimitive,
 
             /// <summary>Every field should have a mockup for extensions.</summary>
-            EveryField,
+            All,
 
             /// <summary>Non-primitive type fields should have extensions.</summary>
-            NonPrimitives,
+            NonPrimitive,
 
             /// <summary>Only extensions with a URL in the provided list should be included.</summary>
-            IncludeByExtensionUrlLookup,
+            ByExtensionUrl,
 
             /// <summary>Only elements with a path in the provided list should have extensions.</summary>
-            IncludeByElementPathLookup,
+            ByElementPath,
         }
 
         /// <summary>Gets the name of the language.</summary>
@@ -170,5 +175,87 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets a value indicating whether structures marked experimental should be included.</summary>
         public bool IncludeExperimental { get; }
+
+        /// <summary>Gets a language parameter.</summary>
+        /// <param name="field">       The field.</param>
+        /// <param name="valueDefault">The value default.</param>
+        /// <returns>The language parameter.</returns>
+        public bool GetParam(
+            string field,
+            bool valueDefault)
+        {
+            if (string.IsNullOrEmpty(field))
+            {
+                return valueDefault;
+            }
+
+            string name = field.ToUpperInvariant();
+
+            if (!_languageOptions.ContainsKey(name) ||
+                string.IsNullOrEmpty(_languageOptions[name]))
+            {
+                return valueDefault;
+            }
+
+            if (bool.TryParse(_languageOptions[name], out bool bValue))
+            {
+                return bValue;
+            }
+
+            return valueDefault;
+        }
+
+        /// <summary>Gets language parameter.</summary>
+        /// <param name="field">       The field.</param>
+        /// <param name="valueDefault">The value default.</param>
+        /// <returns>The language parameter.</returns>
+        public int GetParam(
+            string field,
+            int valueDefault)
+        {
+            if (string.IsNullOrEmpty(field))
+            {
+                return valueDefault;
+            }
+
+            string name = field.ToUpperInvariant();
+
+            if (!_languageOptions.ContainsKey(name) ||
+                string.IsNullOrEmpty(_languageOptions[name]))
+            {
+                return valueDefault;
+            }
+
+            if (int.TryParse(_languageOptions[name], out int iValue))
+            {
+                return iValue;
+            }
+
+            return valueDefault;
+        }
+
+        /// <summary>Gets language parameter.</summary>
+        /// <param name="field">       The field.</param>
+        /// <param name="valueDefault">The value default.</param>
+        /// <returns>The language parameter.</returns>
+        public string GetParam(
+            string field,
+            string valueDefault)
+        {
+            if (string.IsNullOrEmpty(field))
+            {
+                return valueDefault;
+            }
+
+            string name = field.ToUpperInvariant();
+
+            if (!_languageOptions.ContainsKey(name) ||
+                string.IsNullOrEmpty(_languageOptions[name]))
+            {
+                return valueDefault;
+            }
+
+            return _languageOptions[name];
+        }
     }
 }

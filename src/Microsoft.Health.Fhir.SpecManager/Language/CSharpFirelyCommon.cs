@@ -1,4 +1,4 @@
-﻿// <copyright file="CSharpFirely.cs" company="Microsoft Corporation">
+﻿// <copyright file="CSharpFirelyCommon.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -11,7 +11,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
     /// <summary>
     /// Contains the methods and properties shared between the <see cref="CSharpFirely1"/> and <see cref="CSharpFirely2" /> generator classes.
     /// </summary>
-    internal sealed class CSharpFirelyCommon
+    internal static class CSharpFirelyCommon
     {
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents (see Template-Model.tt#1252).</summary>
         public static readonly Dictionary<string, string> PrimitiveTypeMap = new Dictionary<string, string>()
@@ -100,6 +100,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Opens the scope.</summary>
+        /// <param name="writer">The writer to write the comment to.</param>
         public static void OpenScope(ExportStreamWriter writer)
         {
             writer.WriteLineIndented("{");
@@ -107,6 +108,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Closes the scope.</summary>
+        /// <param name="writer">          The writer to write the comment to.</param>
+        /// <param name="includeSemicolon">(Optional) True to include, false to exclude the semicolon.</param>
+        /// <param name="suppressNewline"> (Optional) True to suppress, false to allow the newline.</param>
         public static void CloseScope(ExportStreamWriter writer, bool includeSemicolon = false, bool suppressNewline = false)
         {
             writer.DecreaseIndent();
@@ -188,6 +192,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets an order.</summary>
         /// <param name="element">The element.</param>
+        /// <returns>The order.</returns>
         public static int GetOrder(FhirElement element)
         {
             return (element.FieldOrder * 10) + 10;

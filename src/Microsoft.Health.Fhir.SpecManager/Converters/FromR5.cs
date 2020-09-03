@@ -621,7 +621,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="regex">        [out] The RegEx.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         private static bool TryGetTypeFromElement(
-
             string structureName,
             fhir_5.ElementDefinition element,
             out Dictionary<string, FhirElementType> elementTypes,
@@ -658,7 +657,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     if (!string.IsNullOrEmpty(edType.Code))
                     {
                         // create a type for this code
-                        FhirElementType elementType = new FhirElementType(edType.Code, edType.TargetProfile);
+                        FhirElementType elementType = new FhirElementType(
+                            edType.Code,
+                            edType.TargetProfile,
+                            edType.Profile);
 
                         // add to our dictionary
                         elementTypes.Add(elementType.Name, elementType);
@@ -676,7 +678,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 element.Id.Equals(structureName, StringComparison.Ordinal))
             {
                 // base type is here
-                FhirElementType elementType = new FhirElementType(element.Path, null);
+                FhirElementType elementType = new FhirElementType(element.Path);
 
                 // add to our dictionary
                 elementTypes.Add(elementType.Name, elementType);

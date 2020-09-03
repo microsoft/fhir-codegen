@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
@@ -12,7 +13,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A fhir element type.</summary>
     public class FhirElementType
     {
-        private readonly Dictionary<string, FhirElementProfile> _profiles;
+        private readonly Dictionary<string, FhirElementProfile> _targetProfiles;
+        private readonly Dictionary<string, FhirElementProfile> _typeProfiles;
         private readonly Uri _baseElementTypeUri = new Uri("http://hl7.org/fhir/StructureDefinition");
 
         /// <summary>Initializes a new instance of the <see cref="FhirElementType"/> class.</summary>
@@ -50,17 +52,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
             Type = Name;
 
-            _profiles = new Dictionary<string, FhirElementProfile>();
+            _targetProfiles = new Dictionary<string, FhirElementProfile>();
+            _typeProfiles = new Dictionary<string, FhirElementProfile>();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FhirElementType"/> class.
-        /// </summary>
-        /// <param name="code">    The code.</param>
-        /// <param name="profiles">The profiles.</param>
+        /// <summary>Initializes a new instance of the <see cref="FhirElementType"/> class.</summary>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+        /// <param name="code">          The code.</param>
+        /// <param name="targetProfiles">The target profiles.</param>
+        /// <param name="typeProfiles">  The type profiles.</param>
         public FhirElementType(
             string code,
-            IEnumerable<string> profiles)
+            IEnumerable<string> targetProfiles,
+            IEnumerable<string> typeProfiles)
         {
             // TODO: chain initializers properly
             if (string.IsNullOrEmpty(code))
@@ -92,11 +96,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             Type = Name;
-            _profiles = new Dictionary<string, FhirElementProfile>();
 
-            if (profiles != null)
+            _targetProfiles = new Dictionary<string, FhirElementProfile>();
+            if (targetProfiles != null)
             {
-                foreach (string profileUrl in profiles)
+                foreach (string profileUrl in targetProfiles)
                 {
                     if (string.IsNullOrEmpty(profileUrl))
                     {
@@ -105,30 +109,55 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
                     FhirElementProfile profile = new FhirElementProfile(new Uri(profileUrl));
 
-                    if (_profiles.ContainsKey(profile.Name))
+                    if (_targetProfiles.ContainsKey(profile.Name))
                     {
                         continue;
                     }
 
-                    _profiles.Add(profile.Name, profile);
+                    _targetProfiles.Add(profile.Name, profile);
+                }
+            }
+
+            _typeProfiles = new Dictionary<string, FhirElementProfile>();
+            if (typeProfiles != null)
+            {
+                foreach (string profileUrl in typeProfiles)
+                {
+                    if (string.IsNullOrEmpty(profileUrl))
+                    {
+                        continue;
+                    }
+
+                    FhirElementProfile profile = new FhirElementProfile(new Uri(profileUrl));
+
+                    if (_typeProfiles.ContainsKey(profile.Name))
+                    {
+                        continue;
+                    }
+
+                    _typeProfiles.Add(profile.Name, profile);
                 }
             }
         }
 
         /// <summary>Initializes a new instance of the <see cref="FhirElementType"/> class.</summary>
-        /// <param name="name">    The code.</param>
-        /// <param name="url">     The URL.</param>
-        /// <param name="profiles">The profiles.</param>
+        /// <param name="name">          The code.</param>
+        /// <param name="type">          The type.</param>
+        /// <param name="url">           The URL.</param>
+        /// <param name="targetProfiles">The target profiles.</param>
+        /// <param name="typeProfiles">  The type profiles.</param>
         private FhirElementType(
             string name,
             string type,
             Uri url,
-            Dictionary<string, FhirElementProfile> profiles)
+            Dictionary<string, FhirElementProfile> targetProfiles,
+            Dictionary<string, FhirElementProfile> typeProfiles)
         {
             Name = name;
             Type = type;
             URL = url;
-            _profiles = profiles;
+            _targetProfiles = targetProfiles;
+            _typeProfiles = typeProfiles;
         }
 
         /// <summary>Gets the name.</summary>
@@ -145,20 +174,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
         /// <summary>Gets the profiles.</summary>
         /// <value>The profiles.</value>
-        public Dictionary<string, FhirElementProfile> Profiles => _profiles;
+        public Dictionary<string, FhirElementProfile> Profiles => _targetProfiles;
 
-        /// <summary>Adds a profile.</summary>
+        /// <summary>Gets the type profiles.</summary>
+        public Dictionary<string, FhirElementProfile> TypeProfiles => _typeProfiles;
+
+        /// <summary>Adds a TARGET profile.</summary>
         /// <param name="profileUrl">The profile url.</param>
         internal void AddProfile(string profileUrl)
         {
             FhirElementProfile profile = new FhirElementProfile(new Uri(profileUrl));
 
-            if (_profiles.ContainsKey(profile.Name))
+            if (_targetProfiles.ContainsKey(profile.Name))
             {
                 return;
             }
 
-            _profiles.Add(profile.Name, profile);
+            _targetProfiles.Add(profile.Name, profile);
+        }
+
+        /// <summary>Adds a type profile.</summary>
+        /// <param name="profileUrl">The profile url.</param>
+        internal void AddTypeProfile(string profileUrl)
+        {
+            FhirElementProfile profile = new FhirElementProfile(new Uri(profileUrl));
+
+            if (_typeProfiles.ContainsKey(profile.Name))
+            {
+                return;
+            }
+
+            _typeProfiles.Add(profile.Name, profile);
         }
 
         /// <summary>Deep copy.</summary>
@@ -167,12 +213,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public FhirElementType DeepCopy(
             Dictionary<string, string> primitiveTypeMap)
         {
-            Dictionary<string, FhirElementProfile> profiles = new Dictionary<string, FhirElementProfile>();
+            Dictionary<string, FhirElementProfile> targetProfiles = _targetProfiles.ToDictionary(
+                kvp => kvp.Key,
+                kvp => kvp.Value.DeepCopy());
 
-            foreach (KeyValuePair<string, FhirElementProfile> kvp in _profiles)
-            {
-                profiles.Add(kvp.Key, kvp.Value.DeepCopy());
-            }
+            Dictionary<string, FhirElementProfile> typeProfiles = _typeProfiles.ToDictionary(
+                kvp => kvp.Key,
+                kvp => kvp.Value.DeepCopy());
 
             string type = Type ?? Name;
 
@@ -181,7 +228,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 type = primitiveTypeMap[type];
             }
 
-            return new FhirElementType(Name, type, URL, profiles);
+            return new FhirElementType(Name, type, URL, targetProfiles, typeProfiles);
         }
 
         /// <summary>Type from XML type.</summary>

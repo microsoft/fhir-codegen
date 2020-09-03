@@ -38,7 +38,7 @@ Each version-specific loader implements `IFhirConverter`.
 
 * [Microsoft.Health.Fhir.SpecManager.fhir.r5](Microsoft.Health.Fhir.SpecManager.fhir.r5.html)
 
-  Classes for parsing FHIR R5 JSON files.  Validated against version 4.4.0 (May 2020).
+  Classes for parsing FHIR R5 JSON files.  Validated against version 4.5.0 (September 2020) and 4.4.0 (May 2020).
 
 ## Library Namespace: [Microsoft.Health.Fhir.SpecManager.Language](Microsoft.Health.Fhir.SpecManager.Language.html)
 
@@ -57,25 +57,33 @@ Classes used to export different languages from a loaded version of FHIR.
   Utilities for working with Languages for export.
 
 * Internally Defined Langauges
-  * [Info](Microsoft.Health.Fhir.SpecManager.Language.Info.html)
-    
-    Basic text output of a version of FHIR for information and testing.
-
   * [CSharpBasic](Microsoft.Health.Fhir.SpecManager.Language.CSharpBasic.html)
 
     Basic C# language bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.
 
-  * [TypeScript](Microsoft.Health.Fhir.SpecManager.Language.TypeScript.html)
+  * [CSharpFirely1](Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely1.html)
 
-    Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.
+    Export base C# classes needed for the Firely-maintained C# API ([FHIR-Net-API](https://github.com/FirelyTeam/fhir-net-api/)). Version 1.x, compatible with legacy T4 templates.
 
-  * [CSharpFirely](Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely.html)
+  * [CSharpFirely2](Microsoft.Health.Fhir.SpecManager.Language.CSharpFirely2.html)
 
-    Export base C# classes needed for the Firely-maintained C# API ([FHIR-Net-API](https://github.com/FirelyTeam/fhir-net-api/)).
+    Export base C# classes needed for the Firely-maintained C# API ([FHIR-Net-API](https://github.com/FirelyTeam/fhir-net-api/)). Version 2.x, new development.
+
+  * [Cytoscape](Microsoft.Health.Fhir.SpecManager.Language.Cytoscape.html) **EXPERIMENTAL**
+    
+    Export a [cytoscape](https://js.cytoscape.org/) data file (JSON).
+
+  * [Info](Microsoft.Health.Fhir.SpecManager.Language.Info.html)
+    
+    Basic text output of a version of FHIR for information and testing.
 
   * [OpenAPI](Microsoft.Health.Fhir.SpecManager.Language.LangOpenApi.html) **EXPERIMENTAL**
 
     Export an OpenAPI version 2 or 3 JSON document for the selected options.
+
+  * [TypeScript](Microsoft.Health.Fhir.SpecManager.Language.TypeScript.html)
+
+    Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.
 
 ## Library Namespace: [Microsoft.Health.Fhir.SpecManager.Manager](Microsoft.Health.Fhir.SpecManager.Manager.html)
 
