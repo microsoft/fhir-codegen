@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -2167,9 +2166,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         private void WriteSerializable()
         {
-            _writer.WriteLine("#if !NETSTANDARD1_1");
             _writer.WriteLineIndented("[Serializable]");
-            _writer.WriteLine("#endif");
         }
 
         private static string PrimitiveValueInterface(string valueType)
