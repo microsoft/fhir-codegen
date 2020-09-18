@@ -154,6 +154,16 @@
             "commandName": "Project",
             "commandLineArgs": "--output-path ..\\..\\cytoscape --load-r4 latest --export-keys Patient|Encounter|Observation --fhir-spec-directory ..\\..\\fhirVersions --language Cytoscape",
             "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "jsonTest": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\test\\perfTestCS\\Test\\R4.cs --load-r4 latest --export-keys Patient|Encounter|Observation|Bundle --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic --language-options CSharpBasic|json-library=system|include-summaries=false|access-modifier=public|namespace=PerfTestCS.Test.R4 --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "jsonTestAll": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\test\\perfTestCS\\Test\\R4.cs --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic --language-options CSharpBasic|json-library=system|include-summaries=false|access-modifier=public|namespace=PerfTestCS.Test.R4 --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }
 }
