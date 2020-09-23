@@ -125,6 +125,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Meta",
             "PrimitiveType",
             "Narrative",
+            "Reference",
+            "Identifier",
+            "CodeableConcept",
+            "Period",
         };
 
         /// <summary>
@@ -133,6 +137,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly List<string> _commmonResourceTypes = new List<string>()
         {
             "Resource",
+            "DomainResource",
         };
 
         /// <summary>Gets the reserved words.</summary>
