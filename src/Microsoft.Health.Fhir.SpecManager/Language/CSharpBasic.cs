@@ -76,18 +76,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>The namespace, default to 'fhir'.</summary>
         private string _namespace = "fhir";
 
-        /// <summary>True to use system JSON.</summary>
-        private bool _jsonSystemText = true;
-
-        /// <summary>True to JSON newton soft.</summary>
-        private bool _jsonNewtonSoft = false;
-
-        /// <summary>True to include, false to exclude the summaries.</summary>
-        private bool _includeSummaries = true;
-
-        /// <summary>The access modifier.</summary>
-        private string _accessModifier = "public";
-
         /// <summary>List of types of the exported resource names and types.</summary>
         private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
 
@@ -254,9 +242,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
         {
             { "namespace", "Namespace to use when exporting C# files (default: fhir)." },
-            { "json-library", "Which JSON library to use (system, newtonsoft)." },
-            { "include-summaries", "If export should include Summary XML comments (true|false)." },
-            { "access-modifier", "Access modifier for exported elements (public|internal|private)." },
         };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
@@ -275,17 +260,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _info = info;
             _options = options;
 
-            if (options.GetParam("json-library", "system").Equals("system", StringComparison.OrdinalIgnoreCase))
-            {
-                _jsonSystemText = true;
-                _jsonNewtonSoft = false;
-            }
-            else
-            {
-                _jsonSystemText = false;
-                _jsonNewtonSoft = true;
-            }
-
             if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Enum))
             {
                 _exportEnums = true;
@@ -295,9 +269,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _exportEnums = false;
             }
 
-            _namespace = options.GetParam("namespace", "fhir");
-            _includeSummaries = options.GetParam("include-summaries", true);
-            _accessModifier = options.GetParam("access-modifier", "public");
+            if ((options.LanguageOptions != null) && (options.LanguageOptions.Count > 0))
+            {
+                foreach (KeyValuePair<string, string> kvp in options.LanguageOptions)
+                {
+                    string key = kvp.Key.ToUpperInvariant();
+
+                    switch (key)
+                    {
+                        case "NAMESPACE":
+                            _namespace = kvp.Value;
+                            break;
+                    }
+                }
+            }
 
             _exportedResourceNamesAndTypes = new Dictionary<string, string>();
             _exportedCodes = new HashSet<string>();
@@ -325,14 +310,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteValueSets(_info.ValueSetsByUrl.Values);
                 }
 
-                if (_jsonSystemText)
-                {
-                    WritePolymorphicHelpersSystemText();
-                }
-                else
-                {
-                    WritePolymorphicHelpersNewtonsoft();
-                }
+                WritePolymorphicHelpers();
 
                 // close namespace
                 _writer.DecreaseIndent();
@@ -342,145 +320,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
-        /// <summary>Writes the polymorphic helpers for System.Text.Json.</summary>
-        private void WritePolymorphicHelpersSystemText()
+        /// <summary>Writes a polymorphic helpers.</summary>
+        private void WritePolymorphicHelpers()
         {
-            // open class
-            _writer.WriteLineIndented($"{_accessModifier} class ResourceConverter : JsonConverter<Resource>");
+            _writer.WriteLineIndented("public class ResourceConverter : JsonConverter");
             _writer.WriteLineIndented("{");
             _writer.IncreaseIndent();
 
             // function CanConvert
-            _writer.WriteLineIndented($"{_accessModifier} override bool CanConvert(Type objectType) =>");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("typeof(Resource).IsAssignableFrom(objectType);");
-            _writer.DecreaseIndent();
-            _writer.WriteLine();
-
-            _writer.WriteLineIndented($"{_accessModifier} override void Write(" +
-                "Utf8JsonWriter writer, " +
-                "Resource resource, " +
-                "JsonSerializerOptions options)");
-
-            // open Write
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-
-            // close Write
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-
-            _writer.WriteLineIndented($"{_accessModifier} override Resource Read(" +
-                "ref Utf8JsonReader reader, " +
-                "Type typeToConvert, " +
-                "JsonSerializerOptions options)");
-
-            // open Read
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-
-            _writer.WriteLineIndented("return PolymorphicRead(ref reader, typeToConvert, options);");
-
-            // close Read
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-
-            _writer.WriteLineIndented($"{_accessModifier} static Resource PolymorphicRead(" +
-                "ref Utf8JsonReader reader, " +
-                "Type typeToConvert, " +
-                "JsonSerializerOptions options)");
-
-            // open Read
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-
-            _writer.WriteLineIndented("if (reader.TokenType != JsonTokenType.StartObject)");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("throw new JsonException();");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLine();
-
-            _writer.WriteLineIndented("reader.Read();");
-            _writer.WriteLineIndented("if (reader.TokenType != JsonTokenType.PropertyName)");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("throw new JsonException();");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLine();
-
-            _writer.WriteLineIndented("string propertyName = reader.GetString();");
-            _writer.WriteLineIndented("if (propertyName != \"resourceType\")");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("throw new JsonException();");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLine();
-
-            _writer.WriteLineIndented("reader.Read();");
-            _writer.WriteLineIndented("if (reader.TokenType != JsonTokenType.String)");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("throw new JsonException();");
-            _writer.DecreaseIndent();
-
-            _writer.WriteLineIndented("}");
-            _writer.WriteLine();
-
-            _writer.WriteLineIndented("string resourceType = reader.GetString();");
-            _writer.WriteLineIndented("object target = null;");
-
-            _writer.WriteLineIndented("switch (resourceType)");
-
-            // open switch
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-
-            // loop through our types
-            foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
-            {
-                _writer.WriteLineIndented($"case \"{kvp.Key}\":");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{kvp.Value}.ParseJson(ref reader, options, ref target);");
-                _writer.WriteLineIndented("break;");
-                _writer.DecreaseIndent();
-            }
-
-            // default case returns a Resource object
-            _writer.WriteLineIndented("default:");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("Resource.ParseJson(ref reader, options, ref target);");
-            _writer.WriteLineIndented("break;");
-            _writer.DecreaseIndent();
-
-            // close switch
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLine();
-
-            _writer.WriteLineIndented("return (Resource)target;");
-
-            // close Read
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-
-            // close class
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-        }
-
-        /// <summary>Writes a polymorphic helpers for NewtonSoft.Json.</summary>
-        private void WritePolymorphicHelpersNewtonsoft()
-        {
-            _writer.WriteLineIndented($"{_accessModifier} class ResourceConverter : JsonConverter");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-
-            // function CanConvert
-            _writer.WriteLineIndented($"{_accessModifier} override bool CanConvert(Type objectType)");
+            _writer.WriteLineIndented("public override bool CanConvert(Type objectType)");
             _writer.WriteLineIndented("{");
             _writer.IncreaseIndent();
             _writer.WriteLineIndented("return typeof(Resource).IsAssignableFrom(objectType);");
@@ -488,7 +336,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("}");
 
             // property CanWrite
-            _writer.WriteLineIndented($"{_accessModifier} override bool CanWrite");
+            _writer.WriteLineIndented("public override bool CanWrite");
             _writer.WriteLineIndented("{");
             _writer.IncreaseIndent();
             _writer.WriteLineIndented("get { return false; }");
@@ -496,7 +344,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("}");
 
             // function WriteJson
-            _writer.WriteLineIndented($"{_accessModifier} override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)");
+            _writer.WriteLineIndented("public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)");
             _writer.WriteLineIndented("{");
             _writer.IncreaseIndent();
             _writer.WriteLineIndented("throw new NotImplementedException();");
@@ -504,7 +352,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("}");
 
             // property CanRead
-            _writer.WriteLineIndented($"{_accessModifier} override bool CanRead");
+            _writer.WriteLineIndented("public override bool CanRead");
             _writer.WriteLineIndented("{");
             _writer.IncreaseIndent();
             _writer.WriteLineIndented("get { return true; }");
@@ -512,7 +360,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("}");
 
             // function ReadJson
-            _writer.WriteLineIndented($"{_accessModifier} override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)");
+            _writer.WriteLineIndented("public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)");
             _writer.WriteLineIndented("{");
             _writer.IncreaseIndent();
             _writer.WriteLineIndented("JObject jObject = JObject.Load(reader);");
@@ -591,11 +439,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (vsName.EndsWith("ValueSet", StringComparison.Ordinal))
             {
-                _writer.WriteLineIndented($"{_accessModifier} static class {vsName}");
+                _writer.WriteLineIndented($"public static class {vsName}");
             }
             else
             {
-                _writer.WriteLineIndented($"{_accessModifier} static class {vsName}ValueSet");
+                _writer.WriteLineIndented($"public static class {vsName}ValueSet");
             }
 
             _writer.WriteLineIndented("{");
@@ -655,11 +503,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (_namesRequiringKeywordNew.Contains(name))
                 {
-                    _writer.WriteLineIndented($"{_accessModifier} static readonly new Coding {name} = new Coding");
+                    _writer.WriteLineIndented($"public static readonly new Coding {name} = new Coding");
                 }
                 else
                 {
-                    _writer.WriteLineIndented($"{_accessModifier} static readonly Coding {name} = new Coding");
+                    _writer.WriteLineIndented($"public static readonly Coding {name} = new Coding");
                 }
 
                 _writer.WriteLineIndented("{");
@@ -716,53 +564,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment(complex.Comment);
             }
 
-            string nameForExport;
-            bool hasBaseClass;
-            string baseClassName;
-
             if (string.IsNullOrEmpty(complex.BaseTypeName) ||
                 complex.Name.Equals("Element", StringComparison.Ordinal))
             {
-                nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
-                hasBaseClass = false;
-                baseClassName = string.Empty;
-
-                _writer.WriteLineIndented($"{_accessModifier} class {nameForExport} {{");
+                _writer.WriteLineIndented($"public class {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase)} {{");
             }
             else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
             {
-                nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
-                hasBaseClass = false;
-                baseClassName = string.Empty;
-
                 _writer.WriteLineIndented(
-                    $"{_accessModifier} class" +
-                        $" {nameForExport}" +
+                    $"public class" +
+                        $" {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true)}" +
                         $" {{");
             }
             else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
             {
-                nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
-                hasBaseClass = true;
-                baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
-
                 _writer.WriteLineIndented(
-                    $"{_accessModifier} class" +
-                        $" {nameForExport}" +
+                    $"public class" +
+                        $" {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true)}" +
                         $" :" +
-                        $" {baseClassName} {{");
+                        $" {complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false)} {{");
             }
             else
             {
-                nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
-                hasBaseClass = true;
-                baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
-
                 _writer.WriteLineIndented(
-                    $"{_accessModifier} class" +
-                        $" {nameForExport}" +
+                    $"public class" +
+                        $" {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true)}" +
                         $" :" +
-                        $" {baseClassName} {{");
+                        $" {complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap)} {{");
             }
 
             _writer.IncreaseIndent();
@@ -771,109 +599,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
 
-                WriteIndentedComment("Resource Type Name");
-
-                if (_jsonNewtonSoft)
-                {
-                    _writer.WriteLineIndented("[JsonProperty(\"resourceType\")]");
-                }
-
-                _writer.WriteLineIndented($"{_accessModifier} string ResourceType => \"{complex.Name}\";");
+                _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
+                _writer.WriteLineIndented("[JsonProperty(\"resourceType\")]");
+                _writer.WriteLineIndented($"public string ResourceType => \"{complex.Name}\";");
             }
 
             // write elements
             WriteElements(complex, out List<FhirElement> elementsWithCodes);
-
-            if (_jsonSystemText)
-            {
-                string keywordNew = hasBaseClass ? "new " : string.Empty;
-
-                _writer.WriteLineIndented($"{_accessModifier} static {keywordNew}void ParseJsonProperty(" +
-                    "ref Utf8JsonReader reader, " +
-                    "JsonSerializerOptions options, " +
-                    "ref object obj, " +
-                    "string propertyName)");
-
-                // open ParseJsonProperty
-                _writer.WriteLineIndented("{");
-                _writer.IncreaseIndent();
-
-                _writer.WriteLineIndented("switch (propertyName)");
-
-                // open switch
-                _writer.WriteLineIndented("{");
-                _writer.IncreaseIndent();
-
-                WriteParseJsonPropertyElements(complex, nameForExport);
-
-                if (hasBaseClass)
-                {
-                    _writer.WriteLineIndented($"default:");
-                    _writer.IncreaseIndent();
-                    _writer.WriteLineIndented($"{_namespace}.{baseClassName}.ParseJsonProperty(ref reader, options, ref obj, propertyName);");
-                    _writer.WriteLineIndented("break;");
-                    _writer.DecreaseIndent();
-                }
-
-                // close switch
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("}");
-
-                // close ParseJsonProperty
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("}");
-                _writer.WriteLine();
-
-                _writer.WriteLineIndented($"{_accessModifier} static {keywordNew}void ParseJson(" +
-                    "ref Utf8JsonReader reader, " +
-                    "JsonSerializerOptions options, " +
-                    "ref object obj)");
-
-                // open ParseJson
-                _writer.WriteLineIndented("{");
-                _writer.IncreaseIndent();
-
-                _writer.WriteLineIndented("if (obj == null)");
-                _writer.WriteLineIndented("{");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"obj = new {nameForExport}();");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("}");
-                _writer.WriteLine();
-
-                _writer.WriteLineIndented("string propertyName;");
-                _writer.WriteLine();
-                _writer.WriteLineIndented("while (reader.Read())");
-                _writer.WriteLineIndented("{");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented("if (reader.TokenType == JsonTokenType.EndObject)");
-                _writer.WriteLineIndented("{");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented("return;");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("}");
-                _writer.WriteLine();
-                _writer.WriteLineIndented("if (reader.TokenType == JsonTokenType.PropertyName)");
-                _writer.WriteLineIndented("{");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented("propertyName = reader.GetString();");
-
-                // TODO: this is for debugging ONLY!
-                // _writer.WriteLineIndented($"Console.WriteLine($\"Reading {nameForExport}.{{propertyName}}\");");
-                _writer.WriteLineIndented("reader.Read();");
-                _writer.WriteLineIndented("ParseJsonProperty(ref reader, options, ref obj, propertyName);");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("}");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("}");
-                _writer.WriteLine();
-
-                _writer.WriteLineIndented("throw new JsonException();");
-
-                // close ParseJson
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("}");
-            }
 
             // close interface (type)
             _writer.DecreaseIndent();
@@ -886,278 +618,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteCode(element);
                 }
             }
-        }
-
-        /// <summary>Writes a parse JSON property elements.</summary>
-        /// <param name="complex">The complex.</param>
-        private void WriteParseJsonPropertyElements(FhirComplex complex, string className)
-        {
-            foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.Name))
-            {
-                if (element.IsInherited)
-                {
-                    continue;
-                }
-
-                Dictionary<string, string> values = element.NamesAndTypesForExport(
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    FhirTypeBase.NamingConvention.PascalCase,
-                    false,
-                    string.Empty,
-                    complex.Components.ContainsKey(element.Path));
-
-                foreach (KeyValuePair<string, string> kvp in values)
-                {
-                    string elementName;
-                    if ((kvp.Key == complex.Name) && (!element.IsInherited))
-                    {
-                        elementName = $"{kvp.Key}Field";
-                    }
-                    else
-                    {
-                        elementName = kvp.Key;
-                    }
-
-                    string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
-
-                    string elementType = element.IsArray
-                        ? $"List<{kvp.Value}>"
-                        : $"{kvp.Value}";
-
-                    switch (elementType)
-                    {
-                        case "bool":
-                            WriteJsonPropertyCaseSimple(className, elementName, camel, "GetBoolean");
-                            break;
-                        case "List<bool>":
-                            WriteJsonPropertyListCaseSimple(className, elementName, camel, kvp.Value, "GetBoolean");
-                            break;
-                        case "decimal":
-                            WriteJsonPropertyCaseSimple(className, elementName, camel, "GetDecimal");
-                            break;
-                        case "List<decimal>":
-                            WriteJsonPropertyListCaseSimple(className, elementName, camel, kvp.Value, "GetDecimal");
-                            break;
-                        case "Guid":
-                            WriteJsonPropertyCaseSimple(className, elementName, camel, "GetGuid");
-                            break;
-                        case "List<Guid>":
-                            WriteJsonPropertyListCaseSimple(className, elementName, camel, kvp.Value, "GetGuid");
-                            break;
-                        case "int":
-                            WriteJsonPropertyCaseSimple(className, elementName, camel, "GetInt32");
-                            break;
-                        case "List<int>":
-                            WriteJsonPropertyListCaseSimple(className, elementName, camel, kvp.Value, "GetInt32");
-                            break;
-                        case "string":
-                            WriteJsonPropertyCaseSimple(className, elementName, camel, "GetString");
-                            break;
-                        case "List<string>":
-                            WriteJsonPropertyListCaseSimple(className, elementName, camel, kvp.Value, "GetString");
-                            break;
-                        case "uint":
-                            WriteJsonPropertyCaseSimple(className, elementName, camel, "GetUInt32");
-                            break;
-                        case "List<uint>":
-                            WriteJsonPropertyListCaseSimple(className, elementName, camel, kvp.Value, "GetUInt32");
-                            break;
-                        default:
-                            if (element.IsArray)
-                            {
-                                WriteJsonPropertyListCaseComplex(className, elementName, camel, kvp.Value);
-                            }
-                            else
-                            {
-                                WriteJsonPropertyCaseComplex(className, elementName, camel, elementType);
-                            }
-
-                            break;
-                    }
-
-                    if (RequiresExtension(kvp.Value))
-                    {
-                        if (element.IsArray)
-                        {
-                            WriteJsonPropertyListCaseComplex(className, "_" + elementName, "_" + camel, "Element");
-                        }
-                        else
-                        {
-                            WriteJsonPropertyCaseComplex(className, "_" + elementName, "_" + camel, "Element");
-
-                            //_writer.WriteLineIndented($"case \"_{camel}\":");
-                            //_writer.IncreaseIndent();
-                            //// _writer.WriteLineIndented($"{_namespace}.Element.ParseJsonProperty(reader, options, ref obj, propertyName);");
-
-                            //_writer.WriteLineIndented($"object obj{elementName}Ext = null;");
-                            //_writer.WriteLineIndented($"{_namespace}.Element.ParseJson(ref reader, options, ref obj{elementName}Ext);");
-                            //_writer.WriteLineIndented($"(({className})obj)._{elementName} = ((Element)obj{elementName}Ext);");
-
-                            //_writer.WriteLineIndented("break;");
-                            //_writer.DecreaseIndent();
-                        }
-                    }
-                }
-            }
-        }
-
-        /// <summary>Writes a JSON property case complex.</summary>
-        /// <param name="className">  Name of the class.</param>
-        /// <param name="elementName">Name of the element.</param>
-        /// <param name="camel">      The camel.</param>
-        /// <param name="elementType">Type of the element.</param>
-        private void WriteJsonPropertyCaseComplex(
-            string className,
-            string elementName,
-            string camel,
-            string elementType)
-        {
-            _writer.WriteLineIndented($"case \"{camel}\":");
-            _writer.IncreaseIndent();
-
-            // _writer.WriteLineIndented($"{_namespace}.{elementType}.ParseJsonProperty(reader, options, ref obj, propertyName);");
-
-            if (elementType == "Resource")
-            {
-                _writer.WriteLineIndented($"{_namespace}.{elementType} res{elementName} = " +
-                    $"{_namespace}.ResourceConverter.PolymorphicRead(ref reader, typeof(Resource), options);");
-                _writer.WriteLineIndented($"(({className})obj).{elementName} = ({_namespace}.{elementType})res{elementName};");
-            }
-            else
-            {
-                _writer.WriteLineIndented($"object obj{elementName} = null;");
-                _writer.WriteLineIndented($"{_namespace}.{elementType}.ParseJson(ref reader, options, ref obj{elementName});");
-                _writer.WriteLineIndented($"(({className})obj).{elementName} = ({_namespace}.{elementType})obj{elementName};");
-            }
-
-            _writer.WriteLineIndented("break;");
-            _writer.DecreaseIndent();
-        }
-
-        /// <summary>Writes a JSON property case simple.</summary>
-        /// <param name="elementName">       Name of the element.</param>
-        /// <param name="camel">             The camel.</param>
-        /// <param name="getterFunctionName">Name of the getter function.</param>
-        private void WriteJsonPropertyCaseSimple(
-            string className,
-            string elementName,
-            string camel,
-            string getterFunctionName)
-        {
-            _writer.WriteLineIndented($"case \"{camel}\":");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented($"(({className})obj).{elementName} = reader.{getterFunctionName}();");
-            _writer.WriteLineIndented("break;");
-            _writer.DecreaseIndent();
-        }
-
-        /// <summary>Writes a JSON property list case complex.</summary>
-        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
-        /// <param name="className">  Name of the class.</param>
-        /// <param name="elementName">Name of the element.</param>
-        /// <param name="camel">      The camel.</param>
-        /// <param name="elementType">Type of the element.</param>
-        private void WriteJsonPropertyListCaseComplex(
-            string className,
-            string elementName,
-            string camel,
-            string elementType)
-        {
-            _writer.WriteLineIndented($"case \"{camel}\":");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented($"if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("throw new JsonException();");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLine();
-            _writer.WriteLineIndented($"(({className})obj).{elementName} = new List<{elementType}>();");
-            _writer.WriteLine();
-            _writer.WriteLineIndented($"while (reader.TokenType != JsonTokenType.EndArray)");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-
-            if (elementType == "Resource")
-            {
-                _writer.WriteLineIndented($"{_namespace}.{elementType} resource = " +
-                    $"{_namespace}.ResourceConverter.PolymorphicRead(ref reader, typeof(Resource), options);");
-                _writer.WriteLineIndented($"(({className})obj).{elementName}.Add(resource);");
-            }
-            else
-            {
-                _writer.WriteLineIndented($"object listObj = null;");
-                _writer.WriteLineIndented($"{_namespace}.{elementType}.ParseJson(ref reader, options, ref listObj);");
-                _writer.WriteLineIndented($"(({className})obj).{elementName}.Add(({elementType})listObj);");
-            }
-
-            _writer.WriteLine();
-            _writer.WriteLineIndented($"if (!reader.Read())");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("throw new JsonException();");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLine();
-            _writer.WriteLineIndented($"if ((({className})obj).{elementName}.Count == 0)");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented($"(({className})obj).{elementName} = null;");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLineIndented("break;");
-            _writer.DecreaseIndent();
-        }
-
-        /// <summary>Writes a JSON property list case.</summary>
-        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
-        /// <param name="className">         Name of the class.</param>
-        /// <param name="elementName">       Name of the element.</param>
-        /// <param name="camel">             The camel.</param>
-        /// <param name="elementType">       Type of the element.</param>
-        /// <param name="getterFunctionName">Name of the getter function.</param>
-        private void WriteJsonPropertyListCaseSimple(
-            string className,
-            string elementName,
-            string camel,
-            string elementType,
-            string getterFunctionName)
-        {
-            _writer.WriteLineIndented($"case \"{camel}\":");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented($"if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("throw new JsonException();");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLine();
-            _writer.WriteLineIndented($"(({className})obj).{elementName} = new List<{elementType}>();");
-            _writer.WriteLine();
-            _writer.WriteLineIndented($"while (reader.TokenType != JsonTokenType.EndArray)");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented($"(({className})obj).{elementName}.Add(reader.{getterFunctionName}());");
-            _writer.WriteLine();
-            _writer.WriteLineIndented($"if (!reader.Read())");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented("throw new JsonException();");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLine();
-            _writer.WriteLineIndented($"if ((({className})obj).{elementName}.Count == 0)");
-            _writer.WriteLineIndented("{");
-            _writer.IncreaseIndent();
-            _writer.WriteLineIndented($"(({className})obj).{elementName} = null;");
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("}");
-            _writer.WriteLineIndented("break;");
-            _writer.DecreaseIndent();
         }
 
         /// <summary>Writes a code.</summary>
@@ -1187,15 +647,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _exportedCodes.Add(codeName);
 
-            WriteIndentedComment($"Code Values for the {element.Path} field");
+            _writer.WriteLineIndented($"/// <summary>");
+            _writer.WriteLineIndented($"/// Code Values for the {element.Path} field");
+            _writer.WriteLineIndented($"/// </summary>");
 
             if (codeName.EndsWith("Codes", StringComparison.Ordinal))
             {
-                _writer.WriteLineIndented($"{_accessModifier} static class {codeName} {{");
+                _writer.WriteLineIndented($"public static class {codeName} {{");
             }
             else
             {
-                _writer.WriteLineIndented($"{_accessModifier} static class {codeName}Codes {{");
+                _writer.WriteLineIndented($"public static class {codeName}Codes {{");
             }
 
             _writer.IncreaseIndent();
@@ -1204,7 +666,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
-                _writer.WriteLineIndented($"{_accessModifier} const string {name.ToUpperInvariant()} = \"{value}\";");
+                _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
             }
 
             _writer.DecreaseIndent();
@@ -1270,7 +732,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             foreach (KeyValuePair<string, string> kvp in values)
             {
                 string elementName;
-                if ((kvp.Key == complex.Name) && (!element.IsInherited))
+                if (kvp.Key == complex.Name)
                 {
                     elementName = $"{kvp.Key}Field";
                 }
@@ -1279,10 +741,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     elementName = kvp.Key;
                 }
 
-                string optionalFlagString =
-                    (element.IsOptional && (!element.IsArray) && IsNullable(kvp.Value))
-                        ? "?"
-                        : string.Empty;
+                string optionalFlagString = (element.IsOptional && IsNullable(kvp.Value)) ? "?" : string.Empty;
 
                 if (!string.IsNullOrEmpty(element.Comment))
                 {
@@ -1295,27 +754,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
 
-                if (_jsonNewtonSoft)
-                {
-                    _writer.WriteLineIndented($"[JsonProperty(\"{camel}\")]");
-                }
+                _writer.WriteLineIndented($"[JsonProperty(\"{camel}\")]");
 
-                _writer.WriteLineIndented($"{_accessModifier} {elementType} {elementName} {{ get; set; }}");
+                _writer.WriteLineIndented($"public {elementType} {elementName} {{ get; set; }}");
 
                 if (RequiresExtension(kvp.Value))
                 {
-                    if (_jsonNewtonSoft)
-                    {
-                        _writer.WriteLineIndented($"[JsonProperty(\"_{camel}\")]");
-                    }
+                    _writer.WriteLineIndented($"[JsonProperty(\"_{camel}\")]");
 
                     if (element.IsArray)
                     {
-                        _writer.WriteLineIndented($"{_accessModifier} List<Element> _{elementName} {{ get; set; }}");
+                        _writer.WriteLineIndented($"public List<Element> _{elementName} {{ get; set; }}");
                     }
                     else
                     {
-                        _writer.WriteLineIndented($"{_accessModifier} Element _{elementName} {{ get; set; }}");
+                        _writer.WriteLineIndented($"public Element _{elementName} {{ get; set; }}");
                     }
                 }
             }
@@ -1362,7 +815,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a header.</summary>
         private void WriteHeader()
         {
-            _writer.WriteLineIndented("// <auto-generated />");
+            _writer.WriteLineIndented("// <auto-generated/>");
             _writer.WriteLineIndented($"// Contents of: {_info.PackageName} version: {_info.VersionString}");
             _writer.WriteLineIndented($"  // Primitive Naming Style: {FhirTypeBase.NamingConvention.None}");
             _writer.WriteLineIndented($"  // Complex Type / Resource Naming Style: {FhirTypeBase.NamingConvention.PascalCase}");
@@ -1385,42 +838,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
-            _writer.WriteLine();
+            _writer.WriteLine(string.Empty);
 
             _writer.WriteLineIndented("using System;");
             _writer.WriteLineIndented("using System.Collections.Generic;");
-
-            if (_jsonSystemText)
-            {
-                _writer.WriteLineIndented("using System.Text.Json;");
-                _writer.WriteLineIndented("using System.Text.Json.Serialization;");
-            }
-
-            if (_jsonNewtonSoft)
-            {
-                _writer.WriteLineIndented("using Newtonsoft.Json;");
-                _writer.WriteLineIndented("using Newtonsoft.Json.Linq;");
-            }
-
-            _writer.WriteLine();
-
-            if (!_includeSummaries)
-            {
-                _writer.WriteLineIndented("#pragma warning disable 1591");
-                _writer.WriteLine();
-            }
+            _writer.WriteLineIndented("using Newtonsoft.Json;");
+            _writer.WriteLineIndented("using Newtonsoft.Json.Linq;");
+            _writer.WriteLine(string.Empty);
         }
 
         /// <summary>Writes a footer.</summary>
         private void WriteFooter()
         {
-            if (!_includeSummaries)
-            {
-                _writer.WriteLine();
-                _writer.WriteLineIndented("#pragma warning restore 1591");
-                _writer.WriteLine();
-            }
-
             WriteIndentedComment("end of file", false);
         }
 
@@ -1431,11 +860,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             if (isSummary)
             {
-                if (!_includeSummaries)
-                {
-                    return;
-                }
-
                 _writer.WriteLineIndented("/// <summary>");
             }
 
