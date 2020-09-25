@@ -19,8 +19,8 @@ namespace PerfTestCS
         private static Dictionary<string, int> _r4TestFilesAndLoops = new Dictionary<string, int>
         {
             { "hl7.fhir.r4.examples-4.0.1\\package\\Patient-example.json", 10000 },
-            // { "hl7.fhir.r4.examples-4.0.1\\package\\Observation-2minute-apgar-score.json", 10 },
-            // { "hl7.fhir.r4.examples-4.0.1\\package\\Bundle-resources.json", 1 },
+            { "hl7.fhir.r4.examples-4.0.1\\package\\Observation-2minute-apgar-score.json", 1000 },
+            { "hl7.fhir.r4.examples-4.0.1\\package\\Bundle-resources.json", 5 },
         };
 
         /// <summary>Main entry-point for this application.</summary>
@@ -42,7 +42,7 @@ namespace PerfTestCS
                 {
                     testDir = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\..\\..\\fhirVersions");
 
-                    if (!Directory.Exists(fhirSpecDirectory))
+                    if (!Directory.Exists(testDir))
                     {
                         System.Console.WriteLine("Could not find fhir spec directory!");
                         return -1;
@@ -95,9 +95,31 @@ namespace PerfTestCS
             string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Observation-2minute-apgar-score.json");
 
             var serializeOptions = new System.Text.Json.JsonSerializerOptions();
-            serializeOptions.Converters.Add(new Test.R4.ResourceConverter());
+            // serializeOptions.Converters.Add(new Test.R4.ResourceConverter());
 
-            var obj = System.Text.Json.JsonSerializer.Deserialize(File.ReadAllText(path), typeof(Test.R4.Resource), serializeOptions);
+            // string fragment = "{" +
+            //     "\"use\": \"home\"," +
+            //     "\"type\": \"both\"," +
+            //     "\"text\": \"534 Erewhon St PeasantVille, Rainbow, Vic  3999\"," +
+            //     "\"line\": [" +
+            //     "\"534 Erewhon St\"" +
+            //     "]," +
+            //     "\"city\": \"PleasantVille\"," +
+            //     "\"district\": \"Rainbow\"," +
+            //     "\"state\": \"Vic\"," +
+            //     "\"postalCode\": \"3999\"," +
+            //     "\"period\": {" +
+            //     "\"start\": \"1974-12-25\"" +
+            //     "}" +
+            //     "}";
+
+            // var typedFrag = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Address>(fragment, serializeOptions);
+
+            var obj = System.Text.Json.JsonSerializer.Deserialize(File.ReadAllText(path), typeof(Fhir.R4.Models.Resource), serializeOptions);
+            // var typed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Patient>(File.ReadAllText(path), serializeOptions);
+
+            // var obj = System.Text.Json.JsonSerializer.Deserialize(File.ReadAllText(path), typeof(Test.R4.Resource), serializeOptions);
+            // var typed = System.Text.Json.JsonSerializer.Deserialize<Test.R4.Patient>(File.ReadAllText(path), serializeOptions);
 
             return 0;
         }
@@ -124,29 +146,34 @@ namespace PerfTestCS
             // load the file
             string contents = File.ReadAllText(filename);
 
-            results.Add(TestNetApi(filename, contents, loops));
+            //results.Add(TestNetApi(filename, contents, loops));
             results.Add(TestBasicNewtonSoft(filename, contents, loops));
-            results.Add(TestBasicSystemJson(filename, contents, loops));
+            results.Add(TestCS2(filename, contents, loops));
 
             return results;
         }
 
-        private static TimingResult TestBasicSystemJson(string filename, string contents, int loops)
+        /// <summary>Tests create structure 2.</summary>
+        /// <param name="filename">Filename of the file.</param>
+        /// <param name="contents">The contents.</param>
+        /// <param name="loops">   The loops.</param>
+        /// <returns>A TimingResult.</returns>
+        private static TimingResult TestCS2(string filename, string contents, int loops)
         {
-            TimingResult timingResult = new TimingResult(filename, contents.Length, "CSharpBasic-SystemTextJson", loops);
+            TimingResult timingResult = new TimingResult(filename, contents.Length, "CS2", loops);
 
             Console.WriteLine($"Parsing {timingResult.Filename} with {timingResult.LibraryName}...");
 
             Stopwatch timer = Stopwatch.StartNew();
 
             var serializeOptions = new System.Text.Json.JsonSerializerOptions();
-            serializeOptions.Converters.Add(new Test.R4.ResourceConverter());
+            //serializeOptions.Converters.Add(new Test.R4.ResourceConverter());
 
             timingResult.SetupTime = timer.ElapsedMilliseconds;
 
             timer.Restart();
 
-            var firstParsed = System.Text.Json.JsonSerializer.Deserialize(contents, typeof(Test.R4.Resource), serializeOptions);
+            var firstParsed = System.Text.Json.JsonSerializer.Deserialize(contents, typeof(Fhir.R4.Models.Resource), serializeOptions);
             timingResult.FirstParseTime = timer.ElapsedMilliseconds;
 
             if (firstParsed == null)
@@ -160,7 +187,7 @@ namespace PerfTestCS
             timer.Restart();
             for (int i = 0; i < loops; i++)
             {
-                var typed = System.Text.Json.JsonSerializer.Deserialize(contents, typeof(Test.R4.Resource), serializeOptions);
+                var typed = System.Text.Json.JsonSerializer.Deserialize(contents, typeof(Fhir.R4.Models.Resource), serializeOptions);
                 if (typed == null)
                 {
                     Console.WriteLine($"Parse failed!");
@@ -172,7 +199,6 @@ namespace PerfTestCS
 
             return timingResult;
         }
-
 
         /// <summary>Tests basic newton soft.</summary>
         /// <param name="filename">Filename of the file.</param>
