@@ -28,6 +28,40 @@ namespace Fhir.R4.Models
     /// </summary>
     public Reference SubjectResults { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      if (Count != null)
+      {
+        writer.WriteNumber("count", (int)Count!);
+      }
+
+      if (SubjectResults != null)
+      {
+        writer.WritePropertyName("subjectResults");
+        SubjectResults.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -93,6 +127,29 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Value { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("value");
+      Value.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -157,6 +214,40 @@ namespace Fhir.R4.Models
     /// This element refers to a List of subject level MeasureReport resources, one for each subject in this population in this stratum.
     /// </summary>
     public Reference SubjectResults { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      if (Count != null)
+      {
+        writer.WriteNumber("count", (int)Count!);
+      }
+
+      if (SubjectResults != null)
+      {
+        writer.WritePropertyName("subjectResults");
+        SubjectResults.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -230,6 +321,61 @@ namespace Fhir.R4.Models
     /// The value for this stratum, expressed as a CodeableConcept. When defining stratifiers on complex values, the value must be rendered such that the value for each stratum within the stratifier is unique.
     /// </summary>
     public CodeableConcept Value { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Component != null) && (Component.Count != 0))
+      {
+        writer.WritePropertyName("component");
+        writer.WriteStartArray();
+
+        foreach (MeasureReportGroupStratifierStratumComponent valComponent in Component)
+        {
+          valComponent.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (MeasureScore != null)
+      {
+        writer.WritePropertyName("measureScore");
+        MeasureScore.SerializeJson(ref writer, options);
+      }
+
+      if ((Population != null) && (Population.Count != 0))
+      {
+        writer.WritePropertyName("population");
+        writer.WriteStartArray();
+
+        foreach (MeasureReportGroupStratifierStratumPopulation valPopulation in Population)
+        {
+          valPopulation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Value != null)
+      {
+        writer.WritePropertyName("value");
+        Value.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -346,6 +492,49 @@ namespace Fhir.R4.Models
     /// </summary>
     public List<MeasureReportGroupStratifierStratum> Stratum { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Code != null) && (Code.Count != 0))
+      {
+        writer.WritePropertyName("code");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCode in Code)
+        {
+          valCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Stratum != null) && (Stratum.Count != 0))
+      {
+        writer.WritePropertyName("stratum");
+        writer.WriteStartArray();
+
+        foreach (MeasureReportGroupStratifierStratum valStratum in Stratum)
+        {
+          valStratum.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -458,6 +647,61 @@ namespace Fhir.R4.Models
     /// When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure.
     /// </summary>
     public List<MeasureReportGroupStratifier> Stratifier { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      if (MeasureScore != null)
+      {
+        writer.WritePropertyName("measureScore");
+        MeasureScore.SerializeJson(ref writer, options);
+      }
+
+      if ((Population != null) && (Population.Count != 0))
+      {
+        writer.WritePropertyName("population");
+        writer.WriteStartArray();
+
+        foreach (MeasureReportGroupPopulation valPopulation in Population)
+        {
+          valPopulation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Stratifier != null) && (Stratifier.Count != 0))
+      {
+        writer.WritePropertyName("stratifier");
+        writer.WriteStartArray();
+
+        foreach (MeasureReportGroupStratifier valStratifier in Stratifier)
+        {
+          valStratifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -629,6 +873,118 @@ namespace Fhir.R4.Models
     /// Extension container element for Type
     /// </summary>
     public Element _Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("date", Date);
+
+      if (_Date != null)
+      {
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
+      }
+
+      if ((EvaluatedResource != null) && (EvaluatedResource.Count != 0))
+      {
+        writer.WritePropertyName("evaluatedResource");
+        writer.WriteStartArray();
+
+        foreach (Reference valEvaluatedResource in EvaluatedResource)
+        {
+          valEvaluatedResource.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Group != null) && (Group.Count != 0))
+      {
+        writer.WritePropertyName("group");
+        writer.WriteStartArray();
+
+        foreach (MeasureReportGroup valGroup in Group)
+        {
+          valGroup.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ImprovementNotation != null)
+      {
+        writer.WritePropertyName("improvementNotation");
+        ImprovementNotation.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("measure", Measure);
+
+      if (_Measure != null)
+      {
+        writer.WritePropertyName("_measure");
+        _Measure.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("period");
+      Period.SerializeJson(ref writer, options);
+
+      if (Reporter != null)
+      {
+        writer.WritePropertyName("reporter");
+        Reporter.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

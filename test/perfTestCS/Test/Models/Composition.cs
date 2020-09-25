@@ -36,6 +36,45 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Time { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("mode", Mode);
+
+      if (_Mode != null)
+      {
+        writer.WritePropertyName("_mode");
+        _Mode.SerializeJson(ref writer, options);
+      }
+
+      if (Party != null)
+      {
+        writer.WritePropertyName("party");
+        Party.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("time", Time);
+
+      if (_Time != null)
+      {
+        writer.WritePropertyName("_time");
+        _Time.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -118,6 +157,37 @@ namespace Fhir.R4.Models
     /// </summary>
     public Reference TargetReference { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("code", Code);
+
+      if (_Code != null)
+      {
+        writer.WritePropertyName("_code");
+        _Code.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("targetIdentifier");
+      TargetIdentifier.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("targetReference");
+      TargetReference.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -191,6 +261,55 @@ namespace Fhir.R4.Models
     /// The period of time covered by the documentation. There is no assertion that the documentation is a complete representation for this period, only that it documents events during this time.
     /// </summary>
     public Period Period { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Code != null) && (Code.Count != 0))
+      {
+        writer.WritePropertyName("code");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCode in Code)
+        {
+          valCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Detail != null) && (Detail.Count != 0))
+      {
+        writer.WritePropertyName("detail");
+        writer.WriteStartArray();
+
+        foreach (Reference valDetail in Detail)
+        {
+          valDetail.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -342,6 +461,108 @@ namespace Fhir.R4.Models
     /// Extension container element for Title
     /// </summary>
     public Element _Title { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Author != null) && (Author.Count != 0))
+      {
+        writer.WritePropertyName("author");
+        writer.WriteStartArray();
+
+        foreach (Reference valAuthor in Author)
+        {
+          valAuthor.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      if (EmptyReason != null)
+      {
+        writer.WritePropertyName("emptyReason");
+        EmptyReason.SerializeJson(ref writer, options);
+      }
+
+      if ((Entry != null) && (Entry.Count != 0))
+      {
+        writer.WritePropertyName("entry");
+        writer.WriteStartArray();
+
+        foreach (Reference valEntry in Entry)
+        {
+          valEntry.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Focus != null)
+      {
+        writer.WritePropertyName("focus");
+        Focus.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("mode", Mode);
+
+      if (_Mode != null)
+      {
+        writer.WritePropertyName("_mode");
+        _Mode.SerializeJson(ref writer, options);
+      }
+
+      if (OrderedBy != null)
+      {
+        writer.WritePropertyName("orderedBy");
+        OrderedBy.SerializeJson(ref writer, options);
+      }
+
+      if ((Section != null) && (Section.Count != 0))
+      {
+        writer.WritePropertyName("section");
+        writer.WriteStartArray();
+
+        foreach (CompositionSection valSection in Section)
+        {
+          valSection.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Text != null)
+      {
+        writer.WritePropertyName("text");
+        Text.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("title", Title);
+
+      if (_Title != null)
+      {
+        writer.WritePropertyName("_title");
+        _Title.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -590,6 +811,163 @@ namespace Fhir.R4.Models
     /// For Composition type, LOINC is ubiquitous and strongly endorsed by HL7. Most implementation guides will require a specific LOINC code, or use LOINC as an extensible binding.
     /// </summary>
     public CodeableConcept Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Attester != null) && (Attester.Count != 0))
+      {
+        writer.WritePropertyName("attester");
+        writer.WriteStartArray();
+
+        foreach (CompositionAttester valAttester in Attester)
+        {
+          valAttester.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Author != null) && (Author.Count != 0))
+      {
+        writer.WritePropertyName("author");
+        writer.WriteStartArray();
+
+        foreach (Reference valAuthor in Author)
+        {
+          valAuthor.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Category != null) && (Category.Count != 0))
+      {
+        writer.WritePropertyName("category");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCategory in Category)
+        {
+          valCategory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("confidentiality", Confidentiality);
+
+      if (_Confidentiality != null)
+      {
+        writer.WritePropertyName("_confidentiality");
+        _Confidentiality.SerializeJson(ref writer, options);
+      }
+
+      if (Custodian != null)
+      {
+        writer.WritePropertyName("custodian");
+        Custodian.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("date", Date);
+
+      if (_Date != null)
+      {
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
+      }
+
+      if (Encounter != null)
+      {
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
+
+      if ((Event != null) && (Event.Count != 0))
+      {
+        writer.WritePropertyName("event");
+        writer.WriteStartArray();
+
+        foreach (CompositionEvent valEvent in Event)
+        {
+          valEvent.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      if ((RelatesTo != null) && (RelatesTo.Count != 0))
+      {
+        writer.WritePropertyName("relatesTo");
+        writer.WriteStartArray();
+
+        foreach (CompositionRelatesTo valRelatesTo in RelatesTo)
+        {
+          valRelatesTo.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Section != null) && (Section.Count != 0))
+      {
+        writer.WritePropertyName("section");
+        writer.WriteStartArray();
+
+        foreach (CompositionSection valSection in Section)
+        {
+          valSection.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("title", Title);
+
+      if (_Title != null)
+      {
+        writer.WritePropertyName("_title");
+        _Title.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

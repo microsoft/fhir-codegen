@@ -64,6 +64,77 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _UpperLimit { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("data", Data);
+
+      if (_Data != null)
+      {
+        writer.WritePropertyName("_data");
+        _Data.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteNumber("dimensions", Dimensions);
+
+      if (Factor != null)
+      {
+        writer.WriteNumber("factor", (decimal)Factor!);
+      }
+
+      if (_Factor != null)
+      {
+        writer.WritePropertyName("_factor");
+        _Factor.SerializeJson(ref writer, options);
+      }
+
+      if (LowerLimit != null)
+      {
+        writer.WriteNumber("lowerLimit", (decimal)LowerLimit!);
+      }
+
+      if (_LowerLimit != null)
+      {
+        writer.WritePropertyName("_lowerLimit");
+        _LowerLimit.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("origin");
+      Origin.SerializeJson(ref writer, options);
+
+      writer.WriteNumber("period", Period);
+
+      if (_Period != null)
+      {
+        writer.WritePropertyName("_period");
+        _Period.SerializeJson(ref writer, options);
+      }
+
+      if (UpperLimit != null)
+      {
+        writer.WriteNumber("upperLimit", (decimal)UpperLimit!);
+      }
+
+      if (_UpperLimit != null)
+      {
+        writer.WritePropertyName("_upperLimit");
+        _UpperLimit.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

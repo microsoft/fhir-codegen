@@ -72,6 +72,138 @@ namespace Fhir.R4.Models
     /// </summary>
     public Quantity Width { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Color != null) && (Color.Count != 0))
+      {
+        writer.WritePropertyName("color");
+        writer.WriteStartArray();
+
+        foreach (string valColor in Color)
+        {
+          writer.WriteStringValue(valColor);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Color != null) && (_Color.Count != 0))
+      {
+        writer.WritePropertyName("_color");
+        writer.WriteStartArray();
+
+        foreach (Element val_Color in _Color)
+        {
+          val_Color.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Depth != null)
+      {
+        writer.WritePropertyName("depth");
+        Depth.SerializeJson(ref writer, options);
+      }
+
+      if (ExternalDiameter != null)
+      {
+        writer.WritePropertyName("externalDiameter");
+        ExternalDiameter.SerializeJson(ref writer, options);
+      }
+
+      if (Height != null)
+      {
+        writer.WritePropertyName("height");
+        Height.SerializeJson(ref writer, options);
+      }
+
+      if ((Image != null) && (Image.Count != 0))
+      {
+        writer.WritePropertyName("image");
+        writer.WriteStartArray();
+
+        foreach (Attachment valImage in Image)
+        {
+          valImage.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Imprint != null) && (Imprint.Count != 0))
+      {
+        writer.WritePropertyName("imprint");
+        writer.WriteStartArray();
+
+        foreach (string valImprint in Imprint)
+        {
+          writer.WriteStringValue(valImprint);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Imprint != null) && (_Imprint.Count != 0))
+      {
+        writer.WritePropertyName("_imprint");
+        writer.WriteStartArray();
+
+        foreach (Element val_Imprint in _Imprint)
+        {
+          val_Imprint.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (NominalVolume != null)
+      {
+        writer.WritePropertyName("nominalVolume");
+        NominalVolume.SerializeJson(ref writer, options);
+      }
+
+      if (Scoring != null)
+      {
+        writer.WritePropertyName("scoring");
+        Scoring.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("shape", Shape);
+
+      if (_Shape != null)
+      {
+        writer.WritePropertyName("_shape");
+        _Shape.SerializeJson(ref writer, options);
+      }
+
+      if (Weight != null)
+      {
+        writer.WritePropertyName("weight");
+        Weight.SerializeJson(ref writer, options);
+      }
+
+      if (Width != null)
+      {
+        writer.WritePropertyName("width");
+        Width.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

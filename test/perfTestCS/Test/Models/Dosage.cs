@@ -43,6 +43,59 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Type { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      if (DoseRange != null)
+      {
+        writer.WritePropertyName("doseRange");
+        DoseRange.SerializeJson(ref writer, options);
+      }
+
+      if (DoseQuantity != null)
+      {
+        writer.WritePropertyName("doseQuantity");
+        DoseQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (RateRatio != null)
+      {
+        writer.WritePropertyName("rateRatio");
+        RateRatio.SerializeJson(ref writer, options);
+      }
+
+      if (RateRange != null)
+      {
+        writer.WritePropertyName("rateRange");
+        RateRange.SerializeJson(ref writer, options);
+      }
+
+      if (RateQuantity != null)
+      {
+        writer.WritePropertyName("rateQuantity");
+        RateQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -179,6 +232,123 @@ namespace Fhir.R4.Models
     /// This attribute might not always be populated while the Dosage.text is expected to be populated.  If both are populated, then the Dosage.text should reflect the content of the Dosage.timing.
     /// </summary>
     public Timing Timing { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((AdditionalInstruction != null) && (AdditionalInstruction.Count != 0))
+      {
+        writer.WritePropertyName("additionalInstruction");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valAdditionalInstruction in AdditionalInstruction)
+        {
+          valAdditionalInstruction.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (AsNeededBoolean != null)
+      {
+        writer.WriteBoolean("asNeededBoolean", (bool)AsNeededBoolean!);
+      }
+
+      if (AsNeededCodeableConcept != null)
+      {
+        writer.WritePropertyName("asNeededCodeableConcept");
+        AsNeededCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      if ((DoseAndRate != null) && (DoseAndRate.Count != 0))
+      {
+        writer.WritePropertyName("doseAndRate");
+        writer.WriteStartArray();
+
+        foreach (DosageDoseAndRate valDoseAndRate in DoseAndRate)
+        {
+          valDoseAndRate.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (MaxDosePerAdministration != null)
+      {
+        writer.WritePropertyName("maxDosePerAdministration");
+        MaxDosePerAdministration.SerializeJson(ref writer, options);
+      }
+
+      if (MaxDosePerLifetime != null)
+      {
+        writer.WritePropertyName("maxDosePerLifetime");
+        MaxDosePerLifetime.SerializeJson(ref writer, options);
+      }
+
+      if (MaxDosePerPeriod != null)
+      {
+        writer.WritePropertyName("maxDosePerPeriod");
+        MaxDosePerPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (Method != null)
+      {
+        writer.WritePropertyName("method");
+        Method.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("patientInstruction", PatientInstruction);
+
+      if (_PatientInstruction != null)
+      {
+        writer.WritePropertyName("_patientInstruction");
+        _PatientInstruction.SerializeJson(ref writer, options);
+      }
+
+      if (Route != null)
+      {
+        writer.WritePropertyName("route");
+        Route.SerializeJson(ref writer, options);
+      }
+
+      if (Sequence != null)
+      {
+        writer.WriteNumber("sequence", (int)Sequence!);
+      }
+
+      if (Site != null)
+      {
+        writer.WritePropertyName("site");
+        Site.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("text", Text);
+
+      if (_Text != null)
+      {
+        writer.WritePropertyName("_text");
+        _Text.SerializeJson(ref writer, options);
+      }
+
+      if (Timing != null)
+      {
+        writer.WritePropertyName("timing");
+        Timing.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

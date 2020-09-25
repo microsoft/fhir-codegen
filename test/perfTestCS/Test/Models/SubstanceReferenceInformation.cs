@@ -28,6 +28,48 @@ namespace Fhir.R4.Models
     /// </summary>
     public List<Reference> Source { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Gene != null)
+      {
+        writer.WritePropertyName("gene");
+        Gene.SerializeJson(ref writer, options);
+      }
+
+      if (GeneSequenceOrigin != null)
+      {
+        writer.WritePropertyName("geneSequenceOrigin");
+        GeneSequenceOrigin.SerializeJson(ref writer, options);
+      }
+
+      if ((Source != null) && (Source.Count != 0))
+      {
+        writer.WritePropertyName("source");
+        writer.WriteStartArray();
+
+        foreach (Reference valSource in Source)
+        {
+          valSource.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -119,6 +161,48 @@ namespace Fhir.R4.Models
     /// Todo.
     /// </summary>
     public CodeableConcept Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Element != null)
+      {
+        writer.WritePropertyName("element");
+        Element.SerializeJson(ref writer, options);
+      }
+
+      if ((Source != null) && (Source.Count != 0))
+      {
+        writer.WritePropertyName("source");
+        writer.WriteStartArray();
+
+        foreach (Reference valSource in Source)
+        {
+          valSource.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -215,6 +299,61 @@ namespace Fhir.R4.Models
     /// Todo.
     /// </summary>
     public List<CodeableConcept> Subtype { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Classification != null)
+      {
+        writer.WritePropertyName("classification");
+        Classification.SerializeJson(ref writer, options);
+      }
+
+      if (Domain != null)
+      {
+        writer.WritePropertyName("domain");
+        Domain.SerializeJson(ref writer, options);
+      }
+
+      if ((Source != null) && (Source.Count != 0))
+      {
+        writer.WritePropertyName("source");
+        writer.WriteStartArray();
+
+        foreach (Reference valSource in Source)
+        {
+          valSource.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Subtype != null) && (Subtype.Count != 0))
+      {
+        writer.WritePropertyName("subtype");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valSubtype in Subtype)
+        {
+          valSubtype.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -367,6 +506,92 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Type { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (AmountQuantity != null)
+      {
+        writer.WritePropertyName("amountQuantity");
+        AmountQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (AmountRange != null)
+      {
+        writer.WritePropertyName("amountRange");
+        AmountRange.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("amountString", AmountString);
+
+      if (_AmountString != null)
+      {
+        writer.WritePropertyName("_amountString");
+        _AmountString.SerializeJson(ref writer, options);
+      }
+
+      if (AmountType != null)
+      {
+        writer.WritePropertyName("amountType");
+        AmountType.SerializeJson(ref writer, options);
+      }
+
+      if (Interaction != null)
+      {
+        writer.WritePropertyName("interaction");
+        Interaction.SerializeJson(ref writer, options);
+      }
+
+      if (Organism != null)
+      {
+        writer.WritePropertyName("organism");
+        Organism.SerializeJson(ref writer, options);
+      }
+
+      if (OrganismType != null)
+      {
+        writer.WritePropertyName("organismType");
+        OrganismType.SerializeJson(ref writer, options);
+      }
+
+      if ((Source != null) && (Source.Count != 0))
+      {
+        writer.WritePropertyName("source");
+        writer.WriteStartArray();
+
+        foreach (Reference valSource in Source)
+        {
+          valSource.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Target != null)
+      {
+        writer.WritePropertyName("target");
+        Target.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -513,6 +738,86 @@ namespace Fhir.R4.Models
     /// Todo.
     /// </summary>
     public List<SubstanceReferenceInformationTarget> Target { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Classification != null) && (Classification.Count != 0))
+      {
+        writer.WritePropertyName("classification");
+        writer.WriteStartArray();
+
+        foreach (SubstanceReferenceInformationClassification valClassification in Classification)
+        {
+          valClassification.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("comment", Comment);
+
+      if (_Comment != null)
+      {
+        writer.WritePropertyName("_comment");
+        _Comment.SerializeJson(ref writer, options);
+      }
+
+      if ((Gene != null) && (Gene.Count != 0))
+      {
+        writer.WritePropertyName("gene");
+        writer.WriteStartArray();
+
+        foreach (SubstanceReferenceInformationGene valGene in Gene)
+        {
+          valGene.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((GeneElement != null) && (GeneElement.Count != 0))
+      {
+        writer.WritePropertyName("geneElement");
+        writer.WriteStartArray();
+
+        foreach (SubstanceReferenceInformationGeneElement valGeneElement in GeneElement)
+        {
+          valGeneElement.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Target != null) && (Target.Count != 0))
+      {
+        writer.WritePropertyName("target");
+        writer.WriteStartArray();
+
+        foreach (SubstanceReferenceInformationTarget valTarget in Target)
+        {
+          valTarget.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

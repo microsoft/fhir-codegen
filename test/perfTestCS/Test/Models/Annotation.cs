@@ -44,6 +44,53 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Time { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      if (AuthorReference != null)
+      {
+        writer.WritePropertyName("authorReference");
+        AuthorReference.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("authorString", AuthorString);
+
+      if (_AuthorString != null)
+      {
+        writer.WritePropertyName("_authorString");
+        _AuthorString.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("text", Text);
+
+      if (_Text != null)
+      {
+        writer.WritePropertyName("_text");
+        _Text.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("time", Time);
+
+      if (_Time != null)
+      {
+        writer.WritePropertyName("_time");
+        _Time.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

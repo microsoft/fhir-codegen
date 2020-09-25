@@ -92,6 +92,119 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Use { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("city", City);
+
+      if (_City != null)
+      {
+        writer.WritePropertyName("_city");
+        _City.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("country", Country);
+
+      if (_Country != null)
+      {
+        writer.WritePropertyName("_country");
+        _Country.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("district", District);
+
+      if (_District != null)
+      {
+        writer.WritePropertyName("_district");
+        _District.SerializeJson(ref writer, options);
+      }
+
+      if ((Line != null) && (Line.Count != 0))
+      {
+        writer.WritePropertyName("line");
+        writer.WriteStartArray();
+
+        foreach (string valLine in Line)
+        {
+          writer.WriteStringValue(valLine);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Line != null) && (_Line.Count != 0))
+      {
+        writer.WritePropertyName("_line");
+        writer.WriteStartArray();
+
+        foreach (Element val_Line in _Line)
+        {
+          val_Line.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("postalCode", PostalCode);
+
+      if (_PostalCode != null)
+      {
+        writer.WritePropertyName("_postalCode");
+        _PostalCode.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("state", State);
+
+      if (_State != null)
+      {
+        writer.WritePropertyName("_state");
+        _State.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("text", Text);
+
+      if (_Text != null)
+      {
+        writer.WritePropertyName("_text");
+        _Text.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("use", Use);
+
+      if (_Use != null)
+      {
+        writer.WritePropertyName("_use");
+        _Use.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

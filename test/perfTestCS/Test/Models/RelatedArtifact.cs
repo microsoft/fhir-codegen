@@ -68,6 +68,77 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Url { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("citation", Citation);
+
+      if (_Citation != null)
+      {
+        writer.WritePropertyName("_citation");
+        _Citation.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("display", Display);
+
+      if (_Display != null)
+      {
+        writer.WritePropertyName("_display");
+        _Display.SerializeJson(ref writer, options);
+      }
+
+      if (Document != null)
+      {
+        writer.WritePropertyName("document");
+        Document.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("label", Label);
+
+      if (_Label != null)
+      {
+        writer.WritePropertyName("_label");
+        _Label.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("resource", Resource);
+
+      if (_Resource != null)
+      {
+        writer.WritePropertyName("_resource");
+        _Resource.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("url", Url);
+
+      if (_Url != null)
+      {
+        writer.WritePropertyName("_url");
+        _Url.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

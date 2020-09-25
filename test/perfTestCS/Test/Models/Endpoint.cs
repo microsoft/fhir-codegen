@@ -87,6 +87,156 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Status { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("address", Address);
+
+      if (_Address != null)
+      {
+        writer.WritePropertyName("_address");
+        _Address.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("connectionType");
+      ConnectionType.SerializeJson(ref writer, options);
+
+      if ((Contact != null) && (Contact.Count != 0))
+      {
+        writer.WritePropertyName("contact");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valContact in Contact)
+        {
+          valContact.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Header != null) && (Header.Count != 0))
+      {
+        writer.WritePropertyName("header");
+        writer.WriteStartArray();
+
+        foreach (string valHeader in Header)
+        {
+          writer.WriteStringValue(valHeader);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Header != null) && (_Header.Count != 0))
+      {
+        writer.WritePropertyName("_header");
+        writer.WriteStartArray();
+
+        foreach (Element val_Header in _Header)
+        {
+          val_Header.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ManagingOrganization != null)
+      {
+        writer.WritePropertyName("managingOrganization");
+        ManagingOrganization.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("name", Name);
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      if ((PayloadMimeType != null) && (PayloadMimeType.Count != 0))
+      {
+        writer.WritePropertyName("payloadMimeType");
+        writer.WriteStartArray();
+
+        foreach (string valPayloadMimeType in PayloadMimeType)
+        {
+          writer.WriteStringValue(valPayloadMimeType);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_PayloadMimeType != null) && (_PayloadMimeType.Count != 0))
+      {
+        writer.WritePropertyName("_payloadMimeType");
+        writer.WriteStartArray();
+
+        foreach (Element val_PayloadMimeType in _PayloadMimeType)
+        {
+          val_PayloadMimeType.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((PayloadType != null) && (PayloadType.Count != 0))
+      {
+        writer.WritePropertyName("payloadType");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valPayloadType in PayloadType)
+        {
+          valPayloadType.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

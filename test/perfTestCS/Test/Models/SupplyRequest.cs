@@ -36,6 +36,52 @@ namespace Fhir.R4.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      if (ValueCodeableConcept != null)
+      {
+        writer.WritePropertyName("valueCodeableConcept");
+        ValueCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      if (ValueQuantity != null)
+      {
+        writer.WritePropertyName("valueQuantity");
+        ValueQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (ValueRange != null)
+      {
+        writer.WritePropertyName("valueRange");
+        ValueRange.SerializeJson(ref writer, options);
+      }
+
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -194,6 +240,168 @@ namespace Fhir.R4.Models
     /// Who is intended to fulfill the request.
     /// </summary>
     public List<Reference> Supplier { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("authoredOn", AuthoredOn);
+
+      if (_AuthoredOn != null)
+      {
+        writer.WritePropertyName("_authoredOn");
+        _AuthoredOn.SerializeJson(ref writer, options);
+      }
+
+      if (Category != null)
+      {
+        writer.WritePropertyName("category");
+        Category.SerializeJson(ref writer, options);
+      }
+
+      if (DeliverFrom != null)
+      {
+        writer.WritePropertyName("deliverFrom");
+        DeliverFrom.SerializeJson(ref writer, options);
+      }
+
+      if (DeliverTo != null)
+      {
+        writer.WritePropertyName("deliverTo");
+        DeliverTo.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("itemCodeableConcept");
+      ItemCodeableConcept.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("itemReference");
+      ItemReference.SerializeJson(ref writer, options);
+
+      writer.WriteString("occurrenceDateTime", OccurrenceDateTime);
+
+      if (_OccurrenceDateTime != null)
+      {
+        writer.WritePropertyName("_occurrenceDateTime");
+        _OccurrenceDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (OccurrencePeriod != null)
+      {
+        writer.WritePropertyName("occurrencePeriod");
+        OccurrencePeriod.SerializeJson(ref writer, options);
+      }
+
+      if (OccurrenceTiming != null)
+      {
+        writer.WritePropertyName("occurrenceTiming");
+        OccurrenceTiming.SerializeJson(ref writer, options);
+      }
+
+      if ((Parameter != null) && (Parameter.Count != 0))
+      {
+        writer.WritePropertyName("parameter");
+        writer.WriteStartArray();
+
+        foreach (SupplyRequestParameter valParameter in Parameter)
+        {
+          valParameter.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("priority", Priority);
+
+      if (_Priority != null)
+      {
+        writer.WritePropertyName("_priority");
+        _Priority.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("quantity");
+      Quantity.SerializeJson(ref writer, options);
+
+      if ((ReasonCode != null) && (ReasonCode.Count != 0))
+      {
+        writer.WritePropertyName("reasonCode");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valReasonCode in ReasonCode)
+        {
+          valReasonCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ReasonReference != null) && (ReasonReference.Count != 0))
+      {
+        writer.WritePropertyName("reasonReference");
+        writer.WriteStartArray();
+
+        foreach (Reference valReasonReference in ReasonReference)
+        {
+          valReasonReference.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Requester != null)
+      {
+        writer.WritePropertyName("requester");
+        Requester.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if ((Supplier != null) && (Supplier.Count != 0))
+      {
+        writer.WritePropertyName("supplier");
+        writer.WriteStartArray();
+
+        foreach (Reference valSupplier in Supplier)
+        {
+          valSupplier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

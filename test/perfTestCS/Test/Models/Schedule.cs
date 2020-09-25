@@ -56,6 +56,110 @@ namespace Fhir.R4.Models
     /// </summary>
     public List<CodeableConcept> Specialty { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Active != null)
+      {
+        writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if ((Actor != null) && (Actor.Count != 0))
+      {
+        writer.WritePropertyName("actor");
+        writer.WriteStartArray();
+
+        foreach (Reference valActor in Actor)
+        {
+          valActor.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("comment", Comment);
+
+      if (_Comment != null)
+      {
+        writer.WritePropertyName("_comment");
+        _Comment.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (PlanningHorizon != null)
+      {
+        writer.WritePropertyName("planningHorizon");
+        PlanningHorizon.SerializeJson(ref writer, options);
+      }
+
+      if ((ServiceCategory != null) && (ServiceCategory.Count != 0))
+      {
+        writer.WritePropertyName("serviceCategory");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valServiceCategory in ServiceCategory)
+        {
+          valServiceCategory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ServiceType != null) && (ServiceType.Count != 0))
+      {
+        writer.WritePropertyName("serviceType");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valServiceType in ServiceType)
+        {
+          valServiceType.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Specialty != null) && (Specialty.Count != 0))
+      {
+        writer.WritePropertyName("specialty");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valSpecialty in Specialty)
+        {
+          valSpecialty.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

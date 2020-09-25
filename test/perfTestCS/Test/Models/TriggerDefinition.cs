@@ -64,6 +64,86 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Type { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      if (Condition != null)
+      {
+        writer.WritePropertyName("condition");
+        Condition.SerializeJson(ref writer, options);
+      }
+
+      if ((Data != null) && (Data.Count != 0))
+      {
+        writer.WritePropertyName("data");
+        writer.WriteStartArray();
+
+        foreach (DataRequirement valData in Data)
+        {
+          valData.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("name", Name);
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      if (TimingTiming != null)
+      {
+        writer.WritePropertyName("timingTiming");
+        TimingTiming.SerializeJson(ref writer, options);
+      }
+
+      if (TimingReference != null)
+      {
+        writer.WritePropertyName("timingReference");
+        TimingReference.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("timingDate", TimingDate);
+
+      if (_TimingDate != null)
+      {
+        writer.WritePropertyName("_timingDate");
+        _TimingDate.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("timingDateTime", TimingDateTime);
+
+      if (_TimingDateTime != null)
+      {
+        writer.WritePropertyName("_timingDateTime");
+        _TimingDateTime.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

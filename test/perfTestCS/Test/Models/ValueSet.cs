@@ -36,6 +36,45 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Value { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("language", Language);
+
+      if (_Language != null)
+      {
+        writer.WritePropertyName("_language");
+        _Language.SerializeJson(ref writer, options);
+      }
+
+      if (Use != null)
+      {
+        writer.WritePropertyName("use");
+        Use.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("value", Value);
+
+      if (_Value != null)
+      {
+        writer.WritePropertyName("_value");
+        _Value.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -121,6 +160,52 @@ namespace Fhir.R4.Models
     /// Extension container element for Display
     /// </summary>
     public Element _Display { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("code", Code);
+
+      if (_Code != null)
+      {
+        writer.WritePropertyName("_code");
+        _Code.SerializeJson(ref writer, options);
+      }
+
+      if ((Designation != null) && (Designation.Count != 0))
+      {
+        writer.WritePropertyName("designation");
+        writer.WriteStartArray();
+
+        foreach (ValueSetComposeIncludeConceptDesignation valDesignation in Designation)
+        {
+          valDesignation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("display", Display);
+
+      if (_Display != null)
+      {
+        writer.WritePropertyName("_display");
+        _Display.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -234,6 +319,47 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Value { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("op", Op);
+
+      if (_Op != null)
+      {
+        writer.WritePropertyName("_op");
+        _Op.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("property", Property);
+
+      if (_Property != null)
+      {
+        writer.WritePropertyName("_property");
+        _Property.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("value", Value);
+
+      if (_Value != null)
+      {
+        writer.WritePropertyName("_value");
+        _Value.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -335,6 +461,91 @@ namespace Fhir.R4.Models
     /// Extension container element for Version
     /// </summary>
     public Element _Version { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Concept != null) && (Concept.Count != 0))
+      {
+        writer.WritePropertyName("concept");
+        writer.WriteStartArray();
+
+        foreach (ValueSetComposeIncludeConcept valConcept in Concept)
+        {
+          valConcept.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Filter != null) && (Filter.Count != 0))
+      {
+        writer.WritePropertyName("filter");
+        writer.WriteStartArray();
+
+        foreach (ValueSetComposeIncludeFilter valFilter in Filter)
+        {
+          valFilter.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("system", System);
+
+      if (_System != null)
+      {
+        writer.WritePropertyName("_system");
+        _System.SerializeJson(ref writer, options);
+      }
+
+      if ((ValueSet != null) && (ValueSet.Count != 0))
+      {
+        writer.WritePropertyName("valueSet");
+        writer.WriteStartArray();
+
+        foreach (string valValueSet in ValueSet)
+        {
+          writer.WriteStringValue(valValueSet);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_ValueSet != null) && (_ValueSet.Count != 0))
+      {
+        writer.WritePropertyName("_valueSet");
+        writer.WriteStartArray();
+
+        foreach (Element val_ValueSet in _ValueSet)
+        {
+          val_ValueSet.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("version", Version);
+
+      if (_Version != null)
+      {
+        writer.WritePropertyName("_version");
+        _Version.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -524,6 +735,62 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _LockedDate { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Exclude != null) && (Exclude.Count != 0))
+      {
+        writer.WritePropertyName("exclude");
+        writer.WriteStartArray();
+
+        foreach (ValueSetComposeInclude valExclude in Exclude)
+        {
+          valExclude.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Inactive != null)
+      {
+        writer.WriteBoolean("inactive", (bool)Inactive!);
+      }
+
+      if ((Include != null) && (Include.Count != 0))
+      {
+        writer.WritePropertyName("include");
+        writer.WriteStartArray();
+
+        foreach (ValueSetComposeInclude valInclude in Include)
+        {
+          valInclude.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("lockedDate", LockedDate);
+
+      if (_LockedDate != null)
+      {
+        writer.WritePropertyName("_lockedDate");
+        _LockedDate.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -690,6 +957,84 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _ValueDateTime { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("name", Name);
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueString", ValueString);
+
+      if (_ValueString != null)
+      {
+        writer.WritePropertyName("_valueString");
+        _ValueString.SerializeJson(ref writer, options);
+      }
+
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (ValueInteger != null)
+      {
+        writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (ValueDecimal != null)
+      {
+        writer.WriteNumber("valueDecimal", (decimal)ValueDecimal!);
+      }
+
+      if (_ValueDecimal != null)
+      {
+        writer.WritePropertyName("_valueDecimal");
+        _ValueDecimal.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueUri", ValueUri);
+
+      if (_ValueUri != null)
+      {
+        writer.WritePropertyName("_valueUri");
+        _ValueUri.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueCode", ValueCode);
+
+      if (_ValueCode != null)
+      {
+        writer.WritePropertyName("_valueCode");
+        _ValueCode.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueDateTime", ValueDateTime);
+
+      if (_ValueDateTime != null)
+      {
+        writer.WritePropertyName("_valueDateTime");
+        _ValueDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -842,6 +1187,91 @@ namespace Fhir.R4.Models
     /// Extension container element for Version
     /// </summary>
     public Element _Version { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Abstract != null)
+      {
+        writer.WriteBoolean("abstract", (bool)Abstract!);
+      }
+
+      writer.WriteString("code", Code);
+
+      if (_Code != null)
+      {
+        writer.WritePropertyName("_code");
+        _Code.SerializeJson(ref writer, options);
+      }
+
+      if ((Contains != null) && (Contains.Count != 0))
+      {
+        writer.WritePropertyName("contains");
+        writer.WriteStartArray();
+
+        foreach (ValueSetExpansionContains valContains in Contains)
+        {
+          valContains.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Designation != null) && (Designation.Count != 0))
+      {
+        writer.WritePropertyName("designation");
+        writer.WriteStartArray();
+
+        foreach (ValueSetComposeIncludeConceptDesignation valDesignation in Designation)
+        {
+          valDesignation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("display", Display);
+
+      if (_Display != null)
+      {
+        writer.WritePropertyName("_display");
+        _Display.SerializeJson(ref writer, options);
+      }
+
+      if (Inactive != null)
+      {
+        writer.WriteBoolean("inactive", (bool)Inactive!);
+      }
+
+      writer.WriteString("system", System);
+
+      if (_System != null)
+      {
+        writer.WritePropertyName("_system");
+        _System.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("version", Version);
+
+      if (_Version != null)
+      {
+        writer.WritePropertyName("_version");
+        _Version.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -1016,6 +1446,75 @@ namespace Fhir.R4.Models
     /// Paging only applies to flat expansions.
     /// </summary>
     public int? Total { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Contains != null) && (Contains.Count != 0))
+      {
+        writer.WritePropertyName("contains");
+        writer.WriteStartArray();
+
+        foreach (ValueSetExpansionContains valContains in Contains)
+        {
+          valContains.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("identifier", Identifier);
+
+      if (_Identifier != null)
+      {
+        writer.WritePropertyName("_identifier");
+        _Identifier.SerializeJson(ref writer, options);
+      }
+
+      if (Offset != null)
+      {
+        writer.WriteNumber("offset", (int)Offset!);
+      }
+
+      if ((Parameter != null) && (Parameter.Count != 0))
+      {
+        writer.WritePropertyName("parameter");
+        writer.WriteStartArray();
+
+        foreach (ValueSetExpansionParameter valParameter in Parameter)
+        {
+          valParameter.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("timestamp", Timestamp);
+
+      if (_Timestamp != null)
+      {
+        writer.WritePropertyName("_timestamp");
+        _Timestamp.SerializeJson(ref writer, options);
+      }
+
+      if (Total != null)
+      {
+        writer.WriteNumber("total", (int)Total!);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -1258,6 +1757,180 @@ namespace Fhir.R4.Models
     /// Extension container element for Version
     /// </summary>
     public Element _Version { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Compose != null)
+      {
+        writer.WritePropertyName("compose");
+        Compose.SerializeJson(ref writer, options);
+      }
+
+      if ((Contact != null) && (Contact.Count != 0))
+      {
+        writer.WritePropertyName("contact");
+        writer.WriteStartArray();
+
+        foreach (ContactDetail valContact in Contact)
+        {
+          valContact.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("copyright", Copyright);
+
+      if (_Copyright != null)
+      {
+        writer.WritePropertyName("_copyright");
+        _Copyright.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("date", Date);
+
+      if (_Date != null)
+      {
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("description", Description);
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (Expansion != null)
+      {
+        writer.WritePropertyName("expansion");
+        Expansion.SerializeJson(ref writer, options);
+      }
+
+      if (Experimental != null)
+      {
+        writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Immutable != null)
+      {
+        writer.WriteBoolean("immutable", (bool)Immutable!);
+      }
+
+      if ((Jurisdiction != null) && (Jurisdiction.Count != 0))
+      {
+        writer.WritePropertyName("jurisdiction");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valJurisdiction in Jurisdiction)
+        {
+          valJurisdiction.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("name", Name);
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("publisher", Publisher);
+
+      if (_Publisher != null)
+      {
+        writer.WritePropertyName("_publisher");
+        _Publisher.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("purpose", Purpose);
+
+      if (_Purpose != null)
+      {
+        writer.WritePropertyName("_purpose");
+        _Purpose.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("title", Title);
+
+      if (_Title != null)
+      {
+        writer.WritePropertyName("_title");
+        _Title.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("url", Url);
+
+      if (_Url != null)
+      {
+        writer.WritePropertyName("_url");
+        _Url.SerializeJson(ref writer, options);
+      }
+
+      if ((UseContext != null) && (UseContext.Count != 0))
+      {
+        writer.WritePropertyName("useContext");
+        writer.WriteStartArray();
+
+        foreach (UsageContext valUseContext in UseContext)
+        {
+          valUseContext.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("version", Version);
+
+      if (_Version != null)
+      {
+        writer.WritePropertyName("_version");
+        _Version.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

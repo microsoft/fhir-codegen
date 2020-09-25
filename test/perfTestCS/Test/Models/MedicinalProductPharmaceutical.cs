@@ -24,6 +24,32 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Status { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      if (Status != null)
+      {
+        writer.WritePropertyName("status");
+        Status.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -92,6 +118,37 @@ namespace Fhir.R4.Models
     /// A value for the time.
     /// </summary>
     public Quantity Value { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("supportingInformation", SupportingInformation);
+
+      if (_SupportingInformation != null)
+      {
+        writer.WritePropertyName("_supportingInformation");
+        _SupportingInformation.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("tissue");
+      Tissue.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("value");
+      Value.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -162,6 +219,39 @@ namespace Fhir.R4.Models
     /// A species specific time during which consumption of animal product is not appropriate.
     /// </summary>
     public List<MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod> WithdrawalPeriod { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      if ((WithdrawalPeriod != null) && (WithdrawalPeriod.Count != 0))
+      {
+        writer.WritePropertyName("withdrawalPeriod");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod valWithdrawalPeriod in WithdrawalPeriod)
+        {
+          valWithdrawalPeriod.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -265,6 +355,69 @@ namespace Fhir.R4.Models
     /// A species for which this route applies.
     /// </summary>
     public List<MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies> TargetSpecies { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      if (FirstDose != null)
+      {
+        writer.WritePropertyName("firstDose");
+        FirstDose.SerializeJson(ref writer, options);
+      }
+
+      if (MaxDosePerDay != null)
+      {
+        writer.WritePropertyName("maxDosePerDay");
+        MaxDosePerDay.SerializeJson(ref writer, options);
+      }
+
+      if (MaxDosePerTreatmentPeriod != null)
+      {
+        writer.WritePropertyName("maxDosePerTreatmentPeriod");
+        MaxDosePerTreatmentPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (MaxSingleDose != null)
+      {
+        writer.WritePropertyName("maxSingleDose");
+        MaxSingleDose.SerializeJson(ref writer, options);
+      }
+
+      if (MaxTreatmentPeriod != null)
+      {
+        writer.WritePropertyName("maxTreatmentPeriod");
+        MaxTreatmentPeriod.SerializeJson(ref writer, options);
+      }
+
+      if ((TargetSpecies != null) && (TargetSpecies.Count != 0))
+      {
+        writer.WritePropertyName("targetSpecies");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies valTargetSpecies in TargetSpecies)
+        {
+          valTargetSpecies.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -397,6 +550,100 @@ namespace Fhir.R4.Models
     /// Todo.
     /// </summary>
     public CodeableConcept UnitOfPresentation { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("administrableDoseForm");
+      AdministrableDoseForm.SerializeJson(ref writer, options);
+
+      if ((Characteristics != null) && (Characteristics.Count != 0))
+      {
+        writer.WritePropertyName("characteristics");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductPharmaceuticalCharacteristics valCharacteristics in Characteristics)
+        {
+          valCharacteristics.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Device != null) && (Device.Count != 0))
+      {
+        writer.WritePropertyName("device");
+        writer.WriteStartArray();
+
+        foreach (Reference valDevice in Device)
+        {
+          valDevice.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Ingredient != null) && (Ingredient.Count != 0))
+      {
+        writer.WritePropertyName("ingredient");
+        writer.WriteStartArray();
+
+        foreach (Reference valIngredient in Ingredient)
+        {
+          valIngredient.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((RouteOfAdministration != null) && (RouteOfAdministration.Count != 0))
+      {
+        writer.WritePropertyName("routeOfAdministration");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductPharmaceuticalRouteOfAdministration valRouteOfAdministration in RouteOfAdministration)
+        {
+          valRouteOfAdministration.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (UnitOfPresentation != null)
+      {
+        writer.WritePropertyName("unitOfPresentation");
+        UnitOfPresentation.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

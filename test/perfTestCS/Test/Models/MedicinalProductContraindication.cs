@@ -28,6 +28,32 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept TherapyRelationshipType { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("medicationCodeableConcept");
+      MedicationCodeableConcept.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("medicationReference");
+      MedicationReference.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("therapyRelationshipType");
+      TherapyRelationshipType.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -117,6 +143,103 @@ namespace Fhir.R4.Models
     /// Information about the use of the medicinal product in relation to other therapies as part of the indication.
     /// </summary>
     public List<Reference> TherapeuticIndication { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Comorbidity != null) && (Comorbidity.Count != 0))
+      {
+        writer.WritePropertyName("comorbidity");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valComorbidity in Comorbidity)
+        {
+          valComorbidity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Disease != null)
+      {
+        writer.WritePropertyName("disease");
+        Disease.SerializeJson(ref writer, options);
+      }
+
+      if (DiseaseStatus != null)
+      {
+        writer.WritePropertyName("diseaseStatus");
+        DiseaseStatus.SerializeJson(ref writer, options);
+      }
+
+      if ((OtherTherapy != null) && (OtherTherapy.Count != 0))
+      {
+        writer.WritePropertyName("otherTherapy");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductContraindicationOtherTherapy valOtherTherapy in OtherTherapy)
+        {
+          valOtherTherapy.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Population != null) && (Population.Count != 0))
+      {
+        writer.WritePropertyName("population");
+        writer.WriteStartArray();
+
+        foreach (Population valPopulation in Population)
+        {
+          valPopulation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Subject != null) && (Subject.Count != 0))
+      {
+        writer.WritePropertyName("subject");
+        writer.WriteStartArray();
+
+        foreach (Reference valSubject in Subject)
+        {
+          valSubject.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((TherapeuticIndication != null) && (TherapeuticIndication.Count != 0))
+      {
+        writer.WritePropertyName("therapeuticIndication");
+        writer.WriteStartArray();
+
+        foreach (Reference valTherapeuticIndication in TherapeuticIndication)
+        {
+          valTherapeuticIndication.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

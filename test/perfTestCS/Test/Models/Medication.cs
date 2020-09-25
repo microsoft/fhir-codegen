@@ -32,6 +32,40 @@ namespace Fhir.R4.Models
     /// </summary>
     public Ratio Strength { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (IsActive != null)
+      {
+        writer.WriteBoolean("isActive", (bool)IsActive!);
+      }
+
+      writer.WritePropertyName("itemCodeableConcept");
+      ItemCodeableConcept.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("itemReference");
+      ItemReference.SerializeJson(ref writer, options);
+
+      if (Strength != null)
+      {
+        writer.WritePropertyName("strength");
+        Strength.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -109,6 +143,39 @@ namespace Fhir.R4.Models
     /// Extension container element for LotNumber
     /// </summary>
     public Element _LotNumber { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("expirationDate", ExpirationDate);
+
+      if (_ExpirationDate != null)
+      {
+        writer.WritePropertyName("_expirationDate");
+        _ExpirationDate.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("lotNumber", LotNumber);
+
+      if (_LotNumber != null)
+      {
+        writer.WritePropertyName("_lotNumber");
+        _LotNumber.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -210,6 +277,90 @@ namespace Fhir.R4.Models
     /// Extension container element for Status
     /// </summary>
     public Element _Status { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(ref writer, options);
+      }
+
+      if (Batch != null)
+      {
+        writer.WritePropertyName("batch");
+        Batch.SerializeJson(ref writer, options);
+      }
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      if (Form != null)
+      {
+        writer.WritePropertyName("form");
+        Form.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Ingredient != null) && (Ingredient.Count != 0))
+      {
+        writer.WritePropertyName("ingredient");
+        writer.WriteStartArray();
+
+        foreach (MedicationIngredient valIngredient in Ingredient)
+        {
+          valIngredient.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Manufacturer != null)
+      {
+        writer.WritePropertyName("manufacturer");
+        Manufacturer.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

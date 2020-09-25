@@ -28,6 +28,34 @@ namespace Fhir.R4.Models
     /// </summary>
     public Reference Target { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("assurance", Assurance);
+
+      if (_Assurance != null)
+      {
+        writer.WritePropertyName("_assurance");
+        _Assurance.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("target");
+      Target.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -136,6 +164,124 @@ namespace Fhir.R4.Models
     /// Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification.
     /// </summary>
     public List<ContactPoint> Telecom { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Active != null)
+      {
+        writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if ((Address != null) && (Address.Count != 0))
+      {
+        writer.WritePropertyName("address");
+        writer.WriteStartArray();
+
+        foreach (Address valAddress in Address)
+        {
+          valAddress.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("birthDate", BirthDate);
+
+      if (_BirthDate != null)
+      {
+        writer.WritePropertyName("_birthDate");
+        _BirthDate.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("gender", Gender);
+
+      if (_Gender != null)
+      {
+        writer.WritePropertyName("_gender");
+        _Gender.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Link != null) && (Link.Count != 0))
+      {
+        writer.WritePropertyName("link");
+        writer.WriteStartArray();
+
+        foreach (PersonLink valLink in Link)
+        {
+          valLink.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ManagingOrganization != null)
+      {
+        writer.WritePropertyName("managingOrganization");
+        ManagingOrganization.SerializeJson(ref writer, options);
+      }
+
+      if ((Name != null) && (Name.Count != 0))
+      {
+        writer.WritePropertyName("name");
+        writer.WriteStartArray();
+
+        foreach (HumanName valName in Name)
+        {
+          valName.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Photo != null)
+      {
+        writer.WritePropertyName("photo");
+        Photo.SerializeJson(ref writer, options);
+      }
+
+      if ((Telecom != null) && (Telecom.Count != 0))
+      {
+        writer.WritePropertyName("telecom");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valTelecom in Telecom)
+        {
+          valTelecom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

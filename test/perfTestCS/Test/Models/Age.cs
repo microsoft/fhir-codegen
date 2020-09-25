@@ -16,6 +16,23 @@ namespace Fhir.R4.Models
   [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Age>))]
   public class Age : Quantity,  IFhirJsonSerializable {
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Quantity)this).SerializeJson(ref writer, options, false);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

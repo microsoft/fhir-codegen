@@ -57,6 +57,99 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _VersionId { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("lastUpdated", LastUpdated);
+
+      if (_LastUpdated != null)
+      {
+        writer.WritePropertyName("_lastUpdated");
+        _LastUpdated.SerializeJson(ref writer, options);
+      }
+
+      if ((Profile != null) && (Profile.Count != 0))
+      {
+        writer.WritePropertyName("profile");
+        writer.WriteStartArray();
+
+        foreach (string valProfile in Profile)
+        {
+          writer.WriteStringValue(valProfile);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Profile != null) && (_Profile.Count != 0))
+      {
+        writer.WritePropertyName("_profile");
+        writer.WriteStartArray();
+
+        foreach (Element val_Profile in _Profile)
+        {
+          val_Profile.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Security != null) && (Security.Count != 0))
+      {
+        writer.WritePropertyName("security");
+        writer.WriteStartArray();
+
+        foreach (Coding valSecurity in Security)
+        {
+          valSecurity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("source", Source);
+
+      if (_Source != null)
+      {
+        writer.WritePropertyName("_source");
+        _Source.SerializeJson(ref writer, options);
+      }
+
+      if ((Tag != null) && (Tag.Count != 0))
+      {
+        writer.WritePropertyName("tag");
+        writer.WriteStartArray();
+
+        foreach (Coding valTag in Tag)
+        {
+          valTag.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("versionId", VersionId);
+
+      if (_VersionId != null)
+      {
+        writer.WritePropertyName("_versionId");
+        _VersionId.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

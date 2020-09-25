@@ -36,6 +36,51 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Unit { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (ConversionFactor != null)
+      {
+        writer.WriteNumber("conversionFactor", (decimal)ConversionFactor!);
+      }
+
+      if (_ConversionFactor != null)
+      {
+        writer.WritePropertyName("_conversionFactor");
+        _ConversionFactor.SerializeJson(ref writer, options);
+      }
+
+      if (CustomaryUnit != null)
+      {
+        writer.WritePropertyName("customaryUnit");
+        CustomaryUnit.SerializeJson(ref writer, options);
+      }
+
+      if (DecimalPrecision != null)
+      {
+        writer.WriteNumber("decimalPrecision", (int)DecimalPrecision!);
+      }
+
+      if (Unit != null)
+      {
+        writer.WritePropertyName("unit");
+        Unit.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -145,6 +190,84 @@ namespace Fhir.R4.Models
     /// The low and high values determining the interval. There may be only one of the two.
     /// </summary>
     public Range Range { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Age != null)
+      {
+        writer.WritePropertyName("age");
+        Age.SerializeJson(ref writer, options);
+      }
+
+      if ((AppliesTo != null) && (AppliesTo.Count != 0))
+      {
+        writer.WritePropertyName("appliesTo");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valAppliesTo in AppliesTo)
+        {
+          valAppliesTo.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("category", Category);
+
+      if (_Category != null)
+      {
+        writer.WritePropertyName("_category");
+        _Category.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("condition", Condition);
+
+      if (_Condition != null)
+      {
+        writer.WritePropertyName("_condition");
+        _Condition.SerializeJson(ref writer, options);
+      }
+
+      if (Context != null)
+      {
+        writer.WritePropertyName("context");
+        Context.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("gender", Gender);
+
+      if (_Gender != null)
+      {
+        writer.WritePropertyName("_gender");
+        _Gender.SerializeJson(ref writer, options);
+      }
+
+      if (GestationalAge != null)
+      {
+        writer.WritePropertyName("gestationalAge");
+        GestationalAge.SerializeJson(ref writer, options);
+      }
+
+      if (Range != null)
+      {
+        writer.WritePropertyName("range");
+        Range.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -326,6 +449,143 @@ namespace Fhir.R4.Models
     /// The set of valid coded results for the observations  conforming to this ObservationDefinition.
     /// </summary>
     public Reference ValidCodedValueSet { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (AbnormalCodedValueSet != null)
+      {
+        writer.WritePropertyName("abnormalCodedValueSet");
+        AbnormalCodedValueSet.SerializeJson(ref writer, options);
+      }
+
+      if ((Category != null) && (Category.Count != 0))
+      {
+        writer.WritePropertyName("category");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCategory in Category)
+        {
+          valCategory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      if (CriticalCodedValueSet != null)
+      {
+        writer.WritePropertyName("criticalCodedValueSet");
+        CriticalCodedValueSet.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Method != null)
+      {
+        writer.WritePropertyName("method");
+        Method.SerializeJson(ref writer, options);
+      }
+
+      if (MultipleResultsAllowed != null)
+      {
+        writer.WriteBoolean("multipleResultsAllowed", (bool)MultipleResultsAllowed!);
+      }
+
+      if (NormalCodedValueSet != null)
+      {
+        writer.WritePropertyName("normalCodedValueSet");
+        NormalCodedValueSet.SerializeJson(ref writer, options);
+      }
+
+      if ((PermittedDataType != null) && (PermittedDataType.Count != 0))
+      {
+        writer.WritePropertyName("permittedDataType");
+        writer.WriteStartArray();
+
+        foreach (string valPermittedDataType in PermittedDataType)
+        {
+          writer.WriteStringValue(valPermittedDataType);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_PermittedDataType != null) && (_PermittedDataType.Count != 0))
+      {
+        writer.WritePropertyName("_permittedDataType");
+        writer.WriteStartArray();
+
+        foreach (Element val_PermittedDataType in _PermittedDataType)
+        {
+          val_PermittedDataType.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("preferredReportName", PreferredReportName);
+
+      if (_PreferredReportName != null)
+      {
+        writer.WritePropertyName("_preferredReportName");
+        _PreferredReportName.SerializeJson(ref writer, options);
+      }
+
+      if ((QualifiedInterval != null) && (QualifiedInterval.Count != 0))
+      {
+        writer.WritePropertyName("qualifiedInterval");
+        writer.WriteStartArray();
+
+        foreach (ObservationDefinitionQualifiedInterval valQualifiedInterval in QualifiedInterval)
+        {
+          valQualifiedInterval.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (QuantitativeDetails != null)
+      {
+        writer.WritePropertyName("quantitativeDetails");
+        QuantitativeDetails.SerializeJson(ref writer, options);
+      }
+
+      if (ValidCodedValueSet != null)
+      {
+        writer.WritePropertyName("validCodedValueSet");
+        ValidCodedValueSet.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

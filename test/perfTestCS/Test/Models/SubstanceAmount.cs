@@ -24,6 +24,35 @@ namespace Fhir.R4.Models
     /// </summary>
     public Quantity LowLimit { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      if (HighLimit != null)
+      {
+        writer.WritePropertyName("highLimit");
+        HighLimit.SerializeJson(ref writer, options);
+      }
+
+      if (LowLimit != null)
+      {
+        writer.WritePropertyName("lowLimit");
+        LowLimit.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -108,6 +137,63 @@ namespace Fhir.R4.Models
     /// Reference range of possible or expected values.
     /// </summary>
     public SubstanceAmountReferenceRange ReferenceRange { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (AmountQuantity != null)
+      {
+        writer.WritePropertyName("amountQuantity");
+        AmountQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (AmountRange != null)
+      {
+        writer.WritePropertyName("amountRange");
+        AmountRange.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("amountString", AmountString);
+
+      if (_AmountString != null)
+      {
+        writer.WritePropertyName("_amountString");
+        _AmountString.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("amountText", AmountText);
+
+      if (_AmountText != null)
+      {
+        writer.WritePropertyName("_amountText");
+        _AmountText.SerializeJson(ref writer, options);
+      }
+
+      if (AmountType != null)
+      {
+        writer.WritePropertyName("amountType");
+        AmountType.SerializeJson(ref writer, options);
+      }
+
+      if (ReferenceRange != null)
+      {
+        writer.WritePropertyName("referenceRange");
+        ReferenceRange.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

@@ -24,6 +24,29 @@ namespace Fhir.R4.Models
     /// </summary>
     public Reference AdditiveReference { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("additiveCodeableConcept");
+      AdditiveCodeableConcept.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("additiveReference");
+      AdditiveReference.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -124,6 +147,90 @@ namespace Fhir.R4.Models
     /// The type of container used to contain this kind of specimen.
     /// </summary>
     public CodeableConcept Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Additive != null) && (Additive.Count != 0))
+      {
+        writer.WritePropertyName("additive");
+        writer.WriteStartArray();
+
+        foreach (SpecimenDefinitionTypeTestedContainerAdditive valAdditive in Additive)
+        {
+          valAdditive.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Cap != null)
+      {
+        writer.WritePropertyName("cap");
+        Cap.SerializeJson(ref writer, options);
+      }
+
+      if (Capacity != null)
+      {
+        writer.WritePropertyName("capacity");
+        Capacity.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("description", Description);
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (Material != null)
+      {
+        writer.WritePropertyName("material");
+        Material.SerializeJson(ref writer, options);
+      }
+
+      if (MinimumVolumeQuantity != null)
+      {
+        writer.WritePropertyName("minimumVolumeQuantity");
+        MinimumVolumeQuantity.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("minimumVolumeString", MinimumVolumeString);
+
+      if (_MinimumVolumeString != null)
+      {
+        writer.WritePropertyName("_minimumVolumeString");
+        _MinimumVolumeString.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("preparation", Preparation);
+
+      if (_Preparation != null)
+      {
+        writer.WritePropertyName("_preparation");
+        _Preparation.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -267,6 +374,49 @@ namespace Fhir.R4.Models
     /// </summary>
     public Range TemperatureRange { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("instruction", Instruction);
+
+      if (_Instruction != null)
+      {
+        writer.WritePropertyName("_instruction");
+        _Instruction.SerializeJson(ref writer, options);
+      }
+
+      if (MaxDuration != null)
+      {
+        writer.WritePropertyName("maxDuration");
+        MaxDuration.SerializeJson(ref writer, options);
+      }
+
+      if (TemperatureQualifier != null)
+      {
+        writer.WritePropertyName("temperatureQualifier");
+        TemperatureQualifier.SerializeJson(ref writer, options);
+      }
+
+      if (TemperatureRange != null)
+      {
+        writer.WritePropertyName("temperatureRange");
+        TemperatureRange.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -373,6 +523,88 @@ namespace Fhir.R4.Models
     /// The kind of specimen conditioned for testing expected by lab.
     /// </summary>
     public CodeableConcept Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Container != null)
+      {
+        writer.WritePropertyName("container");
+        Container.SerializeJson(ref writer, options);
+      }
+
+      if ((Handling != null) && (Handling.Count != 0))
+      {
+        writer.WritePropertyName("handling");
+        writer.WriteStartArray();
+
+        foreach (SpecimenDefinitionTypeTestedHandling valHandling in Handling)
+        {
+          valHandling.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (IsDerived != null)
+      {
+        writer.WriteBoolean("isDerived", (bool)IsDerived!);
+      }
+
+      writer.WriteString("preference", Preference);
+
+      if (_Preference != null)
+      {
+        writer.WritePropertyName("_preference");
+        _Preference.SerializeJson(ref writer, options);
+      }
+
+      if ((RejectionCriterion != null) && (RejectionCriterion.Count != 0))
+      {
+        writer.WritePropertyName("rejectionCriterion");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valRejectionCriterion in RejectionCriterion)
+        {
+          valRejectionCriterion.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("requirement", Requirement);
+
+      if (_Requirement != null)
+      {
+        writer.WritePropertyName("_requirement");
+        _Requirement.SerializeJson(ref writer, options);
+      }
+
+      if (RetentionTime != null)
+      {
+        writer.WritePropertyName("retentionTime");
+        RetentionTime.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -539,6 +771,85 @@ namespace Fhir.R4.Models
     /// Specimen conditioned in a container as expected by the testing laboratory.
     /// </summary>
     public List<SpecimenDefinitionTypeTested> TypeTested { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Collection != null) && (Collection.Count != 0))
+      {
+        writer.WritePropertyName("collection");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCollection in Collection)
+        {
+          valCollection.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      if ((PatientPreparation != null) && (PatientPreparation.Count != 0))
+      {
+        writer.WritePropertyName("patientPreparation");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valPatientPreparation in PatientPreparation)
+        {
+          valPatientPreparation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("timeAspect", TimeAspect);
+
+      if (_TimeAspect != null)
+      {
+        writer.WritePropertyName("_timeAspect");
+        _TimeAspect.SerializeJson(ref writer, options);
+      }
+
+      if (TypeCollected != null)
+      {
+        writer.WritePropertyName("typeCollected");
+        TypeCollected.SerializeJson(ref writer, options);
+      }
+
+      if ((TypeTested != null) && (TypeTested.Count != 0))
+      {
+        writer.WritePropertyName("typeTested");
+        writer.WriteStartArray();
+
+        foreach (SpecimenDefinitionTypeTested valTypeTested in TypeTested)
+        {
+          valTypeTested.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

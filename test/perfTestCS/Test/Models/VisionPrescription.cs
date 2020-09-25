@@ -32,6 +32,39 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Base { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteNumber("amount", Amount);
+
+      if (_Amount != null)
+      {
+        writer.WritePropertyName("_amount");
+        _Amount.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("base", Base);
+
+      if (_Base != null)
+      {
+        writer.WritePropertyName("_base");
+        _Base.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -185,6 +218,153 @@ namespace Fhir.R4.Models
     /// Extension container element for Sphere
     /// </summary>
     public Element _Sphere { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Add != null)
+      {
+        writer.WriteNumber("add", (decimal)Add!);
+      }
+
+      if (_Add != null)
+      {
+        writer.WritePropertyName("_add");
+        _Add.SerializeJson(ref writer, options);
+      }
+
+      if (Axis != null)
+      {
+        writer.WriteNumber("axis", (int)Axis!);
+      }
+
+      if (BackCurve != null)
+      {
+        writer.WriteNumber("backCurve", (decimal)BackCurve!);
+      }
+
+      if (_BackCurve != null)
+      {
+        writer.WritePropertyName("_backCurve");
+        _BackCurve.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("brand", Brand);
+
+      if (_Brand != null)
+      {
+        writer.WritePropertyName("_brand");
+        _Brand.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("color", Color);
+
+      if (_Color != null)
+      {
+        writer.WritePropertyName("_color");
+        _Color.SerializeJson(ref writer, options);
+      }
+
+      if (Cylinder != null)
+      {
+        writer.WriteNumber("cylinder", (decimal)Cylinder!);
+      }
+
+      if (_Cylinder != null)
+      {
+        writer.WritePropertyName("_cylinder");
+        _Cylinder.SerializeJson(ref writer, options);
+      }
+
+      if (Diameter != null)
+      {
+        writer.WriteNumber("diameter", (decimal)Diameter!);
+      }
+
+      if (_Diameter != null)
+      {
+        writer.WritePropertyName("_diameter");
+        _Diameter.SerializeJson(ref writer, options);
+      }
+
+      if (Duration != null)
+      {
+        writer.WritePropertyName("duration");
+        Duration.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("eye", Eye);
+
+      if (_Eye != null)
+      {
+        writer.WritePropertyName("_eye");
+        _Eye.SerializeJson(ref writer, options);
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Power != null)
+      {
+        writer.WriteNumber("power", (decimal)Power!);
+      }
+
+      if (_Power != null)
+      {
+        writer.WritePropertyName("_power");
+        _Power.SerializeJson(ref writer, options);
+      }
+
+      if ((Prism != null) && (Prism.Count != 0))
+      {
+        writer.WritePropertyName("prism");
+        writer.WriteStartArray();
+
+        foreach (VisionPrescriptionLensSpecificationPrism valPrism in Prism)
+        {
+          valPrism.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("product");
+      Product.SerializeJson(ref writer, options);
+
+      if (Sphere != null)
+      {
+        writer.WriteNumber("sphere", (decimal)Sphere!);
+      }
+
+      if (_Sphere != null)
+      {
+        writer.WritePropertyName("_sphere");
+        _Sphere.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -425,6 +605,88 @@ namespace Fhir.R4.Models
     /// Extension container element for Status
     /// </summary>
     public Element _Status { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("created", Created);
+
+      if (_Created != null)
+      {
+        writer.WritePropertyName("_created");
+        _Created.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("dateWritten", DateWritten);
+
+      if (_DateWritten != null)
+      {
+        writer.WritePropertyName("_dateWritten");
+        _DateWritten.SerializeJson(ref writer, options);
+      }
+
+      if (Encounter != null)
+      {
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((LensSpecification != null) && (LensSpecification.Count != 0))
+      {
+        writer.WritePropertyName("lensSpecification");
+        writer.WriteStartArray();
+
+        foreach (VisionPrescriptionLensSpecification valLensSpecification in LensSpecification)
+        {
+          valLensSpecification.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("prescriber");
+      Prescriber.SerializeJson(ref writer, options);
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

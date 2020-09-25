@@ -36,6 +36,49 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _ProductRelatedness { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Assessment != null)
+      {
+        writer.WritePropertyName("assessment");
+        Assessment.SerializeJson(ref writer, options);
+      }
+
+      if (Author != null)
+      {
+        writer.WritePropertyName("author");
+        Author.SerializeJson(ref writer, options);
+      }
+
+      if (Method != null)
+      {
+        writer.WritePropertyName("method");
+        Method.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("productRelatedness", ProductRelatedness);
+
+      if (_ProductRelatedness != null)
+      {
+        writer.WritePropertyName("_productRelatedness");
+        _ProductRelatedness.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -110,6 +153,39 @@ namespace Fhir.R4.Models
     /// Identifies the actual instance of what caused the adverse event.  May be a substance, medication, medication administration, medication statement or a device.
     /// </summary>
     public Reference Instance { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Causality != null) && (Causality.Count != 0))
+      {
+        writer.WritePropertyName("causality");
+        writer.WriteStartArray();
+
+        foreach (AdverseEventSuspectEntityCausality valCausality in Causality)
+        {
+          valCausality.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("instance");
+      Instance.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -285,6 +361,200 @@ namespace Fhir.R4.Models
     /// Describes the entity that is suspected to have caused the adverse event.
     /// </summary>
     public List<AdverseEventSuspectEntity> SuspectEntity { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("actuality", Actuality);
+
+      if (_Actuality != null)
+      {
+        writer.WritePropertyName("_actuality");
+        _Actuality.SerializeJson(ref writer, options);
+      }
+
+      if ((Category != null) && (Category.Count != 0))
+      {
+        writer.WritePropertyName("category");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCategory in Category)
+        {
+          valCategory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Contributor != null) && (Contributor.Count != 0))
+      {
+        writer.WritePropertyName("contributor");
+        writer.WriteStartArray();
+
+        foreach (Reference valContributor in Contributor)
+        {
+          valContributor.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("date", Date);
+
+      if (_Date != null)
+      {
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("detected", Detected);
+
+      if (_Detected != null)
+      {
+        writer.WritePropertyName("_detected");
+        _Detected.SerializeJson(ref writer, options);
+      }
+
+      if (Encounter != null)
+      {
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
+
+      if (Event != null)
+      {
+        writer.WritePropertyName("event");
+        Event.SerializeJson(ref writer, options);
+      }
+
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      if (Location != null)
+      {
+        writer.WritePropertyName("location");
+        Location.SerializeJson(ref writer, options);
+      }
+
+      if (Outcome != null)
+      {
+        writer.WritePropertyName("outcome");
+        Outcome.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("recordedDate", RecordedDate);
+
+      if (_RecordedDate != null)
+      {
+        writer.WritePropertyName("_recordedDate");
+        _RecordedDate.SerializeJson(ref writer, options);
+      }
+
+      if (Recorder != null)
+      {
+        writer.WritePropertyName("recorder");
+        Recorder.SerializeJson(ref writer, options);
+      }
+
+      if ((ReferenceDocument != null) && (ReferenceDocument.Count != 0))
+      {
+        writer.WritePropertyName("referenceDocument");
+        writer.WriteStartArray();
+
+        foreach (Reference valReferenceDocument in ReferenceDocument)
+        {
+          valReferenceDocument.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ResultingCondition != null) && (ResultingCondition.Count != 0))
+      {
+        writer.WritePropertyName("resultingCondition");
+        writer.WriteStartArray();
+
+        foreach (Reference valResultingCondition in ResultingCondition)
+        {
+          valResultingCondition.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Seriousness != null)
+      {
+        writer.WritePropertyName("seriousness");
+        Seriousness.SerializeJson(ref writer, options);
+      }
+
+      if (Severity != null)
+      {
+        writer.WritePropertyName("severity");
+        Severity.SerializeJson(ref writer, options);
+      }
+
+      if ((Study != null) && (Study.Count != 0))
+      {
+        writer.WritePropertyName("study");
+        writer.WriteStartArray();
+
+        foreach (Reference valStudy in Study)
+        {
+          valStudy.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("subject");
+      Subject.SerializeJson(ref writer, options);
+
+      if ((SubjectMedicalHistory != null) && (SubjectMedicalHistory.Count != 0))
+      {
+        writer.WritePropertyName("subjectMedicalHistory");
+        writer.WriteStartArray();
+
+        foreach (Reference valSubjectMedicalHistory in SubjectMedicalHistory)
+        {
+          valSubjectMedicalHistory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((SuspectEntity != null) && (SuspectEntity.Count != 0))
+      {
+        writer.WritePropertyName("suspectEntity");
+        writer.WriteStartArray();
+
+        foreach (AdverseEventSuspectEntity valSuspectEntity in SuspectEntity)
+        {
+          valSuspectEntity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

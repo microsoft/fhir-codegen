@@ -68,6 +68,76 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Use { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("documentation", Documentation);
+
+      if (_Documentation != null)
+      {
+        writer.WritePropertyName("_documentation");
+        _Documentation.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("max", Max);
+
+      if (_Max != null)
+      {
+        writer.WritePropertyName("_max");
+        _Max.SerializeJson(ref writer, options);
+      }
+
+      if (Min != null)
+      {
+        writer.WriteNumber("min", (int)Min!);
+      }
+
+      writer.WriteString("name", Name);
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("profile", Profile);
+
+      if (_Profile != null)
+      {
+        writer.WritePropertyName("_profile");
+        _Profile.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("use", Use);
+
+      if (_Use != null)
+      {
+        writer.WritePropertyName("_use");
+        _Use.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

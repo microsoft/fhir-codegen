@@ -48,6 +48,81 @@ namespace Fhir.R4.Models
     /// </summary>
     public List<ContactPoint> Telecom { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Address != null)
+      {
+        writer.WritePropertyName("address");
+        Address.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("gender", Gender);
+
+      if (_Gender != null)
+      {
+        writer.WritePropertyName("_gender");
+        _Gender.SerializeJson(ref writer, options);
+      }
+
+      if (Name != null)
+      {
+        writer.WritePropertyName("name");
+        Name.SerializeJson(ref writer, options);
+      }
+
+      if (Organization != null)
+      {
+        writer.WritePropertyName("organization");
+        Organization.SerializeJson(ref writer, options);
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      if ((Relationship != null) && (Relationship.Count != 0))
+      {
+        writer.WritePropertyName("relationship");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valRelationship in Relationship)
+        {
+          valRelationship.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Telecom != null) && (Telecom.Count != 0))
+      {
+        writer.WritePropertyName("telecom");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valTelecom in Telecom)
+        {
+          valTelecom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -182,6 +257,31 @@ namespace Fhir.R4.Models
     /// </summary>
     public bool? Preferred { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("language");
+      Language.SerializeJson(ref writer, options);
+
+      if (Preferred != null)
+      {
+        writer.WriteBoolean("preferred", (bool)Preferred!);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -245,6 +345,34 @@ namespace Fhir.R4.Models
     /// Extension container element for Type
     /// </summary>
     public Element _Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("other");
+      Other.SerializeJson(ref writer, options);
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -395,6 +523,199 @@ namespace Fhir.R4.Models
     /// A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address might not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner's phone).
     /// </summary>
     public List<ContactPoint> Telecom { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Active != null)
+      {
+        writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if ((Address != null) && (Address.Count != 0))
+      {
+        writer.WritePropertyName("address");
+        writer.WriteStartArray();
+
+        foreach (Address valAddress in Address)
+        {
+          valAddress.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("birthDate", BirthDate);
+
+      if (_BirthDate != null)
+      {
+        writer.WritePropertyName("_birthDate");
+        _BirthDate.SerializeJson(ref writer, options);
+      }
+
+      if ((Communication != null) && (Communication.Count != 0))
+      {
+        writer.WritePropertyName("communication");
+        writer.WriteStartArray();
+
+        foreach (PatientCommunication valCommunication in Communication)
+        {
+          valCommunication.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Contact != null) && (Contact.Count != 0))
+      {
+        writer.WritePropertyName("contact");
+        writer.WriteStartArray();
+
+        foreach (PatientContact valContact in Contact)
+        {
+          valContact.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (DeceasedBoolean != null)
+      {
+        writer.WriteBoolean("deceasedBoolean", (bool)DeceasedBoolean!);
+      }
+
+      writer.WriteString("deceasedDateTime", DeceasedDateTime);
+
+      if (_DeceasedDateTime != null)
+      {
+        writer.WritePropertyName("_deceasedDateTime");
+        _DeceasedDateTime.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("gender", Gender);
+
+      if (_Gender != null)
+      {
+        writer.WritePropertyName("_gender");
+        _Gender.SerializeJson(ref writer, options);
+      }
+
+      if ((GeneralPractitioner != null) && (GeneralPractitioner.Count != 0))
+      {
+        writer.WritePropertyName("generalPractitioner");
+        writer.WriteStartArray();
+
+        foreach (Reference valGeneralPractitioner in GeneralPractitioner)
+        {
+          valGeneralPractitioner.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Link != null) && (Link.Count != 0))
+      {
+        writer.WritePropertyName("link");
+        writer.WriteStartArray();
+
+        foreach (PatientLink valLink in Link)
+        {
+          valLink.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ManagingOrganization != null)
+      {
+        writer.WritePropertyName("managingOrganization");
+        ManagingOrganization.SerializeJson(ref writer, options);
+      }
+
+      if (MaritalStatus != null)
+      {
+        writer.WritePropertyName("maritalStatus");
+        MaritalStatus.SerializeJson(ref writer, options);
+      }
+
+      if (MultipleBirthBoolean != null)
+      {
+        writer.WriteBoolean("multipleBirthBoolean", (bool)MultipleBirthBoolean!);
+      }
+
+      if (MultipleBirthInteger != null)
+      {
+        writer.WriteNumber("multipleBirthInteger", (int)MultipleBirthInteger!);
+      }
+
+      if ((Name != null) && (Name.Count != 0))
+      {
+        writer.WritePropertyName("name");
+        writer.WriteStartArray();
+
+        foreach (HumanName valName in Name)
+        {
+          valName.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Photo != null) && (Photo.Count != 0))
+      {
+        writer.WritePropertyName("photo");
+        writer.WriteStartArray();
+
+        foreach (Attachment valPhoto in Photo)
+        {
+          valPhoto.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Telecom != null) && (Telecom.Count != 0))
+      {
+        writer.WritePropertyName("telecom");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valTelecom in Telecom)
+        {
+          valTelecom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

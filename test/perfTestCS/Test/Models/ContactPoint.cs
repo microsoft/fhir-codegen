@@ -48,6 +48,58 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Value { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      if (Rank != null)
+      {
+        writer.WriteNumber("rank", (uint)Rank!);
+      }
+
+      writer.WriteString("system", System);
+
+      if (_System != null)
+      {
+        writer.WritePropertyName("_system");
+        _System.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("use", Use);
+
+      if (_Use != null)
+      {
+        writer.WritePropertyName("_use");
+        _Use.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("value", Value);
+
+      if (_Value != null)
+      {
+        writer.WritePropertyName("_value");
+        _Value.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

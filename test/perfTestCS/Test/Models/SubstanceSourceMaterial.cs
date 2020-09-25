@@ -28,6 +28,37 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept MaterialType { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("fraction", Fraction);
+
+      if (_Fraction != null)
+      {
+        writer.WritePropertyName("_fraction");
+        _Fraction.SerializeJson(ref writer, options);
+      }
+
+      if (MaterialType != null)
+      {
+        writer.WritePropertyName("materialType");
+        MaterialType.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -96,6 +127,37 @@ namespace Fhir.R4.Models
     /// The type of author of an organism species shall be specified. The parenthetical author of an organism species refers to the first author who published the plant/animal name (of any rank). The primary author of an organism species refers to the first author(s), who validly published the plant/animal name.
     /// </summary>
     public CodeableConcept AuthorType { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("authorDescription", AuthorDescription);
+
+      if (_AuthorDescription != null)
+      {
+        writer.WritePropertyName("_authorDescription");
+        _AuthorDescription.SerializeJson(ref writer, options);
+      }
+
+      if (AuthorType != null)
+      {
+        writer.WritePropertyName("authorType");
+        AuthorType.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -189,6 +251,61 @@ namespace Fhir.R4.Models
     /// Extension container element for PaternalOrganismName
     /// </summary>
     public Element _PaternalOrganismName { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (HybridType != null)
+      {
+        writer.WritePropertyName("hybridType");
+        HybridType.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("maternalOrganismId", MaternalOrganismId);
+
+      if (_MaternalOrganismId != null)
+      {
+        writer.WritePropertyName("_maternalOrganismId");
+        _MaternalOrganismId.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("maternalOrganismName", MaternalOrganismName);
+
+      if (_MaternalOrganismName != null)
+      {
+        writer.WritePropertyName("_maternalOrganismName");
+        _MaternalOrganismName.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("paternalOrganismId", PaternalOrganismId);
+
+      if (_PaternalOrganismId != null)
+      {
+        writer.WritePropertyName("_paternalOrganismId");
+        _PaternalOrganismId.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("paternalOrganismName", PaternalOrganismName);
+
+      if (_PaternalOrganismName != null)
+      {
+        writer.WritePropertyName("_paternalOrganismName");
+        _PaternalOrganismName.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -290,6 +407,47 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Phylum { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Class != null)
+      {
+        writer.WritePropertyName("class");
+        Class.SerializeJson(ref writer, options);
+      }
+
+      if (Kingdom != null)
+      {
+        writer.WritePropertyName("kingdom");
+        Kingdom.SerializeJson(ref writer, options);
+      }
+
+      if (Order != null)
+      {
+        writer.WritePropertyName("order");
+        Order.SerializeJson(ref writer, options);
+      }
+
+      if (Phylum != null)
+      {
+        writer.WritePropertyName("phylum");
+        Phylum.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -388,6 +546,80 @@ namespace Fhir.R4.Models
     /// The species of an organism shall be specified; refers to the Latin epithet of the species of the plant/animal; it is present in names for species and infraspecies.
     /// </summary>
     public CodeableConcept Species { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Author != null) && (Author.Count != 0))
+      {
+        writer.WritePropertyName("author");
+        writer.WriteStartArray();
+
+        foreach (SubstanceSourceMaterialOrganismAuthor valAuthor in Author)
+        {
+          valAuthor.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Family != null)
+      {
+        writer.WritePropertyName("family");
+        Family.SerializeJson(ref writer, options);
+      }
+
+      if (Genus != null)
+      {
+        writer.WritePropertyName("genus");
+        Genus.SerializeJson(ref writer, options);
+      }
+
+      if (Hybrid != null)
+      {
+        writer.WritePropertyName("hybrid");
+        Hybrid.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("intraspecificDescription", IntraspecificDescription);
+
+      if (_IntraspecificDescription != null)
+      {
+        writer.WritePropertyName("_intraspecificDescription");
+        _IntraspecificDescription.SerializeJson(ref writer, options);
+      }
+
+      if (IntraspecificType != null)
+      {
+        writer.WritePropertyName("intraspecificType");
+        IntraspecificType.SerializeJson(ref writer, options);
+      }
+
+      if (OrganismGeneral != null)
+      {
+        writer.WritePropertyName("organismGeneral");
+        OrganismGeneral.SerializeJson(ref writer, options);
+      }
+
+      if (Species != null)
+      {
+        writer.WritePropertyName("species");
+        Species.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -505,6 +737,35 @@ namespace Fhir.R4.Models
     /// The detailed anatomic location when the part can be extracted from different anatomical locations of the organism. Multiple alternative locations may apply.
     /// </summary>
     public CodeableConcept PartLocation { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Part != null)
+      {
+        writer.WritePropertyName("part");
+        Part.SerializeJson(ref writer, options);
+      }
+
+      if (PartLocation != null)
+      {
+        writer.WritePropertyName("partLocation");
+        PartLocation.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -626,6 +887,174 @@ namespace Fhir.R4.Models
     /// The type of the source material shall be specified based on a controlled vocabulary. For vaccines, this subclause refers to the class of infectious agent.
     /// </summary>
     public CodeableConcept SourceMaterialType { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((CountryOfOrigin != null) && (CountryOfOrigin.Count != 0))
+      {
+        writer.WritePropertyName("countryOfOrigin");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCountryOfOrigin in CountryOfOrigin)
+        {
+          valCountryOfOrigin.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (DevelopmentStage != null)
+      {
+        writer.WritePropertyName("developmentStage");
+        DevelopmentStage.SerializeJson(ref writer, options);
+      }
+
+      if ((FractionDescription != null) && (FractionDescription.Count != 0))
+      {
+        writer.WritePropertyName("fractionDescription");
+        writer.WriteStartArray();
+
+        foreach (SubstanceSourceMaterialFractionDescription valFractionDescription in FractionDescription)
+        {
+          valFractionDescription.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((GeographicalLocation != null) && (GeographicalLocation.Count != 0))
+      {
+        writer.WritePropertyName("geographicalLocation");
+        writer.WriteStartArray();
+
+        foreach (string valGeographicalLocation in GeographicalLocation)
+        {
+          writer.WriteStringValue(valGeographicalLocation);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_GeographicalLocation != null) && (_GeographicalLocation.Count != 0))
+      {
+        writer.WritePropertyName("_geographicalLocation");
+        writer.WriteStartArray();
+
+        foreach (Element val_GeographicalLocation in _GeographicalLocation)
+        {
+          val_GeographicalLocation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Organism != null)
+      {
+        writer.WritePropertyName("organism");
+        Organism.SerializeJson(ref writer, options);
+      }
+
+      if (OrganismId != null)
+      {
+        writer.WritePropertyName("organismId");
+        OrganismId.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("organismName", OrganismName);
+
+      if (_OrganismName != null)
+      {
+        writer.WritePropertyName("_organismName");
+        _OrganismName.SerializeJson(ref writer, options);
+      }
+
+      if ((ParentSubstanceId != null) && (ParentSubstanceId.Count != 0))
+      {
+        writer.WritePropertyName("parentSubstanceId");
+        writer.WriteStartArray();
+
+        foreach (Identifier valParentSubstanceId in ParentSubstanceId)
+        {
+          valParentSubstanceId.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ParentSubstanceName != null) && (ParentSubstanceName.Count != 0))
+      {
+        writer.WritePropertyName("parentSubstanceName");
+        writer.WriteStartArray();
+
+        foreach (string valParentSubstanceName in ParentSubstanceName)
+        {
+          writer.WriteStringValue(valParentSubstanceName);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_ParentSubstanceName != null) && (_ParentSubstanceName.Count != 0))
+      {
+        writer.WritePropertyName("_parentSubstanceName");
+        writer.WriteStartArray();
+
+        foreach (Element val_ParentSubstanceName in _ParentSubstanceName)
+        {
+          val_ParentSubstanceName.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((PartDescription != null) && (PartDescription.Count != 0))
+      {
+        writer.WritePropertyName("partDescription");
+        writer.WriteStartArray();
+
+        foreach (SubstanceSourceMaterialPartDescription valPartDescription in PartDescription)
+        {
+          valPartDescription.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (SourceMaterialClass != null)
+      {
+        writer.WritePropertyName("sourceMaterialClass");
+        SourceMaterialClass.SerializeJson(ref writer, options);
+      }
+
+      if (SourceMaterialState != null)
+      {
+        writer.WritePropertyName("sourceMaterialState");
+        SourceMaterialState.SerializeJson(ref writer, options);
+      }
+
+      if (SourceMaterialType != null)
+      {
+        writer.WritePropertyName("sourceMaterialType");
+        SourceMaterialType.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

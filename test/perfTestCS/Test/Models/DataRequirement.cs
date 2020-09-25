@@ -44,6 +44,60 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _ValueSet { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      if ((Code != null) && (Code.Count != 0))
+      {
+        writer.WritePropertyName("code");
+        writer.WriteStartArray();
+
+        foreach (Coding valCode in Code)
+        {
+          valCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("path", Path);
+
+      if (_Path != null)
+      {
+        writer.WritePropertyName("_path");
+        _Path.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("searchParam", SearchParam);
+
+      if (_SearchParam != null)
+      {
+        writer.WritePropertyName("_searchParam");
+        _SearchParam.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueSet", ValueSet);
+
+      if (_ValueSet != null)
+      {
+        writer.WritePropertyName("_valueSet");
+        _ValueSet.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -173,6 +227,59 @@ namespace Fhir.R4.Models
     /// </summary>
     public Duration ValueDuration { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("path", Path);
+
+      if (_Path != null)
+      {
+        writer.WritePropertyName("_path");
+        _Path.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("searchParam", SearchParam);
+
+      if (_SearchParam != null)
+      {
+        writer.WritePropertyName("_searchParam");
+        _SearchParam.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueDateTime", ValueDateTime);
+
+      if (_ValueDateTime != null)
+      {
+        writer.WritePropertyName("_valueDateTime");
+        _ValueDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (ValuePeriod != null)
+      {
+        writer.WritePropertyName("valuePeriod");
+        ValuePeriod.SerializeJson(ref writer, options);
+      }
+
+      if (ValueDuration != null)
+      {
+        writer.WritePropertyName("valueDuration");
+        ValueDuration.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -268,6 +375,39 @@ namespace Fhir.R4.Models
     /// Extension container element for Path
     /// </summary>
     public Element _Path { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("direction", Direction);
+
+      if (_Direction != null)
+      {
+        writer.WritePropertyName("_direction");
+        _Direction.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("path", Path);
+
+      if (_Path != null)
+      {
+        writer.WritePropertyName("_path");
+        _Path.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -378,6 +518,139 @@ namespace Fhir.R4.Models
     /// Extension container element for Type
     /// </summary>
     public Element _Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      if ((CodeFilter != null) && (CodeFilter.Count != 0))
+      {
+        writer.WritePropertyName("codeFilter");
+        writer.WriteStartArray();
+
+        foreach (DataRequirementCodeFilter valCodeFilter in CodeFilter)
+        {
+          valCodeFilter.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((DateFilter != null) && (DateFilter.Count != 0))
+      {
+        writer.WritePropertyName("dateFilter");
+        writer.WriteStartArray();
+
+        foreach (DataRequirementDateFilter valDateFilter in DateFilter)
+        {
+          valDateFilter.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Limit != null)
+      {
+        writer.WriteNumber("limit", (uint)Limit!);
+      }
+
+      if ((MustSupport != null) && (MustSupport.Count != 0))
+      {
+        writer.WritePropertyName("mustSupport");
+        writer.WriteStartArray();
+
+        foreach (string valMustSupport in MustSupport)
+        {
+          writer.WriteStringValue(valMustSupport);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_MustSupport != null) && (_MustSupport.Count != 0))
+      {
+        writer.WritePropertyName("_mustSupport");
+        writer.WriteStartArray();
+
+        foreach (Element val_MustSupport in _MustSupport)
+        {
+          val_MustSupport.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Profile != null) && (Profile.Count != 0))
+      {
+        writer.WritePropertyName("profile");
+        writer.WriteStartArray();
+
+        foreach (string valProfile in Profile)
+        {
+          writer.WriteStringValue(valProfile);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Profile != null) && (_Profile.Count != 0))
+      {
+        writer.WritePropertyName("_profile");
+        writer.WriteStartArray();
+
+        foreach (Element val_Profile in _Profile)
+        {
+          val_Profile.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Sort != null) && (Sort.Count != 0))
+      {
+        writer.WritePropertyName("sort");
+        writer.WriteStartArray();
+
+        foreach (DataRequirementSort valSort in Sort)
+        {
+          valSort.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (SubjectCodeableConcept != null)
+      {
+        writer.WritePropertyName("subjectCodeableConcept");
+        SubjectCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      if (SubjectReference != null)
+      {
+        writer.WritePropertyName("subjectReference");
+        SubjectReference.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

@@ -28,6 +28,34 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Value { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      writer.WriteString("value", Value);
+
+      if (_Value != null)
+      {
+        writer.WritePropertyName("_value");
+        _Value.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -156,6 +184,152 @@ namespace Fhir.R4.Models
     /// Vaccine(s) or vaccine group that pertain to the recommendation.
     /// </summary>
     public List<CodeableConcept> VaccineCode { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((ContraindicatedVaccineCode != null) && (ContraindicatedVaccineCode.Count != 0))
+      {
+        writer.WritePropertyName("contraindicatedVaccineCode");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valContraindicatedVaccineCode in ContraindicatedVaccineCode)
+        {
+          valContraindicatedVaccineCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((DateCriterion != null) && (DateCriterion.Count != 0))
+      {
+        writer.WritePropertyName("dateCriterion");
+        writer.WriteStartArray();
+
+        foreach (ImmunizationRecommendationRecommendationDateCriterion valDateCriterion in DateCriterion)
+        {
+          valDateCriterion.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("description", Description);
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (DoseNumberPositiveInt != null)
+      {
+        writer.WriteNumber("doseNumberPositiveInt", (uint)DoseNumberPositiveInt!);
+      }
+
+      writer.WriteString("doseNumberString", DoseNumberString);
+
+      if (_DoseNumberString != null)
+      {
+        writer.WritePropertyName("_doseNumberString");
+        _DoseNumberString.SerializeJson(ref writer, options);
+      }
+
+      if ((ForecastReason != null) && (ForecastReason.Count != 0))
+      {
+        writer.WritePropertyName("forecastReason");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valForecastReason in ForecastReason)
+        {
+          valForecastReason.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("forecastStatus");
+      ForecastStatus.SerializeJson(ref writer, options);
+
+      writer.WriteString("series", Series);
+
+      if (_Series != null)
+      {
+        writer.WritePropertyName("_series");
+        _Series.SerializeJson(ref writer, options);
+      }
+
+      if (SeriesDosesPositiveInt != null)
+      {
+        writer.WriteNumber("seriesDosesPositiveInt", (uint)SeriesDosesPositiveInt!);
+      }
+
+      writer.WriteString("seriesDosesString", SeriesDosesString);
+
+      if (_SeriesDosesString != null)
+      {
+        writer.WritePropertyName("_seriesDosesString");
+        _SeriesDosesString.SerializeJson(ref writer, options);
+      }
+
+      if ((SupportingImmunization != null) && (SupportingImmunization.Count != 0))
+      {
+        writer.WritePropertyName("supportingImmunization");
+        writer.WriteStartArray();
+
+        foreach (Reference valSupportingImmunization in SupportingImmunization)
+        {
+          valSupportingImmunization.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((SupportingPatientInformation != null) && (SupportingPatientInformation.Count != 0))
+      {
+        writer.WritePropertyName("supportingPatientInformation");
+        writer.WriteStartArray();
+
+        foreach (Reference valSupportingPatientInformation in SupportingPatientInformation)
+        {
+          valSupportingPatientInformation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (TargetDisease != null)
+      {
+        writer.WritePropertyName("targetDisease");
+        TargetDisease.SerializeJson(ref writer, options);
+      }
+
+      if ((VaccineCode != null) && (VaccineCode.Count != 0))
+      {
+        writer.WritePropertyName("vaccineCode");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valVaccineCode in VaccineCode)
+        {
+          valVaccineCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -443,6 +617,69 @@ namespace Fhir.R4.Models
     /// Vaccine administration recommendations.
     /// </summary>
     public List<ImmunizationRecommendationRecommendation> Recommendation { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Authority != null)
+      {
+        writer.WritePropertyName("authority");
+        Authority.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("date", Date);
+
+      if (_Date != null)
+      {
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      if ((Recommendation != null) && (Recommendation.Count != 0))
+      {
+        writer.WritePropertyName("recommendation");
+        writer.WriteStartArray();
+
+        foreach (ImmunizationRecommendationRecommendation valRecommendation in Recommendation)
+        {
+          valRecommendation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

@@ -36,6 +36,67 @@ namespace Fhir.R4.Models
     /// </summary>
     public Period ValidityPeriod { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Country != null)
+      {
+        writer.WritePropertyName("country");
+        Country.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Jurisdiction != null) && (Jurisdiction.Count != 0))
+      {
+        writer.WritePropertyName("jurisdiction");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valJurisdiction in Jurisdiction)
+        {
+          valJurisdiction.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (LegalStatusOfSupply != null)
+      {
+        writer.WritePropertyName("legalStatusOfSupply");
+        LegalStatusOfSupply.SerializeJson(ref writer, options);
+      }
+
+      if (ValidityPeriod != null)
+      {
+        writer.WritePropertyName("validityPeriod");
+        ValidityPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -171,6 +232,59 @@ namespace Fhir.R4.Models
     /// Type of procedure.
     /// </summary>
     public CodeableConcept Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Application != null) && (Application.Count != 0))
+      {
+        writer.WritePropertyName("application");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductAuthorizationProcedure valApplication in Application)
+        {
+          valApplication.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (DatePeriod != null)
+      {
+        writer.WritePropertyName("datePeriod");
+        DatePeriod.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("dateDateTime", DateDateTime);
+
+      if (_DateDateTime != null)
+      {
+        writer.WritePropertyName("_dateDateTime");
+        _DateDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -349,6 +463,158 @@ namespace Fhir.R4.Models
     /// The beginning of the time period in which the marketing authorization is in the specific status shall be specified A complete date consisting of day, month and year shall be specified using the ISO 8601 date format.
     /// </summary>
     public Period ValidityPeriod { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Country != null) && (Country.Count != 0))
+      {
+        writer.WritePropertyName("country");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCountry in Country)
+        {
+          valCountry.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (DataExclusivityPeriod != null)
+      {
+        writer.WritePropertyName("dataExclusivityPeriod");
+        DataExclusivityPeriod.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("dateOfFirstAuthorization", DateOfFirstAuthorization);
+
+      if (_DateOfFirstAuthorization != null)
+      {
+        writer.WritePropertyName("_dateOfFirstAuthorization");
+        _DateOfFirstAuthorization.SerializeJson(ref writer, options);
+      }
+
+      if (Holder != null)
+      {
+        writer.WritePropertyName("holder");
+        Holder.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("internationalBirthDate", InternationalBirthDate);
+
+      if (_InternationalBirthDate != null)
+      {
+        writer.WritePropertyName("_internationalBirthDate");
+        _InternationalBirthDate.SerializeJson(ref writer, options);
+      }
+
+      if ((Jurisdiction != null) && (Jurisdiction.Count != 0))
+      {
+        writer.WritePropertyName("jurisdiction");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valJurisdiction in Jurisdiction)
+        {
+          valJurisdiction.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((JurisdictionalAuthorization != null) && (JurisdictionalAuthorization.Count != 0))
+      {
+        writer.WritePropertyName("jurisdictionalAuthorization");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductAuthorizationJurisdictionalAuthorization valJurisdictionalAuthorization in JurisdictionalAuthorization)
+        {
+          valJurisdictionalAuthorization.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (LegalBasis != null)
+      {
+        writer.WritePropertyName("legalBasis");
+        LegalBasis.SerializeJson(ref writer, options);
+      }
+
+      if (Procedure != null)
+      {
+        writer.WritePropertyName("procedure");
+        Procedure.SerializeJson(ref writer, options);
+      }
+
+      if (Regulator != null)
+      {
+        writer.WritePropertyName("regulator");
+        Regulator.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("restoreDate", RestoreDate);
+
+      if (_RestoreDate != null)
+      {
+        writer.WritePropertyName("_restoreDate");
+        _RestoreDate.SerializeJson(ref writer, options);
+      }
+
+      if (Status != null)
+      {
+        writer.WritePropertyName("status");
+        Status.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("statusDate", StatusDate);
+
+      if (_StatusDate != null)
+      {
+        writer.WritePropertyName("_statusDate");
+        _StatusDate.SerializeJson(ref writer, options);
+      }
+
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      if (ValidityPeriod != null)
+      {
+        writer.WritePropertyName("validityPeriod");
+        ValidityPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

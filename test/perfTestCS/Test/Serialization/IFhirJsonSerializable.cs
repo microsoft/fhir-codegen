@@ -15,6 +15,10 @@ namespace Fhir.R4.Serialization
   public interface IFhirJsonSerializable
   {
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject);
+    /// <summary>
     /// Parse an open JSON object into the current object.
     /// </summary>
     void DeserializeJson(ref Utf8JsonReader reader, JsonSerializerOptions options);

@@ -26,6 +26,7 @@ namespace Fhir.R4.Serialization
     /// </summary>
     public override void Write(Utf8JsonWriter writer, T component, JsonSerializerOptions options)
     {
+      component.SerializeJson(ref writer, options, true);
     }
     /// <summary>
     /// Reads and converts the JSON to a typed object.

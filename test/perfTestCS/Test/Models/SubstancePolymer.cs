@@ -32,6 +32,46 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Type { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(ref writer, options);
+      }
+
+      if (IsDefining != null)
+      {
+        writer.WriteBoolean("isDefining", (bool)IsDefining!);
+      }
+
+      if (Material != null)
+      {
+        writer.WritePropertyName("material");
+        Material.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -101,6 +141,42 @@ namespace Fhir.R4.Models
     /// Todo.
     /// </summary>
     public List<SubstancePolymerMonomerSetStartingMaterial> StartingMaterial { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (RatioType != null)
+      {
+        writer.WritePropertyName("ratioType");
+        RatioType.SerializeJson(ref writer, options);
+      }
+
+      if ((StartingMaterial != null) && (StartingMaterial.Count != 0))
+      {
+        writer.WritePropertyName("startingMaterial");
+        writer.WriteStartArray();
+
+        foreach (SubstancePolymerMonomerSetStartingMaterial valStartingMaterial in StartingMaterial)
+        {
+          valStartingMaterial.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -185,6 +261,35 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Degree { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(ref writer, options);
+      }
+
+      if (Degree != null)
+      {
+        writer.WritePropertyName("degree");
+        Degree.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -253,6 +358,43 @@ namespace Fhir.R4.Models
     /// Todo.
     /// </summary>
     public CodeableConcept Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Attachment != null)
+      {
+        writer.WritePropertyName("attachment");
+        Attachment.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("representation", Representation);
+
+      if (_Representation != null)
+      {
+        writer.WritePropertyName("_representation");
+        _Representation.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -339,6 +481,69 @@ namespace Fhir.R4.Models
     /// Todo.
     /// </summary>
     public List<SubstancePolymerRepeatRepeatUnitStructuralRepresentation> StructuralRepresentation { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(ref writer, options);
+      }
+
+      if ((DegreeOfPolymerisation != null) && (DegreeOfPolymerisation.Count != 0))
+      {
+        writer.WritePropertyName("degreeOfPolymerisation");
+        writer.WriteStartArray();
+
+        foreach (SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation valDegreeOfPolymerisation in DegreeOfPolymerisation)
+        {
+          valDegreeOfPolymerisation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (OrientationOfPolymerisation != null)
+      {
+        writer.WritePropertyName("orientationOfPolymerisation");
+        OrientationOfPolymerisation.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("repeatUnit", RepeatUnit);
+
+      if (_RepeatUnit != null)
+      {
+        writer.WritePropertyName("_repeatUnit");
+        _RepeatUnit.SerializeJson(ref writer, options);
+      }
+
+      if ((StructuralRepresentation != null) && (StructuralRepresentation.Count != 0))
+      {
+        writer.WritePropertyName("structuralRepresentation");
+        writer.WriteStartArray();
+
+        foreach (SubstancePolymerRepeatRepeatUnitStructuralRepresentation valStructuralRepresentation in StructuralRepresentation)
+        {
+          valStructuralRepresentation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -476,6 +681,55 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept RepeatUnitAmountType { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("averageMolecularFormula", AverageMolecularFormula);
+
+      if (_AverageMolecularFormula != null)
+      {
+        writer.WritePropertyName("_averageMolecularFormula");
+        _AverageMolecularFormula.SerializeJson(ref writer, options);
+      }
+
+      if (NumberOfUnits != null)
+      {
+        writer.WriteNumber("numberOfUnits", (int)NumberOfUnits!);
+      }
+
+      if ((RepeatUnit != null) && (RepeatUnit.Count != 0))
+      {
+        writer.WritePropertyName("repeatUnit");
+        writer.WriteStartArray();
+
+        foreach (SubstancePolymerRepeatRepeatUnit valRepeatUnit in RepeatUnit)
+        {
+          valRepeatUnit.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (RepeatUnitAmountType != null)
+      {
+        writer.WritePropertyName("repeatUnitAmountType");
+        RepeatUnitAmountType.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -595,6 +849,103 @@ namespace Fhir.R4.Models
     /// Todo.
     /// </summary>
     public List<SubstancePolymerRepeat> Repeat { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Class != null)
+      {
+        writer.WritePropertyName("class");
+        Class.SerializeJson(ref writer, options);
+      }
+
+      if ((CopolymerConnectivity != null) && (CopolymerConnectivity.Count != 0))
+      {
+        writer.WritePropertyName("copolymerConnectivity");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCopolymerConnectivity in CopolymerConnectivity)
+        {
+          valCopolymerConnectivity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Geometry != null)
+      {
+        writer.WritePropertyName("geometry");
+        Geometry.SerializeJson(ref writer, options);
+      }
+
+      if ((Modification != null) && (Modification.Count != 0))
+      {
+        writer.WritePropertyName("modification");
+        writer.WriteStartArray();
+
+        foreach (string valModification in Modification)
+        {
+          writer.WriteStringValue(valModification);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Modification != null) && (_Modification.Count != 0))
+      {
+        writer.WritePropertyName("_modification");
+        writer.WriteStartArray();
+
+        foreach (Element val_Modification in _Modification)
+        {
+          val_Modification.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((MonomerSet != null) && (MonomerSet.Count != 0))
+      {
+        writer.WritePropertyName("monomerSet");
+        writer.WriteStartArray();
+
+        foreach (SubstancePolymerMonomerSet valMonomerSet in MonomerSet)
+        {
+          valMonomerSet.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Repeat != null) && (Repeat.Count != 0))
+      {
+        writer.WritePropertyName("repeat");
+        writer.WriteStartArray();
+
+        foreach (SubstancePolymerRepeat valRepeat in Repeat)
+        {
+          valRepeat.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

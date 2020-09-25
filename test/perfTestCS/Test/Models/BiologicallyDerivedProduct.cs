@@ -36,6 +36,49 @@ namespace Fhir.R4.Models
     /// </summary>
     public Reference Source { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("collectedDateTime", CollectedDateTime);
+
+      if (_CollectedDateTime != null)
+      {
+        writer.WritePropertyName("_collectedDateTime");
+        _CollectedDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (CollectedPeriod != null)
+      {
+        writer.WritePropertyName("collectedPeriod");
+        CollectedPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (Collector != null)
+      {
+        writer.WritePropertyName("collector");
+        Collector.SerializeJson(ref writer, options);
+      }
+
+      if (Source != null)
+      {
+        writer.WritePropertyName("source");
+        Source.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -130,6 +173,57 @@ namespace Fhir.R4.Models
     /// Time of processing.
     /// </summary>
     public Period TimePeriod { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Additive != null)
+      {
+        writer.WritePropertyName("additive");
+        Additive.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("description", Description);
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (Procedure != null)
+      {
+        writer.WritePropertyName("procedure");
+        Procedure.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("timeDateTime", TimeDateTime);
+
+      if (_TimeDateTime != null)
+      {
+        writer.WritePropertyName("_timeDateTime");
+        _TimeDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (TimePeriod != null)
+      {
+        writer.WritePropertyName("timePeriod");
+        TimePeriod.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -227,6 +321,45 @@ namespace Fhir.R4.Models
     /// </summary>
     public Period TimePeriod { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("description", Description);
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("timeDateTime", TimeDateTime);
+
+      if (_TimeDateTime != null)
+      {
+        writer.WritePropertyName("_timeDateTime");
+        _TimeDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (TimePeriod != null)
+      {
+        writer.WritePropertyName("timePeriod");
+        TimePeriod.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -320,6 +453,56 @@ namespace Fhir.R4.Models
     /// Extension container element for Temperature
     /// </summary>
     public Element _Temperature { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("description", Description);
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (Duration != null)
+      {
+        writer.WritePropertyName("duration");
+        Duration.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("scale", Scale);
+
+      if (_Scale != null)
+      {
+        writer.WritePropertyName("_scale");
+        _Scale.SerializeJson(ref writer, options);
+      }
+
+      if (Temperature != null)
+      {
+        writer.WriteNumber("temperature", (decimal)Temperature!);
+      }
+
+      if (_Temperature != null)
+      {
+        writer.WritePropertyName("_temperature");
+        _Temperature.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -452,6 +635,130 @@ namespace Fhir.R4.Models
     /// Product storage.
     /// </summary>
     public List<BiologicallyDerivedProductStorage> Storage { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Collection != null)
+      {
+        writer.WritePropertyName("collection");
+        Collection.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Manipulation != null)
+      {
+        writer.WritePropertyName("manipulation");
+        Manipulation.SerializeJson(ref writer, options);
+      }
+
+      if ((Parent != null) && (Parent.Count != 0))
+      {
+        writer.WritePropertyName("parent");
+        writer.WriteStartArray();
+
+        foreach (Reference valParent in Parent)
+        {
+          valParent.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Processing != null) && (Processing.Count != 0))
+      {
+        writer.WritePropertyName("processing");
+        writer.WriteStartArray();
+
+        foreach (BiologicallyDerivedProductProcessing valProcessing in Processing)
+        {
+          valProcessing.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("productCategory", ProductCategory);
+
+      if (_ProductCategory != null)
+      {
+        writer.WritePropertyName("_productCategory");
+        _ProductCategory.SerializeJson(ref writer, options);
+      }
+
+      if (ProductCode != null)
+      {
+        writer.WritePropertyName("productCode");
+        ProductCode.SerializeJson(ref writer, options);
+      }
+
+      if (Quantity != null)
+      {
+        writer.WriteNumber("quantity", (int)Quantity!);
+      }
+
+      if ((Request != null) && (Request.Count != 0))
+      {
+        writer.WritePropertyName("request");
+        writer.WriteStartArray();
+
+        foreach (Reference valRequest in Request)
+        {
+          valRequest.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if ((Storage != null) && (Storage.Count != 0))
+      {
+        writer.WritePropertyName("storage");
+        writer.WriteStartArray();
+
+        foreach (BiologicallyDerivedProductStorage valStorage in Storage)
+        {
+          valStorage.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

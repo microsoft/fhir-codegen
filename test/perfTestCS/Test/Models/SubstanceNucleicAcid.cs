@@ -44,6 +44,53 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _ResidueSite { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("connectivity", Connectivity);
+
+      if (_Connectivity != null)
+      {
+        writer.WritePropertyName("_connectivity");
+        _Connectivity.SerializeJson(ref writer, options);
+      }
+
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("name", Name);
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("residueSite", ResidueSite);
+
+      if (_ResidueSite != null)
+      {
+        writer.WritePropertyName("_residueSite");
+        _ResidueSite.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -138,6 +185,45 @@ namespace Fhir.R4.Models
     /// Extension container element for ResidueSite
     /// </summary>
     public Element _ResidueSite { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("name", Name);
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("residueSite", ResidueSite);
+
+      if (_ResidueSite != null)
+      {
+        writer.WritePropertyName("_residueSite");
+        _ResidueSite.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -240,6 +326,85 @@ namespace Fhir.R4.Models
     /// The nucleotide present at the 3’ terminal shall be specified based on a controlled vocabulary. Since the sequence is represented from the 5' to the 3' end, the 5’ prime nucleotide is the letter at the last position in the sequence. A separate representation would be redundant.
     /// </summary>
     public CodeableConcept ThreePrime { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (FivePrime != null)
+      {
+        writer.WritePropertyName("fivePrime");
+        FivePrime.SerializeJson(ref writer, options);
+      }
+
+      if (Length != null)
+      {
+        writer.WriteNumber("length", (int)Length!);
+      }
+
+      if ((Linkage != null) && (Linkage.Count != 0))
+      {
+        writer.WritePropertyName("linkage");
+        writer.WriteStartArray();
+
+        foreach (SubstanceNucleicAcidSubunitLinkage valLinkage in Linkage)
+        {
+          valLinkage.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("sequence", Sequence);
+
+      if (_Sequence != null)
+      {
+        writer.WritePropertyName("_sequence");
+        _Sequence.SerializeJson(ref writer, options);
+      }
+
+      if (SequenceAttachment != null)
+      {
+        writer.WritePropertyName("sequenceAttachment");
+        SequenceAttachment.SerializeJson(ref writer, options);
+      }
+
+      if (Subunit != null)
+      {
+        writer.WriteNumber("subunit", (int)Subunit!);
+      }
+
+      if ((Sugar != null) && (Sugar.Count != 0))
+      {
+        writer.WritePropertyName("sugar");
+        writer.WriteStartArray();
+
+        foreach (SubstanceNucleicAcidSubunitSugar valSugar in Sugar)
+        {
+          valSugar.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ThreePrime != null)
+      {
+        writer.WritePropertyName("threePrime");
+        ThreePrime.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -397,6 +562,64 @@ namespace Fhir.R4.Models
     /// Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times.
     /// </summary>
     public List<SubstanceNucleicAcidSubunit> Subunit { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("areaOfHybridisation", AreaOfHybridisation);
+
+      if (_AreaOfHybridisation != null)
+      {
+        writer.WritePropertyName("_areaOfHybridisation");
+        _AreaOfHybridisation.SerializeJson(ref writer, options);
+      }
+
+      if (NumberOfSubunits != null)
+      {
+        writer.WriteNumber("numberOfSubunits", (int)NumberOfSubunits!);
+      }
+
+      if (OligoNucleotideType != null)
+      {
+        writer.WritePropertyName("oligoNucleotideType");
+        OligoNucleotideType.SerializeJson(ref writer, options);
+      }
+
+      if (SequenceType != null)
+      {
+        writer.WritePropertyName("sequenceType");
+        SequenceType.SerializeJson(ref writer, options);
+      }
+
+      if ((Subunit != null) && (Subunit.Count != 0))
+      {
+        writer.WritePropertyName("subunit");
+        writer.WriteStartArray();
+
+        foreach (SubstanceNucleicAcidSubunit valSubunit in Subunit)
+        {
+          valSubunit.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

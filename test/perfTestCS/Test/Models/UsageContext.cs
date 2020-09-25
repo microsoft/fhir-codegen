@@ -36,6 +36,38 @@ namespace Fhir.R4.Models
     /// </summary>
     public Reference ValueReference { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("valueCodeableConcept");
+      ValueCodeableConcept.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("valueQuantity");
+      ValueQuantity.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("valueRange");
+      ValueRange.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("valueReference");
+      ValueReference.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

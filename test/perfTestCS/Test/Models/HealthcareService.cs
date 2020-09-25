@@ -28,6 +28,37 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Comment { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("comment", Comment);
+
+      if (_Comment != null)
+      {
+        writer.WritePropertyName("_comment");
+        _Comment.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -112,6 +143,70 @@ namespace Fhir.R4.Models
     /// Extension container element for DaysOfWeek
     /// </summary>
     public List<Element> _DaysOfWeek { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (AllDay != null)
+      {
+        writer.WriteBoolean("allDay", (bool)AllDay!);
+      }
+
+      writer.WriteString("availableEndTime", AvailableEndTime);
+
+      if (_AvailableEndTime != null)
+      {
+        writer.WritePropertyName("_availableEndTime");
+        _AvailableEndTime.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("availableStartTime", AvailableStartTime);
+
+      if (_AvailableStartTime != null)
+      {
+        writer.WritePropertyName("_availableStartTime");
+        _AvailableStartTime.SerializeJson(ref writer, options);
+      }
+
+      if ((DaysOfWeek != null) && (DaysOfWeek.Count != 0))
+      {
+        writer.WritePropertyName("daysOfWeek");
+        writer.WriteStartArray();
+
+        foreach (string valDaysOfWeek in DaysOfWeek)
+        {
+          writer.WriteStringValue(valDaysOfWeek);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_DaysOfWeek != null) && (_DaysOfWeek.Count != 0))
+      {
+        writer.WritePropertyName("_daysOfWeek");
+        writer.WriteStartArray();
+
+        foreach (Element val_DaysOfWeek in _DaysOfWeek)
+        {
+          val_DaysOfWeek.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -241,6 +336,37 @@ namespace Fhir.R4.Models
     /// Service is not available (seasonally or for a public holiday) from this date.
     /// </summary>
     public Period During { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("description", Description);
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (During != null)
+      {
+        writer.WritePropertyName("during");
+        During.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -414,6 +540,288 @@ namespace Fhir.R4.Models
     /// The specific type of service that may be delivered or performed.
     /// </summary>
     public List<CodeableConcept> Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Active != null)
+      {
+        writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (AppointmentRequired != null)
+      {
+        writer.WriteBoolean("appointmentRequired", (bool)AppointmentRequired!);
+      }
+
+      writer.WriteString("availabilityExceptions", AvailabilityExceptions);
+
+      if (_AvailabilityExceptions != null)
+      {
+        writer.WritePropertyName("_availabilityExceptions");
+        _AvailabilityExceptions.SerializeJson(ref writer, options);
+      }
+
+      if ((AvailableTime != null) && (AvailableTime.Count != 0))
+      {
+        writer.WritePropertyName("availableTime");
+        writer.WriteStartArray();
+
+        foreach (HealthcareServiceAvailableTime valAvailableTime in AvailableTime)
+        {
+          valAvailableTime.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Category != null) && (Category.Count != 0))
+      {
+        writer.WritePropertyName("category");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCategory in Category)
+        {
+          valCategory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Characteristic != null) && (Characteristic.Count != 0))
+      {
+        writer.WritePropertyName("characteristic");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCharacteristic in Characteristic)
+        {
+          valCharacteristic.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("comment", Comment);
+
+      if (_Comment != null)
+      {
+        writer.WritePropertyName("_comment");
+        _Comment.SerializeJson(ref writer, options);
+      }
+
+      if ((Communication != null) && (Communication.Count != 0))
+      {
+        writer.WritePropertyName("communication");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCommunication in Communication)
+        {
+          valCommunication.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((CoverageArea != null) && (CoverageArea.Count != 0))
+      {
+        writer.WritePropertyName("coverageArea");
+        writer.WriteStartArray();
+
+        foreach (Reference valCoverageArea in CoverageArea)
+        {
+          valCoverageArea.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Eligibility != null) && (Eligibility.Count != 0))
+      {
+        writer.WritePropertyName("eligibility");
+        writer.WriteStartArray();
+
+        foreach (HealthcareServiceEligibility valEligibility in Eligibility)
+        {
+          valEligibility.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Endpoint != null) && (Endpoint.Count != 0))
+      {
+        writer.WritePropertyName("endpoint");
+        writer.WriteStartArray();
+
+        foreach (Reference valEndpoint in Endpoint)
+        {
+          valEndpoint.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("extraDetails", ExtraDetails);
+
+      if (_ExtraDetails != null)
+      {
+        writer.WritePropertyName("_extraDetails");
+        _ExtraDetails.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Location != null) && (Location.Count != 0))
+      {
+        writer.WritePropertyName("location");
+        writer.WriteStartArray();
+
+        foreach (Reference valLocation in Location)
+        {
+          valLocation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("name", Name);
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      if ((NotAvailable != null) && (NotAvailable.Count != 0))
+      {
+        writer.WritePropertyName("notAvailable");
+        writer.WriteStartArray();
+
+        foreach (HealthcareServiceNotAvailable valNotAvailable in NotAvailable)
+        {
+          valNotAvailable.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Photo != null)
+      {
+        writer.WritePropertyName("photo");
+        Photo.SerializeJson(ref writer, options);
+      }
+
+      if ((Program != null) && (Program.Count != 0))
+      {
+        writer.WritePropertyName("program");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valProgram in Program)
+        {
+          valProgram.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ProvidedBy != null)
+      {
+        writer.WritePropertyName("providedBy");
+        ProvidedBy.SerializeJson(ref writer, options);
+      }
+
+      if ((ReferralMethod != null) && (ReferralMethod.Count != 0))
+      {
+        writer.WritePropertyName("referralMethod");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valReferralMethod in ReferralMethod)
+        {
+          valReferralMethod.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ServiceProvisionCode != null) && (ServiceProvisionCode.Count != 0))
+      {
+        writer.WritePropertyName("serviceProvisionCode");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valServiceProvisionCode in ServiceProvisionCode)
+        {
+          valServiceProvisionCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Specialty != null) && (Specialty.Count != 0))
+      {
+        writer.WritePropertyName("specialty");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valSpecialty in Specialty)
+        {
+          valSpecialty.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Telecom != null) && (Telecom.Count != 0))
+      {
+        writer.WritePropertyName("telecom");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valTelecom in Telecom)
+        {
+          valTelecom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Type != null) && (Type.Count != 0))
+      {
+        writer.WritePropertyName("type");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valType in Type)
+        {
+          valType.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

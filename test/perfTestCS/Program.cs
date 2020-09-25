@@ -9,6 +9,7 @@ using System.IO;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
+using Newtonsoft.Json;
 
 namespace PerfTestCS
 {
@@ -19,8 +20,8 @@ namespace PerfTestCS
         private static Dictionary<string, int> _r4TestFilesAndLoops = new Dictionary<string, int>
         {
             { "hl7.fhir.r4.examples-4.0.1\\package\\Patient-example.json", 10000 },
-            { "hl7.fhir.r4.examples-4.0.1\\package\\Observation-2minute-apgar-score.json", 1000 },
-            { "hl7.fhir.r4.examples-4.0.1\\package\\Bundle-resources.json", 5 },
+            { "hl7.fhir.r4.examples-4.0.1\\package\\Observation-2minute-apgar-score.json", 10000 },
+            { "hl7.fhir.r4.examples-4.0.1\\package\\Bundle-resources.json", 10 },
         };
 
         /// <summary>Main entry-point for this application.</summary>
@@ -52,10 +53,10 @@ namespace PerfTestCS
                 }
             }
 
-            // if (SystemTest(fhirSpecDirectory) == 0)
-            // {
-            //     return 0;
-            // }
+            if (SystemTest(fhirSpecDirectory) == 0)
+            {
+                return 0;
+            }
 
             Console.WriteLine("Running tests, this may take a few minutes...");
             Console.WriteLine(string.Empty);
@@ -91,8 +92,8 @@ namespace PerfTestCS
         /// <returns>An int.</returns>
         private static int SystemTest(string fhirSpecDirectory)
         {
-            // string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Patient-example.json");
-            string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Observation-2minute-apgar-score.json");
+            string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Patient-example.json");
+            // string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Observation-2minute-apgar-score.json");
 
             var serializeOptions = new System.Text.Json.JsonSerializerOptions();
             // serializeOptions.Converters.Add(new Test.R4.ResourceConverter());
@@ -115,11 +116,16 @@ namespace PerfTestCS
 
             // var typedFrag = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Address>(fragment, serializeOptions);
 
-            var obj = System.Text.Json.JsonSerializer.Deserialize(File.ReadAllText(path), typeof(Fhir.R4.Models.Resource), serializeOptions);
-            // var typed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Patient>(File.ReadAllText(path), serializeOptions);
+            // var obj = System.Text.Json.JsonSerializer.Deserialize(File.ReadAllText(path), typeof(Fhir.R4.Models.Resource), serializeOptions);
+            var typed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Patient>(File.ReadAllText(path), serializeOptions);
 
             // var obj = System.Text.Json.JsonSerializer.Deserialize(File.ReadAllText(path), typeof(Test.R4.Resource), serializeOptions);
             // var typed = System.Text.Json.JsonSerializer.Deserialize<Test.R4.Patient>(File.ReadAllText(path), serializeOptions);
+
+            string val = System.Text.Json.JsonSerializer.Serialize<Fhir.R4.Models.Patient>(typed, serializeOptions);
+
+            string exportName = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\patient-example-roundtrip.json");
+            File.WriteAllText(exportName, val);
 
             return 0;
         }
@@ -146,7 +152,7 @@ namespace PerfTestCS
             // load the file
             string contents = File.ReadAllText(filename);
 
-            //results.Add(TestNetApi(filename, contents, loops));
+            results.Add(TestNetApi(filename, contents, loops));
             results.Add(TestBasicNewtonSoft(filename, contents, loops));
             results.Add(TestCS2(filename, contents, loops));
 

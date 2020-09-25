@@ -68,6 +68,83 @@ namespace Fhir.R4.Models
     /// </summary>
     public int? WindowStart { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Chromosome != null)
+      {
+        writer.WritePropertyName("chromosome");
+        Chromosome.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("genomeBuild", GenomeBuild);
+
+      if (_GenomeBuild != null)
+      {
+        writer.WritePropertyName("_genomeBuild");
+        _GenomeBuild.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("orientation", Orientation);
+
+      if (_Orientation != null)
+      {
+        writer.WritePropertyName("_orientation");
+        _Orientation.SerializeJson(ref writer, options);
+      }
+
+      if (ReferenceSeqId != null)
+      {
+        writer.WritePropertyName("referenceSeqId");
+        ReferenceSeqId.SerializeJson(ref writer, options);
+      }
+
+      if (ReferenceSeqPointer != null)
+      {
+        writer.WritePropertyName("referenceSeqPointer");
+        ReferenceSeqPointer.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("referenceSeqString", ReferenceSeqString);
+
+      if (_ReferenceSeqString != null)
+      {
+        writer.WritePropertyName("_referenceSeqString");
+        _ReferenceSeqString.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("strand", Strand);
+
+      if (_Strand != null)
+      {
+        writer.WritePropertyName("_strand");
+        _Strand.SerializeJson(ref writer, options);
+      }
+
+      if (WindowEnd != null)
+      {
+        writer.WriteNumber("windowEnd", (int)WindowEnd!);
+      }
+
+      if (WindowStart != null)
+      {
+        writer.WriteNumber("windowStart", (int)WindowStart!);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -206,6 +283,63 @@ namespace Fhir.R4.Models
     /// </summary>
     public Reference VariantPointer { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("cigar", Cigar);
+
+      if (_Cigar != null)
+      {
+        writer.WritePropertyName("_cigar");
+        _Cigar.SerializeJson(ref writer, options);
+      }
+
+      if (End != null)
+      {
+        writer.WriteNumber("end", (int)End!);
+      }
+
+      writer.WriteString("observedAllele", ObservedAllele);
+
+      if (_ObservedAllele != null)
+      {
+        writer.WritePropertyName("_observedAllele");
+        _ObservedAllele.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("referenceAllele", ReferenceAllele);
+
+      if (_ReferenceAllele != null)
+      {
+        writer.WritePropertyName("_referenceAllele");
+        _ReferenceAllele.SerializeJson(ref writer, options);
+      }
+
+      if (Start != null)
+      {
+        writer.WriteNumber("start", (int)Start!);
+      }
+
+      if (VariantPointer != null)
+      {
+        writer.WritePropertyName("variantPointer");
+        VariantPointer.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -328,6 +462,153 @@ namespace Fhir.R4.Models
     /// Extension container element for Sensitivity
     /// </summary>
     public List<Element> _Sensitivity { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((FMeasure != null) && (FMeasure.Count != 0))
+      {
+        writer.WritePropertyName("fMeasure");
+        writer.WriteStartArray();
+
+        foreach (decimal valFMeasure in FMeasure)
+        {
+          writer.WriteNumberValue(valFMeasure);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_FMeasure != null) && (_FMeasure.Count != 0))
+      {
+        writer.WritePropertyName("_fMeasure");
+        writer.WriteStartArray();
+
+        foreach (Element val_FMeasure in _FMeasure)
+        {
+          val_FMeasure.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((NumFN != null) && (NumFN.Count != 0))
+      {
+        writer.WritePropertyName("numFN");
+        writer.WriteStartArray();
+
+        foreach (int valNumFN in NumFN)
+        {
+          writer.WriteNumberValue(valNumFN);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((NumFP != null) && (NumFP.Count != 0))
+      {
+        writer.WritePropertyName("numFP");
+        writer.WriteStartArray();
+
+        foreach (int valNumFP in NumFP)
+        {
+          writer.WriteNumberValue(valNumFP);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((NumTP != null) && (NumTP.Count != 0))
+      {
+        writer.WritePropertyName("numTP");
+        writer.WriteStartArray();
+
+        foreach (int valNumTP in NumTP)
+        {
+          writer.WriteNumberValue(valNumTP);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Precision != null) && (Precision.Count != 0))
+      {
+        writer.WritePropertyName("precision");
+        writer.WriteStartArray();
+
+        foreach (decimal valPrecision in Precision)
+        {
+          writer.WriteNumberValue(valPrecision);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Precision != null) && (_Precision.Count != 0))
+      {
+        writer.WritePropertyName("_precision");
+        writer.WriteStartArray();
+
+        foreach (Element val_Precision in _Precision)
+        {
+          val_Precision.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Score != null) && (Score.Count != 0))
+      {
+        writer.WritePropertyName("score");
+        writer.WriteStartArray();
+
+        foreach (int valScore in Score)
+        {
+          writer.WriteNumberValue(valScore);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Sensitivity != null) && (Sensitivity.Count != 0))
+      {
+        writer.WritePropertyName("sensitivity");
+        writer.WriteStartArray();
+
+        foreach (decimal valSensitivity in Sensitivity)
+        {
+          writer.WriteNumberValue(valSensitivity);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Sensitivity != null) && (_Sensitivity.Count != 0))
+      {
+        writer.WritePropertyName("_sensitivity");
+        writer.WriteStartArray();
+
+        foreach (Element val_Sensitivity in _Sensitivity)
+        {
+          val_Sensitivity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -724,6 +1005,153 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Type { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (End != null)
+      {
+        writer.WriteNumber("end", (int)End!);
+      }
+
+      if (FScore != null)
+      {
+        writer.WriteNumber("fScore", (decimal)FScore!);
+      }
+
+      if (_FScore != null)
+      {
+        writer.WritePropertyName("_fScore");
+        _FScore.SerializeJson(ref writer, options);
+      }
+
+      if (GtFP != null)
+      {
+        writer.WriteNumber("gtFP", (decimal)GtFP!);
+      }
+
+      if (_GtFP != null)
+      {
+        writer.WritePropertyName("_gtFP");
+        _GtFP.SerializeJson(ref writer, options);
+      }
+
+      if (Method != null)
+      {
+        writer.WritePropertyName("method");
+        Method.SerializeJson(ref writer, options);
+      }
+
+      if (Precision != null)
+      {
+        writer.WriteNumber("precision", (decimal)Precision!);
+      }
+
+      if (_Precision != null)
+      {
+        writer.WritePropertyName("_precision");
+        _Precision.SerializeJson(ref writer, options);
+      }
+
+      if (QueryFP != null)
+      {
+        writer.WriteNumber("queryFP", (decimal)QueryFP!);
+      }
+
+      if (_QueryFP != null)
+      {
+        writer.WritePropertyName("_queryFP");
+        _QueryFP.SerializeJson(ref writer, options);
+      }
+
+      if (QueryTP != null)
+      {
+        writer.WriteNumber("queryTP", (decimal)QueryTP!);
+      }
+
+      if (_QueryTP != null)
+      {
+        writer.WritePropertyName("_queryTP");
+        _QueryTP.SerializeJson(ref writer, options);
+      }
+
+      if (Recall != null)
+      {
+        writer.WriteNumber("recall", (decimal)Recall!);
+      }
+
+      if (_Recall != null)
+      {
+        writer.WritePropertyName("_recall");
+        _Recall.SerializeJson(ref writer, options);
+      }
+
+      if (Roc != null)
+      {
+        writer.WritePropertyName("roc");
+        Roc.SerializeJson(ref writer, options);
+      }
+
+      if (Score != null)
+      {
+        writer.WritePropertyName("score");
+        Score.SerializeJson(ref writer, options);
+      }
+
+      if (StandardSequence != null)
+      {
+        writer.WritePropertyName("standardSequence");
+        StandardSequence.SerializeJson(ref writer, options);
+      }
+
+      if (Start != null)
+      {
+        writer.WriteNumber("start", (int)Start!);
+      }
+
+      if (TruthFN != null)
+      {
+        writer.WriteNumber("truthFN", (decimal)TruthFN!);
+      }
+
+      if (_TruthFN != null)
+      {
+        writer.WritePropertyName("_truthFN");
+        _TruthFN.SerializeJson(ref writer, options);
+      }
+
+      if (TruthTP != null)
+      {
+        writer.WriteNumber("truthTP", (decimal)TruthTP!);
+      }
+
+      if (_TruthTP != null)
+      {
+        writer.WritePropertyName("_truthTP");
+        _TruthTP.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -924,6 +1352,71 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _VariantsetId { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("datasetId", DatasetId);
+
+      if (_DatasetId != null)
+      {
+        writer.WritePropertyName("_datasetId");
+        _DatasetId.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("name", Name);
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("readsetId", ReadsetId);
+
+      if (_ReadsetId != null)
+      {
+        writer.WritePropertyName("_readsetId");
+        _ReadsetId.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("url", Url);
+
+      if (_Url != null)
+      {
+        writer.WritePropertyName("_url");
+        _Url.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("variantsetId", VariantsetId);
+
+      if (_VariantsetId != null)
+      {
+        writer.WritePropertyName("_variantsetId");
+        _VariantsetId.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -1029,6 +1522,33 @@ namespace Fhir.R4.Models
     /// </summary>
     public int? Start { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (End != null)
+      {
+        writer.WriteNumber("end", (int)End!);
+      }
+
+      if (Start != null)
+      {
+        writer.WriteNumber("start", (int)Start!);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -1087,6 +1607,33 @@ namespace Fhir.R4.Models
     /// Structural variant inner start. If the coordinate system is either 0-based or 1-based, then start position is inclusive.
     /// </summary>
     public int? Start { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (End != null)
+      {
+        writer.WriteNumber("end", (int)End!);
+      }
+
+      if (Start != null)
+      {
+        writer.WriteNumber("start", (int)Start!);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -1158,6 +1705,51 @@ namespace Fhir.R4.Models
     /// Information about chromosome structure variation DNA change type.
     /// </summary>
     public CodeableConcept VariantType { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Exact != null)
+      {
+        writer.WriteBoolean("exact", (bool)Exact!);
+      }
+
+      if (Inner != null)
+      {
+        writer.WritePropertyName("inner");
+        Inner.SerializeJson(ref writer, options);
+      }
+
+      if (Length != null)
+      {
+        writer.WriteNumber("length", (int)Length!);
+      }
+
+      if (Outer != null)
+      {
+        writer.WritePropertyName("outer");
+        Outer.SerializeJson(ref writer, options);
+      }
+
+      if (VariantType != null)
+      {
+        writer.WritePropertyName("variantType");
+        VariantType.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -1300,6 +1892,163 @@ namespace Fhir.R4.Models
     /// The definition of variant here originates from Sequence ontology ([variant_of](http://www.sequenceontology.org/browser/current_svn/term/variant_of)). This element can represent amino acid or nucleic sequence change(including insertion,deletion,SNP,etc.)  It can represent some complex mutation or segment variation with the assist of CIGAR string.
     /// </summary>
     public List<MolecularSequenceVariant> Variant { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteNumber("coordinateSystem", CoordinateSystem);
+
+      if (Device != null)
+      {
+        writer.WritePropertyName("device");
+        Device.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("observedSeq", ObservedSeq);
+
+      if (_ObservedSeq != null)
+      {
+        writer.WritePropertyName("_observedSeq");
+        _ObservedSeq.SerializeJson(ref writer, options);
+      }
+
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(ref writer, options);
+      }
+
+      if (Performer != null)
+      {
+        writer.WritePropertyName("performer");
+        Performer.SerializeJson(ref writer, options);
+      }
+
+      if ((Pointer != null) && (Pointer.Count != 0))
+      {
+        writer.WritePropertyName("pointer");
+        writer.WriteStartArray();
+
+        foreach (Reference valPointer in Pointer)
+        {
+          valPointer.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Quality != null) && (Quality.Count != 0))
+      {
+        writer.WritePropertyName("quality");
+        writer.WriteStartArray();
+
+        foreach (MolecularSequenceQuality valQuality in Quality)
+        {
+          valQuality.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Quantity != null)
+      {
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(ref writer, options);
+      }
+
+      if (ReadCoverage != null)
+      {
+        writer.WriteNumber("readCoverage", (int)ReadCoverage!);
+      }
+
+      if (ReferenceSeq != null)
+      {
+        writer.WritePropertyName("referenceSeq");
+        ReferenceSeq.SerializeJson(ref writer, options);
+      }
+
+      if ((Repository != null) && (Repository.Count != 0))
+      {
+        writer.WritePropertyName("repository");
+        writer.WriteStartArray();
+
+        foreach (MolecularSequenceRepository valRepository in Repository)
+        {
+          valRepository.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Specimen != null)
+      {
+        writer.WritePropertyName("specimen");
+        Specimen.SerializeJson(ref writer, options);
+      }
+
+      if ((StructureVariant != null) && (StructureVariant.Count != 0))
+      {
+        writer.WritePropertyName("structureVariant");
+        writer.WriteStartArray();
+
+        foreach (MolecularSequenceStructureVariant valStructureVariant in StructureVariant)
+        {
+          valStructureVariant.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if ((Variant != null) && (Variant.Count != 0))
+      {
+        writer.WritePropertyName("variant");
+        writer.WriteStartArray();
+
+        foreach (MolecularSequenceVariant valVariant in Variant)
+        {
+          valVariant.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

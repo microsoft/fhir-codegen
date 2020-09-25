@@ -68,6 +68,131 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Use { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("family", Family);
+
+      if (_Family != null)
+      {
+        writer.WritePropertyName("_family");
+        _Family.SerializeJson(ref writer, options);
+      }
+
+      if ((Given != null) && (Given.Count != 0))
+      {
+        writer.WritePropertyName("given");
+        writer.WriteStartArray();
+
+        foreach (string valGiven in Given)
+        {
+          writer.WriteStringValue(valGiven);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Given != null) && (_Given.Count != 0))
+      {
+        writer.WritePropertyName("_given");
+        writer.WriteStartArray();
+
+        foreach (Element val_Given in _Given)
+        {
+          val_Given.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      if ((Prefix != null) && (Prefix.Count != 0))
+      {
+        writer.WritePropertyName("prefix");
+        writer.WriteStartArray();
+
+        foreach (string valPrefix in Prefix)
+        {
+          writer.WriteStringValue(valPrefix);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Prefix != null) && (_Prefix.Count != 0))
+      {
+        writer.WritePropertyName("_prefix");
+        writer.WriteStartArray();
+
+        foreach (Element val_Prefix in _Prefix)
+        {
+          val_Prefix.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Suffix != null) && (Suffix.Count != 0))
+      {
+        writer.WritePropertyName("suffix");
+        writer.WriteStartArray();
+
+        foreach (string valSuffix in Suffix)
+        {
+          writer.WriteStringValue(valSuffix);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Suffix != null) && (_Suffix.Count != 0))
+      {
+        writer.WritePropertyName("_suffix");
+        writer.WriteStartArray();
+
+        foreach (Element val_Suffix in _Suffix)
+        {
+          val_Suffix.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("text", Text);
+
+      if (_Text != null)
+      {
+        writer.WritePropertyName("_text");
+        _Text.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("use", Use);
+
+      if (_Use != null)
+      {
+        writer.WritePropertyName("_use");
+        _Use.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

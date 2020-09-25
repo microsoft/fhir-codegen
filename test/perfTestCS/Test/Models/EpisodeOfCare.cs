@@ -28,6 +28,34 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Status { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("period");
+      Period.SerializeJson(ref writer, options);
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -96,6 +124,37 @@ namespace Fhir.R4.Models
     /// Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …).
     /// </summary>
     public CodeableConcept Role { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("condition");
+      Condition.SerializeJson(ref writer, options);
+
+      if (Rank != null)
+      {
+        writer.WriteNumber("rank", (uint)Rank!);
+      }
+
+      if (Role != null)
+      {
+        writer.WritePropertyName("role");
+        Role.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -209,6 +268,146 @@ namespace Fhir.R4.Models
     /// The type can be very important in processing as this could be used in determining if the EpisodeOfCare is relevant to specific government reporting, or other types of classifications.
     /// </summary>
     public List<CodeableConcept> Type { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Account != null) && (Account.Count != 0))
+      {
+        writer.WritePropertyName("account");
+        writer.WriteStartArray();
+
+        foreach (Reference valAccount in Account)
+        {
+          valAccount.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (CareManager != null)
+      {
+        writer.WritePropertyName("careManager");
+        CareManager.SerializeJson(ref writer, options);
+      }
+
+      if ((Diagnosis != null) && (Diagnosis.Count != 0))
+      {
+        writer.WritePropertyName("diagnosis");
+        writer.WriteStartArray();
+
+        foreach (EpisodeOfCareDiagnosis valDiagnosis in Diagnosis)
+        {
+          valDiagnosis.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ManagingOrganization != null)
+      {
+        writer.WritePropertyName("managingOrganization");
+        ManagingOrganization.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      if ((ReferralRequest != null) && (ReferralRequest.Count != 0))
+      {
+        writer.WritePropertyName("referralRequest");
+        writer.WriteStartArray();
+
+        foreach (Reference valReferralRequest in ReferralRequest)
+        {
+          valReferralRequest.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if ((StatusHistory != null) && (StatusHistory.Count != 0))
+      {
+        writer.WritePropertyName("statusHistory");
+        writer.WriteStartArray();
+
+        foreach (EpisodeOfCareStatusHistory valStatusHistory in StatusHistory)
+        {
+          valStatusHistory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Team != null) && (Team.Count != 0))
+      {
+        writer.WritePropertyName("team");
+        writer.WriteStartArray();
+
+        foreach (Reference valTeam in Team)
+        {
+          valTeam.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Type != null) && (Type.Count != 0))
+      {
+        writer.WritePropertyName("type");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valType in Type)
+        {
+          valType.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

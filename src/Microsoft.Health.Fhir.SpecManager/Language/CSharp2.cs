@@ -368,6 +368,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"{_accessModifier} interface IFhirJsonSerializable");
                 _writer.OpenScope();
 
+                // function SerializeJson
+                WriteIndentedComment("Serialize to a JSON object");
+                _writer.WriteLineIndented($"void SerializeJson(" +
+                    "ref Utf8JsonWriter writer, " +
+                    "JsonSerializerOptions options, " +
+                    "bool includeStartObject);");
+
                 // function DeserializeJson
                 WriteIndentedComment("Parse an open JSON object into the current object.");
                 _writer.WriteLineIndented($"void DeserializeJson(" +
@@ -431,6 +438,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 // open Write
                 _writer.OpenScope();
+
+                _writer.WriteLineIndented($"component.SerializeJson(ref writer, options, true);");
 
                 // close Write
                 _writer.CloseScope();
@@ -521,6 +530,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 // open Write
                 _writer.OpenScope();
+
+                _writer.WriteLineIndented($"switch (resource)");
+
+                // open switch
+                _writer.OpenScope();
+
+                // loop through our types
+                foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
+                {
+                    _writer.WriteLineIndented($"case {kvp.Value} typed{kvp.Value}:");
+                    _writer.IncreaseIndent();
+                    _writer.WriteLineIndented($"typed{kvp.Value}.SerializeJson(ref writer, options, true);");
+                    _writer.WriteLineIndented("break;");
+                    _writer.DecreaseIndent();
+                }
+
+                // close switch
+                _writer.CloseScope();
 
                 // close Write
                 _writer.CloseScope();
@@ -923,28 +950,351 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // write elements
             WriteElements(complex, out List<FhirElement> elementsWithCodes);
 
-            WriteComplexJsonSerialization(complex, nameForExport, hasBaseClass, baseClassName);
+            WriteComplexJsonSerialization(complex, nameForExport, hasBaseClass, baseClassName, isResource);
+            WriteComplexJsonDeserialization(complex, nameForExport, hasBaseClass, baseClassName);
 
             // close interface (type)
             _writer.CloseScope();
-
-            // we only need to export codes if they are asked for and we aren't writing value sets
-            //if (_exportEnums)
-            //{
-            //    foreach (FhirElement element in elementsWithCodes)
-            //    {
-            //        WriteCode(element);
-            //    }
-            //}
         }
 
-        /// <summary>Writes a complex JSON serialization.</summary>
+        /// <summary>Writes serialization functions for a complex object.</summary>
         /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
         /// <param name="complex">      The complex.</param>
         /// <param name="nameForExport">The name for export.</param>
         /// <param name="hasBaseClass"> True if has base class, false if not.</param>
         /// <param name="baseClassName">Name of the base class.</param>
         private void WriteComplexJsonSerialization(
+            FhirComplex complex,
+            string nameForExport,
+            bool hasBaseClass,
+            string baseClassName,
+            bool isResource)
+        {
+            string keywordNew = hasBaseClass ? "new " : string.Empty;
+
+            WriteIndentedComment("Serialize to a JSON object");
+
+            _writer.WriteLineIndented($"{_accessModifier} {keywordNew}void SerializeJson(" +
+                "ref Utf8JsonWriter writer, " +
+                "JsonSerializerOptions options, " +
+                "bool includeStartObject = true)");
+
+            // open SerializeJson
+            _writer.OpenScope();
+
+            _writer.WriteLineIndented($"if (includeStartObject)");
+            _writer.OpenScope();
+            _writer.WriteLineIndented($"writer.WriteStartObject();");
+            _writer.CloseScope();
+            _writer.WriteLine();
+
+            if (isResource &&
+                (nameForExport != "Resource") &&
+                (nameForExport != "DomainResource") &&
+                (nameForExport != "MetadataResource"))
+            {
+                WriteJsonSerializeElement("ResourceType", "resourceType", "string", false, "WriteString");
+                _writer.WriteLine();
+            }
+
+            if (hasBaseClass)
+            {
+                _writer.WriteLineIndented($"(({_namespaceModels}.{baseClassName})this).SerializeJson(ref writer, options, false);");
+                _writer.WriteLine();
+            }
+
+            WriteSerializeJsonElements(complex, nameForExport);
+
+            _writer.WriteLineIndented($"if (includeStartObject)");
+            _writer.OpenScope();
+            _writer.WriteLineIndented($"writer.WriteEndObject();");
+            _writer.CloseScope();
+
+            // close SerializeJson
+            _writer.CloseScope();
+        }
+
+        /// <summary>Writes a parse JSON property elements.</summary>
+        /// <param name="complex">The complex.</param>
+        private void WriteSerializeJsonElements(FhirComplex complex, string className)
+        {
+            foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.Name))
+            {
+                if (element.IsInherited)
+                {
+                    continue;
+                }
+
+                Dictionary<string, string> values = element.NamesAndTypesForExport(
+                    FhirTypeBase.NamingConvention.PascalCase,
+                    FhirTypeBase.NamingConvention.PascalCase,
+                    false,
+                    string.Empty,
+                    complex.Components.ContainsKey(element.Path));
+
+                foreach (KeyValuePair<string, string> kvp in values)
+                {
+                    bool isOptional = element.IsOptional && RequiresNullTest(kvp.Value);
+
+                    string elementName;
+                    if ((kvp.Key == complex.Name) && (!element.IsInherited))
+                    {
+                        elementName = $"{kvp.Key}Field";
+                    }
+                    else
+                    {
+                        elementName = kvp.Key;
+                    }
+
+                    string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
+
+                    string elementType = element.IsArray
+                        ? $"List<{kvp.Value}>"
+                        : $"{kvp.Value}";
+
+                    switch (elementType)
+                    {
+                        case "bool":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteBoolean");
+                            break;
+                        case "List<bool>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteBooleanValue");
+                            break;
+                        case "decimal":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteNumber");
+                            break;
+                        case "List<decimal>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteNumberValue");
+                            break;
+                        case "Guid":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteString");
+                            break;
+                        case "List<Guid>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteStringValue");
+                            break;
+                        case "int":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteNumber");
+                            break;
+                        case "List<int>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteNumberValue");
+                            break;
+                        case "long":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteString");
+                            break;
+                        case "List<long>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteStringValue");
+                            break;
+                        case "string":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteString");
+                            break;
+                        case "List<string>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteStringValue");
+                            break;
+                        case "uint":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteNumber");
+                            break;
+                        case "List<uint>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteNumberValue");
+                            break;
+                        default:
+                            if (element.IsArray)
+                            {
+                                WriteJsonSerializeListElement(elementName, camel, kvp.Value, string.Empty);
+                            }
+                            else
+                            {
+                                WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, string.Empty);
+                            }
+
+                            break;
+                    }
+
+                    if (RequiresExtension(kvp.Value))
+                    {
+                        if (element.IsArray)
+                        {
+                            WriteJsonSerializeListElement("_" + elementName, "_" + camel, "Element", string.Empty);
+                        }
+                        else
+                        {
+                            WriteJsonSerializeElement("_" + elementName, "_" + camel, "Element", true, string.Empty);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>Writes the JSON serialization for an element.</summary>
+        /// <param name="elementName">       Name of the element.</param>
+        /// <param name="camel">             The camel.</param>
+        /// <param name="elementType">       Type of the element.</param>
+        /// <param name="isOptional">        True if is optional, false if not.</param>
+        /// <param name="writerFunctionName">Name of the getter function.</param>
+        private void WriteJsonSerializeElement(
+            string elementName,
+            string camel,
+            string elementType,
+            bool isOptional,
+            string writerFunctionName)
+        {
+            switch (elementType)
+            {
+                case "Resource":
+                case "DomainResource":
+                case "MetadataResource":
+                case "CanonicalResource":
+                    if (isOptional)
+                    {
+                        _writer.WriteLineIndented($"if ({elementName} != null)");
+                        _writer.OpenScope();
+                        _writer.WriteLineIndented($"writer.WritePropertyName(\"{camel}\");");
+                        _writer.WriteLineIndented($"JsonSerializer.Serialize<{_namespaceModels}.Resource>(" +
+                            $"writer, " +
+                            $"({_namespaceModels}.Resource){elementName}, " +
+                            $"options);");
+                        _writer.CloseScope();
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"writer.WritePropertyName(\"{camel}\");");
+                        _writer.WriteLineIndented($"JsonSerializer.Serialize<{_namespaceModels}.Resource>(" +
+                            $"writer, " +
+                            $"({_namespaceModels}.Resource){elementName}, " +
+                            $"options);");
+                    }
+
+                    break;
+
+                case "guid":
+                case "integer64":
+                case "int64":
+                case "long":
+                    if (isOptional)
+                    {
+                        _writer.WriteLineIndented($"if ({elementName} != null)");
+                        _writer.OpenScope();
+                        _writer.WriteLineIndented($"writer.WriteString(\"{camel}\", {elementName}.ToString(null));");
+                        _writer.CloseScope();
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"writer.WriteString(\"{camel}\", {elementName}.ToString(null));");
+                    }
+
+                    break;
+
+                default:
+                    if (string.IsNullOrEmpty(writerFunctionName))
+                    {
+                        if (isOptional)
+                        {
+                            _writer.WriteLineIndented($"if ({elementName} != null)");
+                            _writer.OpenScope();
+                            _writer.WriteLineIndented($"writer.WritePropertyName(\"{camel}\");");
+                            _writer.WriteLineIndented($"{elementName}.SerializeJson(ref writer, options);");
+                            _writer.CloseScope();
+                        }
+                        else
+                        {
+                            _writer.WriteLineIndented($"writer.WritePropertyName(\"{camel}\");");
+                            _writer.WriteLineIndented($"{elementName}.SerializeJson(ref writer, options);");
+                        }
+                    }
+                    else
+                    {
+                        if (isOptional)
+                        {
+                            _writer.WriteLineIndented($"if ({elementName} != null)");
+                            _writer.OpenScope();
+                            _writer.WriteLineIndented($"writer.{writerFunctionName}(\"{camel}\", ({elementType}){elementName}!);");
+                            _writer.CloseScope();
+                        }
+                        else
+                        {
+                            _writer.WriteLineIndented($"writer.{writerFunctionName}(\"{camel}\", {elementName});");
+                        }
+                    }
+
+                    break;
+            }
+
+            _writer.WriteLine();
+        }
+
+        /// <summary>Writes the JSON serialization for a list of elements.</summary>
+        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
+        /// <param name="elementName">       Name of the element.</param>
+        /// <param name="camel">             The camel.</param>
+        /// <param name="elementType">       Type of the element.</param>
+        /// <param name="writerFunctionName">Name of the getter function.</param>
+        private void WriteJsonSerializeListElement(
+            string elementName,
+            string camel,
+            string elementType,
+            string writerFunctionName)
+        {
+            _writer.WriteLineIndented($"if (({elementName} != null) && ({elementName}.Count != 0))");
+            _writer.OpenScope();
+            _writer.WriteLineIndented($"writer.WritePropertyName(\"{camel}\");");
+            _writer.WriteLineIndented($"writer.WriteStartArray();");
+            _writer.WriteLine();
+
+            switch (elementType)
+            {
+                case "Resource":
+                case "DomainResource":
+                case "MetadataResource":
+                case "CanonicalResource":
+                    _writer.WriteLineIndented($"foreach (Resource resource in {elementName})");
+                    _writer.OpenScope();
+                    _writer.WriteLineIndented($"((Resource)this).SerializeJson(ref writer, options, true);");
+                    _writer.CloseScope();
+
+                    break;
+
+                case "guid":
+                case "integer64":
+                case "int64":
+                case "long":
+                    _writer.WriteLineIndented($"foreach (long longVal{elementName} in {elementName})");
+                    _writer.OpenScope();
+                    _writer.WriteLineIndented($"writer.WriteStringValue(longVal{elementName}.ToString(null));");
+                    _writer.CloseScope();
+
+                    break;
+
+                default:
+                    if (string.IsNullOrEmpty(writerFunctionName))
+                    {
+                        _writer.WriteLineIndented($"foreach ({elementType} val{elementName} in {elementName})");
+                        _writer.OpenScope();
+                        _writer.WriteLineIndented($"val{elementName}.SerializeJson(ref writer, options, true);");
+                        _writer.CloseScope();
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"foreach ({elementType} val{elementName} in {elementName})");
+                        _writer.OpenScope();
+                        _writer.WriteLineIndented($"writer.{writerFunctionName}(val{elementName});");
+                        _writer.CloseScope();
+                    }
+
+                    break;
+            }
+
+            _writer.WriteLine();
+            _writer.WriteLineIndented($"writer.WriteEndArray();");
+            _writer.CloseScope();
+            _writer.WriteLine();
+        }
+
+        /// <summary>Writes deserialization functions for a a complex object.</summary>
+        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
+        /// <param name="complex">      The complex.</param>
+        /// <param name="nameForExport">The name for export.</param>
+        /// <param name="hasBaseClass"> True if has base class, false if not.</param>
+        /// <param name="baseClassName">Name of the base class.</param>
+        private void WriteComplexJsonDeserialization(
             FhirComplex complex,
             string nameForExport,
             bool hasBaseClass,
@@ -967,7 +1317,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // open switch
             _writer.OpenScope();
 
-            WriteDeserializeJsonPropertyElements(complex, nameForExport);
+            WriteDeserializeJsonPropertyElements(complex);
 
             if (hasBaseClass)
             {
@@ -1023,7 +1373,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Writes a parse JSON property elements.</summary>
         /// <param name="complex">The complex.</param>
-        private void WriteDeserializeJsonPropertyElements(FhirComplex complex, string className)
+        private void WriteDeserializeJsonPropertyElements(FhirComplex complex)
         {
             foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.Name))
             {
@@ -1148,6 +1498,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "Resource":
                 case "DomainResource":
                 case "MetadataResource":
+                case "CanonicalResource":
                     _writer.WriteLineIndented($"{elementName} = " +
                         $"JsonSerializer.Deserialize" +
                         $"<{_namespaceModels}.Resource>(ref reader, options);");
@@ -1216,6 +1567,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "Resource":
                 case "DomainResource":
                 case "MetadataResource":
+                case "CanonicalResource":
                     _writer.WriteLineIndented($"{_namespaceModels}.{elementType} resource = " +
                         $"JsonSerializer.Deserialize" +
                         $"<{_namespaceModels}.{elementType}>(ref reader, options);");
@@ -1271,57 +1623,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("break;");
             _writer.DecreaseIndent();
             _writer.WriteLine();
-        }
-
-        /// <summary>Writes a code.</summary>
-        /// <param name="element">The element.</param>
-        private void WriteCode(
-            FhirElement element)
-        {
-            string codeName = FhirUtils.ToConvention(
-                $"{element.Path}.Codes",
-                string.Empty,
-                FhirTypeBase.NamingConvention.PascalCase);
-
-            if (codeName.Contains("[x]"))
-            {
-                codeName = codeName.Replace("[x]", string.Empty);
-            }
-
-            if (codeName.Contains("[X]"))
-            {
-                codeName = codeName.Replace("[X]", string.Empty);
-            }
-
-            if (_exportedCodes.Contains(codeName))
-            {
-                return;
-            }
-
-            _exportedCodes.Add(codeName);
-
-            WriteIndentedComment($"Code Values for the {element.Path} field");
-
-            if (codeName.EndsWith("Codes", StringComparison.Ordinal))
-            {
-                _writer.WriteLineIndented($"{_accessModifier} static class {codeName} {{");
-            }
-            else
-            {
-                _writer.WriteLineIndented($"{_accessModifier} static class {codeName}Codes {{");
-            }
-
-            _writer.IncreaseIndent();
-
-            foreach (string code in element.Codes)
-            {
-                FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
-
-                WriteIndentedComment($"Code: {code}");
-                _writer.WriteLineIndented($"{_accessModifier} const string {name.ToUpperInvariant()} = \"{value}\";");
-            }
-
-            _writer.CloseScope();
         }
 
         /// <summary>Determine if we should write resource name.</summary>
@@ -1457,11 +1758,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "DateTime":
                 case "int":
                 case "uint":
+                case "long":
                 case "Guid":
                     return true;
             }
 
             return false;
+        }
+
+        /// <summary>Tests requires null.</summary>
+        /// <param name="typeName">Name of the type.</param>
+        /// <returns>True if the test passes, false if the test fails.</returns>
+        private static bool RequiresNullTest(string typeName)
+        {
+            // nullable reference types are not allowed in current C#
+            switch (typeName)
+            {
+                case "string":
+                    return false;
+            }
+
+            return true;
         }
 
         /// <summary>Writes a header.</summary>

@@ -68,6 +68,89 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Status { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("created", Created);
+
+      if (_Created != null)
+      {
+        writer.WritePropertyName("_created");
+        _Created.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("disposition", Disposition);
+
+      if (_Disposition != null)
+      {
+        writer.WritePropertyName("_disposition");
+        _Disposition.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Organization != null)
+      {
+        writer.WritePropertyName("organization");
+        Organization.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("outcome", Outcome);
+
+      if (_Outcome != null)
+      {
+        writer.WritePropertyName("_outcome");
+        _Outcome.SerializeJson(ref writer, options);
+      }
+
+      if (Request != null)
+      {
+        writer.WritePropertyName("request");
+        Request.SerializeJson(ref writer, options);
+      }
+
+      if (RequestProvider != null)
+      {
+        writer.WritePropertyName("requestProvider");
+        RequestProvider.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

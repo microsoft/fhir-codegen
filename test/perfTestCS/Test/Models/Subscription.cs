@@ -48,6 +48,73 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Type { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("endpoint", Endpoint);
+
+      if (_Endpoint != null)
+      {
+        writer.WritePropertyName("_endpoint");
+        _Endpoint.SerializeJson(ref writer, options);
+      }
+
+      if ((Header != null) && (Header.Count != 0))
+      {
+        writer.WritePropertyName("header");
+        writer.WriteStartArray();
+
+        foreach (string valHeader in Header)
+        {
+          writer.WriteStringValue(valHeader);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Header != null) && (_Header.Count != 0))
+      {
+        writer.WritePropertyName("_header");
+        writer.WriteStartArray();
+
+        foreach (Element val_Header in _Header)
+        {
+          val_Header.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("payload", Payload);
+
+      if (_Payload != null)
+      {
+        writer.WritePropertyName("_payload");
+        _Payload.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -222,6 +289,82 @@ namespace Fhir.R4.Models
     /// Extension container element for Status
     /// </summary>
     public Element _Status { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("channel");
+      Channel.SerializeJson(ref writer, options);
+
+      if ((Contact != null) && (Contact.Count != 0))
+      {
+        writer.WritePropertyName("contact");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valContact in Contact)
+        {
+          valContact.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("criteria", Criteria);
+
+      if (_Criteria != null)
+      {
+        writer.WritePropertyName("_criteria");
+        _Criteria.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("end", End);
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("error", Error);
+
+      if (_Error != null)
+      {
+        writer.WritePropertyName("_error");
+        _Error.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("reason", Reason);
+
+      if (_Reason != null)
+      {
+        writer.WritePropertyName("_reason");
+        _Reason.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

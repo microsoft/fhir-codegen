@@ -25,6 +25,447 @@ namespace Fhir.R4.Serialization
     /// </summary>
     public override void Write(Utf8JsonWriter writer, Resource resource, JsonSerializerOptions options)
     {
+      switch (resource)
+      {
+        case Account typedAccount:
+          typedAccount.SerializeJson(ref writer, options, true);
+          break;
+        case ActivityDefinition typedActivityDefinition:
+          typedActivityDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case AdverseEvent typedAdverseEvent:
+          typedAdverseEvent.SerializeJson(ref writer, options, true);
+          break;
+        case AllergyIntolerance typedAllergyIntolerance:
+          typedAllergyIntolerance.SerializeJson(ref writer, options, true);
+          break;
+        case Appointment typedAppointment:
+          typedAppointment.SerializeJson(ref writer, options, true);
+          break;
+        case AppointmentResponse typedAppointmentResponse:
+          typedAppointmentResponse.SerializeJson(ref writer, options, true);
+          break;
+        case AuditEvent typedAuditEvent:
+          typedAuditEvent.SerializeJson(ref writer, options, true);
+          break;
+        case Basic typedBasic:
+          typedBasic.SerializeJson(ref writer, options, true);
+          break;
+        case Binary typedBinary:
+          typedBinary.SerializeJson(ref writer, options, true);
+          break;
+        case BiologicallyDerivedProduct typedBiologicallyDerivedProduct:
+          typedBiologicallyDerivedProduct.SerializeJson(ref writer, options, true);
+          break;
+        case BodyStructure typedBodyStructure:
+          typedBodyStructure.SerializeJson(ref writer, options, true);
+          break;
+        case Bundle typedBundle:
+          typedBundle.SerializeJson(ref writer, options, true);
+          break;
+        case CapabilityStatement typedCapabilityStatement:
+          typedCapabilityStatement.SerializeJson(ref writer, options, true);
+          break;
+        case CarePlan typedCarePlan:
+          typedCarePlan.SerializeJson(ref writer, options, true);
+          break;
+        case CareTeam typedCareTeam:
+          typedCareTeam.SerializeJson(ref writer, options, true);
+          break;
+        case CatalogEntry typedCatalogEntry:
+          typedCatalogEntry.SerializeJson(ref writer, options, true);
+          break;
+        case ChargeItem typedChargeItem:
+          typedChargeItem.SerializeJson(ref writer, options, true);
+          break;
+        case ChargeItemDefinition typedChargeItemDefinition:
+          typedChargeItemDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case Claim typedClaim:
+          typedClaim.SerializeJson(ref writer, options, true);
+          break;
+        case ClaimResponse typedClaimResponse:
+          typedClaimResponse.SerializeJson(ref writer, options, true);
+          break;
+        case ClinicalImpression typedClinicalImpression:
+          typedClinicalImpression.SerializeJson(ref writer, options, true);
+          break;
+        case CodeSystem typedCodeSystem:
+          typedCodeSystem.SerializeJson(ref writer, options, true);
+          break;
+        case Communication typedCommunication:
+          typedCommunication.SerializeJson(ref writer, options, true);
+          break;
+        case CommunicationRequest typedCommunicationRequest:
+          typedCommunicationRequest.SerializeJson(ref writer, options, true);
+          break;
+        case CompartmentDefinition typedCompartmentDefinition:
+          typedCompartmentDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case Composition typedComposition:
+          typedComposition.SerializeJson(ref writer, options, true);
+          break;
+        case ConceptMap typedConceptMap:
+          typedConceptMap.SerializeJson(ref writer, options, true);
+          break;
+        case Condition typedCondition:
+          typedCondition.SerializeJson(ref writer, options, true);
+          break;
+        case Consent typedConsent:
+          typedConsent.SerializeJson(ref writer, options, true);
+          break;
+        case Contract typedContract:
+          typedContract.SerializeJson(ref writer, options, true);
+          break;
+        case Coverage typedCoverage:
+          typedCoverage.SerializeJson(ref writer, options, true);
+          break;
+        case CoverageEligibilityRequest typedCoverageEligibilityRequest:
+          typedCoverageEligibilityRequest.SerializeJson(ref writer, options, true);
+          break;
+        case CoverageEligibilityResponse typedCoverageEligibilityResponse:
+          typedCoverageEligibilityResponse.SerializeJson(ref writer, options, true);
+          break;
+        case DetectedIssue typedDetectedIssue:
+          typedDetectedIssue.SerializeJson(ref writer, options, true);
+          break;
+        case Device typedDevice:
+          typedDevice.SerializeJson(ref writer, options, true);
+          break;
+        case DeviceDefinition typedDeviceDefinition:
+          typedDeviceDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case DeviceMetric typedDeviceMetric:
+          typedDeviceMetric.SerializeJson(ref writer, options, true);
+          break;
+        case DeviceRequest typedDeviceRequest:
+          typedDeviceRequest.SerializeJson(ref writer, options, true);
+          break;
+        case DeviceUseStatement typedDeviceUseStatement:
+          typedDeviceUseStatement.SerializeJson(ref writer, options, true);
+          break;
+        case DiagnosticReport typedDiagnosticReport:
+          typedDiagnosticReport.SerializeJson(ref writer, options, true);
+          break;
+        case DocumentManifest typedDocumentManifest:
+          typedDocumentManifest.SerializeJson(ref writer, options, true);
+          break;
+        case DocumentReference typedDocumentReference:
+          typedDocumentReference.SerializeJson(ref writer, options, true);
+          break;
+        case EffectEvidenceSynthesis typedEffectEvidenceSynthesis:
+          typedEffectEvidenceSynthesis.SerializeJson(ref writer, options, true);
+          break;
+        case Encounter typedEncounter:
+          typedEncounter.SerializeJson(ref writer, options, true);
+          break;
+        case Endpoint typedEndpoint:
+          typedEndpoint.SerializeJson(ref writer, options, true);
+          break;
+        case EnrollmentRequest typedEnrollmentRequest:
+          typedEnrollmentRequest.SerializeJson(ref writer, options, true);
+          break;
+        case EnrollmentResponse typedEnrollmentResponse:
+          typedEnrollmentResponse.SerializeJson(ref writer, options, true);
+          break;
+        case EpisodeOfCare typedEpisodeOfCare:
+          typedEpisodeOfCare.SerializeJson(ref writer, options, true);
+          break;
+        case EventDefinition typedEventDefinition:
+          typedEventDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case Evidence typedEvidence:
+          typedEvidence.SerializeJson(ref writer, options, true);
+          break;
+        case EvidenceVariable typedEvidenceVariable:
+          typedEvidenceVariable.SerializeJson(ref writer, options, true);
+          break;
+        case ExampleScenario typedExampleScenario:
+          typedExampleScenario.SerializeJson(ref writer, options, true);
+          break;
+        case ExplanationOfBenefit typedExplanationOfBenefit:
+          typedExplanationOfBenefit.SerializeJson(ref writer, options, true);
+          break;
+        case FamilyMemberHistory typedFamilyMemberHistory:
+          typedFamilyMemberHistory.SerializeJson(ref writer, options, true);
+          break;
+        case Flag typedFlag:
+          typedFlag.SerializeJson(ref writer, options, true);
+          break;
+        case Goal typedGoal:
+          typedGoal.SerializeJson(ref writer, options, true);
+          break;
+        case GraphDefinition typedGraphDefinition:
+          typedGraphDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case Group typedGroup:
+          typedGroup.SerializeJson(ref writer, options, true);
+          break;
+        case GuidanceResponse typedGuidanceResponse:
+          typedGuidanceResponse.SerializeJson(ref writer, options, true);
+          break;
+        case HealthcareService typedHealthcareService:
+          typedHealthcareService.SerializeJson(ref writer, options, true);
+          break;
+        case ImagingStudy typedImagingStudy:
+          typedImagingStudy.SerializeJson(ref writer, options, true);
+          break;
+        case Immunization typedImmunization:
+          typedImmunization.SerializeJson(ref writer, options, true);
+          break;
+        case ImmunizationEvaluation typedImmunizationEvaluation:
+          typedImmunizationEvaluation.SerializeJson(ref writer, options, true);
+          break;
+        case ImmunizationRecommendation typedImmunizationRecommendation:
+          typedImmunizationRecommendation.SerializeJson(ref writer, options, true);
+          break;
+        case ImplementationGuide typedImplementationGuide:
+          typedImplementationGuide.SerializeJson(ref writer, options, true);
+          break;
+        case InsurancePlan typedInsurancePlan:
+          typedInsurancePlan.SerializeJson(ref writer, options, true);
+          break;
+        case Invoice typedInvoice:
+          typedInvoice.SerializeJson(ref writer, options, true);
+          break;
+        case Library typedLibrary:
+          typedLibrary.SerializeJson(ref writer, options, true);
+          break;
+        case Linkage typedLinkage:
+          typedLinkage.SerializeJson(ref writer, options, true);
+          break;
+        case List typedList:
+          typedList.SerializeJson(ref writer, options, true);
+          break;
+        case Location typedLocation:
+          typedLocation.SerializeJson(ref writer, options, true);
+          break;
+        case Measure typedMeasure:
+          typedMeasure.SerializeJson(ref writer, options, true);
+          break;
+        case MeasureReport typedMeasureReport:
+          typedMeasureReport.SerializeJson(ref writer, options, true);
+          break;
+        case Media typedMedia:
+          typedMedia.SerializeJson(ref writer, options, true);
+          break;
+        case Medication typedMedication:
+          typedMedication.SerializeJson(ref writer, options, true);
+          break;
+        case MedicationAdministration typedMedicationAdministration:
+          typedMedicationAdministration.SerializeJson(ref writer, options, true);
+          break;
+        case MedicationDispense typedMedicationDispense:
+          typedMedicationDispense.SerializeJson(ref writer, options, true);
+          break;
+        case MedicationKnowledge typedMedicationKnowledge:
+          typedMedicationKnowledge.SerializeJson(ref writer, options, true);
+          break;
+        case MedicationRequest typedMedicationRequest:
+          typedMedicationRequest.SerializeJson(ref writer, options, true);
+          break;
+        case MedicationStatement typedMedicationStatement:
+          typedMedicationStatement.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProduct typedMedicinalProduct:
+          typedMedicinalProduct.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProductAuthorization typedMedicinalProductAuthorization:
+          typedMedicinalProductAuthorization.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProductContraindication typedMedicinalProductContraindication:
+          typedMedicinalProductContraindication.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProductIndication typedMedicinalProductIndication:
+          typedMedicinalProductIndication.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProductIngredient typedMedicinalProductIngredient:
+          typedMedicinalProductIngredient.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProductInteraction typedMedicinalProductInteraction:
+          typedMedicinalProductInteraction.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProductManufactured typedMedicinalProductManufactured:
+          typedMedicinalProductManufactured.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProductPackaged typedMedicinalProductPackaged:
+          typedMedicinalProductPackaged.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProductPharmaceutical typedMedicinalProductPharmaceutical:
+          typedMedicinalProductPharmaceutical.SerializeJson(ref writer, options, true);
+          break;
+        case MedicinalProductUndesirableEffect typedMedicinalProductUndesirableEffect:
+          typedMedicinalProductUndesirableEffect.SerializeJson(ref writer, options, true);
+          break;
+        case MessageDefinition typedMessageDefinition:
+          typedMessageDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case MessageHeader typedMessageHeader:
+          typedMessageHeader.SerializeJson(ref writer, options, true);
+          break;
+        case MolecularSequence typedMolecularSequence:
+          typedMolecularSequence.SerializeJson(ref writer, options, true);
+          break;
+        case NamingSystem typedNamingSystem:
+          typedNamingSystem.SerializeJson(ref writer, options, true);
+          break;
+        case NutritionOrder typedNutritionOrder:
+          typedNutritionOrder.SerializeJson(ref writer, options, true);
+          break;
+        case Observation typedObservation:
+          typedObservation.SerializeJson(ref writer, options, true);
+          break;
+        case ObservationDefinition typedObservationDefinition:
+          typedObservationDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case OperationDefinition typedOperationDefinition:
+          typedOperationDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case OperationOutcome typedOperationOutcome:
+          typedOperationOutcome.SerializeJson(ref writer, options, true);
+          break;
+        case Organization typedOrganization:
+          typedOrganization.SerializeJson(ref writer, options, true);
+          break;
+        case OrganizationAffiliation typedOrganizationAffiliation:
+          typedOrganizationAffiliation.SerializeJson(ref writer, options, true);
+          break;
+        case Parameters typedParameters:
+          typedParameters.SerializeJson(ref writer, options, true);
+          break;
+        case Patient typedPatient:
+          typedPatient.SerializeJson(ref writer, options, true);
+          break;
+        case PaymentNotice typedPaymentNotice:
+          typedPaymentNotice.SerializeJson(ref writer, options, true);
+          break;
+        case PaymentReconciliation typedPaymentReconciliation:
+          typedPaymentReconciliation.SerializeJson(ref writer, options, true);
+          break;
+        case Person typedPerson:
+          typedPerson.SerializeJson(ref writer, options, true);
+          break;
+        case PlanDefinition typedPlanDefinition:
+          typedPlanDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case Practitioner typedPractitioner:
+          typedPractitioner.SerializeJson(ref writer, options, true);
+          break;
+        case PractitionerRole typedPractitionerRole:
+          typedPractitionerRole.SerializeJson(ref writer, options, true);
+          break;
+        case Procedure typedProcedure:
+          typedProcedure.SerializeJson(ref writer, options, true);
+          break;
+        case Provenance typedProvenance:
+          typedProvenance.SerializeJson(ref writer, options, true);
+          break;
+        case Questionnaire typedQuestionnaire:
+          typedQuestionnaire.SerializeJson(ref writer, options, true);
+          break;
+        case QuestionnaireResponse typedQuestionnaireResponse:
+          typedQuestionnaireResponse.SerializeJson(ref writer, options, true);
+          break;
+        case RelatedPerson typedRelatedPerson:
+          typedRelatedPerson.SerializeJson(ref writer, options, true);
+          break;
+        case RequestGroup typedRequestGroup:
+          typedRequestGroup.SerializeJson(ref writer, options, true);
+          break;
+        case ResearchDefinition typedResearchDefinition:
+          typedResearchDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case ResearchElementDefinition typedResearchElementDefinition:
+          typedResearchElementDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case ResearchStudy typedResearchStudy:
+          typedResearchStudy.SerializeJson(ref writer, options, true);
+          break;
+        case ResearchSubject typedResearchSubject:
+          typedResearchSubject.SerializeJson(ref writer, options, true);
+          break;
+        case RiskAssessment typedRiskAssessment:
+          typedRiskAssessment.SerializeJson(ref writer, options, true);
+          break;
+        case RiskEvidenceSynthesis typedRiskEvidenceSynthesis:
+          typedRiskEvidenceSynthesis.SerializeJson(ref writer, options, true);
+          break;
+        case Schedule typedSchedule:
+          typedSchedule.SerializeJson(ref writer, options, true);
+          break;
+        case SearchParameter typedSearchParameter:
+          typedSearchParameter.SerializeJson(ref writer, options, true);
+          break;
+        case ServiceRequest typedServiceRequest:
+          typedServiceRequest.SerializeJson(ref writer, options, true);
+          break;
+        case Slot typedSlot:
+          typedSlot.SerializeJson(ref writer, options, true);
+          break;
+        case Specimen typedSpecimen:
+          typedSpecimen.SerializeJson(ref writer, options, true);
+          break;
+        case SpecimenDefinition typedSpecimenDefinition:
+          typedSpecimenDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case StructureDefinition typedStructureDefinition:
+          typedStructureDefinition.SerializeJson(ref writer, options, true);
+          break;
+        case StructureMap typedStructureMap:
+          typedStructureMap.SerializeJson(ref writer, options, true);
+          break;
+        case Subscription typedSubscription:
+          typedSubscription.SerializeJson(ref writer, options, true);
+          break;
+        case Substance typedSubstance:
+          typedSubstance.SerializeJson(ref writer, options, true);
+          break;
+        case SubstanceNucleicAcid typedSubstanceNucleicAcid:
+          typedSubstanceNucleicAcid.SerializeJson(ref writer, options, true);
+          break;
+        case SubstancePolymer typedSubstancePolymer:
+          typedSubstancePolymer.SerializeJson(ref writer, options, true);
+          break;
+        case SubstanceProtein typedSubstanceProtein:
+          typedSubstanceProtein.SerializeJson(ref writer, options, true);
+          break;
+        case SubstanceReferenceInformation typedSubstanceReferenceInformation:
+          typedSubstanceReferenceInformation.SerializeJson(ref writer, options, true);
+          break;
+        case SubstanceSourceMaterial typedSubstanceSourceMaterial:
+          typedSubstanceSourceMaterial.SerializeJson(ref writer, options, true);
+          break;
+        case SubstanceSpecification typedSubstanceSpecification:
+          typedSubstanceSpecification.SerializeJson(ref writer, options, true);
+          break;
+        case SupplyDelivery typedSupplyDelivery:
+          typedSupplyDelivery.SerializeJson(ref writer, options, true);
+          break;
+        case SupplyRequest typedSupplyRequest:
+          typedSupplyRequest.SerializeJson(ref writer, options, true);
+          break;
+        case Task typedTask:
+          typedTask.SerializeJson(ref writer, options, true);
+          break;
+        case TerminologyCapabilities typedTerminologyCapabilities:
+          typedTerminologyCapabilities.SerializeJson(ref writer, options, true);
+          break;
+        case TestReport typedTestReport:
+          typedTestReport.SerializeJson(ref writer, options, true);
+          break;
+        case TestScript typedTestScript:
+          typedTestScript.SerializeJson(ref writer, options, true);
+          break;
+        case ValueSet typedValueSet:
+          typedValueSet.SerializeJson(ref writer, options, true);
+          break;
+        case VerificationResult typedVerificationResult:
+          typedVerificationResult.SerializeJson(ref writer, options, true);
+          break;
+        case VisionPrescription typedVisionPrescription:
+          typedVisionPrescription.SerializeJson(ref writer, options, true);
+          break;
+      }
     }
     /// <summary>
     /// Reads and converts the JSON to a typed object.

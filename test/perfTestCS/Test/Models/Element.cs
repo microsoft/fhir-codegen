@@ -28,6 +28,42 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Id { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      if ((Extension != null) && (Extension.Count != 0))
+      {
+        writer.WritePropertyName("extension");
+        writer.WriteStartArray();
+
+        foreach (Extension valExtension in Extension)
+        {
+          valExtension.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("id", Id);
+
+      if (_Id != null)
+      {
+        writer.WritePropertyName("_id");
+        _Id.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

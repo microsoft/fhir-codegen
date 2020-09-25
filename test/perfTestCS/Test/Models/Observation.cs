@@ -44,6 +44,68 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Type { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Age != null)
+      {
+        writer.WritePropertyName("age");
+        Age.SerializeJson(ref writer, options);
+      }
+
+      if ((AppliesTo != null) && (AppliesTo.Count != 0))
+      {
+        writer.WritePropertyName("appliesTo");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valAppliesTo in AppliesTo)
+        {
+          valAppliesTo.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (High != null)
+      {
+        writer.WritePropertyName("high");
+        High.SerializeJson(ref writer, options);
+      }
+
+      if (Low != null)
+      {
+        writer.WritePropertyName("low");
+        Low.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("text", Text);
+
+      if (_Text != null)
+      {
+        writer.WritePropertyName("_text");
+        _Text.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -215,6 +277,128 @@ namespace Fhir.R4.Models
     /// Used when observation has a set of component observations. An observation may have both a value (e.g. an  Apgar score)  and component observations (the observations from which the Apgar score was derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](observation.html#notes) below.
     /// </summary>
     public Period ValuePeriod { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      if (DataAbsentReason != null)
+      {
+        writer.WritePropertyName("dataAbsentReason");
+        DataAbsentReason.SerializeJson(ref writer, options);
+      }
+
+      if ((Interpretation != null) && (Interpretation.Count != 0))
+      {
+        writer.WritePropertyName("interpretation");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valInterpretation in Interpretation)
+        {
+          valInterpretation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ReferenceRange != null) && (ReferenceRange.Count != 0))
+      {
+        writer.WritePropertyName("referenceRange");
+        writer.WriteStartArray();
+
+        foreach (ObservationReferenceRange valReferenceRange in ReferenceRange)
+        {
+          valReferenceRange.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ValueQuantity != null)
+      {
+        writer.WritePropertyName("valueQuantity");
+        ValueQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (ValueCodeableConcept != null)
+      {
+        writer.WritePropertyName("valueCodeableConcept");
+        ValueCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueString", ValueString);
+
+      if (_ValueString != null)
+      {
+        writer.WritePropertyName("_valueString");
+        _ValueString.SerializeJson(ref writer, options);
+      }
+
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (ValueInteger != null)
+      {
+        writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (ValueRange != null)
+      {
+        writer.WritePropertyName("valueRange");
+        ValueRange.SerializeJson(ref writer, options);
+      }
+
+      if (ValueRatio != null)
+      {
+        writer.WritePropertyName("valueRatio");
+        ValueRatio.SerializeJson(ref writer, options);
+      }
+
+      if (ValueSampledData != null)
+      {
+        writer.WritePropertyName("valueSampledData");
+        ValueSampledData.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueTime", ValueTime);
+
+      if (_ValueTime != null)
+      {
+        writer.WritePropertyName("_valueTime");
+        _ValueTime.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueDateTime", ValueDateTime);
+
+      if (_ValueDateTime != null)
+      {
+        writer.WritePropertyName("_valueDateTime");
+        _ValueDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (ValuePeriod != null)
+      {
+        writer.WritePropertyName("valuePeriod");
+        ValuePeriod.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -569,6 +753,341 @@ namespace Fhir.R4.Models
     /// An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](observation.html#notes) below.
     /// </summary>
     public Period ValuePeriod { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((BasedOn != null) && (BasedOn.Count != 0))
+      {
+        writer.WritePropertyName("basedOn");
+        writer.WriteStartArray();
+
+        foreach (Reference valBasedOn in BasedOn)
+        {
+          valBasedOn.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (BodySite != null)
+      {
+        writer.WritePropertyName("bodySite");
+        BodySite.SerializeJson(ref writer, options);
+      }
+
+      if ((Category != null) && (Category.Count != 0))
+      {
+        writer.WritePropertyName("category");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCategory in Category)
+        {
+          valCategory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      if ((Component != null) && (Component.Count != 0))
+      {
+        writer.WritePropertyName("component");
+        writer.WriteStartArray();
+
+        foreach (ObservationComponent valComponent in Component)
+        {
+          valComponent.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (DataAbsentReason != null)
+      {
+        writer.WritePropertyName("dataAbsentReason");
+        DataAbsentReason.SerializeJson(ref writer, options);
+      }
+
+      if ((DerivedFrom != null) && (DerivedFrom.Count != 0))
+      {
+        writer.WritePropertyName("derivedFrom");
+        writer.WriteStartArray();
+
+        foreach (Reference valDerivedFrom in DerivedFrom)
+        {
+          valDerivedFrom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Device != null)
+      {
+        writer.WritePropertyName("device");
+        Device.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("effectiveDateTime", EffectiveDateTime);
+
+      if (_EffectiveDateTime != null)
+      {
+        writer.WritePropertyName("_effectiveDateTime");
+        _EffectiveDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (EffectivePeriod != null)
+      {
+        writer.WritePropertyName("effectivePeriod");
+        EffectivePeriod.SerializeJson(ref writer, options);
+      }
+
+      if (EffectiveTiming != null)
+      {
+        writer.WritePropertyName("effectiveTiming");
+        EffectiveTiming.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("effectiveInstant", EffectiveInstant);
+
+      if (_EffectiveInstant != null)
+      {
+        writer.WritePropertyName("_effectiveInstant");
+        _EffectiveInstant.SerializeJson(ref writer, options);
+      }
+
+      if (Encounter != null)
+      {
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
+
+      if ((Focus != null) && (Focus.Count != 0))
+      {
+        writer.WritePropertyName("focus");
+        writer.WriteStartArray();
+
+        foreach (Reference valFocus in Focus)
+        {
+          valFocus.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((HasMember != null) && (HasMember.Count != 0))
+      {
+        writer.WritePropertyName("hasMember");
+        writer.WriteStartArray();
+
+        foreach (Reference valHasMember in HasMember)
+        {
+          valHasMember.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Interpretation != null) && (Interpretation.Count != 0))
+      {
+        writer.WritePropertyName("interpretation");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valInterpretation in Interpretation)
+        {
+          valInterpretation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("issued", Issued);
+
+      if (_Issued != null)
+      {
+        writer.WritePropertyName("_issued");
+        _Issued.SerializeJson(ref writer, options);
+      }
+
+      if (Method != null)
+      {
+        writer.WritePropertyName("method");
+        Method.SerializeJson(ref writer, options);
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((PartOf != null) && (PartOf.Count != 0))
+      {
+        writer.WritePropertyName("partOf");
+        writer.WriteStartArray();
+
+        foreach (Reference valPartOf in PartOf)
+        {
+          valPartOf.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Performer != null) && (Performer.Count != 0))
+      {
+        writer.WritePropertyName("performer");
+        writer.WriteStartArray();
+
+        foreach (Reference valPerformer in Performer)
+        {
+          valPerformer.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ReferenceRange != null) && (ReferenceRange.Count != 0))
+      {
+        writer.WritePropertyName("referenceRange");
+        writer.WriteStartArray();
+
+        foreach (ObservationReferenceRange valReferenceRange in ReferenceRange)
+        {
+          valReferenceRange.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Specimen != null)
+      {
+        writer.WritePropertyName("specimen");
+        Specimen.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      if (ValueQuantity != null)
+      {
+        writer.WritePropertyName("valueQuantity");
+        ValueQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (ValueCodeableConcept != null)
+      {
+        writer.WritePropertyName("valueCodeableConcept");
+        ValueCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueString", ValueString);
+
+      if (_ValueString != null)
+      {
+        writer.WritePropertyName("_valueString");
+        _ValueString.SerializeJson(ref writer, options);
+      }
+
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (ValueInteger != null)
+      {
+        writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (ValueRange != null)
+      {
+        writer.WritePropertyName("valueRange");
+        ValueRange.SerializeJson(ref writer, options);
+      }
+
+      if (ValueRatio != null)
+      {
+        writer.WritePropertyName("valueRatio");
+        ValueRatio.SerializeJson(ref writer, options);
+      }
+
+      if (ValueSampledData != null)
+      {
+        writer.WritePropertyName("valueSampledData");
+        ValueSampledData.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueTime", ValueTime);
+
+      if (_ValueTime != null)
+      {
+        writer.WritePropertyName("_valueTime");
+        _ValueTime.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("valueDateTime", ValueDateTime);
+
+      if (_ValueDateTime != null)
+      {
+        writer.WritePropertyName("_valueDateTime");
+        _ValueDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (ValuePeriod != null)
+      {
+        writer.WritePropertyName("valuePeriod");
+        ValuePeriod.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

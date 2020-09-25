@@ -56,6 +56,85 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Substance { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("description", Description);
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (ExposureRoute != null)
+      {
+        writer.WritePropertyName("exposureRoute");
+        ExposureRoute.SerializeJson(ref writer, options);
+      }
+
+      if ((Manifestation != null) && (Manifestation.Count != 0))
+      {
+        writer.WritePropertyName("manifestation");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valManifestation in Manifestation)
+        {
+          valManifestation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("onset", Onset);
+
+      if (_Onset != null)
+      {
+        writer.WritePropertyName("_onset");
+        _Onset.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("severity", Severity);
+
+      if (_Severity != null)
+      {
+        writer.WritePropertyName("_severity");
+        _Severity.SerializeJson(ref writer, options);
+      }
+
+      if (Substance != null)
+      {
+        writer.WritePropertyName("substance");
+        Substance.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -304,6 +383,196 @@ namespace Fhir.R4.Models
     /// The data type is CodeableConcept because verificationStatus has some clinical judgment involved, such that there might need to be more specificity than the required FHIR value set allows. For example, a SNOMED coding might allow for additional specificity.
     /// </summary>
     public CodeableConcept VerificationStatus { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Asserter != null)
+      {
+        writer.WritePropertyName("asserter");
+        Asserter.SerializeJson(ref writer, options);
+      }
+
+      if ((Category != null) && (Category.Count != 0))
+      {
+        writer.WritePropertyName("category");
+        writer.WriteStartArray();
+
+        foreach (string valCategory in Category)
+        {
+          writer.WriteStringValue(valCategory);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Category != null) && (_Category.Count != 0))
+      {
+        writer.WritePropertyName("_category");
+        writer.WriteStartArray();
+
+        foreach (Element val_Category in _Category)
+        {
+          val_Category.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ClinicalStatus != null)
+      {
+        writer.WritePropertyName("clinicalStatus");
+        ClinicalStatus.SerializeJson(ref writer, options);
+      }
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("criticality", Criticality);
+
+      if (_Criticality != null)
+      {
+        writer.WritePropertyName("_criticality");
+        _Criticality.SerializeJson(ref writer, options);
+      }
+
+      if (Encounter != null)
+      {
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("lastOccurrence", LastOccurrence);
+
+      if (_LastOccurrence != null)
+      {
+        writer.WritePropertyName("_lastOccurrence");
+        _LastOccurrence.SerializeJson(ref writer, options);
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("onsetDateTime", OnsetDateTime);
+
+      if (_OnsetDateTime != null)
+      {
+        writer.WritePropertyName("_onsetDateTime");
+        _OnsetDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (OnsetAge != null)
+      {
+        writer.WritePropertyName("onsetAge");
+        OnsetAge.SerializeJson(ref writer, options);
+      }
+
+      if (OnsetPeriod != null)
+      {
+        writer.WritePropertyName("onsetPeriod");
+        OnsetPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (OnsetRange != null)
+      {
+        writer.WritePropertyName("onsetRange");
+        OnsetRange.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("onsetString", OnsetString);
+
+      if (_OnsetString != null)
+      {
+        writer.WritePropertyName("_onsetString");
+        _OnsetString.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      if ((Reaction != null) && (Reaction.Count != 0))
+      {
+        writer.WritePropertyName("reaction");
+        writer.WriteStartArray();
+
+        foreach (AllergyIntoleranceReaction valReaction in Reaction)
+        {
+          valReaction.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("recordedDate", RecordedDate);
+
+      if (_RecordedDate != null)
+      {
+        writer.WritePropertyName("_recordedDate");
+        _RecordedDate.SerializeJson(ref writer, options);
+      }
+
+      if (Recorder != null)
+      {
+        writer.WritePropertyName("recorder");
+        Recorder.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (VerificationStatus != null)
+      {
+        writer.WritePropertyName("verificationStatus");
+        VerificationStatus.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

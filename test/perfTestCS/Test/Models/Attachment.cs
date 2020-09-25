@@ -76,6 +76,84 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Url { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("contentType", ContentType);
+
+      if (_ContentType != null)
+      {
+        writer.WritePropertyName("_contentType");
+        _ContentType.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("creation", Creation);
+
+      if (_Creation != null)
+      {
+        writer.WritePropertyName("_creation");
+        _Creation.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("data", Data);
+
+      if (_Data != null)
+      {
+        writer.WritePropertyName("_data");
+        _Data.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("hash", Hash);
+
+      if (_Hash != null)
+      {
+        writer.WritePropertyName("_hash");
+        _Hash.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("language", Language);
+
+      if (_Language != null)
+      {
+        writer.WritePropertyName("_language");
+        _Language.SerializeJson(ref writer, options);
+      }
+
+      if (Size != null)
+      {
+        writer.WriteNumber("size", (uint)Size!);
+      }
+
+      writer.WriteString("title", Title);
+
+      if (_Title != null)
+      {
+        writer.WritePropertyName("_title");
+        _Title.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("url", Url);
+
+      if (_Url != null)
+      {
+        writer.WritePropertyName("_url");
+        _Url.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

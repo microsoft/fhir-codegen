@@ -40,6 +40,46 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Status { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("country");
+      Country.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("dateRange");
+      DateRange.SerializeJson(ref writer, options);
+
+      if (Jurisdiction != null)
+      {
+        writer.WritePropertyName("jurisdiction");
+        Jurisdiction.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("restoreDate", RestoreDate);
+
+      if (_RestoreDate != null)
+      {
+        writer.WritePropertyName("_restoreDate");
+        _RestoreDate.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("status");
+      Status.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

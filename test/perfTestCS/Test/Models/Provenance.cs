@@ -32,6 +32,51 @@ namespace Fhir.R4.Models
     /// </summary>
     public Reference Who { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (OnBehalfOf != null)
+      {
+        writer.WritePropertyName("onBehalfOf");
+        OnBehalfOf.SerializeJson(ref writer, options);
+      }
+
+      if ((Role != null) && (Role.Count != 0))
+      {
+        writer.WritePropertyName("role");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valRole in Role)
+        {
+          valRole.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("who");
+      Who.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -132,6 +177,47 @@ namespace Fhir.R4.Models
     /// whatIdentity should be used for entities that are not a Resource type.
     /// </summary>
     public Reference What { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Agent != null) && (Agent.Count != 0))
+      {
+        writer.WritePropertyName("agent");
+        writer.WriteStartArray();
+
+        foreach (ProvenanceAgent valAgent in Agent)
+        {
+          valAgent.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("role", Role);
+
+      if (_Role != null)
+      {
+        writer.WritePropertyName("_role");
+        _Role.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("what");
+      What.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -276,6 +362,151 @@ namespace Fhir.R4.Models
     /// Target references are usually version specific, but might not be, if a version has not been assigned or if the provenance information is part of the set of resources being maintained (i.e. a document). When using the RESTful API, the identity of the resource might not be known (especially not the version specific one); the client may either submit the resource first, and then the provenance, or it may submit both using a single transaction. See the notes on transaction for further discussion.
     /// </summary>
     public List<Reference> Target { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Activity != null)
+      {
+        writer.WritePropertyName("activity");
+        Activity.SerializeJson(ref writer, options);
+      }
+
+      if ((Agent != null) && (Agent.Count != 0))
+      {
+        writer.WritePropertyName("agent");
+        writer.WriteStartArray();
+
+        foreach (ProvenanceAgent valAgent in Agent)
+        {
+          valAgent.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Entity != null) && (Entity.Count != 0))
+      {
+        writer.WritePropertyName("entity");
+        writer.WriteStartArray();
+
+        foreach (ProvenanceEntity valEntity in Entity)
+        {
+          valEntity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Location != null)
+      {
+        writer.WritePropertyName("location");
+        Location.SerializeJson(ref writer, options);
+      }
+
+      if (OccurredPeriod != null)
+      {
+        writer.WritePropertyName("occurredPeriod");
+        OccurredPeriod.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("occurredDateTime", OccurredDateTime);
+
+      if (_OccurredDateTime != null)
+      {
+        writer.WritePropertyName("_occurredDateTime");
+        _OccurredDateTime.SerializeJson(ref writer, options);
+      }
+
+      if ((Policy != null) && (Policy.Count != 0))
+      {
+        writer.WritePropertyName("policy");
+        writer.WriteStartArray();
+
+        foreach (string valPolicy in Policy)
+        {
+          writer.WriteStringValue(valPolicy);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Policy != null) && (_Policy.Count != 0))
+      {
+        writer.WritePropertyName("_policy");
+        writer.WriteStartArray();
+
+        foreach (Element val_Policy in _Policy)
+        {
+          val_Policy.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Reason != null) && (Reason.Count != 0))
+      {
+        writer.WritePropertyName("reason");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valReason in Reason)
+        {
+          valReason.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("recorded", Recorded);
+
+      if (_Recorded != null)
+      {
+        writer.WritePropertyName("_recorded");
+        _Recorded.SerializeJson(ref writer, options);
+      }
+
+      if ((Signature != null) && (Signature.Count != 0))
+      {
+        writer.WritePropertyName("signature");
+        writer.WriteStartArray();
+
+        foreach (Signature valSignature in Signature)
+        {
+          valSignature.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Target != null) && (Target.Count != 0))
+      {
+        writer.WritePropertyName("target");
+        writer.WriteStartArray();
+
+        foreach (Reference valTarget in Target)
+        {
+          valTarget.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

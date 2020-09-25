@@ -60,6 +60,77 @@ namespace Fhir.R4.Models
     /// </summary>
     public Reference Who { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("data", Data);
+
+      if (_Data != null)
+      {
+        writer.WritePropertyName("_data");
+        _Data.SerializeJson(ref writer, options);
+      }
+
+      if (OnBehalfOf != null)
+      {
+        writer.WritePropertyName("onBehalfOf");
+        OnBehalfOf.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("sigFormat", SigFormat);
+
+      if (_SigFormat != null)
+      {
+        writer.WritePropertyName("_sigFormat");
+        _SigFormat.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("targetFormat", TargetFormat);
+
+      if (_TargetFormat != null)
+      {
+        writer.WritePropertyName("_targetFormat");
+        _TargetFormat.SerializeJson(ref writer, options);
+      }
+
+      if ((Type != null) && (Type.Count != 0))
+      {
+        writer.WritePropertyName("type");
+        writer.WriteStartArray();
+
+        foreach (Coding valType in Type)
+        {
+          valType.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("when", When);
+
+      if (_When != null)
+      {
+        writer.WritePropertyName("_when");
+        _When.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("who");
+      Who.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

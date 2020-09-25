@@ -40,6 +40,70 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept SymptomConditionEffect { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Classification != null)
+      {
+        writer.WritePropertyName("classification");
+        Classification.SerializeJson(ref writer, options);
+      }
+
+      if (FrequencyOfOccurrence != null)
+      {
+        writer.WritePropertyName("frequencyOfOccurrence");
+        FrequencyOfOccurrence.SerializeJson(ref writer, options);
+      }
+
+      if ((Population != null) && (Population.Count != 0))
+      {
+        writer.WritePropertyName("population");
+        writer.WriteStartArray();
+
+        foreach (Population valPopulation in Population)
+        {
+          valPopulation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Subject != null) && (Subject.Count != 0))
+      {
+        writer.WritePropertyName("subject");
+        writer.WriteStartArray();
+
+        foreach (Reference valSubject in Subject)
+        {
+          valSubject.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (SymptomConditionEffect != null)
+      {
+        writer.WritePropertyName("symptomConditionEffect");
+        SymptomConditionEffect.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

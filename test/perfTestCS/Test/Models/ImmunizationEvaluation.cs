@@ -104,6 +104,128 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept TargetDisease { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (Authority != null)
+      {
+        writer.WritePropertyName("authority");
+        Authority.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("date", Date);
+
+      if (_Date != null)
+      {
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("description", Description);
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (DoseNumberPositiveInt != null)
+      {
+        writer.WriteNumber("doseNumberPositiveInt", (uint)DoseNumberPositiveInt!);
+      }
+
+      writer.WriteString("doseNumberString", DoseNumberString);
+
+      if (_DoseNumberString != null)
+      {
+        writer.WritePropertyName("_doseNumberString");
+        _DoseNumberString.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("doseStatus");
+      DoseStatus.SerializeJson(ref writer, options);
+
+      if ((DoseStatusReason != null) && (DoseStatusReason.Count != 0))
+      {
+        writer.WritePropertyName("doseStatusReason");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valDoseStatusReason in DoseStatusReason)
+        {
+          valDoseStatusReason.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("immunizationEvent");
+      ImmunizationEvent.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      writer.WriteString("series", Series);
+
+      if (_Series != null)
+      {
+        writer.WritePropertyName("_series");
+        _Series.SerializeJson(ref writer, options);
+      }
+
+      if (SeriesDosesPositiveInt != null)
+      {
+        writer.WriteNumber("seriesDosesPositiveInt", (uint)SeriesDosesPositiveInt!);
+      }
+
+      writer.WriteString("seriesDosesString", SeriesDosesString);
+
+      if (_SeriesDosesString != null)
+      {
+        writer.WritePropertyName("_seriesDosesString");
+        _SeriesDosesString.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("status", Status);
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("targetDisease");
+      TargetDisease.SerializeJson(ref writer, options);
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

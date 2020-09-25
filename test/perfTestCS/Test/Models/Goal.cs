@@ -64,6 +64,85 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Measure { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (DetailQuantity != null)
+      {
+        writer.WritePropertyName("detailQuantity");
+        DetailQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (DetailRange != null)
+      {
+        writer.WritePropertyName("detailRange");
+        DetailRange.SerializeJson(ref writer, options);
+      }
+
+      if (DetailCodeableConcept != null)
+      {
+        writer.WritePropertyName("detailCodeableConcept");
+        DetailCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("detailString", DetailString);
+
+      if (_DetailString != null)
+      {
+        writer.WritePropertyName("_detailString");
+        _DetailString.SerializeJson(ref writer, options);
+      }
+
+      if (DetailBoolean != null)
+      {
+        writer.WriteBoolean("detailBoolean", (bool)DetailBoolean!);
+      }
+
+      if (DetailInteger != null)
+      {
+        writer.WriteNumber("detailInteger", (int)DetailInteger!);
+      }
+
+      if (DetailRatio != null)
+      {
+        writer.WritePropertyName("detailRatio");
+        DetailRatio.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("dueDate", DueDate);
+
+      if (_DueDate != null)
+      {
+        writer.WritePropertyName("_dueDate");
+        _DueDate.SerializeJson(ref writer, options);
+      }
+
+      if (DueDuration != null)
+      {
+        writer.WritePropertyName("dueDuration");
+        DueDuration.SerializeJson(ref writer, options);
+      }
+
+      if (Measure != null)
+      {
+        writer.WritePropertyName("measure");
+        Measure.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -251,6 +330,179 @@ namespace Fhir.R4.Models
     /// When multiple targets are present for a single goal instance, all targets must be met for the overall goal to be met.
     /// </summary>
     public List<GoalTarget> Target { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (AchievementStatus != null)
+      {
+        writer.WritePropertyName("achievementStatus");
+        AchievementStatus.SerializeJson(ref writer, options);
+      }
+
+      if ((Addresses != null) && (Addresses.Count != 0))
+      {
+        writer.WritePropertyName("addresses");
+        writer.WriteStartArray();
+
+        foreach (Reference valAddresses in Addresses)
+        {
+          valAddresses.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Category != null) && (Category.Count != 0))
+      {
+        writer.WritePropertyName("category");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCategory in Category)
+        {
+          valCategory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("description");
+      Description.SerializeJson(ref writer, options);
+
+      if (ExpressedBy != null)
+      {
+        writer.WritePropertyName("expressedBy");
+        ExpressedBy.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("lifecycleStatus", LifecycleStatus);
+
+      if (_LifecycleStatus != null)
+      {
+        writer.WritePropertyName("_lifecycleStatus");
+        _LifecycleStatus.SerializeJson(ref writer, options);
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((OutcomeCode != null) && (OutcomeCode.Count != 0))
+      {
+        writer.WritePropertyName("outcomeCode");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valOutcomeCode in OutcomeCode)
+        {
+          valOutcomeCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((OutcomeReference != null) && (OutcomeReference.Count != 0))
+      {
+        writer.WritePropertyName("outcomeReference");
+        writer.WriteStartArray();
+
+        foreach (Reference valOutcomeReference in OutcomeReference)
+        {
+          valOutcomeReference.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Priority != null)
+      {
+        writer.WritePropertyName("priority");
+        Priority.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("startDate", StartDate);
+
+      if (_StartDate != null)
+      {
+        writer.WritePropertyName("_startDate");
+        _StartDate.SerializeJson(ref writer, options);
+      }
+
+      if (StartCodeableConcept != null)
+      {
+        writer.WritePropertyName("startCodeableConcept");
+        StartCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("statusDate", StatusDate);
+
+      if (_StatusDate != null)
+      {
+        writer.WritePropertyName("_statusDate");
+        _StatusDate.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("statusReason", StatusReason);
+
+      if (_StatusReason != null)
+      {
+        writer.WritePropertyName("_statusReason");
+        _StatusReason.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("subject");
+      Subject.SerializeJson(ref writer, options);
+
+      if ((Target != null) && (Target.Count != 0))
+      {
+        writer.WritePropertyName("target");
+        writer.WriteStartArray();
+
+        foreach (GoalTarget valTarget in Target)
+        {
+          valTarget.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

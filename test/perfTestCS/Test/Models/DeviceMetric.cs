@@ -40,6 +40,47 @@ namespace Fhir.R4.Models
     /// </summary>
     public Element _Type { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("state", State);
+
+      if (_State != null)
+      {
+        writer.WritePropertyName("_state");
+        _State.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("time", Time);
+
+      if (_Time != null)
+      {
+        writer.WritePropertyName("_time");
+        _Time.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("type", Type);
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -165,6 +206,103 @@ namespace Fhir.R4.Models
     /// DeviceMetric.unit can refer to either UCUM or preferable a RTMMS coding system.
     /// </summary>
     public CodeableConcept Unit { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Calibration != null) && (Calibration.Count != 0))
+      {
+        writer.WritePropertyName("calibration");
+        writer.WriteStartArray();
+
+        foreach (DeviceMetricCalibration valCalibration in Calibration)
+        {
+          valCalibration.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("category", Category);
+
+      if (_Category != null)
+      {
+        writer.WritePropertyName("_category");
+        _Category.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("color", Color);
+
+      if (_Color != null)
+      {
+        writer.WritePropertyName("_color");
+        _Color.SerializeJson(ref writer, options);
+      }
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (MeasurementPeriod != null)
+      {
+        writer.WritePropertyName("measurementPeriod");
+        MeasurementPeriod.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("operationalStatus", OperationalStatus);
+
+      if (_OperationalStatus != null)
+      {
+        writer.WritePropertyName("_operationalStatus");
+        _OperationalStatus.SerializeJson(ref writer, options);
+      }
+
+      if (Parent != null)
+      {
+        writer.WritePropertyName("parent");
+        Parent.SerializeJson(ref writer, options);
+      }
+
+      if (Source != null)
+      {
+        writer.WritePropertyName("source");
+        Source.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
+      if (Unit != null)
+      {
+        writer.WritePropertyName("unit");
+        Unit.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

@@ -40,6 +40,59 @@ namespace Fhir.R4.Models
     /// </summary>
     public CodeableConcept Substance { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if ((Country != null) && (Country.Count != 0))
+      {
+        writer.WritePropertyName("country");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCountry in Country)
+        {
+          valCountry.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("measurementPoint", MeasurementPoint);
+
+      if (_MeasurementPoint != null)
+      {
+        writer.WritePropertyName("_measurementPoint");
+        _MeasurementPoint.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("strength");
+      Strength.SerializeJson(ref writer, options);
+
+      if (StrengthLowLimit != null)
+      {
+        writer.WritePropertyName("strengthLowLimit");
+        StrengthLowLimit.SerializeJson(ref writer, options);
+      }
+
+      if (Substance != null)
+      {
+        writer.WritePropertyName("substance");
+        Substance.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -165,6 +218,78 @@ namespace Fhir.R4.Models
     /// Strength expressed in terms of a reference substance.
     /// </summary>
     public List<MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength> ReferenceStrength { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Concentration != null)
+      {
+        writer.WritePropertyName("concentration");
+        Concentration.SerializeJson(ref writer, options);
+      }
+
+      if (ConcentrationLowLimit != null)
+      {
+        writer.WritePropertyName("concentrationLowLimit");
+        ConcentrationLowLimit.SerializeJson(ref writer, options);
+      }
+
+      if ((Country != null) && (Country.Count != 0))
+      {
+        writer.WritePropertyName("country");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCountry in Country)
+        {
+          valCountry.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WriteString("measurementPoint", MeasurementPoint);
+
+      if (_MeasurementPoint != null)
+      {
+        writer.WritePropertyName("_measurementPoint");
+        _MeasurementPoint.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("presentation");
+      Presentation.SerializeJson(ref writer, options);
+
+      if (PresentationLowLimit != null)
+      {
+        writer.WritePropertyName("presentationLowLimit");
+        PresentationLowLimit.SerializeJson(ref writer, options);
+      }
+
+      if ((ReferenceStrength != null) && (ReferenceStrength.Count != 0))
+      {
+        writer.WritePropertyName("referenceStrength");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength valReferenceStrength in ReferenceStrength)
+        {
+          valReferenceStrength.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -308,6 +433,48 @@ namespace Fhir.R4.Models
     /// </summary>
     public List<MedicinalProductIngredientSpecifiedSubstanceStrength> Strength { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      if (Confidentiality != null)
+      {
+        writer.WritePropertyName("confidentiality");
+        Confidentiality.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("group");
+      Group.SerializeJson(ref writer, options);
+
+      if ((Strength != null) && (Strength.Count != 0))
+      {
+        writer.WritePropertyName("strength");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductIngredientSpecifiedSubstanceStrength valStrength in Strength)
+        {
+          valStrength.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -400,6 +567,39 @@ namespace Fhir.R4.Models
     /// Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product.
     /// </summary>
     public List<MedicinalProductIngredientSpecifiedSubstanceStrength> Strength { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
+      if ((Strength != null) && (Strength.Count != 0))
+      {
+        writer.WritePropertyName("strength");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductIngredientSpecifiedSubstanceStrength valStrength in Strength)
+        {
+          valStrength.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
@@ -503,6 +703,72 @@ namespace Fhir.R4.Models
     /// The ingredient substance.
     /// </summary>
     public MedicinalProductIngredientSubstance Substance { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (AllergenicIndicator != null)
+      {
+        writer.WriteBoolean("allergenicIndicator", (bool)AllergenicIndicator!);
+      }
+
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      if ((Manufacturer != null) && (Manufacturer.Count != 0))
+      {
+        writer.WritePropertyName("manufacturer");
+        writer.WriteStartArray();
+
+        foreach (Reference valManufacturer in Manufacturer)
+        {
+          valManufacturer.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("role");
+      Role.SerializeJson(ref writer, options);
+
+      if ((SpecifiedSubstance != null) && (SpecifiedSubstance.Count != 0))
+      {
+        writer.WritePropertyName("specifiedSubstance");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductIngredientSpecifiedSubstance valSpecifiedSubstance in SpecifiedSubstance)
+        {
+          valSpecifiedSubstance.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Substance != null)
+      {
+        writer.WritePropertyName("substance");
+        Substance.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

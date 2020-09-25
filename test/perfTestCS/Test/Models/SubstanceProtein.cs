@@ -60,6 +60,75 @@ namespace Fhir.R4.Models
     /// </summary>
     public int? Subunit { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      writer.WriteString("cTerminalModification", CTerminalModification);
+
+      if (_CTerminalModification != null)
+      {
+        writer.WritePropertyName("_cTerminalModification");
+        _CTerminalModification.SerializeJson(ref writer, options);
+      }
+
+      if (CTerminalModificationId != null)
+      {
+        writer.WritePropertyName("cTerminalModificationId");
+        CTerminalModificationId.SerializeJson(ref writer, options);
+      }
+
+      if (Length != null)
+      {
+        writer.WriteNumber("length", (int)Length!);
+      }
+
+      writer.WriteString("nTerminalModification", NTerminalModification);
+
+      if (_NTerminalModification != null)
+      {
+        writer.WritePropertyName("_nTerminalModification");
+        _NTerminalModification.SerializeJson(ref writer, options);
+      }
+
+      if (NTerminalModificationId != null)
+      {
+        writer.WritePropertyName("nTerminalModificationId");
+        NTerminalModificationId.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("sequence", Sequence);
+
+      if (_Sequence != null)
+      {
+        writer.WritePropertyName("_sequence");
+        _Sequence.SerializeJson(ref writer, options);
+      }
+
+      if (SequenceAttachment != null)
+      {
+        writer.WritePropertyName("sequenceAttachment");
+        SequenceAttachment.SerializeJson(ref writer, options);
+      }
+
+      if (Subunit != null)
+      {
+        writer.WriteNumber("subunit", (int)Subunit!);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -176,6 +245,76 @@ namespace Fhir.R4.Models
     /// This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times.
     /// </summary>
     public List<SubstanceProteinSubunit> Subunit { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("resourceType", ResourceType);
+
+
+      ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((DisulfideLinkage != null) && (DisulfideLinkage.Count != 0))
+      {
+        writer.WritePropertyName("disulfideLinkage");
+        writer.WriteStartArray();
+
+        foreach (string valDisulfideLinkage in DisulfideLinkage)
+        {
+          writer.WriteStringValue(valDisulfideLinkage);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_DisulfideLinkage != null) && (_DisulfideLinkage.Count != 0))
+      {
+        writer.WritePropertyName("_disulfideLinkage");
+        writer.WriteStartArray();
+
+        foreach (Element val_DisulfideLinkage in _DisulfideLinkage)
+        {
+          val_DisulfideLinkage.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (NumberOfSubunits != null)
+      {
+        writer.WriteNumber("numberOfSubunits", (int)NumberOfSubunits!);
+      }
+
+      if (SequenceType != null)
+      {
+        writer.WritePropertyName("sequenceType");
+        SequenceType.SerializeJson(ref writer, options);
+      }
+
+      if ((Subunit != null) && (Subunit.Count != 0))
+      {
+        writer.WritePropertyName("subunit");
+        writer.WriteStartArray();
+
+        foreach (SubstanceProteinSubunit valSubunit in Subunit)
+        {
+          valSubunit.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>

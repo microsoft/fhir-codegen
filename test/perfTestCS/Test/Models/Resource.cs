@@ -44,6 +44,51 @@ namespace Fhir.R4.Models
     /// </summary>
     public Meta Meta { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      writer.WriteString("id", Id);
+
+      if (_Id != null)
+      {
+        writer.WritePropertyName("_id");
+        _Id.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("implicitRules", ImplicitRules);
+
+      if (_ImplicitRules != null)
+      {
+        writer.WritePropertyName("_implicitRules");
+        _ImplicitRules.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("language", Language);
+
+      if (_Language != null)
+      {
+        writer.WritePropertyName("_language");
+        _Language.SerializeJson(ref writer, options);
+      }
+
+      if (Meta != null)
+      {
+        writer.WritePropertyName("meta");
+        Meta.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

@@ -20,6 +20,36 @@ namespace Fhir.R4.Models
     /// </summary>
     public List<Extension> ModifierExtension { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      if ((ModifierExtension != null) && (ModifierExtension.Count != 0))
+      {
+        writer.WritePropertyName("modifierExtension");
+        writer.WriteStartArray();
+
+        foreach (Extension valModifierExtension in ModifierExtension)
+        {
+          valModifierExtension.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)

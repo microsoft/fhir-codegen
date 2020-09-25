@@ -120,6 +120,204 @@ namespace Fhir.R4.Models
     /// </summary>
     public List<Element> _When { get; set; }
     /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
+
+      if (BoundsDuration != null)
+      {
+        writer.WritePropertyName("boundsDuration");
+        BoundsDuration.SerializeJson(ref writer, options);
+      }
+
+      if (BoundsRange != null)
+      {
+        writer.WritePropertyName("boundsRange");
+        BoundsRange.SerializeJson(ref writer, options);
+      }
+
+      if (BoundsPeriod != null)
+      {
+        writer.WritePropertyName("boundsPeriod");
+        BoundsPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (Count != null)
+      {
+        writer.WriteNumber("count", (uint)Count!);
+      }
+
+      if (CountMax != null)
+      {
+        writer.WriteNumber("countMax", (uint)CountMax!);
+      }
+
+      if ((DayOfWeek != null) && (DayOfWeek.Count != 0))
+      {
+        writer.WritePropertyName("dayOfWeek");
+        writer.WriteStartArray();
+
+        foreach (string valDayOfWeek in DayOfWeek)
+        {
+          writer.WriteStringValue(valDayOfWeek);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_DayOfWeek != null) && (_DayOfWeek.Count != 0))
+      {
+        writer.WritePropertyName("_dayOfWeek");
+        writer.WriteStartArray();
+
+        foreach (Element val_DayOfWeek in _DayOfWeek)
+        {
+          val_DayOfWeek.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Duration != null)
+      {
+        writer.WriteNumber("duration", (decimal)Duration!);
+      }
+
+      if (_Duration != null)
+      {
+        writer.WritePropertyName("_duration");
+        _Duration.SerializeJson(ref writer, options);
+      }
+
+      if (DurationMax != null)
+      {
+        writer.WriteNumber("durationMax", (decimal)DurationMax!);
+      }
+
+      if (_DurationMax != null)
+      {
+        writer.WritePropertyName("_durationMax");
+        _DurationMax.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("durationUnit", DurationUnit);
+
+      if (_DurationUnit != null)
+      {
+        writer.WritePropertyName("_durationUnit");
+        _DurationUnit.SerializeJson(ref writer, options);
+      }
+
+      if (Frequency != null)
+      {
+        writer.WriteNumber("frequency", (uint)Frequency!);
+      }
+
+      if (FrequencyMax != null)
+      {
+        writer.WriteNumber("frequencyMax", (uint)FrequencyMax!);
+      }
+
+      if (Offset != null)
+      {
+        writer.WriteNumber("offset", (uint)Offset!);
+      }
+
+      if (Period != null)
+      {
+        writer.WriteNumber("period", (decimal)Period!);
+      }
+
+      if (_Period != null)
+      {
+        writer.WritePropertyName("_period");
+        _Period.SerializeJson(ref writer, options);
+      }
+
+      if (PeriodMax != null)
+      {
+        writer.WriteNumber("periodMax", (decimal)PeriodMax!);
+      }
+
+      if (_PeriodMax != null)
+      {
+        writer.WritePropertyName("_periodMax");
+        _PeriodMax.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteString("periodUnit", PeriodUnit);
+
+      if (_PeriodUnit != null)
+      {
+        writer.WritePropertyName("_periodUnit");
+        _PeriodUnit.SerializeJson(ref writer, options);
+      }
+
+      if ((TimeOfDay != null) && (TimeOfDay.Count != 0))
+      {
+        writer.WritePropertyName("timeOfDay");
+        writer.WriteStartArray();
+
+        foreach (string valTimeOfDay in TimeOfDay)
+        {
+          writer.WriteStringValue(valTimeOfDay);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_TimeOfDay != null) && (_TimeOfDay.Count != 0))
+      {
+        writer.WritePropertyName("_timeOfDay");
+        writer.WriteStartArray();
+
+        foreach (Element val_TimeOfDay in _TimeOfDay)
+        {
+          val_TimeOfDay.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((When != null) && (When.Count != 0))
+      {
+        writer.WritePropertyName("when");
+        writer.WriteStartArray();
+
+        foreach (string valWhen in When)
+        {
+          writer.WriteStringValue(valWhen);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_When != null) && (_When.Count != 0))
+      {
+        writer.WritePropertyName("_when");
+        writer.WriteStartArray();
+
+        foreach (Element val_When in _When)
+        {
+          val_When.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
+    /// <summary>
     /// Deserialize a JSON property
     /// </summary>
     public new void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
@@ -423,6 +621,61 @@ namespace Fhir.R4.Models
     /// A set of rules that describe when the event is scheduled.
     /// </summary>
     public TimingRepeat Repeat { get; set; }
+    /// <summary>
+    /// Serialize to a JSON object
+    /// </summary>
+    public new void SerializeJson(ref Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
+    {
+      if (includeStartObject)
+      {
+        writer.WriteStartObject();
+      }
+
+      ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      if ((Event != null) && (Event.Count != 0))
+      {
+        writer.WritePropertyName("event");
+        writer.WriteStartArray();
+
+        foreach (string valEvent in Event)
+        {
+          writer.WriteStringValue(valEvent);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Event != null) && (_Event.Count != 0))
+      {
+        writer.WritePropertyName("_event");
+        writer.WriteStartArray();
+
+        foreach (Element val_Event in _Event)
+        {
+          val_Event.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Repeat != null)
+      {
+        writer.WritePropertyName("repeat");
+        Repeat.SerializeJson(ref writer, options);
+      }
+
+      if (includeStartObject)
+      {
+        writer.WriteEndObject();
+      }
+    }
     /// <summary>
     /// Deserialize a JSON property
     /// </summary>
