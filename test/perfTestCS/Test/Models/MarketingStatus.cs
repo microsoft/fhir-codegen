@@ -54,25 +54,28 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("country");
       Country.SerializeJson(ref writer, options);
 
-      writer.WritePropertyName("dateRange");
-      DateRange.SerializeJson(ref writer, options);
-
       if (Jurisdiction != null)
       {
         writer.WritePropertyName("jurisdiction");
         Jurisdiction.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("restoreDate", RestoreDate);
+      writer.WritePropertyName("status");
+      Status.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("dateRange");
+      DateRange.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(RestoreDate))
+      {
+        writer.WriteString("restoreDate", (string)RestoreDate!);
+      }
 
       if (_RestoreDate != null)
       {
         writer.WritePropertyName("_restoreDate");
         _RestoreDate.SerializeJson(ref writer, options);
       }
-
-      writer.WritePropertyName("status");
-      Status.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {

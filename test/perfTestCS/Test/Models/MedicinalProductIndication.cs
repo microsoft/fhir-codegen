@@ -39,14 +39,14 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("therapyRelationshipType");
+      TherapyRelationshipType.SerializeJson(ref writer, options);
+
       writer.WritePropertyName("medicationCodeableConcept");
       MedicationCodeableConcept.SerializeJson(ref writer, options);
 
       writer.WritePropertyName("medicationReference");
       MedicationReference.SerializeJson(ref writer, options);
-
-      writer.WritePropertyName("therapyRelationshipType");
-      TherapyRelationshipType.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -109,7 +109,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indication for the Medicinal Product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductIndication>))]
   public class MedicinalProductIndication : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -161,10 +161,38 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Subject != null) && (Subject.Count != 0))
+      {
+        writer.WritePropertyName("subject");
+        writer.WriteStartArray();
+
+        foreach (Reference valSubject in Subject)
+        {
+          valSubject.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (DiseaseSymptomProcedure != null)
+      {
+        writer.WritePropertyName("diseaseSymptomProcedure");
+        DiseaseSymptomProcedure.SerializeJson(ref writer, options);
+      }
+
+      if (DiseaseStatus != null)
+      {
+        writer.WritePropertyName("diseaseStatus");
+        DiseaseStatus.SerializeJson(ref writer, options);
+      }
 
       if ((Comorbidity != null) && (Comorbidity.Count != 0))
       {
@@ -179,28 +207,16 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (DiseaseStatus != null)
+      if (IntendedEffect != null)
       {
-        writer.WritePropertyName("diseaseStatus");
-        DiseaseStatus.SerializeJson(ref writer, options);
-      }
-
-      if (DiseaseSymptomProcedure != null)
-      {
-        writer.WritePropertyName("diseaseSymptomProcedure");
-        DiseaseSymptomProcedure.SerializeJson(ref writer, options);
+        writer.WritePropertyName("intendedEffect");
+        IntendedEffect.SerializeJson(ref writer, options);
       }
 
       if (Duration != null)
       {
         writer.WritePropertyName("duration");
         Duration.SerializeJson(ref writer, options);
-      }
-
-      if (IntendedEffect != null)
-      {
-        writer.WritePropertyName("intendedEffect");
-        IntendedEffect.SerializeJson(ref writer, options);
       }
 
       if ((OtherTherapy != null) && (OtherTherapy.Count != 0))
@@ -216,32 +232,6 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Population != null) && (Population.Count != 0))
-      {
-        writer.WritePropertyName("population");
-        writer.WriteStartArray();
-
-        foreach (Population valPopulation in Population)
-        {
-          valPopulation.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Subject != null) && (Subject.Count != 0))
-      {
-        writer.WritePropertyName("subject");
-        writer.WriteStartArray();
-
-        foreach (Reference valSubject in Subject)
-        {
-          valSubject.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
       if ((UndesirableEffect != null) && (UndesirableEffect.Count != 0))
       {
         writer.WritePropertyName("undesirableEffect");
@@ -250,6 +240,19 @@ namespace Fhir.R4.Models
         foreach (Reference valUndesirableEffect in UndesirableEffect)
         {
           valUndesirableEffect.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Population != null) && (Population.Count != 0))
+      {
+        writer.WritePropertyName("population");
+        writer.WriteStartArray();
+
+        foreach (Population valPopulation in Population)
+        {
+          valPopulation.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

@@ -100,14 +100,6 @@ namespace Fhir.R4.Models
         QualitativeRisk.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("rationale", Rationale);
-
-      if (_Rationale != null)
-      {
-        writer.WritePropertyName("_rationale");
-        _Rationale.SerializeJson(ref writer, options);
-      }
-
       if (RelativeRisk != null)
       {
         writer.WriteNumber("relativeRisk", (decimal)RelativeRisk!);
@@ -129,6 +121,17 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("whenRange");
         WhenRange.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Rationale))
+      {
+        writer.WriteString("rationale", (string)Rationale!);
+      }
+
+      if (_Rationale != null)
+      {
+        writer.WritePropertyName("_rationale");
+        _Rationale.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -229,7 +232,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RiskAssessment>))]
   public class RiskAssessment : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -329,47 +332,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (BasedOn != null)
-      {
-        writer.WritePropertyName("basedOn");
-        BasedOn.SerializeJson(ref writer, options);
-      }
-
-      if ((Basis != null) && (Basis.Count != 0))
-      {
-        writer.WritePropertyName("basis");
-        writer.WriteStartArray();
-
-        foreach (Reference valBasis in Basis)
-        {
-          valBasis.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Code != null)
-      {
-        writer.WritePropertyName("code");
-        Code.SerializeJson(ref writer, options);
-      }
-
-      if (Condition != null)
-      {
-        writer.WritePropertyName("condition");
-        Condition.SerializeJson(ref writer, options);
-      }
-
-      if (Encounter != null)
-      {
-        writer.WritePropertyName("encounter");
-        Encounter.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -384,34 +353,54 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (BasedOn != null)
+      {
+        writer.WritePropertyName("basedOn");
+        BasedOn.SerializeJson(ref writer, options);
+      }
+
+      if (Parent != null)
+      {
+        writer.WritePropertyName("parent");
+        Parent.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
       if (Method != null)
       {
         writer.WritePropertyName("method");
         Method.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("mitigation", Mitigation);
-
-      if (_Mitigation != null)
+      if (Code != null)
       {
-        writer.WritePropertyName("_mitigation");
-        _Mitigation.SerializeJson(ref writer, options);
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
       }
 
-      if ((Note != null) && (Note.Count != 0))
+      writer.WritePropertyName("subject");
+      Subject.SerializeJson(ref writer, options);
+
+      if (Encounter != null)
       {
-        writer.WritePropertyName("note");
-        writer.WriteStartArray();
-
-        foreach (Annotation valNote in Note)
-        {
-          valNote.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("occurrenceDateTime", OccurrenceDateTime);
+      if (!string.IsNullOrEmpty(OccurrenceDateTime))
+      {
+        writer.WriteString("occurrenceDateTime", (string)OccurrenceDateTime!);
+      }
 
       if (_OccurrenceDateTime != null)
       {
@@ -425,29 +414,16 @@ namespace Fhir.R4.Models
         OccurrencePeriod.SerializeJson(ref writer, options);
       }
 
-      if (Parent != null)
+      if (Condition != null)
       {
-        writer.WritePropertyName("parent");
-        Parent.SerializeJson(ref writer, options);
+        writer.WritePropertyName("condition");
+        Condition.SerializeJson(ref writer, options);
       }
 
       if (Performer != null)
       {
         writer.WritePropertyName("performer");
         Performer.SerializeJson(ref writer, options);
-      }
-
-      if ((Prediction != null) && (Prediction.Count != 0))
-      {
-        writer.WritePropertyName("prediction");
-        writer.WriteStartArray();
-
-        foreach (RiskAssessmentPrediction valPrediction in Prediction)
-        {
-          valPrediction.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
       }
 
       if ((ReasonCode != null) && (ReasonCode.Count != 0))
@@ -476,16 +452,55 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if ((Basis != null) && (Basis.Count != 0))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WritePropertyName("basis");
+        writer.WriteStartArray();
+
+        foreach (Reference valBasis in Basis)
+        {
+          valBasis.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(ref writer, options);
+      if ((Prediction != null) && (Prediction.Count != 0))
+      {
+        writer.WritePropertyName("prediction");
+        writer.WriteStartArray();
+
+        foreach (RiskAssessmentPrediction valPrediction in Prediction)
+        {
+          valPrediction.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Mitigation))
+      {
+        writer.WriteString("mitigation", (string)Mitigation!);
+      }
+
+      if (_Mitigation != null)
+      {
+        writer.WritePropertyName("_mitigation");
+        _Mitigation.SerializeJson(ref writer, options);
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if (includeStartObject)
       {

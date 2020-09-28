@@ -39,7 +39,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("comment", Comment);
+      if (!string.IsNullOrEmpty(Comment))
+      {
+        writer.WriteString("comment", (string)Comment!);
+      }
 
       if (_Comment != null)
       {
@@ -110,7 +113,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DiagnosticReport>))]
   public class DiagnosticReport : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -218,10 +221,26 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if ((BasedOn != null) && (BasedOn.Count != 0))
       {
@@ -234,6 +253,17 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
       }
 
       if ((Category != null) && (Category.Count != 0))
@@ -252,28 +282,22 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("code");
       Code.SerializeJson(ref writer, options);
 
-      writer.WriteString("conclusion", Conclusion);
-
-      if (_Conclusion != null)
+      if (Subject != null)
       {
-        writer.WritePropertyName("_conclusion");
-        _Conclusion.SerializeJson(ref writer, options);
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
       }
 
-      if ((ConclusionCode != null) && (ConclusionCode.Count != 0))
+      if (Encounter != null)
       {
-        writer.WritePropertyName("conclusionCode");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valConclusionCode in ConclusionCode)
-        {
-          valConclusionCode.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("effectiveDateTime", EffectiveDateTime);
+      if (!string.IsNullOrEmpty(EffectiveDateTime))
+      {
+        writer.WriteString("effectiveDateTime", (string)EffectiveDateTime!);
+      }
 
       if (_EffectiveDateTime != null)
       {
@@ -287,57 +311,15 @@ namespace Fhir.R4.Models
         EffectivePeriod.SerializeJson(ref writer, options);
       }
 
-      if (Encounter != null)
+      if (!string.IsNullOrEmpty(Issued))
       {
-        writer.WritePropertyName("encounter");
-        Encounter.SerializeJson(ref writer, options);
+        writer.WriteString("issued", (string)Issued!);
       }
-
-      if ((Identifier != null) && (Identifier.Count != 0))
-      {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((ImagingStudy != null) && (ImagingStudy.Count != 0))
-      {
-        writer.WritePropertyName("imagingStudy");
-        writer.WriteStartArray();
-
-        foreach (Reference valImagingStudy in ImagingStudy)
-        {
-          valImagingStudy.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("issued", Issued);
 
       if (_Issued != null)
       {
         writer.WritePropertyName("_issued");
         _Issued.SerializeJson(ref writer, options);
-      }
-
-      if ((Media != null) && (Media.Count != 0))
-      {
-        writer.WritePropertyName("media");
-        writer.WriteStartArray();
-
-        foreach (DiagnosticReportMedia valMedia in Media)
-        {
-          valMedia.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
       }
 
       if ((Performer != null) && (Performer.Count != 0))
@@ -348,32 +330,6 @@ namespace Fhir.R4.Models
         foreach (Reference valPerformer in Performer)
         {
           valPerformer.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((PresentedForm != null) && (PresentedForm.Count != 0))
-      {
-        writer.WritePropertyName("presentedForm");
-        writer.WriteStartArray();
-
-        foreach (Attachment valPresentedForm in PresentedForm)
-        {
-          valPresentedForm.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Result != null) && (Result.Count != 0))
-      {
-        writer.WritePropertyName("result");
-        writer.WriteStartArray();
-
-        foreach (Reference valResult in Result)
-        {
-          valResult.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -405,18 +361,80 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if ((Result != null) && (Result.Count != 0))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WritePropertyName("result");
+        writer.WriteStartArray();
+
+        foreach (Reference valResult in Result)
+        {
+          valResult.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
-      if (Subject != null)
+      if ((ImagingStudy != null) && (ImagingStudy.Count != 0))
       {
-        writer.WritePropertyName("subject");
-        Subject.SerializeJson(ref writer, options);
+        writer.WritePropertyName("imagingStudy");
+        writer.WriteStartArray();
+
+        foreach (Reference valImagingStudy in ImagingStudy)
+        {
+          valImagingStudy.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Media != null) && (Media.Count != 0))
+      {
+        writer.WritePropertyName("media");
+        writer.WriteStartArray();
+
+        foreach (DiagnosticReportMedia valMedia in Media)
+        {
+          valMedia.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Conclusion))
+      {
+        writer.WriteString("conclusion", (string)Conclusion!);
+      }
+
+      if (_Conclusion != null)
+      {
+        writer.WritePropertyName("_conclusion");
+        _Conclusion.SerializeJson(ref writer, options);
+      }
+
+      if ((ConclusionCode != null) && (ConclusionCode.Count != 0))
+      {
+        writer.WritePropertyName("conclusionCode");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valConclusionCode in ConclusionCode)
+        {
+          valConclusionCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((PresentedForm != null) && (PresentedForm.Count != 0))
+      {
+        writer.WritePropertyName("presentedForm");
+        writer.WriteStartArray();
+
+        foreach (Attachment valPresentedForm in PresentedForm)
+        {
+          valPresentedForm.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

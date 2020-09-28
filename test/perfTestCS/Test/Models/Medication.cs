@@ -43,16 +43,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (IsActive != null)
-      {
-        writer.WriteBoolean("isActive", (bool)IsActive!);
-      }
-
       writer.WritePropertyName("itemCodeableConcept");
       ItemCodeableConcept.SerializeJson(ref writer, options);
 
       writer.WritePropertyName("itemReference");
       ItemReference.SerializeJson(ref writer, options);
+
+      if (IsActive != null)
+      {
+        writer.WriteBoolean("isActive", (bool)IsActive!);
+      }
 
       if (Strength != null)
       {
@@ -155,20 +155,26 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("expirationDate", ExpirationDate);
-
-      if (_ExpirationDate != null)
+      if (!string.IsNullOrEmpty(LotNumber))
       {
-        writer.WritePropertyName("_expirationDate");
-        _ExpirationDate.SerializeJson(ref writer, options);
+        writer.WriteString("lotNumber", (string)LotNumber!);
       }
-
-      writer.WriteString("lotNumber", LotNumber);
 
       if (_LotNumber != null)
       {
         writer.WritePropertyName("_lotNumber");
         _LotNumber.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ExpirationDate))
+      {
+        writer.WriteString("expirationDate", (string)ExpirationDate!);
+      }
+
+      if (_ExpirationDate != null)
+      {
+        writer.WritePropertyName("_expirationDate");
+        _ExpirationDate.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -235,7 +241,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Medication>))]
   public class Medication : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -287,34 +293,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Amount != null)
-      {
-        writer.WritePropertyName("amount");
-        Amount.SerializeJson(ref writer, options);
-      }
-
-      if (Batch != null)
-      {
-        writer.WritePropertyName("batch");
-        Batch.SerializeJson(ref writer, options);
-      }
-
-      if (Code != null)
-      {
-        writer.WritePropertyName("code");
-        Code.SerializeJson(ref writer, options);
-      }
-
-      if (Form != null)
-      {
-        writer.WritePropertyName("form");
-        Form.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -327,6 +312,41 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
+      }
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Manufacturer != null)
+      {
+        writer.WritePropertyName("manufacturer");
+        Manufacturer.SerializeJson(ref writer, options);
+      }
+
+      if (Form != null)
+      {
+        writer.WritePropertyName("form");
+        Form.SerializeJson(ref writer, options);
+      }
+
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(ref writer, options);
       }
 
       if ((Ingredient != null) && (Ingredient.Count != 0))
@@ -342,18 +362,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Manufacturer != null)
+      if (Batch != null)
       {
-        writer.WritePropertyName("manufacturer");
-        Manufacturer.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WritePropertyName("batch");
+        Batch.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

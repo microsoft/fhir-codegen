@@ -47,12 +47,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Country != null)
-      {
-        writer.WritePropertyName("country");
-        Country.SerializeJson(ref writer, options);
-      }
-
       if ((Identifier != null) && (Identifier.Count != 0))
       {
         writer.WritePropertyName("identifier");
@@ -64,6 +58,12 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
+      }
+
+      if (Country != null)
+      {
+        writer.WritePropertyName("country");
+        Country.SerializeJson(ref writer, options);
       }
 
       if ((Jurisdiction != null) && (Jurisdiction.Count != 0))
@@ -244,6 +244,32 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
+      if (DatePeriod != null)
+      {
+        writer.WritePropertyName("datePeriod");
+        DatePeriod.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(DateDateTime))
+      {
+        writer.WriteString("dateDateTime", (string)DateDateTime!);
+      }
+
+      if (_DateDateTime != null)
+      {
+        writer.WritePropertyName("_dateDateTime");
+        _DateDateTime.SerializeJson(ref writer, options);
+      }
+
       if ((Application != null) && (Application.Count != 0))
       {
         writer.WritePropertyName("application");
@@ -256,29 +282,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      if (DatePeriod != null)
-      {
-        writer.WritePropertyName("datePeriod");
-        DatePeriod.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("dateDateTime", DateDateTime);
-
-      if (_DateDateTime != null)
-      {
-        writer.WritePropertyName("_dateDateTime");
-        _DateDateTime.SerializeJson(ref writer, options);
-      }
-
-      if (Identifier != null)
-      {
-        writer.WritePropertyName("identifier");
-        Identifier.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -377,7 +380,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The regulatory authorization of a medicinal product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductAuthorization>))]
   public class MedicinalProductAuthorization : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -473,43 +476,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if ((Country != null) && (Country.Count != 0))
-      {
-        writer.WritePropertyName("country");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valCountry in Country)
-        {
-          valCountry.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (DataExclusivityPeriod != null)
-      {
-        writer.WritePropertyName("dataExclusivityPeriod");
-        DataExclusivityPeriod.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("dateOfFirstAuthorization", DateOfFirstAuthorization);
-
-      if (_DateOfFirstAuthorization != null)
-      {
-        writer.WritePropertyName("_dateOfFirstAuthorization");
-        _DateOfFirstAuthorization.SerializeJson(ref writer, options);
-      }
-
-      if (Holder != null)
-      {
-        writer.WritePropertyName("holder");
-        Holder.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -524,12 +497,23 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("internationalBirthDate", InternationalBirthDate);
-
-      if (_InternationalBirthDate != null)
+      if (Subject != null)
       {
-        writer.WritePropertyName("_internationalBirthDate");
-        _InternationalBirthDate.SerializeJson(ref writer, options);
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      if ((Country != null) && (Country.Count != 0))
+      {
+        writer.WritePropertyName("country");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCountry in Country)
+        {
+          valCountry.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((Jurisdiction != null) && (Jurisdiction.Count != 0))
@@ -545,6 +529,74 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (Status != null)
+      {
+        writer.WritePropertyName("status");
+        Status.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(StatusDate))
+      {
+        writer.WriteString("statusDate", (string)StatusDate!);
+      }
+
+      if (_StatusDate != null)
+      {
+        writer.WritePropertyName("_statusDate");
+        _StatusDate.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(RestoreDate))
+      {
+        writer.WriteString("restoreDate", (string)RestoreDate!);
+      }
+
+      if (_RestoreDate != null)
+      {
+        writer.WritePropertyName("_restoreDate");
+        _RestoreDate.SerializeJson(ref writer, options);
+      }
+
+      if (ValidityPeriod != null)
+      {
+        writer.WritePropertyName("validityPeriod");
+        ValidityPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (DataExclusivityPeriod != null)
+      {
+        writer.WritePropertyName("dataExclusivityPeriod");
+        DataExclusivityPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(DateOfFirstAuthorization))
+      {
+        writer.WriteString("dateOfFirstAuthorization", (string)DateOfFirstAuthorization!);
+      }
+
+      if (_DateOfFirstAuthorization != null)
+      {
+        writer.WritePropertyName("_dateOfFirstAuthorization");
+        _DateOfFirstAuthorization.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(InternationalBirthDate))
+      {
+        writer.WriteString("internationalBirthDate", (string)InternationalBirthDate!);
+      }
+
+      if (_InternationalBirthDate != null)
+      {
+        writer.WritePropertyName("_internationalBirthDate");
+        _InternationalBirthDate.SerializeJson(ref writer, options);
+      }
+
+      if (LegalBasis != null)
+      {
+        writer.WritePropertyName("legalBasis");
+        LegalBasis.SerializeJson(ref writer, options);
+      }
+
       if ((JurisdictionalAuthorization != null) && (JurisdictionalAuthorization.Count != 0))
       {
         writer.WritePropertyName("jurisdictionalAuthorization");
@@ -558,16 +610,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (LegalBasis != null)
+      if (Holder != null)
       {
-        writer.WritePropertyName("legalBasis");
-        LegalBasis.SerializeJson(ref writer, options);
-      }
-
-      if (Procedure != null)
-      {
-        writer.WritePropertyName("procedure");
-        Procedure.SerializeJson(ref writer, options);
+        writer.WritePropertyName("holder");
+        Holder.SerializeJson(ref writer, options);
       }
 
       if (Regulator != null)
@@ -576,38 +622,10 @@ namespace Fhir.R4.Models
         Regulator.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("restoreDate", RestoreDate);
-
-      if (_RestoreDate != null)
+      if (Procedure != null)
       {
-        writer.WritePropertyName("_restoreDate");
-        _RestoreDate.SerializeJson(ref writer, options);
-      }
-
-      if (Status != null)
-      {
-        writer.WritePropertyName("status");
-        Status.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("statusDate", StatusDate);
-
-      if (_StatusDate != null)
-      {
-        writer.WritePropertyName("_statusDate");
-        _StatusDate.SerializeJson(ref writer, options);
-      }
-
-      if (Subject != null)
-      {
-        writer.WritePropertyName("subject");
-        Subject.SerializeJson(ref writer, options);
-      }
-
-      if (ValidityPeriod != null)
-      {
-        writer.WritePropertyName("validityPeriod");
-        ValidityPeriod.SerializeJson(ref writer, options);
+        writer.WritePropertyName("procedure");
+        Procedure.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

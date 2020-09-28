@@ -97,7 +97,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The interactions of the medicinal product with other medicinal products, or other forms of interactions.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductInteraction>))]
   public class MedicinalProductInteraction : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -145,29 +145,36 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("description", Description);
+      if ((Subject != null) && (Subject.Count != 0))
+      {
+        writer.WritePropertyName("subject");
+        writer.WriteStartArray();
+
+        foreach (Reference valSubject in Subject)
+        {
+          valSubject.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
 
       if (_Description != null)
       {
         writer.WritePropertyName("_description");
         _Description.SerializeJson(ref writer, options);
-      }
-
-      if (Effect != null)
-      {
-        writer.WritePropertyName("effect");
-        Effect.SerializeJson(ref writer, options);
-      }
-
-      if (Incidence != null)
-      {
-        writer.WritePropertyName("incidence");
-        Incidence.SerializeJson(ref writer, options);
       }
 
       if ((Interactant != null) && (Interactant.Count != 0))
@@ -183,29 +190,28 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Management != null)
-      {
-        writer.WritePropertyName("management");
-        Management.SerializeJson(ref writer, options);
-      }
-
-      if ((Subject != null) && (Subject.Count != 0))
-      {
-        writer.WritePropertyName("subject");
-        writer.WriteStartArray();
-
-        foreach (Reference valSubject in Subject)
-        {
-          valSubject.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
       if (Type != null)
       {
         writer.WritePropertyName("type");
         Type.SerializeJson(ref writer, options);
+      }
+
+      if (Effect != null)
+      {
+        writer.WritePropertyName("effect");
+        Effect.SerializeJson(ref writer, options);
+      }
+
+      if (Incidence != null)
+      {
+        writer.WritePropertyName("incidence");
+        Incidence.SerializeJson(ref writer, options);
+      }
+
+      if (Management != null)
+      {
+        writer.WritePropertyName("management");
+        Management.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

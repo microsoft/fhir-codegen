@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Media>))]
   public class Media : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -144,87 +144,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if ((BasedOn != null) && (BasedOn.Count != 0))
-      {
-        writer.WritePropertyName("basedOn");
-        writer.WriteStartArray();
-
-        foreach (Reference valBasedOn in BasedOn)
-        {
-          valBasedOn.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (BodySite != null)
-      {
-        writer.WritePropertyName("bodySite");
-        BodySite.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("content");
-      Content.SerializeJson(ref writer, options);
-
-      writer.WriteString("createdDateTime", CreatedDateTime);
-
-      if (_CreatedDateTime != null)
-      {
-        writer.WritePropertyName("_createdDateTime");
-        _CreatedDateTime.SerializeJson(ref writer, options);
-      }
-
-      if (CreatedPeriod != null)
-      {
-        writer.WritePropertyName("createdPeriod");
-        CreatedPeriod.SerializeJson(ref writer, options);
-      }
-
-      if (Device != null)
-      {
-        writer.WritePropertyName("device");
-        Device.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("deviceName", DeviceName);
-
-      if (_DeviceName != null)
-      {
-        writer.WritePropertyName("_deviceName");
-        _DeviceName.SerializeJson(ref writer, options);
-      }
-
-      if (Duration != null)
-      {
-        writer.WriteNumber("duration", (decimal)Duration!);
-      }
-
-      if (_Duration != null)
-      {
-        writer.WritePropertyName("_duration");
-        _Duration.SerializeJson(ref writer, options);
-      }
-
-      if (Encounter != null)
-      {
-        writer.WritePropertyName("encounter");
-        Encounter.SerializeJson(ref writer, options);
-      }
-
-      if (Frames != null)
-      {
-        writer.WriteNumber("frames", (uint)Frames!);
-      }
-
-      if (Height != null)
-      {
-        writer.WriteNumber("height", (uint)Height!);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -239,37 +165,17 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("issued", Issued);
-
-      if (_Issued != null)
+      if ((BasedOn != null) && (BasedOn.Count != 0))
       {
-        writer.WritePropertyName("_issued");
-        _Issued.SerializeJson(ref writer, options);
-      }
-
-      if (Modality != null)
-      {
-        writer.WritePropertyName("modality");
-        Modality.SerializeJson(ref writer, options);
-      }
-
-      if ((Note != null) && (Note.Count != 0))
-      {
-        writer.WritePropertyName("note");
+        writer.WritePropertyName("basedOn");
         writer.WriteStartArray();
 
-        foreach (Annotation valNote in Note)
+        foreach (Reference valBasedOn in BasedOn)
         {
-          valNote.SerializeJson(ref writer, options, true);
+          valBasedOn.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Operator != null)
-      {
-        writer.WritePropertyName("operator");
-        Operator.SerializeJson(ref writer, options);
       }
 
       if ((PartOf != null) && (PartOf.Count != 0))
@@ -285,6 +191,81 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (Modality != null)
+      {
+        writer.WritePropertyName("modality");
+        Modality.SerializeJson(ref writer, options);
+      }
+
+      if (View != null)
+      {
+        writer.WritePropertyName("view");
+        View.SerializeJson(ref writer, options);
+      }
+
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      if (Encounter != null)
+      {
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(CreatedDateTime))
+      {
+        writer.WriteString("createdDateTime", (string)CreatedDateTime!);
+      }
+
+      if (_CreatedDateTime != null)
+      {
+        writer.WritePropertyName("_createdDateTime");
+        _CreatedDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (CreatedPeriod != null)
+      {
+        writer.WritePropertyName("createdPeriod");
+        CreatedPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Issued))
+      {
+        writer.WriteString("issued", (string)Issued!);
+      }
+
+      if (_Issued != null)
+      {
+        writer.WritePropertyName("_issued");
+        _Issued.SerializeJson(ref writer, options);
+      }
+
+      if (Operator != null)
+      {
+        writer.WritePropertyName("operator");
+        Operator.SerializeJson(ref writer, options);
+      }
+
       if ((ReasonCode != null) && (ReasonCode.Count != 0))
       {
         writer.WritePropertyName("reasonCode");
@@ -298,35 +279,69 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if (BodySite != null)
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WritePropertyName("bodySite");
+        BodySite.SerializeJson(ref writer, options);
       }
 
-      if (Subject != null)
+      if (!string.IsNullOrEmpty(DeviceName))
       {
-        writer.WritePropertyName("subject");
-        Subject.SerializeJson(ref writer, options);
+        writer.WriteString("deviceName", (string)DeviceName!);
       }
 
-      if (Type != null)
+      if (_DeviceName != null)
       {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_deviceName");
+        _DeviceName.SerializeJson(ref writer, options);
       }
 
-      if (View != null)
+      if (Device != null)
       {
-        writer.WritePropertyName("view");
-        View.SerializeJson(ref writer, options);
+        writer.WritePropertyName("device");
+        Device.SerializeJson(ref writer, options);
+      }
+
+      if (Height != null)
+      {
+        writer.WriteNumber("height", (uint)Height!);
       }
 
       if (Width != null)
       {
         writer.WriteNumber("width", (uint)Width!);
+      }
+
+      if (Frames != null)
+      {
+        writer.WriteNumber("frames", (uint)Frames!);
+      }
+
+      if (Duration != null)
+      {
+        writer.WriteNumber("duration", (decimal)Duration!);
+      }
+
+      if (_Duration != null)
+      {
+        writer.WritePropertyName("_duration");
+        _Duration.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("content");
+      Content.SerializeJson(ref writer, options);
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

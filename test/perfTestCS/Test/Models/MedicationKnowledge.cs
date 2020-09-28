@@ -35,6 +35,9 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
       if ((Reference != null) && (Reference.Count != 0))
       {
         writer.WritePropertyName("reference");
@@ -47,9 +50,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -151,16 +151,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Source != null)
-      {
-        writer.WritePropertyName("source");
-        Source.SerializeJson(ref writer, options);
-      }
-
       if (Type != null)
       {
         writer.WritePropertyName("type");
         Type.SerializeJson(ref writer, options);
+      }
+
+      if (Source != null)
+      {
+        writer.WritePropertyName("source");
+        Source.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -249,16 +249,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (IsActive != null)
-      {
-        writer.WriteBoolean("isActive", (bool)IsActive!);
-      }
-
       writer.WritePropertyName("itemCodeableConcept");
       ItemCodeableConcept.SerializeJson(ref writer, options);
 
       writer.WritePropertyName("itemReference");
       ItemReference.SerializeJson(ref writer, options);
+
+      if (IsActive != null)
+      {
+        writer.WriteBoolean("isActive", (bool)IsActive!);
+      }
 
       if (Strength != null)
       {
@@ -361,10 +361,13 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WritePropertyName("cost");
-      Cost.SerializeJson(ref writer, options);
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
 
-      writer.WriteString("source", Source);
+      if (!string.IsNullOrEmpty(Source))
+      {
+        writer.WriteString("source", (string)Source!);
+      }
 
       if (_Source != null)
       {
@@ -372,8 +375,8 @@ namespace Fhir.R4.Models
         _Source.SerializeJson(ref writer, options);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
+      writer.WritePropertyName("cost");
+      Cost.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -466,18 +469,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("name", Name);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
 
       if (_Name != null)
       {
         writer.WritePropertyName("_name");
         _Name.SerializeJson(ref writer, options);
-      }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -562,6 +568,9 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
       if ((Dosage != null) && (Dosage.Count != 0))
       {
         writer.WritePropertyName("dosage");
@@ -574,9 +583,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -1026,6 +1032,9 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
       if ((Classification != null) && (Classification.Count != 0))
       {
         writer.WritePropertyName("classification");
@@ -1038,9 +1047,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -1142,16 +1148,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Quantity != null)
-      {
-        writer.WritePropertyName("quantity");
-        Quantity.SerializeJson(ref writer, options);
-      }
-
       if (Type != null)
       {
         writer.WritePropertyName("type");
         Type.SerializeJson(ref writer, options);
+      }
+
+      if (Quantity != null)
+      {
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1264,7 +1270,10 @@ namespace Fhir.R4.Models
         ValueCodeableConcept.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueString", ValueString);
+      if (!string.IsNullOrEmpty(ValueString))
+      {
+        writer.WriteString("valueString", (string)ValueString!);
+      }
 
       if (_ValueString != null)
       {
@@ -1278,7 +1287,10 @@ namespace Fhir.R4.Models
         ValueQuantity.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueBase64Binary", ValueBase64Binary);
+      if (!string.IsNullOrEmpty(ValueBase64Binary))
+      {
+        writer.WriteString("valueBase64Binary", (string)ValueBase64Binary!);
+      }
 
       if (_ValueBase64Binary != null)
       {
@@ -1387,10 +1399,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteBoolean("allowed", Allowed);
-
       writer.WritePropertyName("type");
       Type.SerializeJson(ref writer, options);
+
+      writer.WriteBoolean("allowed", Allowed);
 
       if (includeStartObject)
       {
@@ -1541,14 +1553,14 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("quantity");
+      Quantity.SerializeJson(ref writer, options);
+
       if (Period != null)
       {
         writer.WritePropertyName("period");
         Period.SerializeJson(ref writer, options);
       }
-
-      writer.WritePropertyName("quantity");
-      Quantity.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -1636,14 +1648,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (MaxDispense != null)
-      {
-        writer.WritePropertyName("maxDispense");
-        MaxDispense.SerializeJson(ref writer, options);
-      }
-
       writer.WritePropertyName("regulatoryAuthority");
       RegulatoryAuthority.SerializeJson(ref writer, options);
+
+      if ((Substitution != null) && (Substitution.Count != 0))
+      {
+        writer.WritePropertyName("substitution");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeRegulatorySubstitution valSubstitution in Substitution)
+        {
+          valSubstitution.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if ((Schedule != null) && (Schedule.Count != 0))
       {
@@ -1658,17 +1677,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Substitution != null) && (Substitution.Count != 0))
+      if (MaxDispense != null)
       {
-        writer.WritePropertyName("substitution");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeRegulatorySubstitution valSubstitution in Substitution)
-        {
-          valSubstitution.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("maxDispense");
+        MaxDispense.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1820,12 +1832,6 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (HalfLifePeriod != null)
-      {
-        writer.WritePropertyName("halfLifePeriod");
-        HalfLifePeriod.SerializeJson(ref writer, options);
-      }
-
       if ((LethalDose50 != null) && (LethalDose50.Count != 0))
       {
         writer.WritePropertyName("lethalDose50");
@@ -1837,6 +1843,12 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
+      }
+
+      if (HalfLifePeriod != null)
+      {
+        writer.WritePropertyName("halfLifePeriod");
+        HalfLifePeriod.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1944,7 +1956,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about a medication that is used to support knowledge.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledge>))]
   public class MedicationKnowledge : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -2060,42 +2072,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if ((AdministrationGuidelines != null) && (AdministrationGuidelines.Count != 0))
-      {
-        writer.WritePropertyName("administrationGuidelines");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeAdministrationGuidelines valAdministrationGuidelines in AdministrationGuidelines)
-        {
-          valAdministrationGuidelines.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Amount != null)
-      {
-        writer.WritePropertyName("amount");
-        Amount.SerializeJson(ref writer, options);
-      }
-
-      if ((AssociatedMedication != null) && (AssociatedMedication.Count != 0))
-      {
-        writer.WritePropertyName("associatedMedication");
-        writer.WriteStartArray();
-
-        foreach (Reference valAssociatedMedication in AssociatedMedication)
-        {
-          valAssociatedMedication.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
 
       if (Code != null)
       {
@@ -2103,88 +2086,15 @@ namespace Fhir.R4.Models
         Code.SerializeJson(ref writer, options);
       }
 
-      if ((Contraindication != null) && (Contraindication.Count != 0))
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("contraindication");
-        writer.WriteStartArray();
-
-        foreach (Reference valContraindication in Contraindication)
-        {
-          valContraindication.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("status", (string)Status!);
       }
 
-      if ((Cost != null) && (Cost.Count != 0))
+      if (_Status != null)
       {
-        writer.WritePropertyName("cost");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeCost valCost in Cost)
-        {
-          valCost.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (DoseForm != null)
-      {
-        writer.WritePropertyName("doseForm");
-        DoseForm.SerializeJson(ref writer, options);
-      }
-
-      if ((DrugCharacteristic != null) && (DrugCharacteristic.Count != 0))
-      {
-        writer.WritePropertyName("drugCharacteristic");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeDrugCharacteristic valDrugCharacteristic in DrugCharacteristic)
-        {
-          valDrugCharacteristic.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Ingredient != null) && (Ingredient.Count != 0))
-      {
-        writer.WritePropertyName("ingredient");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeIngredient valIngredient in Ingredient)
-        {
-          valIngredient.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((IntendedRoute != null) && (IntendedRoute.Count != 0))
-      {
-        writer.WritePropertyName("intendedRoute");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valIntendedRoute in IntendedRoute)
-        {
-          valIntendedRoute.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Kinetics != null) && (Kinetics.Count != 0))
-      {
-        writer.WritePropertyName("kinetics");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeKinetics valKinetics in Kinetics)
-        {
-          valKinetics.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
       }
 
       if (Manufacturer != null)
@@ -2193,104 +2103,16 @@ namespace Fhir.R4.Models
         Manufacturer.SerializeJson(ref writer, options);
       }
 
-      if ((MedicineClassification != null) && (MedicineClassification.Count != 0))
+      if (DoseForm != null)
       {
-        writer.WritePropertyName("medicineClassification");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeMedicineClassification valMedicineClassification in MedicineClassification)
-        {
-          valMedicineClassification.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("doseForm");
+        DoseForm.SerializeJson(ref writer, options);
       }
 
-      if ((MonitoringProgram != null) && (MonitoringProgram.Count != 0))
+      if (Amount != null)
       {
-        writer.WritePropertyName("monitoringProgram");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeMonitoringProgram valMonitoringProgram in MonitoringProgram)
-        {
-          valMonitoringProgram.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Monograph != null) && (Monograph.Count != 0))
-      {
-        writer.WritePropertyName("monograph");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeMonograph valMonograph in Monograph)
-        {
-          valMonograph.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Packaging != null)
-      {
-        writer.WritePropertyName("packaging");
-        Packaging.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("preparationInstruction", PreparationInstruction);
-
-      if (_PreparationInstruction != null)
-      {
-        writer.WritePropertyName("_preparationInstruction");
-        _PreparationInstruction.SerializeJson(ref writer, options);
-      }
-
-      if ((ProductType != null) && (ProductType.Count != 0))
-      {
-        writer.WritePropertyName("productType");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valProductType in ProductType)
-        {
-          valProductType.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Regulatory != null) && (Regulatory.Count != 0))
-      {
-        writer.WritePropertyName("regulatory");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeRegulatory valRegulatory in Regulatory)
-        {
-          valRegulatory.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((RelatedMedicationKnowledge != null) && (RelatedMedicationKnowledge.Count != 0))
-      {
-        writer.WritePropertyName("relatedMedicationKnowledge");
-        writer.WriteStartArray();
-
-        foreach (MedicationKnowledgeRelatedMedicationKnowledge valRelatedMedicationKnowledge in RelatedMedicationKnowledge)
-        {
-          valRelatedMedicationKnowledge.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(ref writer, options);
       }
 
       if ((Synonym != null) && (Synonym.Count != 0))
@@ -2314,6 +2136,205 @@ namespace Fhir.R4.Models
         foreach (Element val_Synonym in _Synonym)
         {
           val_Synonym.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((RelatedMedicationKnowledge != null) && (RelatedMedicationKnowledge.Count != 0))
+      {
+        writer.WritePropertyName("relatedMedicationKnowledge");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeRelatedMedicationKnowledge valRelatedMedicationKnowledge in RelatedMedicationKnowledge)
+        {
+          valRelatedMedicationKnowledge.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((AssociatedMedication != null) && (AssociatedMedication.Count != 0))
+      {
+        writer.WritePropertyName("associatedMedication");
+        writer.WriteStartArray();
+
+        foreach (Reference valAssociatedMedication in AssociatedMedication)
+        {
+          valAssociatedMedication.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ProductType != null) && (ProductType.Count != 0))
+      {
+        writer.WritePropertyName("productType");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valProductType in ProductType)
+        {
+          valProductType.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Monograph != null) && (Monograph.Count != 0))
+      {
+        writer.WritePropertyName("monograph");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeMonograph valMonograph in Monograph)
+        {
+          valMonograph.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Ingredient != null) && (Ingredient.Count != 0))
+      {
+        writer.WritePropertyName("ingredient");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeIngredient valIngredient in Ingredient)
+        {
+          valIngredient.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(PreparationInstruction))
+      {
+        writer.WriteString("preparationInstruction", (string)PreparationInstruction!);
+      }
+
+      if (_PreparationInstruction != null)
+      {
+        writer.WritePropertyName("_preparationInstruction");
+        _PreparationInstruction.SerializeJson(ref writer, options);
+      }
+
+      if ((IntendedRoute != null) && (IntendedRoute.Count != 0))
+      {
+        writer.WritePropertyName("intendedRoute");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valIntendedRoute in IntendedRoute)
+        {
+          valIntendedRoute.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Cost != null) && (Cost.Count != 0))
+      {
+        writer.WritePropertyName("cost");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeCost valCost in Cost)
+        {
+          valCost.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((MonitoringProgram != null) && (MonitoringProgram.Count != 0))
+      {
+        writer.WritePropertyName("monitoringProgram");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeMonitoringProgram valMonitoringProgram in MonitoringProgram)
+        {
+          valMonitoringProgram.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((AdministrationGuidelines != null) && (AdministrationGuidelines.Count != 0))
+      {
+        writer.WritePropertyName("administrationGuidelines");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeAdministrationGuidelines valAdministrationGuidelines in AdministrationGuidelines)
+        {
+          valAdministrationGuidelines.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((MedicineClassification != null) && (MedicineClassification.Count != 0))
+      {
+        writer.WritePropertyName("medicineClassification");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeMedicineClassification valMedicineClassification in MedicineClassification)
+        {
+          valMedicineClassification.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Packaging != null)
+      {
+        writer.WritePropertyName("packaging");
+        Packaging.SerializeJson(ref writer, options);
+      }
+
+      if ((DrugCharacteristic != null) && (DrugCharacteristic.Count != 0))
+      {
+        writer.WritePropertyName("drugCharacteristic");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeDrugCharacteristic valDrugCharacteristic in DrugCharacteristic)
+        {
+          valDrugCharacteristic.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Contraindication != null) && (Contraindication.Count != 0))
+      {
+        writer.WritePropertyName("contraindication");
+        writer.WriteStartArray();
+
+        foreach (Reference valContraindication in Contraindication)
+        {
+          valContraindication.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Regulatory != null) && (Regulatory.Count != 0))
+      {
+        writer.WritePropertyName("regulatory");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeRegulatory valRegulatory in Regulatory)
+        {
+          valRegulatory.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Kinetics != null) && (Kinetics.Count != 0))
+      {
+        writer.WritePropertyName("kinetics");
+        writer.WriteStartArray();
+
+        foreach (MedicationKnowledgeKinetics valKinetics in Kinetics)
+        {
+          valKinetics.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

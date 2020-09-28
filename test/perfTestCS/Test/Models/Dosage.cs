@@ -54,6 +54,12 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
       if (DoseRange != null)
       {
         writer.WritePropertyName("doseRange");
@@ -82,12 +88,6 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("rateQuantity");
         RateQuantity.SerializeJson(ref writer, options);
-      }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -244,6 +244,22 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Sequence != null)
+      {
+        writer.WriteNumber("sequence", (int)Sequence!);
+      }
+
+      if (!string.IsNullOrEmpty(Text))
+      {
+        writer.WriteString("text", (string)Text!);
+      }
+
+      if (_Text != null)
+      {
+        writer.WritePropertyName("_text");
+        _Text.SerializeJson(ref writer, options);
+      }
+
       if ((AdditionalInstruction != null) && (AdditionalInstruction.Count != 0))
       {
         writer.WritePropertyName("additionalInstruction");
@@ -257,6 +273,23 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (!string.IsNullOrEmpty(PatientInstruction))
+      {
+        writer.WriteString("patientInstruction", (string)PatientInstruction!);
+      }
+
+      if (_PatientInstruction != null)
+      {
+        writer.WritePropertyName("_patientInstruction");
+        _PatientInstruction.SerializeJson(ref writer, options);
+      }
+
+      if (Timing != null)
+      {
+        writer.WritePropertyName("timing");
+        Timing.SerializeJson(ref writer, options);
+      }
+
       if (AsNeededBoolean != null)
       {
         writer.WriteBoolean("asNeededBoolean", (bool)AsNeededBoolean!);
@@ -266,6 +299,24 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("asNeededCodeableConcept");
         AsNeededCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      if (Site != null)
+      {
+        writer.WritePropertyName("site");
+        Site.SerializeJson(ref writer, options);
+      }
+
+      if (Route != null)
+      {
+        writer.WritePropertyName("route");
+        Route.SerializeJson(ref writer, options);
+      }
+
+      if (Method != null)
+      {
+        writer.WritePropertyName("method");
+        Method.SerializeJson(ref writer, options);
       }
 
       if ((DoseAndRate != null) && (DoseAndRate.Count != 0))
@@ -281,6 +332,12 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (MaxDosePerPeriod != null)
+      {
+        writer.WritePropertyName("maxDosePerPeriod");
+        MaxDosePerPeriod.SerializeJson(ref writer, options);
+      }
+
       if (MaxDosePerAdministration != null)
       {
         writer.WritePropertyName("maxDosePerAdministration");
@@ -291,57 +348,6 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("maxDosePerLifetime");
         MaxDosePerLifetime.SerializeJson(ref writer, options);
-      }
-
-      if (MaxDosePerPeriod != null)
-      {
-        writer.WritePropertyName("maxDosePerPeriod");
-        MaxDosePerPeriod.SerializeJson(ref writer, options);
-      }
-
-      if (Method != null)
-      {
-        writer.WritePropertyName("method");
-        Method.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("patientInstruction", PatientInstruction);
-
-      if (_PatientInstruction != null)
-      {
-        writer.WritePropertyName("_patientInstruction");
-        _PatientInstruction.SerializeJson(ref writer, options);
-      }
-
-      if (Route != null)
-      {
-        writer.WritePropertyName("route");
-        Route.SerializeJson(ref writer, options);
-      }
-
-      if (Sequence != null)
-      {
-        writer.WriteNumber("sequence", (int)Sequence!);
-      }
-
-      if (Site != null)
-      {
-        writer.WritePropertyName("site");
-        Site.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("text", Text);
-
-      if (_Text != null)
-      {
-        writer.WritePropertyName("_text");
-        _Text.SerializeJson(ref writer, options);
-      }
-
-      if (Timing != null)
-      {
-        writer.WritePropertyName("timing");
-        Timing.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AppointmentResponse>))]
   public class AppointmentResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -79,35 +79,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Actor != null)
-      {
-        writer.WritePropertyName("actor");
-        Actor.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("appointment");
-      Appointment.SerializeJson(ref writer, options);
-
-      writer.WriteString("comment", Comment);
-
-      if (_Comment != null)
-      {
-        writer.WritePropertyName("_comment");
-        _Comment.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("end", End);
-
-      if (_End != null)
-      {
-        writer.WritePropertyName("_end");
-        _End.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -122,12 +100,29 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("participantStatus", ParticipantStatus);
+      writer.WritePropertyName("appointment");
+      Appointment.SerializeJson(ref writer, options);
 
-      if (_ParticipantStatus != null)
+      if (!string.IsNullOrEmpty(Start))
       {
-        writer.WritePropertyName("_participantStatus");
-        _ParticipantStatus.SerializeJson(ref writer, options);
+        writer.WriteString("start", (string)Start!);
+      }
+
+      if (_Start != null)
+      {
+        writer.WritePropertyName("_start");
+        _Start.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(End))
+      {
+        writer.WriteString("end", (string)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(ref writer, options);
       }
 
       if ((ParticipantType != null) && (ParticipantType.Count != 0))
@@ -143,12 +138,32 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("start", Start);
-
-      if (_Start != null)
+      if (Actor != null)
       {
-        writer.WritePropertyName("_start");
-        _Start.SerializeJson(ref writer, options);
+        writer.WritePropertyName("actor");
+        Actor.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ParticipantStatus))
+      {
+        writer.WriteString("participantStatus", (string)ParticipantStatus!);
+      }
+
+      if (_ParticipantStatus != null)
+      {
+        writer.WritePropertyName("_participantStatus");
+        _ParticipantStatus.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Comment))
+      {
+        writer.WriteString("comment", (string)Comment!);
+      }
+
+      if (_Comment != null)
+      {
+        writer.WritePropertyName("_comment");
+        _Comment.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

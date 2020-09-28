@@ -43,20 +43,26 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("end", End);
-
-      if (_End != null)
+      if (!string.IsNullOrEmpty(Start))
       {
-        writer.WritePropertyName("_end");
-        _End.SerializeJson(ref writer, options);
+        writer.WriteString("start", (string)Start!);
       }
-
-      writer.WriteString("start", Start);
 
       if (_Start != null)
       {
         writer.WritePropertyName("_start");
         _Start.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(End))
+      {
+        writer.WriteString("end", (string)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

@@ -71,36 +71,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("data", Data);
-
-      if (_Data != null)
-      {
-        writer.WritePropertyName("_data");
-        _Data.SerializeJson(ref writer, options);
-      }
-
-      if (OnBehalfOf != null)
-      {
-        writer.WritePropertyName("onBehalfOf");
-        OnBehalfOf.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("sigFormat", SigFormat);
-
-      if (_SigFormat != null)
-      {
-        writer.WritePropertyName("_sigFormat");
-        _SigFormat.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("targetFormat", TargetFormat);
-
-      if (_TargetFormat != null)
-      {
-        writer.WritePropertyName("_targetFormat");
-        _TargetFormat.SerializeJson(ref writer, options);
-      }
-
       if ((Type != null) && (Type.Count != 0))
       {
         writer.WritePropertyName("type");
@@ -114,7 +84,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("when", When);
+      if (!string.IsNullOrEmpty(When))
+      {
+        writer.WriteString("when", (string)When!);
+      }
 
       if (_When != null)
       {
@@ -124,6 +97,45 @@ namespace Fhir.R4.Models
 
       writer.WritePropertyName("who");
       Who.SerializeJson(ref writer, options);
+
+      if (OnBehalfOf != null)
+      {
+        writer.WritePropertyName("onBehalfOf");
+        OnBehalfOf.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(TargetFormat))
+      {
+        writer.WriteString("targetFormat", (string)TargetFormat!);
+      }
+
+      if (_TargetFormat != null)
+      {
+        writer.WritePropertyName("_targetFormat");
+        _TargetFormat.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(SigFormat))
+      {
+        writer.WriteString("sigFormat", (string)SigFormat!);
+      }
+
+      if (_SigFormat != null)
+      {
+        writer.WritePropertyName("_sigFormat");
+        _SigFormat.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Data))
+      {
+        writer.WriteString("data", (string)Data!);
+      }
+
+      if (_Data != null)
+      {
+        writer.WritePropertyName("_data");
+        _Data.SerializeJson(ref writer, options);
+      }
 
       if (includeStartObject)
       {

@@ -47,23 +47,29 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
-      {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
-      }
-
       writer.WritePropertyName("type");
       Type.SerializeJson(ref writer, options);
 
-      writer.WriteString("value", Value);
+      if (!string.IsNullOrEmpty(Value))
+      {
+        writer.WriteString("value", (string)Value!);
+      }
 
       if (_Value != null)
       {
         writer.WritePropertyName("_value");
         _Value.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -157,14 +163,14 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
       if (Period != null)
       {
         writer.WritePropertyName("period");
         Period.SerializeJson(ref writer, options);
       }
-
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -252,6 +258,18 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("valueQuantity");
+      ValueQuantity.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("valueMoney");
+      ValueMoney.SerializeJson(ref writer, options);
+
       if ((Exception != null) && (Exception.Count != 0))
       {
         writer.WritePropertyName("exception");
@@ -264,18 +282,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("valueQuantity");
-      ValueQuantity.SerializeJson(ref writer, options);
-
-      writer.WritePropertyName("valueMoney");
-      ValueMoney.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -365,7 +371,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Coverage>))]
   public class Coverage : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -466,60 +472,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      writer.WritePropertyName("beneficiary");
-      Beneficiary.SerializeJson(ref writer, options);
-
-      if ((Class != null) && (Class.Count != 0))
-      {
-        writer.WritePropertyName("class");
-        writer.WriteStartArray();
-
-        foreach (CoverageClass valClass in Class)
-        {
-          valClass.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Contract != null) && (Contract.Count != 0))
-      {
-        writer.WritePropertyName("contract");
-        writer.WriteStartArray();
-
-        foreach (Reference valContract in Contract)
-        {
-          valContract.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((CostToBeneficiary != null) && (CostToBeneficiary.Count != 0))
-      {
-        writer.WritePropertyName("costToBeneficiary");
-        writer.WriteStartArray();
-
-        foreach (CoverageCostToBeneficiary valCostToBeneficiary in CostToBeneficiary)
-        {
-          valCostToBeneficiary.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("dependent", Dependent);
-
-      if (_Dependent != null)
-      {
-        writer.WritePropertyName("_dependent");
-        _Dependent.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -534,17 +493,70 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("network", Network);
-
-      if (_Network != null)
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("_network");
-        _Network.SerializeJson(ref writer, options);
+        writer.WriteString("status", (string)Status!);
       }
 
-      if (Order != null)
+      if (_Status != null)
       {
-        writer.WriteNumber("order", (uint)Order!);
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (PolicyHolder != null)
+      {
+        writer.WritePropertyName("policyHolder");
+        PolicyHolder.SerializeJson(ref writer, options);
+      }
+
+      if (Subscriber != null)
+      {
+        writer.WritePropertyName("subscriber");
+        Subscriber.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(SubscriberId))
+      {
+        writer.WriteString("subscriberId", (string)SubscriberId!);
+      }
+
+      if (_SubscriberId != null)
+      {
+        writer.WritePropertyName("_subscriberId");
+        _SubscriberId.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("beneficiary");
+      Beneficiary.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Dependent))
+      {
+        writer.WriteString("dependent", (string)Dependent!);
+      }
+
+      if (_Dependent != null)
+      {
+        writer.WritePropertyName("_dependent");
+        _Dependent.SerializeJson(ref writer, options);
+      }
+
+      if (Relationship != null)
+      {
+        writer.WritePropertyName("relationship");
+        Relationship.SerializeJson(ref writer, options);
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
       }
 
       if ((Payor != null) && (Payor.Count != 0))
@@ -560,30 +572,46 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Period != null)
+      if ((Class != null) && (Class.Count != 0))
       {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
+        writer.WritePropertyName("class");
+        writer.WriteStartArray();
+
+        foreach (CoverageClass valClass in Class)
+        {
+          valClass.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
-      if (PolicyHolder != null)
+      if (Order != null)
       {
-        writer.WritePropertyName("policyHolder");
-        PolicyHolder.SerializeJson(ref writer, options);
+        writer.WriteNumber("order", (uint)Order!);
       }
 
-      if (Relationship != null)
+      if (!string.IsNullOrEmpty(Network))
       {
-        writer.WritePropertyName("relationship");
-        Relationship.SerializeJson(ref writer, options);
+        writer.WriteString("network", (string)Network!);
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if (_Network != null)
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_network");
+        _Network.SerializeJson(ref writer, options);
+      }
+
+      if ((CostToBeneficiary != null) && (CostToBeneficiary.Count != 0))
+      {
+        writer.WritePropertyName("costToBeneficiary");
+        writer.WriteStartArray();
+
+        foreach (CoverageCostToBeneficiary valCostToBeneficiary in CostToBeneficiary)
+        {
+          valCostToBeneficiary.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (Subrogation != null)
@@ -591,24 +619,17 @@ namespace Fhir.R4.Models
         writer.WriteBoolean("subrogation", (bool)Subrogation!);
       }
 
-      if (Subscriber != null)
+      if ((Contract != null) && (Contract.Count != 0))
       {
-        writer.WritePropertyName("subscriber");
-        Subscriber.SerializeJson(ref writer, options);
-      }
+        writer.WritePropertyName("contract");
+        writer.WriteStartArray();
 
-      writer.WriteString("subscriberId", SubscriberId);
+        foreach (Reference valContract in Contract)
+        {
+          valContract.SerializeJson(ref writer, options, true);
+        }
 
-      if (_SubscriberId != null)
-      {
-        writer.WritePropertyName("_subscriberId");
-        _SubscriberId.SerializeJson(ref writer, options);
-      }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

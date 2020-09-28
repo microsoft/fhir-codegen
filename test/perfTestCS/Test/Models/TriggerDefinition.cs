@@ -75,26 +75,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      if (Condition != null)
+      if (!string.IsNullOrEmpty(Type))
       {
-        writer.WritePropertyName("condition");
-        Condition.SerializeJson(ref writer, options);
+        writer.WriteString("type", (string)Type!);
       }
 
-      if ((Data != null) && (Data.Count != 0))
+      if (_Type != null)
       {
-        writer.WritePropertyName("data");
-        writer.WriteStartArray();
-
-        foreach (DataRequirement valData in Data)
-        {
-          valData.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("name", Name);
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
 
       if (_Name != null)
       {
@@ -114,7 +109,10 @@ namespace Fhir.R4.Models
         TimingReference.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("timingDate", TimingDate);
+      if (!string.IsNullOrEmpty(TimingDate))
+      {
+        writer.WriteString("timingDate", (string)TimingDate!);
+      }
 
       if (_TimingDate != null)
       {
@@ -122,7 +120,10 @@ namespace Fhir.R4.Models
         _TimingDate.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("timingDateTime", TimingDateTime);
+      if (!string.IsNullOrEmpty(TimingDateTime))
+      {
+        writer.WriteString("timingDateTime", (string)TimingDateTime!);
+      }
 
       if (_TimingDateTime != null)
       {
@@ -130,12 +131,23 @@ namespace Fhir.R4.Models
         _TimingDateTime.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
+      if ((Data != null) && (Data.Count != 0))
       {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("data");
+        writer.WriteStartArray();
+
+        foreach (DataRequirement valData in Data)
+        {
+          valData.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Condition != null)
+      {
+        writer.WritePropertyName("condition");
+        Condition.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

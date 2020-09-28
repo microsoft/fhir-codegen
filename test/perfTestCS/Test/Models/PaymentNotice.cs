@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides the status of the payment for goods and services rendered, and the request and response resource references.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PaymentNotice>))]
   public class PaymentNotice : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -89,21 +89,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      writer.WritePropertyName("amount");
-      Amount.SerializeJson(ref writer, options);
-
-      writer.WriteString("created", Created);
-
-      if (_Created != null)
-      {
-        writer.WritePropertyName("_created");
-        _Created.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -118,37 +110,16 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Payee != null)
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("payee");
-        Payee.SerializeJson(ref writer, options);
+        writer.WriteString("status", (string)Status!);
       }
 
-      writer.WritePropertyName("payment");
-      Payment.SerializeJson(ref writer, options);
-
-      writer.WriteString("paymentDate", PaymentDate);
-
-      if (_PaymentDate != null)
+      if (_Status != null)
       {
-        writer.WritePropertyName("_paymentDate");
-        _PaymentDate.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
       }
-
-      if (PaymentStatus != null)
-      {
-        writer.WritePropertyName("paymentStatus");
-        PaymentStatus.SerializeJson(ref writer, options);
-      }
-
-      if (Provider != null)
-      {
-        writer.WritePropertyName("provider");
-        Provider.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("recipient");
-      Recipient.SerializeJson(ref writer, options);
 
       if (Request != null)
       {
@@ -162,12 +133,53 @@ namespace Fhir.R4.Models
         Response.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if (!string.IsNullOrEmpty(Created))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WriteString("created", (string)Created!);
+      }
+
+      if (_Created != null)
+      {
+        writer.WritePropertyName("_created");
+        _Created.SerializeJson(ref writer, options);
+      }
+
+      if (Provider != null)
+      {
+        writer.WritePropertyName("provider");
+        Provider.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("payment");
+      Payment.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(PaymentDate))
+      {
+        writer.WriteString("paymentDate", (string)PaymentDate!);
+      }
+
+      if (_PaymentDate != null)
+      {
+        writer.WritePropertyName("_paymentDate");
+        _PaymentDate.SerializeJson(ref writer, options);
+      }
+
+      if (Payee != null)
+      {
+        writer.WritePropertyName("payee");
+        Payee.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("recipient");
+      Recipient.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("amount");
+      Amount.SerializeJson(ref writer, options);
+
+      if (PaymentStatus != null)
+      {
+        writer.WritePropertyName("paymentStatus");
+        PaymentStatus.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

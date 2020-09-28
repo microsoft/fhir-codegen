@@ -66,22 +66,15 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("code");
       Code.SerializeJson(ref writer, options);
 
+      if (Outcome != null)
+      {
+        writer.WritePropertyName("outcome");
+        Outcome.SerializeJson(ref writer, options);
+      }
+
       if (ContributedToDeath != null)
       {
         writer.WriteBoolean("contributedToDeath", (bool)ContributedToDeath!);
-      }
-
-      if ((Note != null) && (Note.Count != 0))
-      {
-        writer.WritePropertyName("note");
-        writer.WriteStartArray();
-
-        foreach (Annotation valNote in Note)
-        {
-          valNote.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
       }
 
       if (OnsetAge != null)
@@ -102,7 +95,10 @@ namespace Fhir.R4.Models
         OnsetPeriod.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("onsetString", OnsetString);
+      if (!string.IsNullOrEmpty(OnsetString))
+      {
+        writer.WriteString("onsetString", (string)OnsetString!);
+      }
 
       if (_OnsetString != null)
       {
@@ -110,10 +106,17 @@ namespace Fhir.R4.Models
         _OnsetString.SerializeJson(ref writer, options);
       }
 
-      if (Outcome != null)
+      if ((Note != null) && (Note.Count != 0))
       {
-        writer.WritePropertyName("outcome");
-        Outcome.SerializeJson(ref writer, options);
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)
@@ -227,7 +230,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Significant health conditions for a person related to the patient relevant in the context of care for the patient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<FamilyMemberHistory>))]
   public class FamilyMemberHistory : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -387,117 +390,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (AgeAge != null)
-      {
-        writer.WritePropertyName("ageAge");
-        AgeAge.SerializeJson(ref writer, options);
-      }
-
-      if (AgeRange != null)
-      {
-        writer.WritePropertyName("ageRange");
-        AgeRange.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("ageString", AgeString);
-
-      if (_AgeString != null)
-      {
-        writer.WritePropertyName("_ageString");
-        _AgeString.SerializeJson(ref writer, options);
-      }
-
-      if (BornPeriod != null)
-      {
-        writer.WritePropertyName("bornPeriod");
-        BornPeriod.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("bornDate", BornDate);
-
-      if (_BornDate != null)
-      {
-        writer.WritePropertyName("_bornDate");
-        _BornDate.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("bornString", BornString);
-
-      if (_BornString != null)
-      {
-        writer.WritePropertyName("_bornString");
-        _BornString.SerializeJson(ref writer, options);
-      }
-
-      if ((Condition != null) && (Condition.Count != 0))
-      {
-        writer.WritePropertyName("condition");
-        writer.WriteStartArray();
-
-        foreach (FamilyMemberHistoryCondition valCondition in Condition)
-        {
-          valCondition.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (DataAbsentReason != null)
-      {
-        writer.WritePropertyName("dataAbsentReason");
-        DataAbsentReason.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("date", Date);
-
-      if (_Date != null)
-      {
-        writer.WritePropertyName("_date");
-        _Date.SerializeJson(ref writer, options);
-      }
-
-      if (DeceasedBoolean != null)
-      {
-        writer.WriteBoolean("deceasedBoolean", (bool)DeceasedBoolean!);
-      }
-
-      if (DeceasedAge != null)
-      {
-        writer.WritePropertyName("deceasedAge");
-        DeceasedAge.SerializeJson(ref writer, options);
-      }
-
-      if (DeceasedRange != null)
-      {
-        writer.WritePropertyName("deceasedRange");
-        DeceasedRange.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("deceasedDate", DeceasedDate);
-
-      if (_DeceasedDate != null)
-      {
-        writer.WritePropertyName("_deceasedDate");
-        _DeceasedDate.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("deceasedString", DeceasedString);
-
-      if (_DeceasedString != null)
-      {
-        writer.WritePropertyName("_deceasedString");
-        _DeceasedString.SerializeJson(ref writer, options);
-      }
-
-      if (EstimatedAge != null)
-      {
-        writer.WriteBoolean("estimatedAge", (bool)EstimatedAge!);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -564,7 +463,41 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("name", Name);
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (DataAbsentReason != null)
+      {
+        writer.WritePropertyName("dataAbsentReason");
+        DataAbsentReason.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Date))
+      {
+        writer.WriteString("date", (string)Date!);
+      }
+
+      if (_Date != null)
+      {
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
 
       if (_Name != null)
       {
@@ -572,21 +505,109 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(ref writer, options);
       }
 
-      if ((Note != null) && (Note.Count != 0))
+      writer.WritePropertyName("relationship");
+      Relationship.SerializeJson(ref writer, options);
+
+      if (Sex != null)
       {
-        writer.WritePropertyName("note");
-        writer.WriteStartArray();
-
-        foreach (Annotation valNote in Note)
-        {
-          valNote.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("sex");
+        Sex.SerializeJson(ref writer, options);
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(ref writer, options);
+      if (BornPeriod != null)
+      {
+        writer.WritePropertyName("bornPeriod");
+        BornPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(BornDate))
+      {
+        writer.WriteString("bornDate", (string)BornDate!);
+      }
+
+      if (_BornDate != null)
+      {
+        writer.WritePropertyName("_bornDate");
+        _BornDate.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(BornString))
+      {
+        writer.WriteString("bornString", (string)BornString!);
+      }
+
+      if (_BornString != null)
+      {
+        writer.WritePropertyName("_bornString");
+        _BornString.SerializeJson(ref writer, options);
+      }
+
+      if (AgeAge != null)
+      {
+        writer.WritePropertyName("ageAge");
+        AgeAge.SerializeJson(ref writer, options);
+      }
+
+      if (AgeRange != null)
+      {
+        writer.WritePropertyName("ageRange");
+        AgeRange.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(AgeString))
+      {
+        writer.WriteString("ageString", (string)AgeString!);
+      }
+
+      if (_AgeString != null)
+      {
+        writer.WritePropertyName("_ageString");
+        _AgeString.SerializeJson(ref writer, options);
+      }
+
+      if (EstimatedAge != null)
+      {
+        writer.WriteBoolean("estimatedAge", (bool)EstimatedAge!);
+      }
+
+      if (DeceasedBoolean != null)
+      {
+        writer.WriteBoolean("deceasedBoolean", (bool)DeceasedBoolean!);
+      }
+
+      if (DeceasedAge != null)
+      {
+        writer.WritePropertyName("deceasedAge");
+        DeceasedAge.SerializeJson(ref writer, options);
+      }
+
+      if (DeceasedRange != null)
+      {
+        writer.WritePropertyName("deceasedRange");
+        DeceasedRange.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(DeceasedDate))
+      {
+        writer.WriteString("deceasedDate", (string)DeceasedDate!);
+      }
+
+      if (_DeceasedDate != null)
+      {
+        writer.WritePropertyName("_deceasedDate");
+        _DeceasedDate.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(DeceasedString))
+      {
+        writer.WriteString("deceasedString", (string)DeceasedString!);
+      }
+
+      if (_DeceasedString != null)
+      {
+        writer.WritePropertyName("_deceasedString");
+        _DeceasedString.SerializeJson(ref writer, options);
+      }
 
       if ((ReasonCode != null) && (ReasonCode.Count != 0))
       {
@@ -614,21 +635,30 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("relationship");
-      Relationship.SerializeJson(ref writer, options);
-
-      if (Sex != null)
+      if ((Note != null) && (Note.Count != 0))
       {
-        writer.WritePropertyName("sex");
-        Sex.SerializeJson(ref writer, options);
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if ((Condition != null) && (Condition.Count != 0))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WritePropertyName("condition");
+        writer.WriteStartArray();
+
+        foreach (FamilyMemberHistoryCondition valCondition in Condition)
+        {
+          valCondition.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

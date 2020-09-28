@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A container for slots of time that may be available for booking appointments.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Schedule>))]
   public class Schedule : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -65,36 +65,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Active != null)
-      {
-        writer.WriteBoolean("active", (bool)Active!);
-      }
-
-      if ((Actor != null) && (Actor.Count != 0))
-      {
-        writer.WritePropertyName("actor");
-        writer.WriteStartArray();
-
-        foreach (Reference valActor in Actor)
-        {
-          valActor.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("comment", Comment);
-
-      if (_Comment != null)
-      {
-        writer.WritePropertyName("_comment");
-        _Comment.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -109,10 +86,9 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (PlanningHorizon != null)
+      if (Active != null)
       {
-        writer.WritePropertyName("planningHorizon");
-        PlanningHorizon.SerializeJson(ref writer, options);
+        writer.WriteBoolean("active", (bool)Active!);
       }
 
       if ((ServiceCategory != null) && (ServiceCategory.Count != 0))
@@ -152,6 +128,36 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
+      }
+
+      if ((Actor != null) && (Actor.Count != 0))
+      {
+        writer.WritePropertyName("actor");
+        writer.WriteStartArray();
+
+        foreach (Reference valActor in Actor)
+        {
+          valActor.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (PlanningHorizon != null)
+      {
+        writer.WritePropertyName("planningHorizon");
+        PlanningHorizon.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Comment))
+      {
+        writer.WriteString("comment", (string)Comment!);
+      }
+
+      if (_Comment != null)
+      {
+        writer.WritePropertyName("_comment");
+        _Comment.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

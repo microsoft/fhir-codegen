@@ -333,6 +333,12 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Value != null)
+      {
+        writer.WritePropertyName("value");
+        Value.SerializeJson(ref writer, options);
+      }
+
       if ((Component != null) && (Component.Count != 0))
       {
         writer.WritePropertyName("component");
@@ -344,12 +350,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (MeasureScore != null)
-      {
-        writer.WritePropertyName("measureScore");
-        MeasureScore.SerializeJson(ref writer, options);
       }
 
       if ((Population != null) && (Population.Count != 0))
@@ -365,10 +365,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Value != null)
+      if (MeasureScore != null)
       {
-        writer.WritePropertyName("value");
-        Value.SerializeJson(ref writer, options);
+        writer.WritePropertyName("measureScore");
+        MeasureScore.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -665,12 +665,6 @@ namespace Fhir.R4.Models
         Code.SerializeJson(ref writer, options);
       }
 
-      if (MeasureScore != null)
-      {
-        writer.WritePropertyName("measureScore");
-        MeasureScore.SerializeJson(ref writer, options);
-      }
-
       if ((Population != null) && (Population.Count != 0))
       {
         writer.WritePropertyName("population");
@@ -682,6 +676,12 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
+      }
+
+      if (MeasureScore != null)
+      {
+        writer.WritePropertyName("measureScore");
+        MeasureScore.SerializeJson(ref writer, options);
       }
 
       if ((Stratifier != null) && (Stratifier.Count != 0))
@@ -807,7 +807,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureReport>))]
   public class MeasureReport : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -883,12 +883,70 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("date", Date);
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Measure))
+      {
+        writer.WriteString("measure", (string)Measure!);
+      }
+
+      if (_Measure != null)
+      {
+        writer.WritePropertyName("_measure");
+        _Measure.SerializeJson(ref writer, options);
+      }
+
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Date))
+      {
+        writer.WriteString("date", (string)Date!);
+      }
 
       if (_Date != null)
       {
@@ -896,17 +954,19 @@ namespace Fhir.R4.Models
         _Date.SerializeJson(ref writer, options);
       }
 
-      if ((EvaluatedResource != null) && (EvaluatedResource.Count != 0))
+      if (Reporter != null)
       {
-        writer.WritePropertyName("evaluatedResource");
-        writer.WriteStartArray();
+        writer.WritePropertyName("reporter");
+        Reporter.SerializeJson(ref writer, options);
+      }
 
-        foreach (Reference valEvaluatedResource in EvaluatedResource)
-        {
-          valEvaluatedResource.SerializeJson(ref writer, options, true);
-        }
+      writer.WritePropertyName("period");
+      Period.SerializeJson(ref writer, options);
 
-        writer.WriteEndArray();
+      if (ImprovementNotation != null)
+      {
+        writer.WritePropertyName("improvementNotation");
+        ImprovementNotation.SerializeJson(ref writer, options);
       }
 
       if ((Group != null) && (Group.Count != 0))
@@ -922,62 +982,17 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
+      if ((EvaluatedResource != null) && (EvaluatedResource.Count != 0))
       {
-        writer.WritePropertyName("identifier");
+        writer.WritePropertyName("evaluatedResource");
         writer.WriteStartArray();
 
-        foreach (Identifier valIdentifier in Identifier)
+        foreach (Reference valEvaluatedResource in EvaluatedResource)
         {
-          valIdentifier.SerializeJson(ref writer, options, true);
+          valEvaluatedResource.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
-      }
-
-      if (ImprovementNotation != null)
-      {
-        writer.WritePropertyName("improvementNotation");
-        ImprovementNotation.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("measure", Measure);
-
-      if (_Measure != null)
-      {
-        writer.WritePropertyName("_measure");
-        _Measure.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("period");
-      Period.SerializeJson(ref writer, options);
-
-      if (Reporter != null)
-      {
-        writer.WritePropertyName("reporter");
-        Reporter.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
-      if (Subject != null)
-      {
-        writer.WritePropertyName("subject");
-        Subject.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
-      {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

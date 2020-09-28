@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Record details about an anatomical structure.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BodyStructure>))]
   public class BodyStructure : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -65,23 +65,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Active != null)
-      {
-        writer.WriteBoolean("active", (bool)Active!);
-      }
-
-      writer.WriteString("description", Description);
-
-      if (_Description != null)
-      {
-        writer.WritePropertyName("_description");
-        _Description.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -96,17 +86,15 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Image != null) && (Image.Count != 0))
+      if (Active != null)
       {
-        writer.WritePropertyName("image");
-        writer.WriteStartArray();
+        writer.WriteBoolean("active", (bool)Active!);
+      }
 
-        foreach (Attachment valImage in Image)
-        {
-          valImage.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+      if (Morphology != null)
+      {
+        writer.WritePropertyName("morphology");
+        Morphology.SerializeJson(ref writer, options);
       }
 
       if (Location != null)
@@ -128,10 +116,28 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Morphology != null)
+      if (!string.IsNullOrEmpty(Description))
       {
-        writer.WritePropertyName("morphology");
-        Morphology.SerializeJson(ref writer, options);
+        writer.WriteString("description", (string)Description!);
+      }
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if ((Image != null) && (Image.Count != 0))
+      {
+        writer.WritePropertyName("image");
+        writer.WriteStartArray();
+
+        foreach (Attachment valImage in Image)
+        {
+          valImage.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       writer.WritePropertyName("patient");

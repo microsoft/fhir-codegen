@@ -71,45 +71,25 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("cTerminalModification", CTerminalModification);
-
-      if (_CTerminalModification != null)
+      if (Subunit != null)
       {
-        writer.WritePropertyName("_cTerminalModification");
-        _CTerminalModification.SerializeJson(ref writer, options);
+        writer.WriteNumber("subunit", (int)Subunit!);
       }
 
-      if (CTerminalModificationId != null)
+      if (!string.IsNullOrEmpty(Sequence))
       {
-        writer.WritePropertyName("cTerminalModificationId");
-        CTerminalModificationId.SerializeJson(ref writer, options);
+        writer.WriteString("sequence", (string)Sequence!);
       }
-
-      if (Length != null)
-      {
-        writer.WriteNumber("length", (int)Length!);
-      }
-
-      writer.WriteString("nTerminalModification", NTerminalModification);
-
-      if (_NTerminalModification != null)
-      {
-        writer.WritePropertyName("_nTerminalModification");
-        _NTerminalModification.SerializeJson(ref writer, options);
-      }
-
-      if (NTerminalModificationId != null)
-      {
-        writer.WritePropertyName("nTerminalModificationId");
-        NTerminalModificationId.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("sequence", Sequence);
 
       if (_Sequence != null)
       {
         writer.WritePropertyName("_sequence");
         _Sequence.SerializeJson(ref writer, options);
+      }
+
+      if (Length != null)
+      {
+        writer.WriteNumber("length", (int)Length!);
       }
 
       if (SequenceAttachment != null)
@@ -118,9 +98,38 @@ namespace Fhir.R4.Models
         SequenceAttachment.SerializeJson(ref writer, options);
       }
 
-      if (Subunit != null)
+      if (NTerminalModificationId != null)
       {
-        writer.WriteNumber("subunit", (int)Subunit!);
+        writer.WritePropertyName("nTerminalModificationId");
+        NTerminalModificationId.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(NTerminalModification))
+      {
+        writer.WriteString("nTerminalModification", (string)NTerminalModification!);
+      }
+
+      if (_NTerminalModification != null)
+      {
+        writer.WritePropertyName("_nTerminalModification");
+        _NTerminalModification.SerializeJson(ref writer, options);
+      }
+
+      if (CTerminalModificationId != null)
+      {
+        writer.WritePropertyName("cTerminalModificationId");
+        CTerminalModificationId.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(CTerminalModification))
+      {
+        writer.WriteString("cTerminalModification", (string)CTerminalModification!);
+      }
+
+      if (_CTerminalModification != null)
+      {
+        writer.WritePropertyName("_cTerminalModification");
+        _CTerminalModification.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -219,7 +228,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A SubstanceProtein is defined as a single unit of a linear amino acid sequence, or a combination of subunits that are either covalently linked or have a defined invariant stoichiometric relationship. This includes all synthetic, recombinant and purified SubstanceProteins of defined sequence, whether the use is therapeutic or prophylactic. This set of elements will be used to describe albumins, coagulation factors, cytokines, growth factors, peptide/SubstanceProtein hormones, enzymes, toxins, toxoids, recombinant vaccines, and immunomodulators.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceProtein>))]
   public class SubstanceProtein : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -255,10 +264,24 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if (SequenceType != null)
+      {
+        writer.WritePropertyName("sequenceType");
+        SequenceType.SerializeJson(ref writer, options);
+      }
+
+      if (NumberOfSubunits != null)
+      {
+        writer.WriteNumber("numberOfSubunits", (int)NumberOfSubunits!);
+      }
 
       if ((DisulfideLinkage != null) && (DisulfideLinkage.Count != 0))
       {
@@ -284,17 +307,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (NumberOfSubunits != null)
-      {
-        writer.WriteNumber("numberOfSubunits", (int)NumberOfSubunits!);
-      }
-
-      if (SequenceType != null)
-      {
-        writer.WritePropertyName("sequenceType");
-        SequenceType.SerializeJson(ref writer, options);
       }
 
       if ((Subunit != null) && (Subunit.Count != 0))

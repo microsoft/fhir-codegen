@@ -14,7 +14,7 @@ namespace Fhir.R4.Models
   /// A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. 
   /// The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationStatement>))]
   public class MedicationStatement : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -119,83 +119,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if ((BasedOn != null) && (BasedOn.Count != 0))
-      {
-        writer.WritePropertyName("basedOn");
-        writer.WriteStartArray();
-
-        foreach (Reference valBasedOn in BasedOn)
-        {
-          valBasedOn.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Category != null)
-      {
-        writer.WritePropertyName("category");
-        Category.SerializeJson(ref writer, options);
-      }
-
-      if (Context != null)
-      {
-        writer.WritePropertyName("context");
-        Context.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("dateAsserted", DateAsserted);
-
-      if (_DateAsserted != null)
-      {
-        writer.WritePropertyName("_dateAsserted");
-        _DateAsserted.SerializeJson(ref writer, options);
-      }
-
-      if ((DerivedFrom != null) && (DerivedFrom.Count != 0))
-      {
-        writer.WritePropertyName("derivedFrom");
-        writer.WriteStartArray();
-
-        foreach (Reference valDerivedFrom in DerivedFrom)
-        {
-          valDerivedFrom.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Dosage != null) && (Dosage.Count != 0))
-      {
-        writer.WritePropertyName("dosage");
-        writer.WriteStartArray();
-
-        foreach (Dosage valDosage in Dosage)
-        {
-          valDosage.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("effectiveDateTime", EffectiveDateTime);
-
-      if (_EffectiveDateTime != null)
-      {
-        writer.WritePropertyName("_effectiveDateTime");
-        _EffectiveDateTime.SerializeJson(ref writer, options);
-      }
-
-      if (EffectivePeriod != null)
-      {
-        writer.WritePropertyName("effectivePeriod");
-        EffectivePeriod.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -210,26 +140,14 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (InformationSource != null)
+      if ((BasedOn != null) && (BasedOn.Count != 0))
       {
-        writer.WritePropertyName("informationSource");
-        InformationSource.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("medicationCodeableConcept");
-      MedicationCodeableConcept.SerializeJson(ref writer, options);
-
-      writer.WritePropertyName("medicationReference");
-      MedicationReference.SerializeJson(ref writer, options);
-
-      if ((Note != null) && (Note.Count != 0))
-      {
-        writer.WritePropertyName("note");
+        writer.WritePropertyName("basedOn");
         writer.WriteStartArray();
 
-        foreach (Annotation valNote in Note)
+        foreach (Reference valBasedOn in BasedOn)
         {
-          valNote.SerializeJson(ref writer, options, true);
+          valBasedOn.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -243,6 +161,98 @@ namespace Fhir.R4.Models
         foreach (Reference valPartOf in PartOf)
         {
           valPartOf.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if ((StatusReason != null) && (StatusReason.Count != 0))
+      {
+        writer.WritePropertyName("statusReason");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valStatusReason in StatusReason)
+        {
+          valStatusReason.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Category != null)
+      {
+        writer.WritePropertyName("category");
+        Category.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("medicationCodeableConcept");
+      MedicationCodeableConcept.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("medicationReference");
+      MedicationReference.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("subject");
+      Subject.SerializeJson(ref writer, options);
+
+      if (Context != null)
+      {
+        writer.WritePropertyName("context");
+        Context.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(EffectiveDateTime))
+      {
+        writer.WriteString("effectiveDateTime", (string)EffectiveDateTime!);
+      }
+
+      if (_EffectiveDateTime != null)
+      {
+        writer.WritePropertyName("_effectiveDateTime");
+        _EffectiveDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (EffectivePeriod != null)
+      {
+        writer.WritePropertyName("effectivePeriod");
+        EffectivePeriod.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(DateAsserted))
+      {
+        writer.WriteString("dateAsserted", (string)DateAsserted!);
+      }
+
+      if (_DateAsserted != null)
+      {
+        writer.WritePropertyName("_dateAsserted");
+        _DateAsserted.SerializeJson(ref writer, options);
+      }
+
+      if (InformationSource != null)
+      {
+        writer.WritePropertyName("informationSource");
+        InformationSource.SerializeJson(ref writer, options);
+      }
+
+      if ((DerivedFrom != null) && (DerivedFrom.Count != 0))
+      {
+        writer.WritePropertyName("derivedFrom");
+        writer.WriteStartArray();
+
+        foreach (Reference valDerivedFrom in DerivedFrom)
+        {
+          valDerivedFrom.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -274,29 +284,31 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if ((Note != null) && (Note.Count != 0))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
-      if ((StatusReason != null) && (StatusReason.Count != 0))
-      {
-        writer.WritePropertyName("statusReason");
+        writer.WritePropertyName("note");
         writer.WriteStartArray();
 
-        foreach (CodeableConcept valStatusReason in StatusReason)
+        foreach (Annotation valNote in Note)
         {
-          valStatusReason.SerializeJson(ref writer, options, true);
+          valNote.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(ref writer, options);
+      if ((Dosage != null) && (Dosage.Count != 0))
+      {
+        writer.WritePropertyName("dosage");
+        writer.WriteStartArray();
+
+        foreach (Dosage valDosage in Dosage)
+        {
+          valDosage.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if (includeStartObject)
       {

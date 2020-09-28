@@ -51,7 +51,10 @@ namespace Fhir.R4.Models
         _Amount.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("base", Base);
+      if (!string.IsNullOrEmpty(Base))
+      {
+        writer.WriteString("base", (string)Base!);
+      }
 
       if (_Base != null)
       {
@@ -230,47 +233,29 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Add != null)
+      writer.WritePropertyName("product");
+      Product.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Eye))
       {
-        writer.WriteNumber("add", (decimal)Add!);
+        writer.WriteString("eye", (string)Eye!);
       }
 
-      if (_Add != null)
+      if (_Eye != null)
       {
-        writer.WritePropertyName("_add");
-        _Add.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_eye");
+        _Eye.SerializeJson(ref writer, options);
       }
 
-      if (Axis != null)
+      if (Sphere != null)
       {
-        writer.WriteNumber("axis", (int)Axis!);
+        writer.WriteNumber("sphere", (decimal)Sphere!);
       }
 
-      if (BackCurve != null)
+      if (_Sphere != null)
       {
-        writer.WriteNumber("backCurve", (decimal)BackCurve!);
-      }
-
-      if (_BackCurve != null)
-      {
-        writer.WritePropertyName("_backCurve");
-        _BackCurve.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("brand", Brand);
-
-      if (_Brand != null)
-      {
-        writer.WritePropertyName("_brand");
-        _Brand.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("color", Color);
-
-      if (_Color != null)
-      {
-        writer.WritePropertyName("_color");
-        _Color.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_sphere");
+        _Sphere.SerializeJson(ref writer, options);
       }
 
       if (Cylinder != null)
@@ -282,6 +267,57 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("_cylinder");
         _Cylinder.SerializeJson(ref writer, options);
+      }
+
+      if (Axis != null)
+      {
+        writer.WriteNumber("axis", (int)Axis!);
+      }
+
+      if ((Prism != null) && (Prism.Count != 0))
+      {
+        writer.WritePropertyName("prism");
+        writer.WriteStartArray();
+
+        foreach (VisionPrescriptionLensSpecificationPrism valPrism in Prism)
+        {
+          valPrism.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Add != null)
+      {
+        writer.WriteNumber("add", (decimal)Add!);
+      }
+
+      if (_Add != null)
+      {
+        writer.WritePropertyName("_add");
+        _Add.SerializeJson(ref writer, options);
+      }
+
+      if (Power != null)
+      {
+        writer.WriteNumber("power", (decimal)Power!);
+      }
+
+      if (_Power != null)
+      {
+        writer.WritePropertyName("_power");
+        _Power.SerializeJson(ref writer, options);
+      }
+
+      if (BackCurve != null)
+      {
+        writer.WriteNumber("backCurve", (decimal)BackCurve!);
+      }
+
+      if (_BackCurve != null)
+      {
+        writer.WritePropertyName("_backCurve");
+        _BackCurve.SerializeJson(ref writer, options);
       }
 
       if (Diameter != null)
@@ -301,12 +337,26 @@ namespace Fhir.R4.Models
         Duration.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("eye", Eye);
-
-      if (_Eye != null)
+      if (!string.IsNullOrEmpty(Color))
       {
-        writer.WritePropertyName("_eye");
-        _Eye.SerializeJson(ref writer, options);
+        writer.WriteString("color", (string)Color!);
+      }
+
+      if (_Color != null)
+      {
+        writer.WritePropertyName("_color");
+        _Color.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Brand))
+      {
+        writer.WriteString("brand", (string)Brand!);
+      }
+
+      if (_Brand != null)
+      {
+        writer.WritePropertyName("_brand");
+        _Brand.SerializeJson(ref writer, options);
       }
 
       if ((Note != null) && (Note.Count != 0))
@@ -320,44 +370,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Power != null)
-      {
-        writer.WriteNumber("power", (decimal)Power!);
-      }
-
-      if (_Power != null)
-      {
-        writer.WritePropertyName("_power");
-        _Power.SerializeJson(ref writer, options);
-      }
-
-      if ((Prism != null) && (Prism.Count != 0))
-      {
-        writer.WritePropertyName("prism");
-        writer.WriteStartArray();
-
-        foreach (VisionPrescriptionLensSpecificationPrism valPrism in Prism)
-        {
-          valPrism.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WritePropertyName("product");
-      Product.SerializeJson(ref writer, options);
-
-      if (Sphere != null)
-      {
-        writer.WriteNumber("sphere", (decimal)Sphere!);
-      }
-
-      if (_Sphere != null)
-      {
-        writer.WritePropertyName("_sphere");
-        _Sphere.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -555,7 +567,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An authorization for the provision of glasses and/or contact lenses to a patient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<VisionPrescription>))]
   public class VisionPrescription : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -615,32 +627,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      writer.WriteString("created", Created);
-
-      if (_Created != null)
-      {
-        writer.WritePropertyName("_created");
-        _Created.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("dateWritten", DateWritten);
-
-      if (_DateWritten != null)
-      {
-        writer.WritePropertyName("_dateWritten");
-        _DateWritten.SerializeJson(ref writer, options);
-      }
-
-      if (Encounter != null)
-      {
-        writer.WritePropertyName("encounter");
-        Encounter.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -655,6 +648,51 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Created))
+      {
+        writer.WriteString("created", (string)Created!);
+      }
+
+      if (_Created != null)
+      {
+        writer.WritePropertyName("_created");
+        _Created.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      if (Encounter != null)
+      {
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(DateWritten))
+      {
+        writer.WriteString("dateWritten", (string)DateWritten!);
+      }
+
+      if (_DateWritten != null)
+      {
+        writer.WritePropertyName("_dateWritten");
+        _DateWritten.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("prescriber");
+      Prescriber.SerializeJson(ref writer, options);
+
       if ((LensSpecification != null) && (LensSpecification.Count != 0))
       {
         writer.WritePropertyName("lensSpecification");
@@ -666,20 +704,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(ref writer, options);
-
-      writer.WritePropertyName("prescriber");
-      Prescriber.SerializeJson(ref writer, options);
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

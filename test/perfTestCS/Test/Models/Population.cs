@@ -65,16 +65,16 @@ namespace Fhir.R4.Models
         Gender.SerializeJson(ref writer, options);
       }
 
-      if (PhysiologicalCondition != null)
-      {
-        writer.WritePropertyName("physiologicalCondition");
-        PhysiologicalCondition.SerializeJson(ref writer, options);
-      }
-
       if (Race != null)
       {
         writer.WritePropertyName("race");
         Race.SerializeJson(ref writer, options);
+      }
+
+      if (PhysiologicalCondition != null)
+      {
+        writer.WritePropertyName("physiologicalCondition");
+        PhysiologicalCondition.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

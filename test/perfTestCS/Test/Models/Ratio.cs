@@ -35,16 +35,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      if (Denominator != null)
-      {
-        writer.WritePropertyName("denominator");
-        Denominator.SerializeJson(ref writer, options);
-      }
-
       if (Numerator != null)
       {
         writer.WritePropertyName("numerator");
         Numerator.SerializeJson(ref writer, options);
+      }
+
+      if (Denominator != null)
+      {
+        writer.WritePropertyName("denominator");
+        Denominator.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

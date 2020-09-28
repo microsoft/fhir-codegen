@@ -79,7 +79,43 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("citation", Citation);
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Label))
+      {
+        writer.WriteString("label", (string)Label!);
+      }
+
+      if (_Label != null)
+      {
+        writer.WritePropertyName("_label");
+        _Label.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Display))
+      {
+        writer.WriteString("display", (string)Display!);
+      }
+
+      if (_Display != null)
+      {
+        writer.WritePropertyName("_display");
+        _Display.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Citation))
+      {
+        writer.WriteString("citation", (string)Citation!);
+      }
 
       if (_Citation != null)
       {
@@ -87,12 +123,15 @@ namespace Fhir.R4.Models
         _Citation.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("display", Display);
-
-      if (_Display != null)
+      if (!string.IsNullOrEmpty(Url))
       {
-        writer.WritePropertyName("_display");
-        _Display.SerializeJson(ref writer, options);
+        writer.WriteString("url", (string)Url!);
+      }
+
+      if (_Url != null)
+      {
+        writer.WritePropertyName("_url");
+        _Url.SerializeJson(ref writer, options);
       }
 
       if (Document != null)
@@ -101,36 +140,15 @@ namespace Fhir.R4.Models
         Document.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("label", Label);
-
-      if (_Label != null)
+      if (!string.IsNullOrEmpty(Resource))
       {
-        writer.WritePropertyName("_label");
-        _Label.SerializeJson(ref writer, options);
+        writer.WriteString("resource", (string)Resource!);
       }
-
-      writer.WriteString("resource", Resource);
 
       if (_Resource != null)
       {
         writer.WritePropertyName("_resource");
         _Resource.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
-      {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("url", Url);
-
-      if (_Url != null)
-      {
-        writer.WritePropertyName("_url");
-        _Url.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

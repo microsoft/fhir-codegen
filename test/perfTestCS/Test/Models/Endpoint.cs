@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Endpoint>))]
   public class Endpoint : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -96,60 +96,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      writer.WriteString("address", Address);
-
-      if (_Address != null)
-      {
-        writer.WritePropertyName("_address");
-        _Address.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("connectionType");
-      ConnectionType.SerializeJson(ref writer, options);
-
-      if ((Contact != null) && (Contact.Count != 0))
-      {
-        writer.WritePropertyName("contact");
-        writer.WriteStartArray();
-
-        foreach (ContactPoint valContact in Contact)
-        {
-          valContact.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Header != null) && (Header.Count != 0))
-      {
-        writer.WritePropertyName("header");
-        writer.WriteStartArray();
-
-        foreach (string valHeader in Header)
-        {
-          writer.WriteStringValue(valHeader);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((_Header != null) && (_Header.Count != 0))
-      {
-        writer.WritePropertyName("_header");
-        writer.WriteStartArray();
-
-        foreach (Element val_Header in _Header)
-        {
-          val_Header.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -164,18 +117,67 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("connectionType");
+      ConnectionType.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
       if (ManagingOrganization != null)
       {
         writer.WritePropertyName("managingOrganization");
         ManagingOrganization.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
+      if ((Contact != null) && (Contact.Count != 0))
       {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
+        writer.WritePropertyName("contact");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valContact in Contact)
+        {
+          valContact.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      if ((PayloadType != null) && (PayloadType.Count != 0))
+      {
+        writer.WritePropertyName("payloadType");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valPayloadType in PayloadType)
+        {
+          valPayloadType.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((PayloadMimeType != null) && (PayloadMimeType.Count != 0))
@@ -204,31 +206,41 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((PayloadType != null) && (PayloadType.Count != 0))
+      if (!string.IsNullOrEmpty(Address))
       {
-        writer.WritePropertyName("payloadType");
+        writer.WriteString("address", (string)Address!);
+      }
+
+      if (_Address != null)
+      {
+        writer.WritePropertyName("_address");
+        _Address.SerializeJson(ref writer, options);
+      }
+
+      if ((Header != null) && (Header.Count != 0))
+      {
+        writer.WritePropertyName("header");
         writer.WriteStartArray();
 
-        foreach (CodeableConcept valPayloadType in PayloadType)
+        foreach (string valHeader in Header)
         {
-          valPayloadType.SerializeJson(ref writer, options, true);
+          writer.WriteStringValue(valHeader);
         }
 
         writer.WriteEndArray();
       }
 
-      if (Period != null)
+      if ((_Header != null) && (_Header.Count != 0))
       {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
-      }
+        writer.WritePropertyName("_header");
+        writer.WriteStartArray();
 
-      writer.WriteString("status", Status);
+        foreach (Element val_Header in _Header)
+        {
+          val_Header.SerializeJson(ref writer, options, true);
+        }
 
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

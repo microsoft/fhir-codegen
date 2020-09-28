@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EnrollmentResponse>))]
   public class EnrollmentResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -77,26 +77,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      writer.WriteString("created", Created);
-
-      if (_Created != null)
-      {
-        writer.WritePropertyName("_created");
-        _Created.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("disposition", Disposition);
-
-      if (_Disposition != null)
-      {
-        writer.WritePropertyName("_disposition");
-        _Disposition.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -111,18 +98,15 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Organization != null)
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("organization");
-        Organization.SerializeJson(ref writer, options);
+        writer.WriteString("status", (string)Status!);
       }
 
-      writer.WriteString("outcome", Outcome);
-
-      if (_Outcome != null)
+      if (_Status != null)
       {
-        writer.WritePropertyName("_outcome");
-        _Outcome.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
       }
 
       if (Request != null)
@@ -131,18 +115,49 @@ namespace Fhir.R4.Models
         Request.SerializeJson(ref writer, options);
       }
 
+      if (!string.IsNullOrEmpty(Outcome))
+      {
+        writer.WriteString("outcome", (string)Outcome!);
+      }
+
+      if (_Outcome != null)
+      {
+        writer.WritePropertyName("_outcome");
+        _Outcome.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Disposition))
+      {
+        writer.WriteString("disposition", (string)Disposition!);
+      }
+
+      if (_Disposition != null)
+      {
+        writer.WritePropertyName("_disposition");
+        _Disposition.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Created))
+      {
+        writer.WriteString("created", (string)Created!);
+      }
+
+      if (_Created != null)
+      {
+        writer.WritePropertyName("_created");
+        _Created.SerializeJson(ref writer, options);
+      }
+
+      if (Organization != null)
+      {
+        writer.WritePropertyName("organization");
+        Organization.SerializeJson(ref writer, options);
+      }
+
       if (RequestProvider != null)
       {
         writer.WritePropertyName("requestProvider");
         RequestProvider.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

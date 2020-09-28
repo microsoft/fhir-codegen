@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A slot of time on a schedule that may be available for booking appointments.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Slot>))]
   public class Slot : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -89,32 +89,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (AppointmentType != null)
-      {
-        writer.WritePropertyName("appointmentType");
-        AppointmentType.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("comment", Comment);
-
-      if (_Comment != null)
-      {
-        writer.WritePropertyName("_comment");
-        _Comment.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("end", End);
-
-      if (_End != null)
-      {
-        writer.WritePropertyName("_end");
-        _End.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -128,14 +109,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      if (Overbooked != null)
-      {
-        writer.WriteBoolean("overbooked", (bool)Overbooked!);
-      }
-
-      writer.WritePropertyName("schedule");
-      Schedule.SerializeJson(ref writer, options);
 
       if ((ServiceCategory != null) && (ServiceCategory.Count != 0))
       {
@@ -176,7 +149,30 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("start", Start);
+      if (AppointmentType != null)
+      {
+        writer.WritePropertyName("appointmentType");
+        AppointmentType.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("schedule");
+      Schedule.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Start))
+      {
+        writer.WriteString("start", (string)Start!);
+      }
 
       if (_Start != null)
       {
@@ -184,12 +180,31 @@ namespace Fhir.R4.Models
         _Start.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if (!string.IsNullOrEmpty(End))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WriteString("end", (string)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(ref writer, options);
+      }
+
+      if (Overbooked != null)
+      {
+        writer.WriteBoolean("overbooked", (bool)Overbooked!);
+      }
+
+      if (!string.IsNullOrEmpty(Comment))
+      {
+        writer.WriteString("comment", (string)Comment!);
+      }
+
+      if (_Comment != null)
+      {
+        writer.WritePropertyName("_comment");
+        _Comment.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

@@ -71,18 +71,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (AmountQuantity != null)
+      if (Role != null)
       {
-        writer.WritePropertyName("amountQuantity");
-        AmountQuantity.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("amountString", AmountString);
-
-      if (_AmountString != null)
-      {
-        writer.WritePropertyName("_amountString");
-        _AmountString.SerializeJson(ref writer, options);
+        writer.WritePropertyName("role");
+        Role.SerializeJson(ref writer, options);
       }
 
       if (Identifier != null)
@@ -91,20 +83,21 @@ namespace Fhir.R4.Models
         Identifier.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("molecularFormula", MolecularFormula);
-
-      if (_MolecularFormula != null)
+      if (!string.IsNullOrEmpty(Name))
       {
-        writer.WritePropertyName("_molecularFormula");
-        _MolecularFormula.SerializeJson(ref writer, options);
+        writer.WriteString("name", (string)Name!);
       }
-
-      writer.WriteString("name", Name);
 
       if (_Name != null)
       {
         writer.WritePropertyName("_name");
         _Name.SerializeJson(ref writer, options);
+      }
+
+      if (Stereochemistry != null)
+      {
+        writer.WritePropertyName("stereochemistry");
+        Stereochemistry.SerializeJson(ref writer, options);
       }
 
       if (OpticalActivity != null)
@@ -113,16 +106,32 @@ namespace Fhir.R4.Models
         OpticalActivity.SerializeJson(ref writer, options);
       }
 
-      if (Role != null)
+      if (!string.IsNullOrEmpty(MolecularFormula))
       {
-        writer.WritePropertyName("role");
-        Role.SerializeJson(ref writer, options);
+        writer.WriteString("molecularFormula", (string)MolecularFormula!);
       }
 
-      if (Stereochemistry != null)
+      if (_MolecularFormula != null)
       {
-        writer.WritePropertyName("stereochemistry");
-        Stereochemistry.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_molecularFormula");
+        _MolecularFormula.SerializeJson(ref writer, options);
+      }
+
+      if (AmountQuantity != null)
+      {
+        writer.WritePropertyName("amountQuantity");
+        AmountQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(AmountString))
+      {
+        writer.WriteString("amountString", (string)AmountString!);
+      }
+
+      if (_AmountString != null)
+      {
+        writer.WritePropertyName("_amountString");
+        _AmountString.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -273,20 +282,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (AmountQuantity != null)
-      {
-        writer.WritePropertyName("amountQuantity");
-        AmountQuantity.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("amountString", AmountString);
-
-      if (_AmountString != null)
-      {
-        writer.WritePropertyName("_amountString");
-        _AmountString.SerializeJson(ref writer, options);
-      }
-
       if (Category != null)
       {
         writer.WritePropertyName("category");
@@ -297,6 +292,17 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("code");
         Code.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Parameters))
+      {
+        writer.WriteString("parameters", (string)Parameters!);
+      }
+
+      if (_Parameters != null)
+      {
+        writer.WritePropertyName("_parameters");
+        _Parameters.SerializeJson(ref writer, options);
       }
 
       if (DefiningSubstanceReference != null)
@@ -311,12 +317,21 @@ namespace Fhir.R4.Models
         DefiningSubstanceCodeableConcept.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("parameters", Parameters);
-
-      if (_Parameters != null)
+      if (AmountQuantity != null)
       {
-        writer.WritePropertyName("_parameters");
-        _Parameters.SerializeJson(ref writer, options);
+        writer.WritePropertyName("amountQuantity");
+        AmountQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(AmountString))
+      {
+        writer.WriteString("amountString", (string)AmountString!);
+      }
+
+      if (_AmountString != null)
+      {
+        writer.WritePropertyName("_amountString");
+        _AmountString.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -434,12 +449,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Amount != null)
-      {
-        writer.WritePropertyName("amount");
-        Amount.SerializeJson(ref writer, options);
-      }
-
       if (Method != null)
       {
         writer.WritePropertyName("method");
@@ -450,6 +459,12 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("type");
         Type.SerializeJson(ref writer, options);
+      }
+
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -547,22 +562,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (HalfLife != null)
-      {
-        writer.WritePropertyName("halfLife");
-        HalfLife.SerializeJson(ref writer, options);
-      }
-
       if (Identifier != null)
       {
         writer.WritePropertyName("identifier");
         Identifier.SerializeJson(ref writer, options);
-      }
-
-      if (MolecularWeight != null)
-      {
-        writer.WritePropertyName("molecularWeight");
-        MolecularWeight.SerializeJson(ref writer, options);
       }
 
       if (Name != null)
@@ -575,6 +578,18 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("substitution");
         Substitution.SerializeJson(ref writer, options);
+      }
+
+      if (HalfLife != null)
+      {
+        writer.WritePropertyName("halfLife");
+        HalfLife.SerializeJson(ref writer, options);
+      }
+
+      if (MolecularWeight != null)
+      {
+        writer.WritePropertyName("molecularWeight");
+        MolecularWeight.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -678,13 +693,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Attachment != null)
+      if (Type != null)
       {
-        writer.WritePropertyName("attachment");
-        Attachment.SerializeJson(ref writer, options);
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("representation", Representation);
+      if (!string.IsNullOrEmpty(Representation))
+      {
+        writer.WriteString("representation", (string)Representation!);
+      }
 
       if (_Representation != null)
       {
@@ -692,10 +710,10 @@ namespace Fhir.R4.Models
         _Representation.SerializeJson(ref writer, options);
       }
 
-      if (Type != null)
+      if (Attachment != null)
       {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("attachment");
+        Attachment.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -817,6 +835,40 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Stereochemistry != null)
+      {
+        writer.WritePropertyName("stereochemistry");
+        Stereochemistry.SerializeJson(ref writer, options);
+      }
+
+      if (OpticalActivity != null)
+      {
+        writer.WritePropertyName("opticalActivity");
+        OpticalActivity.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(MolecularFormula))
+      {
+        writer.WriteString("molecularFormula", (string)MolecularFormula!);
+      }
+
+      if (_MolecularFormula != null)
+      {
+        writer.WritePropertyName("_molecularFormula");
+        _MolecularFormula.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(MolecularFormulaByMoiety))
+      {
+        writer.WriteString("molecularFormulaByMoiety", (string)MolecularFormulaByMoiety!);
+      }
+
+      if (_MolecularFormulaByMoiety != null)
+      {
+        writer.WritePropertyName("_molecularFormulaByMoiety");
+        _MolecularFormulaByMoiety.SerializeJson(ref writer, options);
+      }
+
       if ((Isotope != null) && (Isotope.Count != 0))
       {
         writer.WritePropertyName("isotope");
@@ -830,45 +882,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("molecularFormula", MolecularFormula);
-
-      if (_MolecularFormula != null)
-      {
-        writer.WritePropertyName("_molecularFormula");
-        _MolecularFormula.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("molecularFormulaByMoiety", MolecularFormulaByMoiety);
-
-      if (_MolecularFormulaByMoiety != null)
-      {
-        writer.WritePropertyName("_molecularFormulaByMoiety");
-        _MolecularFormulaByMoiety.SerializeJson(ref writer, options);
-      }
-
       if (MolecularWeight != null)
       {
         writer.WritePropertyName("molecularWeight");
         MolecularWeight.SerializeJson(ref writer, options);
-      }
-
-      if (OpticalActivity != null)
-      {
-        writer.WritePropertyName("opticalActivity");
-        OpticalActivity.SerializeJson(ref writer, options);
-      }
-
-      if ((Representation != null) && (Representation.Count != 0))
-      {
-        writer.WritePropertyName("representation");
-        writer.WriteStartArray();
-
-        foreach (SubstanceSpecificationStructureRepresentation valRepresentation in Representation)
-        {
-          valRepresentation.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
       }
 
       if ((Source != null) && (Source.Count != 0))
@@ -884,10 +901,17 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Stereochemistry != null)
+      if ((Representation != null) && (Representation.Count != 0))
       {
-        writer.WritePropertyName("stereochemistry");
-        Stereochemistry.SerializeJson(ref writer, options);
+        writer.WritePropertyName("representation");
+        writer.WriteStartArray();
+
+        foreach (SubstanceSpecificationStructureRepresentation valRepresentation in Representation)
+        {
+          valRepresentation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)
@@ -1098,7 +1122,27 @@ namespace Fhir.R4.Models
         Code.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("comment", Comment);
+      if (Status != null)
+      {
+        writer.WritePropertyName("status");
+        Status.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(StatusDate))
+      {
+        writer.WriteString("statusDate", (string)StatusDate!);
+      }
+
+      if (_StatusDate != null)
+      {
+        writer.WritePropertyName("_statusDate");
+        _StatusDate.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Comment))
+      {
+        writer.WriteString("comment", (string)Comment!);
+      }
 
       if (_Comment != null)
       {
@@ -1117,20 +1161,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Status != null)
-      {
-        writer.WritePropertyName("status");
-        Status.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("statusDate", StatusDate);
-
-      if (_StatusDate != null)
-      {
-        writer.WritePropertyName("_statusDate");
-        _StatusDate.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1270,18 +1300,21 @@ namespace Fhir.R4.Models
         Authority.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("date", Date);
+      if (Status != null)
+      {
+        writer.WritePropertyName("status");
+        Status.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Date))
+      {
+        writer.WriteString("date", (string)Date!);
+      }
 
       if (_Date != null)
       {
         writer.WritePropertyName("_date");
         _Date.SerializeJson(ref writer, options);
-      }
-
-      if (Status != null)
-      {
-        writer.WritePropertyName("status");
-        Status.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1411,6 +1444,47 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (Status != null)
+      {
+        writer.WritePropertyName("status");
+        Status.SerializeJson(ref writer, options);
+      }
+
+      if (Preferred != null)
+      {
+        writer.WriteBoolean("preferred", (bool)Preferred!);
+      }
+
+      if ((Language != null) && (Language.Count != 0))
+      {
+        writer.WritePropertyName("language");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valLanguage in Language)
+        {
+          valLanguage.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if ((Domain != null) && (Domain.Count != 0))
       {
         writer.WritePropertyName("domain");
@@ -1435,64 +1509,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if ((Language != null) && (Language.Count != 0))
-      {
-        writer.WritePropertyName("language");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valLanguage in Language)
-        {
-          valLanguage.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
-      {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
-      }
-
-      if ((Official != null) && (Official.Count != 0))
-      {
-        writer.WritePropertyName("official");
-        writer.WriteStartArray();
-
-        foreach (SubstanceSpecificationNameOfficial valOfficial in Official)
-        {
-          valOfficial.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Preferred != null)
-      {
-        writer.WriteBoolean("preferred", (bool)Preferred!);
-      }
-
-      if ((Source != null) && (Source.Count != 0))
-      {
-        writer.WritePropertyName("source");
-        writer.WriteStartArray();
-
-        foreach (Reference valSource in Source)
-        {
-          valSource.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Status != null)
-      {
-        writer.WritePropertyName("status");
-        Status.SerializeJson(ref writer, options);
       }
 
       if ((Synonym != null) && (Synonym.Count != 0))
@@ -1521,10 +1537,30 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Type != null)
+      if ((Official != null) && (Official.Count != 0))
       {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("official");
+        writer.WriteStartArray();
+
+        foreach (SubstanceSpecificationNameOfficial valOfficial in Official)
+        {
+          valOfficial.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Source != null) && (Source.Count != 0))
+      {
+        writer.WritePropertyName("source");
+        writer.WriteStartArray();
+
+        foreach (Reference valSource in Source)
+        {
+          valSource.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)
@@ -1847,6 +1883,29 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (SubstanceReference != null)
+      {
+        writer.WritePropertyName("substanceReference");
+        SubstanceReference.SerializeJson(ref writer, options);
+      }
+
+      if (SubstanceCodeableConcept != null)
+      {
+        writer.WritePropertyName("substanceCodeableConcept");
+        SubstanceCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      if (Relationship != null)
+      {
+        writer.WritePropertyName("relationship");
+        Relationship.SerializeJson(ref writer, options);
+      }
+
+      if (IsDefining != null)
+      {
+        writer.WriteBoolean("isDefining", (bool)IsDefining!);
+      }
+
       if (AmountQuantity != null)
       {
         writer.WritePropertyName("amountQuantity");
@@ -1865,7 +1924,10 @@ namespace Fhir.R4.Models
         AmountRatio.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("amountString", AmountString);
+      if (!string.IsNullOrEmpty(AmountString))
+      {
+        writer.WriteString("amountString", (string)AmountString!);
+      }
 
       if (_AmountString != null)
       {
@@ -1885,17 +1947,6 @@ namespace Fhir.R4.Models
         AmountType.SerializeJson(ref writer, options);
       }
 
-      if (IsDefining != null)
-      {
-        writer.WriteBoolean("isDefining", (bool)IsDefining!);
-      }
-
-      if (Relationship != null)
-      {
-        writer.WritePropertyName("relationship");
-        Relationship.SerializeJson(ref writer, options);
-      }
-
       if ((Source != null) && (Source.Count != 0))
       {
         writer.WritePropertyName("source");
@@ -1907,18 +1958,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (SubstanceReference != null)
-      {
-        writer.WritePropertyName("substanceReference");
-        SubstanceReference.SerializeJson(ref writer, options);
-      }
-
-      if (SubstanceCodeableConcept != null)
-      {
-        writer.WritePropertyName("substanceCodeableConcept");
-        SubstanceCodeableConcept.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -2047,7 +2086,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The detailed description of a substance, typically at a level beyond what is used for prescribing.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecification>))]
   public class SubstanceSpecification : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -2147,38 +2186,30 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if ((Code != null) && (Code.Count != 0))
+      if (Identifier != null)
       {
-        writer.WritePropertyName("code");
-        writer.WriteStartArray();
-
-        foreach (SubstanceSpecificationCode valCode in Code)
-        {
-          valCode.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("comment", Comment);
-
-      if (_Comment != null)
+      if (Type != null)
       {
-        writer.WritePropertyName("_comment");
-        _Comment.SerializeJson(ref writer, options);
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("description", Description);
-
-      if (_Description != null)
+      if (Status != null)
       {
-        writer.WritePropertyName("_description");
-        _Description.SerializeJson(ref writer, options);
+        writer.WritePropertyName("status");
+        Status.SerializeJson(ref writer, options);
       }
 
       if (Domain != null)
@@ -2187,10 +2218,39 @@ namespace Fhir.R4.Models
         Domain.SerializeJson(ref writer, options);
       }
 
-      if (Identifier != null)
+      if (!string.IsNullOrEmpty(Description))
       {
-        writer.WritePropertyName("identifier");
-        Identifier.SerializeJson(ref writer, options);
+        writer.WriteString("description", (string)Description!);
+      }
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if ((Source != null) && (Source.Count != 0))
+      {
+        writer.WritePropertyName("source");
+        writer.WriteStartArray();
+
+        foreach (Reference valSource in Source)
+        {
+          valSource.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Comment))
+      {
+        writer.WriteString("comment", (string)Comment!);
+      }
+
+      if (_Comment != null)
+      {
+        writer.WritePropertyName("_comment");
+        _Comment.SerializeJson(ref writer, options);
       }
 
       if ((Moiety != null) && (Moiety.Count != 0))
@@ -2206,14 +2266,39 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((MolecularWeight != null) && (MolecularWeight.Count != 0))
+      if ((Property != null) && (Property.Count != 0))
       {
-        writer.WritePropertyName("molecularWeight");
+        writer.WritePropertyName("property");
         writer.WriteStartArray();
 
-        foreach (SubstanceSpecificationStructureIsotopeMolecularWeight valMolecularWeight in MolecularWeight)
+        foreach (SubstanceSpecificationProperty valProperty in Property)
         {
-          valMolecularWeight.SerializeJson(ref writer, options, true);
+          valProperty.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ReferenceInformation != null)
+      {
+        writer.WritePropertyName("referenceInformation");
+        ReferenceInformation.SerializeJson(ref writer, options);
+      }
+
+      if (Structure != null)
+      {
+        writer.WritePropertyName("structure");
+        Structure.SerializeJson(ref writer, options);
+      }
+
+      if ((Code != null) && (Code.Count != 0))
+      {
+        writer.WritePropertyName("code");
+        writer.WriteStartArray();
+
+        foreach (SubstanceSpecificationCode valCode in Code)
+        {
+          valCode.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -2232,41 +2317,17 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (NucleicAcid != null)
+      if ((MolecularWeight != null) && (MolecularWeight.Count != 0))
       {
-        writer.WritePropertyName("nucleicAcid");
-        NucleicAcid.SerializeJson(ref writer, options);
-      }
-
-      if (Polymer != null)
-      {
-        writer.WritePropertyName("polymer");
-        Polymer.SerializeJson(ref writer, options);
-      }
-
-      if ((Property != null) && (Property.Count != 0))
-      {
-        writer.WritePropertyName("property");
+        writer.WritePropertyName("molecularWeight");
         writer.WriteStartArray();
 
-        foreach (SubstanceSpecificationProperty valProperty in Property)
+        foreach (SubstanceSpecificationStructureIsotopeMolecularWeight valMolecularWeight in MolecularWeight)
         {
-          valProperty.SerializeJson(ref writer, options, true);
+          valMolecularWeight.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Protein != null)
-      {
-        writer.WritePropertyName("protein");
-        Protein.SerializeJson(ref writer, options);
-      }
-
-      if (ReferenceInformation != null)
-      {
-        writer.WritePropertyName("referenceInformation");
-        ReferenceInformation.SerializeJson(ref writer, options);
       }
 
       if ((Relationship != null) && (Relationship.Count != 0))
@@ -2282,41 +2343,28 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Source != null) && (Source.Count != 0))
+      if (NucleicAcid != null)
       {
-        writer.WritePropertyName("source");
-        writer.WriteStartArray();
+        writer.WritePropertyName("nucleicAcid");
+        NucleicAcid.SerializeJson(ref writer, options);
+      }
 
-        foreach (Reference valSource in Source)
-        {
-          valSource.SerializeJson(ref writer, options, true);
-        }
+      if (Polymer != null)
+      {
+        writer.WritePropertyName("polymer");
+        Polymer.SerializeJson(ref writer, options);
+      }
 
-        writer.WriteEndArray();
+      if (Protein != null)
+      {
+        writer.WritePropertyName("protein");
+        Protein.SerializeJson(ref writer, options);
       }
 
       if (SourceMaterial != null)
       {
         writer.WritePropertyName("sourceMaterial");
         SourceMaterial.SerializeJson(ref writer, options);
-      }
-
-      if (Status != null)
-      {
-        writer.WritePropertyName("status");
-        Status.SerializeJson(ref writer, options);
-      }
-
-      if (Structure != null)
-      {
-        writer.WritePropertyName("structure");
-        Structure.SerializeJson(ref writer, options);
-      }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

@@ -67,18 +67,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("description", Description);
-
-      if (_Description != null)
+      if (Substance != null)
       {
-        writer.WritePropertyName("_description");
-        _Description.SerializeJson(ref writer, options);
-      }
-
-      if (ExposureRoute != null)
-      {
-        writer.WritePropertyName("exposureRoute");
-        ExposureRoute.SerializeJson(ref writer, options);
+        writer.WritePropertyName("substance");
+        Substance.SerializeJson(ref writer, options);
       }
 
       if ((Manifestation != null) && (Manifestation.Count != 0))
@@ -94,6 +86,45 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Onset))
+      {
+        writer.WriteString("onset", (string)Onset!);
+      }
+
+      if (_Onset != null)
+      {
+        writer.WritePropertyName("_onset");
+        _Onset.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Severity))
+      {
+        writer.WriteString("severity", (string)Severity!);
+      }
+
+      if (_Severity != null)
+      {
+        writer.WritePropertyName("_severity");
+        _Severity.SerializeJson(ref writer, options);
+      }
+
+      if (ExposureRoute != null)
+      {
+        writer.WritePropertyName("exposureRoute");
+        ExposureRoute.SerializeJson(ref writer, options);
+      }
+
       if ((Note != null) && (Note.Count != 0))
       {
         writer.WritePropertyName("note");
@@ -105,28 +136,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      writer.WriteString("onset", Onset);
-
-      if (_Onset != null)
-      {
-        writer.WritePropertyName("_onset");
-        _Onset.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("severity", Severity);
-
-      if (_Severity != null)
-      {
-        writer.WritePropertyName("_severity");
-        _Severity.SerializeJson(ref writer, options);
-      }
-
-      if (Substance != null)
-      {
-        writer.WritePropertyName("substance");
-        Substance.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -266,7 +275,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AllergyIntolerance>))]
   public class AllergyIntolerance : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -393,15 +402,48 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if (Asserter != null)
+      if ((Identifier != null) && (Identifier.Count != 0))
       {
-        writer.WritePropertyName("asserter");
-        Asserter.SerializeJson(ref writer, options);
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ClinicalStatus != null)
+      {
+        writer.WritePropertyName("clinicalStatus");
+        ClinicalStatus.SerializeJson(ref writer, options);
+      }
+
+      if (VerificationStatus != null)
+      {
+        writer.WritePropertyName("verificationStatus");
+        VerificationStatus.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
       }
 
       if ((Category != null) && (Category.Count != 0))
@@ -430,10 +472,15 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (ClinicalStatus != null)
+      if (!string.IsNullOrEmpty(Criticality))
       {
-        writer.WritePropertyName("clinicalStatus");
-        ClinicalStatus.SerializeJson(ref writer, options);
+        writer.WriteString("criticality", (string)Criticality!);
+      }
+
+      if (_Criticality != null)
+      {
+        writer.WritePropertyName("_criticality");
+        _Criticality.SerializeJson(ref writer, options);
       }
 
       if (Code != null)
@@ -442,13 +489,8 @@ namespace Fhir.R4.Models
         Code.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("criticality", Criticality);
-
-      if (_Criticality != null)
-      {
-        writer.WritePropertyName("_criticality");
-        _Criticality.SerializeJson(ref writer, options);
-      }
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
 
       if (Encounter != null)
       {
@@ -456,41 +498,10 @@ namespace Fhir.R4.Models
         Encounter.SerializeJson(ref writer, options);
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
+      if (!string.IsNullOrEmpty(OnsetDateTime))
       {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("onsetDateTime", (string)OnsetDateTime!);
       }
-
-      writer.WriteString("lastOccurrence", LastOccurrence);
-
-      if (_LastOccurrence != null)
-      {
-        writer.WritePropertyName("_lastOccurrence");
-        _LastOccurrence.SerializeJson(ref writer, options);
-      }
-
-      if ((Note != null) && (Note.Count != 0))
-      {
-        writer.WritePropertyName("note");
-        writer.WriteStartArray();
-
-        foreach (Annotation valNote in Note)
-        {
-          valNote.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("onsetDateTime", OnsetDateTime);
 
       if (_OnsetDateTime != null)
       {
@@ -516,7 +527,10 @@ namespace Fhir.R4.Models
         OnsetRange.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("onsetString", OnsetString);
+      if (!string.IsNullOrEmpty(OnsetString))
+      {
+        writer.WriteString("onsetString", (string)OnsetString!);
+      }
 
       if (_OnsetString != null)
       {
@@ -524,23 +538,10 @@ namespace Fhir.R4.Models
         _OnsetString.SerializeJson(ref writer, options);
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(ref writer, options);
-
-      if ((Reaction != null) && (Reaction.Count != 0))
+      if (!string.IsNullOrEmpty(RecordedDate))
       {
-        writer.WritePropertyName("reaction");
-        writer.WriteStartArray();
-
-        foreach (AllergyIntoleranceReaction valReaction in Reaction)
-        {
-          valReaction.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("recordedDate", (string)RecordedDate!);
       }
-
-      writer.WriteString("recordedDate", RecordedDate);
 
       if (_RecordedDate != null)
       {
@@ -554,18 +555,47 @@ namespace Fhir.R4.Models
         Recorder.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
+      if (Asserter != null)
       {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("asserter");
+        Asserter.SerializeJson(ref writer, options);
       }
 
-      if (VerificationStatus != null)
+      if (!string.IsNullOrEmpty(LastOccurrence))
       {
-        writer.WritePropertyName("verificationStatus");
-        VerificationStatus.SerializeJson(ref writer, options);
+        writer.WriteString("lastOccurrence", (string)LastOccurrence!);
+      }
+
+      if (_LastOccurrence != null)
+      {
+        writer.WritePropertyName("_lastOccurrence");
+        _LastOccurrence.SerializeJson(ref writer, options);
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Reaction != null) && (Reaction.Count != 0))
+      {
+        writer.WritePropertyName("reaction");
+        writer.WriteStartArray();
+
+        foreach (AllergyIntoleranceReaction valReaction in Reaction)
+        {
+          valReaction.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

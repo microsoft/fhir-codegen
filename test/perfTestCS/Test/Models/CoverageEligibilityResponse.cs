@@ -63,12 +63,18 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
       if (AllowedUnsignedInt != null)
       {
         writer.WriteNumber("allowedUnsignedInt", (uint)AllowedUnsignedInt!);
       }
 
-      writer.WriteString("allowedString", AllowedString);
+      if (!string.IsNullOrEmpty(AllowedString))
+      {
+        writer.WriteString("allowedString", (string)AllowedString!);
+      }
 
       if (_AllowedString != null)
       {
@@ -82,15 +88,15 @@ namespace Fhir.R4.Models
         AllowedMoney.SerializeJson(ref writer, options);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
-
       if (UsedUnsignedInt != null)
       {
         writer.WriteNumber("usedUnsignedInt", (uint)UsedUnsignedInt!);
       }
 
-      writer.WriteString("usedString", UsedString);
+      if (!string.IsNullOrEmpty(UsedString))
+      {
+        writer.WriteString("usedString", (string)UsedString!);
+      }
 
       if (_UsedString != null)
       {
@@ -273,6 +279,95 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Category != null)
+      {
+        writer.WritePropertyName("category");
+        Category.SerializeJson(ref writer, options);
+      }
+
+      if (ProductOrService != null)
+      {
+        writer.WritePropertyName("productOrService");
+        ProductOrService.SerializeJson(ref writer, options);
+      }
+
+      if ((Modifier != null) && (Modifier.Count != 0))
+      {
+        writer.WritePropertyName("modifier");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valModifier in Modifier)
+        {
+          valModifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Provider != null)
+      {
+        writer.WritePropertyName("provider");
+        Provider.SerializeJson(ref writer, options);
+      }
+
+      if (Excluded != null)
+      {
+        writer.WriteBoolean("excluded", (bool)Excluded!);
+      }
+
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (Network != null)
+      {
+        writer.WritePropertyName("network");
+        Network.SerializeJson(ref writer, options);
+      }
+
+      if (Unit != null)
+      {
+        writer.WritePropertyName("unit");
+        Unit.SerializeJson(ref writer, options);
+      }
+
+      if (Term != null)
+      {
+        writer.WritePropertyName("term");
+        Term.SerializeJson(ref writer, options);
+      }
+
+      if ((Benefit != null) && (Benefit.Count != 0))
+      {
+        writer.WritePropertyName("benefit");
+        writer.WriteStartArray();
+
+        foreach (CoverageEligibilityResponseInsuranceItemBenefit valBenefit in Benefit)
+        {
+          valBenefit.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if (AuthorizationRequired != null)
       {
         writer.WriteBoolean("authorizationRequired", (bool)AuthorizationRequired!);
@@ -291,95 +386,15 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("authorizationUrl", AuthorizationUrl);
+      if (!string.IsNullOrEmpty(AuthorizationUrl))
+      {
+        writer.WriteString("authorizationUrl", (string)AuthorizationUrl!);
+      }
 
       if (_AuthorizationUrl != null)
       {
         writer.WritePropertyName("_authorizationUrl");
         _AuthorizationUrl.SerializeJson(ref writer, options);
-      }
-
-      if ((Benefit != null) && (Benefit.Count != 0))
-      {
-        writer.WritePropertyName("benefit");
-        writer.WriteStartArray();
-
-        foreach (CoverageEligibilityResponseInsuranceItemBenefit valBenefit in Benefit)
-        {
-          valBenefit.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Category != null)
-      {
-        writer.WritePropertyName("category");
-        Category.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("description", Description);
-
-      if (_Description != null)
-      {
-        writer.WritePropertyName("_description");
-        _Description.SerializeJson(ref writer, options);
-      }
-
-      if (Excluded != null)
-      {
-        writer.WriteBoolean("excluded", (bool)Excluded!);
-      }
-
-      if ((Modifier != null) && (Modifier.Count != 0))
-      {
-        writer.WritePropertyName("modifier");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valModifier in Modifier)
-        {
-          valModifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
-      {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
-      }
-
-      if (Network != null)
-      {
-        writer.WritePropertyName("network");
-        Network.SerializeJson(ref writer, options);
-      }
-
-      if (ProductOrService != null)
-      {
-        writer.WritePropertyName("productOrService");
-        ProductOrService.SerializeJson(ref writer, options);
-      }
-
-      if (Provider != null)
-      {
-        writer.WritePropertyName("provider");
-        Provider.SerializeJson(ref writer, options);
-      }
-
-      if (Term != null)
-      {
-        writer.WritePropertyName("term");
-        Term.SerializeJson(ref writer, options);
-      }
-
-      if (Unit != null)
-      {
-        writer.WritePropertyName("unit");
-        Unit.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -604,18 +619,18 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (BenefitPeriod != null)
-      {
-        writer.WritePropertyName("benefitPeriod");
-        BenefitPeriod.SerializeJson(ref writer, options);
-      }
-
       writer.WritePropertyName("coverage");
       Coverage.SerializeJson(ref writer, options);
 
       if (Inforce != null)
       {
         writer.WriteBoolean("inforce", (bool)Inforce!);
+      }
+
+      if (BenefitPeriod != null)
+      {
+        writer.WritePropertyName("benefitPeriod");
+        BenefitPeriod.SerializeJson(ref writer, options);
       }
 
       if ((Item != null) && (Item.Count != 0))
@@ -790,7 +805,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides eligibility and plan details from the processing of an CoverageEligibilityRequest resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityResponse>))]
   public class CoverageEligibilityResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -898,45 +913,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      writer.WriteString("created", Created);
-
-      if (_Created != null)
-      {
-        writer.WritePropertyName("_created");
-        _Created.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("disposition", Disposition);
-
-      if (_Disposition != null)
-      {
-        writer.WritePropertyName("_disposition");
-        _Disposition.SerializeJson(ref writer, options);
-      }
-
-      if ((Error != null) && (Error.Count != 0))
-      {
-        writer.WritePropertyName("error");
-        writer.WriteStartArray();
-
-        foreach (CoverageEligibilityResponseError valError in Error)
-        {
-          valError.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Form != null)
-      {
-        writer.WritePropertyName("form");
-        Form.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -951,39 +934,15 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Insurance != null) && (Insurance.Count != 0))
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("insurance");
-        writer.WriteStartArray();
-
-        foreach (CoverageEligibilityResponseInsurance valInsurance in Insurance)
-        {
-          valInsurance.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("status", (string)Status!);
       }
 
-      writer.WritePropertyName("insurer");
-      Insurer.SerializeJson(ref writer, options);
-
-      writer.WriteString("outcome", Outcome);
-
-      if (_Outcome != null)
+      if (_Status != null)
       {
-        writer.WritePropertyName("_outcome");
-        _Outcome.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(ref writer, options);
-
-      writer.WriteString("preAuthRef", PreAuthRef);
-
-      if (_PreAuthRef != null)
-      {
-        writer.WritePropertyName("_preAuthRef");
-        _PreAuthRef.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
       }
 
       if ((Purpose != null) && (Purpose.Count != 0))
@@ -1012,16 +971,13 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("request");
-      Request.SerializeJson(ref writer, options);
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
 
-      if (Requestor != null)
+      if (!string.IsNullOrEmpty(ServicedDate))
       {
-        writer.WritePropertyName("requestor");
-        Requestor.SerializeJson(ref writer, options);
+        writer.WriteString("servicedDate", (string)ServicedDate!);
       }
-
-      writer.WriteString("servicedDate", ServicedDate);
 
       if (_ServicedDate != null)
       {
@@ -1035,12 +991,92 @@ namespace Fhir.R4.Models
         ServicedPeriod.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if (!string.IsNullOrEmpty(Created))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WriteString("created", (string)Created!);
+      }
+
+      if (_Created != null)
+      {
+        writer.WritePropertyName("_created");
+        _Created.SerializeJson(ref writer, options);
+      }
+
+      if (Requestor != null)
+      {
+        writer.WritePropertyName("requestor");
+        Requestor.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("request");
+      Request.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Outcome))
+      {
+        writer.WriteString("outcome", (string)Outcome!);
+      }
+
+      if (_Outcome != null)
+      {
+        writer.WritePropertyName("_outcome");
+        _Outcome.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Disposition))
+      {
+        writer.WriteString("disposition", (string)Disposition!);
+      }
+
+      if (_Disposition != null)
+      {
+        writer.WritePropertyName("_disposition");
+        _Disposition.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("insurer");
+      Insurer.SerializeJson(ref writer, options);
+
+      if ((Insurance != null) && (Insurance.Count != 0))
+      {
+        writer.WritePropertyName("insurance");
+        writer.WriteStartArray();
+
+        foreach (CoverageEligibilityResponseInsurance valInsurance in Insurance)
+        {
+          valInsurance.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(PreAuthRef))
+      {
+        writer.WriteString("preAuthRef", (string)PreAuthRef!);
+      }
+
+      if (_PreAuthRef != null)
+      {
+        writer.WritePropertyName("_preAuthRef");
+        _PreAuthRef.SerializeJson(ref writer, options);
+      }
+
+      if (Form != null)
+      {
+        writer.WritePropertyName("form");
+        Form.SerializeJson(ref writer, options);
+      }
+
+      if ((Error != null) && (Error.Count != 0))
+      {
+        writer.WritePropertyName("error");
+        writer.WriteStartArray();
+
+        foreach (CoverageEligibilityResponseError valError in Error)
+        {
+          valError.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

@@ -63,23 +63,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("code", Code);
-
-      if (_Code != null)
+      if (!string.IsNullOrEmpty(System))
       {
-        writer.WritePropertyName("_code");
-        _Code.SerializeJson(ref writer, options);
+        writer.WriteString("system", (string)System!);
       }
-
-      writer.WriteString("display", Display);
-
-      if (_Display != null)
-      {
-        writer.WritePropertyName("_display");
-        _Display.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("system", System);
 
       if (_System != null)
       {
@@ -87,17 +74,42 @@ namespace Fhir.R4.Models
         _System.SerializeJson(ref writer, options);
       }
 
-      if (UserSelected != null)
+      if (!string.IsNullOrEmpty(Version))
       {
-        writer.WriteBoolean("userSelected", (bool)UserSelected!);
+        writer.WriteString("version", (string)Version!);
       }
-
-      writer.WriteString("version", Version);
 
       if (_Version != null)
       {
         writer.WritePropertyName("_version");
         _Version.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Code))
+      {
+        writer.WriteString("code", (string)Code!);
+      }
+
+      if (_Code != null)
+      {
+        writer.WritePropertyName("_code");
+        _Code.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Display))
+      {
+        writer.WriteString("display", (string)Display!);
+      }
+
+      if (_Display != null)
+      {
+        writer.WritePropertyName("_display");
+        _Display.SerializeJson(ref writer, options);
+      }
+
+      if (UserSelected != null)
+      {
+        writer.WriteBoolean("userSelected", (bool)UserSelected!);
       }
 
       if (includeStartObject)

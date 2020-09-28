@@ -43,20 +43,26 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("div", Div);
-
-      if (_Div != null)
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("_div");
-        _Div.SerializeJson(ref writer, options);
+        writer.WriteString("status", (string)Status!);
       }
-
-      writer.WriteString("status", Status);
 
       if (_Status != null)
       {
         writer.WritePropertyName("_status");
         _Status.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Div))
+      {
+        writer.WriteString("div", (string)Div!);
+      }
+
+      if (_Div != null)
+      {
+        writer.WritePropertyName("_div");
+        _Div.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

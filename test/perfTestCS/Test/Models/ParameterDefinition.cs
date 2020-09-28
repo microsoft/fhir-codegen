@@ -79,28 +79,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("documentation", Documentation);
-
-      if (_Documentation != null)
+      if (!string.IsNullOrEmpty(Name))
       {
-        writer.WritePropertyName("_documentation");
-        _Documentation.SerializeJson(ref writer, options);
+        writer.WriteString("name", (string)Name!);
       }
-
-      writer.WriteString("max", Max);
-
-      if (_Max != null)
-      {
-        writer.WritePropertyName("_max");
-        _Max.SerializeJson(ref writer, options);
-      }
-
-      if (Min != null)
-      {
-        writer.WriteNumber("min", (int)Min!);
-      }
-
-      writer.WriteString("name", Name);
 
       if (_Name != null)
       {
@@ -108,15 +90,48 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("profile", Profile);
-
-      if (_Profile != null)
+      if (!string.IsNullOrEmpty(Use))
       {
-        writer.WritePropertyName("_profile");
-        _Profile.SerializeJson(ref writer, options);
+        writer.WriteString("use", (string)Use!);
       }
 
-      writer.WriteString("type", Type);
+      if (_Use != null)
+      {
+        writer.WritePropertyName("_use");
+        _Use.SerializeJson(ref writer, options);
+      }
+
+      if (Min != null)
+      {
+        writer.WriteNumber("min", (int)Min!);
+      }
+
+      if (!string.IsNullOrEmpty(Max))
+      {
+        writer.WriteString("max", (string)Max!);
+      }
+
+      if (_Max != null)
+      {
+        writer.WritePropertyName("_max");
+        _Max.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Documentation))
+      {
+        writer.WriteString("documentation", (string)Documentation!);
+      }
+
+      if (_Documentation != null)
+      {
+        writer.WritePropertyName("_documentation");
+        _Documentation.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
 
       if (_Type != null)
       {
@@ -124,12 +139,15 @@ namespace Fhir.R4.Models
         _Type.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("use", Use);
-
-      if (_Use != null)
+      if (!string.IsNullOrEmpty(Profile))
       {
-        writer.WritePropertyName("_use");
-        _Use.SerializeJson(ref writer, options);
+        writer.WriteString("profile", (string)Profile!);
+      }
+
+      if (_Profile != null)
+      {
+        writer.WritePropertyName("_profile");
+        _Profile.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

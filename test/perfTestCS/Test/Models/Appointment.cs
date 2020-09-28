@@ -57,34 +57,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Actor != null)
-      {
-        writer.WritePropertyName("actor");
-        Actor.SerializeJson(ref writer, options);
-      }
-
-      if (Period != null)
-      {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("required", Required);
-
-      if (_Required != null)
-      {
-        writer.WritePropertyName("_required");
-        _Required.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
       if ((Type != null) && (Type.Count != 0))
       {
         writer.WritePropertyName("type");
@@ -96,6 +68,40 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
+      }
+
+      if (Actor != null)
+      {
+        writer.WritePropertyName("actor");
+        Actor.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Required))
+      {
+        writer.WriteString("required", (string)Required!);
+      }
+
+      if (_Required != null)
+      {
+        writer.WritePropertyName("_required");
+        _Required.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -199,7 +205,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Appointment>))]
   public class Appointment : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -334,67 +340,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (AppointmentType != null)
-      {
-        writer.WritePropertyName("appointmentType");
-        AppointmentType.SerializeJson(ref writer, options);
-      }
-
-      if ((BasedOn != null) && (BasedOn.Count != 0))
-      {
-        writer.WritePropertyName("basedOn");
-        writer.WriteStartArray();
-
-        foreach (Reference valBasedOn in BasedOn)
-        {
-          valBasedOn.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (CancelationReason != null)
-      {
-        writer.WritePropertyName("cancelationReason");
-        CancelationReason.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("comment", Comment);
-
-      if (_Comment != null)
-      {
-        writer.WritePropertyName("_comment");
-        _Comment.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("created", Created);
-
-      if (_Created != null)
-      {
-        writer.WritePropertyName("_created");
-        _Created.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("description", Description);
-
-      if (_Description != null)
-      {
-        writer.WritePropertyName("_description");
-        _Description.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("end", End);
-
-      if (_End != null)
-      {
-        writer.WritePropertyName("_end");
-        _End.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -409,74 +361,21 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (MinutesDuration != null)
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WriteNumber("minutesDuration", (uint)MinutesDuration!);
+        writer.WriteString("status", (string)Status!);
       }
 
-      if ((Participant != null) && (Participant.Count != 0))
+      if (_Status != null)
       {
-        writer.WritePropertyName("participant");
-        writer.WriteStartArray();
-
-        foreach (AppointmentParticipant valParticipant in Participant)
-        {
-          valParticipant.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("patientInstruction", PatientInstruction);
-
-      if (_PatientInstruction != null)
+      if (CancelationReason != null)
       {
-        writer.WritePropertyName("_patientInstruction");
-        _PatientInstruction.SerializeJson(ref writer, options);
-      }
-
-      if (Priority != null)
-      {
-        writer.WriteNumber("priority", (uint)Priority!);
-      }
-
-      if ((ReasonCode != null) && (ReasonCode.Count != 0))
-      {
-        writer.WritePropertyName("reasonCode");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valReasonCode in ReasonCode)
-        {
-          valReasonCode.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((ReasonReference != null) && (ReasonReference.Count != 0))
-      {
-        writer.WritePropertyName("reasonReference");
-        writer.WriteStartArray();
-
-        foreach (Reference valReasonReference in ReasonReference)
-        {
-          valReasonReference.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((RequestedPeriod != null) && (RequestedPeriod.Count != 0))
-      {
-        writer.WritePropertyName("requestedPeriod");
-        writer.WriteStartArray();
-
-        foreach (Period valRequestedPeriod in RequestedPeriod)
-        {
-          valRequestedPeriod.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("cancelationReason");
+        CancelationReason.SerializeJson(ref writer, options);
       }
 
       if ((ServiceCategory != null) && (ServiceCategory.Count != 0))
@@ -505,19 +404,6 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Slot != null) && (Slot.Count != 0))
-      {
-        writer.WritePropertyName("slot");
-        writer.WriteStartArray();
-
-        foreach (Reference valSlot in Slot)
-        {
-          valSlot.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
       if ((Specialty != null) && (Specialty.Count != 0))
       {
         writer.WritePropertyName("specialty");
@@ -531,20 +417,52 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("start", Start);
-
-      if (_Start != null)
+      if (AppointmentType != null)
       {
-        writer.WritePropertyName("_start");
-        _Start.SerializeJson(ref writer, options);
+        writer.WritePropertyName("appointmentType");
+        AppointmentType.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if ((ReasonCode != null) && (ReasonCode.Count != 0))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WritePropertyName("reasonCode");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valReasonCode in ReasonCode)
+        {
+          valReasonCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ReasonReference != null) && (ReasonReference.Count != 0))
+      {
+        writer.WritePropertyName("reasonReference");
+        writer.WriteStartArray();
+
+        foreach (Reference valReasonReference in ReasonReference)
+        {
+          valReasonReference.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Priority != null)
+      {
+        writer.WriteNumber("priority", (uint)Priority!);
+      }
+
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
       }
 
       if ((SupportingInformation != null) && (SupportingInformation.Count != 0))
@@ -555,6 +473,118 @@ namespace Fhir.R4.Models
         foreach (Reference valSupportingInformation in SupportingInformation)
         {
           valSupportingInformation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Start))
+      {
+        writer.WriteString("start", (string)Start!);
+      }
+
+      if (_Start != null)
+      {
+        writer.WritePropertyName("_start");
+        _Start.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(End))
+      {
+        writer.WriteString("end", (string)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(ref writer, options);
+      }
+
+      if (MinutesDuration != null)
+      {
+        writer.WriteNumber("minutesDuration", (uint)MinutesDuration!);
+      }
+
+      if ((Slot != null) && (Slot.Count != 0))
+      {
+        writer.WritePropertyName("slot");
+        writer.WriteStartArray();
+
+        foreach (Reference valSlot in Slot)
+        {
+          valSlot.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Created))
+      {
+        writer.WriteString("created", (string)Created!);
+      }
+
+      if (_Created != null)
+      {
+        writer.WritePropertyName("_created");
+        _Created.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Comment))
+      {
+        writer.WriteString("comment", (string)Comment!);
+      }
+
+      if (_Comment != null)
+      {
+        writer.WritePropertyName("_comment");
+        _Comment.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(PatientInstruction))
+      {
+        writer.WriteString("patientInstruction", (string)PatientInstruction!);
+      }
+
+      if (_PatientInstruction != null)
+      {
+        writer.WritePropertyName("_patientInstruction");
+        _PatientInstruction.SerializeJson(ref writer, options);
+      }
+
+      if ((BasedOn != null) && (BasedOn.Count != 0))
+      {
+        writer.WritePropertyName("basedOn");
+        writer.WriteStartArray();
+
+        foreach (Reference valBasedOn in BasedOn)
+        {
+          valBasedOn.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Participant != null) && (Participant.Count != 0))
+      {
+        writer.WritePropertyName("participant");
+        writer.WriteStartArray();
+
+        foreach (AppointmentParticipant valParticipant in Participant)
+        {
+          valParticipant.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((RequestedPeriod != null) && (RequestedPeriod.Count != 0))
+      {
+        writer.WritePropertyName("requestedPeriod");
+        writer.WriteStartArray();
+
+        foreach (Period valRequestedPeriod in RequestedPeriod)
+        {
+          valRequestedPeriod.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

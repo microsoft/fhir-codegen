@@ -43,22 +43,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Address != null)
+      if (Purpose != null)
       {
-        writer.WritePropertyName("address");
-        Address.SerializeJson(ref writer, options);
+        writer.WritePropertyName("purpose");
+        Purpose.SerializeJson(ref writer, options);
       }
 
       if (Name != null)
       {
         writer.WritePropertyName("name");
         Name.SerializeJson(ref writer, options);
-      }
-
-      if (Purpose != null)
-      {
-        writer.WritePropertyName("purpose");
-        Purpose.SerializeJson(ref writer, options);
       }
 
       if ((Telecom != null) && (Telecom.Count != 0))
@@ -72,6 +66,12 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
+      }
+
+      if (Address != null)
+      {
+        writer.WritePropertyName("address");
+        Address.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -162,7 +162,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Organization>))]
   public class Organization : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -229,27 +229,54 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
       }
 
-      if ((Address != null) && (Address.Count != 0))
+      if ((Type != null) && (Type.Count != 0))
       {
-        writer.WritePropertyName("address");
+        writer.WritePropertyName("type");
         writer.WriteStartArray();
 
-        foreach (Address valAddress in Address)
+        foreach (CodeableConcept valType in Type)
         {
-          valAddress.SerializeJson(ref writer, options, true);
+          valType.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
       }
 
       if ((Alias != null) && (Alias.Count != 0))
@@ -278,6 +305,38 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if ((Telecom != null) && (Telecom.Count != 0))
+      {
+        writer.WritePropertyName("telecom");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valTelecom in Telecom)
+        {
+          valTelecom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Address != null) && (Address.Count != 0))
+      {
+        writer.WritePropertyName("address");
+        writer.WriteStartArray();
+
+        foreach (Address valAddress in Address)
+        {
+          valAddress.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (PartOf != null)
+      {
+        writer.WritePropertyName("partOf");
+        PartOf.SerializeJson(ref writer, options);
+      }
+
       if ((Contact != null) && (Contact.Count != 0))
       {
         writer.WritePropertyName("contact");
@@ -299,59 +358,6 @@ namespace Fhir.R4.Models
         foreach (Reference valEndpoint in Endpoint)
         {
           valEndpoint.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Identifier != null) && (Identifier.Count != 0))
-      {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
-      {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
-      }
-
-      if (PartOf != null)
-      {
-        writer.WritePropertyName("partOf");
-        PartOf.SerializeJson(ref writer, options);
-      }
-
-      if ((Telecom != null) && (Telecom.Count != 0))
-      {
-        writer.WritePropertyName("telecom");
-        writer.WriteStartArray();
-
-        foreach (ContactPoint valTelecom in Telecom)
-        {
-          valTelecom.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Type != null) && (Type.Count != 0))
-      {
-        writer.WritePropertyName("type");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valType in Type)
-        {
-          valType.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

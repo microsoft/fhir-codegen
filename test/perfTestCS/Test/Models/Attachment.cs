@@ -87,7 +87,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("contentType", ContentType);
+      if (!string.IsNullOrEmpty(ContentType))
+      {
+        writer.WriteString("contentType", (string)ContentType!);
+      }
 
       if (_ContentType != null)
       {
@@ -95,31 +98,10 @@ namespace Fhir.R4.Models
         _ContentType.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("creation", Creation);
-
-      if (_Creation != null)
+      if (!string.IsNullOrEmpty(Language))
       {
-        writer.WritePropertyName("_creation");
-        _Creation.SerializeJson(ref writer, options);
+        writer.WriteString("language", (string)Language!);
       }
-
-      writer.WriteString("data", Data);
-
-      if (_Data != null)
-      {
-        writer.WritePropertyName("_data");
-        _Data.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("hash", Hash);
-
-      if (_Hash != null)
-      {
-        writer.WritePropertyName("_hash");
-        _Hash.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("language", Language);
 
       if (_Language != null)
       {
@@ -127,12 +109,48 @@ namespace Fhir.R4.Models
         _Language.SerializeJson(ref writer, options);
       }
 
+      if (!string.IsNullOrEmpty(Data))
+      {
+        writer.WriteString("data", (string)Data!);
+      }
+
+      if (_Data != null)
+      {
+        writer.WritePropertyName("_data");
+        _Data.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Url))
+      {
+        writer.WriteString("url", (string)Url!);
+      }
+
+      if (_Url != null)
+      {
+        writer.WritePropertyName("_url");
+        _Url.SerializeJson(ref writer, options);
+      }
+
       if (Size != null)
       {
         writer.WriteNumber("size", (uint)Size!);
       }
 
-      writer.WriteString("title", Title);
+      if (!string.IsNullOrEmpty(Hash))
+      {
+        writer.WriteString("hash", (string)Hash!);
+      }
+
+      if (_Hash != null)
+      {
+        writer.WritePropertyName("_hash");
+        _Hash.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Title))
+      {
+        writer.WriteString("title", (string)Title!);
+      }
 
       if (_Title != null)
       {
@@ -140,12 +158,15 @@ namespace Fhir.R4.Models
         _Title.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("url", Url);
-
-      if (_Url != null)
+      if (!string.IsNullOrEmpty(Creation))
       {
-        writer.WritePropertyName("_url");
-        _Url.SerializeJson(ref writer, options);
+        writer.WriteString("creation", (string)Creation!);
+      }
+
+      if (_Creation != null)
+      {
+        writer.WritePropertyName("_creation");
+        _Creation.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

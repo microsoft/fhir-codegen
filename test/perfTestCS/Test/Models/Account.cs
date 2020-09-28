@@ -127,13 +127,13 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("party");
+      Party.SerializeJson(ref writer, options);
+
       if (OnHold != null)
       {
         writer.WriteBoolean("onHold", (bool)OnHold!);
       }
-
-      writer.WritePropertyName("party");
-      Party.SerializeJson(ref writer, options);
 
       if (Period != null)
       {
@@ -201,7 +201,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centers, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Account>))]
   public class Account : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -275,10 +275,73 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      if ((Subject != null) && (Subject.Count != 0))
+      {
+        writer.WritePropertyName("subject");
+        writer.WriteStartArray();
+
+        foreach (Reference valSubject in Subject)
+        {
+          valSubject.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (ServicePeriod != null)
+      {
+        writer.WritePropertyName("servicePeriod");
+        ServicePeriod.SerializeJson(ref writer, options);
+      }
 
       if ((Coverage != null) && (Coverage.Count != 0))
       {
@@ -293,7 +356,16 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("description", Description);
+      if (Owner != null)
+      {
+        writer.WritePropertyName("owner");
+        Owner.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
 
       if (_Description != null)
       {
@@ -314,70 +386,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
-      {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
-      {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
-      }
-
-      if (Owner != null)
-      {
-        writer.WritePropertyName("owner");
-        Owner.SerializeJson(ref writer, options);
-      }
-
       if (PartOf != null)
       {
         writer.WritePropertyName("partOf");
         PartOf.SerializeJson(ref writer, options);
-      }
-
-      if (ServicePeriod != null)
-      {
-        writer.WritePropertyName("servicePeriod");
-        ServicePeriod.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
-      if ((Subject != null) && (Subject.Count != 0))
-      {
-        writer.WritePropertyName("subject");
-        writer.WriteStartArray();
-
-        foreach (Reference valSubject in Subject)
-        {
-          valSubject.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

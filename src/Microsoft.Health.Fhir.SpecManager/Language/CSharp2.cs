@@ -341,8 +341,75 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteJsonSerializationHelpers()
         {
             WriteJsonSerializerInterface();
+            WriteJsonSerializerOptions();
             WriteJsonSerializerResourceConverter();
             WriteJsonSerializerComponentConverter();
+        }
+
+        /// <summary>Writes the JSON serializer options.</summary>
+        private void WriteJsonSerializerOptions()
+        {
+            // create a filename for writing
+            string filename = Path.Combine(_directorySerialization, "FhirSerializerOptions.cs");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteHeader(false, false, true);
+
+                // open namespace
+                _writer.WriteLineIndented($"namespace {_namespaceSerialization}");
+                _writer.OpenScope();
+
+                // open class
+                WriteIndentedComment("Default JsonSerializerOptions to format JSON serialization as expected.");
+                _writer.WriteLineIndented($"{_accessModifier} static class FhirSerializerOptions");
+                _writer.OpenScope();
+
+                _writer.WriteLine("#pragma warning disable CA1810 // Initialize reference type static fields inline");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Compact format internal variable.");
+                _writer.WriteLineIndented("private static readonly JsonSerializerOptions _compactFormat;");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Pretty print format internal variable.");
+                _writer.WriteLineIndented("private static readonly JsonSerializerOptions _prettyFormat;");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Initializes static members of the <see cref=\"FhirSerializerOptions\"/> class.");
+                _writer.WriteLineIndented("static FhirSerializerOptions()");
+                _writer.OpenScope();
+                _writer.WriteLineIndented("_prettyFormat = new JsonSerializerOptions();");
+                _writer.WriteLineIndented("_prettyFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;");
+                _writer.WriteLineIndented("_prettyFormat.WriteIndented = true;");
+                _writer.WriteLine();
+                _writer.WriteLineIndented("_compactFormat = new JsonSerializerOptions();");
+                _writer.WriteLineIndented("_compactFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;");
+                _writer.WriteLineIndented("_compactFormat.WriteIndented = true;");
+                _writer.CloseScope();
+                _writer.WriteLine();
+
+                _writer.WriteLine("#pragma warning restore CA1810 // Initialize reference type static fields inline");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Compact (no extra whitespace) format.");
+                _writer.WriteLineIndented("public static JsonSerializerOptions Compact => _compactFormat;");
+                _writer.WriteLine();
+
+                WriteIndentedComment("Pretty-printed (newlines and indentation) format.");
+                _writer.WriteLineIndented("public static JsonSerializerOptions Pretty => _prettyFormat;");
+
+                // close class
+                _writer.CloseScope();
+
+                // close namespace
+                _writer.CloseScope();
+
+                WriteFooter();
+            }
         }
 
         /// <summary>Writes the JSON serializer resource converter.</summary>
@@ -851,13 +918,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="nameForExport">The name for export.</param>
         private void WriteJsonConverterAttribute(bool isResource, string nameForExport)
         {
-            if (isResource)
+            switch (nameForExport)
             {
-                _writer.WriteLineIndented($"[JsonConverter(typeof({_namespaceSerialization}.JsonResourceConverter))]");
-                return;
-            }
+                case "Resource":
+                case "DomainResource":
+                case "MetadataResource":
+                case "CanonicalResource":
+                    _writer.WriteLineIndented($"[JsonConverter(typeof({_namespaceSerialization}.JsonResourceConverter))]");
+                    break;
 
-            _writer.WriteLineIndented($"[JsonConverter(typeof({_namespaceSerialization}.JsonComponentConverter<{nameForExport}>))]");
+                default:
+                    _writer.WriteLineIndented($"[JsonConverter(typeof({_namespaceSerialization}.JsonComponentConverter<{nameForExport}>))]");
+                    break;
+            }
         }
 
         /// <summary>Writes a complex.</summary>
@@ -1003,7 +1076,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLine();
             }
 
-            WriteSerializeJsonElements(complex, nameForExport);
+            WriteSerializeJsonElements(complex);
 
             _writer.WriteLineIndented($"if (includeStartObject)");
             _writer.OpenScope();
@@ -1016,9 +1089,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Writes a parse JSON property elements.</summary>
         /// <param name="complex">The complex.</param>
-        private void WriteSerializeJsonElements(FhirComplex complex, string className)
+        private void WriteSerializeJsonElements(FhirComplex complex)
         {
-            foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.Name))
+            foreach (FhirElement element in complex.Elements.Values)
             {
                 if (element.IsInherited)
                 {
@@ -1205,6 +1278,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         if (isOptional)
                         {
                             _writer.WriteLineIndented($"if ({elementName} != null)");
+                            _writer.OpenScope();
+                            _writer.WriteLineIndented($"writer.{writerFunctionName}(\"{camel}\", ({elementType}){elementName}!);");
+                            _writer.CloseScope();
+                        }
+                        else if (elementType == "string")
+                        {
+                            _writer.WriteLineIndented($"if (!string.IsNullOrEmpty({elementName}))");
                             _writer.OpenScope();
                             _writer.WriteLineIndented($"writer.{writerFunctionName}(\"{camel}\", ({elementType}){elementName}!);");
                             _writer.CloseScope();

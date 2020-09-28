@@ -35,16 +35,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      if (HighLimit != null)
-      {
-        writer.WritePropertyName("highLimit");
-        HighLimit.SerializeJson(ref writer, options);
-      }
-
       if (LowLimit != null)
       {
         writer.WritePropertyName("lowLimit");
         LowLimit.SerializeJson(ref writer, options);
+      }
+
+      if (HighLimit != null)
+      {
+        writer.WritePropertyName("highLimit");
+        HighLimit.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -161,7 +161,10 @@ namespace Fhir.R4.Models
         AmountRange.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("amountString", AmountString);
+      if (!string.IsNullOrEmpty(AmountString))
+      {
+        writer.WriteString("amountString", (string)AmountString!);
+      }
 
       if (_AmountString != null)
       {
@@ -169,18 +172,21 @@ namespace Fhir.R4.Models
         _AmountString.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("amountText", AmountText);
+      if (AmountType != null)
+      {
+        writer.WritePropertyName("amountType");
+        AmountType.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(AmountText))
+      {
+        writer.WriteString("amountText", (string)AmountText!);
+      }
 
       if (_AmountText != null)
       {
         writer.WritePropertyName("_amountText");
         _AmountText.SerializeJson(ref writer, options);
-      }
-
-      if (AmountType != null)
-      {
-        writer.WritePropertyName("amountType");
-        AmountType.SerializeJson(ref writer, options);
       }
 
       if (ReferenceRange != null)

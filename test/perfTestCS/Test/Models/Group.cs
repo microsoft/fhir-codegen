@@ -62,14 +62,6 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("code");
       Code.SerializeJson(ref writer, options);
 
-      writer.WriteBoolean("exclude", Exclude);
-
-      if (Period != null)
-      {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
-      }
-
       writer.WritePropertyName("valueCodeableConcept");
       ValueCodeableConcept.SerializeJson(ref writer, options);
 
@@ -83,6 +75,14 @@ namespace Fhir.R4.Models
 
       writer.WritePropertyName("valueReference");
       ValueReference.SerializeJson(ref writer, options);
+
+      writer.WriteBoolean("exclude", Exclude);
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -197,15 +197,15 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("entity");
       Entity.SerializeJson(ref writer, options);
 
-      if (Inactive != null)
-      {
-        writer.WriteBoolean("inactive", (bool)Inactive!);
-      }
-
       if (Period != null)
       {
         writer.WritePropertyName("period");
         Period.SerializeJson(ref writer, options);
+      }
+
+      if (Inactive != null)
+      {
+        writer.WriteBoolean("inactive", (bool)Inactive!);
       }
 
       if (includeStartObject)
@@ -268,7 +268,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Group>))]
   public class Group : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -332,36 +332,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Active != null)
-      {
-        writer.WriteBoolean("active", (bool)Active!);
-      }
-
-      writer.WriteBoolean("actual", Actual);
-
-      if ((Characteristic != null) && (Characteristic.Count != 0))
-      {
-        writer.WritePropertyName("characteristic");
-        writer.WriteStartArray();
-
-        foreach (GroupCharacteristic valCharacteristic in Characteristic)
-        {
-          valCharacteristic.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Code != null)
-      {
-        writer.WritePropertyName("code");
-        Code.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -376,10 +353,63 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (Active != null)
+      {
+        writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteBoolean("actual", Actual);
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      if (Quantity != null)
+      {
+        writer.WriteNumber("quantity", (uint)Quantity!);
+      }
+
       if (ManagingEntity != null)
       {
         writer.WritePropertyName("managingEntity");
         ManagingEntity.SerializeJson(ref writer, options);
+      }
+
+      if ((Characteristic != null) && (Characteristic.Count != 0))
+      {
+        writer.WritePropertyName("characteristic");
+        writer.WriteStartArray();
+
+        foreach (GroupCharacteristic valCharacteristic in Characteristic)
+        {
+          valCharacteristic.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((Member != null) && (Member.Count != 0))
@@ -393,27 +423,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
-      {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
-      }
-
-      if (Quantity != null)
-      {
-        writer.WriteNumber("quantity", (uint)Quantity!);
-      }
-
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
-      {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

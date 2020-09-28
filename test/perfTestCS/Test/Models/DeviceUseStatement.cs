@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceUseStatement>))]
   public class DeviceUseStatement : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -102,45 +102,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if ((BasedOn != null) && (BasedOn.Count != 0))
-      {
-        writer.WritePropertyName("basedOn");
-        writer.WriteStartArray();
-
-        foreach (Reference valBasedOn in BasedOn)
-        {
-          valBasedOn.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (BodySite != null)
-      {
-        writer.WritePropertyName("bodySite");
-        BodySite.SerializeJson(ref writer, options);
-      }
-
-      if ((DerivedFrom != null) && (DerivedFrom.Count != 0))
-      {
-        writer.WritePropertyName("derivedFrom");
-        writer.WriteStartArray();
-
-        foreach (Reference valDerivedFrom in DerivedFrom)
-        {
-          valDerivedFrom.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WritePropertyName("device");
-      Device.SerializeJson(ref writer, options);
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -155,18 +123,88 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Note != null) && (Note.Count != 0))
+      if ((BasedOn != null) && (BasedOn.Count != 0))
       {
-        writer.WritePropertyName("note");
+        writer.WritePropertyName("basedOn");
         writer.WriteStartArray();
 
-        foreach (Annotation valNote in Note)
+        foreach (Reference valBasedOn in BasedOn)
         {
-          valNote.SerializeJson(ref writer, options, true);
+          valBasedOn.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("subject");
+      Subject.SerializeJson(ref writer, options);
+
+      if ((DerivedFrom != null) && (DerivedFrom.Count != 0))
+      {
+        writer.WritePropertyName("derivedFrom");
+        writer.WriteStartArray();
+
+        foreach (Reference valDerivedFrom in DerivedFrom)
+        {
+          valDerivedFrom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (TimingTiming != null)
+      {
+        writer.WritePropertyName("timingTiming");
+        TimingTiming.SerializeJson(ref writer, options);
+      }
+
+      if (TimingPeriod != null)
+      {
+        writer.WritePropertyName("timingPeriod");
+        TimingPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(TimingDateTime))
+      {
+        writer.WriteString("timingDateTime", (string)TimingDateTime!);
+      }
+
+      if (_TimingDateTime != null)
+      {
+        writer.WritePropertyName("_timingDateTime");
+        _TimingDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(RecordedOn))
+      {
+        writer.WriteString("recordedOn", (string)RecordedOn!);
+      }
+
+      if (_RecordedOn != null)
+      {
+        writer.WritePropertyName("_recordedOn");
+        _RecordedOn.SerializeJson(ref writer, options);
+      }
+
+      if (Source != null)
+      {
+        writer.WritePropertyName("source");
+        Source.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("device");
+      Device.SerializeJson(ref writer, options);
 
       if ((ReasonCode != null) && (ReasonCode.Count != 0))
       {
@@ -194,49 +232,23 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("recordedOn", RecordedOn);
-
-      if (_RecordedOn != null)
+      if (BodySite != null)
       {
-        writer.WritePropertyName("_recordedOn");
-        _RecordedOn.SerializeJson(ref writer, options);
+        writer.WritePropertyName("bodySite");
+        BodySite.SerializeJson(ref writer, options);
       }
 
-      if (Source != null)
+      if ((Note != null) && (Note.Count != 0))
       {
-        writer.WritePropertyName("source");
-        Source.SerializeJson(ref writer, options);
-      }
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
 
-      writer.WriteString("status", Status);
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
 
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(ref writer, options);
-
-      if (TimingTiming != null)
-      {
-        writer.WritePropertyName("timingTiming");
-        TimingTiming.SerializeJson(ref writer, options);
-      }
-
-      if (TimingPeriod != null)
-      {
-        writer.WritePropertyName("timingPeriod");
-        TimingPeriod.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("timingDateTime", TimingDateTime);
-
-      if (_TimingDateTime != null)
-      {
-        writer.WritePropertyName("_timingDateTime");
-        _TimingDateTime.SerializeJson(ref writer, options);
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

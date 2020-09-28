@@ -67,7 +67,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("description", Description);
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
 
       if (_Description != null)
       {
@@ -75,23 +78,10 @@ namespace Fhir.R4.Models
         _Description.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("expression", ExpressionField);
-
-      if (_ExpressionField != null)
+      if (!string.IsNullOrEmpty(Name))
       {
-        writer.WritePropertyName("_expression");
-        _ExpressionField.SerializeJson(ref writer, options);
+        writer.WriteString("name", (string)Name!);
       }
-
-      writer.WriteString("language", Language);
-
-      if (_Language != null)
-      {
-        writer.WritePropertyName("_language");
-        _Language.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("name", Name);
 
       if (_Name != null)
       {
@@ -99,7 +89,32 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("reference", Reference);
+      if (!string.IsNullOrEmpty(Language))
+      {
+        writer.WriteString("language", (string)Language!);
+      }
+
+      if (_Language != null)
+      {
+        writer.WritePropertyName("_language");
+        _Language.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ExpressionField))
+      {
+        writer.WriteString("expression", (string)ExpressionField!);
+      }
+
+      if (_ExpressionField != null)
+      {
+        writer.WritePropertyName("_expression");
+        _ExpressionField.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Reference))
+      {
+        writer.WriteString("reference", (string)Reference!);
+      }
 
       if (_Reference != null)
       {

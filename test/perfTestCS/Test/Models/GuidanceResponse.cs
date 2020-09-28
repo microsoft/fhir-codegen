@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<GuidanceResponse>))]
   public class GuidanceResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -113,41 +113,18 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if ((DataRequirement != null) && (DataRequirement.Count != 0))
+      if (RequestIdentifier != null)
       {
-        writer.WritePropertyName("dataRequirement");
-        writer.WriteStartArray();
-
-        foreach (DataRequirement valDataRequirement in DataRequirement)
-        {
-          valDataRequirement.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Encounter != null)
-      {
-        writer.WritePropertyName("encounter");
-        Encounter.SerializeJson(ref writer, options);
-      }
-
-      if ((EvaluationMessage != null) && (EvaluationMessage.Count != 0))
-      {
-        writer.WritePropertyName("evaluationMessage");
-        writer.WriteStartArray();
-
-        foreach (Reference valEvaluationMessage in EvaluationMessage)
-        {
-          valEvaluationMessage.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("requestIdentifier");
+        RequestIdentifier.SerializeJson(ref writer, options);
       }
 
       if ((Identifier != null) && (Identifier.Count != 0))
@@ -163,7 +140,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("moduleUri", ModuleUri);
+      if (!string.IsNullOrEmpty(ModuleUri))
+      {
+        writer.WriteString("moduleUri", (string)ModuleUri!);
+      }
 
       if (_ModuleUri != null)
       {
@@ -171,7 +151,10 @@ namespace Fhir.R4.Models
         _ModuleUri.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("moduleCanonical", ModuleCanonical);
+      if (!string.IsNullOrEmpty(ModuleCanonical))
+      {
+        writer.WriteString("moduleCanonical", (string)ModuleCanonical!);
+      }
 
       if (_ModuleCanonical != null)
       {
@@ -182,31 +165,38 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("moduleCodeableConcept");
       ModuleCodeableConcept.SerializeJson(ref writer, options);
 
-      if ((Note != null) && (Note.Count != 0))
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("note");
-        writer.WriteStartArray();
-
-        foreach (Annotation valNote in Note)
-        {
-          valNote.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("status", (string)Status!);
       }
 
-      writer.WriteString("occurrenceDateTime", OccurrenceDateTime);
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      if (Encounter != null)
+      {
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(OccurrenceDateTime))
+      {
+        writer.WriteString("occurrenceDateTime", (string)OccurrenceDateTime!);
+      }
 
       if (_OccurrenceDateTime != null)
       {
         writer.WritePropertyName("_occurrenceDateTime");
         _OccurrenceDateTime.SerializeJson(ref writer, options);
-      }
-
-      if (OutputParameters != null)
-      {
-        writer.WritePropertyName("outputParameters");
-        OutputParameters.SerializeJson(ref writer, options);
       }
 
       if (Performer != null)
@@ -241,10 +231,36 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (RequestIdentifier != null)
+      if ((Note != null) && (Note.Count != 0))
       {
-        writer.WritePropertyName("requestIdentifier");
-        RequestIdentifier.SerializeJson(ref writer, options);
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((EvaluationMessage != null) && (EvaluationMessage.Count != 0))
+      {
+        writer.WritePropertyName("evaluationMessage");
+        writer.WriteStartArray();
+
+        foreach (Reference valEvaluationMessage in EvaluationMessage)
+        {
+          valEvaluationMessage.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (OutputParameters != null)
+      {
+        writer.WritePropertyName("outputParameters");
+        OutputParameters.SerializeJson(ref writer, options);
       }
 
       if (Result != null)
@@ -253,18 +269,17 @@ namespace Fhir.R4.Models
         Result.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if ((DataRequirement != null) && (DataRequirement.Count != 0))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
+        writer.WritePropertyName("dataRequirement");
+        writer.WriteStartArray();
 
-      if (Subject != null)
-      {
-        writer.WritePropertyName("subject");
-        Subject.SerializeJson(ref writer, options);
+        foreach (DataRequirement valDataRequirement in DataRequirement)
+        {
+          valDataRequirement.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

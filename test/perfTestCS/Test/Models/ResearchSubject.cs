@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A physical entity which is the primary unit of operational and/or administrative interest in a study.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ResearchSubject>))]
   public class ResearchSubject : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -73,32 +73,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      writer.WriteString("actualArm", ActualArm);
-
-      if (_ActualArm != null)
-      {
-        writer.WritePropertyName("_actualArm");
-        _ActualArm.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("assignedArm", AssignedArm);
-
-      if (_AssignedArm != null)
-      {
-        writer.WritePropertyName("_assignedArm");
-        _AssignedArm.SerializeJson(ref writer, options);
-      }
-
-      if (Consent != null)
-      {
-        writer.WritePropertyName("consent");
-        Consent.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -113,16 +94,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("individual");
-      Individual.SerializeJson(ref writer, options);
-
-      if (Period != null)
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
+        writer.WriteString("status", (string)Status!);
       }
-
-      writer.WriteString("status", Status);
 
       if (_Status != null)
       {
@@ -130,8 +105,45 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(ref writer, options);
       }
 
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
       writer.WritePropertyName("study");
       Study.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("individual");
+      Individual.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(AssignedArm))
+      {
+        writer.WriteString("assignedArm", (string)AssignedArm!);
+      }
+
+      if (_AssignedArm != null)
+      {
+        writer.WritePropertyName("_assignedArm");
+        _AssignedArm.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ActualArm))
+      {
+        writer.WriteString("actualArm", (string)ActualArm!);
+      }
+
+      if (_ActualArm != null)
+      {
+        writer.WritePropertyName("_actualArm");
+        _ActualArm.SerializeJson(ref writer, options);
+      }
+
+      if (Consent != null)
+      {
+        writer.WritePropertyName("consent");
+        Consent.SerializeJson(ref writer, options);
+      }
 
       if (includeStartObject)
       {

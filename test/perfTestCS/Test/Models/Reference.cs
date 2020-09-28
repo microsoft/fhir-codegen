@@ -58,12 +58,26 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("display", Display);
-
-      if (_Display != null)
+      if (!string.IsNullOrEmpty(ReferenceField))
       {
-        writer.WritePropertyName("_display");
-        _Display.SerializeJson(ref writer, options);
+        writer.WriteString("reference", (string)ReferenceField!);
+      }
+
+      if (_ReferenceField != null)
+      {
+        writer.WritePropertyName("_reference");
+        _ReferenceField.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
       }
 
       if (Identifier != null)
@@ -72,20 +86,15 @@ namespace Fhir.R4.Models
         Identifier.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("reference", ReferenceField);
-
-      if (_ReferenceField != null)
+      if (!string.IsNullOrEmpty(Display))
       {
-        writer.WritePropertyName("_reference");
-        _ReferenceField.SerializeJson(ref writer, options);
+        writer.WriteString("display", (string)Display!);
       }
 
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
+      if (_Display != null)
       {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_display");
+        _Display.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

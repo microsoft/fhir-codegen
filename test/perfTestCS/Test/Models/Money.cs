@@ -43,14 +43,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("currency", Currency);
-
-      if (_Currency != null)
-      {
-        writer.WritePropertyName("_currency");
-        _Currency.SerializeJson(ref writer, options);
-      }
-
       if (Value != null)
       {
         writer.WriteNumber("value", (decimal)Value!);
@@ -60,6 +52,17 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("_value");
         _Value.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Currency))
+      {
+        writer.WriteString("currency", (string)Currency!);
+      }
+
+      if (_Currency != null)
+      {
+        writer.WritePropertyName("_currency");
+        _Currency.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

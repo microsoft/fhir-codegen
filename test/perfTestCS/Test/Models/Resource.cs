@@ -53,7 +53,10 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("id", Id);
+      if (!string.IsNullOrEmpty(Id))
+      {
+        writer.WriteString("id", (string)Id!);
+      }
 
       if (_Id != null)
       {
@@ -61,7 +64,16 @@ namespace Fhir.R4.Models
         _Id.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("implicitRules", ImplicitRules);
+      if (Meta != null)
+      {
+        writer.WritePropertyName("meta");
+        Meta.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ImplicitRules))
+      {
+        writer.WriteString("implicitRules", (string)ImplicitRules!);
+      }
 
       if (_ImplicitRules != null)
       {
@@ -69,18 +81,15 @@ namespace Fhir.R4.Models
         _ImplicitRules.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("language", Language);
+      if (!string.IsNullOrEmpty(Language))
+      {
+        writer.WriteString("language", (string)Language!);
+      }
 
       if (_Language != null)
       {
         writer.WritePropertyName("_language");
         _Language.SerializeJson(ref writer, options);
-      }
-
-      if (Meta != null)
-      {
-        writer.WritePropertyName("meta");
-        Meta.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

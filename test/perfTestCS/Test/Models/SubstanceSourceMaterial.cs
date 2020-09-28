@@ -39,7 +39,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("fraction", Fraction);
+      if (!string.IsNullOrEmpty(Fraction))
+      {
+        writer.WriteString("fraction", (string)Fraction!);
+      }
 
       if (_Fraction != null)
       {
@@ -139,18 +142,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("authorDescription", AuthorDescription);
+      if (AuthorType != null)
+      {
+        writer.WritePropertyName("authorType");
+        AuthorType.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(AuthorDescription))
+      {
+        writer.WriteString("authorDescription", (string)AuthorDescription!);
+      }
 
       if (_AuthorDescription != null)
       {
         writer.WritePropertyName("_authorDescription");
         _AuthorDescription.SerializeJson(ref writer, options);
-      }
-
-      if (AuthorType != null)
-      {
-        writer.WritePropertyName("authorType");
-        AuthorType.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -263,13 +269,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (HybridType != null)
+      if (!string.IsNullOrEmpty(MaternalOrganismId))
       {
-        writer.WritePropertyName("hybridType");
-        HybridType.SerializeJson(ref writer, options);
+        writer.WriteString("maternalOrganismId", (string)MaternalOrganismId!);
       }
-
-      writer.WriteString("maternalOrganismId", MaternalOrganismId);
 
       if (_MaternalOrganismId != null)
       {
@@ -277,7 +280,10 @@ namespace Fhir.R4.Models
         _MaternalOrganismId.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("maternalOrganismName", MaternalOrganismName);
+      if (!string.IsNullOrEmpty(MaternalOrganismName))
+      {
+        writer.WriteString("maternalOrganismName", (string)MaternalOrganismName!);
+      }
 
       if (_MaternalOrganismName != null)
       {
@@ -285,7 +291,10 @@ namespace Fhir.R4.Models
         _MaternalOrganismName.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("paternalOrganismId", PaternalOrganismId);
+      if (!string.IsNullOrEmpty(PaternalOrganismId))
+      {
+        writer.WriteString("paternalOrganismId", (string)PaternalOrganismId!);
+      }
 
       if (_PaternalOrganismId != null)
       {
@@ -293,12 +302,21 @@ namespace Fhir.R4.Models
         _PaternalOrganismId.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("paternalOrganismName", PaternalOrganismName);
+      if (!string.IsNullOrEmpty(PaternalOrganismName))
+      {
+        writer.WriteString("paternalOrganismName", (string)PaternalOrganismName!);
+      }
 
       if (_PaternalOrganismName != null)
       {
         writer.WritePropertyName("_paternalOrganismName");
         _PaternalOrganismName.SerializeJson(ref writer, options);
+      }
+
+      if (HybridType != null)
+      {
+        writer.WritePropertyName("hybridType");
+        HybridType.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -418,28 +436,28 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Class != null)
-      {
-        writer.WritePropertyName("class");
-        Class.SerializeJson(ref writer, options);
-      }
-
       if (Kingdom != null)
       {
         writer.WritePropertyName("kingdom");
         Kingdom.SerializeJson(ref writer, options);
       }
 
-      if (Order != null)
-      {
-        writer.WritePropertyName("order");
-        Order.SerializeJson(ref writer, options);
-      }
-
       if (Phylum != null)
       {
         writer.WritePropertyName("phylum");
         Phylum.SerializeJson(ref writer, options);
+      }
+
+      if (Class != null)
+      {
+        writer.WritePropertyName("class");
+        Class.SerializeJson(ref writer, options);
+      }
+
+      if (Order != null)
+      {
+        writer.WritePropertyName("order");
+        Order.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -558,6 +576,41 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Family != null)
+      {
+        writer.WritePropertyName("family");
+        Family.SerializeJson(ref writer, options);
+      }
+
+      if (Genus != null)
+      {
+        writer.WritePropertyName("genus");
+        Genus.SerializeJson(ref writer, options);
+      }
+
+      if (Species != null)
+      {
+        writer.WritePropertyName("species");
+        Species.SerializeJson(ref writer, options);
+      }
+
+      if (IntraspecificType != null)
+      {
+        writer.WritePropertyName("intraspecificType");
+        IntraspecificType.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(IntraspecificDescription))
+      {
+        writer.WriteString("intraspecificDescription", (string)IntraspecificDescription!);
+      }
+
+      if (_IntraspecificDescription != null)
+      {
+        writer.WritePropertyName("_intraspecificDescription");
+        _IntraspecificDescription.SerializeJson(ref writer, options);
+      }
+
       if ((Author != null) && (Author.Count != 0))
       {
         writer.WritePropertyName("author");
@@ -571,48 +624,16 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Family != null)
-      {
-        writer.WritePropertyName("family");
-        Family.SerializeJson(ref writer, options);
-      }
-
-      if (Genus != null)
-      {
-        writer.WritePropertyName("genus");
-        Genus.SerializeJson(ref writer, options);
-      }
-
       if (Hybrid != null)
       {
         writer.WritePropertyName("hybrid");
         Hybrid.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("intraspecificDescription", IntraspecificDescription);
-
-      if (_IntraspecificDescription != null)
-      {
-        writer.WritePropertyName("_intraspecificDescription");
-        _IntraspecificDescription.SerializeJson(ref writer, options);
-      }
-
-      if (IntraspecificType != null)
-      {
-        writer.WritePropertyName("intraspecificType");
-        IntraspecificType.SerializeJson(ref writer, options);
-      }
-
       if (OrganismGeneral != null)
       {
         writer.WritePropertyName("organismGeneral");
         OrganismGeneral.SerializeJson(ref writer, options);
-      }
-
-      if (Species != null)
-      {
-        writer.WritePropertyName("species");
-        Species.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -817,7 +838,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSourceMaterial>))]
   public class SubstanceSourceMaterial : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -897,73 +918,30 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if ((CountryOfOrigin != null) && (CountryOfOrigin.Count != 0))
+      if (SourceMaterialClass != null)
       {
-        writer.WritePropertyName("countryOfOrigin");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valCountryOfOrigin in CountryOfOrigin)
-        {
-          valCountryOfOrigin.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("sourceMaterialClass");
+        SourceMaterialClass.SerializeJson(ref writer, options);
       }
 
-      if (DevelopmentStage != null)
+      if (SourceMaterialType != null)
       {
-        writer.WritePropertyName("developmentStage");
-        DevelopmentStage.SerializeJson(ref writer, options);
+        writer.WritePropertyName("sourceMaterialType");
+        SourceMaterialType.SerializeJson(ref writer, options);
       }
 
-      if ((FractionDescription != null) && (FractionDescription.Count != 0))
+      if (SourceMaterialState != null)
       {
-        writer.WritePropertyName("fractionDescription");
-        writer.WriteStartArray();
-
-        foreach (SubstanceSourceMaterialFractionDescription valFractionDescription in FractionDescription)
-        {
-          valFractionDescription.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((GeographicalLocation != null) && (GeographicalLocation.Count != 0))
-      {
-        writer.WritePropertyName("geographicalLocation");
-        writer.WriteStartArray();
-
-        foreach (string valGeographicalLocation in GeographicalLocation)
-        {
-          writer.WriteStringValue(valGeographicalLocation);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((_GeographicalLocation != null) && (_GeographicalLocation.Count != 0))
-      {
-        writer.WritePropertyName("_geographicalLocation");
-        writer.WriteStartArray();
-
-        foreach (Element val_GeographicalLocation in _GeographicalLocation)
-        {
-          val_GeographicalLocation.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Organism != null)
-      {
-        writer.WritePropertyName("organism");
-        Organism.SerializeJson(ref writer, options);
+        writer.WritePropertyName("sourceMaterialState");
+        SourceMaterialState.SerializeJson(ref writer, options);
       }
 
       if (OrganismId != null)
@@ -972,7 +950,10 @@ namespace Fhir.R4.Models
         OrganismId.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("organismName", OrganismName);
+      if (!string.IsNullOrEmpty(OrganismName))
+      {
+        writer.WriteString("organismName", (string)OrganismName!);
+      }
 
       if (_OrganismName != null)
       {
@@ -1019,6 +1000,70 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if ((CountryOfOrigin != null) && (CountryOfOrigin.Count != 0))
+      {
+        writer.WritePropertyName("countryOfOrigin");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCountryOfOrigin in CountryOfOrigin)
+        {
+          valCountryOfOrigin.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((GeographicalLocation != null) && (GeographicalLocation.Count != 0))
+      {
+        writer.WritePropertyName("geographicalLocation");
+        writer.WriteStartArray();
+
+        foreach (string valGeographicalLocation in GeographicalLocation)
+        {
+          writer.WriteStringValue(valGeographicalLocation);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_GeographicalLocation != null) && (_GeographicalLocation.Count != 0))
+      {
+        writer.WritePropertyName("_geographicalLocation");
+        writer.WriteStartArray();
+
+        foreach (Element val_GeographicalLocation in _GeographicalLocation)
+        {
+          val_GeographicalLocation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (DevelopmentStage != null)
+      {
+        writer.WritePropertyName("developmentStage");
+        DevelopmentStage.SerializeJson(ref writer, options);
+      }
+
+      if ((FractionDescription != null) && (FractionDescription.Count != 0))
+      {
+        writer.WritePropertyName("fractionDescription");
+        writer.WriteStartArray();
+
+        foreach (SubstanceSourceMaterialFractionDescription valFractionDescription in FractionDescription)
+        {
+          valFractionDescription.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Organism != null)
+      {
+        writer.WritePropertyName("organism");
+        Organism.SerializeJson(ref writer, options);
+      }
+
       if ((PartDescription != null) && (PartDescription.Count != 0))
       {
         writer.WritePropertyName("partDescription");
@@ -1030,24 +1075,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (SourceMaterialClass != null)
-      {
-        writer.WritePropertyName("sourceMaterialClass");
-        SourceMaterialClass.SerializeJson(ref writer, options);
-      }
-
-      if (SourceMaterialState != null)
-      {
-        writer.WritePropertyName("sourceMaterialState");
-        SourceMaterialState.SerializeJson(ref writer, options);
-      }
-
-      if (SourceMaterialType != null)
-      {
-        writer.WritePropertyName("sourceMaterialType");
-        SourceMaterialType.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

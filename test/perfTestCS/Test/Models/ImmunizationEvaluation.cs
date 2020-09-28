@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes a comparison of an immunization event against published recommendations to determine if the administration is "valid" in relation to those  recommendations.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationEvaluation>))]
   public class ImmunizationEvaluation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -113,18 +113,45 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if (Authority != null)
+      if ((Identifier != null) && (Identifier.Count != 0))
       {
-        writer.WritePropertyName("authority");
-        Authority.SerializeJson(ref writer, options);
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
-      writer.WriteString("date", Date);
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Date))
+      {
+        writer.WriteString("date", (string)Date!);
+      }
 
       if (_Date != null)
       {
@@ -132,26 +159,17 @@ namespace Fhir.R4.Models
         _Date.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("description", Description);
-
-      if (_Description != null)
+      if (Authority != null)
       {
-        writer.WritePropertyName("_description");
-        _Description.SerializeJson(ref writer, options);
+        writer.WritePropertyName("authority");
+        Authority.SerializeJson(ref writer, options);
       }
 
-      if (DoseNumberPositiveInt != null)
-      {
-        writer.WriteNumber("doseNumberPositiveInt", (uint)DoseNumberPositiveInt!);
-      }
+      writer.WritePropertyName("targetDisease");
+      TargetDisease.SerializeJson(ref writer, options);
 
-      writer.WriteString("doseNumberString", DoseNumberString);
-
-      if (_DoseNumberString != null)
-      {
-        writer.WritePropertyName("_doseNumberString");
-        _DoseNumberString.SerializeJson(ref writer, options);
-      }
+      writer.WritePropertyName("immunizationEvent");
+      ImmunizationEvent.SerializeJson(ref writer, options);
 
       writer.WritePropertyName("doseStatus");
       DoseStatus.SerializeJson(ref writer, options);
@@ -169,26 +187,21 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
+      if (!string.IsNullOrEmpty(Description))
       {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("description", (string)Description!);
       }
 
-      writer.WritePropertyName("immunizationEvent");
-      ImmunizationEvent.SerializeJson(ref writer, options);
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(ref writer, options);
-
-      writer.WriteString("series", Series);
+      if (!string.IsNullOrEmpty(Series))
+      {
+        writer.WriteString("series", (string)Series!);
+      }
 
       if (_Series != null)
       {
@@ -196,29 +209,37 @@ namespace Fhir.R4.Models
         _Series.SerializeJson(ref writer, options);
       }
 
+      if (DoseNumberPositiveInt != null)
+      {
+        writer.WriteNumber("doseNumberPositiveInt", (uint)DoseNumberPositiveInt!);
+      }
+
+      if (!string.IsNullOrEmpty(DoseNumberString))
+      {
+        writer.WriteString("doseNumberString", (string)DoseNumberString!);
+      }
+
+      if (_DoseNumberString != null)
+      {
+        writer.WritePropertyName("_doseNumberString");
+        _DoseNumberString.SerializeJson(ref writer, options);
+      }
+
       if (SeriesDosesPositiveInt != null)
       {
         writer.WriteNumber("seriesDosesPositiveInt", (uint)SeriesDosesPositiveInt!);
       }
 
-      writer.WriteString("seriesDosesString", SeriesDosesString);
+      if (!string.IsNullOrEmpty(SeriesDosesString))
+      {
+        writer.WriteString("seriesDosesString", (string)SeriesDosesString!);
+      }
 
       if (_SeriesDosesString != null)
       {
         writer.WritePropertyName("_seriesDosesString");
         _SeriesDosesString.SerializeJson(ref writer, options);
       }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("targetDisease");
-      TargetDisease.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {

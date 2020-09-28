@@ -51,15 +51,12 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Altitude != null)
-      {
-        writer.WriteNumber("altitude", (decimal)Altitude!);
-      }
+      writer.WriteNumber("longitude", Longitude);
 
-      if (_Altitude != null)
+      if (_Longitude != null)
       {
-        writer.WritePropertyName("_altitude");
-        _Altitude.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_longitude");
+        _Longitude.SerializeJson(ref writer, options);
       }
 
       writer.WriteNumber("latitude", Latitude);
@@ -70,12 +67,15 @@ namespace Fhir.R4.Models
         _Latitude.SerializeJson(ref writer, options);
       }
 
-      writer.WriteNumber("longitude", Longitude);
-
-      if (_Longitude != null)
+      if (Altitude != null)
       {
-        writer.WritePropertyName("_longitude");
-        _Longitude.SerializeJson(ref writer, options);
+        writer.WriteNumber("altitude", (decimal)Altitude!);
+      }
+
+      if (_Altitude != null)
+      {
+        writer.WritePropertyName("_altitude");
+        _Altitude.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -194,19 +194,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (AllDay != null)
-      {
-        writer.WriteBoolean("allDay", (bool)AllDay!);
-      }
-
-      writer.WriteString("closingTime", ClosingTime);
-
-      if (_ClosingTime != null)
-      {
-        writer.WritePropertyName("_closingTime");
-        _ClosingTime.SerializeJson(ref writer, options);
-      }
-
       if ((DaysOfWeek != null) && (DaysOfWeek.Count != 0))
       {
         writer.WritePropertyName("daysOfWeek");
@@ -233,12 +220,31 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("openingTime", OpeningTime);
+      if (AllDay != null)
+      {
+        writer.WriteBoolean("allDay", (bool)AllDay!);
+      }
+
+      if (!string.IsNullOrEmpty(OpeningTime))
+      {
+        writer.WriteString("openingTime", (string)OpeningTime!);
+      }
 
       if (_OpeningTime != null)
       {
         writer.WritePropertyName("_openingTime");
         _OpeningTime.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ClosingTime))
+      {
+        writer.WriteString("closingTime", (string)ClosingTime!);
+      }
+
+      if (_ClosingTime != null)
+      {
+        writer.WritePropertyName("_closingTime");
+        _ClosingTime.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -361,7 +367,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Location>))]
   public class Location : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -470,15 +476,53 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if (Address != null)
+      if ((Identifier != null) && (Identifier.Count != 0))
       {
-        writer.WritePropertyName("address");
-        Address.SerializeJson(ref writer, options);
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (OperationalStatus != null)
+      {
+        writer.WritePropertyName("operationalStatus");
+        OperationalStatus.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
       }
 
       if ((Alias != null) && (Alias.Count != 0))
@@ -507,15 +551,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("availabilityExceptions", AvailabilityExceptions);
-
-      if (_AvailabilityExceptions != null)
+      if (!string.IsNullOrEmpty(Description))
       {
-        writer.WritePropertyName("_availabilityExceptions");
-        _AvailabilityExceptions.SerializeJson(ref writer, options);
+        writer.WriteString("description", (string)Description!);
       }
-
-      writer.WriteString("description", Description);
 
       if (_Description != null)
       {
@@ -523,52 +562,10 @@ namespace Fhir.R4.Models
         _Description.SerializeJson(ref writer, options);
       }
 
-      if ((Endpoint != null) && (Endpoint.Count != 0))
+      if (!string.IsNullOrEmpty(Mode))
       {
-        writer.WritePropertyName("endpoint");
-        writer.WriteStartArray();
-
-        foreach (Reference valEndpoint in Endpoint)
-        {
-          valEndpoint.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("mode", (string)Mode!);
       }
-
-      if ((HoursOfOperation != null) && (HoursOfOperation.Count != 0))
-      {
-        writer.WritePropertyName("hoursOfOperation");
-        writer.WriteStartArray();
-
-        foreach (LocationHoursOfOperation valHoursOfOperation in HoursOfOperation)
-        {
-          valHoursOfOperation.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Identifier != null) && (Identifier.Count != 0))
-      {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (ManagingOrganization != null)
-      {
-        writer.WritePropertyName("managingOrganization");
-        ManagingOrganization.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("mode", Mode);
 
       if (_Mode != null)
       {
@@ -576,44 +573,17 @@ namespace Fhir.R4.Models
         _Mode.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
+      if ((Type != null) && (Type.Count != 0))
       {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
-      }
+        writer.WritePropertyName("type");
+        writer.WriteStartArray();
 
-      if (OperationalStatus != null)
-      {
-        writer.WritePropertyName("operationalStatus");
-        OperationalStatus.SerializeJson(ref writer, options);
-      }
+        foreach (CodeableConcept valType in Type)
+        {
+          valType.SerializeJson(ref writer, options, true);
+        }
 
-      if (PartOf != null)
-      {
-        writer.WritePropertyName("partOf");
-        PartOf.SerializeJson(ref writer, options);
-      }
-
-      if (PhysicalType != null)
-      {
-        writer.WritePropertyName("physicalType");
-        PhysicalType.SerializeJson(ref writer, options);
-      }
-
-      if (Position != null)
-      {
-        writer.WritePropertyName("position");
-        Position.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WriteEndArray();
       }
 
       if ((Telecom != null) && (Telecom.Count != 0))
@@ -629,14 +599,68 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Type != null) && (Type.Count != 0))
+      if (Address != null)
       {
-        writer.WritePropertyName("type");
+        writer.WritePropertyName("address");
+        Address.SerializeJson(ref writer, options);
+      }
+
+      if (PhysicalType != null)
+      {
+        writer.WritePropertyName("physicalType");
+        PhysicalType.SerializeJson(ref writer, options);
+      }
+
+      if (Position != null)
+      {
+        writer.WritePropertyName("position");
+        Position.SerializeJson(ref writer, options);
+      }
+
+      if (ManagingOrganization != null)
+      {
+        writer.WritePropertyName("managingOrganization");
+        ManagingOrganization.SerializeJson(ref writer, options);
+      }
+
+      if (PartOf != null)
+      {
+        writer.WritePropertyName("partOf");
+        PartOf.SerializeJson(ref writer, options);
+      }
+
+      if ((HoursOfOperation != null) && (HoursOfOperation.Count != 0))
+      {
+        writer.WritePropertyName("hoursOfOperation");
         writer.WriteStartArray();
 
-        foreach (CodeableConcept valType in Type)
+        foreach (LocationHoursOfOperation valHoursOfOperation in HoursOfOperation)
         {
-          valType.SerializeJson(ref writer, options, true);
+          valHoursOfOperation.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(AvailabilityExceptions))
+      {
+        writer.WriteString("availabilityExceptions", (string)AvailabilityExceptions!);
+      }
+
+      if (_AvailabilityExceptions != null)
+      {
+        writer.WritePropertyName("_availabilityExceptions");
+        _AvailabilityExceptions.SerializeJson(ref writer, options);
+      }
+
+      if ((Endpoint != null) && (Endpoint.Count != 0))
+      {
+        writer.WritePropertyName("endpoint");
+        writer.WriteStartArray();
+
+        foreach (Reference valEndpoint in Endpoint)
+        {
+          valEndpoint.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text.Encodings.Web;
+using Fhir.R4.Serialization;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
@@ -53,10 +55,10 @@ namespace PerfTestCS
                 }
             }
 
-            if (SystemTest(fhirSpecDirectory) == 0)
-            {
-                return 0;
-            }
+            //if (SystemTest(fhirSpecDirectory) == 0)
+            //{
+            //    return 0;
+            //}
 
             Console.WriteLine("Running tests, this may take a few minutes...");
             Console.WriteLine(string.Empty);
@@ -95,8 +97,12 @@ namespace PerfTestCS
             string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Patient-example.json");
             // string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Observation-2minute-apgar-score.json");
 
-            var serializeOptions = new System.Text.Json.JsonSerializerOptions();
+            string exportName = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\patient-example-roundtrip.json");
+
+            //var serializeOptions = new System.Text.Json.JsonSerializerOptions();
             // serializeOptions.Converters.Add(new Test.R4.ResourceConverter());
+
+            //serializeOptions.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
 
             // string fragment = "{" +
             //     "\"use\": \"home\"," +
@@ -117,15 +123,32 @@ namespace PerfTestCS
             // var typedFrag = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Address>(fragment, serializeOptions);
 
             // var obj = System.Text.Json.JsonSerializer.Deserialize(File.ReadAllText(path), typeof(Fhir.R4.Models.Resource), serializeOptions);
-            var typed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Patient>(File.ReadAllText(path), serializeOptions);
+            var typed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Patient>(File.ReadAllText(path), FhirSerializerOptions.Pretty);
 
             // var obj = System.Text.Json.JsonSerializer.Deserialize(File.ReadAllText(path), typeof(Test.R4.Resource), serializeOptions);
             // var typed = System.Text.Json.JsonSerializer.Deserialize<Test.R4.Patient>(File.ReadAllText(path), serializeOptions);
 
-            string val = System.Text.Json.JsonSerializer.Serialize<Fhir.R4.Models.Patient>(typed, serializeOptions);
+            //string val = System.Text.Json.JsonSerializer.Serialize<Fhir.R4.Models.Patient>(typed, serializeOptions);
+            string val = System.Text.Json.JsonSerializer.Serialize<Fhir.R4.Models.Patient>(typed, FhirSerializerOptions.Pretty);
 
-            string exportName = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\patient-example-roundtrip.json");
             File.WriteAllText(exportName, val);
+
+            //Newtonsoft.Json.JsonConverter converter = new fhirNewtonsoft.ResourceConverter();
+            //
+            //var originalObj = JsonConvert.DeserializeObject<fhirNewtonsoft.Resource>(File.ReadAllText(path), converter);
+            //string originalText = JsonConvert.SerializeObject(originalObj);
+            //
+            //var roundtripObj = JsonConvert.DeserializeObject<fhirNewtonsoft.Resource>(File.ReadAllText(exportName), converter);
+            //string roundtripText = JsonConvert.SerializeObject(roundtripObj);
+
+            //if (originalText != roundtripText)
+            //{
+            //    Console.WriteLine("Failed roundtrip!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Passed roundtrip!");
+            //}
 
             return 0;
         }

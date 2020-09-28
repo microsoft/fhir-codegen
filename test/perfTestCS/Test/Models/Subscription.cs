@@ -59,12 +59,37 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("endpoint", Endpoint);
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Endpoint))
+      {
+        writer.WriteString("endpoint", (string)Endpoint!);
+      }
 
       if (_Endpoint != null)
       {
         writer.WritePropertyName("_endpoint");
         _Endpoint.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Payload))
+      {
+        writer.WriteString("payload", (string)Payload!);
+      }
+
+      if (_Payload != null)
+      {
+        writer.WritePropertyName("_payload");
+        _Payload.SerializeJson(ref writer, options);
       }
 
       if ((Header != null) && (Header.Count != 0))
@@ -91,22 +116,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      writer.WriteString("payload", Payload);
-
-      if (_Payload != null)
-      {
-        writer.WritePropertyName("_payload");
-        _Payload.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
-      {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -234,7 +243,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system can take an appropriate action.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Subscription>))]
   public class Subscription : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -299,13 +308,24 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      writer.WritePropertyName("channel");
-      Channel.SerializeJson(ref writer, options);
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
 
       if ((Contact != null) && (Contact.Count != 0))
       {
@@ -320,15 +340,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("criteria", Criteria);
-
-      if (_Criteria != null)
+      if (!string.IsNullOrEmpty(End))
       {
-        writer.WritePropertyName("_criteria");
-        _Criteria.SerializeJson(ref writer, options);
+        writer.WriteString("end", (string)End!);
       }
-
-      writer.WriteString("end", End);
 
       if (_End != null)
       {
@@ -336,15 +351,10 @@ namespace Fhir.R4.Models
         _End.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("error", Error);
-
-      if (_Error != null)
+      if (!string.IsNullOrEmpty(Reason))
       {
-        writer.WritePropertyName("_error");
-        _Error.SerializeJson(ref writer, options);
+        writer.WriteString("reason", (string)Reason!);
       }
-
-      writer.WriteString("reason", Reason);
 
       if (_Reason != null)
       {
@@ -352,13 +362,30 @@ namespace Fhir.R4.Models
         _Reason.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if (!string.IsNullOrEmpty(Criteria))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WriteString("criteria", (string)Criteria!);
       }
+
+      if (_Criteria != null)
+      {
+        writer.WritePropertyName("_criteria");
+        _Criteria.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Error))
+      {
+        writer.WriteString("error", (string)Error!);
+      }
+
+      if (_Error != null)
+      {
+        writer.WritePropertyName("_error");
+        _Error.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("channel");
+      Channel.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {

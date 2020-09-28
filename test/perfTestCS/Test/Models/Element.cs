@@ -37,6 +37,17 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
+      if (!string.IsNullOrEmpty(Id))
+      {
+        writer.WriteString("id", (string)Id!);
+      }
+
+      if (_Id != null)
+      {
+        writer.WritePropertyName("_id");
+        _Id.SerializeJson(ref writer, options);
+      }
+
       if ((Extension != null) && (Extension.Count != 0))
       {
         writer.WritePropertyName("extension");
@@ -48,14 +59,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      writer.WriteString("id", Id);
-
-      if (_Id != null)
-      {
-        writer.WritePropertyName("_id");
-        _Id.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

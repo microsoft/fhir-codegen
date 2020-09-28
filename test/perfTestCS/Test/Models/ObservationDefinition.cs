@@ -47,6 +47,18 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (CustomaryUnit != null)
+      {
+        writer.WritePropertyName("customaryUnit");
+        CustomaryUnit.SerializeJson(ref writer, options);
+      }
+
+      if (Unit != null)
+      {
+        writer.WritePropertyName("unit");
+        Unit.SerializeJson(ref writer, options);
+      }
+
       if (ConversionFactor != null)
       {
         writer.WriteNumber("conversionFactor", (decimal)ConversionFactor!);
@@ -58,21 +70,9 @@ namespace Fhir.R4.Models
         _ConversionFactor.SerializeJson(ref writer, options);
       }
 
-      if (CustomaryUnit != null)
-      {
-        writer.WritePropertyName("customaryUnit");
-        CustomaryUnit.SerializeJson(ref writer, options);
-      }
-
       if (DecimalPrecision != null)
       {
         writer.WriteNumber("decimalPrecision", (int)DecimalPrecision!);
-      }
-
-      if (Unit != null)
-      {
-        writer.WritePropertyName("unit");
-        Unit.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -202,10 +202,27 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Age != null)
+      if (!string.IsNullOrEmpty(Category))
       {
-        writer.WritePropertyName("age");
-        Age.SerializeJson(ref writer, options);
+        writer.WriteString("category", (string)Category!);
+      }
+
+      if (_Category != null)
+      {
+        writer.WritePropertyName("_category");
+        _Category.SerializeJson(ref writer, options);
+      }
+
+      if (Range != null)
+      {
+        writer.WritePropertyName("range");
+        Range.SerializeJson(ref writer, options);
+      }
+
+      if (Context != null)
+      {
+        writer.WritePropertyName("context");
+        Context.SerializeJson(ref writer, options);
       }
 
       if ((AppliesTo != null) && (AppliesTo.Count != 0))
@@ -221,34 +238,21 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("category", Category);
-
-      if (_Category != null)
+      if (!string.IsNullOrEmpty(Gender))
       {
-        writer.WritePropertyName("_category");
-        _Category.SerializeJson(ref writer, options);
+        writer.WriteString("gender", (string)Gender!);
       }
-
-      writer.WriteString("condition", Condition);
-
-      if (_Condition != null)
-      {
-        writer.WritePropertyName("_condition");
-        _Condition.SerializeJson(ref writer, options);
-      }
-
-      if (Context != null)
-      {
-        writer.WritePropertyName("context");
-        Context.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("gender", Gender);
 
       if (_Gender != null)
       {
         writer.WritePropertyName("_gender");
         _Gender.SerializeJson(ref writer, options);
+      }
+
+      if (Age != null)
+      {
+        writer.WritePropertyName("age");
+        Age.SerializeJson(ref writer, options);
       }
 
       if (GestationalAge != null)
@@ -257,10 +261,15 @@ namespace Fhir.R4.Models
         GestationalAge.SerializeJson(ref writer, options);
       }
 
-      if (Range != null)
+      if (!string.IsNullOrEmpty(Condition))
       {
-        writer.WritePropertyName("range");
-        Range.SerializeJson(ref writer, options);
+        writer.WriteString("condition", (string)Condition!);
+      }
+
+      if (_Condition != null)
+      {
+        writer.WritePropertyName("_condition");
+        _Condition.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -383,7 +392,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ObservationDefinition>))]
   public class ObservationDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -459,16 +468,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (AbnormalCodedValueSet != null)
-      {
-        writer.WritePropertyName("abnormalCodedValueSet");
-        AbnormalCodedValueSet.SerializeJson(ref writer, options);
-      }
 
       if ((Category != null) && (Category.Count != 0))
       {
@@ -486,12 +492,6 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("code");
       Code.SerializeJson(ref writer, options);
 
-      if (CriticalCodedValueSet != null)
-      {
-        writer.WritePropertyName("criticalCodedValueSet");
-        CriticalCodedValueSet.SerializeJson(ref writer, options);
-      }
-
       if ((Identifier != null) && (Identifier.Count != 0))
       {
         writer.WritePropertyName("identifier");
@@ -503,23 +503,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Method != null)
-      {
-        writer.WritePropertyName("method");
-        Method.SerializeJson(ref writer, options);
-      }
-
-      if (MultipleResultsAllowed != null)
-      {
-        writer.WriteBoolean("multipleResultsAllowed", (bool)MultipleResultsAllowed!);
-      }
-
-      if (NormalCodedValueSet != null)
-      {
-        writer.WritePropertyName("normalCodedValueSet");
-        NormalCodedValueSet.SerializeJson(ref writer, options);
       }
 
       if ((PermittedDataType != null) && (PermittedDataType.Count != 0))
@@ -548,12 +531,32 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("preferredReportName", PreferredReportName);
+      if (MultipleResultsAllowed != null)
+      {
+        writer.WriteBoolean("multipleResultsAllowed", (bool)MultipleResultsAllowed!);
+      }
+
+      if (Method != null)
+      {
+        writer.WritePropertyName("method");
+        Method.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(PreferredReportName))
+      {
+        writer.WriteString("preferredReportName", (string)PreferredReportName!);
+      }
 
       if (_PreferredReportName != null)
       {
         writer.WritePropertyName("_preferredReportName");
         _PreferredReportName.SerializeJson(ref writer, options);
+      }
+
+      if (QuantitativeDetails != null)
+      {
+        writer.WritePropertyName("quantitativeDetails");
+        QuantitativeDetails.SerializeJson(ref writer, options);
       }
 
       if ((QualifiedInterval != null) && (QualifiedInterval.Count != 0))
@@ -569,16 +572,28 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (QuantitativeDetails != null)
-      {
-        writer.WritePropertyName("quantitativeDetails");
-        QuantitativeDetails.SerializeJson(ref writer, options);
-      }
-
       if (ValidCodedValueSet != null)
       {
         writer.WritePropertyName("validCodedValueSet");
         ValidCodedValueSet.SerializeJson(ref writer, options);
+      }
+
+      if (NormalCodedValueSet != null)
+      {
+        writer.WritePropertyName("normalCodedValueSet");
+        NormalCodedValueSet.SerializeJson(ref writer, options);
+      }
+
+      if (AbnormalCodedValueSet != null)
+      {
+        writer.WritePropertyName("abnormalCodedValueSet");
+        AbnormalCodedValueSet.SerializeJson(ref writer, options);
+      }
+
+      if (CriticalCodedValueSet != null)
+      {
+        writer.WritePropertyName("criticalCodedValueSet");
+        CriticalCodedValueSet.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

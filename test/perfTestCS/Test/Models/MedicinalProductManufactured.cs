@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The manufactured item as contained in the packaged medicinal product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductManufactured>))]
   public class MedicinalProductManufactured : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -57,26 +57,25 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if ((Ingredient != null) && (Ingredient.Count != 0))
-      {
-        writer.WritePropertyName("ingredient");
-        writer.WriteStartArray();
-
-        foreach (Reference valIngredient in Ingredient)
-        {
-          valIngredient.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
       writer.WritePropertyName("manufacturedDoseForm");
       ManufacturedDoseForm.SerializeJson(ref writer, options);
+
+      if (UnitOfPresentation != null)
+      {
+        writer.WritePropertyName("unitOfPresentation");
+        UnitOfPresentation.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("quantity");
+      Quantity.SerializeJson(ref writer, options);
 
       if ((Manufacturer != null) && (Manufacturer.Count != 0))
       {
@@ -91,14 +90,14 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((OtherCharacteristics != null) && (OtherCharacteristics.Count != 0))
+      if ((Ingredient != null) && (Ingredient.Count != 0))
       {
-        writer.WritePropertyName("otherCharacteristics");
+        writer.WritePropertyName("ingredient");
         writer.WriteStartArray();
 
-        foreach (CodeableConcept valOtherCharacteristics in OtherCharacteristics)
+        foreach (Reference valIngredient in Ingredient)
         {
-          valOtherCharacteristics.SerializeJson(ref writer, options, true);
+          valIngredient.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -110,13 +109,17 @@ namespace Fhir.R4.Models
         PhysicalCharacteristics.SerializeJson(ref writer, options);
       }
 
-      writer.WritePropertyName("quantity");
-      Quantity.SerializeJson(ref writer, options);
-
-      if (UnitOfPresentation != null)
+      if ((OtherCharacteristics != null) && (OtherCharacteristics.Count != 0))
       {
-        writer.WritePropertyName("unitOfPresentation");
-        UnitOfPresentation.SerializeJson(ref writer, options);
+        writer.WritePropertyName("otherCharacteristics");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valOtherCharacteristics in OtherCharacteristics)
+        {
+          valOtherCharacteristics.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

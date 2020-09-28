@@ -43,18 +43,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("expiry", Expiry);
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Expiry))
+      {
+        writer.WriteString("expiry", (string)Expiry!);
+      }
 
       if (_Expiry != null)
       {
         writer.WritePropertyName("_expiry");
         _Expiry.SerializeJson(ref writer, options);
-      }
-
-      if (Identifier != null)
-      {
-        writer.WritePropertyName("identifier");
-        Identifier.SerializeJson(ref writer, options);
       }
 
       if (Quantity != null)
@@ -227,7 +230,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A homogeneous material with a definite composition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Substance>))]
   public class Substance : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -279,10 +282,37 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
 
       if ((Category != null) && (Category.Count != 0))
       {
@@ -300,7 +330,10 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("code");
       Code.SerializeJson(ref writer, options);
 
-      writer.WriteString("description", Description);
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
 
       if (_Description != null)
       {
@@ -308,14 +341,14 @@ namespace Fhir.R4.Models
         _Description.SerializeJson(ref writer, options);
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
+      if ((Instance != null) && (Instance.Count != 0))
       {
-        writer.WritePropertyName("identifier");
+        writer.WritePropertyName("instance");
         writer.WriteStartArray();
 
-        foreach (Identifier valIdentifier in Identifier)
+        foreach (SubstanceInstance valInstance in Instance)
         {
-          valIdentifier.SerializeJson(ref writer, options, true);
+          valInstance.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -332,27 +365,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if ((Instance != null) && (Instance.Count != 0))
-      {
-        writer.WritePropertyName("instance");
-        writer.WriteStartArray();
-
-        foreach (SubstanceInstance valInstance in Instance)
-        {
-          valInstance.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

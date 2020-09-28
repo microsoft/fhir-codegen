@@ -55,7 +55,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("connectivity", Connectivity);
+      if (!string.IsNullOrEmpty(Connectivity))
+      {
+        writer.WriteString("connectivity", (string)Connectivity!);
+      }
 
       if (_Connectivity != null)
       {
@@ -69,7 +72,10 @@ namespace Fhir.R4.Models
         Identifier.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("name", Name);
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
 
       if (_Name != null)
       {
@@ -77,7 +83,10 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("residueSite", ResidueSite);
+      if (!string.IsNullOrEmpty(ResidueSite))
+      {
+        writer.WriteString("residueSite", (string)ResidueSite!);
+      }
 
       if (_ResidueSite != null)
       {
@@ -203,7 +212,10 @@ namespace Fhir.R4.Models
         Identifier.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("name", Name);
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
 
       if (_Name != null)
       {
@@ -211,7 +223,10 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("residueSite", ResidueSite);
+      if (!string.IsNullOrEmpty(ResidueSite))
+      {
+        writer.WriteString("residueSite", (string)ResidueSite!);
+      }
 
       if (_ResidueSite != null)
       {
@@ -338,15 +353,43 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Subunit != null)
+      {
+        writer.WriteNumber("subunit", (int)Subunit!);
+      }
+
+      if (!string.IsNullOrEmpty(Sequence))
+      {
+        writer.WriteString("sequence", (string)Sequence!);
+      }
+
+      if (_Sequence != null)
+      {
+        writer.WritePropertyName("_sequence");
+        _Sequence.SerializeJson(ref writer, options);
+      }
+
+      if (Length != null)
+      {
+        writer.WriteNumber("length", (int)Length!);
+      }
+
+      if (SequenceAttachment != null)
+      {
+        writer.WritePropertyName("sequenceAttachment");
+        SequenceAttachment.SerializeJson(ref writer, options);
+      }
+
       if (FivePrime != null)
       {
         writer.WritePropertyName("fivePrime");
         FivePrime.SerializeJson(ref writer, options);
       }
 
-      if (Length != null)
+      if (ThreePrime != null)
       {
-        writer.WriteNumber("length", (int)Length!);
+        writer.WritePropertyName("threePrime");
+        ThreePrime.SerializeJson(ref writer, options);
       }
 
       if ((Linkage != null) && (Linkage.Count != 0))
@@ -362,25 +405,6 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("sequence", Sequence);
-
-      if (_Sequence != null)
-      {
-        writer.WritePropertyName("_sequence");
-        _Sequence.SerializeJson(ref writer, options);
-      }
-
-      if (SequenceAttachment != null)
-      {
-        writer.WritePropertyName("sequenceAttachment");
-        SequenceAttachment.SerializeJson(ref writer, options);
-      }
-
-      if (Subunit != null)
-      {
-        writer.WriteNumber("subunit", (int)Subunit!);
-      }
-
       if ((Sugar != null) && (Sugar.Count != 0))
       {
         writer.WritePropertyName("sugar");
@@ -392,12 +416,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (ThreePrime != null)
-      {
-        writer.WritePropertyName("threePrime");
-        ThreePrime.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -532,7 +550,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Nucleic acids are defined by three distinct elements: the base, sugar and linkage. Individual substance/moiety IDs will be created for each of these elements. The nucleotide sequence will be always entered in the 5’-3’ direction.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceNucleicAcid>))]
   public class SubstanceNucleicAcid : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -572,17 +590,18 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("areaOfHybridisation", AreaOfHybridisation);
-
-      if (_AreaOfHybridisation != null)
+      if (SequenceType != null)
       {
-        writer.WritePropertyName("_areaOfHybridisation");
-        _AreaOfHybridisation.SerializeJson(ref writer, options);
+        writer.WritePropertyName("sequenceType");
+        SequenceType.SerializeJson(ref writer, options);
       }
 
       if (NumberOfSubunits != null)
@@ -590,16 +609,21 @@ namespace Fhir.R4.Models
         writer.WriteNumber("numberOfSubunits", (int)NumberOfSubunits!);
       }
 
+      if (!string.IsNullOrEmpty(AreaOfHybridisation))
+      {
+        writer.WriteString("areaOfHybridisation", (string)AreaOfHybridisation!);
+      }
+
+      if (_AreaOfHybridisation != null)
+      {
+        writer.WritePropertyName("_areaOfHybridisation");
+        _AreaOfHybridisation.SerializeJson(ref writer, options);
+      }
+
       if (OligoNucleotideType != null)
       {
         writer.WritePropertyName("oligoNucleotideType");
         OligoNucleotideType.SerializeJson(ref writer, options);
-      }
-
-      if (SequenceType != null)
-      {
-        writer.WritePropertyName("sequenceType");
-        SequenceType.SerializeJson(ref writer, options);
       }
 
       if ((Subunit != null) && (Subunit.Count != 0))

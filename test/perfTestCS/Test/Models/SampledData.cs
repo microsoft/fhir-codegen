@@ -75,15 +75,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("data", Data);
+      writer.WritePropertyName("origin");
+      Origin.SerializeJson(ref writer, options);
 
-      if (_Data != null)
+      writer.WriteNumber("period", Period);
+
+      if (_Period != null)
       {
-        writer.WritePropertyName("_data");
-        _Data.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_period");
+        _Period.SerializeJson(ref writer, options);
       }
-
-      writer.WriteNumber("dimensions", Dimensions);
 
       if (Factor != null)
       {
@@ -107,17 +108,6 @@ namespace Fhir.R4.Models
         _LowerLimit.SerializeJson(ref writer, options);
       }
 
-      writer.WritePropertyName("origin");
-      Origin.SerializeJson(ref writer, options);
-
-      writer.WriteNumber("period", Period);
-
-      if (_Period != null)
-      {
-        writer.WritePropertyName("_period");
-        _Period.SerializeJson(ref writer, options);
-      }
-
       if (UpperLimit != null)
       {
         writer.WriteNumber("upperLimit", (decimal)UpperLimit!);
@@ -127,6 +117,19 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("_upperLimit");
         _UpperLimit.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteNumber("dimensions", Dimensions);
+
+      if (!string.IsNullOrEmpty(Data))
+      {
+        writer.WriteString("data", (string)Data!);
+      }
+
+      if (_Data != null)
+      {
+        writer.WritePropertyName("_data");
+        _Data.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

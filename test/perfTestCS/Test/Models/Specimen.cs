@@ -67,13 +67,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (BodySite != null)
+      if (Collector != null)
       {
-        writer.WritePropertyName("bodySite");
-        BodySite.SerializeJson(ref writer, options);
+        writer.WritePropertyName("collector");
+        Collector.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("collectedDateTime", CollectedDateTime);
+      if (!string.IsNullOrEmpty(CollectedDateTime))
+      {
+        writer.WriteString("collectedDateTime", (string)CollectedDateTime!);
+      }
 
       if (_CollectedDateTime != null)
       {
@@ -87,16 +90,28 @@ namespace Fhir.R4.Models
         CollectedPeriod.SerializeJson(ref writer, options);
       }
 
-      if (Collector != null)
-      {
-        writer.WritePropertyName("collector");
-        Collector.SerializeJson(ref writer, options);
-      }
-
       if (Duration != null)
       {
         writer.WritePropertyName("duration");
         Duration.SerializeJson(ref writer, options);
+      }
+
+      if (Quantity != null)
+      {
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(ref writer, options);
+      }
+
+      if (Method != null)
+      {
+        writer.WritePropertyName("method");
+        Method.SerializeJson(ref writer, options);
+      }
+
+      if (BodySite != null)
+      {
+        writer.WritePropertyName("bodySite");
+        BodySite.SerializeJson(ref writer, options);
       }
 
       if (FastingStatusCodeableConcept != null)
@@ -109,18 +124,6 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("fastingStatusDuration");
         FastingStatusDuration.SerializeJson(ref writer, options);
-      }
-
-      if (Method != null)
-      {
-        writer.WritePropertyName("method");
-        Method.SerializeJson(ref writer, options);
-      }
-
-      if (Quantity != null)
-      {
-        writer.WritePropertyName("quantity");
-        Quantity.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -260,20 +263,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if ((Additive != null) && (Additive.Count != 0))
+      if (!string.IsNullOrEmpty(Description))
       {
-        writer.WritePropertyName("additive");
-        writer.WriteStartArray();
-
-        foreach (Reference valAdditive in Additive)
-        {
-          valAdditive.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("description", (string)Description!);
       }
-
-      writer.WriteString("description", Description);
 
       if (_Description != null)
       {
@@ -287,7 +280,23 @@ namespace Fhir.R4.Models
         Procedure.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("timeDateTime", TimeDateTime);
+      if ((Additive != null) && (Additive.Count != 0))
+      {
+        writer.WritePropertyName("additive");
+        writer.WriteStartArray();
+
+        foreach (Reference valAdditive in Additive)
+        {
+          valAdditive.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(TimeDateTime))
+      {
+        writer.WriteString("timeDateTime", (string)TimeDateTime!);
+      }
 
       if (_TimeDateTime != null)
       {
@@ -448,32 +457,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (AdditiveCodeableConcept != null)
-      {
-        writer.WritePropertyName("additiveCodeableConcept");
-        AdditiveCodeableConcept.SerializeJson(ref writer, options);
-      }
-
-      if (AdditiveReference != null)
-      {
-        writer.WritePropertyName("additiveReference");
-        AdditiveReference.SerializeJson(ref writer, options);
-      }
-
-      if (Capacity != null)
-      {
-        writer.WritePropertyName("capacity");
-        Capacity.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("description", Description);
-
-      if (_Description != null)
-      {
-        writer.WritePropertyName("_description");
-        _Description.SerializeJson(ref writer, options);
-      }
-
       if ((Identifier != null) && (Identifier.Count != 0))
       {
         writer.WritePropertyName("identifier");
@@ -487,16 +470,45 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (SpecimenQuantity != null)
+      if (!string.IsNullOrEmpty(Description))
       {
-        writer.WritePropertyName("specimenQuantity");
-        SpecimenQuantity.SerializeJson(ref writer, options);
+        writer.WriteString("description", (string)Description!);
+      }
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
       }
 
       if (Type != null)
       {
         writer.WritePropertyName("type");
         Type.SerializeJson(ref writer, options);
+      }
+
+      if (Capacity != null)
+      {
+        writer.WritePropertyName("capacity");
+        Capacity.SerializeJson(ref writer, options);
+      }
+
+      if (SpecimenQuantity != null)
+      {
+        writer.WritePropertyName("specimenQuantity");
+        SpecimenQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (AdditiveCodeableConcept != null)
+      {
+        writer.WritePropertyName("additiveCodeableConcept");
+        AdditiveCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      if (AdditiveReference != null)
+      {
+        writer.WritePropertyName("additiveReference");
+        AdditiveReference.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -606,7 +618,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A sample to be used for analysis.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Specimen>))]
   public class Specimen : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -682,15 +694,91 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if (AccessionIdentifier != null)
       {
         writer.WritePropertyName("accessionIdentifier");
         AccessionIdentifier.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ReceivedTime))
+      {
+        writer.WriteString("receivedTime", (string)ReceivedTime!);
+      }
+
+      if (_ReceivedTime != null)
+      {
+        writer.WritePropertyName("_receivedTime");
+        _ReceivedTime.SerializeJson(ref writer, options);
+      }
+
+      if ((Parent != null) && (Parent.Count != 0))
+      {
+        writer.WritePropertyName("parent");
+        writer.WriteStartArray();
+
+        foreach (Reference valParent in Parent)
+        {
+          valParent.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Request != null) && (Request.Count != 0))
+      {
+        writer.WritePropertyName("request");
+        writer.WriteStartArray();
+
+        foreach (Reference valRequest in Request)
+        {
+          valRequest.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (Collection != null)
@@ -699,14 +787,14 @@ namespace Fhir.R4.Models
         Collection.SerializeJson(ref writer, options);
       }
 
-      if ((Condition != null) && (Condition.Count != 0))
+      if ((Processing != null) && (Processing.Count != 0))
       {
-        writer.WritePropertyName("condition");
+        writer.WritePropertyName("processing");
         writer.WriteStartArray();
 
-        foreach (CodeableConcept valCondition in Condition)
+        foreach (SpecimenProcessing valProcessing in Processing)
         {
-          valCondition.SerializeJson(ref writer, options, true);
+          valProcessing.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -725,14 +813,14 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
+      if ((Condition != null) && (Condition.Count != 0))
       {
-        writer.WritePropertyName("identifier");
+        writer.WritePropertyName("condition");
         writer.WriteStartArray();
 
-        foreach (Identifier valIdentifier in Identifier)
+        foreach (CodeableConcept valCondition in Condition)
         {
-          valIdentifier.SerializeJson(ref writer, options, true);
+          valCondition.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -749,73 +837,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if ((Parent != null) && (Parent.Count != 0))
-      {
-        writer.WritePropertyName("parent");
-        writer.WriteStartArray();
-
-        foreach (Reference valParent in Parent)
-        {
-          valParent.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Processing != null) && (Processing.Count != 0))
-      {
-        writer.WritePropertyName("processing");
-        writer.WriteStartArray();
-
-        foreach (SpecimenProcessing valProcessing in Processing)
-        {
-          valProcessing.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("receivedTime", ReceivedTime);
-
-      if (_ReceivedTime != null)
-      {
-        writer.WritePropertyName("_receivedTime");
-        _ReceivedTime.SerializeJson(ref writer, options);
-      }
-
-      if ((Request != null) && (Request.Count != 0))
-      {
-        writer.WritePropertyName("request");
-        writer.WriteStartArray();
-
-        foreach (Reference valRequest in Request)
-        {
-          valRequest.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
-      if (Subject != null)
-      {
-        writer.WritePropertyName("subject");
-        Subject.SerializeJson(ref writer, options);
-      }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

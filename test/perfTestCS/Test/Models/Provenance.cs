@@ -43,10 +43,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (OnBehalfOf != null)
+      if (Type != null)
       {
-        writer.WritePropertyName("onBehalfOf");
-        OnBehalfOf.SerializeJson(ref writer, options);
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
       }
 
       if ((Role != null) && (Role.Count != 0))
@@ -62,14 +62,14 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
-      }
-
       writer.WritePropertyName("who");
       Who.SerializeJson(ref writer, options);
+
+      if (OnBehalfOf != null)
+      {
+        writer.WritePropertyName("onBehalfOf");
+        OnBehalfOf.SerializeJson(ref writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -189,6 +189,20 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (!string.IsNullOrEmpty(Role))
+      {
+        writer.WriteString("role", (string)Role!);
+      }
+
+      if (_Role != null)
+      {
+        writer.WritePropertyName("_role");
+        _Role.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("what");
+      What.SerializeJson(ref writer, options);
+
       if ((Agent != null) && (Agent.Count != 0))
       {
         writer.WritePropertyName("agent");
@@ -201,17 +215,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      writer.WriteString("role", Role);
-
-      if (_Role != null)
-      {
-        writer.WritePropertyName("_role");
-        _Role.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("what");
-      What.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -300,7 +303,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Provenance>))]
   public class Provenance : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -372,10 +375,99 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Target != null) && (Target.Count != 0))
+      {
+        writer.WritePropertyName("target");
+        writer.WriteStartArray();
+
+        foreach (Reference valTarget in Target)
+        {
+          valTarget.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (OccurredPeriod != null)
+      {
+        writer.WritePropertyName("occurredPeriod");
+        OccurredPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(OccurredDateTime))
+      {
+        writer.WriteString("occurredDateTime", (string)OccurredDateTime!);
+      }
+
+      if (_OccurredDateTime != null)
+      {
+        writer.WritePropertyName("_occurredDateTime");
+        _OccurredDateTime.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Recorded))
+      {
+        writer.WriteString("recorded", (string)Recorded!);
+      }
+
+      if (_Recorded != null)
+      {
+        writer.WritePropertyName("_recorded");
+        _Recorded.SerializeJson(ref writer, options);
+      }
+
+      if ((Policy != null) && (Policy.Count != 0))
+      {
+        writer.WritePropertyName("policy");
+        writer.WriteStartArray();
+
+        foreach (string valPolicy in Policy)
+        {
+          writer.WriteStringValue(valPolicy);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Policy != null) && (_Policy.Count != 0))
+      {
+        writer.WritePropertyName("_policy");
+        writer.WriteStartArray();
+
+        foreach (Element val_Policy in _Policy)
+        {
+          val_Policy.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Location != null)
+      {
+        writer.WritePropertyName("location");
+        Location.SerializeJson(ref writer, options);
+      }
+
+      if ((Reason != null) && (Reason.Count != 0))
+      {
+        writer.WritePropertyName("reason");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valReason in Reason)
+        {
+          valReason.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if (Activity != null)
       {
@@ -409,73 +501,6 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Location != null)
-      {
-        writer.WritePropertyName("location");
-        Location.SerializeJson(ref writer, options);
-      }
-
-      if (OccurredPeriod != null)
-      {
-        writer.WritePropertyName("occurredPeriod");
-        OccurredPeriod.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("occurredDateTime", OccurredDateTime);
-
-      if (_OccurredDateTime != null)
-      {
-        writer.WritePropertyName("_occurredDateTime");
-        _OccurredDateTime.SerializeJson(ref writer, options);
-      }
-
-      if ((Policy != null) && (Policy.Count != 0))
-      {
-        writer.WritePropertyName("policy");
-        writer.WriteStartArray();
-
-        foreach (string valPolicy in Policy)
-        {
-          writer.WriteStringValue(valPolicy);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((_Policy != null) && (_Policy.Count != 0))
-      {
-        writer.WritePropertyName("_policy");
-        writer.WriteStartArray();
-
-        foreach (Element val_Policy in _Policy)
-        {
-          val_Policy.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Reason != null) && (Reason.Count != 0))
-      {
-        writer.WritePropertyName("reason");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valReason in Reason)
-        {
-          valReason.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("recorded", Recorded);
-
-      if (_Recorded != null)
-      {
-        writer.WritePropertyName("_recorded");
-        _Recorded.SerializeJson(ref writer, options);
-      }
-
       if ((Signature != null) && (Signature.Count != 0))
       {
         writer.WritePropertyName("signature");
@@ -484,19 +509,6 @@ namespace Fhir.R4.Models
         foreach (Signature valSignature in Signature)
         {
           valSignature.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Target != null) && (Target.Count != 0))
-      {
-        writer.WritePropertyName("target");
-        writer.WriteStartArray();
-
-        foreach (Reference valTarget in Target)
-        {
-          valTarget.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

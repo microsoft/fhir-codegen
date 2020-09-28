@@ -49,6 +49,9 @@ namespace Fhir.R4.Models
         Identifier.SerializeJson(ref writer, options);
       }
 
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
       writer.WritePropertyName("period");
       Period.SerializeJson(ref writer, options);
 
@@ -64,9 +67,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {

@@ -39,16 +39,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Gene != null)
-      {
-        writer.WritePropertyName("gene");
-        Gene.SerializeJson(ref writer, options);
-      }
-
       if (GeneSequenceOrigin != null)
       {
         writer.WritePropertyName("geneSequenceOrigin");
         GeneSequenceOrigin.SerializeJson(ref writer, options);
+      }
+
+      if (Gene != null)
+      {
+        writer.WritePropertyName("gene");
+        Gene.SerializeJson(ref writer, options);
       }
 
       if ((Source != null) && (Source.Count != 0))
@@ -173,6 +173,12 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
       if (Element != null)
       {
         writer.WritePropertyName("element");
@@ -190,12 +196,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -311,29 +311,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Classification != null)
-      {
-        writer.WritePropertyName("classification");
-        Classification.SerializeJson(ref writer, options);
-      }
-
       if (Domain != null)
       {
         writer.WritePropertyName("domain");
         Domain.SerializeJson(ref writer, options);
       }
 
-      if ((Source != null) && (Source.Count != 0))
+      if (Classification != null)
       {
-        writer.WritePropertyName("source");
-        writer.WriteStartArray();
-
-        foreach (Reference valSource in Source)
-        {
-          valSource.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("classification");
+        Classification.SerializeJson(ref writer, options);
       }
 
       if ((Subtype != null) && (Subtype.Count != 0))
@@ -344,6 +331,19 @@ namespace Fhir.R4.Models
         foreach (CodeableConcept valSubtype in Subtype)
         {
           valSubtype.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Source != null) && (Source.Count != 0))
+      {
+        writer.WritePropertyName("source");
+        writer.WriteStartArray();
+
+        foreach (Reference valSource in Source)
+        {
+          valSource.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -517,30 +517,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (AmountQuantity != null)
+      if (Target != null)
       {
-        writer.WritePropertyName("amountQuantity");
-        AmountQuantity.SerializeJson(ref writer, options);
+        writer.WritePropertyName("target");
+        Target.SerializeJson(ref writer, options);
       }
 
-      if (AmountRange != null)
+      if (Type != null)
       {
-        writer.WritePropertyName("amountRange");
-        AmountRange.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("amountString", AmountString);
-
-      if (_AmountString != null)
-      {
-        writer.WritePropertyName("_amountString");
-        _AmountString.SerializeJson(ref writer, options);
-      }
-
-      if (AmountType != null)
-      {
-        writer.WritePropertyName("amountType");
-        AmountType.SerializeJson(ref writer, options);
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
       }
 
       if (Interaction != null)
@@ -561,6 +547,35 @@ namespace Fhir.R4.Models
         OrganismType.SerializeJson(ref writer, options);
       }
 
+      if (AmountQuantity != null)
+      {
+        writer.WritePropertyName("amountQuantity");
+        AmountQuantity.SerializeJson(ref writer, options);
+      }
+
+      if (AmountRange != null)
+      {
+        writer.WritePropertyName("amountRange");
+        AmountRange.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(AmountString))
+      {
+        writer.WriteString("amountString", (string)AmountString!);
+      }
+
+      if (_AmountString != null)
+      {
+        writer.WritePropertyName("_amountString");
+        _AmountString.SerializeJson(ref writer, options);
+      }
+
+      if (AmountType != null)
+      {
+        writer.WritePropertyName("amountType");
+        AmountType.SerializeJson(ref writer, options);
+      }
+
       if ((Source != null) && (Source.Count != 0))
       {
         writer.WritePropertyName("source");
@@ -572,18 +587,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Target != null)
-      {
-        writer.WritePropertyName("target");
-        Target.SerializeJson(ref writer, options);
-      }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -708,7 +711,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceReferenceInformation>))]
   public class SubstanceReferenceInformation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -748,25 +751,18 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if ((Classification != null) && (Classification.Count != 0))
+      if (!string.IsNullOrEmpty(Comment))
       {
-        writer.WritePropertyName("classification");
-        writer.WriteStartArray();
-
-        foreach (SubstanceReferenceInformationClassification valClassification in Classification)
-        {
-          valClassification.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("comment", (string)Comment!);
       }
-
-      writer.WriteString("comment", Comment);
 
       if (_Comment != null)
       {
@@ -795,6 +791,19 @@ namespace Fhir.R4.Models
         foreach (SubstanceReferenceInformationGeneElement valGeneElement in GeneElement)
         {
           valGeneElement.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Classification != null) && (Classification.Count != 0))
+      {
+        writer.WritePropertyName("classification");
+        writer.WriteStartArray();
+
+        foreach (SubstanceReferenceInformationClassification valClassification in Classification)
+        {
+          valClassification.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

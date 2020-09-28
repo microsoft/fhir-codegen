@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OrganizationAffiliation>))]
   public class OrganizationAffiliation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -77,14 +77,61 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      if (Organization != null)
+      {
+        writer.WritePropertyName("organization");
+        Organization.SerializeJson(ref writer, options);
+      }
+
+      if (ParticipatingOrganization != null)
+      {
+        writer.WritePropertyName("participatingOrganization");
+        ParticipatingOrganization.SerializeJson(ref writer, options);
+      }
+
+      if ((Network != null) && (Network.Count != 0))
+      {
+        writer.WritePropertyName("network");
+        writer.WriteStartArray();
+
+        foreach (Reference valNetwork in Network)
+        {
+          valNetwork.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((Code != null) && (Code.Count != 0))
@@ -100,40 +147,14 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Endpoint != null) && (Endpoint.Count != 0))
+      if ((Specialty != null) && (Specialty.Count != 0))
       {
-        writer.WritePropertyName("endpoint");
+        writer.WritePropertyName("specialty");
         writer.WriteStartArray();
 
-        foreach (Reference valEndpoint in Endpoint)
+        foreach (CodeableConcept valSpecialty in Specialty)
         {
-          valEndpoint.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((HealthcareService != null) && (HealthcareService.Count != 0))
-      {
-        writer.WritePropertyName("healthcareService");
-        writer.WriteStartArray();
-
-        foreach (Reference valHealthcareService in HealthcareService)
-        {
-          valHealthcareService.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Identifier != null) && (Identifier.Count != 0))
-      {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
+          valSpecialty.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -152,45 +173,14 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Network != null) && (Network.Count != 0))
+      if ((HealthcareService != null) && (HealthcareService.Count != 0))
       {
-        writer.WritePropertyName("network");
+        writer.WritePropertyName("healthcareService");
         writer.WriteStartArray();
 
-        foreach (Reference valNetwork in Network)
+        foreach (Reference valHealthcareService in HealthcareService)
         {
-          valNetwork.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Organization != null)
-      {
-        writer.WritePropertyName("organization");
-        Organization.SerializeJson(ref writer, options);
-      }
-
-      if (ParticipatingOrganization != null)
-      {
-        writer.WritePropertyName("participatingOrganization");
-        ParticipatingOrganization.SerializeJson(ref writer, options);
-      }
-
-      if (Period != null)
-      {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
-      }
-
-      if ((Specialty != null) && (Specialty.Count != 0))
-      {
-        writer.WritePropertyName("specialty");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valSpecialty in Specialty)
-        {
-          valSpecialty.SerializeJson(ref writer, options, true);
+          valHealthcareService.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -204,6 +194,19 @@ namespace Fhir.R4.Models
         foreach (ContactPoint valTelecom in Telecom)
         {
           valTelecom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Endpoint != null) && (Endpoint.Count != 0))
+      {
+        writer.WritePropertyName("endpoint");
+        writer.WriteStartArray();
+
+        foreach (Reference valEndpoint in Endpoint)
+        {
+          valEndpoint.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

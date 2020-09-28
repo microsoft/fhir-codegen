@@ -61,7 +61,10 @@ namespace Fhir.R4.Models
         AuthorReference.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("authorString", AuthorString);
+      if (!string.IsNullOrEmpty(AuthorString))
+      {
+        writer.WriteString("authorString", (string)AuthorString!);
+      }
 
       if (_AuthorString != null)
       {
@@ -69,20 +72,26 @@ namespace Fhir.R4.Models
         _AuthorString.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("text", Text);
-
-      if (_Text != null)
+      if (!string.IsNullOrEmpty(Time))
       {
-        writer.WritePropertyName("_text");
-        _Text.SerializeJson(ref writer, options);
+        writer.WriteString("time", (string)Time!);
       }
-
-      writer.WriteString("time", Time);
 
       if (_Time != null)
       {
         writer.WritePropertyName("_time");
         _Time.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Text))
+      {
+        writer.WriteString("text", (string)Text!);
+      }
+
+      if (_Text != null)
+      {
+        writer.WritePropertyName("_text");
+        _Text.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

@@ -44,6 +44,19 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if ((Role != null) && (Role.Count != 0))
+      {
+        writer.WritePropertyName("role");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valRole in Role)
+        {
+          valRole.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if (Member != null)
       {
         writer.WritePropertyName("member");
@@ -60,19 +73,6 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("period");
         Period.SerializeJson(ref writer, options);
-      }
-
-      if ((Role != null) && (Role.Count != 0))
-      {
-        writer.WritePropertyName("role");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valRole in Role)
-        {
-          valRole.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
       }
 
       if (includeStartObject)
@@ -163,7 +163,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care for a patient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CareTeam>))]
   public class CareTeam : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -239,29 +239,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if ((Category != null) && (Category.Count != 0))
-      {
-        writer.WritePropertyName("category");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valCategory in Category)
-        {
-          valCategory.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Encounter != null)
-      {
-        writer.WritePropertyName("encounter");
-        Encounter.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -276,20 +260,34 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((ManagingOrganization != null) && (ManagingOrganization.Count != 0))
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("managingOrganization");
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if ((Category != null) && (Category.Count != 0))
+      {
+        writer.WritePropertyName("category");
         writer.WriteStartArray();
 
-        foreach (Reference valManagingOrganization in ManagingOrganization)
+        foreach (CodeableConcept valCategory in Category)
         {
-          valManagingOrganization.SerializeJson(ref writer, options, true);
+          valCategory.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      writer.WriteString("name", Name);
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
 
       if (_Name != null)
       {
@@ -297,17 +295,22 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(ref writer, options);
       }
 
-      if ((Note != null) && (Note.Count != 0))
+      if (Subject != null)
       {
-        writer.WritePropertyName("note");
-        writer.WriteStartArray();
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
 
-        foreach (Annotation valNote in Note)
-        {
-          valNote.SerializeJson(ref writer, options, true);
-        }
+      if (Encounter != null)
+      {
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
 
-        writer.WriteEndArray();
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
       }
 
       if ((Participant != null) && (Participant.Count != 0))
@@ -321,12 +324,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Period != null)
-      {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
       }
 
       if ((ReasonCode != null) && (ReasonCode.Count != 0))
@@ -355,18 +352,17 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if ((ManagingOrganization != null) && (ManagingOrganization.Count != 0))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
+        writer.WritePropertyName("managingOrganization");
+        writer.WriteStartArray();
 
-      if (Subject != null)
-      {
-        writer.WritePropertyName("subject");
-        Subject.SerializeJson(ref writer, options);
+        foreach (Reference valManagingOrganization in ManagingOrganization)
+        {
+          valManagingOrganization.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((Telecom != null) && (Telecom.Count != 0))
@@ -377,6 +373,19 @@ namespace Fhir.R4.Models
         foreach (ContactPoint valTelecom in Telecom)
         {
           valTelecom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

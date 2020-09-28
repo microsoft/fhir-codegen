@@ -47,7 +47,22 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("collectedDateTime", CollectedDateTime);
+      if (Collector != null)
+      {
+        writer.WritePropertyName("collector");
+        Collector.SerializeJson(ref writer, options);
+      }
+
+      if (Source != null)
+      {
+        writer.WritePropertyName("source");
+        Source.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(CollectedDateTime))
+      {
+        writer.WriteString("collectedDateTime", (string)CollectedDateTime!);
+      }
 
       if (_CollectedDateTime != null)
       {
@@ -59,18 +74,6 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("collectedPeriod");
         CollectedPeriod.SerializeJson(ref writer, options);
-      }
-
-      if (Collector != null)
-      {
-        writer.WritePropertyName("collector");
-        Collector.SerializeJson(ref writer, options);
-      }
-
-      if (Source != null)
-      {
-        writer.WritePropertyName("source");
-        Source.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -185,13 +188,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Additive != null)
+      if (!string.IsNullOrEmpty(Description))
       {
-        writer.WritePropertyName("additive");
-        Additive.SerializeJson(ref writer, options);
+        writer.WriteString("description", (string)Description!);
       }
-
-      writer.WriteString("description", Description);
 
       if (_Description != null)
       {
@@ -205,7 +205,16 @@ namespace Fhir.R4.Models
         Procedure.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("timeDateTime", TimeDateTime);
+      if (Additive != null)
+      {
+        writer.WritePropertyName("additive");
+        Additive.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(TimeDateTime))
+      {
+        writer.WriteString("timeDateTime", (string)TimeDateTime!);
+      }
 
       if (_TimeDateTime != null)
       {
@@ -332,7 +341,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("description", Description);
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
 
       if (_Description != null)
       {
@@ -340,7 +352,10 @@ namespace Fhir.R4.Models
         _Description.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("timeDateTime", TimeDateTime);
+      if (!string.IsNullOrEmpty(TimeDateTime))
+      {
+        writer.WriteString("timeDateTime", (string)TimeDateTime!);
+      }
 
       if (_TimeDateTime != null)
       {
@@ -465,26 +480,15 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("description", Description);
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
 
       if (_Description != null)
       {
         writer.WritePropertyName("_description");
         _Description.SerializeJson(ref writer, options);
-      }
-
-      if (Duration != null)
-      {
-        writer.WritePropertyName("duration");
-        Duration.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("scale", Scale);
-
-      if (_Scale != null)
-      {
-        writer.WritePropertyName("_scale");
-        _Scale.SerializeJson(ref writer, options);
       }
 
       if (Temperature != null)
@@ -496,6 +500,23 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("_temperature");
         _Temperature.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Scale))
+      {
+        writer.WriteString("scale", (string)Scale!);
+      }
+
+      if (_Scale != null)
+      {
+        writer.WritePropertyName("_scale");
+        _Scale.SerializeJson(ref writer, options);
+      }
+
+      if (Duration != null)
+      {
+        writer.WritePropertyName("duration");
+        Duration.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -577,7 +598,7 @@ namespace Fhir.R4.Models
   /// A material substance originating from a biological entity intended to be transplanted or infused
   /// into another (possibly the same) biological entity.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BiologicallyDerivedProduct>))]
   public class BiologicallyDerivedProduct : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -645,16 +666,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Collection != null)
-      {
-        writer.WritePropertyName("collection");
-        Collection.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -669,39 +687,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Manipulation != null)
+      if (!string.IsNullOrEmpty(ProductCategory))
       {
-        writer.WritePropertyName("manipulation");
-        Manipulation.SerializeJson(ref writer, options);
+        writer.WriteString("productCategory", (string)ProductCategory!);
       }
-
-      if ((Parent != null) && (Parent.Count != 0))
-      {
-        writer.WritePropertyName("parent");
-        writer.WriteStartArray();
-
-        foreach (Reference valParent in Parent)
-        {
-          valParent.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Processing != null) && (Processing.Count != 0))
-      {
-        writer.WritePropertyName("processing");
-        writer.WriteStartArray();
-
-        foreach (BiologicallyDerivedProductProcessing valProcessing in Processing)
-        {
-          valProcessing.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("productCategory", ProductCategory);
 
       if (_ProductCategory != null)
       {
@@ -715,9 +704,15 @@ namespace Fhir.R4.Models
         ProductCode.SerializeJson(ref writer, options);
       }
 
-      if (Quantity != null)
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WriteNumber("quantity", (int)Quantity!);
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
       }
 
       if ((Request != null) && (Request.Count != 0))
@@ -733,12 +728,47 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if (Quantity != null)
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
+        writer.WriteNumber("quantity", (int)Quantity!);
+      }
+
+      if ((Parent != null) && (Parent.Count != 0))
+      {
+        writer.WritePropertyName("parent");
+        writer.WriteStartArray();
+
+        foreach (Reference valParent in Parent)
+        {
+          valParent.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Collection != null)
+      {
+        writer.WritePropertyName("collection");
+        Collection.SerializeJson(ref writer, options);
+      }
+
+      if ((Processing != null) && (Processing.Count != 0))
+      {
+        writer.WritePropertyName("processing");
+        writer.WriteStartArray();
+
+        foreach (BiologicallyDerivedProductProcessing valProcessing in Processing)
+        {
+          valProcessing.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Manipulation != null)
+      {
+        writer.WritePropertyName("manipulation");
+        Manipulation.SerializeJson(ref writer, options);
       }
 
       if ((Storage != null) && (Storage.Count != 0))

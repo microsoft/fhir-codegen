@@ -83,6 +83,53 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Height != null)
+      {
+        writer.WritePropertyName("height");
+        Height.SerializeJson(ref writer, options);
+      }
+
+      if (Width != null)
+      {
+        writer.WritePropertyName("width");
+        Width.SerializeJson(ref writer, options);
+      }
+
+      if (Depth != null)
+      {
+        writer.WritePropertyName("depth");
+        Depth.SerializeJson(ref writer, options);
+      }
+
+      if (Weight != null)
+      {
+        writer.WritePropertyName("weight");
+        Weight.SerializeJson(ref writer, options);
+      }
+
+      if (NominalVolume != null)
+      {
+        writer.WritePropertyName("nominalVolume");
+        NominalVolume.SerializeJson(ref writer, options);
+      }
+
+      if (ExternalDiameter != null)
+      {
+        writer.WritePropertyName("externalDiameter");
+        ExternalDiameter.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Shape))
+      {
+        writer.WriteString("shape", (string)Shape!);
+      }
+
+      if (_Shape != null)
+      {
+        writer.WritePropertyName("_shape");
+        _Shape.SerializeJson(ref writer, options);
+      }
+
       if ((Color != null) && (Color.Count != 0))
       {
         writer.WritePropertyName("color");
@@ -104,37 +151,6 @@ namespace Fhir.R4.Models
         foreach (Element val_Color in _Color)
         {
           val_Color.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (Depth != null)
-      {
-        writer.WritePropertyName("depth");
-        Depth.SerializeJson(ref writer, options);
-      }
-
-      if (ExternalDiameter != null)
-      {
-        writer.WritePropertyName("externalDiameter");
-        ExternalDiameter.SerializeJson(ref writer, options);
-      }
-
-      if (Height != null)
-      {
-        writer.WritePropertyName("height");
-        Height.SerializeJson(ref writer, options);
-      }
-
-      if ((Image != null) && (Image.Count != 0))
-      {
-        writer.WritePropertyName("image");
-        writer.WriteStartArray();
-
-        foreach (Attachment valImage in Image)
-        {
-          valImage.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -166,36 +182,23 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (NominalVolume != null)
+      if ((Image != null) && (Image.Count != 0))
       {
-        writer.WritePropertyName("nominalVolume");
-        NominalVolume.SerializeJson(ref writer, options);
+        writer.WritePropertyName("image");
+        writer.WriteStartArray();
+
+        foreach (Attachment valImage in Image)
+        {
+          valImage.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (Scoring != null)
       {
         writer.WritePropertyName("scoring");
         Scoring.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("shape", Shape);
-
-      if (_Shape != null)
-      {
-        writer.WritePropertyName("_shape");
-        _Shape.SerializeJson(ref writer, options);
-      }
-
-      if (Weight != null)
-      {
-        writer.WritePropertyName("weight");
-        Weight.SerializeJson(ref writer, options);
-      }
-
-      if (Width != null)
-      {
-        writer.WritePropertyName("width");
-        Width.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

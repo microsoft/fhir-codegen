@@ -55,6 +55,39 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
+      if (!string.IsNullOrEmpty(Path))
+      {
+        writer.WriteString("path", (string)Path!);
+      }
+
+      if (_Path != null)
+      {
+        writer.WritePropertyName("_path");
+        _Path.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(SearchParam))
+      {
+        writer.WriteString("searchParam", (string)SearchParam!);
+      }
+
+      if (_SearchParam != null)
+      {
+        writer.WritePropertyName("_searchParam");
+        _SearchParam.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ValueSet))
+      {
+        writer.WriteString("valueSet", (string)ValueSet!);
+      }
+
+      if (_ValueSet != null)
+      {
+        writer.WritePropertyName("_valueSet");
+        _ValueSet.SerializeJson(ref writer, options);
+      }
+
       if ((Code != null) && (Code.Count != 0))
       {
         writer.WritePropertyName("code");
@@ -66,30 +99,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      writer.WriteString("path", Path);
-
-      if (_Path != null)
-      {
-        writer.WritePropertyName("_path");
-        _Path.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("searchParam", SearchParam);
-
-      if (_SearchParam != null)
-      {
-        writer.WritePropertyName("_searchParam");
-        _SearchParam.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("valueSet", ValueSet);
-
-      if (_ValueSet != null)
-      {
-        writer.WritePropertyName("_valueSet");
-        _ValueSet.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -238,7 +247,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("path", Path);
+      if (!string.IsNullOrEmpty(Path))
+      {
+        writer.WriteString("path", (string)Path!);
+      }
 
       if (_Path != null)
       {
@@ -246,7 +258,10 @@ namespace Fhir.R4.Models
         _Path.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("searchParam", SearchParam);
+      if (!string.IsNullOrEmpty(SearchParam))
+      {
+        writer.WriteString("searchParam", (string)SearchParam!);
+      }
 
       if (_SearchParam != null)
       {
@@ -254,7 +269,10 @@ namespace Fhir.R4.Models
         _SearchParam.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueDateTime", ValueDateTime);
+      if (!string.IsNullOrEmpty(ValueDateTime))
+      {
+        writer.WriteString("valueDateTime", (string)ValueDateTime!);
+      }
 
       if (_ValueDateTime != null)
       {
@@ -387,20 +405,26 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("direction", Direction);
-
-      if (_Direction != null)
+      if (!string.IsNullOrEmpty(Path))
       {
-        writer.WritePropertyName("_direction");
-        _Direction.SerializeJson(ref writer, options);
+        writer.WriteString("path", (string)Path!);
       }
-
-      writer.WriteString("path", Path);
 
       if (_Path != null)
       {
         writer.WritePropertyName("_path");
         _Path.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Direction))
+      {
+        writer.WriteString("direction", (string)Direction!);
+      }
+
+      if (_Direction != null)
+      {
+        writer.WritePropertyName("_direction");
+        _Direction.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -530,6 +554,81 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if ((Profile != null) && (Profile.Count != 0))
+      {
+        writer.WritePropertyName("profile");
+        writer.WriteStartArray();
+
+        foreach (string valProfile in Profile)
+        {
+          writer.WriteStringValue(valProfile);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Profile != null) && (_Profile.Count != 0))
+      {
+        writer.WritePropertyName("_profile");
+        writer.WriteStartArray();
+
+        foreach (Element val_Profile in _Profile)
+        {
+          val_Profile.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (SubjectCodeableConcept != null)
+      {
+        writer.WritePropertyName("subjectCodeableConcept");
+        SubjectCodeableConcept.SerializeJson(ref writer, options);
+      }
+
+      if (SubjectReference != null)
+      {
+        writer.WritePropertyName("subjectReference");
+        SubjectReference.SerializeJson(ref writer, options);
+      }
+
+      if ((MustSupport != null) && (MustSupport.Count != 0))
+      {
+        writer.WritePropertyName("mustSupport");
+        writer.WriteStartArray();
+
+        foreach (string valMustSupport in MustSupport)
+        {
+          writer.WriteStringValue(valMustSupport);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_MustSupport != null) && (_MustSupport.Count != 0))
+      {
+        writer.WritePropertyName("_mustSupport");
+        writer.WriteStartArray();
+
+        foreach (Element val_MustSupport in _MustSupport)
+        {
+          val_MustSupport.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if ((CodeFilter != null) && (CodeFilter.Count != 0))
       {
         writer.WritePropertyName("codeFilter");
@@ -561,58 +660,6 @@ namespace Fhir.R4.Models
         writer.WriteNumber("limit", (uint)Limit!);
       }
 
-      if ((MustSupport != null) && (MustSupport.Count != 0))
-      {
-        writer.WritePropertyName("mustSupport");
-        writer.WriteStartArray();
-
-        foreach (string valMustSupport in MustSupport)
-        {
-          writer.WriteStringValue(valMustSupport);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((_MustSupport != null) && (_MustSupport.Count != 0))
-      {
-        writer.WritePropertyName("_mustSupport");
-        writer.WriteStartArray();
-
-        foreach (Element val_MustSupport in _MustSupport)
-        {
-          val_MustSupport.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Profile != null) && (Profile.Count != 0))
-      {
-        writer.WritePropertyName("profile");
-        writer.WriteStartArray();
-
-        foreach (string valProfile in Profile)
-        {
-          writer.WriteStringValue(valProfile);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((_Profile != null) && (_Profile.Count != 0))
-      {
-        writer.WritePropertyName("_profile");
-        writer.WriteStartArray();
-
-        foreach (Element val_Profile in _Profile)
-        {
-          val_Profile.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
       if ((Sort != null) && (Sort.Count != 0))
       {
         writer.WritePropertyName("sort");
@@ -624,26 +671,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (SubjectCodeableConcept != null)
-      {
-        writer.WritePropertyName("subjectCodeableConcept");
-        SubjectCodeableConcept.SerializeJson(ref writer, options);
-      }
-
-      if (SubjectReference != null)
-      {
-        writer.WritePropertyName("subjectReference");
-        SubjectReference.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
-      {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

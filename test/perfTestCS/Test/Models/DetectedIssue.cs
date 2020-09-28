@@ -194,18 +194,21 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("action");
       Action.SerializeJson(ref writer, options);
 
-      if (Author != null)
+      if (!string.IsNullOrEmpty(Date))
       {
-        writer.WritePropertyName("author");
-        Author.SerializeJson(ref writer, options);
+        writer.WriteString("date", (string)Date!);
       }
-
-      writer.WriteString("date", Date);
 
       if (_Date != null)
       {
         writer.WritePropertyName("_date");
         _Date.SerializeJson(ref writer, options);
+      }
+
+      if (Author != null)
+      {
+        writer.WritePropertyName("author");
+        Author.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -273,7 +276,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DetectedIssue>))]
   public class DetectedIssue : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -361,15 +364,36 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if (Author != null)
+      if ((Identifier != null) && (Identifier.Count != 0))
       {
-        writer.WritePropertyName("author");
-        Author.SerializeJson(ref writer, options);
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
       }
 
       if (Code != null)
@@ -378,28 +402,27 @@ namespace Fhir.R4.Models
         Code.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("detail", Detail);
-
-      if (_Detail != null)
+      if (!string.IsNullOrEmpty(Severity))
       {
-        writer.WritePropertyName("_detail");
-        _Detail.SerializeJson(ref writer, options);
+        writer.WriteString("severity", (string)Severity!);
       }
 
-      if ((Evidence != null) && (Evidence.Count != 0))
+      if (_Severity != null)
       {
-        writer.WritePropertyName("evidence");
-        writer.WriteStartArray();
-
-        foreach (DetectedIssueEvidence valEvidence in Evidence)
-        {
-          valEvidence.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("_severity");
+        _Severity.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("identifiedDateTime", IdentifiedDateTime);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(IdentifiedDateTime))
+      {
+        writer.WriteString("identifiedDateTime", (string)IdentifiedDateTime!);
+      }
 
       if (_IdentifiedDateTime != null)
       {
@@ -413,17 +436,10 @@ namespace Fhir.R4.Models
         IdentifiedPeriod.SerializeJson(ref writer, options);
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
+      if (Author != null)
       {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("author");
+        Author.SerializeJson(ref writer, options);
       }
 
       if ((Implicated != null) && (Implicated.Count != 0))
@@ -439,6 +455,41 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if ((Evidence != null) && (Evidence.Count != 0))
+      {
+        writer.WritePropertyName("evidence");
+        writer.WriteStartArray();
+
+        foreach (DetectedIssueEvidence valEvidence in Evidence)
+        {
+          valEvidence.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Detail))
+      {
+        writer.WriteString("detail", (string)Detail!);
+      }
+
+      if (_Detail != null)
+      {
+        writer.WritePropertyName("_detail");
+        _Detail.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Reference))
+      {
+        writer.WriteString("reference", (string)Reference!);
+      }
+
+      if (_Reference != null)
+      {
+        writer.WritePropertyName("_reference");
+        _Reference.SerializeJson(ref writer, options);
+      }
+
       if ((Mitigation != null) && (Mitigation.Count != 0))
       {
         writer.WritePropertyName("mitigation");
@@ -450,36 +501,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Patient != null)
-      {
-        writer.WritePropertyName("patient");
-        Patient.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("reference", Reference);
-
-      if (_Reference != null)
-      {
-        writer.WritePropertyName("_reference");
-        _Reference.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("severity", Severity);
-
-      if (_Severity != null)
-      {
-        writer.WritePropertyName("_severity");
-        _Severity.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

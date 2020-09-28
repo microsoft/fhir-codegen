@@ -42,7 +42,10 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("code");
       Code.SerializeJson(ref writer, options);
 
-      writer.WriteString("value", Value);
+      if (!string.IsNullOrEmpty(Value))
+      {
+        writer.WriteString("value", (string)Value!);
+      }
 
       if (_Value != null)
       {
@@ -196,6 +199,25 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if ((VaccineCode != null) && (VaccineCode.Count != 0))
+      {
+        writer.WritePropertyName("vaccineCode");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valVaccineCode in VaccineCode)
+        {
+          valVaccineCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (TargetDisease != null)
+      {
+        writer.WritePropertyName("targetDisease");
+        TargetDisease.SerializeJson(ref writer, options);
+      }
+
       if ((ContraindicatedVaccineCode != null) && (ContraindicatedVaccineCode.Count != 0))
       {
         writer.WritePropertyName("contraindicatedVaccineCode");
@@ -204,6 +226,22 @@ namespace Fhir.R4.Models
         foreach (CodeableConcept valContraindicatedVaccineCode in ContraindicatedVaccineCode)
         {
           valContraindicatedVaccineCode.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("forecastStatus");
+      ForecastStatus.SerializeJson(ref writer, options);
+
+      if ((ForecastReason != null) && (ForecastReason.Count != 0))
+      {
+        writer.WritePropertyName("forecastReason");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valForecastReason in ForecastReason)
+        {
+          valForecastReason.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -222,7 +260,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("description", Description);
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
 
       if (_Description != null)
       {
@@ -230,36 +271,10 @@ namespace Fhir.R4.Models
         _Description.SerializeJson(ref writer, options);
       }
 
-      if (DoseNumberPositiveInt != null)
+      if (!string.IsNullOrEmpty(Series))
       {
-        writer.WriteNumber("doseNumberPositiveInt", (uint)DoseNumberPositiveInt!);
+        writer.WriteString("series", (string)Series!);
       }
-
-      writer.WriteString("doseNumberString", DoseNumberString);
-
-      if (_DoseNumberString != null)
-      {
-        writer.WritePropertyName("_doseNumberString");
-        _DoseNumberString.SerializeJson(ref writer, options);
-      }
-
-      if ((ForecastReason != null) && (ForecastReason.Count != 0))
-      {
-        writer.WritePropertyName("forecastReason");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valForecastReason in ForecastReason)
-        {
-          valForecastReason.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WritePropertyName("forecastStatus");
-      ForecastStatus.SerializeJson(ref writer, options);
-
-      writer.WriteString("series", Series);
 
       if (_Series != null)
       {
@@ -267,12 +282,31 @@ namespace Fhir.R4.Models
         _Series.SerializeJson(ref writer, options);
       }
 
+      if (DoseNumberPositiveInt != null)
+      {
+        writer.WriteNumber("doseNumberPositiveInt", (uint)DoseNumberPositiveInt!);
+      }
+
+      if (!string.IsNullOrEmpty(DoseNumberString))
+      {
+        writer.WriteString("doseNumberString", (string)DoseNumberString!);
+      }
+
+      if (_DoseNumberString != null)
+      {
+        writer.WritePropertyName("_doseNumberString");
+        _DoseNumberString.SerializeJson(ref writer, options);
+      }
+
       if (SeriesDosesPositiveInt != null)
       {
         writer.WriteNumber("seriesDosesPositiveInt", (uint)SeriesDosesPositiveInt!);
       }
 
-      writer.WriteString("seriesDosesString", SeriesDosesString);
+      if (!string.IsNullOrEmpty(SeriesDosesString))
+      {
+        writer.WriteString("seriesDosesString", (string)SeriesDosesString!);
+      }
 
       if (_SeriesDosesString != null)
       {
@@ -301,25 +335,6 @@ namespace Fhir.R4.Models
         foreach (Reference valSupportingPatientInformation in SupportingPatientInformation)
         {
           valSupportingPatientInformation.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (TargetDisease != null)
-      {
-        writer.WritePropertyName("targetDisease");
-        TargetDisease.SerializeJson(ref writer, options);
-      }
-
-      if ((VaccineCode != null) && (VaccineCode.Count != 0))
-      {
-        writer.WritePropertyName("vaccineCode");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valVaccineCode in VaccineCode)
-        {
-          valVaccineCode.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -587,7 +602,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationRecommendation>))]
   public class ImmunizationRecommendation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -627,24 +642,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Authority != null)
-      {
-        writer.WritePropertyName("authority");
-        Authority.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("date", Date);
-
-      if (_Date != null)
-      {
-        writer.WritePropertyName("_date");
-        _Date.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -661,6 +665,23 @@ namespace Fhir.R4.Models
 
       writer.WritePropertyName("patient");
       Patient.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Date))
+      {
+        writer.WriteString("date", (string)Date!);
+      }
+
+      if (_Date != null)
+      {
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
+      }
+
+      if (Authority != null)
+      {
+        writer.WritePropertyName("authority");
+        Authority.SerializeJson(ref writer, options);
+      }
 
       if ((Recommendation != null) && (Recommendation.Count != 0))
       {

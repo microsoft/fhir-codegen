@@ -51,15 +51,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("display", Display);
-
-      if (_Display != null)
+      if (!string.IsNullOrEmpty(Type))
       {
-        writer.WritePropertyName("_display");
-        _Display.SerializeJson(ref writer, options);
+        writer.WriteString("type", (string)Type!);
       }
-
-      writer.WriteString("type", Type);
 
       if (_Type != null)
       {
@@ -67,12 +62,26 @@ namespace Fhir.R4.Models
         _Type.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("uri", Uri);
+      if (!string.IsNullOrEmpty(Uri))
+      {
+        writer.WriteString("uri", (string)Uri!);
+      }
 
       if (_Uri != null)
       {
         writer.WritePropertyName("_uri");
         _Uri.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Display))
+      {
+        writer.WriteString("display", (string)Display!);
+      }
+
+      if (_Display != null)
+      {
+        writer.WritePropertyName("_display");
+        _Display.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -186,15 +195,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("detail", Detail);
-
-      if (_Detail != null)
+      if (!string.IsNullOrEmpty(Result))
       {
-        writer.WritePropertyName("_detail");
-        _Detail.SerializeJson(ref writer, options);
+        writer.WriteString("result", (string)Result!);
       }
 
-      writer.WriteString("message", Message);
+      if (_Result != null)
+      {
+        writer.WritePropertyName("_result");
+        _Result.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Message))
+      {
+        writer.WriteString("message", (string)Message!);
+      }
 
       if (_Message != null)
       {
@@ -202,12 +217,15 @@ namespace Fhir.R4.Models
         _Message.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("result", Result);
-
-      if (_Result != null)
+      if (!string.IsNullOrEmpty(Detail))
       {
-        writer.WritePropertyName("_result");
-        _Result.SerializeJson(ref writer, options);
+        writer.WriteString("detail", (string)Detail!);
+      }
+
+      if (_Detail != null)
+      {
+        writer.WritePropertyName("_detail");
+        _Detail.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -321,15 +339,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("detail", Detail);
-
-      if (_Detail != null)
+      if (!string.IsNullOrEmpty(Result))
       {
-        writer.WritePropertyName("_detail");
-        _Detail.SerializeJson(ref writer, options);
+        writer.WriteString("result", (string)Result!);
       }
 
-      writer.WriteString("message", Message);
+      if (_Result != null)
+      {
+        writer.WritePropertyName("_result");
+        _Result.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Message))
+      {
+        writer.WriteString("message", (string)Message!);
+      }
 
       if (_Message != null)
       {
@@ -337,12 +361,15 @@ namespace Fhir.R4.Models
         _Message.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("result", Result);
-
-      if (_Result != null)
+      if (!string.IsNullOrEmpty(Detail))
       {
-        writer.WritePropertyName("_result");
-        _Result.SerializeJson(ref writer, options);
+        writer.WriteString("detail", (string)Detail!);
+      }
+
+      if (_Detail != null)
+      {
+        writer.WritePropertyName("_detail");
+        _Detail.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -440,16 +467,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Assert != null)
-      {
-        writer.WritePropertyName("assert");
-        Assert.SerializeJson(ref writer, options);
-      }
-
       if (Operation != null)
       {
         writer.WritePropertyName("operation");
         Operation.SerializeJson(ref writer, options);
+      }
+
+      if (Assert != null)
+      {
+        writer.WritePropertyName("assert");
+        Assert.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -634,16 +661,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Assert != null)
-      {
-        writer.WritePropertyName("assert");
-        Assert.SerializeJson(ref writer, options);
-      }
-
       if (Operation != null)
       {
         writer.WritePropertyName("operation");
         Operation.SerializeJson(ref writer, options);
+      }
+
+      if (Assert != null)
+      {
+        writer.WritePropertyName("assert");
+        Assert.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -736,6 +763,28 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Description))
+      {
+        writer.WriteString("description", (string)Description!);
+      }
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
       if ((Action != null) && (Action.Count != 0))
       {
         writer.WritePropertyName("action");
@@ -747,22 +796,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      writer.WriteString("description", Description);
-
-      if (_Description != null)
-      {
-        writer.WritePropertyName("_description");
-        _Description.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
-      {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1032,7 +1065,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A summary of information based on the results of executing a TestScript.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReport>))]
   public class TestReport : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -1121,7 +1154,10 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
@@ -1132,15 +1168,10 @@ namespace Fhir.R4.Models
         Identifier.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("issued", Issued);
-
-      if (_Issued != null)
+      if (!string.IsNullOrEmpty(Name))
       {
-        writer.WritePropertyName("_issued");
-        _Issued.SerializeJson(ref writer, options);
+        writer.WriteString("name", (string)Name!);
       }
-
-      writer.WriteString("name", Name);
 
       if (_Name != null)
       {
@@ -1148,20 +1179,24 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(ref writer, options);
       }
 
-      if ((Participant != null) && (Participant.Count != 0))
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("participant");
-        writer.WriteStartArray();
-
-        foreach (TestReportParticipant valParticipant in Participant)
-        {
-          valParticipant.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("status", (string)Status!);
       }
 
-      writer.WriteString("result", Result);
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("testScript");
+      TestScript.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Result))
+      {
+        writer.WriteString("result", (string)Result!);
+      }
 
       if (_Result != null)
       {
@@ -1180,24 +1215,45 @@ namespace Fhir.R4.Models
         _Score.SerializeJson(ref writer, options);
       }
 
+      if (!string.IsNullOrEmpty(Tester))
+      {
+        writer.WriteString("tester", (string)Tester!);
+      }
+
+      if (_Tester != null)
+      {
+        writer.WritePropertyName("_tester");
+        _Tester.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Issued))
+      {
+        writer.WriteString("issued", (string)Issued!);
+      }
+
+      if (_Issued != null)
+      {
+        writer.WritePropertyName("_issued");
+        _Issued.SerializeJson(ref writer, options);
+      }
+
+      if ((Participant != null) && (Participant.Count != 0))
+      {
+        writer.WritePropertyName("participant");
+        writer.WriteStartArray();
+
+        foreach (TestReportParticipant valParticipant in Participant)
+        {
+          valParticipant.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if (Setup != null)
       {
         writer.WritePropertyName("setup");
         Setup.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
-      if (Teardown != null)
-      {
-        writer.WritePropertyName("teardown");
-        Teardown.SerializeJson(ref writer, options);
       }
 
       if ((Test != null) && (Test.Count != 0))
@@ -1213,16 +1269,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("tester", Tester);
-
-      if (_Tester != null)
+      if (Teardown != null)
       {
-        writer.WritePropertyName("_tester");
-        _Tester.SerializeJson(ref writer, options);
+        writer.WritePropertyName("teardown");
+        Teardown.SerializeJson(ref writer, options);
       }
-
-      writer.WritePropertyName("testScript");
-      TestScript.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {

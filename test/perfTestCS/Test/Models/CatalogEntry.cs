@@ -39,16 +39,19 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WritePropertyName("item");
-      Item.SerializeJson(ref writer, options);
-
-      writer.WriteString("relationtype", Relationtype);
+      if (!string.IsNullOrEmpty(Relationtype))
+      {
+        writer.WriteString("relationtype", (string)Relationtype!);
+      }
 
       if (_Relationtype != null)
       {
         writer.WritePropertyName("_relationtype");
         _Relationtype.SerializeJson(ref writer, options);
       }
+
+      writer.WritePropertyName("item");
+      Item.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -110,7 +113,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Catalog entries are wrappers that contextualize items included in a catalog.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CatalogEntry>))]
   public class CatalogEntry : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -190,36 +193,37 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if ((AdditionalCharacteristic != null) && (AdditionalCharacteristic.Count != 0))
+      if ((Identifier != null) && (Identifier.Count != 0))
       {
-        writer.WritePropertyName("additionalCharacteristic");
+        writer.WritePropertyName("identifier");
         writer.WriteStartArray();
 
-        foreach (CodeableConcept valAdditionalCharacteristic in AdditionalCharacteristic)
+        foreach (Identifier valIdentifier in Identifier)
         {
-          valAdditionalCharacteristic.SerializeJson(ref writer, options, true);
+          valIdentifier.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      if ((AdditionalClassification != null) && (AdditionalClassification.Count != 0))
+      if (Type != null)
       {
-        writer.WritePropertyName("additionalClassification");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valAdditionalClassification in AdditionalClassification)
-        {
-          valAdditionalClassification.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
       }
+
+      writer.WriteBoolean("orderable", Orderable);
+
+      writer.WritePropertyName("referencedItem");
+      ReferencedItem.SerializeJson(ref writer, options);
 
       if ((AdditionalIdentifier != null) && (AdditionalIdentifier.Count != 0))
       {
@@ -247,20 +251,38 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("status", (string)Status!);
       }
 
-      writer.WriteString("lastUpdated", LastUpdated);
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (ValidityPeriod != null)
+      {
+        writer.WritePropertyName("validityPeriod");
+        ValidityPeriod.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ValidTo))
+      {
+        writer.WriteString("validTo", (string)ValidTo!);
+      }
+
+      if (_ValidTo != null)
+      {
+        writer.WritePropertyName("_validTo");
+        _ValidTo.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(LastUpdated))
+      {
+        writer.WriteString("lastUpdated", (string)LastUpdated!);
+      }
 
       if (_LastUpdated != null)
       {
@@ -268,10 +290,31 @@ namespace Fhir.R4.Models
         _LastUpdated.SerializeJson(ref writer, options);
       }
 
-      writer.WriteBoolean("orderable", Orderable);
+      if ((AdditionalCharacteristic != null) && (AdditionalCharacteristic.Count != 0))
+      {
+        writer.WritePropertyName("additionalCharacteristic");
+        writer.WriteStartArray();
 
-      writer.WritePropertyName("referencedItem");
-      ReferencedItem.SerializeJson(ref writer, options);
+        foreach (CodeableConcept valAdditionalCharacteristic in AdditionalCharacteristic)
+        {
+          valAdditionalCharacteristic.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((AdditionalClassification != null) && (AdditionalClassification.Count != 0))
+      {
+        writer.WritePropertyName("additionalClassification");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valAdditionalClassification in AdditionalClassification)
+        {
+          valAdditionalClassification.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if ((RelatedEntry != null) && (RelatedEntry.Count != 0))
       {
@@ -284,34 +327,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
-      if (Type != null)
-      {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
-      }
-
-      if (ValidityPeriod != null)
-      {
-        writer.WritePropertyName("validityPeriod");
-        ValidityPeriod.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("validTo", ValidTo);
-
-      if (_ValidTo != null)
-      {
-        writer.WritePropertyName("_validTo");
-        _ValidTo.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

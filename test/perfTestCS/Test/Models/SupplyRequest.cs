@@ -146,7 +146,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A record of a request for a medication, substance or device used in the healthcare setting.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SupplyRequest>))]
   public class SupplyRequest : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -250,36 +250,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      writer.WriteString("authoredOn", AuthoredOn);
-
-      if (_AuthoredOn != null)
-      {
-        writer.WritePropertyName("_authoredOn");
-        _AuthoredOn.SerializeJson(ref writer, options);
-      }
-
-      if (Category != null)
-      {
-        writer.WritePropertyName("category");
-        Category.SerializeJson(ref writer, options);
-      }
-
-      if (DeliverFrom != null)
-      {
-        writer.WritePropertyName("deliverFrom");
-        DeliverFrom.SerializeJson(ref writer, options);
-      }
-
-      if (DeliverTo != null)
-      {
-        writer.WritePropertyName("deliverTo");
-        DeliverTo.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -294,13 +271,60 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (Category != null)
+      {
+        writer.WritePropertyName("category");
+        Category.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Priority))
+      {
+        writer.WriteString("priority", (string)Priority!);
+      }
+
+      if (_Priority != null)
+      {
+        writer.WritePropertyName("_priority");
+        _Priority.SerializeJson(ref writer, options);
+      }
+
       writer.WritePropertyName("itemCodeableConcept");
       ItemCodeableConcept.SerializeJson(ref writer, options);
 
       writer.WritePropertyName("itemReference");
       ItemReference.SerializeJson(ref writer, options);
 
-      writer.WriteString("occurrenceDateTime", OccurrenceDateTime);
+      writer.WritePropertyName("quantity");
+      Quantity.SerializeJson(ref writer, options);
+
+      if ((Parameter != null) && (Parameter.Count != 0))
+      {
+        writer.WritePropertyName("parameter");
+        writer.WriteStartArray();
+
+        foreach (SupplyRequestParameter valParameter in Parameter)
+        {
+          valParameter.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(OccurrenceDateTime))
+      {
+        writer.WriteString("occurrenceDateTime", (string)OccurrenceDateTime!);
+      }
 
       if (_OccurrenceDateTime != null)
       {
@@ -320,29 +344,35 @@ namespace Fhir.R4.Models
         OccurrenceTiming.SerializeJson(ref writer, options);
       }
 
-      if ((Parameter != null) && (Parameter.Count != 0))
+      if (!string.IsNullOrEmpty(AuthoredOn))
       {
-        writer.WritePropertyName("parameter");
+        writer.WriteString("authoredOn", (string)AuthoredOn!);
+      }
+
+      if (_AuthoredOn != null)
+      {
+        writer.WritePropertyName("_authoredOn");
+        _AuthoredOn.SerializeJson(ref writer, options);
+      }
+
+      if (Requester != null)
+      {
+        writer.WritePropertyName("requester");
+        Requester.SerializeJson(ref writer, options);
+      }
+
+      if ((Supplier != null) && (Supplier.Count != 0))
+      {
+        writer.WritePropertyName("supplier");
         writer.WriteStartArray();
 
-        foreach (SupplyRequestParameter valParameter in Parameter)
+        foreach (Reference valSupplier in Supplier)
         {
-          valParameter.SerializeJson(ref writer, options, true);
+          valSupplier.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
-
-      writer.WriteString("priority", Priority);
-
-      if (_Priority != null)
-      {
-        writer.WritePropertyName("_priority");
-        _Priority.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("quantity");
-      Quantity.SerializeJson(ref writer, options);
 
       if ((ReasonCode != null) && (ReasonCode.Count != 0))
       {
@@ -370,31 +400,16 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Requester != null)
+      if (DeliverFrom != null)
       {
-        writer.WritePropertyName("requester");
-        Requester.SerializeJson(ref writer, options);
+        writer.WritePropertyName("deliverFrom");
+        DeliverFrom.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if (DeliverTo != null)
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
-      if ((Supplier != null) && (Supplier.Count != 0))
-      {
-        writer.WritePropertyName("supplier");
-        writer.WriteStartArray();
-
-        foreach (Reference valSupplier in Supplier)
-        {
-          valSupplier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("deliverTo");
+        DeliverTo.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

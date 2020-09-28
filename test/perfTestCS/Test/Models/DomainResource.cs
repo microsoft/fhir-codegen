@@ -43,6 +43,12 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Resource)this).SerializeJson(ref writer, options, false);
 
+      if (Text != null)
+      {
+        writer.WritePropertyName("text");
+        Text.SerializeJson(ref writer, options);
+      }
+
       if ((Contained != null) && (Contained.Count != 0))
       {
         writer.WritePropertyName("contained");
@@ -80,12 +86,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Text != null)
-      {
-        writer.WritePropertyName("text");
-        Text.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

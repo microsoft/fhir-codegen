@@ -51,7 +51,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("deviceIdentifier", DeviceIdentifier);
+      if (!string.IsNullOrEmpty(DeviceIdentifier))
+      {
+        writer.WriteString("deviceIdentifier", (string)DeviceIdentifier!);
+      }
 
       if (_DeviceIdentifier != null)
       {
@@ -59,7 +62,10 @@ namespace Fhir.R4.Models
         _DeviceIdentifier.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("issuer", Issuer);
+      if (!string.IsNullOrEmpty(Issuer))
+      {
+        writer.WriteString("issuer", (string)Issuer!);
+      }
 
       if (_Issuer != null)
       {
@@ -67,7 +73,10 @@ namespace Fhir.R4.Models
         _Issuer.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("jurisdiction", Jurisdiction);
+      if (!string.IsNullOrEmpty(Jurisdiction))
+      {
+        writer.WriteString("jurisdiction", (string)Jurisdiction!);
+      }
 
       if (_Jurisdiction != null)
       {
@@ -179,7 +188,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("name", Name);
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
 
       if (_Name != null)
       {
@@ -187,7 +199,10 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("type", Type);
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
 
       if (_Type != null)
       {
@@ -289,7 +304,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("systemType", SystemType);
+      if (!string.IsNullOrEmpty(SystemType))
+      {
+        writer.WriteString("systemType", (string)SystemType!);
+      }
 
       if (_SystemType != null)
       {
@@ -297,7 +315,10 @@ namespace Fhir.R4.Models
         _SystemType.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("version", Version);
+      if (!string.IsNullOrEmpty(Version))
+      {
+        writer.WriteString("version", (string)Version!);
+      }
 
       if (_Version != null)
       {
@@ -391,6 +412,9 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
       if ((Description != null) && (Description.Count != 0))
       {
         writer.WritePropertyName("description");
@@ -403,9 +427,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -514,19 +535,6 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("type");
       Type.SerializeJson(ref writer, options);
 
-      if ((ValueCode != null) && (ValueCode.Count != 0))
-      {
-        writer.WritePropertyName("valueCode");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valValueCode in ValueCode)
-        {
-          valValueCode.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
       if ((ValueQuantity != null) && (ValueQuantity.Count != 0))
       {
         writer.WritePropertyName("valueQuantity");
@@ -535,6 +543,19 @@ namespace Fhir.R4.Models
         foreach (Quantity valValueQuantity in ValueQuantity)
         {
           valValueQuantity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ValueCode != null) && (ValueCode.Count != 0))
+      {
+        writer.WritePropertyName("valueCode");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valValueCode in ValueCode)
+        {
+          valValueCode.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -671,18 +692,18 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (AllergenicIndicator != null)
-      {
-        writer.WriteBoolean("allergenicIndicator", (bool)AllergenicIndicator!);
-      }
+      writer.WritePropertyName("substance");
+      Substance.SerializeJson(ref writer, options);
 
       if (Alternate != null)
       {
         writer.WriteBoolean("alternate", (bool)Alternate!);
       }
 
-      writer.WritePropertyName("substance");
-      Substance.SerializeJson(ref writer, options);
+      if (AllergenicIndicator != null)
+      {
+        writer.WriteBoolean("allergenicIndicator", (bool)AllergenicIndicator!);
+      }
 
       if (includeStartObject)
       {
@@ -743,7 +764,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The characteristics, operational status and capabilities of a medical-related component of a medical device.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceDefinition>))]
   public class DeviceDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -871,35 +892,55 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if ((Capability != null) && (Capability.Count != 0))
+      if ((Identifier != null) && (Identifier.Count != 0))
       {
-        writer.WritePropertyName("capability");
+        writer.WritePropertyName("identifier");
         writer.WriteStartArray();
 
-        foreach (DeviceDefinitionCapability valCapability in Capability)
+        foreach (Identifier valIdentifier in Identifier)
         {
-          valCapability.SerializeJson(ref writer, options, true);
+          valIdentifier.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      if ((Contact != null) && (Contact.Count != 0))
+      if ((UdiDeviceIdentifier != null) && (UdiDeviceIdentifier.Count != 0))
       {
-        writer.WritePropertyName("contact");
+        writer.WritePropertyName("udiDeviceIdentifier");
         writer.WriteStartArray();
 
-        foreach (ContactPoint valContact in Contact)
+        foreach (DeviceDefinitionUdiDeviceIdentifier valUdiDeviceIdentifier in UdiDeviceIdentifier)
         {
-          valContact.SerializeJson(ref writer, options, true);
+          valUdiDeviceIdentifier.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(ManufacturerString))
+      {
+        writer.WriteString("manufacturerString", (string)ManufacturerString!);
+      }
+
+      if (_ManufacturerString != null)
+      {
+        writer.WritePropertyName("_manufacturerString");
+        _ManufacturerString.SerializeJson(ref writer, options);
+      }
+
+      if (ManufacturerReference != null)
+      {
+        writer.WritePropertyName("manufacturerReference");
+        ManufacturerReference.SerializeJson(ref writer, options);
       }
 
       if ((DeviceName != null) && (DeviceName.Count != 0))
@@ -915,60 +956,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
+      if (!string.IsNullOrEmpty(ModelNumber))
       {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("modelNumber", (string)ModelNumber!);
       }
-
-      if ((LanguageCode != null) && (LanguageCode.Count != 0))
-      {
-        writer.WritePropertyName("languageCode");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valLanguageCode in LanguageCode)
-        {
-          valLanguageCode.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("manufacturerString", ManufacturerString);
-
-      if (_ManufacturerString != null)
-      {
-        writer.WritePropertyName("_manufacturerString");
-        _ManufacturerString.SerializeJson(ref writer, options);
-      }
-
-      if (ManufacturerReference != null)
-      {
-        writer.WritePropertyName("manufacturerReference");
-        ManufacturerReference.SerializeJson(ref writer, options);
-      }
-
-      if ((Material != null) && (Material.Count != 0))
-      {
-        writer.WritePropertyName("material");
-        writer.WriteStartArray();
-
-        foreach (DeviceDefinitionMaterial valMaterial in Material)
-        {
-          valMaterial.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("modelNumber", ModelNumber);
 
       if (_ModelNumber != null)
       {
@@ -976,62 +967,49 @@ namespace Fhir.R4.Models
         _ModelNumber.SerializeJson(ref writer, options);
       }
 
-      if ((Note != null) && (Note.Count != 0))
+      if (Type != null)
       {
-        writer.WritePropertyName("note");
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if ((Specialization != null) && (Specialization.Count != 0))
+      {
+        writer.WritePropertyName("specialization");
         writer.WriteStartArray();
 
-        foreach (Annotation valNote in Note)
+        foreach (DeviceDefinitionSpecialization valSpecialization in Specialization)
         {
-          valNote.SerializeJson(ref writer, options, true);
+          valSpecialization.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      writer.WriteString("onlineInformation", OnlineInformation);
-
-      if (_OnlineInformation != null)
+      if ((Version != null) && (Version.Count != 0))
       {
-        writer.WritePropertyName("_onlineInformation");
-        _OnlineInformation.SerializeJson(ref writer, options);
-      }
-
-      if (Owner != null)
-      {
-        writer.WritePropertyName("owner");
-        Owner.SerializeJson(ref writer, options);
-      }
-
-      if (ParentDevice != null)
-      {
-        writer.WritePropertyName("parentDevice");
-        ParentDevice.SerializeJson(ref writer, options);
-      }
-
-      if (PhysicalCharacteristics != null)
-      {
-        writer.WritePropertyName("physicalCharacteristics");
-        PhysicalCharacteristics.SerializeJson(ref writer, options);
-      }
-
-      if ((Property != null) && (Property.Count != 0))
-      {
-        writer.WritePropertyName("property");
+        writer.WritePropertyName("version");
         writer.WriteStartArray();
 
-        foreach (DeviceDefinitionProperty valProperty in Property)
+        foreach (string valVersion in Version)
         {
-          valProperty.SerializeJson(ref writer, options, true);
+          writer.WriteStringValue(valVersion);
         }
 
         writer.WriteEndArray();
       }
 
-      if (Quantity != null)
+      if ((_Version != null) && (_Version.Count != 0))
       {
-        writer.WritePropertyName("quantity");
-        Quantity.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_version");
+        writer.WriteStartArray();
+
+        foreach (Element val_Version in _Version)
+        {
+          val_Version.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((Safety != null) && (Safety.Count != 0))
@@ -1060,39 +1038,74 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Specialization != null) && (Specialization.Count != 0))
+      if (PhysicalCharacteristics != null)
       {
-        writer.WritePropertyName("specialization");
+        writer.WritePropertyName("physicalCharacteristics");
+        PhysicalCharacteristics.SerializeJson(ref writer, options);
+      }
+
+      if ((LanguageCode != null) && (LanguageCode.Count != 0))
+      {
+        writer.WritePropertyName("languageCode");
         writer.WriteStartArray();
 
-        foreach (DeviceDefinitionSpecialization valSpecialization in Specialization)
+        foreach (CodeableConcept valLanguageCode in LanguageCode)
         {
-          valSpecialization.SerializeJson(ref writer, options, true);
+          valLanguageCode.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      if (Type != null)
+      if ((Capability != null) && (Capability.Count != 0))
       {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
-      }
-
-      if ((UdiDeviceIdentifier != null) && (UdiDeviceIdentifier.Count != 0))
-      {
-        writer.WritePropertyName("udiDeviceIdentifier");
+        writer.WritePropertyName("capability");
         writer.WriteStartArray();
 
-        foreach (DeviceDefinitionUdiDeviceIdentifier valUdiDeviceIdentifier in UdiDeviceIdentifier)
+        foreach (DeviceDefinitionCapability valCapability in Capability)
         {
-          valUdiDeviceIdentifier.SerializeJson(ref writer, options, true);
+          valCapability.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      writer.WriteString("url", Url);
+      if ((Property != null) && (Property.Count != 0))
+      {
+        writer.WritePropertyName("property");
+        writer.WriteStartArray();
+
+        foreach (DeviceDefinitionProperty valProperty in Property)
+        {
+          valProperty.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Owner != null)
+      {
+        writer.WritePropertyName("owner");
+        Owner.SerializeJson(ref writer, options);
+      }
+
+      if ((Contact != null) && (Contact.Count != 0))
+      {
+        writer.WritePropertyName("contact");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valContact in Contact)
+        {
+          valContact.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Url))
+      {
+        writer.WriteString("url", (string)Url!);
+      }
 
       if (_Url != null)
       {
@@ -1100,27 +1113,50 @@ namespace Fhir.R4.Models
         _Url.SerializeJson(ref writer, options);
       }
 
-      if ((Version != null) && (Version.Count != 0))
+      if (!string.IsNullOrEmpty(OnlineInformation))
       {
-        writer.WritePropertyName("version");
+        writer.WriteString("onlineInformation", (string)OnlineInformation!);
+      }
+
+      if (_OnlineInformation != null)
+      {
+        writer.WritePropertyName("_onlineInformation");
+        _OnlineInformation.SerializeJson(ref writer, options);
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
         writer.WriteStartArray();
 
-        foreach (string valVersion in Version)
+        foreach (Annotation valNote in Note)
         {
-          writer.WriteStringValue(valVersion);
+          valNote.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      if ((_Version != null) && (_Version.Count != 0))
+      if (Quantity != null)
       {
-        writer.WritePropertyName("_version");
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(ref writer, options);
+      }
+
+      if (ParentDevice != null)
+      {
+        writer.WritePropertyName("parentDevice");
+        ParentDevice.SerializeJson(ref writer, options);
+      }
+
+      if ((Material != null) && (Material.Count != 0))
+      {
+        writer.WritePropertyName("material");
         writer.WriteStartArray();
 
-        foreach (Element val_Version in _Version)
+        foreach (DeviceDefinitionMaterial valMaterial in Material)
         {
-          val_Version.SerializeJson(ref writer, options, true);
+          valMaterial.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

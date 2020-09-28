@@ -103,28 +103,37 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("city", City);
-
-      if (_City != null)
+      if (!string.IsNullOrEmpty(Use))
       {
-        writer.WritePropertyName("_city");
-        _City.SerializeJson(ref writer, options);
+        writer.WriteString("use", (string)Use!);
       }
 
-      writer.WriteString("country", Country);
-
-      if (_Country != null)
+      if (_Use != null)
       {
-        writer.WritePropertyName("_country");
-        _Country.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_use");
+        _Use.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("district", District);
-
-      if (_District != null)
+      if (!string.IsNullOrEmpty(Type))
       {
-        writer.WritePropertyName("_district");
-        _District.SerializeJson(ref writer, options);
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Text))
+      {
+        writer.WriteString("text", (string)Text!);
+      }
+
+      if (_Text != null)
+      {
+        writer.WritePropertyName("_text");
+        _Text.SerializeJson(ref writer, options);
       }
 
       if ((Line != null) && (Line.Count != 0))
@@ -153,21 +162,32 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Period != null)
+      if (!string.IsNullOrEmpty(City))
       {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
+        writer.WriteString("city", (string)City!);
       }
 
-      writer.WriteString("postalCode", PostalCode);
-
-      if (_PostalCode != null)
+      if (_City != null)
       {
-        writer.WritePropertyName("_postalCode");
-        _PostalCode.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_city");
+        _City.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("state", State);
+      if (!string.IsNullOrEmpty(District))
+      {
+        writer.WriteString("district", (string)District!);
+      }
+
+      if (_District != null)
+      {
+        writer.WritePropertyName("_district");
+        _District.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(State))
+      {
+        writer.WriteString("state", (string)State!);
+      }
 
       if (_State != null)
       {
@@ -175,28 +195,32 @@ namespace Fhir.R4.Models
         _State.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("text", Text);
-
-      if (_Text != null)
+      if (!string.IsNullOrEmpty(PostalCode))
       {
-        writer.WritePropertyName("_text");
-        _Text.SerializeJson(ref writer, options);
+        writer.WriteString("postalCode", (string)PostalCode!);
       }
 
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
+      if (_PostalCode != null)
       {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_postalCode");
+        _PostalCode.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("use", Use);
-
-      if (_Use != null)
+      if (!string.IsNullOrEmpty(Country))
       {
-        writer.WritePropertyName("_use");
-        _Use.SerializeJson(ref writer, options);
+        writer.WriteString("country", (string)Country!);
+      }
+
+      if (_Country != null)
+      {
+        writer.WritePropertyName("_country");
+        _Country.SerializeJson(ref writer, options);
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

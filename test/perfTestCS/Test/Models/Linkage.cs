@@ -39,16 +39,19 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WritePropertyName("resource");
-      Resource.SerializeJson(ref writer, options);
-
-      writer.WriteString("type", Type);
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
 
       if (_Type != null)
       {
         writer.WritePropertyName("_type");
         _Type.SerializeJson(ref writer, options);
       }
+
+      writer.WritePropertyName("resource");
+      Resource.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -110,7 +113,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Linkage>))]
   public class Linkage : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -138,7 +141,10 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);

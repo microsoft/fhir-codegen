@@ -85,7 +85,10 @@ namespace Fhir.R4.Models
         Chromosome.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("genomeBuild", GenomeBuild);
+      if (!string.IsNullOrEmpty(GenomeBuild))
+      {
+        writer.WriteString("genomeBuild", (string)GenomeBuild!);
+      }
 
       if (_GenomeBuild != null)
       {
@@ -93,7 +96,10 @@ namespace Fhir.R4.Models
         _GenomeBuild.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("orientation", Orientation);
+      if (!string.IsNullOrEmpty(Orientation))
+      {
+        writer.WriteString("orientation", (string)Orientation!);
+      }
 
       if (_Orientation != null)
       {
@@ -113,7 +119,10 @@ namespace Fhir.R4.Models
         ReferenceSeqPointer.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("referenceSeqString", ReferenceSeqString);
+      if (!string.IsNullOrEmpty(ReferenceSeqString))
+      {
+        writer.WriteString("referenceSeqString", (string)ReferenceSeqString!);
+      }
 
       if (_ReferenceSeqString != null)
       {
@@ -121,7 +130,10 @@ namespace Fhir.R4.Models
         _ReferenceSeqString.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("strand", Strand);
+      if (!string.IsNullOrEmpty(Strand))
+      {
+        writer.WriteString("strand", (string)Strand!);
+      }
 
       if (_Strand != null)
       {
@@ -129,14 +141,14 @@ namespace Fhir.R4.Models
         _Strand.SerializeJson(ref writer, options);
       }
 
-      if (WindowEnd != null)
-      {
-        writer.WriteNumber("windowEnd", (int)WindowEnd!);
-      }
-
       if (WindowStart != null)
       {
         writer.WriteNumber("windowStart", (int)WindowStart!);
+      }
+
+      if (WindowEnd != null)
+      {
+        writer.WriteNumber("windowEnd", (int)WindowEnd!);
       }
 
       if (includeStartObject)
@@ -294,12 +306,9 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("cigar", Cigar);
-
-      if (_Cigar != null)
+      if (Start != null)
       {
-        writer.WritePropertyName("_cigar");
-        _Cigar.SerializeJson(ref writer, options);
+        writer.WriteNumber("start", (int)Start!);
       }
 
       if (End != null)
@@ -307,7 +316,10 @@ namespace Fhir.R4.Models
         writer.WriteNumber("end", (int)End!);
       }
 
-      writer.WriteString("observedAllele", ObservedAllele);
+      if (!string.IsNullOrEmpty(ObservedAllele))
+      {
+        writer.WriteString("observedAllele", (string)ObservedAllele!);
+      }
 
       if (_ObservedAllele != null)
       {
@@ -315,7 +327,10 @@ namespace Fhir.R4.Models
         _ObservedAllele.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("referenceAllele", ReferenceAllele);
+      if (!string.IsNullOrEmpty(ReferenceAllele))
+      {
+        writer.WriteString("referenceAllele", (string)ReferenceAllele!);
+      }
 
       if (_ReferenceAllele != null)
       {
@@ -323,9 +338,15 @@ namespace Fhir.R4.Models
         _ReferenceAllele.SerializeJson(ref writer, options);
       }
 
-      if (Start != null)
+      if (!string.IsNullOrEmpty(Cigar))
       {
-        writer.WriteNumber("start", (int)Start!);
+        writer.WriteString("cigar", (string)Cigar!);
+      }
+
+      if (_Cigar != null)
+      {
+        writer.WritePropertyName("_cigar");
+        _Cigar.SerializeJson(ref writer, options);
       }
 
       if (VariantPointer != null)
@@ -474,40 +495,27 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if ((FMeasure != null) && (FMeasure.Count != 0))
+      if ((Score != null) && (Score.Count != 0))
       {
-        writer.WritePropertyName("fMeasure");
+        writer.WritePropertyName("score");
         writer.WriteStartArray();
 
-        foreach (decimal valFMeasure in FMeasure)
+        foreach (int valScore in Score)
         {
-          writer.WriteNumberValue(valFMeasure);
+          writer.WriteNumberValue(valScore);
         }
 
         writer.WriteEndArray();
       }
 
-      if ((_FMeasure != null) && (_FMeasure.Count != 0))
+      if ((NumTP != null) && (NumTP.Count != 0))
       {
-        writer.WritePropertyName("_fMeasure");
+        writer.WritePropertyName("numTP");
         writer.WriteStartArray();
 
-        foreach (Element val_FMeasure in _FMeasure)
+        foreach (int valNumTP in NumTP)
         {
-          val_FMeasure.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((NumFN != null) && (NumFN.Count != 0))
-      {
-        writer.WritePropertyName("numFN");
-        writer.WriteStartArray();
-
-        foreach (int valNumFN in NumFN)
-        {
-          writer.WriteNumberValue(valNumFN);
+          writer.WriteNumberValue(valNumTP);
         }
 
         writer.WriteEndArray();
@@ -526,14 +534,14 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((NumTP != null) && (NumTP.Count != 0))
+      if ((NumFN != null) && (NumFN.Count != 0))
       {
-        writer.WritePropertyName("numTP");
+        writer.WritePropertyName("numFN");
         writer.WriteStartArray();
 
-        foreach (int valNumTP in NumTP)
+        foreach (int valNumFN in NumFN)
         {
-          writer.WriteNumberValue(valNumTP);
+          writer.WriteNumberValue(valNumFN);
         }
 
         writer.WriteEndArray();
@@ -565,19 +573,6 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Score != null) && (Score.Count != 0))
-      {
-        writer.WritePropertyName("score");
-        writer.WriteStartArray();
-
-        foreach (int valScore in Score)
-        {
-          writer.WriteNumberValue(valScore);
-        }
-
-        writer.WriteEndArray();
-      }
-
       if ((Sensitivity != null) && (Sensitivity.Count != 0))
       {
         writer.WritePropertyName("sensitivity");
@@ -599,6 +594,32 @@ namespace Fhir.R4.Models
         foreach (Element val_Sensitivity in _Sensitivity)
         {
           val_Sensitivity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((FMeasure != null) && (FMeasure.Count != 0))
+      {
+        writer.WritePropertyName("fMeasure");
+        writer.WriteStartArray();
+
+        foreach (decimal valFMeasure in FMeasure)
+        {
+          writer.WriteNumberValue(valFMeasure);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_FMeasure != null) && (_FMeasure.Count != 0))
+      {
+        writer.WritePropertyName("_fMeasure");
+        writer.WriteStartArray();
+
+        foreach (Element val_FMeasure in _FMeasure)
+        {
+          val_FMeasure.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -1016,93 +1037,15 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (End != null)
+      if (!string.IsNullOrEmpty(Type))
       {
-        writer.WriteNumber("end", (int)End!);
+        writer.WriteString("type", (string)Type!);
       }
 
-      if (FScore != null)
+      if (_Type != null)
       {
-        writer.WriteNumber("fScore", (decimal)FScore!);
-      }
-
-      if (_FScore != null)
-      {
-        writer.WritePropertyName("_fScore");
-        _FScore.SerializeJson(ref writer, options);
-      }
-
-      if (GtFP != null)
-      {
-        writer.WriteNumber("gtFP", (decimal)GtFP!);
-      }
-
-      if (_GtFP != null)
-      {
-        writer.WritePropertyName("_gtFP");
-        _GtFP.SerializeJson(ref writer, options);
-      }
-
-      if (Method != null)
-      {
-        writer.WritePropertyName("method");
-        Method.SerializeJson(ref writer, options);
-      }
-
-      if (Precision != null)
-      {
-        writer.WriteNumber("precision", (decimal)Precision!);
-      }
-
-      if (_Precision != null)
-      {
-        writer.WritePropertyName("_precision");
-        _Precision.SerializeJson(ref writer, options);
-      }
-
-      if (QueryFP != null)
-      {
-        writer.WriteNumber("queryFP", (decimal)QueryFP!);
-      }
-
-      if (_QueryFP != null)
-      {
-        writer.WritePropertyName("_queryFP");
-        _QueryFP.SerializeJson(ref writer, options);
-      }
-
-      if (QueryTP != null)
-      {
-        writer.WriteNumber("queryTP", (decimal)QueryTP!);
-      }
-
-      if (_QueryTP != null)
-      {
-        writer.WritePropertyName("_queryTP");
-        _QueryTP.SerializeJson(ref writer, options);
-      }
-
-      if (Recall != null)
-      {
-        writer.WriteNumber("recall", (decimal)Recall!);
-      }
-
-      if (_Recall != null)
-      {
-        writer.WritePropertyName("_recall");
-        _Recall.SerializeJson(ref writer, options);
-      }
-
-      if (Roc != null)
-      {
-        writer.WritePropertyName("roc");
-        Roc.SerializeJson(ref writer, options);
-      }
-
-      if (Score != null)
-      {
-        writer.WritePropertyName("score");
-        Score.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
       }
 
       if (StandardSequence != null)
@@ -1116,15 +1059,21 @@ namespace Fhir.R4.Models
         writer.WriteNumber("start", (int)Start!);
       }
 
-      if (TruthFN != null)
+      if (End != null)
       {
-        writer.WriteNumber("truthFN", (decimal)TruthFN!);
+        writer.WriteNumber("end", (int)End!);
       }
 
-      if (_TruthFN != null)
+      if (Score != null)
       {
-        writer.WritePropertyName("_truthFN");
-        _TruthFN.SerializeJson(ref writer, options);
+        writer.WritePropertyName("score");
+        Score.SerializeJson(ref writer, options);
+      }
+
+      if (Method != null)
+      {
+        writer.WritePropertyName("method");
+        Method.SerializeJson(ref writer, options);
       }
 
       if (TruthTP != null)
@@ -1138,12 +1087,87 @@ namespace Fhir.R4.Models
         _TruthTP.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
+      if (QueryTP != null)
       {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
+        writer.WriteNumber("queryTP", (decimal)QueryTP!);
+      }
+
+      if (_QueryTP != null)
+      {
+        writer.WritePropertyName("_queryTP");
+        _QueryTP.SerializeJson(ref writer, options);
+      }
+
+      if (TruthFN != null)
+      {
+        writer.WriteNumber("truthFN", (decimal)TruthFN!);
+      }
+
+      if (_TruthFN != null)
+      {
+        writer.WritePropertyName("_truthFN");
+        _TruthFN.SerializeJson(ref writer, options);
+      }
+
+      if (QueryFP != null)
+      {
+        writer.WriteNumber("queryFP", (decimal)QueryFP!);
+      }
+
+      if (_QueryFP != null)
+      {
+        writer.WritePropertyName("_queryFP");
+        _QueryFP.SerializeJson(ref writer, options);
+      }
+
+      if (GtFP != null)
+      {
+        writer.WriteNumber("gtFP", (decimal)GtFP!);
+      }
+
+      if (_GtFP != null)
+      {
+        writer.WritePropertyName("_gtFP");
+        _GtFP.SerializeJson(ref writer, options);
+      }
+
+      if (Precision != null)
+      {
+        writer.WriteNumber("precision", (decimal)Precision!);
+      }
+
+      if (_Precision != null)
+      {
+        writer.WritePropertyName("_precision");
+        _Precision.SerializeJson(ref writer, options);
+      }
+
+      if (Recall != null)
+      {
+        writer.WriteNumber("recall", (decimal)Recall!);
+      }
+
+      if (_Recall != null)
+      {
+        writer.WritePropertyName("_recall");
+        _Recall.SerializeJson(ref writer, options);
+      }
+
+      if (FScore != null)
+      {
+        writer.WriteNumber("fScore", (decimal)FScore!);
+      }
+
+      if (_FScore != null)
+      {
+        writer.WritePropertyName("_fScore");
+        _FScore.SerializeJson(ref writer, options);
+      }
+
+      if (Roc != null)
+      {
+        writer.WritePropertyName("roc");
+        Roc.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1363,31 +1387,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("datasetId", DatasetId);
-
-      if (_DatasetId != null)
+      if (!string.IsNullOrEmpty(Type))
       {
-        writer.WritePropertyName("_datasetId");
-        _DatasetId.SerializeJson(ref writer, options);
+        writer.WriteString("type", (string)Type!);
       }
-
-      writer.WriteString("name", Name);
-
-      if (_Name != null)
-      {
-        writer.WritePropertyName("_name");
-        _Name.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("readsetId", ReadsetId);
-
-      if (_ReadsetId != null)
-      {
-        writer.WritePropertyName("_readsetId");
-        _ReadsetId.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("type", Type);
 
       if (_Type != null)
       {
@@ -1395,7 +1398,10 @@ namespace Fhir.R4.Models
         _Type.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("url", Url);
+      if (!string.IsNullOrEmpty(Url))
+      {
+        writer.WriteString("url", (string)Url!);
+      }
 
       if (_Url != null)
       {
@@ -1403,12 +1409,48 @@ namespace Fhir.R4.Models
         _Url.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("variantsetId", VariantsetId);
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
+
+      if (_Name != null)
+      {
+        writer.WritePropertyName("_name");
+        _Name.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(DatasetId))
+      {
+        writer.WriteString("datasetId", (string)DatasetId!);
+      }
+
+      if (_DatasetId != null)
+      {
+        writer.WritePropertyName("_datasetId");
+        _DatasetId.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(VariantsetId))
+      {
+        writer.WriteString("variantsetId", (string)VariantsetId!);
+      }
 
       if (_VariantsetId != null)
       {
         writer.WritePropertyName("_variantsetId");
         _VariantsetId.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(ReadsetId))
+      {
+        writer.WriteString("readsetId", (string)ReadsetId!);
+      }
+
+      if (_ReadsetId != null)
+      {
+        writer.WritePropertyName("_readsetId");
+        _ReadsetId.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1533,14 +1575,14 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (End != null)
-      {
-        writer.WriteNumber("end", (int)End!);
-      }
-
       if (Start != null)
       {
         writer.WriteNumber("start", (int)Start!);
+      }
+
+      if (End != null)
+      {
+        writer.WriteNumber("end", (int)End!);
       }
 
       if (includeStartObject)
@@ -1619,14 +1661,14 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (End != null)
-      {
-        writer.WriteNumber("end", (int)End!);
-      }
-
       if (Start != null)
       {
         writer.WriteNumber("start", (int)Start!);
+      }
+
+      if (End != null)
+      {
+        writer.WriteNumber("end", (int)End!);
       }
 
       if (includeStartObject)
@@ -1717,15 +1759,15 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (VariantType != null)
+      {
+        writer.WritePropertyName("variantType");
+        VariantType.SerializeJson(ref writer, options);
+      }
+
       if (Exact != null)
       {
         writer.WriteBoolean("exact", (bool)Exact!);
-      }
-
-      if (Inner != null)
-      {
-        writer.WritePropertyName("inner");
-        Inner.SerializeJson(ref writer, options);
       }
 
       if (Length != null)
@@ -1739,10 +1781,10 @@ namespace Fhir.R4.Models
         Outer.SerializeJson(ref writer, options);
       }
 
-      if (VariantType != null)
+      if (Inner != null)
       {
-        writer.WritePropertyName("variantType");
-        VariantType.SerializeJson(ref writer, options);
+        writer.WritePropertyName("inner");
+        Inner.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1814,7 +1856,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Raw data describing a biological sequence.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequence>))]
   public class MolecularSequence : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -1902,18 +1944,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      writer.WriteNumber("coordinateSystem", CoordinateSystem);
-
-      if (Device != null)
-      {
-        writer.WritePropertyName("device");
-        Device.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -1928,18 +1965,35 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("observedSeq", ObservedSeq);
-
-      if (_ObservedSeq != null)
+      if (!string.IsNullOrEmpty(Type))
       {
-        writer.WritePropertyName("_observedSeq");
-        _ObservedSeq.SerializeJson(ref writer, options);
+        writer.WriteString("type", (string)Type!);
       }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      writer.WriteNumber("coordinateSystem", CoordinateSystem);
 
       if (Patient != null)
       {
         writer.WritePropertyName("patient");
         Patient.SerializeJson(ref writer, options);
+      }
+
+      if (Specimen != null)
+      {
+        writer.WritePropertyName("specimen");
+        Specimen.SerializeJson(ref writer, options);
+      }
+
+      if (Device != null)
+      {
+        writer.WritePropertyName("device");
+        Device.SerializeJson(ref writer, options);
       }
 
       if (Performer != null)
@@ -1948,17 +2002,40 @@ namespace Fhir.R4.Models
         Performer.SerializeJson(ref writer, options);
       }
 
-      if ((Pointer != null) && (Pointer.Count != 0))
+      if (Quantity != null)
       {
-        writer.WritePropertyName("pointer");
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(ref writer, options);
+      }
+
+      if (ReferenceSeq != null)
+      {
+        writer.WritePropertyName("referenceSeq");
+        ReferenceSeq.SerializeJson(ref writer, options);
+      }
+
+      if ((Variant != null) && (Variant.Count != 0))
+      {
+        writer.WritePropertyName("variant");
         writer.WriteStartArray();
 
-        foreach (Reference valPointer in Pointer)
+        foreach (MolecularSequenceVariant valVariant in Variant)
         {
-          valPointer.SerializeJson(ref writer, options, true);
+          valVariant.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(ObservedSeq))
+      {
+        writer.WriteString("observedSeq", (string)ObservedSeq!);
+      }
+
+      if (_ObservedSeq != null)
+      {
+        writer.WritePropertyName("_observedSeq");
+        _ObservedSeq.SerializeJson(ref writer, options);
       }
 
       if ((Quality != null) && (Quality.Count != 0))
@@ -1974,21 +2051,9 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Quantity != null)
-      {
-        writer.WritePropertyName("quantity");
-        Quantity.SerializeJson(ref writer, options);
-      }
-
       if (ReadCoverage != null)
       {
         writer.WriteNumber("readCoverage", (int)ReadCoverage!);
-      }
-
-      if (ReferenceSeq != null)
-      {
-        writer.WritePropertyName("referenceSeq");
-        ReferenceSeq.SerializeJson(ref writer, options);
       }
 
       if ((Repository != null) && (Repository.Count != 0))
@@ -2004,10 +2069,17 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Specimen != null)
+      if ((Pointer != null) && (Pointer.Count != 0))
       {
-        writer.WritePropertyName("specimen");
-        Specimen.SerializeJson(ref writer, options);
+        writer.WritePropertyName("pointer");
+        writer.WriteStartArray();
+
+        foreach (Reference valPointer in Pointer)
+        {
+          valPointer.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((StructureVariant != null) && (StructureVariant.Count != 0))
@@ -2018,27 +2090,6 @@ namespace Fhir.R4.Models
         foreach (MolecularSequenceStructureVariant valStructureVariant in StructureVariant)
         {
           valStructureVariant.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
-      {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
-      }
-
-      if ((Variant != null) && (Variant.Count != 0))
-      {
-        writer.WritePropertyName("variant");
-        writer.WriteStartArray();
-
-        foreach (MolecularSequenceVariant valVariant in Variant)
-        {
-          valVariant.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

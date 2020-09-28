@@ -35,14 +35,14 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("outerPackaging");
+      OuterPackaging.SerializeJson(ref writer, options);
+
       if (ImmediatePackaging != null)
       {
         writer.WritePropertyName("immediatePackaging");
         ImmediatePackaging.SerializeJson(ref writer, options);
       }
-
-      writer.WritePropertyName("outerPackaging");
-      OuterPackaging.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -162,6 +162,38 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("quantity");
+      Quantity.SerializeJson(ref writer, options);
+
+      if ((Material != null) && (Material.Count != 0))
+      {
+        writer.WritePropertyName("material");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valMaterial in Material)
+        {
+          valMaterial.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if ((AlternateMaterial != null) && (AlternateMaterial.Count != 0))
       {
         writer.WritePropertyName("alternateMaterial");
@@ -188,19 +220,6 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
-      {
-        writer.WritePropertyName("identifier");
-        writer.WriteStartArray();
-
-        foreach (Identifier valIdentifier in Identifier)
-        {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
       if ((ManufacturedItem != null) && (ManufacturedItem.Count != 0))
       {
         writer.WritePropertyName("manufacturedItem");
@@ -209,45 +228,6 @@ namespace Fhir.R4.Models
         foreach (Reference valManufacturedItem in ManufacturedItem)
         {
           valManufacturedItem.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Manufacturer != null) && (Manufacturer.Count != 0))
-      {
-        writer.WritePropertyName("manufacturer");
-        writer.WriteStartArray();
-
-        foreach (Reference valManufacturer in Manufacturer)
-        {
-          valManufacturer.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Material != null) && (Material.Count != 0))
-      {
-        writer.WritePropertyName("material");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valMaterial in Material)
-        {
-          valMaterial.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((OtherCharacteristics != null) && (OtherCharacteristics.Count != 0))
-      {
-        writer.WritePropertyName("otherCharacteristics");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valOtherCharacteristics in OtherCharacteristics)
-        {
-          valOtherCharacteristics.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -272,8 +252,18 @@ namespace Fhir.R4.Models
         PhysicalCharacteristics.SerializeJson(ref writer, options);
       }
 
-      writer.WritePropertyName("quantity");
-      Quantity.SerializeJson(ref writer, options);
+      if ((OtherCharacteristics != null) && (OtherCharacteristics.Count != 0))
+      {
+        writer.WritePropertyName("otherCharacteristics");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valOtherCharacteristics in OtherCharacteristics)
+        {
+          valOtherCharacteristics.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if ((ShelfLifeStorage != null) && (ShelfLifeStorage.Count != 0))
       {
@@ -288,8 +278,18 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
+      if ((Manufacturer != null) && (Manufacturer.Count != 0))
+      {
+        writer.WritePropertyName("manufacturer");
+        writer.WriteStartArray();
+
+        foreach (Reference valManufacturer in Manufacturer)
+        {
+          valManufacturer.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if (includeStartObject)
       {
@@ -595,7 +595,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A medicinal product in a container or package.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPackaged>))]
   public class MedicinalProductPackaged : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -651,31 +651,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if ((BatchIdentifier != null) && (BatchIdentifier.Count != 0))
-      {
-        writer.WritePropertyName("batchIdentifier");
-        writer.WriteStartArray();
-
-        foreach (MedicinalProductPackagedBatchIdentifier valBatchIdentifier in BatchIdentifier)
-        {
-          valBatchIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("description", Description);
-
-      if (_Description != null)
-      {
-        writer.WritePropertyName("_description");
-        _Description.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -690,29 +672,34 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (LegalStatusOfSupply != null)
+      if ((Subject != null) && (Subject.Count != 0))
       {
-        writer.WritePropertyName("legalStatusOfSupply");
-        LegalStatusOfSupply.SerializeJson(ref writer, options);
-      }
-
-      if ((Manufacturer != null) && (Manufacturer.Count != 0))
-      {
-        writer.WritePropertyName("manufacturer");
+        writer.WritePropertyName("subject");
         writer.WriteStartArray();
 
-        foreach (Reference valManufacturer in Manufacturer)
+        foreach (Reference valSubject in Subject)
         {
-          valManufacturer.SerializeJson(ref writer, options, true);
+          valSubject.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      if (MarketingAuthorization != null)
+      if (!string.IsNullOrEmpty(Description))
       {
-        writer.WritePropertyName("marketingAuthorization");
-        MarketingAuthorization.SerializeJson(ref writer, options);
+        writer.WriteString("description", (string)Description!);
+      }
+
+      if (_Description != null)
+      {
+        writer.WritePropertyName("_description");
+        _Description.SerializeJson(ref writer, options);
+      }
+
+      if (LegalStatusOfSupply != null)
+      {
+        writer.WritePropertyName("legalStatusOfSupply");
+        LegalStatusOfSupply.SerializeJson(ref writer, options);
       }
 
       if ((MarketingStatus != null) && (MarketingStatus.Count != 0))
@@ -728,6 +715,38 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (MarketingAuthorization != null)
+      {
+        writer.WritePropertyName("marketingAuthorization");
+        MarketingAuthorization.SerializeJson(ref writer, options);
+      }
+
+      if ((Manufacturer != null) && (Manufacturer.Count != 0))
+      {
+        writer.WritePropertyName("manufacturer");
+        writer.WriteStartArray();
+
+        foreach (Reference valManufacturer in Manufacturer)
+        {
+          valManufacturer.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((BatchIdentifier != null) && (BatchIdentifier.Count != 0))
+      {
+        writer.WritePropertyName("batchIdentifier");
+        writer.WriteStartArray();
+
+        foreach (MedicinalProductPackagedBatchIdentifier valBatchIdentifier in BatchIdentifier)
+        {
+          valBatchIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if ((PackageItem != null) && (PackageItem.Count != 0))
       {
         writer.WritePropertyName("packageItem");
@@ -736,19 +755,6 @@ namespace Fhir.R4.Models
         foreach (MedicinalProductPackagedPackageItem valPackageItem in PackageItem)
         {
           valPackageItem.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Subject != null) && (Subject.Count != 0))
-      {
-        writer.WritePropertyName("subject");
-        writer.WriteStartArray();
-
-        foreach (Reference valSubject in Subject)
-        {
-          valSubject.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

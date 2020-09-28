@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Binary>))]
   public class Binary : Resource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -49,12 +49,18 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.Resource)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("contentType", ContentType);
+      if (!string.IsNullOrEmpty(ContentType))
+      {
+        writer.WriteString("contentType", (string)ContentType!);
+      }
 
       if (_ContentType != null)
       {
@@ -62,18 +68,21 @@ namespace Fhir.R4.Models
         _ContentType.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("data", Data);
+      if (SecurityContext != null)
+      {
+        writer.WritePropertyName("securityContext");
+        SecurityContext.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Data))
+      {
+        writer.WriteString("data", (string)Data!);
+      }
 
       if (_Data != null)
       {
         writer.WritePropertyName("_data");
         _Data.SerializeJson(ref writer, options);
-      }
-
-      if (SecurityContext != null)
-      {
-        writer.WritePropertyName("securityContext");
-        SecurityContext.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

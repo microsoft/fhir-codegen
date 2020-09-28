@@ -35,14 +35,14 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WritePropertyName("actor");
-      Actor.SerializeJson(ref writer, options);
-
       if (Role != null)
       {
         writer.WritePropertyName("role");
         Role.SerializeJson(ref writer, options);
       }
+
+      writer.WritePropertyName("actor");
+      Actor.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -138,10 +138,15 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Amount != null)
+      if (!string.IsNullOrEmpty(Type))
       {
-        writer.WritePropertyName("amount");
-        Amount.SerializeJson(ref writer, options);
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
       }
 
       if (Code != null)
@@ -161,12 +166,10 @@ namespace Fhir.R4.Models
         _Factor.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
+      if (Amount != null)
       {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -273,6 +276,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Sequence != null)
+      {
+        writer.WriteNumber("sequence", (uint)Sequence!);
+      }
+
       writer.WritePropertyName("chargeItemReference");
       ChargeItemReference.SerializeJson(ref writer, options);
 
@@ -290,11 +298,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (Sequence != null)
-      {
-        writer.WriteNumber("sequence", (uint)Sequence!);
       }
 
       if (includeStartObject)
@@ -384,7 +387,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Invoice>))]
   public class Invoice : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -480,32 +483,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Account != null)
-      {
-        writer.WritePropertyName("account");
-        Account.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("cancelledReason", CancelledReason);
-
-      if (_CancelledReason != null)
-      {
-        writer.WritePropertyName("_cancelledReason");
-        _CancelledReason.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("date", Date);
-
-      if (_Date != null)
-      {
-        writer.WritePropertyName("_date");
-        _Date.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -520,36 +504,55 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Issuer != null)
+      if (!string.IsNullOrEmpty(Status))
       {
-        writer.WritePropertyName("issuer");
-        Issuer.SerializeJson(ref writer, options);
+        writer.WriteString("status", (string)Status!);
       }
 
-      if ((LineItem != null) && (LineItem.Count != 0))
+      if (_Status != null)
       {
-        writer.WritePropertyName("lineItem");
-        writer.WriteStartArray();
-
-        foreach (InvoiceLineItem valLineItem in LineItem)
-        {
-          valLineItem.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
       }
 
-      if ((Note != null) && (Note.Count != 0))
+      if (!string.IsNullOrEmpty(CancelledReason))
       {
-        writer.WritePropertyName("note");
-        writer.WriteStartArray();
+        writer.WriteString("cancelledReason", (string)CancelledReason!);
+      }
 
-        foreach (Annotation valNote in Note)
-        {
-          valNote.SerializeJson(ref writer, options, true);
-        }
+      if (_CancelledReason != null)
+      {
+        writer.WritePropertyName("_cancelledReason");
+        _CancelledReason.SerializeJson(ref writer, options);
+      }
 
-        writer.WriteEndArray();
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
+      }
+
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(ref writer, options);
+      }
+
+      if (Recipient != null)
+      {
+        writer.WritePropertyName("recipient");
+        Recipient.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Date))
+      {
+        writer.WriteString("date", (string)Date!);
+      }
+
+      if (_Date != null)
+      {
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
       }
 
       if ((Participant != null) && (Participant.Count != 0))
@@ -565,44 +568,29 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("paymentTerms", PaymentTerms);
-
-      if (_PaymentTerms != null)
+      if (Issuer != null)
       {
-        writer.WritePropertyName("_paymentTerms");
-        _PaymentTerms.SerializeJson(ref writer, options);
+        writer.WritePropertyName("issuer");
+        Issuer.SerializeJson(ref writer, options);
       }
 
-      if (Recipient != null)
+      if (Account != null)
       {
-        writer.WritePropertyName("recipient");
-        Recipient.SerializeJson(ref writer, options);
+        writer.WritePropertyName("account");
+        Account.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
+      if ((LineItem != null) && (LineItem.Count != 0))
       {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
+        writer.WritePropertyName("lineItem");
+        writer.WriteStartArray();
 
-      if (Subject != null)
-      {
-        writer.WritePropertyName("subject");
-        Subject.SerializeJson(ref writer, options);
-      }
+        foreach (InvoiceLineItem valLineItem in LineItem)
+        {
+          valLineItem.SerializeJson(ref writer, options, true);
+        }
 
-      if (TotalGross != null)
-      {
-        writer.WritePropertyName("totalGross");
-        TotalGross.SerializeJson(ref writer, options);
-      }
-
-      if (TotalNet != null)
-      {
-        writer.WritePropertyName("totalNet");
-        TotalNet.SerializeJson(ref writer, options);
+        writer.WriteEndArray();
       }
 
       if ((TotalPriceComponent != null) && (TotalPriceComponent.Count != 0))
@@ -618,10 +606,40 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Type != null)
+      if (TotalNet != null)
       {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("totalNet");
+        TotalNet.SerializeJson(ref writer, options);
+      }
+
+      if (TotalGross != null)
+      {
+        writer.WritePropertyName("totalGross");
+        TotalGross.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(PaymentTerms))
+      {
+        writer.WriteString("paymentTerms", (string)PaymentTerms!);
+      }
+
+      if (_PaymentTerms != null)
+      {
+        writer.WritePropertyName("_paymentTerms");
+        _PaymentTerms.SerializeJson(ref writer, options);
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

@@ -67,38 +67,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("code", Code);
-
-      if (_Code != null)
-      {
-        writer.WritePropertyName("_code");
-        _Code.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("comparator", Comparator);
-
-      if (_Comparator != null)
-      {
-        writer.WritePropertyName("_comparator");
-        _Comparator.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("system", System);
-
-      if (_System != null)
-      {
-        writer.WritePropertyName("_system");
-        _System.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("unit", Unit);
-
-      if (_Unit != null)
-      {
-        writer.WritePropertyName("_unit");
-        _Unit.SerializeJson(ref writer, options);
-      }
-
       if (Value != null)
       {
         writer.WriteNumber("value", (decimal)Value!);
@@ -108,6 +76,50 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("_value");
         _Value.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Comparator))
+      {
+        writer.WriteString("comparator", (string)Comparator!);
+      }
+
+      if (_Comparator != null)
+      {
+        writer.WritePropertyName("_comparator");
+        _Comparator.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Unit))
+      {
+        writer.WriteString("unit", (string)Unit!);
+      }
+
+      if (_Unit != null)
+      {
+        writer.WritePropertyName("_unit");
+        _Unit.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(System))
+      {
+        writer.WriteString("system", (string)System!);
+      }
+
+      if (_System != null)
+      {
+        writer.WritePropertyName("_system");
+        _System.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Code))
+      {
+        writer.WriteString("code", (string)Code!);
+      }
+
+      if (_Code != null)
+      {
+        writer.WritePropertyName("_code");
+        _Code.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

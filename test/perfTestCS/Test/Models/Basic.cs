@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Basic>))]
   public class Basic : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -54,27 +54,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Author != null)
-      {
-        writer.WritePropertyName("author");
-        Author.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("code");
-      Code.SerializeJson(ref writer, options);
-
-      writer.WriteString("created", Created);
-
-      if (_Created != null)
-      {
-        writer.WritePropertyName("_created");
-        _Created.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -89,10 +75,30 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      writer.WritePropertyName("code");
+      Code.SerializeJson(ref writer, options);
+
       if (Subject != null)
       {
         writer.WritePropertyName("subject");
         Subject.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Created))
+      {
+        writer.WriteString("created", (string)Created!);
+      }
+
+      if (_Created != null)
+      {
+        writer.WritePropertyName("_created");
+        _Created.SerializeJson(ref writer, options);
+      }
+
+      if (Author != null)
+      {
+        writer.WritePropertyName("author");
+        Author.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

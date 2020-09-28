@@ -71,7 +71,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("code", Code);
+      if (!string.IsNullOrEmpty(Severity))
+      {
+        writer.WriteString("severity", (string)Severity!);
+      }
+
+      if (_Severity != null)
+      {
+        writer.WritePropertyName("_severity");
+        _Severity.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Code))
+      {
+        writer.WriteString("code", (string)Code!);
+      }
 
       if (_Code != null)
       {
@@ -85,38 +99,15 @@ namespace Fhir.R4.Models
         Details.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("diagnostics", Diagnostics);
+      if (!string.IsNullOrEmpty(Diagnostics))
+      {
+        writer.WriteString("diagnostics", (string)Diagnostics!);
+      }
 
       if (_Diagnostics != null)
       {
         writer.WritePropertyName("_diagnostics");
         _Diagnostics.SerializeJson(ref writer, options);
-      }
-
-      if ((Expression != null) && (Expression.Count != 0))
-      {
-        writer.WritePropertyName("expression");
-        writer.WriteStartArray();
-
-        foreach (string valExpression in Expression)
-        {
-          writer.WriteStringValue(valExpression);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((_Expression != null) && (_Expression.Count != 0))
-      {
-        writer.WritePropertyName("_expression");
-        writer.WriteStartArray();
-
-        foreach (Element val_Expression in _Expression)
-        {
-          val_Expression.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
       }
 
       if ((Location != null) && (Location.Count != 0))
@@ -145,12 +136,30 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("severity", Severity);
-
-      if (_Severity != null)
+      if ((Expression != null) && (Expression.Count != 0))
       {
-        writer.WritePropertyName("_severity");
-        _Severity.SerializeJson(ref writer, options);
+        writer.WritePropertyName("expression");
+        writer.WriteStartArray();
+
+        foreach (string valExpression in Expression)
+        {
+          writer.WriteStringValue(valExpression);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Expression != null) && (_Expression.Count != 0))
+      {
+        writer.WritePropertyName("_expression");
+        writer.WriteStartArray();
+
+        foreach (Element val_Expression in _Expression)
+        {
+          val_Expression.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)
@@ -335,7 +344,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A collection of error, warning, or information messages that result from a system action.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OperationOutcome>))]
   public class OperationOutcome : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -355,7 +364,10 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);

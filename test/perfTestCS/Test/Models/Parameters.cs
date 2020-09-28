@@ -299,7 +299,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("name", Name);
+      if (!string.IsNullOrEmpty(Name))
+      {
+        writer.WriteString("name", (string)Name!);
+      }
 
       if (_Name != null)
       {
@@ -307,26 +310,10 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(ref writer, options);
       }
 
-      if ((Part != null) && (Part.Count != 0))
+      if (!string.IsNullOrEmpty(ValueBase64Binary))
       {
-        writer.WritePropertyName("part");
-        writer.WriteStartArray();
-
-        foreach (ParametersParameter valPart in Part)
-        {
-          valPart.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WriteString("valueBase64Binary", (string)ValueBase64Binary!);
       }
-
-      if (Resource != null)
-      {
-        writer.WritePropertyName("resource");
-        JsonSerializer.Serialize<Fhir.R4.Models.Resource>(writer, (Fhir.R4.Models.Resource)Resource, options);
-      }
-
-      writer.WriteString("valueBase64Binary", ValueBase64Binary);
 
       if (_ValueBase64Binary != null)
       {
@@ -339,7 +326,10 @@ namespace Fhir.R4.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
-      writer.WriteString("valueCanonical", ValueCanonical);
+      if (!string.IsNullOrEmpty(ValueCanonical))
+      {
+        writer.WriteString("valueCanonical", (string)ValueCanonical!);
+      }
 
       if (_ValueCanonical != null)
       {
@@ -347,7 +337,10 @@ namespace Fhir.R4.Models
         _ValueCanonical.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueCode", ValueCode);
+      if (!string.IsNullOrEmpty(ValueCode))
+      {
+        writer.WriteString("valueCode", (string)ValueCode!);
+      }
 
       if (_ValueCode != null)
       {
@@ -355,7 +348,10 @@ namespace Fhir.R4.Models
         _ValueCode.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueDate", ValueDate);
+      if (!string.IsNullOrEmpty(ValueDate))
+      {
+        writer.WriteString("valueDate", (string)ValueDate!);
+      }
 
       if (_ValueDate != null)
       {
@@ -363,7 +359,10 @@ namespace Fhir.R4.Models
         _ValueDate.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueDateTime", ValueDateTime);
+      if (!string.IsNullOrEmpty(ValueDateTime))
+      {
+        writer.WriteString("valueDateTime", (string)ValueDateTime!);
+      }
 
       if (_ValueDateTime != null)
       {
@@ -382,7 +381,10 @@ namespace Fhir.R4.Models
         _ValueDecimal.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueId", ValueId);
+      if (!string.IsNullOrEmpty(ValueId))
+      {
+        writer.WriteString("valueId", (string)ValueId!);
+      }
 
       if (_ValueId != null)
       {
@@ -390,7 +392,10 @@ namespace Fhir.R4.Models
         _ValueId.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueInstant", ValueInstant);
+      if (!string.IsNullOrEmpty(ValueInstant))
+      {
+        writer.WriteString("valueInstant", (string)ValueInstant!);
+      }
 
       if (_ValueInstant != null)
       {
@@ -403,7 +408,10 @@ namespace Fhir.R4.Models
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
       }
 
-      writer.WriteString("valueMarkdown", ValueMarkdown);
+      if (!string.IsNullOrEmpty(ValueMarkdown))
+      {
+        writer.WriteString("valueMarkdown", (string)ValueMarkdown!);
+      }
 
       if (_ValueMarkdown != null)
       {
@@ -411,7 +419,10 @@ namespace Fhir.R4.Models
         _ValueMarkdown.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueOid", ValueOid);
+      if (!string.IsNullOrEmpty(ValueOid))
+      {
+        writer.WriteString("valueOid", (string)ValueOid!);
+      }
 
       if (_ValueOid != null)
       {
@@ -424,7 +435,10 @@ namespace Fhir.R4.Models
         writer.WriteNumber("valuePositiveInt", (uint)ValuePositiveInt!);
       }
 
-      writer.WriteString("valueString", ValueString);
+      if (!string.IsNullOrEmpty(ValueString))
+      {
+        writer.WriteString("valueString", (string)ValueString!);
+      }
 
       if (_ValueString != null)
       {
@@ -432,7 +446,10 @@ namespace Fhir.R4.Models
         _ValueString.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueTime", ValueTime);
+      if (!string.IsNullOrEmpty(ValueTime))
+      {
+        writer.WriteString("valueTime", (string)ValueTime!);
+      }
 
       if (_ValueTime != null)
       {
@@ -445,7 +462,10 @@ namespace Fhir.R4.Models
         writer.WriteNumber("valueUnsignedInt", (uint)ValueUnsignedInt!);
       }
 
-      writer.WriteString("valueUri", ValueUri);
+      if (!string.IsNullOrEmpty(ValueUri))
+      {
+        writer.WriteString("valueUri", (string)ValueUri!);
+      }
 
       if (_ValueUri != null)
       {
@@ -453,7 +473,10 @@ namespace Fhir.R4.Models
         _ValueUri.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("valueUrl", ValueUrl);
+      if (!string.IsNullOrEmpty(ValueUrl))
+      {
+        writer.WriteString("valueUrl", (string)ValueUrl!);
+      }
 
       if (_ValueUrl != null)
       {
@@ -650,6 +673,25 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("valueMeta");
         ValueMeta.SerializeJson(ref writer, options);
+      }
+
+      if (Resource != null)
+      {
+        writer.WritePropertyName("resource");
+        JsonSerializer.Serialize<Fhir.R4.Models.Resource>(writer, (Fhir.R4.Models.Resource)Resource, options);
+      }
+
+      if ((Part != null) && (Part.Count != 0))
+      {
+        writer.WritePropertyName("part");
+        writer.WriteStartArray();
+
+        foreach (ParametersParameter valPart in Part)
+        {
+          valPart.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)
@@ -1039,7 +1081,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Parameters>))]
   public class Parameters : Resource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -1059,7 +1101,10 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.Resource)this).SerializeJson(ref writer, options, false);

@@ -35,16 +35,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Amount != null)
-      {
-        writer.WritePropertyName("amount");
-        Amount.SerializeJson(ref writer, options);
-      }
-
       if (Modifier != null)
       {
         writer.WritePropertyName("modifier");
         Modifier.SerializeJson(ref writer, options);
+      }
+
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -125,16 +125,16 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (FoodType != null)
-      {
-        writer.WritePropertyName("foodType");
-        FoodType.SerializeJson(ref writer, options);
-      }
-
       if (Modifier != null)
       {
         writer.WritePropertyName("modifier");
         Modifier.SerializeJson(ref writer, options);
+      }
+
+      if (FoodType != null)
+      {
+        writer.WritePropertyName("foodType");
+        FoodType.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -235,35 +235,14 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if ((FluidConsistencyType != null) && (FluidConsistencyType.Count != 0))
+      if ((Type != null) && (Type.Count != 0))
       {
-        writer.WritePropertyName("fluidConsistencyType");
+        writer.WritePropertyName("type");
         writer.WriteStartArray();
 
-        foreach (CodeableConcept valFluidConsistencyType in FluidConsistencyType)
+        foreach (CodeableConcept valType in Type)
         {
-          valFluidConsistencyType.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("instruction", Instruction);
-
-      if (_Instruction != null)
-      {
-        writer.WritePropertyName("_instruction");
-        _Instruction.SerializeJson(ref writer, options);
-      }
-
-      if ((Nutrient != null) && (Nutrient.Count != 0))
-      {
-        writer.WritePropertyName("nutrient");
-        writer.WriteStartArray();
-
-        foreach (NutritionOrderOralDietNutrient valNutrient in Nutrient)
-        {
-          valNutrient.SerializeJson(ref writer, options, true);
+          valType.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -282,6 +261,19 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if ((Nutrient != null) && (Nutrient.Count != 0))
+      {
+        writer.WritePropertyName("nutrient");
+        writer.WriteStartArray();
+
+        foreach (NutritionOrderOralDietNutrient valNutrient in Nutrient)
+        {
+          valNutrient.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if ((Texture != null) && (Texture.Count != 0))
       {
         writer.WritePropertyName("texture");
@@ -295,17 +287,28 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Type != null) && (Type.Count != 0))
+      if ((FluidConsistencyType != null) && (FluidConsistencyType.Count != 0))
       {
-        writer.WritePropertyName("type");
+        writer.WritePropertyName("fluidConsistencyType");
         writer.WriteStartArray();
 
-        foreach (CodeableConcept valType in Type)
+        foreach (CodeableConcept valFluidConsistencyType in FluidConsistencyType)
         {
-          valType.SerializeJson(ref writer, options, true);
+          valFluidConsistencyType.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Instruction))
+      {
+        writer.WriteString("instruction", (string)Instruction!);
+      }
+
+      if (_Instruction != null)
+      {
+        writer.WritePropertyName("_instruction");
+        _Instruction.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -540,26 +543,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("instruction", Instruction);
-
-      if (_Instruction != null)
+      if (Type != null)
       {
-        writer.WritePropertyName("_instruction");
-        _Instruction.SerializeJson(ref writer, options);
+        writer.WritePropertyName("type");
+        Type.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("productName", ProductName);
+      if (!string.IsNullOrEmpty(ProductName))
+      {
+        writer.WriteString("productName", (string)ProductName!);
+      }
 
       if (_ProductName != null)
       {
         writer.WritePropertyName("_productName");
         _ProductName.SerializeJson(ref writer, options);
-      }
-
-      if (Quantity != null)
-      {
-        writer.WritePropertyName("quantity");
-        Quantity.SerializeJson(ref writer, options);
       }
 
       if ((Schedule != null) && (Schedule.Count != 0))
@@ -575,10 +573,21 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Type != null)
+      if (Quantity != null)
       {
-        writer.WritePropertyName("type");
-        Type.SerializeJson(ref writer, options);
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Instruction))
+      {
+        writer.WriteString("instruction", (string)Instruction!);
+      }
+
+      if (_Instruction != null)
+      {
+        writer.WritePropertyName("_instruction");
+        _Instruction.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -712,6 +721,12 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      if (Schedule != null)
+      {
+        writer.WritePropertyName("schedule");
+        Schedule.SerializeJson(ref writer, options);
+      }
+
       if (Quantity != null)
       {
         writer.WritePropertyName("quantity");
@@ -728,12 +743,6 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("rateRatio");
         RateRatio.SerializeJson(ref writer, options);
-      }
-
-      if (Schedule != null)
-      {
-        writer.WritePropertyName("schedule");
-        Schedule.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -864,7 +873,33 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("additiveProductName", AdditiveProductName);
+      if (BaseFormulaType != null)
+      {
+        writer.WritePropertyName("baseFormulaType");
+        BaseFormulaType.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(BaseFormulaProductName))
+      {
+        writer.WriteString("baseFormulaProductName", (string)BaseFormulaProductName!);
+      }
+
+      if (_BaseFormulaProductName != null)
+      {
+        writer.WritePropertyName("_baseFormulaProductName");
+        _BaseFormulaProductName.SerializeJson(ref writer, options);
+      }
+
+      if (AdditiveType != null)
+      {
+        writer.WritePropertyName("additiveType");
+        AdditiveType.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(AdditiveProductName))
+      {
+        writer.WriteString("additiveProductName", (string)AdditiveProductName!);
+      }
 
       if (_AdditiveProductName != null)
       {
@@ -872,10 +907,16 @@ namespace Fhir.R4.Models
         _AdditiveProductName.SerializeJson(ref writer, options);
       }
 
-      if (AdditiveType != null)
+      if (CaloricDensity != null)
       {
-        writer.WritePropertyName("additiveType");
-        AdditiveType.SerializeJson(ref writer, options);
+        writer.WritePropertyName("caloricDensity");
+        CaloricDensity.SerializeJson(ref writer, options);
+      }
+
+      if (RouteofAdministration != null)
+      {
+        writer.WritePropertyName("routeofAdministration");
+        RouteofAdministration.SerializeJson(ref writer, options);
       }
 
       if ((Administration != null) && (Administration.Count != 0))
@@ -891,44 +932,21 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("administrationInstruction", AdministrationInstruction);
-
-      if (_AdministrationInstruction != null)
-      {
-        writer.WritePropertyName("_administrationInstruction");
-        _AdministrationInstruction.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("baseFormulaProductName", BaseFormulaProductName);
-
-      if (_BaseFormulaProductName != null)
-      {
-        writer.WritePropertyName("_baseFormulaProductName");
-        _BaseFormulaProductName.SerializeJson(ref writer, options);
-      }
-
-      if (BaseFormulaType != null)
-      {
-        writer.WritePropertyName("baseFormulaType");
-        BaseFormulaType.SerializeJson(ref writer, options);
-      }
-
-      if (CaloricDensity != null)
-      {
-        writer.WritePropertyName("caloricDensity");
-        CaloricDensity.SerializeJson(ref writer, options);
-      }
-
       if (MaxVolumeToDeliver != null)
       {
         writer.WritePropertyName("maxVolumeToDeliver");
         MaxVolumeToDeliver.SerializeJson(ref writer, options);
       }
 
-      if (RouteofAdministration != null)
+      if (!string.IsNullOrEmpty(AdministrationInstruction))
       {
-        writer.WritePropertyName("routeofAdministration");
-        RouteofAdministration.SerializeJson(ref writer, options);
+        writer.WriteString("administrationInstruction", (string)AdministrationInstruction!);
+      }
+
+      if (_AdministrationInstruction != null)
+      {
+        writer.WritePropertyName("_administrationInstruction");
+        _AdministrationInstruction.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -1056,7 +1074,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NutritionOrder>))]
   public class NutritionOrder : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -1164,69 +1182,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if ((AllergyIntolerance != null) && (AllergyIntolerance.Count != 0))
-      {
-        writer.WritePropertyName("allergyIntolerance");
-        writer.WriteStartArray();
-
-        foreach (Reference valAllergyIntolerance in AllergyIntolerance)
-        {
-          valAllergyIntolerance.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("dateTime", DateTime);
-
-      if (_DateTime != null)
-      {
-        writer.WritePropertyName("_dateTime");
-        _DateTime.SerializeJson(ref writer, options);
-      }
-
-      if (Encounter != null)
-      {
-        writer.WritePropertyName("encounter");
-        Encounter.SerializeJson(ref writer, options);
-      }
-
-      if (EnteralFormula != null)
-      {
-        writer.WritePropertyName("enteralFormula");
-        EnteralFormula.SerializeJson(ref writer, options);
-      }
-
-      if ((ExcludeFoodModifier != null) && (ExcludeFoodModifier.Count != 0))
-      {
-        writer.WritePropertyName("excludeFoodModifier");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valExcludeFoodModifier in ExcludeFoodModifier)
-        {
-          valExcludeFoodModifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((FoodPreferenceModifier != null) && (FoodPreferenceModifier.Count != 0))
-      {
-        writer.WritePropertyName("foodPreferenceModifier");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valFoodPreferenceModifier in FoodPreferenceModifier)
-        {
-          valFoodPreferenceModifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -1236,32 +1198,6 @@ namespace Fhir.R4.Models
         foreach (Identifier valIdentifier in Identifier)
         {
           valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Instantiates != null) && (Instantiates.Count != 0))
-      {
-        writer.WritePropertyName("instantiates");
-        writer.WriteStartArray();
-
-        foreach (string valInstantiates in Instantiates)
-        {
-          writer.WriteStringValue(valInstantiates);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((_Instantiates != null) && (_Instantiates.Count != 0))
-      {
-        writer.WritePropertyName("_instantiates");
-        writer.WriteStartArray();
-
-        foreach (Element val_Instantiates in _Instantiates)
-        {
-          val_Instantiates.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -1319,7 +1255,47 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteString("intent", Intent);
+      if ((Instantiates != null) && (Instantiates.Count != 0))
+      {
+        writer.WritePropertyName("instantiates");
+        writer.WriteStartArray();
+
+        foreach (string valInstantiates in Instantiates)
+        {
+          writer.WriteStringValue(valInstantiates);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_Instantiates != null) && (_Instantiates.Count != 0))
+      {
+        writer.WritePropertyName("_instantiates");
+        writer.WriteStartArray();
+
+        foreach (Element val_Instantiates in _Instantiates)
+        {
+          val_Instantiates.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Status))
+      {
+        writer.WriteString("status", (string)Status!);
+      }
+
+      if (_Status != null)
+      {
+        writer.WritePropertyName("_status");
+        _Status.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Intent))
+      {
+        writer.WriteString("intent", (string)Intent!);
+      }
 
       if (_Intent != null)
       {
@@ -1327,14 +1303,66 @@ namespace Fhir.R4.Models
         _Intent.SerializeJson(ref writer, options);
       }
 
-      if ((Note != null) && (Note.Count != 0))
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      if (Encounter != null)
       {
-        writer.WritePropertyName("note");
+        writer.WritePropertyName("encounter");
+        Encounter.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(DateTime))
+      {
+        writer.WriteString("dateTime", (string)DateTime!);
+      }
+
+      if (_DateTime != null)
+      {
+        writer.WritePropertyName("_dateTime");
+        _DateTime.SerializeJson(ref writer, options);
+      }
+
+      if (Orderer != null)
+      {
+        writer.WritePropertyName("orderer");
+        Orderer.SerializeJson(ref writer, options);
+      }
+
+      if ((AllergyIntolerance != null) && (AllergyIntolerance.Count != 0))
+      {
+        writer.WritePropertyName("allergyIntolerance");
         writer.WriteStartArray();
 
-        foreach (Annotation valNote in Note)
+        foreach (Reference valAllergyIntolerance in AllergyIntolerance)
         {
-          valNote.SerializeJson(ref writer, options, true);
+          valAllergyIntolerance.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((FoodPreferenceModifier != null) && (FoodPreferenceModifier.Count != 0))
+      {
+        writer.WritePropertyName("foodPreferenceModifier");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valFoodPreferenceModifier in FoodPreferenceModifier)
+        {
+          valFoodPreferenceModifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((ExcludeFoodModifier != null) && (ExcludeFoodModifier.Count != 0))
+      {
+        writer.WritePropertyName("excludeFoodModifier");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valExcludeFoodModifier in ExcludeFoodModifier)
+        {
+          valExcludeFoodModifier.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -1346,23 +1374,6 @@ namespace Fhir.R4.Models
         OralDiet.SerializeJson(ref writer, options);
       }
 
-      if (Orderer != null)
-      {
-        writer.WritePropertyName("orderer");
-        Orderer.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(ref writer, options);
-
-      writer.WriteString("status", Status);
-
-      if (_Status != null)
-      {
-        writer.WritePropertyName("_status");
-        _Status.SerializeJson(ref writer, options);
-      }
-
       if ((Supplement != null) && (Supplement.Count != 0))
       {
         writer.WritePropertyName("supplement");
@@ -1371,6 +1382,25 @@ namespace Fhir.R4.Models
         foreach (NutritionOrderSupplement valSupplement in Supplement)
         {
           valSupplement.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (EnteralFormula != null)
+      {
+        writer.WritePropertyName("enteralFormula");
+        EnteralFormula.SerializeJson(ref writer, options);
+      }
+
+      if ((Note != null) && (Note.Count != 0))
+      {
+        writer.WritePropertyName("note");
+        writer.WriteStartArray();
+
+        foreach (Annotation valNote in Note)
+        {
+          valNote.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

@@ -39,16 +39,19 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("assurance", Assurance);
+      writer.WritePropertyName("target");
+      Target.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(Assurance))
+      {
+        writer.WriteString("assurance", (string)Assurance!);
+      }
 
       if (_Assurance != null)
       {
         writer.WritePropertyName("_assurance");
         _Assurance.SerializeJson(ref writer, options);
       }
-
-      writer.WritePropertyName("target");
-      Target.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -110,7 +113,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Demographics and administrative information about a person independent of a specific health-related context.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Person>))]
   public class Person : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -174,44 +177,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Active != null)
-      {
-        writer.WriteBoolean("active", (bool)Active!);
-      }
-
-      if ((Address != null) && (Address.Count != 0))
-      {
-        writer.WritePropertyName("address");
-        writer.WriteStartArray();
-
-        foreach (Address valAddress in Address)
-        {
-          valAddress.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("birthDate", BirthDate);
-
-      if (_BirthDate != null)
-      {
-        writer.WritePropertyName("_birthDate");
-        _BirthDate.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("gender", Gender);
-
-      if (_Gender != null)
-      {
-        writer.WritePropertyName("_gender");
-        _Gender.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -224,25 +196,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if ((Link != null) && (Link.Count != 0))
-      {
-        writer.WritePropertyName("link");
-        writer.WriteStartArray();
-
-        foreach (PersonLink valLink in Link)
-        {
-          valLink.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (ManagingOrganization != null)
-      {
-        writer.WritePropertyName("managingOrganization");
-        ManagingOrganization.SerializeJson(ref writer, options);
       }
 
       if ((Name != null) && (Name.Count != 0))
@@ -258,12 +211,6 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (Photo != null)
-      {
-        writer.WritePropertyName("photo");
-        Photo.SerializeJson(ref writer, options);
-      }
-
       if ((Telecom != null) && (Telecom.Count != 0))
       {
         writer.WritePropertyName("telecom");
@@ -272,6 +219,71 @@ namespace Fhir.R4.Models
         foreach (ContactPoint valTelecom in Telecom)
         {
           valTelecom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Gender))
+      {
+        writer.WriteString("gender", (string)Gender!);
+      }
+
+      if (_Gender != null)
+      {
+        writer.WritePropertyName("_gender");
+        _Gender.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(BirthDate))
+      {
+        writer.WriteString("birthDate", (string)BirthDate!);
+      }
+
+      if (_BirthDate != null)
+      {
+        writer.WritePropertyName("_birthDate");
+        _BirthDate.SerializeJson(ref writer, options);
+      }
+
+      if ((Address != null) && (Address.Count != 0))
+      {
+        writer.WritePropertyName("address");
+        writer.WriteStartArray();
+
+        foreach (Address valAddress in Address)
+        {
+          valAddress.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Photo != null)
+      {
+        writer.WritePropertyName("photo");
+        Photo.SerializeJson(ref writer, options);
+      }
+
+      if (ManagingOrganization != null)
+      {
+        writer.WritePropertyName("managingOrganization");
+        ManagingOrganization.SerializeJson(ref writer, options);
+      }
+
+      if (Active != null)
+      {
+        writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if ((Link != null) && (Link.Count != 0))
+      {
+        writer.WritePropertyName("link");
+        writer.WriteStartArray();
+
+        foreach (PersonLink valLink in Link)
+        {
+          valLink.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

@@ -159,32 +159,6 @@ namespace Fhir.R4.Models
         writer.WriteNumber("countMax", (uint)CountMax!);
       }
 
-      if ((DayOfWeek != null) && (DayOfWeek.Count != 0))
-      {
-        writer.WritePropertyName("dayOfWeek");
-        writer.WriteStartArray();
-
-        foreach (string valDayOfWeek in DayOfWeek)
-        {
-          writer.WriteStringValue(valDayOfWeek);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((_DayOfWeek != null) && (_DayOfWeek.Count != 0))
-      {
-        writer.WritePropertyName("_dayOfWeek");
-        writer.WriteStartArray();
-
-        foreach (Element val_DayOfWeek in _DayOfWeek)
-        {
-          val_DayOfWeek.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
       if (Duration != null)
       {
         writer.WriteNumber("duration", (decimal)Duration!);
@@ -207,7 +181,10 @@ namespace Fhir.R4.Models
         _DurationMax.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("durationUnit", DurationUnit);
+      if (!string.IsNullOrEmpty(DurationUnit))
+      {
+        writer.WriteString("durationUnit", (string)DurationUnit!);
+      }
 
       if (_DurationUnit != null)
       {
@@ -223,11 +200,6 @@ namespace Fhir.R4.Models
       if (FrequencyMax != null)
       {
         writer.WriteNumber("frequencyMax", (uint)FrequencyMax!);
-      }
-
-      if (Offset != null)
-      {
-        writer.WriteNumber("offset", (uint)Offset!);
       }
 
       if (Period != null)
@@ -252,12 +224,41 @@ namespace Fhir.R4.Models
         _PeriodMax.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("periodUnit", PeriodUnit);
+      if (!string.IsNullOrEmpty(PeriodUnit))
+      {
+        writer.WriteString("periodUnit", (string)PeriodUnit!);
+      }
 
       if (_PeriodUnit != null)
       {
         writer.WritePropertyName("_periodUnit");
         _PeriodUnit.SerializeJson(ref writer, options);
+      }
+
+      if ((DayOfWeek != null) && (DayOfWeek.Count != 0))
+      {
+        writer.WritePropertyName("dayOfWeek");
+        writer.WriteStartArray();
+
+        foreach (string valDayOfWeek in DayOfWeek)
+        {
+          writer.WriteStringValue(valDayOfWeek);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_DayOfWeek != null) && (_DayOfWeek.Count != 0))
+      {
+        writer.WritePropertyName("_dayOfWeek");
+        writer.WriteStartArray();
+
+        foreach (Element val_DayOfWeek in _DayOfWeek)
+        {
+          val_DayOfWeek.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((TimeOfDay != null) && (TimeOfDay.Count != 0))
@@ -310,6 +311,11 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
+      }
+
+      if (Offset != null)
+      {
+        writer.WriteNumber("offset", (uint)Offset!);
       }
 
       if (includeStartObject)
@@ -633,12 +639,6 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if (Code != null)
-      {
-        writer.WritePropertyName("code");
-        Code.SerializeJson(ref writer, options);
-      }
-
       if ((Event != null) && (Event.Count != 0))
       {
         writer.WritePropertyName("event");
@@ -669,6 +669,12 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("repeat");
         Repeat.SerializeJson(ref writer, options);
+      }
+
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

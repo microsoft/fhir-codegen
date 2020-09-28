@@ -39,14 +39,14 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("therapyRelationshipType");
+      TherapyRelationshipType.SerializeJson(ref writer, options);
+
       writer.WritePropertyName("medicationCodeableConcept");
       MedicationCodeableConcept.SerializeJson(ref writer, options);
 
       writer.WritePropertyName("medicationReference");
       MedicationReference.SerializeJson(ref writer, options);
-
-      writer.WritePropertyName("therapyRelationshipType");
-      TherapyRelationshipType.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -109,7 +109,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductContraindication>))]
   public class MedicinalProductContraindication : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -153,19 +153,22 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      if ((Comorbidity != null) && (Comorbidity.Count != 0))
+      if ((Subject != null) && (Subject.Count != 0))
       {
-        writer.WritePropertyName("comorbidity");
+        writer.WritePropertyName("subject");
         writer.WriteStartArray();
 
-        foreach (CodeableConcept valComorbidity in Comorbidity)
+        foreach (Reference valSubject in Subject)
         {
-          valComorbidity.SerializeJson(ref writer, options, true);
+          valSubject.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -181,6 +184,32 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("diseaseStatus");
         DiseaseStatus.SerializeJson(ref writer, options);
+      }
+
+      if ((Comorbidity != null) && (Comorbidity.Count != 0))
+      {
+        writer.WritePropertyName("comorbidity");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valComorbidity in Comorbidity)
+        {
+          valComorbidity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((TherapeuticIndication != null) && (TherapeuticIndication.Count != 0))
+      {
+        writer.WritePropertyName("therapeuticIndication");
+        writer.WriteStartArray();
+
+        foreach (Reference valTherapeuticIndication in TherapeuticIndication)
+        {
+          valTherapeuticIndication.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((OtherTherapy != null) && (OtherTherapy.Count != 0))
@@ -204,32 +233,6 @@ namespace Fhir.R4.Models
         foreach (Population valPopulation in Population)
         {
           valPopulation.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Subject != null) && (Subject.Count != 0))
-      {
-        writer.WritePropertyName("subject");
-        writer.WriteStartArray();
-
-        foreach (Reference valSubject in Subject)
-        {
-          valSubject.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((TherapeuticIndication != null) && (TherapeuticIndication.Count != 0))
-      {
-        writer.WritePropertyName("therapeuticIndication");
-        writer.WriteStartArray();
-
-        foreach (Reference valTherapeuticIndication in TherapeuticIndication)
-        {
-          valTherapeuticIndication.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

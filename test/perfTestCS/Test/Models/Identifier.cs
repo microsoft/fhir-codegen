@@ -63,24 +63,15 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(ref writer, options, false);
 
-      if (Assigner != null)
+      if (!string.IsNullOrEmpty(Use))
       {
-        writer.WritePropertyName("assigner");
-        Assigner.SerializeJson(ref writer, options);
+        writer.WriteString("use", (string)Use!);
       }
 
-      if (Period != null)
+      if (_Use != null)
       {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("system", System);
-
-      if (_System != null)
-      {
-        writer.WritePropertyName("_system");
-        _System.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_use");
+        _Use.SerializeJson(ref writer, options);
       }
 
       if (Type != null)
@@ -89,20 +80,38 @@ namespace Fhir.R4.Models
         Type.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("use", Use);
-
-      if (_Use != null)
+      if (!string.IsNullOrEmpty(System))
       {
-        writer.WritePropertyName("_use");
-        _Use.SerializeJson(ref writer, options);
+        writer.WriteString("system", (string)System!);
       }
 
-      writer.WriteString("value", Value);
+      if (_System != null)
+      {
+        writer.WritePropertyName("_system");
+        _System.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Value))
+      {
+        writer.WriteString("value", (string)Value!);
+      }
 
       if (_Value != null)
       {
         writer.WritePropertyName("_value");
         _Value.SerializeJson(ref writer, options);
+      }
+
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
+      }
+
+      if (Assigner != null)
+      {
+        writer.WritePropertyName("assigner");
+        Assigner.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

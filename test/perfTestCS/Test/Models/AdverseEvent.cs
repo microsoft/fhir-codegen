@@ -53,6 +53,17 @@ namespace Fhir.R4.Models
         Assessment.SerializeJson(ref writer, options);
       }
 
+      if (!string.IsNullOrEmpty(ProductRelatedness))
+      {
+        writer.WriteString("productRelatedness", (string)ProductRelatedness!);
+      }
+
+      if (_ProductRelatedness != null)
+      {
+        writer.WritePropertyName("_productRelatedness");
+        _ProductRelatedness.SerializeJson(ref writer, options);
+      }
+
       if (Author != null)
       {
         writer.WritePropertyName("author");
@@ -63,14 +74,6 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("method");
         Method.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("productRelatedness", ProductRelatedness);
-
-      if (_ProductRelatedness != null)
-      {
-        writer.WritePropertyName("_productRelatedness");
-        _ProductRelatedness.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -165,6 +168,9 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("instance");
+      Instance.SerializeJson(ref writer, options);
+
       if ((Causality != null) && (Causality.Count != 0))
       {
         writer.WritePropertyName("causality");
@@ -177,9 +183,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      writer.WritePropertyName("instance");
-      Instance.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -259,7 +262,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AdverseEvent>))]
   public class AdverseEvent : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -371,12 +374,24 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("actuality", Actuality);
+      if (Identifier != null)
+      {
+        writer.WritePropertyName("identifier");
+        Identifier.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Actuality))
+      {
+        writer.WriteString("actuality", (string)Actuality!);
+      }
 
       if (_Actuality != null)
       {
@@ -397,34 +412,14 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Contributor != null) && (Contributor.Count != 0))
+      if (Event != null)
       {
-        writer.WritePropertyName("contributor");
-        writer.WriteStartArray();
-
-        foreach (Reference valContributor in Contributor)
-        {
-          valContributor.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("event");
+        Event.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("date", Date);
-
-      if (_Date != null)
-      {
-        writer.WritePropertyName("_date");
-        _Date.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("detected", Detected);
-
-      if (_Detected != null)
-      {
-        writer.WritePropertyName("_detected");
-        _Detected.SerializeJson(ref writer, options);
-      }
+      writer.WritePropertyName("subject");
+      Subject.SerializeJson(ref writer, options);
 
       if (Encounter != null)
       {
@@ -432,55 +427,37 @@ namespace Fhir.R4.Models
         Encounter.SerializeJson(ref writer, options);
       }
 
-      if (Event != null)
+      if (!string.IsNullOrEmpty(Date))
       {
-        writer.WritePropertyName("event");
-        Event.SerializeJson(ref writer, options);
+        writer.WriteString("date", (string)Date!);
       }
 
-      if (Identifier != null)
+      if (_Date != null)
       {
-        writer.WritePropertyName("identifier");
-        Identifier.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_date");
+        _Date.SerializeJson(ref writer, options);
       }
 
-      if (Location != null)
+      if (!string.IsNullOrEmpty(Detected))
       {
-        writer.WritePropertyName("location");
-        Location.SerializeJson(ref writer, options);
+        writer.WriteString("detected", (string)Detected!);
       }
 
-      if (Outcome != null)
+      if (_Detected != null)
       {
-        writer.WritePropertyName("outcome");
-        Outcome.SerializeJson(ref writer, options);
+        writer.WritePropertyName("_detected");
+        _Detected.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("recordedDate", RecordedDate);
+      if (!string.IsNullOrEmpty(RecordedDate))
+      {
+        writer.WriteString("recordedDate", (string)RecordedDate!);
+      }
 
       if (_RecordedDate != null)
       {
         writer.WritePropertyName("_recordedDate");
         _RecordedDate.SerializeJson(ref writer, options);
-      }
-
-      if (Recorder != null)
-      {
-        writer.WritePropertyName("recorder");
-        Recorder.SerializeJson(ref writer, options);
-      }
-
-      if ((ReferenceDocument != null) && (ReferenceDocument.Count != 0))
-      {
-        writer.WritePropertyName("referenceDocument");
-        writer.WriteStartArray();
-
-        foreach (Reference valReferenceDocument in ReferenceDocument)
-        {
-          valReferenceDocument.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
       }
 
       if ((ResultingCondition != null) && (ResultingCondition.Count != 0))
@@ -496,6 +473,12 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
+      if (Location != null)
+      {
+        writer.WritePropertyName("location");
+        Location.SerializeJson(ref writer, options);
+      }
+
       if (Seriousness != null)
       {
         writer.WritePropertyName("seriousness");
@@ -508,21 +491,43 @@ namespace Fhir.R4.Models
         Severity.SerializeJson(ref writer, options);
       }
 
-      if ((Study != null) && (Study.Count != 0))
+      if (Outcome != null)
       {
-        writer.WritePropertyName("study");
+        writer.WritePropertyName("outcome");
+        Outcome.SerializeJson(ref writer, options);
+      }
+
+      if (Recorder != null)
+      {
+        writer.WritePropertyName("recorder");
+        Recorder.SerializeJson(ref writer, options);
+      }
+
+      if ((Contributor != null) && (Contributor.Count != 0))
+      {
+        writer.WritePropertyName("contributor");
         writer.WriteStartArray();
 
-        foreach (Reference valStudy in Study)
+        foreach (Reference valContributor in Contributor)
         {
-          valStudy.SerializeJson(ref writer, options, true);
+          valContributor.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(ref writer, options);
+      if ((SuspectEntity != null) && (SuspectEntity.Count != 0))
+      {
+        writer.WritePropertyName("suspectEntity");
+        writer.WriteStartArray();
+
+        foreach (AdverseEventSuspectEntity valSuspectEntity in SuspectEntity)
+        {
+          valSuspectEntity.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
 
       if ((SubjectMedicalHistory != null) && (SubjectMedicalHistory.Count != 0))
       {
@@ -537,14 +542,27 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((SuspectEntity != null) && (SuspectEntity.Count != 0))
+      if ((ReferenceDocument != null) && (ReferenceDocument.Count != 0))
       {
-        writer.WritePropertyName("suspectEntity");
+        writer.WritePropertyName("referenceDocument");
         writer.WriteStartArray();
 
-        foreach (AdverseEventSuspectEntity valSuspectEntity in SuspectEntity)
+        foreach (Reference valReferenceDocument in ReferenceDocument)
         {
-          valSuspectEntity.SerializeJson(ref writer, options, true);
+          valReferenceDocument.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((Study != null) && (Study.Count != 0))
+      {
+        writer.WritePropertyName("study");
+        writer.WriteStartArray();
+
+        foreach (Reference valStudy in Study)
+        {
+          valStudy.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

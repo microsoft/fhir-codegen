@@ -98,7 +98,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RelatedPerson>))]
   public class RelatedPerson : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -170,57 +170,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (Active != null)
-      {
-        writer.WriteBoolean("active", (bool)Active!);
-      }
-
-      if ((Address != null) && (Address.Count != 0))
-      {
-        writer.WritePropertyName("address");
-        writer.WriteStartArray();
-
-        foreach (Address valAddress in Address)
-        {
-          valAddress.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("birthDate", BirthDate);
-
-      if (_BirthDate != null)
-      {
-        writer.WritePropertyName("_birthDate");
-        _BirthDate.SerializeJson(ref writer, options);
-      }
-
-      if ((Communication != null) && (Communication.Count != 0))
-      {
-        writer.WritePropertyName("communication");
-        writer.WriteStartArray();
-
-        foreach (RelatedPersonCommunication valCommunication in Communication)
-        {
-          valCommunication.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("gender", Gender);
-
-      if (_Gender != null)
-      {
-        writer.WritePropertyName("_gender");
-        _Gender.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -230,6 +186,27 @@ namespace Fhir.R4.Models
         foreach (Identifier valIdentifier in Identifier)
         {
           valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (Active != null)
+      {
+        writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      writer.WritePropertyName("patient");
+      Patient.SerializeJson(ref writer, options);
+
+      if ((Relationship != null) && (Relationship.Count != 0))
+      {
+        writer.WritePropertyName("relationship");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valRelationship in Relationship)
+        {
+          valRelationship.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -248,13 +225,52 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(ref writer, options);
-
-      if (Period != null)
+      if ((Telecom != null) && (Telecom.Count != 0))
       {
-        writer.WritePropertyName("period");
-        Period.SerializeJson(ref writer, options);
+        writer.WritePropertyName("telecom");
+        writer.WriteStartArray();
+
+        foreach (ContactPoint valTelecom in Telecom)
+        {
+          valTelecom.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (!string.IsNullOrEmpty(Gender))
+      {
+        writer.WriteString("gender", (string)Gender!);
+      }
+
+      if (_Gender != null)
+      {
+        writer.WritePropertyName("_gender");
+        _Gender.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(BirthDate))
+      {
+        writer.WriteString("birthDate", (string)BirthDate!);
+      }
+
+      if (_BirthDate != null)
+      {
+        writer.WritePropertyName("_birthDate");
+        _BirthDate.SerializeJson(ref writer, options);
+      }
+
+      if ((Address != null) && (Address.Count != 0))
+      {
+        writer.WritePropertyName("address");
+        writer.WriteStartArray();
+
+        foreach (Address valAddress in Address)
+        {
+          valAddress.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if ((Photo != null) && (Photo.Count != 0))
@@ -270,27 +286,20 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Relationship != null) && (Relationship.Count != 0))
+      if (Period != null)
       {
-        writer.WritePropertyName("relationship");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valRelationship in Relationship)
-        {
-          valRelationship.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
+        writer.WritePropertyName("period");
+        Period.SerializeJson(ref writer, options);
       }
 
-      if ((Telecom != null) && (Telecom.Count != 0))
+      if ((Communication != null) && (Communication.Count != 0))
       {
-        writer.WritePropertyName("telecom");
+        writer.WritePropertyName("communication");
         writer.WriteStartArray();
 
-        foreach (ContactPoint valTelecom in Telecom)
+        foreach (RelatedPersonCommunication valCommunication in Communication)
         {
-          valTelecom.SerializeJson(ref writer, options, true);
+          valCommunication.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();

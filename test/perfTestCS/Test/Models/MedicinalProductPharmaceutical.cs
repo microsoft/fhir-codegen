@@ -130,19 +130,22 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("supportingInformation", SupportingInformation);
+      writer.WritePropertyName("tissue");
+      Tissue.SerializeJson(ref writer, options);
+
+      writer.WritePropertyName("value");
+      Value.SerializeJson(ref writer, options);
+
+      if (!string.IsNullOrEmpty(SupportingInformation))
+      {
+        writer.WriteString("supportingInformation", (string)SupportingInformation!);
+      }
 
       if (_SupportingInformation != null)
       {
         writer.WritePropertyName("_supportingInformation");
         _SupportingInformation.SerializeJson(ref writer, options);
       }
-
-      writer.WritePropertyName("tissue");
-      Tissue.SerializeJson(ref writer, options);
-
-      writer.WritePropertyName("value");
-      Value.SerializeJson(ref writer, options);
 
       if (includeStartObject)
       {
@@ -376,6 +379,12 @@ namespace Fhir.R4.Models
         FirstDose.SerializeJson(ref writer, options);
       }
 
+      if (MaxSingleDose != null)
+      {
+        writer.WritePropertyName("maxSingleDose");
+        MaxSingleDose.SerializeJson(ref writer, options);
+      }
+
       if (MaxDosePerDay != null)
       {
         writer.WritePropertyName("maxDosePerDay");
@@ -386,12 +395,6 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("maxDosePerTreatmentPeriod");
         MaxDosePerTreatmentPeriod.SerializeJson(ref writer, options);
-      }
-
-      if (MaxSingleDose != null)
-      {
-        writer.WritePropertyName("maxSingleDose");
-        MaxSingleDose.SerializeJson(ref writer, options);
       }
 
       if (MaxTreatmentPeriod != null)
@@ -516,7 +519,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A pharmaceutical product described in terms of its composition and dose form.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPharmaceutical>))]
   public class MedicinalProductPharmaceutical : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -560,22 +563,44 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
 
+      if ((Identifier != null) && (Identifier.Count != 0))
+      {
+        writer.WritePropertyName("identifier");
+        writer.WriteStartArray();
+
+        foreach (Identifier valIdentifier in Identifier)
+        {
+          valIdentifier.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       writer.WritePropertyName("administrableDoseForm");
       AdministrableDoseForm.SerializeJson(ref writer, options);
 
-      if ((Characteristics != null) && (Characteristics.Count != 0))
+      if (UnitOfPresentation != null)
       {
-        writer.WritePropertyName("characteristics");
+        writer.WritePropertyName("unitOfPresentation");
+        UnitOfPresentation.SerializeJson(ref writer, options);
+      }
+
+      if ((Ingredient != null) && (Ingredient.Count != 0))
+      {
+        writer.WritePropertyName("ingredient");
         writer.WriteStartArray();
 
-        foreach (MedicinalProductPharmaceuticalCharacteristics valCharacteristics in Characteristics)
+        foreach (Reference valIngredient in Ingredient)
         {
-          valCharacteristics.SerializeJson(ref writer, options, true);
+          valIngredient.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -594,27 +619,14 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if ((Identifier != null) && (Identifier.Count != 0))
+      if ((Characteristics != null) && (Characteristics.Count != 0))
       {
-        writer.WritePropertyName("identifier");
+        writer.WritePropertyName("characteristics");
         writer.WriteStartArray();
 
-        foreach (Identifier valIdentifier in Identifier)
+        foreach (MedicinalProductPharmaceuticalCharacteristics valCharacteristics in Characteristics)
         {
-          valIdentifier.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if ((Ingredient != null) && (Ingredient.Count != 0))
-      {
-        writer.WritePropertyName("ingredient");
-        writer.WriteStartArray();
-
-        foreach (Reference valIngredient in Ingredient)
-        {
-          valIngredient.SerializeJson(ref writer, options, true);
+          valCharacteristics.SerializeJson(ref writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -631,12 +643,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if (UnitOfPresentation != null)
-      {
-        writer.WritePropertyName("unitOfPresentation");
-        UnitOfPresentation.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

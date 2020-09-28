@@ -13,7 +13,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describe the undesirable effects of the medicinal product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductUndesirableEffect>))]
   public class MedicinalProductUndesirableEffect : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -49,10 +49,32 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
+
+      if ((Subject != null) && (Subject.Count != 0))
+      {
+        writer.WritePropertyName("subject");
+        writer.WriteStartArray();
+
+        foreach (Reference valSubject in Subject)
+        {
+          valSubject.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if (SymptomConditionEffect != null)
+      {
+        writer.WritePropertyName("symptomConditionEffect");
+        SymptomConditionEffect.SerializeJson(ref writer, options);
+      }
 
       if (Classification != null)
       {
@@ -77,25 +99,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      if ((Subject != null) && (Subject.Count != 0))
-      {
-        writer.WritePropertyName("subject");
-        writer.WriteStartArray();
-
-        foreach (Reference valSubject in Subject)
-        {
-          valSubject.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      if (SymptomConditionEffect != null)
-      {
-        writer.WritePropertyName("symptomConditionEffect");
-        SymptomConditionEffect.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)

@@ -51,7 +51,21 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      writer.WriteString("state", State);
+      if (!string.IsNullOrEmpty(Type))
+      {
+        writer.WriteString("type", (string)Type!);
+      }
+
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(State))
+      {
+        writer.WriteString("state", (string)State!);
+      }
 
       if (_State != null)
       {
@@ -59,20 +73,15 @@ namespace Fhir.R4.Models
         _State.SerializeJson(ref writer, options);
       }
 
-      writer.WriteString("time", Time);
+      if (!string.IsNullOrEmpty(Time))
+      {
+        writer.WriteString("time", (string)Time!);
+      }
 
       if (_Time != null)
       {
         writer.WritePropertyName("_time");
         _Time.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("type", Type);
-
-      if (_Type != null)
-      {
-        writer.WritePropertyName("_type");
-        _Type.SerializeJson(ref writer, options);
       }
 
       if (includeStartObject)
@@ -148,7 +157,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes a measurement, calculation or setting capability of a medical device.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceMetric>))]
   public class DeviceMetric : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -216,39 +225,13 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if ((Calibration != null) && (Calibration.Count != 0))
-      {
-        writer.WritePropertyName("calibration");
-        writer.WriteStartArray();
-
-        foreach (DeviceMetricCalibration valCalibration in Calibration)
-        {
-          valCalibration.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("category", Category);
-
-      if (_Category != null)
-      {
-        writer.WritePropertyName("_category");
-        _Category.SerializeJson(ref writer, options);
-      }
-
-      writer.WriteString("color", Color);
-
-      if (_Color != null)
-      {
-        writer.WritePropertyName("_color");
-        _Color.SerializeJson(ref writer, options);
-      }
 
       if ((Identifier != null) && (Identifier.Count != 0))
       {
@@ -263,24 +246,13 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      if (MeasurementPeriod != null)
-      {
-        writer.WritePropertyName("measurementPeriod");
-        MeasurementPeriod.SerializeJson(ref writer, options);
-      }
+      writer.WritePropertyName("type");
+      Type.SerializeJson(ref writer, options);
 
-      writer.WriteString("operationalStatus", OperationalStatus);
-
-      if (_OperationalStatus != null)
+      if (Unit != null)
       {
-        writer.WritePropertyName("_operationalStatus");
-        _OperationalStatus.SerializeJson(ref writer, options);
-      }
-
-      if (Parent != null)
-      {
-        writer.WritePropertyName("parent");
-        Parent.SerializeJson(ref writer, options);
+        writer.WritePropertyName("unit");
+        Unit.SerializeJson(ref writer, options);
       }
 
       if (Source != null)
@@ -289,13 +261,62 @@ namespace Fhir.R4.Models
         Source.SerializeJson(ref writer, options);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(ref writer, options);
-
-      if (Unit != null)
+      if (Parent != null)
       {
-        writer.WritePropertyName("unit");
-        Unit.SerializeJson(ref writer, options);
+        writer.WritePropertyName("parent");
+        Parent.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(OperationalStatus))
+      {
+        writer.WriteString("operationalStatus", (string)OperationalStatus!);
+      }
+
+      if (_OperationalStatus != null)
+      {
+        writer.WritePropertyName("_operationalStatus");
+        _OperationalStatus.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Color))
+      {
+        writer.WriteString("color", (string)Color!);
+      }
+
+      if (_Color != null)
+      {
+        writer.WritePropertyName("_color");
+        _Color.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(Category))
+      {
+        writer.WriteString("category", (string)Category!);
+      }
+
+      if (_Category != null)
+      {
+        writer.WritePropertyName("_category");
+        _Category.SerializeJson(ref writer, options);
+      }
+
+      if (MeasurementPeriod != null)
+      {
+        writer.WritePropertyName("measurementPeriod");
+        MeasurementPeriod.SerializeJson(ref writer, options);
+      }
+
+      if ((Calibration != null) && (Calibration.Count != 0))
+      {
+        writer.WritePropertyName("calibration");
+        writer.WriteStartArray();
+
+        foreach (DeviceMetricCalibration valCalibration in Calibration)
+        {
+          valCalibration.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)

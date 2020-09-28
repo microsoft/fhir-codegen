@@ -51,25 +51,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
-      if ((Country != null) && (Country.Count != 0))
+      if (Substance != null)
       {
-        writer.WritePropertyName("country");
-        writer.WriteStartArray();
-
-        foreach (CodeableConcept valCountry in Country)
-        {
-          valCountry.SerializeJson(ref writer, options, true);
-        }
-
-        writer.WriteEndArray();
-      }
-
-      writer.WriteString("measurementPoint", MeasurementPoint);
-
-      if (_MeasurementPoint != null)
-      {
-        writer.WritePropertyName("_measurementPoint");
-        _MeasurementPoint.SerializeJson(ref writer, options);
+        writer.WritePropertyName("substance");
+        Substance.SerializeJson(ref writer, options);
       }
 
       writer.WritePropertyName("strength");
@@ -81,10 +66,28 @@ namespace Fhir.R4.Models
         StrengthLowLimit.SerializeJson(ref writer, options);
       }
 
-      if (Substance != null)
+      if (!string.IsNullOrEmpty(MeasurementPoint))
       {
-        writer.WritePropertyName("substance");
-        Substance.SerializeJson(ref writer, options);
+        writer.WriteString("measurementPoint", (string)MeasurementPoint!);
+      }
+
+      if (_MeasurementPoint != null)
+      {
+        writer.WritePropertyName("_measurementPoint");
+        _MeasurementPoint.SerializeJson(ref writer, options);
+      }
+
+      if ((Country != null) && (Country.Count != 0))
+      {
+        writer.WritePropertyName("country");
+        writer.WriteStartArray();
+
+        foreach (CodeableConcept valCountry in Country)
+        {
+          valCountry.SerializeJson(ref writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
 
       if (includeStartObject)
@@ -230,6 +233,15 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(ref writer, options, false);
 
+      writer.WritePropertyName("presentation");
+      Presentation.SerializeJson(ref writer, options);
+
+      if (PresentationLowLimit != null)
+      {
+        writer.WritePropertyName("presentationLowLimit");
+        PresentationLowLimit.SerializeJson(ref writer, options);
+      }
+
       if (Concentration != null)
       {
         writer.WritePropertyName("concentration");
@@ -240,6 +252,17 @@ namespace Fhir.R4.Models
       {
         writer.WritePropertyName("concentrationLowLimit");
         ConcentrationLowLimit.SerializeJson(ref writer, options);
+      }
+
+      if (!string.IsNullOrEmpty(MeasurementPoint))
+      {
+        writer.WriteString("measurementPoint", (string)MeasurementPoint!);
+      }
+
+      if (_MeasurementPoint != null)
+      {
+        writer.WritePropertyName("_measurementPoint");
+        _MeasurementPoint.SerializeJson(ref writer, options);
       }
 
       if ((Country != null) && (Country.Count != 0))
@@ -253,23 +276,6 @@ namespace Fhir.R4.Models
         }
 
         writer.WriteEndArray();
-      }
-
-      writer.WriteString("measurementPoint", MeasurementPoint);
-
-      if (_MeasurementPoint != null)
-      {
-        writer.WritePropertyName("_measurementPoint");
-        _MeasurementPoint.SerializeJson(ref writer, options);
-      }
-
-      writer.WritePropertyName("presentation");
-      Presentation.SerializeJson(ref writer, options);
-
-      if (PresentationLowLimit != null)
-      {
-        writer.WritePropertyName("presentationLowLimit");
-        PresentationLowLimit.SerializeJson(ref writer, options);
       }
 
       if ((ReferenceStrength != null) && (ReferenceStrength.Count != 0))
@@ -447,14 +453,14 @@ namespace Fhir.R4.Models
       writer.WritePropertyName("code");
       Code.SerializeJson(ref writer, options);
 
+      writer.WritePropertyName("group");
+      Group.SerializeJson(ref writer, options);
+
       if (Confidentiality != null)
       {
         writer.WritePropertyName("confidentiality");
         Confidentiality.SerializeJson(ref writer, options);
       }
-
-      writer.WritePropertyName("group");
-      Group.SerializeJson(ref writer, options);
 
       if ((Strength != null) && (Strength.Count != 0))
       {
@@ -673,7 +679,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An ingredient of a manufactured item or pharmaceutical product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductIngredient>))]
   public class MedicinalProductIngredient : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
@@ -713,20 +719,26 @@ namespace Fhir.R4.Models
         writer.WriteStartObject();
       }
 
-      writer.WriteString("resourceType", ResourceType);
+      if (!string.IsNullOrEmpty(ResourceType))
+      {
+        writer.WriteString("resourceType", (string)ResourceType!);
+      }
 
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(ref writer, options, false);
-
-      if (AllergenicIndicator != null)
-      {
-        writer.WriteBoolean("allergenicIndicator", (bool)AllergenicIndicator!);
-      }
 
       if (Identifier != null)
       {
         writer.WritePropertyName("identifier");
         Identifier.SerializeJson(ref writer, options);
+      }
+
+      writer.WritePropertyName("role");
+      Role.SerializeJson(ref writer, options);
+
+      if (AllergenicIndicator != null)
+      {
+        writer.WriteBoolean("allergenicIndicator", (bool)AllergenicIndicator!);
       }
 
       if ((Manufacturer != null) && (Manufacturer.Count != 0))
@@ -741,9 +753,6 @@ namespace Fhir.R4.Models
 
         writer.WriteEndArray();
       }
-
-      writer.WritePropertyName("role");
-      Role.SerializeJson(ref writer, options);
 
       if ((SpecifiedSubstance != null) && (SpecifiedSubstance.Count != 0))
       {
