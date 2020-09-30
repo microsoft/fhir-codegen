@@ -1,0 +1,64 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "physical-therapy",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: physical-therapy</p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>category</b>: <span>Evaluation</span></p><p><b>code</b>: <span>Assessment of passive range of motion</span></p><p><b>subject</b>: <a>Generated Summary: id: example; Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); -unknown-(HOME), ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>occurrence</b>: 2016-09-27</p><p><b>authoredOn</b>: 2016-09-20</p><p><b>requester</b>: <span>Ollie Ortho, MD</span></p><p><b>performer</b>: <span>Paul Therapist, PT</span></p><p><b>reason</b>: </p><p><b>bodySite</b>: <span>Both knees</span></p></div>"
+  },
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "386053000",
+          "display": "Evaluation procedure (procedure)"
+        }
+      ],
+      "text": "Evaluation"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "710830005",
+        "display": "Assessment of passive range of motion (procedure)"
+      }
+    ],
+    "text": "Assessment of passive range of motion"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "occurrenceDateTime": "2016-09-27",
+  "authoredOn": "2016-09-20",
+  "requester": {
+    "display": "Ollie Ortho, MD"
+  },
+  "performer": [
+    {
+      "display": "Paul Therapist, PT"
+    }
+  ],
+  "reason": [
+    {
+      "concept": {
+        "text": "assessment of mobility limitations due to osteoarthritis"
+      }
+    }
+  ],
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "36701003",
+          "display": "Both knees (body structure)"
+        }
+      ],
+      "text": "Both knees"
+    }
+  ]
+}

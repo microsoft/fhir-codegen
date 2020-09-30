@@ -1,0 +1,16 @@
+{
+  "resourceType": "SubscriptionStatus",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example</p><p><b>type</b>: event-notification</p><p><b>eventsSinceSubscriptionStart</b>: </p><p><b>eventsInNotification</b>: 1</p><p><b>subscription</b>: <a>http://example.org/FHIR/R5/Subscription/123</a></p><p><b>status</b>: active</p><p><b>topic</b>: <a>http://example.org/FHIR/R5/SubscriptionTopic/admission</a></p></div>"
+  },
+  "type": "event-notification",
+  "eventsSinceSubscriptionStart": "1000",
+  "eventsInNotification": 1,
+  "subscription": {
+    "reference": "http://example.org/FHIR/R5/Subscription/123"
+  },
+  "status": "active",
+  "topic": "http://example.org/FHIR/R5/SubscriptionTopic/admission"
+}

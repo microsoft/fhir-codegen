@@ -1,0 +1,221 @@
+{
+  "resourceType": "CapabilityStatement2",
+  "id": "terminology-server",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: terminology-server</p><p><b>url</b>: <a>http://hl7.org/fhir/terminology-server</a></p><p><b>name</b>: Terminology Service Capability Statement</p><p><b>status</b>: draft</p><p><b>date</b>: 2015-07-05</p><p><b>publisher</b>: HL7, Inc</p><p><b>contact</b>: FHIR Project: http://hl7.org/fhir</p><p><b>description</b>: Basic capability statement for a Terminology Server. A server can support more fucntionality than defined here, but this is the minimum amount</p><p><b>kind</b>: capability</p><h3>Softwares</h3><table><tr><td>-</td><td><b>Name</b></td></tr><tr><td>*</td><td>ACME Terminology Server</td></tr></table><p><b>fhirVersion</b>: 4.5.0</p><p><b>format</b>: json, xml</p><blockquote><p><b>rest</b></p><p><b>mode</b>: server</p><p><b>documentation</b>: RESTful Terminology Server</p><blockquote><p><b>resource</b></p><p><b>type</b>: ValueSet</p><p><b>profile</b>: <a>http://hl7.org/fhir/StructureDefinition/ValueSet</a></p><blockquote><p><b>interaction</b></p><p><b>code</b>: read</p><p><b>documentation</b>: Read allows clients to get the logical definitions of the value sets</p></blockquote><blockquote><p><b>interaction</b></p><p><b>code</b>: search-type</p><p><b>documentation</b>: Search allows clients to find value sets on the server</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: date</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ValueSet-date</a></p><p><b>type</b>: date</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: name</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ValueSet-name</a></p><p><b>type</b>: string</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: reference</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ValueSet-reference</a></p><p><b>type</b>: token</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: status</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ValueSet-status</a></p><p><b>type</b>: token</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: url</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ValueSet-url</a></p><p><b>type</b>: uri</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: version</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ValueSet-version</a></p><p><b>type</b>: token</p></blockquote></blockquote><blockquote><p><b>resource</b></p><p><b>type</b>: ConceptMap</p><p><b>profile</b>: <a>http://hl7.org/fhir/StructureDefinition/ConceptMap</a></p><blockquote><p><b>interaction</b></p><p><b>code</b>: read</p><p><b>documentation</b>: Read allows clients to get the logical definitions of the concept maps</p></blockquote><blockquote><p><b>interaction</b></p><p><b>code</b>: search-type</p><p><b>documentation</b>: Search allows clients to find concept maps on the server</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: date</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ConceptMap-date</a></p><p><b>type</b>: date</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: name</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ConceptMap-name</a></p><p><b>type</b>: string</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: status</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ConceptMap-status</a></p><p><b>type</b>: token</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: source</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ConceptMap-source</a></p><p><b>type</b>: uri</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: target</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ConceptMap-target</a></p><p><b>type</b>: uri</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: url</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ConceptMap-url</a></p><p><b>type</b>: uri</p></blockquote><blockquote><p><b>searchParam</b></p><p><b>name</b>: version</p><p><b>definition</b>: <a>http://hl7.org/fhir/SearchParameter/ConceptMap-version</a></p><p><b>type</b>: token</p></blockquote></blockquote><h3>Operations</h3><table><tr><td>-</td><td><b>Extension</b></td><td><b>Name</b></td><td><b>Definition</b></td></tr><tr><td>*</td><td/><td>expand</td><td><a>http://hl7.org/fhir/OperationDefinition/ValueSet-expand</a></td></tr><tr><td>*</td><td/><td>lookup</td><td><a>http://hl7.org/fhir/OperationDefinition/CodeSystem-lookup</a></td></tr><tr><td>*</td><td/><td>validate-code</td><td><a>http://hl7.org/fhir/OperationDefinition/ValueSet-validate-code</a></td></tr><tr><td>*</td><td/><td>translate</td><td><a>http://hl7.org/fhir/OperationDefinition/ConceptMap-translate</a></td></tr><tr><td>*</td><td/><td>closure</td><td><a>http://hl7.org/fhir/OperationDefinition/ConceptMap-closure</a></td></tr></table></blockquote></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-supported-system",
+      "valueUri": "http://loinc.org"
+    }
+  ],
+  "url": "http://hl7.org/fhir/terminology-server",
+  "name": "Terminology Service Capability Statement",
+  "status": "draft",
+  "date": "2015-07-05",
+  "publisher": "HL7, Inc",
+  "contact": [
+    {
+      "name": "FHIR Project",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        }
+      ]
+    }
+  ],
+  "description": "Basic capability statement for a Terminology Server. A server can support more fucntionality than defined here, but this is the minimum amount",
+  "kind": "capability",
+  "software": {
+    "name": "ACME Terminology Server"
+  },
+  "fhirVersion": "4.5.0",
+  "format": [
+    "json",
+    "xml"
+  ],
+  "rest": [
+    {
+      "mode": "server",
+      "documentation": "RESTful Terminology Server",
+      "resource": [
+        {
+          "type": "ValueSet",
+          "profile": "http://hl7.org/fhir/StructureDefinition/ValueSet",
+          "interaction": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-expectation",
+                  "valueCode": "SHALL"
+                }
+              ],
+              "code": "read",
+              "documentation": "Read allows clients to get the logical definitions of the value sets"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-expectation",
+                  "valueCode": "SHALL"
+                }
+              ],
+              "code": "search-type",
+              "documentation": "Search allows clients to find value sets on the server"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/ValueSet-date",
+              "type": "date"
+            },
+            {
+              "name": "name",
+              "definition": "http://hl7.org/fhir/SearchParameter/ValueSet-name",
+              "type": "string"
+            },
+            {
+              "name": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/ValueSet-reference",
+              "type": "token"
+            },
+            {
+              "name": "status",
+              "definition": "http://hl7.org/fhir/SearchParameter/ValueSet-status",
+              "type": "token"
+            },
+            {
+              "name": "url",
+              "definition": "http://hl7.org/fhir/SearchParameter/ValueSet-url",
+              "type": "uri"
+            },
+            {
+              "name": "version",
+              "definition": "http://hl7.org/fhir/SearchParameter/ValueSet-version",
+              "type": "token"
+            }
+          ]
+        },
+        {
+          "type": "ConceptMap",
+          "profile": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
+          "interaction": [
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-expectation",
+                  "valueCode": "SHALL"
+                }
+              ],
+              "code": "read",
+              "documentation": "Read allows clients to get the logical definitions of the concept maps"
+            },
+            {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-expectation",
+                  "valueCode": "SHALL"
+                }
+              ],
+              "code": "search-type",
+              "documentation": "Search allows clients to find concept maps on the server"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/ConceptMap-date",
+              "type": "date"
+            },
+            {
+              "name": "name",
+              "definition": "http://hl7.org/fhir/SearchParameter/ConceptMap-name",
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "definition": "http://hl7.org/fhir/SearchParameter/ConceptMap-status",
+              "type": "token"
+            },
+            {
+              "name": "source",
+              "definition": "http://hl7.org/fhir/SearchParameter/ConceptMap-source",
+              "type": "uri"
+            },
+            {
+              "name": "target",
+              "definition": "http://hl7.org/fhir/SearchParameter/ConceptMap-target",
+              "type": "uri"
+            },
+            {
+              "name": "url",
+              "definition": "http://hl7.org/fhir/SearchParameter/ConceptMap-url",
+              "type": "uri"
+            },
+            {
+              "name": "version",
+              "definition": "http://hl7.org/fhir/SearchParameter/ConceptMap-version",
+              "type": "token"
+            }
+          ]
+        }
+      ],
+      "operation": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-expectation",
+              "valueCode": "SHALL"
+            }
+          ],
+          "name": "expand",
+          "definition": "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-expectation",
+              "valueCode": "SHALL"
+            }
+          ],
+          "name": "lookup",
+          "definition": "http://hl7.org/fhir/OperationDefinition/CodeSystem-lookup"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-expectation",
+              "valueCode": "SHALL"
+            }
+          ],
+          "name": "validate-code",
+          "definition": "http://hl7.org/fhir/OperationDefinition/ValueSet-validate-code"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-expectation",
+              "valueCode": "SHALL"
+            }
+          ],
+          "name": "translate",
+          "definition": "http://hl7.org/fhir/OperationDefinition/ConceptMap-translate"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-expectation",
+              "valueCode": "SHOULD"
+            }
+          ],
+          "name": "closure",
+          "definition": "http://hl7.org/fhir/OperationDefinition/ConceptMap-closure"
+        }
+      ]
+    }
+  ]
+}

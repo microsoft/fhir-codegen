@@ -438,7 +438,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // function SerializeJson
                 WriteIndentedComment("Serialize to a JSON object");
                 _writer.WriteLineIndented($"void SerializeJson(" +
-                    "ref Utf8JsonWriter writer, " +
+                    "Utf8JsonWriter writer, " +
                     "JsonSerializerOptions options, " +
                     "bool includeStartObject);");
 
@@ -506,7 +506,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // open Write
                 _writer.OpenScope();
 
-                _writer.WriteLineIndented($"component.SerializeJson(ref writer, options, true);");
+                _writer.WriteLineIndented($"component.SerializeJson(writer, options, true);");
 
                 // close Write
                 _writer.CloseScope();
@@ -608,7 +608,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     _writer.WriteLineIndented($"case {kvp.Value} typed{kvp.Value}:");
                     _writer.IncreaseIndent();
-                    _writer.WriteLineIndented($"typed{kvp.Value}.SerializeJson(ref writer, options, true);");
+                    _writer.WriteLineIndented($"typed{kvp.Value}.SerializeJson(writer, options, true);");
                     _writer.WriteLineIndented("break;");
                     _writer.DecreaseIndent();
                 }
@@ -1012,7 +1012,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _writer.IncreaseIndent();
 
-            if (isResource && ShouldWriteResourceName(complex.Name))
+            if (isResource && ShouldWriteResourceName(nameForExport))
             {
                 _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
 
@@ -1048,7 +1048,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteIndentedComment("Serialize to a JSON object");
 
             _writer.WriteLineIndented($"{_accessModifier} {keywordNew}void SerializeJson(" +
-                "ref Utf8JsonWriter writer, " +
+                "Utf8JsonWriter writer, " +
                 "JsonSerializerOptions options, " +
                 "bool includeStartObject = true)");
 
@@ -1072,7 +1072,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (hasBaseClass)
             {
-                _writer.WriteLineIndented($"(({_namespaceModels}.{baseClassName})this).SerializeJson(ref writer, options, false);");
+                _writer.WriteLineIndented($"(({_namespaceModels}.{baseClassName})this).SerializeJson(writer, options, false);");
                 _writer.WriteLine();
             }
 
@@ -1246,12 +1246,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     {
                         _writer.WriteLineIndented($"if ({elementName} != null)");
                         _writer.OpenScope();
-                        _writer.WriteLineIndented($"writer.WriteString(\"{camel}\", {elementName}.ToString(null));");
+                        _writer.WriteLineIndented($"writer.WriteString(\"{camel}\", {elementName}.ToString());");
                         _writer.CloseScope();
                     }
                     else
                     {
-                        _writer.WriteLineIndented($"writer.WriteString(\"{camel}\", {elementName}.ToString(null));");
+                        _writer.WriteLineIndented($"writer.WriteString(\"{camel}\", {elementName}.ToString());");
                     }
 
                     break;
@@ -1264,13 +1264,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             _writer.WriteLineIndented($"if ({elementName} != null)");
                             _writer.OpenScope();
                             _writer.WriteLineIndented($"writer.WritePropertyName(\"{camel}\");");
-                            _writer.WriteLineIndented($"{elementName}.SerializeJson(ref writer, options);");
+                            _writer.WriteLineIndented($"{elementName}.SerializeJson(writer, options);");
                             _writer.CloseScope();
                         }
                         else
                         {
                             _writer.WriteLineIndented($"writer.WritePropertyName(\"{camel}\");");
-                            _writer.WriteLineIndented($"{elementName}.SerializeJson(ref writer, options);");
+                            _writer.WriteLineIndented($"{elementName}.SerializeJson(writer, options);");
                         }
                     }
                     else
@@ -1327,7 +1327,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "CanonicalResource":
                     _writer.WriteLineIndented($"foreach (Resource resource in {elementName})");
                     _writer.OpenScope();
-                    _writer.WriteLineIndented($"((Resource)this).SerializeJson(ref writer, options, true);");
+                    _writer.WriteLineIndented($"((Resource)this).SerializeJson(writer, options, true);");
                     _writer.CloseScope();
 
                     break;
@@ -1338,7 +1338,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "long":
                     _writer.WriteLineIndented($"foreach (long longVal{elementName} in {elementName})");
                     _writer.OpenScope();
-                    _writer.WriteLineIndented($"writer.WriteStringValue(longVal{elementName}.ToString(null));");
+                    _writer.WriteLineIndented($"writer.WriteStringValue(longVal{elementName}.ToString());");
                     _writer.CloseScope();
 
                     break;
@@ -1348,7 +1348,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     {
                         _writer.WriteLineIndented($"foreach ({elementType} val{elementName} in {elementName})");
                         _writer.OpenScope();
-                        _writer.WriteLineIndented($"val{elementName}.SerializeJson(ref writer, options, true);");
+                        _writer.WriteLineIndented($"val{elementName}.SerializeJson(writer, options, true);");
                         _writer.CloseScope();
                     }
                     else
@@ -1588,7 +1588,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "int64":
                 case "long":
                     _writer.WriteLineIndented($"string strVal{elementName} = reader.GetString();");
-                    _writer.WriteLineIndented($"if (long.TryParse(strVal{elementName}, out long longVal{elementName})");
+                    _writer.WriteLineIndented($"if (long.TryParse(strVal{elementName}, out long longVal{elementName}))");
                     _writer.OpenScope();
                     _writer.WriteLineIndented($"{elementName} = longVal{elementName};");
                     _writer.CloseScope();
@@ -1662,7 +1662,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "int64":
                 case "long":
                     _writer.WriteLineIndented($"string strVal{elementName} = reader.GetString();");
-                    _writer.WriteLineIndented($"if (long.TryParse(strVal{elementName}, out long longVal{elementName})");
+                    _writer.WriteLineIndented($"if (long.TryParse(strVal{elementName}, out long longVal{elementName}))");
                     _writer.OpenScope();
                     _writer.WriteLineIndented($"{elementName}.Add(longVal{elementName});");
                     _writer.CloseScope();
@@ -1894,7 +1894,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("using System.Text.Json;");
                 _writer.WriteLineIndented("using System.Text.Json.Serialization;");
 
-                _writer.WriteLineIndented($"using {_namespaceValueSets};");
                 _writer.WriteLineIndented($"using {_namespaceSerialization};");
             }
 
@@ -1953,11 +1952,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 comment = value
                     .Replace('\r', '\n')
-                    .Replace("\r\n", "\n")
-                    .Replace("\n\n", "\n")
-                    .Replace("&", "&amp;")
-                    .Replace("<", "&lt;")
-                    .Replace(">", "&gt;");
+                    .Replace("\r\n", "\n", StringComparison.Ordinal)
+                    .Replace("\n\n", "\n", StringComparison.Ordinal)
+                    .Replace("&", "&amp;", StringComparison.Ordinal)
+                    .Replace("<", "&lt;", StringComparison.Ordinal)
+                    .Replace(">", "&gt;", StringComparison.Ordinal);
 
                 lines = comment.Split('\n');
                 foreach (string line in lines)
@@ -1973,8 +1972,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             comment = value
                 .Replace('\r', '\n')
-                .Replace("\r\n", "\n")
-                .Replace("\n\n", "\n");
+                .Replace("\r\n", "\n", StringComparison.Ordinal)
+                .Replace("\n\n", "\n", StringComparison.Ordinal);
 
             lines = comment.Split('\n');
             foreach (string line in lines)

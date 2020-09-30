@@ -55,6 +55,11 @@ namespace PerfTestCS
                 }
             }
 
+            if (FullParseTest(fhirSpecDirectory) == 0)
+            {
+                return 0;
+            }
+
             //if (SystemTest(fhirSpecDirectory) == 0)
             //{
             //    return 0;
@@ -85,6 +90,56 @@ namespace PerfTestCS
             }
 
             // success
+            return 0;
+        }
+
+        /// <summary>Tests full parse.</summary>
+        /// <param name="fhirSpecDirectory">The full path to the directory where FHIR specifications are
+        ///  downloaded and cached.</param>
+        /// <returns>An int.</returns>
+        private static int FullParseTest(string fhirSpecDirectory)
+        {
+            List<string> r4Dirs = new List<string>()
+            {
+                "hl7.fhir.r4.core-4.0.1",
+                "hl7.fhir.r4.examples-4.0.1",
+                "hl7.fhir.r4.expansions-4.0.1",
+            };
+
+            Dictionary<string, Exception> exceptions = new Dictionary<string, Exception>();
+
+            foreach (string subDir in r4Dirs)
+            {
+                string currentDir = Path.GetFullPath(Path.Combine(fhirSpecDirectory, subDir));
+
+                string[] files = Directory.GetFiles(currentDir, $"*.json", SearchOption.AllDirectories);
+
+                foreach (string filename in files)
+                {
+                    string shortName = Path.GetFileNameWithoutExtension(filename);
+
+                    switch (shortName)
+                    {
+                        case ".index":
+                        case "package":
+                            continue;
+                    }
+
+                    Console.WriteLine(filename);
+
+                    try
+                    {
+                        var typed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(File.ReadAllText(filename));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("FAILED");
+                        exceptions.Add(shortName, ex);
+                        return -1;
+                    }
+                }
+            }
+
             return 0;
         }
 

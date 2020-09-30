@@ -1,0 +1,32 @@
+{
+  "resourceType": "Subscription",
+  "id": "admission",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: admission</p><p><b>name</b>: AdmissionExample</p><p><b>status</b>: active</p><p><b>topic</b>: <a>Generated Summary: id: admission; url: http://argonautproject.org/subscription-ig/SubscriptionTopic/admission; title: admission; status: active</a></p><p><b>end</b>: 07/08/2019 9:15:18 PM</p><p><b>reason</b>: subscription for beginning of a clinical encounter for patient 123</p><h3>FilterBies</h3><table><tr><td>-</td><td><b>SearchParamName</b></td><td><b>Value</b></td></tr><tr><td>*</td><td>patient</td><td>Patient/123</td></tr></table><p><b>channelType</b>: <span>rest-hook</span></p><p><b>endpoint</b>: <a>https://example.org/Endpoints/P123</a></p><p><b>header</b>: Authorization: Bearer secret-token-abc-123</p><p><b>heartbeatPeriod</b>: 60</p><p><b>timeout</b>: 5</p><p><b>contentType</b>: application/fhir+json</p><p><b>content</b>: id-only</p></div>"
+  },
+  "name": "AdmissionExample",
+  "status": "active",
+  "topic": {
+    "reference": "SubscriptionTopic/admission"
+  },
+  "end": "2019-08-07T11:15:18Z",
+  "reason": "subscription for beginning of a clinical encounter for patient 123",
+  "filterBy": [
+    {
+      "searchParamName": "patient",
+      "value": "Patient/123"
+    }
+  ],
+  "channelType": {
+    "code": "rest-hook"
+  },
+  "endpoint": "https://example.org/Endpoints/P123",
+  "header": [
+    "Authorization: Bearer secret-token-abc-123"
+  ],
+  "heartbeatPeriod": 60,
+  "timeout": 5,
+  "contentType": "application/fhir+json",
+  "content": "id-only"
+}

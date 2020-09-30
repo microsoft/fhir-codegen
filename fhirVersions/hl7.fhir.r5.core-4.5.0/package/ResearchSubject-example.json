@@ -1,0 +1,53 @@
+{
+  "resourceType": "ResearchSubject",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"
+  },
+  "identifier": [
+    {
+      "type": {
+        "text": "Subject id"
+      },
+      "system": "http://example.org/studysubjectids",
+      "value": "123"
+    }
+  ],
+  "status": "candidate",
+  "progress": [
+    {
+      "type": {
+        "text": "Local enrollment system"
+      },
+      "state": {
+        "text": "local version of on-study"
+      },
+      "startDate": "2019-06-10"
+    },
+    {
+      "type": {
+        "text": "Local milestone system"
+      },
+      "milestone": {
+        "text": "Local versdion of signed up"
+      },
+      "startDate": "2019-06-06"
+    },
+    {
+      "type": {
+        "text": "Local milestone system"
+      },
+      "milestone": {
+        "text": "Local version of randomised"
+      },
+      "startDate": "2019-06-10"
+    }
+  ],
+  "study": {
+    "reference": "ResearchStudy/example"
+  },
+  "individual": {
+    "reference": "Patient/example"
+  }
+}

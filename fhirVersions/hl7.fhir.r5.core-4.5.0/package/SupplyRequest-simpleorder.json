@@ -1,0 +1,64 @@
+{
+  "resourceType": "SupplyRequest",
+  "id": "simpleorder",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: simpleorder</p><p><b>identifier</b>: id: Order10284</p><p><b>status</b>: active</p><p><b>category</b>: <span>Central Stock Resupply</span></p><p><b>priority</b>: asap</p><p><b>item</b>: </p><p><b>quantity</b>: 10</p><p><b>occurrence</b>: 2016-12-31</p><p><b>authoredOn</b>: 2016-12-31</p><p><b>requester</b>: <span>Henry Seven</span></p><p><b>supplier</b>: <span>Vendor1</span></p><p><b>reason</b>: </p><p><b>deliverFrom</b>: <span>Location 1</span></p><p><b>deliverTo</b>: <span>GoodHealth Clinic Receiving</span></p></div>"
+  },
+  "identifier": [
+    {
+      "value": "Order10284"
+    }
+  ],
+  "status": "active",
+  "category": {
+    "coding": [
+      {
+        "code": "central",
+        "display": "Central Stock Resupply"
+      }
+    ]
+  },
+  "priority": "asap",
+  "item": {
+    "concept": {
+      "coding": [
+        {
+          "code": "BlueTubes",
+          "display": "Blood collect tubes blue cap"
+        }
+      ]
+    }
+  },
+  "quantity": {
+    "value": 10
+  },
+  "occurrenceDateTime": "2016-12-31",
+  "authoredOn": "2016-12-31",
+  "requester": {
+    "display": "Henry Seven"
+  },
+  "supplier": [
+    {
+      "display": "Vendor1"
+    }
+  ],
+  "reason": [
+    {
+      "concept": {
+        "coding": [
+          {
+            "code": "stock_low",
+            "display": "Refill due to low stock"
+          }
+        ]
+      }
+    }
+  ],
+  "deliverFrom": {
+    "display": "Location 1"
+  },
+  "deliverTo": {
+    "display": "GoodHealth Clinic Receiving"
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "Participant",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">to do</div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "informative"
+  }],
+  "url" : "http://hl7.org/fhir/StructureDefinition/Participant",
+  "version" : "4.5.0",
+  "name" : "Participant",
+  "title" : "participant",
+  "status" : "draft",
+  "date" : "2020-08-20T17:41:31+10:00",
+  "publisher" : "Health Level Seven International fhir",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    }]
+  }],
+  "description" : "Logical Model: A pattern followed by resources that represent the participant in some activity, process, or responsible for providing information about a resource.",
+  "fhirVersion" : "4.5.0",
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  }],
+  "kind" : "logical",
+  "abstract" : false,
+  "type" : "Participant",
+  "snapshot" : {
+    "element" : [{
+      "id" : "Participant",
+      "path" : "Participant",
+      "short" : "Participant Pattern",
+      "definition" : "A pattern followed by resources that represent the participant in some activity, process, or responsible for providing information about a resource.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Participant",
+        "min" : 0,
+        "max" : "*"
+      },
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "Role"
+      }]
+    },
+    {
+      "id" : "Participant.identifier",
+      "path" : "Participant.identifier",
+      "short" : "Business Identifier for participant",
+      "definition" : "Business identifiers assigned to this participant by one of the applications involved.  These identifiers remain constant as the resource is updated and propagates from server to server.",
+      "comment" : "Note: This is a business identifier, not a resource identifier (see [discussion](resource.html#identifiers)).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number.",
+      "requirements" : "Allows identification of the participant as it is known by various participating systems and in a way that remains consistent across servers.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Participant.identifier",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Identifier"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : ".identifier"
+      }]
+    },
+    {
+      "id" : "Participant.active",
+      "path" : "Participant.active",
+      "short" : "Whether the participant is currently active",
+      "definition" : "Whether this participant record is in active use.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Participant.active",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "boolean"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : ".status"
+      }]
+    },
+    {
+      "id" : "Participant.name",
+      "path" : "Participant.name",
+      "short" : "A name for the participant",
+      "definition" : "Description of participant as presented to a consumer while searching.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Participant.name",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : ".name"
+      }]
+    }]
+  }
+}

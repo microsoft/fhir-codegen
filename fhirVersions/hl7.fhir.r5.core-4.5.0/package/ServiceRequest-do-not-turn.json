@@ -1,0 +1,42 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "do-not-turn",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: do-not-turn</p><p><b>identifier</b>: id: 20170201-0002</p><p><b>status</b>: active</p><p><b>intent</b>: order</p><p><b>priority</b>: stat</p><p><b>doNotPerform</b>: true</p><p><b>code</b>: <span>Turning patient in bed (procedure)</span></p><p><b>subject</b>: <a>Generated Summary: id: example; Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); -unknown-(HOME), ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>authoredOn</b>: 02/02/2017 4:23:07 AM</p><p><b>requester</b>: <a>Dr Adam Careful. Generated Summary: id: example; id: 23; active; Adam Careful </a></p><p><b>reason</b>: </p></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://goodhealth.org/placer-ids",
+      "value": "20170201-0002"
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "priority": "stat",
+  "doNotPerform": true,
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "359962006",
+        "display": "Turning patient in bed (procedure)"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "authoredOn": "2017-02-01T17:23:07Z",
+  "requester": {
+    "reference": "Practitioner/example",
+    "display": "Dr Adam Careful"
+  },
+  "reason": [
+    {
+      "reference": {
+        "display": "Patient has a spinal fracture"
+      }
+    }
+  ]
+}
