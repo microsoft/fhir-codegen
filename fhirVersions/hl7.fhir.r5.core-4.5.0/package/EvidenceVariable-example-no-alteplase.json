@@ -1,0 +1,26 @@
+{
+  "resourceType": "EvidenceVariable",
+  "id": "example-no-alteplase",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>\n        &quot;No alteplase&quot; is an intended exposure concept that may be used in expressing what an Evidence is about.\n      </p>\n\t</div>"
+  },
+  "title": "no alteplase",
+  "status": "draft",
+  "actual": false,
+  "characteristic": [
+    {
+      "description": "no alteplase",
+      "definitionCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+            "code": "8410",
+            "display": "alteplase"
+          }
+        ]
+      },
+      "exclude": true
+    }
+  ]
+}

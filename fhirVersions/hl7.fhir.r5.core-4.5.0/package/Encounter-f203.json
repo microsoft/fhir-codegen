@@ -1,0 +1,194 @@
+{
+  "resourceType": "Encounter",
+  "id": "f203",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: f203</p><p><b>identifier</b>: id: Encounter_Roel_20130311 (TEMP)</p><p><b>status</b>: completed</p><h3>StatusHistories</h3><table><tr><td>-</td><td><b>Status</b></td><td><b>Period</b></td></tr><tr><td>*</td><td>in-progress</td><td>2013-03-08 --&gt; (ongoing)</td></tr></table><p><b>class</b>: <span>inpatient encounter</span></p><p><b>type</b>: <span>Inpatient stay for nine days</span></p><p><b>priority</b>: <span>High priority</span></p><p><b>subject</b>: <a>Roel. Generated Summary: id: f201; BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); ph: +31612345678(MOBILE), ph: +31201234567(HOME); gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p><p><b>episodeOfCare</b>: <a>Generated Summary: id: example; id: 123; status: active; <span>Home and Community Care</span>; period: 2014-09-01 --&gt; (ongoing)</a></p><p><b>basedOn</b>: <a>Generated Summary: id: myringotomy; id: ret4421; id: 1234; status: active; intent: order; <span>Patient referral to specialist</span>; priority: routine; <span>Insertion of grommets</span>; occurrence: ?ngen-2? --&gt; 2014-03-14; authoredOn: 2014-02-14; <span>ENT</span>; <span>For consideration of Grommets</span>; In the past 2 years Beverly has had 6 instances of rt-sided Otitis media. She is     falling behind her peers at school, and displaying some learning difficulties. (By Serena Shrink @2014-02-14)</a></p><h3>Participants</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Individual</b></td></tr><tr><td>*</td><td><span>Participation</span></td><td><a>Generated Summary: id: f201; UZI-nummer: 12345678901 (OFFICIAL); active; Dokter Bronsig(OFFICIAL); ph: +31715269111(WORK); gender: male; birthDate: 1956-12-24</a></td></tr></table><p><b>appointment</b>: <a>Generated Summary: id: example; status: booked; <span>General Practice</span>; <span>General Discussion</span>; <span>General practice</span>; <span>A follow up visit from a previous appointment</span>; <span>Severe burn of left ear</span>; 5; description: Discussion on the results of your recent MRI; start: 10/12/2013 8:00:00 PM; end: 10/12/2013 10:00:00 PM; created: 2013-10-10; comment: Further expand on the results of the MRI and determine the next actions that may be appropriate.</a></p><p><b>period</b>: 2013-03-11 --&gt; 2013-03-20</p><p><b>reason</b>: </p><blockquote><p><b>diagnosis</b></p><p><b>condition</b>: <a>Generated Summary: id: stroke; <span>Active</span>; <span>Confirmed</span>; <span>Encounter Diagnosis</span>; <span>Stroke</span>; onset: 2010-07-18</a></p><p><b>use</b>: <span>Admission diagnosis</span></p><p><b>rank</b>: 1</p></blockquote><blockquote><p><b>diagnosis</b></p><p><b>condition</b>: <a>Generated Summary: id: f201; id: 12345; <span>Resolved</span>; <span>Confirmed</span>; <span>Problem</span>; <span>Mild</span>; <span>Fever</span>; <span>Entire body as a whole</span>; onset: 2013-04-02; abatement: around April 9, 2013; recordedDate: 2013-04-04</a></p><p><b>use</b>: <span>Discharge diagnosis</span></p></blockquote><p><b>account</b>: <a>Generated Summary: id: example; id: 654321; status: active; <span>patient</span>; name: HACC Funded Billing for Peter James Chalmers; servicePeriod: 2016-01-01 --&gt; 2016-06-30; description: Hospital charges</a></p><h3>Hospitalizations</h3><table><tr><td>-</td><td><b>Origin</b></td><td><b>AdmitSource</b></td><td><b>ReAdmission</b></td><td><b>DietPreference</b></td><td><b>SpecialCourtesy</b></td><td><b>SpecialArrangement</b></td><td><b>Destination</b></td></tr><tr><td>*</td><td><a>Generated Summary: id: 2; id: B1-S.F2.1.00; status: suspended; <span>Housekeeping</span>; name: South Wing Neuro OR 1; alias: South Wing OR 5, alias: Main Wing OR 2; description: Old South Wing, Neuro Radiology Operation Room 1 on second floor; mode: instance; <span>Neuroradiology unit</span>; ph: 2329; <span>Room</span></a></td><td><span>Clinical Oncology Department</span></td><td><span>readmitted</span></td><td><span>Fluid balance regulation</span></td><td><span>normal courtesy</span></td><td><span>Wheelchair</span></td><td><a>Generated Summary: id: 2; id: B1-S.F2.1.00; status: suspended; <span>Housekeeping</span>; name: South Wing Neuro OR 1; alias: South Wing OR 5, alias: Main Wing OR 2; description: Old South Wing, Neuro Radiology Operation Room 1 on second floor; mode: instance; <span>Neuroradiology unit</span>; ph: 2329; <span>Room</span></a></td></tr></table><p><b>serviceProvider</b>: <a>Generated Summary: id: 2; id: 666666; name: XYZ Insurance; alias: ABC Insurance</a></p><p><b>partOf</b>: <a>Generated Summary: id: f203; id: Encounter_Roel_20130311 (TEMP); status: completed; <span>inpatient encounter</span>; <span>Inpatient stay for nine days</span>; <span>High priority</span>; period: 2013-03-11 --&gt; 2013-03-20; <span>The patient seems to suffer from bilateral pneumonia and renal insufficiency, most likely due to chemotherapy.</span></a></p></div>"
+  },
+  "identifier": [
+    {
+      "use": "temp",
+      "value": "Encounter_Roel_20130311"
+    }
+  ],
+  "status": "completed",
+  "statusHistory": [
+    {
+      "status": "in-progress",
+      "period": {
+        "start": "2013-03-08"
+      }
+    }
+  ],
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "IMP",
+    "display": "inpatient encounter"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "183807002",
+          "display": "Inpatient stay for nine days"
+        }
+      ]
+    }
+  ],
+  "priority": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "394849002",
+        "display": "High priority"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/f201",
+    "display": "Roel"
+  },
+  "episodeOfCare": [
+    {
+      "reference": "EpisodeOfCare/example"
+    }
+  ],
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/myringotomy"
+    }
+  ],
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART"
+            }
+          ]
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/f201"
+      }
+    }
+  ],
+  "appointment": [
+    {
+      "reference": "Appointment/example"
+    }
+  ],
+  "period": {
+    "start": "2013-03-11",
+    "end": "2013-03-20"
+  },
+  "reason": [
+    {
+      "concept": {
+        "text": "The patient seems to suffer from bilateral pneumonia and renal insufficiency, most likely due to chemotherapy."
+      }
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/stroke"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "AD",
+            "display": "Admission diagnosis"
+          }
+        ]
+      },
+      "rank": 1
+    },
+    {
+      "condition": {
+        "reference": "Condition/f201"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "DD",
+            "display": "Discharge diagnosis"
+          }
+        ]
+      }
+    }
+  ],
+  "account": [
+    {
+      "reference": "Account/example"
+    }
+  ],
+  "hospitalization": {
+    "origin": {
+      "reference": "Location/2"
+    },
+    "admitSource": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "309902002",
+          "display": "Clinical Oncology Department"
+        }
+      ]
+    },
+    "reAdmission": {
+      "coding": [
+        {
+          "display": "readmitted"
+        }
+      ]
+    },
+    "dietPreference": [
+      {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "276026009",
+            "display": "Fluid balance regulation"
+          }
+        ]
+      }
+    ],
+    "specialCourtesy": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy",
+            "code": "NRM",
+            "display": "normal courtesy"
+          }
+        ]
+      }
+    ],
+    "specialArrangement": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements",
+            "code": "wheel",
+            "display": "Wheelchair"
+          }
+        ]
+      }
+    ],
+    "destination": {
+      "reference": "Location/2"
+    }
+  },
+  "serviceProvider": {
+    "reference": "Organization/2"
+  },
+  "partOf": {
+    "reference": "Encounter/f203"
+  }
+}

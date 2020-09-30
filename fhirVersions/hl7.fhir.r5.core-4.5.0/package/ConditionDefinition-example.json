@@ -1,0 +1,110 @@
+{
+  "resourceType": "ConditionDefinition",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example</p><p><b>url</b>: <a>http://hl7.org/fhir/ConditionDefinition/example</a></p><p><b>name</b>: Hyperlipidemia</p><p><b>title</b>: Hyperlipidemia Status</p><p><b>status</b>: draft</p><p><b>date</b>: 26/05/2019 10:44:00 AM</p><p><b>code</b>: <span>Hyperlipidemia (disorder)</span></p><p><b>hasSeverity</b>: false</p><p><b>hasBodySite</b>: false</p><p><b>hasStage</b>: false</p><p><b>definition</b>: <a>https://med.stanford.edu/content/dam/sm/cerc/documents/Hyperlipidemia%20Management%20Protocol.pdf</a></p><blockquote><p><b>observation</b></p><p><b>code</b>: <span>Lipid Panel</span></p></blockquote><blockquote><p><b>observation</b></p><p><b>code</b>: <span>Cholesterol</span></p></blockquote><blockquote><p><b>observation</b></p><p><b>code</b>: <span>Triglyceride</span></p></blockquote><blockquote><p><b>observation</b></p><p><b>code</b>: <span>Cholesterol in HDL</span></p></blockquote><blockquote><p><b>observation</b></p><p><b>code</b>: <span>LDL Chol. (Calc)</span></p></blockquote><h3>Medications</h3><table><tr><td>-</td><td><b>Code</b></td></tr><tr><td>*</td><td><span>Gemfibrozil</span></td></tr></table><h3>Plans</h3><table><tr><td>-</td><td><b>Reference</b></td></tr><tr><td>*</td><td><a>http://acme.com/fhir/PlanDefinition/fd0e32d8-2ebd-4211-9e50-8983efddc2c6</a></td></tr></table></div>"
+  },
+  "url": "http://hl7.org/fhir/ConditionDefinition/example",
+  "name": "Hyperlipidemia",
+  "title": "Hyperlipidemia Status",
+  "status": "draft",
+  "date": "2019-05-26T10:44:00+10:00",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "55822004",
+        "display": "Hyperlipidemia (disorder)"
+      }
+    ]
+  },
+  "hasSeverity": false,
+  "hasBodySite": false,
+  "hasStage": false,
+  "definition": [
+    "https://med.stanford.edu/content/dam/sm/cerc/documents/Hyperlipidemia%20Management%20Protocol.pdf"
+  ],
+  "observation": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "24331-1",
+            "display": "Lipid 1996 panel - Serum or Plasma"
+          }
+        ],
+        "text": "Lipid Panel"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "35200-5",
+            "display": "Cholesterol [Moles/​volume] in Serum or Plasma"
+          }
+        ],
+        "text": "Cholesterol"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "35217-9",
+            "display": "Triglyceride [Moles/​volume] in Serum or Plasma"
+          }
+        ],
+        "text": "Triglyceride"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "2085-9",
+            "display": "HDL Cholesterol"
+          }
+        ],
+        "text": "Cholesterol in HDL"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "13457-7",
+            "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
+          }
+        ],
+        "text": "LDL Chol. (Calc)"
+      }
+    }
+  ],
+  "medication": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+            "code": "203151",
+            "display": "Gemfibrozil"
+          }
+        ]
+      }
+    }
+  ],
+  "plan": [
+    {
+      "reference": {
+        "reference": "http://acme.com/fhir/PlanDefinition/fd0e32d8-2ebd-4211-9e50-8983efddc2c6"
+      }
+    }
+  ]
+}

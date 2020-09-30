@@ -1,0 +1,92 @@
+{
+  "resourceType": "Medication",
+  "id": "med0309",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0309</p><p><b>code</b>: <span>Tylenol PM</span></p><p><b>manufacturer</b>: <a> </a></p><blockquote><p><b>id</b>: org2</p><p><b>name</b>: Johnson and Johnson Consume Inc, McNeil Consumer Healthcare Division</p></blockquote><p><b>doseForm</b>: <span>Film-coated tablet (qualifier value)</span></p><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 500 mg/1 TAB</p></blockquote><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 25 mg/1 TAB</p></blockquote><h3>Batches</h3><table><tr><td>-</td><td><b>LotNumber</b></td><td><b>ExpirationDate</b></td></tr><tr><td>*</td><td>9494788</td><td>2017-05-22</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "org2",
+      "name": "Johnson and Johnson Consume Inc, McNeil Consumer Healthcare Division"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "50580-608-02",
+        "display": "Tylenol PM"
+      }
+    ]
+  },
+  "manufacturer": {
+    "reference": "#org2"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385057009",
+        "display": "Film-coated tablet (qualifier value)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "315266",
+              "display": "Acetaminophen 500 MG"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 500,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm",
+          "code": "TAB"
+        }
+      }
+    },
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "901813",
+              "display": "Diphenhydramine Hydrochloride 25 mg"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 25,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm",
+          "code": "TAB"
+        }
+      }
+    }
+  ],
+  "batch": {
+    "lotNumber": "9494788",
+    "expirationDate": "2017-05-22"
+  }
+}

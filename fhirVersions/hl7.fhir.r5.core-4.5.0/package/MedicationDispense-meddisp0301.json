@@ -1,0 +1,136 @@
+{
+  "resourceType": "MedicationDispense",
+  "id": "meddisp0301",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: meddisp0301</p><p><b>status</b>: in-progress</p><p><b>medication</b>: </p><p><b>subject</b>: <a>Donald Duck. Generated Summary: id: pat1; Medical record number: 654321 (USUAL); active; Duck Donald (OFFICIAL); gender: male; </a></p><p><b>supportingInformation</b>: <a>Generated Summary: id: f203; <span>Active</span>; <span>Confirmed</span>; <span>Problem</span>; <span>Moderate to severe</span>; <span>Bacterial sepsis</span>; <span>Pulmonary vascular structure</span>; onset: 2013-03-08; recordedDate: 2013-03-11</a></p><h3>Performers</h3><table><tr><td>-</td><td><b>Actor</b></td></tr><tr><td>*</td><td><a>Generated Summary: id: f006; id: 937223645 (OFFICIAL), id: 134IDY41W988 (USUAL); Rob van den Berk (OFFICIAL); ph: 0205569288(WORK), R.A.vandenberk@bmc.nl(WORK), fax: 0205664987(WORK); gender: male; birthDate: 1975-12-07</a></td></tr></table><p><b>location</b>: <a>Pharmacy. Generated Summary: id: ukp; status: active; name: UK Pharmacies; description: All Pharmacies in the United Kingdom covered by the National Pharmacy Association; mode: kind; <span>Pharmacy</span>; <span>Jurisdiction</span></a></p><p><b>authorizingPrescription</b>: <a>Generated Summary: id: medrx0318; id: 12345689 (OFFICIAL); status: active; intent: order; <span>#med0301</span>; authoredOn: 2015-01-15; <span>Traveller's Diarrhea (disorder)</span>; culture expected back in 12 hours - may switch depending on results; </a></p><p><b>type</b>: <span>Emergency Supply</span></p><p><b>quantity</b>: 12 Vial</p><p><b>daysSupply</b>: 3 Day</p><p><b>whenPrepared</b>: 15/01/2015 9:20:00 PM</p><p><b>destination</b>: <a>Generated Summary: id: ph; status: active; name: Patient's Home; description: Patient's Home; mode: kind; <span>Patient's Residence</span>; <span>House</span></a></p><p><b>receiver</b>: <a>Donald Duck. Generated Summary: id: pat1; Medical record number: 654321 (USUAL); active; Duck Donald (OFFICIAL); gender: male; </a></p><p><b>dosageInstruction</b>: </p></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Medication",
+      "id": "med0301",
+      "code": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/sid/ndc",
+            "code": "0409-6531-02",
+            "display": "Vancomycin Hydrochloride (VANCOMYCIN HYDROCHLORIDE)"
+          }
+        ]
+      }
+    }
+  ],
+  "status": "in-progress",
+  "medication": {
+    "reference": {
+      "reference": "#med0301",
+      "display": "Vancomycin Hydrochloride"
+    }
+  },
+  "subject": {
+    "reference": "Patient/pat1",
+    "display": "Donald Duck"
+  },
+  "supportingInformation": [
+    {
+      "reference": "Condition/f203"
+    }
+  ],
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/f006"
+      }
+    }
+  ],
+  "location": {
+    "reference": "Location/ukp",
+    "display": "Pharmacy"
+  },
+  "authorizingPrescription": [
+    {
+      "reference": "MedicationRequest/medrx0318"
+    }
+  ],
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "EM",
+        "display": "Emergency Supply"
+      }
+    ]
+  },
+  "quantity": {
+    "value": 12,
+    "unit": "Vial",
+    "system": "http://snomed.info.sct",
+    "code": "733026001"
+  },
+  "daysSupply": {
+    "value": 3,
+    "unit": "Day",
+    "system": "http://unitsofmeasure.org",
+    "code": "d"
+  },
+  "whenPrepared": "2015-01-15T10:20:00Z",
+  "destination": {
+    "reference": "Location/ph"
+  },
+  "receiver": [
+    {
+      "reference": "Patient/pat1",
+      "display": "Donald Duck"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "sequence": 1,
+      "text": "500mg IV q6h x 3 days",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 6,
+          "periodUnit": "h"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "255560000",
+            "display": "Intravenous"
+          }
+        ]
+      },
+      "method": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "420620005",
+            "display": "Push - dosing instruction imperative (qualifier value)"
+          }
+        ]
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ]
+          },
+          "doseQuantity": {
+            "value": 500,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

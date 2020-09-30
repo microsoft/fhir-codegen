@@ -1,0 +1,91 @@
+{
+  "resourceType": "Condition",
+  "id": "f203",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: f203</p><p><b>clinicalStatus</b>: <span>Active</span></p><p><b>verificationStatus</b>: <span>Confirmed</span></p><p><b>category</b>: <span>Problem</span></p><p><b>severity</b>: <span>Moderate to severe</span></p><p><b>code</b>: <span>Bacterial sepsis</span></p><p><b>bodySite</b>: <span>Pulmonary vascular structure</span></p><p><b>subject</b>: <a>Roel. Generated Summary: id: f201; BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); ph: +31612345678(MOBILE), ph: +31201234567(HOME); gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p><p><b>encounter</b>: <a>Roel's encounter on March elevanth. Generated Summary: id: f203; id: Encounter_Roel_20130311 (TEMP); status: completed; <span>inpatient encounter</span>; <span>Inpatient stay for nine days</span>; <span>High priority</span>; period: 2013-03-11 --&gt; 2013-03-20; <span>The patient seems to suffer from bilateral pneumonia and renal insufficiency, most likely due to chemotherapy.</span></a></p><p><b>onset</b>: 2013-03-08</p><p><b>recordedDate</b>: 2013-03-11</p><p><b>asserter</b>: <a>Generated Summary: id: f201; UZI-nummer: 12345678901 (OFFICIAL); active; Dokter Bronsig(OFFICIAL); ph: +31715269111(WORK); gender: male; birthDate: 1956-12-24</a></p><h3>Evidences</h3><table><tr><td>-</td><td><b>Detail</b></td></tr><tr><td>*</td><td><a>Diagnostic report for Roel's sepsis. Generated Summary: id: f202; type: collection</a></td></tr></table></div>"
+  },
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "55607006",
+          "display": "Problem"
+        },
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "problem-list-item"
+        }
+      ]
+    }
+  ],
+  "severity": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "371924009",
+        "display": "Moderate to severe"
+      }
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10001005",
+        "display": "Bacterial sepsis"
+      }
+    ]
+  },
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "281158006",
+          "display": "Pulmonary vascular structure"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/f201",
+    "display": "Roel"
+  },
+  "encounter": {
+    "reference": "Encounter/f203",
+    "display": "Roel's encounter on March elevanth"
+  },
+  "onsetDateTime": "2013-03-08",
+  "recordedDate": "2013-03-11",
+  "asserter": {
+    "reference": "Practitioner/f201"
+  },
+  "evidence": [
+    {
+      "detail": [
+        {
+          "reference": "DiagnosticReport/f202",
+          "display": "Diagnostic report for Roel's sepsis"
+        }
+      ]
+    }
+  ]
+}
