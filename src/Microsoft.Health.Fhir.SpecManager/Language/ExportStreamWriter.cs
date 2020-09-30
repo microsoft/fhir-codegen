@@ -120,6 +120,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _indentation++;
         }
 
+        /// <summary>Opens a scope (writes literal on a line, then indents).</summary>
+        /// <param name="openLiteral">(Optional) The scope open literal.</param>
+        public void OpenScope(string openLiteral = "{")
+        {
+            WriteLineIndented(openLiteral);
+            IncreaseIndent();
+        }
+
         /// <summary>Decrease indent.</summary>
         public void DecreaseIndent()
         {
@@ -129,6 +137,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             _indentation--;
+        }
+
+        /// <summary>Closes a scope (decreases indent, then writes literal on a line).</summary>
+        /// <param name="closeLiteral">(Optional) The close literal.</param>
+        public void CloseScope(string closeLiteral = "}")
+        {
+            DecreaseIndent();
+            WriteLineIndented(closeLiteral);
         }
 
         /// <summary>Sets an indent.</summary>

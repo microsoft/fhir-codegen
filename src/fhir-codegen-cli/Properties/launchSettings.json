@@ -152,7 +152,12 @@
         },
         "cyto4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\cytoscape --load-r4 latest --export-keys Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --fhir-spec-directory ..\\..\\fhirVersions --language Cytoscape",
+            "commandLineArgs": "--output-path ..\\..\\cytoscape --load-r4 latest --export-keys Patient|Encounter|Observation --fhir-spec-directory ..\\..\\fhirVersions --language Cytoscape",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "csV2Test": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\test\\perfTestCS\\Test\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }

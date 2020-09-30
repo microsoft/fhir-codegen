@@ -75,6 +75,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>True to expand references based on allowed profiles.</summary>
         private bool _expandProfiles = true;
 
+        /// <summary>True to expand references.</summary>
+        private bool _expandReferences = true;
+
         /// <summary>True to generate read only.</summary>
         private bool _generateReadOnly = false;
 
@@ -98,6 +101,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>True to remove uncommon fields.</summary>
         private bool _removeUncommonFields = false;
+
+        private HashSet<string> _resourcesToExport = null;
 
         /// <summary>The uncommon fields.</summary>
         private static readonly HashSet<string> _uncommonFields = new HashSet<string>()
@@ -198,6 +203,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "DescriptionMaxLen", "Maximum length of descriptions, if being validated (60)." },
             { "DescriptionValidation", "If descriptions are required and should be validated (false|true)." },
             { "ExpandProfiles", "If types should expand based on allowed profiles (true|false)." },
+            { "ExpandReferences", "If types should expand through references (true|false)" },
             { "FhirJson", "If paths should explicitly support FHIR+JSON (true|false)." },
             { "FhirXml", "If paths should explicitly support FHIR+XML (false|true)." },
             { "History", "If _history GET operations should be included (false|true)" },
@@ -238,6 +244,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _parameters = _options.LanguageOptions;
             }
 
+            if ((options.ExportList != null) && options.ExportList.Any())
+            {
+                _resourcesToExport = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
+
+                foreach (string key in options.ExportList)
+                {
+                    _resourcesToExport.Add(key);
+                }
+            }
+
             _exportedCodes = new HashSet<string>();
 
             _includeBundleOperations = _options.GetParam("BundleOperations", true);
@@ -245,6 +261,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _descriptionMaxLen = _options.GetParam("DescriptionMaxLen", 60);
             _descriptionValidation = _options.GetParam("DescriptionValidation", false);
             _expandProfiles = _options.GetParam("ExpandProfiles", true);
+            _expandReferences = _options.GetParam("ExpandReferences", true);
             _fhirJson = _options.GetParam("FhirJson", true);
             _fhirXml = _options.GetParam("FhirXml", false);
             _includeHistory = _options.GetParam("History", false);
@@ -823,6 +840,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
+                if ((_resourcesToExport != null) &&
+                    (!_resourcesToExport.Contains(resource.ResourceType)))
+                {
+                    continue;
+                }
+
                 OpenApiPathItem typePath = new OpenApiPathItem()
                 {
                     Operations = new Dictionary<OperationType, OpenApiOperation>(),
@@ -1257,7 +1280,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _info.Resources["Bundle"],
                     null,
                     resourceName,
-                    pathReferenceCounts);
+                    pathReferenceCounts,
+                    string.Empty,
+                    0);
             }
             else
             {
@@ -1267,7 +1292,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _info.Resources[resourceName],
                     null,
                     resourceName,
-                    pathReferenceCounts);
+                    pathReferenceCounts,
+                    string.Empty,
+                    0);
             }
         }
 
@@ -1345,7 +1372,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex parent,
             string rootResourceName,
             Dictionary<string, int> pathReferenceCounts,
-            string parentPath = "")
+            string parentPath = "",
+            int currentDepth = 0)
         {
             schema.Type = "object";
             schema.Properties = new Dictionary<string, OpenApiSchema>();
@@ -1364,6 +1392,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             if (pathReferenceCounts.ContainsKey(complex.Path))
+            {
+                return;
+            }
+
+            if ((_maxRecursions > 0) && (currentDepth > _maxRecursions))
             {
                 return;
             }
@@ -1396,7 +1429,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _info.Resources["Resource"],
                         complex,
                         rootResourceName,
-                        subPaths);
+                        subPaths,
+                        string.Empty,
+                        currentDepth + 1);
                 }
                 else
                 {
@@ -1437,7 +1472,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         complex,
                         element,
                         rootResourceName,
-                        subPaths);
+                        subPaths,
+                        currentDepth);
                 }
             }
         }
@@ -1482,7 +1518,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirComplex complex,
             FhirElement element,
             string rootResourceName,
-            Dictionary<string, int> pathReferenceCounts)
+            Dictionary<string, int> pathReferenceCounts,
+            int currentDepth = 0)
         {
             string name = GetElementName(element);
 
@@ -1551,7 +1588,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             complex,
                             rootResourceName,
                             pathReferenceCounts,
-                            element.Path);
+                            element.Path,
+                            currentDepth + 1);
                     }
                     else
                     {
@@ -1579,7 +1617,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 type = elementType.Name;
 
-                if (elementType.TypeProfiles.Count == 1)
+                if (_expandReferences && (elementType.TypeProfiles.Count == 1))
                 {
                     string profileName = elementType.TypeProfiles.First().Value.Name;
                     if (_info.NodeByPath.ContainsKey(profileName))
@@ -1606,7 +1644,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         complex,
                         rootResourceName,
                         pathReferenceCounts,
-                        element.Path);
+                        element.Path,
+                        currentDepth + 1);
                 }
                 else
                 {
@@ -1617,7 +1656,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         complex,
                         rootResourceName,
                         pathReferenceCounts,
-                        element.Path);
+                        element.Path,
+                        currentDepth + 1);
                 }
             }
             else
