@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes a comparison of an immunization event against published recommendations to determine if the administration is "valid" in relation to those  recommendations.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationEvaluation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImmunizationEvaluation>))]
   public class ImmunizationEvaluation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

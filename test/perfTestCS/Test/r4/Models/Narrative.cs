@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A human-readable summary of the resource conveying the essential clinical and business information for the resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Narrative>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Narrative>))]
   public class Narrative : Element,  IFhirJsonSerializable {
     /// <summary>
     /// The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images and internally contained stylesheets. The XHTML content SHALL NOT contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects.

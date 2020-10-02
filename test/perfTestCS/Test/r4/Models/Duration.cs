@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A length of time.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Duration>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Duration>))]
   public class Duration : Quantity,  IFhirJsonSerializable {
     /// <summary>
     /// Serialize to a JSON object

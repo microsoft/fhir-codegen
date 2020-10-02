@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideDependsOn>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideDependsOn>))]
   public class ImplementationGuideDependsOn : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The NPM package name for the Implementation Guide that this IG depends on.
@@ -156,7 +156,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// See [Default Profiles](implementationguide.html#default) for a discussion of which resources are 'covered' by an implementation guide.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideGlobal>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideGlobal>))]
   public class ImplementationGuideGlobal : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A reference to the profile that all instances must conform to.
@@ -272,7 +272,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Groupings are arbitrary sub-divisions of content. Typically, they are used to help build Table of Contents automatically.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideDefinitionGrouping>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideDefinitionGrouping>))]
   public class ImplementationGuideDefinitionGrouping : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Human readable text describing the package.
@@ -388,7 +388,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideDefinitionResource>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideDefinitionResource>))]
   public class ImplementationGuideDefinitionResource : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This is mostly used with examples to explain why it is present (though they can have extensive comments in the examples).
@@ -679,7 +679,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Pages automatically become sections if they have sub-pages. By convention, the home page is called index.html.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideDefinitionPage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideDefinitionPage>))]
   public class ImplementationGuideDefinitionPage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A code that indicates how the page is generated.
@@ -879,7 +879,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Defines how IG is built by tools.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideDefinitionParameter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideDefinitionParameter>))]
   public class ImplementationGuideDefinitionParameter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// apply | path-resource | path-pages | path-tx-cache | expansion-parameter | rule-broken-links | generate-xml | generate-json | generate-turtle | html-template.
@@ -995,7 +995,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A template for building resources.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideDefinitionTemplate>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideDefinitionTemplate>))]
   public class ImplementationGuideDefinitionTemplate : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Type of template specified.
@@ -1139,7 +1139,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Principally, this consists of information abuot source resource and file locations, and build parameters and templates.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideDefinition>))]
   public class ImplementationGuideDefinition : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Groupings are arbitrary sub-divisions of content. Typically, they are used to help build Table of Contents automatically.
@@ -1390,7 +1390,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideManifestResource>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideManifestResource>))]
   public class ImplementationGuideManifestResource : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Typically, conformance resources and knowledge resources are directly part of the implementation guide, with their normal meaning, and patient linked resources are usually examples. However this is not always true.
@@ -1531,7 +1531,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about a page within the IG.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideManifestPage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideManifestPage>))]
   public class ImplementationGuideManifestPage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Appending 'rendering' + "/" + page.name + "#" + page.anchor should resolve to the anchor.
@@ -1733,7 +1733,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about an assembled implementation guide, created by the publication tooling.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuideManifest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuideManifest>))]
   public class ImplementationGuideManifest : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates a relative path to an image that exists within the IG.
@@ -2081,7 +2081,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImplementationGuide>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImplementationGuide>))]
   public class ImplementationGuide : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

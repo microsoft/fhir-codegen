@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The shelf-life and storage information for a medicinal product item or container can be described using this class.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ProductShelfLife>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ProductShelfLife>))]
   public class ProductShelfLife : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Unique identifier for the packaged Medicinal Product.

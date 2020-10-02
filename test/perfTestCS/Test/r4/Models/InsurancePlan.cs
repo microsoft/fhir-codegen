@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlanContact>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlanContact>))]
   public class InsurancePlanContact : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Visiting or postal addresses for the contact.
@@ -161,7 +161,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The specific limits on the benefit.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlanCoverageBenefitLimit>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlanCoverageBenefitLimit>))]
   public class InsurancePlanCoverageBenefitLimit : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Use `CodeableConcept.text` element if the data is free (uncoded) text.
@@ -251,7 +251,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specific benefits under this type of coverage.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlanCoverageBenefit>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlanCoverageBenefit>))]
   public class InsurancePlanCoverageBenefit : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The specific limits on the benefit.
@@ -395,7 +395,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details about the coverage offered by the insurance product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlanCoverage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlanCoverage>))]
   public class InsurancePlanCoverage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Specific benefits under this type of coverage.
@@ -555,7 +555,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Overall costs associated with the plan.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlanPlanGeneralCost>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlanPlanGeneralCost>))]
   public class InsurancePlanPlanGeneralCost : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Additional information about the general costs associated with this plan.
@@ -686,7 +686,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// List of the costs associated with a specific benefit.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlanPlanSpecificCostBenefitCost>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlanPlanSpecificCostBenefitCost>))]
   public class InsurancePlanPlanSpecificCostBenefitCost : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Whether the cost applies to in-network or out-of-network providers (in-network; out-of-network; other).
@@ -832,7 +832,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// List of the specific benefits under this category of benefit.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlanPlanSpecificCostBenefit>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlanPlanSpecificCostBenefit>))]
   public class InsurancePlanPlanSpecificCostBenefit : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// List of the costs associated with a specific benefit.
@@ -948,7 +948,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Costs associated with the coverage provided by the product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlanPlanSpecificCost>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlanPlanSpecificCost>))]
   public class InsurancePlanPlanSpecificCost : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// List of the specific benefits under this category of benefit.
@@ -1064,7 +1064,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details about an insurance plan.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlanPlan>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlanPlan>))]
   public class InsurancePlanPlan : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The geographic region in which a health insurance plan's benefits apply.
@@ -1359,7 +1359,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details of a Health Insurance product/plan provided by an organization.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InsurancePlan>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InsurancePlan>))]
   public class InsurancePlan : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

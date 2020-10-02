@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// For example may be used to identify a class of coverage or employer group, Policy, Plan.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageClass>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageClass>))]
   public class CoverageClass : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A short description for the class.
@@ -140,7 +140,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A suite of codes indicating exceptions or reductions to patient costs and their effective periods.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageCostToBeneficiaryException>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageCostToBeneficiaryException>))]
   public class CoverageCostToBeneficiaryException : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The timeframe during when the exception is in force.
@@ -227,7 +227,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// For example by knowing the patient visit co-pay, the provider can collect the amount prior to undertaking treatment.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageCostToBeneficiary>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageCostToBeneficiary>))]
   public class CoverageCostToBeneficiary : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A suite of codes indicating exceptions or reductions to patient costs and their effective periods.
@@ -370,7 +370,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Coverage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Coverage>))]
   public class Coverage : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

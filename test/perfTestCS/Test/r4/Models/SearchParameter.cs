@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Used to define the parts of a composite search parameter.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SearchParameterComponent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SearchParameterComponent>))]
   public class SearchParameterComponent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The definition of the search parameter that describes this part.
@@ -128,7 +128,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A search parameter that defines a named search item that can be used to search/filter on a resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SearchParameter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SearchParameter>))]
   public class SearchParameter : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

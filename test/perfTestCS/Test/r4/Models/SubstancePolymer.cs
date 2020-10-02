@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstancePolymerMonomerSetStartingMaterial>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstancePolymerMonomerSetStartingMaterial>))]
   public class SubstancePolymerMonomerSetStartingMaterial : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -130,7 +130,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstancePolymerMonomerSet>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstancePolymerMonomerSet>))]
   public class SubstancePolymerMonomerSet : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -249,7 +249,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation>))]
   public class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -339,7 +339,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstancePolymerRepeatRepeatUnitStructuralRepresentation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstancePolymerRepeatRepeatUnitStructuralRepresentation>))]
   public class SubstancePolymerRepeatRepeatUnitStructuralRepresentation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -457,7 +457,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstancePolymerRepeatRepeatUnit>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstancePolymerRepeatRepeatUnit>))]
   public class SubstancePolymerRepeatRepeatUnit : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -663,7 +663,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstancePolymerRepeat>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstancePolymerRepeat>))]
   public class SubstancePolymerRepeat : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -823,7 +823,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstancePolymer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstancePolymer>))]
   public class SubstancePolymer : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

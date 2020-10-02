@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Concepts have both a ```display``` and an array of ```designation```. The display is equivalent to a special designation with an implied ```designation.use``` of "primary code" and a language equal to the [Resource Language](resource.html#language).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ValueSetComposeIncludeConceptDesignation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ValueSetComposeIncludeConceptDesignation>))]
   public class ValueSetComposeIncludeConceptDesignation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// In the absence of a language, the resource language applies.
@@ -143,7 +143,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The list of concepts is considered ordered, though the order might not have any particular significance. Typically, the order of an expansion follows that defined in the compose element.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ValueSetComposeIncludeConcept>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ValueSetComposeIncludeConcept>))]
   public class ValueSetComposeIncludeConcept : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Expressions are allowed if defined by the underlying code system.
@@ -303,7 +303,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ValueSetComposeIncludeFilter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ValueSetComposeIncludeFilter>))]
   public class ValueSetComposeIncludeFilter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// In case filter.property represents a property of the system, the operation applies to the selected property. In case filter.property represents a filter of the system, the operation SHALL match one of the CodeSystem.filter.operator values.
@@ -447,7 +447,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// All the conditions in an include must be true. If a system is listed, all the codes from the system are listed. If one or more filters are listed, all of the filters must apply. If one or more value sets are listed, the codes must be in all the value sets. E.g. each include is 'include all the codes that meet all these conditions'.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ValueSetComposeInclude>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ValueSetComposeInclude>))]
   public class ValueSetComposeInclude : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The list of concepts is considered ordered, though the order might not have any particular significance. Typically, the order of an expansion follows that defined in the compose element.
@@ -737,7 +737,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A set of criteria that define the contents of the value set by including or excluding codes selected from the specified code system(s) that the value set draws from. This is also known as the Content Logical Definition (CLD).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ValueSetCompose>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ValueSetCompose>))]
   public class ValueSetCompose : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Usually this is used to selectively exclude codes that were included by subsumption in the inclusions. Any display names specified for the codes are ignored.
@@ -927,7 +927,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The server decides which parameters to include here, but at a minimum, the list SHOULD include all of the parameters that affect the $expand operation. If the expansion will be persisted all of these parameters SHALL be included. If the codeSystem on the server has a specified version then this version SHALL be provided as a parameter in the expansion (note that not all code systems have a version).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ValueSetExpansionParameter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ValueSetExpansionParameter>))]
   public class ValueSetExpansionParameter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The names are assigned at the discretion of the server.
@@ -1181,7 +1181,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The codes that are contained in the value set expansion.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ValueSetExpansionContains>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ValueSetExpansionContains>))]
   public class ValueSetExpansionContains : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This should not be understood to exclude its use for searching (e.g. by subsumption testing). The client should know whether it is appropriate for the user to select an abstract code or not.
@@ -1468,7 +1468,7 @@ namespace Fhir.R4.Models
   /// Expansion is performed to produce a collection of codes that are ready to use for data entry or validation. Value set expansions are always considered to be stateless - they are a record of the set of codes in the value set at a point in time under a given set of conditions, and are not subject to ongoing maintenance.
   /// Expansion.parameter is  a simplified list of parameters - a subset of the features of the [Parameters](parameters.html) resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ValueSetExpansion>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ValueSetExpansion>))]
   public class ValueSetExpansion : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The codes that are contained in the value set expansion.
@@ -1698,7 +1698,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [CodeSystem](codesystem.html) definitions and their use in [coded elements](terminologies.html).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ValueSet>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ValueSet>))]
   public class ValueSet : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

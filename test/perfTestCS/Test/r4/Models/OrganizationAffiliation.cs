@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OrganizationAffiliation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<OrganizationAffiliation>))]
   public class OrganizationAffiliation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information on the possible cause of the event.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AdverseEventSuspectEntityCausality>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AdverseEventSuspectEntityCausality>))]
   public class AdverseEventSuspectEntityCausality : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Assessment of if the entity caused the event.
@@ -145,7 +145,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes the entity that is suspected to have caused the adverse event.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AdverseEventSuspectEntity>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AdverseEventSuspectEntity>))]
   public class AdverseEventSuspectEntity : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Information on the possible cause of the event.
@@ -261,7 +261,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AdverseEvent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AdverseEvent>))]
   public class AdverseEvent : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

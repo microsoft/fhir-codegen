@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The EventDefinition resource provides a reusable description of when a particular event can occur.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EventDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EventDefinition>))]
   public class EventDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

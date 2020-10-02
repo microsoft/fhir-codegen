@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The manufactured item as contained in the packaged medicinal product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductManufactured>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductManufactured>))]
   public class MedicinalProductManufactured : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

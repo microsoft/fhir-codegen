@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Associated or related knowledge about a medication.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeRelatedMedicationKnowledge>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeRelatedMedicationKnowledge>))]
   public class MedicationKnowledgeRelatedMedicationKnowledge : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Associated documentation about the associated medication knowledge.
@@ -128,7 +128,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Associated documentation about the medication.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeMonograph>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeMonograph>))]
   public class MedicationKnowledgeMonograph : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Associated documentation about the medication.
@@ -218,7 +218,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies a particular constituent of interest in the product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeIngredient>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeIngredient>))]
   public class MedicationKnowledgeIngredient : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indication of whether this ingredient affects the therapeutic action of the drug.
@@ -330,7 +330,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The price of the medication.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeCost>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeCost>))]
   public class MedicationKnowledgeCost : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The price of the medication.
@@ -442,7 +442,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The program under which the medication is reviewed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeMonitoringProgram>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeMonitoringProgram>))]
   public class MedicationKnowledgeMonitoringProgram : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Name of the reviewing program.
@@ -545,7 +545,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Dosage for the medication for the specific guidelines.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeAdministrationGuidelinesDosage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeAdministrationGuidelinesDosage>))]
   public class MedicationKnowledgeAdministrationGuidelinesDosage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Dosage for the medication for the specific guidelines.
@@ -661,7 +661,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Characteristics of the patient that are relevant to the administration guidelines (for example, height, weight, gender, etc.).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics>))]
   public class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Specific characteristic that is relevant to the administration guideline (e.g. height, weight, gender).
@@ -831,7 +831,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Guidelines for the administration of the medication.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeAdministrationGuidelines>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeAdministrationGuidelines>))]
   public class MedicationKnowledgeAdministrationGuidelines : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Dosage for the medication for the specific guidelines.
@@ -1009,7 +1009,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Categorization of the medication within a formulary or classification system.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeMedicineClassification>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeMedicineClassification>))]
   public class MedicationKnowledgeMedicineClassification : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Specific category assigned to the medication (e.g. anti-infective, anti-hypertensive, antibiotic, etc.).
@@ -1125,7 +1125,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information that only applies to packages (not products).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgePackaging>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgePackaging>))]
   public class MedicationKnowledgePackaging : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The number of product units the package would contain if fully loaded.
@@ -1215,7 +1215,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specifies descriptive properties of the medicine, such as color, shape, imprints, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeDrugCharacteristic>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeDrugCharacteristic>))]
   public class MedicationKnowledgeDrugCharacteristic : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A code specifying which characteristic of the medicine is being described (for example, colour, shape, imprint).
@@ -1376,7 +1376,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specifies if changes are allowed when dispensing a medication from a regulatory perspective.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeRegulatorySubstitution>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeRegulatorySubstitution>))]
   public class MedicationKnowledgeRegulatorySubstitution : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Specifies if regulation allows for changes in the medication when dispensing.
@@ -1458,7 +1458,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specifies the schedule of a medication in jurisdiction.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeRegulatorySchedule>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeRegulatorySchedule>))]
   public class MedicationKnowledgeRegulatorySchedule : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Specifies the specific drug schedule.
@@ -1530,7 +1530,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The maximum number of units of the medication that can be dispensed in a period.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeRegulatoryMaxDispense>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeRegulatoryMaxDispense>))]
   public class MedicationKnowledgeRegulatoryMaxDispense : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The period that applies to the maximum number of units.
@@ -1617,7 +1617,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Regulatory information about a medication.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeRegulatory>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeRegulatory>))]
   public class MedicationKnowledgeRegulatory : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The maximum number of units of the medication that can be dispensed in a period.
@@ -1792,7 +1792,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The time course of drug absorption, distribution, metabolism and excretion of a medication from the body.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledgeKinetics>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledgeKinetics>))]
   public class MedicationKnowledgeKinetics : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The drug concentration measured at certain discrete points in time.
@@ -1955,7 +1955,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about a medication that is used to support knowledge.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationKnowledge>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationKnowledge>))]
   public class MedicationKnowledge : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationRecommendationRecommendationDateCriterion>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImmunizationRecommendationRecommendationDateCriterion>))]
   public class ImmunizationRecommendationRecommendationDateCriterion : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Date classification of recommendation.  For example, earliest date to give, latest date to give, etc.
@@ -112,7 +112,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Vaccine administration recommendations.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationRecommendationRecommendation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImmunizationRecommendationRecommendation>))]
   public class ImmunizationRecommendationRecommendation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Vaccine(s) which should not be used to fulfill the recommendation.
@@ -601,7 +601,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationRecommendation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImmunizationRecommendation>))]
   public class ImmunizationRecommendation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

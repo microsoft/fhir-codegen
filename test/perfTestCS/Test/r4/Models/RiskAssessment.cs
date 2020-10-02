@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Multiple repetitions can be used to identify the same type of outcome in different timeframes as well as different types of outcomes.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RiskAssessmentPrediction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RiskAssessmentPrediction>))]
   public class RiskAssessmentPrediction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// One of the potential outcomes for the patient (e.g. remission, death,  a particular condition).
@@ -231,7 +231,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RiskAssessment>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RiskAssessment>))]
   public class RiskAssessment : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Supporting evidence or manifestations that provide the basis for identifying the detected issue such as a GuidanceResponse or MeasureReport.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DetectedIssueEvidence>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DetectedIssueEvidence>))]
   public class DetectedIssueEvidence : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A manifestation that led to the recording of this detected issue.
@@ -160,7 +160,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates an action that has been taken or is committed to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DetectedIssueMitigation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DetectedIssueMitigation>))]
   public class DetectedIssueMitigation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The "text" component can be used for detail or when no appropriate code exists.
@@ -275,7 +275,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DetectedIssue>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DetectedIssue>))]
   public class DetectedIssue : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

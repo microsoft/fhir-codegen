@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A set of rules that describe when the event is scheduled.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TimingRepeat>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TimingRepeat>))]
   public class TimingRepeat : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.
@@ -608,7 +608,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Timing>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Timing>))]
   public class Timing : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// BID etc. are defined as 'at institutionally specified times'. For example, an institution may choose that BID is "always at 7am and 6pm".  If it is inappropriate for this choice to be made, the code BID should not be used. Instead, a distinct organization-specific code should be used in place of the HL7-defined BID code and/or a structured representation should be used (in this case, specifying the two event times).

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Expression>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Expression>))]
   public class Expression : Element,  IFhirJsonSerializable {
     /// <summary>
     /// A brief, natural language description of the condition that effectively communicates the intended semantics.

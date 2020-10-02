@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A reference to a code defined by a terminology system.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Coding>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Coding>))]
   public class Coding : Element,  IFhirJsonSerializable {
     /// <summary>
     /// A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).

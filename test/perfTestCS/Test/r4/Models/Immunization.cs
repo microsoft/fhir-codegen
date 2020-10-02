@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates who performed the immunization event.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationPerformer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImmunizationPerformer>))]
   public class ImmunizationPerformer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// When the individual practitioner who performed the action is known, it is best to send.
@@ -99,7 +99,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Educational material presented to the patient (or guardian) at the time of vaccine administration.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationEducation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImmunizationEducation>))]
   public class ImmunizationEducation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Identifier of the material presented to the patient.
@@ -271,7 +271,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A reaction may be an indication of an allergy or intolerance and, if this is determined to be the case, it should be recorded as a new AllergyIntolerance resource instance as most systems will not query against past Immunization.reaction elements.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationReaction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImmunizationReaction>))]
   public class ImmunizationReaction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Date of reaction to the immunization.
@@ -387,7 +387,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The protocol (set of recommendations) being followed by the provider who administered the dose.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImmunizationProtocolApplied>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImmunizationProtocolApplied>))]
   public class ImmunizationProtocolApplied : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates the authority who published the protocol (e.g. ACIP) that is being followed.
@@ -613,7 +613,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Immunization>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Immunization>))]
   public class Immunization : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

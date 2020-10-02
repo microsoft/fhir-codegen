@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceReferenceInformationGene>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceReferenceInformationGene>))]
   public class SubstanceReferenceInformationGene : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -146,7 +146,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceReferenceInformationGeneElement>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceReferenceInformationGeneElement>))]
   public class SubstanceReferenceInformationGeneElement : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -280,7 +280,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceReferenceInformationClassification>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceReferenceInformationClassification>))]
   public class SubstanceReferenceInformationClassification : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -458,7 +458,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceReferenceInformationTarget>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceReferenceInformationTarget>))]
   public class SubstanceReferenceInformationTarget : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Todo.
@@ -710,7 +710,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Todo.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceReferenceInformation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceReferenceInformation>))]
   public class SubstanceReferenceInformation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<GuidanceResponse>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<GuidanceResponse>))]
   public class GuidanceResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

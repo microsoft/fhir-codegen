@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about the primary source(s) involved in validation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<VerificationResultPrimarySource>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<VerificationResultPrimarySource>))]
   public class VerificationResultPrimarySource : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Ability of the primary source to push updates/alerts (yes; no; undetermined).
@@ -277,7 +277,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about the entity attesting to information.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<VerificationResultAttestation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<VerificationResultAttestation>))]
   public class VerificationResultAttestation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The method by which attested information was submitted/retrieved (manual; API; Push).
@@ -496,7 +496,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about the entity validating information.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<VerificationResultValidator>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<VerificationResultValidator>))]
   public class VerificationResultValidator : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Signed assertion by the validator that they have validated the information.
@@ -611,7 +611,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes validation requirements, source(s), status and dates for one or more elements.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<VerificationResult>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<VerificationResult>))]
   public class VerificationResult : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

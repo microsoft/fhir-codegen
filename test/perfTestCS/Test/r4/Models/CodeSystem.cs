@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Note that filters defined in code systems usually require custom code on the part of any terminology engine that will make them available for use in value set filters. For this reason, they are generally only seen in high value published terminologies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CodeSystemFilter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CodeSystemFilter>))]
   public class CodeSystemFilter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The code that identifies this filter when it is used as a filter in [ValueSet](valueset.html#).compose.include.filter.
@@ -242,7 +242,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A property defines an additional slot through which additional information can be provided about a concept.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CodeSystemProperty>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CodeSystemProperty>))]
   public class CodeSystemProperty : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A code that is used to identify the property. The code is used internally (in CodeSystem.concept.property.code) and also externally, such as in property filters.
@@ -414,7 +414,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Concepts have both a ```display``` and an array of ```designation```. The display is equivalent to a special designation with an implied ```designation.use``` of "primary code" and a language equal to the [Resource Language](resource.html#language).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CodeSystemConceptDesignation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CodeSystemConceptDesignation>))]
   public class CodeSystemConceptDesignation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// In the absence of a language, the resource language applies.
@@ -545,7 +545,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A property value for this concept.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CodeSystemConceptProperty>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CodeSystemConceptProperty>))]
   public class CodeSystemConceptProperty : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A code that is a reference to CodeSystem.property.code.
@@ -774,7 +774,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If this is empty, it means that the code system resource does not represent the content of the code system.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CodeSystemConcept>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CodeSystemConcept>))]
   public class CodeSystemConcept : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A code - a text symbol - that uniquely identifies the concept within the code system.
@@ -1050,7 +1050,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CodeSystem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CodeSystem>))]
   public class CodeSystem : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// For example,  for the original treatment and follow-up exams.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimRelated>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimRelated>))]
   public class ClaimRelated : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Reference to a related claim.
@@ -117,7 +117,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Often providers agree to receive the benefits payable to reduce the near-term costs to the patient. The insurer may decline to pay the provider and choose to pay the subscriber instead.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimPayee>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimPayee>))]
   public class ClaimPayee : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Not required if the payee is 'subscriber' or 'provider'.
@@ -204,7 +204,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The members of the team who provided the products and services.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimCareTeam>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimCareTeam>))]
   public class ClaimCareTeam : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Member of the team who provided the product or service.
@@ -329,7 +329,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Often there are multiple jurisdiction specific valuesets which are required.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimSupportingInfo>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimSupportingInfo>))]
   public class ClaimSupportingInfo : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This may contain a category for the local bill type codes.
@@ -570,7 +570,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about diagnoses relevant to the claim items.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimDiagnosis>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimDiagnosis>))]
   public class ClaimDiagnosis : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The nature of illness or problem in a coded form or as a reference to an external defined Condition.
@@ -738,7 +738,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Procedures performed on the patient relevant to the billing items with the claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimProcedure>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimProcedure>))]
   public class ClaimProcedure : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Date and optionally time the procedure was performed.
@@ -948,7 +948,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// All insurance coverages for the patient which may be applicable for reimbursement, of the products and services listed in the claim, are typically provided in the claim to allow insurers to confirm the ordering of the insurance coverages relative to local 'coordination of benefit' rules. One coverage (and only one) with 'focal=true' is to be used in the adjudication of this claim. Coverages appearing before the focal Coverage in the list, and where 'Coverage.subrogation=false', should provide a reference to the ClaimResponse containing the adjudication results of the prior claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimInsurance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimInsurance>))]
   public class ClaimInsurance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A business agreement number established between the provider and the insurer for special business processing purposes.
@@ -1184,7 +1184,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details of an accident which resulted in injuries which required the products and services listed in the claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimAccident>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimAccident>))]
   public class ClaimAccident : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The date of the accident has to precede the dates of the products and services but within a reasonable timeframe.
@@ -1317,7 +1317,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimItemDetailSubDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimItemDetailSubDetail>))]
   public class ClaimItemDetailSubDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Examples include Medical Care, Periodontics, Renal Dialysis, Vision Coverage.
@@ -1634,7 +1634,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimItemDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimItemDetail>))]
   public class ClaimItemDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Examples include Medical Care, Periodontics, Renal Dialysis, Vision Coverage.
@@ -1995,7 +1995,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A claim line. Either a simple  product or service or a 'group' of details which can each be a simple items or groups of sub-details.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimItem>))]
   public class ClaimItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// For example: Providing a tooth code, allows an insurer to identify a provider performing a filling on a tooth that was previously removed.
@@ -2715,7 +2715,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Claim>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Claim>))]
   public class Claim : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

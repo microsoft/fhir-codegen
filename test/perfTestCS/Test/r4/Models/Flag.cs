@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Prospective warnings of potential issues when providing care to the patient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Flag>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Flag>))]
   public class Flag : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

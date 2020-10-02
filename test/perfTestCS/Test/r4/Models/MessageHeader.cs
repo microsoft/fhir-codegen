@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// There SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MessageHeaderDestination>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MessageHeaderDestination>))]
   public class MessageHeaderDestination : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The id may be a non-resolvable URI for systems that do not use standard network-based addresses.
@@ -158,7 +158,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The source application from which this message originated.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MessageHeaderSource>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MessageHeaderSource>))]
   public class MessageHeaderSource : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An e-mail, phone, website or other contact point to use to resolve issues with message communications.
@@ -345,7 +345,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about the message that this message is a response to.  Only present if this message is a response.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MessageHeaderResponse>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MessageHeaderResponse>))]
   public class MessageHeaderResponse : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This is a generic response to the request message. Specific data for the response will be found in MessageHeader.focus.
@@ -476,7 +476,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MessageHeader>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MessageHeader>))]
   public class MessageHeader : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

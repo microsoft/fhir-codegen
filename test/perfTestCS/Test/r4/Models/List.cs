@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If there are no entries in the list, an emptyReason SHOULD be provided.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ListEntry>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ListEntry>))]
   public class ListEntry : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// When this item was added to the list.
@@ -140,7 +140,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A list is a curated collection of resources.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<List>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<List>))]
   public class List : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

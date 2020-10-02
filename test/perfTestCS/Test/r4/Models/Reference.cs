@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A reference from one resource to another.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Reference>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Reference>))]
   public class Reference : Element,  IFhirJsonSerializable {
     /// <summary>
     /// This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Clinical stage or grade of a condition. May include formal severity assessments.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConditionStage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConditionStage>))]
   public class ConditionStage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Reference to a formal record of the evidence on which the staging assessment is based.
@@ -146,7 +146,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConditionEvidence>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConditionEvidence>))]
   public class ConditionEvidence : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A manifestation or symptom that led to the recording of this condition.
@@ -294,7 +294,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Condition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Condition>))]
   public class Condition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

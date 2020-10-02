@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A set of ordered Quantities defined by a low and high limit.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Range>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Range>))]
   public class Range : Element,  IFhirJsonSerializable {
     /// <summary>
     /// If the high element is missing, the high boundary is not known.

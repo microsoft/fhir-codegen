@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceProteinSubunit>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceProteinSubunit>))]
   public class SubstanceProteinSubunit : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The modification at the C-terminal shall be specified.
@@ -227,7 +227,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A SubstanceProtein is defined as a single unit of a linear amino acid sequence, or a combination of subunits that are either covalently linked or have a defined invariant stoichiometric relationship. This includes all synthetic, recombinant and purified SubstanceProteins of defined sequence, whether the use is therapeutic or prophylactic. This set of elements will be used to describe albumins, coagulation factors, cytokines, growth factors, peptide/SubstanceProtein hormones, enzymes, toxins, toxoids, recombinant vaccines, and immunomodulators.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceProtein>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceProtein>))]
   public class SubstanceProtein : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

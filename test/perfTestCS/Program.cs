@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Encodings.Web;
+using System.Text.Json;
 using Fhir.R4.Serialization;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
@@ -113,6 +114,10 @@ namespace PerfTestCS
                 string currentDir = Path.GetFullPath(Path.Combine(fhirSpecDirectory, subDir));
 
                 string[] files = Directory.GetFiles(currentDir, $"*.json", SearchOption.AllDirectories);
+                //List<string> files = new List<string>()
+                //{
+                //    "C:\\git\\fhir-codegen\\fhirVersions\\hl7.fhir.r4.examples-4.0.1\\package\\Bundle-terminologies.json",
+                //};
 
                 foreach (string filename in files)
                 {
@@ -122,18 +127,19 @@ namespace PerfTestCS
                     {
                         case ".index":
                         case "package":
+                        case "Observation-decimal":     // includes invalid value - supposed to be fixed, but still wrong here
                             continue;
                     }
-
-                    Console.WriteLine(filename);
 
                     try
                     {
                         var typed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(File.ReadAllText(filename));
+
+                        Console.WriteLine($"{typed.GetType().Name}: {filename}");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("FAILED");
+                        Console.WriteLine($"FAILED - {filename}");
                         exceptions.Add(shortName, ex);
                         return -1;
                     }
@@ -149,10 +155,27 @@ namespace PerfTestCS
         /// <returns>An int.</returns>
         private static int SystemTest(string fhirSpecDirectory)
         {
-            string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Patient-example.json");
+            //string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Patient-example.json");
             // string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Observation-2minute-apgar-score.json");
+            string path = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\Observation-decimal.json");
 
-            string exportName = Path.Combine(fhirSpecDirectory, "hl7.fhir.r4.examples-4.0.1\\package\\patient-example-roundtrip.json");
+            string exportName = "c:\\temp\\out.json";
+
+            FhirJsonParser jsonParser = new FhirJsonParser(
+                new ParserSettings
+                {
+                    AcceptUnknownMembers = true,
+                    AllowUnrecognizedEnums = true,
+                });
+
+            var firely = jsonParser.Parse(File.ReadAllText(path));
+
+            //using (JsonDocument doc = JsonDocument.Parse(File.ReadAllText(path)))
+            //{
+            //    var local = new Fhir.R4.Models.Patient();
+            //    local.LoadFromJsonElements(doc.RootElement);
+            //}
+
 
             //var serializeOptions = new System.Text.Json.JsonSerializerOptions();
             // serializeOptions.Converters.Add(new Test.R4.ResourceConverter());

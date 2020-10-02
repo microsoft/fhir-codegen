@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A physical entity which is the primary unit of operational and/or administrative interest in a study.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ResearchSubject>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ResearchSubject>))]
   public class ResearchSubject : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

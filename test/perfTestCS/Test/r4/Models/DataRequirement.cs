@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Code filters specify additional constraints on the data, specifying the value set of interest for a particular element of the data. Each code filter defines an additional constraint on the data, i.e. code filters are AND'ed, not OR'ed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DataRequirementCodeFilter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DataRequirementCodeFilter>))]
   public class DataRequirementCodeFilter : Element,  IFhirJsonSerializable {
     /// <summary>
     /// The codes for the code filter. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes. If codes are specified in addition to a value set, the filter returns items matching a code in the value set or one of the specified codes.
@@ -200,7 +200,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Date filters specify additional constraints on the data in terms of the applicable date range for specific elements. Each date filter specifies an additional constraint on the data, i.e. date filters are AND'ed, not OR'ed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DataRequirementDateFilter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DataRequirementDateFilter>))]
   public class DataRequirementDateFilter : Element,  IFhirJsonSerializable {
     /// <summary>
     /// The path attribute contains a [Simple FHIR Subset](fhirpath.html#simple) that allows path traversal, but not calculation.
@@ -374,7 +374,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This element can be used in combination with the sort element to specify quota requirements such as "the most recent 5" or "the highest 5". When multiple sorts are specified, they are applied in the order they appear in the resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DataRequirementSort>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DataRequirementSort>))]
   public class DataRequirementSort : Element,  IFhirJsonSerializable {
     /// <summary>
     /// The direction of the sort, ascending or descending.
@@ -490,7 +490,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DataRequirement>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DataRequirement>))]
   public class DataRequirement : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Code filters specify additional constraints on the data, specifying the value set of interest for a particular element of the data. Each code filter defines an additional constraint on the data, i.e. code filters are AND'ed, not OR'ed.

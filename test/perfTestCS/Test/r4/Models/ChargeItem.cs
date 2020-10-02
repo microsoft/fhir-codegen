@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates who or what performed or participated in the charged service.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ChargeItemPerformer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ChargeItemPerformer>))]
   public class ChargeItemPerformer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The device, practitioner, etc. who performed or participated in the service.
@@ -99,7 +99,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The resource ChargeItem describes the provision of healthcare provider products for a certain patient, therefore referring not only to the product, but containing in addition details of the provision, like date, time, amounts and participating organizations and persons. Main Usage of the ChargeItem is to enable the billing process and internal cost allocation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ChargeItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ChargeItem>))]
   public class ChargeItem : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

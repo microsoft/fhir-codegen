@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Class that defines the quantity and type of nutrient modifications (for example carbohydrate, fiber or sodium) required for the oral diet.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NutritionOrderOralDietNutrient>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<NutritionOrderOralDietNutrient>))]
   public class NutritionOrderOralDietNutrient : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The quantity of the specified nutrient to include in diet.
@@ -102,7 +102,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Class that describes any texture modifications required for the patient to safely consume various types of solid foods.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NutritionOrderOralDietTexture>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<NutritionOrderOralDietTexture>))]
   public class NutritionOrderOralDietTexture : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Coupled with the `texture.modifier`; could be (All Foods).
@@ -192,7 +192,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Diet given orally in contrast to enteral (tube) feeding.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NutritionOrderOralDiet>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<NutritionOrderOralDiet>))]
   public class NutritionOrderOralDiet : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The required consistency (e.g. honey-thick, nectar-thick, thin, thickened.) of liquids or fluids served to the patient.
@@ -500,7 +500,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Oral nutritional products given in order to add further nutritional value to the patient's diet.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NutritionOrderSupplement>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<NutritionOrderSupplement>))]
   public class NutritionOrderSupplement : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Free text dosage instructions can be used for cases where the instructions are too complex to code.
@@ -690,7 +690,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// See implementation notes below for further discussion on how to order continuous vs bolus enteral feeding using this resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NutritionOrderEnteralFormulaAdministration>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<NutritionOrderEnteralFormulaAdministration>))]
   public class NutritionOrderEnteralFormulaAdministration : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The volume of formula to provide to the patient per the specified administration schedule.
@@ -810,7 +810,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NutritionOrderEnteralFormula>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<NutritionOrderEnteralFormula>))]
   public class NutritionOrderEnteralFormula : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The product or brand name of the type of modular component to be added to the formula.
@@ -1073,7 +1073,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NutritionOrder>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<NutritionOrder>))]
   public class NutritionOrder : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

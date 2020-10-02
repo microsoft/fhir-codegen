@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The references to the policies that are included in this consent scope. Policies may be organizational, but are often defined jurisdictionally, or in law.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConsentPolicy>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConsentPolicy>))]
   public class ConsentPolicy : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Entity or Organization having regulatory jurisdiction or accountability for  enforcing policies pertaining to Consent Directives.
@@ -128,7 +128,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Whether a treatment instruction (e.g. artificial respiration yes or no) was verified with the patient, his/her family or another authorized person.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConsentVerification>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConsentVerification>))]
   public class ConsentVerification : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Date verification was collected.
@@ -241,7 +241,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Who or what is controlled by this rule. Use group to identify a set of actors by some property they share (e.g. 'admitting officers').
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConsentProvisionActor>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConsentProvisionActor>))]
   public class ConsentProvisionActor : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The resource that identifies the actor. To identify actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers').
@@ -325,7 +325,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The resources controlled by this rule if specific resources are referenced.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConsentProvisionData>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConsentProvisionData>))]
   public class ConsentProvisionData : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// How the resource reference is interpreted when testing consent restrictions.
@@ -425,7 +425,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An exception to the base policy of this consent. An exception can be an addition or removal of access permissions.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConsentProvision>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConsentProvision>))]
   public class ConsentProvision : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Note that this is the direct action (not the grounds for the action covered in the purpose element). At present, the only action in the understood and tested scope of this resource is 'read'.
@@ -895,7 +895,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Consent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Consent>))]
   public class Consent : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

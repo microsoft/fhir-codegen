@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An error, warning, or information message that results from a system action.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OperationOutcomeIssue>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<OperationOutcomeIssue>))]
   public class OperationOutcomeIssue : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Describes the type of the issue. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide its own code for the error in the details element.
@@ -343,7 +343,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A collection of error, warning, or information messages that result from a system action.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OperationOutcome>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<OperationOutcome>))]
   public class OperationOutcome : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

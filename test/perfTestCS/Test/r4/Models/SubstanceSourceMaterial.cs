@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Many complex materials are fractions of parts of plants, animals, or minerals. Fraction elements are often necessary to define both Substances and Specified Group 1 Substances. For substances derived from Plants, fraction information will be captured at the Substance information level ( . Oils, Juices and Exudates). Additional information for Extracts, such as extraction solvent composition, will be captured at the Specified Substance Group 1 information level. For plasma-derived products fraction information will be captured at the Substance and the Specified Substance Group 1 levels.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSourceMaterialFractionDescription>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSourceMaterialFractionDescription>))]
   public class SubstanceSourceMaterialFractionDescription : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This element is capturing information about the fraction of a plant part, or human plasma for fractionation.
@@ -115,7 +115,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// 4.9.13.6.1 Author type (Conditional).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSourceMaterialOrganismAuthor>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSourceMaterialOrganismAuthor>))]
   public class SubstanceSourceMaterialOrganismAuthor : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The author of an organism species shall be specified. The author year of an organism shall also be specified when applicable; refers to the year in which the first author(s) published the infraspecific plant/animal name (of any rank).
@@ -218,7 +218,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// 4.9.13.8.1 Hybrid species maternal organism ID (Optional).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSourceMaterialOrganismHybrid>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSourceMaterialOrganismHybrid>))]
   public class SubstanceSourceMaterialOrganismHybrid : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The hybrid type of an organism shall be specified.
@@ -405,7 +405,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// 4.9.13.7.1 Kingdom (Conditional).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSourceMaterialOrganismOrganismGeneral>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSourceMaterialOrganismOrganismGeneral>))]
   public class SubstanceSourceMaterialOrganismOrganismGeneral : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The class of an organism shall be specified.
@@ -525,7 +525,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This subclause describes the organism which the substance is derived from. For vaccines, the parent organism shall be specified based on these subclause elements. As an example, full taxonomy will be described for the Substance Name: ., Leaf.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSourceMaterialOrganism>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSourceMaterialOrganism>))]
   public class SubstanceSourceMaterialOrganism : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// 4.9.13.6.1 Author type (Conditional).
@@ -747,7 +747,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// To do.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSourceMaterialPartDescription>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSourceMaterialPartDescription>))]
   public class SubstanceSourceMaterialPartDescription : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Entity of anatomical origin of source material within an organism.
@@ -837,7 +837,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSourceMaterial>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSourceMaterial>))]
   public class SubstanceSourceMaterial : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

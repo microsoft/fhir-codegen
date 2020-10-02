@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The applicability conditions can be used to ascertain whether a billing item is allowed in a specific context. E.g. some billing codes may only be applicable in out-patient settings, only to male/female patients or only to children.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ChargeItemDefinitionApplicability>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ChargeItemDefinitionApplicability>))]
   public class ChargeItemDefinitionApplicability : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A brief, natural language description of the condition that effectively communicates the intended semantics.
@@ -157,7 +157,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice of how the prices have been calculated.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ChargeItemDefinitionPropertyGroupPriceComponent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ChargeItemDefinitionPropertyGroupPriceComponent>))]
   public class ChargeItemDefinitionPropertyGroupPriceComponent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The amount calculated for this component.
@@ -303,7 +303,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ChargeItemDefinitionPropertyGroup>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ChargeItemDefinitionPropertyGroup>))]
   public class ChargeItemDefinitionPropertyGroup : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The applicability conditions can be used to ascertain whether a billing item is allowed in a specific context. E.g. some billing codes may only be applicable in out-patient settings, only to male/female patients or only to children.
@@ -451,7 +451,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices. The properties may differ largely depending on type and realm, therefore this resource gives only a rough structure and requires profiling for each type of billing code system.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ChargeItemDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ChargeItemDefinition>))]
   public class ChargeItemDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

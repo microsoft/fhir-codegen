@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Does this service have specific eligibility requirements that need to be met in order to use the service?
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<HealthcareServiceEligibility>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<HealthcareServiceEligibility>))]
   public class HealthcareServiceEligibility : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Coded value for the eligibility.
@@ -115,7 +115,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// More detailed availability information may be provided in associated Schedule/Slot resources.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<HealthcareServiceAvailableTime>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<HealthcareServiceAvailableTime>))]
   public class HealthcareServiceAvailableTime : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Is this always available? (hence times are irrelevant) e.g. 24 hour service.
@@ -330,7 +330,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The HealthcareService is not available during this period of time due to the provided reason.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<HealthcareServiceNotAvailable>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<HealthcareServiceNotAvailable>))]
   public class HealthcareServiceNotAvailable : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The reason that can be presented to the user as to why this time is not available.
@@ -433,7 +433,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The details of a healthcare service available at a location.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<HealthcareService>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<HealthcareService>))]
   public class HealthcareService : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

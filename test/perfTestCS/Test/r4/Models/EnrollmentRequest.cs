@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EnrollmentRequest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EnrollmentRequest>))]
   public class EnrollmentRequest : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

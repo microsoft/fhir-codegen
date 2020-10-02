@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A populatioof people with some set of grouping criteria.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Population>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Population>))]
   public class Population : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The age of the specific population.

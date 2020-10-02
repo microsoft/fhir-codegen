@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A population criteria for the measure.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureGroupPopulation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureGroupPopulation>))]
   public class MeasureGroupPopulation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The type of population criteria.
@@ -127,7 +127,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Stratifiers are defined either as a single criteria, or as a set of component criteria.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureGroupStratifierComponent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureGroupStratifierComponent>))]
   public class MeasureGroupStratifierComponent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates a meaning for the stratifier component. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing stratifiers to be correlated across measures.
@@ -242,7 +242,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureGroupStratifier>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureGroupStratifier>))]
   public class MeasureGroupStratifier : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates a meaning for the stratifier. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing stratifiers to be correlated across measures.
@@ -404,7 +404,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A group of population criteria for the measure.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureGroup>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureGroup>))]
   public class MeasureGroup : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates a meaning for the group. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing groups to be correlated across measures.
@@ -595,7 +595,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Note that supplemental data are reported as observations for each patient and included in the evaluatedResources bundle. See the MeasureReport resource or the Quality Reporting topic for more information.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureSupplementalData>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureSupplementalData>))]
   public class MeasureSupplementalData : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates a meaning for the supplemental data. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing supplemental data to be correlated across measures.
@@ -754,7 +754,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The Measure resource provides the definition of a quality measure.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Measure>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Measure>))]
   public class Measure : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

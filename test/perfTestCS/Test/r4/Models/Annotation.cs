@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A  text note which also  contains information about who made the statement and when.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Annotation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Annotation>))]
   public class Annotation : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Organization is used when there's no need for specific attribution as to who made the comment.

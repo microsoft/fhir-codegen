@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<FamilyMemberHistoryCondition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<FamilyMemberHistoryCondition>))]
   public class FamilyMemberHistoryCondition : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system.
@@ -229,7 +229,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Significant health conditions for a person related to the patient relevant in the context of care for the patient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<FamilyMemberHistory>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<FamilyMemberHistory>))]
   public class FamilyMemberHistory : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

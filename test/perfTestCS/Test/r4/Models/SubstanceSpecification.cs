@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Moiety, for structural modifications.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationMoiety>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationMoiety>))]
   public class SubstanceSpecificationMoiety : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Quantitative value for this moiety.
@@ -231,7 +231,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// General specifications for this substance, including how it is related to other substances.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationProperty>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationProperty>))]
   public class SubstanceSpecificationProperty : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Quantitative value for this property.
@@ -422,7 +422,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The molecular weight or weight range (for proteins, polymers or nucleic acids).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationStructureIsotopeMolecularWeight>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationStructureIsotopeMolecularWeight>))]
   public class SubstanceSpecificationStructureIsotopeMolecularWeight : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.
@@ -527,7 +527,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationStructureIsotope>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationStructureIsotope>))]
   public class SubstanceSpecificationStructureIsotope : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Half life - for a non-natural nuclide.
@@ -662,7 +662,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Molecular structural representation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationStructureRepresentation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationStructureRepresentation>))]
   public class SubstanceSpecificationStructureRepresentation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An attached file with the structural representation.
@@ -780,7 +780,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Structural information.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationStructure>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationStructure>))]
   public class SubstanceSpecificationStructure : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio.
@@ -1073,7 +1073,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Codes associated with the substance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationCode>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationCode>))]
   public class SubstanceSpecificationCode : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The specific code.
@@ -1263,7 +1263,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details of the official nature of this name.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationNameOfficial>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationNameOfficial>))]
   public class SubstanceSpecificationNameOfficial : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Which authority uses this official name.
@@ -1381,7 +1381,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Names applicable to this substance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationName>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationName>))]
   public class SubstanceSpecificationName : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive.
@@ -1820,7 +1820,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A link between this substance and another, with details of the relationship.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecificationRelationship>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecificationRelationship>))]
   public class SubstanceSpecificationRelationship : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other.
@@ -2085,7 +2085,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The detailed description of a substance, typically at a level beyond what is used for prescribing.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceSpecification>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceSpecification>))]
   public class SubstanceSpecification : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

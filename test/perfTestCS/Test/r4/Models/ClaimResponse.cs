@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If this item is a group then the values here are a summary of the adjudication of the detail items. If this item is a simple product or service then this is the result of the adjudication of this item.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseItemAdjudication>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseItemAdjudication>))]
   public class ClaimResponseItemAdjudication : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// For example: amount submitted, eligible amount, co-payment, and benefit payable.
@@ -142,7 +142,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A sub-detail adjudication of a simple product or service.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseItemDetailSubDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseItemDetailSubDetail>))]
   public class ClaimResponseItemDetailSubDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -298,7 +298,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A claim detail. Either a simple (a product or service) or a 'group' of sub-details which are simple items.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseItemDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseItemDetail>))]
   public class ClaimResponseItemDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -498,7 +498,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A claim line. Either a simple (a product or service) or a 'group' of details which can also be a simple items or groups of sub-details.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseItem>))]
   public class ClaimResponseItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If this item is a group then the values here are a summary of the adjudication of the detail items. If this item is a simple product or service then this is the result of the adjudication of this item.
@@ -698,7 +698,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The third-tier service adjudications for payor added services.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseAddItemDetailSubDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseAddItemDetailSubDetail>))]
   public class ClaimResponseAddItemDetailSubDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -973,7 +973,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The second-tier service adjudications for payor added services.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseAddItemDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseAddItemDetail>))]
   public class ClaimResponseAddItemDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -1292,7 +1292,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The first-tier service adjudications for payor added product or service lines.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseAddItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseAddItem>))]
   public class ClaimResponseAddItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -1972,7 +1972,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Totals for amounts submitted, co-pays, benefits payable etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseTotal>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseTotal>))]
   public class ClaimResponseTotal : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Monetary total amount associated with the category.
@@ -2056,7 +2056,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Payment details for the adjudication of the claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponsePayment>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponsePayment>))]
   public class ClaimResponsePayment : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Insurers will deduct amounts owing from the provider (adjustment), such as a prior overpayment, from the amount owing to the provider (benefits payable) when payment is made to the provider.
@@ -2213,7 +2213,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A note that describes or explains adjudication results in a human readable form.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseProcessNote>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseProcessNote>))]
   public class ClaimResponseProcessNote : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Only required if the language is different from the resource language.
@@ -2357,7 +2357,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// All insurance coverages for the patient which may be applicable for reimbursement, of the products and services listed in the claim, are typically provided in the claim to allow insurers to confirm the ordering of the insurance coverages relative to local 'coordination of benefit' rules. One coverage (and only one) with 'focal=true' is to be used in the adjudication of this claim. Coverages appearing before the focal Coverage in the list, and where 'subrogation=false', should provide a reference to the ClaimResponse containing the adjudication results of the prior claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseInsurance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseInsurance>))]
   public class ClaimResponseInsurance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A business agreement number established between the provider and the insurer for special business processing purposes.
@@ -2492,7 +2492,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If the request contains errors then an error element should be provided and no adjudication related sections (item, addItem, or payment) should be present.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponseError>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponseError>))]
   public class ClaimResponseError : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An error code, from a specified code system, which details why the claim could not be adjudicated.
@@ -2603,7 +2603,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides the adjudication details from the processing of a Claim resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClaimResponse>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClaimResponse>))]
   public class ClaimResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

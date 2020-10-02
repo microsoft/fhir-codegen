@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A description of the size of the sample involved in the synthesis.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EffectEvidenceSynthesisSampleSize>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EffectEvidenceSynthesisSampleSize>))]
   public class EffectEvidenceSynthesisSampleSize : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Human-readable summary of sample size.
@@ -126,7 +126,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A description of the results for each exposure considered in the effect estimate.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EffectEvidenceSynthesisResultsByExposure>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EffectEvidenceSynthesisResultsByExposure>))]
   public class EffectEvidenceSynthesisResultsByExposure : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Human-readable summary of results by exposure state.
@@ -269,7 +269,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A description of the precision of the estimate for the effect.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EffectEvidenceSynthesisEffectEstimatePrecisionEstimate>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EffectEvidenceSynthesisEffectEstimatePrecisionEstimate>))]
   public class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Lower bound of confidence interval.
@@ -428,7 +428,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The estimated effect of the exposure variant.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EffectEvidenceSynthesisEffectEstimate>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EffectEvidenceSynthesisEffectEstimate>))]
   public class EffectEvidenceSynthesisEffectEstimate : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Human-readable summary of effect estimate.
@@ -633,7 +633,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A description of a component of the overall certainty.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EffectEvidenceSynthesisCertaintyCertaintySubcomponent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EffectEvidenceSynthesisCertaintyCertaintySubcomponent>))]
   public class EffectEvidenceSynthesisCertaintyCertaintySubcomponent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A human-readable string to clarify or explain concepts about the resource.
@@ -796,7 +796,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A description of the certainty of the effect estimate.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EffectEvidenceSynthesisCertainty>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EffectEvidenceSynthesisCertainty>))]
   public class EffectEvidenceSynthesisCertainty : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A description of a component of the overall certainty.
@@ -988,7 +988,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The EffectEvidenceSynthesis resource describes the difference in an outcome between exposures states in a population where the effect estimate is derived from a combination of research studies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EffectEvidenceSynthesis>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EffectEvidenceSynthesis>))]
   public class EffectEvidenceSynthesis : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

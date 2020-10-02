@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Endpoint>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Endpoint>))]
   public class Endpoint : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

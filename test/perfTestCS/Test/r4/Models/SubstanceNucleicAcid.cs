@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The linkages between sugar residues will also be captured.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceNucleicAcidSubunitLinkage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceNucleicAcidSubunitLinkage>))]
   public class SubstanceNucleicAcidSubunitLinkage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The entity that links the sugar residues together should also be captured for nearly all naturally occurring nucleic acid the linkage is a phosphate group. For many synthetic oligonucleotides phosphorothioate linkages are often seen. Linkage connectivity is assumed to be 3’-5’. If the linkage is either 3’-3’ or 5’-5’ this should be specified.
@@ -171,7 +171,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// 5.3.6.8.1 Sugar ID (Mandatory).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceNucleicAcidSubunitSugar>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceNucleicAcidSubunitSugar>))]
   public class SubstanceNucleicAcidSubunitSugar : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The Substance ID of the sugar or sugar-like component that make up the nucleotide.
@@ -302,7 +302,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceNucleicAcidSubunit>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceNucleicAcidSubunit>))]
   public class SubstanceNucleicAcidSubunit : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The nucleotide present at the 5’ terminal shall be specified based on a controlled vocabulary. Since the sequence is represented from the 5' to the 3' end, the 5’ prime nucleotide is the letter at the first position in the sequence. A separate representation would be redundant.
@@ -549,7 +549,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Nucleic acids are defined by three distinct elements: the base, sugar and linkage. Individual substance/moiety IDs will be created for each of these elements. The nucleotide sequence will be always entered in the 5’-3’ direction.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceNucleicAcid>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceNucleicAcid>))]
   public class SubstanceNucleicAcid : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

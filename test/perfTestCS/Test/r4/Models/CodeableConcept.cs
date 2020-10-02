@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CodeableConcept>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CodeableConcept>))]
   public class CodeableConcept : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.

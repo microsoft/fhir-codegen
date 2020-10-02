@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g., specific to the patient's age, gender, weight and other factors), but this might not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ObservationReferenceRange>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ObservationReferenceRange>))]
   public class ObservationReferenceRange : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.
@@ -204,7 +204,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// For a discussion on the ways Observations can be assembled in groups together see [Notes](observation.html#notes) below.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ObservationComponent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ObservationComponent>))]
   public class ObservationComponent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// *All* code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.
@@ -580,7 +580,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Measurements and simple assertions made about a patient, device or other subject.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Observation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Observation>))]
   public class Observation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

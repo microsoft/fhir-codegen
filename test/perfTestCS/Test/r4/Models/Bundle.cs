@@ -14,7 +14,7 @@ namespace Fhir.R4.Models
   /// Bundle.entry.link corresponds to links found in the HTTP header if the resource in the entry was [read](http.html#read) directly.
   /// This specification defines some specific uses of Bundle.link for [searching](search.html#conformance) and [paging](http.html#paging), but no specific uses for Bundle.entry.link, and no defined function in a transaction - the meaning is implementation specific.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BundleLink>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BundleLink>))]
   public class BundleLink : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A name which details the functional use for this link - see [http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1](http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1).
@@ -130,7 +130,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about the search process that lead to the creation of this entry.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BundleEntrySearch>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BundleEntrySearch>))]
   public class BundleEntrySearch : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// There is only one mode. In some corner cases, a resource may be included because it is both a match and an include. In these circumstances, 'match' takes precedence.
@@ -247,7 +247,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Additional information about how this entry should be processed as part of a transaction or batch.  For history, it shows how the entry was processed to create the version contained in the entry.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BundleEntryRequest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BundleEntryRequest>))]
   public class BundleEntryRequest : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Only perform the operation if the Etag value matches. For more information, see the API section ["Managing Resource Contention"](http.html#concurrency).
@@ -475,7 +475,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates the results of processing the corresponding 'request' entry in the batch or transaction being responded to or what the results of an operation where when returning history.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BundleEntryResponse>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BundleEntryResponse>))]
   public class BundleEntryResponse : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Etags match the Resource.meta.versionId. The ETag has to match the version id in the header if a resource is included.
@@ -662,7 +662,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An entry in a bundle resource - will either contain a resource or information about a resource (transactions and history only).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BundleEntry>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BundleEntry>))]
   public class BundleEntry : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// fullUrl might not be [unique in the context of a resource](bundle.html#bundle-unique). Note that since [FHIR resources do not need to be served through the FHIR API](references.html), the fullURL might be a URN or an absolute URL that does not end with the logical id of the resource (Resource.id). However, but if the fullUrl does look like a RESTful server URL (e.g. meets the [regex](references.html#regex), then the 'id' portion of the fullUrl SHALL end with the Resource.id.
@@ -854,7 +854,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A container for a collection of resources.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Bundle>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Bundle>))]
   public class Bundle : Resource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

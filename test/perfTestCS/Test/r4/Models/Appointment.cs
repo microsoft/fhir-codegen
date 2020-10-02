@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// List of participants involved in the appointment.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AppointmentParticipant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AppointmentParticipant>))]
   public class AppointmentParticipant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A Person, Location/HealthcareService or Device that is participating in the appointment.
@@ -204,7 +204,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Appointment>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Appointment>))]
   public class Appointment : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

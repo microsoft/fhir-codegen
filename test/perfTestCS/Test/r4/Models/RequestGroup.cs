@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// When multiple conditions of the same kind are present, the effects are combined using AND semantics, so the overall condition is true only if all of the conditions are true.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RequestGroupActionCondition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RequestGroupActionCondition>))]
   public class RequestGroupActionCondition : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The expression may be inlined, or may be a reference to a named expression within a logic library referenced by the library element.
@@ -115,7 +115,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A relationship to another action such as "before" or "30-60 minutes after start of".
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RequestGroupActionRelatedAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RequestGroupActionRelatedAction>))]
   public class RequestGroupActionRelatedAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The element id of the action this is related to.
@@ -261,7 +261,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The actions, if any, produced by the evaluation of the artifact.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RequestGroupAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RequestGroupAction>))]
   public class RequestGroupAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Sub actions.
@@ -998,7 +998,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A group of related requests that can be used to capture intended activities that have inter-dependencies such as "give this medication after that one".
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RequestGroup>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RequestGroup>))]
   public class RequestGroup : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

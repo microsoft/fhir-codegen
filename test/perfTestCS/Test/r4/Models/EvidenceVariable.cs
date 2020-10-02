@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Characteristics can be defined flexibly to accommodate different use cases for membership criteria, ranging from simple codes, all the way to using an expression language to express the criteria.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EvidenceVariableCharacteristic>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EvidenceVariableCharacteristic>))]
   public class EvidenceVariableCharacteristic : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year).
@@ -361,7 +361,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The EvidenceVariable resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EvidenceVariable>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EvidenceVariable>))]
   public class EvidenceVariable : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

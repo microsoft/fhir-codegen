@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ParameterDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ParameterDefinition>))]
   public class ParameterDefinition : Element,  IFhirJsonSerializable {
     /// <summary>
     /// A brief discussion of what the parameter is for and how it is used by the module.

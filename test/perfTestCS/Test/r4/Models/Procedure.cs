@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Limited to "real" people rather than equipment.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ProcedurePerformer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ProcedurePerformer>))]
   public class ProcedurePerformer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The practitioner who was involved in the procedure.
@@ -114,7 +114,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ProcedureFocalDevice>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ProcedureFocalDevice>))]
   public class ProcedureFocalDevice : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The kind of change that happened to the device during the procedure.
@@ -201,7 +201,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Procedure>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Procedure>))]
   public class Procedure : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

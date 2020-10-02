@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Library>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Library>))]
   public class Library : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

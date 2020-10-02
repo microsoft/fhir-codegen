@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Link to a resource that concerns the same actual person.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PersonLink>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PersonLink>))]
   public class PersonLink : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Level of assurance that this link is associated with the target resource.
@@ -112,7 +112,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Demographics and administrative information about a person independent of a specific health-related context.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Person>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Person>))]
   public class Person : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

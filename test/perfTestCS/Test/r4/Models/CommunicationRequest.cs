@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Text, attachment(s), or resource(s) to be communicated to the recipient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CommunicationRequestPayload>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CommunicationRequestPayload>))]
   public class CommunicationRequestPayload : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The communicated content (or for multi-part communications, one portion of the communication).
@@ -124,7 +124,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CommunicationRequest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CommunicationRequest>))]
   public class CommunicationRequest : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

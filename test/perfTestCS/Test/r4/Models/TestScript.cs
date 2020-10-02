@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The purpose of this element is to define the profile of an origin element used elsewhere in the script.  Test engines could then use the origin-profile mapping to offer a filtered list of test systems that can serve as the sender for the interaction.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptOrigin>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptOrigin>))]
   public class TestScriptOrigin : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A given origin index (e.g. 1) can appear only once in the list (e.g. Origin 1 cannot be specified twice ... once as FormFiller and again as FormProcessor within the same script as that could get confusing during test configuration). 
@@ -96,7 +96,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The purpose of this element is to define the profile of a destination element used elsewhere in the script.  Test engines could then use the destination-profile mapping to offer a filtered list of test systems that can serve as the receiver for the interaction.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptDestination>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptDestination>))]
   public class TestScriptDestination : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A given destination index (e.g. 1) can appear only once in the list (e.g. Destination 1 cannot be specified twice ... once as Form-Manager and again as Form-Processor within the same script as that could get confusing during test configuration). 
@@ -180,7 +180,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A link to the FHIR specification that this test is covering.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptMetadataLink>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptMetadataLink>))]
   public class TestScriptMetadataLink : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Short description of the link.
@@ -296,7 +296,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// When the metadata capabilities section is defined at TestScript.metadata or at TestScript.setup.metadata, and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then all the tests in the TestScript are skipped.  When the metadata capabilities section is defined at TestScript.test.metadata and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then only that test is skipped.  The "metadata.capabilities.required" and "metadata.capabilities.validated" elements only indicate whether the capabilities are the primary focus of the test script or not.  They do not impact the skipping logic.  Capabilities whose "metadata.capabilities.validated" flag is true are the primary focus of the test script.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptMetadataCapability>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptMetadataCapability>))]
   public class TestScriptMetadataCapability : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The conformance statement of the server has to contain at a minimum the contents of the reference pointed to by this element.
@@ -573,7 +573,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The required capability must exist and are assumed to function correctly on the FHIR server being tested.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptMetadata>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptMetadata>))]
   public class TestScriptMetadata : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// When the metadata capabilities section is defined at TestScript.metadata or at TestScript.setup.metadata, and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then all the tests in the TestScript are skipped.  When the metadata capabilities section is defined at TestScript.test.metadata and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then only that test is skipped.  The "metadata.capabilities.required" and "metadata.capabilities.validated" elements only indicate whether the capabilities are the primary focus of the test script or not.  They do not impact the skipping logic.  Capabilities whose "metadata.capabilities.validated" flag is true are the primary focus of the test script.
@@ -721,7 +721,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptFixture>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptFixture>))]
   public class TestScriptFixture : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Whether or not to implicitly create the fixture during setup. If true, the fixture is automatically created on each server being tested during setup, therefore no create operation is required for this fixture in the TestScript.setup section.
@@ -816,7 +816,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Variables would be set based either on XPath/JSONPath expressions against fixtures (static and response), or headerField evaluations against response headers. If variable evaluates to nodelist or anything other than a primitive value, then test engine would report an error.  Variables would be used to perform clean replacements in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations. This limits the places that test engines would need to look for placeholders "${}".  Variables are scoped to the whole script. They are NOT evaluated at declaration. They are evaluated by test engine when used for substitutions in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations.  See example testscript-search.xml.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptVariable>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptVariable>))]
   public class TestScriptVariable : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The purpose of this element is to allow for a pre-defined value that can be used as a default or as an override value. Test engines can optionally use this as a placeholder for user-defined execution time values.
@@ -1100,7 +1100,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This gives control to test-script writers to set headers explicitly based on test requirements.  It will allow for testing using:  - "If-Modified-Since" and "If-None-Match" headers.  See http://build.fhir.org/http.html#2.1.0.5.1 - "If-Match" header.  See http://build.fhir.org/http.html#2.1.0.11 - Conditional Create using "If-None-Exist".  See http://build.fhir.org/http.html#2.1.0.13.1 - Invalid "Content-Type" header for negative testing. - etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptSetupActionOperationRequestHeader>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptSetupActionOperationRequestHeader>))]
   public class TestScriptSetupActionOperationRequestHeader : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If header element is specified, then field is required.
@@ -1216,7 +1216,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The operation to perform.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptSetupActionOperation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptSetupActionOperation>))]
   public class TestScriptSetupActionOperation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If this is specified, then test engine shall set the 'Accept' header to the corresponding value.  If you'd like to explicitly set the 'Accept' to some other value then use the 'requestHeader' element.
@@ -1707,7 +1707,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptSetupActionAssert>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptSetupActionAssert>))]
   public class TestScriptSetupActionAssert : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Thefhirpath expression to be evaluated against the expected fixture to compare to. Ignored if "assert.value" is used. The evaluation will be done before the assertion is evaluated.
@@ -2350,7 +2350,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptSetupAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptSetupAction>))]
   public class TestScriptSetupAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
@@ -2440,7 +2440,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A series of required setup operations before tests are executed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptSetup>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptSetup>))]
   public class TestScriptSetup : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
@@ -2544,7 +2544,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptTestAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptTestAction>))]
   public class TestScriptTestAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
@@ -2634,7 +2634,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A test in this script.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptTest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptTest>))]
   public class TestScriptTest : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
@@ -2794,7 +2794,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptTeardownAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptTeardownAction>))]
   public class TestScriptTeardownAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An operation would involve a REST request to a server.
@@ -2866,7 +2866,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A series of operations required to clean up after all the tests are executed (successfully or otherwise).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScriptTeardown>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScriptTeardown>))]
   public class TestScriptTeardown : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
@@ -2970,7 +2970,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestScript>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestScript>))]
   public class TestScript : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

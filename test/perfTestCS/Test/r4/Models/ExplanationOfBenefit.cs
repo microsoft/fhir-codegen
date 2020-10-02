@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// For example,  for the original treatment and follow-up exams.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitRelated>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitRelated>))]
   public class ExplanationOfBenefitRelated : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Reference to a related claim.
@@ -117,7 +117,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Often providers agree to receive the benefits payable to reduce the near-term costs to the patient. The insurer may decline to pay the provider and may choose to pay the subscriber instead.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitPayee>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitPayee>))]
   public class ExplanationOfBenefitPayee : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Not required if the payee is 'subscriber' or 'provider'.
@@ -207,7 +207,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The members of the team who provided the products and services.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitCareTeam>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitCareTeam>))]
   public class ExplanationOfBenefitCareTeam : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Member of the team who provided the product or service.
@@ -332,7 +332,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Often there are multiple jurisdiction specific valuesets which are required.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitSupportingInfo>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitSupportingInfo>))]
   public class ExplanationOfBenefitSupportingInfo : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This may contain a category for the local bill type codes.
@@ -573,7 +573,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about diagnoses relevant to the claim items.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitDiagnosis>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitDiagnosis>))]
   public class ExplanationOfBenefitDiagnosis : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The nature of illness or problem in a coded form or as a reference to an external defined Condition.
@@ -741,7 +741,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Procedures performed on the patient relevant to the billing items with the claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitProcedure>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitProcedure>))]
   public class ExplanationOfBenefitProcedure : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Date and optionally time the procedure was performed.
@@ -951,7 +951,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// All insurance coverages for the patient which may be applicable for reimbursement, of the products and services listed in the claim, are typically provided in the claim to allow insurers to confirm the ordering of the insurance coverages relative to local 'coordination of benefit' rules. One coverage (and only one) with 'focal=true' is to be used in the adjudication of this claim. Coverages appearing before the focal Coverage in the list, and where 'Coverage.subrogation=false', should provide a reference to the ClaimResponse containing the adjudication results of the prior claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitInsurance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitInsurance>))]
   public class ExplanationOfBenefitInsurance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Reference to the insurance card level information contained in the Coverage resource. The coverage issuing insurer will use these details to locate the patient's actual coverage within the insurer's information system.
@@ -1119,7 +1119,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details of a accident which resulted in injuries which required the products and services listed in the claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitAccident>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitAccident>))]
   public class ExplanationOfBenefitAccident : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The date of the accident has to precede the dates of the products and services but within a reasonable timeframe.
@@ -1252,7 +1252,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If this item is a group then the values here are a summary of the adjudication of the detail items. If this item is a simple product or service then this is the result of the adjudication of this item.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitItemAdjudication>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitItemAdjudication>))]
   public class ExplanationOfBenefitItemAdjudication : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// For example, amount submitted, eligible amount, co-payment, and benefit payable.
@@ -1382,7 +1382,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Third-tier of goods and services.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitItemDetailSubDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitItemDetailSubDetail>))]
   public class ExplanationOfBenefitItemDetailSubDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -1785,7 +1785,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Second-tier of goods and services.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitItemDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitItemDetail>))]
   public class ExplanationOfBenefitItemDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -2232,7 +2232,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A claim line. Either a simple (a product or service) or a 'group' of details which can also be a simple items or groups of sub-details.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitItem>))]
   public class ExplanationOfBenefitItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If this item is a group then the values here are a summary of the adjudication of the detail items. If this item is a simple product or service then this is the result of the adjudication of this item.
@@ -3038,7 +3038,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The third-tier service adjudications for payor added services.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitAddItemDetailSubDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitAddItemDetailSubDetail>))]
   public class ExplanationOfBenefitAddItemDetailSubDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -3313,7 +3313,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The second-tier service adjudications for payor added services.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitAddItemDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitAddItemDetail>))]
   public class ExplanationOfBenefitAddItemDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -3632,7 +3632,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The first-tier service adjudications for payor added product or service lines.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitAddItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitAddItem>))]
   public class ExplanationOfBenefitAddItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The adjudication results.
@@ -4312,7 +4312,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Totals for amounts submitted, co-pays, benefits payable etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitTotal>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitTotal>))]
   public class ExplanationOfBenefitTotal : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Monetary total amount associated with the category.
@@ -4396,7 +4396,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Payment details for the adjudication of the claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitPayment>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitPayment>))]
   public class ExplanationOfBenefitPayment : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Insurers will deduct amounts owing from the provider (adjustment), such as a prior overpayment, from the amount owing to the provider (benefits payable) when payment is made to the provider.
@@ -4559,7 +4559,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A note that describes or explains adjudication results in a human readable form.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitProcessNote>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitProcessNote>))]
   public class ExplanationOfBenefitProcessNote : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Only required if the language is different from the resource language.
@@ -4703,7 +4703,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Benefits Used to date.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitBenefitBalanceFinancial>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitBenefitBalanceFinancial>))]
   public class ExplanationOfBenefitBenefitBalanceFinancial : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The quantity of the benefit which is permitted under the coverage.
@@ -4859,7 +4859,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Balance by Benefit Category.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefitBenefitBalance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefitBenefitBalance>))]
   public class ExplanationOfBenefitBenefitBalance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Examples include Medical Care, Periodontics, Renal Dialysis, Vision Coverage.
@@ -5089,7 +5089,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExplanationOfBenefit>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExplanationOfBenefit>))]
   public class ExplanationOfBenefit : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

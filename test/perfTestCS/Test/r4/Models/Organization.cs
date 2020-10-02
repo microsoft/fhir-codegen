@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OrganizationContact>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<OrganizationContact>))]
   public class OrganizationContact : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Visiting or postal addresses for the contact.
@@ -161,7 +161,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Organization>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Organization>))]
   public class Organization : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

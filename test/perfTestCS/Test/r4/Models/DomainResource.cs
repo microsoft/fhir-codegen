@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A resource that includes narrative, extensions, and contained resources.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamResourceConverter))]
   public class DomainResource : Resource,  IFhirJsonSerializable {
     /// <summary>
     /// This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels.

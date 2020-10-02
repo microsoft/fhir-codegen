@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A human's name with the ability to identify parts and usage.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<HumanName>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<HumanName>))]
   public class HumanName : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Family Name may be decomposed into specific parts using extensions (de, nl, es related cultures).

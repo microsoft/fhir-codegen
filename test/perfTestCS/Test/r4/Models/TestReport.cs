@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A participant in the test execution, either the execution engine, a client, or a server.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReportParticipant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReportParticipant>))]
   public class TestReportParticipant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The display name of the participant.
@@ -156,7 +156,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The operation performed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReportSetupActionOperation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReportSetupActionOperation>))]
   public class TestReportSetupActionOperation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A link to further details on the result.
@@ -300,7 +300,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The results of the assertion performed on the previous operations.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReportSetupActionAssert>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReportSetupActionAssert>))]
   public class TestReportSetupActionAssert : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A link to further details on the result.
@@ -444,7 +444,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReportSetupAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReportSetupAction>))]
   public class TestReportSetupAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The results of the assertion performed on the previous operations.
@@ -534,7 +534,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The results of the series of required setup operations before the tests were executed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReportSetup>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReportSetup>))]
   public class TestReportSetup : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
@@ -638,7 +638,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReportTestAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReportTestAction>))]
   public class TestReportTestAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The results of the assertion performed on the previous operations.
@@ -728,7 +728,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A test executed from the test script.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReportTest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReportTest>))]
   public class TestReportTest : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
@@ -888,7 +888,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReportTeardownAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReportTeardownAction>))]
   public class TestReportTeardownAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An operation would involve a REST request to a server.
@@ -960,7 +960,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReportTeardown>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReportTeardown>))]
   public class TestReportTeardown : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
@@ -1064,7 +1064,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A summary of information based on the results of executing a TestScript.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TestReport>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TestReport>))]
   public class TestReport : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

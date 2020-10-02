@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Allows for adjustment on two axis.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<VisionPrescriptionLensSpecificationPrism>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<VisionPrescriptionLensSpecificationPrism>))]
   public class VisionPrescriptionLensSpecificationPrism : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Amount of prism to compensate for eye alignment in fractional units.
@@ -125,7 +125,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Contain the details of  the individual lens specifications and serves as the authorization for the fullfillment by certified professionals.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<VisionPrescriptionLensSpecification>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<VisionPrescriptionLensSpecification>))]
   public class VisionPrescriptionLensSpecification : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Power adjustment for multifocal lenses measured in dioptres (0.25 units).
@@ -566,7 +566,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An authorization for the provision of glasses and/or contact lenses to a patient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<VisionPrescription>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<VisionPrescription>))]
   public class VisionPrescription : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

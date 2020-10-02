@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An amount of economic utility in some recognized currency.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Money>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Money>))]
   public class Money : Element,  IFhirJsonSerializable {
     /// <summary>
     /// ISO 4217 Currency Code.

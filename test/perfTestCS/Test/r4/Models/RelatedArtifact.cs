@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Related artifacts such as additional documentation, justification, or bibliographic references.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RelatedArtifact>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RelatedArtifact>))]
   public class RelatedArtifact : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Additional structured information about citations should be captured as extensions.

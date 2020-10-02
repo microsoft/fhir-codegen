@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates who should participate in performing the action described.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ActivityDefinitionParticipant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ActivityDefinitionParticipant>))]
   public class ActivityDefinitionParticipant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The role the participant should play in performing the described action.
@@ -115,7 +115,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Dynamic values are applied in the order in which they are defined in the ActivityDefinition. Note that if both a transform and dynamic values are specified, the dynamic values will be applied to the result of the transform.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ActivityDefinitionDynamicValue>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ActivityDefinitionDynamicValue>))]
   public class ActivityDefinitionDynamicValue : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The expression may be inlined, or may be a reference to a named expression within a logic library referenced by the library element.
@@ -215,7 +215,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ActivityDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ActivityDefinition>))]
   public class ActivityDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

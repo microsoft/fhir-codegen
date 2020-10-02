@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A contributor to the content of a knowledge asset, including authors, editors, reviewers, and endorsers.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Contributor>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Contributor>))]
   public class Contributor : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Contact details to assist a user in finding and communicating with the contributor.

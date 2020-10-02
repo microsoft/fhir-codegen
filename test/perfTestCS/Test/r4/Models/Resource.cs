@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This is the base resource type for everything.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonResourceConverter))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamResourceConverter))]
   public class Resource : IFhirJsonSerializable {
     /// <summary>
     /// The only time that a resource does not have an id is when it is being submitted to the server using a create operation.

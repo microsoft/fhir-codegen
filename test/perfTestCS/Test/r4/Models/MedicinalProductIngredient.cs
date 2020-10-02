@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Strength expressed in terms of a reference substance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength>))]
   public class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The country or countries for which the strength range applies.
@@ -186,7 +186,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductIngredientSpecifiedSubstanceStrength>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductIngredientSpecifiedSubstanceStrength>))]
   public class MedicinalProductIngredientSpecifiedSubstanceStrength : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The strength per unitary volume (or mass).
@@ -419,7 +419,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A specified substance that comprises this ingredient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductIngredientSpecifiedSubstance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductIngredientSpecifiedSubstance>))]
   public class MedicinalProductIngredientSpecifiedSubstance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The specified substance.
@@ -562,7 +562,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The ingredient substance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductIngredientSubstance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductIngredientSubstance>))]
   public class MedicinalProductIngredientSubstance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The ingredient substance.
@@ -678,7 +678,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An ingredient of a manufactured item or pharmaceutical product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductIngredient>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductIngredient>))]
   public class MedicinalProductIngredient : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

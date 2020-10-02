@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Characteristics e.g. a products onset of action.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPharmaceuticalCharacteristics>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductPharmaceuticalCharacteristics>))]
   public class MedicinalProductPharmaceuticalCharacteristics : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A coded characteristic.
@@ -99,7 +99,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A species specific time during which consumption of animal product is not appropriate.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod>))]
   public class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Extra information about the withdrawal period.
@@ -211,7 +211,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A species for which this route applies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies>))]
   public class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Coded expression for the species.
@@ -327,7 +327,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The path by which the pharmaceutical product is taken into or makes contact with the body.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPharmaceuticalRouteOfAdministration>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductPharmaceuticalRouteOfAdministration>))]
   public class MedicinalProductPharmaceuticalRouteOfAdministration : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Coded expression for the route.
@@ -518,7 +518,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A pharmaceutical product described in terms of its composition and dose form.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPharmaceutical>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductPharmaceutical>))]
   public class MedicinalProductPharmaceutical : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Authorization in areas within a country.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductAuthorizationJurisdictionalAuthorization>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductAuthorizationJurisdictionalAuthorization>))]
   public class MedicinalProductAuthorizationJurisdictionalAuthorization : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Country of authorization.
@@ -205,7 +205,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The regulatory procedure for granting or amending a marketing authorization.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductAuthorizationProcedure>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductAuthorizationProcedure>))]
   public class MedicinalProductAuthorizationProcedure : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Applcations submitted to obtain a marketing authorization.
@@ -379,7 +379,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The regulatory authorization of a medicinal product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductAuthorization>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductAuthorization>))]
   public class MedicinalProductAuthorization : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

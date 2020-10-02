@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ProdCharacteristic>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ProdCharacteristic>))]
   public class ProdCharacteristic : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Where applicable, the color can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used.

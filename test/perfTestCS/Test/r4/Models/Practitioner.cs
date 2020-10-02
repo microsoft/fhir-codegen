@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PractitionerQualification>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PractitionerQualification>))]
   public class PractitionerQualification : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Coded representation of the qualification.
@@ -158,7 +158,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A person who is directly or indirectly involved in the provisioning of healthcare.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Practitioner>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Practitioner>))]
   public class Practitioner : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

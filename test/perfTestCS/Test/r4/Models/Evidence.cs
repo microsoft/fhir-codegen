@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The Evidence resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Evidence>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Evidence>))]
   public class Evidence : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
