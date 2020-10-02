@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A record of a request for service such as diagnostic investigations, treatments, or operations to be performed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ServiceRequest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ServiceRequest>))]
   public class ServiceRequest : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

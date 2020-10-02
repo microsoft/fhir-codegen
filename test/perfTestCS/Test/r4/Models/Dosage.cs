@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The amount of medication administered.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DosageDoseAndRate>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DosageDoseAndRate>))]
   public class DosageDoseAndRate : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Note that this specifies the quantity of the specified medication, not the quantity for each active ingredient(s). Each ingredient amount can be communicated in the Medication resource. For example, if one wants to communicate that a tablet was 375 mg, where the dose was one tablet, you can use the Medication resource to document that the tablet was comprised of 375 mg of drug XYZ. Alternatively if the dose was 375 mg, then you may only need to use the Medication resource to indicate this was a tablet. If the example were an IV such as dopamine and you wanted to communicate that 400mg of dopamine was mixed in 500 ml of some IV solution, then this would all be communicated in the Medication resource. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule e.g. 500 ml in dose, with timing used to convey that this should be done over 4 hours.
@@ -165,7 +165,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates how the medication is/was taken or should be taken by the patient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Dosage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Dosage>))]
   public class Dosage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Information about administration or preparation of the medication (e.g. "infuse as rapidly as possibly via intraperitoneal port" or "immediately following drug x") should be populated in dosage.text.

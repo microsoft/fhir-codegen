@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A duration of time during which an organism (or a process) has existed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Age>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Age>))]
   public class Age : Quantity,  IFhirJsonSerializable {
     /// <summary>
     /// Serialize to a JSON object

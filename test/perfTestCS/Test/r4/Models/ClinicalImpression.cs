@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// One or more sets of investigations (signs, symptoms, etc.). The actual grouping of investigations varies greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClinicalImpressionInvestigation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClinicalImpressionInvestigation>))]
   public class ClinicalImpressionInvestigation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A name/code for the group ("set") of investigations. Typically, this will be something like "signs", "symptoms", "clinical", "diagnostic", but the list is not constrained, and others such groups such as (exposure|family|travel|nutritional) history may be used.
@@ -128,7 +128,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specific findings or diagnoses that were considered likely or relevant to ongoing treatment.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClinicalImpressionFinding>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClinicalImpressionFinding>))]
   public class ClinicalImpressionFinding : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Which investigations support finding or diagnosis.
@@ -246,7 +246,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called "ClinicalImpression" rather than "ClinicalAssessment" to avoid confusion with the recording of assessment tools such as Apgar score.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ClinicalImpression>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ClinicalImpression>))]
   public class ClinicalImpression : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If the person who performed the series is not known, their Organization may be recorded. A patient, or related person, may be the performer, e.g. for patient-captured images.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImagingStudySeriesPerformer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImagingStudySeriesPerformer>))]
   public class ImagingStudySeriesPerformer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates who or what performed the series.
@@ -99,7 +99,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A single SOP instance within the series, e.g. an image, or presentation state.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImagingStudySeriesInstance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImagingStudySeriesInstance>))]
   public class ImagingStudySeriesInstance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The number of instance in the series.
@@ -240,7 +240,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Each study has one or more series of images or other content.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImagingStudySeries>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImagingStudySeries>))]
   public class ImagingStudySeries : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings. The bodySite may indicate the laterality of body part imaged; if so, it shall be consistent with any content of ImagingStudy.series.laterality.
@@ -628,7 +628,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ImagingStudy>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ImagingStudy>))]
   public class ImagingStudy : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

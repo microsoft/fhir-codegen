@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Compartment Consistency Rules.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<GraphDefinitionLinkTargetCompartment>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<GraphDefinitionLinkTargetCompartment>))]
   public class GraphDefinitionLinkTargetCompartment : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Identifies the compartment.
@@ -212,7 +212,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Potential target for the link.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<GraphDefinitionLinkTarget>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<GraphDefinitionLinkTarget>))]
   public class GraphDefinitionLinkTarget : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Compartment Consistency Rules.
@@ -444,7 +444,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Links this graph makes rules about.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<GraphDefinitionLink>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<GraphDefinitionLink>))]
   public class GraphDefinitionLink : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Information about why this link is of interest in this graph definition.
@@ -673,7 +673,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<GraphDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<GraphDefinition>))]
   public class GraphDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

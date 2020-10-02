@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceUseStatement>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceUseStatement>))]
   public class DeviceUseStatement : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

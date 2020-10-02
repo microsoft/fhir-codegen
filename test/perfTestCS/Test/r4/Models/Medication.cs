@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The ingredients need not be a complete list.  If an ingredient is not specified, this does not indicate whether an ingredient is present or absent.  If an ingredient is specified it does not mean that all ingredients are specified.  It is possible to specify both inactive and active ingredients.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationIngredient>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationIngredient>))]
   public class MedicationIngredient : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indication of whether this ingredient affects the therapeutic action of the drug.
@@ -124,7 +124,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information that only applies to packages (not products).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationBatch>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationBatch>))]
   public class MedicationBatch : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// When this specific batch of product will expire.
@@ -240,7 +240,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Medication>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Medication>))]
   public class Medication : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

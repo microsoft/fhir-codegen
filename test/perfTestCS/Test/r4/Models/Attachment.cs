@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// For referring to data content defined in other formats.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Attachment>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Attachment>))]
   public class Attachment : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.

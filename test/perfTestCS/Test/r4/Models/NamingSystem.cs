@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Multiple identifiers may exist, either due to duplicate registration, regional rules, needs of different communication technologies, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NamingSystemUniqueId>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<NamingSystemUniqueId>))]
   public class NamingSystemUniqueId : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// e.g. "must be used in Germany" or "was initially published in error with this value".
@@ -184,7 +184,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<NamingSystem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<NamingSystem>))]
   public class NamingSystem : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

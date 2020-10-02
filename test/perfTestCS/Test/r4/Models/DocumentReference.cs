@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This element is labeled as a modifier because documents that append to other documents are incomplete on their own.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DocumentReferenceRelatesTo>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DocumentReferenceRelatesTo>))]
   public class DocumentReferenceRelatesTo : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If this document appends another document, then the document cannot be fully understood without also accessing the referenced document.
@@ -112,7 +112,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The document and format referenced. There may be multiple content element repetitions, each with a different format.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DocumentReferenceContent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DocumentReferenceContent>))]
   public class DocumentReferenceContent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The document or URL of the document along with critical metadata to prove content has integrity.
@@ -199,7 +199,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// These values are primarily added to help with searching for interesting/relevant documents.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DocumentReferenceContext>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DocumentReferenceContext>))]
   public class DocumentReferenceContext : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Describes the clinical encounter or type of care that the document content is associated with.
@@ -451,7 +451,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DocumentReference>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DocumentReference>))]
   public class DocumentReference : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

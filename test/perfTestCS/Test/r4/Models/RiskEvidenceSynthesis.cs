@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A description of the size of the sample involved in the synthesis.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RiskEvidenceSynthesisSampleSize>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RiskEvidenceSynthesisSampleSize>))]
   public class RiskEvidenceSynthesisSampleSize : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Human-readable summary of sample size.
@@ -126,7 +126,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A description of the precision of the estimate for the effect.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RiskEvidenceSynthesisRiskEstimatePrecisionEstimate>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RiskEvidenceSynthesisRiskEstimatePrecisionEstimate>))]
   public class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Lower bound of confidence interval.
@@ -285,7 +285,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The estimated risk of the outcome.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RiskEvidenceSynthesisRiskEstimate>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RiskEvidenceSynthesisRiskEstimate>))]
   public class RiskEvidenceSynthesisRiskEstimate : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The sample size for the group that was measured for this risk estimate.
@@ -501,7 +501,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A description of a component of the overall certainty.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RiskEvidenceSynthesisCertaintyCertaintySubcomponent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RiskEvidenceSynthesisCertaintyCertaintySubcomponent>))]
   public class RiskEvidenceSynthesisCertaintyCertaintySubcomponent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A human-readable string to clarify or explain concepts about the resource.
@@ -664,7 +664,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A description of the certainty of the risk estimate.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RiskEvidenceSynthesisCertainty>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RiskEvidenceSynthesisCertainty>))]
   public class RiskEvidenceSynthesisCertainty : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A description of a component of the overall certainty.
@@ -856,7 +856,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The RiskEvidenceSynthesis resource describes the likelihood of an outcome in a population plus exposure state where the risk estimate is derived from a combination of research studies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RiskEvidenceSynthesis>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RiskEvidenceSynthesis>))]
   public class RiskEvidenceSynthesis : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

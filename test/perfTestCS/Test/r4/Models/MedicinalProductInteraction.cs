@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The specific medication, food or laboratory test that interacts.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductInteractionInteractant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductInteractionInteractant>))]
   public class MedicinalProductInteractionInteractant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The specific medication, food or laboratory test that interacts.
@@ -96,7 +96,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The interactions of the medicinal product with other medicinal products, or other forms of interactions.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductInteraction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductInteraction>))]
   public class MedicinalProductInteraction : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

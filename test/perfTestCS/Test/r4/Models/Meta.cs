@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Meta>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Meta>))]
   public class Meta : Element,  IFhirJsonSerializable {
     /// <summary>
     /// This value is always populated except when the resource is first being created. The server / resource manager sets this value; what a client provides is irrelevant. This is equivalent to the HTTP Last-Modified and SHOULD have the same value on a [read](http.html#read) interaction.

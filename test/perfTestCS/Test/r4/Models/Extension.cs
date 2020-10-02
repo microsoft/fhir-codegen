@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Optional Extension Element - found in all resources.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Extension>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Extension>))]
   public class Extension : Element,  IFhirJsonSerializable {
     /// <summary>
     /// The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.

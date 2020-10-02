@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// UDI may identify an unique instance of a device, or it may only identify the type of the device.  See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceUdiCarrier>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceUdiCarrier>))]
   public class DeviceUdiCarrier : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The AIDC form of UDIs should be scanned or otherwise used for the identification of the device whenever possible to minimize errors in records resulting from manual transcriptions. If separate barcodes for DI and PI are present, concatenate the string with DI first and in order of human readable expression on label.
@@ -248,7 +248,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This represents the manufacturer's name of the device as provided by the device, from a UDI label, or by a person describing the Device.  This typically would be used when a person provides the name(s) or when the device represents one of the names available from DeviceDefinition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceDeviceName>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceDeviceName>))]
   public class DeviceDeviceName : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The name of the device.
@@ -365,7 +365,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceSpecialization>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceSpecialization>))]
   public class DeviceSpecialization : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The standard that is used to operate and communicate.
@@ -465,7 +465,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The actual design of the device or software version running on the device.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceVersion>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceVersion>))]
   public class DeviceVersion : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A single component of the device version.
@@ -583,7 +583,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceProperty>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceProperty>))]
   public class DeviceProperty : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Code that specifies the property DeviceDefinitionPropetyCode (Extensible).
@@ -743,7 +743,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Device>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Device>))]
   public class Device : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

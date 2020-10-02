@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details concerning the specimen collection.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SpecimenCollection>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SpecimenCollection>))]
   public class SpecimenCollection : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If the use case requires  BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately)  then use the standard extension [bodySite](extension-bodysite.html).
@@ -220,7 +220,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details concerning processing and processing steps for the specimen.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SpecimenProcessing>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SpecimenProcessing>))]
   public class SpecimenProcessing : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Material used in the processing step.
@@ -410,7 +410,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SpecimenContainer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SpecimenContainer>))]
   public class SpecimenContainer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.
@@ -617,7 +617,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A sample to be used for analysis.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Specimen>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Specimen>))]
   public class Specimen : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

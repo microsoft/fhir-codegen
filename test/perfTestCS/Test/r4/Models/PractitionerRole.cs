@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// More detailed availability information may be provided in associated Schedule/Slot resources.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PractitionerRoleAvailableTime>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PractitionerRoleAvailableTime>))]
   public class PractitionerRoleAvailableTime : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Is this always available? (hence times are irrelevant) e.g. 24 hour service.
@@ -227,7 +227,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The practitioner is not available or performing this role during this period of time due to the provided reason.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PractitionerRoleNotAvailable>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PractitionerRoleNotAvailable>))]
   public class PractitionerRoleNotAvailable : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The reason that can be presented to the user as to why this time is not available.
@@ -330,7 +330,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PractitionerRole>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PractitionerRole>))]
   public class PractitionerRole : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Binary>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Binary>))]
   public class Binary : Resource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details about each adverse reaction event linked to exposure to the identified substance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AllergyIntoleranceReaction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AllergyIntoleranceReaction>))]
   public class AllergyIntoleranceReaction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Use the description to provide any details of a particular event of the occurred reaction such as circumstances, reaction specifics, what happened before/after. Information, related to the event, but not describing a particular care should be captured in the comment field. For example: at the age of four, the patient was given penicillin for strep throat and subsequently developed severe hives.
@@ -274,7 +274,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AllergyIntolerance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AllergyIntolerance>))]
   public class AllergyIntolerance : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

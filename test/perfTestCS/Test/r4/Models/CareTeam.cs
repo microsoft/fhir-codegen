@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies all people and organizations who are expected to be involved in the care team.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CareTeamParticipant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CareTeamParticipant>))]
   public class CareTeamParticipant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Patient only needs to be listed if they have a role other than "subject of care".
@@ -162,7 +162,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care for a patient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CareTeam>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CareTeam>))]
   public class CareTeam : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

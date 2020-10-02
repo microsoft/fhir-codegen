@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The item that is being delivered or has been supplied.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SupplyDeliverySuppliedItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SupplyDeliverySuppliedItem>))]
   public class SupplyDeliverySuppliedItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.
@@ -117,7 +117,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Record of delivery of what is supplied.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SupplyDelivery>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SupplyDelivery>))]
   public class SupplyDelivery : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If multiple repetitions of this extension are present, the item should be enabled when the condition for *any* of the repetitions is true.  I.e. treat "enableWhen"s as being joined by an "or" clause.  This element is a modifier because if enableWhen is present for an item, "required" is ignored unless one of the enableWhen conditions is met. When an item is disabled, all of its descendants are disabled, regardless of what their own enableWhen logic might evaluate to.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<QuestionnaireItemEnableWhen>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<QuestionnaireItemEnableWhen>))]
   public class QuestionnaireItemEnableWhen : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A value that the referenced question is tested using the specified operator in order for the item to be enabled.
@@ -321,7 +321,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This element can be used when the value set machinery of answerValueSet is deemed too cumbersome or when there's a need to capture possible answers that are not codes.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<QuestionnaireItemAnswerOption>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<QuestionnaireItemAnswerOption>))]
   public class QuestionnaireItemAnswerOption : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Use this instead of initial[v] if answerValueSet is present.
@@ -512,7 +512,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The user is allowed to change the value and override the default (unless marked as read-only). If the user doesn't change the value, then this initial value will be persisted when the QuestionnaireResponse is initially created.  Note that initial values can influence results.  The data type of initial[x] must agree with the item.type, and only repeating items can have more then one initial value.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<QuestionnaireItemInitial>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<QuestionnaireItemInitial>))]
   public class QuestionnaireItemInitial : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The type of the initial value must be consistent with the type of the item.
@@ -805,7 +805,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The content of the questionnaire is constructed from an ordered, hierarchical collection of items.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<QuestionnaireItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<QuestionnaireItem>))]
   public class QuestionnaireItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This element can be used when the value set machinery of answerValueSet is deemed too cumbersome or when there's a need to capture possible answers that are not codes.
@@ -1335,7 +1335,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Questionnaire>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Questionnaire>))]
   public class Questionnaire : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

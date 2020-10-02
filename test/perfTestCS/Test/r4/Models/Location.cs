@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<LocationPosition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<LocationPosition>))]
   public class LocationPosition : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below).
@@ -151,7 +151,7 @@ namespace Fhir.R4.Models
   /// This type of information is commonly found published in directories and on websites informing customers when the facility is available.
   /// Specific services within the location may have their own hours which could be shorter (or longer) than the locations hours.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<LocationHoursOfOperation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<LocationHoursOfOperation>))]
   public class LocationHoursOfOperation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The Location is open all day.
@@ -366,7 +366,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Location>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Location>))]
   public class Location : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

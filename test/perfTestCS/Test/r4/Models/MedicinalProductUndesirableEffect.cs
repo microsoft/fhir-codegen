@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describe the undesirable effects of the medicinal product.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductUndesirableEffect>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductUndesirableEffect>))]
   public class MedicinalProductUndesirableEffect : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

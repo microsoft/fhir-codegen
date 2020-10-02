@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specific parameters for the ordered item.  For example, the size of the indicated item.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SupplyRequestParameter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SupplyRequestParameter>))]
   public class SupplyRequestParameter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A code or string that identifies the device detail being asserted.
@@ -145,7 +145,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A record of a request for a medication, substance or device used in the healthcare setting.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SupplyRequest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SupplyRequest>))]
   public class SupplyRequest : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

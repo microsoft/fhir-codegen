@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes the calibrations that have been performed or that are required to be performed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceMetricCalibration>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceMetricCalibration>))]
   public class DeviceMetricCalibration : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Describes the state of the calibration.
@@ -156,7 +156,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes a measurement, calculation or setting capability of a medical device.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceMetric>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceMetric>))]
   public class DeviceMetric : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

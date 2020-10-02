@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specifies contact information for a person or organization.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContactDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContactDetail>))]
   public class ContactDetail : Element,  IFhirJsonSerializable {
     /// <summary>
     /// If there is no named individual, the telecom information is for the organization as a whole.

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A length - a value with a unit that is a physical distance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Distance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Distance>))]
   public class Distance : Quantity,  IFhirJsonSerializable {
     /// <summary>
     /// Serialize to a JSON object

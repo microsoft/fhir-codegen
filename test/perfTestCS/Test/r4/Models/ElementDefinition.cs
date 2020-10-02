@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If there is no discriminator, the content is hard to process, so this should be avoided.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ElementDefinitionSlicingDiscriminator>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ElementDefinitionSlicingDiscriminator>))]
   public class ElementDefinitionSlicingDiscriminator : Element,  IFhirJsonSerializable {
     /// <summary>
     /// The only FHIRPath functions that are allowed are as(type), resolve(), and extension(url).
@@ -128,7 +128,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The first element in the sequence, the one that carries the slicing, is the definition that applies to all the slices. This is based on the unconstrained element, but can apply any constraints as appropriate. This may include the common constraints on the children of the element.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ElementDefinitionSlicing>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ElementDefinitionSlicing>))]
   public class ElementDefinitionSlicing : Element,  IFhirJsonSerializable {
     /// <summary>
     /// If it's really not possible to differentiate them, the design should be re-evaluated to make the content usable.
@@ -301,7 +301,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The base information does not carry any information that could not be determined from the path and related profiles, but making this determination requires both that the related profiles are available, and that the algorithm to determine them be available. For tooling simplicity, the base information must always be populated in element definitions in snap shots, even if it is the same.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ElementDefinitionBase>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ElementDefinitionBase>))]
   public class ElementDefinitionBase : Element,  IFhirJsonSerializable {
     /// <summary>
     /// This is provided to code generation, since the serialization representation in JSON differs depending on whether the base element has max &gt; 1. Also, some forms of code generation may differ.
@@ -427,7 +427,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The Type of the element can be left blank in a differential constraint, in which case the type is inherited from the resource. Abstract types are not permitted to appear as a type when multiple types are listed.  (I.e. Abstract types cannot be part of a choice).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ElementDefinitionType>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ElementDefinitionType>))]
   public class ElementDefinitionType : Element,  IFhirJsonSerializable {
     /// <summary>
     /// See [Aggregation Rules](elementdefinition.html#aggregation) for further clarification.
@@ -801,7 +801,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Examples will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ElementDefinitionExample>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ElementDefinitionExample>))]
   public class ElementDefinitionExample : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Describes the purpose of this example amoung the set of examples.
@@ -1700,7 +1700,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Constraints should be declared on the "context" element - the lowest element in the hierarchy that is common to all nodes referenced by the constraint.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ElementDefinitionConstraint>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ElementDefinitionConstraint>))]
   public class ElementDefinitionConstraint : Element,  IFhirJsonSerializable {
     /// <summary>
     /// In the absense of an expression, the expression is likely not enforceable by validators, and might be missed by many systems.
@@ -1956,7 +1956,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// For a CodeableConcept, when no codes are allowed - only text, use a binding of strength "required" with a description explaining that no coded values are allowed and what sort of information to put in the "text" element.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ElementDefinitionBinding>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ElementDefinitionBinding>))]
   public class ElementDefinitionBinding : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Describes the intended use of this particular set of codes.
@@ -2100,7 +2100,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Mappings are not necessarily specific enough for safe translation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ElementDefinitionMapping>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ElementDefinitionMapping>))]
   public class ElementDefinitionMapping : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Comments that provide information about the mapping or its use.
@@ -2272,7 +2272,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Captures constraints on each element within the resource, profile, or extension.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ElementDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ElementDefinition>))]
   public class ElementDefinition : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Identifies additional names by which this element might also be known.

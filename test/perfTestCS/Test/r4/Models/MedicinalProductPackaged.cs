@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Batch numbering.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPackagedBatchIdentifier>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductPackagedBatchIdentifier>))]
   public class MedicinalProductPackagedBatchIdentifier : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A number appearing on the immediate packaging (and not the outer packaging).
@@ -99,7 +99,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A packaging item, as a contained for medicine, possibly with other packaging items within.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPackagedPackageItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductPackagedPackageItem>))]
   public class MedicinalProductPackagedPackageItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A possible alternate material for the packaging.
@@ -594,7 +594,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A medicinal product in a container or package.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductPackaged>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductPackaged>))]
   public class MedicinalProductPackaged : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

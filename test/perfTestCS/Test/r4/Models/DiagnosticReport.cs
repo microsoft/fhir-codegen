@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DiagnosticReportMedia>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DiagnosticReportMedia>))]
   public class DiagnosticReportMedia : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The comment should be displayed with the image. It would be common for the report to include additional discussion of the image contents in other sections such as the conclusion.
@@ -112,7 +112,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DiagnosticReport>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DiagnosticReport>))]
   public class DiagnosticReport : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContactPoint>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContactPoint>))]
   public class ContactPoint : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Time period when the contact point was/is in use.

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A sequence that is used as a reference to describe variants that are present in a sequence analyzed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequenceReferenceSeq>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MolecularSequenceReferenceSeq>))]
   public class MolecularSequenceReferenceSeq : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Structural unit composed of a nucleic acid molecule which controls its own replication through the interaction of specific proteins at one or more origins of replication ([SO:0000340](http://www.sequenceontology.org/browser/current_svn/term/SO:0000340)).
@@ -255,7 +255,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The definition of variant here originates from Sequence ontology ([variant_of](http://www.sequenceontology.org/browser/current_svn/term/variant_of)). This element can represent amino acid or nucleic sequence change(including insertion,deletion,SNP,etc.)  It can represent some complex mutation or segment variation with the assist of CIGAR string.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequenceVariant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MolecularSequenceVariant>))]
   public class MolecularSequenceVariant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Extended CIGAR string for aligning the sequence with reference bases. See detailed documentation [here](http://support.illumina.com/help/SequencingAnalysisWorkflow/Content/Vault/Informatics/Sequencing_Analysis/CASAVA/swSEQ_mCA_ExtendedCIGARFormat.htm).
@@ -440,7 +440,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Receiver Operator Characteristic (ROC) Curve  to give sensitivity/specificity tradeoff.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequenceQualityRoc>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MolecularSequenceQualityRoc>))]
   public class MolecularSequenceQualityRoc : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Calculated fScore if the GQ score threshold was set to "score" field value.
@@ -926,7 +926,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An experimental feature attribute that defines the quality of the feature in a quantitative way, such as a phred quality score ([SO:0001686](http://www.sequenceontology.org/browser/current_svn/term/SO:0001686)).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequenceQuality>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MolecularSequenceQuality>))]
   public class MolecularSequenceQuality : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// End position of the sequence. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position.
@@ -1324,7 +1324,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Configurations of the external repository. The repository shall store target's observedSeq or records related with target's observedSeq.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequenceRepository>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MolecularSequenceRepository>))]
   public class MolecularSequenceRepository : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Id of the variant in this external repository. The server will understand how to use this id to call for more info about datasets in external repository.
@@ -1552,7 +1552,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Structural variant outer.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequenceStructureVariantOuter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MolecularSequenceStructureVariantOuter>))]
   public class MolecularSequenceStructureVariantOuter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Structural variant outer end. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position.
@@ -1638,7 +1638,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Structural variant inner.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequenceStructureVariantInner>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MolecularSequenceStructureVariantInner>))]
   public class MolecularSequenceStructureVariantInner : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Structural variant inner end. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position.
@@ -1724,7 +1724,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about chromosome structure variation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequenceStructureVariant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MolecularSequenceStructureVariant>))]
   public class MolecularSequenceStructureVariant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Used to indicate if the outer and inner start-end values have the same meaning.
@@ -1855,7 +1855,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Raw data describing a biological sequence.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MolecularSequence>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MolecularSequence>))]
   public class MolecularSequence : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

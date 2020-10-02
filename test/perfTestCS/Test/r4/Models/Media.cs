@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Media>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Media>))]
   public class Media : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

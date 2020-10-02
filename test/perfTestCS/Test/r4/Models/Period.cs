@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A time period defined by a start and end date and optionally time.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Period>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Period>))]
   public class Period : Element,  IFhirJsonSerializable {
     /// <summary>
     /// The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has an end value of 2012-02-03.

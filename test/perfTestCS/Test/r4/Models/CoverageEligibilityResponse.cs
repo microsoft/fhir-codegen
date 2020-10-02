@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Benefits used to date.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityResponseInsuranceItemBenefit>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityResponseInsuranceItemBenefit>))]
   public class CoverageEligibilityResponseInsuranceItemBenefit : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The quantity of the benefit which is permitted under the coverage.
@@ -196,7 +196,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Benefits and optionally current balances, and authorization details by category or service.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityResponseInsuranceItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityResponseInsuranceItem>))]
   public class CoverageEligibilityResponseInsuranceItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A boolean flag indicating whether a preauthorization is required prior to actual service delivery.
@@ -588,7 +588,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// All insurance coverages for the patient which may be applicable for reimbursement, of the products and services listed in the claim, are typically provided in the claim to allow insurers to confirm the ordering of the insurance coverages relative to local 'coordination of benefit' rules. One coverage (and only one) with 'focal=true' is to be used in the adjudication of this claim. Coverages appearing before the focal Coverage in the list, and where 'subrogation=false', should provide a reference to the ClaimResponse containing the adjudication results of the prior claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityResponseInsurance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityResponseInsurance>))]
   public class CoverageEligibilityResponseInsurance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The term of the benefits documented in this response.
@@ -732,7 +732,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Errors encountered during the processing of the request.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityResponseError>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityResponseError>))]
   public class CoverageEligibilityResponseError : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An error code,from a specified code system, which details why the eligibility check could not be performed.
@@ -804,7 +804,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides eligibility and plan details from the processing of an CoverageEligibilityRequest resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityResponse>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityResponse>))]
   public class CoverageEligibilityResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

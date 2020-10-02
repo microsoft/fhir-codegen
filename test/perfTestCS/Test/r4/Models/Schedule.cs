@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A container for slots of time that may be available for booking appointments.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Schedule>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Schedule>))]
   public class Schedule : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

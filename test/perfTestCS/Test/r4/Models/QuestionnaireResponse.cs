@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The value is nested because we cannot have a repeating structure that has variable type.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<QuestionnaireResponseItemAnswer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<QuestionnaireResponseItemAnswer>))]
   public class QuestionnaireResponseItemAnswer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Nested groups and/or questions found within this particular answer.
@@ -370,7 +370,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Groups cannot have answers and therefore must nest directly within item. When dealing with questions, nesting must occur within each answer because some questions may have multiple answers (and the nesting occurs for each answer).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<QuestionnaireResponseItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<QuestionnaireResponseItem>))]
   public class QuestionnaireResponseItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The value is nested because we cannot have a repeating structure that has variable type.
@@ -603,7 +603,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<QuestionnaireResponse>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<QuestionnaireResponse>))]
   public class QuestionnaireResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

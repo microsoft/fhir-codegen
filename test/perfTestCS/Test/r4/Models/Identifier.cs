@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Identifier>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Identifier>))]
   public class Identifier : Element,  IFhirJsonSerializable {
     /// <summary>
     /// The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.

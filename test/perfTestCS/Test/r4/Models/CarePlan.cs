@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CarePlanActivityDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CarePlanActivityDetail>))]
   public class CarePlanActivityDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Tends to be less relevant for activities involving particular products.  Codes should not convey negation - use "prohibited" instead.
@@ -681,7 +681,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CarePlanActivity>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CarePlanActivity>))]
   public class CarePlanActivity : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc.
@@ -904,7 +904,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CarePlan>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CarePlan>))]
   public class CarePlan : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates who or what performed the medication administration and how they were involved.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationAdministrationPerformer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationAdministrationPerformer>))]
   public class MedicationAdministrationPerformer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates who or what performed the medication administration.
@@ -99,7 +99,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes the medication dosage information details e.g. dose, rate, site, route, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationAdministrationDosage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationAdministrationDosage>))]
   public class MedicationAdministrationDosage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If the administration is not instantaneous (rate is present), this can be specified to convey the total amount administered over period of time of a single administration.
@@ -278,7 +278,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationAdministration>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationAdministration>))]
   public class MedicationAdministration : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

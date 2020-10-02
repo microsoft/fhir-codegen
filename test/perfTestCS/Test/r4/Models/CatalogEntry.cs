@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Used for example, to point to a substance, or to a device used to administer a medication.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CatalogEntryRelatedEntry>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CatalogEntryRelatedEntry>))]
   public class CatalogEntryRelatedEntry : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The reference to the related item.
@@ -112,7 +112,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Catalog entries are wrappers that contextualize items included in a catalog.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CatalogEntry>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CatalogEntry>))]
   public class CatalogEntry : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

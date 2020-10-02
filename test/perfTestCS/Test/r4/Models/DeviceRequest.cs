@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specific parameters for the ordered item.  For example, the prism value for lenses.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceRequestParameter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceRequestParameter>))]
   public class DeviceRequestParameter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A code or string that identifies the device detail being asserted.
@@ -145,7 +145,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceRequest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceRequest>))]
   public class DeviceRequest : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

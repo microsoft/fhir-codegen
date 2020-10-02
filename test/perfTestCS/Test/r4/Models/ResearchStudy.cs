@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes an expected sequence of events for one of the participants of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ResearchStudyArm>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ResearchStudyArm>))]
   public class ResearchStudyArm : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A succinct description of the path through the study that would be followed by a subject adhering to this arm.
@@ -143,7 +143,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ResearchStudyObjective>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ResearchStudyObjective>))]
   public class ResearchStudyObjective : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Unique, human-readable label for this objective of the study.
@@ -246,7 +246,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A process where a researcher or organization plans and then executes a series of steps intended to increase the field of healthcare-related knowledge.  This includes studies of safety, efficacy, comparative effectiveness and other information about medications, devices, therapies and other interventional and investigative techniques.  A ResearchStudy involves the gathering of information about human or animal subjects.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ResearchStudy>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ResearchStudy>))]
   public class ResearchStudy : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// When multiple targets are present for a single goal instance, all targets must be met for the overall goal to be met.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<GoalTarget>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<GoalTarget>))]
   public class GoalTarget : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Goal.target.measure defines a coded value.
@@ -244,7 +244,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Goal>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Goal>))]
   public class Goal : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

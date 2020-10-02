@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceDefinitionUdiDeviceIdentifier>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceDefinitionUdiDeviceIdentifier>))]
   public class DeviceDefinitionUdiDeviceIdentifier : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The identifier that is to be associated with every Device that references this DeviceDefintiion for the issuer and jurisdication porvided in the DeviceDefinition.udiDeviceIdentifier.
@@ -156,7 +156,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A name given to the device to identify it.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceDefinitionDeviceName>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceDefinitionDeviceName>))]
   public class DeviceDefinitionDeviceName : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The name of the device.
@@ -273,7 +273,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceDefinitionSpecialization>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceDefinitionSpecialization>))]
   public class DeviceDefinitionSpecialization : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The standard that is used to operate and communicate.
@@ -389,7 +389,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Device capabilities.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceDefinitionCapability>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceDefinitionCapability>))]
   public class DeviceDefinitionCapability : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Description of capability.
@@ -505,7 +505,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceDefinitionProperty>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceDefinitionProperty>))]
   public class DeviceDefinitionProperty : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Code that specifies the property DeviceDefinitionPropetyCode (Extensible).
@@ -665,7 +665,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A substance used to create the material(s) of which the device is made.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceDefinitionMaterial>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceDefinitionMaterial>))]
   public class DeviceDefinitionMaterial : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Whether the substance is a known or suspected allergen.
@@ -763,7 +763,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The characteristics, operational status and capabilities of a medical-related component of a medical device.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DeviceDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DeviceDefinition>))]
   public class DeviceDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about the use of the medicinal product in relation to other therapies described as part of the indication.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductContraindicationOtherTherapy>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductContraindicationOtherTherapy>))]
   public class MedicinalProductContraindicationOtherTherapy : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication.
@@ -108,7 +108,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductContraindication>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductContraindication>))]
   public class MedicinalProductContraindication : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

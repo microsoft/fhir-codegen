@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Distribution of the payment amount for a previously acknowledged payable.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PaymentReconciliationDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PaymentReconciliationDetail>))]
   public class PaymentReconciliationDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The monetary amount allocated from the total payment to the payable.
@@ -232,7 +232,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A note that describes or explains the processing in a human readable form.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PaymentReconciliationProcessNote>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PaymentReconciliationProcessNote>))]
   public class PaymentReconciliationProcessNote : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The explanation or description associated with the processing.
@@ -348,7 +348,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides the details including amount of a payment and allocates the payment items being paid.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PaymentReconciliation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PaymentReconciliation>))]
   public class PaymentReconciliation : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

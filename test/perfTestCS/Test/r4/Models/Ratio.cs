@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A relationship of two Quantity values - expressed as a numerator and a denominator.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Ratio>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Ratio>))]
   public class Ratio : Element,  IFhirJsonSerializable {
     /// <summary>
     /// The value of the denominator.

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Basic>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Basic>))]
   public class Basic : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

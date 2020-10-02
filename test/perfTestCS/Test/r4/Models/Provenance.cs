@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ProvenanceAgent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ProvenanceAgent>))]
   public class ProvenanceAgent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// onBehalfOfIdentity should be used when the agent is not a Resource type.
@@ -158,7 +158,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An entity used in this activity.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ProvenanceEntity>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ProvenanceEntity>))]
   public class ProvenanceEntity : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A usecase where one Provenance.entity.agent is used where the Entity that was used in the creation/updating of the Target, is not in the context of the same custodianship as the Target, and thus the meaning of Provenance.entity.agent is to say that the entity referenced is managed elsewhere and that this Agent provided access to it.  This would be similar to where the Entity being referenced is managed outside FHIR, such as through HL7 v2, v3, or XDS. This might be where the Entity being referenced is managed in another FHIR resource server. Thus it explains the Provenance of that Entity's use in the context of this Provenance activity.
@@ -302,7 +302,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Provenance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Provenance>))]
   public class Provenance : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

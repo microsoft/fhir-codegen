@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Often there are multiple jurisdiction specific valuesets which are required.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityRequestSupportingInfo>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityRequestSupportingInfo>))]
   public class CoverageEligibilityRequestSupportingInfo : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The supporting materials are applicable for all detail items, product/servce categories and specific billing codes.
@@ -107,7 +107,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// All insurance coverages for the patient which may be applicable for reimbursement, of the products and services listed in the claim, are typically provided in the claim to allow insurers to confirm the ordering of the insurance coverages relative to local 'coordination of benefit' rules. One coverage (and only one) with 'focal=true' is to be used in the adjudication of this claim. Coverages appearing before the focal Coverage in the list, and where 'subrogation=false', should provide a reference to the ClaimResponse containing the adjudication results of the prior claim.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityRequestInsurance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityRequestInsurance>))]
   public class CoverageEligibilityRequestInsurance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A business agreement number established between the provider and the insurer for special business processing purposes.
@@ -220,7 +220,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Patient diagnosis for which care is sought.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityRequestItemDiagnosis>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityRequestItemDiagnosis>))]
   public class CoverageEligibilityRequestItemDiagnosis : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The nature of illness or problem in a coded form or as a reference to an external defined Condition.
@@ -310,7 +310,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Service categories or billable services for which benefit details and/or an authorization prior to service delivery may be required by the payor.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityRequestItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityRequestItem>))]
   public class CoverageEligibilityRequestItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Examples include Medical Care, Periodontics, Renal Dialysis, Vision Coverage.
@@ -634,7 +634,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CoverageEligibilityRequest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CoverageEligibilityRequest>))]
   public class CoverageEligibilityRequest : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

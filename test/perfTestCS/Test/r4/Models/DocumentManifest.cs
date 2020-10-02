@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// May be identifiers or resources that caused the DocumentManifest to be created.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DocumentManifestRelated>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DocumentManifestRelated>))]
   public class DocumentManifestRelated : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If both identifier and ref elements are present they shall refer to the same thing.
@@ -102,7 +102,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A collection of documents compiled for a purpose together with metadata that applies to the collection.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<DocumentManifest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<DocumentManifest>))]
   public class DocumentManifest : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

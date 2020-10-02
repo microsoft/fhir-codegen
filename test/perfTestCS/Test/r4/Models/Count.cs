@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Count>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Count>))]
   public class Count : Quantity,  IFhirJsonSerializable {
     /// <summary>
     /// Serialize to a JSON object

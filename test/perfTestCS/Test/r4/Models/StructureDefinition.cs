@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An external specification that the content is mapped to.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureDefinitionMapping>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureDefinitionMapping>))]
   public class StructureDefinitionMapping : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage.
@@ -184,7 +184,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies the types of resource or data type elements to which the extension can be applied.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureDefinitionContext>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureDefinitionContext>))]
   public class StructureDefinitionContext : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An expression that defines where an extension can be used in resources.
@@ -300,7 +300,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A snapshot view is expressed in a standalone form that can be used and interpreted without considering the base StructureDefinition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureDefinitionSnapshot>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureDefinitionSnapshot>))]
   public class StructureDefinitionSnapshot : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Captures constraints on each element within the resource.
@@ -404,7 +404,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureDefinitionDifferential>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureDefinitionDifferential>))]
   public class StructureDefinitionDifferential : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Captures constraints on each element within the resource.
@@ -508,7 +508,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureDefinition>))]
   public class StructureDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

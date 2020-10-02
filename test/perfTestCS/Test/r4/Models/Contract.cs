@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Precusory content developed with a focus and intent of supporting the formation a Contract instance, which may be associated with and transformable into a Contract.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractContentDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractContentDefinition>))]
   public class ContractContentDefinition : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A copyright statement relating to Contract precursor content. Copyright statements are generally legal restrictions on the use and publishing of the Contract precursor content.
@@ -198,7 +198,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Security labels that protect the handling of information about the term and its elements, which may be specifically identified..
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTermSecurityLabel>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTermSecurityLabel>))]
   public class ContractTermSecurityLabel : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Security label privacy tag that species the applicable privacy and security policies governing this term and/or term elements.
@@ -400,7 +400,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Offer Recipient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTermOfferParty>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTermOfferParty>))]
   public class ContractTermOfferParty : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Participant in the offer.
@@ -516,7 +516,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Response to offer text.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTermOfferAnswer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTermOfferAnswer>))]
   public class ContractTermOfferAnswer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.
@@ -809,7 +809,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The matter of concern in the context of this provision of the agrement.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTermOffer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTermOffer>))]
   public class ContractTermOffer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Response to offer text.
@@ -1249,7 +1249,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Circumstance of the asset.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTermAssetContext>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTermAssetContext>))]
   public class ContractTermAssetContext : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Coded representation of the context generally or of the Referenced entity, such as the asset holder type or location.
@@ -1396,7 +1396,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Contract Valued Item List.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTermAssetValuedItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTermAssetValuedItem>))]
   public class ContractTermAssetValuedItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates the time during which this Contract ValuedItem information is effective.
@@ -1844,7 +1844,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Contract Term Asset List.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTermAsset>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTermAsset>))]
   public class ContractTermAsset : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Response to assets.
@@ -2514,7 +2514,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Entity of the action.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTermActionSubject>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTermActionSubject>))]
   public class ContractTermActionSubject : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The entity the action is performed or not performed on or for.
@@ -2634,7 +2634,7 @@ namespace Fhir.R4.Models
   /// Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa.
   /// For example, in cases of actions initiated by one user for other users, or in events that involve more than one user, hardware device, software, or system process. However, only one user may be the initiator/requestor for the event.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTermAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTermAction>))]
   public class ContractTermAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Encounter or Episode with primary association to specified term activity.
@@ -3668,7 +3668,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractTerm>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractTerm>))]
   public class ContractTerm : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa.
@@ -4064,7 +4064,7 @@ namespace Fhir.R4.Models
   /// Signers who are principal parties to the contract are bound by the Contract.activity related to the Contract.topic, and the Contract.term(s), which either extend or restrict the overall action on the topic by, for example, stipulating specific policies or obligations constraining actions, action reason, or agents with respect to some or all of the topic.
   /// For example, specifying how policies or obligations shall constrain actions and action reasons permitted or denied on all or a subset of the Contract.topic (e.g., all or a portion of property being transferred by the contract), agents (e.g., who can resell, assign interests, or alter the property being transferred by the contract), actions, and action reasons; or with respect to Contract.terms, stipulating, extending, or limiting the Contract.period of applicability or valuation of items under consideration.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractSigner>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractSigner>))]
   public class ContractSigner : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Party which is a signator to this Contract.
@@ -4192,7 +4192,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractFriendly>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractFriendly>))]
   public class ContractFriendly : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.
@@ -4276,7 +4276,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// List of Legal expressions or representations of this Contract.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractLegal>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractLegal>))]
   public class ContractLegal : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Contract legal text in human renderable form.
@@ -4360,7 +4360,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// List of Computable Policy Rule Language Representations of this Contract.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ContractRule>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ContractRule>))]
   public class ContractRule : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal).
@@ -4444,7 +4444,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Contract>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Contract>))]
   public class Contract : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

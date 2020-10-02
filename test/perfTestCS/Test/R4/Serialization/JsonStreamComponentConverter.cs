@@ -12,7 +12,7 @@ namespace Fhir.R4.Serialization
   /// <summary>
   /// Common converter to support deserialization of non-resource FHIR components.
   /// </summary>
-  public class JsonComponentConverter<T> : JsonConverter<T>
+  public class JsonStreamComponentConverter<T> : JsonConverter<T>
     where T : IFhirJsonSerializable, new()
   {
     /// <summary>

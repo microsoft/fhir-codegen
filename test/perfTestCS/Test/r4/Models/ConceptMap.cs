@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConceptMapGroupElementTargetDependsOn>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConceptMapGroupElementTargetDependsOn>))]
   public class ConceptMapGroupElementTargetDependsOn : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The display is ignored when processing the map.
@@ -184,7 +184,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Ideally there would only be one map, with equal or equivalent mapping. But multiple maps are allowed for several narrower options, or to assert that other concepts are unmatched.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConceptMapGroupElementTarget>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConceptMapGroupElementTarget>))]
   public class ConceptMapGroupElementTarget : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Identity (code or path) or the element/item that the map refers to.
@@ -444,7 +444,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Generally, the ideal is that there would only be one mapping for each concept in the source value set, but a given concept may be mapped multiple times with different comments or dependencies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConceptMapGroupElement>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConceptMapGroupElement>))]
   public class ConceptMapGroupElement : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Identity (code or path) or the element/item being mapped.
@@ -604,7 +604,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This only applies if the source code has a system value that matches the system defined for the group.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConceptMapGroupUnmapped>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConceptMapGroupUnmapped>))]
   public class ConceptMapGroupUnmapped : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The fixed code to use when the mode = 'fixed'  - all unmapped codes are mapped to a single fixed code.
@@ -776,7 +776,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A group of mappings that all have the same source and target system.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConceptMapGroup>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConceptMapGroup>))]
   public class ConceptMapGroup : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Generally, the ideal is that there would only be one mapping for each concept in the source value set, but a given concept may be mapped multiple times with different comments or dependencies.
@@ -1007,7 +1007,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ConceptMap>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ConceptMap>))]
   public class ConceptMap : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

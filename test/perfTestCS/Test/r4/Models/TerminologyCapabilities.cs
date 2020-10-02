@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Software that is covered by this terminology capability statement.  It is used when the statement describes the capabilities of a particular software version, independent of an installation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesSoftware>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesSoftware>))]
   public class TerminologyCapabilitiesSoftware : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Name the software is known by.
@@ -128,7 +128,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies a specific implementation instance that is described by the terminology capability statement - i.e. a particular installation, rather than the capabilities of a software program.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesImplementation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesImplementation>))]
   public class TerminologyCapabilitiesImplementation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Information about the specific installation that this terminology capability statement relates to.
@@ -244,7 +244,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Filter Properties supported.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesCodeSystemVersionFilter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesCodeSystemVersionFilter>))]
   public class TerminologyCapabilitiesCodeSystemVersionFilter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Code of the property supported.
@@ -418,7 +418,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Language translations might not be available for all codes.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesCodeSystemVersion>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesCodeSystemVersion>))]
   public class TerminologyCapabilitiesCodeSystemVersion : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// For version-less code systems, there should be a single version with no identifier.
@@ -748,7 +748,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The code system - identified by its system URL - may also be declared explicitly as a Code System Resource at /CodeSystem, but it might not be.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesCodeSystem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesCodeSystem>))]
   public class TerminologyCapabilitiesCodeSystem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// True if subsumption is supported for this version of the code system.
@@ -893,7 +893,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Supported expansion parameter.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesExpansionParameter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesExpansionParameter>))]
   public class TerminologyCapabilitiesExpansionParameter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Description of support for parameter.
@@ -1009,7 +1009,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about the [ValueSet/$expand](valueset-operation-expand.html) operation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesExpansion>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesExpansion>))]
   public class TerminologyCapabilitiesExpansion : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Whether the server can return nested value sets.
@@ -1180,7 +1180,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesValidateCode>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesValidateCode>))]
   public class TerminologyCapabilitiesValidateCode : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Whether translations are validated.
@@ -1250,7 +1250,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about the [ConceptMap/$translate](conceptmap-operation-translate.html) operation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesTranslation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesTranslation>))]
   public class TerminologyCapabilitiesTranslation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Whether the client must identify the map.
@@ -1320,7 +1320,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Whether the $closure operation is supported.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilitiesClosure>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilitiesClosure>))]
   public class TerminologyCapabilitiesClosure : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If cross-system closure is supported.
@@ -1393,7 +1393,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A TerminologyCapabilities resource documents a set of capabilities (behaviors) of a FHIR Terminology Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TerminologyCapabilities>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TerminologyCapabilities>))]
   public class TerminologyCapabilities : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

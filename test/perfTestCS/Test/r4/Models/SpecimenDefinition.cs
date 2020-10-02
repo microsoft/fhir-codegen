@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SpecimenDefinitionTypeTestedContainerAdditive>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SpecimenDefinitionTypeTestedContainerAdditive>))]
   public class SpecimenDefinitionTypeTestedContainerAdditive : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.
@@ -96,7 +96,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The specimen's container.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SpecimenDefinitionTypeTestedContainer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SpecimenDefinitionTypeTestedContainer>))]
   public class SpecimenDefinitionTypeTestedContainer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.
@@ -359,7 +359,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Set of instructions for preservation/transport of the specimen at a defined temperature interval, prior the testing process.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SpecimenDefinitionTypeTestedHandling>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SpecimenDefinitionTypeTestedHandling>))]
   public class SpecimenDefinitionTypeTestedHandling : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Additional textual instructions for the preservation or transport of the specimen. For instance, 'Protect from light exposure'.
@@ -492,7 +492,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Specimen conditioned in a container as expected by the testing laboratory.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SpecimenDefinitionTypeTested>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SpecimenDefinitionTypeTested>))]
   public class SpecimenDefinitionTypeTested : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The specimen's container.
@@ -754,7 +754,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A kind of specimen with associated set of requirements.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SpecimenDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SpecimenDefinition>))]
   public class SpecimenDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

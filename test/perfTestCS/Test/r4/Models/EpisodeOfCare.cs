@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EpisodeOfCareStatusHistory>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EpisodeOfCareStatusHistory>))]
   public class EpisodeOfCareStatusHistory : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The period during this EpisodeOfCare that the specific status applied.
@@ -112,7 +112,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The list of diagnosis relevant to this episode of care.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EpisodeOfCareDiagnosis>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EpisodeOfCareDiagnosis>))]
   public class EpisodeOfCareDiagnosis : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.
@@ -212,7 +212,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EpisodeOfCare>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EpisodeOfCare>))]
   public class EpisodeOfCare : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

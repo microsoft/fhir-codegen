@@ -2,7 +2,10 @@
 // Built from: hl7.fhir.r4.core version: 4.0.1
 
 using System;
+using System.Buffers;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Fhir.R4.Models;
@@ -12,8 +15,16 @@ namespace Fhir.R4.Serialization
   /// <summary>
   /// Common resource converter to support polymorphic deserialization.
   /// </summary>
-  public class JsonResourceConverter : JsonConverter<Resource>
+  public class JsonStreamResourceConverter : JsonConverter<Resource>
   {
+    private static readonly byte[] _startObject = Encoding.UTF8.GetBytes("{");
+    private static readonly byte[] _endObject = Encoding.UTF8.GetBytes("}");
+    private static readonly byte[] _startArray = Encoding.UTF8.GetBytes("[");
+    private static readonly byte[] _endArray = Encoding.UTF8.GetBytes("]");
+    private static readonly byte[] _comma = Encoding.UTF8.GetBytes(",");
+    private static readonly byte[] _propertySep = Encoding.UTF8.GetBytes(":");
+    private static readonly byte[] _quote = Encoding.UTF8.GetBytes("\"");
+
     /// <summary>
     /// Determines whether the specified type can be converted.
     /// </summary>
@@ -467,6 +478,7 @@ namespace Fhir.R4.Serialization
           break;
       }
     }
+
     /// <summary>
     /// Reads and converts the JSON to a typed object.
     /// </summary>
@@ -474,11 +486,51 @@ namespace Fhir.R4.Serialization
     {
       return PolymorphicRead(ref reader, typeToConvert, options);
     }
+
     /// <summary>
-    /// Read override to handle polymorphic reading of resources (allowing for open reader).
+    /// Copy raw data from a Utf8JsonReader to a MemoryStream.
+    /// </summary>
+    private static void WriteReaderValueBytes(ref MemoryStream ms, ref Utf8JsonReader reader)
+    {
+      if (reader.HasValueSequence)
+      {
+        byte[] data = new byte[reader.ValueSequence.Length];
+        reader.ValueSequence.CopyTo(data);
+        ms.Write(data);
+        return;
+      }
+
+      ms.Write(reader.ValueSpan);
+    }
+
+    /// <summary>
+    /// Add a JSON seperator token, if necessary.
+    /// </summary>
+    private static void AddSeperatorIfNeeded(ref MemoryStream ms, ref Utf8JsonReader reader, JsonTokenType last)
+    {
+      switch (last)
+      {
+        case JsonTokenType.StartObject:
+        case JsonTokenType.StartArray:
+          // do nothing
+          break;
+        case JsonTokenType.PropertyName:
+          ms.Write(_propertySep);
+          break;
+        default:
+          ms.Write(_comma);
+          break;
+      }
+    }
+
+    /// <summary>
+    /// Read override to handle polymorphic reading of resources.
     /// </summary>
     public static Resource PolymorphicRead(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
+      string propertyName = null;
+      string resourceType = null;
+
       if (reader.TokenType != JsonTokenType.StartObject)
       {
         throw new JsonException();
@@ -490,19 +542,109 @@ namespace Fhir.R4.Serialization
         throw new JsonException();
       }
 
-      string propertyName = reader.GetString();
-      if (propertyName != "resourceType")
+      propertyName = reader.GetString();
+      if (propertyName == "resourceType")
       {
-        throw new JsonException();
+        reader.Read();
+        if (reader.TokenType != JsonTokenType.String)
+        {
+          throw new JsonException();
+        }
+
+        resourceType = reader.GetString();
+
+        return DoPolymorphicRead(ref reader, options, resourceType);
       }
 
-      reader.Read();
-      if (reader.TokenType != JsonTokenType.String)
+      MemoryStream ms = new MemoryStream(4096);
+
+      ms.Write(Encoding.UTF8.GetBytes($"{{\"{propertyName}\""));
+      propertyName = string.Empty;
+
+      int depth = reader.CurrentDepth;
+      bool done = false;
+      bool nextValueIsResourceType = false;
+      JsonTokenType lastToken = JsonTokenType.PropertyName;
+
+      while ((!done) && reader.Read())
       {
-        throw new JsonException();
+        switch (reader.TokenType)
+        {
+          case JsonTokenType.StartObject:
+            AddSeperatorIfNeeded(ref ms, ref reader, lastToken);
+            ms.Write(_startObject);
+            break;
+
+          case JsonTokenType.EndObject:
+            ms.Write(_endObject);
+            if (reader.CurrentDepth == (depth - 1))
+            {
+              done = true;
+            }
+            break;
+
+          case JsonTokenType.StartArray:
+            AddSeperatorIfNeeded(ref ms, ref reader, lastToken);
+            ms.Write(_startArray);
+            break;
+
+          case JsonTokenType.EndArray:
+            ms.Write(_endArray);
+            break;
+
+          case JsonTokenType.PropertyName:
+            AddSeperatorIfNeeded(ref ms, ref reader, lastToken);
+            if (reader.CurrentDepth == depth)
+            {
+              if (reader.ValueTextEquals("resourceType"))
+              {
+                nextValueIsResourceType = true;
+              }
+            }
+
+            ms.Write(_quote);
+            WriteReaderValueBytes(ref ms, ref reader);
+            ms.Write(_quote);
+            break;
+
+          case JsonTokenType.Comment:
+            break;
+
+          case JsonTokenType.String:
+            AddSeperatorIfNeeded(ref ms, ref reader, lastToken);
+            if (nextValueIsResourceType)
+            {
+              resourceType = reader.GetString();
+              nextValueIsResourceType = false;
+            }
+
+            ms.Write(_quote);
+            WriteReaderValueBytes(ref ms, ref reader);
+            ms.Write(_quote);
+            break;
+
+          case JsonTokenType.Number:
+          case JsonTokenType.True:
+          case JsonTokenType.False:
+          case JsonTokenType.Null:
+          default:
+            AddSeperatorIfNeeded(ref ms, ref reader, lastToken);
+            WriteReaderValueBytes(ref ms, ref reader);
+            break;
+        }
+
+        lastToken = reader.TokenType;
       }
 
-      string resourceType = reader.GetString();
+      Utf8JsonReader secondary = new Utf8JsonReader(ms.ToArray());
+
+      return DoPolymorphicRead(ref secondary, options, resourceType);
+    }
+    /// <summary>
+    /// Sub-function for simpler handling of reader switching.
+    /// </summary>
+    public static Resource DoPolymorphicRead(ref Utf8JsonReader reader, JsonSerializerOptions options, string resourceType)
+    {
       IFhirJsonSerializable target = null;
       switch (resourceType)
       {

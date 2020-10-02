@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// How this product was collected.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BiologicallyDerivedProductCollection>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BiologicallyDerivedProductCollection>))]
   public class BiologicallyDerivedProductCollection : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Time of product collection.
@@ -145,7 +145,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Any processing of the product during collection that does not change the fundamental nature of the product. For example adding anti-coagulants during the collection of Peripheral Blood Stem Cells.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BiologicallyDerivedProductProcessing>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BiologicallyDerivedProductProcessing>))]
   public class BiologicallyDerivedProductProcessing : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Substance added during processing.
@@ -306,7 +306,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Any manipulation of product post-collection that is intended to alter the product.  For example a buffy-coat enrichment or CD8 reduction of Peripheral Blood Stem Cells to make it more suitable for infusion.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BiologicallyDerivedProductManipulation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BiologicallyDerivedProductManipulation>))]
   public class BiologicallyDerivedProductManipulation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Description of manipulation.
@@ -437,7 +437,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Product storage.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BiologicallyDerivedProductStorage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BiologicallyDerivedProductStorage>))]
   public class BiologicallyDerivedProductStorage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Description of storage.
@@ -597,7 +597,7 @@ namespace Fhir.R4.Models
   /// A material substance originating from a biological entity intended to be transplanted or infused
   /// into another (possibly the same) biological entity.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BiologicallyDerivedProduct>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BiologicallyDerivedProduct>))]
   public class BiologicallyDerivedProduct : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

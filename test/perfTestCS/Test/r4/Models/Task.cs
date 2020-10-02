@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TaskRestriction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TaskRestriction>))]
   public class TaskRestriction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Note that period.high is the due date representing the time by which the task should be completed.
@@ -144,7 +144,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Additional information that may be needed in the execution of the task.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TaskInput>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TaskInput>))]
   public class TaskInput : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If referencing a BPMN workflow or Protocol, the "system" is the URL for the workflow definition and the code is the "name" of the required input.
@@ -1027,7 +1027,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Outputs produced by the Task.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<TaskOutput>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<TaskOutput>))]
   public class TaskOutput : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The name of the Output parameter.
@@ -1910,7 +1910,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A task to be performed.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Task>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Task>))]
   public class Task : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

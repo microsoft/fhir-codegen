@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Text, attachment(s), or resource(s) that was communicated to the recipient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CommunicationPayload>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CommunicationPayload>))]
   public class CommunicationPayload : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A communicated content (or for multi-part communications, one portion of the communication).
@@ -124,7 +124,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Communication>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Communication>))]
   public class Communication : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

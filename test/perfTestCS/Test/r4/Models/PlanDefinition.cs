@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates what should be done and within what timeframe.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PlanDefinitionGoalTarget>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PlanDefinitionGoalTarget>))]
   public class PlanDefinitionGoalTarget : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value.
@@ -147,7 +147,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Goals that describe what the activities within the plan are intended to achieve. For example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PlanDefinitionGoal>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PlanDefinitionGoal>))]
   public class PlanDefinitionGoal : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Identifies problems, conditions, issues, or concerns the goal is intended to address.
@@ -396,7 +396,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// When multiple conditions of the same kind are present, the effects are combined using AND semantics, so the overall condition is true only if all the conditions are true.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PlanDefinitionActionCondition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PlanDefinitionActionCondition>))]
   public class PlanDefinitionActionCondition : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The expression may be inlined or may be a reference to a named expression within a logic library referenced by the library element.
@@ -499,7 +499,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// When an action depends on multiple actions, the meaning is that all actions are dependencies, rather than that any of the actions are a dependency.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PlanDefinitionActionRelatedAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PlanDefinitionActionRelatedAction>))]
   public class PlanDefinitionActionRelatedAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The element id of the related action.
@@ -645,7 +645,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates who should participate in performing the action described.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PlanDefinitionActionParticipant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PlanDefinitionActionParticipant>))]
   public class PlanDefinitionActionParticipant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The role the participant should play in performing the described action.
@@ -748,7 +748,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Dynamic values are applied in the order in which they are defined in the PlanDefinition resource. Note that when dynamic values are also specified by a referenced ActivityDefinition, the dynamicValues from the ActivityDefinition are applied first, followed by the dynamicValues specified here. In addition, if both a transform and dynamic values are specific, the dynamic values are applied to the result of the transform.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PlanDefinitionActionDynamicValue>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PlanDefinitionActionDynamicValue>))]
   public class PlanDefinitionActionDynamicValue : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The expression may be inlined or may be a reference to a named expression within a logic library referenced by the library element.
@@ -851,7 +851,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Note that there is overlap between many of the elements defined here and the ActivityDefinition resource. When an ActivityDefinition is referenced (using the definition element), the overlapping elements in the plan override the content of the referenced ActivityDefinition unless otherwise documented in the specific elements. See the PlanDefinition resource for more detailed information.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PlanDefinitionAction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PlanDefinitionAction>))]
   public class PlanDefinitionAction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Sub actions that are contained within the action. The behavior of this action determines the functionality of the sub-actions. For example, a selection behavior of at-most-one indicates that of the sub-actions, at most one may be chosen as part of realizing the action definition.
@@ -1995,7 +1995,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PlanDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PlanDefinition>))]
   public class PlanDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

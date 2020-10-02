@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PatientContact>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PatientContact>))]
   public class PatientContact : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Address for the contact person.
@@ -248,7 +248,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes, then you need multiple Patient.Communication associations.   For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PatientCommunication>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PatientCommunication>))]
   public class PatientCommunication : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
@@ -333,7 +333,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// There is no assumption that linked patient records have mutual links.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PatientLink>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PatientLink>))]
   public class PatientLink : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Referencing a RelatedPerson here removes the need to use a Person record to associate a Patient and RelatedPerson as the same individual.
@@ -433,7 +433,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Demographics and other administrative information about an individual or animal receiving care or other health-related services.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Patient>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Patient>))]
   public class Patient : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

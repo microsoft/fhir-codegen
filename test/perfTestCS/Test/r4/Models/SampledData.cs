@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SampledData>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SampledData>))]
   public class SampledData : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Data may be missing if it is omitted for summarization purposes. In general, data is required for any actual use of a SampledData.

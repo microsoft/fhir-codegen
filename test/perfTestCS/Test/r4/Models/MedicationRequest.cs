@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If populating this element, either the quantity or the duration must be included.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationRequestDispenseRequestInitialFill>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationRequestDispenseRequestInitialFill>))]
   public class MedicationRequestDispenseRequestInitialFill : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The length of time that the first dispense is expected to last.
@@ -102,7 +102,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates the specific details for the dispense or medication supply part of a medication request (also known as a Medication Prescription or Medication Order).  Note that this information is not always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationRequestDispenseRequest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationRequestDispenseRequest>))]
   public class MedicationRequestDispenseRequest : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The minimum period of time that must occur between dispenses of the medication.
@@ -265,7 +265,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates whether or not substitution can or should be part of the dispense. In some cases, substitution must happen, in other cases substitution must not happen. This block explains the prescriber's intent. If nothing is specified substitution may be done.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationRequestSubstitution>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationRequestSubstitution>))]
   public class MedicationRequestSubstitution : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This element is labeled as a modifier because whether substitution is allow or not, it cannot be ignored.
@@ -362,7 +362,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationRequest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationRequest>))]
   public class MedicationRequest : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

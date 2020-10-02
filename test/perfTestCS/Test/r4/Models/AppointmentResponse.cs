@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AppointmentResponse>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AppointmentResponse>))]
   public class AppointmentResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

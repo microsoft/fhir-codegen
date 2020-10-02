@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Coding words or phrases of the name.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductNameNamePart>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductNameNamePart>))]
   public class MedicinalProductNameNamePart : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A fragment of a product name.
@@ -112,7 +112,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Country where the name applies.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductNameCountryLanguage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductNameCountryLanguage>))]
   public class MedicinalProductNameCountryLanguage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Country code for where this name applies.
@@ -211,7 +211,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The product's name, including full name and possibly coded parts.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductName>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductName>))]
   public class MedicinalProductName : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Country where the name applies.
@@ -387,7 +387,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An operation applied to the product, for manufacturing or adminsitrative purpose.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductManufacturingBusinessOperation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductManufacturingBusinessOperation>))]
   public class MedicinalProductManufacturingBusinessOperation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Regulatory authorization reference number.
@@ -579,7 +579,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates if the medicinal product has an orphan designation for the treatment of a rare disease.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProductSpecialDesignation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProductSpecialDesignation>))]
   public class MedicinalProductSpecialDesignation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Date when the designation was granted.
@@ -801,7 +801,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicinalProduct>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicinalProduct>))]
   public class MedicinalProduct : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

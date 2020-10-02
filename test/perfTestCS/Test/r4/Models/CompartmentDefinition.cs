@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about how a resource is related to the compartment.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CompartmentDefinitionResource>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CompartmentDefinitionResource>))]
   public class CompartmentDefinitionResource : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The name of a resource supported by the server.
@@ -214,7 +214,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A compartment definition that defines how resources are accessed on a server.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CompartmentDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CompartmentDefinition>))]
   public class CompartmentDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

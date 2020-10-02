@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates who or what performed or participated in the charged service.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InvoiceParticipant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InvoiceParticipant>))]
   public class InvoiceParticipant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The device, practitioner, etc. who performed or participated in the service.
@@ -99,7 +99,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice as to how the prices have been calculated.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InvoiceLineItemPriceComponent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InvoiceLineItemPriceComponent>))]
   public class InvoiceLineItemPriceComponent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// There is no reason to carry the price in the instance of a ChargeItem unless circumstances require a manual override. The list prices or are usually defined in a back catalogue of the billing codes  (see ChargeItem.definition). Derived profiles may require a ChargeItem.overrideReason to be provided if either factor or price are manually overridden.
@@ -245,7 +245,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Each line item represents one charge for goods and services rendered. Details such as date, code and amount are found in the referenced ChargeItem resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<InvoiceLineItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<InvoiceLineItem>))]
   public class InvoiceLineItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference.
@@ -386,7 +386,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Invoice>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Invoice>))]
   public class Invoice : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

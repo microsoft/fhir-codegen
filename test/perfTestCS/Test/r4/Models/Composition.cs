@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Only list each attester once.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CompositionAttester>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CompositionAttester>))]
   public class CompositionAttester : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The type of attestation the authenticator offers.
@@ -143,7 +143,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A document is a version specific composition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CompositionRelatesTo>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CompositionRelatesTo>))]
   public class CompositionRelatesTo : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// If this document appends another document, then the document cannot be fully understood without also accessing the referenced document.
@@ -255,7 +255,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The event needs to be consistent with the type element, though can provide further information if desired.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CompositionEvent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CompositionEvent>))]
   public class CompositionEvent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// An event can further specialize the act inherent in the typeCode, such as where it is simply "Procedure Report" and the procedure was a "colonoscopy". If one or more eventCodes are included, they SHALL NOT conflict with the values inherent in the classCode, practiceSettingCode or typeCode, as such a conflict would create an ambiguous situation. This short list of codes is provided to be used as key words for certain types of queries.
@@ -418,7 +418,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The root of the sections that make up the composition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CompositionSection>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CompositionSection>))]
   public class CompositionSection : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Identifies who is responsible for the information in this section, not necessarily who typed it in.
@@ -742,7 +742,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Composition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Composition>))]
   public class Composition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

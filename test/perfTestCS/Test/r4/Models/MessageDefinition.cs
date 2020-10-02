@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MessageDefinitionFocus>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MessageDefinitionFocus>))]
   public class MessageDefinitionFocus : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Multiple focuses addressing different resources may occasionally occur.  E.g. to link or unlink a resource from a particular account or encounter, etc.
@@ -166,7 +166,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This indicates an application level response to "close" a transaction implicit in a particular request message.  To define a complete workflow scenario, look to the [[PlanDefinition]] resource which allows the definition of complex orchestrations, conditionality, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MessageDefinitionAllowedResponse>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MessageDefinitionAllowedResponse>))]
   public class MessageDefinitionAllowedResponse : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A reference to the message definition that must be adhered to by this supported response.
@@ -282,7 +282,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MessageDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MessageDefinition>))]
   public class MessageDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

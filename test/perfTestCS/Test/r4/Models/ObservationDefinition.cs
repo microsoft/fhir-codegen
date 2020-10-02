@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Characteristics for quantitative results of this observation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ObservationDefinitionQuantitativeDetails>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ObservationDefinitionQuantitativeDetails>))]
   public class ObservationDefinitionQuantitativeDetails : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Factor for converting value expressed with SI unit to value expressed with customary unit.
@@ -143,7 +143,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Multiple  ranges of results qualified by different contexts for ordinal or continuous observations conforming to this ObservationDefinition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ObservationDefinitionQualifiedInterval>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ObservationDefinitionQualifiedInterval>))]
   public class ObservationDefinitionQualifiedInterval : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Some analytes vary greatly over age.
@@ -391,7 +391,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ObservationDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ObservationDefinition>))]
   public class ObservationDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

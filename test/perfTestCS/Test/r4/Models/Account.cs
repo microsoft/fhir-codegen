@@ -14,7 +14,7 @@ namespace Fhir.R4.Models
   /// Local or jurisdictional business rules may determine which coverage covers which types of billable items charged to the account, and in which order.
   /// Where the order is important, a local/jurisdictional extension may be defined to specify the order for the type of charge.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AccountCoverage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AccountCoverage>))]
   public class AccountCoverage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The party(s) that contribute to payment (or part of) of the charges applied to this account (including self-pay).
@@ -100,7 +100,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The parties responsible for balancing the account if other payment options fall short.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AccountGuarantor>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AccountGuarantor>))]
   public class AccountGuarantor : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A guarantor may be placed on credit hold or otherwise have their role temporarily suspended.
@@ -200,7 +200,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centers, etc.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Account>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Account>))]
   public class Account : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

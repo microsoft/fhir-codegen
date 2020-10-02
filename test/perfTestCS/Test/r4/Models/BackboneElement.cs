@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Base definition for all elements that are defined inside a resource - but not those in a data type.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<BackboneElement>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<BackboneElement>))]
   public class BackboneElement : Element,  IFhirJsonSerializable {
     /// <summary>
     /// There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The populations that make up the population group, one for each type of population appropriate for the measure.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureReportGroupPopulation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureReportGroupPopulation>))]
   public class MeasureReportGroupPopulation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The type of the population.
@@ -115,7 +115,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A stratifier component value.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureReportGroupStratifierStratumComponent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureReportGroupStratifierStratumComponent>))]
   public class MeasureReportGroupStratifierStratumComponent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The code for the stratum component value.
@@ -199,7 +199,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The populations that make up the stratum, one for each type of population appropriate to the measure.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureReportGroupStratifierStratumPopulation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureReportGroupStratifierStratumPopulation>))]
   public class MeasureReportGroupStratifierStratumPopulation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The type of the population.
@@ -302,7 +302,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureReportGroupStratifierStratum>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureReportGroupStratifierStratum>))]
   public class MeasureReportGroupStratifierStratum : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A stratifier component value.
@@ -480,7 +480,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureReportGroupStratifier>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureReportGroupStratifier>))]
   public class MeasureReportGroupStratifier : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The meaning of this stratifier, as defined in the measure definition.
@@ -628,7 +628,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The results of the calculation, one for each population group in the measure.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureReportGroup>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureReportGroup>))]
   public class MeasureReportGroup : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The meaning of the population group as defined in the measure definition.
@@ -806,7 +806,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MeasureReport>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MeasureReport>))]
   public class MeasureReport : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

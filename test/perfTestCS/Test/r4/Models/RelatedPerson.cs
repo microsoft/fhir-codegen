@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes, then you need multiple RelatedPerson.Communication associations.   If the RelatedPerson does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RelatedPersonCommunication>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RelatedPersonCommunication>))]
   public class RelatedPersonCommunication : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
@@ -97,7 +97,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<RelatedPerson>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<RelatedPerson>))]
   public class RelatedPerson : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Logical network location for application activity, if the activity has a network location.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AuditEventAgentNetwork>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AuditEventAgentNetwork>))]
   public class AuditEventAgentNetwork : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This could be a device id, IP address or some other identifier associated with a device.
@@ -129,7 +129,7 @@ namespace Fhir.R4.Models
   /// Several agents may be associated (i.e. have some responsibility for an activity) with an event or activity.
   /// For example, an activity may be initiated by one user for other users or involve more than one user. However, only one user may be the initiator/requestor for the activity.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AuditEventAgent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AuditEventAgent>))]
   public class AuditEventAgent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Alternative agent Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g. single sign-on), if available.
@@ -504,7 +504,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Since multi-tier, distributed, or composite applications make source identification ambiguous, this collection of fields may repeat for each application or process actively involved in the event. For example, multiple value-sets can identify participating web servers, application processes, and database server threads in an n-tier distributed application. Passive event participants (e.g. low-level network transports) need not be identified.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AuditEventSource>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AuditEventSource>))]
   public class AuditEventSource : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Identifier of the source where the event was detected.
@@ -648,7 +648,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Tagged value pairs for conveying additional information about the entity.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AuditEventEntityDetail>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AuditEventEntityDetail>))]
   public class AuditEventEntityDetail : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The type of extra detail provided in the value.
@@ -792,7 +792,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Required unless the values for event identification, agent identification, and audit source identification are sufficient to document the entire auditable event. Because events may have more than one entity, this group can be a repeating set of values.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AuditEventEntity>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AuditEventEntity>))]
   public class AuditEventEntity : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Text that describes the entity in more detail.
@@ -1084,7 +1084,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<AuditEvent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<AuditEvent>))]
   public class AuditEvent : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

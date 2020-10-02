@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Actor participating in the resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExampleScenarioActor>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExampleScenarioActor>))]
   public class ExampleScenarioActor : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// should this be called ID or acronym?
@@ -184,7 +184,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A specific version of the resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExampleScenarioInstanceVersion>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExampleScenarioInstanceVersion>))]
   public class ExampleScenarioInstanceVersion : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The description of the resource version.
@@ -300,7 +300,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Resources contained in the instance (e.g. the observations contained in a bundle).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExampleScenarioInstanceContainedInstance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExampleScenarioInstanceContainedInstance>))]
   public class ExampleScenarioInstanceContainedInstance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Each resource contained in the instance.
@@ -416,7 +416,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Each resource and each version that is present in the workflow.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExampleScenarioInstance>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExampleScenarioInstance>))]
   public class ExampleScenarioInstance : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Resources contained in the instance (e.g. the observations contained in a bundle).
@@ -676,7 +676,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Each interaction or action.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExampleScenarioProcessStepOperation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExampleScenarioProcessStepOperation>))]
   public class ExampleScenarioProcessStepOperation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A comment to be inserted in the diagram.
@@ -960,7 +960,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates an alternative step that can be taken instead of the operations on the base step in exceptional/atypical circumstances.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExampleScenarioProcessStepAlternative>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExampleScenarioProcessStepAlternative>))]
   public class ExampleScenarioProcessStepAlternative : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A human-readable description of the alternative explaining when the alternative should occur rather than the base step.
@@ -1120,7 +1120,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Each step of the process.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExampleScenarioProcessStep>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExampleScenarioProcessStep>))]
   public class ExampleScenarioProcessStep : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates an alternative step that can be taken instead of the operations on the base step in exceptional/atypical circumstances.
@@ -1296,7 +1296,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Each major process - a group of operations.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExampleScenarioProcess>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExampleScenarioProcess>))]
   public class ExampleScenarioProcess : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A longer description of the group of operations.
@@ -1512,7 +1512,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Example of workflow instance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ExampleScenario>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ExampleScenario>))]
   public class ExampleScenario : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

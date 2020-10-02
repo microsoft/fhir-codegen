@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides the status of the payment for goods and services rendered, and the request and response resource references.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<PaymentNotice>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<PaymentNotice>))]
   public class PaymentNotice : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

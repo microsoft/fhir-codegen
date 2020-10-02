@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Details where to send notifications when resources are received that meet the criteria.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubscriptionChannel>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubscriptionChannel>))]
   public class SubscriptionChannel : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since there may be more than one, clients should avoid using relative URIs).
@@ -242,7 +242,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system can take an appropriate action.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Subscription>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Subscription>))]
   public class Subscription : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

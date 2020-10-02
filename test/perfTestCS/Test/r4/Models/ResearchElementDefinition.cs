@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Characteristics can be defined flexibly to accommodate different use cases for membership criteria, ranging from simple codes, all the way to using an expression language to express the criteria.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ResearchElementDefinitionCharacteristic>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ResearchElementDefinitionCharacteristic>))]
   public class ResearchElementDefinitionCharacteristic : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Define members of the research element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year).
@@ -496,7 +496,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The ResearchElementDefinition resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ResearchElementDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ResearchElementDefinition>))]
   public class ResearchElementDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// All the identified characteristics must be true for an entity to a member of the group.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<GroupCharacteristic>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<GroupCharacteristic>))]
   public class GroupCharacteristic : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A code that identifies the kind of trait being asserted.
@@ -167,7 +167,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies the resource instances that are members of the group.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<GroupMember>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<GroupMember>))]
   public class GroupMember : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.
@@ -267,7 +267,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Group>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Group>))]
   public class Group : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

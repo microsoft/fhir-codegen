@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// It is not necessary for a structure map to identify any dependent structures, though not listing them may restrict its usefulness.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureMapStructure>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureMapStructure>))]
   public class StructureMapStructure : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This is needed if both types have the same name (e.g. version conversion).
@@ -184,7 +184,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// If no inputs are named, then the entry mappings are type based.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureMapGroupInput>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureMapGroupInput>))]
   public class StructureMapGroupInput : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Documentation for this instance of data.
@@ -356,7 +356,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Source inputs to the mapping.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureMapGroupRuleSource>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureMapGroupRuleSource>))]
   public class StructureMapGroupRuleSource : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// FHIRPath expression  - must be true or the mapping engine throws an error instead of completing.
@@ -1603,7 +1603,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Parameters to the transform.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureMapGroupRuleTargetParameter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureMapGroupRuleTargetParameter>))]
   public class StructureMapGroupRuleTargetParameter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Parameter value - variable or literal.
@@ -1764,7 +1764,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Content to create because of this mapping rule.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureMapGroupRuleTarget>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureMapGroupRuleTarget>))]
   public class StructureMapGroupRuleTarget : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Type or variable this rule applies to.
@@ -2122,7 +2122,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Which other rules to apply in the context of this rule.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureMapGroupRuleDependent>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureMapGroupRuleDependent>))]
   public class StructureMapGroupRuleDependent : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Name of a rule or group to apply.
@@ -2296,7 +2296,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Transform Rule from source to target.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureMapGroupRule>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureMapGroupRule>))]
   public class StructureMapGroupRule : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Which other rules to apply in the context of this rule.
@@ -2588,7 +2588,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Organizes the mapping into manageable chunks for human review/ease of maintenance.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureMapGroup>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureMapGroup>))]
   public class StructureMapGroup : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Additional supporting documentation that explains the purpose of the group and the types of mappings within it.
@@ -2848,7 +2848,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A Map of relationships between 2 structures that can be used to transform data.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<StructureMap>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<StructureMap>))]
   public class StructureMap : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

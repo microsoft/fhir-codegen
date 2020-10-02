@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EnrollmentResponse>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EnrollmentResponse>))]
   public class EnrollmentResponse : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

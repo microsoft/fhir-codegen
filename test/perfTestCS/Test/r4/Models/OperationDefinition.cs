@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OperationDefinitionParameterBinding>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<OperationDefinitionParameterBinding>))]
   public class OperationDefinitionParameterBinding : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// For further discussion, see [Using Terminologies](terminologies.html).
@@ -128,7 +128,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Resolution applies if the referenced parameter exists.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OperationDefinitionParameterReferencedFrom>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<OperationDefinitionParameterReferencedFrom>))]
   public class OperationDefinitionParameterReferencedFrom : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The name of the parameter or dot-separated path of parameter names pointing to the resource parameter that is expected to contain a reference to this resource.
@@ -244,7 +244,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Query Definitions only have one output parameter, named "result". This might not be described, but can be to allow a profile to be defined.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OperationDefinitionParameter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<OperationDefinitionParameter>))]
   public class OperationDefinitionParameter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
@@ -671,7 +671,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The combinations are suggestions as to which sets of parameters to use together, but the combinations are not intended to be authoritative.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OperationDefinitionOverload>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<OperationDefinitionOverload>))]
   public class OperationDefinitionOverload : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Comments to go on overload.
@@ -845,7 +845,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<OperationDefinition>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<OperationDefinition>))]
   public class OperationDefinition : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

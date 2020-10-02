@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A parameter passed to or received from the operation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<ParametersParameter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<ParametersParameter>))]
   public class ParametersParameter : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The name of the parameter (reference to the operation definition).
@@ -1080,7 +1080,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Parameters>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Parameters>))]
   public class Parameters : Resource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

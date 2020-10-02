@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Software that is covered by this capability statement.  It is used when the capability statement describes the capabilities of a particular software version, independent of an installation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementSoftware>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementSoftware>))]
   public class CapabilityStatementSoftware : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Name the software is known by.
@@ -156,7 +156,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies a specific implementation instance that is described by the capability statement - i.e. a particular installation, rather than the capabilities of a software program.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementImplementation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementImplementation>))]
   public class CapabilityStatementImplementation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The organization responsible for the management of the instance and oversight of the data on the server at the specified URL.
@@ -287,7 +287,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Information about security implementation from an interface perspective - what a client needs to know.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementRestSecurity>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementRestSecurity>))]
   public class CapabilityStatementRestSecurity : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The easiest CORS headers to add are Access-Control-Allow-Origin: * &amp; Access-Control-Request-Method: GET, POST, PUT, DELETE. All servers SHOULD support CORS.
@@ -432,7 +432,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// In general, a Resource will only appear in a CapabilityStatement if the server actually has some capabilities - e.g. there is at least one interaction supported. However interactions can be omitted to support summarization (_summary = true).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementRestResourceInteraction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementRestResourceInteraction>))]
   public class CapabilityStatementRestResourceInteraction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Coded identifier of the operation, supported by the system resource.
@@ -548,7 +548,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The search parameters should include the control search parameters such as _sort, _count, etc. that also apply to this resource (though many will be listed at [CapabilityStatement.rest.searchParam](capabilitystatement-definitions.html#CapabilityStatement.rest.searchParam)). The behavior of some search parameters may be further described by other code or extension elements, or narrative within the capability statement or linked [SearchParameter](searchparameter.html#) definitions.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementRestResourceSearchParam>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementRestResourceSearchParam>))]
   public class CapabilityStatementRestResourceSearchParam : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This SHOULD be present, and matches refers to a SearchParameter by its canonical URL. If systems wish to document their support for modifiers, comparators, target resource types, and chained parameters, they should do using a search parameter resource. This element SHALL be populated if the search parameter refers to a SearchParameter defined by the FHIR core specification or externally defined IGs.
@@ -721,7 +721,7 @@ namespace Fhir.R4.Models
   /// Operations linked from CapabilityStatement.rest.resource.operation must have OperationDefinition.type = true or OperationDefinition.instance = true.    
   /// If an operation that is listed in multiple CapabilityStatement.rest.resource.operation (e.g. for different resource types), then clients should understand that the operation is only supported on the specified resource types, and that may be a subset of those listed in OperationDefinition.resource.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementRestResourceOperation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementRestResourceOperation>))]
   public class CapabilityStatementRestResourceOperation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// This can be used to build an HTML form to invoke the operation, for instance.
@@ -865,7 +865,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Max of one repetition per resource type.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementRestResource>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementRestResource>))]
   public class CapabilityStatementRestResource : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Conditional Create is mainly appropriate for interface engine scripts converting from other formats, such as v2.
@@ -1622,7 +1622,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A specification of restful operations supported by the system.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementRestInteraction>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementRestInteraction>))]
   public class CapabilityStatementRestInteraction : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A coded identifier of the operation, supported by the system.
@@ -1738,7 +1738,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Multiple repetitions allow definition of both client and/or server behaviors or possibly behaviors under different configuration settings (for software or requirements statements).
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementRest>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementRest>))]
   public class CapabilityStatementRest : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// At present, the only defined compartments are at [CompartmentDefinition](compartmentdefinition.html).
@@ -2131,7 +2131,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An endpoint (network accessible address) to which messages and/or replies are to be sent.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementMessagingEndpoint>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementMessagingEndpoint>))]
   public class CapabilityStatementMessagingEndpoint : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The network address of the endpoint. For solutions that do not use network addresses for routing, it can be just an identifier.
@@ -2231,7 +2231,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// This is a proposed alternative to the messaging.event structure.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementMessagingSupportedMessage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementMessagingSupportedMessage>))]
   public class CapabilityStatementMessagingSupportedMessage : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Points to a message definition that identifies the messaging event, message structure, allowed responses, etc.
@@ -2347,7 +2347,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Multiple repetitions allow the documentation of multiple endpoints per solution.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementMessaging>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementMessaging>))]
   public class CapabilityStatementMessaging : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Documentation about the system's messaging capabilities for this endpoint not otherwise documented by the capability statement.  For example, the process for becoming an authorized messaging exchange partner.
@@ -2536,7 +2536,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A document definition.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatementDocument>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatementDocument>))]
   public class CapabilityStatementDocument : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// A description of how the application supports or uses the specified document profile.  For example, when documents are created, what action is taken with consumed documents, etc.
@@ -2680,7 +2680,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<CapabilityStatement>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<CapabilityStatement>))]
   public class CapabilityStatement : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

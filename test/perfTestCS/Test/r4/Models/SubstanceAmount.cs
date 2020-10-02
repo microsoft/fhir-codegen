@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Reference range of possible or expected values.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceAmountReferenceRange>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceAmountReferenceRange>))]
   public class SubstanceAmountReferenceRange : Element,  IFhirJsonSerializable {
     /// <summary>
     /// Upper limit possible or expected.
@@ -102,7 +102,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Chemical substances are a single substance type whose primary defining element is the molecular structure. Chemical substances shall be defined on the basis of their complete covalent molecular structure; the presence of a salt (counter-ion) and/or solvates (water, alcohols) is also captured. Purity, grade, physical form or particle size are not taken into account in the definition of a chemical substance or in the assignment of a Substance ID.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<SubstanceAmount>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<SubstanceAmount>))]
   public class SubstanceAmount : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.

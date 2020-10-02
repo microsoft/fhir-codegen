@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<LinkageItem>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<LinkageItem>))]
   public class LinkageItem : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The resource instance being linked as part of the group.
@@ -112,7 +112,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Linkage>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Linkage>))]
   public class Linkage : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

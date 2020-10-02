@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MarketingStatus>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MarketingStatus>))]
   public class MarketingStatus : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The country in which the marketing authorisation has been granted shall be specified It should be specified using the ISO 3166 ‑ 1 alpha-2 code elements.

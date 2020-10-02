@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates who or what performed the event.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationDispensePerformer>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationDispensePerformer>))]
   public class MedicationDispensePerformer : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The device, practitioner, etc. who performed the action.  It should be assumed that the actor is the dispenser of the medication.
@@ -99,7 +99,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates whether or not substitution was made as part of the dispense.  In some cases, substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.  If nothing is specified, substitution was not done.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationDispenseSubstitution>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationDispenseSubstitution>))]
   public class MedicationDispenseSubstitution : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Indicates the reason for the substitution (or lack of substitution) from what was prescribed.
@@ -272,7 +272,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<MedicationDispense>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<MedicationDispense>))]
   public class MedicationDispense : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name

@@ -12,7 +12,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The current status is always found in the current version of the resource, not the status history.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EncounterStatusHistory>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EncounterStatusHistory>))]
   public class EncounterStatusHistory : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The time that the episode was in the specified status.
@@ -112,7 +112,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EncounterClassHistory>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EncounterClassHistory>))]
   public class EncounterClassHistory : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// inpatient | outpatient | ambulatory | emergency +.
@@ -196,7 +196,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The list of people responsible for providing the service.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EncounterParticipant>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EncounterParticipant>))]
   public class EncounterParticipant : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// Persons involved in the encounter other than the patient.
@@ -330,7 +330,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// The list of diagnosis relevant to this encounter.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EncounterDiagnosis>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EncounterDiagnosis>))]
   public class EncounterDiagnosis : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).
@@ -431,7 +431,7 @@ namespace Fhir.R4.Models
   /// An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.
   /// The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EncounterHospitalization>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EncounterHospitalization>))]
   public class EncounterHospitalization : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// From where patient was admitted (physician referral, transfer).
@@ -713,7 +713,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// Virtual encounters can be recorded in the Encounter by specifying a location reference to a location of type "kind" such as "client's home" and an encounter.class = "virtual".
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<EncounterLocation>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<EncounterLocation>))]
   public class EncounterLocation : BackboneElement,  IFhirJsonSerializable {
     /// <summary>
     /// The location where the encounter takes place.
@@ -844,7 +844,7 @@ namespace Fhir.R4.Models
   /// <summary>
   /// An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
   /// </summary>
-  [JsonConverter(typeof(Fhir.R4.Serialization.JsonComponentConverter<Encounter>))]
+  [JsonConverter(typeof(Fhir.R4.Serialization.JsonStreamComponentConverter<Encounter>))]
   public class Encounter : DomainResource,  IFhirJsonSerializable {
     /// <summary>
     /// Resource Type Name
