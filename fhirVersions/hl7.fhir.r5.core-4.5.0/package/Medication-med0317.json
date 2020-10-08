@@ -1,0 +1,70 @@
+{
+  "resourceType": "Medication",
+  "id": "med0317",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0317</p><p><b>doseForm</b>: <span>Injection Solution (qualifier value)</span></p><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 2 meq/1 mL</p></blockquote><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 0.9 g/100 mL</p></blockquote></div>"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385219001",
+        "display": "Injection Solution (qualifier value)"
+      }
+    ],
+    "text": "Injection Solution (qualifier value)"
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "204520",
+              "display": "Potassium Chloride"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 2,
+          "system": "http://unitsofmeasure.org",
+          "code": "meq"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://unitsofmeasure.org",
+          "code": "mL"
+        }
+      }
+    },
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "313002",
+              "display": "Sodium Chloride 0.9% injectable solution"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 0.9,
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        },
+        "denominator": {
+          "value": 100,
+          "system": "http://unitsofmeasure.org",
+          "code": "mL"
+        }
+      }
+    }
+  ]
+}

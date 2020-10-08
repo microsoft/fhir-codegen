@@ -1,0 +1,36 @@
+{
+  "resourceType": "SubscriptionTopic",
+  "id": "admission",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: admission</p><p><b>url</b>: <a>http://argonautproject.org/subscription-ig/SubscriptionTopic/admission</a></p><p><b>title</b>: admission</p><p><b>status</b>: active</p><blockquote><p><b>resourceTrigger</b></p><p><b>description</b>: Beginning of a clinical encounter</p><p><b>resourceType</b>: Encounter</p><h3>QueryCriteria</h3><table><tr><td>-</td><td><b>Previous</b></td><td><b>Current</b></td><td><b>RequireBoth</b></td></tr><tr><td>*</td><td>status:not=in-progress</td><td>status=in-progress</td><td>true</td></tr></table><p><b>fhirPathCriteria</b>: %previous.status!='in-progress' and %current.status='in-progress'</p></blockquote><h3>CanFilterBies</h3><table><tr><td>-</td><td><b>SearchParamName</b></td><td><b>SearchModifier</b></td><td><b>Documentation</b></td></tr><tr><td>*</td><td>patient</td><td>=</td><td>Matching based on the Patient (subject) of an Encounter or based on the Patient's group membership (in/not-in).</td></tr></table></div>"
+  },
+  "url": "http://argonautproject.org/subscription-ig/SubscriptionTopic/admission",
+  "title": "admission",
+  "status": "active",
+  "resourceTrigger": {
+    "description": "Beginning of a clinical encounter",
+    "resourceType": [
+      "Encounter"
+    ],
+    "queryCriteria": {
+      "previous": "status:not=in-progress",
+      "current": "status=in-progress",
+      "requireBoth": true
+    },
+    "fhirPathCriteria": [
+      "%previous.status!='in-progress' and %current.status='in-progress'"
+    ]
+  },
+  "canFilterBy": [
+    {
+      "searchParamName": "patient",
+      "searchModifier": [
+        "=",
+        "in",
+        "not-in"
+      ],
+      "documentation": "Matching based on the Patient (subject) of an Encounter or based on the Patient's group membership (in/not-in)."
+    }
+  ]
+}

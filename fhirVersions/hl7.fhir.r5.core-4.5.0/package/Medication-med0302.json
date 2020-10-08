@@ -1,0 +1,88 @@
+{
+  "resourceType": "Medication",
+  "id": "med0302",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0302</p><p><b>code</b>: <span>Zosyn (piperacillin/tazobactam) 4.5gm injection</span></p><p><b>manufacturer</b>: <a> </a></p><blockquote><p><b>id</b>: org7</p><p><b>name</b>: Wyeth Pharmaceuticals Inc</p></blockquote><p><b>doseForm</b>: <span>Injection solution (qualifier vallue)</span></p><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 4 g/20 mL</p></blockquote><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 0.5 g/20 mL</p></blockquote></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "org7",
+      "name": "Wyeth Pharmaceuticals Inc"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "0206-8862-02",
+        "display": "Zosyn (piperacillin/tazobactam) 4.5gm injection"
+      }
+    ]
+  },
+  "manufacturer": {
+    "reference": "#org7"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385219001",
+        "display": "Injection solution (qualifier vallue)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "203134",
+              "display": "Piperacillin Sodium"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 4,
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        },
+        "denominator": {
+          "value": 20,
+          "system": "http://unitsofmeasure.org",
+          "code": "mL"
+        }
+      }
+    },
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "221167",
+              "display": "Tazobactam Sodium"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 0.5,
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        },
+        "denominator": {
+          "value": 20,
+          "system": "http://unitsofmeasure.org",
+          "code": "mL"
+        }
+      }
+    }
+  ]
+}

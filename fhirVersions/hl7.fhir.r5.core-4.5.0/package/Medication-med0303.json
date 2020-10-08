@@ -1,0 +1,67 @@
+{
+  "resourceType": "Medication",
+  "id": "med0303",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0303</p><p><b>code</b>: <span>Alemtuzumab 10mg/ml (Lemtrada)</span></p><p><b>manufacturer</b>: <a> </a></p><blockquote><p><b>id</b>: org6</p><p><b>name</b>: Genzyme</p></blockquote><p><b>doseForm</b>: <span>Injection solution (qualifier vallue)</span></p><h3>Ingredients</h3><table><tr><td>-</td><td><b>Item</b></td><td><b>Strength[x]</b></td></tr><tr><td>*</td><td/><td>12 mg/1.2 mL</td></tr></table><h3>Batches</h3><table><tr><td>-</td><td><b>LotNumber</b></td><td><b>ExpirationDate</b></td></tr><tr><td>*</td><td>9494788</td><td>2017-05-22</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "org6",
+      "name": "Genzyme"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1594660",
+        "display": "Alemtuzumab 10mg/ml (Lemtrada)"
+      }
+    ]
+  },
+  "manufacturer": {
+    "reference": "#org6"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385219001",
+        "display": "Injection solution (qualifier vallue)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "129472003",
+              "display": "Alemtuzamab (substance)"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 12,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1.2,
+          "system": "http://unitsofmeasure.org",
+          "code": "mL"
+        }
+      }
+    }
+  ],
+  "batch": {
+    "lotNumber": "9494788",
+    "expirationDate": "2017-05-22"
+  }
+}

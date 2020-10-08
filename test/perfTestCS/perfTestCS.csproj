@@ -21,4 +21,9 @@
     </PackageReference>
     <PackageReference Include="System.CommandLine.DragonFruit" Version="0.3.0-alpha.20427.1" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Test\R2\" />
+    <Folder Include="Test\R3\" />
+    <Folder Include="Test\R5\" />
+  </ItemGroup>
 </Project>

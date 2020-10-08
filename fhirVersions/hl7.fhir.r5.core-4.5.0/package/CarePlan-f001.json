@@ -1,0 +1,109 @@
+{
+  "resourceType": "CarePlan",
+  "id": "f001",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: f001</p><p><b>identifier</b>: id: CP2903 (OFFICIAL)</p><p><b>status</b>: completed</p><p><b>intent</b>: plan</p><p><b>subject</b>: <a>P. van de Heuvel. Generated Summary: id: f001; id: 738472983 (USUAL), id: ?ngen-9? (USUAL); active; Pieter van de Heuvel ; ph: 0648352638(MOBILE), p.heuvel@gmail.com(HOME); gender: male; birthDate: 1944-11-17; <span>Getrouwd</span>; multipleBirth</a></p><p><b>period</b>: 2011-06-26 --&gt; 2011-06-27</p><p><b>careTeam</b>: <a> </a></p><blockquote><p><b>id</b>: careteam</p><h3>Participants</h3><table><tr><td>-</td><td><b>Member</b></td></tr><tr><td>*</td><td><a>P. Voigt. Generated Summary: id: f002; id: 730291637 (OFFICIAL), id: 174BIP3JH438 (USUAL); Pieter Voigt (OFFICIAL); ph: 0205569336(WORK), p.voigt@bmc.nl(WORK), fax: 0205669382(WORK); gender: male; birthDate: 1979-04-29</a></td></tr></table></blockquote><p><b>addresses</b>: </p><p><b>goal</b>: <a> </a></p><blockquote><p><b>id</b>: goal</p><p><b>lifecycleStatus</b>: completed</p><p><b>achievementStatus</b>: <span>Achieved</span></p><p><b>description</b>: <span>recovery surgery on heart of patient</span></p><p><b>subject</b>: <a>P. van de Heuvel. Generated Summary: id: f001; id: 738472983 (USUAL), id: ?ngen-9? (USUAL); active; Pieter van de Heuvel ; ph: 0648352638(MOBILE), p.heuvel@gmail.com(HOME); gender: male; birthDate: 1944-11-17; <span>Getrouwd</span>; multipleBirth</a></p><p><b>note</b>: goal accomplished without complications</p></blockquote><blockquote><p><b>activity</b></p><h3>Details</h3><table><tr><td>-</td><td><b>Kind</b></td><td><b>Code</b></td><td><b>Status</b></td><td><b>DoNotPerform</b></td><td><b>Scheduled[x]</b></td><td><b>Performer</b></td></tr><tr><td>*</td><td>ServiceRequest</td><td><span>Operation on heart</span></td><td>completed</td><td>true</td><td>2011-06-27T09:30:10+01:00</td><td><a>P. Voigt. Generated Summary: id: f002; id: 730291637 (OFFICIAL), id: 174BIP3JH438 (USUAL); Pieter Voigt (OFFICIAL); ph: 0205569336(WORK), p.voigt@bmc.nl(WORK), fax: 0205669382(WORK); gender: male; birthDate: 1979-04-29</a></td></tr></table></blockquote></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "CareTeam",
+      "id": "careteam",
+      "participant": [
+        {
+          "member": {
+            "reference": "Practitioner/f002",
+            "display": "P. Voigt"
+          }
+        }
+      ]
+    },
+    {
+      "resourceType": "Goal",
+      "id": "goal",
+      "lifecycleStatus": "completed",
+      "achievementStatus": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/goal-achievement",
+            "code": "achieved",
+            "display": "Achieved"
+          }
+        ],
+        "text": "Achieved"
+      },
+      "description": {
+        "text": "recovery surgery on heart of patient"
+      },
+      "subject": {
+        "reference": "Patient/f001",
+        "display": "P. van de Heuvel"
+      },
+      "note": [
+        {
+          "text": "goal accomplished without complications"
+        }
+      ]
+    }
+  ],
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://www.bmc.nl/zorgportal/identifiers/careplans",
+      "value": "CP2903"
+    }
+  ],
+  "status": "completed",
+  "intent": "plan",
+  "subject": {
+    "reference": "Patient/f001",
+    "display": "P. van de Heuvel"
+  },
+  "period": {
+    "start": "2011-06-26",
+    "end": "2011-06-27"
+  },
+  "careTeam": [
+    {
+      "reference": "#careteam"
+    }
+  ],
+  "addresses": [
+    {
+      "reference": {
+        "reference": "Condition/f201",
+        "display": "?????"
+      }
+    }
+  ],
+  "goal": [
+    {
+      "reference": "#goal"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "ServiceRequest",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "64915003",
+              "display": "Operation on heart"
+            }
+          ]
+        },
+        "status": "completed",
+        "doNotPerform": true,
+        "scheduledString": "2011-06-27T09:30:10+01:00",
+        "performer": [
+          {
+            "reference": "Practitioner/f002",
+            "display": "P. Voigt"
+          }
+        ]
+      }
+    }
+  ]
+}

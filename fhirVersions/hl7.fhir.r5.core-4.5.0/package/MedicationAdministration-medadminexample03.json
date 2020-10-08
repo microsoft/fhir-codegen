@@ -1,0 +1,64 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "medadminexample03",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: medadminexample03</p><p><b>status</b>: on-hold</p><p><b>statusReason</b>: <span>Administration of medication not done due to a contraindication (situation)</span></p><p><b>medication</b>: </p><p><b>subject</b>: <a>Donald Duck. Generated Summary: id: pat1; Medical record number: 654321 (USUAL); active; Duck Donald (OFFICIAL); gender: male; </a></p><p><b>encounter</b>: <a>Generated Summary: id: f001; id: v1451 (OFFICIAL); status: completed; <span>ambulatory</span>; <span>Patient-initiated encounter</span>; <span>Non-urgent cardiological admission</span>; 140 min; <span>Heart valve replacement</span></a></p><p><b>supportingInformation</b>: <a>Generated Summary: id: f204; <span>Inactive</span>; <span>Differential</span>; <span>Problem</span>; <span>Severe</span>; <span>Acute renal insufficiency specified as due to procedure</span>; <span>Kidney</span>; onset: 2013-03-11; abatement: 2013-03-20; recordedDate: 2013-03-11; The patient is anuric.</a></p><p><b>occurence</b>: 16/01/2015 12:30:00 AM --&gt; 16/01/2015 12:30:00 AM</p><p><b>request</b>: <a>Generated Summary: id: medrx0317; id: 12345689 (OFFICIAL); status: completed; intent: order; <span>#med0303</span>; authoredOn: 2015-01-15; <span>Chronic Lymphoid Leukemia (disorder)</span>; </a></p><p><b>note</b>: Patient started Bupropion this morning - will administer in a reduced dose tomorrow</p></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Medication",
+      "id": "med0303",
+      "code": {
+        "coding": [
+          {
+            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+            "code": "1594660",
+            "display": "Alemtuzumab 10mg/ml (Lemtrada)"
+          }
+        ]
+      }
+    }
+  ],
+  "status": "on-hold",
+  "statusReason": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "373147003",
+          "display": "Administration of medication not done due to a contraindication (situation)"
+        }
+      ]
+    }
+  ],
+  "medication": {
+    "reference": {
+      "reference": "#med0303"
+    }
+  },
+  "subject": {
+    "reference": "Patient/pat1",
+    "display": "Donald Duck"
+  },
+  "encounter": {
+    "reference": "Encounter/f001"
+  },
+  "supportingInformation": [
+    {
+      "reference": "Condition/f204"
+    }
+  ],
+  "occurencePeriod": {
+    "start": "2015-01-15T14:30:00+01:00",
+    "end": "2015-01-15T14:30:00+01:00"
+  },
+  "request": {
+    "reference": "MedicationRequest/medrx0317"
+  },
+  "note": [
+    {
+      "text": "Patient started Bupropion this morning - will administer in a reduced dose tomorrow"
+    }
+  ]
+}
