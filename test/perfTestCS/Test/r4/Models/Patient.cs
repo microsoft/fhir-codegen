@@ -270,8 +270,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("language");
-      Language.SerializeJson(writer, options);
+      if (Language != null)
+      {
+        writer.WritePropertyName("language");
+        Language.SerializeJson(writer, options);
+      }
 
       if (Preferred != null)
       {
@@ -359,8 +362,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("other");
-      Other.SerializeJson(writer, options);
+      if (Other != null)
+      {
+        writer.WritePropertyName("other");
+        Other.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Type))
       {

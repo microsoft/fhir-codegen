@@ -306,8 +306,11 @@ namespace Fhir.R4.Models
         writer.WriteBoolean("experimental", (bool)Experimental!);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (SubjectCodeableConcept != null)
       {

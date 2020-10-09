@@ -40,8 +40,11 @@ namespace Fhir.R4.Models
         Function.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("actor");
-      Actor.SerializeJson(writer, options);
+      if (Actor != null)
+      {
+        writer.WritePropertyName("actor");
+        Actor.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -148,8 +151,11 @@ namespace Fhir.R4.Models
         _Uid.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("sopClass");
-      SopClass.SerializeJson(writer, options);
+      if (SopClass != null)
+      {
+        writer.WritePropertyName("sopClass");
+        SopClass.SerializeJson(writer, options);
+      }
 
       if (Number != null)
       {
@@ -330,8 +336,11 @@ namespace Fhir.R4.Models
         writer.WriteNumber("number", (uint)Number!);
       }
 
-      writer.WritePropertyName("modality");
-      Modality.SerializeJson(writer, options);
+      if (Modality != null)
+      {
+        writer.WritePropertyName("modality");
+        Modality.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Description))
       {
@@ -781,8 +790,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (Encounter != null)
       {

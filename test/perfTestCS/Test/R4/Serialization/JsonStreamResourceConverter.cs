@@ -636,9 +636,9 @@ namespace Fhir.R4.Serialization
         lastToken = reader.TokenType;
       }
 
-      Utf8JsonReader secondary = new Utf8JsonReader(ms.ToArray());
+            Utf8JsonReader secondary = new Utf8JsonReader(ms.GetBuffer());
 
-      return DoPolymorphicRead(ref secondary, options, resourceType);
+            return DoPolymorphicRead(ref secondary, options, resourceType);
     }
     /// <summary>
     /// Sub-function for simpler handling of reader switching.

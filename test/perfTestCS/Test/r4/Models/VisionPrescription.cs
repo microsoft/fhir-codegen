@@ -232,8 +232,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("product");
-      Product.SerializeJson(writer, options);
+      if (Product != null)
+      {
+        writer.WritePropertyName("product");
+        Product.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Eye))
       {
@@ -669,8 +672,11 @@ namespace Fhir.R4.Models
         _Created.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if (Encounter != null)
       {
@@ -689,8 +695,11 @@ namespace Fhir.R4.Models
         _DateWritten.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("prescriber");
-      Prescriber.SerializeJson(writer, options);
+      if (Prescriber != null)
+      {
+        writer.WritePropertyName("prescriber");
+        Prescriber.SerializeJson(writer, options);
+      }
 
       if ((LensSpecification != null) && (LensSpecification.Count != 0))
       {

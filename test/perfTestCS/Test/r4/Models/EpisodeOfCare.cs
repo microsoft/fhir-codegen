@@ -49,8 +49,11 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("period");
-      Period.SerializeJson(writer, options);
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -138,8 +141,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("condition");
-      Condition.SerializeJson(writer, options);
+      if (Condition != null)
+      {
+        writer.WritePropertyName("condition");
+        Condition.SerializeJson(writer, options);
+      }
 
       if (Role != null)
       {
@@ -351,8 +357,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if (ManagingOrganization != null)
       {

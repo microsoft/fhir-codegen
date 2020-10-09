@@ -38,14 +38,23 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("therapyRelationshipType");
-      TherapyRelationshipType.SerializeJson(writer, options);
+      if (TherapyRelationshipType != null)
+      {
+        writer.WritePropertyName("therapyRelationshipType");
+        TherapyRelationshipType.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("medicationCodeableConcept");
-      MedicationCodeableConcept.SerializeJson(writer, options);
+      if (MedicationCodeableConcept != null)
+      {
+        writer.WritePropertyName("medicationCodeableConcept");
+        MedicationCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("medicationReference");
-      MedicationReference.SerializeJson(writer, options);
+      if (MedicationReference != null)
+      {
+        writer.WritePropertyName("medicationReference");
+        MedicationReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

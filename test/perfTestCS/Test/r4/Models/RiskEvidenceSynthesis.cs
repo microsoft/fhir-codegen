@@ -1332,8 +1332,11 @@ namespace Fhir.R4.Models
         StudyType.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("population");
-      Population.SerializeJson(writer, options);
+      if (Population != null)
+      {
+        writer.WritePropertyName("population");
+        Population.SerializeJson(writer, options);
+      }
 
       if (Exposure != null)
       {
@@ -1341,8 +1344,11 @@ namespace Fhir.R4.Models
         Exposure.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("outcome");
-      Outcome.SerializeJson(writer, options);
+      if (Outcome != null)
+      {
+        writer.WritePropertyName("outcome");
+        Outcome.SerializeJson(writer, options);
+      }
 
       if (SampleSize != null)
       {

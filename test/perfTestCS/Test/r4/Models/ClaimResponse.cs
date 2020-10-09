@@ -46,8 +46,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("category");
-      Category.SerializeJson(writer, options);
+      if (Category != null)
+      {
+        writer.WritePropertyName("category");
+        Category.SerializeJson(writer, options);
+      }
 
       if (Reason != null)
       {
@@ -748,8 +751,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("productOrService");
-      ProductOrService.SerializeJson(writer, options);
+      if (ProductOrService != null)
+      {
+        writer.WritePropertyName("productOrService");
+        ProductOrService.SerializeJson(writer, options);
+      }
 
       if ((Modifier != null) && (Modifier.Count != 0))
       {
@@ -1027,8 +1033,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("productOrService");
-      ProductOrService.SerializeJson(writer, options);
+      if (ProductOrService != null)
+      {
+        writer.WritePropertyName("productOrService");
+        ProductOrService.SerializeJson(writer, options);
+      }
 
       if ((Modifier != null) && (Modifier.Count != 0))
       {
@@ -1450,8 +1459,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("productOrService");
-      ProductOrService.SerializeJson(writer, options);
+      if (ProductOrService != null)
+      {
+        writer.WritePropertyName("productOrService");
+        ProductOrService.SerializeJson(writer, options);
+      }
 
       if ((Modifier != null) && (Modifier.Count != 0))
       {
@@ -1994,11 +2006,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("category");
-      Category.SerializeJson(writer, options);
+      if (Category != null)
+      {
+        writer.WritePropertyName("category");
+        Category.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("amount");
-      Amount.SerializeJson(writer, options);
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -2098,8 +2116,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (Adjustment != null)
       {
@@ -2124,8 +2145,11 @@ namespace Fhir.R4.Models
         _Date.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("amount");
-      Amount.SerializeJson(writer, options);
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(writer, options);
+      }
 
       if (Identifier != null)
       {
@@ -2399,8 +2423,11 @@ namespace Fhir.R4.Models
 
       writer.WriteBoolean("focal", Focal);
 
-      writer.WritePropertyName("coverage");
-      Coverage.SerializeJson(writer, options);
+      if (Coverage != null)
+      {
+        writer.WritePropertyName("coverage");
+        Coverage.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(BusinessArrangement))
       {
@@ -2537,8 +2564,11 @@ namespace Fhir.R4.Models
         writer.WriteNumber("subDetailSequence", (uint)SubDetailSequence!);
       }
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -2783,8 +2813,11 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (SubType != null)
       {
@@ -2803,8 +2836,11 @@ namespace Fhir.R4.Models
         _Use.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Created))
       {
@@ -2817,8 +2853,11 @@ namespace Fhir.R4.Models
         _Created.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("insurer");
-      Insurer.SerializeJson(writer, options);
+      if (Insurer != null)
+      {
+        writer.WritePropertyName("insurer");
+        Insurer.SerializeJson(writer, options);
+      }
 
       if (Requestor != null)
       {

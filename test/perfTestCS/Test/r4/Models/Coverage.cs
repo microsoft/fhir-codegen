@@ -46,8 +46,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Value))
       {
@@ -162,8 +165,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (Period != null)
       {
@@ -263,11 +269,17 @@ namespace Fhir.R4.Models
         Type.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("valueQuantity");
-      ValueQuantity.SerializeJson(writer, options);
+      if (ValueQuantity != null)
+      {
+        writer.WritePropertyName("valueQuantity");
+        ValueQuantity.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueMoney");
-      ValueMoney.SerializeJson(writer, options);
+      if (ValueMoney != null)
+      {
+        writer.WritePropertyName("valueMoney");
+        ValueMoney.SerializeJson(writer, options);
+      }
 
       if ((Exception != null) && (Exception.Count != 0))
       {
@@ -532,8 +544,11 @@ namespace Fhir.R4.Models
         _SubscriberId.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("beneficiary");
-      Beneficiary.SerializeJson(writer, options);
+      if (Beneficiary != null)
+      {
+        writer.WritePropertyName("beneficiary");
+        Beneficiary.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Dependent))
       {

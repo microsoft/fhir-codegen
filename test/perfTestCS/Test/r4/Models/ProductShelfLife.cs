@@ -48,11 +48,17 @@ namespace Fhir.R4.Models
         Identifier.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("period");
-      Period.SerializeJson(writer, options);
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(writer, options);
+      }
 
       if ((SpecialPrecautionsForStorage != null) && (SpecialPrecautionsForStorage.Count != 0))
       {

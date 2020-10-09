@@ -138,8 +138,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("definitionCodeableConcept");
-      DefinitionCodeableConcept.SerializeJson(writer, options);
+      if (DefinitionCodeableConcept != null)
+      {
+        writer.WritePropertyName("definitionCodeableConcept");
+        DefinitionCodeableConcept.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(DefinitionCanonical))
       {
@@ -152,11 +155,17 @@ namespace Fhir.R4.Models
         _DefinitionCanonical.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("definitionExpression");
-      DefinitionExpression.SerializeJson(writer, options);
+      if (DefinitionExpression != null)
+      {
+        writer.WritePropertyName("definitionExpression");
+        DefinitionExpression.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("definitionDataRequirement");
-      DefinitionDataRequirement.SerializeJson(writer, options);
+      if (DefinitionDataRequirement != null)
+      {
+        writer.WritePropertyName("definitionDataRequirement");
+        DefinitionDataRequirement.SerializeJson(writer, options);
+      }
 
       if ((UsageContext != null) && (UsageContext.Count != 0))
       {

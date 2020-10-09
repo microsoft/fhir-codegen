@@ -383,8 +383,11 @@ namespace Fhir.R4.Models
         _Error.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("channel");
-      Channel.SerializeJson(writer, options);
+      if (Channel != null)
+      {
+        writer.WritePropertyName("channel");
+        Channel.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

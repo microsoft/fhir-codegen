@@ -38,8 +38,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("target");
-      Target.SerializeJson(writer, options);
+      if (Target != null)
+      {
+        writer.WritePropertyName("target");
+        Target.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Assurance))
       {

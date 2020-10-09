@@ -2,7 +2,10 @@
 // Built from: hl7.fhir.r4.core version: 4.0.1
 
 using System;
+using System.Buffers;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Fhir.R4.Models;

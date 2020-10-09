@@ -40,8 +40,11 @@ namespace Fhir.R4.Models
 
       writer.WriteNumber("sequence", Sequence);
 
-      writer.WritePropertyName("information");
-      Information.SerializeJson(writer, options);
+      if (Information != null)
+      {
+        writer.WritePropertyName("information");
+        Information.SerializeJson(writer, options);
+      }
 
       if (AppliesToAll != null)
       {
@@ -142,8 +145,11 @@ namespace Fhir.R4.Models
         writer.WriteBoolean("focal", (bool)Focal!);
       }
 
-      writer.WritePropertyName("coverage");
-      Coverage.SerializeJson(writer, options);
+      if (Coverage != null)
+      {
+        writer.WritePropertyName("coverage");
+        Coverage.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(BusinessArrangement))
       {
@@ -790,8 +796,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(ServicedDate))
       {
@@ -833,8 +842,11 @@ namespace Fhir.R4.Models
         Provider.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("insurer");
-      Insurer.SerializeJson(writer, options);
+      if (Insurer != null)
+      {
+        writer.WritePropertyName("insurer");
+        Insurer.SerializeJson(writer, options);
+      }
 
       if (Facility != null)
       {

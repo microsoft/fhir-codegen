@@ -137,11 +137,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("value");
-      Value.SerializeJson(writer, options);
+      if (Value != null)
+      {
+        writer.WritePropertyName("value");
+        Value.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -959,8 +965,11 @@ namespace Fhir.R4.Models
         Reporter.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("period");
-      Period.SerializeJson(writer, options);
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(writer, options);
+      }
 
       if (ImprovementNotation != null)
       {

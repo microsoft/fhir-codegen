@@ -82,8 +82,11 @@ namespace Fhir.R4.Models
         Predecessor.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (Request != null)
       {
@@ -544,8 +547,11 @@ namespace Fhir.R4.Models
         _PaymentDate.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("paymentAmount");
-      PaymentAmount.SerializeJson(writer, options);
+      if (PaymentAmount != null)
+      {
+        writer.WritePropertyName("paymentAmount");
+        PaymentAmount.SerializeJson(writer, options);
+      }
 
       if (PaymentIdentifier != null)
       {

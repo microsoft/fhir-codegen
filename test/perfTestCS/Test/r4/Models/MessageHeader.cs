@@ -556,8 +556,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("eventCoding");
-      EventCoding.SerializeJson(writer, options);
+      if (EventCoding != null)
+      {
+        writer.WritePropertyName("eventCoding");
+        EventCoding.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(EventUri))
       {
@@ -601,8 +604,11 @@ namespace Fhir.R4.Models
         Author.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("source");
-      Source.SerializeJson(writer, options);
+      if (Source != null)
+      {
+        writer.WritePropertyName("source");
+        Source.SerializeJson(writer, options);
+      }
 
       if (Responsible != null)
       {

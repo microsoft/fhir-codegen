@@ -40,8 +40,11 @@ namespace Fhir.R4.Models
         Function.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("actor");
-      Actor.SerializeJson(writer, options);
+      if (Actor != null)
+      {
+        writer.WritePropertyName("actor");
+        Actor.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -807,11 +810,17 @@ namespace Fhir.R4.Models
         StatusReason.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("vaccineCode");
-      VaccineCode.SerializeJson(writer, options);
+      if (VaccineCode != null)
+      {
+        writer.WritePropertyName("vaccineCode");
+        VaccineCode.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if (Encounter != null)
       {

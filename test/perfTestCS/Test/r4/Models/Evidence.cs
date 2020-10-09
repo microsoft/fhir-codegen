@@ -494,8 +494,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("exposureBackground");
-      ExposureBackground.SerializeJson(writer, options);
+      if (ExposureBackground != null)
+      {
+        writer.WritePropertyName("exposureBackground");
+        ExposureBackground.SerializeJson(writer, options);
+      }
 
       if ((ExposureVariant != null) && (ExposureVariant.Count != 0))
       {

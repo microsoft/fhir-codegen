@@ -40,8 +40,11 @@ namespace Fhir.R4.Models
         Function.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("actor");
-      Actor.SerializeJson(writer, options);
+      if (Actor != null)
+      {
+        writer.WritePropertyName("actor");
+        Actor.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -357,11 +360,17 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (Context != null)
       {

@@ -56,8 +56,11 @@ namespace Fhir.R4.Models
         Substance.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("strength");
-      Strength.SerializeJson(writer, options);
+      if (Strength != null)
+      {
+        writer.WritePropertyName("strength");
+        Strength.SerializeJson(writer, options);
+      }
 
       if (StrengthLowLimit != null)
       {
@@ -232,8 +235,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("presentation");
-      Presentation.SerializeJson(writer, options);
+      if (Presentation != null)
+      {
+        writer.WritePropertyName("presentation");
+        Presentation.SerializeJson(writer, options);
+      }
 
       if (PresentationLowLimit != null)
       {
@@ -449,11 +455,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("group");
-      Group.SerializeJson(writer, options);
+      if (Group != null)
+      {
+        writer.WritePropertyName("group");
+        Group.SerializeJson(writer, options);
+      }
 
       if (Confidentiality != null)
       {
@@ -584,8 +596,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if ((Strength != null) && (Strength.Count != 0))
       {
@@ -732,8 +747,11 @@ namespace Fhir.R4.Models
         Identifier.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("role");
-      Role.SerializeJson(writer, options);
+      if (Role != null)
+      {
+        writer.WritePropertyName("role");
+        Role.SerializeJson(writer, options);
+      }
 
       if (AllergenicIndicator != null)
       {

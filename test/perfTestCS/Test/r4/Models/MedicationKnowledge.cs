@@ -34,8 +34,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((Reference != null) && (Reference.Count != 0))
       {
@@ -248,11 +251,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("itemCodeableConcept");
-      ItemCodeableConcept.SerializeJson(writer, options);
+      if (ItemCodeableConcept != null)
+      {
+        writer.WritePropertyName("itemCodeableConcept");
+        ItemCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("itemReference");
-      ItemReference.SerializeJson(writer, options);
+      if (ItemReference != null)
+      {
+        writer.WritePropertyName("itemReference");
+        ItemReference.SerializeJson(writer, options);
+      }
 
       if (IsActive != null)
       {
@@ -360,8 +369,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Source))
       {
@@ -374,8 +386,11 @@ namespace Fhir.R4.Models
         _Source.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("cost");
-      Cost.SerializeJson(writer, options);
+      if (Cost != null)
+      {
+        writer.WritePropertyName("cost");
+        Cost.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -567,8 +582,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((Dosage != null) && (Dosage.Count != 0))
       {
@@ -691,11 +709,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("characteristicCodeableConcept");
-      CharacteristicCodeableConcept.SerializeJson(writer, options);
+      if (CharacteristicCodeableConcept != null)
+      {
+        writer.WritePropertyName("characteristicCodeableConcept");
+        CharacteristicCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("characteristicQuantity");
-      CharacteristicQuantity.SerializeJson(writer, options);
+      if (CharacteristicQuantity != null)
+      {
+        writer.WritePropertyName("characteristicQuantity");
+        CharacteristicQuantity.SerializeJson(writer, options);
+      }
 
       if ((Value != null) && (Value.Count != 0))
       {
@@ -1031,8 +1055,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((Classification != null) && (Classification.Count != 0))
       {
@@ -1398,8 +1425,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       writer.WriteBoolean("allowed", Allowed);
 
@@ -1476,8 +1506,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("schedule");
-      Schedule.SerializeJson(writer, options);
+      if (Schedule != null)
+      {
+        writer.WritePropertyName("schedule");
+        Schedule.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -1552,8 +1585,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("quantity");
-      Quantity.SerializeJson(writer, options);
+      if (Quantity != null)
+      {
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(writer, options);
+      }
 
       if (Period != null)
       {
@@ -1647,8 +1683,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("regulatoryAuthority");
-      RegulatoryAuthority.SerializeJson(writer, options);
+      if (RegulatoryAuthority != null)
+      {
+        writer.WritePropertyName("regulatoryAuthority");
+        RegulatoryAuthority.SerializeJson(writer, options);
+      }
 
       if ((Substitution != null) && (Substitution.Count != 0))
       {

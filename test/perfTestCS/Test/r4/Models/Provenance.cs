@@ -61,8 +61,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("who");
-      Who.SerializeJson(writer, options);
+      if (Who != null)
+      {
+        writer.WritePropertyName("who");
+        Who.SerializeJson(writer, options);
+      }
 
       if (OnBehalfOf != null)
       {
@@ -199,8 +202,11 @@ namespace Fhir.R4.Models
         _Role.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("what");
-      What.SerializeJson(writer, options);
+      if (What != null)
+      {
+        writer.WritePropertyName("what");
+        What.SerializeJson(writer, options);
+      }
 
       if ((Agent != null) && (Agent.Count != 0))
       {

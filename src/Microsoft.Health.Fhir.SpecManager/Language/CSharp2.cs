@@ -856,7 +856,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("lastToken = reader.TokenType;");
                 _writer.CloseScope();
                 _writer.WriteLine();
-                _writer.WriteLineIndented("Utf8JsonReader secondary = new Utf8JsonReader(ms.ToArray());");
+                _writer.WriteLineIndented("Utf8JsonReader secondary = new Utf8JsonReader(ms.GetBuffer());");
                 _writer.WriteLine();
                 _writer.WriteLineIndented("return DoPolymorphicRead(ref secondary, options, resourceType);");
 
@@ -1319,7 +1319,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 foreach (KeyValuePair<string, string> kvp in values)
                 {
-                    bool isOptional = element.IsOptional && RequiresNullTest(kvp.Value);
+                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional);
 
                     string elementName;
                     if ((kvp.Key == complex.Name) && (!element.IsInherited))
@@ -1634,7 +1634,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 foreach (KeyValuePair<string, string> kvp in values)
                 {
-                    bool isOptional = element.IsOptional && RequiresNullTest(kvp.Value);
+                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional);
 
                     string elementName;
                     if ((kvp.Key == complex.Name) && (!element.IsInherited))
@@ -2336,15 +2336,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Tests requires null.</summary>
-        /// <param name="typeName">Name of the type.</param>
+        /// <param name="typeName">         Name of the type.</param>
+        /// <param name="flaggedAsOptional">True to flagged as optional.</param>
         /// <returns>True if the test passes, false if the test fails.</returns>
-        private static bool RequiresNullTest(string typeName)
+        private static bool RequiresNullTest(string typeName, bool flaggedAsOptional)
         {
             // nullable reference types are not allowed in current C#
             switch (typeName)
             {
                 case "string":
                     return false;
+
+                case "bool":
+                case "decimal":
+                case "DateTime":
+                case "int":
+                case "uint":
+                case "long":
+                case "Guid":
+                    return flaggedAsOptional;
             }
 
             return true;

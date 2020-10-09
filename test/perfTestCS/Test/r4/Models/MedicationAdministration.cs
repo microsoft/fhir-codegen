@@ -40,8 +40,11 @@ namespace Fhir.R4.Models
         Function.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("actor");
-      Actor.SerializeJson(writer, options);
+      if (Actor != null)
+      {
+        writer.WritePropertyName("actor");
+        Actor.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -480,14 +483,23 @@ namespace Fhir.R4.Models
         Category.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("medicationCodeableConcept");
-      MedicationCodeableConcept.SerializeJson(writer, options);
+      if (MedicationCodeableConcept != null)
+      {
+        writer.WritePropertyName("medicationCodeableConcept");
+        MedicationCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("medicationReference");
-      MedicationReference.SerializeJson(writer, options);
+      if (MedicationReference != null)
+      {
+        writer.WritePropertyName("medicationReference");
+        MedicationReference.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (Context != null)
       {
@@ -519,8 +531,11 @@ namespace Fhir.R4.Models
         _EffectiveDateTime.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("effectivePeriod");
-      EffectivePeriod.SerializeJson(writer, options);
+      if (EffectivePeriod != null)
+      {
+        writer.WritePropertyName("effectivePeriod");
+        EffectivePeriod.SerializeJson(writer, options);
+      }
 
       if ((Performer != null) && (Performer.Count != 0))
       {

@@ -34,8 +34,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if (Status != null)
       {
@@ -129,11 +132,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("tissue");
-      Tissue.SerializeJson(writer, options);
+      if (Tissue != null)
+      {
+        writer.WritePropertyName("tissue");
+        Tissue.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("value");
-      Value.SerializeJson(writer, options);
+      if (Value != null)
+      {
+        writer.WritePropertyName("value");
+        Value.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(SupportingInformation))
       {
@@ -233,8 +242,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if ((WithdrawalPeriod != null) && (WithdrawalPeriod.Count != 0))
       {
@@ -369,8 +381,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if (FirstDose != null)
       {
@@ -583,8 +598,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("administrableDoseForm");
-      AdministrableDoseForm.SerializeJson(writer, options);
+      if (AdministrableDoseForm != null)
+      {
+        writer.WritePropertyName("administrableDoseForm");
+        AdministrableDoseForm.SerializeJson(writer, options);
+      }
 
       if (UnitOfPresentation != null)
       {

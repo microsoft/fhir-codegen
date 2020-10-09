@@ -64,8 +64,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("manufacturedDoseForm");
-      ManufacturedDoseForm.SerializeJson(writer, options);
+      if (ManufacturedDoseForm != null)
+      {
+        writer.WritePropertyName("manufacturedDoseForm");
+        ManufacturedDoseForm.SerializeJson(writer, options);
+      }
 
       if (UnitOfPresentation != null)
       {
@@ -73,8 +76,11 @@ namespace Fhir.R4.Models
         UnitOfPresentation.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("quantity");
-      Quantity.SerializeJson(writer, options);
+      if (Quantity != null)
+      {
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(writer, options);
+      }
 
       if ((Manufacturer != null) && (Manufacturer.Count != 0))
       {

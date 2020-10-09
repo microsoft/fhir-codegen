@@ -110,11 +110,17 @@ namespace Fhir.R4.Models
         Period.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("study");
-      Study.SerializeJson(writer, options);
+      if (Study != null)
+      {
+        writer.WritePropertyName("study");
+        Study.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("individual");
-      Individual.SerializeJson(writer, options);
+      if (Individual != null)
+      {
+        writer.WritePropertyName("individual");
+        Individual.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(AssignedArm))
       {

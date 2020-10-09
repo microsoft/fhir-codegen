@@ -99,8 +99,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("appointment");
-      Appointment.SerializeJson(writer, options);
+      if (Appointment != null)
+      {
+        writer.WritePropertyName("appointment");
+        Appointment.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Start))
       {

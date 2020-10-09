@@ -190,8 +190,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("action");
-      Action.SerializeJson(writer, options);
+      if (Action != null)
+      {
+        writer.WritePropertyName("action");
+        Action.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Date))
       {

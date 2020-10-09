@@ -49,8 +49,11 @@ namespace Fhir.R4.Models
         _Code.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("target");
-      Target.SerializeJson(writer, options);
+      if (Target != null)
+      {
+        writer.WritePropertyName("target");
+        Target.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -134,8 +137,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("attachment");
-      Attachment.SerializeJson(writer, options);
+      if (Attachment != null)
+      {
+        writer.WritePropertyName("attachment");
+        Attachment.SerializeJson(writer, options);
+      }
 
       if (Format != null)
       {

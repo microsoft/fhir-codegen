@@ -149,8 +149,11 @@ namespace Fhir.R4.Models
         Provider.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("payment");
-      Payment.SerializeJson(writer, options);
+      if (Payment != null)
+      {
+        writer.WritePropertyName("payment");
+        Payment.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(PaymentDate))
       {
@@ -169,11 +172,17 @@ namespace Fhir.R4.Models
         Payee.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("recipient");
-      Recipient.SerializeJson(writer, options);
+      if (Recipient != null)
+      {
+        writer.WritePropertyName("recipient");
+        Recipient.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("amount");
-      Amount.SerializeJson(writer, options);
+      if (Amount != null)
+      {
+        writer.WritePropertyName("amount");
+        Amount.SerializeJson(writer, options);
+      }
 
       if (PaymentStatus != null)
       {

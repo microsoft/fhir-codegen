@@ -192,8 +192,11 @@ namespace Fhir.R4.Models
         VariantState.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("riskEvidenceSynthesis");
-      RiskEvidenceSynthesis.SerializeJson(writer, options);
+      if (RiskEvidenceSynthesis != null)
+      {
+        writer.WritePropertyName("riskEvidenceSynthesis");
+        RiskEvidenceSynthesis.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -1472,17 +1475,29 @@ namespace Fhir.R4.Models
         StudyType.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("population");
-      Population.SerializeJson(writer, options);
+      if (Population != null)
+      {
+        writer.WritePropertyName("population");
+        Population.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("exposure");
-      Exposure.SerializeJson(writer, options);
+      if (Exposure != null)
+      {
+        writer.WritePropertyName("exposure");
+        Exposure.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("exposureAlternative");
-      ExposureAlternative.SerializeJson(writer, options);
+      if (ExposureAlternative != null)
+      {
+        writer.WritePropertyName("exposureAlternative");
+        ExposureAlternative.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("outcome");
-      Outcome.SerializeJson(writer, options);
+      if (Outcome != null)
+      {
+        writer.WritePropertyName("outcome");
+        Outcome.SerializeJson(writer, options);
+      }
 
       if (SampleSize != null)
       {

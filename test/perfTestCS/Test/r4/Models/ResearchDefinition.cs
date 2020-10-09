@@ -616,8 +616,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("population");
-      Population.SerializeJson(writer, options);
+      if (Population != null)
+      {
+        writer.WritePropertyName("population");
+        Population.SerializeJson(writer, options);
+      }
 
       if (Exposure != null)
       {

@@ -68,8 +68,11 @@ namespace Fhir.R4.Models
         _Date.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("item");
-      Item.SerializeJson(writer, options);
+      if (Item != null)
+      {
+        writer.WritePropertyName("item");
+        Item.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

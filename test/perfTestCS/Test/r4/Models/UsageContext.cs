@@ -46,20 +46,35 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueCodeableConcept");
-      ValueCodeableConcept.SerializeJson(writer, options);
+      if (ValueCodeableConcept != null)
+      {
+        writer.WritePropertyName("valueCodeableConcept");
+        ValueCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueQuantity");
-      ValueQuantity.SerializeJson(writer, options);
+      if (ValueQuantity != null)
+      {
+        writer.WritePropertyName("valueQuantity");
+        ValueQuantity.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueRange");
-      ValueRange.SerializeJson(writer, options);
+      if (ValueRange != null)
+      {
+        writer.WritePropertyName("valueRange");
+        ValueRange.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueReference");
-      ValueReference.SerializeJson(writer, options);
+      if (ValueReference != null)
+      {
+        writer.WritePropertyName("valueReference");
+        ValueReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

@@ -298,14 +298,23 @@ namespace Fhir.R4.Models
         _Priority.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("itemCodeableConcept");
-      ItemCodeableConcept.SerializeJson(writer, options);
+      if (ItemCodeableConcept != null)
+      {
+        writer.WritePropertyName("itemCodeableConcept");
+        ItemCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("itemReference");
-      ItemReference.SerializeJson(writer, options);
+      if (ItemReference != null)
+      {
+        writer.WritePropertyName("itemReference");
+        ItemReference.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("quantity");
-      Quantity.SerializeJson(writer, options);
+      if (Quantity != null)
+      {
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(writer, options);
+      }
 
       if ((Parameter != null) && (Parameter.Count != 0))
       {

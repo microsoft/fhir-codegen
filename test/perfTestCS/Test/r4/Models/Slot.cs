@@ -154,8 +154,11 @@ namespace Fhir.R4.Models
         AppointmentType.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("schedule");
-      Schedule.SerializeJson(writer, options);
+      if (Schedule != null)
+      {
+        writer.WritePropertyName("schedule");
+        Schedule.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Status))
       {

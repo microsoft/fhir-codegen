@@ -545,8 +545,11 @@ namespace Fhir.R4.Models
         _Site.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("observer");
-      Observer.SerializeJson(writer, options);
+      if (Observer != null)
+      {
+        writer.WritePropertyName("observer");
+        Observer.SerializeJson(writer, options);
+      }
 
       if ((Type != null) && (Type.Count != 0))
       {
@@ -1169,8 +1172,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.DomainResource)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((Subtype != null) && (Subtype.Count != 0))
       {
@@ -1261,8 +1267,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("source");
-      Source.SerializeJson(writer, options);
+      if (Source != null)
+      {
+        writer.WritePropertyName("source");
+        Source.SerializeJson(writer, options);
+      }
 
       if ((Entity != null) && (Entity.Count != 0))
       {

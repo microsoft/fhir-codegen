@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Enumeration;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using Fhir.R4.Serialization;
@@ -56,10 +57,10 @@ namespace PerfTestCS
                 }
             }
 
-            if (FullParseTest(fhirSpecDirectory) == 0)
-            {
-                return 0;
-            }
+            //if (FullParseTest(fhirSpecDirectory) == 0)
+            //{
+            //    return 0;
+            //}
 
             //if (SystemTest(fhirSpecDirectory) == 0)
             //{
@@ -100,6 +101,8 @@ namespace PerfTestCS
         /// <returns>An int.</returns>
         private static int FullParseTest(string fhirSpecDirectory)
         {
+            bool verifyWithNetApi = false;
+
             List<string> r4Dirs = new List<string>()
             {
                 "hl7.fhir.r4.core-4.0.1",
@@ -107,11 +110,28 @@ namespace PerfTestCS
                 "hl7.fhir.r4.expansions-4.0.1",
             };
 
+            FhirJsonParser jsonParser = new FhirJsonParser(
+                new ParserSettings
+                {
+                    AcceptUnknownMembers = true,
+                    AllowUnrecognizedEnums = true,
+                    PermissiveParsing = true,
+                });
+
+            FhirJsonSerializer jsonSerializer = new FhirJsonSerializer(
+                new SerializerSettings
+                {
+                    AppendNewLine = false,
+                    Pretty = false,
+                });
+
             Dictionary<string, Exception> exceptions = new Dictionary<string, Exception>();
 
             foreach (string subDir in r4Dirs)
             {
                 string currentDir = Path.GetFullPath(Path.Combine(fhirSpecDirectory, subDir));
+
+                Console.WriteLine($"{currentDir}...                                               ");
 
                 string[] files = Directory.GetFiles(currentDir, $"*.json", SearchOption.AllDirectories);
                 //List<string> files = new List<string>()
@@ -127,15 +147,15 @@ namespace PerfTestCS
                     {
                         case ".index":
                         case "package":
-                        case "Observation-decimal":     // includes invalid value - supposed to be fixed, but still wrong here
+
+                        // includes invalid value - supposed to be fixed, but still wrong here
+                        case "Observation-decimal":
                             continue;
                     }
 
                     try
                     {
-                        var typed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(File.ReadAllText(filename));
-
-                        Console.WriteLine($"{typed.GetType().Name}: {filename}");
+                        RoundTripFile(filename, shortName, ref jsonParser, ref jsonSerializer, verifyWithNetApi);
                     }
                     catch (Exception ex)
                     {
@@ -147,6 +167,50 @@ namespace PerfTestCS
             }
 
             return 0;
+        }
+
+        /// <summary>Round trip file.</summary>
+        /// <param name="filename">        Filename of the file.</param>
+        /// <param name="shortName">       Name of the short.</param>
+        /// <param name="jsonParser">      [in,out] The JSON parser.</param>
+        /// <param name="jsonSerializer">  [in,out] The JSON serializer.</param>
+        /// <param name="verifyWithNetApi">True to verify with net API.</param>
+        private static void RoundTripFile(
+            string filename,
+            string shortName,
+            ref FhirJsonParser jsonParser,
+            ref FhirJsonSerializer jsonSerializer,
+            bool verifyWithNetApi)
+        {
+            Console.Write($"{shortName}...                                                            \r");
+
+            string contents = File.ReadAllText(filename);
+
+            var parsed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(contents);
+            string serialized = System.Text.Json.JsonSerializer.Serialize<Fhir.R4.Models.Resource>(parsed, FhirSerializerOptions.Compact);
+
+            if (!verifyWithNetApi)
+            {
+                return;
+            }
+
+            try
+            {
+                var parsedOriginal = jsonParser.Parse(contents);
+                string serializedOriginal = jsonSerializer.SerializeToString(parsedOriginal);
+
+                var parsedCS2 = jsonParser.Parse(serialized);
+                string serializedCS2 = jsonSerializer.SerializeToString(parsedCS2);
+
+                if (serializedOriginal.Length != serializedCS2.Length)
+                {
+                    Console.Write("");
+                }
+            }
+            catch (Exception)
+            {
+                // ignore
+            }
         }
 
         /// <summary>Tests system.</summary>
@@ -238,9 +302,11 @@ namespace PerfTestCS
             Console.WriteLine(string.Empty);
             Console.WriteLine($"Results of file: {result.Filename}, {result.FileSize} bytes");
             Console.WriteLine($"{result.LibraryName}:");
-            Console.WriteLine($"       Setup: {result.SetupTime / 1000.0}s");
-            Console.WriteLine($" First Parse: {result.FirstParseTime / 1000.0}s");
-            Console.WriteLine($"Looped Parse: {result.LoopedParseTime / 1000.0}s (avg: {(result.LoopedParseTime / 1000.0) / result.LoopCount})");
+            Console.WriteLine($"           Setup: {result.SetupTime / 1000.0}s");
+            Console.WriteLine($"     First Parse: {result.FirstParseTime / 1000.0}s");
+            Console.WriteLine($" First Serialize: {result.FirstSerializeTime / 1000.0}s");
+            Console.WriteLine($"    Looped Parse: {result.LoopedParseTime / 1000.0}s (avg: {(result.LoopedParseTime / 1000.0) / result.LoopCount})");
+            Console.WriteLine($"Looped Serialize: {result.LoopedSerializeTime / 1000.0}s (avg: {(result.LoopedSerializeTime / 1000.0) / result.LoopCount})");
         }
 
         /// <summary>Executes the tests.</summary>
@@ -269,7 +335,7 @@ namespace PerfTestCS
         {
             TimingResult timingResult = new TimingResult(filename, contents.Length, "CS2", loops);
 
-            Console.WriteLine($"Parsing {timingResult.Filename} with {timingResult.LibraryName}...");
+            Console.WriteLine($"Measuring {timingResult.Filename} with {timingResult.LibraryName}...");
 
             Stopwatch timer = Stopwatch.StartNew();
 
@@ -289,6 +355,18 @@ namespace PerfTestCS
                 timingResult.FailureCount++;
             }
 
+            timer.Restart();
+            string firstSerialized = System.Text.Json.JsonSerializer.Serialize(firstParsed, typeof(Fhir.R4.Models.Resource));
+            timingResult.FirstSerializeTime = timer.ElapsedMilliseconds;
+
+            if (string.IsNullOrEmpty(firstSerialized))
+            {
+                Console.WriteLine($"Serialize failed!");
+                timingResult.FailureCount++;
+            }
+
+            firstSerialized = null;
+
             timingResult.ResourceType = firstParsed.GetType().Name;
 
             timer.Restart();
@@ -304,6 +382,19 @@ namespace PerfTestCS
 
             timingResult.LoopedParseTime = timer.ElapsedMilliseconds;
 
+            timer.Restart();
+            for (int i = 0; i < loops; i++)
+            {
+                string serialized = System.Text.Json.JsonSerializer.Serialize(firstParsed, typeof(Fhir.R4.Models.Resource));
+                if (string.IsNullOrEmpty(serialized))
+                {
+                    Console.WriteLine($"Serialize failed!");
+                    timingResult.FailureCount++;
+                }
+            }
+
+            timingResult.LoopedSerializeTime = timer.ElapsedMilliseconds;
+
             return timingResult;
         }
 
@@ -316,7 +407,7 @@ namespace PerfTestCS
         {
             TimingResult timingResult = new TimingResult(filename, contents.Length, "CSharpBasic-Newtonsoft", loops);
 
-            Console.WriteLine($"Parsing {timingResult.Filename} with {timingResult.LibraryName}...");
+            Console.WriteLine($"Measuring {timingResult.Filename} with {timingResult.LibraryName}...");
 
             Stopwatch timer = Stopwatch.StartNew();
 
@@ -335,6 +426,18 @@ namespace PerfTestCS
                 timingResult.FailureCount++;
             }
 
+            timer.Restart();
+            string firstSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(firstParsed);
+            timingResult.FirstSerializeTime = timer.ElapsedMilliseconds;
+
+            if (string.IsNullOrEmpty(firstSerialized))
+            {
+                Console.WriteLine($"Serialize failed!");
+                timingResult.FailureCount++;
+            }
+
+            firstSerialized = null;
+
             timingResult.ResourceType = firstParsed.GetType().Name;
 
             timer.Restart();
@@ -350,6 +453,19 @@ namespace PerfTestCS
 
             timingResult.LoopedParseTime = timer.ElapsedMilliseconds;
 
+            timer.Restart();
+            for (int i = 0; i < loops; i++)
+            {
+                string serialized = Newtonsoft.Json.JsonConvert.SerializeObject(firstParsed);
+                if (string.IsNullOrEmpty(serialized))
+                {
+                    Console.WriteLine($"Serialize failed!");
+                    timingResult.FailureCount++;
+                }
+            }
+
+            timingResult.LoopedSerializeTime = timer.ElapsedMilliseconds;
+
             return timingResult;
         }
 
@@ -364,7 +480,7 @@ namespace PerfTestCS
 
             TimingResult timingResult = new TimingResult(filename, contents.Length, $"FHIR Net API, R4: {version}", loops);
 
-            Console.WriteLine($"Parsing {timingResult.Filename} with {timingResult.LibraryName}...");
+            Console.WriteLine($"Measuring {timingResult.Filename} with {timingResult.LibraryName}...");
 
             Stopwatch timer = Stopwatch.StartNew();
 
@@ -373,6 +489,13 @@ namespace PerfTestCS
                 {
                     AcceptUnknownMembers = true,
                     AllowUnrecognizedEnums = true,
+                });
+
+            FhirJsonSerializer jsonSerializer = new FhirJsonSerializer(
+                new SerializerSettings
+                {
+                    AppendNewLine = false,
+                    Pretty = false,
                 });
 
             timingResult.SetupTime = timer.ElapsedMilliseconds;
@@ -388,7 +511,19 @@ namespace PerfTestCS
                 timingResult.FailureCount++;
             }
 
+            timer.Restart();
+            string firstSerialized = jsonSerializer.SerializeToString(firstParsed);
+            timingResult.FirstSerializeTime = timer.ElapsedMilliseconds;
+
+            if (string.IsNullOrEmpty(firstSerialized))
+            {
+                Console.WriteLine($"Serialize failed!");
+                timingResult.FailureCount++;
+            }
+
             timingResult.ResourceType = firstParsed.GetType().Name;
+
+            firstSerialized = null;
 
             timer.Restart();
             for (int i = 0; i < loops; i++)
@@ -402,6 +537,19 @@ namespace PerfTestCS
             }
 
             timingResult.LoopedParseTime = timer.ElapsedMilliseconds;
+
+            timer.Restart();
+            for (int i = 0; i < loops; i++)
+            {
+                string serialized = jsonSerializer.SerializeToString(firstParsed);
+                if (string.IsNullOrEmpty(serialized))
+                {
+                    Console.WriteLine($"Serialize failed!");
+                    timingResult.FailureCount++;
+                }
+            }
+
+            timingResult.LoopedSerializeTime = timer.ElapsedMilliseconds;
 
             return timingResult;
         }

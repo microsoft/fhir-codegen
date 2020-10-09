@@ -180,14 +180,23 @@ namespace Fhir.R4.Models
         _AnswerString.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("answerCoding");
-      AnswerCoding.SerializeJson(writer, options);
+      if (AnswerCoding != null)
+      {
+        writer.WritePropertyName("answerCoding");
+        AnswerCoding.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("answerQuantity");
-      AnswerQuantity.SerializeJson(writer, options);
+      if (AnswerQuantity != null)
+      {
+        writer.WritePropertyName("answerQuantity");
+        AnswerQuantity.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("answerReference");
-      AnswerReference.SerializeJson(writer, options);
+      if (AnswerReference != null)
+      {
+        writer.WritePropertyName("answerReference");
+        AnswerReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -410,11 +419,17 @@ namespace Fhir.R4.Models
         _ValueString.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("valueCoding");
-      ValueCoding.SerializeJson(writer, options);
+      if (ValueCoding != null)
+      {
+        writer.WritePropertyName("valueCoding");
+        ValueCoding.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueReference");
-      ValueReference.SerializeJson(writer, options);
+      if (ValueReference != null)
+      {
+        writer.WritePropertyName("valueReference");
+        ValueReference.SerializeJson(writer, options);
+      }
 
       if (InitialSelected != null)
       {
@@ -665,17 +680,29 @@ namespace Fhir.R4.Models
         _ValueUri.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("valueAttachment");
-      ValueAttachment.SerializeJson(writer, options);
+      if (ValueAttachment != null)
+      {
+        writer.WritePropertyName("valueAttachment");
+        ValueAttachment.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueCoding");
-      ValueCoding.SerializeJson(writer, options);
+      if (ValueCoding != null)
+      {
+        writer.WritePropertyName("valueCoding");
+        ValueCoding.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueQuantity");
-      ValueQuantity.SerializeJson(writer, options);
+      if (ValueQuantity != null)
+      {
+        writer.WritePropertyName("valueQuantity");
+        ValueQuantity.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueReference");
-      ValueReference.SerializeJson(writer, options);
+      if (ValueReference != null)
+      {
+        writer.WritePropertyName("valueReference");
+        ValueReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
