@@ -34,8 +34,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("outerPackaging");
-      OuterPackaging.SerializeJson(writer, options);
+      if (OuterPackaging != null)
+      {
+        writer.WritePropertyName("outerPackaging");
+        OuterPackaging.SerializeJson(writer, options);
+      }
 
       if (ImmediatePackaging != null)
       {
@@ -174,11 +177,17 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("quantity");
-      Quantity.SerializeJson(writer, options);
+      if (Quantity != null)
+      {
+        writer.WritePropertyName("quantity");
+        Quantity.SerializeJson(writer, options);
+      }
 
       if ((Material != null) && (Material.Count != 0))
       {

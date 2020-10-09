@@ -162,11 +162,17 @@ namespace Fhir.R4.Models
         Quantity.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("substanceCodeableConcept");
-      SubstanceCodeableConcept.SerializeJson(writer, options);
+      if (SubstanceCodeableConcept != null)
+      {
+        writer.WritePropertyName("substanceCodeableConcept");
+        SubstanceCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("substanceReference");
-      SubstanceReference.SerializeJson(writer, options);
+      if (SubstanceReference != null)
+      {
+        writer.WritePropertyName("substanceReference");
+        SubstanceReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -326,8 +332,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Description))
       {

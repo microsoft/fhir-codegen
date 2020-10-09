@@ -37,8 +37,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("coverage");
-      Coverage.SerializeJson(writer, options);
+      if (Coverage != null)
+      {
+        writer.WritePropertyName("coverage");
+        Coverage.SerializeJson(writer, options);
+      }
 
       if (Priority != null)
       {
@@ -126,8 +129,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("party");
-      Party.SerializeJson(writer, options);
+      if (Party != null)
+      {
+        writer.WritePropertyName("party");
+        Party.SerializeJson(writer, options);
+      }
 
       if (OnHold != null)
       {

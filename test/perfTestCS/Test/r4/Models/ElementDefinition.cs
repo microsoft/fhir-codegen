@@ -1251,98 +1251,191 @@ namespace Fhir.R4.Models
 
       writer.WriteString("valueUuid", ValueUuid);
 
-      writer.WritePropertyName("valueAddress");
-      ValueAddress.SerializeJson(writer, options);
+      if (ValueAddress != null)
+      {
+        writer.WritePropertyName("valueAddress");
+        ValueAddress.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueAge");
-      ValueAge.SerializeJson(writer, options);
+      if (ValueAge != null)
+      {
+        writer.WritePropertyName("valueAge");
+        ValueAge.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueAnnotation");
-      ValueAnnotation.SerializeJson(writer, options);
+      if (ValueAnnotation != null)
+      {
+        writer.WritePropertyName("valueAnnotation");
+        ValueAnnotation.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueAttachment");
-      ValueAttachment.SerializeJson(writer, options);
+      if (ValueAttachment != null)
+      {
+        writer.WritePropertyName("valueAttachment");
+        ValueAttachment.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueCodeableConcept");
-      ValueCodeableConcept.SerializeJson(writer, options);
+      if (ValueCodeableConcept != null)
+      {
+        writer.WritePropertyName("valueCodeableConcept");
+        ValueCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueCoding");
-      ValueCoding.SerializeJson(writer, options);
+      if (ValueCoding != null)
+      {
+        writer.WritePropertyName("valueCoding");
+        ValueCoding.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueContactPoint");
-      ValueContactPoint.SerializeJson(writer, options);
+      if (ValueContactPoint != null)
+      {
+        writer.WritePropertyName("valueContactPoint");
+        ValueContactPoint.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueCount");
-      ValueCount.SerializeJson(writer, options);
+      if (ValueCount != null)
+      {
+        writer.WritePropertyName("valueCount");
+        ValueCount.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueDistance");
-      ValueDistance.SerializeJson(writer, options);
+      if (ValueDistance != null)
+      {
+        writer.WritePropertyName("valueDistance");
+        ValueDistance.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueDuration");
-      ValueDuration.SerializeJson(writer, options);
+      if (ValueDuration != null)
+      {
+        writer.WritePropertyName("valueDuration");
+        ValueDuration.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueHumanName");
-      ValueHumanName.SerializeJson(writer, options);
+      if (ValueHumanName != null)
+      {
+        writer.WritePropertyName("valueHumanName");
+        ValueHumanName.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueIdentifier");
-      ValueIdentifier.SerializeJson(writer, options);
+      if (ValueIdentifier != null)
+      {
+        writer.WritePropertyName("valueIdentifier");
+        ValueIdentifier.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueMoney");
-      ValueMoney.SerializeJson(writer, options);
+      if (ValueMoney != null)
+      {
+        writer.WritePropertyName("valueMoney");
+        ValueMoney.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valuePeriod");
-      ValuePeriod.SerializeJson(writer, options);
+      if (ValuePeriod != null)
+      {
+        writer.WritePropertyName("valuePeriod");
+        ValuePeriod.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueQuantity");
-      ValueQuantity.SerializeJson(writer, options);
+      if (ValueQuantity != null)
+      {
+        writer.WritePropertyName("valueQuantity");
+        ValueQuantity.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueRange");
-      ValueRange.SerializeJson(writer, options);
+      if (ValueRange != null)
+      {
+        writer.WritePropertyName("valueRange");
+        ValueRange.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueRatio");
-      ValueRatio.SerializeJson(writer, options);
+      if (ValueRatio != null)
+      {
+        writer.WritePropertyName("valueRatio");
+        ValueRatio.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueReference");
-      ValueReference.SerializeJson(writer, options);
+      if (ValueReference != null)
+      {
+        writer.WritePropertyName("valueReference");
+        ValueReference.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueSampledData");
-      ValueSampledData.SerializeJson(writer, options);
+      if (ValueSampledData != null)
+      {
+        writer.WritePropertyName("valueSampledData");
+        ValueSampledData.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueSignature");
-      ValueSignature.SerializeJson(writer, options);
+      if (ValueSignature != null)
+      {
+        writer.WritePropertyName("valueSignature");
+        ValueSignature.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueTiming");
-      ValueTiming.SerializeJson(writer, options);
+      if (ValueTiming != null)
+      {
+        writer.WritePropertyName("valueTiming");
+        ValueTiming.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueContactDetail");
-      ValueContactDetail.SerializeJson(writer, options);
+      if (ValueContactDetail != null)
+      {
+        writer.WritePropertyName("valueContactDetail");
+        ValueContactDetail.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueContributor");
-      ValueContributor.SerializeJson(writer, options);
+      if (ValueContributor != null)
+      {
+        writer.WritePropertyName("valueContributor");
+        ValueContributor.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueDataRequirement");
-      ValueDataRequirement.SerializeJson(writer, options);
+      if (ValueDataRequirement != null)
+      {
+        writer.WritePropertyName("valueDataRequirement");
+        ValueDataRequirement.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueExpression");
-      ValueExpression.SerializeJson(writer, options);
+      if (ValueExpression != null)
+      {
+        writer.WritePropertyName("valueExpression");
+        ValueExpression.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueParameterDefinition");
-      ValueParameterDefinition.SerializeJson(writer, options);
+      if (ValueParameterDefinition != null)
+      {
+        writer.WritePropertyName("valueParameterDefinition");
+        ValueParameterDefinition.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueRelatedArtifact");
-      ValueRelatedArtifact.SerializeJson(writer, options);
+      if (ValueRelatedArtifact != null)
+      {
+        writer.WritePropertyName("valueRelatedArtifact");
+        ValueRelatedArtifact.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueTriggerDefinition");
-      ValueTriggerDefinition.SerializeJson(writer, options);
+      if (ValueTriggerDefinition != null)
+      {
+        writer.WritePropertyName("valueTriggerDefinition");
+        ValueTriggerDefinition.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueUsageContext");
-      ValueUsageContext.SerializeJson(writer, options);
+      if (ValueUsageContext != null)
+      {
+        writer.WritePropertyName("valueUsageContext");
+        ValueUsageContext.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueDosage");
-      ValueDosage.SerializeJson(writer, options);
+      if (ValueDosage != null)
+      {
+        writer.WritePropertyName("valueDosage");
+        ValueDosage.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueMeta");
-      ValueMeta.SerializeJson(writer, options);
+      if (ValueMeta != null)
+      {
+        writer.WritePropertyName("valueMeta");
+        ValueMeta.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

@@ -458,8 +458,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("reference");
-      Reference.SerializeJson(writer, options);
+      if (Reference != null)
+      {
+        writer.WritePropertyName("reference");
+        Reference.SerializeJson(writer, options);
+      }
 
       if ((FhirVersion != null) && (FhirVersion.Count != 0))
       {
@@ -736,8 +739,11 @@ namespace Fhir.R4.Models
         _NameUrl.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("nameReference");
-      NameReference.SerializeJson(writer, options);
+      if (NameReference != null)
+      {
+        writer.WritePropertyName("nameReference");
+        NameReference.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Title))
       {
@@ -1428,8 +1434,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("reference");
-      Reference.SerializeJson(writer, options);
+      if (Reference != null)
+      {
+        writer.WritePropertyName("reference");
+        Reference.SerializeJson(writer, options);
+      }
 
       if (ExampleBoolean != null)
       {

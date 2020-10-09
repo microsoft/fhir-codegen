@@ -146,8 +146,11 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if ((DerivedFrom != null) && (DerivedFrom.Count != 0))
       {
@@ -202,8 +205,11 @@ namespace Fhir.R4.Models
         Source.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("device");
-      Device.SerializeJson(writer, options);
+      if (Device != null)
+      {
+        writer.WritePropertyName("device");
+        Device.SerializeJson(writer, options);
+      }
 
       if ((ReasonCode != null) && (ReasonCode.Count != 0))
       {

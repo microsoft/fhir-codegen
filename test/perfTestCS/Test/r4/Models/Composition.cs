@@ -184,11 +184,17 @@ namespace Fhir.R4.Models
         _Code.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("targetIdentifier");
-      TargetIdentifier.SerializeJson(writer, options);
+      if (TargetIdentifier != null)
+      {
+        writer.WritePropertyName("targetIdentifier");
+        TargetIdentifier.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("targetReference");
-      TargetReference.SerializeJson(writer, options);
+      if (TargetReference != null)
+      {
+        writer.WritePropertyName("targetReference");
+        TargetReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -860,8 +866,11 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((Category != null) && (Category.Count != 0))
       {

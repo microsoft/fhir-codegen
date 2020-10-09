@@ -53,11 +53,17 @@ namespace Fhir.R4.Models
         _ContentString.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("contentAttachment");
-      ContentAttachment.SerializeJson(writer, options);
+      if (ContentAttachment != null)
+      {
+        writer.WritePropertyName("contentAttachment");
+        ContentAttachment.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("contentReference");
-      ContentReference.SerializeJson(writer, options);
+      if (ContentReference != null)
+      {
+        writer.WritePropertyName("contentReference");
+        ContentReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

@@ -50,8 +50,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("country");
-      Country.SerializeJson(writer, options);
+      if (Country != null)
+      {
+        writer.WritePropertyName("country");
+        Country.SerializeJson(writer, options);
+      }
 
       if (Jurisdiction != null)
       {
@@ -59,11 +62,17 @@ namespace Fhir.R4.Models
         Jurisdiction.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("status");
-      Status.SerializeJson(writer, options);
+      if (Status != null)
+      {
+        writer.WritePropertyName("status");
+        Status.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("dateRange");
-      DateRange.SerializeJson(writer, options);
+      if (DateRange != null)
+      {
+        writer.WritePropertyName("dateRange");
+        DateRange.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(RestoreDate))
       {

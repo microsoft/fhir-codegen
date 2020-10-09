@@ -38,8 +38,11 @@ namespace Fhir.R4.Models
 
       writer.WriteNumber("index", Index);
 
-      writer.WritePropertyName("profile");
-      Profile.SerializeJson(writer, options);
+      if (Profile != null)
+      {
+        writer.WritePropertyName("profile");
+        Profile.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -122,8 +125,11 @@ namespace Fhir.R4.Models
 
       writer.WriteNumber("index", Index);
 
-      writer.WritePropertyName("profile");
-      Profile.SerializeJson(writer, options);
+      if (Profile != null)
+      {
+        writer.WritePropertyName("profile");
+        Profile.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -2812,8 +2818,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("operation");
-      Operation.SerializeJson(writer, options);
+      if (Operation != null)
+      {
+        writer.WritePropertyName("operation");
+        Operation.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

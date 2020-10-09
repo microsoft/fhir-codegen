@@ -62,8 +62,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if (Outcome != null)
       {
@@ -479,8 +482,11 @@ namespace Fhir.R4.Models
         DataAbsentReason.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Date))
       {
@@ -504,8 +510,11 @@ namespace Fhir.R4.Models
         _Name.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("relationship");
-      Relationship.SerializeJson(writer, options);
+      if (Relationship != null)
+      {
+        writer.WritePropertyName("relationship");
+        Relationship.SerializeJson(writer, options);
+      }
 
       if (Sex != null)
       {

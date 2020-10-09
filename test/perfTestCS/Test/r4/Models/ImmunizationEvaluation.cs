@@ -144,8 +144,11 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Date))
       {
@@ -164,14 +167,23 @@ namespace Fhir.R4.Models
         Authority.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("targetDisease");
-      TargetDisease.SerializeJson(writer, options);
+      if (TargetDisease != null)
+      {
+        writer.WritePropertyName("targetDisease");
+        TargetDisease.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("immunizationEvent");
-      ImmunizationEvent.SerializeJson(writer, options);
+      if (ImmunizationEvent != null)
+      {
+        writer.WritePropertyName("immunizationEvent");
+        ImmunizationEvent.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("doseStatus");
-      DoseStatus.SerializeJson(writer, options);
+      if (DoseStatus != null)
+      {
+        writer.WritePropertyName("doseStatus");
+        DoseStatus.SerializeJson(writer, options);
+      }
 
       if ((DoseStatusReason != null) && (DoseStatusReason.Count != 0))
       {

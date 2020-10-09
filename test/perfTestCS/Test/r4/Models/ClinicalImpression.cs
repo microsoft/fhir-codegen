@@ -34,8 +34,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if ((Item != null) && (Item.Count != 0))
       {
@@ -426,8 +429,11 @@ namespace Fhir.R4.Models
         _Description.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (Encounter != null)
       {

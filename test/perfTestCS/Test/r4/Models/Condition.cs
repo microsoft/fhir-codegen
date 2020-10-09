@@ -502,8 +502,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (Encounter != null)
       {

@@ -152,8 +152,11 @@ namespace Fhir.R4.Models
         _Path.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("expression");
-      Expression.SerializeJson(writer, options);
+      if (Expression != null)
+      {
+        writer.WritePropertyName("expression");
+        Expression.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

@@ -74,8 +74,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.Element)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("origin");
-      Origin.SerializeJson(writer, options);
+      if (Origin != null)
+      {
+        writer.WritePropertyName("origin");
+        Origin.SerializeJson(writer, options);
+      }
 
       writer.WriteNumber("period", Period);
 

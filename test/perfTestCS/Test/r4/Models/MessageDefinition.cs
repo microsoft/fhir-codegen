@@ -706,8 +706,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("eventCoding");
-      EventCoding.SerializeJson(writer, options);
+      if (EventCoding != null)
+      {
+        writer.WritePropertyName("eventCoding");
+        EventCoding.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(EventUri))
       {

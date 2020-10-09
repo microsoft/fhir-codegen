@@ -40,8 +40,11 @@ namespace Fhir.R4.Models
         Role.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("actor");
-      Actor.SerializeJson(writer, options);
+      if (Actor != null)
+      {
+        writer.WritePropertyName("actor");
+        Actor.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -280,11 +283,17 @@ namespace Fhir.R4.Models
         writer.WriteNumber("sequence", (uint)Sequence!);
       }
 
-      writer.WritePropertyName("chargeItemReference");
-      ChargeItemReference.SerializeJson(writer, options);
+      if (ChargeItemReference != null)
+      {
+        writer.WritePropertyName("chargeItemReference");
+        ChargeItemReference.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("chargeItemCodeableConcept");
-      ChargeItemCodeableConcept.SerializeJson(writer, options);
+      if (ChargeItemCodeableConcept != null)
+      {
+        writer.WritePropertyName("chargeItemCodeableConcept");
+        ChargeItemCodeableConcept.SerializeJson(writer, options);
+      }
 
       if ((PriceComponent != null) && (PriceComponent.Count != 0))
       {

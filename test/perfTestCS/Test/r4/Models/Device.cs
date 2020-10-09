@@ -391,8 +391,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("systemType");
-      SystemType.SerializeJson(writer, options);
+      if (SystemType != null)
+      {
+        writer.WritePropertyName("systemType");
+        SystemType.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Version))
       {
@@ -609,8 +612,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((ValueQuantity != null) && (ValueQuantity.Count != 0))
       {

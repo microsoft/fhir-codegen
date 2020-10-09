@@ -437,11 +437,17 @@ namespace Fhir.R4.Models
         _Priority.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("codeReference");
-      CodeReference.SerializeJson(writer, options);
+      if (CodeReference != null)
+      {
+        writer.WritePropertyName("codeReference");
+        CodeReference.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("codeCodeableConcept");
-      CodeCodeableConcept.SerializeJson(writer, options);
+      if (CodeCodeableConcept != null)
+      {
+        writer.WritePropertyName("codeCodeableConcept");
+        CodeCodeableConcept.SerializeJson(writer, options);
+      }
 
       if ((Parameter != null) && (Parameter.Count != 0))
       {
@@ -456,8 +462,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (Encounter != null)
       {

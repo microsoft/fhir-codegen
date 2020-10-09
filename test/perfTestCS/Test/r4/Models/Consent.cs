@@ -263,11 +263,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("role");
-      Role.SerializeJson(writer, options);
+      if (Role != null)
+      {
+        writer.WritePropertyName("role");
+        Role.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("reference");
-      Reference.SerializeJson(writer, options);
+      if (Reference != null)
+      {
+        writer.WritePropertyName("reference");
+        Reference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -362,8 +368,11 @@ namespace Fhir.R4.Models
         _Meaning.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("reference");
-      Reference.SerializeJson(writer, options);
+      if (Reference != null)
+      {
+        writer.WritePropertyName("reference");
+        Reference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -1007,8 +1016,11 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("scope");
-      Scope.SerializeJson(writer, options);
+      if (Scope != null)
+      {
+        writer.WritePropertyName("scope");
+        Scope.SerializeJson(writer, options);
+      }
 
       if ((Category != null) && (Category.Count != 0))
       {

@@ -526,8 +526,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("organization");
-      Organization.SerializeJson(writer, options);
+      if (Organization != null)
+      {
+        writer.WritePropertyName("organization");
+        Organization.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(IdentityCertificate))
       {

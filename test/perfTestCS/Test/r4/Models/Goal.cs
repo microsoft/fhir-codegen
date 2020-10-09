@@ -402,11 +402,17 @@ namespace Fhir.R4.Models
         Priority.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("description");
-      Description.SerializeJson(writer, options);
+      if (Description != null)
+      {
+        writer.WritePropertyName("description");
+        Description.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(StartDate))
       {

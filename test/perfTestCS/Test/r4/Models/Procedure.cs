@@ -44,8 +44,11 @@ namespace Fhir.R4.Models
         Function.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("actor");
-      Actor.SerializeJson(writer, options);
+      if (Actor != null)
+      {
+        writer.WritePropertyName("actor");
+        Actor.SerializeJson(writer, options);
+      }
 
       if (OnBehalfOf != null)
       {
@@ -142,8 +145,11 @@ namespace Fhir.R4.Models
         Action.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("manipulated");
-      Manipulated.SerializeJson(writer, options);
+      if (Manipulated != null)
+      {
+        writer.WritePropertyName("manipulated");
+        Manipulated.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -495,8 +501,11 @@ namespace Fhir.R4.Models
         Code.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (Encounter != null)
       {

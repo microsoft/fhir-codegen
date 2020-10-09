@@ -47,8 +47,14 @@ namespace PerfTestCS
         /// <summary>Gets or sets the first parse.</summary>
         public long FirstParseTime { get; set; }
 
+        /// <summary>Gets or sets the first serialize time.</summary>
+        public long FirstSerializeTime { get; set; }
+
         /// <summary>Gets or sets the looped parse.</summary>
         public long LoopedParseTime { get; set; }
+
+        /// <summary>Gets or sets the looped serialize time.</summary>
+        public long LoopedSerializeTime { get; set; }
 
         /// <summary>Gets the number of loops.</summary>
         public int LoopCount { get; }

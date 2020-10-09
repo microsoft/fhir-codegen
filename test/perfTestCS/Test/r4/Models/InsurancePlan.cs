@@ -281,8 +281,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Requirement))
       {
@@ -421,8 +424,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((Network != null) && (Network.Count != 0))
       {
@@ -716,8 +722,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (Applicability != null)
       {
@@ -854,8 +863,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((Cost != null) && (Cost.Count != 0))
       {
@@ -970,8 +982,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("category");
-      Category.SerializeJson(writer, options);
+      if (Category != null)
+      {
+        writer.WritePropertyName("category");
+        Category.SerializeJson(writer, options);
+      }
 
       if ((Benefit != null) && (Benefit.Count != 0))
       {

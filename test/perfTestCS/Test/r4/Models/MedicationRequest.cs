@@ -293,8 +293,11 @@ namespace Fhir.R4.Models
 
       writer.WriteBoolean("allowedBoolean", AllowedBoolean);
 
-      writer.WritePropertyName("allowedCodeableConcept");
-      AllowedCodeableConcept.SerializeJson(writer, options);
+      if (AllowedCodeableConcept != null)
+      {
+        writer.WritePropertyName("allowedCodeableConcept");
+        AllowedCodeableConcept.SerializeJson(writer, options);
+      }
 
       if (Reason != null)
       {
@@ -629,14 +632,23 @@ namespace Fhir.R4.Models
         ReportedReference.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("medicationCodeableConcept");
-      MedicationCodeableConcept.SerializeJson(writer, options);
+      if (MedicationCodeableConcept != null)
+      {
+        writer.WritePropertyName("medicationCodeableConcept");
+        MedicationCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("medicationReference");
-      MedicationReference.SerializeJson(writer, options);
+      if (MedicationReference != null)
+      {
+        writer.WritePropertyName("medicationReference");
+        MedicationReference.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (Encounter != null)
       {

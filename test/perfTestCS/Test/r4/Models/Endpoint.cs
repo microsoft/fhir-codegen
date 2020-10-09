@@ -127,8 +127,11 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("connectionType");
-      ConnectionType.SerializeJson(writer, options);
+      if (ConnectionType != null)
+      {
+        writer.WritePropertyName("connectionType");
+        ConnectionType.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Name))
       {

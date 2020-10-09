@@ -249,8 +249,11 @@ namespace Fhir.R4.Models
         Identifier.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (DatePeriod != null)
       {

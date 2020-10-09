@@ -195,8 +195,11 @@ namespace Fhir.R4.Models
         Category.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("description");
-      Description.SerializeJson(writer, options);
+      if (Description != null)
+      {
+        writer.WritePropertyName("description");
+        Description.SerializeJson(writer, options);
+      }
 
       if (Priority != null)
       {

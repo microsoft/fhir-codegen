@@ -906,8 +906,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("operation");
-      Operation.SerializeJson(writer, options);
+      if (Operation != null)
+      {
+        writer.WritePropertyName("operation");
+        Operation.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -1189,8 +1192,11 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("testScript");
-      TestScript.SerializeJson(writer, options);
+      if (TestScript != null)
+      {
+        writer.WritePropertyName("testScript");
+        TestScript.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Result))
       {

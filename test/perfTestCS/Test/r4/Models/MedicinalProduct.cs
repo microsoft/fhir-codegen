@@ -49,8 +49,11 @@ namespace Fhir.R4.Models
         _Part.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -138,8 +141,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("country");
-      Country.SerializeJson(writer, options);
+      if (Country != null)
+      {
+        writer.WritePropertyName("country");
+        Country.SerializeJson(writer, options);
+      }
 
       if (Jurisdiction != null)
       {
@@ -147,8 +153,11 @@ namespace Fhir.R4.Models
         Jurisdiction.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("language");
-      Language.SerializeJson(writer, options);
+      if (Language != null)
+      {
+        writer.WritePropertyName("language");
+        Language.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

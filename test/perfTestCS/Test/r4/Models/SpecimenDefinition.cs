@@ -34,11 +34,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("additiveCodeableConcept");
-      AdditiveCodeableConcept.SerializeJson(writer, options);
+      if (AdditiveCodeableConcept != null)
+      {
+        writer.WritePropertyName("additiveCodeableConcept");
+        AdditiveCodeableConcept.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("additiveReference");
-      AdditiveReference.SerializeJson(writer, options);
+      if (AdditiveReference != null)
+      {
+        writer.WritePropertyName("additiveReference");
+        AdditiveReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

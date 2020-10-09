@@ -633,8 +633,11 @@ namespace Fhir.R4.Models
         _ValueCode.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("valueCoding");
-      ValueCoding.SerializeJson(writer, options);
+      if (ValueCoding != null)
+      {
+        writer.WritePropertyName("valueCoding");
+        ValueCoding.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(ValueString))
       {

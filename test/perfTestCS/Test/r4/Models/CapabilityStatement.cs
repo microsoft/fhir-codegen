@@ -2157,8 +2157,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("protocol");
-      Protocol.SerializeJson(writer, options);
+      if (Protocol != null)
+      {
+        writer.WritePropertyName("protocol");
+        Protocol.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Address))
       {

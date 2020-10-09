@@ -291,8 +291,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if (ValueQuantity != null)
       {
@@ -845,8 +848,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if (Subject != null)
       {

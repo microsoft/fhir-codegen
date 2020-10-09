@@ -34,8 +34,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("language");
-      Language.SerializeJson(writer, options);
+      if (Language != null)
+      {
+        writer.WritePropertyName("language");
+        Language.SerializeJson(writer, options);
+      }
 
       if (Preferred != null)
       {
@@ -195,8 +198,11 @@ namespace Fhir.R4.Models
         writer.WriteBoolean("active", (bool)Active!);
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if ((Relationship != null) && (Relationship.Count != 0))
       {

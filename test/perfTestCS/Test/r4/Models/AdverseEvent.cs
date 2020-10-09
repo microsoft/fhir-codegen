@@ -167,8 +167,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("instance");
-      Instance.SerializeJson(writer, options);
+      if (Instance != null)
+      {
+        writer.WritePropertyName("instance");
+        Instance.SerializeJson(writer, options);
+      }
 
       if ((Causality != null) && (Causality.Count != 0))
       {
@@ -417,8 +420,11 @@ namespace Fhir.R4.Models
         Event.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("subject");
-      Subject.SerializeJson(writer, options);
+      if (Subject != null)
+      {
+        writer.WritePropertyName("subject");
+        Subject.SerializeJson(writer, options);
+      }
 
       if (Encounter != null)
       {

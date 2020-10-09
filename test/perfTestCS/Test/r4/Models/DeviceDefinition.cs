@@ -411,8 +411,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((Description != null) && (Description.Count != 0))
       {
@@ -531,8 +534,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((ValueQuantity != null) && (ValueQuantity.Count != 0))
       {
@@ -691,8 +697,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("substance");
-      Substance.SerializeJson(writer, options);
+      if (Substance != null)
+      {
+        writer.WritePropertyName("substance");
+        Substance.SerializeJson(writer, options);
+      }
 
       if (Alternate != null)
       {

@@ -49,8 +49,11 @@ namespace Fhir.R4.Models
         _Type.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("resource");
-      Resource.SerializeJson(writer, options);
+      if (Resource != null)
+      {
+        writer.WritePropertyName("resource");
+        Resource.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

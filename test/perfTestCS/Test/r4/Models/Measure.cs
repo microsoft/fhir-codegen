@@ -59,8 +59,11 @@ namespace Fhir.R4.Models
         _Description.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("criteria");
-      Criteria.SerializeJson(writer, options);
+      if (Criteria != null)
+      {
+        writer.WritePropertyName("criteria");
+        Criteria.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -174,8 +177,11 @@ namespace Fhir.R4.Models
         _Description.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("criteria");
-      Criteria.SerializeJson(writer, options);
+      if (Criteria != null)
+      {
+        writer.WritePropertyName("criteria");
+        Criteria.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -659,8 +665,11 @@ namespace Fhir.R4.Models
         _Description.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("criteria");
-      Criteria.SerializeJson(writer, options);
+      if (Criteria != null)
+      {
+        writer.WritePropertyName("criteria");
+        Criteria.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

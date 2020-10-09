@@ -38,8 +38,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Value))
       {
@@ -230,8 +233,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("forecastStatus");
-      ForecastStatus.SerializeJson(writer, options);
+      if (ForecastStatus != null)
+      {
+        writer.WritePropertyName("forecastStatus");
+        ForecastStatus.SerializeJson(writer, options);
+      }
 
       if ((ForecastReason != null) && (ForecastReason.Count != 0))
       {
@@ -662,8 +668,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Date))
       {

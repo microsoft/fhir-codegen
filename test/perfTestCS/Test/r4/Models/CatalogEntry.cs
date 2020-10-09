@@ -49,8 +49,11 @@ namespace Fhir.R4.Models
         _Relationtype.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("item");
-      Item.SerializeJson(writer, options);
+      if (Item != null)
+      {
+        writer.WritePropertyName("item");
+        Item.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -221,8 +224,11 @@ namespace Fhir.R4.Models
 
       writer.WriteBoolean("orderable", Orderable);
 
-      writer.WritePropertyName("referencedItem");
-      ReferencedItem.SerializeJson(writer, options);
+      if (ReferencedItem != null)
+      {
+        writer.WritePropertyName("referencedItem");
+        ReferencedItem.SerializeJson(writer, options);
+      }
 
       if ((AdditionalIdentifier != null) && (AdditionalIdentifier.Count != 0))
       {

@@ -62,8 +62,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (AllowedUnsignedInt != null)
       {
@@ -618,8 +621,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("coverage");
-      Coverage.SerializeJson(writer, options);
+      if (Coverage != null)
+      {
+        writer.WritePropertyName("coverage");
+        Coverage.SerializeJson(writer, options);
+      }
 
       if (Inforce != null)
       {
@@ -750,8 +756,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("code");
-      Code.SerializeJson(writer, options);
+      if (Code != null)
+      {
+        writer.WritePropertyName("code");
+        Code.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -970,8 +979,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("patient");
-      Patient.SerializeJson(writer, options);
+      if (Patient != null)
+      {
+        writer.WritePropertyName("patient");
+        Patient.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(ServicedDate))
       {
@@ -1007,8 +1019,11 @@ namespace Fhir.R4.Models
         Requestor.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("request");
-      Request.SerializeJson(writer, options);
+      if (Request != null)
+      {
+        writer.WritePropertyName("request");
+        Request.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Outcome))
       {
@@ -1032,8 +1047,11 @@ namespace Fhir.R4.Models
         _Disposition.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("insurer");
-      Insurer.SerializeJson(writer, options);
+      if (Insurer != null)
+      {
+        writer.WritePropertyName("insurer");
+        Insurer.SerializeJson(writer, options);
+      }
 
       if ((Insurance != null) && (Insurance.Count != 0))
       {

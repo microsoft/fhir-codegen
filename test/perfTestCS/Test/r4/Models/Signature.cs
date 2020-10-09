@@ -94,8 +94,11 @@ namespace Fhir.R4.Models
         _When.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("who");
-      Who.SerializeJson(writer, options);
+      if (Who != null)
+      {
+        writer.WritePropertyName("who");
+        Who.SerializeJson(writer, options);
+      }
 
       if (OnBehalfOf != null)
       {

@@ -49,8 +49,11 @@ namespace Fhir.R4.Models
         _Status.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("period");
-      Period.SerializeJson(writer, options);
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -134,11 +137,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("class");
-      Class.SerializeJson(writer, options);
+      if (Class != null)
+      {
+        writer.WritePropertyName("class");
+        Class.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("period");
-      Period.SerializeJson(writer, options);
+      if (Period != null)
+      {
+        writer.WritePropertyName("period");
+        Period.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -356,8 +365,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("condition");
-      Condition.SerializeJson(writer, options);
+      if (Condition != null)
+      {
+        writer.WritePropertyName("condition");
+        Condition.SerializeJson(writer, options);
+      }
 
       if (Use != null)
       {
@@ -748,8 +760,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("location");
-      Location.SerializeJson(writer, options);
+      if (Location != null)
+      {
+        writer.WritePropertyName("location");
+        Location.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Status))
       {
@@ -1003,8 +1018,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("class");
-      Class.SerializeJson(writer, options);
+      if (Class != null)
+      {
+        writer.WritePropertyName("class");
+        Class.SerializeJson(writer, options);
+      }
 
       if ((ClassHistory != null) && (ClassHistory.Count != 0))
       {

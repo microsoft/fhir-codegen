@@ -62,8 +62,11 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if (SubType != null)
       {
@@ -241,8 +244,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("classification");
-      Classification.SerializeJson(writer, options);
+      if (Classification != null)
+      {
+        writer.WritePropertyName("classification");
+        Classification.SerializeJson(writer, options);
+      }
 
       if ((Category != null) && (Category.Count != 0))
       {
@@ -435,8 +441,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("role");
-      Role.SerializeJson(writer, options);
+      if (Role != null)
+      {
+        writer.WritePropertyName("role");
+        Role.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -669,17 +678,29 @@ namespace Fhir.R4.Models
         _ValueUri.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("valueAttachment");
-      ValueAttachment.SerializeJson(writer, options);
+      if (ValueAttachment != null)
+      {
+        writer.WritePropertyName("valueAttachment");
+        ValueAttachment.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueCoding");
-      ValueCoding.SerializeJson(writer, options);
+      if (ValueCoding != null)
+      {
+        writer.WritePropertyName("valueCoding");
+        ValueCoding.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueQuantity");
-      ValueQuantity.SerializeJson(writer, options);
+      if (ValueQuantity != null)
+      {
+        writer.WritePropertyName("valueQuantity");
+        ValueQuantity.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("valueReference");
-      ValueReference.SerializeJson(writer, options);
+      if (ValueReference != null)
+      {
+        writer.WritePropertyName("valueReference");
+        ValueReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -2773,8 +2794,11 @@ namespace Fhir.R4.Models
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
       }
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
       if ((Subject != null) && (Subject.Count != 0))
       {
@@ -2789,8 +2813,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("intent");
-      Intent.SerializeJson(writer, options);
+      if (Intent != null)
+      {
+        writer.WritePropertyName("intent");
+        Intent.SerializeJson(writer, options);
+      }
 
       if ((LinkId != null) && (LinkId.Count != 0))
       {
@@ -2818,8 +2845,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("status");
-      Status.SerializeJson(writer, options);
+      if (Status != null)
+      {
+        writer.WritePropertyName("status");
+        Status.SerializeJson(writer, options);
+      }
 
       if (Context != null)
       {
@@ -3814,8 +3844,11 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WritePropertyName("offer");
-      Offer.SerializeJson(writer, options);
+      if (Offer != null)
+      {
+        writer.WritePropertyName("offer");
+        Offer.SerializeJson(writer, options);
+      }
 
       if ((Asset != null) && (Asset.Count != 0))
       {
@@ -4090,11 +4123,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("type");
-      Type.SerializeJson(writer, options);
+      if (Type != null)
+      {
+        writer.WritePropertyName("type");
+        Type.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("party");
-      Party.SerializeJson(writer, options);
+      if (Party != null)
+      {
+        writer.WritePropertyName("party");
+        Party.SerializeJson(writer, options);
+      }
 
       if ((Signature != null) && (Signature.Count != 0))
       {
@@ -4214,11 +4253,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("contentAttachment");
-      ContentAttachment.SerializeJson(writer, options);
+      if (ContentAttachment != null)
+      {
+        writer.WritePropertyName("contentAttachment");
+        ContentAttachment.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("contentReference");
-      ContentReference.SerializeJson(writer, options);
+      if (ContentReference != null)
+      {
+        writer.WritePropertyName("contentReference");
+        ContentReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -4298,11 +4343,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("contentAttachment");
-      ContentAttachment.SerializeJson(writer, options);
+      if (ContentAttachment != null)
+      {
+        writer.WritePropertyName("contentAttachment");
+        ContentAttachment.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("contentReference");
-      ContentReference.SerializeJson(writer, options);
+      if (ContentReference != null)
+      {
+        writer.WritePropertyName("contentReference");
+        ContentReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -4382,11 +4433,17 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WritePropertyName("contentAttachment");
-      ContentAttachment.SerializeJson(writer, options);
+      if (ContentAttachment != null)
+      {
+        writer.WritePropertyName("contentAttachment");
+        ContentAttachment.SerializeJson(writer, options);
+      }
 
-      writer.WritePropertyName("contentReference");
-      ContentReference.SerializeJson(writer, options);
+      if (ContentReference != null)
+      {
+        writer.WritePropertyName("contentReference");
+        ContentReference.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {

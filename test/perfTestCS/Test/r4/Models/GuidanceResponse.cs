@@ -161,8 +161,11 @@ namespace Fhir.R4.Models
         _ModuleCanonical.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("moduleCodeableConcept");
-      ModuleCodeableConcept.SerializeJson(writer, options);
+      if (ModuleCodeableConcept != null)
+      {
+        writer.WritePropertyName("moduleCodeableConcept");
+        ModuleCodeableConcept.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Status))
       {

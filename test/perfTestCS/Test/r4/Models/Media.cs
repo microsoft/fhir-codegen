@@ -327,8 +327,11 @@ namespace Fhir.R4.Models
         _Duration.SerializeJson(writer, options);
       }
 
-      writer.WritePropertyName("content");
-      Content.SerializeJson(writer, options);
+      if (Content != null)
+      {
+        writer.WritePropertyName("content");
+        Content.SerializeJson(writer, options);
+      }
 
       if ((Note != null) && (Note.Count != 0))
       {
