@@ -57,10 +57,10 @@ namespace PerfTestCS
                 }
             }
 
-            if (FullParseTest(fhirSpecDirectory) == 0)
-            {
-                return 0;
-            }
+            //if (FullParseTest(fhirSpecDirectory) == 0)
+            //{
+            //    return 0;
+            //}
 
             //if (SystemTest(fhirSpecDirectory) == 0)
             //{
