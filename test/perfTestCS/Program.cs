@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Enumeration;
+using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using Fhir.R4.Serialization;
@@ -113,9 +114,9 @@ namespace PerfTestCS
             FhirJsonParser jsonParser = new FhirJsonParser(
                 new ParserSettings
                 {
-                    AcceptUnknownMembers = true,
-                    AllowUnrecognizedEnums = true,
-                    PermissiveParsing = true,
+                    AcceptUnknownMembers = false, //true,
+                    AllowUnrecognizedEnums = false, //true,
+                    PermissiveParsing = false, //true,
                 });
 
             FhirJsonSerializer jsonSerializer = new FhirJsonSerializer(
@@ -149,7 +150,7 @@ namespace PerfTestCS
                         case "package":
 
                         // includes invalid value - supposed to be fixed, but still wrong here
-                        case "Observation-decimal":
+                        //case "Observation-decimal":
                             continue;
                     }
 
@@ -159,10 +160,18 @@ namespace PerfTestCS
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"FAILED - {filename}");
-                        exceptions.Add(shortName, ex);
-                        return -1;
+                        exceptions.Add(subDir + "/" + shortName, ex);
                     }
+                }
+            }
+
+            if (exceptions.Count > 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Exceptions:");
+                foreach (KeyValuePair<string, Exception> kvp in exceptions)
+                {
+                    Console.WriteLine($"{kvp.Key,-30}: {kvp.Value.Message}");
                 }
             }
 
@@ -186,31 +195,24 @@ namespace PerfTestCS
 
             string contents = File.ReadAllText(filename);
 
-            var parsed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(contents);
-            string serialized = System.Text.Json.JsonSerializer.Serialize<Fhir.R4.Models.Resource>(parsed, FhirSerializerOptions.Compact);
+            //var parsed = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(contents);
+            //string serialized = System.Text.Json.JsonSerializer.Serialize<Fhir.R4.Models.Resource>(parsed, FhirSerializerOptions.Compact);
 
-            if (!verifyWithNetApi)
-            {
-                return;
-            }
+            //if (!verifyWithNetApi)
+            //{
+            //    return;
+            //}
 
-            try
-            {
-                var parsedOriginal = jsonParser.Parse(contents);
-                string serializedOriginal = jsonSerializer.SerializeToString(parsedOriginal);
+            var parsedOriginal = jsonParser.Parse(contents);
+            string serializedOriginal = jsonSerializer.SerializeToString(parsedOriginal);
 
-                var parsedCS2 = jsonParser.Parse(serialized);
-                string serializedCS2 = jsonSerializer.SerializeToString(parsedCS2);
+            //var parsedCS2 = jsonParser.Parse(serialized);
+            //string serializedCS2 = jsonSerializer.SerializeToString(parsedCS2);
 
-                if (serializedOriginal.Length != serializedCS2.Length)
-                {
-                    Console.Write("");
-                }
-            }
-            catch (Exception)
-            {
-                // ignore
-            }
+            //if (serializedOriginal.Length != serializedCS2.Length)
+            //{
+            //    Console.Write("");
+            //}
         }
 
         /// <summary>Tests system.</summary>
