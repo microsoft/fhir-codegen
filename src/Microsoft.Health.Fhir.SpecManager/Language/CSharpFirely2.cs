@@ -959,6 +959,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     $" destination.WritePropertyName(\"resourceType\");" +
                     $" destination.WriteValue(\"{complexName}\");" +
                     $" }}");
+
+                // treat bundle differently because root-level bundles do not need the subsetted tag added
+                if (complexName == "Bundle")
+                {
+                    _writer.WriteLineIndented($"base.WriteJson(destination, summary, elements, propertyName, isChoice, false, requiresSubsetTag);");
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"base.WriteJson(destination, summary, elements, propertyName, isChoice, false, (requiresSubsetTag || summary != Hl7.Fhir.Rest.SummaryType.False));");
+                }
             }
             else
             {
@@ -971,79 +981,39 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     $" }}" +
                     $" destination.WriteStartObject();" +
                     $" }}");
-            }
 
-            _writer.WriteLineIndented($"base.WriteJson(destination, summary, elements, propertyName, isChoice, false, requiresSubsetTag);");
+                _writer.WriteLineIndented($"base.WriteJson(destination, summary, elements, propertyName, isChoice, false, requiresSubsetTag);");
+            }
 
             if ((exportedElements.Count > 0) && isResource)
             {
-                int includedTextElementCount = 0;
-
-                // open switch (summary)
-                _writer.WriteLineIndented("switch (summary)");
-                _writer.OpenScope();
-
-                _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.True:");
-                _writer.IncreaseIndent();
-
-                foreach (WrittenElementInfo info in exportedElements)
+                // special handling for bundle, since it needs to have all fields added in all modes other than count
+                if (complexName == "Bundle")
                 {
-                    if (!info.InSummary)
-                    {
-                        continue;
-                    }
+                    // open switch (summary)
+                    _writer.WriteLineIndented("switch (summary)");
+                    _writer.OpenScope();
 
-                    WriteJsonExportByType(info, true);
-                }
-
-                _writer.WriteLineIndented("break;");
-                _writer.DecreaseIndent();
-
-                _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.Text:");
-                _writer.IncreaseIndent();
-
-                foreach (WrittenElementInfo info in exportedElements)
-                {
-                    if ((!info.IsMandatory) &&
-                        (!_elementsForText.Contains(info.FhirElementName)))
-                    {
-                        continue;
-                    }
-
-                    WriteJsonExportByType(info, true);
-                    includedTextElementCount++;
-                }
-
-                _writer.WriteLineIndented("break;");
-                _writer.DecreaseIndent();
-
-                _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.Count:");
-                _writer.IncreaseIndent();
-
-                foreach (WrittenElementInfo info in exportedElements)
-                {
-                    if ((!info.IsMandatory) &&
-                        (!_elementsForCount.Contains(info.FhirElementName)))
-                    {
-                        continue;
-                    }
-
-                    WriteJsonExportByType(info, true);
-                }
-
-                _writer.WriteLineIndented("break;");
-                _writer.DecreaseIndent();
-
-                _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.Data:");
-
-                if (includedTextElementCount != 0)
-                {
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.True:");
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.Text:");
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.Data:");
                     _writer.IncreaseIndent();
 
                     foreach (WrittenElementInfo info in exportedElements)
                     {
-                        if ((info.FhirElementName == "text") ||
-                            (info.ExportedType == "Narrative"))
+                        WriteJsonExportByType(info, true);
+                    }
+
+                    _writer.WriteLineIndented("break;");
+                    _writer.DecreaseIndent();
+
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.Count:");
+                    _writer.IncreaseIndent();
+
+                    foreach (WrittenElementInfo info in exportedElements)
+                    {
+                        if ((!info.IsMandatory) &&
+                            (!_elementsForCount.Contains(info.FhirElementName)))
                         {
                             continue;
                         }
@@ -1053,21 +1023,115 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     _writer.WriteLineIndented("break;");
                     _writer.DecreaseIndent();
+
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.False:");
+                    _writer.IncreaseIndent();
+
+                    foreach (WrittenElementInfo info in exportedElements)
+                    {
+                        WriteJsonExportByType(info);
+                    }
+
+                    _writer.WriteLineIndented("break;");
+                    _writer.DecreaseIndent();
+
+                    // close switch (summary)
+                    _writer.CloseScope();
                 }
-
-                _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.False:");
-                _writer.IncreaseIndent();
-
-                foreach (WrittenElementInfo info in exportedElements)
+                else
                 {
-                    WriteJsonExportByType(info);
+                    int includedTextElementCount = 0;
+
+                    // open switch (summary)
+                    _writer.WriteLineIndented("switch (summary)");
+                    _writer.OpenScope();
+
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.True:");
+                    _writer.IncreaseIndent();
+
+                    foreach (WrittenElementInfo info in exportedElements)
+                    {
+                        if (!info.InSummary)
+                        {
+                            continue;
+                        }
+
+                        WriteJsonExportByType(info, true);
+                    }
+
+                    _writer.WriteLineIndented("break;");
+                    _writer.DecreaseIndent();
+
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.Text:");
+                    _writer.IncreaseIndent();
+
+                    foreach (WrittenElementInfo info in exportedElements)
+                    {
+                        if ((!info.IsMandatory) &&
+                            (!_elementsForText.Contains(info.FhirElementName)))
+                        {
+                            continue;
+                        }
+
+                        WriteJsonExportByType(info, true);
+                        includedTextElementCount++;
+                    }
+
+                    _writer.WriteLineIndented("break;");
+                    _writer.DecreaseIndent();
+
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.Count:");
+                    _writer.IncreaseIndent();
+
+                    foreach (WrittenElementInfo info in exportedElements)
+                    {
+                        if ((!info.IsMandatory) &&
+                            (!_elementsForCount.Contains(info.FhirElementName)))
+                        {
+                            continue;
+                        }
+
+                        WriteJsonExportByType(info, true);
+                    }
+
+                    _writer.WriteLineIndented("break;");
+                    _writer.DecreaseIndent();
+
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.Data:");
+
+                    if (includedTextElementCount != 0)
+                    {
+                        _writer.IncreaseIndent();
+
+                        foreach (WrittenElementInfo info in exportedElements)
+                        {
+                            if ((info.FhirElementName == "text") ||
+                                (info.ExportedType == "Narrative"))
+                            {
+                                continue;
+                            }
+
+                            WriteJsonExportByType(info, true);
+                        }
+
+                        _writer.WriteLineIndented("break;");
+                        _writer.DecreaseIndent();
+                    }
+
+                    _writer.WriteLineIndented("case Hl7.Fhir.Rest.SummaryType.False:");
+                    _writer.IncreaseIndent();
+
+                    foreach (WrittenElementInfo info in exportedElements)
+                    {
+                        WriteJsonExportByType(info);
+                    }
+
+                    _writer.WriteLineIndented("break;");
+                    _writer.DecreaseIndent();
+
+                    // close switch (summary)
+                    _writer.CloseScope();
                 }
-
-                _writer.WriteLineIndented("break;");
-                _writer.DecreaseIndent();
-
-                // close switch (summary)
-                _writer.CloseScope();
             }
             else if (exportedElements.Count > 0)
             {
