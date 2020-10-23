@@ -893,7 +893,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteChildren(exportedElements);
             WriteNamedChildren(exportedElements);
 
-            WriteJsonHelpers(complex.Name, exportedElements, isResource);
+            WriteJsonSerailzeFunction(complex.Name, exportedElements, isResource);
+            WriteJsonParseFunction(complex.Name, exportedElements, isResource);
 
             // close class
             CloseScope();
@@ -925,16 +926,244 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             return baseTypeName;
         }
 
-        /// <summary>Writes a JSON helpers.</summary>
+        /// <summary>Writes a JSON parse function.</summary>
         /// <param name="complexName">     Name of the complex type.</param>
         /// <param name="exportedElements">The exported elements.</param>
         /// <param name="isResource">      True if is resource, false if not.</param>
-        private void WriteJsonHelpers(
+        private void WriteJsonParseFunction(
             string complexName,
             List<WrittenElementInfo> exportedElements,
             bool isResource)
         {
+            // open ReadJson
+            WriteIndentedComment("Parse JSON into a POCO");
+            _writer.WriteLineIndented(
+                "public override void ReadJson(" +
+                " ref Newtonsoft.Json.JsonReader source," +
+                " FhirJsonParsingSettings settings)");
+            OpenScope();
+
+            _writer.WriteLineIndented("string propertyName;");
+            _writer.WriteLine();
+            _writer.WriteLineIndented("while (source.Read())");
+            _writer.OpenScope();
+            _writer.WriteLineIndented("if (source.TokenType == Newtonsoft.Json.JsonToken.EndObject)");
+            _writer.OpenScope();
+            _writer.WriteLineIndented("return;");
+            _writer.CloseScope();
+            _writer.WriteLine();
+            _writer.WriteLineIndented("if (source.TokenType == Newtonsoft.Json.JsonToken.PropertyName)");
+            _writer.OpenScope();
+            _writer.WriteLineIndented("propertyName = (string)source.Value;");
+
+            // TODO: this is for debugging ONLY!
+            // _writer.WriteLineIndented($"Console.WriteLine($\"Reading {complexName}.{{propertyName}}\");");
+            _writer.WriteLineIndented("source.Read();");
+            _writer.WriteLineIndented("this.ReadJsonProperty(ref source, settings, propertyName);");
+            _writer.CloseScope();
+            _writer.CloseScope();
+            _writer.WriteLine();
+
+            _writer.WriteLineIndented("throw new Newtonsoft.Json.JsonException();");
+
+            // close ReadJson
+            CloseScope();
+
+            // open ReadJsonProperty
+            WriteIndentedComment("Parse a single JSON value into a POCO");
+            _writer.WriteLineIndented(
+                "public override void ReadJsonProperty(" +
+                " ref Newtonsoft.Json.JsonReader source," +
+                " FhirJsonParsingSettings settings," +
+                " string propertyName)");
+            OpenScope();
+
+            _writer.WriteLineIndented("switch (propertyName)");
+
+            // open switch
+            _writer.OpenScope();
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                WriteJsonParseCase(info);
+            }
+
+            _writer.WriteLineIndented($"default:");
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented($"base.ReadJsonProperty(ref source, settings, propertyName);");
+            _writer.WriteLineIndented("break;");
+            _writer.DecreaseIndent();
+
+            // close switch
+            _writer.CloseScope();
+
+            // close ReadJsonProperty
+            _writer.CloseScope();
+        }
+
+        /// <summary>Writes a JSON parse by type.</summary>
+        /// <param name="info">The information.</param>
+        private void WriteJsonParseCase(WrittenElementInfo info)
+        {
+            if (info.IsChoice)
+            {
+                foreach (string typeName in info.FhirTypeList)
+                {
+                    WriteJsonParseSimpleType(info, typeName);
+                }
+
+                return;
+            }
+
+            if (info.FhirTypeList.Count == 1)
+            {
+                WriteJsonParseSimpleType(info, info.FhirTypeList[0]);
+                return;
+            }
+
+            WriteJsonParseSimpleType(info);
+        }
+
+        /// <summary>Writes a JSON parse simple type.</summary>
+        /// <param name="info">        The information.</param>
+        /// <param name="fhirTypeName">(Optional) Name of the FHIR type.</param>
+        private void WriteJsonParseSimpleType(WrittenElementInfo info, string fhirTypeName = "")
+        {
+            if (info.IsChoice)
+            {
+                _writer.WriteLineIndented($"case \"{info.FhirElementName}{fhirTypeName}\":");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"case \"{info.FhirElementName}\":");
+            }
+
+            _writer.IncreaseIndent();
+
+            if (info.IsList)
+            {
+                _writer.WriteLineIndented($"// parse list: {info.ExportedName}::{fhirTypeName} ({info.ExportedType})");
+                // note: cannot have choice types on arrays
+                //_writer.WriteLineIndented(
+                //    $"if (({info.ExportedName} != null) && ({info.ExportedName}.Count > 0))" +
+                //    $" {{" +
+                //    $" SerializationUtil.WriteJsonPropertyName(destination, \"{info.FhirElementName}\", \"\", false);" +
+                //    $" destination.WriteStartArray();" +
+                //    $" foreach (var elem in {info.ExportedName})" +
+                //    $" {{" +
+                //    $" elem.WriteJson(destination, summary, elements, \"\", {(info.IsChoice ? "true" : "false")}, true);" +
+                //    $" }}" +
+                //    $" destination.WriteEndArray();" +
+                //    $" }}");
+            }
+            else
+            {
+                switch (fhirTypeName)
+                {
+                    case "Boolean":
+                    case "boolean":
+                        _writer.WriteLineIndented($"{info.ExportedName} = new FhirBoolean((bool)source.Value);");
+                        break;
+
+                    case "Integer":
+                    case "integer":
+                        _writer.WriteLineIndented($"{info.ExportedName} = new Integer((int)source.Value);");
+                        break;
+
+                    case "UnsignedInt":
+                    case "unsignedInt":
+                        _writer.WriteLineIndented($"{info.ExportedName} = new UnsignedInt((int)source.Value);");
+                        break;
+
+                    case "PositiveInt":
+                    case "positiveInt":
+                        _writer.WriteLineIndented($"{info.ExportedName} = new PositiveInt((int)source.Value);");
+                        break;
+
+                    case "Integer64":
+                    case "integer64":
+                        _writer.WriteLineIndented($"{info.ExportedName} = new Integer64(long.Parse(source.Value.ToString()));");
+                        break;
+
+                    case "Time":
+                    case "time":
+                        _writer.WriteLineIndented($"{info.ExportedName} = PrimitiveTypeConverter.ConvertTo<Time>(source.Value.ToString());");
+                        break;
+
+                    case "Date":
+                    case "date":
+                        _writer.WriteLineIndented($"{info.ExportedName} = PrimitiveTypeConverter.ConvertTo<Date>(source.Value.ToString());");
+                        break;
+
+                    case "Instant":
+                    case "instant":
+                        _writer.WriteLineIndented($"{info.ExportedName} = PrimitiveTypeConverter.ConvertTo<Instant>(source.Value.ToString());");
+                        break;
+
+                    case "DateTime":
+                    case "dateTime":
+                        _writer.WriteLineIndented($"{info.ExportedName} = PrimitiveTypeConverter.ConvertTo<FhirDateTime>(source.Value.ToString());");
+                        break;
+
+                    case "Decimal":
+                    case "decimal":
+                        _writer.WriteLineIndented($"{info.ExportedName} = PrimitiveTypeConverter.ConvertTo<FhirDecimal>(source.Value);");
+                        break;
+
+                    case "code":
+                        if (info.ExportedType.StartsWith("Code<", StringComparison.Ordinal))
+                        {
+                            string enumType = info.ExportedType.Substring(5, info.ExportedType.Length - 6);
+                            _writer.WriteLineIndented($"{info.ExportedName} = new {info.ExportedType}(EnumUtility.ParseLiteral<{enumType}>(source.Value.ToString()));");
+                        }
+
+                        break;
+
+                    //case "base64Binary":
+                    //case "string":
+                    //case "id":
+                    //case "uri":
+                    //case "oid":
+                    //case "uuid":
+                    //case "canonical":
+                    //case "url":
+                    //case "markdown":
+                    //case "xhtml":
+                    //    break;
+                    default:
+                        _writer.WriteLineIndented($"// parse value: {info.ExportedName}::{fhirTypeName} ({info.ExportedType})");
+                        break;
+                }
+
+                //_writer.WriteLineIndented(
+                //    $"if ({info.ExportedName} != null)" +
+                //    $" {{" +
+                //    $" {info.ExportedName}.WriteJson(destination, summary, elements, \"{info.FhirElementName}\", {(info.IsChoice ? "true" : "false")}, true);" +
+                //    $" }}");
+            }
+
+            _writer.WriteLineIndented("break;");
+            _writer.DecreaseIndent();
+            _writer.WriteLine();
+        }
+
+        /// <summary>Writes the Json serialize function (WriteJson).</summary>
+        /// <param name="complexName">     Name of the complex type.</param>
+        /// <param name="exportedElements">The exported elements.</param>
+        /// <param name="isResource">      True if is resource, false if not.</param>
+        private void WriteJsonSerailzeFunction(
+            string complexName,
+            List<WrittenElementInfo> exportedElements,
+            bool isResource)
+        {
+            // don't write for 'resource' - it's handled manually because of the handling for the SUBSET tag in meta
+            if (complexName == "Resource")
+            {
+                return;
+            }
+
             // open WriteJson
+            WriteIndentedComment("Serialize a POCO into JSON");
             _writer.WriteLineIndented(
                 "public override void WriteJson(" +
                 " Newtonsoft.Json.JsonWriter destination," +
@@ -1153,20 +1382,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="info">The information.</param>
         private void WriteJsonExportByType(WrittenElementInfo info, bool isSubset = false)
         {
-            if (info.ExportedType.StartsWith("List<", StringComparison.OrdinalIgnoreCase))
+            // if (info.ExportedType.StartsWith("List<", StringComparison.OrdinalIgnoreCase))
+            if (info.IsList)
             {
                 // note: cannot have choice types on arrays
                 _writer.WriteLineIndented(
-                    $"if (({info.ExportedName} != null) && ({info.ExportedName}.Count > 0))" +
-                    $" {{" +
-                    $" SerializationUtil.WriteJsonPropertyName(destination, \"{info.FhirElementName}\", \"\", false);" +
-                    $" destination.WriteStartArray();" +
-                    $" foreach (var elem in {info.ExportedName})" +
-                    $" {{" +
-                    $" elem.WriteJson(destination, summary, elements, \"\", {(info.IsChoice ? "true" : "false")}, true, {(isSubset ? "true" : "requiresSubsetTag")});" +
-                    $" }}" +
-                    $" destination.WriteEndArray();" +
-                    $" }}");
+                $"if (({info.ExportedName} != null) && ({info.ExportedName}.Count > 0))" +
+                $" {{" +
+                $" SerializationUtil.WriteJsonPropertyName(destination, \"{info.FhirElementName}\", \"\", false);" +
+                $" destination.WriteStartArray();" +
+                $" foreach (var elem in {info.ExportedName})" +
+                $" {{" +
+                $" elem.WriteJson(destination, summary, elements, \"\", {(info.IsChoice ? "true" : "false")}, true, {(isSubset ? "true" : "requiresSubsetTag")});" +
+                $" }}" +
+                $" destination.WriteEndArray();" +
+                $" }}");
             }
             else
             {
@@ -1440,7 +1670,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIsExactly(exportName, exportedElements);
                 WriteChildren(exportedElements);
                 WriteNamedChildren(exportedElements);
-                WriteJsonHelpers(complex.Name, exportedElements, false);
+                WriteJsonSerailzeFunction(complex.Name, exportedElements, false);
+                WriteJsonParseFunction(complex.Name, exportedElements, false);
             }
 
             // close class
@@ -1689,7 +1920,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 out string summary,
                 out string choice,
                 out string allowedTypes,
-                out string resourceReferences);
+                out string resourceReferences,
+                out List<string> fhirTypeList);
 
             _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice})]");
 
@@ -1765,6 +1997,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         InSummary = element.IsSummary,
                         IsMandatory = element.CardinalityMin > 0,
                         IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
+                        FhirTypeList = fhirTypeList,
                     });
 
                 _writer.WriteLineIndented($"public {codeLiteral} {pascal}{matchTrailer}Element");
@@ -1789,6 +2022,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         InSummary = element.IsSummary,
                         IsMandatory = element.CardinalityMin > 0,
                         IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
+                        FhirTypeList = fhirTypeList,
                     });
 
                 _writer.WriteLineIndented($"public List<{codeLiteral}> {pascal}{matchTrailer}Element");
@@ -1887,7 +2121,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 out string summary,
                 out string choice,
                 out string allowedTypes,
-                out string resourceReferences);
+                out string resourceReferences,
+                out List<string> fhirTypeList);
 
             /* Exceptions:
              *  o Meta.source only exists since R5, it is still present in the common version.
@@ -2018,6 +2253,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         InSummary = element.IsSummary,
                         IsMandatory = element.CardinalityMin > 0,
                         IsChoice = isChoice,
+                        FhirTypeList = fhirTypeList,
                     });
 
                 _writer.WriteLineIndented($"public {Namespace}.{type} {pascal}{elementTag}");
@@ -2042,6 +2278,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         InSummary = element.IsSummary,
                         IsMandatory = element.CardinalityMin > 0,
                         IsChoice = isChoice,
+                        FhirTypeList = fhirTypeList,
                     });
 
                 _writer.WriteLineIndented($"public List<{Namespace}.{type}> {pascal}{elementTag}");
@@ -2171,16 +2408,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="choice">            [out] The choice.</param>
         /// <param name="allowedTypes">      [out] List of types of the allowed.</param>
         /// <param name="resourceReferences">[out] The resource references.</param>
+        /// <param name="fhirTypeList">      [out] List of FHIR types.</param>
         private void BuildElementOptionals(
             FhirElement element,
             out string summary,
             out string choice,
             out string allowedTypes,
-            out string resourceReferences)
+            out string resourceReferences,
+            out List<string> fhirTypeList)
         {
             choice = string.Empty;
             allowedTypes = string.Empty;
             resourceReferences = string.Empty;
+            fhirTypeList = new List<string>();
 
             summary = element.IsSummary ? ", InSummary=true" : string.Empty;
 
@@ -2189,6 +2429,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 if (element.ElementTypes.Count == 1)
                 {
                     string elementType = element.ElementTypes.First().Value.Name;
+                    fhirTypeList.Add(elementType);
 
                     if (elementType == "Resource")
                     {
@@ -2237,6 +2478,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             sb.Append(FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase));
                         }
 
+                        fhirTypeList.Add(FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase));
                         sb.Append(")");
                     }
 
@@ -2671,6 +2913,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             internal bool InSummary;
             internal bool IsMandatory;
             internal bool IsChoice;
+            internal List<string> FhirTypeList;
         }
 
         /// <summary>Information about the written model.</summary>
