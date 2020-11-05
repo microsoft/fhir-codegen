@@ -1,0 +1,34 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "di",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: di</p><p><b>status</b>: active</p><p><b>intent</b>: original-order</p><p><b>code</b>: <span>Chest CT</span></p><p><b>subject</b>: <a>Generated Summary: id: dicom; id: MINT1234; active; MINT_TEST ; gender: male</a></p><p><b>occurrence</b>: 08/05/2013 12:33:27 PM</p><p><b>requester</b>: <a>Dr. Adam Careful. Generated Summary: id: example; id: 23; active; Adam Careful </a></p><p><b>reason</b>: </p></div>"
+  },
+  "status": "active",
+  "intent": "original-order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24627-2"
+      }
+    ],
+    "text": "Chest CT"
+  },
+  "subject": {
+    "reference": "Patient/dicom"
+  },
+  "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
+  "requester": {
+    "reference": "Practitioner/example",
+    "display": "Dr. Adam Careful"
+  },
+  "reason": [
+    {
+      "concept": {
+        "text": "Check for metastatic disease"
+      }
+    }
+  ]
+}

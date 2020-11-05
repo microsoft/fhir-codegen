@@ -863,7 +863,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("/// <summary>");
             }
 
-            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n");
+            string comment = value
+                .Replace('\r', '\n')
+                .Replace("\r\n", "\n")
+                .Replace("\n\n", "\n")
+                .Replace("<", "&lt;")
+                .Replace(">", "&gt;");
 
             string[] lines = comment.Split('\n');
             foreach (string line in lines)

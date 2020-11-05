@@ -1,0 +1,27 @@
+{
+  "resourceType": "Task",
+  "id": "example3",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example3</p><p><b>status</b>: draft</p><p><b>intent</b>: order</p><p><b>code</b>: <span>Refill Request</span></p><p><b>focus</b>: <a>Generated Summary: id: medrx002; id: 12345 (OFFICIAL); status: active; intent: order; <span>prescribed medication</span>; authoredOn: 2015-03-01; <span>Essential hypertension (disorder)</span>; </a></p><p><b>for</b>: <a>Generated Summary: id: f001; id: 738472983 (USUAL), id: ?ngen-9? (USUAL); active; Pieter van de Heuvel ; ph: 0648352638(MOBILE), p.heuvel@gmail.com(HOME); gender: male; birthDate: 1944-11-17; <span>Getrouwd</span>; multipleBirth</a></p><p><b>authoredOn</b>: 11/03/2016 1:39:32 PM</p><p><b>lastModified</b>: 11/03/2016 1:39:32 PM</p><p><b>requester</b>: <a>Generated Summary: id: example; Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); -unknown-(HOME), ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>owner</b>: <a>Generated Summary: id: example; id: 23; active; Adam Careful </a></p></div>"
+  },
+  "status": "draft",
+  "intent": "order",
+  "code": {
+    "text": "Refill Request"
+  },
+  "focus": {
+    "reference": "MedicationRequest/medrx002"
+  },
+  "for": {
+    "reference": "Patient/f001"
+  },
+  "authoredOn": "2016-03-10T22:39:32-04:00",
+  "lastModified": "2016-03-10T22:39:32-04:00",
+  "requester": {
+    "reference": "Patient/example"
+  },
+  "owner": {
+    "reference": "Practitioner/example"
+  }
+}

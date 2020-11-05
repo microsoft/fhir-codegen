@@ -1,0 +1,93 @@
+{
+  "resourceType": "DeviceRequest",
+  "id": "insulinpump",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: insulinpump</p><p><b>identifier</b>: id: ip_request1.1</p><p><b>instantiatesCanonical</b>: <a>http://motivemi.com/artifacts/PlanDefinition/low-suicide-risk-order-set</a></p><p><b>basedOn</b>: <span>Homecare - DM follow-up</span></p><p><b>priorRequest</b>: <span>CGM ambulatory</span></p><p><b>groupIdentifier</b>: id: ip_request1</p><p><b>status</b>: active</p><p><b>intent</b>: instance-order</p><p><b>priority</b>: routine</p><p><b>code</b>: </p><p><b>subject</b>: <a>Generated Summary: id: dicom; id: MINT1234; active; MINT_TEST ; gender: male</a></p><p><b>encounter</b>: <span>Encounter 1</span></p><p><b>occurrence</b>: 08/05/2013 12:33:27 PM</p><p><b>authoredOn</b>: 08/05/2013 12:33:27 PM</p><p><b>requester</b>: <a>Dr. Adam Careful. Generated Summary: id: example; id: 23; active; Adam Careful </a></p><p><b>performerType</b>: <span>Nurse</span></p><p><b>performer</b>: <span>Nurse Rossignol</span></p><p><b>reason</b>: , </p><p><b>supportingInfo</b>: <span>Previous results</span></p><p><b>note</b>: this is the right device brand and model</p><p><b>relevantHistory</b>: <span>Request for unspecified device</span></p></div>"
+  },
+  "identifier": [
+    {
+      "value": "ip_request1.1"
+    }
+  ],
+  "instantiatesCanonical": [
+    "http://motivemi.com/artifacts/PlanDefinition/low-suicide-risk-order-set"
+  ],
+  "basedOn": [
+    {
+      "display": "Homecare - DM follow-up"
+    }
+  ],
+  "priorRequest": [
+    {
+      "display": "CGM ambulatory"
+    }
+  ],
+  "groupIdentifier": {
+    "value": "ip_request1"
+  },
+  "status": "active",
+  "intent": "instance-order",
+  "priority": "routine",
+  "code": {
+    "concept": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "43148-6"
+        }
+      ],
+      "text": "Insulin delivery device panel"
+    }
+  },
+  "subject": {
+    "reference": "Patient/dicom"
+  },
+  "encounter": {
+    "display": "Encounter 1"
+  },
+  "occurrenceDateTime": "2013-05-08T09:33:27+07:00",
+  "authoredOn": "2013-05-08T09:33:27+07:00",
+  "requester": {
+    "reference": "Practitioner/example",
+    "display": "Dr. Adam Careful"
+  },
+  "performerType": {
+    "coding": [
+      {
+        "display": "Qualified nurse"
+      }
+    ],
+    "text": "Nurse"
+  },
+  "performer": {
+    "display": "Nurse Rossignol"
+  },
+  "reason": [
+    {
+      "concept": {
+        "text": "gastroparesis"
+      }
+    },
+    {
+      "reference": {
+        "display": "Gastroparesis"
+      }
+    }
+  ],
+  "supportingInfo": [
+    {
+      "display": "Previous results"
+    }
+  ],
+  "note": [
+    {
+      "text": "this is the right device brand and model"
+    }
+  ],
+  "relevantHistory": [
+    {
+      "display": "Request for unspecified device"
+    }
+  ]
+}
