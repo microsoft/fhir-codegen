@@ -1,0 +1,165 @@
+{
+  "resourceType": "NutritionIntake",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example</p><p><b>status</b>: completed</p><p><b>code</b>: <span>Inpatient</span></p><p><b>subject</b>: <span>Paula Patient Chalmers</span></p><p><b>occurrence</b>: 02/08/2019 6:45:18 PM</p><blockquote><p><b>consumedItem</b></p><p><b>type</b>: <span>food</span></p><p><b>nutritionProduct</b>: </p><p><b>amount</b>: 100 percent</p></blockquote><blockquote><p><b>consumedItem</b></p><p><b>type</b>: <span>food</span></p><p><b>nutritionProduct</b>: </p><p><b>amount</b>: 100 percent</p></blockquote><blockquote><p><b>consumedItem</b></p><p><b>type</b>: <span>food</span></p><p><b>nutritionProduct</b>: </p><p><b>amount</b>: 50 percent</p></blockquote><blockquote><p><b>consumedItem</b></p><p><b>type</b>: <span>food</span></p><p><b>nutritionProduct</b>: </p><p><b>amount</b>: 50 percent</p></blockquote><blockquote><p><b>consumedItem</b></p><p><b>type</b>: <span>fluid</span></p><p><b>nutritionProduct</b>: </p><p><b>amount</b>: 100 percent</p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: </p><p><b>amount</b>: 313 kilocalorie</p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: </p><p><b>amount</b>: 10.4 grams</p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: </p><p><b>amount</b>: 18.00 grams</p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: </p><p><b>amount</b>: 26.47 grams</p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: </p><p><b>amount</b>: 770 Milligrams</p></blockquote></div>"
+  },
+  "status": "completed",
+  "code": {
+    "text": "Inpatient"
+  },
+  "subject": {
+    "display": "Paula Patient Chalmers"
+  },
+  "occurrenceDateTime": "2019-08-02T12:45:18+04:00",
+  "consumedItem": [
+    {
+      "type": {
+        "text": "food"
+      },
+      "nutritionProduct": {
+        "concept": {
+          "text": "Grill Sandwich"
+        }
+      },
+      "amount": {
+        "value": 100,
+        "unit": "percent",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      }
+    },
+    {
+      "type": {
+        "text": "food"
+      },
+      "nutritionProduct": {
+        "concept": {
+          "text": "French Fries Spiral Battered"
+        }
+      },
+      "amount": {
+        "value": 100,
+        "unit": "percent",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      }
+    },
+    {
+      "type": {
+        "text": "food"
+      },
+      "nutritionProduct": {
+        "concept": {
+          "text": "Tomato Soup Healthy Request"
+        }
+      },
+      "amount": {
+        "value": 50,
+        "unit": "percent",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      }
+    },
+    {
+      "type": {
+        "text": "food"
+      },
+      "nutritionProduct": {
+        "concept": {
+          "text": "Side Garden Salad"
+        }
+      },
+      "amount": {
+        "value": 50,
+        "unit": "percent",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      }
+    },
+    {
+      "type": {
+        "text": "fluid"
+      },
+      "nutritionProduct": {
+        "concept": {
+          "text": "Ice Tea Unsweetened"
+        }
+      },
+      "amount": {
+        "value": 100,
+        "unit": "percent",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      }
+    }
+  ],
+  "ingredientLabel": [
+    {
+      "nutrient": {
+        "concept": {
+          "text": "Total Calories"
+        }
+      },
+      "amount": {
+        "value": 313,
+        "unit": "kilocalorie",
+        "system": "http://unitsofmeasure.org",
+        "code": "kcal"
+      }
+    },
+    {
+      "nutrient": {
+        "concept": {
+          "text": "Protein"
+        }
+      },
+      "amount": {
+        "value": 10.4,
+        "unit": "grams",
+        "system": "http://unitsofmeasure.org",
+        "code": "g"
+      }
+    },
+    {
+      "nutrient": {
+        "concept": {
+          "text": "Fat (Total)"
+        }
+      },
+      "amount": {
+        "value": 18.00,
+        "unit": "grams",
+        "system": "http://unitsofmeasure.org",
+        "code": "g"
+      }
+    },
+    {
+      "nutrient": {
+        "concept": {
+          "text": "Carbohydrate"
+        }
+      },
+      "amount": {
+        "value": 26.47,
+        "unit": "grams",
+        "system": "http://unitsofmeasure.org",
+        "code": "g"
+      }
+    },
+    {
+      "nutrient": {
+        "concept": {
+          "text": "Sodium"
+        }
+      },
+      "amount": {
+        "value": 770,
+        "unit": "Milligrams",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg"
+      }
+    }
+  ]
+}

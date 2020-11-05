@@ -154,6 +154,11 @@
             "commandName": "Project",
             "commandLineArgs": "--output-path ..\\..\\cytoscape --load-r4 latest --export-keys Patient|Encounter|Observation --fhir-spec-directory ..\\..\\fhirVersions --language Cytoscape",
             "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "csV2Test": {
+            "commandName": "Project",
+            "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\test\\perfTestCS\\Test\\r4\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }
 }

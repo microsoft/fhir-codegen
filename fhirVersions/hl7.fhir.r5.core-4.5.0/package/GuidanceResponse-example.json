@@ -1,0 +1,74 @@
+{
+  "resourceType": "GuidanceResponse",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example</p><p><b>requestIdentifier</b>: id: guidanceRequest1</p><p><b>identifier</b>: id: guidanceResponse1</p><p><b>module</b>: <a>http://someguidelineprovider.org/radiology-appropriateness-guidelines.html</a></p><p><b>status</b>: success</p><p><b>subject</b>: <a>Generated Summary: id: example; Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); -unknown-(HOME), ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a>Generated Summary: id: example; status: in-progress; <span>inpatient encounter</span></a></p><p><b>occurrenceDateTime</b>: 11/03/2017 3:02:00 AM</p><p><b>performer</b>: <a>Device/software</a></p><p><b>reason</b>: </p><p><b>outputParameters</b>: <a> </a></p><blockquote><p><b>id</b>: outputParameters1</p><blockquote><p><b>parameter</b></p><p><b>name</b>: score</p><p><b>value</b>: 7</p></blockquote><blockquote><p><b>parameter</b></p><p><b>name</b>: item-assessed</p><p><b>value</b>: <span>CT, head, wo iv contrast</span></p></blockquote><blockquote><p><b>parameter</b></p><p><b>name</b>: device</p><p><b>value</b>: <a>Device/software</a></p></blockquote><blockquote><p><b>parameter</b></p><p><b>name</b>: guideline-followed</p><p><b>value</b>: <a>http://someguidelineprovider.org/radiology-appropriateness-guidelines.html</a></p></blockquote></blockquote></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Parameters",
+      "id": "outputParameters1",
+      "parameter": [
+        {
+          "name": "score",
+          "valueDecimal": 7
+        },
+        {
+          "name": "item-assessed",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "70450",
+                "display": "CT, head, wo iv contrast"
+              }
+            ]
+          }
+        },
+        {
+          "name": "device",
+          "valueReference": {
+            "reference": "Device/software"
+          }
+        },
+        {
+          "name": "guideline-followed",
+          "valueUri": "http://someguidelineprovider.org/radiology-appropriateness-guidelines.html"
+        }
+      ]
+    }
+  ],
+  "requestIdentifier": {
+    "system": "http://example.org",
+    "value": "guidanceRequest1"
+  },
+  "identifier": [
+    {
+      "system": "http://example.org",
+      "value": "guidanceResponse1"
+    }
+  ],
+  "moduleUri": "http://someguidelineprovider.org/radiology-appropriateness-guidelines.html",
+  "status": "success",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "occurrenceDateTime": "2017-03-10T16:02:00Z",
+  "performer": {
+    "reference": "Device/software"
+  },
+  "reason": [
+    {
+      "concept": {
+        "text": "Guideline Appropriate Ordering Assessment"
+      }
+    }
+  ],
+  "outputParameters": {
+    "reference": "#outputParameters1"
+  }
+}

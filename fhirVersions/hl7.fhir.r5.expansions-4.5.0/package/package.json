@@ -1,0 +1,19 @@
+{
+  "name": "hl7.fhir.r5.expansions",
+  "tools-version": 3,
+  "type": "fhir.core",
+  "date": "20200820174131",
+  "license": "CC0-1.0",
+  "canonical": "http://hl7.org/fhir",
+  "url": "http://hl7.org/fhir",
+  "title": "FHIR R5 package : Expansions",
+  "description": "Expansions for the R5 version of the FHIR standard (built Thu, Aug 20, 2020 17:41+1000+10:00)",
+  "directories": {
+    "lib": "package",
+    "example": "example"
+  },
+  "fhirVersions": [
+    "4.5.0"
+  ],
+  "version": "4.5.0"
+}

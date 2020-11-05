@@ -1,0 +1,40 @@
+{
+  "resourceType": "Medication",
+  "id": "med0306",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0306</p><p><b>code</b>: <span>Adcetris</span></p><p><b>manufacturer</b>: <a> </a></p><blockquote><p><b>id</b>: org3</p><p><b>name</b>: Seattle Genetics Inc</p></blockquote><p><b>doseForm</b>: <span>Lyophilized powder for injectable solution (qualifier value) </span></p><h3>Batches</h3><table><tr><td>-</td><td><b>LotNumber</b></td><td><b>ExpirationDate</b></td></tr><tr><td>*</td><td>12345</td><td>2019-10-31</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "org3",
+      "name": "Seattle Genetics Inc"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "51144-050-01",
+        "display": "Adcetris"
+      }
+    ]
+  },
+  "manufacturer": {
+    "reference": "#org3"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421637006",
+        "display": "Lyophilized powder for injectable solution (qualifier value) "
+      }
+    ]
+  },
+  "batch": {
+    "lotNumber": "12345",
+    "expirationDate": "2019-10-31"
+  }
+}

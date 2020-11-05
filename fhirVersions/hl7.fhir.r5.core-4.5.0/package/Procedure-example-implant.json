@@ -1,0 +1,85 @@
+{
+  "resourceType": "Procedure",
+  "id": "example-implant",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example-implant</p><p><b>status</b>: completed</p><p><b>code</b>: <span>Implant Pacemaker</span></p><p><b>subject</b>: <a>Generated Summary: id: example; Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); -unknown-(HOME), ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>occurrence</b>: 2015-04-05</p><h3>Performers</h3><table><tr><td>-</td><td><b>Actor</b></td></tr><tr><td>*</td><td><a>Dr Cecil Surgeon. Generated Summary: id: example; id: 23; active; Adam Careful </a></td></tr></table><p><b>reason</b>: </p><p><b>followUp</b>: <span>ROS 5 days  - 2013-04-10</span></p><p><b>note</b>: Routine Appendectomy. Appendix was inflamed and in retro-caecal position</p><h3>FocalDevices</h3><table><tr><td>-</td><td><b>Action</b></td><td><b>Manipulated</b></td></tr><tr><td>*</td><td><span>Implanted</span></td><td><a> </a><blockquote><p><b>id</b>: example-pacemaker</p><p><b>manufacturer</b>: Acme Devices, Inc</p><p><b>lotNumber</b>: 1234-5678</p><p><b>type</b>: <span>Cardiac pacemaker implant</span></p><p><b>patient</b>: <a>Generated Summary: id: example; Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); -unknown-(HOME), ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p></blockquote></td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Device",
+      "id": "example-pacemaker",
+      "manufacturer": "Acme Devices, Inc",
+      "lotNumber": "1234-5678",
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "14106009",
+              "display": "Cardiac pacemaker implant"
+            }
+          ]
+        }
+      ],
+      "patient": {
+        "reference": "Patient/example"
+      }
+    }
+  ],
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "25267002",
+        "display": "Insertion of intracardiac pacemaker (procedure)"
+      }
+    ],
+    "text": "Implant Pacemaker"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "occurrenceDateTime": "2015-04-05",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/example",
+        "display": "Dr Cecil Surgeon"
+      }
+    }
+  ],
+  "reason": [
+    {
+      "concept": {
+        "text": "Bradycardia"
+      }
+    }
+  ],
+  "followUp": [
+    {
+      "text": "ROS 5 days  - 2013-04-10"
+    }
+  ],
+  "note": [
+    {
+      "text": "Routine Appendectomy. Appendix was inflamed and in retro-caecal position"
+    }
+  ],
+  "focalDevice": [
+    {
+      "action": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/device-action",
+            "code": "implanted"
+          }
+        ]
+      },
+      "manipulated": {
+        "reference": "#example-pacemaker"
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "resourceType": "Bundle",
+  "id": "54f808cf-d159-4c9b-accb-c33eb20f0ecc",
+  "type": "subscription-notification",
+  "timestamp": "2020-04-17T10:24:13.1882432-05:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:231e7f38-2dd1-45ac-9161-d7bd87c403bd",
+      "resource": {
+        "resourceType": "SubscriptionStatus",
+        "id": "231e7f38-2dd1-45ac-9161-d7bd87c403bd",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: 231e7f38-2dd1-45ac-9161-d7bd87c403bd</p><p><b>type</b>: handshake</p><p><b>eventsSinceSubscriptionStart</b>: </p><p><b>eventsInNotification</b>: 0</p><p><b>subscription</b>: <a>http://example.org/FHIR/R5/Subscription/123</a></p><p><b>status</b>: requested</p><p><b>topic</b>: <a>http://example.org/FHIR/R5/SubscriptionTopic/admission</a></p></div>"
+        },
+        "type": "handshake",
+        "eventsSinceSubscriptionStart": "0",
+        "eventsInNotification": 0,
+        "subscription": {
+          "reference": "http://example.org/FHIR/R5/Subscription/123"
+        },
+        "status": "requested",
+        "topic": "http://example.org/FHIR/R5/SubscriptionTopic/admission"
+      }
+    }
+  ]
+}
