@@ -1,0 +1,88 @@
+{
+  "resourceType": "MedicationUsage",
+  "id": "example004",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example004</p><p><b>partOf</b>: <a>Generated Summary: id: blood-pressure; id: urn:uuid:187e0c12-8dd2-67e2-99b2-bf273c878281; <span>Vital Signs</span>; <span>Blood pressure systolic &amp; diastolic</span>; effective: 2012-09-17; <span>Below low normal</span>; <span>Right arm</span></a></p><p><b>status</b>: active</p><p><b>medication</b>: </p><p><b>subject</b>: <a>Donald Duck. Generated Summary: id: pat1; Medical record number: 654321 (USUAL); active; Duck Donald (OFFICIAL); gender: male; </a></p><p><b>effective</b>: 2014-01-23</p><p><b>dateAsserted</b>: 2015-02-22</p><p><b>informationSource</b>: <a>Donald Duck. Generated Summary: id: pat1; Medical record number: 654321 (USUAL); active; Duck Donald (OFFICIAL); gender: male; </a></p><p><b>reason</b>: </p><p><b>note</b>: Patient indicates they miss the occasional dose</p><p><b>dosage</b>: </p></div>"
+  },
+  "partOf": [
+    {
+      "reference": "Observation/blood-pressure"
+    }
+  ],
+  "status": "active",
+  "medication": {
+    "concept": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "27658006",
+          "display": "Amoxicillin (product)"
+        }
+      ]
+    }
+  },
+  "subject": {
+    "reference": "Patient/pat1",
+    "display": "Donald Duck"
+  },
+  "effectiveDateTime": "2014-01-23",
+  "dateAsserted": "2015-02-22",
+  "informationSource": {
+    "reference": "Patient/pat1",
+    "display": "Donald Duck"
+  },
+  "reason": [
+    {
+      "concept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "65363002",
+            "display": "Otitis Media"
+          }
+        ]
+      }
+    }
+  ],
+  "note": [
+    {
+      "text": "Patient indicates they miss the occasional dose"
+    }
+  ],
+  "dosage": [
+    {
+      "text": "one capsule three times daily",
+      "timing": {
+        "repeat": {
+          "frequency": 3,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "260548002",
+            "display": "Oral"
+          }
+        ]
+      },
+      "maxDosePerPeriod": {
+        "numerator": {
+          "value": 3,
+          "unit": "capsules",
+          "system": "http://snomed.info/sct",
+          "code": "385055001"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      }
+    }
+  ]
+}

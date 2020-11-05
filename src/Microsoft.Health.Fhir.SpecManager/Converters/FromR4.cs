@@ -11,10 +11,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+//using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Newtonsoft.Json;
 using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
+//using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
@@ -1163,6 +1165,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 // try to parse this JSON into a resource object
                 return JsonConvert.DeserializeObject<fhir_4.Resource>(json, _jsonConverter);
+                //return JsonSerializer.Deserialize<fhir_4.Resource>(json);
             }
             catch (JsonException ex)
             {

@@ -1,0 +1,99 @@
+{
+  "resourceType": "Encounter",
+  "id": "f202",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: f202</p><p><b>identifier</b>: id: Encounter_Roel_20130128 (TEMP)</p><p><b>status</b>: completed</p><p><b>class</b>: <span>ambulatory</span></p><p><b>type</b>: <span>Chemotherapy</span></p><p><b>priority</b>: <span>Urgent</span></p><p><b>subject</b>: <a>Roel. Generated Summary: id: f201; BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); ph: +31612345678(MOBILE), ph: +31201234567(HOME); gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p><h3>Participants</h3><table><tr><td>-</td><td><b>Individual</b></td></tr><tr><td>*</td><td><a>Generated Summary: id: f201; UZI-nummer: 12345678901 (OFFICIAL); active; Dokter Bronsig(OFFICIAL); ph: +31715269111(WORK); gender: male; birthDate: 1956-12-24</a></td></tr></table><p><b>length</b>: 56 minutes</p><p><b>reason</b>: </p><blockquote><p><b>diagnosis</b></p><p><b>condition</b>: <span>Complications from Roel's TPF chemotherapy on January 28th, 2013</span></p><p><b>use</b>: <span>Admission diagnosis</span></p><p><b>rank</b>: 2</p></blockquote><blockquote><p><b>diagnosis</b></p><p><b>condition</b>: <span>The patient is treated for a tumor</span></p><p><b>use</b>: <span>Chief complaint</span></p><p><b>rank</b>: 1</p></blockquote><p><b>serviceProvider</b>: <a>Generated Summary: id: f201; id: Artis University Medical Center (OFFICIAL); active; <span>Academic Medical Center</span>; name: Artis University Medical Center (AUMC); ph: +31715269111(WORK)</a></p></div>"
+  },
+  "identifier": [
+    {
+      "use": "temp",
+      "value": "Encounter_Roel_20130128"
+    }
+  ],
+  "status": "completed",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "367336001",
+          "display": "Chemotherapy"
+        }
+      ]
+    }
+  ],
+  "priority": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "103391001",
+        "display": "Urgent"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/f201",
+    "display": "Roel"
+  },
+  "participant": [
+    {
+      "individual": {
+        "reference": "Practitioner/f201"
+      }
+    }
+  ],
+  "length": {
+    "value": 56,
+    "unit": "minutes",
+    "system": "http://unitsofmeasure.org",
+    "code": "min"
+  },
+  "reason": [
+    {
+      "concept": {
+        "text": "The patient is treated for a tumor."
+      }
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "display": "Complications from Roel's TPF chemotherapy on January 28th, 2013"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "AD",
+            "display": "Admission diagnosis"
+          }
+        ]
+      },
+      "rank": 2
+    },
+    {
+      "condition": {
+        "display": "The patient is treated for a tumor"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "CC",
+            "display": "Chief complaint"
+          }
+        ]
+      },
+      "rank": 1
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/f201"
+  }
+}

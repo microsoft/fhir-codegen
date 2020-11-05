@@ -1,0 +1,63 @@
+{
+  "resourceType": "Medication",
+  "id": "med0321",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0321</p><p><b>code</b>: <span>Capecitabine (product)</span></p><p><b>doseForm</b>: <span>Tablet dose form (qualifier value)</span></p><h3>Ingredients</h3><table><tr><td>-</td><td><b>Item</b></td><td><b>Strength[x]</b></td></tr><tr><td>*</td><td/><td>500 mg/1 Tablet</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Substance",
+      "id": "sub03",
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "386906001",
+            "display": "Capecitabine (substance)"
+          }
+        ]
+      }
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "108761006",
+        "display": "Capecitabine (product)"
+      }
+    ]
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385055001",
+        "display": "Tablet dose form (qualifier value)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "reference": {
+          "reference": "#sub03"
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 500,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1,
+          "unit": "Tablet",
+          "system": "http://snomed.info/sct",
+          "code": "385055001"
+        }
+      }
+    }
+  ]
+}

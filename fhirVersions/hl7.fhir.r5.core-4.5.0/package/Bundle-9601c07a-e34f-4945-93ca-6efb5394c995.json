@@ -1,0 +1,27 @@
+{
+  "resourceType": "Bundle",
+  "id": "9601c07a-e34f-4945-93ca-6efb5394c995",
+  "type": "subscription-notification",
+  "timestamp": "2020-04-17T10:24:13.1882432-05:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:b21e4fae-ce73-45cb-8e37-1e203362b2ae",
+      "resource": {
+        "resourceType": "SubscriptionStatus",
+        "id": "b21e4fae-ce73-45cb-8e37-1e203362b2ae",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: b21e4fae-ce73-45cb-8e37-1e203362b2ae</p><p><b>type</b>: event-notification</p><p><b>eventsSinceSubscriptionStart</b>: </p><p><b>eventsInNotification</b>: 0</p><p><b>subscription</b>: <a>http://example.org/FHIR/R5/Subscription/123</a></p><p><b>status</b>: active</p><p><b>topic</b>: <a>http://example.org/FHIR/R5/SubscriptionTopic/admission</a></p></div>"
+        },
+        "type": "event-notification",
+        "eventsSinceSubscriptionStart": "310",
+        "eventsInNotification": 0,
+        "subscription": {
+          "reference": "http://example.org/FHIR/R5/Subscription/123"
+        },
+        "status": "active",
+        "topic": "http://example.org/FHIR/R5/SubscriptionTopic/admission"
+      }
+    }
+  ]
+}

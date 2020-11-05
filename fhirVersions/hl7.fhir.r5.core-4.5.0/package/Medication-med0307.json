@@ -1,0 +1,67 @@
+{
+  "resourceType": "Medication",
+  "id": "med0307",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0307</p><p><b>code</b>: <span>Novolog 100u/ml</span></p><p><b>manufacturer</b>: <a> </a></p><blockquote><p><b>id</b>: org3</p><p><b>name</b>: Novo Nordisk</p></blockquote><p><b>doseForm</b>: <span>Injection solution (qualifier value)</span></p><h3>Ingredients</h3><table><tr><td>-</td><td><b>Item</b></td><td><b>Strength[x]</b></td></tr><tr><td>*</td><td/><td>100 U/1 mL</td></tr></table><h3>Batches</h3><table><tr><td>-</td><td><b>LotNumber</b></td><td><b>ExpirationDate</b></td></tr><tr><td>*</td><td>12345</td><td>2019-10-31</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "org3",
+      "name": "Novo Nordisk"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "0169-7501-11",
+        "display": "Novolog 100u/ml"
+      }
+    ]
+  },
+  "manufacturer": {
+    "reference": "#org3"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385219001",
+        "display": "Injection solution (qualifier value)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "325072002",
+              "display": "Insulin Aspart (substance)"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 100,
+          "system": "http://unitsofmeasure.org",
+          "code": "U"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://unitsofmeasure.org",
+          "code": "mL"
+        }
+      }
+    }
+  ],
+  "batch": {
+    "lotNumber": "12345",
+    "expirationDate": "2019-10-31"
+  }
+}

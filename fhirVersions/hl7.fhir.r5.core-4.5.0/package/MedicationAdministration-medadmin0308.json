@@ -1,0 +1,57 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "medadmin0308",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: medadmin0308</p><p><b>status</b>: completed</p><p><b>medication</b>: </p><p><b>subject</b>: <a>Donald Duck. Generated Summary: id: pat1; Medical record number: 654321 (USUAL); active; Duck Donald (OFFICIAL); gender: male; </a></p><p><b>occurence</b>: 15/01/2015 2:30:00 PM --&gt; 16/01/2015 12:30:00 AM</p><h3>Performers</h3><table><tr><td>-</td><td><b>Actor</b></td></tr><tr><td>*</td><td><a>Patrick Pump. Generated Summary: id: f007; id: 874635264 (OFFICIAL), id: 567IUI51C154 (USUAL); Simone Heps (OFFICIAL); ph: 020556936(WORK), S.M.Heps@bmc.nl(WORK), fax: 0205669283(WORK); gender: female; birthDate: 1971-11-07</a></td></tr></table><p><b>request</b>: <a>Generated Summary: id: medrx0320; id: 12345689 (OFFICIAL); status: completed; intent: order; <span>Lantus 100 unit/ml injectable solution</span>; authoredOn: 2015-01-15; <span>On subcutaneous insulin for diabetes mellitus (finding)</span>; </a></p><h3>Dosages</h3><table><tr><td>-</td><td><b>Text</b></td><td><b>Route</b></td><td><b>Dose</b></td></tr><tr><td>*</td><td>20 Units SC before breakfast</td><td><span>Subcutaneous (qualifier value)</span></td><td>20 U</td></tr></table></div>"
+  },
+  "status": "completed",
+  "medication": {
+    "concept": {
+      "coding": [
+        {
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "code": "285018",
+          "display": "Lantus 100 unit/ml injectable solution"
+        }
+      ]
+    }
+  },
+  "subject": {
+    "reference": "Patient/pat1",
+    "display": "Donald Duck"
+  },
+  "occurencePeriod": {
+    "start": "2015-01-15T04:30:00+01:00",
+    "end": "2015-01-15T14:30:00+01:00"
+  },
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/f007",
+        "display": "Patrick Pump"
+      }
+    }
+  ],
+  "request": {
+    "reference": "MedicationRequest/medrx0320"
+  },
+  "dosage": {
+    "text": "20 Units SC before breakfast",
+    "route": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "263887005",
+          "display": "Subcutaneous (qualifier value)"
+        }
+      ]
+    },
+    "dose": {
+      "value": 20,
+      "unit": "U",
+      "system": "http://unitsofmeasure.org",
+      "code": "U"
+    }
+  }
+}

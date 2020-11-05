@@ -1,0 +1,67 @@
+{
+  "resourceType": "Medication",
+  "id": "med0304",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0304</p><p><b>code</b>: <span>Myleran 2mg tablet, film coated</span></p><p><b>manufacturer</b>: <a> </a></p><blockquote><p><b>id</b>: org6</p><p><b>name</b>: Aspen Global Inc</p></blockquote><p><b>doseForm</b>: <span>Film-coated tablet (qualifier value)</span></p><h3>Ingredients</h3><table><tr><td>-</td><td><b>Item</b></td><td><b>Strength[x]</b></td></tr><tr><td>*</td><td/><td>2 mg/1 TAB</td></tr></table><h3>Batches</h3><table><tr><td>-</td><td><b>LotNumber</b></td><td><b>ExpirationDate</b></td></tr><tr><td>*</td><td>9494788</td><td>2017-05-22</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "org6",
+      "name": "Aspen Global Inc"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "76388-713-25",
+        "display": "Myleran 2mg tablet, film coated"
+      }
+    ]
+  },
+  "manufacturer": {
+    "reference": "#org6"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385057009",
+        "display": "Film-coated tablet (qualifier value)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387138002",
+              "display": "Busulfan (substance)"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 2,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm",
+          "code": "TAB"
+        }
+      }
+    }
+  ],
+  "batch": {
+    "lotNumber": "9494788",
+    "expirationDate": "2017-05-22"
+  }
+}

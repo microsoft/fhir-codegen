@@ -1,0 +1,92 @@
+{
+  "resourceType": "Medication",
+  "id": "med0308",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0308</p><p><b>code</b>: <span>Percocet tablet</span></p><p><b>manufacturer</b>: <a> </a></p><blockquote><p><b>id</b>: org1</p><p><b>name</b>: Stat Rx USA LLC</p></blockquote><p><b>doseForm</b>: <span>Tablet dose form (qualifier value)</span></p><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 5 mg/1 TAB</p></blockquote><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 325 mg/1 TAB</p></blockquote><h3>Batches</h3><table><tr><td>-</td><td><b>LotNumber</b></td><td><b>ExpirationDate</b></td></tr><tr><td>*</td><td>658484</td><td>2020-07-31</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "org1",
+      "name": "Stat Rx USA LLC"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "63481-623-70",
+        "display": "Percocet tablet"
+      }
+    ]
+  },
+  "manufacturer": {
+    "reference": "#org1"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385055001",
+        "display": "Tablet dose form (qualifier value)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "82063",
+              "display": "Oxycodone HCl"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 5,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm",
+          "code": "TAB"
+        }
+      }
+    },
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "161",
+              "display": "Acetaminophen"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 325,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm",
+          "code": "TAB"
+        }
+      }
+    }
+  ],
+  "batch": {
+    "lotNumber": "658484",
+    "expirationDate": "2020-07-31"
+  }
+}

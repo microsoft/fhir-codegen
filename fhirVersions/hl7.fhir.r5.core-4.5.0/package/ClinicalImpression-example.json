@@ -1,0 +1,49 @@
+{
+  "resourceType": "ClinicalImpression",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example</p><p><b>identifier</b>: id: 12345</p><p><b>status</b>: completed</p><p><b>description</b>: This 26 yo male patient is brought into ER by ambulance after being involved in a motor vehicle accident</p><p><b>subject</b>: <a>Generated Summary: id: example; Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); -unknown-(HOME), ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a>Generated Summary: id: example; status: in-progress; <span>inpatient encounter</span></a></p><p><b>effective</b>: 06/12/2014 8:00:00 PM --&gt; 06/12/2014 10:33:00 PM</p><p><b>date</b>: 06/12/2014 10:33:00 PM</p><p><b>performer</b>: <a>Generated Summary: id: example; id: 23; active; Adam Careful </a></p><p><b>problem</b>: <span>MVA</span></p><p><b>summary</b>: provisional diagnoses of laceration of head and traumatic brain injury (TBI)</p><h3>Findings</h3><table><tr><td>-</td><td><b>Item</b></td></tr><tr><td>*</td><td/></tr></table></div>"
+  },
+  "identifier": [
+    {
+      "value": "12345"
+    }
+  ],
+  "status": "completed",
+  "description": "This 26 yo male patient is brought into ER by ambulance after being involved in a motor vehicle accident",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "effectivePeriod": {
+    "start": "2014-12-06T20:00:00+11:00",
+    "end": "2014-12-06T22:33:00+11:00"
+  },
+  "date": "2014-12-06T22:33:00+11:00",
+  "performer": {
+    "reference": "Practitioner/example"
+  },
+  "problem": [
+    {
+      "display": "MVA"
+    }
+  ],
+  "summary": "provisional diagnoses of laceration of head and traumatic brain injury (TBI)",
+  "finding": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-9",
+              "code": "850.0"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "resourceType": "CarePlan",
+  "id": "f202",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: f202</p><p><b>status</b>: active</p><p><b>intent</b>: plan</p><p><b>subject</b>: <a>Roel. Generated Summary: id: f201; BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); ph: +31612345678(MOBILE), ph: +31201234567(HOME); gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p><p><b>careTeam</b>: <a> </a></p><blockquote><p><b>id</b>: careteam</p><h3>Participants</h3><table><tr><td>-</td><td><b>Role</b></td><td><b>Member</b></td></tr><tr><td>*</td><td><span>Treated with</span></td><td><a>Dokter Bronsig. Generated Summary: id: f201; UZI-nummer: 12345678901 (OFFICIAL); active; Dokter Bronsig(OFFICIAL); ph: +31715269111(WORK); gender: male; birthDate: 1956-12-24</a></td></tr></table></blockquote><p><b>addresses</b>: </p><p><b>goal</b>: <a> </a></p><blockquote><p><b>id</b>: goal</p><p><b>lifecycleStatus</b>: active</p><p><b>description</b>: <span>Elimination of the spenoid bone tumor</span></p><p><b>subject</b>: <a>Roel. Generated Summary: id: f201; BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); ph: +31612345678(MOBILE), ph: +31201234567(HOME); gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p></blockquote><blockquote><p><b>activity</b></p><p><b>outcome</b>: </p><h3>Details</h3><table><tr><td>-</td><td><b>Kind</b></td><td><b>Code</b></td><td><b>Status</b></td><td><b>DoNotPerform</b></td><td><b>Product[x]</b></td></tr><tr><td>*</td><td>ServiceRequest</td><td><span>Chemotherapy</span></td><td>in-progress</td><td>false</td><td><a> </a><blockquote><p><b>id</b>: tpf</p><p><b>code</b>: <span>TPF</span></p><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p></blockquote><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p></blockquote><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p></blockquote></blockquote></td></tr></table></blockquote></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Medication",
+      "id": "doce",
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "108806006",
+            "display": "Docetaxel"
+          }
+        ]
+      }
+    },
+    {
+      "resourceType": "Medication",
+      "id": "cisp",
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "57066004",
+            "display": "Cisplatin"
+          }
+        ]
+      }
+    },
+    {
+      "resourceType": "Medication",
+      "id": "fluo",
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "3127006",
+            "display": "Fluorouracil"
+          }
+        ]
+      }
+    },
+    {
+      "resourceType": "Medication",
+      "id": "tpf",
+      "code": {
+        "text": "TPF"
+      },
+      "ingredient": [
+        {
+          "item": {
+            "reference": {
+              "reference": "#doce"
+            }
+          }
+        },
+        {
+          "item": {
+            "reference": {
+              "reference": "#cisp"
+            }
+          }
+        },
+        {
+          "item": {
+            "reference": {
+              "reference": "#fluo"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "resourceType": "CareTeam",
+      "id": "careteam",
+      "participant": [
+        {
+          "role": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "28995006",
+                "display": "Treated with"
+              }
+            ]
+          },
+          "member": {
+            "reference": "Practitioner/f201",
+            "display": "Dokter Bronsig"
+          }
+        }
+      ]
+    },
+    {
+      "resourceType": "Goal",
+      "id": "goal",
+      "lifecycleStatus": "active",
+      "description": {
+        "text": "Elimination of the spenoid bone tumor"
+      },
+      "subject": {
+        "reference": "Patient/f201",
+        "display": "Roel"
+      }
+    }
+  ],
+  "status": "active",
+  "intent": "plan",
+  "subject": {
+    "reference": "Patient/f201",
+    "display": "Roel"
+  },
+  "careTeam": [
+    {
+      "reference": "#careteam"
+    }
+  ],
+  "addresses": [
+    {
+      "reference": {
+        "reference": "Condition/f202",
+        "display": "Roel's head-neck tumor"
+      }
+    }
+  ],
+  "goal": [
+    {
+      "reference": "#goal"
+    }
+  ],
+  "activity": [
+    {
+      "outcome": [
+        {
+          "reference": {
+            "reference": "Procedure/f201",
+            "display": "Roel's Chemotherapy"
+          }
+        }
+      ],
+      "detail": {
+        "kind": "ServiceRequest",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "367336001",
+              "display": "Chemotherapy"
+            }
+          ]
+        },
+        "status": "in-progress",
+        "doNotPerform": false,
+        "productReference": {
+          "reference": "#tpf"
+        }
+      }
+    }
+  ]
+}
