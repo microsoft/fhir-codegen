@@ -1,0 +1,151 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "medadmin0309",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: medadmin0309</p><p><b>status</b>: completed</p><p><b>medication</b>: </p><p><b>subject</b>: <a>Donald Duck. Generated Summary: id: pat1; Medical record number: 654321 (USUAL); active; Duck Donald (OFFICIAL); gender: male; </a></p><p><b>occurence</b>: 16/01/2015 8:03:00 AM --&gt; 16/01/2015 12:03:00 PM</p><h3>Performers</h3><table><tr><td>-</td><td><b>Function</b></td><td><b>Actor</b></td></tr><tr><td>*</td><td><span>Performer</span></td><td><a>Patrick Pump. Generated Summary: id: f007; id: 874635264 (OFFICIAL), id: 567IUI51C154 (USUAL); Simone Heps (OFFICIAL); ph: 020556936(WORK), S.M.Heps@bmc.nl(WORK), fax: 0205669283(WORK); gender: female; birthDate: 1971-11-07</a></td></tr></table><p><b>request</b>: <a>Generated Summary: id: medrx0323; id: 12345689 (OFFICIAL); status: completed; intent: order; <span>#med0318</span>; authoredOn: 2015-01-15; </a></p><p><b>device</b>: <a>Generated Summary: id: f001; id: 12345; status: active</a></p><h3>Dosages</h3><table><tr><td>-</td><td><b>Text</b></td><td><b>Site</b></td><td><b>Route</b></td><td><b>Method</b></td><td><b>Dose</b></td><td><b>Rate[x]</b></td></tr><tr><td>*</td><td>1000mL infused at 50ml/hour for 4 hours - hung at 2200 hours</td><td><span>Structure of ligament of left superior vena cava</span></td><td><span>Intravenous</span></td><td><span>PICC line</span></td><td>1000 mL</td><td>50 mL/1 h</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Medication",
+      "id": "med0318",
+      "doseForm": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "385221006",
+            "display": "Injection emulsion"
+          }
+        ]
+      },
+      "ingredient": [
+        {
+          "item": {
+            "concept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/ndc",
+                  "code": "0338-1134-03",
+                  "display": "Clinimix 4.25/10 sulfite-free (4.25% Amino Acid in 10% Dextrose) Injection, 1000ml"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item": {
+            "concept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/ndc",
+                  "code": "0409-5779-01",
+                  "display": "TPN Electrolytes SODIUM CHLORIDE, CALCIUM CHLORIDE, POTASSIUM CHLORIDE, MAGNESIUM CHLORIDE, and SODIUM ACETATE ANHYDROUS | INJECTION, SOLUTION, CONCENTRATE | 321 mg/20mL, 331 mg/20mL, 1491 mg/20mL, 508 mg/20mL, 2420 mg/20mL"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item": {
+            "concept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/ndc",
+                  "code": "0338-0519-02",
+                  "display": "Intralipid 20% IV Fat Emulsion"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "batch": {
+        "lotNumber": "123455",
+        "expirationDate": "2016-07-09"
+      }
+    }
+  ],
+  "status": "completed",
+  "medication": {
+    "reference": {
+      "reference": "#med0318"
+    }
+  },
+  "subject": {
+    "reference": "Patient/pat1",
+    "display": "Donald Duck"
+  },
+  "occurencePeriod": {
+    "start": "2015-01-15T22:03:00+01:00",
+    "end": "2015-01-16T02:03:00+01:00"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/med-admin-perform-function",
+            "code": "performer",
+            "display": "Performer"
+          }
+        ]
+      },
+      "actor": {
+        "reference": "Practitioner/f007",
+        "display": "Patrick Pump"
+      }
+    }
+  ],
+  "request": {
+    "reference": "MedicationRequest/medrx0323"
+  },
+  "device": [
+    {
+      "reference": "Device/f001"
+    }
+  ],
+  "dosage": {
+    "text": "1000mL infused at 50ml/hour for 4 hours - hung at 2200 hours",
+    "site": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "6073002",
+          "display": "Structure of ligament of left superior vena cava"
+        }
+      ]
+    },
+    "route": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "255560000",
+          "display": "Intravenous"
+        }
+      ]
+    },
+    "method": {
+      "text": "PICC line"
+    },
+    "dose": {
+      "value": 1000,
+      "unit": "mL",
+      "system": "http://unitsofmeasure.org",
+      "code": "mL"
+    },
+    "rateRatio": {
+      "numerator": {
+        "value": 50,
+        "unit": "mL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mL"
+      },
+      "denominator": {
+        "value": 1,
+        "unit": "h",
+        "system": "http://unitsofmeasure.org",
+        "code": "h"
+      }
+    }
+  }
+}

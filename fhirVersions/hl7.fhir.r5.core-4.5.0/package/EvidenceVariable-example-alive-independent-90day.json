@@ -1,0 +1,57 @@
+{
+  "resourceType": "EvidenceVariable",
+  "id": "example-alive-independent-90day",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>\n        &quot;Alive and not functionally dependent at 90 days&quot; is an outcome used in expressing what an Evidence is about.\n      </p>\n\t</div>"
+  },
+  "title": "Alive and not functionally dependent at 90 days",
+  "status": "draft",
+  "actual": false,
+  "characteristicCombination": "intersection",
+  "characteristic": [
+    {
+      "description": "not functionally dependent at 90 days",
+      "definitionCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "718705001",
+            "display": "Functionally dependent (finding)"
+          }
+        ]
+      },
+      "exclude": true,
+      "timeFromStart": {
+        "quantity": {
+          "value": 90,
+          "unit": "day",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      }
+    },
+    {
+      "description": "alive at 90 days",
+      "definitionCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "419099009",
+            "display": "Dead (finding)"
+          }
+        ]
+      },
+      "exclude": true,
+      "timeFromStart": {
+        "quantity": {
+          "value": 90,
+          "unit": "day",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      }
+    }
+  ],
+  "handling": "dichotomous"
+}

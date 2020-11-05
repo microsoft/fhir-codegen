@@ -1,0 +1,66 @@
+{
+  "resourceType": "Medication",
+  "id": "med0313",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0313</p><p><b>code</b>: <span>Lorazepam 2mg/ml injection solution 1ml vial (product)</span></p><p><b>doseForm</b>: <span>Injection solution (qualifier value)</span></p><p><b>amount</b>: 1 ml/1 vial</p><h3>Ingredients</h3><table><tr><td>-</td><td><b>Item</b></td><td><b>Strength[x]</b></td></tr><tr><td>*</td><td/><td>2 mg/1 mL</td></tr></table></div>"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "400621001",
+        "display": "Lorazepam 2mg/ml injection solution 1ml vial (product)"
+      }
+    ]
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385219001",
+        "display": "Injection solution (qualifier value)"
+      }
+    ]
+  },
+  "amount": {
+    "numerator": {
+      "value": 1,
+      "unit": "ml",
+      "system": "http://unitsofmeasure.org",
+      "code": "ml"
+    },
+    "denominator": {
+      "value": 1,
+      "system": "http://terminology.hl7.org/CodeSystem/medicationknowledge-package-type",
+      "code": "vial"
+    }
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387106007",
+              "display": "Lorazepam (substance)"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 2,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://unitsofmeasure.org",
+          "code": "mL"
+        }
+      }
+    }
+  ]
+}

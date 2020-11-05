@@ -1,0 +1,62 @@
+{
+  "resourceType": "Medication",
+  "id": "med0312",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0312</p><p><b>code</b>: <span>Nystatin 100,000 units/ml oral suspension (product)</span></p><p><b>doseForm</b>: <span>Oral suspension (qualifier value)</span></p><h3>Ingredients</h3><table><tr><td>-</td><td><b>Item</b></td><td><b>Strength[x]</b></td></tr><tr><td>*</td><td/><td>100000 [IU]/1 mL</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Substance",
+      "id": "sub02",
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "387048002",
+            "display": "Nystatin (substance)"
+          }
+        ]
+      }
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "324689003",
+        "display": "Nystatin 100,000 units/ml oral suspension (product)"
+      }
+    ]
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "387048002",
+        "display": "Oral suspension (qualifier value)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "reference": {
+          "reference": "#sub02"
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 100000,
+          "system": "http://unitsofmeasure.org",
+          "code": "[IU]"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://unitsofmeasure.org",
+          "code": "mL"
+        }
+      }
+    }
+  ]
+}

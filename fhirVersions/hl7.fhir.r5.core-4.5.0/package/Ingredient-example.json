@@ -1,0 +1,59 @@
+{
+  "resourceType": "Ingredient",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example</p><p><b>role</b>: <span>ActiveBase</span></p><p><b>manufacturer</b>: <a>Organization/example</a></p><blockquote><p><b>specifiedSubstance</b></p><p><b>code</b>: <span>equixabanCompany1</span></p><p><b>group</b>: <span>2</span></p></blockquote><blockquote><p><b>specifiedSubstance</b></p><p><b>code</b>: <span>equixabanCompany2</span></p><p><b>group</b>: <span>2</span></p></blockquote></div>"
+  },
+  "role": {
+    "coding": [
+      {
+        "system": "http://ema.europa.eu/example/ingredientRole",
+        "code": "ActiveBase"
+      }
+    ]
+  },
+  "manufacturer": [
+    {
+      "reference": "Organization/example"
+    }
+  ],
+  "specifiedSubstance": [
+    {
+      "codeCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://ema.europa.eu/example/specifiedSubstance",
+            "code": "equixabanCompany1"
+          }
+        ]
+      },
+      "group": {
+        "coding": [
+          {
+            "system": "http://ema.europa.eu/example/specifiedSubstanceGroup",
+            "code": "2"
+          }
+        ]
+      }
+    },
+    {
+      "codeCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://ema.europa.eu/example/specifiedSubstance",
+            "code": "equixabanCompany2"
+          }
+        ]
+      },
+      "group": {
+        "coding": [
+          {
+            "system": "http://ema.europa.eu/example/specifiedSubstanceGroup",
+            "code": "2"
+          }
+        ]
+      }
+    }
+  ]
+}

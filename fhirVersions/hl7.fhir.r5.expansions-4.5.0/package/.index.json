@@ -1,0 +1,4142 @@
+{
+  "index-version": 1,
+  "files": [
+    {
+      "filename": "ValueSet-definition-resource-types.json",
+      "resourceType": "ValueSet",
+      "id": "definition-resource-types",
+      "url": "http://hl7.org/fhir/ValueSet/definition-resource-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationdispense-performer-function.json",
+      "resourceType": "ValueSet",
+      "id": "medicationdispense-performer-function",
+      "url": "http://hl7.org/fhir/ValueSet/medicationdispense-performer-function",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-specimen-status.json",
+      "resourceType": "ValueSet",
+      "id": "specimen-status",
+      "url": "http://hl7.org/fhir/ValueSet/specimen-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-imagingstudy-status.json",
+      "resourceType": "ValueSet",
+      "id": "imagingstudy-status",
+      "url": "http://hl7.org/fhir/ValueSet/imagingstudy-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-payment-adjustment-reason.json",
+      "resourceType": "ValueSet",
+      "id": "payment-adjustment-reason",
+      "url": "http://hl7.org/fhir/ValueSet/payment-adjustment-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-observation-interpretation.json",
+      "resourceType": "ValueSet",
+      "id": "observation-interpretation",
+      "url": "http://hl7.org/fhir/ValueSet/observation-interpretation",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-subscriber-relationship.json",
+      "resourceType": "ValueSet",
+      "id": "subscriber-relationship",
+      "url": "http://hl7.org/fhir/ValueSet/subscriber-relationship",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-action.json",
+      "resourceType": "ValueSet",
+      "id": "contract-action",
+      "url": "http://hl7.org/fhir/ValueSet/contract-action",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationrequest-status-reason.json",
+      "resourceType": "ValueSet",
+      "id": "medicationrequest-status-reason",
+      "url": "http://hl7.org/fhir/ValueSet/medicationrequest-status-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-explanationofbenefit-status.json",
+      "resourceType": "ValueSet",
+      "id": "explanationofbenefit-status",
+      "url": "http://hl7.org/fhir/ValueSet/explanationofbenefit-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-policy.json",
+      "resourceType": "ValueSet",
+      "id": "consent-policy",
+      "url": "http://hl7.org/fhir/ValueSet/consent-policy",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-extension-context-type.json",
+      "resourceType": "ValueSet",
+      "id": "extension-context-type",
+      "url": "http://hl7.org/fhir/ValueSet/extension-context-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v2-0493.json",
+      "resourceType": "ValueSet",
+      "id": "v2-0493",
+      "url": "http://terminology.hl7.org/ValueSet/v2-0493",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-statistic-type.json",
+      "resourceType": "ValueSet",
+      "id": "statistic-type",
+      "url": "http://hl7.org/fhir/ValueSet/statistic-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationknowledge-status.json",
+      "resourceType": "ValueSet",
+      "id": "medicationknowledge-status",
+      "url": "http://hl7.org/fhir/ValueSet/medicationknowledge-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-care-plan-activity-status-reason.json",
+      "resourceType": "ValueSet",
+      "id": "care-plan-activity-status-reason",
+      "url": "http://hl7.org/fhir/ValueSet/care-plan-activity-status-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-map-transform.json",
+      "resourceType": "ValueSet",
+      "id": "map-transform",
+      "url": "http://hl7.org/fhir/ValueSet/map-transform",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-age-units.json",
+      "resourceType": "ValueSet",
+      "id": "age-units",
+      "url": "http://hl7.org/fhir/ValueSet/age-units",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-supply-item.json",
+      "resourceType": "ValueSet",
+      "id": "supply-item",
+      "url": "http://hl7.org/fhir/ValueSet/supply-item",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-event-or-request-resource-types.json",
+      "resourceType": "ValueSet",
+      "id": "event-or-request-resource-types",
+      "url": "http://hl7.org/fhir/ValueSet/event-or-request-resource-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-narrative-status.json",
+      "resourceType": "ValueSet",
+      "id": "narrative-status",
+      "url": "http://hl7.org/fhir/ValueSet/narrative-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-device-status.json",
+      "resourceType": "ValueSet",
+      "id": "device-status",
+      "url": "http://hl7.org/fhir/ValueSet/device-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-ActConsentDirective.json",
+      "resourceType": "ValueSet",
+      "id": "v3-ActConsentDirective",
+      "url": "http://terminology.hl7.org/ValueSet/v3-ActConsentDirective",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-subscription-channel-type.json",
+      "resourceType": "ValueSet",
+      "id": "subscription-channel-type",
+      "url": "http://hl7.org/fhir/ValueSet/subscription-channel-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-discriminator-type.json",
+      "resourceType": "ValueSet",
+      "id": "discriminator-type",
+      "url": "http://hl7.org/fhir/ValueSet/discriminator-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-diet.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-diet",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-diet",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-admin-location.json",
+      "resourceType": "ValueSet",
+      "id": "medication-admin-location",
+      "url": "http://hl7.org/fhir/ValueSet/medication-admin-location",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationknowledge-characteristic.json",
+      "resourceType": "ValueSet",
+      "id": "medicationknowledge-characteristic",
+      "url": "http://hl7.org/fhir/ValueSet/medicationknowledge-characteristic",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-communication-method.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-communication-method",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-communication-method",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-metric-operational-status.json",
+      "resourceType": "ValueSet",
+      "id": "metric-operational-status",
+      "url": "http://hl7.org/fhir/ValueSet/metric-operational-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-linkage-type.json",
+      "resourceType": "ValueSet",
+      "id": "linkage-type",
+      "url": "http://hl7.org/fhir/ValueSet/linkage-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-map-target-list-mode.json",
+      "resourceType": "ValueSet",
+      "id": "map-target-list-mode",
+      "url": "http://hl7.org/fhir/ValueSet/map-target-list-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-decision-mode.json",
+      "resourceType": "ValueSet",
+      "id": "contract-decision-mode",
+      "url": "http://hl7.org/fhir/ValueSet/contract-decision-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-operation-parameter-use.json",
+      "resourceType": "ValueSet",
+      "id": "operation-parameter-use",
+      "url": "http://hl7.org/fhir/ValueSet/operation-parameter-use",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-testscript-profile-origin-types.json",
+      "resourceType": "ValueSet",
+      "id": "testscript-profile-origin-types",
+      "url": "http://hl7.org/fhir/ValueSet/testscript-profile-origin-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-resource-types.json",
+      "resourceType": "ValueSet",
+      "id": "resource-types",
+      "url": "http://hl7.org/fhir/ValueSet/resource-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-fundsreserve.json",
+      "resourceType": "ValueSet",
+      "id": "fundsreserve",
+      "url": "http://hl7.org/fhir/ValueSet/fundsreserve",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-detectedissue-category.json",
+      "resourceType": "ValueSet",
+      "id": "detectedissue-category",
+      "url": "http://hl7.org/fhir/ValueSet/detectedissue-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-bodystructure-code.json",
+      "resourceType": "ValueSet",
+      "id": "bodystructure-code",
+      "url": "http://hl7.org/fhir/ValueSet/bodystructure-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-validation-process.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-validation-process",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-validation-process",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medline-pubmed-owner.json",
+      "resourceType": "ValueSet",
+      "id": "medline-pubmed-owner",
+      "url": "http://hl7.org/fhir/ValueSet/medline-pubmed-owner",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-research-study-phase.json",
+      "resourceType": "ValueSet",
+      "id": "research-study-phase",
+      "url": "http://hl7.org/fhir/ValueSet/research-study-phase",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-map-source-list-mode.json",
+      "resourceType": "ValueSet",
+      "id": "map-source-list-mode",
+      "url": "http://hl7.org/fhir/ValueSet/map-source-list-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-binding-strength.json",
+      "resourceType": "ValueSet",
+      "id": "binding-strength",
+      "url": "http://hl7.org/fhir/ValueSet/binding-strength",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-bundle-type.json",
+      "resourceType": "ValueSet",
+      "id": "bundle-type",
+      "url": "http://hl7.org/fhir/ValueSet/bundle-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-scope.json",
+      "resourceType": "ValueSet",
+      "id": "contract-scope",
+      "url": "http://hl7.org/fhir/ValueSet/contract-scope",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-journal-issue-medium.json",
+      "resourceType": "ValueSet",
+      "id": "journal-issue-medium",
+      "url": "http://hl7.org/fhir/ValueSet/journal-issue-medium",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-action.json",
+      "resourceType": "ValueSet",
+      "id": "consent-action",
+      "url": "http://hl7.org/fhir/ValueSet/consent-action",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-map-context-type.json",
+      "resourceType": "ValueSet",
+      "id": "map-context-type",
+      "url": "http://hl7.org/fhir/ValueSet/map-context-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-security-classification.json",
+      "resourceType": "ValueSet",
+      "id": "contract-security-classification",
+      "url": "http://hl7.org/fhir/ValueSet/contract-security-classification",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-care-team-category.json",
+      "resourceType": "ValueSet",
+      "id": "care-team-category",
+      "url": "http://hl7.org/fhir/ValueSet/care-team-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-ex-procedure-type.json",
+      "resourceType": "ValueSet",
+      "id": "ex-procedure-type",
+      "url": "http://hl7.org/fhir/ValueSet/ex-procedure-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-discharge-disposition.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-discharge-disposition",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-discharge-disposition",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-type.json",
+      "resourceType": "ValueSet",
+      "id": "contract-type",
+      "url": "http://hl7.org/fhir/ValueSet/contract-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-document-reference-status.json",
+      "resourceType": "ValueSet",
+      "id": "document-reference-status",
+      "url": "http://hl7.org/fhir/ValueSet/document-reference-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-udi-entry-type.json",
+      "resourceType": "ValueSet",
+      "id": "udi-entry-type",
+      "url": "http://hl7.org/fhir/ValueSet/udi-entry-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-usage-context-type.json",
+      "resourceType": "ValueSet",
+      "id": "usage-context-type",
+      "url": "http://hl7.org/fhir/ValueSet/usage-context-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-referencerange-appliesto.json",
+      "resourceType": "ValueSet",
+      "id": "referencerange-appliesto",
+      "url": "http://hl7.org/fhir/ValueSet/referencerange-appliesto",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-citation-summary-style.json",
+      "resourceType": "ValueSet",
+      "id": "citation-summary-style",
+      "url": "http://hl7.org/fhir/ValueSet/citation-summary-style",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-operation-outcome.json",
+      "resourceType": "ValueSet",
+      "id": "operation-outcome",
+      "url": "http://hl7.org/fhir/ValueSet/operation-outcome",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-site.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-site",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-site",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-sequence-type.json",
+      "resourceType": "ValueSet",
+      "id": "sequence-type",
+      "url": "http://hl7.org/fhir/ValueSet/sequence-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-push-type-available.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-push-type-available",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-push-type-available",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-research-subject-milestone.json",
+      "resourceType": "ValueSet",
+      "id": "research-subject-milestone",
+      "url": "http://hl7.org/fhir/ValueSet/research-subject-milestone",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-contributing-factor.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-contributing-factor",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-contributing-factor",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-payment-status.json",
+      "resourceType": "ValueSet",
+      "id": "payment-status",
+      "url": "http://hl7.org/fhir/ValueSet/payment-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-namingsystem-type.json",
+      "resourceType": "ValueSet",
+      "id": "namingsystem-type",
+      "url": "http://hl7.org/fhir/ValueSet/namingsystem-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-body-site.json",
+      "resourceType": "ValueSet",
+      "id": "body-site",
+      "url": "http://hl7.org/fhir/ValueSet/body-site",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-document-attestation-mode.json",
+      "resourceType": "ValueSet",
+      "id": "document-attestation-mode",
+      "url": "http://hl7.org/fhir/ValueSet/document-attestation-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-name-use.json",
+      "resourceType": "ValueSet",
+      "id": "name-use",
+      "url": "http://hl7.org/fhir/ValueSet/name-use",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-form-codes.json",
+      "resourceType": "ValueSet",
+      "id": "medication-form-codes",
+      "url": "http://hl7.org/fhir/ValueSet/medication-form-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-vision-product.json",
+      "resourceType": "ValueSet",
+      "id": "vision-product",
+      "url": "http://hl7.org/fhir/ValueSet/vision-product",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-detectedissue-mitigation-action.json",
+      "resourceType": "ValueSet",
+      "id": "detectedissue-mitigation-action",
+      "url": "http://hl7.org/fhir/ValueSet/detectedissue-mitigation-action",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-focus-characteristic-code.json",
+      "resourceType": "ValueSet",
+      "id": "focus-characteristic-code",
+      "url": "http://hl7.org/fhir/ValueSet/focus-characteristic-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-list-status.json",
+      "resourceType": "ValueSet",
+      "id": "list-status",
+      "url": "http://hl7.org/fhir/ValueSet/list-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-list-example-codes.json",
+      "resourceType": "ValueSet",
+      "id": "list-example-codes",
+      "url": "http://hl7.org/fhir/ValueSet/list-example-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-search-modifier-code.json",
+      "resourceType": "ValueSet",
+      "id": "search-modifier-code",
+      "url": "http://hl7.org/fhir/ValueSet/search-modifier-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-bodystructure-relative-location.json",
+      "resourceType": "ValueSet",
+      "id": "bodystructure-relative-location",
+      "url": "http://hl7.org/fhir/ValueSet/bodystructure-relative-location",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-map-model-mode.json",
+      "resourceType": "ValueSet",
+      "id": "map-model-mode",
+      "url": "http://hl7.org/fhir/ValueSet/map-model-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-failure-action.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-failure-action",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-failure-action",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-request-resource-types.json",
+      "resourceType": "ValueSet",
+      "id": "request-resource-types",
+      "url": "http://hl7.org/fhir/ValueSet/request-resource-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-definition-use.json",
+      "resourceType": "ValueSet",
+      "id": "definition-use",
+      "url": "http://hl7.org/fhir/ValueSet/definition-use",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-characteristic-combination.json",
+      "resourceType": "ValueSet",
+      "id": "characteristic-combination",
+      "url": "http://hl7.org/fhir/ValueSet/characteristic-combination",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-response-code.json",
+      "resourceType": "ValueSet",
+      "id": "response-code",
+      "url": "http://hl7.org/fhir/ValueSet/response-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-signature-type.json",
+      "resourceType": "ValueSet",
+      "id": "signature-type",
+      "url": "http://hl7.org/fhir/ValueSet/signature-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-service-referral-method.json",
+      "resourceType": "ValueSet",
+      "id": "service-referral-method",
+      "url": "http://hl7.org/fhir/ValueSet/service-referral-method",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-care-plan-activity-outcome.json",
+      "resourceType": "ValueSet",
+      "id": "care-plan-activity-outcome",
+      "url": "http://hl7.org/fhir/ValueSet/care-plan-activity-outcome",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-filter-operator.json",
+      "resourceType": "ValueSet",
+      "id": "filter-operator",
+      "url": "http://hl7.org/fhir/ValueSet/filter-operator",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-procedure-category.json",
+      "resourceType": "ValueSet",
+      "id": "procedure-category",
+      "url": "http://hl7.org/fhir/ValueSet/procedure-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-all-types.json",
+      "resourceType": "ValueSet",
+      "id": "all-types",
+      "url": "http://hl7.org/fhir/ValueSet/all-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-usage-status.json",
+      "resourceType": "ValueSet",
+      "id": "medication-usage-status",
+      "url": "http://hl7.org/fhir/ValueSet/medication-usage-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-clinical-use-issue-type.json",
+      "resourceType": "ValueSet",
+      "id": "clinical-use-issue-type",
+      "url": "http://hl7.org/fhir/ValueSet/clinical-use-issue-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-conditional-delete-status.json",
+      "resourceType": "ValueSet",
+      "id": "conditional-delete-status",
+      "url": "http://hl7.org/fhir/ValueSet/conditional-delete-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-provision-type.json",
+      "resourceType": "ValueSet",
+      "id": "consent-provision-type",
+      "url": "http://hl7.org/fhir/ValueSet/consent-provision-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-evaluation-dose-status-reason.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-evaluation-dose-status-reason",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-evaluation-dose-status-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contributor-summary-type.json",
+      "resourceType": "ValueSet",
+      "id": "contributor-summary-type",
+      "url": "http://hl7.org/fhir/ValueSet/contributor-summary-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-formatcodes.json",
+      "resourceType": "ValueSet",
+      "id": "formatcodes",
+      "url": "http://hl7.org/fhir/ValueSet/formatcodes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-codes.json",
+      "resourceType": "ValueSet",
+      "id": "medication-codes",
+      "url": "http://hl7.org/fhir/ValueSet/medication-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-doc-typecodes.json",
+      "resourceType": "ValueSet",
+      "id": "doc-typecodes",
+      "url": "http://hl7.org/fhir/ValueSet/doc-typecodes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-research-study-status.json",
+      "resourceType": "ValueSet",
+      "id": "research-study-status",
+      "url": "http://hl7.org/fhir/ValueSet/research-study-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-security-role-type.json",
+      "resourceType": "ValueSet",
+      "id": "security-role-type",
+      "url": "http://hl7.org/fhir/ValueSet/security-role-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-http-verb.json",
+      "resourceType": "ValueSet",
+      "id": "http-verb",
+      "url": "http://hl7.org/fhir/ValueSet/http-verb",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-ex-program-code.json",
+      "resourceType": "ValueSet",
+      "id": "ex-program-code",
+      "url": "http://hl7.org/fhir/ValueSet/ex-program-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-evidence-report-type.json",
+      "resourceType": "ValueSet",
+      "id": "evidence-report-type",
+      "url": "http://hl7.org/fhir/ValueSet/evidence-report-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-knowledge-resource-types.json",
+      "resourceType": "ValueSet",
+      "id": "knowledge-resource-types",
+      "url": "http://hl7.org/fhir/ValueSet/knowledge-resource-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-clinicalimpression-status-reason.json",
+      "resourceType": "ValueSet",
+      "id": "clinicalimpression-status-reason",
+      "url": "http://hl7.org/fhir/ValueSet/clinicalimpression-status-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-research-study-reason-stopped.json",
+      "resourceType": "ValueSet",
+      "id": "research-study-reason-stopped",
+      "url": "http://hl7.org/fhir/ValueSet/research-study-reason-stopped",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-c80-practice-codes.json",
+      "resourceType": "ValueSet",
+      "id": "c80-practice-codes",
+      "url": "http://hl7.org/fhir/ValueSet/c80-practice-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-rejection-criteria.json",
+      "resourceType": "ValueSet",
+      "id": "rejection-criteria",
+      "url": "http://hl7.org/fhir/ValueSet/rejection-criteria",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-supplyrequest-kind.json",
+      "resourceType": "ValueSet",
+      "id": "supplyrequest-kind",
+      "url": "http://hl7.org/fhir/ValueSet/supplyrequest-kind",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-slotstatus.json",
+      "resourceType": "ValueSet",
+      "id": "slotstatus",
+      "url": "http://hl7.org/fhir/ValueSet/slotstatus",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-address-use.json",
+      "resourceType": "ValueSet",
+      "id": "address-use",
+      "url": "http://hl7.org/fhir/ValueSet/address-use",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-recommendation-target-disease.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-recommendation-target-disease",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-recommendation-target-disease",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-search-xpath-usage.json",
+      "resourceType": "ValueSet",
+      "id": "search-xpath-usage",
+      "url": "http://hl7.org/fhir/ValueSet/search-xpath-usage",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-product-category.json",
+      "resourceType": "ValueSet",
+      "id": "product-category",
+      "url": "http://hl7.org/fhir/ValueSet/product-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-quantity-comparator.json",
+      "resourceType": "ValueSet",
+      "id": "quantity-comparator",
+      "url": "http://hl7.org/fhir/ValueSet/quantity-comparator",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-ver-status.json",
+      "resourceType": "ValueSet",
+      "id": "condition-ver-status",
+      "url": "http://hl7.org/fhir/ValueSet/condition-ver-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-subscription-state.json",
+      "resourceType": "ValueSet",
+      "id": "subscription-state",
+      "url": "http://hl7.org/fhir/ValueSet/subscription-state",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-ActPriority.json",
+      "resourceType": "ValueSet",
+      "id": "v3-ActPriority",
+      "url": "http://terminology.hl7.org/ValueSet/v3-ActPriority",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-medicationrequest-admin-location.json",
+      "resourceType": "ValueSet",
+      "id": "medicationrequest-admin-location",
+      "url": "http://hl7.org/fhir/ValueSet/medicationrequest-admin-location",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-assetcontext.json",
+      "resourceType": "ValueSet",
+      "id": "contract-assetcontext",
+      "url": "http://hl7.org/fhir/ValueSet/contract-assetcontext",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-service-type.json",
+      "resourceType": "ValueSet",
+      "id": "service-type",
+      "url": "http://hl7.org/fhir/ValueSet/service-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-data-absent-reason.json",
+      "resourceType": "ValueSet",
+      "id": "data-absent-reason",
+      "url": "http://hl7.org/fhir/ValueSet/data-absent-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-list-item-flag.json",
+      "resourceType": "ValueSet",
+      "id": "list-item-flag",
+      "url": "http://hl7.org/fhir/ValueSet/list-item-flag",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-benefit-network.json",
+      "resourceType": "ValueSet",
+      "id": "benefit-network",
+      "url": "http://hl7.org/fhir/ValueSet/benefit-network",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-status.json",
+      "resourceType": "ValueSet",
+      "id": "contract-status",
+      "url": "http://hl7.org/fhir/ValueSet/contract-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-event-timing.json",
+      "resourceType": "ValueSet",
+      "id": "event-timing",
+      "url": "http://hl7.org/fhir/ValueSet/event-timing",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-fm-status.json",
+      "resourceType": "ValueSet",
+      "id": "fm-status",
+      "url": "http://hl7.org/fhir/ValueSet/fm-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-flag-status.json",
+      "resourceType": "ValueSet",
+      "id": "flag-status",
+      "url": "http://hl7.org/fhir/ValueSet/flag-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-reason-medication-not-given-codes.json",
+      "resourceType": "ValueSet",
+      "id": "reason-medication-not-given-codes",
+      "url": "http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-food-type.json",
+      "resourceType": "ValueSet",
+      "id": "food-type",
+      "url": "http://hl7.org/fhir/ValueSet/food-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-substance-code.json",
+      "resourceType": "ValueSet",
+      "id": "substance-code",
+      "url": "http://hl7.org/fhir/ValueSet/substance-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-PurposeOfUse.json",
+      "resourceType": "ValueSet",
+      "id": "v3-PurposeOfUse",
+      "url": "http://terminology.hl7.org/ValueSet/v3-PurposeOfUse",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-detectedissue-severity.json",
+      "resourceType": "ValueSet",
+      "id": "detectedissue-severity",
+      "url": "http://hl7.org/fhir/ValueSet/detectedissue-severity",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-assert-response-code-types.json",
+      "resourceType": "ValueSet",
+      "id": "assert-response-code-types",
+      "url": "http://hl7.org/fhir/ValueSet/assert-response-code-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-product-status.json",
+      "resourceType": "ValueSet",
+      "id": "product-status",
+      "url": "http://hl7.org/fhir/ValueSet/product-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-plan-definition-type.json",
+      "resourceType": "ValueSet",
+      "id": "plan-definition-type",
+      "url": "http://hl7.org/fhir/ValueSet/plan-definition-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-quality-type.json",
+      "resourceType": "ValueSet",
+      "id": "quality-type",
+      "url": "http://hl7.org/fhir/ValueSet/quality-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-seriousness.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-seriousness",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-seriousness",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-units-of-time.json",
+      "resourceType": "ValueSet",
+      "id": "units-of-time",
+      "url": "http://hl7.org/fhir/ValueSet/units-of-time",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-program.json",
+      "resourceType": "ValueSet",
+      "id": "program",
+      "url": "http://hl7.org/fhir/ValueSet/program",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-graph-compartment-rule.json",
+      "resourceType": "ValueSet",
+      "id": "graph-compartment-rule",
+      "url": "http://hl7.org/fhir/ValueSet/graph-compartment-rule",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-conceptmap-unmapped-mode.json",
+      "resourceType": "ValueSet",
+      "id": "conceptmap-unmapped-mode",
+      "url": "http://hl7.org/fhir/ValueSet/conceptmap-unmapped-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-product-storage-scale.json",
+      "resourceType": "ValueSet",
+      "id": "product-storage-scale",
+      "url": "http://hl7.org/fhir/ValueSet/product-storage-scale",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-metric-color.json",
+      "resourceType": "ValueSet",
+      "id": "metric-color",
+      "url": "http://hl7.org/fhir/ValueSet/metric-color",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-verification.json",
+      "resourceType": "ValueSet",
+      "id": "consent-verification",
+      "url": "http://hl7.org/fhir/ValueSet/consent-verification",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-concept-map-relationship.json",
+      "resourceType": "ValueSet",
+      "id": "concept-map-relationship",
+      "url": "http://hl7.org/fhir/ValueSet/concept-map-relationship",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-vision-base-codes.json",
+      "resourceType": "ValueSet",
+      "id": "vision-base-codes",
+      "url": "http://hl7.org/fhir/ValueSet/vision-base-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-asset-availability.json",
+      "resourceType": "ValueSet",
+      "id": "asset-availability",
+      "url": "http://hl7.org/fhir/ValueSet/asset-availability",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-participantrequired.json",
+      "resourceType": "ValueSet",
+      "id": "participantrequired",
+      "url": "http://hl7.org/fhir/ValueSet/participantrequired",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medline-pubmed-status.json",
+      "resourceType": "ValueSet",
+      "id": "medline-pubmed-status",
+      "url": "http://hl7.org/fhir/ValueSet/medline-pubmed-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-ex-diagnosis-on-admission.json",
+      "resourceType": "ValueSet",
+      "id": "ex-diagnosis-on-admission",
+      "url": "http://hl7.org/fhir/ValueSet/ex-diagnosis-on-admission",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-report-status-codes.json",
+      "resourceType": "ValueSet",
+      "id": "report-status-codes",
+      "url": "http://hl7.org/fhir/ValueSet/report-status-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-endpoint-status.json",
+      "resourceType": "ValueSet",
+      "id": "endpoint-status",
+      "url": "http://hl7.org/fhir/ValueSet/endpoint-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-common-tags.json",
+      "resourceType": "ValueSet",
+      "id": "common-tags",
+      "url": "http://hl7.org/fhir/ValueSet/common-tags",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-ex-diagnosistype.json",
+      "resourceType": "ValueSet",
+      "id": "ex-diagnosistype",
+      "url": "http://hl7.org/fhir/ValueSet/ex-diagnosistype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-task-status.json",
+      "resourceType": "ValueSet",
+      "id": "task-status",
+      "url": "http://hl7.org/fhir/ValueSet/task-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-testscript-operation-codes.json",
+      "resourceType": "ValueSet",
+      "id": "testscript-operation-codes",
+      "url": "http://hl7.org/fhir/ValueSet/testscript-operation-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-reference-handling-policy.json",
+      "resourceType": "ValueSet",
+      "id": "reference-handling-policy",
+      "url": "http://hl7.org/fhir/ValueSet/reference-handling-policy",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-message-reason-encounter.json",
+      "resourceType": "ValueSet",
+      "id": "message-reason-encounter",
+      "url": "http://hl7.org/fhir/ValueSet/message-reason-encounter",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-data-meaning.json",
+      "resourceType": "ValueSet",
+      "id": "consent-data-meaning",
+      "url": "http://hl7.org/fhir/ValueSet/consent-data-meaning",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-administration-method-codes.json",
+      "resourceType": "ValueSet",
+      "id": "administration-method-codes",
+      "url": "http://hl7.org/fhir/ValueSet/administration-method-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-identifier-type.json",
+      "resourceType": "ValueSet",
+      "id": "identifier-type",
+      "url": "http://hl7.org/fhir/ValueSet/identifier-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-citation-contribution.json",
+      "resourceType": "ValueSet",
+      "id": "citation-contribution",
+      "url": "http://hl7.org/fhir/ValueSet/citation-contribution",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-code.json",
+      "resourceType": "ValueSet",
+      "id": "condition-code",
+      "url": "http://hl7.org/fhir/ValueSet/condition-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-content-derivative.json",
+      "resourceType": "ValueSet",
+      "id": "contract-content-derivative",
+      "url": "http://hl7.org/fhir/ValueSet/contract-content-derivative",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-status.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-status",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-coverage-financial-exception.json",
+      "resourceType": "ValueSet",
+      "id": "coverage-financial-exception",
+      "url": "http://hl7.org/fhir/ValueSet/coverage-financial-exception",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-communication-topic.json",
+      "resourceType": "ValueSet",
+      "id": "communication-topic",
+      "url": "http://hl7.org/fhir/ValueSet/communication-topic",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-episodeofcare-type.json",
+      "resourceType": "ValueSet",
+      "id": "episodeofcare-type",
+      "url": "http://hl7.org/fhir/ValueSet/episodeofcare-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-device-type.json",
+      "resourceType": "ValueSet",
+      "id": "device-type",
+      "url": "http://hl7.org/fhir/ValueSet/device-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-approach-site-codes.json",
+      "resourceType": "ValueSet",
+      "id": "approach-site-codes",
+      "url": "http://hl7.org/fhir/ValueSet/approach-site-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-search-entry-mode.json",
+      "resourceType": "ValueSet",
+      "id": "search-entry-mode",
+      "url": "http://hl7.org/fhir/ValueSet/search-entry-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-action-cardinality-behavior.json",
+      "resourceType": "ValueSet",
+      "id": "action-cardinality-behavior",
+      "url": "http://hl7.org/fhir/ValueSet/action-cardinality-behavior",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-definition-subtype.json",
+      "resourceType": "ValueSet",
+      "id": "contract-definition-subtype",
+      "url": "http://hl7.org/fhir/ValueSet/contract-definition-subtype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-strand-type.json",
+      "resourceType": "ValueSet",
+      "id": "strand-type",
+      "url": "http://hl7.org/fhir/ValueSet/strand-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-definition-type.json",
+      "resourceType": "ValueSet",
+      "id": "contract-definition-type",
+      "url": "http://hl7.org/fhir/ValueSet/contract-definition-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-manifestation-or-symptom.json",
+      "resourceType": "ValueSet",
+      "id": "manifestation-or-symptom",
+      "url": "http://hl7.org/fhir/ValueSet/manifestation-or-symptom",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-search-param-type.json",
+      "resourceType": "ValueSet",
+      "id": "search-param-type",
+      "url": "http://hl7.org/fhir/ValueSet/search-param-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-questionnaire-purpose.json",
+      "resourceType": "ValueSet",
+      "id": "condition-questionnaire-purpose",
+      "url": "http://hl7.org/fhir/ValueSet/condition-questionnaire-purpose",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-flag-code.json",
+      "resourceType": "ValueSet",
+      "id": "flag-code",
+      "url": "http://hl7.org/fhir/ValueSet/flag-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-actorrole.json",
+      "resourceType": "ValueSet",
+      "id": "contract-actorrole",
+      "url": "http://hl7.org/fhir/ValueSet/contract-actorrole",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-eligibilityresponse-purpose.json",
+      "resourceType": "ValueSet",
+      "id": "eligibilityresponse-purpose",
+      "url": "http://hl7.org/fhir/ValueSet/eligibilityresponse-purpose",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v2-0116.json",
+      "resourceType": "ValueSet",
+      "id": "v2-0116",
+      "url": "http://terminology.hl7.org/ValueSet/v2-0116",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-item-type.json",
+      "resourceType": "ValueSet",
+      "id": "item-type",
+      "url": "http://hl7.org/fhir/ValueSet/item-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-type.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-type",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-benefit-unit.json",
+      "resourceType": "ValueSet",
+      "id": "benefit-unit",
+      "url": "http://hl7.org/fhir/ValueSet/benefit-unit",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-provenance-entity-role.json",
+      "resourceType": "ValueSet",
+      "id": "provenance-entity-role",
+      "url": "http://hl7.org/fhir/ValueSet/provenance-entity-role",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-ActIncidentCode.json",
+      "resourceType": "ValueSet",
+      "id": "v3-ActIncidentCode",
+      "url": "http://terminology.hl7.org/ValueSet/v3-ActIncidentCode",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-expression-language.json",
+      "resourceType": "ValueSet",
+      "id": "expression-language",
+      "url": "http://hl7.org/fhir/ValueSet/expression-language",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-action-participant-type.json",
+      "resourceType": "ValueSet",
+      "id": "action-participant-type",
+      "url": "http://hl7.org/fhir/ValueSet/action-participant-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contact-point-use.json",
+      "resourceType": "ValueSet",
+      "id": "contact-point-use",
+      "url": "http://hl7.org/fhir/ValueSet/contact-point-use",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-list-empty-reason.json",
+      "resourceType": "ValueSet",
+      "id": "list-empty-reason",
+      "url": "http://hl7.org/fhir/ValueSet/list-empty-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-flag-category.json",
+      "resourceType": "ValueSet",
+      "id": "flag-category",
+      "url": "http://hl7.org/fhir/ValueSet/flag-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-procedure-reason.json",
+      "resourceType": "ValueSet",
+      "id": "procedure-reason",
+      "url": "http://hl7.org/fhir/ValueSet/procedure-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-allergyintolerance-clinical.json",
+      "resourceType": "ValueSet",
+      "id": "allergyintolerance-clinical",
+      "url": "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-measure-report-status.json",
+      "resourceType": "ValueSet",
+      "id": "measure-report-status",
+      "url": "http://hl7.org/fhir/ValueSet/measure-report-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-stage-type.json",
+      "resourceType": "ValueSet",
+      "id": "condition-stage-type",
+      "url": "http://hl7.org/fhir/ValueSet/condition-stage-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-scope.json",
+      "resourceType": "ValueSet",
+      "id": "consent-scope",
+      "url": "http://hl7.org/fhir/ValueSet/consent-scope",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-clinicalimpression-prognosis.json",
+      "resourceType": "ValueSet",
+      "id": "clinicalimpression-prognosis",
+      "url": "http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-device-kind.json",
+      "resourceType": "ValueSet",
+      "id": "device-kind",
+      "url": "http://hl7.org/fhir/ValueSet/device-kind",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-substance-category.json",
+      "resourceType": "ValueSet",
+      "id": "substance-category",
+      "url": "http://hl7.org/fhir/ValueSet/substance-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-administrative-gender.json",
+      "resourceType": "ValueSet",
+      "id": "administrative-gender",
+      "url": "http://hl7.org/fhir/ValueSet/administrative-gender",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-issue-severity.json",
+      "resourceType": "ValueSet",
+      "id": "issue-severity",
+      "url": "http://hl7.org/fhir/ValueSet/issue-severity",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-supporting-info.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-supporting-info",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-supporting-info",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-audit-event-action.json",
+      "resourceType": "ValueSet",
+      "id": "audit-event-action",
+      "url": "http://hl7.org/fhir/ValueSet/audit-event-action",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-participant-type.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-participant-type",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-participant-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-assettype.json",
+      "resourceType": "ValueSet",
+      "id": "contract-assettype",
+      "url": "http://hl7.org/fhir/ValueSet/contract-assettype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-insuranceplan-applicability.json",
+      "resourceType": "ValueSet",
+      "id": "insuranceplan-applicability",
+      "url": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-issue-type.json",
+      "resourceType": "ValueSet",
+      "id": "issue-type",
+      "url": "http://hl7.org/fhir/ValueSet/issue-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationrequest-course-of-therapy.json",
+      "resourceType": "ValueSet",
+      "id": "medicationrequest-course-of-therapy",
+      "url": "http://hl7.org/fhir/ValueSet/medicationrequest-course-of-therapy",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-publishing-model-type.json",
+      "resourceType": "ValueSet",
+      "id": "publishing-model-type",
+      "url": "http://hl7.org/fhir/ValueSet/publishing-model-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-state-codes.json",
+      "resourceType": "ValueSet",
+      "id": "consent-state-codes",
+      "url": "http://hl7.org/fhir/ValueSet/consent-state-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-attribute-estimate-type.json",
+      "resourceType": "ValueSet",
+      "id": "attribute-estimate-type",
+      "url": "http://hl7.org/fhir/ValueSet/attribute-estimate-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-object-role.json",
+      "resourceType": "ValueSet",
+      "id": "object-role",
+      "url": "http://hl7.org/fhir/ValueSet/object-role",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-term-type.json",
+      "resourceType": "ValueSet",
+      "id": "contract-term-type",
+      "url": "http://hl7.org/fhir/ValueSet/contract-term-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-category.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-category",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-variable-handling.json",
+      "resourceType": "ValueSet",
+      "id": "variable-handling",
+      "url": "http://hl7.org/fhir/ValueSet/variable-handling",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-clinical-findings.json",
+      "resourceType": "ValueSet",
+      "id": "clinical-findings",
+      "url": "http://hl7.org/fhir/ValueSet/clinical-findings",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-publicationstatus.json",
+      "resourceType": "ValueSet",
+      "id": "contract-publicationstatus",
+      "url": "http://hl7.org/fhir/ValueSet/contract-publicationstatus",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-specimen-collection.json",
+      "resourceType": "ValueSet",
+      "id": "specimen-collection",
+      "url": "http://hl7.org/fhir/ValueSet/specimen-collection",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-trigger-type.json",
+      "resourceType": "ValueSet",
+      "id": "trigger-type",
+      "url": "http://hl7.org/fhir/ValueSet/trigger-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-report-relation-type.json",
+      "resourceType": "ValueSet",
+      "id": "report-relation-type",
+      "url": "http://hl7.org/fhir/ValueSet/report-relation-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-admin-status.json",
+      "resourceType": "ValueSet",
+      "id": "medication-admin-status",
+      "url": "http://hl7.org/fhir/ValueSet/medication-admin-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-mimetypes.json",
+      "resourceType": "ValueSet",
+      "id": "mimetypes",
+      "url": "http://hl7.org/fhir/ValueSet/mimetypes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-ParticipationMode.json",
+      "resourceType": "ValueSet",
+      "id": "v3-ParticipationMode",
+      "url": "http://terminology.hl7.org/ValueSet/v3-ParticipationMode",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-immunization-program-eligibility.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-program-eligibility",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-program-eligibility",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-series-performer-function.json",
+      "resourceType": "ValueSet",
+      "id": "series-performer-function",
+      "url": "http://hl7.org/fhir/ValueSet/series-performer-function",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-ex-benefitcategory.json",
+      "resourceType": "ValueSet",
+      "id": "ex-benefitcategory",
+      "url": "http://hl7.org/fhir/ValueSet/ex-benefitcategory",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-catalogentry-relation-type.json",
+      "resourceType": "ValueSet",
+      "id": "catalogentry-relation-type",
+      "url": "http://hl7.org/fhir/ValueSet/catalogentry-relation-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-audit-source-type.json",
+      "resourceType": "ValueSet",
+      "id": "audit-source-type",
+      "url": "http://hl7.org/fhir/ValueSet/audit-source-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-outcome.json",
+      "resourceType": "ValueSet",
+      "id": "condition-outcome",
+      "url": "http://hl7.org/fhir/ValueSet/condition-outcome",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-spdx-license.json",
+      "resourceType": "ValueSet",
+      "id": "spdx-license",
+      "url": "http://hl7.org/fhir/ValueSet/spdx-license",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-location-status.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-location-status",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-location-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-cost-category.json",
+      "resourceType": "ValueSet",
+      "id": "medication-cost-category",
+      "url": "http://hl7.org/fhir/ValueSet/medication-cost-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-assetsubtype.json",
+      "resourceType": "ValueSet",
+      "id": "contract-assetsubtype",
+      "url": "http://hl7.org/fhir/ValueSet/contract-assetsubtype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-vaccine-code.json",
+      "resourceType": "ValueSet",
+      "id": "vaccine-code",
+      "url": "http://hl7.org/fhir/ValueSet/vaccine-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-coverage-class.json",
+      "resourceType": "ValueSet",
+      "id": "coverage-class",
+      "url": "http://hl7.org/fhir/ValueSet/coverage-class",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-status.json",
+      "resourceType": "ValueSet",
+      "id": "medication-status",
+      "url": "http://hl7.org/fhir/ValueSet/medication-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-relatedperson-relationshiptype.json",
+      "resourceType": "ValueSet",
+      "id": "relatedperson-relationshiptype",
+      "url": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contributor-summary-source.json",
+      "resourceType": "ValueSet",
+      "id": "contributor-summary-source",
+      "url": "http://hl7.org/fhir/ValueSet/contributor-summary-source",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-mitigating-action.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-mitigating-action",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-mitigating-action",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-chromosome-human.json",
+      "resourceType": "ValueSet",
+      "id": "chromosome-human",
+      "url": "http://hl7.org/fhir/ValueSet/chromosome-human",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-catalogentry-type.json",
+      "resourceType": "ValueSet",
+      "id": "catalogentry-type",
+      "url": "http://hl7.org/fhir/ValueSet/catalogentry-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-subscription-notification-type.json",
+      "resourceType": "ValueSet",
+      "id": "subscription-notification-type",
+      "url": "http://hl7.org/fhir/ValueSet/subscription-notification-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-questionnaire-questions.json",
+      "resourceType": "ValueSet",
+      "id": "questionnaire-questions",
+      "url": "http://hl7.org/fhir/ValueSet/questionnaire-questions",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-list-mode.json",
+      "resourceType": "ValueSet",
+      "id": "list-mode",
+      "url": "http://hl7.org/fhir/ValueSet/list-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-container-material.json",
+      "resourceType": "ValueSet",
+      "id": "container-material",
+      "url": "http://hl7.org/fhir/ValueSet/container-material",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-service-uscls.json",
+      "resourceType": "ValueSet",
+      "id": "service-uscls",
+      "url": "http://hl7.org/fhir/ValueSet/service-uscls",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-claim-modifiers.json",
+      "resourceType": "ValueSet",
+      "id": "claim-modifiers",
+      "url": "http://hl7.org/fhir/ValueSet/claim-modifiers",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-citation-variant-type.json",
+      "resourceType": "ValueSet",
+      "id": "citation-variant-type",
+      "url": "http://hl7.org/fhir/ValueSet/citation-variant-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v2-0371.json",
+      "resourceType": "ValueSet",
+      "id": "v2-0371",
+      "url": "http://terminology.hl7.org/ValueSet/v2-0371",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-procedure-followup.json",
+      "resourceType": "ValueSet",
+      "id": "procedure-followup",
+      "url": "http://hl7.org/fhir/ValueSet/procedure-followup",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-timing-abbreviation.json",
+      "resourceType": "ValueSet",
+      "id": "timing-abbreviation",
+      "url": "http://hl7.org/fhir/ValueSet/timing-abbreviation",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-subpotent-reason.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-subpotent-reason",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-subpotent-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-preventive-action.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-preventive-action",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-preventive-action",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-FamilyMember.json",
+      "resourceType": "ValueSet",
+      "id": "v3-FamilyMember",
+      "url": "http://terminology.hl7.org/ValueSet/v3-FamilyMember",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-document-relationship-type.json",
+      "resourceType": "ValueSet",
+      "id": "document-relationship-type",
+      "url": "http://hl7.org/fhir/ValueSet/document-relationship-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-forms.json",
+      "resourceType": "ValueSet",
+      "id": "forms",
+      "url": "http://hl7.org/fhir/ValueSet/forms",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-action-grouping-behavior.json",
+      "resourceType": "ValueSet",
+      "id": "action-grouping-behavior",
+      "url": "http://hl7.org/fhir/ValueSet/action-grouping-behavior",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-languages.json",
+      "resourceType": "ValueSet",
+      "id": "languages",
+      "url": "http://hl7.org/fhir/ValueSet/languages",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationdispense-status.json",
+      "resourceType": "ValueSet",
+      "id": "medicationdispense-status",
+      "url": "http://hl7.org/fhir/ValueSet/medicationdispense-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-party-role.json",
+      "resourceType": "ValueSet",
+      "id": "contract-party-role",
+      "url": "http://hl7.org/fhir/ValueSet/contract-party-role",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-research-subject-status.json",
+      "resourceType": "ValueSet",
+      "id": "research-subject-status",
+      "url": "http://hl7.org/fhir/ValueSet/research-subject-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-search-comparator.json",
+      "resourceType": "ValueSet",
+      "id": "search-comparator",
+      "url": "http://hl7.org/fhir/ValueSet/search-comparator",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-subject-status.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-subject-status",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-subject-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-metric-calibration-state.json",
+      "resourceType": "ValueSet",
+      "id": "metric-calibration-state",
+      "url": "http://hl7.org/fhir/ValueSet/metric-calibration-state",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-endpoint-connection-type.json",
+      "resourceType": "ValueSet",
+      "id": "endpoint-connection-type",
+      "url": "http://hl7.org/fhir/ValueSet/endpoint-connection-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationrequest-category.json",
+      "resourceType": "ValueSet",
+      "id": "medicationrequest-category",
+      "url": "http://hl7.org/fhir/ValueSet/medicationrequest-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-composite-measure-scoring.json",
+      "resourceType": "ValueSet",
+      "id": "composite-measure-scoring",
+      "url": "http://hl7.org/fhir/ValueSet/composite-measure-scoring",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-history-status.json",
+      "resourceType": "ValueSet",
+      "id": "history-status",
+      "url": "http://hl7.org/fhir/ValueSet/history-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-claim-use.json",
+      "resourceType": "ValueSet",
+      "id": "claim-use",
+      "url": "http://hl7.org/fhir/ValueSet/claim-use",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-organization-type.json",
+      "resourceType": "ValueSet",
+      "id": "organization-type",
+      "url": "http://hl7.org/fhir/ValueSet/organization-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-claim-informationcategory.json",
+      "resourceType": "ValueSet",
+      "id": "claim-informationcategory",
+      "url": "http://hl7.org/fhir/ValueSet/claim-informationcategory",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-not-consumed-reason.json",
+      "resourceType": "ValueSet",
+      "id": "not-consumed-reason",
+      "url": "http://hl7.org/fhir/ValueSet/not-consumed-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-examplescenario-actor-type.json",
+      "resourceType": "ValueSet",
+      "id": "examplescenario-actor-type",
+      "url": "http://hl7.org/fhir/ValueSet/examplescenario-actor-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-coverageeligibilityresponse-ex-auth-support.json",
+      "resourceType": "ValueSet",
+      "id": "coverageeligibilityresponse-ex-auth-support",
+      "url": "http://hl7.org/fhir/ValueSet/coverageeligibilityresponse-ex-auth-support",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-list-order.json",
+      "resourceType": "ValueSet",
+      "id": "list-order",
+      "url": "http://hl7.org/fhir/ValueSet/list-order",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-recommendation-date-criterion.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-recommendation-date-criterion",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-recommendation-date-criterion",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-allergy-intolerance-category.json",
+      "resourceType": "ValueSet",
+      "id": "allergy-intolerance-category",
+      "url": "http://hl7.org/fhir/ValueSet/allergy-intolerance-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-category.json",
+      "resourceType": "ValueSet",
+      "id": "consent-category",
+      "url": "http://hl7.org/fhir/ValueSet/consent-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-questionnaire-enable-behavior.json",
+      "resourceType": "ValueSet",
+      "id": "questionnaire-enable-behavior",
+      "url": "http://hl7.org/fhir/ValueSet/questionnaire-enable-behavior",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-document-classcodes.json",
+      "resourceType": "ValueSet",
+      "id": "document-classcodes",
+      "url": "http://hl7.org/fhir/ValueSet/document-classcodes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-questionnaire-answers-status.json",
+      "resourceType": "ValueSet",
+      "id": "questionnaire-answers-status",
+      "url": "http://hl7.org/fhir/ValueSet/questionnaire-answers-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-process-priority.json",
+      "resourceType": "ValueSet",
+      "id": "process-priority",
+      "url": "http://hl7.org/fhir/ValueSet/process-priority",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-status.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-status",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-operation-kind.json",
+      "resourceType": "ValueSet",
+      "id": "operation-kind",
+      "url": "http://hl7.org/fhir/ValueSet/operation-kind",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-action-selection-behavior.json",
+      "resourceType": "ValueSet",
+      "id": "action-selection-behavior",
+      "url": "http://hl7.org/fhir/ValueSet/action-selection-behavior",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-dose-rate-type.json",
+      "resourceType": "ValueSet",
+      "id": "dose-rate-type",
+      "url": "http://hl7.org/fhir/ValueSet/dose-rate-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-graph-compartment-use.json",
+      "resourceType": "ValueSet",
+      "id": "graph-compartment-use",
+      "url": "http://hl7.org/fhir/ValueSet/graph-compartment-use",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationdispense-status-reason.json",
+      "resourceType": "ValueSet",
+      "id": "medicationdispense-status-reason",
+      "url": "http://hl7.org/fhir/ValueSet/medicationdispense-status-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-distance-units.json",
+      "resourceType": "ValueSet",
+      "id": "distance-units",
+      "url": "http://hl7.org/fhir/ValueSet/distance-units",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contact-point-system.json",
+      "resourceType": "ValueSet",
+      "id": "contact-point-system",
+      "url": "http://hl7.org/fhir/ValueSet/contact-point-system",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-allergyintolerance-code.json",
+      "resourceType": "ValueSet",
+      "id": "allergyintolerance-code",
+      "url": "http://hl7.org/fhir/ValueSet/allergyintolerance-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-guidance-response-status.json",
+      "resourceType": "ValueSet",
+      "id": "guidance-response-status",
+      "url": "http://hl7.org/fhir/ValueSet/guidance-response-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-remittance-outcome.json",
+      "resourceType": "ValueSet",
+      "id": "remittance-outcome",
+      "url": "http://hl7.org/fhir/ValueSet/remittance-outcome",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-c80-facilitycodes.json",
+      "resourceType": "ValueSet",
+      "id": "c80-facilitycodes",
+      "url": "http://hl7.org/fhir/ValueSet/c80-facilitycodes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-specimen-collection-method.json",
+      "resourceType": "ValueSet",
+      "id": "specimen-collection-method",
+      "url": "http://hl7.org/fhir/ValueSet/specimen-collection-method",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-address-type.json",
+      "resourceType": "ValueSet",
+      "id": "address-type",
+      "url": "http://hl7.org/fhir/ValueSet/address-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-ex-revenue-center.json",
+      "resourceType": "ValueSet",
+      "id": "ex-revenue-center",
+      "url": "http://hl7.org/fhir/ValueSet/ex-revenue-center",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-procedure-outcome.json",
+      "resourceType": "ValueSet",
+      "id": "procedure-outcome",
+      "url": "http://hl7.org/fhir/ValueSet/procedure-outcome",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-permitted-data-type.json",
+      "resourceType": "ValueSet",
+      "id": "permitted-data-type",
+      "url": "http://hl7.org/fhir/ValueSet/permitted-data-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-action-type.json",
+      "resourceType": "ValueSet",
+      "id": "action-type",
+      "url": "http://hl7.org/fhir/ValueSet/action-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-container-cap.json",
+      "resourceType": "ValueSet",
+      "id": "container-cap",
+      "url": "http://hl7.org/fhir/ValueSet/container-cap",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-severity.json",
+      "resourceType": "ValueSet",
+      "id": "condition-severity",
+      "url": "http://hl7.org/fhir/ValueSet/condition-severity",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-location-physical-type.json",
+      "resourceType": "ValueSet",
+      "id": "location-physical-type",
+      "url": "http://hl7.org/fhir/ValueSet/location-physical-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-provider-qualification.json",
+      "resourceType": "ValueSet",
+      "id": "provider-qualification",
+      "url": "http://hl7.org/fhir/ValueSet/provider-qualification",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-characteristic-method.json",
+      "resourceType": "ValueSet",
+      "id": "characteristic-method",
+      "url": "http://hl7.org/fhir/ValueSet/characteristic-method",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-map-input-mode.json",
+      "resourceType": "ValueSet",
+      "id": "map-input-mode",
+      "url": "http://hl7.org/fhir/ValueSet/map-input-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-concept-map-equivalence.json",
+      "resourceType": "ValueSet",
+      "id": "concept-map-equivalence",
+      "url": "http://hl7.org/fhir/ValueSet/concept-map-equivalence",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-report-action-result-codes.json",
+      "resourceType": "ValueSet",
+      "id": "report-action-result-codes",
+      "url": "http://hl7.org/fhir/ValueSet/report-action-result-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-structure-definition-kind.json",
+      "resourceType": "ValueSet",
+      "id": "structure-definition-kind",
+      "url": "http://hl7.org/fhir/ValueSet/structure-definition-kind",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v2-0092.json",
+      "resourceType": "ValueSet",
+      "id": "v2-0092",
+      "url": "http://terminology.hl7.org/ValueSet/v2-0092",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-provenance-activity-type.json",
+      "resourceType": "ValueSet",
+      "id": "provenance-activity-type",
+      "url": "http://hl7.org/fhir/ValueSet/provenance-activity-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-content-code.json",
+      "resourceType": "ValueSet",
+      "id": "consent-content-code",
+      "url": "http://hl7.org/fhir/ValueSet/consent-content-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-concept-property-type.json",
+      "resourceType": "ValueSet",
+      "id": "concept-property-type",
+      "url": "http://hl7.org/fhir/ValueSet/concept-property-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-note-type.json",
+      "resourceType": "ValueSet",
+      "id": "note-type",
+      "url": "http://hl7.org/fhir/ValueSet/note-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-versioning-policy.json",
+      "resourceType": "ValueSet",
+      "id": "versioning-policy",
+      "url": "http://hl7.org/fhir/ValueSet/versioning-policy",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-ServiceDeliveryLocationRoleType.json",
+      "resourceType": "ValueSet",
+      "id": "v3-ServiceDeliveryLocationRoleType",
+      "url": "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-medicationknowledge-package-type.json",
+      "resourceType": "ValueSet",
+      "id": "medicationknowledge-package-type",
+      "url": "http://hl7.org/fhir/ValueSet/medicationknowledge-package-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-duration-units.json",
+      "resourceType": "ValueSet",
+      "id": "duration-units",
+      "url": "http://hl7.org/fhir/ValueSet/duration-units",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-category.json",
+      "resourceType": "ValueSet",
+      "id": "condition-category",
+      "url": "http://hl7.org/fhir/ValueSet/condition-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v2-0276.json",
+      "resourceType": "ValueSet",
+      "id": "v2-0276",
+      "url": "http://terminology.hl7.org/ValueSet/v2-0276",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-location-mode.json",
+      "resourceType": "ValueSet",
+      "id": "location-mode",
+      "url": "http://hl7.org/fhir/ValueSet/location-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-request-priority.json",
+      "resourceType": "ValueSet",
+      "id": "request-priority",
+      "url": "http://hl7.org/fhir/ValueSet/request-priority",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-action-precheck-behavior.json",
+      "resourceType": "ValueSet",
+      "id": "action-precheck-behavior",
+      "url": "http://hl7.org/fhir/ValueSet/action-precheck-behavior",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-care-plan-activity-kind.json",
+      "resourceType": "ValueSet",
+      "id": "care-plan-activity-kind",
+      "url": "http://hl7.org/fhir/ValueSet/care-plan-activity-kind",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-supplyrequest-reason.json",
+      "resourceType": "ValueSet",
+      "id": "supplyrequest-reason",
+      "url": "http://hl7.org/fhir/ValueSet/supplyrequest-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-service-category.json",
+      "resourceType": "ValueSet",
+      "id": "service-category",
+      "url": "http://hl7.org/fhir/ValueSet/service-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-resource-slicing-rules.json",
+      "resourceType": "ValueSet",
+      "id": "resource-slicing-rules",
+      "url": "http://hl7.org/fhir/ValueSet/resource-slicing-rules",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-resource-aggregation-mode.json",
+      "resourceType": "ValueSet",
+      "id": "resource-aggregation-mode",
+      "url": "http://hl7.org/fhir/ValueSet/resource-aggregation-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-questionnaire-answers.json",
+      "resourceType": "ValueSet",
+      "id": "questionnaire-answers",
+      "url": "http://hl7.org/fhir/ValueSet/questionnaire-answers",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-benefit-type.json",
+      "resourceType": "ValueSet",
+      "id": "benefit-type",
+      "url": "http://hl7.org/fhir/ValueSet/benefit-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-usage-admin-location.json",
+      "resourceType": "ValueSet",
+      "id": "medication-usage-admin-location",
+      "url": "http://hl7.org/fhir/ValueSet/medication-usage-admin-location",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-report-result-codes.json",
+      "resourceType": "ValueSet",
+      "id": "report-result-codes",
+      "url": "http://hl7.org/fhir/ValueSet/report-result-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-constraint-severity.json",
+      "resourceType": "ValueSet",
+      "id": "constraint-severity",
+      "url": "http://hl7.org/fhir/ValueSet/constraint-severity",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contributor-summary-style.json",
+      "resourceType": "ValueSet",
+      "id": "contributor-summary-style",
+      "url": "http://hl7.org/fhir/ValueSet/contributor-summary-style",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-variable-role.json",
+      "resourceType": "ValueSet",
+      "id": "variable-role",
+      "url": "http://hl7.org/fhir/ValueSet/variable-role",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-map-group-type-mode.json",
+      "resourceType": "ValueSet",
+      "id": "map-group-type-mode",
+      "url": "http://hl7.org/fhir/ValueSet/map-group-type-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-supplyrequest-status.json",
+      "resourceType": "ValueSet",
+      "id": "supplyrequest-status",
+      "url": "http://hl7.org/fhir/ValueSet/supplyrequest-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-c80-doc-typecodes.json",
+      "resourceType": "ValueSet",
+      "id": "c80-doc-typecodes",
+      "url": "http://hl7.org/fhir/ValueSet/c80-doc-typecodes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-group-measure.json",
+      "resourceType": "ValueSet",
+      "id": "group-measure",
+      "url": "http://hl7.org/fhir/ValueSet/group-measure",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-message-events.json",
+      "resourceType": "ValueSet",
+      "id": "message-events",
+      "url": "http://hl7.org/fhir/ValueSet/message-events",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-synthesis-type.json",
+      "resourceType": "ValueSet",
+      "id": "synthesis-type",
+      "url": "http://hl7.org/fhir/ValueSet/synthesis-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-published-in-type.json",
+      "resourceType": "ValueSet",
+      "id": "published-in-type",
+      "url": "http://hl7.org/fhir/ValueSet/published-in-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-messageheader-response-request.json",
+      "resourceType": "ValueSet",
+      "id": "messageheader-response-request",
+      "url": "http://hl7.org/fhir/ValueSet/messageheader-response-request",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-specimen-contained-preference.json",
+      "resourceType": "ValueSet",
+      "id": "specimen-contained-preference",
+      "url": "http://hl7.org/fhir/ValueSet/specimen-contained-preference",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-statistic-model-code.json",
+      "resourceType": "ValueSet",
+      "id": "statistic-model-code",
+      "url": "http://hl7.org/fhir/ValueSet/statistic-model-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-chargeitem-status.json",
+      "resourceType": "ValueSet",
+      "id": "chargeitem-status",
+      "url": "http://hl7.org/fhir/ValueSet/chargeitem-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-reaction-event-severity.json",
+      "resourceType": "ValueSet",
+      "id": "reaction-event-severity",
+      "url": "http://hl7.org/fhir/ValueSet/reaction-event-severity",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-report-participant-type.json",
+      "resourceType": "ValueSet",
+      "id": "report-participant-type",
+      "url": "http://hl7.org/fhir/ValueSet/report-participant-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-nutrient-code.json",
+      "resourceType": "ValueSet",
+      "id": "nutrient-code",
+      "url": "http://hl7.org/fhir/ValueSet/nutrient-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-device-statement-status.json",
+      "resourceType": "ValueSet",
+      "id": "device-statement-status",
+      "url": "http://hl7.org/fhir/ValueSet/device-statement-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-nutritionproduct-status.json",
+      "resourceType": "ValueSet",
+      "id": "nutritionproduct-status",
+      "url": "http://hl7.org/fhir/ValueSet/nutritionproduct-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-goal-start-event.json",
+      "resourceType": "ValueSet",
+      "id": "goal-start-event",
+      "url": "http://hl7.org/fhir/ValueSet/goal-start-event",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-code-search-support.json",
+      "resourceType": "ValueSet",
+      "id": "code-search-support",
+      "url": "http://hl7.org/fhir/ValueSet/code-search-support",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-status-reason.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-status-reason",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-status-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-can-push-updates.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-can-push-updates",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-can-push-updates",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contactentity-type.json",
+      "resourceType": "ValueSet",
+      "id": "contactentity-type",
+      "url": "http://hl7.org/fhir/ValueSet/contactentity-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-audit-media-type.json",
+      "resourceType": "ValueSet",
+      "id": "audit-media-type",
+      "url": "http://hl7.org/fhir/ValueSet/audit-media-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-audit-event-type.json",
+      "resourceType": "ValueSet",
+      "id": "audit-event-type",
+      "url": "http://hl7.org/fhir/ValueSet/audit-event-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-risk-probability.json",
+      "resourceType": "ValueSet",
+      "id": "risk-probability",
+      "url": "http://hl7.org/fhir/ValueSet/risk-probability",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-causality-method.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-causality-method",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-causality-method",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-benefit-term.json",
+      "resourceType": "ValueSet",
+      "id": "benefit-term",
+      "url": "http://hl7.org/fhir/ValueSet/benefit-term",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-designation-use.json",
+      "resourceType": "ValueSet",
+      "id": "designation-use",
+      "url": "http://hl7.org/fhir/ValueSet/designation-use",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-performer-role.json",
+      "resourceType": "ValueSet",
+      "id": "performer-role",
+      "url": "http://hl7.org/fhir/ValueSet/performer-role",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-diagnostic-report-status.json",
+      "resourceType": "ValueSet",
+      "id": "diagnostic-report-status",
+      "url": "http://hl7.org/fhir/ValueSet/diagnostic-report-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-event-resource-types.json",
+      "resourceType": "ValueSet",
+      "id": "event-resource-types",
+      "url": "http://hl7.org/fhir/ValueSet/event-resource-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-metric-category.json",
+      "resourceType": "ValueSet",
+      "id": "metric-category",
+      "url": "http://hl7.org/fhir/ValueSet/metric-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-conditional-read-status.json",
+      "resourceType": "ValueSet",
+      "id": "conditional-read-status",
+      "url": "http://hl7.org/fhir/ValueSet/conditional-read-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-location-status.json",
+      "resourceType": "ValueSet",
+      "id": "location-status",
+      "url": "http://hl7.org/fhir/ValueSet/location-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-event-capability-mode.json",
+      "resourceType": "ValueSet",
+      "id": "event-capability-mode",
+      "url": "http://hl7.org/fhir/ValueSet/event-capability-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-property-representation.json",
+      "resourceType": "ValueSet",
+      "id": "property-representation",
+      "url": "http://hl7.org/fhir/ValueSet/property-representation",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-observation-category.json",
+      "resourceType": "ValueSet",
+      "id": "observation-category",
+      "url": "http://hl7.org/fhir/ValueSet/observation-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-type.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-type",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-assert-direction-codes.json",
+      "resourceType": "ValueSet",
+      "id": "assert-direction-codes",
+      "url": "http://hl7.org/fhir/ValueSet/assert-direction-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-basic-resource-type.json",
+      "resourceType": "ValueSet",
+      "id": "basic-resource-type",
+      "url": "http://hl7.org/fhir/ValueSet/basic-resource-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-origin.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-origin",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-origin",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-substance-status.json",
+      "resourceType": "ValueSet",
+      "id": "substance-status",
+      "url": "http://hl7.org/fhir/ValueSet/substance-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-insuranceplan-type.json",
+      "resourceType": "ValueSet",
+      "id": "insuranceplan-type",
+      "url": "http://hl7.org/fhir/ValueSet/insuranceplan-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-audit-event-outcome.json",
+      "resourceType": "ValueSet",
+      "id": "audit-event-outcome",
+      "url": "http://hl7.org/fhir/ValueSet/audit-event-outcome",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-care-plan-activity-status.json",
+      "resourceType": "ValueSet",
+      "id": "care-plan-activity-status",
+      "url": "http://hl7.org/fhir/ValueSet/care-plan-activity-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-audit-entity-type.json",
+      "resourceType": "ValueSet",
+      "id": "audit-entity-type",
+      "url": "http://hl7.org/fhir/ValueSet/audit-entity-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-signer-type.json",
+      "resourceType": "ValueSet",
+      "id": "contract-signer-type",
+      "url": "http://hl7.org/fhir/ValueSet/contract-signer-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-goal-priority.json",
+      "resourceType": "ValueSet",
+      "id": "goal-priority",
+      "url": "http://hl7.org/fhir/ValueSet/goal-priority",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-eligibilityrequest-purpose.json",
+      "resourceType": "ValueSet",
+      "id": "eligibilityrequest-purpose",
+      "url": "http://hl7.org/fhir/ValueSet/eligibilityrequest-purpose",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-handling-condition.json",
+      "resourceType": "ValueSet",
+      "id": "handling-condition",
+      "url": "http://hl7.org/fhir/ValueSet/handling-condition",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-patient-contactrelationship.json",
+      "resourceType": "ValueSet",
+      "id": "patient-contactrelationship",
+      "url": "http://hl7.org/fhir/ValueSet/patient-contactrelationship",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-capability-statement-kind.json",
+      "resourceType": "ValueSet",
+      "id": "capability-statement-kind",
+      "url": "http://hl7.org/fhir/ValueSet/capability-statement-kind",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-certainty-subcomponent-rating.json",
+      "resourceType": "ValueSet",
+      "id": "certainty-subcomponent-rating",
+      "url": "http://hl7.org/fhir/ValueSet/certainty-subcomponent-rating",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-recommendation-status.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-recommendation-status",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-recommendation-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-link-type.json",
+      "resourceType": "ValueSet",
+      "id": "link-type",
+      "url": "http://hl7.org/fhir/ValueSet/link-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-referencerange-meaning.json",
+      "resourceType": "ValueSet",
+      "id": "referencerange-meaning",
+      "url": "http://hl7.org/fhir/ValueSet/referencerange-meaning",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contributor-type.json",
+      "resourceType": "ValueSet",
+      "id": "contributor-type",
+      "url": "http://hl7.org/fhir/ValueSet/contributor-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-currencies.json",
+      "resourceType": "ValueSet",
+      "id": "currencies",
+      "url": "http://hl7.org/fhir/ValueSet/currencies",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-goal-achievement.json",
+      "resourceType": "ValueSet",
+      "id": "goal-achievement",
+      "url": "http://hl7.org/fhir/ValueSet/goal-achievement",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-diagnosis-role.json",
+      "resourceType": "ValueSet",
+      "id": "diagnosis-role",
+      "url": "http://hl7.org/fhir/ValueSet/diagnosis-role",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-action-relationship-type.json",
+      "resourceType": "ValueSet",
+      "id": "action-relationship-type",
+      "url": "http://hl7.org/fhir/ValueSet/action-relationship-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-servicerequest-category.json",
+      "resourceType": "ValueSet",
+      "id": "servicerequest-category",
+      "url": "http://hl7.org/fhir/ValueSet/servicerequest-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-communication-request-status-reason.json",
+      "resourceType": "ValueSet",
+      "id": "communication-request-status-reason",
+      "url": "http://hl7.org/fhir/ValueSet/communication-request-status-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-coverage-copay-type.json",
+      "resourceType": "ValueSet",
+      "id": "coverage-copay-type",
+      "url": "http://hl7.org/fhir/ValueSet/coverage-copay-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-account-type.json",
+      "resourceType": "ValueSet",
+      "id": "account-type",
+      "url": "http://hl7.org/fhir/ValueSet/account-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-recommendation-reason.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-recommendation-reason",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-recommendation-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-route-codes.json",
+      "resourceType": "ValueSet",
+      "id": "route-codes",
+      "url": "http://hl7.org/fhir/ValueSet/route-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-claim-subtype.json",
+      "resourceType": "ValueSet",
+      "id": "claim-subtype",
+      "url": "http://hl7.org/fhir/ValueSet/claim-subtype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-citation-classifier.json",
+      "resourceType": "ValueSet",
+      "id": "citation-classifier",
+      "url": "http://hl7.org/fhir/ValueSet/citation-classifier",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-stage.json",
+      "resourceType": "ValueSet",
+      "id": "condition-stage",
+      "url": "http://hl7.org/fhir/ValueSet/condition-stage",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-type-restful-interaction.json",
+      "resourceType": "ValueSet",
+      "id": "type-restful-interaction",
+      "url": "http://hl7.org/fhir/ValueSet/type-restful-interaction",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-tooth.json",
+      "resourceType": "ValueSet",
+      "id": "tooth",
+      "url": "http://hl7.org/fhir/ValueSet/tooth",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-report-codes.json",
+      "resourceType": "ValueSet",
+      "id": "report-codes",
+      "url": "http://hl7.org/fhir/ValueSet/report-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-audit-event-sub-type.json",
+      "resourceType": "ValueSet",
+      "id": "audit-event-sub-type",
+      "url": "http://hl7.org/fhir/ValueSet/audit-event-sub-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-system-restful-interaction.json",
+      "resourceType": "ValueSet",
+      "id": "system-restful-interaction",
+      "url": "http://hl7.org/fhir/ValueSet/system-restful-interaction",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-actuality.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-actuality",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-actuality",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-entformula-additive.json",
+      "resourceType": "ValueSet",
+      "id": "entformula-additive",
+      "url": "http://hl7.org/fhir/ValueSet/entformula-additive",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-reason-medication-status-codes.json",
+      "resourceType": "ValueSet",
+      "id": "reason-medication-status-codes",
+      "url": "http://hl7.org/fhir/ValueSet/reason-medication-status-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-security-category.json",
+      "resourceType": "ValueSet",
+      "id": "contract-security-category",
+      "url": "http://hl7.org/fhir/ValueSet/contract-security-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-restful-security-service.json",
+      "resourceType": "ValueSet",
+      "id": "restful-security-service",
+      "url": "http://hl7.org/fhir/ValueSet/restful-security-service",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-catalogentry-status.json",
+      "resourceType": "ValueSet",
+      "id": "catalogentry-status",
+      "url": "http://hl7.org/fhir/ValueSet/catalogentry-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-evaluation-dose-status.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-evaluation-dose-status",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-evaluation-dose-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-consent-content-class.json",
+      "resourceType": "ValueSet",
+      "id": "consent-content-class",
+      "url": "http://hl7.org/fhir/ValueSet/consent-content-class",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-subject-type.json",
+      "resourceType": "ValueSet",
+      "id": "subject-type",
+      "url": "http://hl7.org/fhir/ValueSet/subject-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-SubstanceAdminSubstitutionReason.json",
+      "resourceType": "ValueSet",
+      "id": "v3-SubstanceAdminSubstitutionReason",
+      "url": "http://terminology.hl7.org/ValueSet/v3-SubstanceAdminSubstitutionReason",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-payment-type.json",
+      "resourceType": "ValueSet",
+      "id": "payment-type",
+      "url": "http://hl7.org/fhir/ValueSet/payment-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-event-status.json",
+      "resourceType": "ValueSet",
+      "id": "event-status",
+      "url": "http://hl7.org/fhir/ValueSet/event-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-network-type.json",
+      "resourceType": "ValueSet",
+      "id": "network-type",
+      "url": "http://hl7.org/fhir/ValueSet/network-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-function.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-function",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-function",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-subscription-error.json",
+      "resourceType": "ValueSet",
+      "id": "subscription-error",
+      "url": "http://hl7.org/fhir/ValueSet/subscription-error",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-service-place.json",
+      "resourceType": "ValueSet",
+      "id": "service-place",
+      "url": "http://hl7.org/fhir/ValueSet/service-place",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-ActSubstanceAdminSubstitutionCode.json",
+      "resourceType": "ValueSet",
+      "id": "v3-ActSubstanceAdminSubstitutionCode",
+      "url": "http://terminology.hl7.org/ValueSet/v3-ActSubstanceAdminSubstitutionCode",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-encounter-admit-source.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-admit-source",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-admit-source",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-alternative-title-type.json",
+      "resourceType": "ValueSet",
+      "id": "alternative-title-type",
+      "url": "http://hl7.org/fhir/ValueSet/alternative-title-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationrequest-intent.json",
+      "resourceType": "ValueSet",
+      "id": "medicationrequest-intent",
+      "url": "http://hl7.org/fhir/ValueSet/medicationrequest-intent",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-diagnostic-service-sections.json",
+      "resourceType": "ValueSet",
+      "id": "diagnostic-service-sections",
+      "url": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-composition-status.json",
+      "resourceType": "ValueSet",
+      "id": "composition-status",
+      "url": "http://hl7.org/fhir/ValueSet/composition-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-compartment-type.json",
+      "resourceType": "ValueSet",
+      "id": "compartment-type",
+      "url": "http://hl7.org/fhir/ValueSet/compartment-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-communication-not-done-reason.json",
+      "resourceType": "ValueSet",
+      "id": "communication-not-done-reason",
+      "url": "http://hl7.org/fhir/ValueSet/communication-not-done-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-pubmed-pubstatus.json",
+      "resourceType": "ValueSet",
+      "id": "pubmed-pubstatus",
+      "url": "http://hl7.org/fhir/ValueSet/pubmed-pubstatus",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-special-arrangements.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-special-arrangements",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-special-arrangements",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-payeetype.json",
+      "resourceType": "ValueSet",
+      "id": "payeetype",
+      "url": "http://hl7.org/fhir/ValueSet/payeetype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-action-required-behavior.json",
+      "resourceType": "ValueSet",
+      "id": "action-required-behavior",
+      "url": "http://hl7.org/fhir/ValueSet/action-required-behavior",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-security-control.json",
+      "resourceType": "ValueSet",
+      "id": "contract-security-control",
+      "url": "http://hl7.org/fhir/ValueSet/contract-security-control",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-http-operations.json",
+      "resourceType": "ValueSet",
+      "id": "http-operations",
+      "url": "http://hl7.org/fhir/ValueSet/http-operations",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-procedure-not-performed-reason.json",
+      "resourceType": "ValueSet",
+      "id": "procedure-not-performed-reason",
+      "url": "http://hl7.org/fhir/ValueSet/procedure-not-performed-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-article-url-type.json",
+      "resourceType": "ValueSet",
+      "id": "article-url-type",
+      "url": "http://hl7.org/fhir/ValueSet/article-url-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-device-status-reason.json",
+      "resourceType": "ValueSet",
+      "id": "device-status-reason",
+      "url": "http://hl7.org/fhir/ValueSet/device-status-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v2-0916.json",
+      "resourceType": "ValueSet",
+      "id": "v2-0916",
+      "url": "http://terminology.hl7.org/ValueSet/v2-0916",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-marital-status.json",
+      "resourceType": "ValueSet",
+      "id": "marital-status",
+      "url": "http://hl7.org/fhir/ValueSet/marital-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-observation-status.json",
+      "resourceType": "ValueSet",
+      "id": "observation-status",
+      "url": "http://hl7.org/fhir/ValueSet/observation-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-service-provision-conditions.json",
+      "resourceType": "ValueSet",
+      "id": "service-provision-conditions",
+      "url": "http://hl7.org/fhir/ValueSet/service-provision-conditions",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-expiration-type.json",
+      "resourceType": "ValueSet",
+      "id": "contract-expiration-type",
+      "url": "http://hl7.org/fhir/ValueSet/contract-expiration-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-enteral-route.json",
+      "resourceType": "ValueSet",
+      "id": "enteral-route",
+      "url": "http://hl7.org/fhir/ValueSet/enteral-route",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-research-subject-state.json",
+      "resourceType": "ValueSet",
+      "id": "research-subject-state",
+      "url": "http://hl7.org/fhir/ValueSet/research-subject-state",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-surface.json",
+      "resourceType": "ValueSet",
+      "id": "surface",
+      "url": "http://hl7.org/fhir/ValueSet/surface",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-library-type.json",
+      "resourceType": "ValueSet",
+      "id": "library-type",
+      "url": "http://hl7.org/fhir/ValueSet/library-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-route.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-route",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-route",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-vision-eye-codes.json",
+      "resourceType": "ValueSet",
+      "id": "vision-eye-codes",
+      "url": "http://hl7.org/fhir/ValueSet/vision-eye-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-subscription-payload-content.json",
+      "resourceType": "ValueSet",
+      "id": "subscription-payload-content",
+      "url": "http://hl7.org/fhir/ValueSet/subscription-payload-content",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-validation-type.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-validation-type",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-validation-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-history-absent-reason.json",
+      "resourceType": "ValueSet",
+      "id": "history-absent-reason",
+      "url": "http://hl7.org/fhir/ValueSet/history-absent-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-status.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-status",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-group-type.json",
+      "resourceType": "ValueSet",
+      "id": "group-type",
+      "url": "http://hl7.org/fhir/ValueSet/group-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-action-condition-kind.json",
+      "resourceType": "ValueSet",
+      "id": "action-condition-kind",
+      "url": "http://hl7.org/fhir/ValueSet/action-condition-kind",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-certainty-subcomponent-type.json",
+      "resourceType": "ValueSet",
+      "id": "certainty-subcomponent-type",
+      "url": "http://hl7.org/fhir/ValueSet/certainty-subcomponent-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-servicerequest-orderdetail.json",
+      "resourceType": "ValueSet",
+      "id": "servicerequest-orderdetail",
+      "url": "http://hl7.org/fhir/ValueSet/servicerequest-orderdetail",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-reason.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-reason",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adjudication.json",
+      "resourceType": "ValueSet",
+      "id": "adjudication",
+      "url": "http://hl7.org/fhir/ValueSet/adjudication",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-ingredientstrength.json",
+      "resourceType": "ValueSet",
+      "id": "medication-ingredientstrength",
+      "url": "http://hl7.org/fhir/ValueSet/medication-ingredientstrength",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-audit-event-severity.json",
+      "resourceType": "ValueSet",
+      "id": "audit-event-severity",
+      "url": "http://hl7.org/fhir/ValueSet/audit-event-severity",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-measure-improvement-notation.json",
+      "resourceType": "ValueSet",
+      "id": "measure-improvement-notation",
+      "url": "http://hl7.org/fhir/ValueSet/measure-improvement-notation",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-device-nametype.json",
+      "resourceType": "ValueSet",
+      "id": "device-nametype",
+      "url": "http://hl7.org/fhir/ValueSet/device-nametype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-Confidentiality.json",
+      "resourceType": "ValueSet",
+      "id": "v3-Confidentiality",
+      "url": "http://terminology.hl7.org/ValueSet/v3-Confidentiality",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-claim-exception.json",
+      "resourceType": "ValueSet",
+      "id": "claim-exception",
+      "url": "http://hl7.org/fhir/ValueSet/claim-exception",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-codesystem-hierarchy-meaning.json",
+      "resourceType": "ValueSet",
+      "id": "codesystem-hierarchy-meaning",
+      "url": "http://hl7.org/fhir/ValueSet/codesystem-hierarchy-meaning",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-claim-careteamrole.json",
+      "resourceType": "ValueSet",
+      "id": "claim-careteamrole",
+      "url": "http://hl7.org/fhir/ValueSet/claim-careteamrole",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-care-plan-intent.json",
+      "resourceType": "ValueSet",
+      "id": "care-plan-intent",
+      "url": "http://hl7.org/fhir/ValueSet/care-plan-intent",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-organization-role.json",
+      "resourceType": "ValueSet",
+      "id": "organization-role",
+      "url": "http://hl7.org/fhir/ValueSet/organization-role",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-claim-type.json",
+      "resourceType": "ValueSet",
+      "id": "claim-type",
+      "url": "http://hl7.org/fhir/ValueSet/claim-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-evaluation-status.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-evaluation-status",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-evaluation-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-allergyintolerance-verification.json",
+      "resourceType": "ValueSet",
+      "id": "allergyintolerance-verification",
+      "url": "http://hl7.org/fhir/ValueSet/allergyintolerance-verification",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-testscript-profile-destination-types.json",
+      "resourceType": "ValueSet",
+      "id": "testscript-profile-destination-types",
+      "url": "http://hl7.org/fhir/ValueSet/testscript-profile-destination-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-FHIR-version.json",
+      "resourceType": "ValueSet",
+      "id": "FHIR-version",
+      "url": "http://hl7.org/fhir/ValueSet/FHIR-version",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-specimen-processing-procedure.json",
+      "resourceType": "ValueSet",
+      "id": "specimen-processing-procedure",
+      "url": "http://hl7.org/fhir/ValueSet/specimen-processing-procedure",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v2-0360.json",
+      "resourceType": "ValueSet",
+      "id": "v2-0360",
+      "url": "http://terminology.hl7.org/ValueSet/v2-0360",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-doc-section-codes.json",
+      "resourceType": "ValueSet",
+      "id": "doc-section-codes",
+      "url": "http://hl7.org/fhir/ValueSet/doc-section-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-clinical.json",
+      "resourceType": "ValueSet",
+      "id": "condition-clinical",
+      "url": "http://hl7.org/fhir/ValueSet/condition-clinical",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-subtype.json",
+      "resourceType": "ValueSet",
+      "id": "contract-subtype",
+      "url": "http://hl7.org/fhir/ValueSet/contract-subtype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-causality-assess.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-causality-assess",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-causality-assess",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-supplydelivery-type.json",
+      "resourceType": "ValueSet",
+      "id": "supplydelivery-type",
+      "url": "http://hl7.org/fhir/ValueSet/supplydelivery-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-task-intent.json",
+      "resourceType": "ValueSet",
+      "id": "task-intent",
+      "url": "http://hl7.org/fhir/ValueSet/task-intent",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-communication-category.json",
+      "resourceType": "ValueSet",
+      "id": "communication-category",
+      "url": "http://hl7.org/fhir/ValueSet/communication-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-legalstate.json",
+      "resourceType": "ValueSet",
+      "id": "contract-legalstate",
+      "url": "http://hl7.org/fhir/ValueSet/contract-legalstate",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-coverage-type.json",
+      "resourceType": "ValueSet",
+      "id": "coverage-type",
+      "url": "http://hl7.org/fhir/ValueSet/coverage-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-type-derivation-rule.json",
+      "resourceType": "ValueSet",
+      "id": "type-derivation-rule",
+      "url": "http://hl7.org/fhir/ValueSet/type-derivation-rule",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-state-change-reason.json",
+      "resourceType": "ValueSet",
+      "id": "state-change-reason",
+      "url": "http://hl7.org/fhir/ValueSet/state-change-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-message-transport.json",
+      "resourceType": "ValueSet",
+      "id": "message-transport",
+      "url": "http://hl7.org/fhir/ValueSet/message-transport",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-interaction-trigger.json",
+      "resourceType": "ValueSet",
+      "id": "interaction-trigger",
+      "url": "http://hl7.org/fhir/ValueSet/interaction-trigger",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-term-subtype.json",
+      "resourceType": "ValueSet",
+      "id": "contract-term-subtype",
+      "url": "http://hl7.org/fhir/ValueSet/contract-term-subtype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-diet-type.json",
+      "resourceType": "ValueSet",
+      "id": "diet-type",
+      "url": "http://hl7.org/fhir/ValueSet/diet-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-appointment-cancellation-reason.json",
+      "resourceType": "ValueSet",
+      "id": "appointment-cancellation-reason",
+      "url": "http://hl7.org/fhir/ValueSet/appointment-cancellation-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-reference-version-rules.json",
+      "resourceType": "ValueSet",
+      "id": "reference-version-rules",
+      "url": "http://hl7.org/fhir/ValueSet/reference-version-rules",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-measure-type.json",
+      "resourceType": "ValueSet",
+      "id": "measure-type",
+      "url": "http://hl7.org/fhir/ValueSet/measure-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-object-lifecycle-events.json",
+      "resourceType": "ValueSet",
+      "id": "object-lifecycle-events",
+      "url": "http://hl7.org/fhir/ValueSet/object-lifecycle-events",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-participant-function.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-participant-function",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-participant-function",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-reason-medication-given-codes.json",
+      "resourceType": "ValueSet",
+      "id": "reason-medication-given-codes",
+      "url": "http://hl7.org/fhir/ValueSet/reason-medication-given-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-measure-data-usage.json",
+      "resourceType": "ValueSet",
+      "id": "measure-data-usage",
+      "url": "http://hl7.org/fhir/ValueSet/measure-data-usage",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-research-subject-state-type.json",
+      "resourceType": "ValueSet",
+      "id": "research-subject-state-type",
+      "url": "http://hl7.org/fhir/ValueSet/research-subject-state-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationrequest-status.json",
+      "resourceType": "ValueSet",
+      "id": "medicationrequest-status",
+      "url": "http://hl7.org/fhir/ValueSet/medicationrequest-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-document-mode.json",
+      "resourceType": "ValueSet",
+      "id": "document-mode",
+      "url": "http://hl7.org/fhir/ValueSet/document-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adjudication-reason.json",
+      "resourceType": "ValueSet",
+      "id": "adjudication-reason",
+      "url": "http://hl7.org/fhir/ValueSet/adjudication-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-sort-direction.json",
+      "resourceType": "ValueSet",
+      "id": "sort-direction",
+      "url": "http://hl7.org/fhir/ValueSet/sort-direction",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-evidence-classifier-code.json",
+      "resourceType": "ValueSet",
+      "id": "evidence-classifier-code",
+      "url": "http://hl7.org/fhir/ValueSet/evidence-classifier-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-funding-source.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-funding-source",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-funding-source",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-ActEncounterCode.json",
+      "resourceType": "ValueSet",
+      "id": "v3-ActEncounterCode",
+      "url": "http://terminology.hl7.org/ValueSet/v3-ActEncounterCode",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-observation-range-category.json",
+      "resourceType": "ValueSet",
+      "id": "observation-range-category",
+      "url": "http://hl7.org/fhir/ValueSet/observation-range-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-validation-status.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-validation-status",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-validation-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-security-labels.json",
+      "resourceType": "ValueSet",
+      "id": "security-labels",
+      "url": "http://hl7.org/fhir/ValueSet/security-labels",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-special-courtesy.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-special-courtesy",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-special-courtesy",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-identifier-use.json",
+      "resourceType": "ValueSet",
+      "id": "identifier-use",
+      "url": "http://hl7.org/fhir/ValueSet/identifier-use",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-condition-precondition-type.json",
+      "resourceType": "ValueSet",
+      "id": "condition-precondition-type",
+      "url": "http://hl7.org/fhir/ValueSet/condition-precondition-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-request-status.json",
+      "resourceType": "ValueSet",
+      "id": "request-status",
+      "url": "http://hl7.org/fhir/ValueSet/request-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-evidence-quality.json",
+      "resourceType": "ValueSet",
+      "id": "evidence-quality",
+      "url": "http://hl7.org/fhir/ValueSet/evidence-quality",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-subscription-search-modifier.json",
+      "resourceType": "ValueSet",
+      "id": "subscription-search-modifier",
+      "url": "http://hl7.org/fhir/ValueSet/subscription-search-modifier",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medication-as-needed-reason.json",
+      "resourceType": "ValueSet",
+      "id": "medication-as-needed-reason",
+      "url": "http://hl7.org/fhir/ValueSet/medication-as-needed-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-namingsystem-identifier-type.json",
+      "resourceType": "ValueSet",
+      "id": "namingsystem-identifier-type",
+      "url": "http://hl7.org/fhir/ValueSet/namingsystem-identifier-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-participant-role.json",
+      "resourceType": "ValueSet",
+      "id": "participant-role",
+      "url": "http://hl7.org/fhir/ValueSet/participant-role",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-account-status.json",
+      "resourceType": "ValueSet",
+      "id": "account-status",
+      "url": "http://hl7.org/fhir/ValueSet/account-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-questionnaire-enable-operator.json",
+      "resourceType": "ValueSet",
+      "id": "questionnaire-enable-operator",
+      "url": "http://hl7.org/fhir/ValueSet/questionnaire-enable-operator",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-task-code.json",
+      "resourceType": "ValueSet",
+      "id": "task-code",
+      "url": "http://hl7.org/fhir/ValueSet/task-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-publication-status.json",
+      "resourceType": "ValueSet",
+      "id": "publication-status",
+      "url": "http://hl7.org/fhir/ValueSet/publication-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-evidence-report-section.json",
+      "resourceType": "ValueSet",
+      "id": "evidence-report-section",
+      "url": "http://hl7.org/fhir/ValueSet/evidence-report-section",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-icd-10-procedures.json",
+      "resourceType": "ValueSet",
+      "id": "icd-10-procedures",
+      "url": "http://hl7.org/fhir/ValueSet/icd-10-procedures",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-device-action.json",
+      "resourceType": "ValueSet",
+      "id": "device-action",
+      "url": "http://hl7.org/fhir/ValueSet/device-action",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-measure-report-type.json",
+      "resourceType": "ValueSet",
+      "id": "measure-report-type",
+      "url": "http://hl7.org/fhir/ValueSet/measure-report-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-observation-methods.json",
+      "resourceType": "ValueSet",
+      "id": "observation-methods",
+      "url": "http://hl7.org/fhir/ValueSet/observation-methods",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-practitioner-role.json",
+      "resourceType": "ValueSet",
+      "id": "practitioner-role",
+      "url": "http://hl7.org/fhir/ValueSet/practitioner-role",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-definition-topic.json",
+      "resourceType": "ValueSet",
+      "id": "definition-topic",
+      "url": "http://hl7.org/fhir/ValueSet/definition-topic",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-repository-type.json",
+      "resourceType": "ValueSet",
+      "id": "repository-type",
+      "url": "http://hl7.org/fhir/ValueSet/repository-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-assert-operator-codes.json",
+      "resourceType": "ValueSet",
+      "id": "assert-operator-codes",
+      "url": "http://hl7.org/fhir/ValueSet/assert-operator-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-codesystem-content-mode.json",
+      "resourceType": "ValueSet",
+      "id": "codesystem-content-mode",
+      "url": "http://hl7.org/fhir/ValueSet/codesystem-content-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-guide-page-generation.json",
+      "resourceType": "ValueSet",
+      "id": "guide-page-generation",
+      "url": "http://hl7.org/fhir/ValueSet/guide-page-generation",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-goal-category.json",
+      "resourceType": "ValueSet",
+      "id": "goal-category",
+      "url": "http://hl7.org/fhir/ValueSet/goal-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v2-0487.json",
+      "resourceType": "ValueSet",
+      "id": "v2-0487",
+      "url": "http://terminology.hl7.org/ValueSet/v2-0487",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-identity-assuranceLevel.json",
+      "resourceType": "ValueSet",
+      "id": "identity-assuranceLevel",
+      "url": "http://hl7.org/fhir/ValueSet/identity-assuranceLevel",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-prepare-patient-prior-specimen-collection.json",
+      "resourceType": "ValueSet",
+      "id": "prepare-patient-prior-specimen-collection",
+      "url": "http://hl7.org/fhir/ValueSet/prepare-patient-prior-specimen-collection",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-directness.json",
+      "resourceType": "ValueSet",
+      "id": "directness",
+      "url": "http://hl7.org/fhir/ValueSet/directness",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-research-study-prim-purp-type.json",
+      "resourceType": "ValueSet",
+      "id": "research-study-prim-purp-type",
+      "url": "http://hl7.org/fhir/ValueSet/research-study-prim-purp-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-need.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-need",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-need",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-measure-scoring.json",
+      "resourceType": "ValueSet",
+      "id": "measure-scoring",
+      "url": "http://hl7.org/fhir/ValueSet/measure-scoring",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-assetscope.json",
+      "resourceType": "ValueSet",
+      "id": "contract-assetscope",
+      "url": "http://hl7.org/fhir/ValueSet/contract-assetscope",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-care-team-status.json",
+      "resourceType": "ValueSet",
+      "id": "care-team-status",
+      "url": "http://hl7.org/fhir/ValueSet/care-team-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-med-admin-perform-function.json",
+      "resourceType": "ValueSet",
+      "id": "med-admin-perform-function",
+      "url": "http://hl7.org/fhir/ValueSet/med-admin-perform-function",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-invoice-priceComponentType.json",
+      "resourceType": "ValueSet",
+      "id": "invoice-priceComponentType",
+      "url": "http://hl7.org/fhir/ValueSet/invoice-priceComponentType",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-invoice-status.json",
+      "resourceType": "ValueSet",
+      "id": "invoice-status",
+      "url": "http://hl7.org/fhir/ValueSet/invoice-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-message-significance-category.json",
+      "resourceType": "ValueSet",
+      "id": "message-significance-category",
+      "url": "http://hl7.org/fhir/ValueSet/message-significance-category",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-defined-types.json",
+      "resourceType": "ValueSet",
+      "id": "defined-types",
+      "url": "http://hl7.org/fhir/ValueSet/defined-types",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-related-artifact-type.json",
+      "resourceType": "ValueSet",
+      "id": "related-artifact-type",
+      "url": "http://hl7.org/fhir/ValueSet/related-artifact-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-permission-status.json",
+      "resourceType": "ValueSet",
+      "id": "permission-status",
+      "url": "http://hl7.org/fhir/ValueSet/permission-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-participationstatus.json",
+      "resourceType": "ValueSet",
+      "id": "participationstatus",
+      "url": "http://hl7.org/fhir/ValueSet/participationstatus",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-contract-actionstatus.json",
+      "resourceType": "ValueSet",
+      "id": "contract-actionstatus",
+      "url": "http://hl7.org/fhir/ValueSet/contract-actionstatus",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-medicationdispense-admin-location.json",
+      "resourceType": "ValueSet",
+      "id": "medicationdispense-admin-location",
+      "url": "http://hl7.org/fhir/ValueSet/medicationdispense-admin-location",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-statistic-model-method.json",
+      "resourceType": "ValueSet",
+      "id": "statistic-model-method",
+      "url": "http://hl7.org/fhir/ValueSet/statistic-model-method",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adverse-event-status.json",
+      "resourceType": "ValueSet",
+      "id": "adverse-event-status",
+      "url": "http://hl7.org/fhir/ValueSet/adverse-event-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-observation-codes.json",
+      "resourceType": "ValueSet",
+      "id": "observation-codes",
+      "url": "http://hl7.org/fhir/ValueSet/observation-codes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-research-study-objective-type.json",
+      "resourceType": "ValueSet",
+      "id": "research-study-objective-type",
+      "url": "http://hl7.org/fhir/ValueSet/research-study-objective-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-procedure-code.json",
+      "resourceType": "ValueSet",
+      "id": "procedure-code",
+      "url": "http://hl7.org/fhir/ValueSet/procedure-code",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-appointmentstatus.json",
+      "resourceType": "ValueSet",
+      "id": "appointmentstatus",
+      "url": "http://hl7.org/fhir/ValueSet/appointmentstatus",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-missing-tooth-reason.json",
+      "resourceType": "ValueSet",
+      "id": "missing-tooth-reason",
+      "url": "http://hl7.org/fhir/ValueSet/missing-tooth-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-encounter-reason.json",
+      "resourceType": "ValueSet",
+      "id": "encounter-reason",
+      "url": "http://hl7.org/fhir/ValueSet/encounter-reason",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-episode-of-care-status.json",
+      "resourceType": "ValueSet",
+      "id": "episode-of-care-status",
+      "url": "http://hl7.org/fhir/ValueSet/episode-of-care-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-goal-status.json",
+      "resourceType": "ValueSet",
+      "id": "goal-status",
+      "url": "http://hl7.org/fhir/ValueSet/goal-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-related-claim-relationship.json",
+      "resourceType": "ValueSet",
+      "id": "related-claim-relationship",
+      "url": "http://hl7.org/fhir/ValueSet/related-claim-relationship",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-ex-diagnosisrelatedgroup.json",
+      "resourceType": "ValueSet",
+      "id": "ex-diagnosisrelatedgroup",
+      "url": "http://hl7.org/fhir/ValueSet/ex-diagnosisrelatedgroup",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-v3-ActPharmacySupplyType.json",
+      "resourceType": "ValueSet",
+      "id": "v3-ActPharmacySupplyType",
+      "url": "http://terminology.hl7.org/ValueSet/v3-ActPharmacySupplyType",
+      "version": "2.0.0"
+    },
+    {
+      "filename": "ValueSet-composition-attestation-mode.json",
+      "resourceType": "ValueSet",
+      "id": "composition-attestation-mode",
+      "url": "http://hl7.org/fhir/ValueSet/composition-attestation-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-allergy-intolerance-criticality.json",
+      "resourceType": "ValueSet",
+      "id": "allergy-intolerance-criticality",
+      "url": "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-immunization-evaluation-target-disease.json",
+      "resourceType": "ValueSet",
+      "id": "immunization-evaluation-target-disease",
+      "url": "http://hl7.org/fhir/ValueSet/immunization-evaluation-target-disease",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-request-intent.json",
+      "resourceType": "ValueSet",
+      "id": "request-intent",
+      "url": "http://hl7.org/fhir/ValueSet/request-intent",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-specimen-container-type.json",
+      "resourceType": "ValueSet",
+      "id": "specimen-container-type",
+      "url": "http://hl7.org/fhir/ValueSet/specimen-container-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-adjudication-error.json",
+      "resourceType": "ValueSet",
+      "id": "adjudication-error",
+      "url": "http://hl7.org/fhir/ValueSet/adjudication-error",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-orientation-type.json",
+      "resourceType": "ValueSet",
+      "id": "orientation-type",
+      "url": "http://hl7.org/fhir/ValueSet/orientation-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-study-type.json",
+      "resourceType": "ValueSet",
+      "id": "study-type",
+      "url": "http://hl7.org/fhir/ValueSet/study-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-restful-capability-mode.json",
+      "resourceType": "ValueSet",
+      "id": "restful-capability-mode",
+      "url": "http://hl7.org/fhir/ValueSet/restful-capability-mode",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-ex-paymenttype.json",
+      "resourceType": "ValueSet",
+      "id": "ex-paymenttype",
+      "url": "http://hl7.org/fhir/ValueSet/ex-paymenttype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-supplydelivery-status.json",
+      "resourceType": "ValueSet",
+      "id": "supplydelivery-status",
+      "url": "http://hl7.org/fhir/ValueSet/supplydelivery-status",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-metric-calibration-type.json",
+      "resourceType": "ValueSet",
+      "id": "metric-calibration-type",
+      "url": "http://hl7.org/fhir/ValueSet/metric-calibration-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-days-of-week.json",
+      "resourceType": "ValueSet",
+      "id": "days-of-week",
+      "url": "http://hl7.org/fhir/ValueSet/days-of-week",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-measure-population.json",
+      "resourceType": "ValueSet",
+      "id": "measure-population",
+      "url": "http://hl7.org/fhir/ValueSet/measure-population",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-modified-foodtype.json",
+      "resourceType": "ValueSet",
+      "id": "modified-foodtype",
+      "url": "http://hl7.org/fhir/ValueSet/modified-foodtype",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-allergy-intolerance-type.json",
+      "resourceType": "ValueSet",
+      "id": "allergy-intolerance-type",
+      "url": "http://hl7.org/fhir/ValueSet/allergy-intolerance-type",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-chargeitem-billingcodes.json",
+      "resourceType": "ValueSet",
+      "id": "chargeitem-billingcodes",
+      "url": "http://hl7.org/fhir/ValueSet/chargeitem-billingcodes",
+      "version": "4.5.0"
+    },
+    {
+      "filename": "ValueSet-verificationresult-primary-source-type.json",
+      "resourceType": "ValueSet",
+      "id": "verificationresult-primary-source-type",
+      "url": "http://hl7.org/fhir/ValueSet/verificationresult-primary-source-type",
+      "version": "4.5.0"
+    }
+  ]
+}

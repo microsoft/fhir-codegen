@@ -1,0 +1,37 @@
+{
+  "resourceType": "Bundle",
+  "id": "3945182f-d315-4dbf-9259-09d863c7e7da",
+  "type": "subscription-notification",
+  "timestamp": "2020-04-17T10:24:13.1882432-05:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:c144782b-da2f-4125-a9e2-9fa4b9085a40",
+      "resource": {
+        "resourceType": "SubscriptionStatus",
+        "id": "c144782b-da2f-4125-a9e2-9fa4b9085a40",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: c144782b-da2f-4125-a9e2-9fa4b9085a40</p><p><b>type</b>: event-notification</p><p><b>eventsSinceSubscriptionStart</b>: </p><p><b>eventsInNotification</b>: 1</p><p><b>subscription</b>: <a>http://example.org/FHIR/R5/Subscription/123</a></p><p><b>status</b>: active</p><p><b>topic</b>: <a>http://example.org/FHIR/R5/SubscriptionTopic/admission</a></p></div>"
+        },
+        "type": "event-notification",
+        "eventsSinceSubscriptionStart": "310",
+        "eventsInNotification": 1,
+        "subscription": {
+          "reference": "http://example.org/FHIR/R5/Subscription/123"
+        },
+        "status": "active",
+        "topic": "http://example.org/FHIR/R5/SubscriptionTopic/admission"
+      }
+    },
+    {
+      "fullUrl": "https://example.org/FHIR/R5/Encounter/2",
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/2"
+      },
+      "response": {
+        "status": "201"
+      }
+    }
+  ]
+}

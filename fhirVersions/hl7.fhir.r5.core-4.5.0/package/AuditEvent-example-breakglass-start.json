@@ -1,0 +1,88 @@
+{
+  "resourceType": "AuditEvent",
+  "id": "example-breakglass-start",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Authorized Break-Glass period has been declared to enable immediate emergent treatment condition. This AuditEvent indicates the start of the Break-Glass event. Another would indicate the stop of that Break-Glass period, providd there is a session or state that can detect the end of the break-glass event.</div>"
+  },
+  "type": {
+    "system": "http://dicom.nema.org/resources/ontology/DCM",
+    "code": "110113",
+    "display": "Security Alert"
+  },
+  "subtype": [
+    {
+      "system": "http://dicom.nema.org/resources/ontology/DCM",
+      "code": "110127",
+      "display": "Emergency Override Started"
+    }
+  ],
+  "action": "E",
+  "recorded": "2013-09-22T00:08:00Z",
+  "outcome": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/audit-event-outcome",
+        "code": "0",
+        "display": "Success"
+      }
+    ],
+    "text": "Successful  Start of Break-Glass"
+  },
+  "purposeOfEvent": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+          "code": "ETREAT",
+          "display": "Emergency Treatment"
+        }
+      ]
+    }
+  ],
+  "agent": [
+    {
+      "who": {
+        "reference": "Practitioner/f001"
+      },
+      "requestor": true,
+      "location": {
+        "reference": "Location/1"
+      },
+      "network": {
+        "address": "custodian.net",
+        "type": "1"
+      }
+    }
+  ],
+  "source": {
+    "site": "Watcher",
+    "observer": {
+      "display": "Watchers Accounting of Disclosures Application"
+    },
+    "type": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/security-source-type",
+        "code": "4",
+        "display": "Application Server"
+      }
+    ]
+  },
+  "entity": [
+    {
+      "what": {
+        "reference": "Patient/example"
+      },
+      "type": {
+        "system": "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code": "1",
+        "display": "Person"
+      },
+      "role": {
+        "system": "http://terminology.hl7.org/CodeSystem/object-role",
+        "code": "1",
+        "display": "Patient"
+      }
+    }
+  ]
+}

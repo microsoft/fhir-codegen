@@ -1,0 +1,109 @@
+{
+  "resourceType": "MedicinalProductDefinition",
+  "id": "drug-and-device",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: drug-and-device</p><p><b>identifier</b>: id: Wonderdrug+</p><p><b>combinedPharmaceuticalDoseForm</b>: <span>solution for injection</span></p><p><b>packagedMedicinalProduct</b>: <a> </a></p><blockquote><p><b>id</b>: package</p><blockquote><p><b>package</b></p><blockquote><p><b>containedItem</b></p><p><b>item</b>: <a>#liquidItem</a></p><p><b>amount</b>: 20 ml</p></blockquote><blockquote><p><b>containedItem</b></p><p><b>item</b>: <a>#syringeDevice</a></p></blockquote></blockquote></blockquote><h3>Names</h3><table><tr><td>-</td><td><b>ProductName</b></td></tr><tr><td>*</td><td>Wonderdrug+ liquid 20ml</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "PackagedProductDefinition",
+      "id": "package",
+      "package": [
+        {
+          "containedItem": [
+            {
+              "item": [
+                {
+                  "reference": "#liquidItem"
+                }
+              ],
+              "amountQuantity": {
+                "value": 20,
+                "unit": "ml"
+              }
+            },
+            {
+              "item": [
+                {
+                  "reference": "#syringeDevice"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resourceType": "DeviceDefinition",
+      "id": "syringeDevice",
+      "type": {
+        "text": "syringe"
+      }
+    },
+    {
+      "resourceType": "ManufacturedItemDefinition",
+      "id": "liquidItem",
+      "manufacturedDoseForm": {
+        "coding": [
+          {
+            "system": "http://example.org.uk/fhir/doseform",
+            "code": "solution for injection"
+          }
+        ]
+      },
+      "ingredient": [
+        {
+          "reference": "#ingredient"
+        }
+      ]
+    },
+    {
+      "resourceType": "Ingredient",
+      "id": "ingredient",
+      "role": {
+        "coding": [
+          {
+            "system": "http://example.org.uk/fhir/ingredientRole",
+            "code": "active"
+          }
+        ]
+      },
+      "substance": {
+        "codeCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://example.org.uk/fhir/ingredients",
+              "code": "12345",
+              "display": "Wondersubstance BP"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "system": "http://example.org.uk/fhir/product",
+      "value": "Wonderdrug+"
+    }
+  ],
+  "combinedPharmaceuticalDoseForm": {
+    "coding": [
+      {
+        "system": "http://example.org.uk/fhir/doseform",
+        "code": "solution for injection"
+      }
+    ]
+  },
+  "packagedMedicinalProduct": [
+    {
+      "reference": "#package"
+    }
+  ],
+  "name": [
+    {
+      "productName": "Wonderdrug+ liquid 20ml"
+    }
+  ]
+}

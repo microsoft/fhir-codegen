@@ -1,0 +1,74 @@
+{
+  "resourceType": "Medication",
+  "id": "medexample015",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: medexample015</p><p><b>code</b>: <span>Capecitabine 500mg oral tablet (Xeloda)</span></p><p><b>manufacturer</b>: <a> </a></p><blockquote><p><b>id</b>: org2</p><p><b>name</b>: Gene Inc</p></blockquote><p><b>doseForm</b>: <span>Tablet dose form (qualifier value)</span></p><h3>Ingredients</h3><table><tr><td>-</td><td><b>Item</b></td><td><b>Strength[x]</b></td></tr><tr><td>*</td><td/><td>500 mg/1 TAB</td></tr></table><h3>Batches</h3><table><tr><td>-</td><td><b>LotNumber</b></td><td><b>ExpirationDate</b></td></tr><tr><td>*</td><td>9494788</td><td>2017-05-22</td></tr></table></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "org2",
+      "name": "Gene Inc"
+    },
+    {
+      "resourceType": "Substance",
+      "id": "sub04",
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "386906001",
+            "display": "Capecitabine (substance)"
+          }
+        ]
+      }
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "213293",
+        "display": "Capecitabine 500mg oral tablet (Xeloda)"
+      }
+    ]
+  },
+  "manufacturer": {
+    "reference": "#org2"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385055001",
+        "display": "Tablet dose form (qualifier value)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "reference": {
+          "reference": "#sub04"
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 500,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm",
+          "code": "TAB"
+        }
+      }
+    }
+  ],
+  "batch": {
+    "lotNumber": "9494788",
+    "expirationDate": "2017-05-22"
+  }
+}

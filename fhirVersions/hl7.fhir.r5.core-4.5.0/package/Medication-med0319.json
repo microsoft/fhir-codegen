@@ -1,0 +1,95 @@
+{
+  "resourceType": "Medication",
+  "id": "med0319",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0319</p><p><b>doseForm</b>: <span>Ointment</span></p><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 5 g/100 g</p></blockquote><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 1 g/100 g</p></blockquote><blockquote><p><b>ingredient</b></p><p><b>item</b>: </p><p><b>strength</b>: 94 g/100 g</p></blockquote></div>"
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385101003",
+        "display": "Ointment"
+      }
+    ],
+    "text": "Ointment"
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387253001",
+              "display": "Salicyclic Acid (substance)"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 5,
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        },
+        "denominator": {
+          "value": 100,
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        }
+      }
+    },
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "396458002",
+              "display": "Hydrocortisone (substance)"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 1,
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        },
+        "denominator": {
+          "value": 100,
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        }
+      }
+    },
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "126066007",
+              "display": "White Petrolatum (substance)"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 94,
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        },
+        "denominator": {
+          "value": 100,
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "resourceType": "CarePlan",
+  "id": "f203",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: f203</p><p><b>status</b>: completed</p><p><b>intent</b>: plan</p><p><b>subject</b>: <a>Roel. Generated Summary: id: f201; BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); ph: +31612345678(MOBILE), ph: +31201234567(HOME); gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p><p><b>period</b>: 2013-04-14 --&gt; 2013-04-21</p><p><b>careTeam</b>: <a> </a></p><blockquote><p><b>id</b>: careteam</p><blockquote><p><b>participant</b></p><p><b>role</b>: <span>Review of care plan</span></p><p><b>member</b>: <a>Dokter Bronsig. Generated Summary: id: f201; UZI-nummer: 12345678901 (OFFICIAL); active; Dokter Bronsig(OFFICIAL); ph: +31715269111(WORK); gender: male; birthDate: 1956-12-24</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>role</b>: <span>Radiographic imaging</span></p><p><b>member</b>: <a>Luigi Maas. Generated Summary: id: f202; UZI-nummer: 12345678902 (OFFICIAL), BIG-nummer: 12345678902 (OFFICIAL); active; Luigi Maas(OFFICIAL); ph: +31715269111(WORK); gender: male; birthDate: 1960-06-12</a></p></blockquote></blockquote><p><b>addresses</b>: </p><p><b>goal</b>: <a> </a></p><blockquote><p><b>id</b>: goal</p><p><b>lifecycleStatus</b>: cancelled</p><p><b>description</b>: <span>Check whether further treatment of sepsis/pulmonary abcess is required</span></p><p><b>subject</b>: <a>Roel. Generated Summary: id: f201; BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); ph: +31612345678(MOBILE), ph: +31201234567(HOME); gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p></blockquote><blockquote><p><b>activity</b></p><h3>Details</h3><table><tr><td>-</td><td><b>Kind</b></td><td><b>Code</b></td><td><b>Status</b></td><td><b>DoNotPerform</b></td></tr><tr><td>*</td><td>ServiceRequest</td><td><span>High resolution computed tomography of lungs</span></td><td>not-started</td><td>false</td></tr></table></blockquote></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "CareTeam",
+      "id": "careteam",
+      "participant": [
+        {
+          "role": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "425268008",
+                "display": "Review of care plan"
+              }
+            ]
+          },
+          "member": {
+            "reference": "Practitioner/f201",
+            "display": "Dokter Bronsig"
+          }
+        },
+        {
+          "role": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "278110001",
+                "display": "Radiographic imaging"
+              }
+            ]
+          },
+          "member": {
+            "reference": "Practitioner/f202",
+            "display": "Luigi Maas"
+          }
+        }
+      ]
+    },
+    {
+      "resourceType": "Goal",
+      "id": "goal",
+      "lifecycleStatus": "cancelled",
+      "description": {
+        "text": "Check whether further treatment of sepsis/pulmonary abcess is required"
+      },
+      "subject": {
+        "reference": "Patient/f201",
+        "display": "Roel"
+      }
+    }
+  ],
+  "status": "completed",
+  "intent": "plan",
+  "subject": {
+    "reference": "Patient/f201",
+    "display": "Roel"
+  },
+  "period": {
+    "start": "2013-04-14",
+    "end": "2013-04-21"
+  },
+  "careTeam": [
+    {
+      "reference": "#careteam"
+    }
+  ],
+  "addresses": [
+    {
+      "reference": {
+        "reference": "Condition/f203",
+        "display": "Roel's sepsis"
+      }
+    }
+  ],
+  "goal": [
+    {
+      "reference": "#goal"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "ServiceRequest",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "241541005",
+              "display": "High resolution computed tomography of lungs"
+            }
+          ]
+        },
+        "status": "not-started",
+        "doNotPerform": false
+      }
+    }
+  ]
+}

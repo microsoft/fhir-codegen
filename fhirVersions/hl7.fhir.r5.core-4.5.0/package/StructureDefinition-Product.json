@@ -1,0 +1,429 @@
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "Product",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">to do</div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "informative"
+  }],
+  "url" : "http://hl7.org/fhir/StructureDefinition/Product",
+  "version" : "4.5.0",
+  "name" : "Product",
+  "title" : "product",
+  "status" : "draft",
+  "date" : "2020-08-20T17:41:31+10:00",
+  "publisher" : "Health Level Seven International fhir",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    }]
+  }],
+  "description" : "Logical Model: A pattern to be followed by resources that represent a product used in healthcare, for clinical or operational purposes.",
+  "fhirVersion" : "4.5.0",
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  }],
+  "kind" : "logical",
+  "abstract" : false,
+  "type" : "Product",
+  "snapshot" : {
+    "element" : [{
+      "id" : "Product",
+      "path" : "Product",
+      "short" : "Product Pattern",
+      "definition" : "A pattern to be followed by resources that represent a product used in healthcare, for clinical or operational purposes.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Product",
+        "min" : 0,
+        "max" : "*"
+      },
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "Act[moodCode=EVN]"
+      }]
+    },
+    {
+      "id" : "Product.status",
+      "path" : "Product.status",
+      "short" : "active | inactive | entered-in-error",
+      "definition" : "The current state of the product.",
+      "comment" : "Unknown does not represent \"other\" - one of the defined statuses must apply.  Unknown is used when the authoring system is not sure what the current status is.",
+      "min" : 1,
+      "max" : "1",
+      "base" : {
+        "path" : "Product.status",
+        "min" : 1,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "code"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : true,
+      "isModifierReason" : "This element is labelled as a modifier because it is a status element that contains status entered-in-error which means that the resource should not be treated as valid",
+      "isSummary" : true,
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "ProductStatus"
+        }],
+        "strength" : "required",
+        "description" : "Codes identifying the lifecycle stage of a product.",
+        "valueSet" : "http://hl7.org/fhir/ValueSet/product-status|4.5.0"
+      },
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "Varies by domain"
+      },
+      {
+        "identity" : "rim",
+        "map" : ".status"
+      },
+      {
+        "identity" : "w5",
+        "map" : "FiveWs.status"
+      }]
+    },
+    {
+      "id" : "Product.category",
+      "path" : "Product.category",
+      "short" : "A category or class of the product",
+      "definition" : "A category of the product. For example drug class, or device type. A product can have one or several categories. The categories can be from an official / regulatory source, or internal categorization or classification schemes. Categories are useful in search and retrieval of products, or can be used for determining authorizations, e.g. who can order which kinds of products.",
+      "alias" : ["class"],
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Product.category",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "CodeableConcept"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "Varies by domain"
+      },
+      {
+        "identity" : "rim",
+        "map" : ".code"
+      }]
+    },
+    {
+      "id" : "Product.code",
+      "path" : "Product.code",
+      "short" : "A code designating a specific type of product",
+      "definition" : "The code assigned to the product, for example a catalog number, Device DI, Drug Code or other. Can be an internally assigned or an official product code such as the manufacturer-assigned code. There may be different codes for a product, having different levels of granularity. For example \"0123456789\" corresponding to \"CompuHyper GlobalMed, UltraImplantable 2.25 x 8 mm\".",
+      "alias" : ["type"],
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Product.code",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "CodeableConcept"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "Varies by domain"
+      },
+      {
+        "identity" : "rim",
+        "map" : ".code"
+      }]
+    },
+    {
+      "id" : "Product.manufacturer",
+      "path" : "Product.manufacturer",
+      "short" : "Manufacturer, representative or officially responsible for the product",
+      "definition" : "The organisation (manufacturer, representative or legal authorisation holder) that is responsible for the device.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Product.manufacturer",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Organization"]
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "Varies by domain"
+      }]
+    },
+    {
+      "id" : "Product.instance",
+      "path" : "Product.instance",
+      "short" : "One or several physical instances or occurrences of the product",
+      "definition" : "Conveys instance-level information about this product item. One or several physical, countable instances or occurrences of the product.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Product.instance",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Element"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false
+    },
+    {
+      "id" : "Product.instance.quantity",
+      "path" : "Product.instance.quantity",
+      "short" : "The amount of items",
+      "definition" : "For products that represent a particular quantity of a substance or type of item, indicates how 'much' of the product (by weight, volume, count, etc.) is represented by this resource instance.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Product.instance.quantity",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Quantity",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/SimpleQuantity"]
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false
+    },
+    {
+      "id" : "Product.instance.identifier",
+      "path" : "Product.instance.identifier",
+      "short" : "The identifier for the physical instance, typically a serial number",
+      "definition" : "The identifier for the physical instance, typically a serial number.",
+      "alias" : ["serialNumber"],
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Product.instance.identifier",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Identifier"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false
+    },
+    {
+      "id" : "Product.instance.lotNumber",
+      "path" : "Product.instance.lotNumber",
+      "short" : "The identification of the batch or lot of the product",
+      "definition" : "The identification of the batch or lot of the product.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Product.instance.lotNumber",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false
+    },
+    {
+      "id" : "Product.instance.expiry",
+      "path" : "Product.instance.expiry",
+      "short" : "The expiry date or date and time for the product",
+      "definition" : "The time after which the product is no longer expected to be in proper condition, or its use is not advised or not allowed.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Product.instance.expiry",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "dateTime"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false
+    },
+    {
+      "id" : "Product.instance.subject",
+      "path" : "Product.instance.subject",
+      "short" : "Individual the product is associated with, or which has used the product",
+      "definition" : "Individual the product is associated with, or which has used the product.",
+      "comment" : "[For resources that aren't patient-specific, the set of allowed resources may be extended to include other things.  Group should generally be retained unless there's certainty this resource won't be used for veterinary, research or public health settings where Group may be necessary (e.g. this cage of rats/crate of chickens, group of people in a 5 mile radious of the incident, etc.)].",
+      "requirements" : "Links the product to the Patient context.",
+      "alias" : ["patient"],
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Product.instance.subject",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Patient",
+        "http://hl7.org/fhir/StructureDefinition/Group"]
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "PAT in proximity to EVN segment"
+      },
+      {
+        "identity" : "rim",
+        "map" : ".participation[typeCode=SBJ].role"
+      },
+      {
+        "identity" : "w5",
+        "map" : "FiveWs.subject"
+      }]
+    },
+    {
+      "id" : "Product.note",
+      "path" : "Product.note",
+      "short" : "Comments made about the product",
+      "definition" : "Comments made about the product.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Product.note",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Annotation"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "NTE"
+      }]
+    }]
+  }
+}
