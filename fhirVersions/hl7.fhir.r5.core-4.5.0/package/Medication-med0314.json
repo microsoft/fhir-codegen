@@ -1,0 +1,54 @@
+{
+  "resourceType": "Medication",
+  "id": "med0314",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: med0314</p><p><b>code</b>: <span>Alprazolam 0.25mg Oral Tablet</span></p><p><b>doseForm</b>: <span>Tablet dose form (qualifier value)</span></p><h3>Ingredients</h3><table><tr><td>-</td><td><b>Item</b></td><td><b>Strength[x]</b></td></tr><tr><td>*</td><td/><td>0.25 mg/1 Tablet</td></tr></table></div>"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "308047",
+        "display": "Alprazolam 0.25mg Oral Tablet"
+      }
+    ]
+  },
+  "doseForm": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385055001",
+        "display": "Tablet dose form (qualifier value)"
+      }
+    ]
+  },
+  "ingredient": [
+    {
+      "item": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386983007",
+              "display": "Alprazolam (substance)"
+            }
+          ]
+        }
+      },
+      "strengthRatio": {
+        "numerator": {
+          "value": 0.25,
+          "system": "http://unitsofmeasure.org",
+          "code": "mg"
+        },
+        "denominator": {
+          "value": 1,
+          "unit": "Tablet",
+          "system": "http://snomed.info/sct",
+          "code": "385055001"
+        }
+      }
+    }
+  ]
+}

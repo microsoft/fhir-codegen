@@ -1,0 +1,33 @@
+{
+  "resourceType": "CatalogEntry",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example</p><p><b>identifier</b>: id: 456</p><p><b>name</b>: Serum electrolyte panel</p><p><b>type</b>: ActivityDefinition</p><p><b>status</b>: active</p><p><b>effectivePeriod</b>: 2018-12-16 --&gt; (ongoing)</p><p><b>orderable</b>: true</p><p><b>referencedItem</b>: <a>http://example.org/fhir/ActivityDefinition/789</a></p><p><b>updatedBy</b>: <a>Person/2</a></p><p><b>note</b>: created as an example (By Adam Man)</p></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://example.com/identifier",
+      "value": "456"
+    }
+  ],
+  "name": "Serum electrolyte panel",
+  "type": "ActivityDefinition",
+  "status": "active",
+  "effectivePeriod": {
+    "start": "2018-12-16"
+  },
+  "orderable": true,
+  "referencedItem": {
+    "reference": "http://example.org/fhir/ActivityDefinition/789"
+  },
+  "updatedBy": {
+    "reference": "Person/2"
+  },
+  "note": [
+    {
+      "authorString": "Adam Man",
+      "text": "created as an example"
+    }
+  ]
+}

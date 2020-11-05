@@ -1,0 +1,122 @@
+{
+  "resourceType": "MedicinalProductDefinition",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: example</p><p><b>identifier</b>: id: {mpid}</p><p><b>classification</b>: <span>B01AF02</span></p><p><b>attachedDocument</b>: <a>Generated Summary: id: example; id: urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234; status: current; docStatus: preliminary; <span>Outpatient Note</span>; <span>History and Physical</span>; <span>Arm</span>; <span>Outpatient</span>; <span>General Medicine</span>; period: 23/12/2004 8:00:00 AM --&gt; 23/12/2004 8:01:00 AM; date: 24/12/2005 9:43:41 AM; description: Physical; <span>very restricted</span></a></p><p><b>masterFile</b>: <a>Generated Summary: id: example; id: urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234; status: current; docStatus: preliminary; <span>Outpatient Note</span>; <span>History and Physical</span>; <span>Arm</span>; <span>Outpatient</span>; <span>General Medicine</span>; period: 23/12/2004 8:00:00 AM --&gt; 23/12/2004 8:01:00 AM; date: 24/12/2005 9:43:41 AM; description: Physical; <span>very restricted</span></a></p><blockquote><p><b>name</b></p><p><b>productName</b>: Equilidem 2.5 mg film-coated tablets</p><blockquote><p><b>namePart</b></p><p><b>part</b>: Equilidem</p><p><b>type</b>: <span>INV</span></p></blockquote><blockquote><p><b>namePart</b></p><p><b>part</b>: 2.5 mg</p><p><b>type</b>: <span>STR</span></p></blockquote><blockquote><p><b>namePart</b></p><p><b>part</b>: film-coated tablets</p><p><b>type</b>: <span>FRM</span></p></blockquote><h3>CountryLanguages</h3><table><tr><td>-</td><td><b>Country</b></td><td><b>Jurisdiction</b></td><td><b>Language</b></td></tr><tr><td>*</td><td><span>EU</span></td><td><span>EU</span></td><td><span>EN</span></td></tr></table></blockquote><h3>ManufacturingBusinessOperations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>EffectiveDate</b></td><td><b>Authorization</b></td></tr><tr><td>*</td><td/><td>2013-03-15 --&gt; (ongoing)</td><td><span/></td></tr></table></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://ema.europa.eu/example/MPID",
+      "value": "{mpid}"
+    }
+  ],
+  "classification": [
+    {
+      "coding": [
+        {
+          "system": "http://ema.europa.eu/example/WHOAnatomicalTherapeuticChemicalATCClassificationSystem",
+          "code": "B01AF02"
+        }
+      ]
+    }
+  ],
+  "attachedDocument": [
+    {
+      "reference": "DocumentReference/example"
+    }
+  ],
+  "masterFile": [
+    {
+      "reference": "DocumentReference/example"
+    }
+  ],
+  "name": [
+    {
+      "productName": "Equilidem 2.5 mg film-coated tablets",
+      "namePart": [
+        {
+          "part": "Equilidem",
+          "type": {
+            "coding": [
+              {
+                "code": "INV"
+              }
+            ]
+          }
+        },
+        {
+          "part": "2.5 mg",
+          "type": {
+            "coding": [
+              {
+                "code": "STR"
+              }
+            ]
+          }
+        },
+        {
+          "part": "film-coated tablets",
+          "type": {
+            "coding": [
+              {
+                "code": "FRM"
+              }
+            ]
+          }
+        }
+      ],
+      "countryLanguage": [
+        {
+          "country": {
+            "coding": [
+              {
+                "system": "http://ema.europa.eu/example/countryCode",
+                "code": "EU"
+              }
+            ]
+          },
+          "jurisdiction": {
+            "coding": [
+              {
+                "system": "http://ema.europa.eu/example/jurisdictionCode",
+                "code": "EU"
+              }
+            ]
+          },
+          "language": {
+            "coding": [
+              {
+                "system": "http://ema.europa.eu/example/languageCode",
+                "code": "EN"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "manufacturingBusinessOperation": [
+    {
+      "type": {
+        "concept": {
+          "coding": [
+            {
+              "system": "http://ema.europa.eu/example/manufacturingOperationType",
+              "code": "Batchrelease"
+            }
+          ]
+        }
+      },
+      "effectiveDate": {
+        "start": "2013-03-15"
+      },
+      "authorization": {
+        "identifier": {
+          "system": "http://ema.europa.eu/example/manufacturingAuthorisationReferenceNumber",
+          "value": "1324TZ"
+        }
+      }
+    }
+  ]
+}

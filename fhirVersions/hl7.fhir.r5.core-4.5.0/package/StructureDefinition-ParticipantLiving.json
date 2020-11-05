@@ -1,0 +1,201 @@
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "ParticipantLiving",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">to do</div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "informative"
+  }],
+  "url" : "http://hl7.org/fhir/StructureDefinition/ParticipantLiving",
+  "version" : "4.5.0",
+  "name" : "ParticipantLiving",
+  "title" : "participantliving",
+  "status" : "draft",
+  "date" : "2020-08-20T17:41:31+10:00",
+  "publisher" : "Health Level Seven International fhir",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    }]
+  }],
+  "description" : "Logical Model: A pattern followed by resources that represent the participant in some activity, process, or responsible for providing information about a resource.",
+  "fhirVersion" : "4.5.0",
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  }],
+  "kind" : "logical",
+  "abstract" : false,
+  "type" : "ParticipantLiving",
+  "snapshot" : {
+    "element" : [{
+      "id" : "ParticipantLiving",
+      "path" : "ParticipantLiving",
+      "short" : "Participant Pattern",
+      "definition" : "A pattern followed by resources that represent the participant in some activity, process, or responsible for providing information about a resource.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "ParticipantLiving",
+        "min" : 0,
+        "max" : "*"
+      },
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "Role"
+      }]
+    },
+    {
+      "id" : "ParticipantLiving.birthDate",
+      "path" : "ParticipantLiving.birthDate",
+      "short" : "The date of birth for the individual",
+      "definition" : "The date of birth for the individual.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "ParticipantLiving.birthDate",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "date"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false
+    },
+    {
+      "id" : "ParticipantLiving.gender",
+      "path" : "ParticipantLiving.gender",
+      "short" : "male | female | other | unknown",
+      "definition" : "Administrative Gender - the gender that the participant is considered to have for administration and record keeping purposes.",
+      "requirements" : "Needed for identification of the individual, in combination with (at least) name and birth date.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "ParticipantLiving.gender",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "code"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "AdministrativeGender"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
+          "valueBoolean" : true
+        }],
+        "strength" : "required",
+        "description" : "The gender of a person used for administrative purposes.",
+        "valueSet" : "http://hl7.org/fhir/ValueSet/administrative-gender|4.5.0"
+      }
+    },
+    {
+      "id" : "ParticipantLiving.photo",
+      "path" : "ParticipantLiving.photo",
+      "short" : "Image of the participant",
+      "definition" : "Image of the participant.",
+      "requirements" : "Many EHR systems have the capability to capture an image of the participant. Fits with newer social media usage too.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "ParticipantLiving.photo",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Attachment"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false
+    },
+    {
+      "id" : "ParticipantLiving.communication",
+      "path" : "ParticipantLiving.communication",
+      "short" : "The language which can be used to communicate with the participant",
+      "definition" : "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.",
+      "requirements" : "Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect.",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "ParticipantLiving.communication",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "CodeableConcept"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet",
+          "valueCanonical" : "http://hl7.org/fhir/ValueSet/all-languages"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "Language"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
+          "valueBoolean" : true
+        }],
+        "strength" : "preferred",
+        "description" : "A human language.",
+        "valueSet" : "http://hl7.org/fhir/ValueSet/languages"
+      }
+    }]
+  }
+}

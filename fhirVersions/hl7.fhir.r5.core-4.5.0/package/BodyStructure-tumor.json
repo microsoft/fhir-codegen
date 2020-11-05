@@ -1,0 +1,44 @@
+{
+  "resourceType": "BodyStructure",
+  "id": "tumor",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: tumor</p><p><b>identifier</b>: id: 12345</p><p><b>morphology</b>: <span>Splenic mass</span></p><p><b>location</b>: <span>Spleen</span></p><p><b>description</b>: 7 cm maximum diameter</p><p><b>image</b>: </p><p><b>patient</b>: <a>Generated Summary: id: example; Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); -unknown-(HOME), ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://goodhealth.org/bodystructure/identifiers",
+      "value": "12345"
+    }
+  ],
+  "morphology": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4147007",
+        "display": "Mass (morphologic abnormality)"
+      }
+    ],
+    "text": "Splenic mass"
+  },
+  "location": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "78961009",
+        "display": "Splenic structure (body structure)"
+      }
+    ],
+    "text": "Spleen"
+  },
+  "description": "7 cm maximum diameter",
+  "image": [
+    {
+      "contentType": "application/dicom",
+      "url": "http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"
+    }
+  ],
+  "patient": {
+    "reference": "Patient/example"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "resourceType": "Procedure",
+  "id": "f003",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: f003</p><p><b>status</b>: completed</p><p><b>code</b>: <span>Incision of retropharyngeal abscess</span></p><p><b>subject</b>: <a>P. van de Heuvel. Generated Summary: id: f001; id: 738472983 (USUAL), id: ?ngen-9? (USUAL); active; Pieter van de Heuvel ; ph: 0648352638(MOBILE), p.heuvel@gmail.com(HOME); gender: male; birthDate: 1944-11-17; <span>Getrouwd</span>; multipleBirth</a></p><p><b>encounter</b>: <a>Generated Summary: id: f003; id: v6751 (OFFICIAL); status: completed; <span>ambulatory</span>; <span>Patient-initiated encounter</span>; <span>Non-urgent ear, nose and throat admission</span>; 90 min; <span>Retropharyngeal abscess</span></a></p><p><b>occurrence</b>: 24/03/2013 7:30:10 PM --&gt; 24/03/2013 8:30:10 PM</p><h3>Performers</h3><table><tr><td>-</td><td><b>Function</b></td><td><b>Actor</b></td></tr><tr><td>*</td><td><span>Care role</span></td><td><a>E.M.J.M. van den broek. Generated Summary: id: f001; id: 938273695 (OFFICIAL), id: 129IDH4OP733 (USUAL); Eric van den broek (OFFICIAL); ph: 0205568263(WORK), E.M.vandenbroek@bmc.nl(WORK), fax: 0205664440(WORK); gender: male; birthDate: 1975-12-07</a></td></tr></table><p><b>reason</b>: </p><p><b>bodySite</b>: <span>Retropharyngeal area</span></p><p><b>outcome</b>: <span>removal of the retropharyngeal abscess</span></p><p><b>report</b>: <a>Lab results blood test. Generated Summary: id: f001</a></p><p><b>followUp</b>: <span>described in care plan</span></p></div>"
+  },
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "172960003",
+        "display": "Incision of retropharyngeal abscess"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/f001",
+    "display": "P. van de Heuvel"
+  },
+  "encounter": {
+    "reference": "Encounter/f003"
+  },
+  "occurrencePeriod": {
+    "start": "2013-03-24T09:30:10+01:00",
+    "end": "2013-03-24T10:30:10+01:00"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.2.4.15.111",
+            "code": "01.000",
+            "display": "Arts"
+          }
+        ],
+        "text": "Care role"
+      },
+      "actor": {
+        "reference": "Practitioner/f001",
+        "display": "E.M.J.M. van den broek"
+      }
+    }
+  ],
+  "reason": [
+    {
+      "concept": {
+        "text": "abcess in retropharyngeal area"
+      }
+    }
+  ],
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "83030008",
+          "display": "Retropharyngeal area"
+        }
+      ]
+    }
+  ],
+  "outcome": {
+    "text": "removal of the retropharyngeal abscess"
+  },
+  "report": [
+    {
+      "reference": "DiagnosticReport/f001",
+      "display": "Lab results blood test"
+    }
+  ],
+  "followUp": [
+    {
+      "text": "described in care plan"
+    }
+  ]
+}

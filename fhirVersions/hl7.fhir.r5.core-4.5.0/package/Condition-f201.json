@@ -1,0 +1,110 @@
+{
+  "resourceType": "Condition",
+  "id": "f201",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: f201</p><p><b>identifier</b>: id: 12345</p><p><b>clinicalStatus</b>: <span>Resolved</span></p><p><b>verificationStatus</b>: <span>Confirmed</span></p><p><b>category</b>: <span>Problem</span></p><p><b>severity</b>: <span>Mild</span></p><p><b>code</b>: <span>Fever</span></p><p><b>bodySite</b>: <span>Entire body as a whole</span></p><p><b>subject</b>: <a>Roel. Generated Summary: id: f201; BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); ph: +31612345678(MOBILE), ph: +31201234567(HOME); gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p><p><b>encounter</b>: <a>Generated Summary: id: f201; id: Encounter_Roel_20130404 (TEMP); status: completed; <span>ambulatory</span>; <span>Consultation</span>; <span>Normal</span>; <span>The patient had fever peaks over the last couple of days. He is worried about these peaks.</span></a></p><p><b>onset</b>: 2013-04-02</p><p><b>abatement</b>: around April 9, 2013</p><p><b>recordedDate</b>: 2013-04-04</p><p><b>recorder</b>: <a>Generated Summary: id: f201; UZI-nummer: 12345678901 (OFFICIAL); active; Dokter Bronsig(OFFICIAL); ph: +31715269111(WORK); gender: male; birthDate: 1956-12-24</a></p><p><b>asserter</b>: <a>Generated Summary: id: f201; UZI-nummer: 12345678901 (OFFICIAL); active; Dokter Bronsig(OFFICIAL); ph: +31715269111(WORK); gender: male; birthDate: 1956-12-24</a></p><h3>Evidences</h3><table><tr><td>-</td><td><b>Code</b></td><td><b>Detail</b></td></tr><tr><td>*</td><td><span>degrees C</span></td><td><a>Temperature. Generated Summary: id: f202; status: entered-in-error; <span>Vital Signs</span>; <span>Temperature</span>; issued: 04/04/2013 11:27:00 PM; 39 degrees C; <span>High</span>; <span>Oral cavity</span>; <span>Oral temperature taking</span></a></td></tr></table></div>"
+  },
+  "identifier": [
+    {
+      "value": "12345"
+    }
+  ],
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "55607006",
+          "display": "Problem"
+        },
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "problem-list-item"
+        }
+      ]
+    }
+  ],
+  "severity": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "255604002",
+        "display": "Mild"
+      }
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "386661006",
+        "display": "Fever"
+      }
+    ]
+  },
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "38266002",
+          "display": "Entire body as a whole"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/f201",
+    "display": "Roel"
+  },
+  "encounter": {
+    "reference": "Encounter/f201"
+  },
+  "onsetDateTime": "2013-04-02",
+  "abatementString": "around April 9, 2013",
+  "recordedDate": "2013-04-04",
+  "recorder": {
+    "reference": "Practitioner/f201"
+  },
+  "asserter": {
+    "reference": "Practitioner/f201"
+  },
+  "evidence": [
+    {
+      "code": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "258710007",
+              "display": "degrees C"
+            }
+          ]
+        }
+      ],
+      "detail": [
+        {
+          "reference": "Observation/f202",
+          "display": "Temperature"
+        }
+      ]
+    }
+  ]
+}

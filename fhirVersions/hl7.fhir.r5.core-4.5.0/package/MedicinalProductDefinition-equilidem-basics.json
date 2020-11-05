@@ -1,0 +1,73 @@
+{
+  "resourceType": "MedicinalProductDefinition",
+  "id": "equilidem-basics",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: equilidem-basics</p><p><b>identifier</b>: id: Equilidem25</p><p><b>combinedPharmaceuticalDoseForm</b>: <span>tablet</span></p><p><b>indication</b>: Prevention of venous thromboembolic events (VTE) in adult patients who have undergone elective hip or knee replacement surgery. Prevention of stroke and systemic embolism in adult patients with non-valvular atrial fibrillation (NVAF), with one or more risk factors, such as prior stroke or transient ischaemic attack (TIA); age ≥ 75 years; hypertension; diabetes mellitus; symptomatic heart failure (NYHA Class &gt;= II). Treatment of deep vein thrombosis (DVT) and pulmonary embolism (PE), and prevention of recurrent DVT and PE in adults.</p><p><b>legalStatusOfSupply</b>: <span>Prescription only medicine</span></p><p><b>classification</b>: <span>B01A</span></p><p><b>ingredient</b>: </p><ul><li><span>Equilidonium Phosphate</span></li><li><span>Calcium Carbonate</span></li></ul><h3>Names</h3><table><tr><td>-</td><td><b>ProductName</b></td></tr><tr><td>*</td><td>Equilidem 2.5 mg film-coated tablets</td></tr></table><h3>CrossReferences</h3><table><tr><td>-</td><td><b>Product</b></td></tr><tr><td>*</td><td/></tr></table><h3>ManufacturingBusinessOperations</h3><table><tr><td>-</td><td><b>Manufacturer</b></td></tr><tr><td>*</td><td><span>EquiliDrugCo Inc.</span></td></tr></table></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://example.org.uk/fhir/product",
+      "value": "Equilidem25"
+    }
+  ],
+  "combinedPharmaceuticalDoseForm": {
+    "coding": [
+      {
+        "system": "http://example.org.uk/fhir/dosefom",
+        "code": "tablet"
+      }
+    ]
+  },
+  "indication": "Prevention of venous thromboembolic events (VTE) in adult patients who have undergone elective hip or knee replacement surgery. Prevention of stroke and systemic embolism in adult patients with non-valvular atrial fibrillation (NVAF), with one or more risk factors, such as prior stroke or transient ischaemic attack (TIA); age ≥ 75 years; hypertension; diabetes mellitus; symptomatic heart failure (NYHA Class >= II). Treatment of deep vein thrombosis (DVT) and pulmonary embolism (PE), and prevention of recurrent DVT and PE in adults.",
+  "legalStatusOfSupply": {
+    "coding": [
+      {
+        "system": "http://example.org.uk/fhir/legalstatusofsupply",
+        "code": "POM",
+        "display": "Prescription only medicine"
+      }
+    ]
+  },
+  "classification": [
+    {
+      "coding": [
+        {
+          "system": "http://www.whocc.no/atc/example",
+          "code": "B01A"
+        }
+      ]
+    }
+  ],
+  "ingredient": [
+    {
+      "display": "Equilidonium Phosphate"
+    },
+    {
+      "display": "Calcium Carbonate"
+    }
+  ],
+  "name": [
+    {
+      "productName": "Equilidem 2.5 mg film-coated tablets"
+    }
+  ],
+  "crossReference": [
+    {
+      "product": {
+        "reference": {
+          "reference": "MedicinalProductDefinition/genericEquilidonium"
+        }
+      }
+    }
+  ],
+  "manufacturingBusinessOperation": [
+    {
+      "manufacturer": [
+        {
+          "display": "EquiliDrugCo Inc."
+        }
+      ]
+    }
+  ]
+}
