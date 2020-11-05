@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -1112,7 +1111,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
 
             _writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
-            WriteIndentedComment(complex.Purpose, false);
+            WriteIndentedComment(complex.Purpose, isSummary: false, singleLine: true);
 
             // close class
             CloseScope();
@@ -1612,11 +1611,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              * automate this, by scanning differences between 3/4/5/6/7 etc.. */
             if (element.Path == "Meta.source")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=\"3.2.0\")]");
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=FhirRelease.R4)]");
             }
             else if (element.Path == "Reference.type")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=\"3.3.0\")]");
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=FhirRelease.R4)]");
             }
             else
             {
@@ -1625,7 +1624,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (element.Path == "Meta.profile")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, TypeRedirect=typeof(Canonical), Since=\"3.3.0\")]");
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Canonical), Since = FhirRelease.R4)]");
             }
 
             if ((!string.IsNullOrEmpty(resourceReferences)) && string.IsNullOrEmpty(allowedTypes))
@@ -2167,9 +2166,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         private void WriteSerializable()
         {
-            _writer.WriteLine("#if !NETSTANDARD1_1");
             _writer.WriteLineIndented("[Serializable]");
-            _writer.WriteLine("#endif");
         }
 
         private static string PrimitiveValueInterface(string valueType)
