@@ -380,3 +380,4 @@ msbuild.wrn
 /firely
 /temp
 /cytoscape
+/generated/local-*
