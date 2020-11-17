@@ -125,6 +125,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Meta",
             "PrimitiveType",
             "Narrative",
+            "Reference",
+            "Identifier",
+            "CodeableConcept",
+            "Period",
         };
 
         /// <summary>
@@ -133,6 +137,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly List<string> _commmonResourceTypes = new List<string>()
         {
             "Resource",
+            "DomainResource",
         };
 
         /// <summary>Gets the reserved words.</summary>
@@ -1295,8 +1300,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirConcept concept in vs.Concepts)
             {
-                string codeName = ConvertEnumValue(concept.Code);   // FhirUtils.SanitizeForProperty(concept.Code, _reservedWords);
-                string pascal = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
+                string codeName = ConvertEnumValue(concept.Code);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
                 if (string.IsNullOrEmpty(concept.Definition))
@@ -1312,24 +1316,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
 
-                if (usedLiterals.Contains(pascal))
+                if (usedLiterals.Contains(codeName))
                 {
                     // start at 2 so that the unadorned version makes sense as v1
                     for (int i = 2; i < 1000; i++)
                     {
-                        if (usedLiterals.Contains($"{pascal}_{i}"))
+                        if (usedLiterals.Contains($"{codeName}_{i}"))
                         {
                             continue;
                         }
 
-                        pascal = $"{pascal}_{i}";
+                        codeName = $"{codeName}_{i}";
                         break;
                     }
                 }
 
-                usedLiterals.Add(pascal);
+                usedLiterals.Add(codeName);
 
-                _writer.WriteLineIndented($"{pascal},");
+                _writer.WriteLineIndented($"{codeName},");
             }
 
             CloseScope();
