@@ -381,3 +381,4 @@ msbuild.wrn
 /temp
 /cytoscape
 /fhirVersions/local-*
+/generated/local_*
