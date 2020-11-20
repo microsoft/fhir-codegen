@@ -531,6 +531,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.OpenScope();
 
                 _writer.WriteLineIndented($"component.SerializeJson(writer, options, true);");
+                _writer.WriteLineIndented("writer.Flush();");
 
                 // close Write
                 _writer.CloseScope();
@@ -648,6 +649,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 // close switch
                 _writer.CloseScope();
+
+                _writer.WriteLine();
+                _writer.WriteLineIndented("writer.Flush();");
 
                 // close Write
                 _writer.CloseScope();
@@ -856,6 +860,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("lastToken = reader.TokenType;");
                 _writer.CloseScope();
                 _writer.WriteLine();
+                _writer.WriteLineIndented("ms.Flush();");
                 _writer.WriteLineIndented("Utf8JsonReader secondary = new Utf8JsonReader(ms.GetBuffer());");
                 _writer.WriteLine();
                 _writer.WriteLineIndented("return DoPolymorphicRead(ref secondary, options, resourceType);");

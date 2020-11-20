@@ -78,6 +78,119 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Loads a package.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+        /// <param name="localPublishDirectory"> Local FHIR Publish directory.</param>
+        /// <param name="fhirSpecDirectory">     Pathname of the FHIR spec directory.</param>
+        /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>
+        /// <param name="localLoadType">         Type of the local load.</param>
+        /// <param name="officialExpansionsOnly">True to official expansions only.</param>
+        public static void LoadLocalBuild(
+            string localPublishDirectory,
+            string fhirSpecDirectory,
+            ref FhirVersionInfo fhirVersionInfo,
+            string localLoadType,
+            bool officialExpansionsOnly)
+        {
+            // sanity checks
+            if (fhirVersionInfo == null)
+            {
+                Console.WriteLine($"LoadLocalBuild <<< invalid version info is NULL, cannot load {localPublishDirectory}");
+                throw new ArgumentNullException(nameof(fhirVersionInfo));
+            }
+
+            // tell the user what's going on
+            Console.WriteLine(
+                $"LoadLocalBuild <<<" +
+                $" Found: {fhirVersionInfo.PackageName}" +
+                $" version: {fhirVersionInfo.VersionString}" +
+                $" build: {fhirVersionInfo.ReleaseName}");
+
+            string expansionDir;
+            string packageDir;
+
+            if (localLoadType == "latest")
+            {
+                FhirPackageDownloader.CopyAndExtract(
+                    localPublishDirectory,
+                    fhirVersionInfo.ExpansionsPackageName,
+                    fhirVersionInfo.VersionString,
+                    fhirSpecDirectory,
+                    out expansionDir);
+
+                expansionDir = Path.Combine(expansionDir, "package");
+            }
+            else
+            {
+                expansionDir = Path.Combine(
+                    fhirSpecDirectory,
+                    $"local-{fhirVersionInfo.ExpansionsPackageName}-{fhirVersionInfo.VersionString}",
+                    "package");
+            }
+
+            // load package info
+            FhirPackageInfo expansionPackageInfo = FhirPackageInfo.Load(expansionDir);
+
+            // tell the user what's going on
+            Console.WriteLine($"LoadPackage <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
+
+            if (localLoadType == "latest")
+            {
+                FhirPackageDownloader.CopyAndExtract(
+                    localPublishDirectory,
+                    fhirVersionInfo.PackageName,
+                    fhirVersionInfo.VersionString,
+                    fhirSpecDirectory,
+                    out packageDir);
+
+                packageDir = Path.Combine(packageDir, "package");
+            }
+            else
+            {
+                packageDir = Path.Combine(
+                    fhirSpecDirectory,
+                    $"local-{fhirVersionInfo.PackageName}-{fhirVersionInfo.VersionString}",
+                    "package");
+            }
+
+            // load package info
+            FhirPackageInfo packageInfo = FhirPackageInfo.Load(packageDir);
+
+            // tell the user what's going on
+            Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
+
+            // update our structure
+            fhirVersionInfo.VersionString = packageInfo.Version;
+
+            // process Code Systems
+            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo);
+
+            // process Value Set expansions
+            if (officialExpansionsOnly)
+            {
+                ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo);
+            }
+            else
+            {
+                ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo);
+            }
+
+            // process structure definitions
+            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);
+
+            // process search parameters (adds to resources)
+            ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo);
+
+            // process operations (adds to resources and version info (server level))
+            ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo);
+
+            // add version-specific "MAGIC" items
+            AddSearchMagicParameters(ref fhirVersionInfo);
+
+            // make sure we cleared the last line
+            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+        }
+
+        /// <summary>Loads a package.</summary>
+        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
         /// <param name="fhirSpecDirectory">     Pathname of the FHIR spec directory.</param>
         /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>

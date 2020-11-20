@@ -184,11 +184,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 return filesWritten;
             }
 
+            string langVersionString;
+
+            if (info.IsDevBuild)
+            {
+                langVersionString = $"local_{exportLanguage.LanguageName}_R{info.MajorVersion}_{info.ReleaseName}";
+            }
+            else
+            {
+                langVersionString = $"{exportLanguage.LanguageName}_R{info.MajorVersion}";
+            }
+
             if (exportedFiles.Length == 1)
             {
-                string filename = Path.Combine(
-                    outputPath,
-                    $"{exportLanguage.LanguageName}_R{info.MajorVersion}");
+                string filename = Path.Combine(outputPath, langVersionString);
 
                 filename = Path.ChangeExtension(filename, exportLanguage.SingleFileExportExtension);
 
@@ -209,7 +218,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             if (isPartOfBatch)
             {
-                path = Path.Combine(outputPath, $"{exportLanguage.LanguageName}_R{info.MajorVersion}");
+                path = Path.Combine(outputPath, langVersionString);
             }
 
             if (!Directory.Exists(path))

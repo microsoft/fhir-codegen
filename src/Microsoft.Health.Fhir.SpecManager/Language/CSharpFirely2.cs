@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
@@ -126,6 +125,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Meta",
             "PrimitiveType",
             "Narrative",
+            "Reference",
+            "Identifier",
+            "CodeableConcept",
+            "Period",
         };
 
         /// <summary>
@@ -134,6 +137,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly List<string> _commmonResourceTypes = new List<string>()
         {
             "Resource",
+            "DomainResource",
         };
 
         /// <summary>Gets the reserved words.</summary>
@@ -1112,7 +1116,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
 
             _writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
-            WriteIndentedComment(complex.Purpose, false);
+            WriteIndentedComment(complex.Purpose, isSummary: false, singleLine: true);
 
             // close class
             CloseScope();
@@ -1296,8 +1300,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (FhirConcept concept in vs.Concepts)
             {
-                string codeName = ConvertEnumValue(concept.Code);   // FhirUtils.SanitizeForProperty(concept.Code, _reservedWords);
-                string pascal = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
+                string codeName = ConvertEnumValue(concept.Code);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
                 if (string.IsNullOrEmpty(concept.Definition))
@@ -1313,24 +1316,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
 
-                if (usedLiterals.Contains(pascal))
+                if (usedLiterals.Contains(codeName))
                 {
                     // start at 2 so that the unadorned version makes sense as v1
                     for (int i = 2; i < 1000; i++)
                     {
-                        if (usedLiterals.Contains($"{pascal}_{i}"))
+                        if (usedLiterals.Contains($"{codeName}_{i}"))
                         {
                             continue;
                         }
 
-                        pascal = $"{pascal}_{i}";
+                        codeName = $"{codeName}_{i}";
                         break;
                     }
                 }
 
-                usedLiterals.Add(pascal);
+                usedLiterals.Add(codeName);
 
-                _writer.WriteLineIndented($"{pascal},");
+                _writer.WriteLineIndented($"{codeName},");
             }
 
             CloseScope();
@@ -1612,11 +1615,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              * automate this, by scanning differences between 3/4/5/6/7 etc.. */
             if (element.Path == "Meta.source")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=\"3.2.0\")]");
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=FhirRelease.R4)]");
             }
             else if (element.Path == "Reference.type")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=\"3.3.0\")]");
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=FhirRelease.R4)]");
             }
             else
             {
@@ -1625,7 +1628,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (element.Path == "Meta.profile")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, TypeRedirect=typeof(Canonical), Since=\"3.3.0\")]");
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Canonical), Since = FhirRelease.R4)]");
             }
 
             if ((!string.IsNullOrEmpty(resourceReferences)) && string.IsNullOrEmpty(allowedTypes))
@@ -2167,9 +2170,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         private void WriteSerializable()
         {
-            _writer.WriteLine("#if !NETSTANDARD1_1");
             _writer.WriteLineIndented("[Serializable]");
-            _writer.WriteLine("#endif");
         }
 
         private static string PrimitiveValueInterface(string valueType)

@@ -52,7 +52,9 @@ namespace FhirCodegenCli
         ///  (primitive|complex|resource|interaction|enum), default is all.</param>
         /// <param name="extensionSupport">      The level of extensions to include
         ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
-        /// <param name="languageHelp">         Display languages and their options.</param>
+        /// <param name="languageHelp">          Display languages and their options.</param>
+        /// <param name="fhirPublishDirectory">  The full path to a local FHIR build publish directory (.../publish).</param>
+        /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -70,7 +72,9 @@ namespace FhirCodegenCli
             bool includeExperimental = false,
             string exportTypes = "",
             string extensionSupport = "",
-            bool languageHelp = false)
+            bool languageHelp = false,
+            string fhirPublishDirectory = "",
+            string loadLocalFhirBuild = "")
         {
             if (languageHelp)
             {
@@ -86,6 +90,18 @@ namespace FhirCodegenCli
             if (string.IsNullOrEmpty(fhirSpecDirectory))
             {
                 fhirSpecDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\fhirVersions");
+            }
+
+            if (!string.IsNullOrEmpty(loadLocalFhirBuild))
+            {
+                if (string.IsNullOrEmpty(fhirPublishDirectory))
+                {
+                    fhirPublishDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\fhir\\publish");
+                }
+            }
+            else
+            {
+                fhirPublishDirectory = string.Empty;
             }
 
             if (string.IsNullOrEmpty(outputPath))
@@ -146,12 +162,13 @@ namespace FhirCodegenCli
             Stopwatch timingWatch = Stopwatch.StartNew();
 
             // initialize the FHIR version manager with our requested directory
-            FhirManager.Init(fhirSpecDirectory);
+            FhirManager.Init(fhirSpecDirectory, fhirPublishDirectory);
 
             FhirVersionInfo r2 = null;
             FhirVersionInfo r3 = null;
             FhirVersionInfo r4 = null;
             FhirVersionInfo r5 = null;
+            FhirVersionInfo localVersion = null;
 
             FhirServerInfo serverInfo = null;
 
@@ -167,7 +184,8 @@ namespace FhirCodegenCli
             if (string.IsNullOrEmpty(loadR2) &&
                 string.IsNullOrEmpty(loadR3) &&
                 string.IsNullOrEmpty(loadR4) &&
-                string.IsNullOrEmpty(loadR5))
+                string.IsNullOrEmpty(loadR5) &&
+                string.IsNullOrEmpty(loadLocalFhirBuild))
             {
                 if (serverInfo == null)
                 {
@@ -224,6 +242,12 @@ namespace FhirCodegenCli
                 fhirVersionCount++;
             }
 
+            if (!string.IsNullOrEmpty(loadLocalFhirBuild))
+            {
+                localVersion = FhirManager.Current.LoadLocal(loadLocalFhirBuild, officialExpansionsOnly);
+                fhirVersionCount++;
+            }
+
             if (fhirVersionCount > 1)
             {
                 isBatch = true;
@@ -247,6 +271,16 @@ namespace FhirCodegenCli
                 if ((verbose == true) && (r4 != null))
                 {
                     DumpFhirVersion(Console.Out, r4);
+                }
+
+                if ((verbose == true) && (r5 != null))
+                {
+                    DumpFhirVersion(Console.Out, r5);
+                }
+
+                if ((verbose == true) && (localVersion != null))
+                {
+                    DumpFhirVersion(Console.Out, localVersion);
                 }
             }
 
@@ -318,6 +352,11 @@ namespace FhirCodegenCli
                     if (r5 != null)
                     {
                         filesWritten.AddRange(Exporter.Export(r5, serverInfo, lang, options, outputPath, isBatch));
+                    }
+
+                    if (localVersion != null)
+                    {
+                        filesWritten.AddRange(Exporter.Export(localVersion, serverInfo, lang, options, outputPath, isBatch));
                     }
                 }
             }
