@@ -782,6 +782,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteIndentedComment($"{complex.ShortDescription}");
 
             WriteSerializable();
+
             if (isResource)
             {
                 _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\", IsResource=true)]");
@@ -800,7 +801,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string abstractFlag = isAbstract ? " abstract" : string.Empty;
 
-            _writer.WriteLineIndented("[DataContract]");
+            
 
             List<string> interfaces = new List<string>();
 
@@ -1145,10 +1146,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             Debug.Assert(!string.IsNullOrEmpty(componentName), $"Found a type at element {complex.Path} without a name or explicit name.");
 
+            WriteSerializable();
             _writer.WriteLineIndented($"[FhirType(\"{componentName}\", IsNestedType=true)]");
-
-            _writer.WriteLineIndented("[DataContract]");
-
             _writer.WriteLineIndented(
                 $"public partial class" +
                     $" {exportName}" +
@@ -2099,10 +2098,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteIndentedComment($"Primitive Type {primitive.Name}");
                 }
 
-                WriteSerializable();
                 _writer.WriteLineIndented("[System.Diagnostics.DebuggerDisplay(@\"\\{Value={Value}}\")]");
+                WriteSerializable();
                 _writer.WriteLineIndented($"[FhirType(\"{primitive.Name}\")]");
-                _writer.WriteLineIndented("[DataContract]");
 
                 _writer.WriteLineIndented(
                     $"public partial class" +
@@ -2171,6 +2169,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteSerializable()
         {
             _writer.WriteLineIndented("[Serializable]");
+            _writer.WriteLineIndented("[DataContract]");
         }
 
         private static string PrimitiveValueInterface(string valueType)
