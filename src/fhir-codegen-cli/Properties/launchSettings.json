@@ -1,179 +1,179 @@
 {
-    "profiles": {
-        "fhir-codegen-cli": {
-            "commandName": "Project",
-            "commandLineArgs": "--load-r2 latest --load-r3 latest --load-r4 latest --language Info",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "r2": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "r3": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "r4": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "r5": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "localInfo": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-local-fhir-build current --official-expansions-only true --fhir-spec-directory ..\\..\\fhirVersions --language Info",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "ts2": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "ts3": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "ts4": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "ts5": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "cs2": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "cs3": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "cs4": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "cs5": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-publish-directory ..\\..\\..\\fhir\\publish --language CSharpBasic",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "csLocal": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-local-fhir-build true --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "GenerateAll": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language Info|TypeScript|CSharpBasic",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "GenerateFirely": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely1|CSharpFirely2 --official-expansions-only true --language-options CSharpFirely1|DetailedHeader=false",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely2 API 1.x": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r2 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely3 API 1.x": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r3 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely4 API 1.x": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely5 API 1.x": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely3 API 2.x": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r3 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely4 API 2.x": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely5 API 2.x": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\src\\Hl7.Fhir.Core\\Model --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely5 API 2.x Common": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\fhir-net-api\\common\\src\\Hl7.Fhir.Support.Poco\\Model --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --language-options CSharpFirely2|subset=common --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "FirelyAll": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\firely --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "server2": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseDstu2/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "server3": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseStu3/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "server4": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|fhirjson=true|SingleResponses=true|ReadOnly=true --export-keys Patient|Bundle --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "server4Min": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|fhirjson=true|SingleResponses=true|Summaries=false|SchemaDescriptions=false|ReadOnly=true|ExpandProfiles=false --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "azTest": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|RemoveUncommonFields=true|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|BundleOperations=false|descriptions=true|DescriptionValidation=true|SchemasInline=true --extension-support none --export-keys Bundle|Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --output-path ..\\..\\temp\\OpenApi_R4.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "azTestMin": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|RemoveUncommonFields=true|Minify=true|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|BundleOperations=false|descriptions=true|DescriptionValidation=true|SchemasInline=true --extension-support none --export-keys Bundle|Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --output-path ..\\..\\temp\\OpenApi_R4_min.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "azTestFull": {
-            "commandName": "Project",
-            "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|OpenApiVersion=3|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|descriptions=true|DescriptionValidation=true --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "cyto4": {
-            "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\cytoscape --load-r4 latest --export-keys Patient|Encounter|Observation --fhir-spec-directory ..\\..\\fhirVersions --language Cytoscape",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "csV2Test": {
-            "commandName": "Project",
-            "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\test\\perfTestCS\\Test\\r4\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        }
+  "profiles": {
+    "fhir-codegen-cli": {
+      "commandName": "Project",
+      "commandLineArgs": "--load-r2 latest --load-r3 latest --load-r4 latest --language Info",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "r2": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "r3": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "r4": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "r5": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "localInfo": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-local-fhir-build current --official-expansions-only true --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "ts2": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "ts3": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "ts4": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "ts5": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "cs2": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "cs3": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r3 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "cs4": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "cs5": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-publish-directory ..\\..\\..\\fhir\\publish --language CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "csLocal": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-local-fhir-build true --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "GenerateAll": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language Info|TypeScript|CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "GenerateFirely": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely1|CSharpFirely2 --official-expansions-only true --language-options CSharpFirely1|DetailedHeader=false",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "Firely2 API 1.x": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r2 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "Firely3 API 1.x": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r3 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "Firely4 API 1.x": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "Firely5 API 1.x": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "Firely3 API 2.x": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r3 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "Firely4 API 2.x": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "Firely5 API 2.x": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "Firely5 API 2.x Common": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\common\\src\\Hl7.Fhir.Support.Poco\\Model --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --language-options CSharpFirely2|subset=common --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "FirelyAll": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\firely --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "server2": {
+      "commandName": "Project",
+      "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseDstu2/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "server3": {
+      "commandName": "Project",
+      "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseStu3/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "server4": {
+      "commandName": "Project",
+      "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|fhirjson=true|SingleResponses=true|ReadOnly=true --export-keys Patient|Bundle --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "server4Min": {
+      "commandName": "Project",
+      "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseR4/ --language-options OpenApi|fhirjson=true|SingleResponses=true|Summaries=false|SchemaDescriptions=false|ReadOnly=true|ExpandProfiles=false --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "azTest": {
+      "commandName": "Project",
+      "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|RemoveUncommonFields=true|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|BundleOperations=false|descriptions=true|DescriptionValidation=true|SchemasInline=true --extension-support none --export-keys Bundle|Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --output-path ..\\..\\temp\\OpenApi_R4.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "azTestMin": {
+      "commandName": "Project",
+      "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|RemoveUncommonFields=true|Minify=true|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|BundleOperations=false|descriptions=true|DescriptionValidation=true|SchemasInline=true --extension-support none --export-keys Bundle|Appointment|AppointmentResponse|Device|Encounter|Flag|Location|Patient|Person|Practitioner|Observation|Condition|Procedure|AllergyIntolerance|MedicationStatement|RiskAssessment|MedicationRequest|ServiceRequest|DiagnosticReport|Coverage|ImageStudy|Procedure --output-path ..\\..\\temp\\OpenApi_R4_min.json --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "azTestFull": {
+      "commandName": "Project",
+      "commandLineArgs": "--fhir-server-url https://prototype-erp-fhir.azurewebsites.net/ --language-options OpenApi|OpenApiVersion=3|history=false|fhirjson=true|SingleResponses=true|ReadOnly=true|descriptions=true|DescriptionValidation=true --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language OpenApi",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "cyto4": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\cytoscape --load-r4 latest --export-keys Patient|Encounter|Observation --fhir-spec-directory ..\\..\\fhirVersions --language Cytoscape",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "csV2Test": {
+      "commandName": "Project",
+      "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\test\\perfTestCS\\Test\\r4\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     }
+  }
 }
