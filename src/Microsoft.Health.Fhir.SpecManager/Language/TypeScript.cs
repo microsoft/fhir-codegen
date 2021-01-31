@@ -568,19 +568,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 // Use generated enum for codes when required strength
-                if (_exportEnums
-                        && element.Codes != null
+                if (element.Codes != null
                         && element.Codes.Any()
                         && !string.IsNullOrEmpty(element.ValueSet)
                         && !string.IsNullOrEmpty(element.BindingStrength)
                         && string.Equals(element.BindingStrength, "required"))
                 {
-                    string codeName = FhirUtils.ToConvention(
-                        $"{element.Path}.Codes",
-                        string.Empty,
-                        FhirTypeBase.NamingConvention.PascalCase);
+                    if (_exportEnums)
+                    {
+                        // If we are building enum, reference
+                        string codeName = FhirUtils.ToConvention(
+                            $"{element.Path}.Codes",
+                            string.Empty,
+                            FhirTypeBase.NamingConvention.PascalCase);
 
-                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName}{arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName};");
+                    }
+                    else
+                    {
+                        // otherwise, inline the required codes
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {string.Join("|", element.Codes.Select(c => $"'{c}'"))};");
+                    }
                 }
                 else
                 {
