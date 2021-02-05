@@ -567,7 +567,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteIndentedComment(element.Comment);
                 }
 
-                _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                // Use generated enum for codes when required strength
+                if (element.Codes != null
+                        && element.Codes.Any()
+                        && !string.IsNullOrEmpty(element.ValueSet)
+                        && !string.IsNullOrEmpty(element.BindingStrength)
+                        && string.Equals(element.BindingStrength, "required"))
+                {
+                    if (_exportEnums)
+                    {
+                        // If we are building enum, reference
+                        string codeName = FhirUtils.ToConvention(
+                            $"{element.Path}.Codes",
+                            string.Empty,
+                            FhirTypeBase.NamingConvention.PascalCase);
+
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName};");
+                    }
+                    else
+                    {
+                        // otherwise, inline the required codes
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {string.Join("|", element.Codes.Select(c => $"'{c}'"))};");
+                    }
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                }
 
                 if (RequiresExtension(kvp.Value))
                 {
