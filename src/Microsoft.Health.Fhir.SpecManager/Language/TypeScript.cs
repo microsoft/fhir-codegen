@@ -572,7 +572,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         && element.Codes.Any()
                         && !string.IsNullOrEmpty(element.ValueSet)
                         && !string.IsNullOrEmpty(element.BindingStrength)
-                        && string.Equals(element.BindingStrength, "required"))
+                        && string.Equals(element.BindingStrength, "required", StringComparison.Ordinal))
                 {
                     if (_exportEnums)
                     {
