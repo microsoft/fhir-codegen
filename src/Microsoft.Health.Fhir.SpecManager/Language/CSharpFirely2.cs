@@ -116,17 +116,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "BackboneElement",
             "BackboneType",
             "Base",
+            "CodeableConcept",
             "Coding",
+            "ContactPoint",
+            "ContactDetail",
             "DataType",
             "Element",
             "Extension",
-            "Meta",
-            "PrimitiveType",
-            "Narrative",
-            "Reference",
             "Identifier",
-            "CodeableConcept",
+            "Meta",
+            "Narrative",
             "Period",
+            "PrimitiveType",
+            "Quantity",
+            "Range",
+            "Reference",
+            "UsageContext",
         };
 
         /// <summary>
@@ -134,10 +139,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// </summary>
         private static readonly List<string> _commmonResourceTypes = new List<string>()
         {
-            "Resource",
             "DomainResource",
-            "Parameters",
             "OperationOutcome",
+            "Parameters",
+            "Resource",
+         /*   "CodeSystem",
+            "ValueSet", */
+        };
+
+        private static readonly List<string> _commonValueSets = new List<string>()
+        {
+            "http://hl7.org/fhir/ValueSet/filter-operator",
+            "http://hl7.org/fhir/ValueSet/publication-status",
         };
 
         /// <summary>Gets the reserved words.</summary>
@@ -270,9 +283,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteGenerationComment(infoWriter);
 
-                if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Enum) && subset.HasFlag(GenSubset.Main))
+                if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Enum))
                 {
-                    WriteCommonValueSets();
+                    WriteSharedValueSets(subset);
                 }
 
                 _modelWriter.WriteLineIndented("// Generated items");
@@ -487,7 +500,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return string.Empty;
             }
 
+#pragma warning disable CA1307 // Specify StringComparison
             return value.Replace("\"", "\"\"").Replace("\r", @"\r").Replace("\n", @"\n");
+#pragma warning restore CA1307 // Specify StringComparison
         }
 
         /// <summary>Writes the C# to FHIR map dictionary.</summary>
@@ -569,7 +584,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Writes the common enums.</summary>
-        private void WriteCommonValueSets()
+        private void WriteSharedValueSets(GenSubset subset)
         {
             HashSet<string> usedEnumNames = new HashSet<string>();
 
@@ -610,9 +625,25 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             continue;
                         }
 
-                        WriteEnum(vs, string.Empty, usedEnumNames);
+                        if (subset.HasFlag(GenSubset.Common) && !_commonValueSets.Contains(vs.URL))
+                        {
+                            continue;
+                        }
 
-                        _modelWriter.WriteLineIndented($"// Generated Shared Enumeration: {_writtenValueSets[vs.URL].ValueSetName} ({vs.URL})");
+                        // If this is a shared valueset that will be generated in the common library,
+                        // don't also generate it here.
+                        bool suppressWriteValueSet = subset.HasFlag(GenSubset.Main) && _commonValueSets.Contains(vs.URL);
+                        WriteEnum(vs, string.Empty, usedEnumNames, silent: suppressWriteValueSet);
+
+                        if (!suppressWriteValueSet)
+                        {
+                            _modelWriter.WriteLineIndented($"// Generated Shared Enumeration: {_writtenValueSets[vs.URL].ValueSetName} ({vs.URL})");
+                        }
+                        else
+                        {
+                            _modelWriter.WriteLineIndented($"// Deferred generation of Shared Enumeration (will be generated in common): {_writtenValueSets[vs.URL].ValueSetName} ({vs.URL})");
+                        }
+
                         _modelWriter.IncreaseIndent();
 
                         foreach (string path in vs.ReferencedByPaths)
@@ -630,6 +661,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                         _modelWriter.DecreaseIndent();
                         _modelWriter.WriteLine(string.Empty);
+
                     }
                 }
 
@@ -1097,7 +1129,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A string.</returns>
         private static string SanitizeForQuote(string value)
         {
+#pragma warning disable CA1307 // Specify StringComparison
             return value.Replace("\\", "\\\\").Replace("\"", "\\\"");
+#pragma warning restore CA1307 // Specify StringComparison
         }
 
         /// <summary>Writes a constrained quantity.</summary>
@@ -1257,10 +1291,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes a value set as an enum.</summary>
         /// <param name="vs">       The vs.</param>
         /// <param name="className">Name of the class this enum is being written in.</param>
+        /// <param name="silent">Do not actually write parameter to file, just add it in memory.</param>
         private void WriteEnum(
             FhirValueSet vs,
             string className,
-            HashSet<string> usedEnumNames)
+            HashSet<string> usedEnumNames,
+            bool silent = false)
         {
             if (_writtenValueSets.ContainsKey(vs.URL))
             {
@@ -1284,68 +1320,72 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             usedEnumNames.Add(nameSanitized);
 
-            if (vs.ReferencedCodeSystems.Count == 1)
+            if (!silent)
             {
-                WriteIndentedComment(
-                    $"{vs.Description}\n" +
-                    $"(url: {vs.URL})\n" +
-                    $"(system: {vs.ReferencedCodeSystems.First()})");
-            }
-            else
-            {
-                WriteIndentedComment(
-                    $"{vs.Description}\n" +
-                    $"(url: {vs.URL})\n" +
-                    $"(systems: {vs.ReferencedCodeSystems.Count})");
-            }
-
-            _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\")]");
-
-            _writer.WriteLineIndented($"public enum {nameSanitized}");
-
-            OpenScope();
-
-            HashSet<string> usedLiterals = new HashSet<string>();
-
-            foreach (FhirConcept concept in vs.Concepts)
-            {
-                string codeName = ConvertEnumValue(concept.Code);
-                string codeValue = FhirUtils.SanitizeForValue(concept.Code);
-
-                if (string.IsNullOrEmpty(concept.Definition))
+                if (vs.ReferencedCodeSystems.Count == 1)
                 {
-                    WriteIndentedComment($"MISSING DESCRIPTION\n(system: {concept.System})");
+                    WriteIndentedComment(
+                        $"{vs.Description}\n" +
+                        $"(url: {vs.URL})\n" +
+                        $"(system: {vs.ReferencedCodeSystems.First()})");
                 }
                 else
                 {
-                    WriteIndentedComment($"{concept.Definition}\n(system: {concept.System})");
+                    WriteIndentedComment(
+                        $"{vs.Description}\n" +
+                        $"(url: {vs.URL})\n" +
+                        $"(systems: {vs.ReferencedCodeSystems.Count})");
                 }
 
-                string display = FhirUtils.SanitizeForValue(concept.Display);
+                _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\")]");
 
-                _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+                _writer.WriteLineIndented($"public enum {nameSanitized}");
 
-                if (usedLiterals.Contains(codeName))
+                OpenScope();
+
+
+                HashSet<string> usedLiterals = new HashSet<string>();
+
+                foreach (FhirConcept concept in vs.Concepts)
                 {
-                    // start at 2 so that the unadorned version makes sense as v1
-                    for (int i = 2; i < 1000; i++)
-                    {
-                        if (usedLiterals.Contains($"{codeName}_{i}"))
-                        {
-                            continue;
-                        }
+                    string codeName = ConvertEnumValue(concept.Code);
+                    string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
-                        codeName = $"{codeName}_{i}";
-                        break;
+                    if (string.IsNullOrEmpty(concept.Definition))
+                    {
+                        WriteIndentedComment($"MISSING DESCRIPTION\n(system: {concept.System})");
                     }
+                    else
+                    {
+                        WriteIndentedComment($"{concept.Definition}\n(system: {concept.System})");
+                    }
+
+                    string display = FhirUtils.SanitizeForValue(concept.Display);
+
+                    _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+
+                    if (usedLiterals.Contains(codeName))
+                    {
+                        // start at 2 so that the unadorned version makes sense as v1
+                        for (int i = 2; i < 1000; i++)
+                        {
+                            if (usedLiterals.Contains($"{codeName}_{i}"))
+                            {
+                                continue;
+                            }
+
+                            codeName = $"{codeName}_{i}";
+                            break;
+                        }
+                    }
+
+                    usedLiterals.Add(codeName);
+
+                    _writer.WriteLineIndented($"{codeName},");
                 }
 
-                usedLiterals.Add(codeName);
-
-                _writer.WriteLineIndented($"{codeName},");
+                CloseScope();
             }
-
-            CloseScope();
 
             _writtenValueSets.Add(
                 vs.URL,
@@ -1444,9 +1484,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented(resourceReferences);
             }
 
-            // Generate the [AllowedTypes] attribute, except when we are generating datatypes and resources
-            // in Common, since this list probably contains classes that we have not yet moved to common.
-            if (!string.IsNullOrEmpty(allowedTypes) && !subset.HasFlag(GenSubset.Common))
+            // Generate the [AllowedTypes] attribute, except when we are generating an element for the
+            // open datatypes in Common, since this list contains classes that we have not yet moved to common.
+            bool isOpenTypeInCommon = subset.HasFlag(GenSubset.Common) && element.ElementTypes.Count > 25;
+            if (!string.IsNullOrEmpty(allowedTypes) && !isOpenTypeInCommon)
             {
                 _writer.WriteLineIndented("[CLSCompliant(false)]");
                 _writer.WriteLineIndented(allowedTypes);
