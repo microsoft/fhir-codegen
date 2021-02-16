@@ -83,7 +83,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 writer.WriteLineIndented("/// <summary>");
             }
 
+#pragma warning disable CA1307 // Specify StringComparison
             string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n")
+#pragma warning restore CA1307 // Specify StringComparison
                 .Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
 
             string[] lines = comment.Split('\n');
@@ -178,9 +180,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 result += bit.Substring(1);
             }
 
+#pragma warning disable CA1307 // Specify StringComparison
             result = result.Replace(".", "_");
             result = result.Replace(")", "_");
             result = result.Replace("(", "_");
+#pragma warning restore CA1307 // Specify StringComparison
 
             if (char.IsDigit(result[0]))
             {
