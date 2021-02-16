@@ -682,7 +682,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             _writer.WriteLineIndented($"/**");
 
-            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n");
+            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n", StringComparison.Ordinal).Replace("\n\n", "\n", StringComparison.Ordinal);
 
             string[] lines = comment.Split('\n');
             foreach (string line in lines)
