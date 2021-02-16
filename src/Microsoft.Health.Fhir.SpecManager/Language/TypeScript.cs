@@ -560,6 +560,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.Empty,
                 complex.Components.ContainsKey(element.Path));
 
+            if ((values.Count > 1) &&
+                (!element.IsOptional) &&
+                string.IsNullOrEmpty(optionalFlagString))
+            {
+                optionalFlagString = "?";
+            }
+
             foreach (KeyValuePair<string, string> kvp in values)
             {
                 if (!string.IsNullOrEmpty(element.Comment))
