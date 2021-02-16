@@ -489,11 +489,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented($"export enum {codeName} {{");
 
             _writer.IncreaseIndent();
-            foreach (string code in element.Codes)
-            {
-                FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
-                _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+            if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+            {
+                foreach (FhirConcept concept in vs.Concepts)
+                {
+                    FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
+
+                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                }
+            }
+            else
+            {
+                foreach (string code in element.Codes)
+                {
+                    FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+
+                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                }
             }
 
             _writer.DecreaseIndent();
@@ -590,6 +603,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             FhirTypeBase.NamingConvention.PascalCase);
 
                         _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName};");
+                    }
+                    else if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+                    {
+                        // use the full expansion
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))};");
                     }
                     else
                     {
