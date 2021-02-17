@@ -440,7 +440,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (isResource && ShouldWriteResourceName(complex.Name))
             {
                 _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
-                _writer.WriteLineIndented($"resourceType: '{complex.Name}'");
+                _writer.WriteLineIndented($"resourceType: '{complex.Name}';");
+            }
+            else if (isResource)
+            {
+                _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
+                _writer.WriteLineIndented($"resourceType: any;");
             }
 
             // write elements
