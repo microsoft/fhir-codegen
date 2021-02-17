@@ -75,6 +75,11 @@
       "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-publish-directory ..\\..\\..\\fhir\\publish --language CSharpBasic",
       "workingDirectory": "$(MSBuildProjectDirectory)"
     },
+    "csAll": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --include-experimental --fhir-publish-directory ..\\..\\..\\fhir\\publish --language CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
     "csLocal": {
       "commandName": "Project",
       "commandLineArgs": "--output-path ..\\..\\generated --load-local-fhir-build true --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",

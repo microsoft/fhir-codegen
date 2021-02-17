@@ -662,11 +662,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _writer.IncreaseIndent();
 
-            foreach (string code in element.Codes)
+            if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
             {
-                FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+                foreach (FhirConcept concept in vs.Concepts)
+                {
+                    FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
 
-                _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                    _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                }
+            }
+            else
+            {
+                foreach (string code in element.Codes)
+                {
+                    FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+
+                    _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                }
             }
 
             _writer.DecreaseIndent();
