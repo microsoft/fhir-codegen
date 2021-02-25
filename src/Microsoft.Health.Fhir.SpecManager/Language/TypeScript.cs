@@ -607,17 +607,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             string.Empty,
                             FhirTypeBase.NamingConvention.PascalCase);
 
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName}{arrayFlagString};");
                     }
                     else if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
                     {
                         // use the full expansion
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))}){arrayFlagString};");
                     }
                     else
                     {
                         // otherwise, inline the required codes
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {string.Join("|", element.Codes.Select(c => $"'{c}'"))};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString};");
                     }
                 }
                 else
