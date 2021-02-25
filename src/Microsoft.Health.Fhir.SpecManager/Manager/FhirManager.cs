@@ -24,21 +24,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Dictionary of published versions.</summary>
         private Dictionary<string, FhirVersionInfo> _publishedVersionDict;
 
-        /// <summary>Dictionary of development versions.</summary>
-        private Dictionary<string, FhirVersionInfo> _devVersionDict;
+        /// <summary>Local development version (if present).</summary>
+        private FhirVersionInfo _localVersion;
 
         /// <summary>Pathname of the npm directory.</summary>
         private string _fhirSpecDirectory;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FhirManager"/> class.
-        /// </summary>
-        ///
-        /// <param name="npmDirectory">Pathname of the npm directory.</param>
-        private FhirManager(string npmDirectory)
+        /// <summary>Pathname of the local FHIR Publish directory.</summary>
+        private string _localPublishDirectory;
+
+        /// <summary>Initializes a new instance of the <see cref="FhirManager"/> class.</summary>
+        /// <param name="npmDirectory">    Pathname of the npm directory.</param>
+        /// <param name="fhirPublishDirectory">Pathname of the fhir build directory.</param>
+        private FhirManager(string npmDirectory, string fhirPublishDirectory)
         {
             // set locals
             _fhirSpecDirectory = npmDirectory;
+            _localPublishDirectory = fhirPublishDirectory;
+            _localVersion = null;
 
             _knownVersions = new Dictionary<int, SortedSet<string>>()
             {
@@ -122,26 +125,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     }
                 },
             };
-
-            // create a dictionary for dev builds
-            _devVersionDict = new Dictionary<string, FhirVersionInfo>()
-            {
-                {
-                    "master",
-                    new FhirVersionInfo(5)
-                    {
-                        ReleaseName = string.Empty,
-                        PackageName = "hl7.fhir.r5.core",
-                        ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
-                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
-                        VersionString = "4.4.0",
-                        IsDevBuild = true,
-                        DevBranch = string.Empty,
-                        IsLocalBuild = false,
-                        IsOnDisk = false,
-                    }
-                },
-            };
         }
 
         /// <summary>Gets the current singleton.</summary>
@@ -154,35 +137,171 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         ///  null.</exception>
         /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
         ///  present.</exception>
-        /// <param name="fhirSpecDirectory">Pathname of the FHIR Spec directory.</param>
-        public static void Init(string fhirSpecDirectory)
+        /// <param name="fhirSpecDirectory">        Pathname of the FHIR Spec directory.</param>
+        /// <param name="fhirPublishDirectory">Pathname of the FHIR local publish directory.</param>
+        public static void Init(string fhirSpecDirectory, string fhirPublishDirectory)
         {
             // check to make sure we have a directory to work from
-            if (string.IsNullOrEmpty(fhirSpecDirectory))
+            if (string.IsNullOrEmpty(fhirSpecDirectory) && string.IsNullOrEmpty(fhirPublishDirectory))
             {
                 throw new ArgumentNullException(nameof(fhirSpecDirectory));
             }
 
-            string dir;
+            string specDir = string.Empty;
+            string publishDir = string.Empty;
 
-            // check for rooted vs relative
-            if (Path.IsPathRooted(fhirSpecDirectory))
+            if (!string.IsNullOrEmpty(fhirSpecDirectory))
             {
-                dir = fhirSpecDirectory;
-            }
-            else
-            {
-                dir = Path.Combine(Directory.GetCurrentDirectory(), fhirSpecDirectory);
+                // check for rooted vs relative
+                if (Path.IsPathRooted(fhirSpecDirectory))
+                {
+                    specDir = Path.GetFullPath(fhirSpecDirectory);
+                }
+                else
+                {
+                    specDir = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), fhirSpecDirectory));
+                }
+
+                // make sure the directory exists
+                if (!Directory.Exists(specDir))
+                {
+                    throw new DirectoryNotFoundException($"FHIR Specification Directory not found: {fhirSpecDirectory}");
+                }
             }
 
-            // make sure the directory exists
-            if (!Directory.Exists(dir))
+            if (!string.IsNullOrEmpty(fhirPublishDirectory))
             {
-                throw new DirectoryNotFoundException($"FHIR Specification Directory not found: {fhirSpecDirectory}");
+                // check for rooted vs relative
+                if (Path.IsPathRooted(fhirPublishDirectory))
+                {
+                    publishDir = Path.GetFullPath(fhirPublishDirectory);
+                }
+                else
+                {
+                    publishDir = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), fhirPublishDirectory));
+                }
+
+                // make sure the directory exists
+                if (!Directory.Exists(publishDir))
+                {
+                    throw new DirectoryNotFoundException($"FHIR Build Directory not found: {fhirPublishDirectory}");
+                }
             }
 
             // make our instance
-            _instance = new FhirManager(dir);
+            _instance = new FhirManager(specDir, publishDir);
+        }
+
+        /// <summary>Loads the local.</summary>
+        /// <exception cref="ArgumentNullException">      Thrown when one or more required arguments are
+        ///  null.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
+        ///  required range.</exception>
+        /// <param name="localLoadType">         Type of the local load.</param>
+        /// <param name="officialExpansionsOnly">(Optional) True to official expansions only.</param>
+        /// <returns>The local.</returns>
+        public FhirVersionInfo LoadLocal(
+            string localLoadType,
+            bool officialExpansionsOnly = false)
+        {
+            if (string.IsNullOrEmpty(_localPublishDirectory))
+            {
+                throw new ArgumentNullException($"Loading a local FHIR build requires a --fhir-publish-directory");
+            }
+
+            GetLocalVersionInfo(
+                out string fhirVersion,
+                out string versionString,
+                out string buildId,
+                out string buildDate);
+
+            int majorVersion = FhirVersionInfo.GetMajorVersion(versionString);
+
+            if (majorVersion == 0)
+            {
+                throw new ArgumentOutOfRangeException($"Unknown FHIR version: {versionString}");
+            }
+
+            _localVersion = new FhirVersionInfo(majorVersion)
+            {
+                ReleaseName = buildId,
+                PackageName = $"hl7.fhir.r{majorVersion}.core",
+                ExamplesPackageName = string.Empty,
+                ExpansionsPackageName = $"hl7.fhir.r{majorVersion}.expansions",
+                VersionString = versionString,
+                IsDevBuild = true,
+                DevBranch = string.Empty,
+                IsLocalBuild = true,
+                IsOnDisk = true,
+            };
+
+            // load the package
+            Loader.LoadLocalBuild(_localPublishDirectory, _fhirSpecDirectory, ref _localVersion, localLoadType, officialExpansionsOnly);
+
+            return _localVersion;
+        }
+
+        /// <summary>Gets local version information.</summary>
+        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+        /// <param name="fhirVersion">[out] The FHIR version.</param>
+        /// <param name="version">    [out] The version string (e.g., 4.0.1).</param>
+        /// <param name="buildId">    [out] Identifier for the build.</param>
+        /// <param name="buildDate">  [out] The build date.</param>
+        private void GetLocalVersionInfo(
+            out string fhirVersion,
+            out string version,
+            out string buildId,
+            out string buildDate)
+        {
+            string infoPath = Path.Combine(_localPublishDirectory, "version.info");
+
+            if (!File.Exists(infoPath))
+            {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+                throw new FileNotFoundException("Incomplete FHIR build, cannot find version information", infoPath);
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
+            }
+
+            IEnumerable<string> lines = File.ReadLines(infoPath);
+
+            fhirVersion = string.Empty;
+            version = string.Empty;
+            buildId = string.Empty;
+            buildDate = string.Empty;
+
+            foreach (string line in lines)
+            {
+                if (!line.Contains('=', StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                string[] kvp = line.Split('=');
+
+                if (kvp.Length != 2)
+                {
+                    continue;
+                }
+
+                switch (kvp[0])
+                {
+                    case "FhirVersion":
+                        fhirVersion = kvp[1];
+                        break;
+
+                    case "version":
+                        version = kvp[1];
+                        break;
+
+                    case "buildId":
+                        buildId = kvp[1];
+                        break;
+
+                    case "date":
+                        buildDate = kvp[1];
+                        break;
+                }
+            }
         }
 
         /// <summary>Loads a published version of FHIR.</summary>

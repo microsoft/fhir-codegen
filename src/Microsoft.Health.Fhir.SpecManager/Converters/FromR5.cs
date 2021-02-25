@@ -190,6 +190,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 contains = new List<FhirConcept>();
             }
 
+            List<KeyValuePair<string, string>> properties = new List<KeyValuePair<string, string>>();
+
+            if (ec.Property != null)
+            {
+                foreach (fhir_5.ValueSetExpansionContainsProperty prop in ec.Property)
+                {
+                    if (string.IsNullOrEmpty(prop.Code))
+                    {
+                        continue;
+                    }
+
+                    if (!string.IsNullOrEmpty(prop.ValueCode))
+                    {
+                        properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueCode));
+                    }
+                    else if (!string.IsNullOrEmpty(prop.ValueString))
+                    {
+                        properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueString));
+                    }
+                }
+            }
+
             // TODO: Determine if the Inactive flag needs to be checked
             if ((!string.IsNullOrEmpty(ec.System)) ||
                 (!string.IsNullOrEmpty(ec.Code)))
@@ -198,7 +220,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     ec.System,
                     ec.Code,
                     ec.Display,
-                    ec.Version));
+                    ec.Version,
+                    string.Empty,
+                    string.Empty,
+                    properties));
             }
 
             if ((ec.Contains != null) && (ec.Contains.Count > 0))
@@ -330,6 +355,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 return;
             }
 
+            List<KeyValuePair<string, string>> properties = new List<KeyValuePair<string, string>>();
+
             foreach (fhir_5.CodeSystemConcept concept in concepts)
             {
                 if (concept.Property != null)
@@ -337,10 +364,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     bool deprecated = false;
                     foreach (fhir_5.CodeSystemConceptProperty prop in concept.Property)
                     {
+                        if (string.IsNullOrEmpty(prop.Code))
+                        {
+                            continue;
+                        }
+
                         if ((prop.Code == "status") && (prop.ValueCode == "deprecated"))
                         {
                             deprecated = true;
                             break;
+                        }
+
+                        if (!string.IsNullOrEmpty(prop.ValueCode))
+                        {
+                            properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueCode));
+                        }
+                        else if (!string.IsNullOrEmpty(prop.ValueString))
+                        {
+                            properties.Add(new KeyValuePair<string, string>(prop.Code, prop.ValueString));
                         }
                     }
 
@@ -363,7 +404,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         concept.Display,
                         string.Empty,
                         concept.Definition,
-                        codeSystemId));
+                        codeSystemId,
+                        properties));
 
                 if (concept.Concept != null)
                 {
@@ -952,11 +994,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
 
                         // determine if there is type expansion
-                        if (field.Contains("[x]"))
+                        if (field.Contains("[x]", StringComparison.Ordinal))
                         {
                             // fix the field and path names
-                            id = id.Replace("[x]", string.Empty);
-                            field = field.Replace("[x]", string.Empty);
+                            id = id.Replace("[x]", string.Empty, StringComparison.Ordinal);
+                            field = field.Replace("[x]", string.Empty, StringComparison.Ordinal);
 
                             // force no base type
                             elementType = string.Empty;
@@ -1166,7 +1208,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             {
                 // try to parse this JSON into a resource object
                 return JsonConvert.DeserializeObject<fhir_5.Resource>(json, _jsonConverter);
-                //return JsonSerializer.Deserialize<fhir_5.Resource>(json);
             }
             catch (JsonException ex)
             {

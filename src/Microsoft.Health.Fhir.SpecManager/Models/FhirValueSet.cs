@@ -384,6 +384,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             HashSet<string> inclusionSet = null;
             HashSet<string> exclusionSet = null;
             int maxRecusrions = -1;
+            List<KeyValuePair<string, string>> filterProperties = new List<KeyValuePair<string, string>>();
 
             foreach (FhirValueSetFilter filter in filters)
             {
@@ -477,6 +478,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
                     case "concept:exists":
                     default:
+                        if (filter.Operation == "=")
+                        {
+                            filterProperties.Add(new KeyValuePair<string, string>(filter.Property, filter.Value));
+
+                            includeSelf = true;
+                            includeChildren = true;
+                            includeParents = false;
+
+                            continue;
+                        }
+
                         throw new NotImplementedException($"Unhandled filter: {filterKey}");
                 }
             }
@@ -501,7 +513,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     regex,
                     inclusionSet,
                     exclusionSet,
-                    maxRecusrions);
+                    maxRecusrions,
+                    filterProperties);
             }
 
             if (exclude)
@@ -516,21 +529,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     regex,
                     inclusionSet,
                     exclusionSet,
-                    maxRecusrions);
+                    maxRecusrions,
+                    filterProperties);
             }
         }
 
         /// <summary>Removes from node.</summary>
-        /// <param name="values">         [in,out] The values.</param>
-        /// <param name="node">           The node.</param>
-        /// <param name="includeSelf">    True to include, false to exclude the self.</param>
-        /// <param name="includeChildren">True to include, false to exclude the children.</param>
-        /// <param name="includeParents"> True to include, false to exclude the parents.</param>
-        /// <param name="exclusionKey">   The exclusion key.</param>
-        /// <param name="regex">          The RegEx.</param>
-        /// <param name="inclusionSet">   Set the inclusion belongs to.</param>
-        /// <param name="exclusionSet">   Set the exclusion belongs to.</param>
-        /// <param name="maxRecursions">  (Optional) The maximum recursions (-1 for no limit).</param>
+        /// <param name="values">          [in,out] The values.</param>
+        /// <param name="node">            The node.</param>
+        /// <param name="includeSelf">     True to include, false to exclude the self.</param>
+        /// <param name="includeChildren"> True to include, false to exclude the children.</param>
+        /// <param name="includeParents">  True to include, false to exclude the parents.</param>
+        /// <param name="exclusionKey">    The exclusion key.</param>
+        /// <param name="regex">           The RegEx.</param>
+        /// <param name="inclusionSet">    Set the inclusion belongs to.</param>
+        /// <param name="exclusionSet">    Set the exclusion belongs to.</param>
+        /// <param name="maxRecursions">   (Optional) The maximum recursions (-1 for no limit).</param>
+        /// <param name="filterProperties">(Optional) The include properties.</param>
         private static void RemoveFromNode(
             ref Dictionary<string, FhirConcept> values,
             FhirConceptTreeNode node,
@@ -541,7 +556,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Regex regex,
             HashSet<string> inclusionSet,
             HashSet<string> exclusionSet,
-            int maxRecursions = -1)
+            int maxRecursions = -1,
+            List<KeyValuePair<string, string>> filterProperties = null)
         {
             if ((!string.IsNullOrEmpty(exclusionKey)) &&
                 (node.Concept.Code == exclusionKey))
@@ -555,9 +571,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 ((inclusionSet == null) || inclusionSet.Contains(node.Concept.Code)) &&
                 ((exclusionSet == null) || (!exclusionSet.Contains(node.Concept.Code))))
             {
-                if (values.ContainsKey(node.Concept.Code))
+                string key = node.Concept.Key();
+
+                if (!values.ContainsKey(key))
                 {
-                    values.Remove(node.Concept.Code);
+                    if ((filterProperties != null) && (filterProperties.Count > 0))
+                    {
+                        if (node.Concept.MatchesProperties(filterProperties))
+                        {
+                            values.Remove(key);
+                        }
+                    }
+                    else
+                    {
+                        values.Remove(key);
+                    }
                 }
             }
 
@@ -582,7 +610,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         regex,
                         inclusionSet,
                         exclusionSet,
-                        maxRecursions);
+                        maxRecursions,
+                        filterProperties);
                 }
             }
 
@@ -605,20 +634,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     regex,
                     inclusionSet,
                     exclusionSet,
-                    maxRecursions);
+                    maxRecursions,
+                    filterProperties);
             }
         }
 
         /// <summary>Adds from node.</summary>
-        /// <param name="values">         [in,out] The values.</param>
-        /// <param name="node">           The node.</param>
-        /// <param name="includeSelf">    True to include, false to exclude the self.</param>
-        /// <param name="includeChildren">True to include, false to exclude the children.</param>
-        /// <param name="includeParents"> True to include, false to exclude the parents.</param>
-        /// <param name="exclusionKey">   The exclusion key.</param>
-        /// <param name="regex">          The RegEx.</param>
-        /// <param name="inclusionSet">   Set the inclusion belongs to.</param>
-        /// <param name="exclusionSet">   Set the exclusion belongs to.</param>
+        /// <param name="values">          [in,out] The values.</param>
+        /// <param name="node">            The node.</param>
+        /// <param name="includeSelf">     True to include, false to exclude the self.</param>
+        /// <param name="includeChildren"> True to include, false to exclude the children.</param>
+        /// <param name="includeParents">  True to include, false to exclude the parents.</param>
+        /// <param name="exclusionKey">    The exclusion key.</param>
+        /// <param name="regex">           The RegEx.</param>
+        /// <param name="inclusionSet">    Set the inclusion belongs to.</param>
+        /// <param name="exclusionSet">    Set the exclusion belongs to.</param>
+        /// <param name="maxRecursions">   (Optional) The maximum recursions (-1 for no limit).</param>
+        /// <param name="filterProperties">(Optional) The include properties.</param>
         private static void AddFromNode(
             ref Dictionary<string, FhirConcept> values,
             FhirConceptTreeNode node,
@@ -629,7 +661,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Regex regex,
             HashSet<string> inclusionSet,
             HashSet<string> exclusionSet,
-            int maxRecursions = -1)
+            int maxRecursions = -1,
+            List<KeyValuePair<string, string>> filterProperties = null)
         {
             if ((!string.IsNullOrEmpty(exclusionKey)) &&
                 (node.Concept != null) &&
@@ -649,7 +682,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
 
                 if (!values.ContainsKey(key))
                 {
-                    values.Add(node.Concept.Key(), node.Concept);
+                    if ((filterProperties != null) && (filterProperties.Count > 0))
+                    {
+                        if (node.Concept.MatchesProperties(filterProperties))
+                        {
+                            values.Add(key, node.Concept);
+                        }
+                    }
+                    else
+                    {
+                        values.Add(key, node.Concept);
+                    }
                 }
             }
 
@@ -673,7 +716,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                         exclusionKey,
                         regex,
                         inclusionSet,
-                        exclusionSet);
+                        exclusionSet,
+                        maxRecursions,
+                        filterProperties);
                 }
             }
 
@@ -695,7 +740,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     exclusionKey,
                     regex,
                     inclusionSet,
-                    exclusionSet);
+                    exclusionSet,
+                    maxRecursions,
+                    filterProperties);
             }
         }
 

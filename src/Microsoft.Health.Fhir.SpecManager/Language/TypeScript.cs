@@ -560,6 +560,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.Empty,
                 complex.Components.ContainsKey(element.Path));
 
+            if ((values.Count > 1) &&
+                (!element.IsOptional) &&
+                string.IsNullOrEmpty(optionalFlagString))
+            {
+                optionalFlagString = "?";
+            }
+
             foreach (KeyValuePair<string, string> kvp in values)
             {
                 if (!string.IsNullOrEmpty(element.Comment))
@@ -567,7 +574,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteIndentedComment(element.Comment);
                 }
 
-                _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                // Use generated enum for codes when required strength
+                if (element.Codes != null
+                        && element.Codes.Any()
+                        && !string.IsNullOrEmpty(element.ValueSet)
+                        && !string.IsNullOrEmpty(element.BindingStrength)
+                        && string.Equals(element.BindingStrength, "required", StringComparison.Ordinal))
+                {
+                    if (_exportEnums)
+                    {
+                        // If we are building enum, reference
+                        string codeName = FhirUtils.ToConvention(
+                            $"{element.Path}.Codes",
+                            string.Empty,
+                            FhirTypeBase.NamingConvention.PascalCase);
+
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName};");
+                    }
+                    else
+                    {
+                        // otherwise, inline the required codes
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {string.Join("|", element.Codes.Select(c => $"'{c}'"))};");
+                    }
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                }
 
                 if (RequiresExtension(kvp.Value))
                 {

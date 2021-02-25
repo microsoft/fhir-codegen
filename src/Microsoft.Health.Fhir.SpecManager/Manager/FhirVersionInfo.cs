@@ -1303,7 +1303,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         return 3;
 
                     case '4':
-                        if (versionString.StartsWith("4.4", StringComparison.Ordinal))
+
+                        if ((versionString[2] == '4') ||
+                            (versionString[2] == '5') ||
+                            (versionString[2] == '6'))
                         {
                             return 5;
                         }

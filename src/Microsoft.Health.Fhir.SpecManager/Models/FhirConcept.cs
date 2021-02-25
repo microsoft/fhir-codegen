@@ -11,6 +11,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     /// <summary>A fhir triplet.</summary>
     public class FhirConcept : ICloneable
     {
+        /// <summary>The properties and values.</summary>
+        private HashSet<string> _propertiesAndValues = null;
+
         /// <summary>Initializes a new instance of the <see cref="FhirConcept"/> class.</summary>
         /// <param name="system">    The system.</param>
         /// <param name="code">      The code.</param>
@@ -52,6 +55,46 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             else
             {
                 SystemLocalName = FhirUtils.SanitizeForProperty(systemLocalName, null);
+            }
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="FhirConcept"/> class.</summary>
+        /// <param name="system">         The system.</param>
+        /// <param name="code">           The code.</param>
+        /// <param name="display">        The display.</param>
+        /// <param name="version">        The version.</param>
+        /// <param name="definition">     The definition.</param>
+        /// <param name="systemLocalName">The name of the system.</param>
+        /// <param name="properties">     The properties.</param>
+        public FhirConcept(
+            string system,
+            string code,
+            string display,
+            string version,
+            string definition,
+            string systemLocalName,
+            List<KeyValuePair<string, string>> properties)
+            : this(
+                system,
+                code,
+                display,
+                version,
+                definition,
+                systemLocalName)
+        {
+            if ((properties != null) && (properties.Count > 0))
+            {
+                _propertiesAndValues = new HashSet<string>();
+
+                foreach (KeyValuePair<string, string> kvp in properties)
+                {
+                    string combined = kvp.Key + ":" + kvp.Value;
+
+                    if (!_propertiesAndValues.Contains(combined))
+                    {
+                        _propertiesAndValues.Add(combined);
+                    }
+                }
             }
         }
 
@@ -186,6 +229,50 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public object Clone()
         {
             return new FhirConcept(System, Code, Display, Version, Definition, SystemLocalName);
+        }
+
+        /// <summary>Matches properties.</summary>
+        /// <param name="properties">The properties.</param>
+        /// <returns>True if matches properties, false if not.</returns>
+        public bool MatchesProperties(List<KeyValuePair<string, string>> properties)
+        {
+            if (properties == null)
+            {
+                return true;
+            }
+
+            if (_propertiesAndValues == null)
+            {
+                return false;
+            }
+
+            foreach (KeyValuePair<string, string> kvp in properties)
+            {
+                string combined = kvp.Key + ":" + kvp.Value;
+
+                if (!_propertiesAndValues.Contains(combined))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>Query if this Concept has a property with the specified value.</summary>
+        /// <param name="propertyName"> Name of the property.</param>
+        /// <param name="propertyValue">The property value.</param>
+        /// <returns>True if this concept matches, false if not.</returns>
+        public bool HasProperty(string propertyName, string propertyValue)
+        {
+            if (_propertiesAndValues == null)
+            {
+                return false;
+            }
+
+            string combined = propertyName + ":" + propertyValue;
+
+            return _propertiesAndValues.Contains(combined);
         }
     }
 }

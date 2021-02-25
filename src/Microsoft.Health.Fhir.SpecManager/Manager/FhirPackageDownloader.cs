@@ -184,10 +184,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             string version,
             string specDirectory)
         {
-            Stream fileStream = null;
-            Stream gzipStream = null;
-            TarArchive tar = null;
-
             try
             {
                 // build our extraction directory name
@@ -199,17 +195,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     Directory.CreateDirectory(directory);
                 }
 
-                // start our download as a stream
-                fileStream = _httpClient.GetStreamAsync(uri).Result;
-
-                // extract to the npm directory
-                gzipStream = new GZipInputStream(fileStream);
-
-                // grab the tar archive
-                tar = TarArchive.CreateInputTarArchive(gzipStream);
-
-                // extract
-                tar.ExtractContents(directory);
+                using (Stream fileStream = _httpClient.GetStreamAsync(uri).Result)
+                using (Stream gzipStream = new GZipInputStream(fileStream))
+                using (TarArchive tar = TarArchive.CreateInputTarArchive(gzipStream))
+                {
+                    // extract
+                    tar.ExtractContents(directory);
+                }
 
                 return true;
             }
@@ -218,23 +210,56 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 Console.WriteLine($"DownloadPublishedPackage <<< failed to download package: {packageName}-{version}: {ex.Message}");
                 throw;
             }
-            finally
+        }
+
+        /// <summary>Downloads the and extract.</summary>
+        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+        /// <param name="sourceDir">    Path to load package files from.</param>
+        /// <param name="packageName">  Name of the package.</param>
+        /// <param name="version">      The version.</param>
+        /// <param name="specDirectory">Pathname of the specifier directory.</param>
+        /// <param name="dir">          [out] The dir the package was expanded to.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        internal static bool CopyAndExtract(
+            string sourceDir,
+            string packageName,
+            string version,
+            string specDirectory,
+            out string dir)
+        {
+            try
             {
-                // clean up
-                if (tar != null)
+                // build our extraction directory name
+                dir = Path.Combine(specDirectory, $"local-{packageName}-{version}");
+
+                // make sure our destination directory exists
+                if (!Directory.Exists(dir))
                 {
-                    tar.Close();
+                    Directory.CreateDirectory(dir);
                 }
 
-                if (gzipStream != null)
+                string sourceFilename = Path.Combine(sourceDir, $"{packageName}.tgz");
+
+                if (!File.Exists(sourceFilename))
                 {
-                    gzipStream.Close();
+                    throw new FileNotFoundException();
                 }
 
-                if (fileStream != null)
+                // open the source file
+                using (Stream fileStream = new FileStream(sourceFilename, FileMode.Open))
+                using (Stream gzipStream = new GZipInputStream(fileStream))
+                using (TarArchive tar = TarArchive.CreateInputTarArchive(gzipStream))
                 {
-                    fileStream.Close();
+                    // extract
+                    tar.ExtractContents(dir);
                 }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"DownloadPublishedPackage <<< failed to download package: {packageName}-{version}: {ex.Message}");
+                throw;
             }
         }
 
