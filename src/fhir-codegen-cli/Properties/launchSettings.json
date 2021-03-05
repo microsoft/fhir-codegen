@@ -50,6 +50,11 @@
       "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
       "workingDirectory": "$(MSBuildProjectDirectory)"
     },
+    "tsAll": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
     "cs2": {
       "commandName": "Project",
       "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
@@ -68,6 +73,11 @@
     "cs5": {
       "commandName": "Project",
       "commandLineArgs": "--output-path ..\\..\\generated --load-r5 latest --include-experimental --fhir-publish-directory ..\\..\\..\\fhir\\publish --language CSharpBasic",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "csAll": {
+      "commandName": "Project",
+      "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --include-experimental --fhir-publish-directory ..\\..\\..\\fhir\\publish --language CSharpBasic",
       "workingDirectory": "$(MSBuildProjectDirectory)"
     },
     "csLocal": {
