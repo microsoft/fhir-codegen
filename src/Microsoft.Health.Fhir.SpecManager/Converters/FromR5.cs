@@ -74,7 +74,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 Console.WriteLine($" - {value}");
             }
 
-            Console.WriteLine("Warnings (able to pass, but should not be happening)");
+            Console.WriteLine("Warnings (able to pass, but should be reviewed)");
 
             foreach (string value in _warnings)
             {
@@ -1100,16 +1100,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
                         else if (!string.IsNullOrEmpty(element.ContentReference))
                         {
-                            // check for local definition
-                            switch (element.ContentReference[0])
+                            if (element.ContentReference.StartsWith("http://hl7.org/fhir/StructureDefinition/", StringComparison.OrdinalIgnoreCase))
                             {
-                                case '#':
-                                    // use the local reference
-                                    elementType = element.ContentReference.Substring(1);
-                                    break;
-
-                                default:
-                                    throw new InvalidDataException($"Could not resolve ContentReference {element.ContentReference} in {sd.Name} field {element.Path}");
+                                int loc = element.ContentReference.IndexOf('#', StringComparison.Ordinal);
+                                elementType = element.ContentReference.Substring(loc + 1);
+                            }
+                            else if (element.ContentReference[0] == '#')
+                            {
+                                // use the local reference
+                                elementType = element.ContentReference.Substring(1);
+                            }
+                            else
+                            {
+                                throw new InvalidDataException($"Could not resolve ContentReference {element.ContentReference} in {sd.Name} field {element.Path}");
                             }
                         }
 

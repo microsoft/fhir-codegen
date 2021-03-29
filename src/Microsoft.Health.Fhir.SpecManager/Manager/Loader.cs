@@ -270,10 +270,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // add version-specific "MAGIC" items
             AddSearchMagicParameters(ref fhirVersionInfo);
 
-            if (fhirVersionInfo.ConverterHasIssues(out int _, out int _))
+            if (fhirVersionInfo.ConverterHasIssues(out int errorCount, out int warningCount))
             {
                 // make sure we cleared the last line
-                Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName} with Issues{new string(' ', 100)}");
+                Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}" +
+                    $" with {errorCount} errors" +
+                    $" and {warningCount} warnings" +
+                    $"{new string(' ', 100)}");
                 fhirVersionInfo.DisplayConverterIssues();
             }
             else

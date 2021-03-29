@@ -74,7 +74,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 Console.WriteLine($" - {value}");
             }
 
-            Console.WriteLine("Warnings (able to pass, but should not be happening)");
+            Console.WriteLine("Warnings (able to pass, but should be reviewed)");
 
             foreach (string value in _warnings)
             {
