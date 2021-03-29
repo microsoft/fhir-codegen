@@ -1,0 +1,70 @@
+{
+  "resourceType": "Observation",
+  "id": "herd1",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p/><p><b>category</b>: <span>Laboratory</span></p><p><b>code</b>: <span>Mycoplasma hyopneumoniae - MHP</span></p><p><b>subject</b>: <a>Generated Summary: id: 20171120-1234; active; type: animal; actual; <span>Porcine</span>; name: Breeding herd; 2500</a></p><p><b>encounter</b>: <span>part of a health assurance program</span></p><p><b>effective</b>: 2017-11-20</p><p><b>value</b>: 0.2 % (sample/positive control)</p><p><b>interpretation</b>: <span>Negative</span></p><p><b>specimen</b>: <a>30 serum. Generated Summary: id: 20171120-1234; <span>Pooled serum sample</span>; Pooled serum sample from 30 individuals</a></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>&gt;0.4 Positive; 0.3 to 0.4 Suspect &lt; 0.3 Negative</td></tr></table></div>"
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "80219-9",
+        "display": "Mycoplasma hyopneumoniae Ab sample/Positive control in Serum by Immunoassay"
+      },
+      {
+        "system": "http://acme.org/devices/clinical-codes",
+        "code": "Mycoplasma",
+        "display": "Mycoplasma"
+      }
+    ],
+    "text": "Mycoplasma hyopneumoniae - MHP"
+  },
+  "subject": {
+    "reference": "Group/herd1"
+  },
+  "encounter": {
+    "display": "part of a health assurance program"
+  },
+  "effectiveDateTime": "2017-11-20",
+  "valueQuantity": {
+    "value": 0.2,
+    "unit": "% (sample/positive control)",
+    "system": "http://unitsofmeasure.org",
+    "code": "%"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "NEG",
+          "display": "Negative"
+        }
+      ],
+      "text": "Negative"
+    }
+  ],
+  "specimen": {
+    "reference": "Specimen/pooled-serum",
+    "display": "30 serum"
+  },
+  "referenceRange": [
+    {
+      "text": ">0.4 Positive; 0.3 to 0.4 Suspect < 0.3 Negative"
+    }
+  ]
+}

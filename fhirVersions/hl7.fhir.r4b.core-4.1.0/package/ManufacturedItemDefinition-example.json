@@ -1,0 +1,74 @@
+{
+  "resourceType": "ManufacturedItemDefinition",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>manufacturedDoseForm</b>: <span>Film-coatedtablet</span></p><p><b>unitOfPresentation</b>: <span>Tablet</span></p><p><b>manufacturer</b>: <a>Organization/example</a></p><h3>Ingredients</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table><blockquote><p><b>property</b></p><p><b>type</b>: <span>shape</span></p><p><b>value</b>: <span>Oval</span></p></blockquote><blockquote><p><b>property</b></p><p><b>type</b>: <span>color</span></p><p><b>value</b>: <span>pink</span></p></blockquote><blockquote><p><b>property</b></p><p><b>type</b>: <span>imprint</span></p><p><b>value</b>: <span>894</span></p></blockquote></div>"
+  },
+  "manufacturedDoseForm": {
+    "coding": [
+      {
+        "system": "http://ema.europa.eu/example/manufactureddoseform",
+        "code": "Film-coatedtablet"
+      }
+    ]
+  },
+  "unitOfPresentation": {
+    "coding": [
+      {
+        "system": "http://ema.europa.eu/example/unitofpresentation",
+        "code": "Tablet"
+      }
+    ]
+  },
+  "manufacturer": [
+    {
+      "reference": "Organization/example"
+    }
+  ],
+  "ingredient": [
+    {
+      "reference": {
+        "reference": "Ingredient/example"
+      }
+    }
+  ],
+  "property": [
+    {
+      "type": {
+        "coding": [
+          {
+            "code": "shape"
+          }
+        ]
+      },
+      "valueCodeableConcept": {
+        "text": "Oval"
+      }
+    },
+    {
+      "type": {
+        "coding": [
+          {
+            "code": "color"
+          }
+        ]
+      },
+      "valueCodeableConcept": {
+        "text": "pink"
+      }
+    },
+    {
+      "type": {
+        "coding": [
+          {
+            "code": "imprint"
+          }
+        ]
+      },
+      "valueCodeableConcept": {
+        "text": "894"
+      }
+    }
+  ]
+}

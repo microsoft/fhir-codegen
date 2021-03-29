@@ -1,0 +1,27 @@
+{
+  "resourceType": "Endpoint",
+  "id": "direct-endpoint",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>status</b>: active</p><p><b>connectionType</b>: <span>direct-project</span></p><p><b>name</b>: MARTIN SMIETANKA</p><p><b>managingOrganization</b>: <a>Organization/299</a></p><p><b>payloadType</b>: <span>urn:hl7-org:sdwg:ccda-structuredBody:1.1</span></p><p><b>address</b>: <a>MARTIN.SMIETANKA@directnppes.com</a></p></div>"
+  },
+  "status": "active",
+  "connectionType": {
+    "code": "direct-project"
+  },
+  "name": "MARTIN SMIETANKA",
+  "managingOrganization": {
+    "reference": "Organization/299"
+  },
+  "payloadType": [
+    {
+      "coding": [
+        {
+          "system": "urn:oid:1.3.6.1.4.1.19376.1.2.3",
+          "code": "urn:hl7-org:sdwg:ccda-structuredBody:1.1"
+        }
+      ]
+    }
+  ],
+  "address": "mailto:MARTIN.SMIETANKA@directnppes.com"
+}

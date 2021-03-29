@@ -1,0 +1,192 @@
+{
+  "resourceType": "PackagedProductDefinition",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: {PCID}</p><p><b>description</b>: ALU-PVC/PVDC BLISTERS. CARTONS OF 10 FILM-COATED TABLETS.</p><blockquote><p><b>package</b></p><p><b>type</b>: <span>Carton</span></p><p><b>quantity</b>: 1</p><p><b>material</b>: <span>Paperboard</span></p><p><b>manufacturer</b>: <a>Organization/example</a></p><blockquote><p><b>property</b></p><p><b>type</b>: <span>height</span></p><p><b>value</b>: 50 mm</p></blockquote><blockquote><p><b>property</b></p><p><b>type</b>: <span>width</span></p><p><b>value</b>: 45 mm</p></blockquote><blockquote><p><b>property</b></p><p><b>type</b>: <span>depth</span></p><p><b>value</b>: 23.5 mm</p></blockquote><h3>Packages</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://ema.europa.eu/example/pcid",
+      "value": "{PCID}"
+    }
+  ],
+  "description": "ALU-PVC/PVDC BLISTERS. CARTONS OF 10 FILM-COATED TABLETS.",
+  "package": {
+    "type": {
+      "coding": [
+        {
+          "system": "http://ema.europa.eu/example/packageitemcontainertype",
+          "code": "Carton"
+        }
+      ]
+    },
+    "quantity": 1,
+    "material": [
+      {
+        "coding": [
+          {
+            "system": "http://ema.europa.eu/example/packageItemContainerMaterial",
+            "code": "Paperboard"
+          }
+        ]
+      }
+    ],
+    "manufacturer": [
+      {
+        "reference": "Organization/example"
+      }
+    ],
+    "property": [
+      {
+        "type": {
+          "coding": [
+            {
+              "code": "height"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 50,
+          "unit": "mm"
+        }
+      },
+      {
+        "type": {
+          "coding": [
+            {
+              "code": "width"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 45,
+          "unit": "mm"
+        }
+      },
+      {
+        "type": {
+          "coding": [
+            {
+              "code": "depth"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 23.5,
+          "unit": "mm"
+        }
+      }
+    ],
+    "package": [
+      {
+        "type": {
+          "coding": [
+            {
+              "system": "http://ema.europa.eu/example/packageitemcontainertype",
+              "code": "Blister"
+            }
+          ]
+        },
+        "quantity": 1,
+        "material": [
+          {
+            "coding": [
+              {
+                "system": "http://ema.europa.eu/example/packageItemContainerMaterial",
+                "code": "PVC"
+              }
+            ]
+          },
+          {
+            "coding": [
+              {
+                "system": "http://ema.europa.eu/example/packageItemContainerMaterial",
+                "code": "PVDC"
+              }
+            ]
+          },
+          {
+            "coding": [
+              {
+                "system": "http://ema.europa.eu/example/packageItemContainerMaterial",
+                "code": "alu"
+              }
+            ]
+          }
+        ],
+        "shelfLifeStorage": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://ema.europa.eu/example/shelfLifeTypePlaceHolder",
+                  "code": "ShelfLifeofPackagedMedicinalProduct"
+                }
+              ]
+            },
+            "periodQuantity": {
+              "value": 3,
+              "unit": "a"
+            },
+            "specialPrecautionsForStorage": [
+              {
+                "coding": [
+                  {
+                    "system": "http://ema.europa.eu/example/specialprecautionsforstorage",
+                    "code": "none"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "manufacturer": [
+          {
+            "reference": "Organization/example"
+          }
+        ],
+        "property": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "height"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 45,
+              "unit": "mm"
+            }
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "width"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 35,
+              "unit": "mm"
+            }
+          }
+        ],
+        "containedItem": [
+          {
+            "item": [
+              {
+                "reference": {
+                  "reference": "ManufacturedItemDefinition/tablet"
+                }
+              }
+            ],
+            "amountInteger": 10
+          }
+        ]
+      }
+    ]
+  }
+}

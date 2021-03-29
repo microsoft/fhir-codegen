@@ -1,0 +1,16 @@
+{
+  "resourceType": "DeviceRequest",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>status</b>: completed</p><p><b>intent</b>: original-order</p><p><b>code</b>: <a>Generated Summary: id: 345675</a></p><p><b>subject</b>: <a>Generated Summary: Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); , Phone: (03) 5555 6473, Phone: (03) 3410 5613, Phone: (03) 5555 8834; gender: male; birthDate: 1974-12-25; </a></p></div>"
+  },
+  "status": "completed",
+  "intent": "original-order",
+  "codeReference": {
+    "reference": "Device/example"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  }
+}

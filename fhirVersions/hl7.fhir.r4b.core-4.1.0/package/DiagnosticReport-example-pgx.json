@@ -1,0 +1,50 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "example-pgx",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span>Pharmacogenetics Report</span> </h2><table><tr><td>Subject</td><td>Unable to get Patient Details</td></tr><tr><td>When For</td><td>15 Oct. 2016, 12:34:56 pm</td></tr><tr><td>Reported</td><td>20 Oct. 2016, 2:00:05 pm</td></tr></table><p><b>Report Details</b></p><table><tr><td><b>Code</b></td><td><b>Value</b></td><td><b>Reported</b></td></tr><tr><td><a><span>CYP2C9 gene product metabolic activity interpretation</span></a></td><td><span>Normal metabolizer</span></td><td>4 Apr. 2013, 1:30:10 am</td></tr></table></div>"
+  },
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/example-pgx"
+    }
+  ],
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "https://system/PGxReport",
+        "code": "PGxReport",
+        "display": "Pharmacogenetics Report"
+      }
+    ],
+    "text": "Pharmacogenetics Report"
+  },
+  "subject": {
+    "reference": "Patient/899962",
+    "display": "Bob Smith"
+  },
+  "effectiveDateTime": "2016-10-15T12:34:56+11:00",
+  "issued": "2016-10-20T14:00:05+11:00",
+  "performer": [
+    {
+      "reference": "Organization/4829"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/example-phenotype"
+    }
+  ],
+  "presentedForm": [
+    {
+      "contentType": "application/pdf",
+      "language": "en",
+      "data": "cGRmSW5CYXNlNjRCaW5hcnk=",
+      "hash": "571ef9c5655840f324e679072ed62b1b95eef8a0",
+      "title": "Pharmacogenetics Report",
+      "creation": "2016-10-20T20:00:00+11:00"
+    }
+  ]
+}

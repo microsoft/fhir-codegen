@@ -1,0 +1,63 @@
+{
+  "resourceType": "CompartmentDefinition",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>url</b>: <code>http://hl7.org/fhir/CompartmentDefinition/example</code></p><p><b>name</b>: EXAMPLE</p><p><b>status</b>: draft</p><p><b>experimental</b>: true</p><p><b>date</b>: 2017-02-24</p><p><b>publisher</b>: Health Level Seven International (FHIR Infrastructure)</p><p><b>contact</b>: [string]: <a>http://hl7.org/fhir</a></p><p><b>description</b>: The set of resources associated with a particular Device (example with Communication and CommunicationRequest resourses only).</p><h3>UseContexts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table><p><b>purpose</b>: Provides an example of a FHIR compartment definition based on the Device resource type.</p><p><b>code</b>: Device</p><p><b>search</b>: true</p><blockquote><p><b>resource</b></p><p><b>code</b>: Communication</p><p><b>param</b>: sender, recipient</p><p><b>documentation</b>: The device used as the message sender and recipient</p></blockquote><blockquote><p><b>resource</b></p><p><b>code</b>: CommunicationRequest</p><p><b>param</b>: sender, recipient</p><p><b>documentation</b>: The device used as the message sender and recipient</p></blockquote></div>"
+  },
+  "url": "http://hl7.org/fhir/CompartmentDefinition/example",
+  "name": "EXAMPLE",
+  "status": "draft",
+  "experimental": true,
+  "date": "2017-02-24",
+  "publisher": "Health Level Seven International (FHIR Infrastructure)",
+  "contact": [
+    {
+      "name": "[string]",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        }
+      ]
+    }
+  ],
+  "description": "The set of resources associated with a particular Device (example with Communication and CommunicationRequest resourses only).",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/resource-types",
+            "code": "Device"
+          }
+        ]
+      }
+    }
+  ],
+  "purpose": "Provides an example of a FHIR compartment definition based on the Device resource type.",
+  "code": "Device",
+  "search": true,
+  "resource": [
+    {
+      "code": "Communication",
+      "param": [
+        "sender",
+        "recipient"
+      ],
+      "documentation": "The device used as the message sender and recipient"
+    },
+    {
+      "code": "CommunicationRequest",
+      "param": [
+        "sender",
+        "recipient"
+      ],
+      "documentation": "The device used as the message sender and recipient"
+    }
+  ]
+}

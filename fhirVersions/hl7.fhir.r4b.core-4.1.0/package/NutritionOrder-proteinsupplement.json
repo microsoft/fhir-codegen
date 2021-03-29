@@ -1,0 +1,68 @@
+{
+  "resourceType": "NutritionOrder",
+  "id": "proteinsupplement",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 123</p><p><b>status</b>: active</p><p><b>intent</b>: order</p><p><b>patient</b>: <a>Peter Chalmers. Generated Summary: Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); , Phone: (03) 5555 6473, Phone: (03) 3410 5613, Phone: (03) 5555 8834; gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a>Inpatient. Generated Summary: status: in-progress; <span>inpatient encounter</span></a></p><p><b>dateTime</b>: 2014-09-17</p><p><b>orderer</b>: <a>Dr Adam Careful. Generated Summary: id: 23; active; Adam Careful </a></p><h3>Supplements</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>ProductName</b></td><td><b>Schedule</b></td><td><b>Quantity</b></td><td><b>Instruction</b></td></tr><tr><td>*</td><td><span>High Protein Powder</span></td><td>Beneprotein</td><td>Starting 2015-02-10, Do , at meals</td><td>1 scoop</td><td>Beneprotein 1 scoop TID with meal.starting on  2015-02-10</td></tr></table></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://goodhealthhospital.org/nutrition-requests",
+      "value": "123"
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "patient": {
+    "reference": "Patient/example",
+    "display": "Peter Chalmers"
+  },
+  "encounter": {
+    "reference": "Encounter/example",
+    "display": "Inpatient"
+  },
+  "dateTime": "2014-09-17",
+  "orderer": {
+    "reference": "Practitioner/example",
+    "display": "Dr Adam Careful"
+  },
+  "supplement": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "442991000124104",
+            "display": "Adult high protein formula"
+          },
+          {
+            "system": "http://goodhealthhospital.org/supplement-type-codes",
+            "code": "1000",
+            "display": "High Protein Powder"
+          }
+        ],
+        "text": "High Protein Powder"
+      },
+      "productName": "Beneprotein",
+      "schedule": [
+        {
+          "repeat": {
+            "boundsPeriod": {
+              "start": "2015-02-10"
+            },
+            "when": [
+              "C"
+            ]
+          }
+        }
+      ],
+      "quantity": {
+        "value": 1,
+        "unit": "scoop",
+        "system": "http://unitsofmeasure.org",
+        "code": "{scoop}"
+      },
+      "instruction": "Beneprotein 1 scoop TID with meal.starting on  2015-02-10"
+    }
+  ]
+}

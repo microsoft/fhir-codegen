@@ -1,0 +1,45 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "ambulation",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 45678</p><p><b>basedOn</b>: <a>Maternity care plan. Generated Summary: status: active; intent: plan; period: 2013-01-01 --&gt; 2013-10-01</a></p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>code</b>: <span>Ambulation</span></p><p><b>subject</b>: <a>Generated Summary: Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); , Phone: (03) 5555 6473, Phone: (03) 3410 5613, Phone: (03) 5555 8834; gender: male; birthDate: 1974-12-25; </a></p><p><b>authoredOn</b>: 2017-03-05</p><p><b>requester</b>: <a>Dr. Beverly Crusher. Generated Summary: </a></p><p><b>reasonReference</b>: <a>Blood Pressure. Generated Summary: id: urn:uuid:187e0c12-8dd2-67e2-99b2-bf273c878281; <span>Vital Signs</span>; <span>Blood pressure systolic &amp; diastolic</span>; effective: 2012-09-17; <span>Below low normal</span>; <span>Right arm</span></a></p></div>"
+  },
+  "identifier": [
+    {
+      "value": "45678"
+    }
+  ],
+  "basedOn": [
+    {
+      "reference": "CarePlan/preg",
+      "display": "Maternity care plan"
+    }
+  ],
+  "status": "completed",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "62013009",
+        "display": "Ambulating patient (procedure)"
+      }
+    ],
+    "text": "Ambulation"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "authoredOn": "2017-03-05",
+  "requester": {
+    "reference": "Practitioner/3ad0687e-f477-468c-afd5-fcc2bf897809",
+    "display": "Dr. Beverly Crusher"
+  },
+  "reasonReference": [
+    {
+      "reference": "Observation/blood-pressure",
+      "display": "Blood Pressure"
+    }
+  ]
+}

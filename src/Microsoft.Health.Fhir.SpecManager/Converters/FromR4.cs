@@ -30,10 +30,58 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
         private readonly JsonConverter _jsonConverter;
 
+        /// <summary>The errors.</summary>
+        private List<string> _errors;
+
+        /// <summary>The warnings.</summary>
+        private List<string> _warnings;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FromR4"/> class.
         /// </summary>
-        public FromR4() => _jsonConverter = new fhir_4.ResourceConverter();
+        public FromR4()
+        {
+            _jsonConverter = new fhir_4.ResourceConverter();
+            _errors = new List<string>();
+            _warnings = new List<string>();
+        }
+
+        /// <summary>Query if this object has issues.</summary>
+        /// <param name="errorCount">  [out] Number of errors.</param>
+        /// <param name="warningCount">[out] Number of warnings.</param>
+        /// <returns>True if issues, false if not.</returns>
+        public bool HasIssues(out int errorCount, out int warningCount)
+        {
+            errorCount = _errors.Count;
+            warningCount = _warnings.Count;
+
+            if ((errorCount > 0) || (warningCount > 0))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>Displays the issues.</summary>
+        public void DisplayIssues()
+        {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+            Console.WriteLine("Errors (only able to pass with manual code changes)");
+
+            foreach (string value in _errors)
+            {
+                Console.WriteLine($" - {value}");
+            }
+
+            Console.WriteLine("Warnings (able to pass, but should not be happening)");
+
+            foreach (string value in _warnings)
+            {
+                Console.WriteLine($" - {value}");
+            }
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
+        }
 
         /// <summary>Process the value set.</summary>
         /// <param name="vs">             The vs.</param>
@@ -42,8 +90,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_4.ValueSet vs,
             FhirVersionInfo fhirVersionInfo)
         {
+            if (string.IsNullOrEmpty(vs.Status))
+            {
+                vs.Status = "unknown";
+            }
+
             // ignore retired
             if (vs.Status.Equals("retired", StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            // do not process a value set if we have already loaded it
+            if (fhirVersionInfo.HasValueSet(vs.Url))
             {
                 return;
             }
@@ -161,7 +220,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             if (string.IsNullOrEmpty(vs.Version))
             {
-                throw new Exception($"Cannot index ValueSet: {vs.Url} version: {vs.Version}");
+                vs.Version = "0";
+                _warnings.Add($"ValueSet {vs.Name} ({vs.Id}): No Version present");
+                //throw new Exception($"Cannot index ValueSet: {vs.Url} version: {vs.Version}");
             }
 
             FhirValueSet valueSet = new FhirValueSet(
@@ -178,6 +239,47 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
 
             // add our code system
             fhirVersionInfo.AddValueSet(valueSet);
+
+            if ((valueSet.Expansion == null) &&
+                (!IsExpandable(includes)))
+            {
+                _warnings.Add($"ValueSet {vs.Name} ({vs.Id}): Unexpandable Value Set in core specification!");
+            }
+        }
+
+        /// <summary>Query if 'includes' is expandable.</summary>
+        /// <param name="includes">The includes.</param>
+        /// <returns>True if expandable, false if not.</returns>
+        private bool IsExpandable(List<FhirValueSetComposition> includes)
+        {
+            if ((includes == null) || (includes.Count == 0))
+            {
+                return false;
+            }
+
+            foreach (FhirValueSetComposition comp in includes)
+            {
+                if (comp.System != null)
+                {
+                    if (comp.System.StartsWith("http://hl7.org/fhir/", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+
+                    if (comp.System.StartsWith("http://terminology.hl7.org/CodeSystem/", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                }
+
+                if ((comp.LinkedValueSets != null) &&
+                    (comp.LinkedValueSets.Count > 0))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>Adds the contains to 'ec'.</summary>
@@ -282,6 +384,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_4.CodeSystem cs,
             FhirVersionInfo fhirVersionInfo)
         {
+            // TODO: Patch for R4B
+            if (string.IsNullOrEmpty(cs.Status))
+            {
+                cs.Status = "unknown";
+                _errors.Add($"CodeSystem {cs.Name} ({cs.Id}): Status field missing");
+            }
+
             // ignore retired
             if (cs.Status.Equals("retired", StringComparison.Ordinal))
             {
@@ -766,7 +875,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="sd">                   The structure definition to parse.</param>
         /// <param name="fhirVersionInfo">      FHIR Version information.</param>
         /// <param name="definitionComplexType">Type of strcuture definition we are parsing.</param>
-        private static void ProcessComplex(
+        private void ProcessComplex(
             fhir_4.StructureDefinition sd,
             FhirVersionInfo fhirVersionInfo,
             FhirComplex.FhirComplexType definitionComplexType)
@@ -970,27 +1079,33 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
 
                         // determine if there is type expansion
-                        if (field.Contains("[x]"))
+                        if (field.Contains("[x]", StringComparison.OrdinalIgnoreCase))
                         {
                             // fix the field and path names
-                            id = id.Replace("[x]", string.Empty);
-                            field = field.Replace("[x]", string.Empty);
+                            id = id.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
+                            field = field.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
 
                             // force no base type
                             elementType = string.Empty;
                         }
                         else if (!string.IsNullOrEmpty(element.ContentReference))
                         {
-                            // check for local definition
-                            switch (element.ContentReference[0])
+                            if (element.ContentReference.StartsWith("http://hl7.org/fhir/StructureDefinition/", StringComparison.OrdinalIgnoreCase))
                             {
-                                case '#':
-                                    // use the local reference
-                                    elementType = element.ContentReference.Substring(1);
-                                    break;
+                                int loc = element.ContentReference.IndexOf('#', StringComparison.Ordinal);
+                                elementType = element.ContentReference.Substring(loc + 1);
 
-                                default:
-                                    throw new InvalidDataException($"Could not resolve ContentReference {element.ContentReference} in {sd.Name} field {element.Path}");
+                                _warnings.Add($"Complex: {sd.Name} ({sd.Id}): New format ContentReference: {element.Id}: {element.ContentReference}");
+
+                            }
+                            else if (element.ContentReference[0] == '#')
+                            {
+                                // use the local reference
+                                elementType = element.ContentReference.Substring(1);
+                            }
+                            else
+                            {
+                                throw new InvalidDataException($"Could not resolve ContentReference {element.ContentReference} in {sd.Name} field {element.Path}");
                             }
                         }
 

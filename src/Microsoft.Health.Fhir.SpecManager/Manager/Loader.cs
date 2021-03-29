@@ -250,11 +250,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo);
 
             // process Value Set expansions
-            if (officialExpansionsOnly)
-            {
-                ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo);
-            }
-            else
+            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo);
+
+            // process other value set definitions (if requested)
+            if (!officialExpansionsOnly)
             {
                 ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo);
             }
@@ -271,8 +270,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // add version-specific "MAGIC" items
             AddSearchMagicParameters(ref fhirVersionInfo);
 
-            // make sure we cleared the last line
-            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+            if (fhirVersionInfo.ConverterHasIssues(out int _, out int _))
+            {
+                // make sure we cleared the last line
+                Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName} with Issues{new string(' ', 100)}");
+                fhirVersionInfo.DisplayConverterIssues();
+            }
+            else
+            {
+                // make sure we cleared the last line
+                Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+            }
         }
 
         /// <summary>Adds the search magic parameters.</summary>
@@ -372,7 +380,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             foreach (string filename in files)
             {
                 // check for skipping file
-                if (FhirVersionInfo.ShouldSkipFile(Path.GetFileName(filename)))
+                if (fhirVersionInfo.ShouldSkipFile(Path.GetFileName(filename)))
                 {
                     // skip this file
                     continue;

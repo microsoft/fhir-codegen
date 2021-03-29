@@ -1,0 +1,50 @@
+{
+  "resourceType": "Specimen",
+  "id": "pooled-serum",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>accessionIdentifier</b>: id: 20171120-1234</p><p><b>type</b>: <span>Pooled serum sample</span></p><p><b>subject</b>: <a>Generated Summary: id: 20171120-1234; active; type: animal; actual; <span>Porcine</span>; name: Breeding herd; 2500</a></p><h3>Collections</h3><table><tr><td>-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td></tr><tr><td>*</td><td><span>James Herriot, FRCVS</span></td><td>2017-11-14</td></tr></table><h3>Containers</h3><table><tr><td>-</td><td><b>Type</b></td></tr><tr><td>*</td><td><span>Red Top Blood Collection Tube</span></td></tr></table><p><b>note</b>: Pooled serum sample from 30 individuals</p></div>"
+  },
+  "accessionIdentifier": {
+    "system": "https://vetmed.iastate.edu/vdl",
+    "value": "20171120-1234"
+  },
+  "type": {
+    "coding": [
+      {
+        "system": "https://vetmed.iastate.edu/vdl",
+        "code": "Serum sample, pooled",
+        "display": "Serum sample, pooled"
+      }
+    ],
+    "text": "Pooled serum sample"
+  },
+  "subject": {
+    "reference": "Group/herd1"
+  },
+  "collection": {
+    "collector": {
+      "display": "James Herriot, FRCVS"
+    },
+    "collectedDateTime": "2017-11-14"
+  },
+  "container": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "https://vetmed.iastate.edu/vdl",
+            "code": "RTT",
+            "display": "Red Top Tube"
+          }
+        ],
+        "text": "Red Top Blood Collection Tube"
+      }
+    }
+  ],
+  "note": [
+    {
+      "text": "Pooled serum sample from 30 individuals"
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "resourceType": "SubstanceDefinition",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 100000099270</p><p><b>status</b>: <span>Current</span></p><p><b>category</b>: <span>Chemical</span></p><p><b>domain</b>: <span>Human use</span></p><h3>Codes</h3><table><tr><td>-</td><td><b>Code</b></td></tr><tr><td>*</td><td><span>SUB99611MIG</span></td></tr></table><blockquote><p><b>name</b></p><p><b>name</b>: PARACETAMOL</p><p><b>status</b>: <span>Current</span></p><p><b>preferred</b>: true</p><p><b>language</b>: <span>English</span></p></blockquote><blockquote><p><b>name</b></p><p><b>name</b>: ΠΑΡΑΚΕΤΑΜΌΛΗ</p><p><b>status</b>: <span>Current</span></p><p><b>preferred</b>: false</p><p><b>language</b>: <span>Greek, Modern (1453-)</span></p></blockquote><blockquote><p><b>name</b></p><p><b>name</b>: ПАРАЦЕТАМОЛ</p><p><b>status</b>: <span>Current</span></p><p><b>preferred</b>: false</p><p><b>language</b>: <span>Bulgarian</span></p></blockquote><blockquote><p><b>name</b></p><p><b>name</b>: ACETAMINOPHEN</p><p><b>status</b>: <span>Current</span></p><p><b>preferred</b>: false</p><p><b>language</b>: <span>English</span></p></blockquote></div>"
+  },
+  "identifier": {
+    "system": "http://example.europa.eu/fhir/SMSId",
+    "value": "100000099270"
+  },
+  "status": {
+    "coding": [
+      {
+        "system": "http://example.europa.eu/fhir/Status",
+        "code": "200000005004",
+        "display": "Current"
+      }
+    ]
+  },
+  "category": {
+    "coding": [
+      {
+        "system": "http://example.europa.eu/fhir/SubstanceType",
+        "code": "100000075670",
+        "display": "Chemical"
+      }
+    ]
+  },
+  "domain": {
+    "coding": [
+      {
+        "system": "http://example.europa.eu/fhir/Domain",
+        "code": "100000000012",
+        "display": "Human use"
+      }
+    ]
+  },
+  "code": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://example.europa.eu/fhir/Substance",
+            "code": "SUB99611MIG"
+          }
+        ]
+      }
+    }
+  ],
+  "name": [
+    {
+      "name": "PARACETAMOL",
+      "status": {
+        "coding": [
+          {
+            "system": "http://example.europa.eu/fhir/Status",
+            "code": "200000005004",
+            "display": "Current"
+          }
+        ]
+      },
+      "preferred": true,
+      "language": [
+        {
+          "coding": [
+            {
+              "system": "http://example.europa.eu/fhir/Language",
+              "code": "100000072147",
+              "display": "English"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ΠΑΡΑΚΕΤΑΜΌΛΗ",
+      "status": {
+        "coding": [
+          {
+            "system": "http://example.europa.eu/fhir/Status",
+            "code": "200000005004",
+            "display": "Current"
+          }
+        ]
+      },
+      "preferred": false,
+      "language": [
+        {
+          "coding": [
+            {
+              "system": "http://example.europa.eu/fhir/Language",
+              "code": "100000072181",
+              "display": "Greek, Modern (1453-)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ПАРАЦЕТАМОЛ",
+      "status": {
+        "coding": [
+          {
+            "system": "http://example.europa.eu/fhir/Status",
+            "code": "200000005004",
+            "display": "Current"
+          }
+        ]
+      },
+      "preferred": false,
+      "language": [
+        {
+          "coding": [
+            {
+              "system": "http://example.europa.eu/fhir/Language",
+              "code": "100000072142",
+              "display": "Bulgarian"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACETAMINOPHEN",
+      "status": {
+        "coding": [
+          {
+            "system": "http://example.europa.eu/fhir/Status",
+            "code": "200000005004",
+            "display": "Current"
+          }
+        ]
+      },
+      "preferred": false,
+      "language": [
+        {
+          "coding": [
+            {
+              "system": "http://example.europa.eu/fhir/Language",
+              "code": "100000072147",
+              "display": "English"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

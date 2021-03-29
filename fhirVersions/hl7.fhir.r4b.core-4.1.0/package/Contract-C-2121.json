@@ -1,0 +1,179 @@
+{
+  "resourceType": "Contract",
+  "id": "C-2121",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2016-07-19T18:18:42.108-04:00"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>status</b>: executed</p><p><b>contentDerivative</b>: <span>Content Registration</span></p><p><b>issued</b>: 2 Nov. 2013, 12:18:27 pm</p><p><b>applies</b>: 2 Nov. 2013, 12:18:27 pm --&gt; (ongoing)</p><p><b>subject</b>: <a>Generated Summary: BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); Phone: +31612345678, Phone: +31201234567; gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p><p><b>type</b>: <span>Opt-in consent directive</span></p><p><b>subType</b>: <span>Health Care Directive</span></p><blockquote><p><b>term</b></p><h3>Offers</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Decision</b></td><td><b>Text</b></td></tr><tr><td>*</td><td><span>Statutory</span></td><td><span>opt-in</span></td><td>Can't refuse</td></tr></table><h3>Assets</h3><table><tr><td>-</td><td><b>Period</b></td></tr><tr><td>*</td><td>2 Nov. 2013, 12:18:27 pm --&gt; 2 Nov. 2019, 12:18:27 pm</td></tr></table><blockquote><p><b>action</b></p><p><b>type</b>: <span>Action A</span></p><blockquote><p><b>subject</b></p><p><b>reference</b>: <a>VA Ann Arbor Healthcare System. Generated Summary: id: 91654 (OFFICIAL), id: 17-0112278 (USUAL); <span>University Medical Hospital</span>; name: Burgers University Medical Center; Phone: 022-655 2300</a></p><p><b>role</b>: <span>Recipient of restricted health information</span></p></blockquote><blockquote><p><b>subject</b></p><p><b>reference</b>: <a>Community Mental Health Clinic. Generated Summary: id: 666666; name: XYZ Insurance; alias: ABC Insurance</a></p><p><b>role</b>: <span>Sender of restricted health information</span></p></blockquote><p><b>intent</b>: <span>health program reporting</span></p><p><b>status</b>: <span>Sample</span></p></blockquote></blockquote><blockquote><p><b>signer</b></p><p><b>type</b>: <span>SELF</span></p><p><b>party</b>: <a>Alice Recruit. Generated Summary: BSN: 123456789 (OFFICIAL), BSN: 123456789 (OFFICIAL); active; Roel(OFFICIAL); Phone: +31612345678, Phone: +31201234567; gender: male; birthDate: 1960-03-13; <span>Legally married</span>; </a></p><h3>Signatures</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><h3>Legals</h3><table><tr><td>-</td><td><b>Content[x]</b></td></tr><tr><td>*</td><td/></tr></table></div>"
+  },
+  "status": "executed",
+  "contentDerivative": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/contract-content-derivative",
+        "code": "registration"
+      }
+    ]
+  },
+  "issued": "2013-11-01T21:18:27-04:00",
+  "applies": {
+    "start": "2013-11-01T21:18:27-04:00"
+  },
+  "subject": [
+    {
+      "reference": "Patient/f201"
+    }
+  ],
+  "type": {
+    "coding": [
+      {
+        "system": "http://mdhhs.org/fhir/consentdirective-type",
+        "code": "OPTIN"
+      }
+    ],
+    "text": "Opt-in consent directive"
+  },
+  "subType": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/consentcategorycodes",
+          "code": "hcd"
+        }
+      ]
+    }
+  ],
+  "term": [
+    {
+      "offer": {
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/contracttermtypecodes",
+              "code": "statutory"
+            }
+          ]
+        },
+        "decision": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "OPTIN"
+            }
+          ]
+        },
+        "text": "Can't refuse"
+      },
+      "asset": [
+        {
+          "period": [
+            {
+              "start": "2013-11-01T21:18:27-04:00",
+              "end": "2019-11-01T21:18:27-04:00"
+            }
+          ]
+        }
+      ],
+      "action": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/contractaction",
+                "code": "action-a"
+              }
+            ]
+          },
+          "subject": [
+            {
+              "reference": [
+                {
+                  "reference": "Organization/f001",
+                  "display": "VA Ann Arbor Healthcare System"
+                }
+              ],
+              "role": {
+                "coding": [
+                  {
+                    "system": "http://mdhhs.org/fhir/consent-actor-type",
+                    "code": "IR",
+                    "display": "Recipient"
+                  }
+                ],
+                "text": "Recipient of restricted health information"
+              }
+            },
+            {
+              "reference": [
+                {
+                  "reference": "Organization/2",
+                  "display": "Community Mental Health Clinic"
+                }
+              ],
+              "role": {
+                "coding": [
+                  {
+                    "system": "http://mdhhs.org/fhir/consent-actor-type",
+                    "code": "IS",
+                    "display": "Sender"
+                  }
+                ],
+                "text": "Sender of restricted health information"
+              }
+            }
+          ],
+          "intent": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+                "code": "HPRGRP"
+              }
+            ]
+          },
+          "status": {
+            "text": "Sample"
+          }
+        }
+      ]
+    }
+  ],
+  "signer": [
+    {
+      "type": {
+        "system": "http://mdhhs.org/fhir/consent-signer-type",
+        "code": "SELF"
+      },
+      "party": {
+        "reference": "Patient/f201",
+        "display": "Alice Recruit"
+      },
+      "signature": [
+        {
+          "type": [
+            {
+              "system": "urn:iso-astm:E1762-95:2013",
+              "code": "1.2.840.10065.1.12.1.1"
+            }
+          ],
+          "when": "2017-02-08T10:57:34+01:00",
+          "who": {
+            "reference": "Patient/f201"
+          }
+        }
+      ]
+    }
+  ],
+  "legal": [
+    {
+      "contentAttachment": {
+        "contentType": "application/pdf",
+        "language": "en-US",
+        "url": "http://org.mihin.ecms/ConsentDirective-2121",
+        "title": "MDHHS-5515 Consent To Share Your Health Information"
+      }
+    }
+  ]
+}

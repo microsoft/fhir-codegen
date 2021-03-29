@@ -1,0 +1,67 @@
+{
+  "resourceType": "PackagedProductDefinition",
+  "id": "package-with-liquid-and-syringe",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>subject</b>: <a>MedicinalProductDefinition/ProductThatHasThisPackType</a></p><blockquote><p><b>package</b></p><blockquote><p><b>containedItem</b></p><h3>Items</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table><p><b>amount</b>: 20 ml</p></blockquote><blockquote><p><b>containedItem</b></p><h3>Items</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "DeviceDefinition",
+      "id": "syringeDevice",
+      "type": {
+        "text": "syringe"
+      }
+    },
+    {
+      "resourceType": "ManufacturedItemDefinition",
+      "id": "liquidItem",
+      "manufacturedDoseForm": {
+        "coding": [
+          {
+            "system": "http://example.org.uk/fhir/doseform",
+            "code": "solution for injection"
+          }
+        ]
+      },
+      "ingredient": [
+        {
+          "reference": {
+            "reference": "Ingredient/liquidIngredient"
+          }
+        }
+      ]
+    }
+  ],
+  "subject": [
+    {
+      "reference": "MedicinalProductDefinition/ProductThatHasThisPackType"
+    }
+  ],
+  "package": {
+    "containedItem": [
+      {
+        "item": [
+          {
+            "reference": {
+              "reference": "#liquidItem"
+            }
+          }
+        ],
+        "amountQuantity": {
+          "value": 20,
+          "unit": "ml"
+        }
+      },
+      {
+        "item": [
+          {
+            "reference": {
+              "reference": "#syringeDevice"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

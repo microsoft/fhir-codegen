@@ -1,0 +1,110 @@
+{
+  "resourceType": "NutritionOrder",
+  "id": "enteralcontinuous",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 123</p><p><b>status</b>: active</p><p><b>intent</b>: order</p><p><b>patient</b>: <a>Peter Chalmers. Generated Summary: Medical record number: 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim , Peter James Windsor (MAIDEN); , Phone: (03) 5555 6473, Phone: (03) 3410 5613, Phone: (03) 5555 8834; gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a>Inpatient. Generated Summary: status: in-progress; <span>inpatient encounter</span></a></p><p><b>dateTime</b>: 2014-09-17</p><p><b>orderer</b>: <a>Dr Adam Careful. Generated Summary: id: 23; active; Adam Careful </a></p><blockquote><p><b>enteralFormula</b></p><p><b>baseFormulaType</b>: <span>Diabetic specialty enteral formula</span></p><p><b>baseFormulaProductName</b>:  Acme Diabetes Formula</p><p><b>caloricDensity</b>: 1 calories per milliliter</p><p><b>routeofAdministration</b>: <span>Instillation, nasogastric tube</span></p><blockquote><p><b>administration</b></p><p><b>schedule</b>: Starting 17 Sep. 2014, 5:00:00 pm, Do Once</p><p><b>rate</b>: 60 ml/hr</p></blockquote><blockquote><p><b>administration</b></p><p><b>schedule</b>: Starting 17 Sep. 2014, 9:00:00 pm, Do Once</p><p><b>rate</b>: 80 ml/hr</p></blockquote><blockquote><p><b>administration</b></p><p><b>schedule</b>: Starting 18 Sep. 2014, 1:00:00 am, Do Once</p><p><b>rate</b>: 100 ml/hr</p></blockquote><p><b>maxVolumeToDeliver</b>: 880 milliliter/day</p><p><b>administrationInstruction</b>: Hold feedings from 7 pm to 7 am. Add MCT oil to increase calories from 1.0 cal/mL to 1.5 cal/mL</p></blockquote></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://www.acme.org/nutritionorders",
+      "value": "123"
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "patient": {
+    "reference": "Patient/example",
+    "display": "Peter Chalmers"
+  },
+  "encounter": {
+    "reference": "Encounter/example",
+    "display": "Inpatient"
+  },
+  "dateTime": "2014-09-17",
+  "orderer": {
+    "reference": "Practitioner/example",
+    "display": "Dr Adam Careful"
+  },
+  "enteralFormula": {
+    "baseFormulaType": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "6547210000124112",
+          "display": "Diabetic specialty enteral formula"
+        }
+      ]
+    },
+    "baseFormulaProductName": " Acme Diabetes Formula",
+    "caloricDensity": {
+      "value": 1,
+      "unit": "calories per milliliter",
+      "system": "http://unitsofmeasure.org",
+      "code": "cal/mL"
+    },
+    "routeofAdministration": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+          "code": "NGT",
+          "display": "Instillation, nasogastric tube"
+        }
+      ]
+    },
+    "administration": [
+      {
+        "schedule": {
+          "repeat": {
+            "boundsPeriod": {
+              "start": "2014-09-17T07:00:00Z"
+            }
+          }
+        },
+        "rateQuantity": {
+          "value": 60,
+          "unit": "ml/hr",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/h"
+        }
+      },
+      {
+        "schedule": {
+          "repeat": {
+            "boundsPeriod": {
+              "start": "2014-09-17T11:00:00Z"
+            }
+          }
+        },
+        "rateQuantity": {
+          "value": 80,
+          "unit": "ml/hr",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/h"
+        }
+      },
+      {
+        "schedule": {
+          "repeat": {
+            "boundsPeriod": {
+              "start": "2014-09-17T15:00:00Z"
+            }
+          }
+        },
+        "rateQuantity": {
+          "value": 100,
+          "unit": "ml/hr",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/h"
+        }
+      }
+    ],
+    "maxVolumeToDeliver": {
+      "value": 880,
+      "unit": "milliliter/day",
+      "system": "http://unitsofmeasure.org",
+      "code": "mL/d"
+    },
+    "administrationInstruction": "Hold feedings from 7 pm to 7 am. Add MCT oil to increase calories from 1.0 cal/mL to 1.5 cal/mL"
+  }
+}

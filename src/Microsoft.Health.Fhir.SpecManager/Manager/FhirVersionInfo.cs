@@ -134,6 +134,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             },
         };
 
+        /// <summary>The version files to ignore.</summary>
+        private static Dictionary<int, HashSet<string>> _versionFilesToIgnore = new Dictionary<int, HashSet<string>>()
+        {
+            {
+                2,
+                new HashSet<string>()
+            },
+            {
+                3,
+                new HashSet<string>()
+            },
+            {
+                4,
+                new HashSet<string>()
+                {
+                    //"ValueSet-cpt-all.json",
+                    //"ValueSet-example-filter.json",
+                }
+            },
+            {
+                5,
+                new HashSet<string>()
+            },
+        };
+
         private static HashSet<string> _npmFilesToIgnore = new HashSet<string>()
         {
             ".index.json",
@@ -215,7 +240,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         public string ReleaseName { get; set; }
 
         /// <summary>Gets or sets the name of the package.</summary>
-        ///
         /// <value>The name of the package.</value>
         public string PackageName { get; set; }
 
@@ -228,6 +252,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Gets or sets the version string.</summary>
         /// <value>The version string.</value>
         public string VersionString { get; set; }
+
+        /// <summary>Gets or sets the ballot prefix (e.g., 2021Jan).</summary>
+        public string BallotPrefix { get; set; }
 
         /// <summary>Gets or sets a value indicating whether this object is development build.</summary>
         /// <value>True if this object is development build, false if not.</value>
@@ -598,9 +625,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Determine if we should skip file.</summary>
         /// <param name="filename">Filename of the file.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool ShouldSkipFile(string filename)
+        public bool ShouldSkipFile(string filename)
         {
             if (_npmFilesToIgnore.Contains(filename))
+            {
+                return true;
+            }
+
+            if (_versionFilesToIgnore[MajorVersion].Contains(filename))
             {
                 return true;
             }
@@ -638,7 +670,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 return false;
             }
 
-            int index = path.IndexOf('.');
+            int index = path.IndexOf('.', StringComparison.Ordinal);
 
             string currentPath;
 
@@ -681,6 +713,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             // process this per the correct FHIR version
             _fhirConverter.ProcessResource(resource, this);
+        }
+
+        /// <summary>Determines if we can converter has issues.</summary>
+        /// <param name="errorCount">  [out] Number of errors.</param>
+        /// <param name="warningCount">[out] Number of warnings.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public bool ConverterHasIssues(out int errorCount, out int warningCount)
+        {
+            return _fhirConverter.HasIssues(out errorCount, out warningCount);
+        }
+
+        /// <summary>Displays the converter issues.</summary>
+        public void DisplayConverterIssues()
+        {
+            _fhirConverter.DisplayIssues();
         }
 
         /// <summary>Adds a versioned parameter.</summary>

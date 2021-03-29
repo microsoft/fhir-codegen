@@ -36,5 +36,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             object metadata,
             string serverUrl,
             out FhirServerInfo serverInfo);
+
+        /// <summary>Query if 'errorCount' has issues.</summary>
+        /// <param name="errorCount">  [out] Number of errors.</param>
+        /// <param name="warningCount">[out] Number of warnings.</param>
+        /// <returns>True if issues, false if not.</returns>
+        bool HasIssues(
+            out int errorCount,
+            out int warningCount);
+
+        /// <summary>Displays the issues.</summary>
+        void DisplayIssues();
     }
 }

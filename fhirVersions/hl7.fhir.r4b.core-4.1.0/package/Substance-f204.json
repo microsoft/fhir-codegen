@@ -1,0 +1,45 @@
+{
+  "resourceType": "Substance",
+  "id": "f204",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: AB94687</p><p><b>instance</b>: true</p><p><b>category</b>: <span>Chemical</span></p><h3>Codes</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table><p><b>description</b>: Solution for silver nitrate stain</p><p><b>expiry</b>: 2018-01-01</p><p><b>quantity</b>: 100 mL</p></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://acme.org/identifiers/substances/lot",
+      "value": "AB94687"
+    }
+  ],
+  "instance": true,
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/substance-category",
+          "code": "chemical",
+          "display": "Chemical"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "concept": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "333346007",
+          "display": "Silver nitrate 20% solution (product)"
+        }
+      ]
+    }
+  },
+  "description": "Solution for silver nitrate stain",
+  "expiry": "2018-01-01",
+  "quantity": {
+    "value": 100,
+    "unit": "mL",
+    "system": "http://unitsofmeasure.org",
+    "code": "mL"
+  }
+}

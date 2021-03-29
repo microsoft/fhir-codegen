@@ -1,0 +1,37 @@
+{
+  "resourceType": "Substance",
+  "id": "f203",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 1234</p><p><b>instance</b>: false</p><p><b>category</b>: <span>Chemical</span></p><h3>Codes</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://acme.org/identifiers/substances",
+      "value": "1234"
+    }
+  ],
+  "instance": false,
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/substance-category",
+          "code": "chemical",
+          "display": "Chemical"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "concept": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "88480006",
+          "display": "Potassium"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "resourceType": "MedicinalProductDefinition",
+  "id": "drug-combo-product",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p>\n\t\t\t\t<b>\n\t\t\t\t\tGenerated Narrative\n\t\t\t\t</b>\n\t\t\t</p>\n\t\t\t<p>\n\t\t\t\t<b>\n\t\t\t\t\tid\n\t\t\t\t</b>\n\t\t\t\t: drug-combo-product\n\t\t\t</p>\n\t\t\t<p>\n\t\t\t\t<b>\n\t\t\t\t\tidentifier\n\t\t\t\t</b>\n\t\t\t\t: id: ThrushTreatCombo\n\t\t\t</p>\n\t\t\t<p>\n\t\t\t\t<b>\n\t\t\t\t\tcombinedPharmaceuticalDoseForm\n\t\t\t\t</b>\n\t\t\t\t:\n\t\t\t\t<span title=\"Codes: {http://example.org.uk/fhir/doseform Tablet and Cream for topical application}\">\n\t\t\t\t\tTablet and Cream for topical application\n\t\t\t\t</span>\n\t\t\t</p>\n\t\t\t<p>\n\t\t\t\t<b>\n\t\t\t\t\tpackagedMedicinalProduct\n\t\t\t\t</b>\n\t\t\t\t:\n\t\t\t\t<a name=\"packageCombo\"/>\n\t\t\t</p>\n\t\t\t<blockquote>\n\t\t\t\t<p>\n\t\t\t\t\t<b>\n\t\t\t\t\t\tid\n\t\t\t\t\t</b>\n\t\t\t\t\t:packageCombo\n\t\t\t\t</p>\n\t\t\t\t<blockquote>\n\t\t\t\t\t<p>\n\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\tpackage (outer)\n\t\t\t\t\t\t</b>\n\t\t\t\t\t</p>\n\t\t\t\t\t<p>\n\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\ttype\n\t\t\t\t\t\t</b>\n\t\t\t\t\t\t:\n\t\t\t\t\t\t<span title=\"Codes: \">\n\t\t\t\t\t\t\tBox\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</p>\n\t\t\t\t\t<blockquote>\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\tPackage (inner 1)\n\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\tType\n\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t\t: Blister pack\n\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\tItems quantity\n\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t\t: 1\n\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<blockquote>\n\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\t\tForm\n\t\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t\t\t: Tablet\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t<blockquote>\n\t\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\t\t\tIngredient\n\t\t\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t\t\t\t: 150mg fluconazole\n\t\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t</blockquote>\n\t\t\t\t\t\t</blockquote>\n\t\t\t\t\t</blockquote>\n\t\t\t\t\t<blockquote>\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\tPackage (inner 2)\n\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\tType\n\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t\t: Tube\n\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\tItems quantity\n\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t\t: 20g\n\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<blockquote>\n\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\t\tPackage Item\n\t\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t\t\t: Cap\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t</blockquote>\n\t\t\t\t\t\t<blockquote>\n\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\t\tForm\n\t\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t\t\t: Cream for topical application\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t<blockquote>\n\t\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\t\t\t\tIngredient\n\t\t\t\t\t\t\t\t\t</b>\n\t\t\t\t\t\t\t\t\t: 2% w/w clotrimazole\n\t\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t</blockquote>\n\t\t\t\t\t\t</blockquote>\n\t\t\t\t\t</blockquote>\n\t\t\t\t</blockquote>\n\t\t\t</blockquote>\n\t\t\t<h3>\n\t\t\t\tNames\n\t\t\t</h3>\n\t\t\t<table class=\"grid\">\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t-\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<b>\n\t\t\t\t\t\t\tProductName\n\t\t\t\t\t\t</b>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t*\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tThrushTreat Combo\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t</div>"
+  },
+  "contained": [
+    {
+      "resourceType": "PackagedProductDefinition",
+      "id": "packageCombo",
+      "package": {
+        "type": {
+          "coding": [
+            {
+              "code": "Box"
+            }
+          ]
+        },
+        "package": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "blister pack"
+                }
+              ]
+            },
+            "containedItem": [
+              {
+                "item": [
+                  {
+                    "reference": {
+                      "reference": "#tabletItem"
+                    }
+                  }
+                ],
+                "amountQuantity": {
+                  "value": 1
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "tube"
+                }
+              ]
+            },
+            "containedItem": [
+              {
+                "item": [
+                  {
+                    "reference": {
+                      "reference": "#creamItem"
+                    }
+                  }
+                ],
+                "amountQuantity": {
+                  "value": 20,
+                  "unit": "g"
+                }
+              }
+            ],
+            "package": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "code": "cap"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "resourceType": "ManufacturedItemDefinition",
+      "id": "tabletItem",
+      "manufacturedDoseForm": {
+        "coding": [
+          {
+            "system": "http://example.org.uk/fhir/doseform",
+            "code": "tablet"
+          }
+        ]
+      }
+    },
+    {
+      "resourceType": "ManufacturedItemDefinition",
+      "id": "creamItem",
+      "manufacturedDoseForm": {
+        "coding": [
+          {
+            "system": "http://example.org.uk/fhir/doseform",
+            "code": "Cream for topical application"
+          }
+        ]
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "system": "http://example.org.uk/fhir/product",
+      "value": "ThrushTreatCombo"
+    }
+  ],
+  "combinedPharmaceuticalDoseForm": {
+    "coding": [
+      {
+        "system": "http://example.org.uk/fhir/doseform",
+        "code": "Tablet and Cream for topical application"
+      }
+    ]
+  },
+  "packagedMedicinalProduct": [
+    {
+      "reference": {
+        "reference": "#packageCombo"
+      }
+    }
+  ],
+  "name": [
+    {
+      "productName": "ThrushTreat Combo"
+    }
+  ]
+}

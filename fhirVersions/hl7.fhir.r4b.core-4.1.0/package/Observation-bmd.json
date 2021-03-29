@@ -1,0 +1,43 @@
+{
+  "resourceType": "Observation",
+  "id": "bmd",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p/><p><b>code</b>: <span>BMD - Left Femur</span></p><p><b>subject</b>: <a>Generated Summary: Medical record number: 123456 (USUAL); active; Duck D Donald (OFFICIAL); gender: other</a></p><p><b>performer</b>: <a>Acme Imaging Diagnostics. Generated Summary: id: ClinLab; name: Clinical Lab; Phone: +1 555 234 1234, contact@labs.acme.org</a></p><p><b>value</b>: 0.887 g/cm²</p><p><b>bodySite</b>: <span>Left Femur</span></p></div>"
+  },
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24701-5",
+        "display": "Femur DXA Bone density"
+      }
+    ],
+    "text": "BMD - Left Femur"
+  },
+  "subject": {
+    "reference": "Patient/pat2"
+  },
+  "performer": [
+    {
+      "reference": "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f",
+      "display": "Acme Imaging Diagnostics"
+    }
+  ],
+  "valueQuantity": {
+    "value": 0.887,
+    "unit": "g/cm²",
+    "system": "http://unitsofmeasure.org",
+    "code": "g/cm-2"
+  },
+  "bodySite": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71341001:272741003=7771000"
+      }
+    ],
+    "text": "Left Femur"
+  }
+}

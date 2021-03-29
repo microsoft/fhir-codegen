@@ -47,7 +47,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             {
                 { 2, new SortedSet<string>() { "1.0.2" } },
                 { 3, new SortedSet<string>() { "3.0.2" } },
-                { 4, new SortedSet<string>() { "4.0.1" } },
+                { 4, new SortedSet<string>() { "4.0.1", "4.1.0" } },
                 { 5, new SortedSet<string>() { "4.4.0", "4.5.0" } },
             };
 
@@ -59,6 +59,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     new FhirVersionInfo(2)
                     {
                         ReleaseName = "DSTU2",
+                        BallotPrefix = string.Empty,
                         PackageName = "hl7.fhir.r2.core",
                         ExamplesPackageName = "hl7.fhir.r2.examples",
                         ExpansionsPackageName = "hl7.fhir.r2.expansions",
@@ -73,6 +74,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     new FhirVersionInfo(3)
                     {
                         ReleaseName = "STU3",
+                        BallotPrefix = string.Empty,
                         PackageName = "hl7.fhir.r3.core",
                         ExamplesPackageName = "hl7.fhir.r3.examples",
                         ExpansionsPackageName = "hl7.fhir.r3.expansions",
@@ -87,6 +89,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     new FhirVersionInfo(4)
                     {
                         ReleaseName = "R4",
+                        BallotPrefix = string.Empty,
                         PackageName = "hl7.fhir.r4.core",
                         ExamplesPackageName = "hl7.fhir.r4.examples",
                         ExpansionsPackageName = "hl7.fhir.r4.expansions",
@@ -97,10 +100,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     }
                 },
                 {
+                    "4.1.0",
+                    new FhirVersionInfo(4)
+                    {
+                        ReleaseName = "R4B",
+                        BallotPrefix = "2021Mar",
+                        PackageName = "hl7.fhir.r4b.core",
+                        ExamplesPackageName = string.Empty,
+                        ExpansionsPackageName = "hl7.fhir.r4b.expansions",
+                        VersionString = "4.1.0",
+                        IsDevBuild = false,
+                        IsLocalBuild = false,
+                        IsOnDisk = false,
+                    }
+                },
+                {
                     "4.4.0",
                     new FhirVersionInfo(5)
                     {
-                        ReleaseName = "2020May",
+                        ReleaseName = "R5",
+                        BallotPrefix = "2020May",
                         PackageName = "hl7.fhir.r5.core",
                         ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
                         ExpansionsPackageName = "hl7.fhir.r5.expansions",
@@ -114,7 +133,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     "4.5.0",
                     new FhirVersionInfo(5)
                     {
-                        ReleaseName = "2020Sep",
+                        ReleaseName = "R5",
+                        BallotPrefix = "2020Sep",
                         PackageName = "hl7.fhir.r5.core",
                         ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
                         ExpansionsPackageName = "hl7.fhir.r5.expansions",
@@ -343,9 +363,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 {
                     if (version == "latest")
                     {
-                        if (!versionsToLoad.Contains(_knownVersions[majorRelease].Max))
+                        string bestMatchVersion = string.Empty;
+
+                        // known versions are sorted in ascending order
+                        foreach (string knownVersion in _knownVersions[majorRelease])
                         {
-                            versionsToLoad.Add(_knownVersions[majorRelease].Max);
+                            if (string.IsNullOrEmpty(bestMatchVersion))
+                            {
+                                bestMatchVersion = knownVersion;
+                                continue;
+                            }
+
+                            if (string.IsNullOrEmpty(_publishedVersionDict[knownVersion].BallotPrefix))
+                            {
+                                bestMatchVersion = knownVersion;
+                            }
+                        }
+
+                        if (!versionsToLoad.Contains(bestMatchVersion))
+                        {
+                            versionsToLoad.Add(bestMatchVersion);
                         }
 
                         continue;
@@ -374,18 +411,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // grab the packages we need
             FindOrDownload(
                 info.ReleaseName,
+                info.BallotPrefix,
                 info.PackageName,
                 info.VersionString,
                 offlineMode);
 
             FindOrDownload(
                 info.ReleaseName,
+                info.BallotPrefix,
                 info.ExpansionsPackageName,
                 info.VersionString,
                 offlineMode);
 
             FindOrDownload(
                 info.ReleaseName,
+                info.BallotPrefix,
                 info.ExamplesPackageName,
                 info.VersionString,
                 offlineMode,
@@ -402,16 +442,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Searches for the first or download.</summary>
+        /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
+        ///  null.</exception>
         /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
         ///  present.</exception>
         /// <exception cref="Exception">                 Thrown when an exception error condition occurs.</exception>
-        /// <param name="releaseName">The release name (e.g., R4, DSTU2).</param>
-        /// <param name="packageName">Name of the package.</param>
-        /// <param name="version">    The version string (e.g., 4.0.1).</param>
-        /// <param name="offlineMode">True to allow, false to suppress the download.</param>
-        /// <param name="isOptional"> (Optional) True if is optional, false if not.</param>
+        /// <param name="releaseName"> The release name (e.g., R4, DSTU2).</param>
+        /// <param name="ballotPrefix">The ballot prefix.</param>
+        /// <param name="packageName"> Name of the package.</param>
+        /// <param name="version">     The version string (e.g., 4.0.1).</param>
+        /// <param name="offlineMode"> True to allow, false to suppress the download.</param>
+        /// <param name="isOptional">  (Optional) True if is optional, false if not.</param>
         private void FindOrDownload(
             string releaseName,
+            string ballotPrefix,
             string packageName,
             string version,
             bool offlineMode,
@@ -454,6 +498,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                 if (!FhirPackageDownloader.Download(
                         releaseName,
+                        ballotPrefix,
                         packageName,
                         version,
                         _fhirSpecDirectory))
