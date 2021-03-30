@@ -352,7 +352,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // figure out which version(s) we are loading
             if (string.IsNullOrEmpty(versions) || (versions == "latest"))
             {
-                versionsToLoad.Add(_knownVersions[majorRelease].Max);
+                string bestMatchVersion = string.Empty;
+
+                // known versions are sorted in ascending order
+                foreach (string knownVersion in _knownVersions[majorRelease])
+                {
+                    if (string.IsNullOrEmpty(bestMatchVersion))
+                    {
+                        bestMatchVersion = knownVersion;
+                        continue;
+                    }
+
+                    if (string.IsNullOrEmpty(_publishedVersionDict[knownVersion].BallotPrefix))
+                    {
+                        bestMatchVersion = knownVersion;
+                    }
+                }
+
+                if (!versionsToLoad.Contains(bestMatchVersion))
+                {
+                    versionsToLoad.Add(bestMatchVersion);
+                }
             }
             else
             {

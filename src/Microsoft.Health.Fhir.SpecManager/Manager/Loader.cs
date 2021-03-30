@@ -160,27 +160,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // update our structure
             fhirVersionInfo.VersionString = packageInfo.Version;
 
+            HashSet<string> processedFiles = new HashSet<string>();
+
             // process Code Systems
-            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo);
+            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
 
             // process Value Set expansions
-            if (officialExpansionsOnly)
+            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+
+            if (!officialExpansionsOnly)
             {
-                ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo);
-            }
-            else
-            {
-                ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo);
+                ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
             }
 
             // process structure definitions
-            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);
+            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
 
             // process search parameters (adds to resources)
-            ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo);
+            ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
 
             // process operations (adds to resources and version info (server level))
-            ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo);
+            ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
 
             // add version-specific "MAGIC" items
             AddSearchMagicParameters(ref fhirVersionInfo);
@@ -246,26 +246,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             // update our structure
             fhirVersionInfo.VersionString = packageInfo.Version;
 
+            HashSet<string> processedFiles = new HashSet<string>();
+
             // process Code Systems
-            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo);
+            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
 
             // process Value Set expansions
-            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo);
+            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
 
             // process other value set definitions (if requested)
             if (!officialExpansionsOnly)
             {
-                ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo);
+                ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
             }
 
             // process structure definitions
-            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo);
+            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
 
             // process search parameters (adds to resources)
-            ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo);
+            ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
 
             // process operations (adds to resources and version info (server level))
-            ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo);
+            ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
 
             // add version-specific "MAGIC" items
             AddSearchMagicParameters(ref fhirVersionInfo);
@@ -359,25 +361,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="packageDir">     The package dir.</param>
         /// <param name="prefix">         The prefix.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+        /// <param name="processedFiles"> [in,out] The processed files.</param>
         private static void ProcessFileGroup(
             string packageDir,
             string prefix,
-            ref FhirVersionInfo fhirVersionInfo)
+            ref FhirVersionInfo fhirVersionInfo,
+            ref HashSet<string> processedFiles)
         {
             // get the files in this directory
             string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
 
             // process these files
-            ProcessPackageFiles(files, ref fhirVersionInfo);
+            ProcessPackageFiles(files, ref fhirVersionInfo, ref processedFiles);
         }
 
         /// <summary>Process the package files.</summary>
         /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
         /// <param name="files">          The files.</param>
         /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+        /// <param name="processedFiles"> [in,out] The processed files.</param>
         private static void ProcessPackageFiles(
             string[] files,
-            ref FhirVersionInfo fhirVersionInfo)
+            ref FhirVersionInfo fhirVersionInfo,
+            ref HashSet<string> processedFiles)
         {
             // traverse the files
             foreach (string filename in files)
@@ -414,6 +420,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         Console.WriteLine($"\nProcessPackageFiles <<< Unhandled type: {shortName}");
                         throw new InvalidDataException($"Unhandled type: {shortName}");
                     }
+
+                    if (processedFiles.Contains(shortName))
+                    {
+                        // skip
+                        continue;
+                    }
+
+                    processedFiles.Add(shortName);
 
                     // read the file
                     string contents = File.ReadAllText(filename);
