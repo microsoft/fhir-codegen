@@ -53,6 +53,6 @@ jobs:
       - name: Publish
         uses: softprops/action-gh-release@v1
         with:
-          files: "fhir-codegen*"
+          files: "fhir-codegen-*"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
