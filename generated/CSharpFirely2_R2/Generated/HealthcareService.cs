@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// The details of a healthcare service available at a location
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("HealthcareService", IsResource=true)]
   [DataContract]
+  [FhirType("HealthcareService", IsResource=true)]
   public partial class HealthcareService : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -112,8 +110,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Specific service delivered or performed
     /// </summary>
-    [FhirType("HealthcareService#ServiceType", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("HealthcareService#ServiceType", IsNestedType=true)]
     public partial class ServiceTypeComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -220,8 +219,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Times the Service Site is available
     /// </summary>
-    [FhirType("HealthcareService#AvailableTime", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("HealthcareService#AvailableTime", IsNestedType=true)]
     public partial class AvailableTimeComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -435,8 +435,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Not available during this time due to provided reason
     /// </summary>
-    [FhirType("HealthcareService#NotAvailable", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("HealthcareService#NotAvailable", IsNestedType=true)]
     public partial class NotAvailableComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

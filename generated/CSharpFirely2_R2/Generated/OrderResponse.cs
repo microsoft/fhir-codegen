@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A response to an order
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("OrderResponse", IsResource=true)]
   [DataContract]
+  [FhirType("OrderResponse", IsResource=true)]
   public partial class OrderResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

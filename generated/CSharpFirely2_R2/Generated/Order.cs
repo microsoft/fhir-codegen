@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A request to perform an action
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Order", IsResource=true)]
   [DataContract]
+  [FhirType("Order", IsResource=true)]
   public partial class Order : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// When order should be fulfilled
     /// </summary>
-    [FhirType("Order#When", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Order#When", IsNestedType=true)]
     public partial class WhenComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

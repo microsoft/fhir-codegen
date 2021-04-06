@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// An instance of a medical-related component of a medical device
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("DeviceComponent", IsResource=true)]
   [DataContract]
+  [FhirType("DeviceComponent", IsResource=true)]
   public partial class DeviceComponent : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -136,8 +134,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Production specification of the component
     /// </summary>
-    [FhirType("DeviceComponent#ProductionSpecification", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("DeviceComponent#ProductionSpecification", IsNestedType=true)]
     public partial class ProductionSpecificationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

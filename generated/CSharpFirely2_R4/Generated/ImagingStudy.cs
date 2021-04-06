@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A set of images produced in single study (one or more series of references images)
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ImagingStudy", IsResource=true)]
   [DataContract]
+  [FhirType("ImagingStudy", IsResource=true)]
   public partial class ImagingStudy : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -100,8 +98,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Each study has one or more series of instances
     /// </summary>
-    [FhirType("ImagingStudy#Series", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImagingStudy#Series", IsNestedType=true)]
     public partial class SeriesComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -486,8 +485,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Who performed the series
     /// </summary>
-    [FhirType("ImagingStudy#Performer", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImagingStudy#Performer", IsNestedType=true)]
     public partial class PerformerComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -595,8 +595,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// A single SOP instance from the series
     /// </summary>
-    [FhirType("ImagingStudy#Instance", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImagingStudy#Instance", IsNestedType=true)]
     public partial class InstanceComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -11934,7 +11934,7 @@ Resources: 96
     - title[0..1]: string
     - text[0..1]: string
     - subject[0..1]: Reference(Resource)
-    - group[0..*]: Questionnaire.group
+    - group[0..*]: QuestionnaireResponse.group
     - question[0..*]: BackboneElement
       - id[0..1]: id
       - extension[0..*]: Extension
@@ -11946,7 +11946,7 @@ Resources: 96
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
         - value[x][0..1]: Attachment|boolean|Coding|date|dateTime|decimal|instant|integer|Quantity|Reference(Resource)|string|time|uri
-        - group[0..*]: Questionnaire.group
+        - group[0..*]: QuestionnaireResponse.group
         Extensions: 1
         +http://hl7.org/fhir/StructureDefinition/questionnaireresponse-author
         - id[0..1]: id
@@ -11997,7 +11997,7 @@ Resources: 96
     - title[0..1]: string
     - text[0..1]: string
     - subject[0..1]: Reference(Resource)
-    - group[0..*]: Questionnaire.group
+    - group[0..*]: QuestionnaireResponse.group
     - question[0..*]: BackboneElement
       - id[0..1]: id
       - extension[0..*]: Extension
@@ -12009,7 +12009,7 @@ Resources: 96
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
         - value[x][0..1]: Attachment|boolean|Coding|date|dateTime|decimal|instant|integer|Quantity|Reference(Resource)|string|time|uri
-        - group[0..*]: Questionnaire.group
+        - group[0..*]: QuestionnaireResponse.group
         Extensions: 1
         +http://hl7.org/fhir/StructureDefinition/questionnaireresponse-author
         - id[0..1]: id

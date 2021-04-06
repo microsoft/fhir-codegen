@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Who, What, When for a set of resources
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Provenance", IsResource=true)]
   [DataContract]
+  [FhirType("Provenance", IsResource=true)]
   public partial class Provenance : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -94,8 +92,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Agents involved in creating resource
     /// </summary>
-    [FhirType("Provenance#Agent", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Provenance#Agent", IsNestedType=true)]
     public partial class AgentComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -240,8 +239,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Track delegation between agents
     /// </summary>
-    [FhirType("Provenance#RelatedAgent", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Provenance#RelatedAgent", IsNestedType=true)]
     public partial class RelatedAgentComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -366,8 +366,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// An entity used in this activity
     /// </summary>
-    [FhirType("Provenance#Entity", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Provenance#Entity", IsNestedType=true)]
     public partial class EntityComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

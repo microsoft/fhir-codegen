@@ -222,13 +222,13 @@ namespace Hl7.Fhir.Model
       [FhirElement("group", Order=80)]
       [Cardinality(Min=0,Max=-1)]
       [DataMember]
-      public List<Hl7.Fhir.Model.Questionnaire.GroupComponent> Group
+      public List<Hl7.Fhir.Model.QuestionnaireResponse.GroupComponent> Group
       {
-        get { if(_Group==null) _Group = new List<Hl7.Fhir.Model.Questionnaire.GroupComponent>(); return _Group; }
+        get { if(_Group==null) _Group = new List<Hl7.Fhir.Model.QuestionnaireResponse.GroupComponent>(); return _Group; }
         set { _Group = value; OnPropertyChanged("Group"); }
       }
 
-      private List<Hl7.Fhir.Model.Questionnaire.GroupComponent> _Group;
+      private List<Hl7.Fhir.Model.QuestionnaireResponse.GroupComponent> _Group;
 
       /// <summary>
       /// Questions in this group
@@ -258,7 +258,7 @@ namespace Hl7.Fhir.Model
         if(TitleElement != null) dest.TitleElement = (Hl7.Fhir.Model.FhirString)TitleElement.DeepCopy();
         if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
         if(Subject != null) dest.Subject = (Hl7.Fhir.Model.ResourceReference)Subject.DeepCopy();
-        if(Group != null) dest.Group = new List<Hl7.Fhir.Model.Questionnaire.GroupComponent>(Group.DeepCopy());
+        if(Group != null) dest.Group = new List<Hl7.Fhir.Model.QuestionnaireResponse.GroupComponent>(Group.DeepCopy());
         if(Question != null) dest.Question = new List<Hl7.Fhir.Model.QuestionnaireResponse.QuestionComponent>(Question.DeepCopy());
         return dest;
       }
@@ -536,13 +536,13 @@ namespace Hl7.Fhir.Model
       [FhirElement("group", Order=50)]
       [Cardinality(Min=0,Max=-1)]
       [DataMember]
-      public List<Hl7.Fhir.Model.Questionnaire.GroupComponent> Group
+      public List<Hl7.Fhir.Model.QuestionnaireResponse.GroupComponent> Group
       {
-        get { if(_Group==null) _Group = new List<Hl7.Fhir.Model.Questionnaire.GroupComponent>(); return _Group; }
+        get { if(_Group==null) _Group = new List<Hl7.Fhir.Model.QuestionnaireResponse.GroupComponent>(); return _Group; }
         set { _Group = value; OnPropertyChanged("Group"); }
       }
 
-      private List<Hl7.Fhir.Model.Questionnaire.GroupComponent> _Group;
+      private List<Hl7.Fhir.Model.QuestionnaireResponse.GroupComponent> _Group;
 
       public override IDeepCopyable CopyTo(IDeepCopyable other)
       {
@@ -555,7 +555,7 @@ namespace Hl7.Fhir.Model
 
         base.CopyTo(dest);
         if(Value != null) dest.Value = (Hl7.Fhir.Model.Element)Value.DeepCopy();
-        if(Group != null) dest.Group = new List<Hl7.Fhir.Model.Questionnaire.GroupComponent>(Group.DeepCopy());
+        if(Group != null) dest.Group = new List<Hl7.Fhir.Model.QuestionnaireResponse.GroupComponent>(Group.DeepCopy());
         return dest;
       }
 

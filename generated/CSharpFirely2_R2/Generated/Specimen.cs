@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Sample for analysis
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Specimen", IsResource=true)]
   [DataContract]
+  [FhirType("Specimen", IsResource=true)]
   public partial class Specimen : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -94,8 +92,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Collection details
     /// </summary>
-    [FhirType("Specimen#Collection", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Specimen#Collection", IsNestedType=true)]
     public partial class CollectionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -295,8 +294,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Treatment and processing step details
     /// </summary>
-    [FhirType("Specimen#Treatment", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Specimen#Treatment", IsNestedType=true)]
     public partial class TreatmentComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -440,8 +440,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Direct container of specimen (tube/slide, etc.)
     /// </summary>
-    [FhirType("Specimen#Container", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Specimen#Container", IsNestedType=true)]
     public partial class ContainerComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

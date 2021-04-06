@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Search Parameter for a resource
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("SearchParameter", IsResource=true)]
   [DataContract]
+  [FhirType("SearchParameter", IsResource=true)]
   public partial class SearchParameter : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -100,8 +98,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contact details of the publisher
     /// </summary>
-    [FhirType("SearchParameter#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("SearchParameter#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

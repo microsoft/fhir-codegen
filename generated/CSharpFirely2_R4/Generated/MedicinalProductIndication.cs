@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// MedicinalProductIndication
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("MedicinalProductIndication", IsResource=true)]
   [DataContract]
+  [FhirType("MedicinalProductIndication", IsResource=true)]
   public partial class MedicinalProductIndication : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Information about the use of the medicinal product in relation to other therapies described as part of the indication
     /// </summary>
-    [FhirType("MedicinalProductIndication#OtherTherapy", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MedicinalProductIndication#OtherTherapy", IsNestedType=true)]
     public partial class OtherTherapyComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -42,11 +42,9 @@ using Hl7.Fhir.Validation;
 
 namespace Hl7.Fhir.Model
 {
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Account", IsResource=true)]
   [DataContract]
+  [FhirType("Account", IsResource=true)]
   public partial class Account : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

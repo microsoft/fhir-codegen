@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A quality measure definition
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Measure", IsResource=true)]
   [DataContract]
+  [FhirType("Measure", IsResource=true)]
   public partial class Measure : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Population criteria group
     /// </summary>
-    [FhirType("Measure#Group", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Measure#Group", IsNestedType=true)]
     public partial class GroupComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -222,8 +221,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Population criteria
     /// </summary>
-    [FhirType("Measure#Population", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Measure#Population", IsNestedType=true)]
     public partial class PopulationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -365,8 +365,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Stratifier criteria for the measure
     /// </summary>
-    [FhirType("Measure#Stratifier", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Measure#Stratifier", IsNestedType=true)]
     public partial class StratifierComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -526,8 +527,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Stratifier criteria component for the measure
     /// </summary>
-    [FhirType("Measure#Component", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Measure#Component", IsNestedType=true)]
     public partial class ComponentComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -669,8 +671,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// What other data should be reported with the measure
     /// </summary>
-    [FhirType("Measure#SupplementalData", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Measure#SupplementalData", IsNestedType=true)]
     public partial class SupplementalDataComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

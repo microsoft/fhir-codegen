@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Healthcare plan for patient or group
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("CarePlan", IsResource=true)]
   [DataContract]
+  [FhirType("CarePlan", IsResource=true)]
   public partial class CarePlan : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -174,8 +172,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Plans related to this one
     /// </summary>
-    [FhirType("CarePlan#RelatedPlan", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("CarePlan#RelatedPlan", IsNestedType=true)]
     public partial class RelatedPlanComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -301,8 +300,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Who's involved in plan?
     /// </summary>
-    [FhirType("CarePlan#Participant", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("CarePlan#Participant", IsNestedType=true)]
     public partial class ParticipantComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -409,8 +409,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Action to occur as part of plan
     /// </summary>
-    [FhirType("CarePlan#Activity", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("CarePlan#Activity", IsNestedType=true)]
     public partial class ActivityComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -557,8 +558,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// In-line definition of activity
     /// </summary>
-    [FhirType("CarePlan#Detail", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("CarePlan#Detail", IsNestedType=true)]
     public partial class DetailComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Definition of a Medication
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Medication", IsResource=true)]
   [DataContract]
+  [FhirType("Medication", IsResource=true)]
   public partial class Medication : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Administrable medication details
     /// </summary>
-    [FhirType("Medication#Product", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Medication#Product", IsNestedType=true)]
     public partial class ProductComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -183,8 +182,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Active or inactive ingredient
     /// </summary>
-    [FhirType("Medication#Ingredient", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Medication#Ingredient", IsNestedType=true)]
     public partial class IngredientComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -289,8 +289,9 @@ namespace Hl7.Fhir.Model
 
     }
 
-    [FhirType("Medication#Batch", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Medication#Batch", IsNestedType=true)]
     public partial class BatchComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -419,8 +420,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Details about packaged medications
     /// </summary>
-    [FhirType("Medication#Package", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Medication#Package", IsNestedType=true)]
     public partial class PackageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -526,8 +528,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// What is  in the package
     /// </summary>
-    [FhirType("Medication#Content", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Medication#Content", IsNestedType=true)]
     public partial class ContentComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

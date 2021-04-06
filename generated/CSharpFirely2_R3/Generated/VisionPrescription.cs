@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Prescription for vision correction products for a patient
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("VisionPrescription", IsResource=true)]
   [DataContract]
+  [FhirType("VisionPrescription", IsResource=true)]
   public partial class VisionPrescription : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -116,8 +114,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Vision supply authorization
     /// </summary>
-    [FhirType("VisionPrescription#Dispense", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("VisionPrescription#Dispense", IsNestedType=true)]
     public partial class DispenseComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

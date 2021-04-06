@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A structured set of questions and their answers
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("QuestionnaireResponse", IsResource=true)]
   [DataContract]
+  [FhirType("QuestionnaireResponse", IsResource=true)]
   public partial class QuestionnaireResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -100,8 +98,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Groups and questions
     /// </summary>
-    [FhirType("QuestionnaireResponse#Item", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("QuestionnaireResponse#Item", IsNestedType=true)]
     public partial class ItemComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -337,8 +336,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The response(s) to the question
     /// </summary>
-    [FhirType("QuestionnaireResponse#Answer", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("QuestionnaireResponse#Answer", IsNestedType=true)]
     public partial class AnswerComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

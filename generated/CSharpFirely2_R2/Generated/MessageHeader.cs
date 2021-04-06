@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A resource that describes a message that is exchanged between systems
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("MessageHeader", IsResource=true)]
   [DataContract]
+  [FhirType("MessageHeader", IsResource=true)]
   public partial class MessageHeader : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -88,8 +86,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// If this is a reply to prior message
     /// </summary>
-    [FhirType("MessageHeader#Response", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MessageHeader#Response", IsNestedType=true)]
     public partial class ResponseComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -252,8 +251,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Message Source Application
     /// </summary>
-    [FhirType("MessageHeader#MessageSource", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MessageHeader#MessageSource", IsNestedType=true)]
     public partial class MessageSourceComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -485,8 +485,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Message Destination Application(s)
     /// </summary>
-    [FhirType("MessageHeader#MessageDestination", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MessageHeader#MessageDestination", IsNestedType=true)]
     public partial class MessageDestinationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

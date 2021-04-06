@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Information about patient's relatives, relevant for patient
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("FamilyMemberHistory", IsResource=true)]
   [DataContract]
+  [FhirType("FamilyMemberHistory", IsResource=true)]
   public partial class FamilyMemberHistory : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -94,8 +92,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Condition that the related person had
     /// </summary>
-    [FhirType("FamilyMemberHistory#Condition", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("FamilyMemberHistory#Condition", IsNestedType=true)]
     public partial class ConditionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A healthcare consumer's  choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Consent", IsResource=true)]
   [DataContract]
+  [FhirType("Consent", IsResource=true)]
   public partial class Consent : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -162,8 +160,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Policies covered by this consent
     /// </summary>
-    [FhirType("Consent#Policy", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Consent#Policy", IsNestedType=true)]
     public partial class PolicyComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -304,8 +303,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Consent Verified by patient or family
     /// </summary>
-    [FhirType("Consent#Verification", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Consent#Verification", IsNestedType=true)]
     public partial class VerificationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -467,8 +467,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Constraints to the base Consent.policyRule
     /// </summary>
-    [FhirType("Consent#provision", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Consent#provision", IsNestedType=true)]
     public partial class provisionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -761,8 +762,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Who|what controlled by this rule (or group, by role)
     /// </summary>
-    [FhirType("Consent#provisionActor", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Consent#provisionActor", IsNestedType=true)]
     public partial class provisionActorComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -871,8 +873,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Data controlled by this rule
     /// </summary>
-    [FhirType("Consent#provisionData", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Consent#provisionData", IsNestedType=true)]
     public partial class provisionDataComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
