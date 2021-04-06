@@ -43,8 +43,10 @@ jobs:
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then
             7z a -tzip "${release_name}.zip" "./${release_name}/*"
+            7z a -tzip "generated-${tag}.zip" -r "./generated/*"
           else
             tar czvf "${release_name}.tar.gz" "$release_name"
+            tar czvf "generated-${tag}.tar.gz" "generated"
           fi
 
           # Delete output directory
@@ -53,6 +55,10 @@ jobs:
       - name: Publish
         uses: softprops/action-gh-release@v1
         with:
-          files: "fhir-codegen-*"
+          fail_on_unmatched_files: false
+          files: |
+            "fhir-codegen-*"
+            "generated-*.zip"
+            "generated-*.tar.gz"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
