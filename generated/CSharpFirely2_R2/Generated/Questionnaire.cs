@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A structured set of questions
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Questionnaire", IsResource=true)]
   [DataContract]
+  [FhirType("Questionnaire", IsResource=true)]
   public partial class Questionnaire : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -188,8 +186,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Grouped questions
     /// </summary>
-    [FhirType("Questionnaire#Group", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Questionnaire#Group", IsNestedType=true)]
     public partial class GroupComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -495,8 +494,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Questions in this group
     /// </summary>
-    [FhirType("Questionnaire#Question", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Questionnaire#Question", IsNestedType=true)]
     public partial class QuestionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// The formal response to a guidance request
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("GuidanceResponse", IsResource=true)]
   [DataContract]
+  [FhirType("GuidanceResponse", IsResource=true)]
   public partial class GuidanceResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

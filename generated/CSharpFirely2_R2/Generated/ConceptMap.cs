@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A map from one set of concepts to one or more other concepts
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ConceptMap", IsResource=true)]
   [DataContract]
+  [FhirType("ConceptMap", IsResource=true)]
   public partial class ConceptMap : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -124,8 +122,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contact details of the publisher
     /// </summary>
-    [FhirType("ConceptMap#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ConceptMap#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -249,8 +248,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Mappings for a concept from the source set
     /// </summary>
-    [FhirType("ConceptMap#SourceElement", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ConceptMap#SourceElement", IsNestedType=true)]
     public partial class SourceElementComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -410,8 +410,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Concept in target system for element
     /// </summary>
-    [FhirType("ConceptMap#TargetElement", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ConceptMap#TargetElement", IsNestedType=true)]
     public partial class TargetElementComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -663,8 +664,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Other elements required for this mapping (from context)
     /// </summary>
-    [FhirType("ConceptMap#OtherElement", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ConceptMap#OtherElement", IsNestedType=true)]
     public partial class OtherElementComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

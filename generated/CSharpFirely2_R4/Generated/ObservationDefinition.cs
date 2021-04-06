@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Definition of an observation
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ObservationDefinition", IsResource=true)]
   [DataContract]
+  [FhirType("ObservationDefinition", IsResource=true)]
   public partial class ObservationDefinition : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -164,8 +162,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Characteristics of quantitative results
     /// </summary>
-    [FhirType("ObservationDefinition#QuantitativeDetails", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ObservationDefinition#QuantitativeDetails", IsNestedType=true)]
     public partial class QuantitativeDetailsComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -342,8 +341,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Qualified range for continuous and ordinal observation results
     /// </summary>
-    [FhirType("ObservationDefinition#QualifiedInterval", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ObservationDefinition#QualifiedInterval", IsNestedType=true)]
     public partial class QualifiedIntervalComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

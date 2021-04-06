@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A material substance originating from a biological entity
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("BiologicallyDerivedProduct", IsResource=true)]
   [DataContract]
+  [FhirType("BiologicallyDerivedProduct", IsResource=true)]
   public partial class BiologicallyDerivedProduct : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -150,8 +148,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// How this product was collected
     /// </summary>
-    [FhirType("BiologicallyDerivedProduct#Collection", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("BiologicallyDerivedProduct#Collection", IsNestedType=true)]
     public partial class CollectionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -280,8 +279,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Any processing of the product during collection
     /// </summary>
-    [FhirType("BiologicallyDerivedProduct#Processing", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("BiologicallyDerivedProduct#Processing", IsNestedType=true)]
     public partial class ProcessingComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -444,8 +444,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Any manipulation of product post-collection
     /// </summary>
-    [FhirType("BiologicallyDerivedProduct#Manipulation", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("BiologicallyDerivedProduct#Manipulation", IsNestedType=true)]
     public partial class ManipulationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -570,8 +571,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Product storage
     /// </summary>
-    [FhirType("BiologicallyDerivedProduct#Storage", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("BiologicallyDerivedProduct#Storage", IsNestedType=true)]
     public partial class StorageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

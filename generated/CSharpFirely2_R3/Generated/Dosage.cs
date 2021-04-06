@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// How the medication is/was taken or should be taken
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Dosage")]
   [DataContract]
+  [FhirType("Dosage")]
   public partial class Dosage : Hl7.Fhir.Model.DataType
   {
     /// <summary>

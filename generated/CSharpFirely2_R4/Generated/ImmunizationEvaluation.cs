@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Immunization evaluation information
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ImmunizationEvaluation", IsResource=true)]
   [DataContract]
+  [FhirType("ImmunizationEvaluation", IsResource=true)]
   public partial class ImmunizationEvaluation : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

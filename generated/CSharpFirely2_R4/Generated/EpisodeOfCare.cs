@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// An association of a Patient with an Organization and  Healthcare Provider(s) for a period of time that the Organization assumes some level of responsibility
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("EpisodeOfCare", IsResource=true)]
   [DataContract]
+  [FhirType("EpisodeOfCare", IsResource=true)]
   public partial class EpisodeOfCare : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -112,8 +110,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Past list of status codes (the current status may be included to cover the start date of the status)
     /// </summary>
-    [FhirType("EpisodeOfCare#StatusHistory", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("EpisodeOfCare#StatusHistory", IsNestedType=true)]
     public partial class StatusHistoryComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -238,8 +237,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The list of diagnosis relevant to this episode of care
     /// </summary>
-    [FhirType("EpisodeOfCare#Diagnosis", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("EpisodeOfCare#Diagnosis", IsNestedType=true)]
     public partial class DiagnosisComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

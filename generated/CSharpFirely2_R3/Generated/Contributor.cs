@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Contributor information
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Contributor")]
   [DataContract]
+  [FhirType("Contributor")]
   public partial class Contributor : Hl7.Fhir.Model.DataType
   {
     /// <summary>

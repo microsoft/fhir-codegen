@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Event record kept for security purposes
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("AuditEvent", IsResource=true)]
   [DataContract]
+  [FhirType("AuditEvent", IsResource=true)]
   public partial class AuditEvent : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -174,8 +172,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// What was done
     /// </summary>
-    [FhirType("AuditEvent#Event", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("AuditEvent#Event", IsNestedType=true)]
     public partial class EventComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -446,8 +445,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// A person, a hardware device or software process
     /// </summary>
-    [FhirType("AuditEvent#Participant", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("AuditEvent#Participant", IsNestedType=true)]
     public partial class ParticipantComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -794,8 +794,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Logical network location for application activity
     /// </summary>
-    [FhirType("AuditEvent#Network", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("AuditEvent#Network", IsNestedType=true)]
     public partial class NetworkComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -936,8 +937,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Application systems and processes
     /// </summary>
-    [FhirType("AuditEvent#Source", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("AuditEvent#Source", IsNestedType=true)]
     public partial class SourceComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1080,8 +1082,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Specific instances of data or objects that have been accessed
     /// </summary>
-    [FhirType("AuditEvent#Object", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("AuditEvent#Object", IsNestedType=true)]
     public partial class ObjectComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1388,8 +1391,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Additional Information about the Object
     /// </summary>
-    [FhirType("AuditEvent#Detail", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("AuditEvent#Detail", IsNestedType=true)]
     public partial class DetailComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

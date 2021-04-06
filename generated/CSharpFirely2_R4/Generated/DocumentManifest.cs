@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A list that defines a set of documents
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("DocumentManifest", IsResource=true)]
   [DataContract]
+  [FhirType("DocumentManifest", IsResource=true)]
   public partial class DocumentManifest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Related things
     /// </summary>
-    [FhirType("DocumentManifest#Related", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("DocumentManifest#Related", IsNestedType=true)]
     public partial class RelatedComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

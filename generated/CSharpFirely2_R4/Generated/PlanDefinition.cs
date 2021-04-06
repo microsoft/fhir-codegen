@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// The definition of a plan for a series of actions, independent of any specific patient or context
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("PlanDefinition", IsResource=true)]
   [DataContract]
+  [FhirType("PlanDefinition", IsResource=true)]
   public partial class PlanDefinition : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// What the plan is trying to accomplish
     /// </summary>
-    [FhirType("PlanDefinition#Goal", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("PlanDefinition#Goal", IsNestedType=true)]
     public partial class GoalComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -260,8 +259,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Target outcome for the goal
     /// </summary>
-    [FhirType("PlanDefinition#Target", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("PlanDefinition#Target", IsNestedType=true)]
     public partial class TargetComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -386,8 +386,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Action defined by the plan
     /// </summary>
-    [FhirType("PlanDefinition#Action", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("PlanDefinition#Action", IsNestedType=true)]
     public partial class ActionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1176,8 +1177,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Whether or not the action is applicable
     /// </summary>
-    [FhirType("PlanDefinition#Condition", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("PlanDefinition#Condition", IsNestedType=true)]
     public partial class ConditionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1301,8 +1303,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Relationship to another action
     /// </summary>
-    [FhirType("PlanDefinition#RelatedAction", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("PlanDefinition#RelatedAction", IsNestedType=true)]
     public partial class RelatedActionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1465,8 +1468,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Who should participate in the action
     /// </summary>
-    [FhirType("PlanDefinition#Participant", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("PlanDefinition#Participant", IsNestedType=true)]
     public partial class ParticipantComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1590,8 +1594,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Dynamic aspects of the definition
     /// </summary>
-    [FhirType("PlanDefinition#DynamicValue", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("PlanDefinition#DynamicValue", IsNestedType=true)]
     public partial class DynamicValueComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

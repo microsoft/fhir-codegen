@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A task to be performed
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Task", IsResource=true)]
   [DataContract]
+  [FhirType("Task", IsResource=true)]
   public partial class Task : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -206,8 +204,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Constraints on fulfillment tasks
     /// </summary>
-    [FhirType("Task#Restriction", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Task#Restriction", IsNestedType=true)]
     public partial class RestrictionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -351,8 +350,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Information used to perform task
     /// </summary>
-    [FhirType("Task#Parameter", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Task#Parameter", IsNestedType=true)]
     public partial class ParameterComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -461,8 +461,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Information produced as part of task
     /// </summary>
-    [FhirType("Task#Output", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Task#Output", IsNestedType=true)]
     public partial class OutputComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

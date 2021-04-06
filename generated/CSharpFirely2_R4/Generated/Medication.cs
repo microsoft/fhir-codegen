@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Definition of a Medication
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Medication", IsResource=true)]
   [DataContract]
+  [FhirType("Medication", IsResource=true)]
   public partial class Medication : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -88,8 +86,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Active or inactive ingredient
     /// </summary>
-    [FhirType("Medication#Ingredient", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Medication#Ingredient", IsNestedType=true)]
     public partial class IngredientComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -233,8 +232,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Details about packaged medications
     /// </summary>
-    [FhirType("Medication#Batch", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Medication#Batch", IsNestedType=true)]
     public partial class BatchComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -119,7 +119,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 { "Provenance.agent", "Provenance.agent" },
                 { "DiagnosticReport.locationPerformed.valueReference", "DiagnosticReport.extension.valueReference" },
                 { "Questionnaire.group", "Questionnaire.group" },
-                { "QuestionnaireResponse.group", "Questionnaire.group" },
+                { "QuestionnaireResponse.group", "QuestionnaireResponse.group" },
                 { "ValueSet.designation", "ValueSet.codeSystem.concept.designation" },
                 { "DataElement.l", "DataElement.element.maxValue[x]" },
                 { "DataElement.MappingEquivalence", "DataElement.element.mapping.extension" },

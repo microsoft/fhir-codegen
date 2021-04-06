@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Delivery of bulk Supplies
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("SupplyDelivery", IsResource=true)]
   [DataContract]
+  [FhirType("SupplyDelivery", IsResource=true)]
   public partial class SupplyDelivery : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -116,8 +114,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The item that is delivered or supplied
     /// </summary>
-    [FhirType("SupplyDelivery#SuppliedItem", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("SupplyDelivery#SuppliedItem", IsNestedType=true)]
     public partial class SuppliedItemComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Record of medication being taken by a patient
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("MedicationStatement", IsResource=true)]
   [DataContract]
+  [FhirType("MedicationStatement", IsResource=true)]
   public partial class MedicationStatement : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -94,8 +92,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Details of how medication was taken
     /// </summary>
-    [FhirType("MedicationStatement#Dosage", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MedicationStatement#Dosage", IsNestedType=true)]
     public partial class DosageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

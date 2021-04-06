@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Request for a medication, substance or device
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("SupplyRequest", IsResource=true)]
   [DataContract]
+  [FhirType("SupplyRequest", IsResource=true)]
   public partial class SupplyRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -94,8 +92,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// When the request should be fulfilled
     /// </summary>
-    [FhirType("SupplyRequest#When", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("SupplyRequest#When", IsNestedType=true)]
     public partial class WhenComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Definition of an operation or a named query
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("OperationDefinition", IsResource=true)]
   [DataContract]
+  [FhirType("OperationDefinition", IsResource=true)]
   public partial class OperationDefinition : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -1015,8 +1013,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contact details of the publisher
     /// </summary>
-    [FhirType("OperationDefinition#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("OperationDefinition#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1140,8 +1139,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Parameters for the operation/query
     /// </summary>
-    [FhirType("OperationDefinition#Parameter", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("OperationDefinition#Parameter", IsNestedType=true)]
     public partial class ParameterComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1487,8 +1487,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// ValueSet details if this is coded
     /// </summary>
-    [FhirType("OperationDefinition#Binding", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("OperationDefinition#Binding", IsNestedType=true)]
     public partial class BindingComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

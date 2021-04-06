@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use)
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("MedicinalProduct", IsResource=true)]
   [DataContract]
+  [FhirType("MedicinalProduct", IsResource=true)]
   public partial class MedicinalProduct : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The product's name, including full name and possibly coded parts
     /// </summary>
-    [FhirType("MedicinalProduct#Name", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MedicinalProduct#Name", IsNestedType=true)]
     public partial class NameComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -205,8 +204,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Coding words or phrases of the name
     /// </summary>
-    [FhirType("MedicinalProduct#NamePart", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MedicinalProduct#NamePart", IsNestedType=true)]
     public partial class NamePartComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -331,8 +331,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Country where the name applies
     /// </summary>
-    [FhirType("MedicinalProduct#CountryLanguage", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MedicinalProduct#CountryLanguage", IsNestedType=true)]
     public partial class CountryLanguageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -457,8 +458,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// An operation applied to the product, for manufacturing or adminsitrative purpose
     /// </summary>
-    [FhirType("MedicinalProduct#ManufacturingBusinessOperation", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MedicinalProduct#ManufacturingBusinessOperation", IsNestedType=true)]
     public partial class ManufacturingBusinessOperationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -658,8 +660,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Indicates if the medicinal product has an orphan designation for the treatment of a rare disease
     /// </summary>
-    [FhirType("MedicinalProduct#SpecialDesignation", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MedicinalProduct#SpecialDesignation", IsNestedType=true)]
     public partial class SpecialDesignationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Search Parameter for a resource
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("SearchParameter", IsResource=true)]
   [DataContract]
+  [FhirType("SearchParameter", IsResource=true)]
   public partial class SearchParameter : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -234,8 +232,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// For Composite resources to define the parts
     /// </summary>
-    [FhirType("SearchParameter#Component", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("SearchParameter#Component", IsNestedType=true)]
     public partial class ComponentComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

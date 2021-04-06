@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Media", IsResource=true)]
   [DataContract]
+  [FhirType("Media", IsResource=true)]
   public partial class Media : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

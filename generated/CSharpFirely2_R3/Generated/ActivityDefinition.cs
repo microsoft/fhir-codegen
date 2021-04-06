@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// The definition of a specific activity to be taken, independent of any particular patient or context
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ActivityDefinition", IsResource=true)]
   [DataContract]
+  [FhirType("ActivityDefinition", IsResource=true)]
   public partial class ActivityDefinition : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Who should participate in the action
     /// </summary>
-    [FhirType("ActivityDefinition#Participant", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ActivityDefinition#Participant", IsNestedType=true)]
     public partial class ParticipantComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -185,8 +184,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Dynamic aspects of the definition
     /// </summary>
-    [FhirType("ActivityDefinition#DynamicValue", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ActivityDefinition#DynamicValue", IsNestedType=true)]
     public partial class DynamicValueComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

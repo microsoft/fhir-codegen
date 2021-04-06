@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Defines an expected trigger for a module
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("TriggerDefinition")]
   [DataContract]
+  [FhirType("TriggerDefinition")]
   public partial class TriggerDefinition : Hl7.Fhir.Model.DataType
   {
     /// <summary>

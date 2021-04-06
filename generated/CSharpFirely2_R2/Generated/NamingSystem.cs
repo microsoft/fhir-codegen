@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// System of unique identification
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("NamingSystem", IsResource=true)]
   [DataContract]
+  [FhirType("NamingSystem", IsResource=true)]
   public partial class NamingSystem : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -122,8 +120,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contact details of the publisher
     /// </summary>
-    [FhirType("NamingSystem#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("NamingSystem#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -247,8 +246,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Unique identifiers used for system
     /// </summary>
-    [FhirType("NamingSystem#UniqueId", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("NamingSystem#UniqueId", IsNestedType=true)]
     public partial class UniqueIdComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

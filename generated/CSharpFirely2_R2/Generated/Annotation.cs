@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Text node with attribution
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Annotation")]
   [DataContract]
+  [FhirType("Annotation")]
   public partial class Annotation : Hl7.Fhir.Model.DataType
   {
     /// <summary>

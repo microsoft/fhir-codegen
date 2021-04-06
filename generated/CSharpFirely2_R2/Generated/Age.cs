@@ -45,9 +45,8 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A duration (length of time) with a UCUM code
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
+  [DataContract]
   [FhirType("Age")]
   public partial class Age : Quantity
   {
@@ -62,7 +61,7 @@ namespace Hl7.Fhir.Model
     }
 
     // TODO: Add code to enforce these constraints:
-    /// There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.  If value is present, it SHALL be positive.
+    // There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.  If value is present, it SHALL be positive.
   }
 
 }

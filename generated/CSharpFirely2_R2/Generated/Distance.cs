@@ -45,9 +45,8 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A measure of distance
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
+  [DataContract]
   [FhirType("Distance")]
   public partial class Distance : Quantity
   {
@@ -62,7 +61,7 @@ namespace Hl7.Fhir.Model
     }
 
     // TODO: Add code to enforce these constraints:
-    /// There SHALL be a code if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.
+    // There SHALL be a code if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.
   }
 
 }

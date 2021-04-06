@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A clinical assessment performed when planning treatments and management strategies for a patient
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ClinicalImpression", IsResource=true)]
   [DataContract]
+  [FhirType("ClinicalImpression", IsResource=true)]
   public partial class ClinicalImpression : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -88,8 +86,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// One or more sets of investigations (signs, symptions, etc.)
     /// </summary>
-    [FhirType("ClinicalImpression#Investigations", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ClinicalImpression#Investigations", IsNestedType=true)]
     public partial class InvestigationsComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -198,8 +197,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Possible or likely findings and diagnoses
     /// </summary>
-    [FhirType("ClinicalImpression#Finding", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ClinicalImpression#Finding", IsNestedType=true)]
     public partial class FindingComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -323,8 +323,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Diagnosis considered not possible
     /// </summary>
-    [FhirType("ClinicalImpression#RuledOut", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ClinicalImpression#RuledOut", IsNestedType=true)]
     public partial class RuledOutComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

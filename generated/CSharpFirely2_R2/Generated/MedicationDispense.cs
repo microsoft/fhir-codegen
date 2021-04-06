@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Dispensing a medication to a named patient
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("MedicationDispense", IsResource=true)]
   [DataContract]
+  [FhirType("MedicationDispense", IsResource=true)]
   public partial class MedicationDispense : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -102,8 +100,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Medicine administration instructions to the patient/caregiver
     /// </summary>
-    [FhirType("MedicationDispense#DosageInstruction", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MedicationDispense#DosageInstruction", IsNestedType=true)]
     public partial class DosageInstructionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -378,8 +377,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Deals with substitution of one medicine for another
     /// </summary>
-    [FhirType("MedicationDispense#Substitution", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("MedicationDispense#Substitution", IsNestedType=true)]
     public partial class SubstitutionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

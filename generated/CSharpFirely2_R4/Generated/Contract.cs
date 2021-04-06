@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Legal Agreement
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Contract", IsResource=true)]
   [DataContract]
+  [FhirType("Contract", IsResource=true)]
   public partial class Contract : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -260,8 +258,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contract precursor content
     /// </summary>
-    [FhirType("Contract#ContentDefinition", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#ContentDefinition", IsNestedType=true)]
     public partial class ContentDefinitionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -478,8 +477,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contract Term List
     /// </summary>
-    [FhirType("Contract#Term", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#Term", IsNestedType=true)]
     public partial class TermComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -807,8 +807,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Protection for the Term
     /// </summary>
-    [FhirType("Contract#SecurityLabel", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#SecurityLabel", IsNestedType=true)]
     public partial class SecurityLabelComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -971,8 +972,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Context of the Contract term
     /// </summary>
-    [FhirType("Contract#ContractOffer", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#ContractOffer", IsNestedType=true)]
     public partial class ContractOfferComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1283,8 +1285,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Offer Recipient
     /// </summary>
-    [FhirType("Contract#ContractParty", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#ContractParty", IsNestedType=true)]
     public partial class ContractPartyComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1393,8 +1396,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Response to offer text
     /// </summary>
-    [FhirType("Contract#Answer", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#Answer", IsNestedType=true)]
     public partial class AnswerComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1484,8 +1488,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contract Term Asset List
     /// </summary>
-    [FhirType("Contract#ContractAsset", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#ContractAsset", IsNestedType=true)]
     public partial class ContractAssetComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1909,8 +1914,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Circumstance of the asset
     /// </summary>
-    [FhirType("Contract#AssetContext", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#AssetContext", IsNestedType=true)]
     public partial class AssetContextComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -2054,8 +2060,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contract Valued Item List
     /// </summary>
-    [FhirType("Contract#ValuedItem", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#ValuedItem", IsNestedType=true)]
     public partial class ValuedItemComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -2510,8 +2517,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Entity being ascribed responsibility
     /// </summary>
-    [FhirType("Contract#Action", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#Action", IsNestedType=true)]
     public partial class ActionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -3128,8 +3136,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Entity of the action
     /// </summary>
-    [FhirType("Contract#ActionSubject", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#ActionSubject", IsNestedType=true)]
     public partial class ActionSubjectComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -3237,8 +3246,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contract Signatory
     /// </summary>
-    [FhirType("Contract#Signatory", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#Signatory", IsNestedType=true)]
     public partial class SignatoryComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -3366,8 +3376,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contract Friendly Language
     /// </summary>
-    [FhirType("Contract#FriendlyLanguage", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#FriendlyLanguage", IsNestedType=true)]
     public partial class FriendlyLanguageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -3457,8 +3468,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contract Legal Language
     /// </summary>
-    [FhirType("Contract#LegalLanguage", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#LegalLanguage", IsNestedType=true)]
     public partial class LegalLanguageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -3548,8 +3560,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Computable Contract Language
     /// </summary>
-    [FhirType("Contract#ComputableLanguage", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Contract#ComputableLanguage", IsNestedType=true)]
     public partial class ComputableLanguageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

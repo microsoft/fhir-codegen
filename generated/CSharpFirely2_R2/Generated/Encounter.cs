@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// An interaction during which services are provided to the patient
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Encounter", IsResource=true)]
   [DataContract]
+  [FhirType("Encounter", IsResource=true)]
   public partial class Encounter : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -206,8 +204,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// List of past encounter statuses
     /// </summary>
-    [FhirType("Encounter#StatusHistory", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Encounter#StatusHistory", IsNestedType=true)]
     public partial class StatusHistoryComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -332,8 +331,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// List of participants involved in the encounter
     /// </summary>
-    [FhirType("Encounter#Participant", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Encounter#Participant", IsNestedType=true)]
     public partial class ParticipantComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -459,8 +459,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Details about the admission to a healthcare service
     /// </summary>
-    [FhirType("Encounter#Hospitalization", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Encounter#Hospitalization", IsNestedType=true)]
     public partial class HospitalizationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -740,8 +741,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// List of locations where the patient has been
     /// </summary>
-    [FhirType("Encounter#Location", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Encounter#Location", IsNestedType=true)]
     public partial class LocationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

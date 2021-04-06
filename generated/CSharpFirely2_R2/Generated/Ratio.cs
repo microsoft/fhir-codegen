@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A ratio of two Quantity values - a numerator and a denominator
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Ratio")]
   [DataContract]
+  [FhirType("Ratio")]
   public partial class Ratio : Hl7.Fhir.Model.DataType
   {
     /// <summary>

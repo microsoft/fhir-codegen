@@ -45,9 +45,8 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A fixed quantity (no comparator)
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
+  [DataContract]
   [FhirType("SimpleQuantity")]
   public partial class SimpleQuantity : Quantity
   {
@@ -62,7 +61,7 @@ namespace Hl7.Fhir.Model
     }
 
     // TODO: Add code to enforce these constraints:
-    /// The comparator is not used on a SimpleQuantity
+    // The comparator is not used on a SimpleQuantity
   }
 
 }

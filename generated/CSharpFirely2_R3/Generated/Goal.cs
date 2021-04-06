@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Describes the intended objective(s) for a patient, group or organization
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Goal", IsResource=true)]
   [DataContract]
+  [FhirType("Goal", IsResource=true)]
   public partial class Goal : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -148,8 +146,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Target outcome for the goal
     /// </summary>
-    [FhirType("Goal#Target", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Goal#Target", IsNestedType=true)]
     public partial class TargetComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

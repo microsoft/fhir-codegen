@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Potential outcomes for a subject with likelihood
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("RiskAssessment", IsResource=true)]
   [DataContract]
+  [FhirType("RiskAssessment", IsResource=true)]
   public partial class RiskAssessment : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Outcome predicted
     /// </summary>
-    [FhirType("RiskAssessment#Prediction", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("RiskAssessment#Prediction", IsNestedType=true)]
     public partial class PredictionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

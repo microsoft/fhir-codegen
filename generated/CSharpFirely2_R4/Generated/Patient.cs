@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Information about an individual or animal receiving health care services
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Patient", IsResource=true)]
   [DataContract]
+  [FhirType("Patient", IsResource=true)]
   public partial class Patient : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -94,8 +92,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// A contact party (e.g. guardian, partner, friend) for the patient
     /// </summary>
-    [FhirType("Patient#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Patient#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -312,8 +311,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// A language which may be used to communicate with the patient about his or her health
     /// </summary>
-    [FhirType("Patient#Communication", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Patient#Communication", IsNestedType=true)]
     public partial class CommunicationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -437,8 +437,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Link to another patient resource that concerns the same actual person
     /// </summary>
-    [FhirType("Patient#Link", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Patient#Link", IsNestedType=true)]
     public partial class LinkComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
