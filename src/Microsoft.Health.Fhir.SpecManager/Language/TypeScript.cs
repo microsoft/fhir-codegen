@@ -679,7 +679,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (RequiresExtension(kvp.Value))
                 {
-                    _writer.WriteLineIndented($"_{kvp.Key}?: Element;");
+                    _writer.WriteLineIndented($"_{kvp.Key}?: Element{arrayFlagString};");
                 }
             }
         }
