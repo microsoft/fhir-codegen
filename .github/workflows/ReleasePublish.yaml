@@ -1,0 +1,64 @@
+name: Publish
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: Release
+    strategy:
+      matrix:
+        kind: ['linux', 'windows', 'macOS']
+        include:
+          - kind: linux
+            os: ubuntu-latest
+            target: linux-x64
+          - kind: windows
+            os: windows-latest
+            target: win-x64
+          - kind: macOS
+            os: macos-latest
+            target: osx-x64
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.407
+
+      - name: Build
+        shell: bash
+        run: |
+          # Define some variables for things we need
+          tag=$(git describe --tags --abbrev=0)
+          release_name="fhir-codegen-$tag-${{ matrix.target }}"
+
+          # Build everything
+          dotnet publish src/fhir-codegen-cli/fhir-codegen-cli.csproj --framework netcoreapp3.1 --runtime "${{ matrix.target }}" -c Release -o "$release_name"
+
+          # Pack files
+          if [ "${{ matrix.target }}" == "win-x64" ]; then
+            7z a -tzip "${release_name}.zip" "./${release_name}/*"
+            7z a -tzip "generated-${tag}.zip" -r "./generated/*"
+          else
+            tar czvf "${release_name}.tar.gz" "$release_name"
+            tar czvf "generated-${tag}.tar.gz" "generated"
+          fi
+
+          # Delete output directory
+          rm -r "$release_name"
+
+      - name: Publish
+        uses: softprops/action-gh-release@v1
+        with:
+          fail_on_unmatched_files: false
+          files: |
+            "fhir-codegen-*"
+            "generated-*.zip"
+            "generated-*.tar.gz"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
