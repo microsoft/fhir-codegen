@@ -2654,7 +2654,7 @@ Resources: 96
   - acceptUnknown[1..1]: code
     {no|extensions|elements|both}
   - format[1..*]: code
-    {formats|json|mime}
+    {xml|json|MIME Type}
   - profile[0..*]: Reference(StructureDefinition)
   - rest[0..*]: BackboneElement
     - id[0..1]: id
