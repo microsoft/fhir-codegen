@@ -647,7 +647,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         && !string.IsNullOrEmpty(element.ValueSet)
                         && !string.IsNullOrEmpty(element.BindingStrength)
                         && string.Equals(element.BindingStrength, "required", StringComparison.Ordinal)
-                        && (element.ValueSet != "http://www.rfc-editor.org/bcp/bcp13.txt"))
+                        && (element.ValueSet != "http://www.rfc-editor.org/bcp/bcp13.txt")
+                        && (!element.ValueSet.StartsWith("http://hl7.org/fhir/ValueSet/mimetypes", StringComparison.Ordinal)))
                 {
                     if (_exportEnums)
                     {
