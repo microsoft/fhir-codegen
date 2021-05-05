@@ -2712,7 +2712,7 @@ Resources: 151
     - custodian[0..1]: Reference(Organization)
   - fhirVersion[1..1]: code
   - format[1..*]: code
-    {formats|json|ttl|mime}
+    {xml|json|ttl|MIME Type}
   - patchFormat[0..*]: code
   - implementationGuide[0..*]: canonical(ImplementationGuide)
   - rest[0..*]: BackboneElement
@@ -3069,7 +3069,7 @@ Resources: 151
     - custodian[0..1]: Reference(Organization)
   - fhirVersion[1..1]: code
   - format[1..*]: code
-    {formats|json|ttl|mime}
+    {xml|json|ttl|MIME Type}
   - patchFormat[0..*]: code
   - implementationGuide[0..*]: canonical(ImplementationGuide)
   - rest[0..*]: BackboneElement

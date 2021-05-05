@@ -2114,7 +2114,7 @@ Resources: 119
   - acceptUnknown[1..1]: code
     {no|extensions|elements|both}
   - format[1..*]: code
-    {formats|json|ttl|mime}
+    {xml|json|ttl|MIME Type}
   - patchFormat[0..*]: code
   - implementationGuide[0..*]: uri
   - profile[0..*]: Reference(StructureDefinition)

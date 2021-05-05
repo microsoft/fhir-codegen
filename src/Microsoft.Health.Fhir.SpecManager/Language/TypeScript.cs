@@ -641,11 +641,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 // Use generated enum for codes when required strength
+                // EXCLUDE the MIME type value set - those should be bound to strings
                 if (element.Codes != null
                         && element.Codes.Any()
                         && !string.IsNullOrEmpty(element.ValueSet)
                         && !string.IsNullOrEmpty(element.BindingStrength)
-                        && string.Equals(element.BindingStrength, "required", StringComparison.Ordinal))
+                        && string.Equals(element.BindingStrength, "required", StringComparison.Ordinal)
+                        && (element.ValueSet != "http://www.rfc-editor.org/bcp/bcp13.txt")
+                        && (!element.ValueSet.StartsWith("http://hl7.org/fhir/ValueSet/mimetypes", StringComparison.Ordinal)))
                 {
                     if (_exportEnums)
                     {
@@ -679,7 +682,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (RequiresExtension(kvp.Value))
                 {
-                    _writer.WriteLineIndented($"_{kvp.Key}?: Element;");
+                    _writer.WriteLineIndented($"_{kvp.Key}?: Element{arrayFlagString};");
                 }
             }
         }

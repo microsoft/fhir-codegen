@@ -89,15 +89,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             if ((baseTypeName == "code") ||
                 ((elementTypes != null) && elementTypes.Any((e) => { return e.Key == "code"; })))
             {
-                if ((!string.IsNullOrEmpty(shortDescription)) &&
-                    shortDescription.Contains('|'))
+                if (shortDescription == "formats supported (xml | json | mime type)")
+                {
+                    _codes = new List<string>()
+                    {
+                        "xml",
+                        "json",
+                        "MIME Type",
+                    };
+                }
+                else if (shortDescription == "formats supported (xml | json | ttl | mime type)")
+                {
+                    _codes = new List<string>()
+                    {
+                        "xml",
+                        "json",
+                        "ttl",
+                        "MIME Type",
+                    };
+                }
+                else if ((!string.IsNullOrEmpty(shortDescription)) &&
+                    shortDescription.Contains('|', StringComparison.Ordinal))
                 {
                     _codes = new List<string>();
                     string[] codeValues = shortDescription.Split('|');
                     foreach (string code in codeValues)
                     {
                         string clean = code.Trim();
-                        if (clean.Contains(" "))
+                        if (clean.Contains(" ", StringComparison.Ordinal))
                         {
                             clean = clean.Substring(0, clean.IndexOf(" ", StringComparison.Ordinal));
                         }
