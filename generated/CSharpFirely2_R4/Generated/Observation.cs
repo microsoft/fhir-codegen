@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Measurements and simple assertions
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Observation", IsResource=true)]
   [DataContract]
+  [FhirType("Observation", IsResource=true)]
   public partial class Observation : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Provides guide for interpretation
     /// </summary>
-    [FhirType("Observation#ReferenceRange", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Observation#ReferenceRange", IsNestedType=true)]
     public partial class ReferenceRangeComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -257,8 +256,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Component results
     /// </summary>
-    [FhirType("Observation#Component", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Observation#Component", IsNestedType=true)]
     public partial class ComponentComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -45,9 +45,8 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A duration of time during which an organism (or a process) has existed
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
+  [DataContract]
   [FhirType("Age")]
   public partial class Age : Quantity
   {
@@ -62,7 +61,7 @@ namespace Hl7.Fhir.Model
     }
 
     // TODO: Add code to enforce these constraints:
-    /// A duration of time during which an organism (or a process) has existed.
+    // A duration of time during which an organism (or a process) has existed.
   }
 
 }

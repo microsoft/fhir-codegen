@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// An action that is being or was performed on a patient
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Procedure", IsResource=true)]
   [DataContract]
+  [FhirType("Procedure", IsResource=true)]
   public partial class Procedure : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The people who performed the procedure
     /// </summary>
-    [FhirType("Procedure#Performer", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Procedure#Performer", IsNestedType=true)]
     public partial class PerformerComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -189,8 +188,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Device changed in procedure
     /// </summary>
-    [FhirType("Procedure#FocalDevice", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Procedure#FocalDevice", IsNestedType=true)]
     public partial class FocalDeviceComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

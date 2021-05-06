@@ -45,9 +45,8 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A count of a discrete element (no unit)
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
+  [DataContract]
   [FhirType("Count")]
   public partial class Count : Quantity
   {
@@ -62,7 +61,7 @@ namespace Hl7.Fhir.Model
     }
 
     // TODO: Add code to enforce these constraints:
-    /// There SHALL be a code with a value of "1" if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.  If present, the value SHALL a whole number.
+    // There SHALL be a code with a value of "1" if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.  If present, the value SHALL a whole number.
   }
 
 }

@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A set of codes drawn from one or more code systems
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ValueSet", IsResource=true)]
   [DataContract]
+  [FhirType("ValueSet", IsResource=true)]
   public partial class ValueSet : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -106,8 +104,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contact details of the publisher
     /// </summary>
-    [FhirType("ValueSet#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -231,8 +230,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// An inline code system, which is part of this value set
     /// </summary>
-    [FhirType("ValueSet#CodeSystem", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#CodeSystem", IsNestedType=true)]
     public partial class CodeSystemComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -429,8 +429,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Concepts in the code system
     /// </summary>
-    [FhirType("ValueSet#ConceptDefinition", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#ConceptDefinition", IsNestedType=true)]
     public partial class ConceptDefinitionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -682,8 +683,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Additional representations for the concept
     /// </summary>
-    [FhirType("ValueSet#Designation", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#Designation", IsNestedType=true)]
     public partial class DesignationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -843,8 +845,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// When value set includes codes from elsewhere
     /// </summary>
-    [FhirType("ValueSet#Compose", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#Compose", IsNestedType=true)]
     public partial class ComposeComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -988,8 +991,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Include one or more codes from a code system
     /// </summary>
-    [FhirType("ValueSet#ConceptSet", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#ConceptSet", IsNestedType=true)]
     public partial class ConceptSetComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1169,8 +1173,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// A concept defined in the system
     /// </summary>
-    [FhirType("ValueSet#ConceptReference", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#ConceptReference", IsNestedType=true)]
     public partial class ConceptReferenceComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1331,8 +1336,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Select codes/concepts by their properties (including relationships)
     /// </summary>
-    [FhirType("ValueSet#Filter", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#Filter", IsNestedType=true)]
     public partial class FilterComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1512,8 +1518,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Used when the value set is "expanded"
     /// </summary>
-    [FhirType("ValueSet#Expansion", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#Expansion", IsNestedType=true)]
     public partial class ExpansionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1766,8 +1773,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Parameter that controlled the expansion process
     /// </summary>
-    [FhirType("ValueSet#Parameter", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#Parameter", IsNestedType=true)]
     public partial class ParameterComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1893,8 +1901,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Codes in the value set
     /// </summary>
-    [FhirType("ValueSet#Contains", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ValueSet#Contains", IsNestedType=true)]
     public partial class ContainsComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A request for a diagnostic service
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("DiagnosticOrder", IsResource=true)]
   [DataContract]
+  [FhirType("DiagnosticOrder", IsResource=true)]
   public partial class DiagnosticOrder : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -148,8 +146,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// A list of events of interest in the lifecycle
     /// </summary>
-    [FhirType("DiagnosticOrder#Event", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("DiagnosticOrder#Event", IsNestedType=true)]
     public partial class EventComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -330,8 +329,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The items the orderer requested
     /// </summary>
-    [FhirType("DiagnosticOrder#Item", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("DiagnosticOrder#Item", IsNestedType=true)]
     public partial class ItemComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

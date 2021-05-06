@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Guidance or advice relating to an immunization
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ImmunizationRecommendation", IsResource=true)]
   [DataContract]
+  [FhirType("ImmunizationRecommendation", IsResource=true)]
   public partial class ImmunizationRecommendation : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Vaccine administration recommendations
     /// </summary>
-    [FhirType("ImmunizationRecommendation#Recommendation", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImmunizationRecommendation#Recommendation", IsNestedType=true)]
     public partial class RecommendationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -337,8 +336,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Dates governing proposed immunization
     /// </summary>
-    [FhirType("ImmunizationRecommendation#DateCriterion", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImmunizationRecommendation#DateCriterion", IsNestedType=true)]
     public partial class DateCriterionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -463,8 +463,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Protocol used by recommendation
     /// </summary>
-    [FhirType("ImmunizationRecommendation#Protocol", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImmunizationRecommendation#Protocol", IsNestedType=true)]
     public partial class ProtocolComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

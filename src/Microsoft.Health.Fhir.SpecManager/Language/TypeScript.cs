@@ -70,6 +70,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>The exported codes.</summary>
         private HashSet<string> _exportedCodes = new HashSet<string>();
 
+        /// <summary>The exported resources.</summary>
+        private List<string> _exportedResources = new List<string>();
+
         /// <summary>The currently in-use text writer.</summary>
         private ExportStreamWriter _writer;
 
@@ -172,6 +175,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _options = options;
 
             _exportedCodes = new HashSet<string>();
+            _exportedResources = new List<string>();
 
             if (options.OptionalClassTypesToExport.Contains(ExporterOptions.FhirExportClassType.Enum))
             {
@@ -200,8 +204,55 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     WriteValueSets(_info.ValueSetsByUrl.Values);
                 }
 
+                WriteExpandedResourceInterfaceBinding();
+
                 WriteFooter();
             }
+        }
+
+        /// <summary>Writes the expanded resource interface binding.</summary>
+        private void WriteExpandedResourceInterfaceBinding()
+        {
+            if (_exportedResources.Count == 0)
+            {
+                return;
+            }
+
+            _exportedResources.Sort();
+
+            WriteIndentedComment("Resource binding for generic use.");
+
+            if (_exportedResources.Count == 1)
+            {
+                _writer.WriteLineIndented($"export type FhirResource = {_exportedResources[0]};");
+                return;
+            }
+
+            _writer.WriteLineIndented("export type FhirResource = ");
+
+            _writer.IncreaseIndent();
+
+            int index = 0;
+            int last = _exportedResources.Count - 1;
+            foreach (string exportedName in _exportedResources)
+            {
+                if (index == 0)
+                {
+                    _writer.WriteLineIndented(exportedName);
+                }
+                else if (index == last)
+                {
+                    _writer.WriteLineIndented("|" + exportedName + ";");
+                }
+                else
+                {
+                    _writer.WriteLineIndented("|" + exportedName);
+                }
+
+                index++;
+            }
+
+            _writer.DecreaseIndent();
         }
 
         /// <summary>Writes a value sets.</summary>
@@ -406,41 +457,43 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment(complex.Comment);
             }
 
+            string exportName;
+
             if (string.IsNullOrEmpty(complex.BaseTypeName) ||
                 complex.Name.Equals("Element", StringComparison.Ordinal))
             {
-                _writer.WriteLineIndented($"export interface {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase)} {{");
+                exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
+                _writer.WriteLineIndented($"export interface {exportName} {{");
             }
             else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
             {
-                _writer.WriteLineIndented(
-                    $"export interface" +
-                        $" {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true)}" +
-                        $" {{");
-            }
-            else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
-            {
-                _writer.WriteLineIndented(
-                    $"export interface" +
-                        $" {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true)}" +
-                        $" extends" +
-                        $" {complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false)} {{");
+                exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
+                _writer.WriteLineIndented($"export interface {exportName} {{");
             }
             else
             {
-                _writer.WriteLineIndented(
-                    $"export interface" +
-                        $" {complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true)}" +
-                        $" extends" +
-                        $" {complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap)} {{");
+                exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
+                string typeName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
+
+                _writer.WriteLineIndented($"export interface {exportName} extends {typeName} {{");
             }
 
             _writer.IncreaseIndent();
 
-            if (isResource && ShouldWriteResourceName(complex.Name))
+            if (isResource)
             {
-                _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
-                _writer.WriteLineIndented($"resourceType: '{complex.Name}'");
+                if (ShouldWriteResourceName(complex.Name))
+                {
+                    _exportedResources.Add(exportName);
+
+                    _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
+                    _writer.WriteLineIndented($"resourceType: '{complex.Name}';");
+                }
+                else
+                {
+                    _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
+                    _writer.WriteLineIndented($"resourceType: string;");
+                }
             }
 
             // write elements
@@ -489,11 +542,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented($"export enum {codeName} {{");
 
             _writer.IncreaseIndent();
-            foreach (string code in element.Codes)
-            {
-                FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
-                _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+            if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+            {
+                foreach (FhirConcept concept in vs.Concepts)
+                {
+                    FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
+
+                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                }
+            }
+            else
+            {
+                foreach (string code in element.Codes)
+                {
+                    FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+
+                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                }
             }
 
             _writer.DecreaseIndent();
@@ -575,11 +641,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 // Use generated enum for codes when required strength
+                // EXCLUDE the MIME type value set - those should be bound to strings
                 if (element.Codes != null
                         && element.Codes.Any()
                         && !string.IsNullOrEmpty(element.ValueSet)
                         && !string.IsNullOrEmpty(element.BindingStrength)
-                        && string.Equals(element.BindingStrength, "required", StringComparison.Ordinal))
+                        && string.Equals(element.BindingStrength, "required", StringComparison.Ordinal)
+                        && (element.ValueSet != "http://www.rfc-editor.org/bcp/bcp13.txt")
+                        && (!element.ValueSet.StartsWith("http://hl7.org/fhir/ValueSet/mimetypes", StringComparison.Ordinal)))
                 {
                     if (_exportEnums)
                     {
@@ -589,13 +658,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             string.Empty,
                             FhirTypeBase.NamingConvention.PascalCase);
 
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName}{arrayFlagString};");
+                    }
+                    else if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+                    {
+                        // use the full expansion
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))}){arrayFlagString};");
                     }
                     else
                     {
                         // otherwise, inline the required codes
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {string.Join("|", element.Codes.Select(c => $"'{c}'"))};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString};");
                     }
+                }
+                else if (kvp.Value.Equals("Resource", StringComparison.Ordinal))
+                {
+                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: FhirResource{arrayFlagString};");
                 }
                 else
                 {
@@ -604,7 +682,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (RequiresExtension(kvp.Value))
                 {
-                    _writer.WriteLineIndented($"_{kvp.Key}?: Element;");
+                    _writer.WriteLineIndented($"_{kvp.Key}?: Element{arrayFlagString};");
                 }
             }
         }
@@ -664,7 +742,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             _writer.WriteLineIndented($"/**");
 
-            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n").Replace("\n\n", "\n");
+            string comment = value.Replace('\r', '\n').Replace("\r\n", "\n", StringComparison.Ordinal).Replace("\n\n", "\n", StringComparison.Ordinal);
 
             string[] lines = comment.Split('\n');
             foreach (string line in lines)

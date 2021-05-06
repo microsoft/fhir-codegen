@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Request for a medication, substance or device
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("SupplyRequest", IsResource=true)]
   [DataContract]
+  [FhirType("SupplyRequest", IsResource=true)]
   public partial class SupplyRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -112,8 +110,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// The item being requested
     /// </summary>
-    [FhirType("SupplyRequest#OrderedItem", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("SupplyRequest#OrderedItem", IsNestedType=true)]
     public partial class OrderedItemComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -221,8 +220,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Who/what is requesting service
     /// </summary>
-    [FhirType("SupplyRequest#Requester", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("SupplyRequest#Requester", IsNestedType=true)]
     public partial class RequesterComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

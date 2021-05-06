@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// ProcessResponse resource
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ProcessResponse", IsResource=true)]
   [DataContract]
+  [FhirType("ProcessResponse", IsResource=true)]
   public partial class ProcessResponse : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Notes
     /// </summary>
-    [FhirType("ProcessResponse#Notes", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ProcessResponse#Notes", IsNestedType=true)]
     public partial class NotesComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

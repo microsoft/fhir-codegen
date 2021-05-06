@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A grouping of people or organizations with a common purpose
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Organization", IsResource=true)]
   [DataContract]
+  [FhirType("Organization", IsResource=true)]
   public partial class Organization : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -60,8 +58,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contact for the organization for a certain purpose
     /// </summary>
-    [FhirType("Organization#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Organization#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

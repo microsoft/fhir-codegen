@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Resource data element
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("DataElement", IsResource=true)]
   [DataContract]
+  [FhirType("DataElement", IsResource=true)]
   public partial class DataElement : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -106,8 +104,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contact details of the publisher
     /// </summary>
-    [FhirType("DataElement#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("DataElement#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -231,8 +230,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// External specification mapped to
     /// </summary>
-    [FhirType("DataElement#Mapping", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("DataElement#Mapping", IsNestedType=true)]
     public partial class MappingComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -152,6 +152,10 @@ Options:
   -?, -h, --help                       Show help and usage information
 ```
 
+## Requirements
+
+In order to run TypeScript tests, the system must be able to find the 'tsc' (TypeScript compile) command.  Note that it must be installed and accessible by the test application (e.g., `npm install -g typescript`).
+
 # Pre-Generated Files
 
 The `generated` directory has static outputs for each of the supported versions of FHIR, in each of the supported languages.

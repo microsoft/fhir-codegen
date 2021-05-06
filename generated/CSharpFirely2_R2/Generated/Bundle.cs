@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Contains a collection of resources
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Bundle", IsResource=true)]
   [DataContract]
+  [FhirType("Bundle", IsResource=true)]
   public partial class Bundle : Hl7.Fhir.Model.Resource
   {
     /// <summary>
@@ -186,8 +184,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Links related to this Bundle
     /// </summary>
-    [FhirType("Bundle#Link", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Bundle#Link", IsNestedType=true)]
     public partial class LinkComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -330,8 +329,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Entry in the bundle - will have a resource, or information
     /// </summary>
-    [FhirType("Bundle#Entry", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Bundle#Entry", IsNestedType=true)]
     public partial class EntryComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -529,8 +529,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Search related information
     /// </summary>
-    [FhirType("Bundle#Search", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Bundle#Search", IsNestedType=true)]
     public partial class SearchComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -671,8 +672,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Transaction Related Information
     /// </summary>
-    [FhirType("Bundle#Request", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Bundle#Request", IsNestedType=true)]
     public partial class RequestComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -959,8 +961,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Transaction Related Information
     /// </summary>
-    [FhirType("Bundle#Response", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Bundle#Response", IsNestedType=true)]
     public partial class ResponseComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

@@ -42,11 +42,9 @@ using Hl7.Fhir.Validation;
 
 namespace Hl7.Fhir.Model
 {
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("DeviceUseStatement", IsResource=true)]
   [DataContract]
+  [FhirType("DeviceUseStatement", IsResource=true)]
   public partial class DeviceUseStatement : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

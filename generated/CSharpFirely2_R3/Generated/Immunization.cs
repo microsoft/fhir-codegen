@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Immunization event information
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Immunization", IsResource=true)]
   [DataContract]
+  [FhirType("Immunization", IsResource=true)]
   public partial class Immunization : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -82,8 +80,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Who performed event
     /// </summary>
-    [FhirType("Immunization#Practitioner", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Immunization#Practitioner", IsNestedType=true)]
     public partial class PractitionerComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -191,8 +190,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Administration/non-administration reasons
     /// </summary>
-    [FhirType("Immunization#Explanation", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Immunization#Explanation", IsNestedType=true)]
     public partial class ExplanationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -299,8 +299,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Details of a reaction that follows immunization
     /// </summary>
-    [FhirType("Immunization#Reaction", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Immunization#Reaction", IsNestedType=true)]
     public partial class ReactionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -461,8 +462,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// What protocol was followed
     /// </summary>
-    [FhirType("Immunization#VaccinationProtocol", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Immunization#VaccinationProtocol", IsNestedType=true)]
     public partial class VaccinationProtocolComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

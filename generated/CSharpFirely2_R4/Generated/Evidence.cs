@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A research context or question
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Evidence", IsResource=true)]
   [DataContract]
+  [FhirType("Evidence", IsResource=true)]
   public partial class Evidence : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

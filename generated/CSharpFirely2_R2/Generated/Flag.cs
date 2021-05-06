@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Key information to flag to healthcare providers
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Flag", IsResource=true)]
   [DataContract]
+  [FhirType("Flag", IsResource=true)]
   public partial class Flag : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

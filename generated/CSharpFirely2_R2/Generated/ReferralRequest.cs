@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A request for referral or transfer of care
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ReferralRequest", IsResource=true)]
   [DataContract]
+  [FhirType("ReferralRequest", IsResource=true)]
   public partial class ReferralRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

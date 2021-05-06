@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Request to perform some action on or in regards to an existing resource
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ProcessRequest", IsResource=true)]
   [DataContract]
+  [FhirType("ProcessRequest", IsResource=true)]
   public partial class ProcessRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -94,8 +92,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Items to re-adjudicate
     /// </summary>
-    [FhirType("ProcessRequest#Items", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ProcessRequest#Items", IsNestedType=true)]
     public partial class ItemsComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

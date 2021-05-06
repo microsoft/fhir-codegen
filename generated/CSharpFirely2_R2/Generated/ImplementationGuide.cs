@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A set of rules about how FHIR is used
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("ImplementationGuide", IsResource=true)]
   [DataContract]
+  [FhirType("ImplementationGuide", IsResource=true)]
   public partial class ImplementationGuide : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -186,8 +184,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contact details of the publisher
     /// </summary>
-    [FhirType("ImplementationGuide#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImplementationGuide#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -311,8 +310,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Another Implementation guide this depends on
     /// </summary>
-    [FhirType("ImplementationGuide#Dependency", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImplementationGuide#Dependency", IsNestedType=true)]
     public partial class DependencyComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -455,8 +455,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Group of resources as used in .page.package
     /// </summary>
-    [FhirType("ImplementationGuide#Package", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImplementationGuide#Package", IsNestedType=true)]
     public partial class PackageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -617,8 +618,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Resource in the implementation guide
     /// </summary>
-    [FhirType("ImplementationGuide#Resource", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImplementationGuide#Resource", IsNestedType=true)]
     public partial class ResourceComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -873,8 +875,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Profiles that apply globally
     /// </summary>
-    [FhirType("ImplementationGuide#Global", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImplementationGuide#Global", IsNestedType=true)]
     public partial class GlobalComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1001,8 +1004,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Page/Section in the Guide
     /// </summary>
-    [FhirType("ImplementationGuide#Page", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("ImplementationGuide#Page", IsNestedType=true)]
     public partial class PageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

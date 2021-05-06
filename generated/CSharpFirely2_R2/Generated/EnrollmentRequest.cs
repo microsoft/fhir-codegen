@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Enrollment request
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("EnrollmentRequest", IsResource=true)]
   [DataContract]
+  [FhirType("EnrollmentRequest", IsResource=true)]
   public partial class EnrollmentRequest : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>

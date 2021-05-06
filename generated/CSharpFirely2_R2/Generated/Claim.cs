@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// Claim, Pre-determination or Pre-authorization
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Claim", IsResource=true)]
   [DataContract]
+  [FhirType("Claim", IsResource=true)]
   public partial class Claim : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -134,8 +132,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Payee
     /// </summary>
-    [FhirType("Claim#Payee", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Claim#Payee", IsNestedType=true)]
     public partial class PayeeComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -282,8 +281,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Diagnosis
     /// </summary>
-    [FhirType("Claim#Diagnosis", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Claim#Diagnosis", IsNestedType=true)]
     public partial class DiagnosisComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -408,8 +408,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Insurance or medical plan
     /// </summary>
-    [FhirType("Claim#Coverage", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Claim#Coverage", IsNestedType=true)]
     public partial class CoverageComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -703,8 +704,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Goods and Services
     /// </summary>
-    [FhirType("Claim#Items", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Claim#Items", IsNestedType=true)]
     public partial class ItemsComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1178,8 +1180,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Additional items
     /// </summary>
-    [FhirType("Claim#Detail", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Claim#Detail", IsNestedType=true)]
     public partial class DetailComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1486,8 +1489,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Additional items
     /// </summary>
-    [FhirType("Claim#SubDetail", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Claim#SubDetail", IsNestedType=true)]
     public partial class SubDetailComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1775,8 +1779,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Prosthetic details
     /// </summary>
-    [FhirType("Claim#Prosthesis", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Claim#Prosthesis", IsNestedType=true)]
     public partial class ProsthesisComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1935,8 +1940,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Only if type = oral
     /// </summary>
-    [FhirType("Claim#MissingTeeth", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Claim#MissingTeeth", IsNestedType=true)]
     public partial class MissingTeethComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>

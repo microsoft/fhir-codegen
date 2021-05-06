@@ -45,11 +45,9 @@ namespace Hl7.Fhir.Model
   /// <summary>
   /// A conformance statement
   /// </summary>
-#if !NETSTANDARD1_1
   [Serializable]
-#endif
-  [FhirType("Conformance", IsResource=true)]
   [DataContract]
+  [FhirType("Conformance", IsResource=true)]
   public partial class Conformance : Hl7.Fhir.Model.DomainResource
   {
     /// <summary>
@@ -468,8 +466,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Contact details of the publisher
     /// </summary>
-    [FhirType("Conformance#Contact", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Contact", IsNestedType=true)]
     public partial class ContactComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -593,8 +592,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Software that is covered by this conformance statement
     /// </summary>
-    [FhirType("Conformance#Software", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Software", IsNestedType=true)]
     public partial class SoftwareComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -772,8 +772,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// If this describes a specific instance
     /// </summary>
-    [FhirType("Conformance#Implementation", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Implementation", IsNestedType=true)]
     public partial class ImplementationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -915,8 +916,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// If the endpoint is a RESTful one
     /// </summary>
-    [FhirType("Conformance#Rest", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Rest", IsNestedType=true)]
     public partial class RestComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1225,8 +1227,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Information about security of implementation
     /// </summary>
-    [FhirType("Conformance#Security", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Security", IsNestedType=true)]
     public partial class SecurityComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1405,8 +1408,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Certificates associated with security profiles
     /// </summary>
-    [FhirType("Conformance#Certificate", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Certificate", IsNestedType=true)]
     public partial class CertificateComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -1547,8 +1551,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Resource served on the REST interface
     /// </summary>
-    [FhirType("Conformance#Resource", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Resource", IsNestedType=true)]
     public partial class ResourceComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -2002,8 +2007,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// What operations are supported?
     /// </summary>
-    [FhirType("Conformance#ResourceInteraction", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#ResourceInteraction", IsNestedType=true)]
     public partial class ResourceInteractionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -2145,8 +2151,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Search params supported by implementation
     /// </summary>
-    [FhirType("Conformance#SearchParam", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#SearchParam", IsNestedType=true)]
     public partial class SearchParamComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -2472,8 +2479,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// What operations are supported?
     /// </summary>
-    [FhirType("Conformance#SystemInteraction", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#SystemInteraction", IsNestedType=true)]
     public partial class SystemInteractionComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -2615,8 +2623,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Definition of an operation or a custom query
     /// </summary>
-    [FhirType("Conformance#Operation", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Operation", IsNestedType=true)]
     public partial class OperationComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -2743,8 +2752,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// If messaging is supported
     /// </summary>
-    [FhirType("Conformance#Messaging", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Messaging", IsNestedType=true)]
     public partial class MessagingComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -2923,8 +2933,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// A messaging service end-point
     /// </summary>
-    [FhirType("Conformance#Endpoint", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Endpoint", IsNestedType=true)]
     public partial class EndpointComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -3049,8 +3060,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Declare support for this event
     /// </summary>
-    [FhirType("Conformance#Event", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Event", IsNestedType=true)]
     public partial class EventComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
@@ -3326,8 +3338,9 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Document definition
     /// </summary>
-    [FhirType("Conformance#Document", IsNestedType=true)]
+    [Serializable]
     [DataContract]
+    [FhirType("Conformance#Document", IsNestedType=true)]
     public partial class DocumentComponent : Hl7.Fhir.Model.BackboneElement
     {
       /// <summary>
