@@ -33,7 +33,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// For Range, it means members of the group have a value that falls somewhere within the specified range.
     /// </summary>
-    public bool ValueBoolean { get; set; }
+    public bool? ValueBoolean { get; set; }
     /// <summary>
     /// For Range, it means members of the group have a value that falls somewhere within the specified range.
     /// </summary>
@@ -70,7 +70,10 @@ namespace Fhir.R4.Models
         ValueCodeableConcept.SerializeJson(writer, options);
       }
 
-      writer.WriteBoolean("valueBoolean", ValueBoolean);
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
 
       if (ValueQuantity != null)
       {

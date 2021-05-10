@@ -822,7 +822,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
-    public bool ValueBoolean { get; set; }
+    public bool? ValueBoolean { get; set; }
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
@@ -858,7 +858,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
-    public decimal ValueDecimal { get; set; }
+    public decimal? ValueDecimal { get; set; }
     /// <summary>
     /// Extension container element for ValueDecimal
     /// </summary>
@@ -882,7 +882,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
-    public int ValueInteger { get; set; }
+    public int? ValueInteger { get; set; }
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
@@ -902,7 +902,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
-    public uint ValuePositiveInt { get; set; }
+    public uint? ValuePositiveInt { get; set; }
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
@@ -922,7 +922,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
-    public uint ValueUnsignedInt { get; set; }
+    public uint? ValueUnsignedInt { get; set; }
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
@@ -942,7 +942,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
-    public Guid ValueUuid { get; set; }
+    public Guid? ValueUuid { get; set; }
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
@@ -1101,7 +1101,10 @@ namespace Fhir.R4.Models
         _ValueBase64Binary.SerializeJson(writer, options);
       }
 
-      writer.WriteBoolean("valueBoolean", ValueBoolean);
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
 
       if (!string.IsNullOrEmpty(ValueCanonical))
       {
@@ -1147,7 +1150,10 @@ namespace Fhir.R4.Models
         _ValueDateTime.SerializeJson(writer, options);
       }
 
-      writer.WriteNumber("valueDecimal", ValueDecimal);
+      if (ValueDecimal != null)
+      {
+        writer.WriteNumber("valueDecimal", (decimal)ValueDecimal!);
+      }
 
       if (_ValueDecimal != null)
       {
@@ -1177,7 +1183,10 @@ namespace Fhir.R4.Models
         _ValueInstant.SerializeJson(writer, options);
       }
 
-      writer.WriteNumber("valueInteger", ValueInteger);
+      if (ValueInteger != null)
+      {
+        writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
 
       if (!string.IsNullOrEmpty(ValueMarkdown))
       {
@@ -1201,7 +1210,10 @@ namespace Fhir.R4.Models
         _ValueOid.SerializeJson(writer, options);
       }
 
-      writer.WriteNumber("valuePositiveInt", ValuePositiveInt);
+      if (ValuePositiveInt != null)
+      {
+        writer.WriteNumber("valuePositiveInt", (uint)ValuePositiveInt!);
+      }
 
       if (!string.IsNullOrEmpty(ValueString))
       {
@@ -1225,7 +1237,10 @@ namespace Fhir.R4.Models
         _ValueTime.SerializeJson(writer, options);
       }
 
-      writer.WriteNumber("valueUnsignedInt", ValueUnsignedInt);
+      if (ValueUnsignedInt != null)
+      {
+        writer.WriteNumber("valueUnsignedInt", (uint)ValueUnsignedInt!);
+      }
 
       if (!string.IsNullOrEmpty(ValueUri))
       {
@@ -1249,7 +1264,10 @@ namespace Fhir.R4.Models
         _ValueUrl.SerializeJson(writer, options);
       }
 
-      writer.WriteString("valueUuid", ValueUuid);
+      if (ValueUuid != null)
+      {
+        writer.WriteString("valueUuid", (Guid)ValueUuid!);
+      }
 
       if (ValueAddress != null)
       {

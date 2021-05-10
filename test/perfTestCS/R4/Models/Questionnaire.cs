@@ -17,11 +17,11 @@ namespace Fhir.R4.Models
     /// <summary>
     /// A value that the referenced question is tested using the specified operator in order for the item to be enabled.
     /// </summary>
-    public bool AnswerBoolean { get; set; }
+    public bool? AnswerBoolean { get; set; }
     /// <summary>
     /// A value that the referenced question is tested using the specified operator in order for the item to be enabled.
     /// </summary>
-    public decimal AnswerDecimal { get; set; }
+    public decimal? AnswerDecimal { get; set; }
     /// <summary>
     /// Extension container element for AnswerDecimal
     /// </summary>
@@ -29,7 +29,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// A value that the referenced question is tested using the specified operator in order for the item to be enabled.
     /// </summary>
-    public int AnswerInteger { get; set; }
+    public int? AnswerInteger { get; set; }
     /// <summary>
     /// A value that the referenced question is tested using the specified operator in order for the item to be enabled.
     /// </summary>
@@ -124,9 +124,15 @@ namespace Fhir.R4.Models
         _Operator.SerializeJson(writer, options);
       }
 
-      writer.WriteBoolean("answerBoolean", AnswerBoolean);
+      if (AnswerBoolean != null)
+      {
+        writer.WriteBoolean("answerBoolean", (bool)AnswerBoolean!);
+      }
 
-      writer.WriteNumber("answerDecimal", AnswerDecimal);
+      if (AnswerDecimal != null)
+      {
+        writer.WriteNumber("answerDecimal", (decimal)AnswerDecimal!);
+      }
 
       if (_AnswerDecimal != null)
       {
@@ -134,7 +140,10 @@ namespace Fhir.R4.Models
         _AnswerDecimal.SerializeJson(writer, options);
       }
 
-      writer.WriteNumber("answerInteger", AnswerInteger);
+      if (AnswerInteger != null)
+      {
+        writer.WriteNumber("answerInteger", (int)AnswerInteger!);
+      }
 
       if (!string.IsNullOrEmpty(AnswerDate))
       {
@@ -339,7 +348,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The data type of the value must agree with the item.type.
     /// </summary>
-    public int ValueInteger { get; set; }
+    public int? ValueInteger { get; set; }
     /// <summary>
     /// The data type of the value must agree with the item.type.
     /// </summary>
@@ -384,7 +393,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WriteNumber("valueInteger", ValueInteger);
+      if (ValueInteger != null)
+      {
+        writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
 
       if (!string.IsNullOrEmpty(ValueDate))
       {
@@ -532,11 +544,11 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The type of the initial value must be consistent with the type of the item.
     /// </summary>
-    public bool ValueBoolean { get; set; }
+    public bool? ValueBoolean { get; set; }
     /// <summary>
     /// The type of the initial value must be consistent with the type of the item.
     /// </summary>
-    public decimal ValueDecimal { get; set; }
+    public decimal? ValueDecimal { get; set; }
     /// <summary>
     /// Extension container element for ValueDecimal
     /// </summary>
@@ -544,7 +556,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The type of the initial value must be consistent with the type of the item.
     /// </summary>
-    public int ValueInteger { get; set; }
+    public int? ValueInteger { get; set; }
     /// <summary>
     /// The type of the initial value must be consistent with the type of the item.
     /// </summary>
@@ -613,9 +625,15 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WriteBoolean("valueBoolean", ValueBoolean);
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
 
-      writer.WriteNumber("valueDecimal", ValueDecimal);
+      if (ValueDecimal != null)
+      {
+        writer.WriteNumber("valueDecimal", (decimal)ValueDecimal!);
+      }
 
       if (_ValueDecimal != null)
       {
@@ -623,7 +641,10 @@ namespace Fhir.R4.Models
         _ValueDecimal.SerializeJson(writer, options);
       }
 
-      writer.WriteNumber("valueInteger", ValueInteger);
+      if (ValueInteger != null)
+      {
+        writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
 
       if (!string.IsNullOrEmpty(ValueDate))
       {

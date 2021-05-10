@@ -578,11 +578,11 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The value of this property.
     /// </summary>
-    public int ValueInteger { get; set; }
+    public int? ValueInteger { get; set; }
     /// <summary>
     /// The value of this property.
     /// </summary>
-    public bool ValueBoolean { get; set; }
+    public bool? ValueBoolean { get; set; }
     /// <summary>
     /// The value of this property.
     /// </summary>
@@ -594,7 +594,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The value of this property.
     /// </summary>
-    public decimal ValueDecimal { get; set; }
+    public decimal? ValueDecimal { get; set; }
     /// <summary>
     /// Extension container element for ValueDecimal
     /// </summary>
@@ -650,9 +650,15 @@ namespace Fhir.R4.Models
         _ValueString.SerializeJson(writer, options);
       }
 
-      writer.WriteNumber("valueInteger", ValueInteger);
+      if (ValueInteger != null)
+      {
+        writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
 
-      writer.WriteBoolean("valueBoolean", ValueBoolean);
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
 
       if (!string.IsNullOrEmpty(ValueDateTime))
       {
@@ -665,7 +671,10 @@ namespace Fhir.R4.Models
         _ValueDateTime.SerializeJson(writer, options);
       }
 
-      writer.WriteNumber("valueDecimal", ValueDecimal);
+      if (ValueDecimal != null)
+      {
+        writer.WriteNumber("valueDecimal", (decimal)ValueDecimal!);
+      }
 
       if (_ValueDecimal != null)
       {

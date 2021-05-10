@@ -1624,15 +1624,15 @@ namespace Fhir.R4.Models
     /// <summary>
     /// Parameter value - variable or literal.
     /// </summary>
-    public bool ValueBoolean { get; set; }
+    public bool? ValueBoolean { get; set; }
     /// <summary>
     /// Parameter value - variable or literal.
     /// </summary>
-    public int ValueInteger { get; set; }
+    public int? ValueInteger { get; set; }
     /// <summary>
     /// Parameter value - variable or literal.
     /// </summary>
-    public decimal ValueDecimal { get; set; }
+    public decimal? ValueDecimal { get; set; }
     /// <summary>
     /// Extension container element for ValueDecimal
     /// </summary>
@@ -1671,11 +1671,20 @@ namespace Fhir.R4.Models
         _ValueString.SerializeJson(writer, options);
       }
 
-      writer.WriteBoolean("valueBoolean", ValueBoolean);
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
 
-      writer.WriteNumber("valueInteger", ValueInteger);
+      if (ValueInteger != null)
+      {
+        writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
 
-      writer.WriteNumber("valueDecimal", ValueDecimal);
+      if (ValueDecimal != null)
+      {
+        writer.WriteNumber("valueDecimal", (decimal)ValueDecimal!);
+      }
 
       if (_ValueDecimal != null)
       {

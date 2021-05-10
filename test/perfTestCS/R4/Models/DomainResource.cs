@@ -53,9 +53,9 @@ namespace Fhir.R4.Models
         writer.WritePropertyName("contained");
         writer.WriteStartArray();
 
-        foreach (Resource resource in Contained)
+        foreach (dynamic resource in Contained)
         {
-          ((Resource)this).SerializeJson(writer, options, true);
+          resource.SerializeJson(writer, options, true);
         }
 
         writer.WriteEndArray();

@@ -530,11 +530,11 @@ namespace Fhir.R4.Models
     /// <summary>
     /// Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.
     /// </summary>
-    public bool ValueBoolean { get; set; }
+    public bool? ValueBoolean { get; set; }
     /// <summary>
     /// Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.
     /// </summary>
-    public decimal ValueDecimal { get; set; }
+    public decimal? ValueDecimal { get; set; }
     /// <summary>
     /// Extension container element for ValueDecimal
     /// </summary>
@@ -542,7 +542,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.
     /// </summary>
-    public int ValueInteger { get; set; }
+    public int? ValueInteger { get; set; }
     /// <summary>
     /// Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.
     /// </summary>
@@ -611,9 +611,15 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WriteBoolean("valueBoolean", ValueBoolean);
+      if (ValueBoolean != null)
+      {
+        writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
 
-      writer.WriteNumber("valueDecimal", ValueDecimal);
+      if (ValueDecimal != null)
+      {
+        writer.WriteNumber("valueDecimal", (decimal)ValueDecimal!);
+      }
 
       if (_ValueDecimal != null)
       {
@@ -621,7 +627,10 @@ namespace Fhir.R4.Models
         _ValueDecimal.SerializeJson(writer, options);
       }
 
-      writer.WriteNumber("valueInteger", ValueInteger);
+      if (ValueInteger != null)
+      {
+        writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
 
       if (!string.IsNullOrEmpty(ValueDate))
       {

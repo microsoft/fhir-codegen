@@ -8,10 +8,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 
 namespace PerfTestCS.Benchmark
 {
     /// <summary>A serialization benchmarks.</summary>
+    [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
+    [CategoriesColumn]
     public class SerializationBenchmarks
     {
         /// <summary>The base dir.</summary>
@@ -34,6 +37,9 @@ namespace PerfTestCS.Benchmark
 
         /// <summary>The basic newtonsoft model.</summary>
         private fhirNewtonsoft.Resource _basicNewtonsoftModel;
+
+        /// <summary>The basic system JSON model.</summary>
+        private Fhir.R4.Models.Resource _basicSystemJsonModel;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SerializationBenchmarks"/> class.
@@ -125,7 +131,8 @@ namespace PerfTestCS.Benchmark
 
         /// <summary>Parses a specified file contents from memory.</summary>
         /// <returns>An object.</returns>
-        [Benchmark]
+        [BenchmarkCategory("Parse")]
+        [Benchmark(Baseline = true)]
         public object FirelyParse()
         {
             return _firelyParser.Parse(_json);
@@ -133,7 +140,8 @@ namespace PerfTestCS.Benchmark
 
         /// <summary>Serialize this object to the given stream.</summary>
         /// <returns>A string.</returns>
-        [Benchmark]
+        [BenchmarkCategory("Serialize")]
+        [Benchmark(Baseline = true)]
         public string FirelySerialize()
         {
             string test = _firelySerializer.SerializeToString(_firelyModel);
@@ -165,6 +173,7 @@ namespace PerfTestCS.Benchmark
 
         /// <summary>Basic newtonsoft parse.</summary>
         /// <returns>An object.</returns>
+        [BenchmarkCategory("Parse")]
         [Benchmark]
         public object BasicNewtonsoftParse()
         {
@@ -173,11 +182,52 @@ namespace PerfTestCS.Benchmark
 
         /// <summary>Basic newtonsoft serialize.</summary>
         /// <returns>A string.</returns>
+        [BenchmarkCategory("Serialize")]
         [Benchmark]
         public string BasicNewtonsoftSerialize()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(_basicNewtonsoftModel);
         }
 
+        /// <summary>Basic system JSON setup.</summary>
+        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+        [GlobalSetup(Targets = new[] { nameof(BasicSystemJsonParse), nameof(BasicSystemJsonSerialize) })]
+        public void BasicSystemJsonSetup()
+        {
+            string filename = Path.Combine(_baseDir, Filename);
+
+            if (!File.Exists(filename))
+            {
+                throw new FileNotFoundException();
+            }
+
+            if (string.IsNullOrEmpty(_json))
+            {
+                _json = File.ReadAllText(filename);
+            }
+
+            if (_basicSystemJsonModel == null)
+            {
+                _basicSystemJsonModel = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(_json);
+            }
+        }
+
+        /// <summary>Basic system JSON parse.</summary>
+        /// <returns>An object.</returns>
+        [BenchmarkCategory("Parse")]
+        [Benchmark]
+        public object BasicSystemJsonParse()
+        {
+            return System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(_json);
+        }
+
+        /// <summary>Basic system JSON serialize.</summary>
+        /// <returns>A string.</returns>
+        [BenchmarkCategory("Serialize")]
+        [Benchmark]
+        public string BasicSystemJsonSerialize()
+        {
+            return System.Text.Json.JsonSerializer.Serialize(_basicSystemJsonModel);
+        }
     }
 }

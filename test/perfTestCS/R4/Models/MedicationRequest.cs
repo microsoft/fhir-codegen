@@ -270,7 +270,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// This element is labeled as a modifier because whether substitution is allow or not, it cannot be ignored.
     /// </summary>
-    public bool AllowedBoolean { get; set; }
+    public bool? AllowedBoolean { get; set; }
     /// <summary>
     /// This element is labeled as a modifier because whether substitution is allow or not, it cannot be ignored.
     /// </summary>
@@ -291,7 +291,10 @@ namespace Fhir.R4.Models
 
       ((Fhir.R4.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
-      writer.WriteBoolean("allowedBoolean", AllowedBoolean);
+      if (AllowedBoolean != null)
+      {
+        writer.WriteBoolean("allowedBoolean", (bool)AllowedBoolean!);
+      }
 
       if (AllowedCodeableConcept != null)
       {

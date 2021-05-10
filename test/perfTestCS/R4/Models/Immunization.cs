@@ -399,7 +399,7 @@ namespace Fhir.R4.Models
     /// <summary>
     /// The use of an integer is preferred if known. A string should only be used in cases where an integer is not available (such as when documenting a recurring booster dose).
     /// </summary>
-    public uint DoseNumberPositiveInt { get; set; }
+    public uint? DoseNumberPositiveInt { get; set; }
     /// <summary>
     /// The use of an integer is preferred if known. A string should only be used in cases where an integer is not available (such as when documenting a recurring booster dose).
     /// </summary>
@@ -474,7 +474,10 @@ namespace Fhir.R4.Models
         writer.WriteEndArray();
       }
 
-      writer.WriteNumber("doseNumberPositiveInt", DoseNumberPositiveInt);
+      if (DoseNumberPositiveInt != null)
+      {
+        writer.WriteNumber("doseNumberPositiveInt", (uint)DoseNumberPositiveInt!);
+      }
 
       if (!string.IsNullOrEmpty(DoseNumberString))
       {
