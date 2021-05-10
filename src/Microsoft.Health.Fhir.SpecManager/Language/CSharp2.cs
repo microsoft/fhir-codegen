@@ -1322,9 +1322,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     string.Empty,
                     complex.Components.ContainsKey(element.Path));
 
+                bool isMultiTyped = values.Count > 1;
+
                 foreach (KeyValuePair<string, string> kvp in values)
                 {
-                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional);
+                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional || isMultiTyped);
 
                     string elementName;
                     if ((kvp.Key == complex.Name) && (!element.IsInherited))
@@ -1542,11 +1544,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "DomainResource":
                 case "MetadataResource":
                 case "CanonicalResource":
-                    _writer.WriteLineIndented($"foreach (Resource resource in {elementName})");
+                    _writer.WriteLineIndented($"foreach (dynamic resource in {elementName})");
                     _writer.OpenScope();
-                    _writer.WriteLineIndented($"((Resource)this).SerializeJson(writer, options, true);");
+                    _writer.WriteLineIndented($"resource.SerializeJson(writer, options, true);");
                     _writer.CloseScope();
 
+                    // _writer.WriteLineIndented($"foreach (Resource resource in {elementName})");
+                    // _writer.WriteLineIndented($"((Resource)this).SerializeJson(writer, options, true);");
                     break;
 
                 case "guid":
@@ -1637,9 +1641,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     string.Empty,
                     complex.Components.ContainsKey(element.Path));
 
+                bool isMultiTyped = values.Count > 1;
+
                 foreach (KeyValuePair<string, string> kvp in values)
                 {
-                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional);
+                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional || isMultiTyped);
 
                     string elementName;
                     if ((kvp.Key == complex.Name) && (!element.IsInherited))
@@ -2255,6 +2261,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.Empty,
                 complex.Components.ContainsKey(element.Path));
 
+            bool isMultiTyped = values.Count > 1;
+
             foreach (KeyValuePair<string, string> kvp in values)
             {
                 string elementName;
@@ -2268,7 +2276,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 string optionalFlagString =
-                    (element.IsOptional && (!element.IsArray) && IsNullable(kvp.Value))
+                    ((element.IsOptional || isMultiTyped) && (!element.IsArray) && IsNullable(kvp.Value))
                         ? "?"
                         : string.Empty;
 

@@ -10,6 +10,9 @@ using System.IO.Enumeration;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Reports;
+using BenchmarkDotNet.Running;
 using Fhir.R4.Serialization;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
@@ -57,6 +60,14 @@ namespace PerfTestCS
                     fhirSpecDirectory = testDir;
                 }
             }
+
+            Summary serializationSummary = BenchmarkRunner.Run<Benchmark.SerializationBenchmarks>(
+                DefaultConfig.Instance
+                    .WithOption(ConfigOptions.DisableLogFile, true)
+                    .WithOption(ConfigOptions.KeepBenchmarkFiles, true)
+                    .WithOption(ConfigOptions.JoinSummary, true));
+
+            return 0;
 
             //if (FullParseTest(fhirSpecDirectory) == 0)
             //{
