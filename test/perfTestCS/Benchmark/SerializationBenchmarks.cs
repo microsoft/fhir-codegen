@@ -15,6 +15,7 @@ namespace PerfTestCS.Benchmark
     /// <summary>A serialization benchmarks.</summary>
     [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
     [CategoriesColumn]
+    [MemoryDiagnoser]
     public class SerializationBenchmarks
     {
         /// <summary>The base dir.</summary>
