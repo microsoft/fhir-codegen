@@ -194,6 +194,11 @@
             "commandName": "Project",
             "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\temp\\JsonRoundtrip\\RoundtripCli\\R4\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "firelyJsonTest": {
+            "commandName": "Project",
+            "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\temp\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2JsonExt --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }
 }

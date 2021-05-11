@@ -1276,7 +1276,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.OpenScope();
             _writer.WriteLineIndented($"writer.WriteStartObject();");
             _writer.CloseScope();
-            _writer.WriteLine();
 
             if (isResource &&
                 (nameForExport != "Resource") &&
@@ -1457,6 +1456,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     break;
 
+                // TODO(ginoc): Why is guid here?
                 case "guid":
                 case "integer64":
                 case "int64":
