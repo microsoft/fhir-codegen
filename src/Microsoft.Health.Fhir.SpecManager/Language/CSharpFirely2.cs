@@ -86,11 +86,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "CanonicalResource",
             "MetadataResource",
 
-            /* Citation somehow generates incorrect code - there must be something new
-             * going on with this resource type. For now, it has been disabled so we can
-             * take a look at it later, before R5 ships. */
-            "Citation",
-
             /* UCUM is used as a required binding in a codeable concept. Since we do not
              * use enums in this situation, it is not useful to generate this valueset
              */
@@ -661,7 +656,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                         _modelWriter.DecreaseIndent();
                         _modelWriter.WriteLine(string.Empty);
-
                     }
                 }
 
@@ -837,8 +831,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             string abstractFlag = isAbstract ? " abstract" : string.Empty;
-
-
 
             List<string> interfaces = new List<string>();
 
@@ -1181,9 +1173,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteIndentedComment($"{complex.ShortDescription}");
 
-            string componentName = parentExportName + "#" + (string.IsNullOrEmpty(complex.ExplicitName) ?
+            string explicitName = complex.ExplicitName;
+
+            // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
+            //   explicitname in the definition for attributes:
+            //   - Statistic.attributeEstimate.attributeEstimate
+            //   - Citation.contributorship.summary
+            if (complex.Id == "Statistic.attributeEstimate.attributeEstimate")
+            {
+                explicitName = "AttributeEstimateAttributeEstimate";
+                exportName = "AttributeEstimateAttributeEstimateComponent";
+            }
+            else if (complex.Id == "Citation.contributorship.summary")
+            {
+                explicitName = "ContributorshipSummary";
+                exportName = "ContributorshipSummaryComponent";
+            }
+
+            // end of repair
+            string componentName = parentExportName + "#" + (string.IsNullOrEmpty(explicitName) ?
                 complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
-                complex.ExplicitName);
+                explicitName);
 
             Debug.Assert(!string.IsNullOrEmpty(componentName), $"Found a type at element {complex.Path} without a name or explicit name.");
 
@@ -1342,7 +1352,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"public enum {nameSanitized}");
 
                 OpenScope();
-
 
                 HashSet<string> usedLiterals = new HashSet<string>();
 
@@ -1896,7 +1905,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A string.</returns>
         private string BuildTypeFromPath(string type)
         {
-            if (_info.TryGetExplicitName(type, out string explicitTypeName))
+            // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
+            //   explicitname in the definition for attributes:
+            //   - Statistic.attributeEstimate.attributeEstimate
+            //   - Citation.contributorship.summary
+            if (type == "Statistic.attributeEstimate.attributeEstimate")
+            {
+                type = "Statistic.AttributeEstimateAttributeEstimateComponent";
+            }
+            else if (type == "Citation.contributorship.summary")
+            {
+                type = "Citation.ContributorshipSummaryComponent";
+            }
+
+            // end of repair
+            else if (_info.TryGetExplicitName(type, out string explicitTypeName))
             {
                 string parentName = type.Substring(0, type.IndexOf('.'));
                 type = $"{parentName}" +
