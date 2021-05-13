@@ -42,6 +42,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>The written resources.</summary>
         private Dictionary<string, WrittenModelInfo> _writtenModels = new Dictionary<string, WrittenModelInfo>();
 
+        /// <summary>The written converters.</summary>
+        private List<string> _writtenConverters = new List<string>();
+
         /// <summary>The split characters.</summary>
         private static readonly char[] _splitChars = { '|', ' ' };
 
@@ -177,6 +180,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             { "Element.id", "ElementId" },
             { "Extension.url", "Url" },
+            { "Narrative.div", "Div" },
         };
 
         /// <summary>
@@ -298,11 +302,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the JSON serialization helper files.</summary>
         private void WriteJsonSerializationHelpers()
         {
-            WriteJsonSerializerInterface();
+            // WriteJsonSerializerInterface();
+
             WriteJsonSerializerOptions();
 
             WriteJsonStreamResourceConverter();
-            WriteJsonStreamComponentConverter();
+
+            // WriteJsonStreamComponentConverter();
 
             WriteJsonStreamUtilities();
         }
@@ -342,16 +348,57 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteIndentedComment("Initializes static members of the <see cref=\"FhirSerializerOptions\"/> class.");
                 _writer.WriteLineIndented("static FhirSerializerOptions()");
+
+                // open FhirSerializerOptions
                 _writer.OpenScope();
-                _writer.WriteLineIndented("_prettyFormat = new JsonSerializerOptions();");
-                _writer.WriteLineIndented("_prettyFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;");
-                _writer.WriteLineIndented("_prettyFormat.WriteIndented = true;");
+                _writer.WriteLineIndented("_prettyFormat = new JsonSerializerOptions()");
+
+                // open _prettyForymat
+                _writer.OpenScope();
+                _writer.WriteLineIndented("Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,");
+                _writer.WriteLineIndented("WriteIndented = true,");
+                _writer.WriteLineIndented("Converters =");
+
+                // open Converters
+                _writer.OpenScope();
+
+                foreach (string converter in _writtenConverters)
+                {
+                    _writer.WriteLineIndented($"new {converter}(),");
+                }
+
+                // close Converters
+                _writer.CloseScope("},");
+
+                // close _prettyFormat
+                _writer.CloseScope("};");
+
                 _writer.WriteLine();
-                _writer.WriteLineIndented("_compactFormat = new JsonSerializerOptions();");
-                _writer.WriteLineIndented("_compactFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;");
-                _writer.WriteLineIndented("_compactFormat.WriteIndented = true;");
+
+                _writer.WriteLineIndented("_compactFormat = new JsonSerializerOptions()");
+
+                // open _compactFormat
+                _writer.OpenScope();
+                _writer.WriteLineIndented("Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,");
+                _writer.WriteLineIndented("WriteIndented = false,");
+                _writer.WriteLineIndented("Converters =");
+
+                // open Converters
+                _writer.OpenScope();
+
+                foreach (string converter in _writtenConverters)
+                {
+                    _writer.WriteLineIndented($"new {converter}(),");
+                }
+
+                // close Converters
+                _writer.CloseScope("},");
+
+                // close _compactFormat
+                _writer.CloseScope("};");
+
+                // close FhirSerializerOptions
                 _writer.CloseScope();
-                _writer.WriteLine();
 
                 _writer.WriteLine("#pragma warning restore CA1810 // Initialize reference type static fields inline");
                 _writer.WriteLine();
@@ -425,7 +472,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteFooter();
             }
         }
-
 
         /// <summary>Writes the JSON serializer component converter.</summary>
         /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
@@ -962,7 +1008,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteNamespaceOpen();
 
-                WriteComponent(complex, exportName, DetermineExportedBaseTypeName(complex.BaseTypeName), true, 0);
+                WriteComponent(complex, exportName, DetermineExportedBaseTypeName(complex.BaseTypeName, false), true, 0);
 
                 WriteNamespaceClose();
 
@@ -989,7 +1035,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //    baseExportName = CSharpFirelyCommon.TypeNameMappings[baseExportName];
             //}
 
-            string baseExportName = DetermineExportedBaseTypeName(complex.BaseTypeName);
+            string baseExportName = DetermineExportedBaseTypeName(complex.BaseTypeName, true);
 
             string csName = $"{_modelNamespace}.{exportName}";
 
@@ -1094,35 +1140,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // close SerializeJson
             CloseScope();
 
-            // TODO(ginoc): Re-enable deserialization
-            //// Write DeserializeJson
-            //WriteDeserializeJson(complex.Name, exportName);
+            // Write DeserializeJson
+            WriteDeserializeJson(complex.Name, exportName);
 
-            //// open DeserializeJsonProperty
-            //OpenDeserializeJsonProperty(complex.Name, exportName);
+            // open DeserializeJsonProperty
+            OpenDeserializeJsonProperty(complex.Name, exportName);
 
-            //// open switch
-            //_writer.WriteLineIndented("switch (propertyName)");
-            //_writer.OpenScope();
+            // open switch
+            _writer.WriteLineIndented("switch (propertyName)");
+            _writer.OpenScope();
 
-            //WriteDeserializeJsonElements(complex, exportName);
+            WriteDeserializeJsonElements(complex, exportName);
 
-            //if ((!string.IsNullOrEmpty(baseExportName)) &&
-            //     (baseExportName != exportName))
-            //{
-            //    _writer.WriteLineIndented($"// Complex: {complex.Name}, Export: {exportName}, Base: {complex.BaseTypeName}");
-            //    _writer.WriteLineIndented($"default:");
-            //    _writer.IncreaseIndent();
-            //    _writer.WriteLineIndented($"(({_modelNamespace}.{baseExportName})current).DeserializeJsonProperty(ref reader, options, propertyName);");
-            //    _writer.WriteLineIndented("break;");
-            //    _writer.DecreaseIndent();
-            //}
+            if ((!string.IsNullOrEmpty(baseExportName)) &&
+                 (baseExportName != exportName) &&
+                 (baseExportName != "DataType"))
+            {
+                _writer.WriteLineIndented($"// Complex: {complex.Name}, Export: {exportName}, Base: {complex.BaseTypeName}");
+                _writer.WriteLineIndented($"default:");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"(({_modelNamespace}.{baseExportName})current).DeserializeJsonProperty(ref reader, options, propertyName);");
+                _writer.WriteLineIndented("break;");
+                _writer.DecreaseIndent();
+            }
 
-            //// close switch
-            //_writer.CloseScope();
+            // close switch
+            _writer.CloseScope();
 
-            //// close DeserializeJsonProperty
-            //CloseScope();
+            // close DeserializeJsonProperty
+            CloseScope();
 
             // check for nested components
             if (complex.Components != null)
@@ -1153,11 +1199,73 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
             }
 
+            // write our component converter
+            WriteComponentConverter(exportName);
+
             // close class
             CloseScope();
         }
 
-        private string DetermineExportedBaseTypeName(string baseTypeName)
+        /// <summary>Writes the JSON serializer component converter.</summary>
+        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
+        private void WriteComponentConverter(
+            string exportName)
+        {
+            _writtenConverters.Add($"{exportName}JsonExtensions.{exportName}JsonConverter");
+
+            // open class
+            WriteIndentedComment("Resource converter to support Sytem.Text.Json interop.");
+            _writer.WriteLineIndented($"public class {exportName}JsonConverter : JsonConverter<{exportName}>");
+            _writer.OpenScope();
+
+            // function CanConvert
+            WriteIndentedComment("Determines whether the specified type can be converted.");
+            _writer.WriteLineIndented($"public override bool CanConvert(Type objectType) =>");
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented($"typeof({exportName}).IsAssignableFrom(objectType);");
+            _writer.DecreaseIndent();
+            _writer.WriteLine();
+
+            WriteIndentedComment("Writes a specified value as JSON.");
+            _writer.WriteLineIndented($"public override void Write(" +
+                $"Utf8JsonWriter writer, " +
+                $"{exportName} value, " +
+                $"JsonSerializerOptions options)");
+
+            // open Write
+            _writer.OpenScope();
+
+            _writer.WriteLineIndented($"value.SerializeJson(writer, options, true);");
+            _writer.WriteLineIndented("writer.Flush();");
+
+            // close Write
+            _writer.CloseScope();
+
+            WriteIndentedComment("Reads and converts the JSON to a typed object.");
+            _writer.WriteLineIndented($"public override {exportName} Read(" +
+                $"ref Utf8JsonReader reader, " +
+                $"Type typeToConvert, " +
+                $"JsonSerializerOptions options)");
+
+            // open Read
+            _writer.OpenScope();
+
+            _writer.WriteLineIndented($"{exportName} target = new {exportName}();");
+            _writer.WriteLineIndented("target.DeserializeJson(ref reader, options);");
+            _writer.WriteLineIndented("return target;");
+
+            // close Read
+            _writer.CloseScope();
+
+            // close class
+            _writer.CloseScope();
+        }
+
+        /// <summary>Determine exported base type name.</summary>
+        /// <param name="baseTypeName">Name of the base type.</param>
+        /// <param name="isDataType">  True if is data type, false if not.</param>
+        /// <returns>A string.</returns>
+        private string DetermineExportedBaseTypeName(string baseTypeName, bool isDataType)
         {
             // These two classes are more like interfaces, we treat their subclasses
             // as subclasses of DomainResource instead.
@@ -1169,10 +1277,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (_info.MajorVersion < 5)
             {
                 // Promote R4 datatypes (all derived from Element/BackboneElement) to the right new subclass
-                //if (baseTypeName == "BackboneElement" && _info.MajorVersion == 4)
-                //{
-                //    return "BackboneType";
-                //}
+                if ((baseTypeName == "BackboneElement") && (_info.MajorVersion == 4) && isDataType)
+                {
+                    return "BackboneType";
+                }
 
                 if (baseTypeName == "Element")
                 {
@@ -1670,7 +1778,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
                 complex.ExplicitName);
 
-            string baseExportName = DetermineExportedBaseTypeName(complex.BaseTypeName);
+            string baseExportName = DetermineExportedBaseTypeName(complex.BaseTypeName, false);
 
             // open SerializeJson
             OpenSerializeJson(componentName, exportName, parentExportName);
@@ -1701,31 +1809,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // close SerializeJson
             CloseScope();
 
-            // TODO(ginoc): Re-enable deserialization
-            //// Write DeserializeJson
-            //WriteDeserializeJson(componentName, exportName, parentExportName, true);
+            // Write DeserializeJson
+            WriteDeserializeJson(componentName, exportName, parentExportName, true);
 
-            //// open DeserializeJsonProperty
-            //OpenDeserializeJsonProperty(componentName, exportName, parentExportName, true);
+            // open DeserializeJsonProperty
+            OpenDeserializeJsonProperty(componentName, exportName, parentExportName, true);
 
-            //// open switch
-            //_writer.WriteLineIndented("switch (propertyName)");
-            //_writer.OpenScope();
+            // open switch
+            _writer.WriteLineIndented("switch (propertyName)");
+            _writer.OpenScope();
 
-            //WriteDeserializeJsonElements(complex, exportName);
+            WriteDeserializeJsonElements(complex, exportName);
 
-            //_writer.WriteLineIndented($"// Complex: {complex.Name}, Export: {exportName}, Base: {complex.BaseTypeName}");
-            //_writer.WriteLineIndented($"default:");
-            //_writer.IncreaseIndent();
-            //_writer.WriteLineIndented($"(({_modelNamespace}.{baseExportName})current).DeserializeJsonProperty(ref reader, options, propertyName);");
-            //_writer.WriteLineIndented("break;");
-            //_writer.DecreaseIndent();
+            if ((!string.IsNullOrEmpty(baseExportName)) &&
+                 (baseExportName != exportName) &&
+                 (baseExportName != "DataType"))
+            {
+                _writer.WriteLineIndented($"// Complex: {complex.Name}, Export: {exportName}, Base: {complex.BaseTypeName}");
+                _writer.WriteLineIndented($"default:");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"(({_modelNamespace}.{baseExportName})current).DeserializeJsonProperty(ref reader, options, propertyName);");
+                _writer.WriteLineIndented("break;");
+                _writer.DecreaseIndent();
+            }
 
-            //// close switch
-            //_writer.CloseScope();
+            // close switch
+            _writer.CloseScope();
 
-            //// close DeserializeJsonProperty
-            //CloseScope();
+            // close DeserializeJsonProperty
+            CloseScope();
 
             // check for nested components
             if (complex.Components != null)
@@ -1881,200 +1993,335 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     elementInfo = BuildElementInfo(exportedComplexName, element);
                 }
 
+                string currentName = "current." + elementInfo.ExportedName;
+
                 if (elementInfo.IsChoice)
                 {
-                    foreach (KeyValuePair<string, string> kvp in elementInfo.FhirAndCsTypes)
-                    {
-                        string camel = elementInfo.FhirElementName + char.ToUpperInvariant(kvp.Key[0]) + kvp.Key.Substring(1);
-
-                        string csType = kvp.Key.StartsWith(_modelNamespace, StringComparison.Ordinal)
-                            ? kvp.Key.Substring(_modelNamespace.Length + 1)
-                            : kvp.Key;
-
-                        if (elementInfo.IsList)
-                        {
-                            switch (kvp.Value)
-                            {
-                                case "Base64Binary":
-                                    WriteJsonPropertyParseListCase(elementInfo.ExportedName, camel, kvp.Value, "GetBytesFromBase64", true);
-                                    break;
-                                case "FhirBoolean":
-                                    WriteJsonPropertyParseListCase(elementInfo.ExportedName, camel, kvp.Value, "GetBoolean", true);
-                                    break;
-                                case "FhirDecimal":
-                                    WriteJsonPropertyParseListCase(elementInfo.ExportedName, camel, kvp.Value, "GetDecimal", true);
-                                    break;
-                                case "Guid":
-                                    WriteJsonPropertyParseListCase(elementInfo.ExportedName, camel, kvp.Value, "GetGuid", false);
-                                    break;
-                                case "PositiveInt":
-                                case "UnsignedInt":
-                                    //WriteJsonPropertyParseListCase(elementInfo.ExportedName, camel, kvp.Value, "GetUInt32", true);
-                                    //break;
-                                case "Integer":
-                                    WriteJsonPropertyParseListCase(elementInfo.ExportedName, camel, kvp.Value, "GetInt32", true);
-                                    break;
-                                case "Integer64":
-                                    WriteJsonPropertyParseListCase(elementInfo.ExportedName, camel, kvp.Value, "GetInt32", true);
-                                    break;
-                                case "Canonical":
-                                case "Date":
-                                case "DateTime":
-                                case "FhirDateTime":
-                                case "FhirString":
-                                case "FhirUri":
-                                case "FhirUrl":
-                                case "Id":
-                                case "XHtml":
-                                    WriteJsonPropertyParseListCase(elementInfo.ExportedName, camel, kvp.Value, "GetString", true);
-                                    break;
-                                default:
-                                    WriteJsonPropertyParseListCase(elementInfo.ExportedName, camel, kvp.Value, string.Empty, false);
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            switch (kvp.Value)
-                            {
-                                case "Base64Binary":
-                                    WriteJsonPropertyParseCase(elementInfo.ExportedName, camel, kvp.Value, "GetBytesFromBase64", true);
-                                    break;
-                                case "FhirBoolean":
-                                    WriteJsonPropertyParseCase(elementInfo.ExportedName, camel, kvp.Value, "GetBoolean", true);
-                                    break;
-                                case "FhirDecimal":
-                                    WriteJsonPropertyParseCase(elementInfo.ExportedName, camel, kvp.Value, "GetDecimal", true);
-                                    break;
-                                case "Guid":
-                                    WriteJsonPropertyParseCase(elementInfo.ExportedName, camel, kvp.Value, "GetGuid", false);
-                                    break;
-                                case "PositiveInt":
-                                case "UnsignedInt":
-                                    //WriteJsonPropertyParseCase(elementInfo.ExportedName, camel, kvp.Value, "GetUInt32", true);
-                                    //break;
-                                case "Integer":
-                                    WriteJsonPropertyParseCase(elementInfo.ExportedName, camel, kvp.Value, "GetInt32", true);
-                                    break;
-                                case "Integer64":
-                                    WriteJsonPropertyParseCase(elementInfo.ExportedName, camel, kvp.Value, "GetString", true);
-                                    break;
-                                case "Canonical":
-                                case "Date":
-                                case "DateTime":
-                                case "FhirDateTime":
-                                case "FhirString":
-                                case "FhirUri":
-                                case "FhirUrl":
-                                case "Id":
-                                case "XHtml":
-                                    WriteJsonPropertyParseCase(elementInfo.ExportedName, camel, kvp.Value, "GetString", true);
-                                    break;
-                                default:
-                                    WriteJsonPropertyParseCase(elementInfo.ExportedName, camel, kvp.Value, string.Empty, false);
-
-                                    break;
-                            }
-                        }
-                    }
+                    WriteJsonDeserializeChoiceElement(currentName, element, elementInfo);
                 }
                 else
                 {
+                    _writer.WriteLineIndented($"case \"{elementInfo.FhirElementName}\":");
+                    _writer.IncreaseIndent();
+
+                    string csType;
+
                     if (elementInfo.IsList)
                     {
-                        string csType = elementInfo.ExportedListSubType.StartsWith(_modelNamespace, StringComparison.Ordinal)
+                        csType = elementInfo.ExportedListSubType.StartsWith(_modelNamespace, StringComparison.Ordinal)
                             ? elementInfo.ExportedListSubType.Substring(_modelNamespace.Length + 1)
                             : elementInfo.ExportedListSubType;
 
-                        switch (csType)
-                        {
-                            case "Base64Binary":
-                                WriteJsonPropertyParseListCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetBytesFromBase64", true);
-                                break;
-                            case "FhirBoolean":
-                                WriteJsonPropertyParseListCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetBoolean", true);
-                                break;
-                            case "FhirDecimal":
-                                WriteJsonPropertyParseListCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetDecimal", true);
-                                break;
-                            case "Guid":
-                                WriteJsonPropertyParseListCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetGuid", false);
-                                break;
-                            case "PositiveInt":
-                            case "UnsignedInt":
-                                //WriteJsonPropertyParseListCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetUInt32", true);
-                                //break;
-                            case "Integer":
-                                WriteJsonPropertyParseListCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetInt32", true);
-                                break;
-                            case "Integer64":
-                                WriteJsonPropertyParseListCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetInt64", true);
-                                break;
-                            case "Canonical":
-                            case "Date":
-                            case "DateTime":
-                            case "FhirDateTime":
-                            case "FhirString":
-                            case "FhirUri":
-                            case "FhirUrl":
-                            case "Id":
-                            case "XHtml":
-                                WriteJsonPropertyParseListCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetString", true);
-                                break;
-                            default:
-                                WriteJsonPropertyParseListCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, string.Empty, false);
-
-                                break;
-                        }
+                        _writer.WriteLineIndented($"if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))");
+                        _writer.OpenScope();
+                        _writer.WriteLineIndented("throw new JsonException();");
+                        _writer.CloseScope();
+                        _writer.WriteLine();
+                        _writer.WriteLineIndented($"{currentName} = new List<{csType}>();");
+                        _writer.WriteLine();
+                        _writer.WriteLineIndented($"while (reader.TokenType != JsonTokenType.EndArray)");
+                        _writer.OpenScope();
                     }
                     else
                     {
-                        string csType = elementInfo.ExportedType.StartsWith(_modelNamespace, StringComparison.Ordinal)
+                        csType = elementInfo.ExportedType.StartsWith(_modelNamespace, StringComparison.Ordinal)
                             ? elementInfo.ExportedType.Substring(_modelNamespace.Length + 1)
                             : elementInfo.ExportedType;
-
-                        switch (csType)
-                        {
-                            case "Base64Binary":
-                                WriteJsonPropertyParseCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetBytesFromBase64", true);
-                                break;
-                            case "FhirBoolean":
-                                WriteJsonPropertyParseCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetBoolean", true);
-                                break;
-                            case "FhirDecimal":
-                                WriteJsonPropertyParseCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetDecimal", true);
-                                break;
-                            case "Guid":
-                                WriteJsonPropertyParseCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetGuid", false);
-                                break;
-                            case "PositiveInt":
-                            case "UnsignedInt":
-                                //WriteJsonPropertyParseCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetUInt32", true);
-                                //break;
-                            case "Integer":
-                                WriteJsonPropertyParseCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetInt32", true);
-                                break;
-                            case "Integer64":
-                                WriteJsonPropertyParseCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetInt64", true);
-                                break;
-                            case "Canonical":
-                            case "Date":
-                            case "DateTime":
-                            case "FhirDateTime":
-                            case "FhirString":
-                            case "FhirUri":
-                            case "FhirUrl":
-                            case "Id":
-                            case "XHtml":
-                                WriteJsonPropertyParseCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, "GetString", true);
-                                break;
-                            default:
-                                WriteJsonPropertyParseCase(elementInfo.ExportedName, elementInfo.FhirElementName, csType, string.Empty, false);
-
-                                break;
-                        }
                     }
+
+                    switch (csType)
+                    {
+                        case "Resource":
+                        case "DomainResource":
+                        case "MetadataResource":
+                        case "CanonicalResource":
+                            if (elementInfo.IsList)
+                            {
+                                _writer.WriteLineIndented($"{currentName}.Add(JsonSerializer.Deserialize<{_modelNamespace}.Resource>(ref reader, options));");
+                            }
+                            else
+                            {
+                                _writer.WriteLineIndented($"{currentName} = JsonSerializer.Deserialize<{_modelNamespace}.Resource>(ref reader, options);");
+                            }
+
+                            break;
+
+                        case "Base64Binary":
+                            if (elementInfo.IsList)
+                            {
+                                _writer.WriteLineIndented($"{currentName}.Add(new {csType}(reader.GetBytesFromBase64()));");
+                            }
+                            else
+                            {
+                                _writer.WriteLineIndented($"{currentName} = new {csType}(reader.GetBytesFromBase64());");
+                            }
+
+                            break;
+
+                        case "Canonical":
+                        case "Code":
+                        case "Date":
+                        case "DateTime":
+                        case "FhirDateTime":
+                        case "FhirString":
+                        case "FhirUri":
+                        case "FhirUrl":
+                        case "Id":
+                        case "Markdown":
+                        case "Oid":
+                        case "Uuid":
+                        case "XHtml":
+                            if (elementInfo.IsList)
+                            {
+                                _writer.WriteLineIndented($"{currentName}.Add(new {csType}(reader.GetString()));");
+                            }
+                            else
+                            {
+                                _writer.WriteLineIndented($"{currentName} = new {csType}(reader.GetString());");
+                            }
+
+                            break;
+
+                        // special case for Element.id, Extension.url, and Narrative.div
+                        case "string":
+                            if (elementInfo.IsList)
+                            {
+                                _writer.WriteLineIndented($"{currentName}.Add(reader.GetString());");
+                            }
+                            else
+                            {
+                                _writer.WriteLineIndented($"{currentName} = reader.GetString();");
+                            }
+
+                            break;
+
+                        case "FhirBoolean":
+                            if (elementInfo.IsList)
+                            {
+                                _writer.WriteLineIndented($"{currentName}.Add(new {csType}(reader.GetBoolean()));");
+                            }
+                            else
+                            {
+                                _writer.WriteLineIndented($"{currentName} = new {csType}(reader.GetBoolean());");
+                            }
+
+                            break;
+
+                        case "FhirDecimal":
+                            if (elementInfo.IsList)
+                            {
+                                _writer.WriteLineIndented($"{currentName}.Add(new {csType}(reader.GetDecimal()));");
+                            }
+                            else
+                            {
+                                _writer.WriteLineIndented($"{currentName} = new {csType}(reader.GetDecimal());");
+                            }
+
+                            break;
+
+                        case "Integer":
+                        case "PositiveInt":
+                        case "UnsignedInt":
+                            if (elementInfo.IsList)
+                            {
+                                _writer.WriteLineIndented($"{currentName}.Add(new {csType}(reader.GetInt32()));");
+                            }
+                            else
+                            {
+                                _writer.WriteLineIndented($"{currentName} = new {csType}(reader.GetInt32());");
+                            }
+
+                            break;
+
+                        case "Instant":
+                            if (elementInfo.IsList)
+                            {
+                                _writer.WriteLineIndented($"{currentName}.Add(new {csType}(DateTimeOffset.Parse(reader.GetString())));");
+                            }
+                            else
+                            {
+                                _writer.WriteLineIndented($"{currentName} = new {csType}(DateTimeOffset.Parse(reader.GetString()));");
+                            }
+
+                            break;
+
+                        case "Integer64":
+                            if (elementInfo.IsList)
+                            {
+                                _writer.WriteLineIndented($"{currentName}.Add(new {csType}(long.Parse(reader.GetString())));");
+                            }
+                            else
+                            {
+                                _writer.WriteLineIndented($"{currentName} = new {csType}(long.Parse(reader.GetString()));");
+                            }
+
+                            break;
+
+                        default:
+                            // check for enum-typed codes (non-enum codes are handled above)
+                            if (csType.StartsWith("Code<", StringComparison.Ordinal))
+                            {
+                                string codeType = csType.Substring(5, csType.Length - 6);
+
+                                if (elementInfo.IsList)
+                                {
+                                    _writer.WriteLineIndented($"{currentName}.Add(" +
+                                        $"new {csType}(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<{codeType}>(reader.GetString())));");
+                                }
+                                else
+                                {
+                                    _writer.WriteLineIndented($"{currentName} =" +
+                                        $"new {csType}(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<{codeType}>(reader.GetString()));");
+                                }
+                            }
+                            else
+                            {
+                                if (elementInfo.IsList)
+                                {
+                                    _writer.WriteLineIndented($"{currentName}.Add(" +
+                                        $"JsonSerializer.Deserialize<{_modelNamespace}.{csType}>(ref reader, options));");
+
+                                    //_writer.WriteLineIndented($"{_modelNamespace}.{csType} v_{elementInfo.ExportedName} = new {_modelNamespace}.{csType}();");
+                                    //_writer.WriteLineIndented($"v_{elementInfo.ExportedName}.DeserializeJson(ref reader, options);");
+                                    //_writer.WriteLineIndented($"{currentName}.Add(v_{elementInfo.ExportedName});");
+                                }
+                                else
+                                {
+                                    _writer.WriteLineIndented($"{currentName} = " +
+                                        $"JsonSerializer.Deserialize<{_modelNamespace}.{csType}>(ref reader, options);");
+
+                                    //_writer.WriteLineIndented($"{currentName} = new {_modelNamespace}.{csType}();");
+                                    //_writer.WriteLineIndented($"{currentName}.DeserializeJson(ref reader, options);");
+                                }
+                            }
+
+                            break;
+                    }
+
+                    if (elementInfo.IsList)
+                    {
+                        _writer.WriteLine();
+                        _writer.WriteLineIndented($"if (!reader.Read())");
+                        _writer.OpenScope();
+                        _writer.WriteLineIndented("throw new JsonException();");
+                        _writer.CloseScope();
+                        _writer.CloseScope();
+                        _writer.WriteLine();
+                        _writer.WriteLineIndented($"if ({currentName}.Count == 0)");
+                        _writer.OpenScope();
+                        _writer.WriteLineIndented($"{currentName} = null;");
+                        _writer.CloseScope();
+                    }
+
+                    _writer.WriteLine();
+                    _writer.WriteLineIndented("break;");
+                    _writer.DecreaseIndent();
+                    _writer.WriteLine();
                 }
+            }
+        }
+
+        /// <summary>Writes a JSON deserialize choice element.</summary>
+        /// <param name="currentName">The current name.</param>
+        /// <param name="element">    The element.</param>
+        /// <param name="elementInfo">Information describing the element.</param>
+        private void WriteJsonDeserializeChoiceElement(
+            string currentName,
+            FhirElement element,
+            WrittenElementInfo elementInfo)
+        {
+            foreach (KeyValuePair<string, string> kvp in elementInfo.FhirAndCsTypes)
+            {
+                string fhirCombinedName = elementInfo.FhirElementName + char.ToUpperInvariant(kvp.Key[0]) + kvp.Key.Substring(1);
+
+                _writer.WriteLineIndented($"case \"{fhirCombinedName}\":");
+                _writer.IncreaseIndent();
+
+                if (elementInfo.IsList)
+                {
+                    Console.Write("");
+                }
+
+                switch (kvp.Value)
+                {
+                    case "Resource":
+                    case "DomainResource":
+                    case "MetadataResource":
+                    case "CanonicalResource":
+                        _writer.WriteLineIndented($"{currentName} = JsonSerializer.Deserialize<{_modelNamespace}.Resource>(ref reader, options);");
+                        break;
+
+                    case "Base64Binary":
+                        _writer.WriteLineIndented($"{currentName} = new {kvp.Value}(reader.GetBytesFromBase64());");
+                        break;
+
+                    case "Canonical":
+                    case "Code":
+                    case "Date":
+                    case "DateTime":
+                    case "FhirDateTime":
+                    case "FhirString":
+                    case "FhirUri":
+                    case "FhirUrl":
+                    case "Id":
+                    case "Markdown":
+                    case "Oid":
+                    case "Uuid":
+                    case "XHtml":
+                        _writer.WriteLineIndented($"{currentName} = new {kvp.Value}(reader.GetString());");
+                        break;
+
+                    // special case for Element.id, Extension.url, and Narrative.div
+                    case "string":
+                        _writer.WriteLineIndented($"{currentName} = reader.GetString();");
+                        break;
+
+                    case "FhirBoolean":
+                        _writer.WriteLineIndented($"{currentName} = new {kvp.Value}(reader.GetBoolean());");
+                        break;
+
+                    case "FhirDecimal":
+                        _writer.WriteLineIndented($"{currentName} = new {kvp.Value}(reader.GetDecimal());");
+                        break;
+
+                    case "Integer":
+                    case "PositiveInt":
+                    case "UnsignedInt":
+                        _writer.WriteLineIndented($"{currentName} = new {kvp.Value}(reader.GetInt32());");
+                        break;
+
+                    case "Instant":
+                        _writer.WriteLineIndented($"{currentName} = new {kvp.Value}(DateTimeOffset.Parse(reader.GetString()));");
+                        break;
+
+                    case "Integer64":
+                        _writer.WriteLineIndented($"{currentName} = new {kvp.Value}(long.Parse(reader.GetString()));");
+                        break;
+
+                    default:
+                        // check for enum-typed codes (non-enum codes are handled above)
+                        if (kvp.Value.StartsWith("Code<", StringComparison.Ordinal))
+                        {
+                            string codeType = kvp.Value.Substring(5, kvp.Value.Length - 6);
+
+                            _writer.WriteLineIndented($"{currentName} =" +
+                                $"new {kvp.Value}(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<{codeType}>(reader.GetString()));");
+                        }
+                        else
+                        {
+                            _writer.WriteLineIndented($"{currentName} = " +
+                                $"JsonSerializer.Deserialize<{_modelNamespace}.{kvp.Value}>(ref reader, options);");
+
+                            //_writer.WriteLineIndented($"{currentName} = new {_modelNamespace}.{kvp.Value}();");
+                            //_writer.WriteLineIndented($"{currentName}.DeserializeJson(ref reader, options);");
+                        }
+
+                        break;
+                }
+
+                _writer.WriteLineIndented("break;");
+                _writer.WriteLine();
+                _writer.DecreaseIndent();
             }
         }
 
@@ -2348,30 +2595,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             {
                                 if (elementInfo.IsMandatory)
                                 {
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteBase64String(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"(byte[]){currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteBase64String(\"{elementInfo.FhirElementName}\",(byte[]){currentName}.Value);");
                                 }
                                 else
                                 {
                                     _writer.WriteLineIndented($"if (({currentName} != null) && ({currentName}.Value != null))");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteBase64String(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"{currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteBase64String(\"{elementInfo.FhirElementName}\",{currentName}.Value);");
                                     _writer.CloseScope();
                                 }
                             }
 
                             break;
 
-                        case "Code":
-                            Console.Write("");
-                            break;
-
                         case "Canonical":
+                        case "Code":
                         case "Date":
                         case "DateTime":
                         case "FhirDateTime":
@@ -2394,30 +2632,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             {
                                 if (elementInfo.IsMandatory)
                                 {
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteString(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"{currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName}.Value);");
                                 }
                                 else
                                 {
                                     _writer.WriteLineIndented($"if (({currentName} != null) && ({currentName}.Value != null))");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteString(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"{currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName}.Value);");
                                     _writer.CloseScope();
                                 }
                             }
 
                             break;
 
-                        // special case for ElementId
+                        // special case for Element.id, Extension.url, and Narrative.div
                         case "string":
                             if (elementInfo.IsList)
                             {
-                                _writer.WriteLineIndented($"foreach ({csType} val in {currentName})");
+                                _writer.WriteLineIndented($"foreach (string val in {currentName})");
                                 _writer.OpenScope();
                                 _writer.WriteLineIndented($"writer.WriteStringValue(val);");
                                 _writer.CloseScope();
@@ -2426,19 +2658,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             {
                                 if (elementInfo.IsMandatory)
                                 {
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteString(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"{currentName});");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName});");
                                 }
                                 else
                                 {
                                     _writer.WriteLineIndented($"if (!string.IsNullOrEmpty({currentName}))");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteString(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"{currentName});");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName});");
                                     _writer.CloseScope();
                                 }
                             }
@@ -2457,19 +2683,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             {
                                 if (elementInfo.IsMandatory)
                                 {
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteBoolean(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"(bool){currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteBoolean(\"{elementInfo.FhirElementName}\",(bool){currentName}.Value);");
                                 }
                                 else
                                 {
                                     _writer.WriteLineIndented($"if (({currentName} != null) && ({currentName}.Value != null))");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteBoolean(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"(bool){currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteBoolean(\"{elementInfo.FhirElementName}\",(bool){currentName}.Value);");
                                     _writer.CloseScope();
                                 }
                             }
@@ -2488,19 +2708,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             {
                                 if (elementInfo.IsMandatory)
                                 {
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteNumber(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"(decimal){currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteNumber(\"{elementInfo.FhirElementName}\",(decimal){currentName}.Value);");
                                 }
                                 else
                                 {
                                     _writer.WriteLineIndented($"if (({currentName} != null) && ({currentName}.Value != null))");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteNumber(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"(decimal){currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteNumber(\"{elementInfo.FhirElementName}\",(decimal){currentName}.Value);");
                                     _writer.CloseScope();
                                 }
                             }
@@ -2521,19 +2735,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             {
                                 if (elementInfo.IsMandatory)
                                 {
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteNumber(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"(int){currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteNumber(\"{elementInfo.FhirElementName}\",(int){currentName}.Value);");
                                 }
                                 else
                                 {
                                     _writer.WriteLineIndented($"if (({currentName} != null) && ({currentName}.Value != null))");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteNumber(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"(int){currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteNumber(\"{elementInfo.FhirElementName}\",(int){currentName}.Value);");
                                     _writer.CloseScope();
                                 }
                             }
@@ -2591,19 +2799,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             {
                                 if (elementInfo.IsMandatory)
                                 {
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteString(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"{currentName}.Value.ToString());");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName}.Value.ToString());");
                                 }
                                 else
                                 {
                                     _writer.WriteLineIndented($"if (({currentName} != null) && ({currentName}.Value != null))");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented(
-                                        $"writer.WriteString(" +
-                                            $"\"{elementInfo.FhirElementName}\"," +
-                                            $"{currentName}.Value.ToString());");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName}.Value.ToString());");
                                     _writer.CloseScope();
                                 }
                             }
@@ -2611,27 +2813,62 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             break;
 
                         default:
-                            if (elementInfo.IsList)
+
+                            // check for enum-typed codes (non-enum codes are handled above)
+                            if (csType.StartsWith("Code<", StringComparison.Ordinal))
                             {
-                                _writer.WriteLineIndented($"foreach ({csType} val in {currentName})");
-                                _writer.OpenScope();
-                                _writer.WriteLineIndented($"val.SerializeJson(writer, options, true);");
-                                _writer.CloseScope();
-                            }
-                            else
-                            {
-                                if (elementInfo.IsMandatory)
+                                if (elementInfo.IsList)
                                 {
-                                    _writer.WriteLineIndented($"writer.WritePropertyName(\"{elementInfo.FhirElementName}\");");
-                                    _writer.WriteLineIndented($"{currentName}.SerializeJson(writer, options);");
+                                    _writer.WriteLineIndented($"foreach ({csType} val in {currentName})");
+                                    _writer.OpenScope();
+                                    _writer.WriteLineIndented($"writer.WriteStringValue(Hl7.Fhir.Utility.EnumUtility.GetLiteral(val.Value));");
+                                    _writer.CloseScope();
                                 }
                                 else
                                 {
-                                    _writer.WriteLineIndented($"if ({currentName} != null)");
+                                    if (elementInfo.IsMandatory)
+                                    {
+                                        _writer.WriteLineIndented(
+                                            $"writer.WriteString(" +
+                                                $"\"{elementInfo.FhirElementName}\"," +
+                                                $"Hl7.Fhir.Utility.EnumUtility.GetLiteral({currentName}.Value));");
+                                    }
+                                    else
+                                    {
+                                        _writer.WriteLineIndented($"if ({currentName} != null)");
+                                        _writer.OpenScope();
+                                        _writer.WriteLineIndented(
+                                            $"writer.WriteString(" +
+                                                $"\"{elementInfo.FhirElementName}\"," +
+                                                $"Hl7.Fhir.Utility.EnumUtility.GetLiteral({currentName}.Value));");
+                                        _writer.CloseScope();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (elementInfo.IsList)
+                                {
+                                    _writer.WriteLineIndented($"foreach ({csType} val in {currentName})");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented($"writer.WritePropertyName(\"{elementInfo.FhirElementName}\");");
-                                    _writer.WriteLineIndented($"{currentName}.SerializeJson(writer, options);");
+                                    _writer.WriteLineIndented($"val.SerializeJson(writer, options, true);");
                                     _writer.CloseScope();
+                                }
+                                else
+                                {
+                                    if (elementInfo.IsMandatory)
+                                    {
+                                        _writer.WriteLineIndented($"writer.WritePropertyName(\"{elementInfo.FhirElementName}\");");
+                                        _writer.WriteLineIndented($"{currentName}.SerializeJson(writer, options);");
+                                    }
+                                    else
+                                    {
+                                        _writer.WriteLineIndented($"if ({currentName} != null)");
+                                        _writer.OpenScope();
+                                        _writer.WriteLineIndented($"writer.WritePropertyName(\"{elementInfo.FhirElementName}\");");
+                                        _writer.WriteLineIndented($"{currentName}.SerializeJson(writer, options);");
+                                        _writer.CloseScope();
+                                    }
                                 }
                             }
 
@@ -2687,26 +2924,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     case "MetadataResource":
                     case "CanonicalResource":
                         _writer.WriteLineIndented($"writer.WritePropertyName(\"{fhirCombinedName}\");");
-                        _writer.WriteLineIndented($"JsonSerializer.Serialize<{_modelNamespace}.Resource>(" +
-                            $"writer, " +
-                            $"({_modelNamespace}.Resource){caseVarName}, " +
-                            $"options);");
-
+                        _writer.WriteLineIndented($"JsonSerializer.Serialize<{_modelNamespace}.Resource>(writer, ({_modelNamespace}.Resource){caseVarName}, options);");
                         break;
 
                     case "Base64Binary":
-                        _writer.WriteLineIndented(
-                            $"writer.WriteBase64String(" +
-                                $"\"{fhirCombinedName}\"," +
-                                $"(byte[]){caseVarName}.Value);");
-
-                        break;
-
-                    case "Code":
-                        Console.Write("");
+                        _writer.WriteLineIndented($"writer.WriteBase64String(\"{fhirCombinedName}\", (byte[]){caseVarName}.Value);");
                         break;
 
                     case "Canonical":
+                    case "Code":
                     case "Date":
                     case "DateTime":
                     case "FhirDateTime":
@@ -2718,44 +2944,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     case "Oid":
                     case "Uuid":
                     case "XHtml":
-                        _writer.WriteLineIndented(
-                            $"writer.WriteString(" +
-                                $"\"{fhirCombinedName}\"," +
-                                $"{caseVarName}.Value);");
-
+                        _writer.WriteLineIndented($"writer.WriteString(\"{fhirCombinedName}\",{caseVarName}.Value);");
                         break;
 
-                    // special case for ElementId
+                    // special case for Element.id, Extension.url, and Narrative.div
                     case "string":
-                        _writer.WriteLineIndented(
-                            $"writer.WriteString(" +
-                                $"\"{fhirCombinedName}\"," +
-                                $"{caseVarName});");
-
+                        _writer.WriteLineIndented($"writer.WriteString(\"{fhirCombinedName}\",{caseVarName});");
                         break;
 
                     case "FhirBoolean":
-                        _writer.WriteLineIndented(
-                            $"writer.WriteBoolean(" +
-                                $"\"{fhirCombinedName}\"," +
-                                $"(bool){caseVarName}.Value);");
-
+                        _writer.WriteLineIndented($"writer.WriteBoolean(\"{fhirCombinedName}\", (bool){caseVarName}.Value);");
                         break;
 
                     case "FhirDecimal":
-                        _writer.WriteLineIndented(
-                            $"writer.WriteNumber(" +
-                                $"\"{fhirCombinedName}\"," +
-                                $"(decimal){caseVarName}.Value);");
+                        _writer.WriteLineIndented($"writer.WriteNumber(\"{fhirCombinedName}\",(decimal){caseVarName}.Value);");
                         break;
 
                     case "Integer":
                     case "PositiveInt":
                     case "UnsignedInt":
-                        _writer.WriteLineIndented(
-                            $"writer.WriteNumber(" +
-                                $"\"{fhirCombinedName}\"," +
-                                $"(int){caseVarName}.Value);");
+                        _writer.WriteLineIndented($"writer.WriteNumber(\"{fhirCombinedName}\",(int){caseVarName}.Value);");
                         break;
 
                     case "Instant":
@@ -2765,20 +2973,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 $"((DateTimeOffset){caseVarName}.Value).ToString(" +
                                     $"\"yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK\", " +
                                     $"System.Globalization.CultureInfo.InvariantCulture));");
-
                         break;
 
                     case "Integer64":
-                        _writer.WriteLineIndented(
-                            $"writer.WriteString(" +
-                                $"\"{fhirCombinedName}\"," +
-                                $"{caseVarName}.Value.ToString());");
-
+                        _writer.WriteLineIndented($"writer.WriteString(\"{fhirCombinedName}\",{caseVarName}.Value.ToString());");
                         break;
 
                     default:
-                        _writer.WriteLineIndented($"writer.WritePropertyName(\"{fhirCombinedName}\");");
-                        _writer.WriteLineIndented($"{caseVarName}.SerializeJson(writer, options);");
+                        // check for enum-typed codes (non-enum codes are handled above)
+                        if (kvp.Value.StartsWith("Code<", StringComparison.Ordinal))
+                        {
+                            _writer.WriteLineIndented(
+                                $"writer.WriteString(" +
+                                    $"\"{fhirCombinedName}\"," +
+                                    $"Hl7.Fhir.Utility.EnumUtility.GetLiteral({caseVarName}.Value));");
+                        }
+                        else
+                        {
+                            _writer.WriteLineIndented($"writer.WritePropertyName(\"{fhirCombinedName}\");");
+                            _writer.WriteLineIndented($"{caseVarName}.SerializeJson(writer, options);");
+                        }
 
                         break;
                 }
@@ -2967,28 +3181,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             string elementTag = noElement ? string.Empty : "Element";
 
-            if (element.Path == "Element.id")
+            if (_elementNameReplacementsByPath.ContainsKey(element.Path))
             {
                 return new WrittenElementInfo()
                 {
                     FhirElementName = element.Name.Replace("[x]", string.Empty, StringComparison.Ordinal),
-                    ExportedName = "ElementId",
-                    ExportedType = $"string",
-                    ExportedListSubType = null,
-                    ExportedEnumType = null,
-                    IsList = false,
-                    InSummary = element.IsSummary,
-                    IsMandatory = element.CardinalityMin > 0,
-                    IsChoice = isChoice,
-                    FhirAndCsTypes = fhirAndCsTypes,
-                };
-            }
-            else if (element.Path == "Extension.url")
-            {
-                return new WrittenElementInfo()
-                {
-                    FhirElementName = element.Name.Replace("[x]", string.Empty, StringComparison.Ordinal),
-                    ExportedName = "Url",
+                    ExportedName = _elementNameReplacementsByPath[element.Path],
                     ExportedType = $"string",
                     ExportedListSubType = null,
                     ExportedEnumType = null,

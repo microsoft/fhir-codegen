@@ -125,7 +125,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
             { "base", "Object" },
-            { "base64Binary", "string" },
+            { "base64Binary", "byte[]" },
             { "boolean", "bool" },
             { "canonical", "string" },
             { "code", "string" },
@@ -1351,6 +1351,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         case "List<bool>":
                             WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteBooleanValue");
                             break;
+                        case "byte[]":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteBase64String");
+                            break;
+                        case "List<byte[]>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteBase64StringValue");
+                            break;
                         case "decimal":
                             WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteNumber");
                             break;
@@ -1456,7 +1462,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     break;
 
-                // TODO(ginoc): Why is guid here?
+                // non-string types that are serialized as strings
                 case "guid":
                 case "integer64":
                 case "int64":
