@@ -24,6 +24,9 @@ namespace PerfTestCS.Benchmark
         /// <summary>The JSON.</summary>
         private string _json;
 
+        /// <summary>The JSON in bytes.</summary>
+        private byte[] _jsonBytes;
+
         /// <summary>The JSON parser.</summary>
         private Hl7.Fhir.Serialization.FhirJsonParser _firelyParser;
 
@@ -41,6 +44,9 @@ namespace PerfTestCS.Benchmark
 
         /// <summary>The basic system JSON model.</summary>
         private Fhir.R4.Models.Resource _basicSystemJsonModel;
+
+        /// <summary>The extent converter.</summary>
+        private Hl7.Fhir.Serialization.JsonStreamResourceConverter _extConverter;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SerializationBenchmarks"/> class.
@@ -85,7 +91,10 @@ namespace PerfTestCS.Benchmark
 
             _basicNewtonsoftConverter = new fhirNewtonsoft.ResourceConverter();
 
+            _extConverter = new Hl7.Fhir.Serialization.JsonStreamResourceConverter();
+
             _json = null;
+            _jsonBytes = null;
             _firelyModel = null;
         }
 
@@ -146,6 +155,62 @@ namespace PerfTestCS.Benchmark
         public string FirelySerialize()
         {
             string test = _firelySerializer.SerializeToString(_firelyModel);
+
+            return test;
+        }
+
+        /// <summary>Global setup, executed once per parameter value.</summary>
+        [GlobalSetup(Targets = new[] { nameof(FirelyExtParse), nameof(FirelyExtSerialize) })]
+        public void FirelyExtSetup()
+        {
+            string filename = Path.Combine(_baseDir, Filename);
+
+            if (!File.Exists(filename))
+            {
+                throw new FileNotFoundException();
+            }
+
+            if (_jsonBytes == null)
+            {
+                _jsonBytes = File.ReadAllBytes(filename);
+                Console.WriteLine($"Loaded {Filename}, {_jsonBytes.Length} bytes");
+            }
+
+            if (_firelyModel == null)
+            {
+                _json = File.ReadAllText(filename);
+                _firelyModel = _firelyParser.Parse(_json);
+                _json = null;
+            }
+        }
+
+        /// <summary>Parses a specified file contents from memory.</summary>
+        /// <returns>An object.</returns>
+        [BenchmarkCategory("Parse")]
+        [Benchmark()]
+        public object FirelyExtParse()
+        {
+            System.Text.Json.Utf8JsonReader reader = new System.Text.Json.Utf8JsonReader(_jsonBytes.AsSpan<byte>());
+
+            return _extConverter.Read(
+                ref reader,
+                typeof(Hl7.Fhir.Model.Resource),
+                Hl7.Fhir.Serialization.FhirSerializerOptions.Compact);
+        }
+
+        /// <summary>Serialize this object to the given stream.</summary>
+        /// <returns>A string.</returns>
+        [BenchmarkCategory("Serialize")]
+        [Benchmark()]
+        public string FirelyExtSerialize()
+        {
+            MemoryStream memoryStream = new MemoryStream();
+
+            System.Text.Json.Utf8JsonWriter writer = new System.Text.Json.Utf8JsonWriter(memoryStream);
+
+            _extConverter.Write(writer, (Hl7.Fhir.Model.Resource)_firelyModel, Hl7.Fhir.Serialization.FhirSerializerOptions.Compact);
+
+            string test = System.Text.Encoding.UTF8.GetString(memoryStream.GetBuffer());
 
             return test;
         }
