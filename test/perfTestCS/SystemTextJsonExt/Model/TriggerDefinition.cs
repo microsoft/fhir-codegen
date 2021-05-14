@@ -135,20 +135,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.TriggerDefinition.TriggerType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.TriggerDefinition.TriggerType>(reader.GetString()));
-
           break;
 
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "timingTiming":
-          current.Timing = JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options);
+          current.Timing = new Hl7.Fhir.Model.Timing();
+          current.Timing.DeserializeJson(ref reader, options);
           break;
 
         case "timingReference":
-          current.Timing = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.Timing = new Hl7.Fhir.Model.ResourceReference();
+          current.Timing.DeserializeJson(ref reader, options);
           break;
 
         case "timingDate":
@@ -169,24 +169,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Data.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.DataRequirement>(ref reader, options));
+            Hl7.Fhir.Model.DataRequirement v_Data = new Hl7.Fhir.Model.DataRequirement();
+            v_Data.DeserializeJson(ref reader, options);
+            current.Data.Add(v_Data);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Data.Count == 0)
           {
             current.Data = null;
           }
-
           break;
 
         case "condition":
-          current.Condition = JsonSerializer.Deserialize<Hl7.Fhir.Model.Expression>(ref reader, options);
-
+          current.Condition = new Hl7.Fhir.Model.Expression();
+          current.Condition.DeserializeJson(ref reader, options);
           break;
 
       }

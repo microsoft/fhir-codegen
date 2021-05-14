@@ -191,34 +191,34 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "productCategory":
           current.ProductCategoryElement =new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductCategory>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductCategory>(reader.GetString()));
-
           break;
 
         case "productCode":
-          current.ProductCode = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ProductCode = new Hl7.Fhir.Model.CodeableConcept();
+          current.ProductCode.DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStatus>(reader.GetString()));
-
           break;
 
         case "request":
@@ -231,24 +231,29 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Request.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Request = new Hl7.Fhir.Model.ResourceReference();
+            v_Request.DeserializeJson(ref reader, options);
+            current.Request.Add(v_Request);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Request.Count == 0)
           {
             current.Request = null;
           }
-
           break;
 
         case "quantity":
           current.QuantityElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_quantity":
+          ((Hl7.Fhir.Model.Element)current.QuantityElement).DeserializeJson(ref reader, options);
           break;
 
         case "parent":
@@ -261,24 +266,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Parent.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Parent = new Hl7.Fhir.Model.ResourceReference();
+            v_Parent.DeserializeJson(ref reader, options);
+            current.Parent.Add(v_Parent);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Parent.Count == 0)
           {
             current.Parent = null;
           }
-
           break;
 
         case "collection":
-          current.Collection = JsonSerializer.Deserialize<Hl7.Fhir.Model.BiologicallyDerivedProduct.CollectionComponent>(ref reader, options);
-
+          current.Collection = new Hl7.Fhir.Model.BiologicallyDerivedProduct.CollectionComponent();
+          current.Collection.DeserializeJson(ref reader, options);
           break;
 
         case "processing":
@@ -291,24 +298,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Processing.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.BiologicallyDerivedProduct.ProcessingComponent>(ref reader, options));
+            Hl7.Fhir.Model.BiologicallyDerivedProduct.ProcessingComponent v_Processing = new Hl7.Fhir.Model.BiologicallyDerivedProduct.ProcessingComponent();
+            v_Processing.DeserializeJson(ref reader, options);
+            current.Processing.Add(v_Processing);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Processing.Count == 0)
           {
             current.Processing = null;
           }
-
           break;
 
         case "manipulation":
-          current.Manipulation = JsonSerializer.Deserialize<Hl7.Fhir.Model.BiologicallyDerivedProduct.ManipulationComponent>(ref reader, options);
-
+          current.Manipulation = new Hl7.Fhir.Model.BiologicallyDerivedProduct.ManipulationComponent();
+          current.Manipulation.DeserializeJson(ref reader, options);
           break;
 
         case "storage":
@@ -321,19 +330,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Storage.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.BiologicallyDerivedProduct.StorageComponent>(ref reader, options));
+            Hl7.Fhir.Model.BiologicallyDerivedProduct.StorageComponent v_Storage = new Hl7.Fhir.Model.BiologicallyDerivedProduct.StorageComponent();
+            v_Storage.DeserializeJson(ref reader, options);
+            current.Storage.Add(v_Storage);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Storage.Count == 0)
           {
             current.Storage = null;
           }
-
           break;
 
         // Complex: BiologicallyDerivedProduct, Export: BiologicallyDerivedProduct, Base: DomainResource
@@ -413,13 +424,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "collector":
-          current.Collector = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Collector = new Hl7.Fhir.Model.ResourceReference();
+          current.Collector.DeserializeJson(ref reader, options);
           break;
 
         case "source":
-          current.Source = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Source = new Hl7.Fhir.Model.ResourceReference();
+          current.Source.DeserializeJson(ref reader, options);
           break;
 
         case "collectedDateTime":
@@ -427,7 +438,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "collectedPeriod":
-          current.Collected = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
+          current.Collected = new Hl7.Fhir.Model.Period();
+          current.Collected.DeserializeJson(ref reader, options);
           break;
 
         // Complex: collection, Export: CollectionComponent, Base: BackboneElement
@@ -513,17 +525,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "procedure":
-          current.Procedure = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Procedure = new Hl7.Fhir.Model.CodeableConcept();
+          current.Procedure.DeserializeJson(ref reader, options);
           break;
 
         case "additive":
-          current.Additive = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Additive = new Hl7.Fhir.Model.ResourceReference();
+          current.Additive.DeserializeJson(ref reader, options);
           break;
 
         case "timeDateTime":
@@ -531,7 +542,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "timePeriod":
-          current.Time = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
+          current.Time = new Hl7.Fhir.Model.Period();
+          current.Time.DeserializeJson(ref reader, options);
           break;
 
         // Complex: processing, Export: ProcessingComponent, Base: BackboneElement
@@ -605,7 +617,6 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "timeDateTime":
@@ -613,7 +624,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "timePeriod":
-          current.Time = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
+          current.Time = new Hl7.Fhir.Model.Period();
+          current.Time.DeserializeJson(ref reader, options);
           break;
 
         // Complex: manipulation, Export: ManipulationComponent, Base: BackboneElement
@@ -690,22 +702,19 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "temperature":
           current.TemperatureElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "scale":
           current.ScaleElement =new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStorageScale>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStorageScale>(reader.GetString()));
-
           break;
 
         case "duration":
-          current.Duration = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Duration = new Hl7.Fhir.Model.Period();
+          current.Duration.DeserializeJson(ref reader, options);
           break;
 
         // Complex: storage, Export: StorageComponent, Base: BackboneElement

@@ -167,54 +167,51 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "active":
           current.ActiveElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.Group.GroupType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Group.GroupType>(reader.GetString()));
-
           break;
 
         case "actual":
           current.ActualElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "quantity":
           current.QuantityElement = new UnsignedInt(reader.GetInt32());
-
           break;
 
         case "managingEntity":
-          current.ManagingEntity = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.ManagingEntity = new Hl7.Fhir.Model.ResourceReference();
+          current.ManagingEntity.DeserializeJson(ref reader, options);
           break;
 
         case "characteristic":
@@ -227,19 +224,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Characteristic.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Group.CharacteristicComponent>(ref reader, options));
+            Hl7.Fhir.Model.Group.CharacteristicComponent v_Characteristic = new Hl7.Fhir.Model.Group.CharacteristicComponent();
+            v_Characteristic.DeserializeJson(ref reader, options);
+            current.Characteristic.Add(v_Characteristic);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Characteristic.Count == 0)
           {
             current.Characteristic = null;
           }
-
           break;
 
         case "member":
@@ -252,19 +251,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Member.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Group.MemberComponent>(ref reader, options));
+            Hl7.Fhir.Model.Group.MemberComponent v_Member = new Hl7.Fhir.Model.Group.MemberComponent();
+            v_Member.DeserializeJson(ref reader, options);
+            current.Member.Add(v_Member);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Member.Count == 0)
           {
             current.Member = null;
           }
-
           break;
 
         // Complex: Group, Export: Group, Base: DomainResource
@@ -355,12 +356,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "valueCodeableConcept":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.CodeableConcept();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueBoolean":
@@ -368,25 +370,27 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "valueQuantity":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Quantity();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueRange":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Range();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueReference":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.ResourceReference();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "exclude":
           current.ExcludeElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         // Complex: characteristic, Export: CharacteristicComponent, Base: BackboneElement
@@ -455,18 +459,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "entity":
-          current.Entity = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Entity = new Hl7.Fhir.Model.ResourceReference();
+          current.Entity.DeserializeJson(ref reader, options);
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         case "inactive":
           current.InactiveElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         // Complex: member, Export: MemberComponent, Base: BackboneElement

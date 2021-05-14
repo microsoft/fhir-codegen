@@ -143,49 +143,48 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.FinancialResourceStatusCodes>(reader.GetString()));
-
           break;
 
         case "created":
           current.CreatedElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "patient":
-          current.Patient = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Patient = new Hl7.Fhir.Model.ResourceReference();
+          current.Patient.DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
-          current.Encounter = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Encounter = new Hl7.Fhir.Model.ResourceReference();
+          current.Encounter.DeserializeJson(ref reader, options);
           break;
 
         case "dateWritten":
           current.DateWrittenElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "prescriber":
-          current.Prescriber = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Prescriber = new Hl7.Fhir.Model.ResourceReference();
+          current.Prescriber.DeserializeJson(ref reader, options);
           break;
 
         case "lensSpecification":
@@ -198,19 +197,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.LensSpecification.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.VisionPrescription.LensSpecificationComponent>(ref reader, options));
+            Hl7.Fhir.Model.VisionPrescription.LensSpecificationComponent v_LensSpecification = new Hl7.Fhir.Model.VisionPrescription.LensSpecificationComponent();
+            v_LensSpecification.DeserializeJson(ref reader, options);
+            current.LensSpecification.Add(v_LensSpecification);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.LensSpecification.Count == 0)
           {
             current.LensSpecification = null;
           }
-
           break;
 
         // Complex: VisionPrescription, Export: VisionPrescription, Base: DomainResource
@@ -343,28 +344,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "product":
-          current.Product = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Product = new Hl7.Fhir.Model.CodeableConcept();
+          current.Product.DeserializeJson(ref reader, options);
           break;
 
         case "eye":
           current.EyeElement =new Code<Hl7.Fhir.Model.VisionPrescription.VisionEyes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.VisionPrescription.VisionEyes>(reader.GetString()));
-
           break;
 
         case "sphere":
           current.SphereElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "cylinder":
           current.CylinderElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "axis":
           current.AxisElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_axis":
+          ((Hl7.Fhir.Model.Element)current.AxisElement).DeserializeJson(ref reader, options);
           break;
 
         case "prism":
@@ -377,54 +378,50 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Prism.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.VisionPrescription.PrismComponent>(ref reader, options));
+            Hl7.Fhir.Model.VisionPrescription.PrismComponent v_Prism = new Hl7.Fhir.Model.VisionPrescription.PrismComponent();
+            v_Prism.DeserializeJson(ref reader, options);
+            current.Prism.Add(v_Prism);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Prism.Count == 0)
           {
             current.Prism = null;
           }
-
           break;
 
         case "add":
           current.AddElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "power":
           current.PowerElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "backCurve":
           current.BackCurveElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "diameter":
           current.DiameterElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "duration":
-          current.Duration = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Duration = new Hl7.Fhir.Model.Quantity();
+          current.Duration.DeserializeJson(ref reader, options);
           break;
 
         case "color":
           current.ColorElement = new FhirString(reader.GetString());
-
           break;
 
         case "brand":
           current.BrandElement = new FhirString(reader.GetString());
-
           break;
 
         case "note":
@@ -437,19 +434,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Note.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Annotation>(ref reader, options));
+            Hl7.Fhir.Model.Annotation v_Note = new Hl7.Fhir.Model.Annotation();
+            v_Note.DeserializeJson(ref reader, options);
+            current.Note.Add(v_Note);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Note.Count == 0)
           {
             current.Note = null;
           }
-
           break;
 
         // Complex: lensSpecification, Export: LensSpecificationComponent, Base: BackboneElement
@@ -509,12 +508,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "amount":
           current.AmountElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "base":
           current.BaseElement =new Code<Hl7.Fhir.Model.VisionPrescription.VisionBase>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.VisionPrescription.VisionBase>(reader.GetString()));
-
           break;
 
         // Complex: prism, Export: PrismComponent, Base: BackboneElement

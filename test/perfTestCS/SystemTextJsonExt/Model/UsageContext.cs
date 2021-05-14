@@ -115,24 +115,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.Coding();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "valueCodeableConcept":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.CodeableConcept();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueQuantity":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Quantity();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueRange":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Range();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueReference":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.ResourceReference();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
       }

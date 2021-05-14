@@ -168,37 +168,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "url":
           current.UrlElement = new FhirUri(reader.GetString());
-
           break;
 
         case "version":
           current.VersionElement = new FhirString(reader.GetString());
-
           break;
 
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.PublicationStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.PublicationStatus>(reader.GetString()));
-
           break;
 
         case "experimental":
           current.ExperimentalElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "date":
           current.DateElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "publisher":
           current.PublisherElement = new FhirString(reader.GetString());
-
           break;
 
         case "contact":
@@ -211,24 +204,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Contact.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactDetail>(ref reader, options));
+            Hl7.Fhir.Model.ContactDetail v_Contact = new Hl7.Fhir.Model.ContactDetail();
+            v_Contact.DeserializeJson(ref reader, options);
+            current.Contact.Add(v_Contact);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Contact.Count == 0)
           {
             current.Contact = null;
           }
-
           break;
 
         case "description":
           current.Description = new Markdown(reader.GetString());
-
           break;
 
         case "useContext":
@@ -241,34 +235,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.UseContext.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.UsageContext>(ref reader, options));
+            Hl7.Fhir.Model.UsageContext v_UseContext = new Hl7.Fhir.Model.UsageContext();
+            v_UseContext.DeserializeJson(ref reader, options);
+            current.UseContext.Add(v_UseContext);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.UseContext.Count == 0)
           {
             current.UseContext = null;
           }
-
           break;
 
         case "purpose":
           current.Purpose = new Markdown(reader.GetString());
-
           break;
 
         case "code":
           current.CodeElement =new Code<Hl7.Fhir.Model.CompartmentType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.CompartmentType>(reader.GetString()));
-
           break;
 
         case "search":
           current.SearchElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "resource":
@@ -281,19 +274,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Resource.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CompartmentDefinition.ResourceComponent>(ref reader, options));
+            Hl7.Fhir.Model.CompartmentDefinition.ResourceComponent v_Resource = new Hl7.Fhir.Model.CompartmentDefinition.ResourceComponent();
+            v_Resource.DeserializeJson(ref reader, options);
+            current.Resource.Add(v_Resource);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Resource.Count == 0)
           {
             current.Resource = null;
           }
-
           break;
 
         // Complex: CompartmentDefinition, Export: CompartmentDefinition, Base: DomainResource
@@ -367,7 +362,6 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.CodeElement =new Code<Hl7.Fhir.Model.ResourceType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ResourceType>(reader.GetString()));
-
           break;
 
         case "param":
@@ -386,18 +380,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ParamElement.Count == 0)
           {
             current.ParamElement = null;
           }
-
           break;
 
         case "documentation":
           current.DocumentationElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: resource, Export: ResourceComponent, Base: BackboneElement

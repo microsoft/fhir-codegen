@@ -151,34 +151,42 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "appointment":
-          current.Appointment = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Appointment = new Hl7.Fhir.Model.ResourceReference();
+          current.Appointment.DeserializeJson(ref reader, options);
           break;
 
         case "start":
           current.StartElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_start":
+          ((Hl7.Fhir.Model.Element)current.StartElement).DeserializeJson(ref reader, options);
           break;
 
         case "end":
           current.EndElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_end":
+          ((Hl7.Fhir.Model.Element)current.EndElement).DeserializeJson(ref reader, options);
           break;
 
         case "participantType":
@@ -191,34 +199,34 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ParticipantType.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_ParticipantType = new Hl7.Fhir.Model.CodeableConcept();
+            v_ParticipantType.DeserializeJson(ref reader, options);
+            current.ParticipantType.Add(v_ParticipantType);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ParticipantType.Count == 0)
           {
             current.ParticipantType = null;
           }
-
           break;
 
         case "actor":
-          current.Actor = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Actor = new Hl7.Fhir.Model.ResourceReference();
+          current.Actor.DeserializeJson(ref reader, options);
           break;
 
         case "participantStatus":
           current.ParticipantStatusElement =new Code<Hl7.Fhir.Model.ParticipationStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ParticipationStatus>(reader.GetString()));
-
           break;
 
         case "comment":
           current.CommentElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: AppointmentResponse, Export: AppointmentResponse, Base: DomainResource

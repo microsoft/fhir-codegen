@@ -108,17 +108,19 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "contentType":
           current.ContentTypeElement = new Code(reader.GetString());
+          break;
 
+        case "_contentType":
+          ((Hl7.Fhir.Model.Element)current.ContentTypeElement).DeserializeJson(ref reader, options);
           break;
 
         case "securityContext":
-          current.SecurityContext = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.SecurityContext = new Hl7.Fhir.Model.ResourceReference();
+          current.SecurityContext.DeserializeJson(ref reader, options);
           break;
 
         case "data":
           current.DataElement = new Base64Binary(reader.GetBytesFromBase64());
-
           break;
 
         // Complex: Binary, Export: Binary, Base: Resource

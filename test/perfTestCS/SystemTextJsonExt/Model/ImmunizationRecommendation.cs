@@ -136,34 +136,35 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "patient":
-          current.Patient = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Patient = new Hl7.Fhir.Model.ResourceReference();
+          current.Patient.DeserializeJson(ref reader, options);
           break;
 
         case "date":
           current.DateElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "authority":
-          current.Authority = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Authority = new Hl7.Fhir.Model.ResourceReference();
+          current.Authority.DeserializeJson(ref reader, options);
           break;
 
         case "recommendation":
@@ -176,19 +177,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Recommendation.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ImmunizationRecommendation.RecommendationComponent>(ref reader, options));
+            Hl7.Fhir.Model.ImmunizationRecommendation.RecommendationComponent v_Recommendation = new Hl7.Fhir.Model.ImmunizationRecommendation.RecommendationComponent();
+            v_Recommendation.DeserializeJson(ref reader, options);
+            current.Recommendation.Add(v_Recommendation);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Recommendation.Count == 0)
           {
             current.Recommendation = null;
           }
-
           break;
 
         // Complex: ImmunizationRecommendation, Export: ImmunizationRecommendation, Base: DomainResource
@@ -361,24 +364,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.VaccineCode.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_VaccineCode = new Hl7.Fhir.Model.CodeableConcept();
+            v_VaccineCode.DeserializeJson(ref reader, options);
+            current.VaccineCode.Add(v_VaccineCode);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.VaccineCode.Count == 0)
           {
             current.VaccineCode = null;
           }
-
           break;
 
         case "targetDisease":
-          current.TargetDisease = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.TargetDisease = new Hl7.Fhir.Model.CodeableConcept();
+          current.TargetDisease.DeserializeJson(ref reader, options);
           break;
 
         case "contraindicatedVaccineCode":
@@ -391,24 +396,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ContraindicatedVaccineCode.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_ContraindicatedVaccineCode = new Hl7.Fhir.Model.CodeableConcept();
+            v_ContraindicatedVaccineCode.DeserializeJson(ref reader, options);
+            current.ContraindicatedVaccineCode.Add(v_ContraindicatedVaccineCode);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ContraindicatedVaccineCode.Count == 0)
           {
             current.ContraindicatedVaccineCode = null;
           }
-
           break;
 
         case "forecastStatus":
-          current.ForecastStatus = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ForecastStatus = new Hl7.Fhir.Model.CodeableConcept();
+          current.ForecastStatus.DeserializeJson(ref reader, options);
           break;
 
         case "forecastReason":
@@ -421,19 +428,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ForecastReason.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_ForecastReason = new Hl7.Fhir.Model.CodeableConcept();
+            v_ForecastReason.DeserializeJson(ref reader, options);
+            current.ForecastReason.Add(v_ForecastReason);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ForecastReason.Count == 0)
           {
             current.ForecastReason = null;
           }
-
           break;
 
         case "dateCriterion":
@@ -446,29 +455,29 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.DateCriterion.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ImmunizationRecommendation.DateCriterionComponent>(ref reader, options));
+            Hl7.Fhir.Model.ImmunizationRecommendation.DateCriterionComponent v_DateCriterion = new Hl7.Fhir.Model.ImmunizationRecommendation.DateCriterionComponent();
+            v_DateCriterion.DeserializeJson(ref reader, options);
+            current.DateCriterion.Add(v_DateCriterion);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.DateCriterion.Count == 0)
           {
             current.DateCriterion = null;
           }
-
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "series":
           current.SeriesElement = new FhirString(reader.GetString());
-
           break;
 
         case "doseNumberPositiveInt":
@@ -497,19 +506,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.SupportingImmunization.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_SupportingImmunization = new Hl7.Fhir.Model.ResourceReference();
+            v_SupportingImmunization.DeserializeJson(ref reader, options);
+            current.SupportingImmunization.Add(v_SupportingImmunization);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.SupportingImmunization.Count == 0)
           {
             current.SupportingImmunization = null;
           }
-
           break;
 
         case "supportingPatientInformation":
@@ -522,19 +533,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.SupportingPatientInformation.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_SupportingPatientInformation = new Hl7.Fhir.Model.ResourceReference();
+            v_SupportingPatientInformation.DeserializeJson(ref reader, options);
+            current.SupportingPatientInformation.Add(v_SupportingPatientInformation);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.SupportingPatientInformation.Count == 0)
           {
             current.SupportingPatientInformation = null;
           }
-
           break;
 
         // Complex: recommendation, Export: RecommendationComponent, Base: BackboneElement
@@ -594,13 +607,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "value":
           current.ValueElement = new FhirDateTime(reader.GetString());
-
           break;
 
         // Complex: dateCriterion, Export: DateCriterionComponent, Base: BackboneElement

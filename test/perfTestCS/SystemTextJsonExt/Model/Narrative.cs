@@ -95,12 +95,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Narrative.NarrativeStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Narrative.NarrativeStatus>(reader.GetString()));
-
           break;
 
         case "div":
           current.Div = reader.GetString();
-
           break;
 
       }

@@ -230,34 +230,35 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "clinicalStatus":
-          current.ClinicalStatus = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ClinicalStatus = new Hl7.Fhir.Model.CodeableConcept();
+          current.ClinicalStatus.DeserializeJson(ref reader, options);
           break;
 
         case "verificationStatus":
-          current.VerificationStatus = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.VerificationStatus = new Hl7.Fhir.Model.CodeableConcept();
+          current.VerificationStatus.DeserializeJson(ref reader, options);
           break;
 
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType>(reader.GetString()));
-
           break;
 
         case "category":
@@ -276,33 +277,32 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.CategoryElement.Count == 0)
           {
             current.CategoryElement = null;
           }
-
           break;
 
         case "criticality":
           current.CriticalityElement =new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality>(reader.GetString()));
-
           break;
 
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "patient":
-          current.Patient = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Patient = new Hl7.Fhir.Model.ResourceReference();
+          current.Patient.DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
-          current.Encounter = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Encounter = new Hl7.Fhir.Model.ResourceReference();
+          current.Encounter.DeserializeJson(ref reader, options);
           break;
 
         case "onsetDateTime":
@@ -310,15 +310,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "onsetAge":
-          current.Onset = JsonSerializer.Deserialize<Hl7.Fhir.Model.Age>(ref reader, options);
+          current.Onset = new Hl7.Fhir.Model.Age();
+          current.Onset.DeserializeJson(ref reader, options);
           break;
 
         case "onsetPeriod":
-          current.Onset = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
+          current.Onset = new Hl7.Fhir.Model.Period();
+          current.Onset.DeserializeJson(ref reader, options);
           break;
 
         case "onsetRange":
-          current.Onset = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Onset = new Hl7.Fhir.Model.Range();
+          current.Onset.DeserializeJson(ref reader, options);
           break;
 
         case "onsetString":
@@ -327,22 +330,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "recordedDate":
           current.RecordedDateElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "recorder":
-          current.Recorder = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Recorder = new Hl7.Fhir.Model.ResourceReference();
+          current.Recorder.DeserializeJson(ref reader, options);
           break;
 
         case "asserter":
-          current.Asserter = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Asserter = new Hl7.Fhir.Model.ResourceReference();
+          current.Asserter.DeserializeJson(ref reader, options);
           break;
 
         case "lastOccurrence":
           current.LastOccurrenceElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "note":
@@ -355,19 +356,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Note.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Annotation>(ref reader, options));
+            Hl7.Fhir.Model.Annotation v_Note = new Hl7.Fhir.Model.Annotation();
+            v_Note.DeserializeJson(ref reader, options);
+            current.Note.Add(v_Note);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Note.Count == 0)
           {
             current.Note = null;
           }
-
           break;
 
         case "reaction":
@@ -380,19 +383,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Reaction.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.AllergyIntolerance.ReactionComponent>(ref reader, options));
+            Hl7.Fhir.Model.AllergyIntolerance.ReactionComponent v_Reaction = new Hl7.Fhir.Model.AllergyIntolerance.ReactionComponent();
+            v_Reaction.DeserializeJson(ref reader, options);
+            current.Reaction.Add(v_Reaction);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Reaction.Count == 0)
           {
             current.Reaction = null;
           }
-
           break;
 
         // Complex: AllergyIntolerance, Export: AllergyIntolerance, Base: DomainResource
@@ -496,8 +501,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "substance":
-          current.Substance = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Substance = new Hl7.Fhir.Model.CodeableConcept();
+          current.Substance.DeserializeJson(ref reader, options);
           break;
 
         case "manifestation":
@@ -510,39 +515,38 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Manifestation.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_Manifestation = new Hl7.Fhir.Model.CodeableConcept();
+            v_Manifestation.DeserializeJson(ref reader, options);
+            current.Manifestation.Add(v_Manifestation);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Manifestation.Count == 0)
           {
             current.Manifestation = null;
           }
-
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "onset":
           current.OnsetElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "severity":
           current.SeverityElement =new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity>(reader.GetString()));
-
           break;
 
         case "exposureRoute":
-          current.ExposureRoute = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ExposureRoute = new Hl7.Fhir.Model.CodeableConcept();
+          current.ExposureRoute.DeserializeJson(ref reader, options);
           break;
 
         case "note":
@@ -555,19 +559,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Note.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Annotation>(ref reader, options));
+            Hl7.Fhir.Model.Annotation v_Note = new Hl7.Fhir.Model.Annotation();
+            v_Note.DeserializeJson(ref reader, options);
+            current.Note.Add(v_Note);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Note.Count == 0)
           {
             current.Note = null;
           }
-
           break;
 
         // Complex: reaction, Export: ReactionComponent, Base: BackboneElement

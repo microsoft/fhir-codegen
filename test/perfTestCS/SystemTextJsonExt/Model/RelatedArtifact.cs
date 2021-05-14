@@ -124,37 +124,35 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType>(reader.GetString()));
-
           break;
 
         case "label":
           current.LabelElement = new FhirString(reader.GetString());
-
           break;
 
         case "display":
           current.DisplayElement = new FhirString(reader.GetString());
-
           break;
 
         case "citation":
           current.Citation = new Markdown(reader.GetString());
-
           break;
 
         case "url":
           current.UrlElement = new FhirUrl(reader.GetString());
-
           break;
 
         case "document":
-          current.Document = JsonSerializer.Deserialize<Hl7.Fhir.Model.Attachment>(ref reader, options);
-
+          current.Document = new Hl7.Fhir.Model.Attachment();
+          current.Document.DeserializeJson(ref reader, options);
           break;
 
         case "resource":
           current.ResourceElement = new Canonical(reader.GetString());
+          break;
 
+        case "_resource":
+          ((Hl7.Fhir.Model.Element)current.ResourceElement).DeserializeJson(ref reader, options);
           break;
 
       }

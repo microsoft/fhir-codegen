@@ -112,22 +112,19 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "reference":
           current.ReferenceElement = new FhirString(reader.GetString());
-
           break;
 
         case "type":
           current.TypeElement = new FhirUri(reader.GetString());
-
           break;
 
         case "identifier":
-          current.Identifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.Identifier = new Hl7.Fhir.Model.Identifier();
+          current.Identifier.DeserializeJson(ref reader, options);
           break;
 
         case "display":
           current.DisplayElement = new FhirString(reader.GetString());
-
           break;
 
       }

@@ -113,27 +113,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "name":
           current.NameElement = new Id(reader.GetString());
+          break;
 
+        case "_name":
+          ((Hl7.Fhir.Model.Element)current.NameElement).DeserializeJson(ref reader, options);
           break;
 
         case "language":
           current.LanguageElement = new Code(reader.GetString());
+          break;
 
+        case "_language":
+          ((Hl7.Fhir.Model.Element)current.LanguageElement).DeserializeJson(ref reader, options);
           break;
 
         case "expression":
           current.ExpressionElement = new FhirString(reader.GetString());
-
           break;
 
         case "reference":
           current.ReferenceElement = new FhirUri(reader.GetString());
-
           break;
 
       }

@@ -112,22 +112,27 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "id":
           current.IdElement = new Id(reader.GetString());
+          break;
 
+        case "_id":
+          ((Hl7.Fhir.Model.Element)current.IdElement).DeserializeJson(ref reader, options);
           break;
 
         case "meta":
-          current.Meta = JsonSerializer.Deserialize<Hl7.Fhir.Model.Meta>(ref reader, options);
-
+          current.Meta = new Hl7.Fhir.Model.Meta();
+          current.Meta.DeserializeJson(ref reader, options);
           break;
 
         case "implicitRules":
           current.ImplicitRulesElement = new FhirUri(reader.GetString());
-
           break;
 
         case "language":
           current.LanguageElement = new Code(reader.GetString());
+          break;
 
+        case "_language":
+          ((Hl7.Fhir.Model.Element)current.LanguageElement).DeserializeJson(ref reader, options);
           break;
 
       }

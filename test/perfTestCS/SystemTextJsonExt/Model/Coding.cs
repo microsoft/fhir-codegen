@@ -116,27 +116,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "system":
           current.SystemElement = new FhirUri(reader.GetString());
-
           break;
 
         case "version":
           current.VersionElement = new FhirString(reader.GetString());
-
           break;
 
         case "code":
           current.CodeElement = new Code(reader.GetString());
+          break;
 
+        case "_code":
+          ((Hl7.Fhir.Model.Element)current.CodeElement).DeserializeJson(ref reader, options);
           break;
 
         case "display":
           current.DisplayElement = new FhirString(reader.GetString());
-
           break;
 
         case "userSelected":
           current.UserSelectedElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
       }

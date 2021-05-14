@@ -113,28 +113,27 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "country":
-          current.Country = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Country = new Hl7.Fhir.Model.CodeableConcept();
+          current.Country.DeserializeJson(ref reader, options);
           break;
 
         case "jurisdiction":
-          current.Jurisdiction = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Jurisdiction = new Hl7.Fhir.Model.CodeableConcept();
+          current.Jurisdiction.DeserializeJson(ref reader, options);
           break;
 
         case "status":
-          current.Status = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Status = new Hl7.Fhir.Model.CodeableConcept();
+          current.Status.DeserializeJson(ref reader, options);
           break;
 
         case "dateRange":
-          current.DateRange = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.DateRange = new Hl7.Fhir.Model.Period();
+          current.DateRange.DeserializeJson(ref reader, options);
           break;
 
         case "restoreDate":
           current.RestoreDateElement = new FhirDateTime(reader.GetString());
-
           break;
 
         // Complex: MarketingStatus, Export: MarketingStatus, Base: BackboneElement

@@ -127,13 +127,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "sequenceType":
-          current.SequenceType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.SequenceType = new Hl7.Fhir.Model.CodeableConcept();
+          current.SequenceType.DeserializeJson(ref reader, options);
           break;
 
         case "numberOfSubunits":
           current.NumberOfSubunitsElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_numberOfSubunits":
+          ((Hl7.Fhir.Model.Element)current.NumberOfSubunitsElement).DeserializeJson(ref reader, options);
           break;
 
         case "disulfideLinkage":
@@ -152,13 +155,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.DisulfideLinkageElement.Count == 0)
           {
             current.DisulfideLinkageElement = null;
           }
-
           break;
 
         case "subunit":
@@ -171,19 +174,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Subunit.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceProtein.SubunitComponent>(ref reader, options));
+            Hl7.Fhir.Model.SubstanceProtein.SubunitComponent v_Subunit = new Hl7.Fhir.Model.SubstanceProtein.SubunitComponent();
+            v_Subunit.DeserializeJson(ref reader, options);
+            current.Subunit.Add(v_Subunit);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Subunit.Count == 0)
           {
             current.Subunit = null;
           }
-
           break;
 
         // Complex: SubstanceProtein, Export: SubstanceProtein, Base: DomainResource
@@ -282,42 +287,45 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "subunit":
           current.SubunitElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_subunit":
+          ((Hl7.Fhir.Model.Element)current.SubunitElement).DeserializeJson(ref reader, options);
           break;
 
         case "sequence":
           current.SequenceElement = new FhirString(reader.GetString());
-
           break;
 
         case "length":
           current.LengthElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_length":
+          ((Hl7.Fhir.Model.Element)current.LengthElement).DeserializeJson(ref reader, options);
           break;
 
         case "sequenceAttachment":
-          current.SequenceAttachment = JsonSerializer.Deserialize<Hl7.Fhir.Model.Attachment>(ref reader, options);
-
+          current.SequenceAttachment = new Hl7.Fhir.Model.Attachment();
+          current.SequenceAttachment.DeserializeJson(ref reader, options);
           break;
 
         case "nTerminalModificationId":
-          current.NTerminalModificationId = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.NTerminalModificationId = new Hl7.Fhir.Model.Identifier();
+          current.NTerminalModificationId.DeserializeJson(ref reader, options);
           break;
 
         case "nTerminalModification":
           current.NTerminalModificationElement = new FhirString(reader.GetString());
-
           break;
 
         case "cTerminalModificationId":
-          current.CTerminalModificationId = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.CTerminalModificationId = new Hl7.Fhir.Model.Identifier();
+          current.CTerminalModificationId.DeserializeJson(ref reader, options);
           break;
 
         case "cTerminalModification":
           current.CTerminalModificationElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: subunit, Export: SubunitComponent, Base: BackboneElement

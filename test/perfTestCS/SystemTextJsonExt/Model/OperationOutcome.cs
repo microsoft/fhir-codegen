@@ -114,19 +114,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Issue.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.OperationOutcome.IssueComponent>(ref reader, options));
+            Hl7.Fhir.Model.OperationOutcome.IssueComponent v_Issue = new Hl7.Fhir.Model.OperationOutcome.IssueComponent();
+            v_Issue.DeserializeJson(ref reader, options);
+            current.Issue.Add(v_Issue);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Issue.Count == 0)
           {
             current.Issue = null;
           }
-
           break;
 
         // Complex: OperationOutcome, Export: OperationOutcome, Base: DomainResource
@@ -219,22 +221,19 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "severity":
           current.SeverityElement =new Code<Hl7.Fhir.Model.OperationOutcome.IssueSeverity>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.OperationOutcome.IssueSeverity>(reader.GetString()));
-
           break;
 
         case "code":
           current.CodeElement =new Code<Hl7.Fhir.Model.OperationOutcome.IssueType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.OperationOutcome.IssueType>(reader.GetString()));
-
           break;
 
         case "details":
-          current.Details = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Details = new Hl7.Fhir.Model.CodeableConcept();
+          current.Details.DeserializeJson(ref reader, options);
           break;
 
         case "diagnostics":
           current.DiagnosticsElement = new FhirString(reader.GetString());
-
           break;
 
         case "location":
@@ -253,13 +252,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.LocationElement.Count == 0)
           {
             current.LocationElement = null;
           }
-
           break;
 
         case "expression":
@@ -278,13 +277,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ExpressionElement.Count == 0)
           {
             current.ExpressionElement = null;
           }
-
           break;
 
         // Complex: issue, Export: IssueComponent, Base: BackboneElement

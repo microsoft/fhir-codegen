@@ -110,7 +110,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "authorReference":
-          current.Author = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.Author = new Hl7.Fhir.Model.ResourceReference();
+          current.Author.DeserializeJson(ref reader, options);
           break;
 
         case "authorString":
@@ -119,12 +120,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "time":
           current.TimeElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "text":
           current.Text = new Markdown(reader.GetString());
-
           break;
 
       }

@@ -110,19 +110,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ModifierExtension.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Extension>(ref reader, options));
+            Hl7.Fhir.Model.Extension v_ModifierExtension = new Hl7.Fhir.Model.Extension();
+            v_ModifierExtension.DeserializeJson(ref reader, options);
+            current.ModifierExtension.Add(v_ModifierExtension);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ModifierExtension.Count == 0)
           {
             current.ModifierExtension = null;
           }
-
           break;
 
       }

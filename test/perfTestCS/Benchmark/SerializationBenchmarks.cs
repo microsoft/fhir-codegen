@@ -187,7 +187,7 @@ namespace PerfTestCS.Benchmark
         /// <summary>Parses a specified file contents from memory.</summary>
         /// <returns>An object.</returns>
         [BenchmarkCategory("Parse")]
-        [Benchmark()]
+        [Benchmark]
         public object FirelyExtParse()
         {
             System.Text.Json.Utf8JsonReader reader = new System.Text.Json.Utf8JsonReader(_jsonBytes.AsSpan<byte>());
@@ -201,7 +201,7 @@ namespace PerfTestCS.Benchmark
         /// <summary>Serialize this object to the given stream.</summary>
         /// <returns>A string.</returns>
         [BenchmarkCategory("Serialize")]
-        [Benchmark()]
+        [Benchmark]
         public string FirelyExtSerialize()
         {
             MemoryStream memoryStream = new MemoryStream();

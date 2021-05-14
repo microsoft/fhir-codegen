@@ -201,28 +201,27 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "sourceMaterialClass":
-          current.SourceMaterialClass = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.SourceMaterialClass = new Hl7.Fhir.Model.CodeableConcept();
+          current.SourceMaterialClass.DeserializeJson(ref reader, options);
           break;
 
         case "sourceMaterialType":
-          current.SourceMaterialType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.SourceMaterialType = new Hl7.Fhir.Model.CodeableConcept();
+          current.SourceMaterialType.DeserializeJson(ref reader, options);
           break;
 
         case "sourceMaterialState":
-          current.SourceMaterialState = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.SourceMaterialState = new Hl7.Fhir.Model.CodeableConcept();
+          current.SourceMaterialState.DeserializeJson(ref reader, options);
           break;
 
         case "organismId":
-          current.OrganismId = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.OrganismId = new Hl7.Fhir.Model.Identifier();
+          current.OrganismId.DeserializeJson(ref reader, options);
           break;
 
         case "organismName":
           current.OrganismNameElement = new FhirString(reader.GetString());
-
           break;
 
         case "parentSubstanceId":
@@ -235,19 +234,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ParentSubstanceId.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_ParentSubstanceId = new Hl7.Fhir.Model.Identifier();
+            v_ParentSubstanceId.DeserializeJson(ref reader, options);
+            current.ParentSubstanceId.Add(v_ParentSubstanceId);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ParentSubstanceId.Count == 0)
           {
             current.ParentSubstanceId = null;
           }
-
           break;
 
         case "parentSubstanceName":
@@ -266,13 +267,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ParentSubstanceNameElement.Count == 0)
           {
             current.ParentSubstanceNameElement = null;
           }
-
           break;
 
         case "countryOfOrigin":
@@ -285,19 +286,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.CountryOfOrigin.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_CountryOfOrigin = new Hl7.Fhir.Model.CodeableConcept();
+            v_CountryOfOrigin.DeserializeJson(ref reader, options);
+            current.CountryOfOrigin.Add(v_CountryOfOrigin);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.CountryOfOrigin.Count == 0)
           {
             current.CountryOfOrigin = null;
           }
-
           break;
 
         case "geographicalLocation":
@@ -316,18 +319,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.GeographicalLocationElement.Count == 0)
           {
             current.GeographicalLocationElement = null;
           }
-
           break;
 
         case "developmentStage":
-          current.DevelopmentStage = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.DevelopmentStage = new Hl7.Fhir.Model.CodeableConcept();
+          current.DevelopmentStage.DeserializeJson(ref reader, options);
           break;
 
         case "fractionDescription":
@@ -340,24 +343,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.FractionDescription.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceSourceMaterial.FractionDescriptionComponent>(ref reader, options));
+            Hl7.Fhir.Model.SubstanceSourceMaterial.FractionDescriptionComponent v_FractionDescription = new Hl7.Fhir.Model.SubstanceSourceMaterial.FractionDescriptionComponent();
+            v_FractionDescription.DeserializeJson(ref reader, options);
+            current.FractionDescription.Add(v_FractionDescription);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.FractionDescription.Count == 0)
           {
             current.FractionDescription = null;
           }
-
           break;
 
         case "organism":
-          current.Organism = JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceSourceMaterial.OrganismComponent>(ref reader, options);
-
+          current.Organism = new Hl7.Fhir.Model.SubstanceSourceMaterial.OrganismComponent();
+          current.Organism.DeserializeJson(ref reader, options);
           break;
 
         case "partDescription":
@@ -370,19 +375,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.PartDescription.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceSourceMaterial.PartDescriptionComponent>(ref reader, options));
+            Hl7.Fhir.Model.SubstanceSourceMaterial.PartDescriptionComponent v_PartDescription = new Hl7.Fhir.Model.SubstanceSourceMaterial.PartDescriptionComponent();
+            v_PartDescription.DeserializeJson(ref reader, options);
+            current.PartDescription.Add(v_PartDescription);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.PartDescription.Count == 0)
           {
             current.PartDescription = null;
           }
-
           break;
 
         // Complex: SubstanceSourceMaterial, Export: SubstanceSourceMaterial, Base: DomainResource
@@ -449,12 +456,11 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "fraction":
           current.FractionElement = new FhirString(reader.GetString());
-
           break;
 
         case "materialType":
-          current.MaterialType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.MaterialType = new Hl7.Fhir.Model.CodeableConcept();
+          current.MaterialType.DeserializeJson(ref reader, options);
           break;
 
         // Complex: fractionDescription, Export: FractionDescriptionComponent, Base: BackboneElement
@@ -561,28 +567,27 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "family":
-          current.Family = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Family = new Hl7.Fhir.Model.CodeableConcept();
+          current.Family.DeserializeJson(ref reader, options);
           break;
 
         case "genus":
-          current.Genus = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Genus = new Hl7.Fhir.Model.CodeableConcept();
+          current.Genus.DeserializeJson(ref reader, options);
           break;
 
         case "species":
-          current.Species = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Species = new Hl7.Fhir.Model.CodeableConcept();
+          current.Species.DeserializeJson(ref reader, options);
           break;
 
         case "intraspecificType":
-          current.IntraspecificType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.IntraspecificType = new Hl7.Fhir.Model.CodeableConcept();
+          current.IntraspecificType.DeserializeJson(ref reader, options);
           break;
 
         case "intraspecificDescription":
           current.IntraspecificDescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "author":
@@ -595,29 +600,31 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Author.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceSourceMaterial.AuthorComponent>(ref reader, options));
+            Hl7.Fhir.Model.SubstanceSourceMaterial.AuthorComponent v_Author = new Hl7.Fhir.Model.SubstanceSourceMaterial.AuthorComponent();
+            v_Author.DeserializeJson(ref reader, options);
+            current.Author.Add(v_Author);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Author.Count == 0)
           {
             current.Author = null;
           }
-
           break;
 
         case "hybrid":
-          current.Hybrid = JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceSourceMaterial.HybridComponent>(ref reader, options);
-
+          current.Hybrid = new Hl7.Fhir.Model.SubstanceSourceMaterial.HybridComponent();
+          current.Hybrid.DeserializeJson(ref reader, options);
           break;
 
         case "organismGeneral":
-          current.OrganismGeneral = JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceSourceMaterial.OrganismGeneralComponent>(ref reader, options);
-
+          current.OrganismGeneral = new Hl7.Fhir.Model.SubstanceSourceMaterial.OrganismGeneralComponent();
+          current.OrganismGeneral.DeserializeJson(ref reader, options);
           break;
 
         // Complex: organism, Export: OrganismComponent, Base: BackboneElement
@@ -683,13 +690,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "authorType":
-          current.AuthorType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.AuthorType = new Hl7.Fhir.Model.CodeableConcept();
+          current.AuthorType.DeserializeJson(ref reader, options);
           break;
 
         case "authorDescription":
           current.AuthorDescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: author, Export: AuthorComponent, Base: BackboneElement
@@ -771,27 +777,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "maternalOrganismId":
           current.MaternalOrganismIdElement = new FhirString(reader.GetString());
-
           break;
 
         case "maternalOrganismName":
           current.MaternalOrganismNameElement = new FhirString(reader.GetString());
-
           break;
 
         case "paternalOrganismId":
           current.PaternalOrganismIdElement = new FhirString(reader.GetString());
-
           break;
 
         case "paternalOrganismName":
           current.PaternalOrganismNameElement = new FhirString(reader.GetString());
-
           break;
 
         case "hybridType":
-          current.HybridType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.HybridType = new Hl7.Fhir.Model.CodeableConcept();
+          current.HybridType.DeserializeJson(ref reader, options);
           break;
 
         // Complex: hybrid, Export: HybridComponent, Base: BackboneElement
@@ -870,23 +872,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "kingdom":
-          current.Kingdom = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Kingdom = new Hl7.Fhir.Model.CodeableConcept();
+          current.Kingdom.DeserializeJson(ref reader, options);
           break;
 
         case "phylum":
-          current.Phylum = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Phylum = new Hl7.Fhir.Model.CodeableConcept();
+          current.Phylum.DeserializeJson(ref reader, options);
           break;
 
         case "class":
-          current.Class = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Class = new Hl7.Fhir.Model.CodeableConcept();
+          current.Class.DeserializeJson(ref reader, options);
           break;
 
         case "order":
-          current.Order = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Order = new Hl7.Fhir.Model.CodeableConcept();
+          current.Order.DeserializeJson(ref reader, options);
           break;
 
         // Complex: organismGeneral, Export: OrganismGeneralComponent, Base: BackboneElement
@@ -953,13 +955,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "part":
-          current.Part = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Part = new Hl7.Fhir.Model.CodeableConcept();
+          current.Part.DeserializeJson(ref reader, options);
           break;
 
         case "partLocation":
-          current.PartLocation = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.PartLocation = new Hl7.Fhir.Model.CodeableConcept();
+          current.PartLocation.DeserializeJson(ref reader, options);
           break;
 
         // Complex: partDescription, Export: PartDescriptionComponent, Base: BackboneElement

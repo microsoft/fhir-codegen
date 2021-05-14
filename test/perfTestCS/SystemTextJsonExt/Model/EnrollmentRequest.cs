@@ -148,49 +148,49 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.FinancialResourceStatusCodes>(reader.GetString()));
-
           break;
 
         case "created":
           current.CreatedElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "insurer":
-          current.Insurer = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Insurer = new Hl7.Fhir.Model.ResourceReference();
+          current.Insurer.DeserializeJson(ref reader, options);
           break;
 
         case "provider":
-          current.Provider = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Provider = new Hl7.Fhir.Model.ResourceReference();
+          current.Provider.DeserializeJson(ref reader, options);
           break;
 
         case "candidate":
-          current.Candidate = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Candidate = new Hl7.Fhir.Model.ResourceReference();
+          current.Candidate.DeserializeJson(ref reader, options);
           break;
 
         case "coverage":
-          current.Coverage = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Coverage = new Hl7.Fhir.Model.ResourceReference();
+          current.Coverage.DeserializeJson(ref reader, options);
           break;
 
         // Complex: EnrollmentRequest, Export: EnrollmentRequest, Base: DomainResource

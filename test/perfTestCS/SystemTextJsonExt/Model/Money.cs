@@ -101,12 +101,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "value":
           current.ValueElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "currency":
           current.CurrencyElement =new Code<Hl7.Fhir.Model.Money.Currencies>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Money.Currencies>(reader.GetString()));
-
           break;
 
       }

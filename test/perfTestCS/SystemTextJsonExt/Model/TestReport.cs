@@ -161,43 +161,37 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "identifier":
-          current.Identifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.Identifier = new Hl7.Fhir.Model.Identifier();
+          current.Identifier.DeserializeJson(ref reader, options);
           break;
 
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.TestReport.TestReportStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.TestReport.TestReportStatus>(reader.GetString()));
-
           break;
 
         case "testScript":
-          current.TestScript = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.TestScript = new Hl7.Fhir.Model.ResourceReference();
+          current.TestScript.DeserializeJson(ref reader, options);
           break;
 
         case "result":
           current.ResultElement =new Code<Hl7.Fhir.Model.TestReport.TestReportResult>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.TestReport.TestReportResult>(reader.GetString()));
-
           break;
 
         case "score":
           current.ScoreElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "tester":
           current.TesterElement = new FhirString(reader.GetString());
-
           break;
 
         case "issued":
           current.IssuedElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "participant":
@@ -210,24 +204,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Participant.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.ParticipantComponent>(ref reader, options));
+            Hl7.Fhir.Model.TestReport.ParticipantComponent v_Participant = new Hl7.Fhir.Model.TestReport.ParticipantComponent();
+            v_Participant.DeserializeJson(ref reader, options);
+            current.Participant.Add(v_Participant);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Participant.Count == 0)
           {
             current.Participant = null;
           }
-
           break;
 
         case "setup":
-          current.Setup = JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.SetupComponent>(ref reader, options);
-
+          current.Setup = new Hl7.Fhir.Model.TestReport.SetupComponent();
+          current.Setup.DeserializeJson(ref reader, options);
           break;
 
         case "test":
@@ -240,24 +236,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Test.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.TestComponent>(ref reader, options));
+            Hl7.Fhir.Model.TestReport.TestComponent v_Test = new Hl7.Fhir.Model.TestReport.TestComponent();
+            v_Test.DeserializeJson(ref reader, options);
+            current.Test.Add(v_Test);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Test.Count == 0)
           {
             current.Test = null;
           }
-
           break;
 
         case "teardown":
-          current.Teardown = JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.TeardownComponent>(ref reader, options);
-
+          current.Teardown = new Hl7.Fhir.Model.TestReport.TeardownComponent();
+          current.Teardown.DeserializeJson(ref reader, options);
           break;
 
         // Complex: TestReport, Export: TestReport, Base: DomainResource
@@ -322,17 +320,14 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.TestReport.TestReportParticipantType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.TestReport.TestReportParticipantType>(reader.GetString()));
-
           break;
 
         case "uri":
           current.UriElement = new FhirUri(reader.GetString());
-
           break;
 
         case "display":
           current.DisplayElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: participant, Export: ParticipantComponent, Base: BackboneElement
@@ -407,19 +402,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Action.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.SetupActionComponent>(ref reader, options));
+            Hl7.Fhir.Model.TestReport.SetupActionComponent v_Action = new Hl7.Fhir.Model.TestReport.SetupActionComponent();
+            v_Action.DeserializeJson(ref reader, options);
+            current.Action.Add(v_Action);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Action.Count == 0)
           {
             current.Action = null;
           }
-
           break;
 
         // Complex: setup, Export: SetupComponent, Base: BackboneElement
@@ -486,13 +483,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "operation":
-          current.Operation = JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.OperationComponent>(ref reader, options);
-
+          current.Operation = new Hl7.Fhir.Model.TestReport.OperationComponent();
+          current.Operation.DeserializeJson(ref reader, options);
           break;
 
         case "assert":
-          current.Assert = JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.AssertComponent>(ref reader, options);
-
+          current.Assert = new Hl7.Fhir.Model.TestReport.AssertComponent();
+          current.Assert.DeserializeJson(ref reader, options);
           break;
 
         // Complex: action, Export: SetupActionComponent, Base: BackboneElement
@@ -560,17 +557,14 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "result":
           current.ResultElement =new Code<Hl7.Fhir.Model.TestReport.TestReportActionResult>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.TestReport.TestReportActionResult>(reader.GetString()));
-
           break;
 
         case "message":
           current.Message = new Markdown(reader.GetString());
-
           break;
 
         case "detail":
           current.DetailElement = new FhirUri(reader.GetString());
-
           break;
 
         // Complex: operation, Export: OperationComponent, Base: BackboneElement
@@ -638,17 +632,14 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "result":
           current.ResultElement =new Code<Hl7.Fhir.Model.TestReport.TestReportActionResult>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.TestReport.TestReportActionResult>(reader.GetString()));
-
           break;
 
         case "message":
           current.Message = new Markdown(reader.GetString());
-
           break;
 
         case "detail":
           current.DetailElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: assert, Export: AssertComponent, Base: BackboneElement
@@ -725,12 +716,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "action":
@@ -743,19 +732,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Action.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.TestActionComponent>(ref reader, options));
+            Hl7.Fhir.Model.TestReport.TestActionComponent v_Action = new Hl7.Fhir.Model.TestReport.TestActionComponent();
+            v_Action.DeserializeJson(ref reader, options);
+            current.Action.Add(v_Action);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Action.Count == 0)
           {
             current.Action = null;
           }
-
           break;
 
         // Complex: test, Export: TestComponent, Base: BackboneElement
@@ -822,13 +813,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "operation":
-          current.Operation = JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.OperationComponent>(ref reader, options);
-
+          current.Operation = new Hl7.Fhir.Model.TestReport.OperationComponent();
+          current.Operation.DeserializeJson(ref reader, options);
           break;
 
         case "assert":
-          current.Assert = JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.AssertComponent>(ref reader, options);
-
+          current.Assert = new Hl7.Fhir.Model.TestReport.AssertComponent();
+          current.Assert.DeserializeJson(ref reader, options);
           break;
 
         // Complex: action, Export: TestActionComponent, Base: BackboneElement
@@ -903,19 +894,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Action.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.TeardownActionComponent>(ref reader, options));
+            Hl7.Fhir.Model.TestReport.TeardownActionComponent v_Action = new Hl7.Fhir.Model.TestReport.TeardownActionComponent();
+            v_Action.DeserializeJson(ref reader, options);
+            current.Action.Add(v_Action);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Action.Count == 0)
           {
             current.Action = null;
           }
-
           break;
 
         // Complex: teardown, Export: TeardownComponent, Base: BackboneElement
@@ -973,8 +966,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "operation":
-          current.Operation = JsonSerializer.Deserialize<Hl7.Fhir.Model.TestReport.OperationComponent>(ref reader, options);
-
+          current.Operation = new Hl7.Fhir.Model.TestReport.OperationComponent();
+          current.Operation.DeserializeJson(ref reader, options);
           break;
 
         // Complex: action, Export: TeardownActionComponent, Base: BackboneElement

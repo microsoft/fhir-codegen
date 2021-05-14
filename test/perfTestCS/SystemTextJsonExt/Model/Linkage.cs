@@ -117,12 +117,11 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "active":
           current.ActiveElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "author":
-          current.Author = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Author = new Hl7.Fhir.Model.ResourceReference();
+          current.Author.DeserializeJson(ref reader, options);
           break;
 
         case "item":
@@ -135,19 +134,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Item.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Linkage.ItemComponent>(ref reader, options));
+            Hl7.Fhir.Model.Linkage.ItemComponent v_Item = new Hl7.Fhir.Model.Linkage.ItemComponent();
+            v_Item.DeserializeJson(ref reader, options);
+            current.Item.Add(v_Item);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Item.Count == 0)
           {
             current.Item = null;
           }
-
           break;
 
         // Complex: Linkage, Export: Linkage, Base: DomainResource
@@ -208,12 +209,11 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.Linkage.LinkageType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Linkage.LinkageType>(reader.GetString()));
-
           break;
 
         case "resource":
-          current.Resource = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Resource = new Hl7.Fhir.Model.ResourceReference();
+          current.Resource.DeserializeJson(ref reader, options);
           break;
 
         // Complex: item, Export: ItemComponent, Base: BackboneElement

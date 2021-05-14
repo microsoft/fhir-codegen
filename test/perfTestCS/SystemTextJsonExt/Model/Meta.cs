@@ -139,17 +139,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "versionId":
           current.VersionIdElement = new Id(reader.GetString());
+          break;
 
+        case "_versionId":
+          ((Hl7.Fhir.Model.Element)current.VersionIdElement).DeserializeJson(ref reader, options);
           break;
 
         case "lastUpdated":
           current.LastUpdatedElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_lastUpdated":
+          ((Hl7.Fhir.Model.Element)current.LastUpdatedElement).DeserializeJson(ref reader, options);
           break;
 
         case "source":
           current.SourceElement = new FhirUri(reader.GetString());
-
           break;
 
         case "profile":
@@ -168,13 +173,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ProfileElement.Count == 0)
           {
             current.ProfileElement = null;
           }
-
           break;
 
         case "security":
@@ -187,19 +192,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Security.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options));
+            Hl7.Fhir.Model.Coding v_Security = new Hl7.Fhir.Model.Coding();
+            v_Security.DeserializeJson(ref reader, options);
+            current.Security.Add(v_Security);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Security.Count == 0)
           {
             current.Security = null;
           }
-
           break;
 
         case "tag":
@@ -212,19 +219,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Tag.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options));
+            Hl7.Fhir.Model.Coding v_Tag = new Hl7.Fhir.Model.Coding();
+            v_Tag.DeserializeJson(ref reader, options);
+            current.Tag.Add(v_Tag);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Tag.Count == 0)
           {
             current.Tag = null;
           }
-
           break;
 
       }

@@ -116,18 +116,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "identifier":
-          current.Identifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.Identifier = new Hl7.Fhir.Model.Identifier();
+          current.Identifier.DeserializeJson(ref reader, options);
           break;
 
         case "type":
-          current.Type = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Type = new Hl7.Fhir.Model.CodeableConcept();
+          current.Type.DeserializeJson(ref reader, options);
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Quantity();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         case "specialPrecautionsForStorage":
@@ -140,19 +140,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.SpecialPrecautionsForStorage.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_SpecialPrecautionsForStorage = new Hl7.Fhir.Model.CodeableConcept();
+            v_SpecialPrecautionsForStorage.DeserializeJson(ref reader, options);
+            current.SpecialPrecautionsForStorage.Add(v_SpecialPrecautionsForStorage);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.SpecialPrecautionsForStorage.Count == 0)
           {
             current.SpecialPrecautionsForStorage = null;
           }
-
           break;
 
         // Complex: ProductShelfLife, Export: ProductShelfLife, Base: BackboneElement

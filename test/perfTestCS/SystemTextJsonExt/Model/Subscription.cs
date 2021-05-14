@@ -125,7 +125,6 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Subscription.SubscriptionStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Subscription.SubscriptionStatus>(reader.GetString()));
-
           break;
 
         case "contact":
@@ -138,44 +137,46 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Contact.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactPoint>(ref reader, options));
+            Hl7.Fhir.Model.ContactPoint v_Contact = new Hl7.Fhir.Model.ContactPoint();
+            v_Contact.DeserializeJson(ref reader, options);
+            current.Contact.Add(v_Contact);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Contact.Count == 0)
           {
             current.Contact = null;
           }
-
           break;
 
         case "end":
           current.EndElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_end":
+          ((Hl7.Fhir.Model.Element)current.EndElement).DeserializeJson(ref reader, options);
           break;
 
         case "reason":
           current.ReasonElement = new FhirString(reader.GetString());
-
           break;
 
         case "criteria":
           current.CriteriaElement = new FhirString(reader.GetString());
-
           break;
 
         case "error":
           current.ErrorElement = new FhirString(reader.GetString());
-
           break;
 
         case "channel":
-          current.Channel = JsonSerializer.Deserialize<Hl7.Fhir.Model.Subscription.ChannelComponent>(ref reader, options);
-
+          current.Channel = new Hl7.Fhir.Model.Subscription.ChannelComponent();
+          current.Channel.DeserializeJson(ref reader, options);
           break;
 
         // Complex: Subscription, Export: Subscription, Base: DomainResource
@@ -254,17 +255,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.Subscription.SubscriptionChannelType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Subscription.SubscriptionChannelType>(reader.GetString()));
-
           break;
 
         case "endpoint":
           current.EndpointElement = new FhirUrl(reader.GetString());
-
           break;
 
         case "payload":
           current.PayloadElement = new Code(reader.GetString());
+          break;
 
+        case "_payload":
+          ((Hl7.Fhir.Model.Element)current.PayloadElement).DeserializeJson(ref reader, options);
           break;
 
         case "header":
@@ -283,13 +285,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.HeaderElement.Count == 0)
           {
             current.HeaderElement = null;
           }
-
           break;
 
         // Complex: channel, Export: ChannelComponent, Base: BackboneElement

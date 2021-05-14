@@ -172,19 +172,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "serviceCategory":
@@ -197,19 +199,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ServiceCategory.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_ServiceCategory = new Hl7.Fhir.Model.CodeableConcept();
+            v_ServiceCategory.DeserializeJson(ref reader, options);
+            current.ServiceCategory.Add(v_ServiceCategory);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ServiceCategory.Count == 0)
           {
             current.ServiceCategory = null;
           }
-
           break;
 
         case "serviceType":
@@ -222,19 +226,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ServiceType.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_ServiceType = new Hl7.Fhir.Model.CodeableConcept();
+            v_ServiceType.DeserializeJson(ref reader, options);
+            current.ServiceType.Add(v_ServiceType);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ServiceType.Count == 0)
           {
             current.ServiceType = null;
           }
-
           break;
 
         case "specialty":
@@ -247,54 +253,59 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Specialty.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_Specialty = new Hl7.Fhir.Model.CodeableConcept();
+            v_Specialty.DeserializeJson(ref reader, options);
+            current.Specialty.Add(v_Specialty);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Specialty.Count == 0)
           {
             current.Specialty = null;
           }
-
           break;
 
         case "appointmentType":
-          current.AppointmentType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.AppointmentType = new Hl7.Fhir.Model.CodeableConcept();
+          current.AppointmentType.DeserializeJson(ref reader, options);
           break;
 
         case "schedule":
-          current.Schedule = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Schedule = new Hl7.Fhir.Model.ResourceReference();
+          current.Schedule.DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Slot.SlotStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Slot.SlotStatus>(reader.GetString()));
-
           break;
 
         case "start":
           current.StartElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_start":
+          ((Hl7.Fhir.Model.Element)current.StartElement).DeserializeJson(ref reader, options);
           break;
 
         case "end":
           current.EndElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_end":
+          ((Hl7.Fhir.Model.Element)current.EndElement).DeserializeJson(ref reader, options);
           break;
 
         case "overbooked":
           current.OverbookedElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "comment":
           current.CommentElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: Slot, Export: Slot, Base: DomainResource

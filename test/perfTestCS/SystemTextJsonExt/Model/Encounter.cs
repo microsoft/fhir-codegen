@@ -299,24 +299,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Encounter.EncounterStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Encounter.EncounterStatus>(reader.GetString()));
-
           break;
 
         case "statusHistory":
@@ -329,24 +330,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.StatusHistory.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Encounter.StatusHistoryComponent>(ref reader, options));
+            Hl7.Fhir.Model.Encounter.StatusHistoryComponent v_StatusHistory = new Hl7.Fhir.Model.Encounter.StatusHistoryComponent();
+            v_StatusHistory.DeserializeJson(ref reader, options);
+            current.StatusHistory.Add(v_StatusHistory);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.StatusHistory.Count == 0)
           {
             current.StatusHistory = null;
           }
-
           break;
 
         case "class":
-          current.Class = JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options);
-
+          current.Class = new Hl7.Fhir.Model.Coding();
+          current.Class.DeserializeJson(ref reader, options);
           break;
 
         case "classHistory":
@@ -359,19 +362,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ClassHistory.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Encounter.ClassHistoryComponent>(ref reader, options));
+            Hl7.Fhir.Model.Encounter.ClassHistoryComponent v_ClassHistory = new Hl7.Fhir.Model.Encounter.ClassHistoryComponent();
+            v_ClassHistory.DeserializeJson(ref reader, options);
+            current.ClassHistory.Add(v_ClassHistory);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ClassHistory.Count == 0)
           {
             current.ClassHistory = null;
           }
-
           break;
 
         case "type":
@@ -384,34 +389,36 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Type.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_Type = new Hl7.Fhir.Model.CodeableConcept();
+            v_Type.DeserializeJson(ref reader, options);
+            current.Type.Add(v_Type);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Type.Count == 0)
           {
             current.Type = null;
           }
-
           break;
 
         case "serviceType":
-          current.ServiceType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ServiceType = new Hl7.Fhir.Model.CodeableConcept();
+          current.ServiceType.DeserializeJson(ref reader, options);
           break;
 
         case "priority":
-          current.Priority = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Priority = new Hl7.Fhir.Model.CodeableConcept();
+          current.Priority.DeserializeJson(ref reader, options);
           break;
 
         case "subject":
-          current.Subject = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Subject = new Hl7.Fhir.Model.ResourceReference();
+          current.Subject.DeserializeJson(ref reader, options);
           break;
 
         case "episodeOfCare":
@@ -424,19 +431,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.EpisodeOfCare.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_EpisodeOfCare = new Hl7.Fhir.Model.ResourceReference();
+            v_EpisodeOfCare.DeserializeJson(ref reader, options);
+            current.EpisodeOfCare.Add(v_EpisodeOfCare);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.EpisodeOfCare.Count == 0)
           {
             current.EpisodeOfCare = null;
           }
-
           break;
 
         case "basedOn":
@@ -449,19 +458,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.BasedOn.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_BasedOn = new Hl7.Fhir.Model.ResourceReference();
+            v_BasedOn.DeserializeJson(ref reader, options);
+            current.BasedOn.Add(v_BasedOn);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.BasedOn.Count == 0)
           {
             current.BasedOn = null;
           }
-
           break;
 
         case "participant":
@@ -474,19 +485,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Participant.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Encounter.ParticipantComponent>(ref reader, options));
+            Hl7.Fhir.Model.Encounter.ParticipantComponent v_Participant = new Hl7.Fhir.Model.Encounter.ParticipantComponent();
+            v_Participant.DeserializeJson(ref reader, options);
+            current.Participant.Add(v_Participant);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Participant.Count == 0)
           {
             current.Participant = null;
           }
-
           break;
 
         case "appointment":
@@ -499,29 +512,31 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Appointment.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Appointment = new Hl7.Fhir.Model.ResourceReference();
+            v_Appointment.DeserializeJson(ref reader, options);
+            current.Appointment.Add(v_Appointment);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Appointment.Count == 0)
           {
             current.Appointment = null;
           }
-
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         case "length":
-          current.Length = JsonSerializer.Deserialize<Hl7.Fhir.Model.Duration>(ref reader, options);
-
+          current.Length = new Hl7.Fhir.Model.Duration();
+          current.Length.DeserializeJson(ref reader, options);
           break;
 
         case "reasonCode":
@@ -534,19 +549,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ReasonCode.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_ReasonCode = new Hl7.Fhir.Model.CodeableConcept();
+            v_ReasonCode.DeserializeJson(ref reader, options);
+            current.ReasonCode.Add(v_ReasonCode);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ReasonCode.Count == 0)
           {
             current.ReasonCode = null;
           }
-
           break;
 
         case "reasonReference":
@@ -559,19 +576,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ReasonReference.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_ReasonReference = new Hl7.Fhir.Model.ResourceReference();
+            v_ReasonReference.DeserializeJson(ref reader, options);
+            current.ReasonReference.Add(v_ReasonReference);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ReasonReference.Count == 0)
           {
             current.ReasonReference = null;
           }
-
           break;
 
         case "diagnosis":
@@ -584,19 +603,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Diagnosis.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Encounter.DiagnosisComponent>(ref reader, options));
+            Hl7.Fhir.Model.Encounter.DiagnosisComponent v_Diagnosis = new Hl7.Fhir.Model.Encounter.DiagnosisComponent();
+            v_Diagnosis.DeserializeJson(ref reader, options);
+            current.Diagnosis.Add(v_Diagnosis);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Diagnosis.Count == 0)
           {
             current.Diagnosis = null;
           }
-
           break;
 
         case "account":
@@ -609,24 +630,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Account.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Account = new Hl7.Fhir.Model.ResourceReference();
+            v_Account.DeserializeJson(ref reader, options);
+            current.Account.Add(v_Account);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Account.Count == 0)
           {
             current.Account = null;
           }
-
           break;
 
         case "hospitalization":
-          current.Hospitalization = JsonSerializer.Deserialize<Hl7.Fhir.Model.Encounter.HospitalizationComponent>(ref reader, options);
-
+          current.Hospitalization = new Hl7.Fhir.Model.Encounter.HospitalizationComponent();
+          current.Hospitalization.DeserializeJson(ref reader, options);
           break;
 
         case "location":
@@ -639,29 +662,31 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Location.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Encounter.LocationComponent>(ref reader, options));
+            Hl7.Fhir.Model.Encounter.LocationComponent v_Location = new Hl7.Fhir.Model.Encounter.LocationComponent();
+            v_Location.DeserializeJson(ref reader, options);
+            current.Location.Add(v_Location);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Location.Count == 0)
           {
             current.Location = null;
           }
-
           break;
 
         case "serviceProvider":
-          current.ServiceProvider = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.ServiceProvider = new Hl7.Fhir.Model.ResourceReference();
+          current.ServiceProvider.DeserializeJson(ref reader, options);
           break;
 
         case "partOf":
-          current.PartOf = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.PartOf = new Hl7.Fhir.Model.ResourceReference();
+          current.PartOf.DeserializeJson(ref reader, options);
           break;
 
         // Complex: Encounter, Export: Encounter, Base: DomainResource
@@ -722,12 +747,11 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Encounter.EncounterStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Encounter.EncounterStatus>(reader.GetString()));
-
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         // Complex: statusHistory, Export: StatusHistoryComponent, Base: BackboneElement
@@ -788,13 +812,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "class":
-          current.Class = JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options);
-
+          current.Class = new Hl7.Fhir.Model.Coding();
+          current.Class.DeserializeJson(ref reader, options);
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         // Complex: classHistory, Export: ClassHistoryComponent, Base: BackboneElement
@@ -881,29 +905,31 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Type.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_Type = new Hl7.Fhir.Model.CodeableConcept();
+            v_Type.DeserializeJson(ref reader, options);
+            current.Type.Add(v_Type);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Type.Count == 0)
           {
             current.Type = null;
           }
-
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         case "individual":
-          current.Individual = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Individual = new Hl7.Fhir.Model.ResourceReference();
+          current.Individual.DeserializeJson(ref reader, options);
           break;
 
         // Complex: participant, Export: ParticipantComponent, Base: BackboneElement
@@ -972,18 +998,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "condition":
-          current.Condition = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Condition = new Hl7.Fhir.Model.ResourceReference();
+          current.Condition.DeserializeJson(ref reader, options);
           break;
 
         case "use":
-          current.Use = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Use = new Hl7.Fhir.Model.CodeableConcept();
+          current.Use.DeserializeJson(ref reader, options);
           break;
 
         case "rank":
           current.RankElement = new PositiveInt(reader.GetInt32());
-
           break;
 
         // Complex: diagnosis, Export: DiagnosisComponent, Base: BackboneElement
@@ -1107,23 +1132,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "preAdmissionIdentifier":
-          current.PreAdmissionIdentifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.PreAdmissionIdentifier = new Hl7.Fhir.Model.Identifier();
+          current.PreAdmissionIdentifier.DeserializeJson(ref reader, options);
           break;
 
         case "origin":
-          current.Origin = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Origin = new Hl7.Fhir.Model.ResourceReference();
+          current.Origin.DeserializeJson(ref reader, options);
           break;
 
         case "admitSource":
-          current.AdmitSource = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.AdmitSource = new Hl7.Fhir.Model.CodeableConcept();
+          current.AdmitSource.DeserializeJson(ref reader, options);
           break;
 
         case "reAdmission":
-          current.ReAdmission = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ReAdmission = new Hl7.Fhir.Model.CodeableConcept();
+          current.ReAdmission.DeserializeJson(ref reader, options);
           break;
 
         case "dietPreference":
@@ -1136,19 +1161,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.DietPreference.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_DietPreference = new Hl7.Fhir.Model.CodeableConcept();
+            v_DietPreference.DeserializeJson(ref reader, options);
+            current.DietPreference.Add(v_DietPreference);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.DietPreference.Count == 0)
           {
             current.DietPreference = null;
           }
-
           break;
 
         case "specialCourtesy":
@@ -1161,19 +1188,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.SpecialCourtesy.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_SpecialCourtesy = new Hl7.Fhir.Model.CodeableConcept();
+            v_SpecialCourtesy.DeserializeJson(ref reader, options);
+            current.SpecialCourtesy.Add(v_SpecialCourtesy);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.SpecialCourtesy.Count == 0)
           {
             current.SpecialCourtesy = null;
           }
-
           break;
 
         case "specialArrangement":
@@ -1186,29 +1215,31 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.SpecialArrangement.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_SpecialArrangement = new Hl7.Fhir.Model.CodeableConcept();
+            v_SpecialArrangement.DeserializeJson(ref reader, options);
+            current.SpecialArrangement.Add(v_SpecialArrangement);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.SpecialArrangement.Count == 0)
           {
             current.SpecialArrangement = null;
           }
-
           break;
 
         case "destination":
-          current.Destination = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Destination = new Hl7.Fhir.Model.ResourceReference();
+          current.Destination.DeserializeJson(ref reader, options);
           break;
 
         case "dischargeDisposition":
-          current.DischargeDisposition = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.DischargeDisposition = new Hl7.Fhir.Model.CodeableConcept();
+          current.DischargeDisposition.DeserializeJson(ref reader, options);
           break;
 
         // Complex: hospitalization, Export: HospitalizationComponent, Base: BackboneElement
@@ -1283,23 +1314,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "location":
-          current.Location = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Location = new Hl7.Fhir.Model.ResourceReference();
+          current.Location.DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Encounter.EncounterLocationStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Encounter.EncounterLocationStatus>(reader.GetString()));
-
           break;
 
         case "physicalType":
-          current.PhysicalType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.PhysicalType = new Hl7.Fhir.Model.CodeableConcept();
+          current.PhysicalType.DeserializeJson(ref reader, options);
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         // Complex: location, Export: LocationComponent, Base: BackboneElement

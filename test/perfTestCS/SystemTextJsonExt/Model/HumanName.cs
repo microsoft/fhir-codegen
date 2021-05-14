@@ -145,17 +145,14 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "use":
           current.UseElement =new Code<Hl7.Fhir.Model.HumanName.NameUse>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.HumanName.NameUse>(reader.GetString()));
-
           break;
 
         case "text":
           current.TextElement = new FhirString(reader.GetString());
-
           break;
 
         case "family":
           current.FamilyElement = new FhirString(reader.GetString());
-
           break;
 
         case "given":
@@ -174,13 +171,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.GivenElement.Count == 0)
           {
             current.GivenElement = null;
           }
-
           break;
 
         case "prefix":
@@ -199,13 +196,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.PrefixElement.Count == 0)
           {
             current.PrefixElement = null;
           }
-
           break;
 
         case "suffix":
@@ -224,18 +221,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.SuffixElement.Count == 0)
           {
             current.SuffixElement = null;
           }
-
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
       }

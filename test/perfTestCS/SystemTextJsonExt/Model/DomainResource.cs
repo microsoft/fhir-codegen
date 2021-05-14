@@ -69,7 +69,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteStartArray();
         foreach (dynamic resource in current.Contained)
         {
-          resource.SerializeJson(writer, options, true);
+          JsonStreamResourceConverter.WriteResource(writer, resource, options);
         }
         writer.WriteEndArray();
       }
@@ -132,8 +132,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "text":
-          current.Text = JsonSerializer.Deserialize<Hl7.Fhir.Model.Narrative>(ref reader, options);
-
+          current.Text = new Hl7.Fhir.Model.Narrative();
+          current.Text.DeserializeJson(ref reader, options);
           break;
 
         case "contained":
@@ -146,19 +146,19 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Contained.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Resource>(ref reader, options));
+            current.Contained.Add(Hl7.Fhir.Serialization.JsonStreamResourceConverter.PolymorphicRead(ref reader, typeof(Hl7.Fhir.Model.Resource), options));
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Contained.Count == 0)
           {
             current.Contained = null;
           }
-
           break;
 
         case "extension":
@@ -171,19 +171,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Extension.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Extension>(ref reader, options));
+            Hl7.Fhir.Model.Extension v_Extension = new Hl7.Fhir.Model.Extension();
+            v_Extension.DeserializeJson(ref reader, options);
+            current.Extension.Add(v_Extension);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Extension.Count == 0)
           {
             current.Extension = null;
           }
-
           break;
 
         case "modifierExtension":
@@ -196,19 +198,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ModifierExtension.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Extension>(ref reader, options));
+            Hl7.Fhir.Model.Extension v_ModifierExtension = new Hl7.Fhir.Model.Extension();
+            v_ModifierExtension.DeserializeJson(ref reader, options);
+            current.ModifierExtension.Add(v_ModifierExtension);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ModifierExtension.Count == 0)
           {
             current.ModifierExtension = null;
           }
-
           break;
 
         // Complex: DomainResource, Export: DomainResource, Base: Resource

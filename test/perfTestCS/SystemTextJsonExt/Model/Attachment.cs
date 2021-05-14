@@ -131,42 +131,42 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "contentType":
           current.ContentTypeElement = new Code(reader.GetString());
+          break;
 
+        case "_contentType":
+          ((Hl7.Fhir.Model.Element)current.ContentTypeElement).DeserializeJson(ref reader, options);
           break;
 
         case "language":
           current.LanguageElement = new Code(reader.GetString());
+          break;
 
+        case "_language":
+          ((Hl7.Fhir.Model.Element)current.LanguageElement).DeserializeJson(ref reader, options);
           break;
 
         case "data":
           current.DataElement = new Base64Binary(reader.GetBytesFromBase64());
-
           break;
 
         case "url":
           current.UrlElement = new FhirUrl(reader.GetString());
-
           break;
 
         case "size":
           current.SizeElement = new UnsignedInt(reader.GetInt32());
-
           break;
 
         case "hash":
           current.HashElement = new Base64Binary(reader.GetBytesFromBase64());
-
           break;
 
         case "title":
           current.TitleElement = new FhirString(reader.GetString());
-
           break;
 
         case "creation":
           current.CreationElement = new FhirDateTime(reader.GetString());
-
           break;
 
       }

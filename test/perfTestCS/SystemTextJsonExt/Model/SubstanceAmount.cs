@@ -127,11 +127,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "amountQuantity":
-          current.Amount = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.Amount = new Hl7.Fhir.Model.Quantity();
+          current.Amount.DeserializeJson(ref reader, options);
           break;
 
         case "amountRange":
-          current.Amount = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Amount = new Hl7.Fhir.Model.Range();
+          current.Amount.DeserializeJson(ref reader, options);
           break;
 
         case "amountString":
@@ -139,18 +141,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "amountType":
-          current.AmountType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.AmountType = new Hl7.Fhir.Model.CodeableConcept();
+          current.AmountType.DeserializeJson(ref reader, options);
           break;
 
         case "amountText":
           current.AmountTextElement = new FhirString(reader.GetString());
-
           break;
 
         case "referenceRange":
-          current.ReferenceRange = JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceAmount.ReferenceRangeComponent>(ref reader, options);
-
+          current.ReferenceRange = new Hl7.Fhir.Model.SubstanceAmount.ReferenceRangeComponent();
+          current.ReferenceRange.DeserializeJson(ref reader, options);
           break;
 
         // Complex: SubstanceAmount, Export: SubstanceAmount, Base: BackboneElement
@@ -214,13 +215,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "lowLimit":
-          current.LowLimit = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.LowLimit = new Hl7.Fhir.Model.Quantity();
+          current.LowLimit.DeserializeJson(ref reader, options);
           break;
 
         case "highLimit":
-          current.HighLimit = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.HighLimit = new Hl7.Fhir.Model.Quantity();
+          current.HighLimit.DeserializeJson(ref reader, options);
           break;
 
       }

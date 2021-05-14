@@ -102,13 +102,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "low":
-          current.Low = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Low = new Hl7.Fhir.Model.Quantity();
+          current.Low.DeserializeJson(ref reader, options);
           break;
 
         case "high":
-          current.High = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.High = new Hl7.Fhir.Model.Quantity();
+          current.High.DeserializeJson(ref reader, options);
           break;
 
       }

@@ -145,18 +145,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "manufacturedDoseForm":
-          current.ManufacturedDoseForm = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ManufacturedDoseForm = new Hl7.Fhir.Model.CodeableConcept();
+          current.ManufacturedDoseForm.DeserializeJson(ref reader, options);
           break;
 
         case "unitOfPresentation":
-          current.UnitOfPresentation = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.UnitOfPresentation = new Hl7.Fhir.Model.CodeableConcept();
+          current.UnitOfPresentation.DeserializeJson(ref reader, options);
           break;
 
         case "quantity":
-          current.Quantity = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Quantity = new Hl7.Fhir.Model.Quantity();
+          current.Quantity.DeserializeJson(ref reader, options);
           break;
 
         case "manufacturer":
@@ -169,19 +169,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Manufacturer.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Manufacturer = new Hl7.Fhir.Model.ResourceReference();
+            v_Manufacturer.DeserializeJson(ref reader, options);
+            current.Manufacturer.Add(v_Manufacturer);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Manufacturer.Count == 0)
           {
             current.Manufacturer = null;
           }
-
           break;
 
         case "ingredient":
@@ -194,24 +196,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Ingredient.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Ingredient = new Hl7.Fhir.Model.ResourceReference();
+            v_Ingredient.DeserializeJson(ref reader, options);
+            current.Ingredient.Add(v_Ingredient);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Ingredient.Count == 0)
           {
             current.Ingredient = null;
           }
-
           break;
 
         case "physicalCharacteristics":
-          current.PhysicalCharacteristics = JsonSerializer.Deserialize<Hl7.Fhir.Model.ProdCharacteristic>(ref reader, options);
-
+          current.PhysicalCharacteristics = new Hl7.Fhir.Model.ProdCharacteristic();
+          current.PhysicalCharacteristics.DeserializeJson(ref reader, options);
           break;
 
         case "otherCharacteristics":
@@ -224,19 +228,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.OtherCharacteristics.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_OtherCharacteristics = new Hl7.Fhir.Model.CodeableConcept();
+            v_OtherCharacteristics.DeserializeJson(ref reader, options);
+            current.OtherCharacteristics.Add(v_OtherCharacteristics);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.OtherCharacteristics.Count == 0)
           {
             current.OtherCharacteristics = null;
           }
-
           break;
 
         // Complex: MedicinalProductManufactured, Export: MedicinalProductManufactured, Base: DomainResource

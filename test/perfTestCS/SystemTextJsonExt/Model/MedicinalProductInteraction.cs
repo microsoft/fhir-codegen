@@ -154,24 +154,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Subject.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Subject = new Hl7.Fhir.Model.ResourceReference();
+            v_Subject.DeserializeJson(ref reader, options);
+            current.Subject.Add(v_Subject);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Subject.Count == 0)
           {
             current.Subject = null;
           }
-
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "interactant":
@@ -184,39 +185,41 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Interactant.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MedicinalProductInteraction.InteractantComponent>(ref reader, options));
+            Hl7.Fhir.Model.MedicinalProductInteraction.InteractantComponent v_Interactant = new Hl7.Fhir.Model.MedicinalProductInteraction.InteractantComponent();
+            v_Interactant.DeserializeJson(ref reader, options);
+            current.Interactant.Add(v_Interactant);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Interactant.Count == 0)
           {
             current.Interactant = null;
           }
-
           break;
 
         case "type":
-          current.Type = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Type = new Hl7.Fhir.Model.CodeableConcept();
+          current.Type.DeserializeJson(ref reader, options);
           break;
 
         case "effect":
-          current.Effect = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Effect = new Hl7.Fhir.Model.CodeableConcept();
+          current.Effect.DeserializeJson(ref reader, options);
           break;
 
         case "incidence":
-          current.Incidence = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Incidence = new Hl7.Fhir.Model.CodeableConcept();
+          current.Incidence.DeserializeJson(ref reader, options);
           break;
 
         case "management":
-          current.Management = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Management = new Hl7.Fhir.Model.CodeableConcept();
+          current.Management.DeserializeJson(ref reader, options);
           break;
 
         // Complex: MedicinalProductInteraction, Export: MedicinalProductInteraction, Base: DomainResource
@@ -285,11 +288,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "itemReference":
-          current.Item = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.Item = new Hl7.Fhir.Model.ResourceReference();
+          current.Item.DeserializeJson(ref reader, options);
           break;
 
         case "itemCodeableConcept":
-          current.Item = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
+          current.Item = new Hl7.Fhir.Model.CodeableConcept();
+          current.Item.DeserializeJson(ref reader, options);
           break;
 
         // Complex: interactant, Export: InteractantComponent, Base: BackboneElement

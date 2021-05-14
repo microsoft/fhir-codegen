@@ -160,44 +160,45 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Medication.MedicationStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Medication.MedicationStatusCodes>(reader.GetString()));
-
           break;
 
         case "manufacturer":
-          current.Manufacturer = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Manufacturer = new Hl7.Fhir.Model.ResourceReference();
+          current.Manufacturer.DeserializeJson(ref reader, options);
           break;
 
         case "form":
-          current.Form = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Form = new Hl7.Fhir.Model.CodeableConcept();
+          current.Form.DeserializeJson(ref reader, options);
           break;
 
         case "amount":
-          current.Amount = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
-
+          current.Amount = new Hl7.Fhir.Model.Ratio();
+          current.Amount.DeserializeJson(ref reader, options);
           break;
 
         case "ingredient":
@@ -210,24 +211,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Ingredient.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Medication.IngredientComponent>(ref reader, options));
+            Hl7.Fhir.Model.Medication.IngredientComponent v_Ingredient = new Hl7.Fhir.Model.Medication.IngredientComponent();
+            v_Ingredient.DeserializeJson(ref reader, options);
+            current.Ingredient.Add(v_Ingredient);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Ingredient.Count == 0)
           {
             current.Ingredient = null;
           }
-
           break;
 
         case "batch":
-          current.Batch = JsonSerializer.Deserialize<Hl7.Fhir.Model.Medication.BatchComponent>(ref reader, options);
-
+          current.Batch = new Hl7.Fhir.Model.Medication.BatchComponent();
+          current.Batch.DeserializeJson(ref reader, options);
           break;
 
         // Complex: Medication, Export: Medication, Base: DomainResource
@@ -307,21 +310,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "itemCodeableConcept":
-          current.Item = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
+          current.Item = new Hl7.Fhir.Model.CodeableConcept();
+          current.Item.DeserializeJson(ref reader, options);
           break;
 
         case "itemReference":
-          current.Item = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.Item = new Hl7.Fhir.Model.ResourceReference();
+          current.Item.DeserializeJson(ref reader, options);
           break;
 
         case "isActive":
           current.IsActiveElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "strength":
-          current.Strength = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
-
+          current.Strength = new Hl7.Fhir.Model.Ratio();
+          current.Strength.DeserializeJson(ref reader, options);
           break;
 
         // Complex: ingredient, Export: IngredientComponent, Base: BackboneElement
@@ -387,12 +391,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "lotNumber":
           current.LotNumberElement = new FhirString(reader.GetString());
-
           break;
 
         case "expirationDate":
           current.ExpirationDateElement = new FhirDateTime(reader.GetString());
-
           break;
 
         // Complex: batch, Export: BatchComponent, Base: BackboneElement

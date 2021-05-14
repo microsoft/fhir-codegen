@@ -120,37 +120,42 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "name":
           current.NameElement = new Code(reader.GetString());
+          break;
 
+        case "_name":
+          ((Hl7.Fhir.Model.Element)current.NameElement).DeserializeJson(ref reader, options);
           break;
 
         case "use":
           current.UseElement =new Code<Hl7.Fhir.Model.OperationParameterUse>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.OperationParameterUse>(reader.GetString()));
-
           break;
 
         case "min":
           current.MinElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_min":
+          ((Hl7.Fhir.Model.Element)current.MinElement).DeserializeJson(ref reader, options);
           break;
 
         case "max":
           current.MaxElement = new FhirString(reader.GetString());
-
           break;
 
         case "documentation":
           current.DocumentationElement = new FhirString(reader.GetString());
-
           break;
 
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.FHIRAllTypes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.FHIRAllTypes>(reader.GetString()));
-
           break;
 
         case "profile":
           current.ProfileElement = new Canonical(reader.GetString());
+          break;
 
+        case "_profile":
+          ((Hl7.Fhir.Model.Element)current.ProfileElement).DeserializeJson(ref reader, options);
           break;
 
       }

@@ -136,18 +136,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "identifier":
-          current.Identifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.Identifier = new Hl7.Fhir.Model.Identifier();
+          current.Identifier.DeserializeJson(ref reader, options);
           break;
 
         case "role":
-          current.Role = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Role = new Hl7.Fhir.Model.CodeableConcept();
+          current.Role.DeserializeJson(ref reader, options);
           break;
 
         case "allergenicIndicator":
           current.AllergenicIndicatorElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "manufacturer":
@@ -160,19 +159,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Manufacturer.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Manufacturer = new Hl7.Fhir.Model.ResourceReference();
+            v_Manufacturer.DeserializeJson(ref reader, options);
+            current.Manufacturer.Add(v_Manufacturer);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Manufacturer.Count == 0)
           {
             current.Manufacturer = null;
           }
-
           break;
 
         case "specifiedSubstance":
@@ -185,24 +186,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.SpecifiedSubstance.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MedicinalProductIngredient.SpecifiedSubstanceComponent>(ref reader, options));
+            Hl7.Fhir.Model.MedicinalProductIngredient.SpecifiedSubstanceComponent v_SpecifiedSubstance = new Hl7.Fhir.Model.MedicinalProductIngredient.SpecifiedSubstanceComponent();
+            v_SpecifiedSubstance.DeserializeJson(ref reader, options);
+            current.SpecifiedSubstance.Add(v_SpecifiedSubstance);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.SpecifiedSubstance.Count == 0)
           {
             current.SpecifiedSubstance = null;
           }
-
           break;
 
         case "substance":
-          current.Substance = JsonSerializer.Deserialize<Hl7.Fhir.Model.MedicinalProductIngredient.SubstanceComponent>(ref reader, options);
-
+          current.Substance = new Hl7.Fhir.Model.MedicinalProductIngredient.SubstanceComponent();
+          current.Substance.DeserializeJson(ref reader, options);
           break;
 
         // Complex: MedicinalProductIngredient, Export: MedicinalProductIngredient, Base: DomainResource
@@ -280,18 +283,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "group":
-          current.Group = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Group = new Hl7.Fhir.Model.CodeableConcept();
+          current.Group.DeserializeJson(ref reader, options);
           break;
 
         case "confidentiality":
-          current.Confidentiality = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Confidentiality = new Hl7.Fhir.Model.CodeableConcept();
+          current.Confidentiality.DeserializeJson(ref reader, options);
           break;
 
         case "strength":
@@ -304,19 +307,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Strength.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MedicinalProductIngredient.StrengthComponent>(ref reader, options));
+            Hl7.Fhir.Model.MedicinalProductIngredient.StrengthComponent v_Strength = new Hl7.Fhir.Model.MedicinalProductIngredient.StrengthComponent();
+            v_Strength.DeserializeJson(ref reader, options);
+            current.Strength.Add(v_Strength);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Strength.Count == 0)
           {
             current.Strength = null;
           }
-
           break;
 
         // Complex: specifiedSubstance, Export: SpecifiedSubstanceComponent, Base: BackboneElement
@@ -419,28 +424,27 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "presentation":
-          current.Presentation = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
-
+          current.Presentation = new Hl7.Fhir.Model.Ratio();
+          current.Presentation.DeserializeJson(ref reader, options);
           break;
 
         case "presentationLowLimit":
-          current.PresentationLowLimit = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
-
+          current.PresentationLowLimit = new Hl7.Fhir.Model.Ratio();
+          current.PresentationLowLimit.DeserializeJson(ref reader, options);
           break;
 
         case "concentration":
-          current.Concentration = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
-
+          current.Concentration = new Hl7.Fhir.Model.Ratio();
+          current.Concentration.DeserializeJson(ref reader, options);
           break;
 
         case "concentrationLowLimit":
-          current.ConcentrationLowLimit = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
-
+          current.ConcentrationLowLimit = new Hl7.Fhir.Model.Ratio();
+          current.ConcentrationLowLimit.DeserializeJson(ref reader, options);
           break;
 
         case "measurementPoint":
           current.MeasurementPointElement = new FhirString(reader.GetString());
-
           break;
 
         case "country":
@@ -453,19 +457,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Country.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_Country = new Hl7.Fhir.Model.CodeableConcept();
+            v_Country.DeserializeJson(ref reader, options);
+            current.Country.Add(v_Country);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Country.Count == 0)
           {
             current.Country = null;
           }
-
           break;
 
         case "referenceStrength":
@@ -478,19 +484,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ReferenceStrength.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MedicinalProductIngredient.ReferenceStrengthComponent>(ref reader, options));
+            Hl7.Fhir.Model.MedicinalProductIngredient.ReferenceStrengthComponent v_ReferenceStrength = new Hl7.Fhir.Model.MedicinalProductIngredient.ReferenceStrengthComponent();
+            v_ReferenceStrength.DeserializeJson(ref reader, options);
+            current.ReferenceStrength.Add(v_ReferenceStrength);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ReferenceStrength.Count == 0)
           {
             current.ReferenceStrength = null;
           }
-
           break;
 
         // Complex: strength, Export: StrengthComponent, Base: BackboneElement
@@ -576,23 +584,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "substance":
-          current.Substance = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Substance = new Hl7.Fhir.Model.CodeableConcept();
+          current.Substance.DeserializeJson(ref reader, options);
           break;
 
         case "strength":
-          current.Strength = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
-
+          current.Strength = new Hl7.Fhir.Model.Ratio();
+          current.Strength.DeserializeJson(ref reader, options);
           break;
 
         case "strengthLowLimit":
-          current.StrengthLowLimit = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
-
+          current.StrengthLowLimit = new Hl7.Fhir.Model.Ratio();
+          current.StrengthLowLimit.DeserializeJson(ref reader, options);
           break;
 
         case "measurementPoint":
           current.MeasurementPointElement = new FhirString(reader.GetString());
-
           break;
 
         case "country":
@@ -605,19 +612,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Country.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_Country = new Hl7.Fhir.Model.CodeableConcept();
+            v_Country.DeserializeJson(ref reader, options);
+            current.Country.Add(v_Country);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Country.Count == 0)
           {
             current.Country = null;
           }
-
           break;
 
         // Complex: referenceStrength, Export: ReferenceStrengthComponent, Base: BackboneElement
@@ -686,8 +695,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "strength":
@@ -700,19 +709,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Strength.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MedicinalProductIngredient.StrengthComponent>(ref reader, options));
+            Hl7.Fhir.Model.MedicinalProductIngredient.StrengthComponent v_Strength = new Hl7.Fhir.Model.MedicinalProductIngredient.StrengthComponent();
+            v_Strength.DeserializeJson(ref reader, options);
+            current.Strength.Add(v_Strength);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Strength.Count == 0)
           {
             current.Strength = null;
           }
-
           break;
 
         // Complex: substance, Export: SubstanceComponent, Base: BackboneElement

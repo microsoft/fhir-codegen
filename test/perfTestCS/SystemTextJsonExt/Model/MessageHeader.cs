@@ -173,7 +173,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "eventCoding":
-          current.Event = JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options);
+          current.Event = new Hl7.Fhir.Model.Coding();
+          current.Event.DeserializeJson(ref reader, options);
           break;
 
         case "eventUri":
@@ -190,54 +191,56 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Destination.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MessageHeader.MessageDestinationComponent>(ref reader, options));
+            Hl7.Fhir.Model.MessageHeader.MessageDestinationComponent v_Destination = new Hl7.Fhir.Model.MessageHeader.MessageDestinationComponent();
+            v_Destination.DeserializeJson(ref reader, options);
+            current.Destination.Add(v_Destination);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Destination.Count == 0)
           {
             current.Destination = null;
           }
-
           break;
 
         case "sender":
-          current.Sender = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Sender = new Hl7.Fhir.Model.ResourceReference();
+          current.Sender.DeserializeJson(ref reader, options);
           break;
 
         case "enterer":
-          current.Enterer = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Enterer = new Hl7.Fhir.Model.ResourceReference();
+          current.Enterer.DeserializeJson(ref reader, options);
           break;
 
         case "author":
-          current.Author = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Author = new Hl7.Fhir.Model.ResourceReference();
+          current.Author.DeserializeJson(ref reader, options);
           break;
 
         case "source":
-          current.Source = JsonSerializer.Deserialize<Hl7.Fhir.Model.MessageHeader.MessageSourceComponent>(ref reader, options);
-
+          current.Source = new Hl7.Fhir.Model.MessageHeader.MessageSourceComponent();
+          current.Source.DeserializeJson(ref reader, options);
           break;
 
         case "responsible":
-          current.Responsible = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Responsible = new Hl7.Fhir.Model.ResourceReference();
+          current.Responsible.DeserializeJson(ref reader, options);
           break;
 
         case "reason":
-          current.Reason = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Reason = new Hl7.Fhir.Model.CodeableConcept();
+          current.Reason.DeserializeJson(ref reader, options);
           break;
 
         case "response":
-          current.Response = JsonSerializer.Deserialize<Hl7.Fhir.Model.MessageHeader.ResponseComponent>(ref reader, options);
-
+          current.Response = new Hl7.Fhir.Model.MessageHeader.ResponseComponent();
+          current.Response.DeserializeJson(ref reader, options);
           break;
 
         case "focus":
@@ -250,24 +253,29 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Focus.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Focus = new Hl7.Fhir.Model.ResourceReference();
+            v_Focus.DeserializeJson(ref reader, options);
+            current.Focus.Add(v_Focus);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Focus.Count == 0)
           {
             current.Focus = null;
           }
-
           break;
 
         case "definition":
           current.DefinitionElement = new Canonical(reader.GetString());
+          break;
 
+        case "_definition":
+          ((Hl7.Fhir.Model.Element)current.DefinitionElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: MessageHeader, Export: MessageHeader, Base: DomainResource
@@ -342,22 +350,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "target":
-          current.Target = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Target = new Hl7.Fhir.Model.ResourceReference();
+          current.Target.DeserializeJson(ref reader, options);
           break;
 
         case "endpoint":
           current.EndpointElement = new FhirUrl(reader.GetString());
-
           break;
 
         case "receiver":
-          current.Receiver = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Receiver = new Hl7.Fhir.Model.ResourceReference();
+          current.Receiver.DeserializeJson(ref reader, options);
           break;
 
         // Complex: destination, Export: MessageDestinationComponent, Base: BackboneElement
@@ -436,27 +442,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "software":
           current.SoftwareElement = new FhirString(reader.GetString());
-
           break;
 
         case "version":
           current.VersionElement = new FhirString(reader.GetString());
-
           break;
 
         case "contact":
-          current.Contact = JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactPoint>(ref reader, options);
-
+          current.Contact = new Hl7.Fhir.Model.ContactPoint();
+          current.Contact.DeserializeJson(ref reader, options);
           break;
 
         case "endpoint":
           current.EndpointElement = new FhirUrl(reader.GetString());
-
           break;
 
         // Complex: source, Export: MessageSourceComponent, Base: BackboneElement
@@ -522,17 +524,19 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "identifier":
           current.IdentifierElement = new Id(reader.GetString());
+          break;
 
+        case "_identifier":
+          ((Hl7.Fhir.Model.Element)current.IdentifierElement).DeserializeJson(ref reader, options);
           break;
 
         case "code":
           current.CodeElement =new Code<Hl7.Fhir.Model.MessageHeader.ResponseType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.MessageHeader.ResponseType>(reader.GetString()));
-
           break;
 
         case "details":
-          current.Details = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Details = new Hl7.Fhir.Model.ResourceReference();
+          current.Details.DeserializeJson(ref reader, options);
           break;
 
         // Complex: response, Export: ResponseComponent, Base: BackboneElement

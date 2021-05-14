@@ -168,59 +168,61 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.MeasureReport.MeasureReportStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.MeasureReport.MeasureReportStatus>(reader.GetString()));
-
           break;
 
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.MeasureReport.MeasureReportType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.MeasureReport.MeasureReportType>(reader.GetString()));
-
           break;
 
         case "measure":
           current.MeasureElement = new Canonical(reader.GetString());
+          break;
 
+        case "_measure":
+          ((Hl7.Fhir.Model.Element)current.MeasureElement).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
-          current.Subject = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Subject = new Hl7.Fhir.Model.ResourceReference();
+          current.Subject.DeserializeJson(ref reader, options);
           break;
 
         case "date":
           current.DateElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "reporter":
-          current.Reporter = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Reporter = new Hl7.Fhir.Model.ResourceReference();
+          current.Reporter.DeserializeJson(ref reader, options);
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         case "improvementNotation":
-          current.ImprovementNotation = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ImprovementNotation = new Hl7.Fhir.Model.CodeableConcept();
+          current.ImprovementNotation.DeserializeJson(ref reader, options);
           break;
 
         case "group":
@@ -233,19 +235,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Group.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MeasureReport.GroupComponent>(ref reader, options));
+            Hl7.Fhir.Model.MeasureReport.GroupComponent v_Group = new Hl7.Fhir.Model.MeasureReport.GroupComponent();
+            v_Group.DeserializeJson(ref reader, options);
+            current.Group.Add(v_Group);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Group.Count == 0)
           {
             current.Group = null;
           }
-
           break;
 
         case "evaluatedResource":
@@ -258,19 +262,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.EvaluatedResource.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_EvaluatedResource = new Hl7.Fhir.Model.ResourceReference();
+            v_EvaluatedResource.DeserializeJson(ref reader, options);
+            current.EvaluatedResource.Add(v_EvaluatedResource);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.EvaluatedResource.Count == 0)
           {
             current.EvaluatedResource = null;
           }
-
           break;
 
         // Complex: MeasureReport, Export: MeasureReport, Base: DomainResource
@@ -359,8 +365,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "population":
@@ -373,24 +379,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Population.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MeasureReport.PopulationComponent>(ref reader, options));
+            Hl7.Fhir.Model.MeasureReport.PopulationComponent v_Population = new Hl7.Fhir.Model.MeasureReport.PopulationComponent();
+            v_Population.DeserializeJson(ref reader, options);
+            current.Population.Add(v_Population);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Population.Count == 0)
           {
             current.Population = null;
           }
-
           break;
 
         case "measureScore":
-          current.MeasureScore = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.MeasureScore = new Hl7.Fhir.Model.Quantity();
+          current.MeasureScore.DeserializeJson(ref reader, options);
           break;
 
         case "stratifier":
@@ -403,19 +411,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Stratifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MeasureReport.StratifierComponent>(ref reader, options));
+            Hl7.Fhir.Model.MeasureReport.StratifierComponent v_Stratifier = new Hl7.Fhir.Model.MeasureReport.StratifierComponent();
+            v_Stratifier.DeserializeJson(ref reader, options);
+            current.Stratifier.Add(v_Stratifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Stratifier.Count == 0)
           {
             current.Stratifier = null;
           }
-
           break;
 
         // Complex: group, Export: GroupComponent, Base: BackboneElement
@@ -487,18 +497,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "count":
           current.CountElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_count":
+          ((Hl7.Fhir.Model.Element)current.CountElement).DeserializeJson(ref reader, options);
           break;
 
         case "subjectResults":
-          current.SubjectResults = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.SubjectResults = new Hl7.Fhir.Model.ResourceReference();
+          current.SubjectResults.DeserializeJson(ref reader, options);
           break;
 
         // Complex: population, Export: PopulationComponent, Base: BackboneElement
@@ -584,19 +597,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Code.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_Code = new Hl7.Fhir.Model.CodeableConcept();
+            v_Code.DeserializeJson(ref reader, options);
+            current.Code.Add(v_Code);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Code.Count == 0)
           {
             current.Code = null;
           }
-
           break;
 
         case "stratum":
@@ -609,19 +624,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Stratum.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MeasureReport.StratifierGroupComponent>(ref reader, options));
+            Hl7.Fhir.Model.MeasureReport.StratifierGroupComponent v_Stratum = new Hl7.Fhir.Model.MeasureReport.StratifierGroupComponent();
+            v_Stratum.DeserializeJson(ref reader, options);
+            current.Stratum.Add(v_Stratum);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Stratum.Count == 0)
           {
             current.Stratum = null;
           }
-
           break;
 
         // Complex: stratifier, Export: StratifierComponent, Base: BackboneElement
@@ -710,8 +727,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "value":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Value = new Hl7.Fhir.Model.CodeableConcept();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "component":
@@ -724,19 +741,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Component.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MeasureReport.ComponentComponent>(ref reader, options));
+            Hl7.Fhir.Model.MeasureReport.ComponentComponent v_Component = new Hl7.Fhir.Model.MeasureReport.ComponentComponent();
+            v_Component.DeserializeJson(ref reader, options);
+            current.Component.Add(v_Component);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Component.Count == 0)
           {
             current.Component = null;
           }
-
           break;
 
         case "population":
@@ -749,24 +768,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Population.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MeasureReport.StratifierGroupPopulationComponent>(ref reader, options));
+            Hl7.Fhir.Model.MeasureReport.StratifierGroupPopulationComponent v_Population = new Hl7.Fhir.Model.MeasureReport.StratifierGroupPopulationComponent();
+            v_Population.DeserializeJson(ref reader, options);
+            current.Population.Add(v_Population);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Population.Count == 0)
           {
             current.Population = null;
           }
-
           break;
 
         case "measureScore":
-          current.MeasureScore = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.MeasureScore = new Hl7.Fhir.Model.Quantity();
+          current.MeasureScore.DeserializeJson(ref reader, options);
           break;
 
         // Complex: stratum, Export: StratifierGroupComponent, Base: BackboneElement
@@ -827,13 +848,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "value":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Value = new Hl7.Fhir.Model.CodeableConcept();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         // Complex: component, Export: ComponentComponent, Base: BackboneElement
@@ -905,18 +926,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         case "count":
           current.CountElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_count":
+          ((Hl7.Fhir.Model.Element)current.CountElement).DeserializeJson(ref reader, options);
           break;
 
         case "subjectResults":
-          current.SubjectResults = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.SubjectResults = new Hl7.Fhir.Model.ResourceReference();
+          current.SubjectResults.DeserializeJson(ref reader, options);
           break;
 
         // Complex: population, Export: StratifierGroupPopulationComponent, Base: BackboneElement

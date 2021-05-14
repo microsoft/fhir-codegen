@@ -102,13 +102,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "numerator":
-          current.Numerator = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Numerator = new Hl7.Fhir.Model.Quantity();
+          current.Numerator.DeserializeJson(ref reader, options);
           break;
 
         case "denominator":
-          current.Denominator = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Denominator = new Hl7.Fhir.Model.Quantity();
+          current.Denominator.DeserializeJson(ref reader, options);
           break;
 
       }

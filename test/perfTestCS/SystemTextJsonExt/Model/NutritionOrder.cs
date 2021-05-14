@@ -235,19 +235,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "instantiatesCanonical":
@@ -266,13 +268,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.InstantiatesCanonicalElement.Count == 0)
           {
             current.InstantiatesCanonicalElement = null;
           }
+          break;
 
+        case "_instantiatesCanonical":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_instantiatesCanonical = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            ((Hl7.Fhir.Model.Element)current.InstantiatesCanonicalElement[i_instantiatesCanonical++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
           break;
 
         case "instantiatesUri":
@@ -291,13 +313,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.InstantiatesUriElement.Count == 0)
           {
             current.InstantiatesUriElement = null;
           }
-
           break;
 
         case "instantiates":
@@ -316,43 +338,40 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.InstantiatesElement.Count == 0)
           {
             current.InstantiatesElement = null;
           }
-
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.RequestStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.RequestStatus>(reader.GetString()));
-
           break;
 
         case "intent":
           current.IntentElement =new Code<Hl7.Fhir.Model.RequestIntent>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.RequestIntent>(reader.GetString()));
-
           break;
 
         case "patient":
-          current.Patient = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Patient = new Hl7.Fhir.Model.ResourceReference();
+          current.Patient.DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
-          current.Encounter = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Encounter = new Hl7.Fhir.Model.ResourceReference();
+          current.Encounter.DeserializeJson(ref reader, options);
           break;
 
         case "dateTime":
           current.DateTimeElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "orderer":
-          current.Orderer = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Orderer = new Hl7.Fhir.Model.ResourceReference();
+          current.Orderer.DeserializeJson(ref reader, options);
           break;
 
         case "allergyIntolerance":
@@ -365,19 +384,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.AllergyIntolerance.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_AllergyIntolerance = new Hl7.Fhir.Model.ResourceReference();
+            v_AllergyIntolerance.DeserializeJson(ref reader, options);
+            current.AllergyIntolerance.Add(v_AllergyIntolerance);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.AllergyIntolerance.Count == 0)
           {
             current.AllergyIntolerance = null;
           }
-
           break;
 
         case "foodPreferenceModifier":
@@ -390,19 +411,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.FoodPreferenceModifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_FoodPreferenceModifier = new Hl7.Fhir.Model.CodeableConcept();
+            v_FoodPreferenceModifier.DeserializeJson(ref reader, options);
+            current.FoodPreferenceModifier.Add(v_FoodPreferenceModifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.FoodPreferenceModifier.Count == 0)
           {
             current.FoodPreferenceModifier = null;
           }
-
           break;
 
         case "excludeFoodModifier":
@@ -415,24 +438,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ExcludeFoodModifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_ExcludeFoodModifier = new Hl7.Fhir.Model.CodeableConcept();
+            v_ExcludeFoodModifier.DeserializeJson(ref reader, options);
+            current.ExcludeFoodModifier.Add(v_ExcludeFoodModifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ExcludeFoodModifier.Count == 0)
           {
             current.ExcludeFoodModifier = null;
           }
-
           break;
 
         case "oralDiet":
-          current.OralDiet = JsonSerializer.Deserialize<Hl7.Fhir.Model.NutritionOrder.OralDietComponent>(ref reader, options);
-
+          current.OralDiet = new Hl7.Fhir.Model.NutritionOrder.OralDietComponent();
+          current.OralDiet.DeserializeJson(ref reader, options);
           break;
 
         case "supplement":
@@ -445,24 +470,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Supplement.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.NutritionOrder.SupplementComponent>(ref reader, options));
+            Hl7.Fhir.Model.NutritionOrder.SupplementComponent v_Supplement = new Hl7.Fhir.Model.NutritionOrder.SupplementComponent();
+            v_Supplement.DeserializeJson(ref reader, options);
+            current.Supplement.Add(v_Supplement);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Supplement.Count == 0)
           {
             current.Supplement = null;
           }
-
           break;
 
         case "enteralFormula":
-          current.EnteralFormula = JsonSerializer.Deserialize<Hl7.Fhir.Model.NutritionOrder.EnteralFormulaComponent>(ref reader, options);
-
+          current.EnteralFormula = new Hl7.Fhir.Model.NutritionOrder.EnteralFormulaComponent();
+          current.EnteralFormula.DeserializeJson(ref reader, options);
           break;
 
         case "note":
@@ -475,19 +502,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Note.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Annotation>(ref reader, options));
+            Hl7.Fhir.Model.Annotation v_Note = new Hl7.Fhir.Model.Annotation();
+            v_Note.DeserializeJson(ref reader, options);
+            current.Note.Add(v_Note);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Note.Count == 0)
           {
             current.Note = null;
           }
-
           break;
 
         // Complex: NutritionOrder, Export: NutritionOrder, Base: DomainResource
@@ -611,19 +640,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Type.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_Type = new Hl7.Fhir.Model.CodeableConcept();
+            v_Type.DeserializeJson(ref reader, options);
+            current.Type.Add(v_Type);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Type.Count == 0)
           {
             current.Type = null;
           }
-
           break;
 
         case "schedule":
@@ -636,19 +667,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Schedule.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options));
+            Hl7.Fhir.Model.Timing v_Schedule = new Hl7.Fhir.Model.Timing();
+            v_Schedule.DeserializeJson(ref reader, options);
+            current.Schedule.Add(v_Schedule);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Schedule.Count == 0)
           {
             current.Schedule = null;
           }
-
           break;
 
         case "nutrient":
@@ -661,19 +694,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Nutrient.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.NutritionOrder.NutrientComponent>(ref reader, options));
+            Hl7.Fhir.Model.NutritionOrder.NutrientComponent v_Nutrient = new Hl7.Fhir.Model.NutritionOrder.NutrientComponent();
+            v_Nutrient.DeserializeJson(ref reader, options);
+            current.Nutrient.Add(v_Nutrient);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Nutrient.Count == 0)
           {
             current.Nutrient = null;
           }
-
           break;
 
         case "texture":
@@ -686,19 +721,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Texture.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.NutritionOrder.TextureComponent>(ref reader, options));
+            Hl7.Fhir.Model.NutritionOrder.TextureComponent v_Texture = new Hl7.Fhir.Model.NutritionOrder.TextureComponent();
+            v_Texture.DeserializeJson(ref reader, options);
+            current.Texture.Add(v_Texture);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Texture.Count == 0)
           {
             current.Texture = null;
           }
-
           break;
 
         case "fluidConsistencyType":
@@ -711,24 +748,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.FluidConsistencyType.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_FluidConsistencyType = new Hl7.Fhir.Model.CodeableConcept();
+            v_FluidConsistencyType.DeserializeJson(ref reader, options);
+            current.FluidConsistencyType.Add(v_FluidConsistencyType);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.FluidConsistencyType.Count == 0)
           {
             current.FluidConsistencyType = null;
           }
-
           break;
 
         case "instruction":
           current.InstructionElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: oralDiet, Export: OralDietComponent, Base: BackboneElement
@@ -795,13 +833,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "modifier":
-          current.Modifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Modifier = new Hl7.Fhir.Model.CodeableConcept();
+          current.Modifier.DeserializeJson(ref reader, options);
           break;
 
         case "amount":
-          current.Amount = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Amount = new Hl7.Fhir.Model.Quantity();
+          current.Amount.DeserializeJson(ref reader, options);
           break;
 
         // Complex: nutrient, Export: NutrientComponent, Base: BackboneElement
@@ -868,13 +906,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "modifier":
-          current.Modifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Modifier = new Hl7.Fhir.Model.CodeableConcept();
+          current.Modifier.DeserializeJson(ref reader, options);
           break;
 
         case "foodType":
-          current.FoodType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.FoodType = new Hl7.Fhir.Model.CodeableConcept();
+          current.FoodType.DeserializeJson(ref reader, options);
           break;
 
         // Complex: texture, Export: TextureComponent, Base: BackboneElement
@@ -962,13 +1000,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "type":
-          current.Type = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Type = new Hl7.Fhir.Model.CodeableConcept();
+          current.Type.DeserializeJson(ref reader, options);
           break;
 
         case "productName":
           current.ProductNameElement = new FhirString(reader.GetString());
-
           break;
 
         case "schedule":
@@ -981,29 +1018,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Schedule.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options));
+            Hl7.Fhir.Model.Timing v_Schedule = new Hl7.Fhir.Model.Timing();
+            v_Schedule.DeserializeJson(ref reader, options);
+            current.Schedule.Add(v_Schedule);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Schedule.Count == 0)
           {
             current.Schedule = null;
           }
-
           break;
 
         case "quantity":
-          current.Quantity = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Quantity = new Hl7.Fhir.Model.Quantity();
+          current.Quantity.DeserializeJson(ref reader, options);
           break;
 
         case "instruction":
           current.InstructionElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: supplement, Export: SupplementComponent, Base: BackboneElement
@@ -1114,33 +1152,31 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "baseFormulaType":
-          current.BaseFormulaType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.BaseFormulaType = new Hl7.Fhir.Model.CodeableConcept();
+          current.BaseFormulaType.DeserializeJson(ref reader, options);
           break;
 
         case "baseFormulaProductName":
           current.BaseFormulaProductNameElement = new FhirString(reader.GetString());
-
           break;
 
         case "additiveType":
-          current.AdditiveType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.AdditiveType = new Hl7.Fhir.Model.CodeableConcept();
+          current.AdditiveType.DeserializeJson(ref reader, options);
           break;
 
         case "additiveProductName":
           current.AdditiveProductNameElement = new FhirString(reader.GetString());
-
           break;
 
         case "caloricDensity":
-          current.CaloricDensity = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.CaloricDensity = new Hl7.Fhir.Model.Quantity();
+          current.CaloricDensity.DeserializeJson(ref reader, options);
           break;
 
         case "routeofAdministration":
-          current.RouteofAdministration = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.RouteofAdministration = new Hl7.Fhir.Model.CodeableConcept();
+          current.RouteofAdministration.DeserializeJson(ref reader, options);
           break;
 
         case "administration":
@@ -1153,29 +1189,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Administration.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.NutritionOrder.AdministrationComponent>(ref reader, options));
+            Hl7.Fhir.Model.NutritionOrder.AdministrationComponent v_Administration = new Hl7.Fhir.Model.NutritionOrder.AdministrationComponent();
+            v_Administration.DeserializeJson(ref reader, options);
+            current.Administration.Add(v_Administration);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Administration.Count == 0)
           {
             current.Administration = null;
           }
-
           break;
 
         case "maxVolumeToDeliver":
-          current.MaxVolumeToDeliver = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.MaxVolumeToDeliver = new Hl7.Fhir.Model.Quantity();
+          current.MaxVolumeToDeliver.DeserializeJson(ref reader, options);
           break;
 
         case "administrationInstruction":
           current.AdministrationInstructionElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: enteralFormula, Export: EnteralFormulaComponent, Base: BackboneElement
@@ -1256,21 +1293,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "schedule":
-          current.Schedule = JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options);
-
+          current.Schedule = new Hl7.Fhir.Model.Timing();
+          current.Schedule.DeserializeJson(ref reader, options);
           break;
 
         case "quantity":
-          current.Quantity = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Quantity = new Hl7.Fhir.Model.Quantity();
+          current.Quantity.DeserializeJson(ref reader, options);
           break;
 
         case "rateQuantity":
-          current.Rate = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.Rate = new Hl7.Fhir.Model.Quantity();
+          current.Rate.DeserializeJson(ref reader, options);
           break;
 
         case "rateRatio":
-          current.Rate = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
+          current.Rate = new Hl7.Fhir.Model.Ratio();
+          current.Rate.DeserializeJson(ref reader, options);
           break;
 
         // Complex: administration, Export: AdministrationComponent, Base: BackboneElement

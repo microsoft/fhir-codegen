@@ -116,27 +116,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "value":
           current.ValueElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "comparator":
           current.ComparatorElement =new Code<Hl7.Fhir.Model.Age.QuantityComparator>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Age.QuantityComparator>(reader.GetString()));
-
           break;
 
         case "unit":
           current.UnitElement = new FhirString(reader.GetString());
-
           break;
 
         case "system":
           current.SystemElement = new FhirUri(reader.GetString());
-
           break;
 
         case "code":
           current.CodeElement = new Code(reader.GetString());
+          break;
 
+        case "_code":
+          ((Hl7.Fhir.Model.Element)current.CodeElement).DeserializeJson(ref reader, options);
           break;
 
       }

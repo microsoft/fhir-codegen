@@ -186,19 +186,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "subject":
@@ -211,29 +213,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Subject.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Subject = new Hl7.Fhir.Model.ResourceReference();
+            v_Subject.DeserializeJson(ref reader, options);
+            current.Subject.Add(v_Subject);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Subject.Count == 0)
           {
             current.Subject = null;
           }
-
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "legalStatusOfSupply":
-          current.LegalStatusOfSupply = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.LegalStatusOfSupply = new Hl7.Fhir.Model.CodeableConcept();
+          current.LegalStatusOfSupply.DeserializeJson(ref reader, options);
           break;
 
         case "marketingStatus":
@@ -246,24 +249,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.MarketingStatus.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MarketingStatus>(ref reader, options));
+            Hl7.Fhir.Model.MarketingStatus v_MarketingStatus = new Hl7.Fhir.Model.MarketingStatus();
+            v_MarketingStatus.DeserializeJson(ref reader, options);
+            current.MarketingStatus.Add(v_MarketingStatus);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.MarketingStatus.Count == 0)
           {
             current.MarketingStatus = null;
           }
-
           break;
 
         case "marketingAuthorization":
-          current.MarketingAuthorization = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.MarketingAuthorization = new Hl7.Fhir.Model.ResourceReference();
+          current.MarketingAuthorization.DeserializeJson(ref reader, options);
           break;
 
         case "manufacturer":
@@ -276,19 +281,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Manufacturer.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Manufacturer = new Hl7.Fhir.Model.ResourceReference();
+            v_Manufacturer.DeserializeJson(ref reader, options);
+            current.Manufacturer.Add(v_Manufacturer);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Manufacturer.Count == 0)
           {
             current.Manufacturer = null;
           }
-
           break;
 
         case "batchIdentifier":
@@ -301,19 +308,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.BatchIdentifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MedicinalProductPackaged.BatchIdentifierComponent>(ref reader, options));
+            Hl7.Fhir.Model.MedicinalProductPackaged.BatchIdentifierComponent v_BatchIdentifier = new Hl7.Fhir.Model.MedicinalProductPackaged.BatchIdentifierComponent();
+            v_BatchIdentifier.DeserializeJson(ref reader, options);
+            current.BatchIdentifier.Add(v_BatchIdentifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.BatchIdentifier.Count == 0)
           {
             current.BatchIdentifier = null;
           }
-
           break;
 
         case "packageItem":
@@ -326,19 +335,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.PackageItem.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MedicinalProductPackaged.PackageItemComponent>(ref reader, options));
+            Hl7.Fhir.Model.MedicinalProductPackaged.PackageItemComponent v_PackageItem = new Hl7.Fhir.Model.MedicinalProductPackaged.PackageItemComponent();
+            v_PackageItem.DeserializeJson(ref reader, options);
+            current.PackageItem.Add(v_PackageItem);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.PackageItem.Count == 0)
           {
             current.PackageItem = null;
           }
-
           break;
 
         // Complex: MedicinalProductPackaged, Export: MedicinalProductPackaged, Base: DomainResource
@@ -402,13 +413,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "outerPackaging":
-          current.OuterPackaging = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.OuterPackaging = new Hl7.Fhir.Model.Identifier();
+          current.OuterPackaging.DeserializeJson(ref reader, options);
           break;
 
         case "immediatePackaging":
-          current.ImmediatePackaging = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.ImmediatePackaging = new Hl7.Fhir.Model.Identifier();
+          current.ImmediatePackaging.DeserializeJson(ref reader, options);
           break;
 
         // Complex: batchIdentifier, Export: BatchIdentifierComponent, Base: BackboneElement
@@ -583,29 +594,31 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "type":
-          current.Type = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Type = new Hl7.Fhir.Model.CodeableConcept();
+          current.Type.DeserializeJson(ref reader, options);
           break;
 
         case "quantity":
-          current.Quantity = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Quantity = new Hl7.Fhir.Model.Quantity();
+          current.Quantity.DeserializeJson(ref reader, options);
           break;
 
         case "material":
@@ -618,19 +631,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Material.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_Material = new Hl7.Fhir.Model.CodeableConcept();
+            v_Material.DeserializeJson(ref reader, options);
+            current.Material.Add(v_Material);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Material.Count == 0)
           {
             current.Material = null;
           }
-
           break;
 
         case "alternateMaterial":
@@ -643,19 +658,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.AlternateMaterial.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_AlternateMaterial = new Hl7.Fhir.Model.CodeableConcept();
+            v_AlternateMaterial.DeserializeJson(ref reader, options);
+            current.AlternateMaterial.Add(v_AlternateMaterial);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.AlternateMaterial.Count == 0)
           {
             current.AlternateMaterial = null;
           }
-
           break;
 
         case "device":
@@ -668,19 +685,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Device.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Device = new Hl7.Fhir.Model.ResourceReference();
+            v_Device.DeserializeJson(ref reader, options);
+            current.Device.Add(v_Device);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Device.Count == 0)
           {
             current.Device = null;
           }
-
           break;
 
         case "manufacturedItem":
@@ -693,19 +712,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ManufacturedItem.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_ManufacturedItem = new Hl7.Fhir.Model.ResourceReference();
+            v_ManufacturedItem.DeserializeJson(ref reader, options);
+            current.ManufacturedItem.Add(v_ManufacturedItem);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ManufacturedItem.Count == 0)
           {
             current.ManufacturedItem = null;
           }
-
           break;
 
         case "packageItem":
@@ -718,24 +739,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.PackageItem.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MedicinalProductPackaged.PackageItemComponent>(ref reader, options));
+            Hl7.Fhir.Model.MedicinalProductPackaged.PackageItemComponent v_PackageItem = new Hl7.Fhir.Model.MedicinalProductPackaged.PackageItemComponent();
+            v_PackageItem.DeserializeJson(ref reader, options);
+            current.PackageItem.Add(v_PackageItem);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.PackageItem.Count == 0)
           {
             current.PackageItem = null;
           }
-
           break;
 
         case "physicalCharacteristics":
-          current.PhysicalCharacteristics = JsonSerializer.Deserialize<Hl7.Fhir.Model.ProdCharacteristic>(ref reader, options);
-
+          current.PhysicalCharacteristics = new Hl7.Fhir.Model.ProdCharacteristic();
+          current.PhysicalCharacteristics.DeserializeJson(ref reader, options);
           break;
 
         case "otherCharacteristics":
@@ -748,19 +771,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.OtherCharacteristics.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_OtherCharacteristics = new Hl7.Fhir.Model.CodeableConcept();
+            v_OtherCharacteristics.DeserializeJson(ref reader, options);
+            current.OtherCharacteristics.Add(v_OtherCharacteristics);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.OtherCharacteristics.Count == 0)
           {
             current.OtherCharacteristics = null;
           }
-
           break;
 
         case "shelfLifeStorage":
@@ -773,19 +798,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.ShelfLifeStorage.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ProductShelfLife>(ref reader, options));
+            Hl7.Fhir.Model.ProductShelfLife v_ShelfLifeStorage = new Hl7.Fhir.Model.ProductShelfLife();
+            v_ShelfLifeStorage.DeserializeJson(ref reader, options);
+            current.ShelfLifeStorage.Add(v_ShelfLifeStorage);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ShelfLifeStorage.Count == 0)
           {
             current.ShelfLifeStorage = null;
           }
-
           break;
 
         case "manufacturer":
@@ -798,19 +825,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Manufacturer.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Manufacturer = new Hl7.Fhir.Model.ResourceReference();
+            v_Manufacturer.DeserializeJson(ref reader, options);
+            current.Manufacturer.Add(v_Manufacturer);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Manufacturer.Count == 0)
           {
             current.Manufacturer = null;
           }
-
           break;
 
         // Complex: packageItem, Export: PackageItemComponent, Base: BackboneElement

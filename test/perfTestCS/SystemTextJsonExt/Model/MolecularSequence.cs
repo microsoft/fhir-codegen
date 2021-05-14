@@ -222,59 +222,63 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.MolecularSequence.sequenceType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.MolecularSequence.sequenceType>(reader.GetString()));
-
           break;
 
         case "coordinateSystem":
           current.CoordinateSystemElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_coordinateSystem":
+          ((Hl7.Fhir.Model.Element)current.CoordinateSystemElement).DeserializeJson(ref reader, options);
           break;
 
         case "patient":
-          current.Patient = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Patient = new Hl7.Fhir.Model.ResourceReference();
+          current.Patient.DeserializeJson(ref reader, options);
           break;
 
         case "specimen":
-          current.Specimen = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Specimen = new Hl7.Fhir.Model.ResourceReference();
+          current.Specimen.DeserializeJson(ref reader, options);
           break;
 
         case "device":
-          current.Device = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Device = new Hl7.Fhir.Model.ResourceReference();
+          current.Device.DeserializeJson(ref reader, options);
           break;
 
         case "performer":
-          current.Performer = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Performer = new Hl7.Fhir.Model.ResourceReference();
+          current.Performer.DeserializeJson(ref reader, options);
           break;
 
         case "quantity":
-          current.Quantity = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Quantity = new Hl7.Fhir.Model.Quantity();
+          current.Quantity.DeserializeJson(ref reader, options);
           break;
 
         case "referenceSeq":
-          current.ReferenceSeq = JsonSerializer.Deserialize<Hl7.Fhir.Model.MolecularSequence.ReferenceSeqComponent>(ref reader, options);
-
+          current.ReferenceSeq = new Hl7.Fhir.Model.MolecularSequence.ReferenceSeqComponent();
+          current.ReferenceSeq.DeserializeJson(ref reader, options);
           break;
 
         case "variant":
@@ -287,24 +291,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Variant.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MolecularSequence.VariantComponent>(ref reader, options));
+            Hl7.Fhir.Model.MolecularSequence.VariantComponent v_Variant = new Hl7.Fhir.Model.MolecularSequence.VariantComponent();
+            v_Variant.DeserializeJson(ref reader, options);
+            current.Variant.Add(v_Variant);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Variant.Count == 0)
           {
             current.Variant = null;
           }
-
           break;
 
         case "observedSeq":
           current.ObservedSeqElement = new FhirString(reader.GetString());
-
           break;
 
         case "quality":
@@ -317,24 +322,29 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Quality.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MolecularSequence.QualityComponent>(ref reader, options));
+            Hl7.Fhir.Model.MolecularSequence.QualityComponent v_Quality = new Hl7.Fhir.Model.MolecularSequence.QualityComponent();
+            v_Quality.DeserializeJson(ref reader, options);
+            current.Quality.Add(v_Quality);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Quality.Count == 0)
           {
             current.Quality = null;
           }
-
           break;
 
         case "readCoverage":
           current.ReadCoverageElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_readCoverage":
+          ((Hl7.Fhir.Model.Element)current.ReadCoverageElement).DeserializeJson(ref reader, options);
           break;
 
         case "repository":
@@ -347,19 +357,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Repository.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MolecularSequence.RepositoryComponent>(ref reader, options));
+            Hl7.Fhir.Model.MolecularSequence.RepositoryComponent v_Repository = new Hl7.Fhir.Model.MolecularSequence.RepositoryComponent();
+            v_Repository.DeserializeJson(ref reader, options);
+            current.Repository.Add(v_Repository);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Repository.Count == 0)
           {
             current.Repository = null;
           }
-
           break;
 
         case "pointer":
@@ -372,19 +384,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Pointer.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Pointer = new Hl7.Fhir.Model.ResourceReference();
+            v_Pointer.DeserializeJson(ref reader, options);
+            current.Pointer.Add(v_Pointer);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Pointer.Count == 0)
           {
             current.Pointer = null;
           }
-
           break;
 
         case "structureVariant":
@@ -397,19 +411,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.StructureVariant.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.MolecularSequence.StructureVariantComponent>(ref reader, options));
+            Hl7.Fhir.Model.MolecularSequence.StructureVariantComponent v_StructureVariant = new Hl7.Fhir.Model.MolecularSequence.StructureVariantComponent();
+            v_StructureVariant.DeserializeJson(ref reader, options);
+            current.StructureVariant.Add(v_StructureVariant);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.StructureVariant.Count == 0)
           {
             current.StructureVariant = null;
           }
-
           break;
 
         // Complex: MolecularSequence, Export: MolecularSequence, Base: DomainResource
@@ -512,48 +528,50 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "chromosome":
-          current.Chromosome = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Chromosome = new Hl7.Fhir.Model.CodeableConcept();
+          current.Chromosome.DeserializeJson(ref reader, options);
           break;
 
         case "genomeBuild":
           current.GenomeBuildElement = new FhirString(reader.GetString());
-
           break;
 
         case "orientation":
           current.OrientationElement =new Code<Hl7.Fhir.Model.MolecularSequence.orientationType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.MolecularSequence.orientationType>(reader.GetString()));
-
           break;
 
         case "referenceSeqId":
-          current.ReferenceSeqId = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ReferenceSeqId = new Hl7.Fhir.Model.CodeableConcept();
+          current.ReferenceSeqId.DeserializeJson(ref reader, options);
           break;
 
         case "referenceSeqPointer":
-          current.ReferenceSeqPointer = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.ReferenceSeqPointer = new Hl7.Fhir.Model.ResourceReference();
+          current.ReferenceSeqPointer.DeserializeJson(ref reader, options);
           break;
 
         case "referenceSeqString":
           current.ReferenceSeqStringElement = new FhirString(reader.GetString());
-
           break;
 
         case "strand":
           current.StrandElement =new Code<Hl7.Fhir.Model.MolecularSequence.strandType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.MolecularSequence.strandType>(reader.GetString()));
-
           break;
 
         case "windowStart":
           current.WindowStartElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_windowStart":
+          ((Hl7.Fhir.Model.Element)current.WindowStartElement).DeserializeJson(ref reader, options);
           break;
 
         case "windowEnd":
           current.WindowEndElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_windowEnd":
+          ((Hl7.Fhir.Model.Element)current.WindowEndElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: referenceSeq, Export: ReferenceSeqComponent, Base: BackboneElement
@@ -640,32 +658,35 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "start":
           current.StartElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_start":
+          ((Hl7.Fhir.Model.Element)current.StartElement).DeserializeJson(ref reader, options);
           break;
 
         case "end":
           current.EndElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_end":
+          ((Hl7.Fhir.Model.Element)current.EndElement).DeserializeJson(ref reader, options);
           break;
 
         case "observedAllele":
           current.ObservedAlleleElement = new FhirString(reader.GetString());
-
           break;
 
         case "referenceAllele":
           current.ReferenceAlleleElement = new FhirString(reader.GetString());
-
           break;
 
         case "cigar":
           current.CigarElement = new FhirString(reader.GetString());
-
           break;
 
         case "variantPointer":
-          current.VariantPointer = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.VariantPointer = new Hl7.Fhir.Model.ResourceReference();
+          current.VariantPointer.DeserializeJson(ref reader, options);
           break;
 
         // Complex: variant, Export: VariantComponent, Base: BackboneElement
@@ -797,77 +818,74 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.MolecularSequence.qualityType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.MolecularSequence.qualityType>(reader.GetString()));
-
           break;
 
         case "standardSequence":
-          current.StandardSequence = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.StandardSequence = new Hl7.Fhir.Model.CodeableConcept();
+          current.StandardSequence.DeserializeJson(ref reader, options);
           break;
 
         case "start":
           current.StartElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_start":
+          ((Hl7.Fhir.Model.Element)current.StartElement).DeserializeJson(ref reader, options);
           break;
 
         case "end":
           current.EndElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_end":
+          ((Hl7.Fhir.Model.Element)current.EndElement).DeserializeJson(ref reader, options);
           break;
 
         case "score":
-          current.Score = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Score = new Hl7.Fhir.Model.Quantity();
+          current.Score.DeserializeJson(ref reader, options);
           break;
 
         case "method":
-          current.Method = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Method = new Hl7.Fhir.Model.CodeableConcept();
+          current.Method.DeserializeJson(ref reader, options);
           break;
 
         case "truthTP":
           current.TruthTPElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "queryTP":
           current.QueryTPElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "truthFN":
           current.TruthFNElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "queryFP":
           current.QueryFPElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "gtFP":
           current.GtFPElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "precision":
           current.PrecisionElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "recall":
           current.RecallElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "fScore":
           current.FScoreElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "roc":
-          current.Roc = JsonSerializer.Deserialize<Hl7.Fhir.Model.MolecularSequence.RocComponent>(ref reader, options);
-
+          current.Roc = new Hl7.Fhir.Model.MolecularSequence.RocComponent();
+          current.Roc.DeserializeJson(ref reader, options);
           break;
 
         // Complex: quality, Export: QualityComponent, Base: BackboneElement
@@ -1014,13 +1032,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ScoreElement.Count == 0)
           {
             current.ScoreElement = null;
           }
+          break;
 
+        case "_score":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_score = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            ((Hl7.Fhir.Model.Element)current.ScoreElement[i_score++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
           break;
 
         case "numTP":
@@ -1039,13 +1077,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.NumTPElement.Count == 0)
           {
             current.NumTPElement = null;
           }
+          break;
 
+        case "_numTP":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_numTP = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            ((Hl7.Fhir.Model.Element)current.NumTPElement[i_numTP++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
           break;
 
         case "numFP":
@@ -1064,13 +1122,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.NumFPElement.Count == 0)
           {
             current.NumFPElement = null;
           }
+          break;
 
+        case "_numFP":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_numFP = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            ((Hl7.Fhir.Model.Element)current.NumFPElement[i_numFP++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
           break;
 
         case "numFN":
@@ -1089,13 +1167,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.NumFNElement.Count == 0)
           {
             current.NumFNElement = null;
           }
+          break;
 
+        case "_numFN":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_numFN = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            ((Hl7.Fhir.Model.Element)current.NumFNElement[i_numFN++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
           break;
 
         case "precision":
@@ -1114,13 +1212,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.PrecisionElement.Count == 0)
           {
             current.PrecisionElement = null;
           }
-
           break;
 
         case "sensitivity":
@@ -1139,13 +1237,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.SensitivityElement.Count == 0)
           {
             current.SensitivityElement = null;
           }
-
           break;
 
         case "fMeasure":
@@ -1164,13 +1262,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.FMeasureElement.Count == 0)
           {
             current.FMeasureElement = null;
           }
-
           break;
 
         // Complex: roc, Export: RocComponent, Base: BackboneElement
@@ -1253,32 +1351,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.MolecularSequence.repositoryType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.MolecularSequence.repositoryType>(reader.GetString()));
-
           break;
 
         case "url":
           current.UrlElement = new FhirUri(reader.GetString());
-
           break;
 
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "datasetId":
           current.DatasetIdElement = new FhirString(reader.GetString());
-
           break;
 
         case "variantsetId":
           current.VariantsetIdElement = new FhirString(reader.GetString());
-
           break;
 
         case "readsetId":
           current.ReadsetIdElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: repository, Export: RepositoryComponent, Base: BackboneElement
@@ -1361,28 +1453,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "variantType":
-          current.VariantType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.VariantType = new Hl7.Fhir.Model.CodeableConcept();
+          current.VariantType.DeserializeJson(ref reader, options);
           break;
 
         case "exact":
           current.ExactElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "length":
           current.LengthElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_length":
+          ((Hl7.Fhir.Model.Element)current.LengthElement).DeserializeJson(ref reader, options);
           break;
 
         case "outer":
-          current.Outer = JsonSerializer.Deserialize<Hl7.Fhir.Model.MolecularSequence.OuterComponent>(ref reader, options);
-
+          current.Outer = new Hl7.Fhir.Model.MolecularSequence.OuterComponent();
+          current.Outer.DeserializeJson(ref reader, options);
           break;
 
         case "inner":
-          current.Inner = JsonSerializer.Deserialize<Hl7.Fhir.Model.MolecularSequence.InnerComponent>(ref reader, options);
-
+          current.Inner = new Hl7.Fhir.Model.MolecularSequence.InnerComponent();
+          current.Inner.DeserializeJson(ref reader, options);
           break;
 
         // Complex: structureVariant, Export: StructureVariantComponent, Base: BackboneElement
@@ -1448,12 +1542,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "start":
           current.StartElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_start":
+          ((Hl7.Fhir.Model.Element)current.StartElement).DeserializeJson(ref reader, options);
           break;
 
         case "end":
           current.EndElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_end":
+          ((Hl7.Fhir.Model.Element)current.EndElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: outer, Export: OuterComponent, Base: BackboneElement
@@ -1519,12 +1619,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "start":
           current.StartElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_start":
+          ((Hl7.Fhir.Model.Element)current.StartElement).DeserializeJson(ref reader, options);
           break;
 
         case "end":
           current.EndElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_end":
+          ((Hl7.Fhir.Model.Element)current.EndElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: inner, Export: InnerComponent, Base: BackboneElement

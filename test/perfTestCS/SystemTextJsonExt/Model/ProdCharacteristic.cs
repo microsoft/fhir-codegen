@@ -173,38 +173,37 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "height":
-          current.Height = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Height = new Hl7.Fhir.Model.Quantity();
+          current.Height.DeserializeJson(ref reader, options);
           break;
 
         case "width":
-          current.Width = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Width = new Hl7.Fhir.Model.Quantity();
+          current.Width.DeserializeJson(ref reader, options);
           break;
 
         case "depth":
-          current.Depth = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Depth = new Hl7.Fhir.Model.Quantity();
+          current.Depth.DeserializeJson(ref reader, options);
           break;
 
         case "weight":
-          current.Weight = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Weight = new Hl7.Fhir.Model.Quantity();
+          current.Weight.DeserializeJson(ref reader, options);
           break;
 
         case "nominalVolume":
-          current.NominalVolume = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.NominalVolume = new Hl7.Fhir.Model.Quantity();
+          current.NominalVolume.DeserializeJson(ref reader, options);
           break;
 
         case "externalDiameter":
-          current.ExternalDiameter = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.ExternalDiameter = new Hl7.Fhir.Model.Quantity();
+          current.ExternalDiameter.DeserializeJson(ref reader, options);
           break;
 
         case "shape":
           current.ShapeElement = new FhirString(reader.GetString());
-
           break;
 
         case "color":
@@ -223,13 +222,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ColorElement.Count == 0)
           {
             current.ColorElement = null;
           }
-
           break;
 
         case "imprint":
@@ -248,13 +247,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ImprintElement.Count == 0)
           {
             current.ImprintElement = null;
           }
-
           break;
 
         case "image":
@@ -267,24 +266,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Image.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Attachment>(ref reader, options));
+            Hl7.Fhir.Model.Attachment v_Image = new Hl7.Fhir.Model.Attachment();
+            v_Image.DeserializeJson(ref reader, options);
+            current.Image.Add(v_Image);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Image.Count == 0)
           {
             current.Image = null;
           }
-
           break;
 
         case "scoring":
-          current.Scoring = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Scoring = new Hl7.Fhir.Model.CodeableConcept();
+          current.Scoring.DeserializeJson(ref reader, options);
           break;
 
         // Complex: ProdCharacteristic, Export: ProdCharacteristic, Base: BackboneElement

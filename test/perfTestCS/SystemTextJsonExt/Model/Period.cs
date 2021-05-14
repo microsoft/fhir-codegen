@@ -101,12 +101,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "start":
           current.StartElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "end":
           current.EndElement = new FhirDateTime(reader.GetString());
-
           break;
 
       }

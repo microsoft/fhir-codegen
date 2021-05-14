@@ -117,38 +117,32 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "origin":
-          current.Origin = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.Origin = new Hl7.Fhir.Model.Quantity();
+          current.Origin.DeserializeJson(ref reader, options);
           break;
 
         case "period":
           current.PeriodElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "factor":
           current.FactorElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "lowerLimit":
           current.LowerLimitElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "upperLimit":
           current.UpperLimitElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "dimensions":
           current.DimensionsElement = new PositiveInt(reader.GetInt32());
-
           break;
 
         case "data":
           current.DataElement = new FhirString(reader.GetString());
-
           break;
 
       }

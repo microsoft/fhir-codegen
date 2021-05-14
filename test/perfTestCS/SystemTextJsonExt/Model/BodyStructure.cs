@@ -161,34 +161,35 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "active":
           current.ActiveElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "morphology":
-          current.Morphology = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Morphology = new Hl7.Fhir.Model.CodeableConcept();
+          current.Morphology.DeserializeJson(ref reader, options);
           break;
 
         case "location":
-          current.Location = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Location = new Hl7.Fhir.Model.CodeableConcept();
+          current.Location.DeserializeJson(ref reader, options);
           break;
 
         case "locationQualifier":
@@ -201,24 +202,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.LocationQualifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_LocationQualifier = new Hl7.Fhir.Model.CodeableConcept();
+            v_LocationQualifier.DeserializeJson(ref reader, options);
+            current.LocationQualifier.Add(v_LocationQualifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.LocationQualifier.Count == 0)
           {
             current.LocationQualifier = null;
           }
-
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "image":
@@ -231,24 +233,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Image.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Attachment>(ref reader, options));
+            Hl7.Fhir.Model.Attachment v_Image = new Hl7.Fhir.Model.Attachment();
+            v_Image.DeserializeJson(ref reader, options);
+            current.Image.Add(v_Image);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Image.Count == 0)
           {
             current.Image = null;
           }
-
           break;
 
         case "patient":
-          current.Patient = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Patient = new Hl7.Fhir.Model.ResourceReference();
+          current.Patient.DeserializeJson(ref reader, options);
           break;
 
         // Complex: BodyStructure, Export: BodyStructure, Base: DomainResource

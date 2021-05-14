@@ -162,74 +162,77 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.FinancialResourceStatusCodes>(reader.GetString()));
-
           break;
 
         case "request":
-          current.Request = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Request = new Hl7.Fhir.Model.ResourceReference();
+          current.Request.DeserializeJson(ref reader, options);
           break;
 
         case "response":
-          current.Response = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Response = new Hl7.Fhir.Model.ResourceReference();
+          current.Response.DeserializeJson(ref reader, options);
           break;
 
         case "created":
           current.CreatedElement = new FhirDateTime(reader.GetString());
-
           break;
 
         case "provider":
-          current.Provider = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Provider = new Hl7.Fhir.Model.ResourceReference();
+          current.Provider.DeserializeJson(ref reader, options);
           break;
 
         case "payment":
-          current.Payment = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Payment = new Hl7.Fhir.Model.ResourceReference();
+          current.Payment.DeserializeJson(ref reader, options);
           break;
 
         case "paymentDate":
           current.PaymentDateElement = new Date(reader.GetString());
+          break;
 
+        case "_paymentDate":
+          ((Hl7.Fhir.Model.Element)current.PaymentDateElement).DeserializeJson(ref reader, options);
           break;
 
         case "payee":
-          current.Payee = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Payee = new Hl7.Fhir.Model.ResourceReference();
+          current.Payee.DeserializeJson(ref reader, options);
           break;
 
         case "recipient":
-          current.Recipient = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Recipient = new Hl7.Fhir.Model.ResourceReference();
+          current.Recipient.DeserializeJson(ref reader, options);
           break;
 
         case "amount":
-          current.Amount = JsonSerializer.Deserialize<Hl7.Fhir.Model.Money>(ref reader, options);
-
+          current.Amount = new Hl7.Fhir.Model.Money();
+          current.Amount.DeserializeJson(ref reader, options);
           break;
 
         case "paymentStatus":
-          current.PaymentStatus = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.PaymentStatus = new Hl7.Fhir.Model.CodeableConcept();
+          current.PaymentStatus.DeserializeJson(ref reader, options);
           break;
 
         // Complex: PaymentNotice, Export: PaymentNotice, Base: DomainResource

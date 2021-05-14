@@ -143,34 +143,36 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Subject.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options));
+            Hl7.Fhir.Model.ResourceReference v_Subject = new Hl7.Fhir.Model.ResourceReference();
+            v_Subject.DeserializeJson(ref reader, options);
+            current.Subject.Add(v_Subject);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Subject.Count == 0)
           {
             current.Subject = null;
           }
-
           break;
 
         case "symptomConditionEffect":
-          current.SymptomConditionEffect = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.SymptomConditionEffect = new Hl7.Fhir.Model.CodeableConcept();
+          current.SymptomConditionEffect.DeserializeJson(ref reader, options);
           break;
 
         case "classification":
-          current.Classification = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Classification = new Hl7.Fhir.Model.CodeableConcept();
+          current.Classification.DeserializeJson(ref reader, options);
           break;
 
         case "frequencyOfOccurrence":
-          current.FrequencyOfOccurrence = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.FrequencyOfOccurrence = new Hl7.Fhir.Model.CodeableConcept();
+          current.FrequencyOfOccurrence.DeserializeJson(ref reader, options);
           break;
 
         case "population":
@@ -183,19 +185,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Population.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Population>(ref reader, options));
+            Hl7.Fhir.Model.Population v_Population = new Hl7.Fhir.Model.Population();
+            v_Population.DeserializeJson(ref reader, options);
+            current.Population.Add(v_Population);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Population.Count == 0)
           {
             current.Population = null;
           }
-
           break;
 
         // Complex: MedicinalProductUndesirableEffect, Export: MedicinalProductUndesirableEffect, Base: DomainResource

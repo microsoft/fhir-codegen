@@ -144,54 +144,53 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.ResearchSubject.ResearchSubjectStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ResearchSubject.ResearchSubjectStatus>(reader.GetString()));
-
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         case "study":
-          current.Study = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Study = new Hl7.Fhir.Model.ResourceReference();
+          current.Study.DeserializeJson(ref reader, options);
           break;
 
         case "individual":
-          current.Individual = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Individual = new Hl7.Fhir.Model.ResourceReference();
+          current.Individual.DeserializeJson(ref reader, options);
           break;
 
         case "assignedArm":
           current.AssignedArmElement = new FhirString(reader.GetString());
-
           break;
 
         case "actualArm":
           current.ActualArmElement = new FhirString(reader.GetString());
-
           break;
 
         case "consent":
-          current.Consent = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Consent = new Hl7.Fhir.Model.ResourceReference();
+          current.Consent.DeserializeJson(ref reader, options);
           break;
 
         // Complex: ResearchSubject, Export: ResearchSubject, Base: DomainResource

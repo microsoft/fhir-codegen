@@ -186,12 +186,14 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "sequence":
           current.SequenceElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_sequence":
+          ((Hl7.Fhir.Model.Element)current.SequenceElement).DeserializeJson(ref reader, options);
           break;
 
         case "text":
           current.TextElement = new FhirString(reader.GetString());
-
           break;
 
         case "additionalInstruction":
@@ -204,29 +206,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.AdditionalInstruction.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options));
+            Hl7.Fhir.Model.CodeableConcept v_AdditionalInstruction = new Hl7.Fhir.Model.CodeableConcept();
+            v_AdditionalInstruction.DeserializeJson(ref reader, options);
+            current.AdditionalInstruction.Add(v_AdditionalInstruction);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.AdditionalInstruction.Count == 0)
           {
             current.AdditionalInstruction = null;
           }
-
           break;
 
         case "patientInstruction":
           current.PatientInstructionElement = new FhirString(reader.GetString());
-
           break;
 
         case "timing":
-          current.Timing = JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options);
-
+          current.Timing = new Hl7.Fhir.Model.Timing();
+          current.Timing.DeserializeJson(ref reader, options);
           break;
 
         case "asNeededBoolean":
@@ -234,22 +237,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "asNeededCodeableConcept":
-          current.AsNeeded = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
+          current.AsNeeded = new Hl7.Fhir.Model.CodeableConcept();
+          current.AsNeeded.DeserializeJson(ref reader, options);
           break;
 
         case "site":
-          current.Site = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Site = new Hl7.Fhir.Model.CodeableConcept();
+          current.Site.DeserializeJson(ref reader, options);
           break;
 
         case "route":
-          current.Route = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Route = new Hl7.Fhir.Model.CodeableConcept();
+          current.Route.DeserializeJson(ref reader, options);
           break;
 
         case "method":
-          current.Method = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Method = new Hl7.Fhir.Model.CodeableConcept();
+          current.Method.DeserializeJson(ref reader, options);
           break;
 
         case "doseAndRate":
@@ -262,34 +266,36 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.DoseAndRate.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Dosage.DoseAndRateComponent>(ref reader, options));
+            Hl7.Fhir.Model.Dosage.DoseAndRateComponent v_DoseAndRate = new Hl7.Fhir.Model.Dosage.DoseAndRateComponent();
+            v_DoseAndRate.DeserializeJson(ref reader, options);
+            current.DoseAndRate.Add(v_DoseAndRate);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.DoseAndRate.Count == 0)
           {
             current.DoseAndRate = null;
           }
-
           break;
 
         case "maxDosePerPeriod":
-          current.MaxDosePerPeriod = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
-
+          current.MaxDosePerPeriod = new Hl7.Fhir.Model.Ratio();
+          current.MaxDosePerPeriod.DeserializeJson(ref reader, options);
           break;
 
         case "maxDosePerAdministration":
-          current.MaxDosePerAdministration = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.MaxDosePerAdministration = new Hl7.Fhir.Model.Quantity();
+          current.MaxDosePerAdministration.DeserializeJson(ref reader, options);
           break;
 
         case "maxDosePerLifetime":
-          current.MaxDosePerLifetime = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
-
+          current.MaxDosePerLifetime = new Hl7.Fhir.Model.Quantity();
+          current.MaxDosePerLifetime.DeserializeJson(ref reader, options);
           break;
 
         // Complex: Dosage, Export: Dosage, Base: BackboneElement
@@ -379,28 +385,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "type":
-          current.Type = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Type = new Hl7.Fhir.Model.CodeableConcept();
+          current.Type.DeserializeJson(ref reader, options);
           break;
 
         case "doseRange":
-          current.Dose = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Dose = new Hl7.Fhir.Model.Range();
+          current.Dose.DeserializeJson(ref reader, options);
           break;
 
         case "doseQuantity":
-          current.Dose = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.Dose = new Hl7.Fhir.Model.Quantity();
+          current.Dose.DeserializeJson(ref reader, options);
           break;
 
         case "rateRatio":
-          current.Rate = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
+          current.Rate = new Hl7.Fhir.Model.Ratio();
+          current.Rate.DeserializeJson(ref reader, options);
           break;
 
         case "rateRange":
-          current.Rate = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Rate = new Hl7.Fhir.Model.Range();
+          current.Rate.DeserializeJson(ref reader, options);
           break;
 
         case "rateQuantity":
-          current.Rate = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.Rate = new Hl7.Fhir.Model.Quantity();
+          current.Rate.DeserializeJson(ref reader, options);
           break;
 
       }

@@ -124,32 +124,29 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "use":
           current.UseElement =new Code<Hl7.Fhir.Model.Identifier.IdentifierUse>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Identifier.IdentifierUse>(reader.GetString()));
-
           break;
 
         case "type":
-          current.Type = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Type = new Hl7.Fhir.Model.CodeableConcept();
+          current.Type.DeserializeJson(ref reader, options);
           break;
 
         case "system":
           current.SystemElement = new FhirUri(reader.GetString());
-
           break;
 
         case "value":
           current.ValueElement = new FhirString(reader.GetString());
-
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
         case "assigner":
-          current.Assigner = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Assigner = new Hl7.Fhir.Model.ResourceReference();
+          current.Assigner.DeserializeJson(ref reader, options);
           break;
 
       }

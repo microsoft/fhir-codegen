@@ -131,23 +131,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.EventElement.Count == 0)
           {
             current.EventElement = null;
           }
-
           break;
 
         case "repeat":
-          current.Repeat = JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing.RepeatComponent>(ref reader, options);
-
+          current.Repeat = new Hl7.Fhir.Model.Timing.RepeatComponent();
+          current.Repeat.DeserializeJson(ref reader, options);
           break;
 
         case "code":
-          current.Code = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Code = new Hl7.Fhir.Model.CodeableConcept();
+          current.Code.DeserializeJson(ref reader, options);
           break;
 
         // Complex: Timing, Export: Timing, Base: BackboneElement
@@ -305,65 +305,58 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "boundsDuration":
-          current.Bounds = JsonSerializer.Deserialize<Hl7.Fhir.Model.Duration>(ref reader, options);
+          current.Bounds = new Hl7.Fhir.Model.Duration();
+          current.Bounds.DeserializeJson(ref reader, options);
           break;
 
         case "boundsRange":
-          current.Bounds = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Bounds = new Hl7.Fhir.Model.Range();
+          current.Bounds.DeserializeJson(ref reader, options);
           break;
 
         case "boundsPeriod":
-          current.Bounds = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
+          current.Bounds = new Hl7.Fhir.Model.Period();
+          current.Bounds.DeserializeJson(ref reader, options);
           break;
 
         case "count":
           current.CountElement = new PositiveInt(reader.GetInt32());
-
           break;
 
         case "countMax":
           current.CountMaxElement = new PositiveInt(reader.GetInt32());
-
           break;
 
         case "duration":
           current.DurationElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "durationMax":
           current.DurationMaxElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "durationUnit":
           current.DurationUnitElement =new Code<Hl7.Fhir.Model.Timing.UnitsOfTime>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Timing.UnitsOfTime>(reader.GetString()));
-
           break;
 
         case "frequency":
           current.FrequencyElement = new PositiveInt(reader.GetInt32());
-
           break;
 
         case "frequencyMax":
           current.FrequencyMaxElement = new PositiveInt(reader.GetInt32());
-
           break;
 
         case "period":
           current.PeriodElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "periodMax":
           current.PeriodMaxElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         case "periodUnit":
           current.PeriodUnitElement =new Code<Hl7.Fhir.Model.Timing.UnitsOfTime>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Timing.UnitsOfTime>(reader.GetString()));
-
           break;
 
         case "dayOfWeek":
@@ -382,13 +375,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.DayOfWeekElement.Count == 0)
           {
             current.DayOfWeekElement = null;
           }
-
           break;
 
         case "timeOfDay":
@@ -401,19 +394,41 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.TimeOfDayElement.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Time>(ref reader, options));
+            Hl7.Fhir.Model.Time v_TimeOfDayElement = new Hl7.Fhir.Model.Time();
+            v_TimeOfDayElement.DeserializeJson(ref reader, options);
+            current.TimeOfDayElement.Add(v_TimeOfDayElement);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.TimeOfDayElement.Count == 0)
           {
             current.TimeOfDayElement = null;
           }
+          break;
 
+        case "_timeOfDay":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_timeOfDay = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            ((Hl7.Fhir.Model.Element)current.TimeOfDayElement[i_timeOfDay++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
           break;
 
         case "when":
@@ -432,18 +447,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.WhenElement.Count == 0)
           {
             current.WhenElement = null;
           }
-
           break;
 
         case "offset":
           current.OffsetElement = new UnsignedInt(reader.GetInt32());
-
           break;
 
       }

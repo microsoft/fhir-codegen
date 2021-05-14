@@ -136,49 +136,59 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Type.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options));
+            Hl7.Fhir.Model.Coding v_Type = new Hl7.Fhir.Model.Coding();
+            v_Type.DeserializeJson(ref reader, options);
+            current.Type.Add(v_Type);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Type.Count == 0)
           {
             current.Type = null;
           }
-
           break;
 
         case "when":
           current.WhenElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_when":
+          ((Hl7.Fhir.Model.Element)current.WhenElement).DeserializeJson(ref reader, options);
           break;
 
         case "who":
-          current.Who = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Who = new Hl7.Fhir.Model.ResourceReference();
+          current.Who.DeserializeJson(ref reader, options);
           break;
 
         case "onBehalfOf":
-          current.OnBehalfOf = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.OnBehalfOf = new Hl7.Fhir.Model.ResourceReference();
+          current.OnBehalfOf.DeserializeJson(ref reader, options);
           break;
 
         case "targetFormat":
           current.TargetFormatElement = new Code(reader.GetString());
+          break;
 
+        case "_targetFormat":
+          ((Hl7.Fhir.Model.Element)current.TargetFormatElement).DeserializeJson(ref reader, options);
           break;
 
         case "sigFormat":
           current.SigFormatElement = new Code(reader.GetString());
+          break;
 
+        case "_sigFormat":
+          ((Hl7.Fhir.Model.Element)current.SigFormatElement).DeserializeJson(ref reader, options);
           break;
 
         case "data":
           current.DataElement = new Base64Binary(reader.GetBytesFromBase64());
-
           break;
 
       }

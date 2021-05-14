@@ -921,7 +921,6 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "path":
           current.PathElement = new FhirString(reader.GetString());
-
           break;
 
         case "representation":
@@ -940,28 +939,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.RepresentationElement.Count == 0)
           {
             current.RepresentationElement = null;
           }
-
           break;
 
         case "sliceName":
           current.SliceNameElement = new FhirString(reader.GetString());
-
           break;
 
         case "sliceIsConstraining":
           current.SliceIsConstrainingElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "label":
           current.LabelElement = new FhirString(reader.GetString());
-
           break;
 
         case "code":
@@ -974,44 +970,42 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Code.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options));
+            Hl7.Fhir.Model.Coding v_Code = new Hl7.Fhir.Model.Coding();
+            v_Code.DeserializeJson(ref reader, options);
+            current.Code.Add(v_Code);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Code.Count == 0)
           {
             current.Code = null;
           }
-
           break;
 
         case "slicing":
-          current.Slicing = JsonSerializer.Deserialize<Hl7.Fhir.Model.ElementDefinition.SlicingComponent>(ref reader, options);
-
+          current.Slicing = new Hl7.Fhir.Model.ElementDefinition.SlicingComponent();
+          current.Slicing.DeserializeJson(ref reader, options);
           break;
 
         case "short":
           current.ShortElement = new FhirString(reader.GetString());
-
           break;
 
         case "definition":
           current.Definition = new Markdown(reader.GetString());
-
           break;
 
         case "comment":
           current.Comment = new Markdown(reader.GetString());
-
           break;
 
         case "requirements":
           current.Requirements = new Markdown(reader.GetString());
-
           break;
 
         case "alias":
@@ -1030,33 +1024,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.AliasElement.Count == 0)
           {
             current.AliasElement = null;
           }
-
           break;
 
         case "min":
           current.MinElement = new UnsignedInt(reader.GetInt32());
-
           break;
 
         case "max":
           current.MaxElement = new FhirString(reader.GetString());
-
           break;
 
         case "base":
-          current.Base = JsonSerializer.Deserialize<Hl7.Fhir.Model.ElementDefinition.BaseComponent>(ref reader, options);
-
+          current.Base = new Hl7.Fhir.Model.ElementDefinition.BaseComponent();
+          current.Base.DeserializeJson(ref reader, options);
           break;
 
         case "contentReference":
           current.ContentReferenceElement = new FhirUri(reader.GetString());
-
           break;
 
         case "type":
@@ -1069,19 +1060,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Type.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ElementDefinition.TypeRefComponent>(ref reader, options));
+            Hl7.Fhir.Model.ElementDefinition.TypeRefComponent v_Type = new Hl7.Fhir.Model.ElementDefinition.TypeRefComponent();
+            v_Type.DeserializeJson(ref reader, options);
+            current.Type.Add(v_Type);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Type.Count == 0)
           {
             current.Type = null;
           }
-
           break;
 
         case "defaultValueBase64Binary":
@@ -1141,7 +1134,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "defaultValueTime":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Time>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Time();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueUnsignedInt":
@@ -1161,137 +1155,166 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "defaultValueAddress":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Address>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Address();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueAge":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Age>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Age();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueAnnotation":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Annotation>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Annotation();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueAttachment":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Attachment>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Attachment();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueCodeableConcept":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.CodeableConcept();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueCoding":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Coding();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueContactPoint":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactPoint>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.ContactPoint();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueCount":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Count>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Count();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueDistance":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Distance>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Distance();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueDuration":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Duration>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Duration();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueHumanName":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.HumanName>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.HumanName();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueIdentifier":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Identifier();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueMoney":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Money>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Money();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValuePeriod":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Period();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueQuantity":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Quantity();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueRange":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Range();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueRatio":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Ratio();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueReference":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.ResourceReference();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueSampledData":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.SampledData>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.SampledData();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueSignature":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Signature>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Signature();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueTiming":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Timing();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueContactDetail":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactDetail>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.ContactDetail();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueContributor":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Contributor>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Contributor();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueDataRequirement":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.DataRequirement>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.DataRequirement();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueExpression":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Expression>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Expression();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueParameterDefinition":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.ParameterDefinition>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.ParameterDefinition();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueRelatedArtifact":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.RelatedArtifact>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.RelatedArtifact();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueTriggerDefinition":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.TriggerDefinition>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.TriggerDefinition();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueUsageContext":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.UsageContext>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.UsageContext();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueDosage":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Dosage>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Dosage();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueMeta":
-          current.DefaultValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Meta>(ref reader, options);
+          current.DefaultValue = new Hl7.Fhir.Model.Meta();
+          current.DefaultValue.DeserializeJson(ref reader, options);
           break;
 
         case "meaningWhenMissing":
           current.MeaningWhenMissing = new Markdown(reader.GetString());
-
           break;
 
         case "orderMeaning":
           current.OrderMeaningElement = new FhirString(reader.GetString());
-
           break;
 
         case "fixedBase64Binary":
@@ -1351,7 +1374,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "fixedTime":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Time>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Time();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedUnsignedInt":
@@ -1371,127 +1395,158 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "fixedAddress":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Address>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Address();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedAge":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Age>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Age();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedAnnotation":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Annotation>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Annotation();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedAttachment":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Attachment>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Attachment();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedCodeableConcept":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.CodeableConcept();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedCoding":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Coding();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedContactPoint":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactPoint>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.ContactPoint();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedCount":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Count>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Count();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedDistance":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Distance>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Distance();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedDuration":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Duration>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Duration();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedHumanName":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.HumanName>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.HumanName();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedIdentifier":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Identifier();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedMoney":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Money>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Money();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedPeriod":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Period();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedQuantity":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Quantity();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedRange":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Range();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedRatio":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Ratio();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedReference":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.ResourceReference();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedSampledData":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.SampledData>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.SampledData();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedSignature":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Signature>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Signature();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedTiming":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Timing();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedContactDetail":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactDetail>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.ContactDetail();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedContributor":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Contributor>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Contributor();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedDataRequirement":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.DataRequirement>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.DataRequirement();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedExpression":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Expression>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Expression();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedParameterDefinition":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.ParameterDefinition>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.ParameterDefinition();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedRelatedArtifact":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.RelatedArtifact>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.RelatedArtifact();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedTriggerDefinition":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.TriggerDefinition>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.TriggerDefinition();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedUsageContext":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.UsageContext>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.UsageContext();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedDosage":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Dosage>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Dosage();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "fixedMeta":
-          current.Fixed = JsonSerializer.Deserialize<Hl7.Fhir.Model.Meta>(ref reader, options);
+          current.Fixed = new Hl7.Fhir.Model.Meta();
+          current.Fixed.DeserializeJson(ref reader, options);
           break;
 
         case "patternBase64Binary":
@@ -1551,7 +1606,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "patternTime":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Time>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Time();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternUnsignedInt":
@@ -1571,127 +1627,158 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "patternAddress":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Address>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Address();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternAge":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Age>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Age();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternAnnotation":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Annotation>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Annotation();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternAttachment":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Attachment>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Attachment();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternCodeableConcept":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.CodeableConcept();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternCoding":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Coding();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternContactPoint":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactPoint>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.ContactPoint();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternCount":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Count>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Count();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternDistance":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Distance>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Distance();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternDuration":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Duration>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Duration();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternHumanName":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.HumanName>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.HumanName();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternIdentifier":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Identifier();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternMoney":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Money>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Money();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternPeriod":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Period();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternQuantity":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Quantity();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternRange":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Range();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternRatio":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Ratio();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternReference":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.ResourceReference();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternSampledData":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.SampledData>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.SampledData();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternSignature":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Signature>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Signature();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternTiming":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Timing();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternContactDetail":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactDetail>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.ContactDetail();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternContributor":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Contributor>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Contributor();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternDataRequirement":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.DataRequirement>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.DataRequirement();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternExpression":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Expression>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Expression();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternParameterDefinition":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.ParameterDefinition>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.ParameterDefinition();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternRelatedArtifact":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.RelatedArtifact>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.RelatedArtifact();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternTriggerDefinition":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.TriggerDefinition>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.TriggerDefinition();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternUsageContext":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.UsageContext>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.UsageContext();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternDosage":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Dosage>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Dosage();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "patternMeta":
-          current.Pattern = JsonSerializer.Deserialize<Hl7.Fhir.Model.Meta>(ref reader, options);
+          current.Pattern = new Hl7.Fhir.Model.Meta();
+          current.Pattern.DeserializeJson(ref reader, options);
           break;
 
         case "example":
@@ -1704,19 +1791,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Example.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ElementDefinition.ExampleComponent>(ref reader, options));
+            Hl7.Fhir.Model.ElementDefinition.ExampleComponent v_Example = new Hl7.Fhir.Model.ElementDefinition.ExampleComponent();
+            v_Example.DeserializeJson(ref reader, options);
+            current.Example.Add(v_Example);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Example.Count == 0)
           {
             current.Example = null;
           }
-
           break;
 
         case "minValueDate":
@@ -1732,7 +1821,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "minValueTime":
-          current.MinValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Time>(ref reader, options);
+          current.MinValue = new Hl7.Fhir.Model.Time();
+          current.MinValue.DeserializeJson(ref reader, options);
           break;
 
         case "minValueDecimal":
@@ -1752,7 +1842,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "minValueQuantity":
-          current.MinValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.MinValue = new Hl7.Fhir.Model.Quantity();
+          current.MinValue.DeserializeJson(ref reader, options);
           break;
 
         case "maxValueDate":
@@ -1768,7 +1859,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "maxValueTime":
-          current.MaxValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Time>(ref reader, options);
+          current.MaxValue = new Hl7.Fhir.Model.Time();
+          current.MaxValue.DeserializeJson(ref reader, options);
           break;
 
         case "maxValueDecimal":
@@ -1788,12 +1880,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "maxValueQuantity":
-          current.MaxValue = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.MaxValue = new Hl7.Fhir.Model.Quantity();
+          current.MaxValue.DeserializeJson(ref reader, options);
           break;
 
         case "maxLength":
           current.MaxLengthElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_maxLength":
+          ((Hl7.Fhir.Model.Element)current.MaxLengthElement).DeserializeJson(ref reader, options);
           break;
 
         case "condition":
@@ -1812,13 +1908,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ConditionElement.Count == 0)
           {
             current.ConditionElement = null;
           }
+          break;
 
+        case "_condition":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_condition = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            ((Hl7.Fhir.Model.Element)current.ConditionElement[i_condition++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
           break;
 
         case "constraint":
@@ -1831,44 +1947,42 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Constraint.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ElementDefinition.ConstraintComponent>(ref reader, options));
+            Hl7.Fhir.Model.ElementDefinition.ConstraintComponent v_Constraint = new Hl7.Fhir.Model.ElementDefinition.ConstraintComponent();
+            v_Constraint.DeserializeJson(ref reader, options);
+            current.Constraint.Add(v_Constraint);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Constraint.Count == 0)
           {
             current.Constraint = null;
           }
-
           break;
 
         case "mustSupport":
           current.MustSupportElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "isModifier":
           current.IsModifierElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "isModifierReason":
           current.IsModifierReasonElement = new FhirString(reader.GetString());
-
           break;
 
         case "isSummary":
           current.IsSummaryElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "binding":
-          current.Binding = JsonSerializer.Deserialize<Hl7.Fhir.Model.ElementDefinition.ElementDefinitionBindingComponent>(ref reader, options);
-
+          current.Binding = new Hl7.Fhir.Model.ElementDefinition.ElementDefinitionBindingComponent();
+          current.Binding.DeserializeJson(ref reader, options);
           break;
 
         case "mapping":
@@ -1881,19 +1995,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Mapping.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ElementDefinition.MappingComponent>(ref reader, options));
+            Hl7.Fhir.Model.ElementDefinition.MappingComponent v_Mapping = new Hl7.Fhir.Model.ElementDefinition.MappingComponent();
+            v_Mapping.DeserializeJson(ref reader, options);
+            current.Mapping.Add(v_Mapping);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Mapping.Count == 0)
           {
             current.Mapping = null;
           }
-
           break;
 
         // Complex: ElementDefinition, Export: ElementDefinition, Base: BackboneElement
@@ -1977,34 +2093,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Discriminator.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.ElementDefinition.DiscriminatorComponent>(ref reader, options));
+            Hl7.Fhir.Model.ElementDefinition.DiscriminatorComponent v_Discriminator = new Hl7.Fhir.Model.ElementDefinition.DiscriminatorComponent();
+            v_Discriminator.DeserializeJson(ref reader, options);
+            current.Discriminator.Add(v_Discriminator);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Discriminator.Count == 0)
           {
             current.Discriminator = null;
           }
-
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "ordered":
           current.OrderedElement = new FhirBoolean(reader.GetBoolean());
-
           break;
 
         case "rules":
           current.RulesElement =new Code<Hl7.Fhir.Model.ElementDefinition.SlicingRules>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ElementDefinition.SlicingRules>(reader.GetString()));
-
           break;
 
       }
@@ -2057,12 +2172,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.ElementDefinition.DiscriminatorType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ElementDefinition.DiscriminatorType>(reader.GetString()));
-
           break;
 
         case "path":
           current.PathElement = new FhirString(reader.GetString());
-
           break;
 
       }
@@ -2117,17 +2230,14 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "path":
           current.PathElement = new FhirString(reader.GetString());
-
           break;
 
         case "min":
           current.MinElement = new UnsignedInt(reader.GetInt32());
-
           break;
 
         case "max":
           current.MaxElement = new FhirString(reader.GetString());
-
           break;
 
       }
@@ -2216,7 +2326,6 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.CodeElement = new FhirUri(reader.GetString());
-
           break;
 
         case "profile":
@@ -2235,13 +2344,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.ProfileElement.Count == 0)
           {
             current.ProfileElement = null;
           }
+          break;
 
+        case "_profile":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_profile = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            ((Hl7.Fhir.Model.Element)current.ProfileElement[i_profile++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
           break;
 
         case "targetProfile":
@@ -2260,13 +2389,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.TargetProfileElement.Count == 0)
           {
             current.TargetProfileElement = null;
           }
+          break;
 
+        case "_targetProfile":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_targetProfile = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            ((Hl7.Fhir.Model.Element)current.TargetProfileElement[i_targetProfile++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
           break;
 
         case "aggregation":
@@ -2285,18 +2434,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.AggregationElement.Count == 0)
           {
             current.AggregationElement = null;
           }
-
           break;
 
         case "versioning":
           current.VersioningElement =new Code<Hl7.Fhir.Model.ElementDefinition.ReferenceVersionRules>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ElementDefinition.ReferenceVersionRules>(reader.GetString()));
-
           break;
 
       }
@@ -2535,7 +2683,6 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "label":
           current.LabelElement = new FhirString(reader.GetString());
-
           break;
 
         case "valueBase64Binary":
@@ -2595,7 +2742,8 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "valueTime":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Time>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Time();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueUnsignedInt":
@@ -2615,127 +2763,158 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "valueAddress":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Address>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Address();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueAge":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Age>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Age();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueAnnotation":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Annotation>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Annotation();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueAttachment":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Attachment>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Attachment();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueCodeableConcept":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.CodeableConcept();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueCoding":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Coding>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Coding();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueContactPoint":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactPoint>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.ContactPoint();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueCount":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Count>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Count();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueDistance":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Distance>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Distance();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueDuration":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Duration>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Duration();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueHumanName":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.HumanName>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.HumanName();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueIdentifier":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Identifier();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueMoney":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Money>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Money();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valuePeriod":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Period();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueQuantity":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Quantity>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Quantity();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueRange":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Range>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Range();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueRatio":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Ratio>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Ratio();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueReference":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.ResourceReference();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueSampledData":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.SampledData>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.SampledData();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueSignature":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Signature>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Signature();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueTiming":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Timing();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueContactDetail":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.ContactDetail>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.ContactDetail();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueContributor":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Contributor>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Contributor();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueDataRequirement":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.DataRequirement>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.DataRequirement();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueExpression":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Expression>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Expression();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueParameterDefinition":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.ParameterDefinition>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.ParameterDefinition();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueRelatedArtifact":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.RelatedArtifact>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.RelatedArtifact();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueTriggerDefinition":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.TriggerDefinition>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.TriggerDefinition();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueUsageContext":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.UsageContext>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.UsageContext();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueDosage":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Dosage>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Dosage();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
         case "valueMeta":
-          current.Value = JsonSerializer.Deserialize<Hl7.Fhir.Model.Meta>(ref reader, options);
+          current.Value = new Hl7.Fhir.Model.Meta();
+          current.Value.DeserializeJson(ref reader, options);
           break;
 
       }
@@ -2810,37 +2989,38 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "key":
           current.KeyElement = new Id(reader.GetString());
+          break;
 
+        case "_key":
+          ((Hl7.Fhir.Model.Element)current.KeyElement).DeserializeJson(ref reader, options);
           break;
 
         case "requirements":
           current.RequirementsElement = new FhirString(reader.GetString());
-
           break;
 
         case "severity":
           current.SeverityElement =new Code<Hl7.Fhir.Model.ElementDefinition.ConstraintSeverity>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ElementDefinition.ConstraintSeverity>(reader.GetString()));
-
           break;
 
         case "human":
           current.HumanElement = new FhirString(reader.GetString());
-
           break;
 
         case "expression":
           current.ExpressionElement = new FhirString(reader.GetString());
-
           break;
 
         case "xpath":
           current.XpathElement = new FhirString(reader.GetString());
-
           break;
 
         case "source":
           current.SourceElement = new Canonical(reader.GetString());
+          break;
 
+        case "_source":
+          ((Hl7.Fhir.Model.Element)current.SourceElement).DeserializeJson(ref reader, options);
           break;
 
       }
@@ -2901,17 +3081,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "strength":
           current.StrengthElement =new Code<Hl7.Fhir.Model.BindingStrength>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(reader.GetString()));
-
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
-
           break;
 
         case "valueSet":
           current.ValueSetElement = new Canonical(reader.GetString());
+          break;
 
+        case "_valueSet":
+          ((Hl7.Fhir.Model.Element)current.ValueSetElement).DeserializeJson(ref reader, options);
           break;
 
       }
@@ -2974,22 +3155,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "identity":
           current.IdentityElement = new Id(reader.GetString());
+          break;
 
+        case "_identity":
+          ((Hl7.Fhir.Model.Element)current.IdentityElement).DeserializeJson(ref reader, options);
           break;
 
         case "language":
           current.LanguageElement = new Code(reader.GetString());
+          break;
 
+        case "_language":
+          ((Hl7.Fhir.Model.Element)current.LanguageElement).DeserializeJson(ref reader, options);
           break;
 
         case "map":
           current.MapElement = new FhirString(reader.GetString());
-
           break;
 
         case "comment":
           current.CommentElement = new FhirString(reader.GetString());
-
           break;
 
       }

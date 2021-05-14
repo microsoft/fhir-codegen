@@ -107,7 +107,6 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "id":
           current.ElementId = reader.GetString();
-
           break;
 
         case "extension":
@@ -120,19 +119,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Extension.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Extension>(ref reader, options));
+            Hl7.Fhir.Model.Extension v_Extension = new Hl7.Fhir.Model.Extension();
+            v_Extension.DeserializeJson(ref reader, options);
+            current.Extension.Add(v_Extension);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Extension.Count == 0)
           {
             current.Extension = null;
           }
-
           break;
 
       }

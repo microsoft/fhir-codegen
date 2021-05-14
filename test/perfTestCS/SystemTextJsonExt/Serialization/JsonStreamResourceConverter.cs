@@ -67,6 +67,13 @@ namespace Hl7.Fhir.Serialization
     /// </summary>
     public override void Write(Utf8JsonWriter writer, Resource resource, JsonSerializerOptions options)
     {
+      WriteResource(writer, resource, options);
+    }
+    /// <summary>
+    /// Writes a specified Resource as JSON.
+    /// </summary>
+    public static void WriteResource(Utf8JsonWriter writer, Resource resource, JsonSerializerOptions options)
+    {
       switch (resource)
       {
         case Account typedAccount:

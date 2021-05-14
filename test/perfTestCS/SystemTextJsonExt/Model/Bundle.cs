@@ -140,23 +140,24 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "identifier":
-          current.Identifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.Identifier = new Hl7.Fhir.Model.Identifier();
+          current.Identifier.DeserializeJson(ref reader, options);
           break;
 
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.Bundle.BundleType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Bundle.BundleType>(reader.GetString()));
-
           break;
 
         case "timestamp":
           current.TimestampElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_timestamp":
+          ((Hl7.Fhir.Model.Element)current.TimestampElement).DeserializeJson(ref reader, options);
           break;
 
         case "total":
           current.TotalElement = new UnsignedInt(reader.GetInt32());
-
           break;
 
         case "link":
@@ -169,19 +170,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Link.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Bundle.LinkComponent>(ref reader, options));
+            Hl7.Fhir.Model.Bundle.LinkComponent v_Link = new Hl7.Fhir.Model.Bundle.LinkComponent();
+            v_Link.DeserializeJson(ref reader, options);
+            current.Link.Add(v_Link);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Link.Count == 0)
           {
             current.Link = null;
           }
-
           break;
 
         case "entry":
@@ -194,24 +197,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Entry.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Bundle.EntryComponent>(ref reader, options));
+            Hl7.Fhir.Model.Bundle.EntryComponent v_Entry = new Hl7.Fhir.Model.Bundle.EntryComponent();
+            v_Entry.DeserializeJson(ref reader, options);
+            current.Entry.Add(v_Entry);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Entry.Count == 0)
           {
             current.Entry = null;
           }
-
           break;
 
         case "signature":
-          current.Signature = JsonSerializer.Deserialize<Hl7.Fhir.Model.Signature>(ref reader, options);
-
+          current.Signature = new Hl7.Fhir.Model.Signature();
+          current.Signature.DeserializeJson(ref reader, options);
           break;
 
         // Complex: Bundle, Export: Bundle, Base: Resource
@@ -271,12 +276,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "relation":
           current.RelationElement = new FhirString(reader.GetString());
-
           break;
 
         case "url":
           current.UrlElement = new FhirUri(reader.GetString());
-
           break;
 
         // Complex: link, Export: LinkComponent, Base: BackboneElement
@@ -380,44 +383,44 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Link.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Bundle.LinkComponent>(ref reader, options));
+            Hl7.Fhir.Model.Bundle.LinkComponent v_Link = new Hl7.Fhir.Model.Bundle.LinkComponent();
+            v_Link.DeserializeJson(ref reader, options);
+            current.Link.Add(v_Link);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Link.Count == 0)
           {
             current.Link = null;
           }
-
           break;
 
         case "fullUrl":
           current.FullUrlElement = new FhirUri(reader.GetString());
-
           break;
 
         case "resource":
-          current.Resource = JsonSerializer.Deserialize<Hl7.Fhir.Model.Resource>(ref reader, options);
-
+          current.Resource = Hl7.Fhir.Serialization.JsonStreamResourceConverter.PolymorphicRead(ref reader, typeof(Hl7.Fhir.Model.Resource), options);
           break;
 
         case "search":
-          current.Search = JsonSerializer.Deserialize<Hl7.Fhir.Model.Bundle.SearchComponent>(ref reader, options);
-
+          current.Search = new Hl7.Fhir.Model.Bundle.SearchComponent();
+          current.Search.DeserializeJson(ref reader, options);
           break;
 
         case "request":
-          current.Request = JsonSerializer.Deserialize<Hl7.Fhir.Model.Bundle.RequestComponent>(ref reader, options);
-
+          current.Request = new Hl7.Fhir.Model.Bundle.RequestComponent();
+          current.Request.DeserializeJson(ref reader, options);
           break;
 
         case "response":
-          current.Response = JsonSerializer.Deserialize<Hl7.Fhir.Model.Bundle.ResponseComponent>(ref reader, options);
-
+          current.Response = new Hl7.Fhir.Model.Bundle.ResponseComponent();
+          current.Response.DeserializeJson(ref reader, options);
           break;
 
         // Complex: entry, Export: EntryComponent, Base: BackboneElement
@@ -483,12 +486,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "mode":
           current.ModeElement =new Code<Hl7.Fhir.Model.Bundle.SearchEntryMode>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Bundle.SearchEntryMode>(reader.GetString()));
-
           break;
 
         case "score":
           current.ScoreElement = new FhirDecimal(reader.GetDecimal());
-
           break;
 
         // Complex: search, Export: SearchComponent, Base: BackboneElement
@@ -568,32 +569,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "method":
           current.MethodElement =new Code<Hl7.Fhir.Model.Bundle.HTTPVerb>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Bundle.HTTPVerb>(reader.GetString()));
-
           break;
 
         case "url":
           current.UrlElement = new FhirUri(reader.GetString());
-
           break;
 
         case "ifNoneMatch":
           current.IfNoneMatchElement = new FhirString(reader.GetString());
-
           break;
 
         case "ifModifiedSince":
           current.IfModifiedSinceElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_ifModifiedSince":
+          ((Hl7.Fhir.Model.Element)current.IfModifiedSinceElement).DeserializeJson(ref reader, options);
           break;
 
         case "ifMatch":
           current.IfMatchElement = new FhirString(reader.GetString());
-
           break;
 
         case "ifNoneExist":
           current.IfNoneExistElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: request, Export: RequestComponent, Base: BackboneElement
@@ -672,27 +671,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "status":
           current.StatusElement = new FhirString(reader.GetString());
-
           break;
 
         case "location":
           current.LocationElement = new FhirUri(reader.GetString());
-
           break;
 
         case "etag":
           current.EtagElement = new FhirString(reader.GetString());
-
           break;
 
         case "lastModified":
           current.LastModifiedElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_lastModified":
+          ((Hl7.Fhir.Model.Element)current.LastModifiedElement).DeserializeJson(ref reader, options);
           break;
 
         case "outcome":
-          current.Outcome = JsonSerializer.Deserialize<Hl7.Fhir.Model.Resource>(ref reader, options);
-
+          current.Outcome = Hl7.Fhir.Serialization.JsonStreamResourceConverter.PolymorphicRead(ref reader, typeof(Hl7.Fhir.Model.Resource), options);
           break;
 
         // Complex: response, Export: ResponseComponent, Base: BackboneElement

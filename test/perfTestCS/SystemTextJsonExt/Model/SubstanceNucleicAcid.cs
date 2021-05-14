@@ -127,23 +127,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "sequenceType":
-          current.SequenceType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.SequenceType = new Hl7.Fhir.Model.CodeableConcept();
+          current.SequenceType.DeserializeJson(ref reader, options);
           break;
 
         case "numberOfSubunits":
           current.NumberOfSubunitsElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_numberOfSubunits":
+          ((Hl7.Fhir.Model.Element)current.NumberOfSubunitsElement).DeserializeJson(ref reader, options);
           break;
 
         case "areaOfHybridisation":
           current.AreaOfHybridisationElement = new FhirString(reader.GetString());
-
           break;
 
         case "oligoNucleotideType":
-          current.OligoNucleotideType = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.OligoNucleotideType = new Hl7.Fhir.Model.CodeableConcept();
+          current.OligoNucleotideType.DeserializeJson(ref reader, options);
           break;
 
         case "subunit":
@@ -156,19 +158,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Subunit.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceNucleicAcid.SubunitComponent>(ref reader, options));
+            Hl7.Fhir.Model.SubstanceNucleicAcid.SubunitComponent v_Subunit = new Hl7.Fhir.Model.SubstanceNucleicAcid.SubunitComponent();
+            v_Subunit.DeserializeJson(ref reader, options);
+            current.Subunit.Add(v_Subunit);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Subunit.Count == 0)
           {
             current.Subunit = null;
           }
-
           break;
 
         // Complex: SubstanceNucleicAcid, Export: SubstanceNucleicAcid, Base: DomainResource
@@ -279,32 +283,37 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "subunit":
           current.SubunitElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_subunit":
+          ((Hl7.Fhir.Model.Element)current.SubunitElement).DeserializeJson(ref reader, options);
           break;
 
         case "sequence":
           current.SequenceElement = new FhirString(reader.GetString());
-
           break;
 
         case "length":
           current.LengthElement = new Integer(reader.GetInt32());
+          break;
 
+        case "_length":
+          ((Hl7.Fhir.Model.Element)current.LengthElement).DeserializeJson(ref reader, options);
           break;
 
         case "sequenceAttachment":
-          current.SequenceAttachment = JsonSerializer.Deserialize<Hl7.Fhir.Model.Attachment>(ref reader, options);
-
+          current.SequenceAttachment = new Hl7.Fhir.Model.Attachment();
+          current.SequenceAttachment.DeserializeJson(ref reader, options);
           break;
 
         case "fivePrime":
-          current.FivePrime = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.FivePrime = new Hl7.Fhir.Model.CodeableConcept();
+          current.FivePrime.DeserializeJson(ref reader, options);
           break;
 
         case "threePrime":
-          current.ThreePrime = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.ThreePrime = new Hl7.Fhir.Model.CodeableConcept();
+          current.ThreePrime.DeserializeJson(ref reader, options);
           break;
 
         case "linkage":
@@ -317,19 +326,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Linkage.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceNucleicAcid.LinkageComponent>(ref reader, options));
+            Hl7.Fhir.Model.SubstanceNucleicAcid.LinkageComponent v_Linkage = new Hl7.Fhir.Model.SubstanceNucleicAcid.LinkageComponent();
+            v_Linkage.DeserializeJson(ref reader, options);
+            current.Linkage.Add(v_Linkage);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Linkage.Count == 0)
           {
             current.Linkage = null;
           }
-
           break;
 
         case "sugar":
@@ -342,19 +353,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Sugar.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.SubstanceNucleicAcid.SugarComponent>(ref reader, options));
+            Hl7.Fhir.Model.SubstanceNucleicAcid.SugarComponent v_Sugar = new Hl7.Fhir.Model.SubstanceNucleicAcid.SugarComponent();
+            v_Sugar.DeserializeJson(ref reader, options);
+            current.Sugar.Add(v_Sugar);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Sugar.Count == 0)
           {
             current.Sugar = null;
           }
-
           break;
 
         // Complex: subunit, Export: SubunitComponent, Base: BackboneElement
@@ -431,22 +444,19 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "connectivity":
           current.ConnectivityElement = new FhirString(reader.GetString());
-
           break;
 
         case "identifier":
-          current.Identifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.Identifier = new Hl7.Fhir.Model.Identifier();
+          current.Identifier.DeserializeJson(ref reader, options);
           break;
 
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "residueSite":
           current.ResidueSiteElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: linkage, Export: LinkageComponent, Base: BackboneElement
@@ -517,18 +527,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       switch (propertyName)
       {
         case "identifier":
-          current.Identifier = JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options);
-
+          current.Identifier = new Hl7.Fhir.Model.Identifier();
+          current.Identifier.DeserializeJson(ref reader, options);
           break;
 
         case "name":
           current.NameElement = new FhirString(reader.GetString());
-
           break;
 
         case "residueSite":
           current.ResidueSiteElement = new FhirString(reader.GetString());
-
           break;
 
         // Complex: sugar, Export: SugarComponent, Base: BackboneElement

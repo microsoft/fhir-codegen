@@ -148,17 +148,14 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "use":
           current.UseElement =new Code<Hl7.Fhir.Model.Address.AddressUse>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Address.AddressUse>(reader.GetString()));
-
           break;
 
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.Address.AddressType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Address.AddressType>(reader.GetString()));
-
           break;
 
         case "text":
           current.TextElement = new FhirString(reader.GetString());
-
           break;
 
         case "line":
@@ -177,43 +174,38 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.LineElement.Count == 0)
           {
             current.LineElement = null;
           }
-
           break;
 
         case "city":
           current.CityElement = new FhirString(reader.GetString());
-
           break;
 
         case "district":
           current.DistrictElement = new FhirString(reader.GetString());
-
           break;
 
         case "state":
           current.StateElement = new FhirString(reader.GetString());
-
           break;
 
         case "postalCode":
           current.PostalCodeElement = new FhirString(reader.GetString());
-
           break;
 
         case "country":
           current.CountryElement = new FhirString(reader.GetString());
-
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
       }

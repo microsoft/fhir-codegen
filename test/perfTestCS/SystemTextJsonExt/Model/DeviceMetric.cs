@@ -164,59 +164,58 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Identifier.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.Identifier>(ref reader, options));
+            Hl7.Fhir.Model.Identifier v_Identifier = new Hl7.Fhir.Model.Identifier();
+            v_Identifier.DeserializeJson(ref reader, options);
+            current.Identifier.Add(v_Identifier);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Identifier.Count == 0)
           {
             current.Identifier = null;
           }
-
           break;
 
         case "type":
-          current.Type = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Type = new Hl7.Fhir.Model.CodeableConcept();
+          current.Type.DeserializeJson(ref reader, options);
           break;
 
         case "unit":
-          current.Unit = JsonSerializer.Deserialize<Hl7.Fhir.Model.CodeableConcept>(ref reader, options);
-
+          current.Unit = new Hl7.Fhir.Model.CodeableConcept();
+          current.Unit.DeserializeJson(ref reader, options);
           break;
 
         case "source":
-          current.Source = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Source = new Hl7.Fhir.Model.ResourceReference();
+          current.Source.DeserializeJson(ref reader, options);
           break;
 
         case "parent":
-          current.Parent = JsonSerializer.Deserialize<Hl7.Fhir.Model.ResourceReference>(ref reader, options);
-
+          current.Parent = new Hl7.Fhir.Model.ResourceReference();
+          current.Parent.DeserializeJson(ref reader, options);
           break;
 
         case "operationalStatus":
           current.OperationalStatusElement =new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricOperationalStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.DeviceMetric.DeviceMetricOperationalStatus>(reader.GetString()));
-
           break;
 
         case "color":
           current.ColorElement =new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricColor>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.DeviceMetric.DeviceMetricColor>(reader.GetString()));
-
           break;
 
         case "category":
           current.CategoryElement =new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCategory>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCategory>(reader.GetString()));
-
           break;
 
         case "measurementPeriod":
-          current.MeasurementPeriod = JsonSerializer.Deserialize<Hl7.Fhir.Model.Timing>(ref reader, options);
-
+          current.MeasurementPeriod = new Hl7.Fhir.Model.Timing();
+          current.MeasurementPeriod.DeserializeJson(ref reader, options);
           break;
 
         case "calibration":
@@ -229,19 +228,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
-            current.Calibration.Add(JsonSerializer.Deserialize<Hl7.Fhir.Model.DeviceMetric.CalibrationComponent>(ref reader, options));
+            Hl7.Fhir.Model.DeviceMetric.CalibrationComponent v_Calibration = new Hl7.Fhir.Model.DeviceMetric.CalibrationComponent();
+            v_Calibration.DeserializeJson(ref reader, options);
+            current.Calibration.Add(v_Calibration);
 
             if (!reader.Read())
             {
               throw new JsonException();
             }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
 
           if (current.Calibration.Count == 0)
           {
             current.Calibration = null;
           }
-
           break;
 
         // Complex: DeviceMetric, Export: DeviceMetric, Base: DomainResource
@@ -312,17 +313,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationType>(reader.GetString()));
-
           break;
 
         case "state":
           current.StateElement =new Code<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationState>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.DeviceMetric.DeviceMetricCalibrationState>(reader.GetString()));
-
           break;
 
         case "time":
           current.TimeElement = new Instant(DateTimeOffset.Parse(reader.GetString()));
+          break;
 
+        case "_time":
+          ((Hl7.Fhir.Model.Element)current.TimeElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: calibration, Export: CalibrationComponent, Base: BackboneElement

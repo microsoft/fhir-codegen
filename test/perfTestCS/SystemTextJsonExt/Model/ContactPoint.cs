@@ -117,27 +117,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "system":
           current.SystemElement =new Code<Hl7.Fhir.Model.ContactPoint.ContactPointSystem>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ContactPoint.ContactPointSystem>(reader.GetString()));
-
           break;
 
         case "value":
           current.ValueElement = new FhirString(reader.GetString());
-
           break;
 
         case "use":
           current.UseElement =new Code<Hl7.Fhir.Model.ContactPoint.ContactPointUse>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ContactPoint.ContactPointUse>(reader.GetString()));
-
           break;
 
         case "rank":
           current.RankElement = new PositiveInt(reader.GetInt32());
-
           break;
 
         case "period":
-          current.Period = JsonSerializer.Deserialize<Hl7.Fhir.Model.Period>(ref reader, options);
-
+          current.Period = new Hl7.Fhir.Model.Period();
+          current.Period.DeserializeJson(ref reader, options);
           break;
 
       }
