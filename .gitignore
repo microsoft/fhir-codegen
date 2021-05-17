@@ -382,3 +382,4 @@ msbuild.wrn
 /cytoscape
 /fhirVersions/local-*
 /generated/local_*
+/fhirVersions
