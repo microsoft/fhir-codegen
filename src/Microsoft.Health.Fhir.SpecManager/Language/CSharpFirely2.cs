@@ -1159,6 +1159,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
         }
 
+        private string capitalizeThoseSillyBackboneNames(string path) =>
+            path.Length == 1 ? path :
+                   path.StartsWith(".") ?
+                    char.ToUpper(path[1]) + capitalizeThoseSillyBackboneNames(path.Substring(2))
+                    : path[0] + capitalizeThoseSillyBackboneNames(path.Substring(1));
+
         /// <summary>Writes a component.</summary>
         /// <param name="complex">              The complex data type.</param>
         /// <param name="exportName">           Name of the export.</param>
@@ -1183,18 +1189,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //   explicitname in the definition for attributes:
             //   - Statistic.attributeEstimate.attributeEstimate
             //   - Citation.contributorship.summary
-            if (complex.Id == "Statistic.attributeEstimate.attributeEstimate")
+            if (complex.Id.StartsWith("Citation") || complex.Id.StartsWith("Statistic"))
             {
-                explicitName = "AttributeEstimateAttributeEstimate";
-                exportName = "AttributeEstimateAttributeEstimateComponent";
+                string parentName = complex.Id.Substring(0, complex.Id.IndexOf('.'));
+                var sillyBackboneName = complex.Id.Substring(parentName.Length);
+                explicitName = capitalizeThoseSillyBackboneNames(sillyBackboneName);
+                exportName = explicitName + "Component";
             }
-            else if (complex.Id == "Citation.contributorship.summary")
-            {
-                explicitName = "ContributorshipSummary";
-                exportName = "ContributorshipSummaryComponent";
-            }
-
             // end of repair
+
             string componentName = parentExportName + "#" + (string.IsNullOrEmpty(explicitName) ?
                 complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
                 explicitName);
@@ -1922,15 +1925,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //   explicitname in the definition for attributes:
             //   - Statistic.attributeEstimate.attributeEstimate
             //   - Citation.contributorship.summary
-            if (type == "Statistic.attributeEstimate.attributeEstimate")
-            {
-                type = "Statistic.AttributeEstimateAttributeEstimateComponent";
-            }
-            else if (type == "Citation.contributorship.summary")
-            {
-                type = "Citation.ContributorshipSummaryComponent";
-            }
 
+            if (type.StartsWith("Citation") || type.StartsWith("Statistic"))
+            {
+                string parentName = type.Substring(0, type.IndexOf('.'));
+                var sillyBackboneName = type.Substring(parentName.Length);
+                type = parentName + "." + capitalizeThoseSillyBackboneNames(sillyBackboneName) + "Component";
+            }
             // end of repair
             else if (_info.TryGetExplicitName(type, out string explicitTypeName))
             {
