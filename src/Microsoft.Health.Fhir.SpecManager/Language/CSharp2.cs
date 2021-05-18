@@ -125,7 +125,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
             { "base", "Object" },
-            { "base64Binary", "string" },
+            { "base64Binary", "byte[]" },
             { "boolean", "bool" },
             { "canonical", "string" },
             { "code", "string" },
@@ -1276,7 +1276,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.OpenScope();
             _writer.WriteLineIndented($"writer.WriteStartObject();");
             _writer.CloseScope();
-            _writer.WriteLine();
 
             if (isResource &&
                 (nameForExport != "Resource") &&
@@ -1322,9 +1321,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     string.Empty,
                     complex.Components.ContainsKey(element.Path));
 
+                bool isMultiTyped = values.Count > 1;
+
                 foreach (KeyValuePair<string, string> kvp in values)
                 {
-                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional);
+                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional || isMultiTyped);
 
                     string elementName;
                     if ((kvp.Key == complex.Name) && (!element.IsInherited))
@@ -1349,6 +1350,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             break;
                         case "List<bool>":
                             WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteBooleanValue");
+                            break;
+                        case "byte[]":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteBase64String");
+                            break;
+                        case "List<byte[]>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteBase64StringValue");
                             break;
                         case "decimal":
                             WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteNumber");
@@ -1455,6 +1462,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     break;
 
+                // non-string types that are serialized as strings
                 case "guid":
                 case "integer64":
                 case "int64":
@@ -1542,11 +1550,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "DomainResource":
                 case "MetadataResource":
                 case "CanonicalResource":
-                    _writer.WriteLineIndented($"foreach (Resource resource in {elementName})");
+                    _writer.WriteLineIndented($"foreach (dynamic resource in {elementName})");
                     _writer.OpenScope();
-                    _writer.WriteLineIndented($"((Resource)this).SerializeJson(writer, options, true);");
+                    _writer.WriteLineIndented($"resource.SerializeJson(writer, options, true);");
                     _writer.CloseScope();
 
+                    // _writer.WriteLineIndented($"foreach (Resource resource in {elementName})");
+                    // _writer.WriteLineIndented($"((Resource)this).SerializeJson(writer, options, true);");
                     break;
 
                 case "guid":
@@ -1637,9 +1647,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     string.Empty,
                     complex.Components.ContainsKey(element.Path));
 
+                bool isMultiTyped = values.Count > 1;
+
                 foreach (KeyValuePair<string, string> kvp in values)
                 {
-                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional);
+                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional || isMultiTyped);
 
                     string elementName;
                     if ((kvp.Key == complex.Name) && (!element.IsInherited))
@@ -2255,6 +2267,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.Empty,
                 complex.Components.ContainsKey(element.Path));
 
+            bool isMultiTyped = values.Count > 1;
+
             foreach (KeyValuePair<string, string> kvp in values)
             {
                 string elementName;
@@ -2268,7 +2282,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 string optionalFlagString =
-                    (element.IsOptional && (!element.IsArray) && IsNullable(kvp.Value))
+                    ((element.IsOptional || isMultiTyped) && (!element.IsArray) && IsNullable(kvp.Value))
                         ? "?"
                         : string.Empty;
 
