@@ -1245,6 +1245,74 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             // close interface (type)
             _writer.CloseScope();
+
+            if (_exportEnums)
+            {
+                foreach (FhirElement element in elementsWithCodes)
+                {
+                    WriteCode(element);
+                }
+            }
+        }
+
+        /// <summary>Writes a code.</summary>
+        /// <param name="element">The element.</param>
+        private void WriteCode(
+            FhirElement element)
+        {
+            string codeName = FhirUtils.ToConvention(
+                $"{element.Path}.Codes",
+                string.Empty,
+                FhirTypeBase.NamingConvention.PascalCase);
+
+            if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
+            {
+                codeName = codeName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
+            }
+
+            if (_exportedCodes.Contains(codeName))
+            {
+                return;
+            }
+
+            _exportedCodes.Add(codeName);
+
+            _writer.WriteLineIndented($"/// <summary>");
+            _writer.WriteLineIndented($"/// Code Values for the {element.Path} field");
+            _writer.WriteLineIndented($"/// </summary>");
+
+            if (codeName.EndsWith("Codes", StringComparison.Ordinal))
+            {
+                _writer.WriteLineIndented($"public static class {codeName} {{");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"public static class {codeName}Codes {{");
+            }
+
+            _writer.IncreaseIndent();
+
+            if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+            {
+                foreach (FhirConcept concept in vs.Concepts)
+                {
+                    FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
+
+                    _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                }
+            }
+            else
+            {
+                foreach (string code in element.Codes)
+                {
+                    FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+
+                    _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                }
+            }
+
+            _writer.DecreaseIndent();
+            _writer.WriteLineIndented("}");
         }
 
         /// <summary>Writes serialization functions for a complex object.</summary>
@@ -2001,6 +2069,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         case "List<bool>":
                             WriteJsonPropertyParseListCase(elementName, camel, kvp.Value, "GetBoolean");
                             break;
+                        case "byte[]":
+                            WriteJsonPropertyParseCase(elementName, camel, kvp.Value, "GetBytesFromBase64");
+                            break;
+                        case "List<byte[]>":
+                            WriteJsonPropertyParseListCase(elementName, camel, kvp.Value, "GetBytesFromBase64");
+                            break;
                         case "decimal":
                             WriteJsonPropertyParseCase(elementName, camel, kvp.Value, "GetDecimal");
                             break;
@@ -2090,6 +2164,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"<{_namespaceModels}.Resource>(ref reader, options);");
                     break;
 
+                case "byte[]":
+                    _writer.WriteLineIndented($"{elementName} = reader.{getterFunctionName}();");
+                    break;
+
                 case "integer64":
                 case "int64":
                 case "long":
@@ -2162,6 +2240,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     //_writer.WriteLineIndented($"{_namespaceModels}.{elementType} resource = new {_namespaceModels}.{elementType}();");
                     //_writer.WriteLineIndented($"resource.DeserializeJson(ref reader, options);");
                     //_writer.WriteLineIndented($"{elementName}.Add(resource);");
+                    break;
+
+                case "byte[]":
+                    _writer.WriteLineIndented($"{elementName}.Add(reader.{getterFunctionName}());");
                     break;
 
                 case "integer64":
@@ -2367,6 +2449,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     return false;
 
                 case "bool":
+                case "byte[]":
                 case "decimal":
                 case "DateTime":
                 case "int":

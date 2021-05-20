@@ -7,16 +7,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-//using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Newtonsoft.Json;
+using fhir_5 = fhirCsR5.Models;
+
+#if CAKE        // other versions of loaders
 using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.r5;
-//using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.r5.Models;
+using fhir_5 = Microsoft.Health.Fhir.SpecManager.fhir.r5.Models;
+#endif
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
@@ -28,7 +29,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         private const string ExtensionShort = "Additional content defined by implementations";
 
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
-        private readonly JsonConverter _jsonConverter;
+        // private readonly JsonConverter _jsonConverter;
 
         /// <summary>The errors.</summary>
         private List<string> _errors;
@@ -41,7 +42,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// </summary>
         public FromR5()
         {
-            _jsonConverter = new fhir_5.ResourceConverter();
+            // _jsonConverter = new fhir_5.ResourceConverter();
             _errors = new List<string>();
             _warnings = new List<string>();
         }
@@ -90,6 +91,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_5.ValueSet vs,
             FhirVersionInfo fhirVersionInfo)
         {
+            if (string.IsNullOrEmpty(vs.Status))
+            {
+                vs.Status = "unknown";
+            }
+
             // ignore retired
             if (vs.Status.Equals("retired", StringComparison.Ordinal))
             {
@@ -400,6 +406,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             fhir_5.CodeSystem cs,
             FhirVersionInfo fhirVersionInfo)
         {
+            // TODO: Patch for 4.6.0
+            if (string.IsNullOrEmpty(cs.Status))
+            {
+                cs.Status = "unknown";
+                _errors.Add($"CodeSystem {cs.Name} ({cs.Id}): Status field missing");
+            }
+
             // ignore retired
             if (cs.Status.Equals("retired", StringComparison.Ordinal))
             {
@@ -1305,7 +1318,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             try
             {
                 // try to parse this JSON into a resource object
-                return JsonConvert.DeserializeObject<fhir_5.Resource>(json, _jsonConverter);
+                // return JsonConvert.DeserializeObject<fhir_5.Resource>(json, _jsonConverter);
+                return System.Text.Json.JsonSerializer.Deserialize<fhir_5.Resource>(
+                    json,
+                    fhirCsR4.Serialization.FhirSerializerOptions.Compact);
             }
             catch (JsonException ex)
             {
