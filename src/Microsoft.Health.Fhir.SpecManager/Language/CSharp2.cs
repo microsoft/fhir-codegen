@@ -1345,10 +1345,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented($"writer.WriteStartObject();");
             _writer.CloseScope();
 
-            if (isResource &&
-                (nameForExport != "Resource") &&
-                (nameForExport != "DomainResource") &&
-                (nameForExport != "MetadataResource"))
+            if (isResource && ShouldWriteResourceName(nameForExport))
             {
                 WriteJsonSerializeElement("ResourceType", "resourceType", "string", false, "WriteString");
                 _writer.WriteLine();
@@ -1902,7 +1899,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "DomainResource":
                 case "MetadataResource":
                 case "CanonicalResource":
-
                     _writer.WriteLineIndented($"{_namespaceModels}.Resource item{elementName} = new {_namespaceModels}.Resource();");
                     _writer.WriteLineIndented($"item{elementName}.LoadFromJsonElements(jList{elementName}[i]);");
                     _writer.WriteLineIndented($"{elementName}.Add(item{elementName});");
@@ -1912,7 +1908,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "integer64":
                 case "int64":
                 case "long":
-
                     _writer.WriteLineIndented($"string strVal{elementName} = jList{elementName}[i].GetString();");
                     _writer.WriteLineIndented($"if (long.TryParse(strVal{elementName}, out long longVal{elementName}))");
                     _writer.OpenScope();
