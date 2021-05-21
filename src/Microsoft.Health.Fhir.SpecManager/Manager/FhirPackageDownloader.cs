@@ -34,12 +34,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Downloads either a Package or Published version of the requested type.</summary>
         /// <param name="releaseName">      The release name (e.g., R4, DSTU2).</param>
+        /// <param name="ballotPrefix">     The ballot prefix.</param>
         /// <param name="packageName">      Name of the package.</param>
         /// <param name="version">          The version string (e.g., 4.0.1).</param>
         /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public static bool Download(
             string releaseName,
+            string ballotPrefix,
             string packageName,
             string version,
             string fhirSpecDirectory)
@@ -82,6 +84,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 // download from publish URL
                 loaded = FhirPackageDownloader.DownloadPublished(
                     releaseName,
+                    ballotPrefix,
                     packageName,
                     version,
                     fhirSpecDirectory);
@@ -155,18 +158,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Downloads a published FHIR package.</summary>
         /// <param name="releaseName">      The release name (e.g., R4, DSTU2).</param>
+        /// <param name="ballotPrefix">     The ballot prefix.</param>
         /// <param name="packageName">      Name of the package.</param>
         /// <param name="version">          The version string (e.g., 4.0.1).</param>
         /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public static bool DownloadPublished(
             string releaseName,
+            string ballotPrefix,
             string packageName,
             string version,
             string fhirSpecDirectory)
         {
             // build the url to this package
-            string url = $"{PublishedDownloadUrlBase}{releaseName}/{packageName}.tgz";
+            string url;
+
+            if (string.IsNullOrEmpty(ballotPrefix))
+            {
+                url = $"{PublishedDownloadUrlBase}{releaseName}/{packageName}.tgz";
+            }
+            else
+            {
+                url = $"{PublishedDownloadUrlBase}{ballotPrefix}/{packageName}.tgz";
+            }
 
             // download and extract our package
             return DownloadAndExtract(new Uri(url), packageName, version, fhirSpecDirectory);

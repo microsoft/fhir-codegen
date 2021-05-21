@@ -35,12 +35,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>The named reference links.</summary>
         private static Dictionary<string, string> _namedReferenceLinks;
 
+        /// <summary>The errors.</summary>
+        private List<string> _errors;
+
+        /// <summary>The warnings.</summary>
+        private List<string> _warnings;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FromR2"/> class.
         /// </summary>
         public FromR2()
         {
             _jsonConverter = new fhir_2.ResourceConverter();
+            _errors = new List<string>();
+            _warnings = new List<string>();
             _namedReferenceLinks = new Dictionary<string, string>()
             {
                 { "Extension.extension", "Extension.extension" },
@@ -125,6 +133,43 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             };
         }
 
+        /// <summary>Query if this object has issues.</summary>
+        /// <param name="errorCount">  [out] Number of errors.</param>
+        /// <param name="warningCount">[out] Number of warnings.</param>
+        /// <returns>True if issues, false if not.</returns>
+        public bool HasIssues(out int errorCount, out int warningCount)
+        {
+            errorCount = _errors.Count;
+            warningCount = _warnings.Count;
+
+            if ((errorCount > 0) || (warningCount > 0))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>Displays the issues.</summary>
+        public void DisplayIssues()
+        {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+            Console.WriteLine("Errors (only able to pass with manual code changes)");
+
+            foreach (string value in _errors)
+            {
+                Console.WriteLine($" - {value}");
+            }
+
+            Console.WriteLine("Warnings (able to pass, but should be reviewed)");
+
+            foreach (string value in _warnings)
+            {
+                Console.WriteLine($" - {value}");
+            }
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
+        }
+
         /// <summary>Process the value set.</summary>
         /// <param name="vs">             The vs.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
@@ -134,6 +179,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         {
             // ignore retired
             if (vs.Status.Equals("retired", StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            // do not process a value set if we have already loaded it
+            if (fhirVersionInfo.HasValueSet(vs.Url))
             {
                 return;
             }

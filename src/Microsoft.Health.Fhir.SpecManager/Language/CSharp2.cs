@@ -125,7 +125,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
             { "base", "Object" },
-            { "base64Binary", "string" },
+            { "base64Binary", "byte[]" },
             { "boolean", "bool" },
             { "canonical", "string" },
             { "code", "string" },
@@ -1245,6 +1245,74 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             // close interface (type)
             _writer.CloseScope();
+
+            if (_exportEnums)
+            {
+                foreach (FhirElement element in elementsWithCodes)
+                {
+                    WriteCode(element);
+                }
+            }
+        }
+
+        /// <summary>Writes a code.</summary>
+        /// <param name="element">The element.</param>
+        private void WriteCode(
+            FhirElement element)
+        {
+            string codeName = FhirUtils.ToConvention(
+                $"{element.Path}.Codes",
+                string.Empty,
+                FhirTypeBase.NamingConvention.PascalCase);
+
+            if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
+            {
+                codeName = codeName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
+            }
+
+            if (_exportedCodes.Contains(codeName))
+            {
+                return;
+            }
+
+            _exportedCodes.Add(codeName);
+
+            _writer.WriteLineIndented($"/// <summary>");
+            _writer.WriteLineIndented($"/// Code Values for the {element.Path} field");
+            _writer.WriteLineIndented($"/// </summary>");
+
+            if (codeName.EndsWith("Codes", StringComparison.Ordinal))
+            {
+                _writer.WriteLineIndented($"public static class {codeName} {{");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"public static class {codeName}Codes {{");
+            }
+
+            _writer.IncreaseIndent();
+
+            if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
+            {
+                foreach (FhirConcept concept in vs.Concepts)
+                {
+                    FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
+
+                    _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                }
+            }
+            else
+            {
+                foreach (string code in element.Codes)
+                {
+                    FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
+
+                    _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                }
+            }
+
+            _writer.DecreaseIndent();
+            _writer.WriteLineIndented("}");
         }
 
         /// <summary>Writes serialization functions for a complex object.</summary>
@@ -1276,7 +1344,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.OpenScope();
             _writer.WriteLineIndented($"writer.WriteStartObject();");
             _writer.CloseScope();
-            _writer.WriteLine();
 
             if (isResource &&
                 (nameForExport != "Resource") &&
@@ -1322,9 +1389,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     string.Empty,
                     complex.Components.ContainsKey(element.Path));
 
+                bool isMultiTyped = values.Count > 1;
+
                 foreach (KeyValuePair<string, string> kvp in values)
                 {
-                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional);
+                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional || isMultiTyped);
 
                     string elementName;
                     if ((kvp.Key == complex.Name) && (!element.IsInherited))
@@ -1349,6 +1418,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             break;
                         case "List<bool>":
                             WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteBooleanValue");
+                            break;
+                        case "byte[]":
+                            WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteBase64String");
+                            break;
+                        case "List<byte[]>":
+                            WriteJsonSerializeListElement(elementName, camel, kvp.Value, "WriteBase64StringValue");
                             break;
                         case "decimal":
                             WriteJsonSerializeElement(elementName, camel, kvp.Value, isOptional, "WriteNumber");
@@ -1455,6 +1530,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     break;
 
+                // non-string types that are serialized as strings
                 case "guid":
                 case "integer64":
                 case "int64":
@@ -1542,11 +1618,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "DomainResource":
                 case "MetadataResource":
                 case "CanonicalResource":
-                    _writer.WriteLineIndented($"foreach (Resource resource in {elementName})");
+                    _writer.WriteLineIndented($"foreach (dynamic resource in {elementName})");
                     _writer.OpenScope();
-                    _writer.WriteLineIndented($"((Resource)this).SerializeJson(writer, options, true);");
+                    _writer.WriteLineIndented($"resource.SerializeJson(writer, options, true);");
                     _writer.CloseScope();
 
+                    // _writer.WriteLineIndented($"foreach (Resource resource in {elementName})");
+                    // _writer.WriteLineIndented($"((Resource)this).SerializeJson(writer, options, true);");
                     break;
 
                 case "guid":
@@ -1637,9 +1715,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     string.Empty,
                     complex.Components.ContainsKey(element.Path));
 
+                bool isMultiTyped = values.Count > 1;
+
                 foreach (KeyValuePair<string, string> kvp in values)
                 {
-                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional);
+                    bool isOptional = RequiresNullTest(kvp.Value, element.IsOptional || isMultiTyped);
 
                     string elementName;
                     if ((kvp.Key == complex.Name) && (!element.IsInherited))
@@ -1989,6 +2069,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         case "List<bool>":
                             WriteJsonPropertyParseListCase(elementName, camel, kvp.Value, "GetBoolean");
                             break;
+                        case "byte[]":
+                            WriteJsonPropertyParseCase(elementName, camel, kvp.Value, "GetBytesFromBase64");
+                            break;
+                        case "List<byte[]>":
+                            WriteJsonPropertyParseListCase(elementName, camel, kvp.Value, "GetBytesFromBase64");
+                            break;
                         case "decimal":
                             WriteJsonPropertyParseCase(elementName, camel, kvp.Value, "GetDecimal");
                             break;
@@ -2078,6 +2164,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         $"<{_namespaceModels}.Resource>(ref reader, options);");
                     break;
 
+                case "byte[]":
+                    _writer.WriteLineIndented($"{elementName} = reader.{getterFunctionName}();");
+                    break;
+
                 case "integer64":
                 case "int64":
                 case "long":
@@ -2150,6 +2240,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     //_writer.WriteLineIndented($"{_namespaceModels}.{elementType} resource = new {_namespaceModels}.{elementType}();");
                     //_writer.WriteLineIndented($"resource.DeserializeJson(ref reader, options);");
                     //_writer.WriteLineIndented($"{elementName}.Add(resource);");
+                    break;
+
+                case "byte[]":
+                    _writer.WriteLineIndented($"{elementName}.Add(reader.{getterFunctionName}());");
                     break;
 
                 case "integer64":
@@ -2255,6 +2349,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.Empty,
                 complex.Components.ContainsKey(element.Path));
 
+            bool isMultiTyped = values.Count > 1;
+
             foreach (KeyValuePair<string, string> kvp in values)
             {
                 string elementName;
@@ -2268,7 +2364,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 string optionalFlagString =
-                    (element.IsOptional && (!element.IsArray) && IsNullable(kvp.Value))
+                    ((element.IsOptional || isMultiTyped) && (!element.IsArray) && IsNullable(kvp.Value))
                         ? "?"
                         : string.Empty;
 
@@ -2353,6 +2449,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     return false;
 
                 case "bool":
+                case "byte[]":
                 case "decimal":
                 case "DateTime":
                 case "int":
