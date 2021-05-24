@@ -66,7 +66,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       if ((current.DataElement != null) && (current.DataElement.Value != null))
       {
-        writer.WriteBase64String("data",current.DataElement.Value);
+        writer.WriteString("data",System.Convert.ToBase64String(current.DataElement.Value));
       }
 
       if ((current.UrlElement != null) && (current.UrlElement.Value != null))
@@ -81,7 +81,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       if ((current.HashElement != null) && (current.HashElement.Value != null))
       {
-        writer.WriteBase64String("hash",current.HashElement.Value);
+        writer.WriteString("hash",System.Convert.ToBase64String(current.HashElement.Value));
       }
 
       if ((current.TitleElement != null) && (current.TitleElement.Value != null))
@@ -146,7 +146,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "data":
-          current.DataElement = new Base64Binary(reader.GetBytesFromBase64());
+          current.DataElement = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         case "url":
@@ -158,7 +158,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "hash":
-          current.HashElement = new Base64Binary(reader.GetBytesFromBase64());
+          current.HashElement = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         case "title":

@@ -662,7 +662,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       if ((current.CarrierAIDCElement != null) && (current.CarrierAIDCElement.Value != null))
       {
-        writer.WriteBase64String("carrierAIDC",current.CarrierAIDCElement.Value);
+        writer.WriteString("carrierAIDC",System.Convert.ToBase64String(current.CarrierAIDCElement.Value));
       }
 
       if ((current.CarrierHRFElement != null) && (current.CarrierHRFElement.Value != null))
@@ -723,7 +723,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "carrierAIDC":
-          current.CarrierAIDCElement = new Base64Binary(reader.GetBytesFromBase64());
+          current.CarrierAIDCElement = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         case "carrierHRF":

@@ -789,7 +789,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       if ((current.QueryElement != null) && (current.QueryElement.Value != null))
       {
-        writer.WriteBase64String("query",current.QueryElement.Value);
+        writer.WriteString("query",System.Convert.ToBase64String(current.QueryElement.Value));
       }
 
       if ((current.Detail != null) && (current.Detail.Count != 0))
@@ -894,7 +894,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "query":
-          current.QueryElement = new Base64Binary(reader.GetBytesFromBase64());
+          current.QueryElement = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         case "detail":
@@ -950,7 +950,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             writer.WriteString("valueString",v_FhirString.Value);
             break;
           case Base64Binary v_Base64Binary:
-            writer.WriteBase64String("valueBase64Binary", (byte[])v_Base64Binary.Value);
+            writer.WriteString("valueBase64Binary", System.Convert.ToBase64String((byte[])v_Base64Binary.Value));
             break;
         }
       }
@@ -998,7 +998,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "valueBase64Binary":
-          current.Value = new Base64Binary(reader.GetBytesFromBase64());
+          current.Value = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         // Complex: detail, Export: DetailComponent, Base: BackboneElement
