@@ -2258,6 +2258,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment("Primitive value of the element");
 
                 _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof({getSystemTypeForFhirType(primitive.Name)}))]");
 
                 if (CSharpFirelyCommon.PrimitiveValidationPatterns.ContainsKey(primitive.Name))
                 {
@@ -2288,6 +2289,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteFooter();
             }
+        }
+
+        private string getSystemTypeForFhirType(string fhirType)
+        {
+            var systemTypeName = fhirType switch
+            {
+                "boolean" => "Boolean",
+                "integer" => "Integer",
+                "unsignedInt" => "Integer",
+                "positiveInt" => "Integer",
+                "integer64" => "Long",
+                "time" => "Time",
+                "date" => "Date",
+                "instant" => "DateTime",
+                "dateTime" => "DateTime",
+                "decimal" => "Decimal",
+                _ => "String"
+            };
+
+            return "SystemPrimitive." + systemTypeName;
         }
 
         private void WriteSerializable()
@@ -2368,6 +2389,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
             _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
             _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
+            _writer.WriteLineIndented("using SystemPrimitive = Hl7.Fhir.ElementModel.Types;");
             _writer.WriteLine(string.Empty);
 
             WriteCopyright();
