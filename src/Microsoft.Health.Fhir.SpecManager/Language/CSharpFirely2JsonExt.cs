@@ -1364,6 +1364,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     continue;
                 }
 
+                //if (element.Path == "Timing.event")
+                //{
+                //    Console.Write("");
+                //}
+
                 string typeName = element.BaseTypeName;
 
                 if (string.IsNullOrEmpty(typeName) &&
@@ -1445,11 +1450,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         case "Base64Binary":
                             if (elementInfo.IsList)
                             {
-                                _writer.WriteLineIndented($"{currentName}.Add(new {csType}(reader.GetBytesFromBase64()));");
+                                _writer.WriteLineIndented($"{currentName}.Add(new {csType}(System.Convert.FromBase64String(reader.GetString())));");
                             }
                             else
                             {
-                                _writer.WriteLineIndented($"{currentName} = new {csType}(reader.GetBytesFromBase64());");
+                                _writer.WriteLineIndented($"{currentName} = new {csType}(System.Convert.FromBase64String(reader.GetString()));");
                             }
 
                             break;
@@ -1587,7 +1592,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                     //    $"JsonSerializer.Deserialize<{_modelNamespace}.{csType}>(ref reader, options);");
 
                                     _writer.WriteLineIndented($"{currentName} = new {_modelNamespace}.{csType}();");
-                                    _writer.WriteLineIndented($"{currentName}.DeserializeJson(ref reader, options);");
+                                    _writer.WriteLineIndented($"(({_modelNamespace}.{csType}){currentName}).DeserializeJson(ref reader, options);");
                                 }
                             }
 
@@ -1616,7 +1621,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.DecreaseIndent();
                     _writer.WriteLine();
 
-                    if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(csType.ToLowerInvariant()) &&
+                    if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(typeName) &&
                         (csType != "string"))
                     {
                         string elementName = currentName.EndsWith("Element", StringComparison.Ordinal)
@@ -1637,6 +1642,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             _writer.WriteLine();
                             _writer.WriteLineIndented($"while (reader.TokenType != JsonTokenType.EndArray)");
                             _writer.OpenScope();
+
+                            _writer.WriteLineIndented($"if (i_{elementInfo.FhirElementName} >= {elementName}.Count)");
+                            _writer.OpenScope();
+                            _writer.WriteLineIndented($"{elementName}.Add(new {csType}());");
+                            _writer.CloseScope();
+
                             _writer.WriteLineIndented($"(({_modelNamespace}.Element){elementName}[i_{elementInfo.FhirElementName}++]).DeserializeJson(ref reader, options);");
                             _writer.WriteLine();
                             _writer.WriteLineIndented($"if (!reader.Read())");
@@ -1696,7 +1707,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         break;
 
                     case "Base64Binary":
-                        _writer.WriteLineIndented($"{currentName} = new {kvp.Value}(reader.GetBytesFromBase64());");
+                        _writer.WriteLineIndented($"{currentName} = new {kvp.Value}(System.Convert.FromBase64String(reader.GetString()));");
                         break;
 
                     case "Canonical":
@@ -1757,8 +1768,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             //    $"JsonSerializer.Deserialize<{_modelNamespace}.{kvp.Value}>(ref reader, options);");
 
                             _writer.WriteLineIndented($"{currentName} = new {_modelNamespace}.{kvp.Value}();");
-                            _writer.WriteLineIndented($"{currentName}.DeserializeJson(ref reader, options);");
-
+                            _writer.WriteLineIndented($"(({_modelNamespace}.{kvp.Value}){currentName}).DeserializeJson(ref reader, options);");
                         }
 
                         break;
@@ -1876,20 +1886,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             {
                                 _writer.WriteLineIndented($"foreach ({csType} val in {currentName})");
                                 _writer.OpenScope();
-                                _writer.WriteLineIndented($"writer.WriteBase64StringValue(val.Value);");
+                                _writer.WriteLineIndented($"writer.WriteStringValue(System.Convert.ToBase64String(val.Value));");
                                 _writer.CloseScope();
                             }
                             else
                             {
                                 if (elementInfo.IsMandatory)
                                 {
-                                    _writer.WriteLineIndented($"writer.WriteBase64String(\"{elementInfo.FhirElementName}\",(byte[]){currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",System.Convert.ToBase64String((byte[]){currentName}.Value));");
                                 }
                                 else
                                 {
                                     _writer.WriteLineIndented($"if (({currentName} != null) && ({currentName}.Value != null))");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented($"writer.WriteBase64String(\"{elementInfo.FhirElementName}\",{currentName}.Value);");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",System.Convert.ToBase64String({currentName}.Value));");
                                     _writer.CloseScope();
                                 }
                             }
@@ -2216,7 +2226,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         break;
 
                     case "Base64Binary":
-                        _writer.WriteLineIndented($"writer.WriteBase64String(\"{fhirCombinedName}\", (byte[]){caseVarName}.Value);");
+                        _writer.WriteLineIndented($"writer.WriteString(\"{fhirCombinedName}\", System.Convert.ToBase64String((byte[]){caseVarName}.Value));");
                         break;
 
                     case "Canonical":

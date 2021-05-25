@@ -204,17 +204,21 @@ namespace PerfTestCS.Benchmark
         [Benchmark]
         public string FirelyExtSerialize()
         {
-            MemoryStream memoryStream = new MemoryStream();
+            using (MemoryStream memoryStream = new MemoryStream())
+            using (System.Text.Json.Utf8JsonWriter writer = new System.Text.Json.Utf8JsonWriter(memoryStream))
+            {
+                _extConverter.Write(
+                    writer,
+                    (Hl7.Fhir.Model.Resource)_firelyModel,
+                    Hl7.Fhir.Serialization.FhirSerializerOptions.Compact);
 
-            System.Text.Json.Utf8JsonWriter writer = new System.Text.Json.Utf8JsonWriter(memoryStream);
+                string test = System.Text.Encoding.UTF8.GetString(memoryStream.GetBuffer());
 
-            _extConverter.Write(writer, (Hl7.Fhir.Model.Resource)_firelyModel, Hl7.Fhir.Serialization.FhirSerializerOptions.Compact);
-
-            string test = System.Text.Encoding.UTF8.GetString(memoryStream.GetBuffer());
-
-            return test;
+                return test;
+            }
         }
 
+#if CAKE // 2021.05.24 - just testing Firely right now
         /// <summary>Basic newtonsoft setup.</summary>
         [GlobalSetup(Targets = new[] { nameof(BasicNewtonsoftParse), nameof(BasicNewtonsoftSerialize) })]
         public void BasicNewtonsoftSetup()
@@ -295,5 +299,7 @@ namespace PerfTestCS.Benchmark
         {
             return System.Text.Json.JsonSerializer.Serialize(_basicSystemJsonModel);
         }
+#endif
+
     }
 }

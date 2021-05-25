@@ -68,7 +68,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       if ((current.DataElement != null) && (current.DataElement.Value != null))
       {
-        writer.WriteBase64String("data",current.DataElement.Value);
+        writer.WriteString("data",System.Convert.ToBase64String(current.DataElement.Value));
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -120,7 +120,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "data":
-          current.DataElement = new Base64Binary(reader.GetBytesFromBase64());
+          current.DataElement = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         // Complex: Binary, Export: Binary, Base: Resource

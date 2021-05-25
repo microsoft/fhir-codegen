@@ -170,7 +170,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.DefaultValue)
         {
           case Base64Binary v_Base64Binary:
-            writer.WriteBase64String("defaultValueBase64Binary", (byte[])v_Base64Binary.Value);
+            writer.WriteString("defaultValueBase64Binary", System.Convert.ToBase64String((byte[])v_Base64Binary.Value));
             break;
           case FhirBoolean v_FhirBoolean:
             writer.WriteBoolean("defaultValueBoolean", (bool)v_FhirBoolean.Value);
@@ -368,7 +368,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.Fixed)
         {
           case Base64Binary v_Base64Binary:
-            writer.WriteBase64String("fixedBase64Binary", (byte[])v_Base64Binary.Value);
+            writer.WriteString("fixedBase64Binary", System.Convert.ToBase64String((byte[])v_Base64Binary.Value));
             break;
           case FhirBoolean v_FhirBoolean:
             writer.WriteBoolean("fixedBoolean", (bool)v_FhirBoolean.Value);
@@ -556,7 +556,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.Pattern)
         {
           case Base64Binary v_Base64Binary:
-            writer.WriteBase64String("patternBase64Binary", (byte[])v_Base64Binary.Value);
+            writer.WriteString("patternBase64Binary", System.Convert.ToBase64String((byte[])v_Base64Binary.Value));
             break;
           case FhirBoolean v_FhirBoolean:
             writer.WriteBoolean("patternBoolean", (bool)v_FhirBoolean.Value);
@@ -1078,7 +1078,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "defaultValueBase64Binary":
-          current.DefaultValue = new Base64Binary(reader.GetBytesFromBase64());
+          current.DefaultValue = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         case "defaultValueBoolean":
@@ -1318,7 +1318,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "fixedBase64Binary":
-          current.Fixed = new Base64Binary(reader.GetBytesFromBase64());
+          current.Fixed = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         case "fixedBoolean":
@@ -1550,7 +1550,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "patternBase64Binary":
-          current.Pattern = new Base64Binary(reader.GetBytesFromBase64());
+          current.Pattern = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         case "patternBoolean":
@@ -2463,7 +2463,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.Value)
         {
           case Base64Binary v_Base64Binary:
-            writer.WriteBase64String("valueBase64Binary", (byte[])v_Base64Binary.Value);
+            writer.WriteString("valueBase64Binary", System.Convert.ToBase64String((byte[])v_Base64Binary.Value));
             break;
           case FhirBoolean v_FhirBoolean:
             writer.WriteBoolean("valueBoolean", (bool)v_FhirBoolean.Value);
@@ -2686,7 +2686,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "valueBase64Binary":
-          current.Value = new Base64Binary(reader.GetBytesFromBase64());
+          current.Value = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         case "valueBoolean":

@@ -48,7 +48,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 { 2, new SortedSet<string>() { "1.0.2" } },
                 { 3, new SortedSet<string>() { "3.0.2" } },
                 { 4, new SortedSet<string>() { "4.0.1", "4.1.0" } },
-                { 5, new SortedSet<string>() { "4.4.0", "4.5.0" } },
+                { 5, new SortedSet<string>() { "4.4.0", "4.5.0", "4.6.0" } },
             };
 
             // build the dictionary of published versions*
@@ -139,6 +139,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
                         ExpansionsPackageName = "hl7.fhir.r5.expansions",
                         VersionString = "4.5.0",
+                        IsDevBuild = false,
+                        IsLocalBuild = false,
+                        IsOnDisk = false,
+                    }
+                },
+                {
+                    "4.6.0",
+                    new FhirVersionInfo(5)
+                    {
+                        ReleaseName = "R5",
+                        BallotPrefix = "2021May",
+                        PackageName = "hl7.fhir.r5.core",
+                        ExamplesPackageName = "hl7.fhir.r5.examples",
+                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
+                        VersionString = "4.6.0",
                         IsDevBuild = false,
                         IsLocalBuild = false,
                         IsOnDisk = false,
@@ -363,7 +378,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         continue;
                     }
 
-                    if (string.IsNullOrEmpty(_publishedVersionDict[knownVersion].BallotPrefix))
+                    if (string.IsNullOrEmpty(_publishedVersionDict[knownVersion].BallotPrefix) ||
+                        (!string.IsNullOrEmpty(_publishedVersionDict[bestMatchVersion].BallotPrefix)))
                     {
                         bestMatchVersion = knownVersion;
                     }

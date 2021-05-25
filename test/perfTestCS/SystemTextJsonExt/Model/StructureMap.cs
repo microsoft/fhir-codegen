@@ -1062,7 +1062,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.DefaultValue)
         {
           case Base64Binary v_Base64Binary:
-            writer.WriteBase64String("defaultValueBase64Binary", (byte[])v_Base64Binary.Value);
+            writer.WriteString("defaultValueBase64Binary", System.Convert.ToBase64String((byte[])v_Base64Binary.Value));
             break;
           case FhirBoolean v_FhirBoolean:
             writer.WriteBoolean("defaultValueBoolean", (bool)v_FhirBoolean.Value);
@@ -1335,7 +1335,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
           break;
 
         case "defaultValueBase64Binary":
-          current.DefaultValue = new Base64Binary(reader.GetBytesFromBase64());
+          current.DefaultValue = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
         case "defaultValueBoolean":

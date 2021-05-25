@@ -66,7 +66,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                 if (!Directory.Exists(packageDir))
                 {
-                    Console.WriteLine($"Cannot find R{releaseName}-{packageName} in {fhirSpecDirectory}");
+                    Console.WriteLine($"Cannot find {releaseName}-{packageName} in {fhirSpecDirectory}");
                     return false;
                 }
             }

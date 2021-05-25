@@ -7,16 +7,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-//using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 using Newtonsoft.Json;
+using fhir_4 = fhirCsR4.Models;
+
+#if CAKE        // other versions of loaders
 using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4;
-//using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4.Models;
+using fhir_4 = Microsoft.Health.Fhir.SpecManager.fhir.r4.Models;
+#endif
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
@@ -28,7 +29,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         private const string ExtensionShort = "Additional content defined by implementations";
 
         /// <summary>The JSON converter for polymorphic deserialization of this version of FHIR.</summary>
-        private readonly JsonConverter _jsonConverter;
+        // private readonly JsonConverter _jsonConverter;
 
         /// <summary>The errors.</summary>
         private List<string> _errors;
@@ -41,7 +42,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// </summary>
         public FromR4()
         {
-            _jsonConverter = new fhir_4.ResourceConverter();
+            // _jsonConverter = new fhir_4.ResourceConverter();
             _errors = new List<string>();
             _warnings = new List<string>();
         }
@@ -1298,8 +1299,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             try
             {
                 // try to parse this JSON into a resource object
-                return JsonConvert.DeserializeObject<fhir_4.Resource>(json, _jsonConverter);
-                //return JsonSerializer.Deserialize<fhir_4.Resource>(json);
+                // return JsonConvert.DeserializeObject<fhir_4.Resource>(json, _jsonConverter);
+                // return JsonSerializer.Deserialize<fhir_4.Resource>(json);
+                return System.Text.Json.JsonSerializer.Deserialize<fhir_4.Resource>(
+                    json,
+                    fhirCsR4.Serialization.FhirSerializerOptions.Compact);
+
             }
             catch (JsonException ex)
             {
