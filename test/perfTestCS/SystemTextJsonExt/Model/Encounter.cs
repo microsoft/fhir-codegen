@@ -320,6 +320,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.Encounter.EncounterStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Encounter.EncounterStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "statusHistory":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -349,7 +353,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "class":
           current.Class = new Hl7.Fhir.Model.Coding();
-          current.Class.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Coding)current.Class).DeserializeJson(ref reader, options);
           break;
 
         case "classHistory":
@@ -408,17 +412,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "serviceType":
           current.ServiceType = new Hl7.Fhir.Model.CodeableConcept();
-          current.ServiceType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ServiceType).DeserializeJson(ref reader, options);
           break;
 
         case "priority":
           current.Priority = new Hl7.Fhir.Model.CodeableConcept();
-          current.Priority.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Priority).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "episodeOfCare":
@@ -531,12 +535,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         case "length":
           current.Length = new Hl7.Fhir.Model.Duration();
-          current.Length.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Duration)current.Length).DeserializeJson(ref reader, options);
           break;
 
         case "reasonCode":
@@ -649,7 +653,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "hospitalization":
           current.Hospitalization = new Hl7.Fhir.Model.Encounter.HospitalizationComponent();
-          current.Hospitalization.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Encounter.HospitalizationComponent)current.Hospitalization).DeserializeJson(ref reader, options);
           break;
 
         case "location":
@@ -681,12 +685,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "serviceProvider":
           current.ServiceProvider = new Hl7.Fhir.Model.ResourceReference();
-          current.ServiceProvider.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.ServiceProvider).DeserializeJson(ref reader, options);
           break;
 
         case "partOf":
           current.PartOf = new Hl7.Fhir.Model.ResourceReference();
-          current.PartOf.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.PartOf).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Encounter, Export: Encounter, Base: DomainResource
@@ -749,9 +753,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.Encounter.EncounterStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Encounter.EncounterStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         // Complex: statusHistory, Export: StatusHistoryComponent, Base: BackboneElement
@@ -813,12 +821,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "class":
           current.Class = new Hl7.Fhir.Model.Coding();
-          current.Class.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Coding)current.Class).DeserializeJson(ref reader, options);
           break;
 
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         // Complex: classHistory, Export: ClassHistoryComponent, Base: BackboneElement
@@ -924,12 +932,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         case "individual":
           current.Individual = new Hl7.Fhir.Model.ResourceReference();
-          current.Individual.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Individual).DeserializeJson(ref reader, options);
           break;
 
         // Complex: participant, Export: ParticipantComponent, Base: BackboneElement
@@ -957,9 +965,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Use.SerializeJson(writer, options);
       }
 
-      if ((current.RankElement != null) && (current.RankElement.Value != null))
+      if (current.RankElement != null)
       {
-        writer.WriteNumber("rank",(int)current.RankElement.Value);
+        if (current.RankElement.Value != null)
+        {
+          writer.WriteNumber("rank",(int)current.RankElement.Value);
+        }
+        if (current.RankElement.HasExtensions() || (!string.IsNullOrEmpty(current.RankElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_rank",false,current.RankElement.Extension,current.RankElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -999,16 +1014,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "condition":
           current.Condition = new Hl7.Fhir.Model.ResourceReference();
-          current.Condition.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Condition).DeserializeJson(ref reader, options);
           break;
 
         case "use":
           current.Use = new Hl7.Fhir.Model.CodeableConcept();
-          current.Use.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Use).DeserializeJson(ref reader, options);
           break;
 
         case "rank":
           current.RankElement = new PositiveInt(reader.GetInt32());
+          break;
+
+        case "_rank":
+          ((Hl7.Fhir.Model.Element)current.RankElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: diagnosis, Export: DiagnosisComponent, Base: BackboneElement
@@ -1133,22 +1152,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "preAdmissionIdentifier":
           current.PreAdmissionIdentifier = new Hl7.Fhir.Model.Identifier();
-          current.PreAdmissionIdentifier.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.PreAdmissionIdentifier).DeserializeJson(ref reader, options);
           break;
 
         case "origin":
           current.Origin = new Hl7.Fhir.Model.ResourceReference();
-          current.Origin.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Origin).DeserializeJson(ref reader, options);
           break;
 
         case "admitSource":
           current.AdmitSource = new Hl7.Fhir.Model.CodeableConcept();
-          current.AdmitSource.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.AdmitSource).DeserializeJson(ref reader, options);
           break;
 
         case "reAdmission":
           current.ReAdmission = new Hl7.Fhir.Model.CodeableConcept();
-          current.ReAdmission.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ReAdmission).DeserializeJson(ref reader, options);
           break;
 
         case "dietPreference":
@@ -1234,12 +1253,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "destination":
           current.Destination = new Hl7.Fhir.Model.ResourceReference();
-          current.Destination.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Destination).DeserializeJson(ref reader, options);
           break;
 
         case "dischargeDisposition":
           current.DischargeDisposition = new Hl7.Fhir.Model.CodeableConcept();
-          current.DischargeDisposition.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.DischargeDisposition).DeserializeJson(ref reader, options);
           break;
 
         // Complex: hospitalization, Export: HospitalizationComponent, Base: BackboneElement
@@ -1315,21 +1334,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "location":
           current.Location = new Hl7.Fhir.Model.ResourceReference();
-          current.Location.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Location).DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Encounter.EncounterLocationStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Encounter.EncounterLocationStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "physicalType":
           current.PhysicalType = new Hl7.Fhir.Model.CodeableConcept();
-          current.PhysicalType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.PhysicalType).DeserializeJson(ref reader, options);
           break;
 
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         // Complex: location, Export: LocationComponent, Base: BackboneElement

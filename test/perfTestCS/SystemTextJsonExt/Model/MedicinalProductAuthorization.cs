@@ -103,14 +103,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Status.SerializeJson(writer, options);
       }
 
-      if ((current.StatusDateElement != null) && (current.StatusDateElement.Value != null))
+      if (current.StatusDateElement != null)
       {
-        writer.WriteString("statusDate",current.StatusDateElement.Value);
+        if (!string.IsNullOrEmpty(current.StatusDateElement.Value))
+        {
+          writer.WriteString("statusDate",current.StatusDateElement.Value);
+        }
+        if (current.StatusDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.StatusDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_statusDate",false,current.StatusDateElement.Extension,current.StatusDateElement.ElementId);
+        }
       }
 
-      if ((current.RestoreDateElement != null) && (current.RestoreDateElement.Value != null))
+      if (current.RestoreDateElement != null)
       {
-        writer.WriteString("restoreDate",current.RestoreDateElement.Value);
+        if (!string.IsNullOrEmpty(current.RestoreDateElement.Value))
+        {
+          writer.WriteString("restoreDate",current.RestoreDateElement.Value);
+        }
+        if (current.RestoreDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.RestoreDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_restoreDate",false,current.RestoreDateElement.Extension,current.RestoreDateElement.ElementId);
+        }
       }
 
       if (current.ValidityPeriod != null)
@@ -125,14 +139,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.DataExclusivityPeriod.SerializeJson(writer, options);
       }
 
-      if ((current.DateOfFirstAuthorizationElement != null) && (current.DateOfFirstAuthorizationElement.Value != null))
+      if (current.DateOfFirstAuthorizationElement != null)
       {
-        writer.WriteString("dateOfFirstAuthorization",current.DateOfFirstAuthorizationElement.Value);
+        if (!string.IsNullOrEmpty(current.DateOfFirstAuthorizationElement.Value))
+        {
+          writer.WriteString("dateOfFirstAuthorization",current.DateOfFirstAuthorizationElement.Value);
+        }
+        if (current.DateOfFirstAuthorizationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateOfFirstAuthorizationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_dateOfFirstAuthorization",false,current.DateOfFirstAuthorizationElement.Extension,current.DateOfFirstAuthorizationElement.ElementId);
+        }
       }
 
-      if ((current.InternationalBirthDateElement != null) && (current.InternationalBirthDateElement.Value != null))
+      if (current.InternationalBirthDateElement != null)
       {
-        writer.WriteString("internationalBirthDate",current.InternationalBirthDateElement.Value);
+        if (!string.IsNullOrEmpty(current.InternationalBirthDateElement.Value))
+        {
+          writer.WriteString("internationalBirthDate",current.InternationalBirthDateElement.Value);
+        }
+        if (current.InternationalBirthDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.InternationalBirthDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_internationalBirthDate",false,current.InternationalBirthDateElement.Extension,current.InternationalBirthDateElement.ElementId);
+        }
       }
 
       if (current.LegalBasis != null)
@@ -234,7 +262,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "country":
@@ -293,38 +321,54 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "status":
           current.Status = new Hl7.Fhir.Model.CodeableConcept();
-          current.Status.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Status).DeserializeJson(ref reader, options);
           break;
 
         case "statusDate":
           current.StatusDateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_statusDate":
+          ((Hl7.Fhir.Model.Element)current.StatusDateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "restoreDate":
           current.RestoreDateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_restoreDate":
+          ((Hl7.Fhir.Model.Element)current.RestoreDateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "validityPeriod":
           current.ValidityPeriod = new Hl7.Fhir.Model.Period();
-          current.ValidityPeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.ValidityPeriod).DeserializeJson(ref reader, options);
           break;
 
         case "dataExclusivityPeriod":
           current.DataExclusivityPeriod = new Hl7.Fhir.Model.Period();
-          current.DataExclusivityPeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.DataExclusivityPeriod).DeserializeJson(ref reader, options);
           break;
 
         case "dateOfFirstAuthorization":
           current.DateOfFirstAuthorizationElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_dateOfFirstAuthorization":
+          ((Hl7.Fhir.Model.Element)current.DateOfFirstAuthorizationElement).DeserializeJson(ref reader, options);
+          break;
+
         case "internationalBirthDate":
           current.InternationalBirthDateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_internationalBirthDate":
+          ((Hl7.Fhir.Model.Element)current.InternationalBirthDateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "legalBasis":
           current.LegalBasis = new Hl7.Fhir.Model.CodeableConcept();
-          current.LegalBasis.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.LegalBasis).DeserializeJson(ref reader, options);
           break;
 
         case "jurisdictionalAuthorization":
@@ -356,17 +400,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "holder":
           current.Holder = new Hl7.Fhir.Model.ResourceReference();
-          current.Holder.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Holder).DeserializeJson(ref reader, options);
           break;
 
         case "regulator":
           current.Regulator = new Hl7.Fhir.Model.ResourceReference();
-          current.Regulator.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Regulator).DeserializeJson(ref reader, options);
           break;
 
         case "procedure":
           current.Procedure = new Hl7.Fhir.Model.MedicinalProductAuthorization.ProcedureComponent();
-          current.Procedure.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.MedicinalProductAuthorization.ProcedureComponent)current.Procedure).DeserializeJson(ref reader, options);
           break;
 
         // Complex: MedicinalProductAuthorization, Export: MedicinalProductAuthorization, Base: DomainResource
@@ -489,7 +533,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "country":
           current.Country = new Hl7.Fhir.Model.CodeableConcept();
-          current.Country.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Country).DeserializeJson(ref reader, options);
           break;
 
         case "jurisdiction":
@@ -521,12 +565,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "legalStatusOfSupply":
           current.LegalStatusOfSupply = new Hl7.Fhir.Model.CodeableConcept();
-          current.LegalStatusOfSupply.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.LegalStatusOfSupply).DeserializeJson(ref reader, options);
           break;
 
         case "validityPeriod":
           current.ValidityPeriod = new Hl7.Fhir.Model.Period();
-          current.ValidityPeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.ValidityPeriod).DeserializeJson(ref reader, options);
           break;
 
         // Complex: jurisdictionalAuthorization, Export: JurisdictionalAuthorizationComponent, Base: BackboneElement
@@ -615,17 +659,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "identifier":
           current.Identifier = new Hl7.Fhir.Model.Identifier();
-          current.Identifier.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.Identifier).DeserializeJson(ref reader, options);
           break;
 
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "datePeriod":
           current.Date = new Hl7.Fhir.Model.Period();
-          current.Date.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Date).DeserializeJson(ref reader, options);
           break;
 
         case "dateDateTime":

@@ -56,24 +56,52 @@ namespace Hl7.Fhir.Model.JsonExtensions
       if (includeStartObject) { writer.WriteStartObject(); }
       writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
 
-      if ((current.LabelElement != null) && (current.LabelElement.Value != null))
+      if (current.LabelElement != null)
       {
-        writer.WriteString("label",current.LabelElement.Value);
+        if (!string.IsNullOrEmpty(current.LabelElement.Value))
+        {
+          writer.WriteString("label",current.LabelElement.Value);
+        }
+        if (current.LabelElement.HasExtensions() || (!string.IsNullOrEmpty(current.LabelElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_label",false,current.LabelElement.Extension,current.LabelElement.ElementId);
+        }
       }
 
-      if ((current.DisplayElement != null) && (current.DisplayElement.Value != null))
+      if (current.DisplayElement != null)
       {
-        writer.WriteString("display",current.DisplayElement.Value);
+        if (!string.IsNullOrEmpty(current.DisplayElement.Value))
+        {
+          writer.WriteString("display",current.DisplayElement.Value);
+        }
+        if (current.DisplayElement.HasExtensions() || (!string.IsNullOrEmpty(current.DisplayElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_display",false,current.DisplayElement.Extension,current.DisplayElement.ElementId);
+        }
       }
 
-      if ((current.Citation != null) && (current.Citation.Value != null))
+      if (current.Citation != null)
       {
-        writer.WriteString("citation",current.Citation.Value);
+        if (!string.IsNullOrEmpty(current.Citation.Value))
+        {
+          writer.WriteString("citation",current.Citation.Value);
+        }
+        if (current.Citation.HasExtensions() || (!string.IsNullOrEmpty(current.Citation.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_citation",false,current.Citation.Extension,current.Citation.ElementId);
+        }
       }
 
-      if ((current.UrlElement != null) && (current.UrlElement.Value != null))
+      if (current.UrlElement != null)
       {
-        writer.WriteString("url",current.UrlElement.Value);
+        if (!string.IsNullOrEmpty(current.UrlElement.Value))
+        {
+          writer.WriteString("url",current.UrlElement.Value);
+        }
+        if (current.UrlElement.HasExtensions() || (!string.IsNullOrEmpty(current.UrlElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_url",false,current.UrlElement.Extension,current.UrlElement.ElementId);
+        }
       }
 
       if (current.Document != null)
@@ -82,9 +110,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Document.SerializeJson(writer, options);
       }
 
-      if ((current.ResourceElement != null) && (current.ResourceElement.Value != null))
+      if (current.ResourceElement != null)
       {
-        writer.WriteString("resource",current.ResourceElement.Value);
+        if (!string.IsNullOrEmpty(current.ResourceElement.Value))
+        {
+          writer.WriteString("resource",current.ResourceElement.Value);
+        }
+        if (current.ResourceElement.HasExtensions() || (!string.IsNullOrEmpty(current.ResourceElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_resource",false,current.ResourceElement.Extension,current.ResourceElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -126,12 +161,24 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.TypeElement =new Code<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType>(reader.GetString()));
           break;
 
+        case "_type":
+          ((Hl7.Fhir.Model.Element)current.TypeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "label":
           current.LabelElement = new FhirString(reader.GetString());
           break;
 
+        case "_label":
+          ((Hl7.Fhir.Model.Element)current.LabelElement).DeserializeJson(ref reader, options);
+          break;
+
         case "display":
           current.DisplayElement = new FhirString(reader.GetString());
+          break;
+
+        case "_display":
+          ((Hl7.Fhir.Model.Element)current.DisplayElement).DeserializeJson(ref reader, options);
           break;
 
         case "citation":
@@ -142,9 +189,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.UrlElement = new FhirUrl(reader.GetString());
           break;
 
+        case "_url":
+          ((Hl7.Fhir.Model.Element)current.UrlElement).DeserializeJson(ref reader, options);
+          break;
+
         case "document":
           current.Document = new Hl7.Fhir.Model.Attachment();
-          current.Document.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Attachment)current.Document).DeserializeJson(ref reader, options);
           break;
 
         case "resource":

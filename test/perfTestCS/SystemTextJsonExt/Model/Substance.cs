@@ -88,9 +88,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("code");
       current.Code.SerializeJson(writer, options);
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
       if ((current.Instance != null) && (current.Instance.Count != 0))
@@ -181,6 +188,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.Substance.FHIRSubstanceStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Substance.FHIRSubstanceStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "category":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -210,11 +221,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
+          break;
+
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
           break;
 
         case "instance":
@@ -293,9 +308,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Identifier.SerializeJson(writer, options);
       }
 
-      if ((current.ExpiryElement != null) && (current.ExpiryElement.Value != null))
+      if (current.ExpiryElement != null)
       {
-        writer.WriteString("expiry",current.ExpiryElement.Value);
+        if (!string.IsNullOrEmpty(current.ExpiryElement.Value))
+        {
+          writer.WriteString("expiry",current.ExpiryElement.Value);
+        }
+        if (current.ExpiryElement.HasExtensions() || (!string.IsNullOrEmpty(current.ExpiryElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_expiry",false,current.ExpiryElement.Extension,current.ExpiryElement.ElementId);
+        }
       }
 
       if (current.Quantity != null)
@@ -341,16 +363,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "identifier":
           current.Identifier = new Hl7.Fhir.Model.Identifier();
-          current.Identifier.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.Identifier).DeserializeJson(ref reader, options);
           break;
 
         case "expiry":
           current.ExpiryElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_expiry":
+          ((Hl7.Fhir.Model.Element)current.ExpiryElement).DeserializeJson(ref reader, options);
+          break;
+
         case "quantity":
           current.Quantity = new Hl7.Fhir.Model.Quantity();
-          current.Quantity.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Quantity).DeserializeJson(ref reader, options);
           break;
 
         // Complex: instance, Export: InstanceComponent, Base: BackboneElement
@@ -426,17 +452,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "quantity":
           current.Quantity = new Hl7.Fhir.Model.Ratio();
-          current.Quantity.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Ratio)current.Quantity).DeserializeJson(ref reader, options);
           break;
 
         case "substanceCodeableConcept":
           current.Substance = new Hl7.Fhir.Model.CodeableConcept();
-          current.Substance.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Substance).DeserializeJson(ref reader, options);
           break;
 
         case "substanceReference":
           current.Substance = new Hl7.Fhir.Model.ResourceReference();
-          current.Substance.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Substance).DeserializeJson(ref reader, options);
           break;
 
         // Complex: ingredient, Export: IngredientComponent, Base: BackboneElement

@@ -101,14 +101,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.RecordedElement != null) && (current.RecordedElement.Value != null))
+      if (current.RecordedElement != null)
       {
-        writer.WriteString("recorded",current.RecordedElement.Value);
+        if (!string.IsNullOrEmpty(current.RecordedElement.Value))
+        {
+          writer.WriteString("recorded",current.RecordedElement.Value);
+        }
+        if (current.RecordedElement.HasExtensions() || (!string.IsNullOrEmpty(current.RecordedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_recorded",false,current.RecordedElement.Extension,current.RecordedElement.ElementId);
+        }
       }
 
-      if ((current.PrimarySourceElement != null) && (current.PrimarySourceElement.Value != null))
+      if (current.PrimarySourceElement != null)
       {
-        writer.WriteBoolean("primarySource",(bool)current.PrimarySourceElement.Value);
+        if (current.PrimarySourceElement.Value != null)
+        {
+          writer.WriteBoolean("primarySource",(bool)current.PrimarySourceElement.Value);
+        }
+        if (current.PrimarySourceElement.HasExtensions() || (!string.IsNullOrEmpty(current.PrimarySourceElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_primarySource",false,current.PrimarySourceElement.Extension,current.PrimarySourceElement.ElementId);
+        }
       }
 
       if (current.ReportOrigin != null)
@@ -129,14 +143,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Manufacturer.SerializeJson(writer, options);
       }
 
-      if ((current.LotNumberElement != null) && (current.LotNumberElement.Value != null))
+      if (current.LotNumberElement != null)
       {
-        writer.WriteString("lotNumber",current.LotNumberElement.Value);
+        if (!string.IsNullOrEmpty(current.LotNumberElement.Value))
+        {
+          writer.WriteString("lotNumber",current.LotNumberElement.Value);
+        }
+        if (current.LotNumberElement.HasExtensions() || (!string.IsNullOrEmpty(current.LotNumberElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_lotNumber",false,current.LotNumberElement.Extension,current.LotNumberElement.ElementId);
+        }
       }
 
-      if ((current.ExpirationDateElement != null) && (current.ExpirationDateElement.Value != null))
+      if (current.ExpirationDateElement != null)
       {
-        writer.WriteString("expirationDate",current.ExpirationDateElement.Value);
+        if (!string.IsNullOrEmpty(current.ExpirationDateElement.Value))
+        {
+          writer.WriteString("expirationDate",current.ExpirationDateElement.Value);
+        }
+        if (current.ExpirationDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.ExpirationDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_expirationDate",false,current.ExpirationDateElement.Extension,current.ExpirationDateElement.ElementId);
+        }
       }
 
       if (current.Site != null)
@@ -201,9 +229,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.IsSubpotentElement != null) && (current.IsSubpotentElement.Value != null))
+      if (current.IsSubpotentElement != null)
       {
-        writer.WriteBoolean("isSubpotent",(bool)current.IsSubpotentElement.Value);
+        if (current.IsSubpotentElement.Value != null)
+        {
+          writer.WriteBoolean("isSubpotent",(bool)current.IsSubpotentElement.Value);
+        }
+        if (current.IsSubpotentElement.HasExtensions() || (!string.IsNullOrEmpty(current.IsSubpotentElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_isSubpotent",false,current.IsSubpotentElement.Extension,current.IsSubpotentElement.ElementId);
+        }
       }
 
       if ((current.SubpotentReason != null) && (current.SubpotentReason.Count != 0))
@@ -333,24 +368,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.Immunization.ImmunizationStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Immunization.ImmunizationStatusCodes>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "statusReason":
           current.StatusReason = new Hl7.Fhir.Model.CodeableConcept();
-          current.StatusReason.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.StatusReason).DeserializeJson(ref reader, options);
           break;
 
         case "vaccineCode":
           current.VaccineCode = new Hl7.Fhir.Model.CodeableConcept();
-          current.VaccineCode.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.VaccineCode).DeserializeJson(ref reader, options);
           break;
 
         case "patient":
           current.Patient = new Hl7.Fhir.Model.ResourceReference();
-          current.Patient.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Patient).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "occurrenceDateTime":
@@ -365,27 +404,39 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.RecordedElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_recorded":
+          ((Hl7.Fhir.Model.Element)current.RecordedElement).DeserializeJson(ref reader, options);
+          break;
+
         case "primarySource":
           current.PrimarySourceElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_primarySource":
+          ((Hl7.Fhir.Model.Element)current.PrimarySourceElement).DeserializeJson(ref reader, options);
+          break;
+
         case "reportOrigin":
           current.ReportOrigin = new Hl7.Fhir.Model.CodeableConcept();
-          current.ReportOrigin.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ReportOrigin).DeserializeJson(ref reader, options);
           break;
 
         case "location":
           current.Location = new Hl7.Fhir.Model.ResourceReference();
-          current.Location.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Location).DeserializeJson(ref reader, options);
           break;
 
         case "manufacturer":
           current.Manufacturer = new Hl7.Fhir.Model.ResourceReference();
-          current.Manufacturer.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Manufacturer).DeserializeJson(ref reader, options);
           break;
 
         case "lotNumber":
           current.LotNumberElement = new FhirString(reader.GetString());
+          break;
+
+        case "_lotNumber":
+          ((Hl7.Fhir.Model.Element)current.LotNumberElement).DeserializeJson(ref reader, options);
           break;
 
         case "expirationDate":
@@ -398,17 +449,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "site":
           current.Site = new Hl7.Fhir.Model.CodeableConcept();
-          current.Site.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Site).DeserializeJson(ref reader, options);
           break;
 
         case "route":
           current.Route = new Hl7.Fhir.Model.CodeableConcept();
-          current.Route.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Route).DeserializeJson(ref reader, options);
           break;
 
         case "doseQuantity":
           current.DoseQuantity = new Hl7.Fhir.Model.Quantity();
-          current.DoseQuantity.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.DoseQuantity).DeserializeJson(ref reader, options);
           break;
 
         case "performer":
@@ -523,6 +574,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.IsSubpotentElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_isSubpotent":
+          ((Hl7.Fhir.Model.Element)current.IsSubpotentElement).DeserializeJson(ref reader, options);
+          break;
+
         case "subpotentReason":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -606,7 +661,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "fundingSource":
           current.FundingSource = new Hl7.Fhir.Model.CodeableConcept();
-          current.FundingSource.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.FundingSource).DeserializeJson(ref reader, options);
           break;
 
         case "reaction":
@@ -725,12 +780,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "function":
           current.Function = new Hl7.Fhir.Model.CodeableConcept();
-          current.Function.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Function).DeserializeJson(ref reader, options);
           break;
 
         case "actor":
           current.Actor = new Hl7.Fhir.Model.ResourceReference();
-          current.Actor.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Actor).DeserializeJson(ref reader, options);
           break;
 
         // Complex: performer, Export: PerformerComponent, Base: BackboneElement
@@ -749,24 +804,52 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: Immunization#Education, Export: EducationComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.DocumentTypeElement != null) && (current.DocumentTypeElement.Value != null))
+      if (current.DocumentTypeElement != null)
       {
-        writer.WriteString("documentType",current.DocumentTypeElement.Value);
+        if (!string.IsNullOrEmpty(current.DocumentTypeElement.Value))
+        {
+          writer.WriteString("documentType",current.DocumentTypeElement.Value);
+        }
+        if (current.DocumentTypeElement.HasExtensions() || (!string.IsNullOrEmpty(current.DocumentTypeElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_documentType",false,current.DocumentTypeElement.Extension,current.DocumentTypeElement.ElementId);
+        }
       }
 
-      if ((current.ReferenceElement != null) && (current.ReferenceElement.Value != null))
+      if (current.ReferenceElement != null)
       {
-        writer.WriteString("reference",current.ReferenceElement.Value);
+        if (!string.IsNullOrEmpty(current.ReferenceElement.Value))
+        {
+          writer.WriteString("reference",current.ReferenceElement.Value);
+        }
+        if (current.ReferenceElement.HasExtensions() || (!string.IsNullOrEmpty(current.ReferenceElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_reference",false,current.ReferenceElement.Extension,current.ReferenceElement.ElementId);
+        }
       }
 
-      if ((current.PublicationDateElement != null) && (current.PublicationDateElement.Value != null))
+      if (current.PublicationDateElement != null)
       {
-        writer.WriteString("publicationDate",current.PublicationDateElement.Value);
+        if (!string.IsNullOrEmpty(current.PublicationDateElement.Value))
+        {
+          writer.WriteString("publicationDate",current.PublicationDateElement.Value);
+        }
+        if (current.PublicationDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.PublicationDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_publicationDate",false,current.PublicationDateElement.Extension,current.PublicationDateElement.ElementId);
+        }
       }
 
-      if ((current.PresentationDateElement != null) && (current.PresentationDateElement.Value != null))
+      if (current.PresentationDateElement != null)
       {
-        writer.WriteString("presentationDate",current.PresentationDateElement.Value);
+        if (!string.IsNullOrEmpty(current.PresentationDateElement.Value))
+        {
+          writer.WriteString("presentationDate",current.PresentationDateElement.Value);
+        }
+        if (current.PresentationDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.PresentationDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_presentationDate",false,current.PresentationDateElement.Extension,current.PresentationDateElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -808,16 +891,32 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DocumentTypeElement = new FhirString(reader.GetString());
           break;
 
+        case "_documentType":
+          ((Hl7.Fhir.Model.Element)current.DocumentTypeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "reference":
           current.ReferenceElement = new FhirUri(reader.GetString());
+          break;
+
+        case "_reference":
+          ((Hl7.Fhir.Model.Element)current.ReferenceElement).DeserializeJson(ref reader, options);
           break;
 
         case "publicationDate":
           current.PublicationDateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_publicationDate":
+          ((Hl7.Fhir.Model.Element)current.PublicationDateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "presentationDate":
           current.PresentationDateElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_presentationDate":
+          ((Hl7.Fhir.Model.Element)current.PresentationDateElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: education, Export: EducationComponent, Base: BackboneElement
@@ -836,9 +935,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: Immunization#Reaction, Export: ReactionComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.DateElement != null) && (current.DateElement.Value != null))
+      if (current.DateElement != null)
       {
-        writer.WriteString("date",current.DateElement.Value);
+        if (!string.IsNullOrEmpty(current.DateElement.Value))
+        {
+          writer.WriteString("date",current.DateElement.Value);
+        }
+        if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_date",false,current.DateElement.Extension,current.DateElement.ElementId);
+        }
       }
 
       if (current.Detail != null)
@@ -847,9 +953,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Detail.SerializeJson(writer, options);
       }
 
-      if ((current.ReportedElement != null) && (current.ReportedElement.Value != null))
+      if (current.ReportedElement != null)
       {
-        writer.WriteBoolean("reported",(bool)current.ReportedElement.Value);
+        if (current.ReportedElement.Value != null)
+        {
+          writer.WriteBoolean("reported",(bool)current.ReportedElement.Value);
+        }
+        if (current.ReportedElement.HasExtensions() || (!string.IsNullOrEmpty(current.ReportedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_reported",false,current.ReportedElement.Extension,current.ReportedElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -891,13 +1004,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_date":
+          ((Hl7.Fhir.Model.Element)current.DateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "detail":
           current.Detail = new Hl7.Fhir.Model.ResourceReference();
-          current.Detail.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Detail).DeserializeJson(ref reader, options);
           break;
 
         case "reported":
           current.ReportedElement = new FhirBoolean(reader.GetBoolean());
+          break;
+
+        case "_reported":
+          ((Hl7.Fhir.Model.Element)current.ReportedElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: reaction, Export: ReactionComponent, Base: BackboneElement
@@ -916,9 +1037,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: Immunization#ProtocolApplied, Export: ProtocolAppliedComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.SeriesElement != null) && (current.SeriesElement.Value != null))
+      if (current.SeriesElement != null)
       {
-        writer.WriteString("series",current.SeriesElement.Value);
+        if (!string.IsNullOrEmpty(current.SeriesElement.Value))
+        {
+          writer.WriteString("series",current.SeriesElement.Value);
+        }
+        if (current.SeriesElement.HasExtensions() || (!string.IsNullOrEmpty(current.SeriesElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_series",false,current.SeriesElement.Extension,current.SeriesElement.ElementId);
+        }
       }
 
       if (current.Authority != null)
@@ -1001,9 +1129,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.SeriesElement = new FhirString(reader.GetString());
           break;
 
+        case "_series":
+          ((Hl7.Fhir.Model.Element)current.SeriesElement).DeserializeJson(ref reader, options);
+          break;
+
         case "authority":
           current.Authority = new Hl7.Fhir.Model.ResourceReference();
-          current.Authority.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Authority).DeserializeJson(ref reader, options);
           break;
 
         case "targetDisease":

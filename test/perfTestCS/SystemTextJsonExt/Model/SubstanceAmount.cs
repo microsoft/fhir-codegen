@@ -80,9 +80,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.AmountType.SerializeJson(writer, options);
       }
 
-      if ((current.AmountTextElement != null) && (current.AmountTextElement.Value != null))
+      if (current.AmountTextElement != null)
       {
-        writer.WriteString("amountText",current.AmountTextElement.Value);
+        if (!string.IsNullOrEmpty(current.AmountTextElement.Value))
+        {
+          writer.WriteString("amountText",current.AmountTextElement.Value);
+        }
+        if (current.AmountTextElement.HasExtensions() || (!string.IsNullOrEmpty(current.AmountTextElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_amountText",false,current.AmountTextElement.Extension,current.AmountTextElement.ElementId);
+        }
       }
 
       if (current.ReferenceRange != null)
@@ -128,12 +135,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "amountQuantity":
           current.Amount = new Hl7.Fhir.Model.Quantity();
-          current.Amount.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Amount).DeserializeJson(ref reader, options);
           break;
 
         case "amountRange":
           current.Amount = new Hl7.Fhir.Model.Range();
-          current.Amount.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Amount).DeserializeJson(ref reader, options);
           break;
 
         case "amountString":
@@ -142,16 +149,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "amountType":
           current.AmountType = new Hl7.Fhir.Model.CodeableConcept();
-          current.AmountType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.AmountType).DeserializeJson(ref reader, options);
           break;
 
         case "amountText":
           current.AmountTextElement = new FhirString(reader.GetString());
           break;
 
+        case "_amountText":
+          ((Hl7.Fhir.Model.Element)current.AmountTextElement).DeserializeJson(ref reader, options);
+          break;
+
         case "referenceRange":
           current.ReferenceRange = new Hl7.Fhir.Model.SubstanceAmount.ReferenceRangeComponent();
-          current.ReferenceRange.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SubstanceAmount.ReferenceRangeComponent)current.ReferenceRange).DeserializeJson(ref reader, options);
           break;
 
         // Complex: SubstanceAmount, Export: SubstanceAmount, Base: BackboneElement
@@ -216,12 +227,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "lowLimit":
           current.LowLimit = new Hl7.Fhir.Model.Quantity();
-          current.LowLimit.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.LowLimit).DeserializeJson(ref reader, options);
           break;
 
         case "highLimit":
           current.HighLimit = new Hl7.Fhir.Model.Quantity();
-          current.HighLimit.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.HighLimit).DeserializeJson(ref reader, options);
           break;
 
       }

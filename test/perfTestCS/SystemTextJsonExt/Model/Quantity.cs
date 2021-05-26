@@ -54,9 +54,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
     public static void SerializeJson(this Quantity current, Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
     {
       if (includeStartObject) { writer.WriteStartObject(); }
-      if ((current.ValueElement != null) && (current.ValueElement.Value != null))
+      if (current.ValueElement != null)
       {
-        writer.WriteNumber("value",(decimal)current.ValueElement.Value);
+        if (current.ValueElement.Value != null)
+        {
+          writer.WriteNumber("value",(decimal)current.ValueElement.Value);
+        }
+        if (current.ValueElement.HasExtensions() || (!string.IsNullOrEmpty(current.ValueElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_value",false,current.ValueElement.Extension,current.ValueElement.ElementId);
+        }
       }
 
       if (current.ComparatorElement != null)
@@ -64,19 +71,40 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteString("comparator",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.ComparatorElement.Value));
       }
 
-      if ((current.UnitElement != null) && (current.UnitElement.Value != null))
+      if (current.UnitElement != null)
       {
-        writer.WriteString("unit",current.UnitElement.Value);
+        if (!string.IsNullOrEmpty(current.UnitElement.Value))
+        {
+          writer.WriteString("unit",current.UnitElement.Value);
+        }
+        if (current.UnitElement.HasExtensions() || (!string.IsNullOrEmpty(current.UnitElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_unit",false,current.UnitElement.Extension,current.UnitElement.ElementId);
+        }
       }
 
-      if ((current.SystemElement != null) && (current.SystemElement.Value != null))
+      if (current.SystemElement != null)
       {
-        writer.WriteString("system",current.SystemElement.Value);
+        if (!string.IsNullOrEmpty(current.SystemElement.Value))
+        {
+          writer.WriteString("system",current.SystemElement.Value);
+        }
+        if (current.SystemElement.HasExtensions() || (!string.IsNullOrEmpty(current.SystemElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_system",false,current.SystemElement.Extension,current.SystemElement.ElementId);
+        }
       }
 
-      if ((current.CodeElement != null) && (current.CodeElement.Value != null))
+      if (current.CodeElement != null)
       {
-        writer.WriteString("code",current.CodeElement.Value);
+        if (!string.IsNullOrEmpty(current.CodeElement.Value))
+        {
+          writer.WriteString("code",current.CodeElement.Value);
+        }
+        if (current.CodeElement.HasExtensions() || (!string.IsNullOrEmpty(current.CodeElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_code",false,current.CodeElement.Extension,current.CodeElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -118,16 +146,32 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.ValueElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_value":
+          ((Hl7.Fhir.Model.Element)current.ValueElement).DeserializeJson(ref reader, options);
+          break;
+
         case "comparator":
           current.ComparatorElement =new Code<Hl7.Fhir.Model.Age.QuantityComparator>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Age.QuantityComparator>(reader.GetString()));
+          break;
+
+        case "_comparator":
+          ((Hl7.Fhir.Model.Element)current.ComparatorElement).DeserializeJson(ref reader, options);
           break;
 
         case "unit":
           current.UnitElement = new FhirString(reader.GetString());
           break;
 
+        case "_unit":
+          ((Hl7.Fhir.Model.Element)current.UnitElement).DeserializeJson(ref reader, options);
+          break;
+
         case "system":
           current.SystemElement = new FhirUri(reader.GetString());
+          break;
+
+        case "_system":
+          ((Hl7.Fhir.Model.Element)current.SystemElement).DeserializeJson(ref reader, options);
           break;
 
         case "code":

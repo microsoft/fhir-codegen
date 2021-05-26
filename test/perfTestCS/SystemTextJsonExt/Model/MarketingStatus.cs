@@ -72,9 +72,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("dateRange");
       current.DateRange.SerializeJson(writer, options);
 
-      if ((current.RestoreDateElement != null) && (current.RestoreDateElement.Value != null))
+      if (current.RestoreDateElement != null)
       {
-        writer.WriteString("restoreDate",current.RestoreDateElement.Value);
+        if (!string.IsNullOrEmpty(current.RestoreDateElement.Value))
+        {
+          writer.WriteString("restoreDate",current.RestoreDateElement.Value);
+        }
+        if (current.RestoreDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.RestoreDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_restoreDate",false,current.RestoreDateElement.Extension,current.RestoreDateElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -114,26 +121,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "country":
           current.Country = new Hl7.Fhir.Model.CodeableConcept();
-          current.Country.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Country).DeserializeJson(ref reader, options);
           break;
 
         case "jurisdiction":
           current.Jurisdiction = new Hl7.Fhir.Model.CodeableConcept();
-          current.Jurisdiction.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Jurisdiction).DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.Status = new Hl7.Fhir.Model.CodeableConcept();
-          current.Status.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Status).DeserializeJson(ref reader, options);
           break;
 
         case "dateRange":
           current.DateRange = new Hl7.Fhir.Model.Period();
-          current.DateRange.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.DateRange).DeserializeJson(ref reader, options);
           break;
 
         case "restoreDate":
           current.RestoreDateElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_restoreDate":
+          ((Hl7.Fhir.Model.Element)current.RestoreDateElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: MarketingStatus, Export: MarketingStatus, Base: BackboneElement

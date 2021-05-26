@@ -59,26 +59,54 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteNumber("period",(decimal)current.PeriodElement.Value);
 
-      if ((current.FactorElement != null) && (current.FactorElement.Value != null))
+      if (current.FactorElement != null)
       {
-        writer.WriteNumber("factor",(decimal)current.FactorElement.Value);
+        if (current.FactorElement.Value != null)
+        {
+          writer.WriteNumber("factor",(decimal)current.FactorElement.Value);
+        }
+        if (current.FactorElement.HasExtensions() || (!string.IsNullOrEmpty(current.FactorElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_factor",false,current.FactorElement.Extension,current.FactorElement.ElementId);
+        }
       }
 
-      if ((current.LowerLimitElement != null) && (current.LowerLimitElement.Value != null))
+      if (current.LowerLimitElement != null)
       {
-        writer.WriteNumber("lowerLimit",(decimal)current.LowerLimitElement.Value);
+        if (current.LowerLimitElement.Value != null)
+        {
+          writer.WriteNumber("lowerLimit",(decimal)current.LowerLimitElement.Value);
+        }
+        if (current.LowerLimitElement.HasExtensions() || (!string.IsNullOrEmpty(current.LowerLimitElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_lowerLimit",false,current.LowerLimitElement.Extension,current.LowerLimitElement.ElementId);
+        }
       }
 
-      if ((current.UpperLimitElement != null) && (current.UpperLimitElement.Value != null))
+      if (current.UpperLimitElement != null)
       {
-        writer.WriteNumber("upperLimit",(decimal)current.UpperLimitElement.Value);
+        if (current.UpperLimitElement.Value != null)
+        {
+          writer.WriteNumber("upperLimit",(decimal)current.UpperLimitElement.Value);
+        }
+        if (current.UpperLimitElement.HasExtensions() || (!string.IsNullOrEmpty(current.UpperLimitElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_upperLimit",false,current.UpperLimitElement.Extension,current.UpperLimitElement.ElementId);
+        }
       }
 
       writer.WriteNumber("dimensions",(int)current.DimensionsElement.Value);
 
-      if ((current.DataElement != null) && (current.DataElement.Value != null))
+      if (current.DataElement != null)
       {
-        writer.WriteString("data",current.DataElement.Value);
+        if (!string.IsNullOrEmpty(current.DataElement.Value))
+        {
+          writer.WriteString("data",current.DataElement.Value);
+        }
+        if (current.DataElement.HasExtensions() || (!string.IsNullOrEmpty(current.DataElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_data",false,current.DataElement.Extension,current.DataElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -118,31 +146,55 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "origin":
           current.Origin = new Hl7.Fhir.Model.Quantity();
-          current.Origin.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Origin).DeserializeJson(ref reader, options);
           break;
 
         case "period":
           current.PeriodElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_period":
+          ((Hl7.Fhir.Model.Element)current.PeriodElement).DeserializeJson(ref reader, options);
+          break;
+
         case "factor":
           current.FactorElement = new FhirDecimal(reader.GetDecimal());
+          break;
+
+        case "_factor":
+          ((Hl7.Fhir.Model.Element)current.FactorElement).DeserializeJson(ref reader, options);
           break;
 
         case "lowerLimit":
           current.LowerLimitElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_lowerLimit":
+          ((Hl7.Fhir.Model.Element)current.LowerLimitElement).DeserializeJson(ref reader, options);
+          break;
+
         case "upperLimit":
           current.UpperLimitElement = new FhirDecimal(reader.GetDecimal());
+          break;
+
+        case "_upperLimit":
+          ((Hl7.Fhir.Model.Element)current.UpperLimitElement).DeserializeJson(ref reader, options);
           break;
 
         case "dimensions":
           current.DimensionsElement = new PositiveInt(reader.GetInt32());
           break;
 
+        case "_dimensions":
+          ((Hl7.Fhir.Model.Element)current.DimensionsElement).DeserializeJson(ref reader, options);
+          break;
+
         case "data":
           current.DataElement = new FhirString(reader.GetString());
+          break;
+
+        case "_data":
+          ((Hl7.Fhir.Model.Element)current.DataElement).DeserializeJson(ref reader, options);
           break;
 
       }

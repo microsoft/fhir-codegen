@@ -179,26 +179,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Medication.MedicationStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Medication.MedicationStatusCodes>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "manufacturer":
           current.Manufacturer = new Hl7.Fhir.Model.ResourceReference();
-          current.Manufacturer.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Manufacturer).DeserializeJson(ref reader, options);
           break;
 
         case "form":
           current.Form = new Hl7.Fhir.Model.CodeableConcept();
-          current.Form.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Form).DeserializeJson(ref reader, options);
           break;
 
         case "amount":
           current.Amount = new Hl7.Fhir.Model.Ratio();
-          current.Amount.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Ratio)current.Amount).DeserializeJson(ref reader, options);
           break;
 
         case "ingredient":
@@ -230,7 +234,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "batch":
           current.Batch = new Hl7.Fhir.Model.Medication.BatchComponent();
-          current.Batch.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Medication.BatchComponent)current.Batch).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Medication, Export: Medication, Base: DomainResource
@@ -263,9 +267,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.IsActiveElement != null) && (current.IsActiveElement.Value != null))
+      if (current.IsActiveElement != null)
       {
-        writer.WriteBoolean("isActive",(bool)current.IsActiveElement.Value);
+        if (current.IsActiveElement.Value != null)
+        {
+          writer.WriteBoolean("isActive",(bool)current.IsActiveElement.Value);
+        }
+        if (current.IsActiveElement.HasExtensions() || (!string.IsNullOrEmpty(current.IsActiveElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_isActive",false,current.IsActiveElement.Extension,current.IsActiveElement.ElementId);
+        }
       }
 
       if (current.Strength != null)
@@ -311,21 +322,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "itemCodeableConcept":
           current.Item = new Hl7.Fhir.Model.CodeableConcept();
-          current.Item.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Item).DeserializeJson(ref reader, options);
           break;
 
         case "itemReference":
           current.Item = new Hl7.Fhir.Model.ResourceReference();
-          current.Item.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Item).DeserializeJson(ref reader, options);
           break;
 
         case "isActive":
           current.IsActiveElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_isActive":
+          ((Hl7.Fhir.Model.Element)current.IsActiveElement).DeserializeJson(ref reader, options);
+          break;
+
         case "strength":
           current.Strength = new Hl7.Fhir.Model.Ratio();
-          current.Strength.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Ratio)current.Strength).DeserializeJson(ref reader, options);
           break;
 
         // Complex: ingredient, Export: IngredientComponent, Base: BackboneElement
@@ -344,14 +359,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: Medication#Batch, Export: BatchComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.LotNumberElement != null) && (current.LotNumberElement.Value != null))
+      if (current.LotNumberElement != null)
       {
-        writer.WriteString("lotNumber",current.LotNumberElement.Value);
+        if (!string.IsNullOrEmpty(current.LotNumberElement.Value))
+        {
+          writer.WriteString("lotNumber",current.LotNumberElement.Value);
+        }
+        if (current.LotNumberElement.HasExtensions() || (!string.IsNullOrEmpty(current.LotNumberElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_lotNumber",false,current.LotNumberElement.Extension,current.LotNumberElement.ElementId);
+        }
       }
 
-      if ((current.ExpirationDateElement != null) && (current.ExpirationDateElement.Value != null))
+      if (current.ExpirationDateElement != null)
       {
-        writer.WriteString("expirationDate",current.ExpirationDateElement.Value);
+        if (!string.IsNullOrEmpty(current.ExpirationDateElement.Value))
+        {
+          writer.WriteString("expirationDate",current.ExpirationDateElement.Value);
+        }
+        if (current.ExpirationDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.ExpirationDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_expirationDate",false,current.ExpirationDateElement.Extension,current.ExpirationDateElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -393,8 +422,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.LotNumberElement = new FhirString(reader.GetString());
           break;
 
+        case "_lotNumber":
+          ((Hl7.Fhir.Model.Element)current.LotNumberElement).DeserializeJson(ref reader, options);
+          break;
+
         case "expirationDate":
           current.ExpirationDateElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_expirationDate":
+          ((Hl7.Fhir.Model.Element)current.ExpirationDateElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: batch, Export: BatchComponent, Base: BackboneElement

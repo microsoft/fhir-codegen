@@ -51,24 +51,27 @@ namespace Hl7.Fhir.Serialization
 #pragma warning disable CA1810 // Initialize reference type static fields inline
 
     /// <summary>
+    /// Serializer options for Converters (polymorphic deserialization).
+    /// </summary>
+    private static readonly JsonSerializerOptions _serializerOptions;
+
+    /// <summary>
     /// Compact format internal variable.
     /// </summary>
-    private static readonly JsonSerializerOptions _compactFormat;
+    private static readonly JsonWriterOptions _compactFormat;
 
     /// <summary>
     /// Pretty print format internal variable.
     /// </summary>
-    private static readonly JsonSerializerOptions _prettyFormat;
+    private static readonly JsonWriterOptions _prettyFormat;
 
     /// <summary>
     /// Initializes static members of the &lt;see cref="FhirSerializerOptions"/&gt; class.
     /// </summary>
     static FhirSerializerOptions()
     {
-      _prettyFormat = new JsonSerializerOptions()
+      _serializerOptions = new JsonSerializerOptions()
       {
-        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-        WriteIndented = true,
         Converters =
         {
           new AddressJsonExtensions.AddressJsonConverter(),
@@ -259,211 +262,35 @@ namespace Hl7.Fhir.Serialization
         },
       };
 
-      _compactFormat = new JsonSerializerOptions()
+      _compactFormat = new JsonWriterOptions()
       {
         Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-        WriteIndented = false,
-        Converters =
-        {
-          new AddressJsonExtensions.AddressJsonConverter(),
-          new AgeJsonExtensions.AgeJsonConverter(),
-          new AnnotationJsonExtensions.AnnotationJsonConverter(),
-          new AttachmentJsonExtensions.AttachmentJsonConverter(),
-          new CodeableConceptJsonExtensions.CodeableConceptJsonConverter(),
-          new CodingJsonExtensions.CodingJsonConverter(),
-          new ContactDetailJsonExtensions.ContactDetailJsonConverter(),
-          new ContactPointJsonExtensions.ContactPointJsonConverter(),
-          new ContributorJsonExtensions.ContributorJsonConverter(),
-          new CountJsonExtensions.CountJsonConverter(),
-          new DataRequirementJsonExtensions.DataRequirementJsonConverter(),
-          new DistanceJsonExtensions.DistanceJsonConverter(),
-          new DosageJsonExtensions.DosageJsonConverter(),
-          new DurationJsonExtensions.DurationJsonConverter(),
-          new ElementDefinitionJsonExtensions.ElementDefinitionJsonConverter(),
-          new ExpressionJsonExtensions.ExpressionJsonConverter(),
-          new ExtensionJsonExtensions.ExtensionJsonConverter(),
-          new HumanNameJsonExtensions.HumanNameJsonConverter(),
-          new IdentifierJsonExtensions.IdentifierJsonConverter(),
-          new MarketingStatusJsonExtensions.MarketingStatusJsonConverter(),
-          new MetaJsonExtensions.MetaJsonConverter(),
-          new MoneyJsonExtensions.MoneyJsonConverter(),
-          new NarrativeJsonExtensions.NarrativeJsonConverter(),
-          new ParameterDefinitionJsonExtensions.ParameterDefinitionJsonConverter(),
-          new PeriodJsonExtensions.PeriodJsonConverter(),
-          new PopulationJsonExtensions.PopulationJsonConverter(),
-          new ProdCharacteristicJsonExtensions.ProdCharacteristicJsonConverter(),
-          new ProductShelfLifeJsonExtensions.ProductShelfLifeJsonConverter(),
-          new QuantityJsonExtensions.QuantityJsonConverter(),
-          new RangeJsonExtensions.RangeJsonConverter(),
-          new RatioJsonExtensions.RatioJsonConverter(),
-          new ResourceReferenceJsonExtensions.ResourceReferenceJsonConverter(),
-          new RelatedArtifactJsonExtensions.RelatedArtifactJsonConverter(),
-          new SampledDataJsonExtensions.SampledDataJsonConverter(),
-          new SignatureJsonExtensions.SignatureJsonConverter(),
-          new SubstanceAmountJsonExtensions.SubstanceAmountJsonConverter(),
-          new TimingJsonExtensions.TimingJsonConverter(),
-          new TriggerDefinitionJsonExtensions.TriggerDefinitionJsonConverter(),
-          new UsageContextJsonExtensions.UsageContextJsonConverter(),
-          new AccountJsonExtensions.AccountJsonConverter(),
-          new ActivityDefinitionJsonExtensions.ActivityDefinitionJsonConverter(),
-          new AdverseEventJsonExtensions.AdverseEventJsonConverter(),
-          new AllergyIntoleranceJsonExtensions.AllergyIntoleranceJsonConverter(),
-          new AppointmentJsonExtensions.AppointmentJsonConverter(),
-          new AppointmentResponseJsonExtensions.AppointmentResponseJsonConverter(),
-          new AuditEventJsonExtensions.AuditEventJsonConverter(),
-          new BasicJsonExtensions.BasicJsonConverter(),
-          new BinaryJsonExtensions.BinaryJsonConverter(),
-          new BiologicallyDerivedProductJsonExtensions.BiologicallyDerivedProductJsonConverter(),
-          new BodyStructureJsonExtensions.BodyStructureJsonConverter(),
-          new BundleJsonExtensions.BundleJsonConverter(),
-          new CapabilityStatementJsonExtensions.CapabilityStatementJsonConverter(),
-          new CarePlanJsonExtensions.CarePlanJsonConverter(),
-          new CareTeamJsonExtensions.CareTeamJsonConverter(),
-          new CatalogEntryJsonExtensions.CatalogEntryJsonConverter(),
-          new ChargeItemJsonExtensions.ChargeItemJsonConverter(),
-          new ChargeItemDefinitionJsonExtensions.ChargeItemDefinitionJsonConverter(),
-          new ClaimJsonExtensions.ClaimJsonConverter(),
-          new ClaimResponseJsonExtensions.ClaimResponseJsonConverter(),
-          new ClinicalImpressionJsonExtensions.ClinicalImpressionJsonConverter(),
-          new CodeSystemJsonExtensions.CodeSystemJsonConverter(),
-          new CommunicationJsonExtensions.CommunicationJsonConverter(),
-          new CommunicationRequestJsonExtensions.CommunicationRequestJsonConverter(),
-          new CompartmentDefinitionJsonExtensions.CompartmentDefinitionJsonConverter(),
-          new CompositionJsonExtensions.CompositionJsonConverter(),
-          new ConceptMapJsonExtensions.ConceptMapJsonConverter(),
-          new ConditionJsonExtensions.ConditionJsonConverter(),
-          new ConsentJsonExtensions.ConsentJsonConverter(),
-          new ContractJsonExtensions.ContractJsonConverter(),
-          new CoverageJsonExtensions.CoverageJsonConverter(),
-          new CoverageEligibilityRequestJsonExtensions.CoverageEligibilityRequestJsonConverter(),
-          new CoverageEligibilityResponseJsonExtensions.CoverageEligibilityResponseJsonConverter(),
-          new DetectedIssueJsonExtensions.DetectedIssueJsonConverter(),
-          new DeviceJsonExtensions.DeviceJsonConverter(),
-          new DeviceDefinitionJsonExtensions.DeviceDefinitionJsonConverter(),
-          new DeviceMetricJsonExtensions.DeviceMetricJsonConverter(),
-          new DeviceRequestJsonExtensions.DeviceRequestJsonConverter(),
-          new DeviceUseStatementJsonExtensions.DeviceUseStatementJsonConverter(),
-          new DiagnosticReportJsonExtensions.DiagnosticReportJsonConverter(),
-          new DocumentManifestJsonExtensions.DocumentManifestJsonConverter(),
-          new DocumentReferenceJsonExtensions.DocumentReferenceJsonConverter(),
-          new EffectEvidenceSynthesisJsonExtensions.EffectEvidenceSynthesisJsonConverter(),
-          new EncounterJsonExtensions.EncounterJsonConverter(),
-          new EndpointJsonExtensions.EndpointJsonConverter(),
-          new EnrollmentRequestJsonExtensions.EnrollmentRequestJsonConverter(),
-          new EnrollmentResponseJsonExtensions.EnrollmentResponseJsonConverter(),
-          new EpisodeOfCareJsonExtensions.EpisodeOfCareJsonConverter(),
-          new EventDefinitionJsonExtensions.EventDefinitionJsonConverter(),
-          new EvidenceJsonExtensions.EvidenceJsonConverter(),
-          new EvidenceVariableJsonExtensions.EvidenceVariableJsonConverter(),
-          new ExampleScenarioJsonExtensions.ExampleScenarioJsonConverter(),
-          new ExplanationOfBenefitJsonExtensions.ExplanationOfBenefitJsonConverter(),
-          new FamilyMemberHistoryJsonExtensions.FamilyMemberHistoryJsonConverter(),
-          new FlagJsonExtensions.FlagJsonConverter(),
-          new GoalJsonExtensions.GoalJsonConverter(),
-          new GraphDefinitionJsonExtensions.GraphDefinitionJsonConverter(),
-          new GroupJsonExtensions.GroupJsonConverter(),
-          new GuidanceResponseJsonExtensions.GuidanceResponseJsonConverter(),
-          new HealthcareServiceJsonExtensions.HealthcareServiceJsonConverter(),
-          new ImagingStudyJsonExtensions.ImagingStudyJsonConverter(),
-          new ImmunizationJsonExtensions.ImmunizationJsonConverter(),
-          new ImmunizationEvaluationJsonExtensions.ImmunizationEvaluationJsonConverter(),
-          new ImmunizationRecommendationJsonExtensions.ImmunizationRecommendationJsonConverter(),
-          new ImplementationGuideJsonExtensions.ImplementationGuideJsonConverter(),
-          new InsurancePlanJsonExtensions.InsurancePlanJsonConverter(),
-          new InvoiceJsonExtensions.InvoiceJsonConverter(),
-          new LibraryJsonExtensions.LibraryJsonConverter(),
-          new LinkageJsonExtensions.LinkageJsonConverter(),
-          new ListJsonExtensions.ListJsonConverter(),
-          new LocationJsonExtensions.LocationJsonConverter(),
-          new MeasureJsonExtensions.MeasureJsonConverter(),
-          new MeasureReportJsonExtensions.MeasureReportJsonConverter(),
-          new MediaJsonExtensions.MediaJsonConverter(),
-          new MedicationJsonExtensions.MedicationJsonConverter(),
-          new MedicationAdministrationJsonExtensions.MedicationAdministrationJsonConverter(),
-          new MedicationDispenseJsonExtensions.MedicationDispenseJsonConverter(),
-          new MedicationKnowledgeJsonExtensions.MedicationKnowledgeJsonConverter(),
-          new MedicationRequestJsonExtensions.MedicationRequestJsonConverter(),
-          new MedicationStatementJsonExtensions.MedicationStatementJsonConverter(),
-          new MedicinalProductJsonExtensions.MedicinalProductJsonConverter(),
-          new MedicinalProductAuthorizationJsonExtensions.MedicinalProductAuthorizationJsonConverter(),
-          new MedicinalProductContraindicationJsonExtensions.MedicinalProductContraindicationJsonConverter(),
-          new MedicinalProductIndicationJsonExtensions.MedicinalProductIndicationJsonConverter(),
-          new MedicinalProductIngredientJsonExtensions.MedicinalProductIngredientJsonConverter(),
-          new MedicinalProductInteractionJsonExtensions.MedicinalProductInteractionJsonConverter(),
-          new MedicinalProductManufacturedJsonExtensions.MedicinalProductManufacturedJsonConverter(),
-          new MedicinalProductPackagedJsonExtensions.MedicinalProductPackagedJsonConverter(),
-          new MedicinalProductPharmaceuticalJsonExtensions.MedicinalProductPharmaceuticalJsonConverter(),
-          new MedicinalProductUndesirableEffectJsonExtensions.MedicinalProductUndesirableEffectJsonConverter(),
-          new MessageDefinitionJsonExtensions.MessageDefinitionJsonConverter(),
-          new MessageHeaderJsonExtensions.MessageHeaderJsonConverter(),
-          new MolecularSequenceJsonExtensions.MolecularSequenceJsonConverter(),
-          new NamingSystemJsonExtensions.NamingSystemJsonConverter(),
-          new NutritionOrderJsonExtensions.NutritionOrderJsonConverter(),
-          new ObservationJsonExtensions.ObservationJsonConverter(),
-          new ObservationDefinitionJsonExtensions.ObservationDefinitionJsonConverter(),
-          new OperationDefinitionJsonExtensions.OperationDefinitionJsonConverter(),
-          new OperationOutcomeJsonExtensions.OperationOutcomeJsonConverter(),
-          new OrganizationJsonExtensions.OrganizationJsonConverter(),
-          new OrganizationAffiliationJsonExtensions.OrganizationAffiliationJsonConverter(),
-          new ParametersJsonExtensions.ParametersJsonConverter(),
-          new PatientJsonExtensions.PatientJsonConverter(),
-          new PaymentNoticeJsonExtensions.PaymentNoticeJsonConverter(),
-          new PaymentReconciliationJsonExtensions.PaymentReconciliationJsonConverter(),
-          new PersonJsonExtensions.PersonJsonConverter(),
-          new PlanDefinitionJsonExtensions.PlanDefinitionJsonConverter(),
-          new PractitionerJsonExtensions.PractitionerJsonConverter(),
-          new PractitionerRoleJsonExtensions.PractitionerRoleJsonConverter(),
-          new ProcedureJsonExtensions.ProcedureJsonConverter(),
-          new ProvenanceJsonExtensions.ProvenanceJsonConverter(),
-          new QuestionnaireJsonExtensions.QuestionnaireJsonConverter(),
-          new QuestionnaireResponseJsonExtensions.QuestionnaireResponseJsonConverter(),
-          new RelatedPersonJsonExtensions.RelatedPersonJsonConverter(),
-          new RequestGroupJsonExtensions.RequestGroupJsonConverter(),
-          new ResearchDefinitionJsonExtensions.ResearchDefinitionJsonConverter(),
-          new ResearchElementDefinitionJsonExtensions.ResearchElementDefinitionJsonConverter(),
-          new ResearchStudyJsonExtensions.ResearchStudyJsonConverter(),
-          new ResearchSubjectJsonExtensions.ResearchSubjectJsonConverter(),
-          new RiskAssessmentJsonExtensions.RiskAssessmentJsonConverter(),
-          new RiskEvidenceSynthesisJsonExtensions.RiskEvidenceSynthesisJsonConverter(),
-          new ScheduleJsonExtensions.ScheduleJsonConverter(),
-          new SearchParameterJsonExtensions.SearchParameterJsonConverter(),
-          new ServiceRequestJsonExtensions.ServiceRequestJsonConverter(),
-          new SlotJsonExtensions.SlotJsonConverter(),
-          new SpecimenJsonExtensions.SpecimenJsonConverter(),
-          new SpecimenDefinitionJsonExtensions.SpecimenDefinitionJsonConverter(),
-          new StructureDefinitionJsonExtensions.StructureDefinitionJsonConverter(),
-          new StructureMapJsonExtensions.StructureMapJsonConverter(),
-          new SubscriptionJsonExtensions.SubscriptionJsonConverter(),
-          new SubstanceJsonExtensions.SubstanceJsonConverter(),
-          new SubstanceNucleicAcidJsonExtensions.SubstanceNucleicAcidJsonConverter(),
-          new SubstancePolymerJsonExtensions.SubstancePolymerJsonConverter(),
-          new SubstanceProteinJsonExtensions.SubstanceProteinJsonConverter(),
-          new SubstanceReferenceInformationJsonExtensions.SubstanceReferenceInformationJsonConverter(),
-          new SubstanceSourceMaterialJsonExtensions.SubstanceSourceMaterialJsonConverter(),
-          new SubstanceSpecificationJsonExtensions.SubstanceSpecificationJsonConverter(),
-          new SupplyDeliveryJsonExtensions.SupplyDeliveryJsonConverter(),
-          new SupplyRequestJsonExtensions.SupplyRequestJsonConverter(),
-          new TaskJsonExtensions.TaskJsonConverter(),
-          new TerminologyCapabilitiesJsonExtensions.TerminologyCapabilitiesJsonConverter(),
-          new TestReportJsonExtensions.TestReportJsonConverter(),
-          new TestScriptJsonExtensions.TestScriptJsonConverter(),
-          new ValueSetJsonExtensions.ValueSetJsonConverter(),
-          new VerificationResultJsonExtensions.VerificationResultJsonConverter(),
-          new VisionPrescriptionJsonExtensions.VisionPrescriptionJsonConverter(),
-        },
+        Indented = false,
       };
+
+      _prettyFormat = new JsonWriterOptions()
+      {
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        Indented = true,
+      };
+
     }
 #pragma warning restore CA1810 // Initialize reference type static fields inline
 
     /// <summary>
+    /// Serializer options for Converters (polymorphic deserialization).
+    /// </summary>
+    public static JsonSerializerOptions SerializerOptions => _serializerOptions;
+
+    /// <summary>
     /// Compact (no extra whitespace) format.
     /// </summary>
-    public static JsonSerializerOptions Compact => _compactFormat;
+    public static JsonWriterOptions Compact => _compactFormat;
 
     /// <summary>
     /// Pretty-printed (newlines and indentation) format.
     /// </summary>
-    public static JsonSerializerOptions Pretty => _prettyFormat;
+    public static JsonWriterOptions Pretty => _prettyFormat;
   }
 }
 // end of file

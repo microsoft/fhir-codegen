@@ -124,14 +124,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.StatusDateElement != null) && (current.StatusDateElement.Value != null))
+      if (current.StatusDateElement != null)
       {
-        writer.WriteString("statusDate",current.StatusDateElement.Value);
+        if (!string.IsNullOrEmpty(current.StatusDateElement.Value))
+        {
+          writer.WriteString("statusDate",current.StatusDateElement.Value);
+        }
+        if (current.StatusDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.StatusDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_statusDate",false,current.StatusDateElement.Extension,current.StatusDateElement.ElementId);
+        }
       }
 
-      if ((current.StatusReasonElement != null) && (current.StatusReasonElement.Value != null))
+      if (current.StatusReasonElement != null)
       {
-        writer.WriteString("statusReason",current.StatusReasonElement.Value);
+        if (!string.IsNullOrEmpty(current.StatusReasonElement.Value))
+        {
+          writer.WriteString("statusReason",current.StatusReasonElement.Value);
+        }
+        if (current.StatusReasonElement.HasExtensions() || (!string.IsNullOrEmpty(current.StatusReasonElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_statusReason",false,current.StatusReasonElement.Extension,current.StatusReasonElement.ElementId);
+        }
       }
 
       if (current.ExpressedBy != null)
@@ -250,9 +264,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.LifecycleStatusElement =new Code<Hl7.Fhir.Model.Goal.GoalLifecycleStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Goal.GoalLifecycleStatus>(reader.GetString()));
           break;
 
+        case "_lifecycleStatus":
+          ((Hl7.Fhir.Model.Element)current.LifecycleStatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "achievementStatus":
           current.AchievementStatus = new Hl7.Fhir.Model.CodeableConcept();
-          current.AchievementStatus.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.AchievementStatus).DeserializeJson(ref reader, options);
           break;
 
         case "category":
@@ -284,17 +302,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "priority":
           current.Priority = new Hl7.Fhir.Model.CodeableConcept();
-          current.Priority.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Priority).DeserializeJson(ref reader, options);
           break;
 
         case "description":
           current.Description = new Hl7.Fhir.Model.CodeableConcept();
-          current.Description.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Description).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "startDate":
@@ -303,7 +321,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "startCodeableConcept":
           current.Start = new Hl7.Fhir.Model.CodeableConcept();
-          current.Start.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Start).DeserializeJson(ref reader, options);
           break;
 
         case "target":
@@ -345,9 +363,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusReasonElement = new FhirString(reader.GetString());
           break;
 
+        case "_statusReason":
+          ((Hl7.Fhir.Model.Element)current.StatusReasonElement).DeserializeJson(ref reader, options);
+          break;
+
         case "expressedBy":
           current.ExpressedBy = new Hl7.Fhir.Model.ResourceReference();
-          current.ExpressedBy.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.ExpressedBy).DeserializeJson(ref reader, options);
           break;
 
         case "addresses":
@@ -561,22 +583,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "measure":
           current.Measure = new Hl7.Fhir.Model.CodeableConcept();
-          current.Measure.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Measure).DeserializeJson(ref reader, options);
           break;
 
         case "detailQuantity":
           current.Detail = new Hl7.Fhir.Model.Quantity();
-          current.Detail.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Detail).DeserializeJson(ref reader, options);
           break;
 
         case "detailRange":
           current.Detail = new Hl7.Fhir.Model.Range();
-          current.Detail.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Detail).DeserializeJson(ref reader, options);
           break;
 
         case "detailCodeableConcept":
           current.Detail = new Hl7.Fhir.Model.CodeableConcept();
-          current.Detail.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Detail).DeserializeJson(ref reader, options);
           break;
 
         case "detailString":
@@ -593,7 +615,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "detailRatio":
           current.Detail = new Hl7.Fhir.Model.Ratio();
-          current.Detail.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Ratio)current.Detail).DeserializeJson(ref reader, options);
           break;
 
         case "dueDate":
@@ -602,7 +624,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "dueDuration":
           current.Due = new Hl7.Fhir.Model.Duration();
-          current.Due.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Duration)current.Due).DeserializeJson(ref reader, options);
           break;
 
         // Complex: target, Export: TargetComponent, Base: BackboneElement

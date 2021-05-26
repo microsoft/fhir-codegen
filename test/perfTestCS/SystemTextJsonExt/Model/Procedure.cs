@@ -73,9 +73,45 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         writer.WritePropertyName("instantiatesCanonical");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (Canonical val in current.InstantiatesCanonicalElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (Canonical val in current.InstantiatesCanonicalElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_instantiatesCanonical");
+          writer.WriteStartArray();
+          foreach (Canonical val in current.InstantiatesCanonicalElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -84,9 +120,45 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         writer.WritePropertyName("instantiatesUri");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirUri val in current.InstantiatesUriElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirUri val in current.InstantiatesUriElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_instantiatesUri");
+          writer.WriteStartArray();
+          foreach (FhirUri val in current.InstantiatesUriElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -419,6 +491,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
+            if (i_instantiatesCanonical >= current.InstantiatesCanonicalElement.Count)
+            {
+              current.InstantiatesCanonicalElement.Add(new Canonical());
+            }
             ((Hl7.Fhir.Model.Element)current.InstantiatesCanonicalElement[i_instantiatesCanonical++]).DeserializeJson(ref reader, options);
 
             if (!reader.Read())
@@ -451,6 +527,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
           if (current.InstantiatesUriElement.Count == 0)
           {
             current.InstantiatesUriElement = null;
+          }
+          break;
+
+        case "_instantiatesUri":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_instantiatesUri = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_instantiatesUri >= current.InstantiatesUriElement.Count)
+            {
+              current.InstantiatesUriElement.Add(new FhirUri());
+            }
+            ((Hl7.Fhir.Model.Element)current.InstantiatesUriElement[i_instantiatesUri++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
           break;
 
@@ -512,29 +612,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.EventStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.EventStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "statusReason":
           current.StatusReason = new Hl7.Fhir.Model.CodeableConcept();
-          current.StatusReason.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.StatusReason).DeserializeJson(ref reader, options);
           break;
 
         case "category":
           current.Category = new Hl7.Fhir.Model.CodeableConcept();
-          current.Category.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Category).DeserializeJson(ref reader, options);
           break;
 
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "performedDateTime":
@@ -543,7 +647,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "performedPeriod":
           current.Performed = new Hl7.Fhir.Model.Period();
-          current.Performed.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Performed).DeserializeJson(ref reader, options);
           break;
 
         case "performedString":
@@ -552,22 +656,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "performedAge":
           current.Performed = new Hl7.Fhir.Model.Age();
-          current.Performed.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Age)current.Performed).DeserializeJson(ref reader, options);
           break;
 
         case "performedRange":
           current.Performed = new Hl7.Fhir.Model.Range();
-          current.Performed.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Performed).DeserializeJson(ref reader, options);
           break;
 
         case "recorder":
           current.Recorder = new Hl7.Fhir.Model.ResourceReference();
-          current.Recorder.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Recorder).DeserializeJson(ref reader, options);
           break;
 
         case "asserter":
           current.Asserter = new Hl7.Fhir.Model.ResourceReference();
-          current.Asserter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Asserter).DeserializeJson(ref reader, options);
           break;
 
         case "performer":
@@ -599,7 +703,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "location":
           current.Location = new Hl7.Fhir.Model.ResourceReference();
-          current.Location.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Location).DeserializeJson(ref reader, options);
           break;
 
         case "reasonCode":
@@ -685,7 +789,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "outcome":
           current.Outcome = new Hl7.Fhir.Model.CodeableConcept();
-          current.Outcome.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Outcome).DeserializeJson(ref reader, options);
           break;
 
         case "report":
@@ -972,17 +1076,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "function":
           current.Function = new Hl7.Fhir.Model.CodeableConcept();
-          current.Function.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Function).DeserializeJson(ref reader, options);
           break;
 
         case "actor":
           current.Actor = new Hl7.Fhir.Model.ResourceReference();
-          current.Actor.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Actor).DeserializeJson(ref reader, options);
           break;
 
         case "onBehalfOf":
           current.OnBehalfOf = new Hl7.Fhir.Model.ResourceReference();
-          current.OnBehalfOf.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.OnBehalfOf).DeserializeJson(ref reader, options);
           break;
 
         // Complex: performer, Export: PerformerComponent, Base: BackboneElement
@@ -1047,12 +1151,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "action":
           current.Action = new Hl7.Fhir.Model.CodeableConcept();
-          current.Action.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Action).DeserializeJson(ref reader, options);
           break;
 
         case "manipulated":
           current.Manipulated = new Hl7.Fhir.Model.ResourceReference();
-          current.Manipulated.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Manipulated).DeserializeJson(ref reader, options);
           break;
 
         // Complex: focalDevice, Export: FocalDeviceComponent, Base: BackboneElement

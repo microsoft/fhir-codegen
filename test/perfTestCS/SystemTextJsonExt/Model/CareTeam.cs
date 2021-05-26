@@ -85,9 +85,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.NameElement != null) && (current.NameElement.Value != null))
+      if (current.NameElement != null)
       {
-        writer.WriteString("name",current.NameElement.Value);
+        if (!string.IsNullOrEmpty(current.NameElement.Value))
+        {
+          writer.WriteString("name",current.NameElement.Value);
+        }
+        if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_name",false,current.NameElement.Extension,current.NameElement.ElementId);
+        }
       }
 
       if (current.Subject != null)
@@ -240,6 +247,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.CareTeam.CareTeamStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.CareTeam.CareTeamStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "category":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -271,19 +282,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.NameElement = new FhirString(reader.GetString());
           break;
 
+        case "_name":
+          ((Hl7.Fhir.Model.Element)current.NameElement).DeserializeJson(ref reader, options);
+          break;
+
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         case "participant":
@@ -557,17 +572,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "member":
           current.Member = new Hl7.Fhir.Model.ResourceReference();
-          current.Member.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Member).DeserializeJson(ref reader, options);
           break;
 
         case "onBehalfOf":
           current.OnBehalfOf = new Hl7.Fhir.Model.ResourceReference();
-          current.OnBehalfOf.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.OnBehalfOf).DeserializeJson(ref reader, options);
           break;
 
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         // Complex: participant, Export: ParticipantComponent, Base: BackboneElement

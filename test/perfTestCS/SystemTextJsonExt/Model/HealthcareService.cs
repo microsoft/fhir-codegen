@@ -69,9 +69,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.ActiveElement != null) && (current.ActiveElement.Value != null))
+      if (current.ActiveElement != null)
       {
-        writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        if (current.ActiveElement.Value != null)
+        {
+          writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        }
+        if (current.ActiveElement.HasExtensions() || (!string.IsNullOrEmpty(current.ActiveElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_active",false,current.ActiveElement.Extension,current.ActiveElement.ElementId);
+        }
       }
 
       if (current.ProvidedBy != null)
@@ -124,19 +131,40 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.NameElement != null) && (current.NameElement.Value != null))
+      if (current.NameElement != null)
       {
-        writer.WriteString("name",current.NameElement.Value);
+        if (!string.IsNullOrEmpty(current.NameElement.Value))
+        {
+          writer.WriteString("name",current.NameElement.Value);
+        }
+        if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_name",false,current.NameElement.Extension,current.NameElement.ElementId);
+        }
       }
 
-      if ((current.CommentElement != null) && (current.CommentElement.Value != null))
+      if (current.CommentElement != null)
       {
-        writer.WriteString("comment",current.CommentElement.Value);
+        if (!string.IsNullOrEmpty(current.CommentElement.Value))
+        {
+          writer.WriteString("comment",current.CommentElement.Value);
+        }
+        if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_comment",false,current.CommentElement.Extension,current.CommentElement.ElementId);
+        }
       }
 
-      if ((current.ExtraDetails != null) && (current.ExtraDetails.Value != null))
+      if (current.ExtraDetails != null)
       {
-        writer.WriteString("extraDetails",current.ExtraDetails.Value);
+        if (!string.IsNullOrEmpty(current.ExtraDetails.Value))
+        {
+          writer.WriteString("extraDetails",current.ExtraDetails.Value);
+        }
+        if (current.ExtraDetails.HasExtensions() || (!string.IsNullOrEmpty(current.ExtraDetails.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_extraDetails",false,current.ExtraDetails.Extension,current.ExtraDetails.ElementId);
+        }
       }
 
       if (current.Photo != null)
@@ -233,9 +261,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.AppointmentRequiredElement != null) && (current.AppointmentRequiredElement.Value != null))
+      if (current.AppointmentRequiredElement != null)
       {
-        writer.WriteBoolean("appointmentRequired",(bool)current.AppointmentRequiredElement.Value);
+        if (current.AppointmentRequiredElement.Value != null)
+        {
+          writer.WriteBoolean("appointmentRequired",(bool)current.AppointmentRequiredElement.Value);
+        }
+        if (current.AppointmentRequiredElement.HasExtensions() || (!string.IsNullOrEmpty(current.AppointmentRequiredElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_appointmentRequired",false,current.AppointmentRequiredElement.Extension,current.AppointmentRequiredElement.ElementId);
+        }
       }
 
       if ((current.AvailableTime != null) && (current.AvailableTime.Count != 0))
@@ -260,9 +295,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.AvailabilityExceptionsElement != null) && (current.AvailabilityExceptionsElement.Value != null))
+      if (current.AvailabilityExceptionsElement != null)
       {
-        writer.WriteString("availabilityExceptions",current.AvailabilityExceptionsElement.Value);
+        if (!string.IsNullOrEmpty(current.AvailabilityExceptionsElement.Value))
+        {
+          writer.WriteString("availabilityExceptions",current.AvailabilityExceptionsElement.Value);
+        }
+        if (current.AvailabilityExceptionsElement.HasExtensions() || (!string.IsNullOrEmpty(current.AvailabilityExceptionsElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_availabilityExceptions",false,current.AvailabilityExceptionsElement.Extension,current.AvailabilityExceptionsElement.ElementId);
+        }
       }
 
       if ((current.Endpoint != null) && (current.Endpoint.Count != 0))
@@ -342,9 +384,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.ActiveElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_active":
+          ((Hl7.Fhir.Model.Element)current.ActiveElement).DeserializeJson(ref reader, options);
+          break;
+
         case "providedBy":
           current.ProvidedBy = new Hl7.Fhir.Model.ResourceReference();
-          current.ProvidedBy.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.ProvidedBy).DeserializeJson(ref reader, options);
           break;
 
         case "category":
@@ -459,8 +505,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.NameElement = new FhirString(reader.GetString());
           break;
 
+        case "_name":
+          ((Hl7.Fhir.Model.Element)current.NameElement).DeserializeJson(ref reader, options);
+          break;
+
         case "comment":
           current.CommentElement = new FhirString(reader.GetString());
+          break;
+
+        case "_comment":
+          ((Hl7.Fhir.Model.Element)current.CommentElement).DeserializeJson(ref reader, options);
           break;
 
         case "extraDetails":
@@ -469,7 +523,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "photo":
           current.Photo = new Hl7.Fhir.Model.Attachment();
-          current.Photo.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Attachment)current.Photo).DeserializeJson(ref reader, options);
           break;
 
         case "telecom":
@@ -692,6 +746,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.AppointmentRequiredElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_appointmentRequired":
+          ((Hl7.Fhir.Model.Element)current.AppointmentRequiredElement).DeserializeJson(ref reader, options);
+          break;
+
         case "availableTime":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -750,6 +808,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.AvailabilityExceptionsElement = new FhirString(reader.GetString());
           break;
 
+        case "_availabilityExceptions":
+          ((Hl7.Fhir.Model.Element)current.AvailabilityExceptionsElement).DeserializeJson(ref reader, options);
+          break;
+
         case "endpoint":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -799,9 +861,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Code.SerializeJson(writer, options);
       }
 
-      if ((current.Comment != null) && (current.Comment.Value != null))
+      if (current.Comment != null)
       {
-        writer.WriteString("comment",current.Comment.Value);
+        if (!string.IsNullOrEmpty(current.Comment.Value))
+        {
+          writer.WriteString("comment",current.Comment.Value);
+        }
+        if (current.Comment.HasExtensions() || (!string.IsNullOrEmpty(current.Comment.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_comment",false,current.Comment.Extension,current.Comment.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -841,7 +910,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "comment":
@@ -875,9 +944,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.AllDayElement != null) && (current.AllDayElement.Value != null))
+      if (current.AllDayElement != null)
       {
-        writer.WriteBoolean("allDay",(bool)current.AllDayElement.Value);
+        if (current.AllDayElement.Value != null)
+        {
+          writer.WriteBoolean("allDay",(bool)current.AllDayElement.Value);
+        }
+        if (current.AllDayElement.HasExtensions() || (!string.IsNullOrEmpty(current.AllDayElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_allDay",false,current.AllDayElement.Extension,current.AllDayElement.ElementId);
+        }
       }
 
       if (current.AvailableStartTimeElement != null)
@@ -952,13 +1028,41 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_daysOfWeek":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_daysOfWeek = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_daysOfWeek >= current.DaysOfWeekElement.Count)
+            {
+              current.DaysOfWeekElement.Add(new Code<Hl7.Fhir.Model.DaysOfWeek>());
+            }
+            ((Hl7.Fhir.Model.Element)current.DaysOfWeekElement[i_daysOfWeek++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "allDay":
           current.AllDayElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_allDay":
+          ((Hl7.Fhir.Model.Element)current.AllDayElement).DeserializeJson(ref reader, options);
+          break;
+
         case "availableStartTime":
           current.AvailableStartTimeElement = new Hl7.Fhir.Model.Time();
-          current.AvailableStartTimeElement.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Time)current.AvailableStartTimeElement).DeserializeJson(ref reader, options);
           break;
 
         case "_availableStartTime":
@@ -967,7 +1071,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "availableEndTime":
           current.AvailableEndTimeElement = new Hl7.Fhir.Model.Time();
-          current.AvailableEndTimeElement.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Time)current.AvailableEndTimeElement).DeserializeJson(ref reader, options);
           break;
 
         case "_availableEndTime":
@@ -1037,9 +1141,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "during":
           current.During = new Hl7.Fhir.Model.Period();
-          current.During.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.During).DeserializeJson(ref reader, options);
           break;
 
         // Complex: notAvailable, Export: NotAvailableComponent, Base: BackboneElement

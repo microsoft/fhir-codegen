@@ -54,44 +54,100 @@ namespace Hl7.Fhir.Model.JsonExtensions
     public static void SerializeJson(this Attachment current, Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
     {
       if (includeStartObject) { writer.WriteStartObject(); }
-      if ((current.ContentTypeElement != null) && (current.ContentTypeElement.Value != null))
+      if (current.ContentTypeElement != null)
       {
-        writer.WriteString("contentType",current.ContentTypeElement.Value);
+        if (!string.IsNullOrEmpty(current.ContentTypeElement.Value))
+        {
+          writer.WriteString("contentType",current.ContentTypeElement.Value);
+        }
+        if (current.ContentTypeElement.HasExtensions() || (!string.IsNullOrEmpty(current.ContentTypeElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_contentType",false,current.ContentTypeElement.Extension,current.ContentTypeElement.ElementId);
+        }
       }
 
-      if ((current.LanguageElement != null) && (current.LanguageElement.Value != null))
+      if (current.LanguageElement != null)
       {
-        writer.WriteString("language",current.LanguageElement.Value);
+        if (!string.IsNullOrEmpty(current.LanguageElement.Value))
+        {
+          writer.WriteString("language",current.LanguageElement.Value);
+        }
+        if (current.LanguageElement.HasExtensions() || (!string.IsNullOrEmpty(current.LanguageElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_language",false,current.LanguageElement.Extension,current.LanguageElement.ElementId);
+        }
       }
 
-      if ((current.DataElement != null) && (current.DataElement.Value != null))
+      if (current.DataElement != null)
       {
-        writer.WriteString("data",System.Convert.ToBase64String(current.DataElement.Value));
+        if (current.DataElement.Value != null)
+        {
+          writer.WriteString("data",System.Convert.ToBase64String(current.DataElement.Value));
+        }
+        if (current.DataElement.HasExtensions() || (!string.IsNullOrEmpty(current.DataElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_data",false,current.DataElement.Extension,current.DataElement.ElementId);
+        }
       }
 
-      if ((current.UrlElement != null) && (current.UrlElement.Value != null))
+      if (current.UrlElement != null)
       {
-        writer.WriteString("url",current.UrlElement.Value);
+        if (!string.IsNullOrEmpty(current.UrlElement.Value))
+        {
+          writer.WriteString("url",current.UrlElement.Value);
+        }
+        if (current.UrlElement.HasExtensions() || (!string.IsNullOrEmpty(current.UrlElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_url",false,current.UrlElement.Extension,current.UrlElement.ElementId);
+        }
       }
 
-      if ((current.SizeElement != null) && (current.SizeElement.Value != null))
+      if (current.SizeElement != null)
       {
-        writer.WriteNumber("size",(int)current.SizeElement.Value);
+        if (current.SizeElement.Value != null)
+        {
+          writer.WriteNumber("size",(int)current.SizeElement.Value);
+        }
+        if (current.SizeElement.HasExtensions() || (!string.IsNullOrEmpty(current.SizeElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_size",false,current.SizeElement.Extension,current.SizeElement.ElementId);
+        }
       }
 
-      if ((current.HashElement != null) && (current.HashElement.Value != null))
+      if (current.HashElement != null)
       {
-        writer.WriteString("hash",System.Convert.ToBase64String(current.HashElement.Value));
+        if (current.HashElement.Value != null)
+        {
+          writer.WriteString("hash",System.Convert.ToBase64String(current.HashElement.Value));
+        }
+        if (current.HashElement.HasExtensions() || (!string.IsNullOrEmpty(current.HashElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_hash",false,current.HashElement.Extension,current.HashElement.ElementId);
+        }
       }
 
-      if ((current.TitleElement != null) && (current.TitleElement.Value != null))
+      if (current.TitleElement != null)
       {
-        writer.WriteString("title",current.TitleElement.Value);
+        if (!string.IsNullOrEmpty(current.TitleElement.Value))
+        {
+          writer.WriteString("title",current.TitleElement.Value);
+        }
+        if (current.TitleElement.HasExtensions() || (!string.IsNullOrEmpty(current.TitleElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_title",false,current.TitleElement.Extension,current.TitleElement.ElementId);
+        }
       }
 
-      if ((current.CreationElement != null) && (current.CreationElement.Value != null))
+      if (current.CreationElement != null)
       {
-        writer.WriteString("creation",current.CreationElement.Value);
+        if (!string.IsNullOrEmpty(current.CreationElement.Value))
+        {
+          writer.WriteString("creation",current.CreationElement.Value);
+        }
+        if (current.CreationElement.HasExtensions() || (!string.IsNullOrEmpty(current.CreationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_creation",false,current.CreationElement.Extension,current.CreationElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -149,24 +205,48 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DataElement = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
           break;
 
+        case "_data":
+          ((Hl7.Fhir.Model.Element)current.DataElement).DeserializeJson(ref reader, options);
+          break;
+
         case "url":
           current.UrlElement = new FhirUrl(reader.GetString());
+          break;
+
+        case "_url":
+          ((Hl7.Fhir.Model.Element)current.UrlElement).DeserializeJson(ref reader, options);
           break;
 
         case "size":
           current.SizeElement = new UnsignedInt(reader.GetInt32());
           break;
 
+        case "_size":
+          ((Hl7.Fhir.Model.Element)current.SizeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "hash":
           current.HashElement = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
+          break;
+
+        case "_hash":
+          ((Hl7.Fhir.Model.Element)current.HashElement).DeserializeJson(ref reader, options);
           break;
 
         case "title":
           current.TitleElement = new FhirString(reader.GetString());
           break;
 
+        case "_title":
+          ((Hl7.Fhir.Model.Element)current.TitleElement).DeserializeJson(ref reader, options);
+          break;
+
         case "creation":
           current.CreationElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_creation":
+          ((Hl7.Fhir.Model.Element)current.CreationElement).DeserializeJson(ref reader, options);
           break;
 
       }

@@ -80,9 +80,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
       if (current.LegalStatusOfSupply != null)
@@ -234,9 +241,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "legalStatusOfSupply":
           current.LegalStatusOfSupply = new Hl7.Fhir.Model.CodeableConcept();
-          current.LegalStatusOfSupply.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.LegalStatusOfSupply).DeserializeJson(ref reader, options);
           break;
 
         case "marketingStatus":
@@ -268,7 +279,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "marketingAuthorization":
           current.MarketingAuthorization = new Hl7.Fhir.Model.ResourceReference();
-          current.MarketingAuthorization.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.MarketingAuthorization).DeserializeJson(ref reader, options);
           break;
 
         case "manufacturer":
@@ -414,12 +425,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "outerPackaging":
           current.OuterPackaging = new Hl7.Fhir.Model.Identifier();
-          current.OuterPackaging.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.OuterPackaging).DeserializeJson(ref reader, options);
           break;
 
         case "immediatePackaging":
           current.ImmediatePackaging = new Hl7.Fhir.Model.Identifier();
-          current.ImmediatePackaging.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.ImmediatePackaging).DeserializeJson(ref reader, options);
           break;
 
         // Complex: batchIdentifier, Export: BatchIdentifierComponent, Base: BackboneElement
@@ -613,12 +624,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "quantity":
           current.Quantity = new Hl7.Fhir.Model.Quantity();
-          current.Quantity.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Quantity).DeserializeJson(ref reader, options);
           break;
 
         case "material":
@@ -758,7 +769,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "physicalCharacteristics":
           current.PhysicalCharacteristics = new Hl7.Fhir.Model.ProdCharacteristic();
-          current.PhysicalCharacteristics.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ProdCharacteristic)current.PhysicalCharacteristics).DeserializeJson(ref reader, options);
           break;
 
         case "otherCharacteristics":

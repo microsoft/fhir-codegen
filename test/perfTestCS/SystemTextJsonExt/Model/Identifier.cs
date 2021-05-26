@@ -65,14 +65,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Type.SerializeJson(writer, options);
       }
 
-      if ((current.SystemElement != null) && (current.SystemElement.Value != null))
+      if (current.SystemElement != null)
       {
-        writer.WriteString("system",current.SystemElement.Value);
+        if (!string.IsNullOrEmpty(current.SystemElement.Value))
+        {
+          writer.WriteString("system",current.SystemElement.Value);
+        }
+        if (current.SystemElement.HasExtensions() || (!string.IsNullOrEmpty(current.SystemElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_system",false,current.SystemElement.Extension,current.SystemElement.ElementId);
+        }
       }
 
-      if ((current.ValueElement != null) && (current.ValueElement.Value != null))
+      if (current.ValueElement != null)
       {
-        writer.WriteString("value",current.ValueElement.Value);
+        if (!string.IsNullOrEmpty(current.ValueElement.Value))
+        {
+          writer.WriteString("value",current.ValueElement.Value);
+        }
+        if (current.ValueElement.HasExtensions() || (!string.IsNullOrEmpty(current.ValueElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_value",false,current.ValueElement.Extension,current.ValueElement.ElementId);
+        }
       }
 
       if (current.Period != null)
@@ -126,27 +140,39 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.UseElement =new Code<Hl7.Fhir.Model.Identifier.IdentifierUse>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Identifier.IdentifierUse>(reader.GetString()));
           break;
 
+        case "_use":
+          ((Hl7.Fhir.Model.Element)current.UseElement).DeserializeJson(ref reader, options);
+          break;
+
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "system":
           current.SystemElement = new FhirUri(reader.GetString());
           break;
 
+        case "_system":
+          ((Hl7.Fhir.Model.Element)current.SystemElement).DeserializeJson(ref reader, options);
+          break;
+
         case "value":
           current.ValueElement = new FhirString(reader.GetString());
           break;
 
+        case "_value":
+          ((Hl7.Fhir.Model.Element)current.ValueElement).DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         case "assigner":
           current.Assigner = new Hl7.Fhir.Model.ResourceReference();
-          current.Assigner.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Assigner).DeserializeJson(ref reader, options);
           break;
 
       }

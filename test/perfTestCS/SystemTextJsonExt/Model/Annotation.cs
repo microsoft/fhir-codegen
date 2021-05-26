@@ -67,9 +67,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.TimeElement != null) && (current.TimeElement.Value != null))
+      if (current.TimeElement != null)
       {
-        writer.WriteString("time",current.TimeElement.Value);
+        if (!string.IsNullOrEmpty(current.TimeElement.Value))
+        {
+          writer.WriteString("time",current.TimeElement.Value);
+        }
+        if (current.TimeElement.HasExtensions() || (!string.IsNullOrEmpty(current.TimeElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_time",false,current.TimeElement.Extension,current.TimeElement.ElementId);
+        }
       }
 
       writer.WriteString("text",current.Text.Value);
@@ -111,7 +118,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "authorReference":
           current.Author = new Hl7.Fhir.Model.ResourceReference();
-          current.Author.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Author).DeserializeJson(ref reader, options);
           break;
 
         case "authorString":
@@ -120,6 +127,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "time":
           current.TimeElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_time":
+          ((Hl7.Fhir.Model.Element)current.TimeElement).DeserializeJson(ref reader, options);
           break;
 
         case "text":

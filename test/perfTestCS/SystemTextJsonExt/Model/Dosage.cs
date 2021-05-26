@@ -57,14 +57,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Complex: Dosage, Export: Dosage, Base: BackboneElement (BackboneType)
       ((Hl7.Fhir.Model.BackboneType)current).SerializeJson(writer, options, false);
 
-      if ((current.SequenceElement != null) && (current.SequenceElement.Value != null))
+      if (current.SequenceElement != null)
       {
-        writer.WriteNumber("sequence",(int)current.SequenceElement.Value);
+        if (current.SequenceElement.Value != null)
+        {
+          writer.WriteNumber("sequence",(int)current.SequenceElement.Value);
+        }
+        if (current.SequenceElement.HasExtensions() || (!string.IsNullOrEmpty(current.SequenceElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_sequence",false,current.SequenceElement.Extension,current.SequenceElement.ElementId);
+        }
       }
 
-      if ((current.TextElement != null) && (current.TextElement.Value != null))
+      if (current.TextElement != null)
       {
-        writer.WriteString("text",current.TextElement.Value);
+        if (!string.IsNullOrEmpty(current.TextElement.Value))
+        {
+          writer.WriteString("text",current.TextElement.Value);
+        }
+        if (current.TextElement.HasExtensions() || (!string.IsNullOrEmpty(current.TextElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_text",false,current.TextElement.Extension,current.TextElement.ElementId);
+        }
       }
 
       if ((current.AdditionalInstruction != null) && (current.AdditionalInstruction.Count != 0))
@@ -78,9 +92,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.PatientInstructionElement != null) && (current.PatientInstructionElement.Value != null))
+      if (current.PatientInstructionElement != null)
       {
-        writer.WriteString("patientInstruction",current.PatientInstructionElement.Value);
+        if (!string.IsNullOrEmpty(current.PatientInstructionElement.Value))
+        {
+          writer.WriteString("patientInstruction",current.PatientInstructionElement.Value);
+        }
+        if (current.PatientInstructionElement.HasExtensions() || (!string.IsNullOrEmpty(current.PatientInstructionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_patientInstruction",false,current.PatientInstructionElement.Extension,current.PatientInstructionElement.ElementId);
+        }
       }
 
       if (current.Timing != null)
@@ -196,6 +217,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.TextElement = new FhirString(reader.GetString());
           break;
 
+        case "_text":
+          ((Hl7.Fhir.Model.Element)current.TextElement).DeserializeJson(ref reader, options);
+          break;
+
         case "additionalInstruction":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -227,9 +252,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.PatientInstructionElement = new FhirString(reader.GetString());
           break;
 
+        case "_patientInstruction":
+          ((Hl7.Fhir.Model.Element)current.PatientInstructionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "timing":
           current.Timing = new Hl7.Fhir.Model.Timing();
-          current.Timing.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Timing)current.Timing).DeserializeJson(ref reader, options);
           break;
 
         case "asNeededBoolean":
@@ -238,22 +267,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "asNeededCodeableConcept":
           current.AsNeeded = new Hl7.Fhir.Model.CodeableConcept();
-          current.AsNeeded.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.AsNeeded).DeserializeJson(ref reader, options);
           break;
 
         case "site":
           current.Site = new Hl7.Fhir.Model.CodeableConcept();
-          current.Site.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Site).DeserializeJson(ref reader, options);
           break;
 
         case "route":
           current.Route = new Hl7.Fhir.Model.CodeableConcept();
-          current.Route.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Route).DeserializeJson(ref reader, options);
           break;
 
         case "method":
           current.Method = new Hl7.Fhir.Model.CodeableConcept();
-          current.Method.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Method).DeserializeJson(ref reader, options);
           break;
 
         case "doseAndRate":
@@ -285,17 +314,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "maxDosePerPeriod":
           current.MaxDosePerPeriod = new Hl7.Fhir.Model.Ratio();
-          current.MaxDosePerPeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Ratio)current.MaxDosePerPeriod).DeserializeJson(ref reader, options);
           break;
 
         case "maxDosePerAdministration":
           current.MaxDosePerAdministration = new Hl7.Fhir.Model.Quantity();
-          current.MaxDosePerAdministration.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.MaxDosePerAdministration).DeserializeJson(ref reader, options);
           break;
 
         case "maxDosePerLifetime":
           current.MaxDosePerLifetime = new Hl7.Fhir.Model.Quantity();
-          current.MaxDosePerLifetime.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.MaxDosePerLifetime).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Dosage, Export: Dosage, Base: BackboneElement
@@ -386,32 +415,32 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "doseRange":
           current.Dose = new Hl7.Fhir.Model.Range();
-          current.Dose.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Dose).DeserializeJson(ref reader, options);
           break;
 
         case "doseQuantity":
           current.Dose = new Hl7.Fhir.Model.Quantity();
-          current.Dose.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Dose).DeserializeJson(ref reader, options);
           break;
 
         case "rateRatio":
           current.Rate = new Hl7.Fhir.Model.Ratio();
-          current.Rate.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Ratio)current.Rate).DeserializeJson(ref reader, options);
           break;
 
         case "rateRange":
           current.Rate = new Hl7.Fhir.Model.Range();
-          current.Rate.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Rate).DeserializeJson(ref reader, options);
           break;
 
         case "rateQuantity":
           current.Rate = new Hl7.Fhir.Model.Quantity();
-          current.Rate.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Rate).DeserializeJson(ref reader, options);
           break;
 
       }

@@ -78,9 +78,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Subject.SerializeJson(writer, options);
       }
 
-      if ((current.CreatedElement != null) && (current.CreatedElement.Value != null))
+      if (current.CreatedElement != null)
       {
-        writer.WriteString("created",current.CreatedElement.Value);
+        if (!string.IsNullOrEmpty(current.CreatedElement.Value))
+        {
+          writer.WriteString("created",current.CreatedElement.Value);
+        }
+        if (current.CreatedElement.HasExtensions() || (!string.IsNullOrEmpty(current.CreatedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_created",false,current.CreatedElement.Extension,current.CreatedElement.ElementId);
+        }
       }
 
       if (current.Author != null)
@@ -153,12 +160,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "created":
@@ -171,7 +178,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "author":
           current.Author = new Hl7.Fhir.Model.ResourceReference();
-          current.Author.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Author).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Basic, Export: Basic, Base: DomainResource

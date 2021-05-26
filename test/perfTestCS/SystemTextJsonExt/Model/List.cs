@@ -73,9 +73,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("mode",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.ModeElement.Value));
 
-      if ((current.TitleElement != null) && (current.TitleElement.Value != null))
+      if (current.TitleElement != null)
       {
-        writer.WriteString("title",current.TitleElement.Value);
+        if (!string.IsNullOrEmpty(current.TitleElement.Value))
+        {
+          writer.WriteString("title",current.TitleElement.Value);
+        }
+        if (current.TitleElement.HasExtensions() || (!string.IsNullOrEmpty(current.TitleElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_title",false,current.TitleElement.Extension,current.TitleElement.ElementId);
+        }
       }
 
       if (current.Code != null)
@@ -96,9 +103,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Encounter.SerializeJson(writer, options);
       }
 
-      if ((current.DateElement != null) && (current.DateElement.Value != null))
+      if (current.DateElement != null)
       {
-        writer.WriteString("date",current.DateElement.Value);
+        if (!string.IsNullOrEmpty(current.DateElement.Value))
+        {
+          writer.WriteString("date",current.DateElement.Value);
+        }
+        if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_date",false,current.DateElement.Extension,current.DateElement.ElementId);
+        }
       }
 
       if (current.Source != null)
@@ -207,41 +221,57 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.List.ListStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.List.ListStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "mode":
           current.ModeElement =new Code<Hl7.Fhir.Model.ListMode>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ListMode>(reader.GetString()));
+          break;
+
+        case "_mode":
+          ((Hl7.Fhir.Model.Element)current.ModeElement).DeserializeJson(ref reader, options);
           break;
 
         case "title":
           current.TitleElement = new FhirString(reader.GetString());
           break;
 
+        case "_title":
+          ((Hl7.Fhir.Model.Element)current.TitleElement).DeserializeJson(ref reader, options);
+          break;
+
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "date":
           current.DateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_date":
+          ((Hl7.Fhir.Model.Element)current.DateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "source":
           current.Source = new Hl7.Fhir.Model.ResourceReference();
-          current.Source.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Source).DeserializeJson(ref reader, options);
           break;
 
         case "orderedBy":
           current.OrderedBy = new Hl7.Fhir.Model.CodeableConcept();
-          current.OrderedBy.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.OrderedBy).DeserializeJson(ref reader, options);
           break;
 
         case "note":
@@ -300,7 +330,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "emptyReason":
           current.EmptyReason = new Hl7.Fhir.Model.CodeableConcept();
-          current.EmptyReason.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.EmptyReason).DeserializeJson(ref reader, options);
           break;
 
         // Complex: List, Export: List, Base: DomainResource
@@ -325,14 +355,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Flag.SerializeJson(writer, options);
       }
 
-      if ((current.DeletedElement != null) && (current.DeletedElement.Value != null))
+      if (current.DeletedElement != null)
       {
-        writer.WriteBoolean("deleted",(bool)current.DeletedElement.Value);
+        if (current.DeletedElement.Value != null)
+        {
+          writer.WriteBoolean("deleted",(bool)current.DeletedElement.Value);
+        }
+        if (current.DeletedElement.HasExtensions() || (!string.IsNullOrEmpty(current.DeletedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_deleted",false,current.DeletedElement.Extension,current.DeletedElement.ElementId);
+        }
       }
 
-      if ((current.DateElement != null) && (current.DateElement.Value != null))
+      if (current.DateElement != null)
       {
-        writer.WriteString("date",current.DateElement.Value);
+        if (!string.IsNullOrEmpty(current.DateElement.Value))
+        {
+          writer.WriteString("date",current.DateElement.Value);
+        }
+        if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_date",false,current.DateElement.Extension,current.DateElement.ElementId);
+        }
       }
 
       writer.WritePropertyName("item");
@@ -375,20 +419,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "flag":
           current.Flag = new Hl7.Fhir.Model.CodeableConcept();
-          current.Flag.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Flag).DeserializeJson(ref reader, options);
           break;
 
         case "deleted":
           current.DeletedElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_deleted":
+          ((Hl7.Fhir.Model.Element)current.DeletedElement).DeserializeJson(ref reader, options);
+          break;
+
         case "date":
           current.DateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_date":
+          ((Hl7.Fhir.Model.Element)current.DateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "item":
           current.Item = new Hl7.Fhir.Model.ResourceReference();
-          current.Item.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Item).DeserializeJson(ref reader, options);
           break;
 
         // Complex: entry, Export: EntryComponent, Base: BackboneElement

@@ -126,27 +126,27 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "ageRange":
           current.Age = new Hl7.Fhir.Model.Range();
-          current.Age.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Age).DeserializeJson(ref reader, options);
           break;
 
         case "ageCodeableConcept":
           current.Age = new Hl7.Fhir.Model.CodeableConcept();
-          current.Age.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Age).DeserializeJson(ref reader, options);
           break;
 
         case "gender":
           current.Gender = new Hl7.Fhir.Model.CodeableConcept();
-          current.Gender.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Gender).DeserializeJson(ref reader, options);
           break;
 
         case "race":
           current.Race = new Hl7.Fhir.Model.CodeableConcept();
-          current.Race.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Race).DeserializeJson(ref reader, options);
           break;
 
         case "physiologicalCondition":
           current.PhysiologicalCondition = new Hl7.Fhir.Model.CodeableConcept();
-          current.PhysiologicalCondition.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.PhysiologicalCondition).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Population, Export: Population, Base: BackboneElement

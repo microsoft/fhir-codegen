@@ -274,19 +274,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.SupplyDelivery.SupplyDeliveryStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.SupplyDelivery.SupplyDeliveryStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "patient":
           current.Patient = new Hl7.Fhir.Model.ResourceReference();
-          current.Patient.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Patient).DeserializeJson(ref reader, options);
           break;
 
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "suppliedItem":
           current.SuppliedItem = new Hl7.Fhir.Model.SupplyDelivery.SuppliedItemComponent();
-          current.SuppliedItem.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SupplyDelivery.SuppliedItemComponent)current.SuppliedItem).DeserializeJson(ref reader, options);
           break;
 
         case "occurrenceDateTime":
@@ -295,22 +299,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "occurrencePeriod":
           current.Occurrence = new Hl7.Fhir.Model.Period();
-          current.Occurrence.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Occurrence).DeserializeJson(ref reader, options);
           break;
 
         case "occurrenceTiming":
           current.Occurrence = new Hl7.Fhir.Model.Timing();
-          current.Occurrence.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Timing)current.Occurrence).DeserializeJson(ref reader, options);
           break;
 
         case "supplier":
           current.Supplier = new Hl7.Fhir.Model.ResourceReference();
-          current.Supplier.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Supplier).DeserializeJson(ref reader, options);
           break;
 
         case "destination":
           current.Destination = new Hl7.Fhir.Model.ResourceReference();
-          current.Destination.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Destination).DeserializeJson(ref reader, options);
           break;
 
         case "receiver":
@@ -413,17 +417,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "quantity":
           current.Quantity = new Hl7.Fhir.Model.Quantity();
-          current.Quantity.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Quantity).DeserializeJson(ref reader, options);
           break;
 
         case "itemCodeableConcept":
           current.Item = new Hl7.Fhir.Model.CodeableConcept();
-          current.Item.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Item).DeserializeJson(ref reader, options);
           break;
 
         case "itemReference":
           current.Item = new Hl7.Fhir.Model.ResourceReference();
-          current.Item.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Item).DeserializeJson(ref reader, options);
           break;
 
         // Complex: suppliedItem, Export: SuppliedItemComponent, Base: BackboneElement

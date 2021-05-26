@@ -59,9 +59,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteString("system",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.SystemElement.Value));
       }
 
-      if ((current.ValueElement != null) && (current.ValueElement.Value != null))
+      if (current.ValueElement != null)
       {
-        writer.WriteString("value",current.ValueElement.Value);
+        if (!string.IsNullOrEmpty(current.ValueElement.Value))
+        {
+          writer.WriteString("value",current.ValueElement.Value);
+        }
+        if (current.ValueElement.HasExtensions() || (!string.IsNullOrEmpty(current.ValueElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_value",false,current.ValueElement.Extension,current.ValueElement.ElementId);
+        }
       }
 
       if (current.UseElement != null)
@@ -69,9 +76,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteString("use",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.UseElement.Value));
       }
 
-      if ((current.RankElement != null) && (current.RankElement.Value != null))
+      if (current.RankElement != null)
       {
-        writer.WriteNumber("rank",(int)current.RankElement.Value);
+        if (current.RankElement.Value != null)
+        {
+          writer.WriteNumber("rank",(int)current.RankElement.Value);
+        }
+        if (current.RankElement.HasExtensions() || (!string.IsNullOrEmpty(current.RankElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_rank",false,current.RankElement.Extension,current.RankElement.ElementId);
+        }
       }
 
       if (current.Period != null)
@@ -119,21 +133,37 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.SystemElement =new Code<Hl7.Fhir.Model.ContactPoint.ContactPointSystem>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ContactPoint.ContactPointSystem>(reader.GetString()));
           break;
 
+        case "_system":
+          ((Hl7.Fhir.Model.Element)current.SystemElement).DeserializeJson(ref reader, options);
+          break;
+
         case "value":
           current.ValueElement = new FhirString(reader.GetString());
+          break;
+
+        case "_value":
+          ((Hl7.Fhir.Model.Element)current.ValueElement).DeserializeJson(ref reader, options);
           break;
 
         case "use":
           current.UseElement =new Code<Hl7.Fhir.Model.ContactPoint.ContactPointUse>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ContactPoint.ContactPointUse>(reader.GetString()));
           break;
 
+        case "_use":
+          ((Hl7.Fhir.Model.Element)current.UseElement).DeserializeJson(ref reader, options);
+          break;
+
         case "rank":
           current.RankElement = new PositiveInt(reader.GetInt32());
           break;
 
+        case "_rank":
+          ((Hl7.Fhir.Model.Element)current.RankElement).DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
       }

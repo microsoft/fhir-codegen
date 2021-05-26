@@ -82,15 +82,51 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      writer.WriteString("recorded",((DateTimeOffset)current.RecordedElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture));
+      writer.WriteString("recorded",((DateTimeOffset)current.RecordedElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
 
       if ((current.PolicyElement != null) && (current.PolicyElement.Count != 0))
       {
         writer.WritePropertyName("policy");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirUri val in current.PolicyElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirUri val in current.PolicyElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_policy");
+          writer.WriteStartArray();
+          foreach (FhirUri val in current.PolicyElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -215,7 +251,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "occurredPeriod":
           current.Occurred = new Hl7.Fhir.Model.Period();
-          current.Occurred.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Occurred).DeserializeJson(ref reader, options);
           break;
 
         case "occurredDateTime":
@@ -255,9 +291,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_policy":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_policy = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_policy >= current.PolicyElement.Count)
+            {
+              current.PolicyElement.Add(new FhirUri());
+            }
+            ((Hl7.Fhir.Model.Element)current.PolicyElement[i_policy++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "location":
           current.Location = new Hl7.Fhir.Model.ResourceReference();
-          current.Location.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Location).DeserializeJson(ref reader, options);
           break;
 
         case "reason":
@@ -289,7 +349,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "activity":
           current.Activity = new Hl7.Fhir.Model.CodeableConcept();
-          current.Activity.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Activity).DeserializeJson(ref reader, options);
           break;
 
         case "agent":
@@ -452,7 +512,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "role":
@@ -484,12 +544,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "who":
           current.Who = new Hl7.Fhir.Model.ResourceReference();
-          current.Who.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Who).DeserializeJson(ref reader, options);
           break;
 
         case "onBehalfOf":
           current.OnBehalfOf = new Hl7.Fhir.Model.ResourceReference();
-          current.OnBehalfOf.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.OnBehalfOf).DeserializeJson(ref reader, options);
           break;
 
         // Complex: agent, Export: AgentComponent, Base: BackboneElement
@@ -563,9 +623,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.RoleElement =new Code<Hl7.Fhir.Model.Provenance.ProvenanceEntityRole>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Provenance.ProvenanceEntityRole>(reader.GetString()));
           break;
 
+        case "_role":
+          ((Hl7.Fhir.Model.Element)current.RoleElement).DeserializeJson(ref reader, options);
+          break;
+
         case "what":
           current.What = new Hl7.Fhir.Model.ResourceReference();
-          current.What.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.What).DeserializeJson(ref reader, options);
           break;
 
         case "agent":

@@ -172,9 +172,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.RecordedDateElement != null) && (current.RecordedDateElement.Value != null))
+      if (current.RecordedDateElement != null)
       {
-        writer.WriteString("recordedDate",current.RecordedDateElement.Value);
+        if (!string.IsNullOrEmpty(current.RecordedDateElement.Value))
+        {
+          writer.WriteString("recordedDate",current.RecordedDateElement.Value);
+        }
+        if (current.RecordedDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.RecordedDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_recordedDate",false,current.RecordedDateElement.Extension,current.RecordedDateElement.ElementId);
+        }
       }
 
       if (current.Recorder != null)
@@ -286,12 +293,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "clinicalStatus":
           current.ClinicalStatus = new Hl7.Fhir.Model.CodeableConcept();
-          current.ClinicalStatus.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ClinicalStatus).DeserializeJson(ref reader, options);
           break;
 
         case "verificationStatus":
           current.VerificationStatus = new Hl7.Fhir.Model.CodeableConcept();
-          current.VerificationStatus.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.VerificationStatus).DeserializeJson(ref reader, options);
           break;
 
         case "category":
@@ -323,12 +330,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "severity":
           current.Severity = new Hl7.Fhir.Model.CodeableConcept();
-          current.Severity.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Severity).DeserializeJson(ref reader, options);
           break;
 
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "bodySite":
@@ -360,12 +367,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "onsetDateTime":
@@ -374,17 +381,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "onsetAge":
           current.Onset = new Hl7.Fhir.Model.Age();
-          current.Onset.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Age)current.Onset).DeserializeJson(ref reader, options);
           break;
 
         case "onsetPeriod":
           current.Onset = new Hl7.Fhir.Model.Period();
-          current.Onset.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Onset).DeserializeJson(ref reader, options);
           break;
 
         case "onsetRange":
           current.Onset = new Hl7.Fhir.Model.Range();
-          current.Onset.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Onset).DeserializeJson(ref reader, options);
           break;
 
         case "onsetString":
@@ -397,17 +404,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "abatementAge":
           current.Abatement = new Hl7.Fhir.Model.Age();
-          current.Abatement.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Age)current.Abatement).DeserializeJson(ref reader, options);
           break;
 
         case "abatementPeriod":
           current.Abatement = new Hl7.Fhir.Model.Period();
-          current.Abatement.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Abatement).DeserializeJson(ref reader, options);
           break;
 
         case "abatementRange":
           current.Abatement = new Hl7.Fhir.Model.Range();
-          current.Abatement.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Abatement).DeserializeJson(ref reader, options);
           break;
 
         case "abatementString":
@@ -418,14 +425,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.RecordedDateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_recordedDate":
+          ((Hl7.Fhir.Model.Element)current.RecordedDateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "recorder":
           current.Recorder = new Hl7.Fhir.Model.ResourceReference();
-          current.Recorder.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Recorder).DeserializeJson(ref reader, options);
           break;
 
         case "asserter":
           current.Asserter = new Hl7.Fhir.Model.ResourceReference();
-          current.Asserter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Asserter).DeserializeJson(ref reader, options);
           break;
 
         case "stage":
@@ -585,7 +596,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "summary":
           current.Summary = new Hl7.Fhir.Model.CodeableConcept();
-          current.Summary.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Summary).DeserializeJson(ref reader, options);
           break;
 
         case "assessment":
@@ -617,7 +628,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         // Complex: stage, Export: StageComponent, Base: BackboneElement

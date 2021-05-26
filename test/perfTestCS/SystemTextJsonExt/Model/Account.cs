@@ -77,9 +77,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Type.SerializeJson(writer, options);
       }
 
-      if ((current.NameElement != null) && (current.NameElement.Value != null))
+      if (current.NameElement != null)
       {
-        writer.WriteString("name",current.NameElement.Value);
+        if (!string.IsNullOrEmpty(current.NameElement.Value))
+        {
+          writer.WriteString("name",current.NameElement.Value);
+        }
+        if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_name",false,current.NameElement.Extension,current.NameElement.ElementId);
+        }
       }
 
       if ((current.Subject != null) && (current.Subject.Count != 0))
@@ -116,9 +123,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Owner.SerializeJson(writer, options);
       }
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
       if ((current.Guarantor != null) && (current.Guarantor.Count != 0))
@@ -204,13 +218,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.Account.AccountStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Account.AccountStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "name":
           current.NameElement = new FhirString(reader.GetString());
+          break;
+
+        case "_name":
+          ((Hl7.Fhir.Model.Element)current.NameElement).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
@@ -242,7 +264,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "servicePeriod":
           current.ServicePeriod = new Hl7.Fhir.Model.Period();
-          current.ServicePeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.ServicePeriod).DeserializeJson(ref reader, options);
           break;
 
         case "coverage":
@@ -274,11 +296,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "owner":
           current.Owner = new Hl7.Fhir.Model.ResourceReference();
-          current.Owner.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Owner).DeserializeJson(ref reader, options);
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
+          break;
+
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
           break;
 
         case "guarantor":
@@ -310,7 +336,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "partOf":
           current.PartOf = new Hl7.Fhir.Model.ResourceReference();
-          current.PartOf.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.PartOf).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Account, Export: Account, Base: DomainResource
@@ -332,9 +358,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("coverage");
       current.Coverage.SerializeJson(writer, options);
 
-      if ((current.PriorityElement != null) && (current.PriorityElement.Value != null))
+      if (current.PriorityElement != null)
       {
-        writer.WriteNumber("priority",(int)current.PriorityElement.Value);
+        if (current.PriorityElement.Value != null)
+        {
+          writer.WriteNumber("priority",(int)current.PriorityElement.Value);
+        }
+        if (current.PriorityElement.HasExtensions() || (!string.IsNullOrEmpty(current.PriorityElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_priority",false,current.PriorityElement.Extension,current.PriorityElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -374,11 +407,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "coverage":
           current.Coverage = new Hl7.Fhir.Model.ResourceReference();
-          current.Coverage.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Coverage).DeserializeJson(ref reader, options);
           break;
 
         case "priority":
           current.PriorityElement = new PositiveInt(reader.GetInt32());
+          break;
+
+        case "_priority":
+          ((Hl7.Fhir.Model.Element)current.PriorityElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: coverage, Export: CoverageComponent, Base: BackboneElement
@@ -400,9 +437,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("party");
       current.Party.SerializeJson(writer, options);
 
-      if ((current.OnHoldElement != null) && (current.OnHoldElement.Value != null))
+      if (current.OnHoldElement != null)
       {
-        writer.WriteBoolean("onHold",(bool)current.OnHoldElement.Value);
+        if (current.OnHoldElement.Value != null)
+        {
+          writer.WriteBoolean("onHold",(bool)current.OnHoldElement.Value);
+        }
+        if (current.OnHoldElement.HasExtensions() || (!string.IsNullOrEmpty(current.OnHoldElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_onHold",false,current.OnHoldElement.Extension,current.OnHoldElement.ElementId);
+        }
       }
 
       if (current.Period != null)
@@ -448,16 +492,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "party":
           current.Party = new Hl7.Fhir.Model.ResourceReference();
-          current.Party.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Party).DeserializeJson(ref reader, options);
           break;
 
         case "onHold":
           current.OnHoldElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_onHold":
+          ((Hl7.Fhir.Model.Element)current.OnHoldElement).DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         // Complex: guarantor, Export: GuarantorComponent, Base: BackboneElement

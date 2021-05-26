@@ -54,14 +54,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
     public static void SerializeJson(this Period current, Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
     {
       if (includeStartObject) { writer.WriteStartObject(); }
-      if ((current.StartElement != null) && (current.StartElement.Value != null))
+      if (current.StartElement != null)
       {
-        writer.WriteString("start",current.StartElement.Value);
+        if (!string.IsNullOrEmpty(current.StartElement.Value))
+        {
+          writer.WriteString("start",current.StartElement.Value);
+        }
+        if (current.StartElement.HasExtensions() || (!string.IsNullOrEmpty(current.StartElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_start",false,current.StartElement.Extension,current.StartElement.ElementId);
+        }
       }
 
-      if ((current.EndElement != null) && (current.EndElement.Value != null))
+      if (current.EndElement != null)
       {
-        writer.WriteString("end",current.EndElement.Value);
+        if (!string.IsNullOrEmpty(current.EndElement.Value))
+        {
+          writer.WriteString("end",current.EndElement.Value);
+        }
+        if (current.EndElement.HasExtensions() || (!string.IsNullOrEmpty(current.EndElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_end",false,current.EndElement.Extension,current.EndElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -103,8 +117,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StartElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_start":
+          ((Hl7.Fhir.Model.Element)current.StartElement).DeserializeJson(ref reader, options);
+          break;
+
         case "end":
           current.EndElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_end":
+          ((Hl7.Fhir.Model.Element)current.EndElement).DeserializeJson(ref reader, options);
           break;
 
       }

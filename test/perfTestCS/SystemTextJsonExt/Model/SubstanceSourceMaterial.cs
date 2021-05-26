@@ -82,9 +82,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.OrganismId.SerializeJson(writer, options);
       }
 
-      if ((current.OrganismNameElement != null) && (current.OrganismNameElement.Value != null))
+      if (current.OrganismNameElement != null)
       {
-        writer.WriteString("organismName",current.OrganismNameElement.Value);
+        if (!string.IsNullOrEmpty(current.OrganismNameElement.Value))
+        {
+          writer.WriteString("organismName",current.OrganismNameElement.Value);
+        }
+        if (current.OrganismNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.OrganismNameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_organismName",false,current.OrganismNameElement.Extension,current.OrganismNameElement.ElementId);
+        }
       }
 
       if ((current.ParentSubstanceId != null) && (current.ParentSubstanceId.Count != 0))
@@ -102,9 +109,45 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         writer.WritePropertyName("parentSubstanceName");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirString val in current.ParentSubstanceNameElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirString val in current.ParentSubstanceNameElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_parentSubstanceName");
+          writer.WriteStartArray();
+          foreach (FhirString val in current.ParentSubstanceNameElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -124,9 +167,45 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         writer.WritePropertyName("geographicalLocation");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirString val in current.GeographicalLocationElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirString val in current.GeographicalLocationElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_geographicalLocation");
+          writer.WriteStartArray();
+          foreach (FhirString val in current.GeographicalLocationElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -202,26 +281,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "sourceMaterialClass":
           current.SourceMaterialClass = new Hl7.Fhir.Model.CodeableConcept();
-          current.SourceMaterialClass.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.SourceMaterialClass).DeserializeJson(ref reader, options);
           break;
 
         case "sourceMaterialType":
           current.SourceMaterialType = new Hl7.Fhir.Model.CodeableConcept();
-          current.SourceMaterialType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.SourceMaterialType).DeserializeJson(ref reader, options);
           break;
 
         case "sourceMaterialState":
           current.SourceMaterialState = new Hl7.Fhir.Model.CodeableConcept();
-          current.SourceMaterialState.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.SourceMaterialState).DeserializeJson(ref reader, options);
           break;
 
         case "organismId":
           current.OrganismId = new Hl7.Fhir.Model.Identifier();
-          current.OrganismId.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.OrganismId).DeserializeJson(ref reader, options);
           break;
 
         case "organismName":
           current.OrganismNameElement = new FhirString(reader.GetString());
+          break;
+
+        case "_organismName":
+          ((Hl7.Fhir.Model.Element)current.OrganismNameElement).DeserializeJson(ref reader, options);
           break;
 
         case "parentSubstanceId":
@@ -273,6 +356,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
           if (current.ParentSubstanceNameElement.Count == 0)
           {
             current.ParentSubstanceNameElement = null;
+          }
+          break;
+
+        case "_parentSubstanceName":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_parentSubstanceName = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_parentSubstanceName >= current.ParentSubstanceNameElement.Count)
+            {
+              current.ParentSubstanceNameElement.Add(new FhirString());
+            }
+            ((Hl7.Fhir.Model.Element)current.ParentSubstanceNameElement[i_parentSubstanceName++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
           break;
 
@@ -328,9 +435,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_geographicalLocation":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_geographicalLocation = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_geographicalLocation >= current.GeographicalLocationElement.Count)
+            {
+              current.GeographicalLocationElement.Add(new FhirString());
+            }
+            ((Hl7.Fhir.Model.Element)current.GeographicalLocationElement[i_geographicalLocation++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "developmentStage":
           current.DevelopmentStage = new Hl7.Fhir.Model.CodeableConcept();
-          current.DevelopmentStage.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.DevelopmentStage).DeserializeJson(ref reader, options);
           break;
 
         case "fractionDescription":
@@ -362,7 +493,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "organism":
           current.Organism = new Hl7.Fhir.Model.SubstanceSourceMaterial.OrganismComponent();
-          current.Organism.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SubstanceSourceMaterial.OrganismComponent)current.Organism).DeserializeJson(ref reader, options);
           break;
 
         case "partDescription":
@@ -408,9 +539,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: SubstanceSourceMaterial#FractionDescription, Export: FractionDescriptionComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.FractionElement != null) && (current.FractionElement.Value != null))
+      if (current.FractionElement != null)
       {
-        writer.WriteString("fraction",current.FractionElement.Value);
+        if (!string.IsNullOrEmpty(current.FractionElement.Value))
+        {
+          writer.WriteString("fraction",current.FractionElement.Value);
+        }
+        if (current.FractionElement.HasExtensions() || (!string.IsNullOrEmpty(current.FractionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_fraction",false,current.FractionElement.Extension,current.FractionElement.ElementId);
+        }
       }
 
       if (current.MaterialType != null)
@@ -458,9 +596,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.FractionElement = new FhirString(reader.GetString());
           break;
 
+        case "_fraction":
+          ((Hl7.Fhir.Model.Element)current.FractionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "materialType":
           current.MaterialType = new Hl7.Fhir.Model.CodeableConcept();
-          current.MaterialType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.MaterialType).DeserializeJson(ref reader, options);
           break;
 
         // Complex: fractionDescription, Export: FractionDescriptionComponent, Base: BackboneElement
@@ -503,9 +645,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.IntraspecificType.SerializeJson(writer, options);
       }
 
-      if ((current.IntraspecificDescriptionElement != null) && (current.IntraspecificDescriptionElement.Value != null))
+      if (current.IntraspecificDescriptionElement != null)
       {
-        writer.WriteString("intraspecificDescription",current.IntraspecificDescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.IntraspecificDescriptionElement.Value))
+        {
+          writer.WriteString("intraspecificDescription",current.IntraspecificDescriptionElement.Value);
+        }
+        if (current.IntraspecificDescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.IntraspecificDescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_intraspecificDescription",false,current.IntraspecificDescriptionElement.Extension,current.IntraspecificDescriptionElement.ElementId);
+        }
       }
 
       if ((current.Author != null) && (current.Author.Count != 0))
@@ -568,26 +717,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "family":
           current.Family = new Hl7.Fhir.Model.CodeableConcept();
-          current.Family.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Family).DeserializeJson(ref reader, options);
           break;
 
         case "genus":
           current.Genus = new Hl7.Fhir.Model.CodeableConcept();
-          current.Genus.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Genus).DeserializeJson(ref reader, options);
           break;
 
         case "species":
           current.Species = new Hl7.Fhir.Model.CodeableConcept();
-          current.Species.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Species).DeserializeJson(ref reader, options);
           break;
 
         case "intraspecificType":
           current.IntraspecificType = new Hl7.Fhir.Model.CodeableConcept();
-          current.IntraspecificType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.IntraspecificType).DeserializeJson(ref reader, options);
           break;
 
         case "intraspecificDescription":
           current.IntraspecificDescriptionElement = new FhirString(reader.GetString());
+          break;
+
+        case "_intraspecificDescription":
+          ((Hl7.Fhir.Model.Element)current.IntraspecificDescriptionElement).DeserializeJson(ref reader, options);
           break;
 
         case "author":
@@ -619,12 +772,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "hybrid":
           current.Hybrid = new Hl7.Fhir.Model.SubstanceSourceMaterial.HybridComponent();
-          current.Hybrid.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SubstanceSourceMaterial.HybridComponent)current.Hybrid).DeserializeJson(ref reader, options);
           break;
 
         case "organismGeneral":
           current.OrganismGeneral = new Hl7.Fhir.Model.SubstanceSourceMaterial.OrganismGeneralComponent();
-          current.OrganismGeneral.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SubstanceSourceMaterial.OrganismGeneralComponent)current.OrganismGeneral).DeserializeJson(ref reader, options);
           break;
 
         // Complex: organism, Export: OrganismComponent, Base: BackboneElement
@@ -649,9 +802,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.AuthorType.SerializeJson(writer, options);
       }
 
-      if ((current.AuthorDescriptionElement != null) && (current.AuthorDescriptionElement.Value != null))
+      if (current.AuthorDescriptionElement != null)
       {
-        writer.WriteString("authorDescription",current.AuthorDescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.AuthorDescriptionElement.Value))
+        {
+          writer.WriteString("authorDescription",current.AuthorDescriptionElement.Value);
+        }
+        if (current.AuthorDescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthorDescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_authorDescription",false,current.AuthorDescriptionElement.Extension,current.AuthorDescriptionElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -691,11 +851,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "authorType":
           current.AuthorType = new Hl7.Fhir.Model.CodeableConcept();
-          current.AuthorType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.AuthorType).DeserializeJson(ref reader, options);
           break;
 
         case "authorDescription":
           current.AuthorDescriptionElement = new FhirString(reader.GetString());
+          break;
+
+        case "_authorDescription":
+          ((Hl7.Fhir.Model.Element)current.AuthorDescriptionElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: author, Export: AuthorComponent, Base: BackboneElement
@@ -714,24 +878,52 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: SubstanceSourceMaterial#Hybrid, Export: HybridComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.MaternalOrganismIdElement != null) && (current.MaternalOrganismIdElement.Value != null))
+      if (current.MaternalOrganismIdElement != null)
       {
-        writer.WriteString("maternalOrganismId",current.MaternalOrganismIdElement.Value);
+        if (!string.IsNullOrEmpty(current.MaternalOrganismIdElement.Value))
+        {
+          writer.WriteString("maternalOrganismId",current.MaternalOrganismIdElement.Value);
+        }
+        if (current.MaternalOrganismIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.MaternalOrganismIdElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_maternalOrganismId",false,current.MaternalOrganismIdElement.Extension,current.MaternalOrganismIdElement.ElementId);
+        }
       }
 
-      if ((current.MaternalOrganismNameElement != null) && (current.MaternalOrganismNameElement.Value != null))
+      if (current.MaternalOrganismNameElement != null)
       {
-        writer.WriteString("maternalOrganismName",current.MaternalOrganismNameElement.Value);
+        if (!string.IsNullOrEmpty(current.MaternalOrganismNameElement.Value))
+        {
+          writer.WriteString("maternalOrganismName",current.MaternalOrganismNameElement.Value);
+        }
+        if (current.MaternalOrganismNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.MaternalOrganismNameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_maternalOrganismName",false,current.MaternalOrganismNameElement.Extension,current.MaternalOrganismNameElement.ElementId);
+        }
       }
 
-      if ((current.PaternalOrganismIdElement != null) && (current.PaternalOrganismIdElement.Value != null))
+      if (current.PaternalOrganismIdElement != null)
       {
-        writer.WriteString("paternalOrganismId",current.PaternalOrganismIdElement.Value);
+        if (!string.IsNullOrEmpty(current.PaternalOrganismIdElement.Value))
+        {
+          writer.WriteString("paternalOrganismId",current.PaternalOrganismIdElement.Value);
+        }
+        if (current.PaternalOrganismIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.PaternalOrganismIdElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_paternalOrganismId",false,current.PaternalOrganismIdElement.Extension,current.PaternalOrganismIdElement.ElementId);
+        }
       }
 
-      if ((current.PaternalOrganismNameElement != null) && (current.PaternalOrganismNameElement.Value != null))
+      if (current.PaternalOrganismNameElement != null)
       {
-        writer.WriteString("paternalOrganismName",current.PaternalOrganismNameElement.Value);
+        if (!string.IsNullOrEmpty(current.PaternalOrganismNameElement.Value))
+        {
+          writer.WriteString("paternalOrganismName",current.PaternalOrganismNameElement.Value);
+        }
+        if (current.PaternalOrganismNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.PaternalOrganismNameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_paternalOrganismName",false,current.PaternalOrganismNameElement.Extension,current.PaternalOrganismNameElement.ElementId);
+        }
       }
 
       if (current.HybridType != null)
@@ -779,21 +971,37 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.MaternalOrganismIdElement = new FhirString(reader.GetString());
           break;
 
+        case "_maternalOrganismId":
+          ((Hl7.Fhir.Model.Element)current.MaternalOrganismIdElement).DeserializeJson(ref reader, options);
+          break;
+
         case "maternalOrganismName":
           current.MaternalOrganismNameElement = new FhirString(reader.GetString());
+          break;
+
+        case "_maternalOrganismName":
+          ((Hl7.Fhir.Model.Element)current.MaternalOrganismNameElement).DeserializeJson(ref reader, options);
           break;
 
         case "paternalOrganismId":
           current.PaternalOrganismIdElement = new FhirString(reader.GetString());
           break;
 
+        case "_paternalOrganismId":
+          ((Hl7.Fhir.Model.Element)current.PaternalOrganismIdElement).DeserializeJson(ref reader, options);
+          break;
+
         case "paternalOrganismName":
           current.PaternalOrganismNameElement = new FhirString(reader.GetString());
           break;
 
+        case "_paternalOrganismName":
+          ((Hl7.Fhir.Model.Element)current.PaternalOrganismNameElement).DeserializeJson(ref reader, options);
+          break;
+
         case "hybridType":
           current.HybridType = new Hl7.Fhir.Model.CodeableConcept();
-          current.HybridType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.HybridType).DeserializeJson(ref reader, options);
           break;
 
         // Complex: hybrid, Export: HybridComponent, Base: BackboneElement
@@ -873,22 +1081,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "kingdom":
           current.Kingdom = new Hl7.Fhir.Model.CodeableConcept();
-          current.Kingdom.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Kingdom).DeserializeJson(ref reader, options);
           break;
 
         case "phylum":
           current.Phylum = new Hl7.Fhir.Model.CodeableConcept();
-          current.Phylum.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Phylum).DeserializeJson(ref reader, options);
           break;
 
         case "class":
           current.Class = new Hl7.Fhir.Model.CodeableConcept();
-          current.Class.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Class).DeserializeJson(ref reader, options);
           break;
 
         case "order":
           current.Order = new Hl7.Fhir.Model.CodeableConcept();
-          current.Order.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Order).DeserializeJson(ref reader, options);
           break;
 
         // Complex: organismGeneral, Export: OrganismGeneralComponent, Base: BackboneElement
@@ -956,12 +1164,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "part":
           current.Part = new Hl7.Fhir.Model.CodeableConcept();
-          current.Part.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Part).DeserializeJson(ref reader, options);
           break;
 
         case "partLocation":
           current.PartLocation = new Hl7.Fhir.Model.CodeableConcept();
-          current.PartLocation.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.PartLocation).DeserializeJson(ref reader, options);
           break;
 
         // Complex: partDescription, Export: PartDescriptionComponent, Base: BackboneElement

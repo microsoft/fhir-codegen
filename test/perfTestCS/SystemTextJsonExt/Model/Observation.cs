@@ -150,9 +150,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.IssuedElement != null) && (current.IssuedElement.Value != null))
+      if (current.IssuedElement != null)
       {
-        writer.WriteString("issued",((DateTimeOffset)current.IssuedElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture));
+        if (current.IssuedElement.Value != null)
+        {
+          writer.WriteString("issued",((DateTimeOffset)current.IssuedElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
+        }
+        if (current.IssuedElement.HasExtensions() || (!string.IsNullOrEmpty(current.IssuedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_issued",false,current.IssuedElement.Extension,current.IssuedElement.ElementId);
+        }
       }
 
       if ((current.Performer != null) && (current.Performer.Count != 0))
@@ -428,6 +435,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.ObservationStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ObservationStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "category":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -457,12 +468,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "focus":
@@ -494,7 +505,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "effectiveDateTime":
@@ -503,12 +514,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "effectivePeriod":
           current.Effective = new Hl7.Fhir.Model.Period();
-          current.Effective.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Effective).DeserializeJson(ref reader, options);
           break;
 
         case "effectiveTiming":
           current.Effective = new Hl7.Fhir.Model.Timing();
-          current.Effective.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Timing)current.Effective).DeserializeJson(ref reader, options);
           break;
 
         case "effectiveInstant":
@@ -552,12 +563,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "valueQuantity":
           current.Value = new Hl7.Fhir.Model.Quantity();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueCodeableConcept":
           current.Value = new Hl7.Fhir.Model.CodeableConcept();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueString":
@@ -574,22 +585,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "valueRange":
           current.Value = new Hl7.Fhir.Model.Range();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueRatio":
           current.Value = new Hl7.Fhir.Model.Ratio();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Ratio)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueSampledData":
           current.Value = new Hl7.Fhir.Model.SampledData();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SampledData)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueTime":
           current.Value = new Hl7.Fhir.Model.Time();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Time)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueDateTime":
@@ -598,12 +609,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "valuePeriod":
           current.Value = new Hl7.Fhir.Model.Period();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "dataAbsentReason":
           current.DataAbsentReason = new Hl7.Fhir.Model.CodeableConcept();
-          current.DataAbsentReason.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.DataAbsentReason).DeserializeJson(ref reader, options);
           break;
 
         case "interpretation":
@@ -662,22 +673,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "bodySite":
           current.BodySite = new Hl7.Fhir.Model.CodeableConcept();
-          current.BodySite.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.BodySite).DeserializeJson(ref reader, options);
           break;
 
         case "method":
           current.Method = new Hl7.Fhir.Model.CodeableConcept();
-          current.Method.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Method).DeserializeJson(ref reader, options);
           break;
 
         case "specimen":
           current.Specimen = new Hl7.Fhir.Model.ResourceReference();
-          current.Specimen.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Specimen).DeserializeJson(ref reader, options);
           break;
 
         case "device":
           current.Device = new Hl7.Fhir.Model.ResourceReference();
-          current.Device.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Device).DeserializeJson(ref reader, options);
           break;
 
         case "referenceRange":
@@ -839,9 +850,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Age.SerializeJson(writer, options);
       }
 
-      if ((current.TextElement != null) && (current.TextElement.Value != null))
+      if (current.TextElement != null)
       {
-        writer.WriteString("text",current.TextElement.Value);
+        if (!string.IsNullOrEmpty(current.TextElement.Value))
+        {
+          writer.WriteString("text",current.TextElement.Value);
+        }
+        if (current.TextElement.HasExtensions() || (!string.IsNullOrEmpty(current.TextElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_text",false,current.TextElement.Extension,current.TextElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -881,17 +899,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "low":
           current.Low = new Hl7.Fhir.Model.Quantity();
-          current.Low.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Low).DeserializeJson(ref reader, options);
           break;
 
         case "high":
           current.High = new Hl7.Fhir.Model.Quantity();
-          current.High.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.High).DeserializeJson(ref reader, options);
           break;
 
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "appliesTo":
@@ -923,11 +941,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "age":
           current.Age = new Hl7.Fhir.Model.Range();
-          current.Age.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Age).DeserializeJson(ref reader, options);
           break;
 
         case "text":
           current.TextElement = new FhirString(reader.GetString());
+          break;
+
+        case "_text":
+          ((Hl7.Fhir.Model.Element)current.TextElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: referenceRange, Export: ReferenceRangeComponent, Base: BackboneElement
@@ -1060,17 +1082,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "valueQuantity":
           current.Value = new Hl7.Fhir.Model.Quantity();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueCodeableConcept":
           current.Value = new Hl7.Fhir.Model.CodeableConcept();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueString":
@@ -1087,22 +1109,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "valueRange":
           current.Value = new Hl7.Fhir.Model.Range();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueRatio":
           current.Value = new Hl7.Fhir.Model.Ratio();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Ratio)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueSampledData":
           current.Value = new Hl7.Fhir.Model.SampledData();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SampledData)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueTime":
           current.Value = new Hl7.Fhir.Model.Time();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Time)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueDateTime":
@@ -1111,12 +1133,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "valuePeriod":
           current.Value = new Hl7.Fhir.Model.Period();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "dataAbsentReason":
           current.DataAbsentReason = new Hl7.Fhir.Model.CodeableConcept();
-          current.DataAbsentReason.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.DataAbsentReason).DeserializeJson(ref reader, options);
           break;
 
         case "interpretation":

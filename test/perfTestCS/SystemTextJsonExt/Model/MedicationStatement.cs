@@ -146,9 +146,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.DateAssertedElement != null) && (current.DateAssertedElement.Value != null))
+      if (current.DateAssertedElement != null)
       {
-        writer.WriteString("dateAsserted",current.DateAssertedElement.Value);
+        if (!string.IsNullOrEmpty(current.DateAssertedElement.Value))
+        {
+          writer.WriteString("dateAsserted",current.DateAssertedElement.Value);
+        }
+        if (current.DateAssertedElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateAssertedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_dateAsserted",false,current.DateAssertedElement.Extension,current.DateAssertedElement.ElementId);
+        }
       }
 
       if (current.InformationSource != null)
@@ -332,6 +339,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.MedicationStatement.MedicationStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.MedicationStatement.MedicationStatusCodes>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "statusReason":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -361,27 +372,27 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "category":
           current.Category = new Hl7.Fhir.Model.CodeableConcept();
-          current.Category.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Category).DeserializeJson(ref reader, options);
           break;
 
         case "medicationCodeableConcept":
           current.Medication = new Hl7.Fhir.Model.CodeableConcept();
-          current.Medication.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Medication).DeserializeJson(ref reader, options);
           break;
 
         case "medicationReference":
           current.Medication = new Hl7.Fhir.Model.ResourceReference();
-          current.Medication.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Medication).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "context":
           current.Context = new Hl7.Fhir.Model.ResourceReference();
-          current.Context.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Context).DeserializeJson(ref reader, options);
           break;
 
         case "effectiveDateTime":
@@ -390,16 +401,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "effectivePeriod":
           current.Effective = new Hl7.Fhir.Model.Period();
-          current.Effective.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Effective).DeserializeJson(ref reader, options);
           break;
 
         case "dateAsserted":
           current.DateAssertedElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_dateAsserted":
+          ((Hl7.Fhir.Model.Element)current.DateAssertedElement).DeserializeJson(ref reader, options);
+          break;
+
         case "informationSource":
           current.InformationSource = new Hl7.Fhir.Model.ResourceReference();
-          current.InformationSource.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.InformationSource).DeserializeJson(ref reader, options);
           break;
 
         case "derivedFrom":

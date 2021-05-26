@@ -103,12 +103,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "numerator":
           current.Numerator = new Hl7.Fhir.Model.Quantity();
-          current.Numerator.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Numerator).DeserializeJson(ref reader, options);
           break;
 
         case "denominator":
           current.Denominator = new Hl7.Fhir.Model.Quantity();
-          current.Denominator.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Denominator).DeserializeJson(ref reader, options);
           break;
 
       }

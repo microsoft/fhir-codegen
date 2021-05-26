@@ -121,9 +121,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteString("priority",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.PriorityElement.Value));
       }
 
-      if ((current.DoNotPerformElement != null) && (current.DoNotPerformElement.Value != null))
+      if (current.DoNotPerformElement != null)
       {
-        writer.WriteBoolean("doNotPerform",(bool)current.DoNotPerformElement.Value);
+        if (current.DoNotPerformElement.Value != null)
+        {
+          writer.WriteBoolean("doNotPerform",(bool)current.DoNotPerformElement.Value);
+        }
+        if (current.DoNotPerformElement.HasExtensions() || (!string.IsNullOrEmpty(current.DoNotPerformElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_doNotPerform",false,current.DoNotPerformElement.Extension,current.DoNotPerformElement.ElementId);
+        }
       }
 
       if ((current.Medium != null) && (current.Medium.Count != 0))
@@ -184,9 +191,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.AuthoredOnElement != null) && (current.AuthoredOnElement.Value != null))
+      if (current.AuthoredOnElement != null)
       {
-        writer.WriteString("authoredOn",current.AuthoredOnElement.Value);
+        if (!string.IsNullOrEmpty(current.AuthoredOnElement.Value))
+        {
+          writer.WriteString("authoredOn",current.AuthoredOnElement.Value);
+        }
+        if (current.AuthoredOnElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthoredOnElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_authoredOn",false,current.AuthoredOnElement.Extension,current.AuthoredOnElement.ElementId);
+        }
       }
 
       if (current.Requester != null)
@@ -363,16 +377,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "groupIdentifier":
           current.GroupIdentifier = new Hl7.Fhir.Model.Identifier();
-          current.GroupIdentifier.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.GroupIdentifier).DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.RequestStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.RequestStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "statusReason":
           current.StatusReason = new Hl7.Fhir.Model.CodeableConcept();
-          current.StatusReason.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.StatusReason).DeserializeJson(ref reader, options);
           break;
 
         case "category":
@@ -406,8 +424,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.PriorityElement =new Code<Hl7.Fhir.Model.RequestPriority>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.RequestPriority>(reader.GetString()));
           break;
 
+        case "_priority":
+          ((Hl7.Fhir.Model.Element)current.PriorityElement).DeserializeJson(ref reader, options);
+          break;
+
         case "doNotPerform":
           current.DoNotPerformElement = new FhirBoolean(reader.GetBoolean());
+          break;
+
+        case "_doNotPerform":
+          ((Hl7.Fhir.Model.Element)current.DoNotPerformElement).DeserializeJson(ref reader, options);
           break;
 
         case "medium":
@@ -439,7 +465,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "about":
@@ -471,7 +497,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "payload":
@@ -507,16 +533,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "occurrencePeriod":
           current.Occurrence = new Hl7.Fhir.Model.Period();
-          current.Occurrence.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Occurrence).DeserializeJson(ref reader, options);
           break;
 
         case "authoredOn":
           current.AuthoredOnElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_authoredOn":
+          ((Hl7.Fhir.Model.Element)current.AuthoredOnElement).DeserializeJson(ref reader, options);
+          break;
+
         case "requester":
           current.Requester = new Hl7.Fhir.Model.ResourceReference();
-          current.Requester.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Requester).DeserializeJson(ref reader, options);
           break;
 
         case "recipient":
@@ -548,7 +578,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "sender":
           current.Sender = new Hl7.Fhir.Model.ResourceReference();
-          current.Sender.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Sender).DeserializeJson(ref reader, options);
           break;
 
         case "reasonCode":
@@ -706,12 +736,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "contentAttachment":
           current.Content = new Hl7.Fhir.Model.Attachment();
-          current.Content.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Attachment)current.Content).DeserializeJson(ref reader, options);
           break;
 
         case "contentReference":
           current.Content = new Hl7.Fhir.Model.ResourceReference();
-          current.Content.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Content).DeserializeJson(ref reader, options);
           break;
 
         // Complex: payload, Export: PayloadComponent, Base: BackboneElement

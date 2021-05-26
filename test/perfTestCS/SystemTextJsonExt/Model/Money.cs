@@ -54,9 +54,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
     public static void SerializeJson(this Money current, Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
     {
       if (includeStartObject) { writer.WriteStartObject(); }
-      if ((current.ValueElement != null) && (current.ValueElement.Value != null))
+      if (current.ValueElement != null)
       {
-        writer.WriteNumber("value",(decimal)current.ValueElement.Value);
+        if (current.ValueElement.Value != null)
+        {
+          writer.WriteNumber("value",(decimal)current.ValueElement.Value);
+        }
+        if (current.ValueElement.HasExtensions() || (!string.IsNullOrEmpty(current.ValueElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_value",false,current.ValueElement.Extension,current.ValueElement.ElementId);
+        }
       }
 
       if (current.CurrencyElement != null)
@@ -103,8 +110,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.ValueElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_value":
+          ((Hl7.Fhir.Model.Element)current.ValueElement).DeserializeJson(ref reader, options);
+          break;
+
         case "currency":
           current.CurrencyElement =new Code<Hl7.Fhir.Model.Money.Currencies>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Money.Currencies>(reader.GetString()));
+          break;
+
+        case "_currency":
+          ((Hl7.Fhir.Model.Element)current.CurrencyElement).DeserializeJson(ref reader, options);
           break;
 
       }

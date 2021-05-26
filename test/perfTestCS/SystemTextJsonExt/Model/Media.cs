@@ -136,9 +136,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.IssuedElement != null) && (current.IssuedElement.Value != null))
+      if (current.IssuedElement != null)
       {
-        writer.WriteString("issued",((DateTimeOffset)current.IssuedElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture));
+        if (current.IssuedElement.Value != null)
+        {
+          writer.WriteString("issued",((DateTimeOffset)current.IssuedElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
+        }
+        if (current.IssuedElement.HasExtensions() || (!string.IsNullOrEmpty(current.IssuedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_issued",false,current.IssuedElement.Extension,current.IssuedElement.ElementId);
+        }
       }
 
       if (current.Operator != null)
@@ -164,9 +171,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.BodySite.SerializeJson(writer, options);
       }
 
-      if ((current.DeviceNameElement != null) && (current.DeviceNameElement.Value != null))
+      if (current.DeviceNameElement != null)
       {
-        writer.WriteString("deviceName",current.DeviceNameElement.Value);
+        if (!string.IsNullOrEmpty(current.DeviceNameElement.Value))
+        {
+          writer.WriteString("deviceName",current.DeviceNameElement.Value);
+        }
+        if (current.DeviceNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.DeviceNameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_deviceName",false,current.DeviceNameElement.Extension,current.DeviceNameElement.ElementId);
+        }
       }
 
       if (current.Device != null)
@@ -175,24 +189,52 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Device.SerializeJson(writer, options);
       }
 
-      if ((current.HeightElement != null) && (current.HeightElement.Value != null))
+      if (current.HeightElement != null)
       {
-        writer.WriteNumber("height",(int)current.HeightElement.Value);
+        if (current.HeightElement.Value != null)
+        {
+          writer.WriteNumber("height",(int)current.HeightElement.Value);
+        }
+        if (current.HeightElement.HasExtensions() || (!string.IsNullOrEmpty(current.HeightElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_height",false,current.HeightElement.Extension,current.HeightElement.ElementId);
+        }
       }
 
-      if ((current.WidthElement != null) && (current.WidthElement.Value != null))
+      if (current.WidthElement != null)
       {
-        writer.WriteNumber("width",(int)current.WidthElement.Value);
+        if (current.WidthElement.Value != null)
+        {
+          writer.WriteNumber("width",(int)current.WidthElement.Value);
+        }
+        if (current.WidthElement.HasExtensions() || (!string.IsNullOrEmpty(current.WidthElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_width",false,current.WidthElement.Extension,current.WidthElement.ElementId);
+        }
       }
 
-      if ((current.FramesElement != null) && (current.FramesElement.Value != null))
+      if (current.FramesElement != null)
       {
-        writer.WriteNumber("frames",(int)current.FramesElement.Value);
+        if (current.FramesElement.Value != null)
+        {
+          writer.WriteNumber("frames",(int)current.FramesElement.Value);
+        }
+        if (current.FramesElement.HasExtensions() || (!string.IsNullOrEmpty(current.FramesElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_frames",false,current.FramesElement.Extension,current.FramesElement.ElementId);
+        }
       }
 
-      if ((current.DurationElement != null) && (current.DurationElement.Value != null))
+      if (current.DurationElement != null)
       {
-        writer.WriteNumber("duration",(decimal)current.DurationElement.Value);
+        if (current.DurationElement.Value != null)
+        {
+          writer.WriteNumber("duration",(decimal)current.DurationElement.Value);
+        }
+        if (current.DurationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DurationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_duration",false,current.DurationElement.Extension,current.DurationElement.ElementId);
+        }
       }
 
       writer.WritePropertyName("content");
@@ -329,29 +371,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.EventStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.EventStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "modality":
           current.Modality = new Hl7.Fhir.Model.CodeableConcept();
-          current.Modality.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Modality).DeserializeJson(ref reader, options);
           break;
 
         case "view":
           current.View = new Hl7.Fhir.Model.CodeableConcept();
-          current.View.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.View).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "createdDateTime":
@@ -360,7 +406,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "createdPeriod":
           current.Created = new Hl7.Fhir.Model.Period();
-          current.Created.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Created).DeserializeJson(ref reader, options);
           break;
 
         case "issued":
@@ -373,7 +419,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "operator":
           current.Operator = new Hl7.Fhir.Model.ResourceReference();
-          current.Operator.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Operator).DeserializeJson(ref reader, options);
           break;
 
         case "reasonCode":
@@ -405,37 +451,57 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "bodySite":
           current.BodySite = new Hl7.Fhir.Model.CodeableConcept();
-          current.BodySite.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.BodySite).DeserializeJson(ref reader, options);
           break;
 
         case "deviceName":
           current.DeviceNameElement = new FhirString(reader.GetString());
           break;
 
+        case "_deviceName":
+          ((Hl7.Fhir.Model.Element)current.DeviceNameElement).DeserializeJson(ref reader, options);
+          break;
+
         case "device":
           current.Device = new Hl7.Fhir.Model.ResourceReference();
-          current.Device.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Device).DeserializeJson(ref reader, options);
           break;
 
         case "height":
           current.HeightElement = new PositiveInt(reader.GetInt32());
           break;
 
+        case "_height":
+          ((Hl7.Fhir.Model.Element)current.HeightElement).DeserializeJson(ref reader, options);
+          break;
+
         case "width":
           current.WidthElement = new PositiveInt(reader.GetInt32());
+          break;
+
+        case "_width":
+          ((Hl7.Fhir.Model.Element)current.WidthElement).DeserializeJson(ref reader, options);
           break;
 
         case "frames":
           current.FramesElement = new PositiveInt(reader.GetInt32());
           break;
 
+        case "_frames":
+          ((Hl7.Fhir.Model.Element)current.FramesElement).DeserializeJson(ref reader, options);
+          break;
+
         case "duration":
           current.DurationElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_duration":
+          ((Hl7.Fhir.Model.Element)current.DurationElement).DeserializeJson(ref reader, options);
+          break;
+
         case "content":
           current.Content = new Hl7.Fhir.Model.Attachment();
-          current.Content.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Attachment)current.Content).DeserializeJson(ref reader, options);
           break;
 
         case "note":

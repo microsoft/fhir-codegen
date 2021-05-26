@@ -113,14 +113,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.ValidityPeriod.SerializeJson(writer, options);
       }
 
-      if ((current.ValidToElement != null) && (current.ValidToElement.Value != null))
+      if (current.ValidToElement != null)
       {
-        writer.WriteString("validTo",current.ValidToElement.Value);
+        if (!string.IsNullOrEmpty(current.ValidToElement.Value))
+        {
+          writer.WriteString("validTo",current.ValidToElement.Value);
+        }
+        if (current.ValidToElement.HasExtensions() || (!string.IsNullOrEmpty(current.ValidToElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_validTo",false,current.ValidToElement.Extension,current.ValidToElement.ElementId);
+        }
       }
 
-      if ((current.LastUpdatedElement != null) && (current.LastUpdatedElement.Value != null))
+      if (current.LastUpdatedElement != null)
       {
-        writer.WriteString("lastUpdated",current.LastUpdatedElement.Value);
+        if (!string.IsNullOrEmpty(current.LastUpdatedElement.Value))
+        {
+          writer.WriteString("lastUpdated",current.LastUpdatedElement.Value);
+        }
+        if (current.LastUpdatedElement.HasExtensions() || (!string.IsNullOrEmpty(current.LastUpdatedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_lastUpdated",false,current.LastUpdatedElement.Extension,current.LastUpdatedElement.ElementId);
+        }
       }
 
       if ((current.AdditionalCharacteristic != null) && (current.AdditionalCharacteristic.Count != 0))
@@ -220,16 +234,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "orderable":
           current.OrderableElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_orderable":
+          ((Hl7.Fhir.Model.Element)current.OrderableElement).DeserializeJson(ref reader, options);
+          break;
+
         case "referencedItem":
           current.ReferencedItem = new Hl7.Fhir.Model.ResourceReference();
-          current.ReferencedItem.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.ReferencedItem).DeserializeJson(ref reader, options);
           break;
 
         case "additionalIdentifier":
@@ -290,17 +308,29 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.PublicationStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.PublicationStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "validityPeriod":
           current.ValidityPeriod = new Hl7.Fhir.Model.Period();
-          current.ValidityPeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.ValidityPeriod).DeserializeJson(ref reader, options);
           break;
 
         case "validTo":
           current.ValidToElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_validTo":
+          ((Hl7.Fhir.Model.Element)current.ValidToElement).DeserializeJson(ref reader, options);
+          break;
+
         case "lastUpdated":
           current.LastUpdatedElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_lastUpdated":
+          ((Hl7.Fhir.Model.Element)current.LastUpdatedElement).DeserializeJson(ref reader, options);
           break;
 
         case "additionalCharacteristic":
@@ -444,9 +474,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.RelationtypeElement =new Code<Hl7.Fhir.Model.CatalogEntry.CatalogEntryRelationType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.CatalogEntry.CatalogEntryRelationType>(reader.GetString()));
           break;
 
+        case "_relationtype":
+          ((Hl7.Fhir.Model.Element)current.RelationtypeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "item":
           current.Item = new Hl7.Fhir.Model.ResourceReference();
-          current.Item.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Item).DeserializeJson(ref reader, options);
           break;
 
         // Complex: relatedEntry, Export: RelatedEntryComponent, Base: BackboneElement

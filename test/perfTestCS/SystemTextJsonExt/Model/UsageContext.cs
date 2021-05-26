@@ -116,27 +116,27 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.Code = new Hl7.Fhir.Model.Coding();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Coding)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "valueCodeableConcept":
           current.Value = new Hl7.Fhir.Model.CodeableConcept();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueQuantity":
           current.Value = new Hl7.Fhir.Model.Quantity();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueRange":
           current.Value = new Hl7.Fhir.Model.Range();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueReference":
           current.Value = new Hl7.Fhir.Model.ResourceReference();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Value).DeserializeJson(ref reader, options);
           break;
 
       }

@@ -69,9 +69,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.ActiveElement != null) && (current.ActiveElement.Value != null))
+      if (current.ActiveElement != null)
       {
-        writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        if (current.ActiveElement.Value != null)
+        {
+          writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        }
+        if (current.ActiveElement.HasExtensions() || (!string.IsNullOrEmpty(current.ActiveElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_active",false,current.ActiveElement.Extension,current.ActiveElement.ElementId);
+        }
       }
 
       if (current.Morphology != null)
@@ -97,9 +104,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
       if ((current.Image != null) && (current.Image.Count != 0))
@@ -182,14 +196,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.ActiveElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_active":
+          ((Hl7.Fhir.Model.Element)current.ActiveElement).DeserializeJson(ref reader, options);
+          break;
+
         case "morphology":
           current.Morphology = new Hl7.Fhir.Model.CodeableConcept();
-          current.Morphology.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Morphology).DeserializeJson(ref reader, options);
           break;
 
         case "location":
           current.Location = new Hl7.Fhir.Model.CodeableConcept();
-          current.Location.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Location).DeserializeJson(ref reader, options);
           break;
 
         case "locationQualifier":
@@ -223,6 +241,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "image":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -252,7 +274,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "patient":
           current.Patient = new Hl7.Fhir.Model.ResourceReference();
-          current.Patient.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Patient).DeserializeJson(ref reader, options);
           break;
 
         // Complex: BodyStructure, Export: BodyStructure, Base: DomainResource

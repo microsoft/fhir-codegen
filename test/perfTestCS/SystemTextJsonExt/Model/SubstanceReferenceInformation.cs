@@ -58,9 +58,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Complex: SubstanceReferenceInformation, Export: SubstanceReferenceInformation, Base: DomainResource (DomainResource)
       ((Hl7.Fhir.Model.DomainResource)current).SerializeJson(writer, options, false);
 
-      if ((current.CommentElement != null) && (current.CommentElement.Value != null))
+      if (current.CommentElement != null)
       {
-        writer.WriteString("comment",current.CommentElement.Value);
+        if (!string.IsNullOrEmpty(current.CommentElement.Value))
+        {
+          writer.WriteString("comment",current.CommentElement.Value);
+        }
+        if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_comment",false,current.CommentElement.Extension,current.CommentElement.ElementId);
+        }
       }
 
       if ((current.Gene != null) && (current.Gene.Count != 0))
@@ -144,6 +151,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "comment":
           current.CommentElement = new FhirString(reader.GetString());
+          break;
+
+        case "_comment":
+          ((Hl7.Fhir.Model.Element)current.CommentElement).DeserializeJson(ref reader, options);
           break;
 
         case "gene":
@@ -330,12 +341,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "geneSequenceOrigin":
           current.GeneSequenceOrigin = new Hl7.Fhir.Model.CodeableConcept();
-          current.GeneSequenceOrigin.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.GeneSequenceOrigin).DeserializeJson(ref reader, options);
           break;
 
         case "gene":
           current.Gene = new Hl7.Fhir.Model.CodeableConcept();
-          current.Gene.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Gene).DeserializeJson(ref reader, options);
           break;
 
         case "source":
@@ -441,12 +452,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "element":
           current.Element = new Hl7.Fhir.Model.Identifier();
-          current.Element.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.Element).DeserializeJson(ref reader, options);
           break;
 
         case "source":
@@ -563,12 +574,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "domain":
           current.Domain = new Hl7.Fhir.Model.CodeableConcept();
-          current.Domain.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Domain).DeserializeJson(ref reader, options);
           break;
 
         case "classification":
           current.Classification = new Hl7.Fhir.Model.CodeableConcept();
-          current.Classification.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Classification).DeserializeJson(ref reader, options);
           break;
 
         case "subtype":
@@ -742,37 +753,37 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "target":
           current.Target = new Hl7.Fhir.Model.Identifier();
-          current.Target.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.Target).DeserializeJson(ref reader, options);
           break;
 
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "interaction":
           current.Interaction = new Hl7.Fhir.Model.CodeableConcept();
-          current.Interaction.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Interaction).DeserializeJson(ref reader, options);
           break;
 
         case "organism":
           current.Organism = new Hl7.Fhir.Model.CodeableConcept();
-          current.Organism.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Organism).DeserializeJson(ref reader, options);
           break;
 
         case "organismType":
           current.OrganismType = new Hl7.Fhir.Model.CodeableConcept();
-          current.OrganismType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.OrganismType).DeserializeJson(ref reader, options);
           break;
 
         case "amountQuantity":
           current.Amount = new Hl7.Fhir.Model.Quantity();
-          current.Amount.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Amount).DeserializeJson(ref reader, options);
           break;
 
         case "amountRange":
           current.Amount = new Hl7.Fhir.Model.Range();
-          current.Amount.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Amount).DeserializeJson(ref reader, options);
           break;
 
         case "amountString":
@@ -781,7 +792,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "amountType":
           current.AmountType = new Hl7.Fhir.Model.CodeableConcept();
-          current.AmountType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.AmountType).DeserializeJson(ref reader, options);
           break;
 
         case "source":

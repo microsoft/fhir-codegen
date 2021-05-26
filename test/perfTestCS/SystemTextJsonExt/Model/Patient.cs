@@ -69,9 +69,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.ActiveElement != null) && (current.ActiveElement.Value != null))
+      if (current.ActiveElement != null)
       {
-        writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        if (current.ActiveElement.Value != null)
+        {
+          writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        }
+        if (current.ActiveElement.HasExtensions() || (!string.IsNullOrEmpty(current.ActiveElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_active",false,current.ActiveElement.Extension,current.ActiveElement.ElementId);
+        }
       }
 
       if ((current.Name != null) && (current.Name.Count != 0))
@@ -101,9 +108,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteString("gender",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.GenderElement.Value));
       }
 
-      if ((current.BirthDateElement != null) && (current.BirthDateElement.Value != null))
+      if (current.BirthDateElement != null)
       {
-        writer.WriteString("birthDate",current.BirthDateElement.Value);
+        if (!string.IsNullOrEmpty(current.BirthDateElement.Value))
+        {
+          writer.WriteString("birthDate",current.BirthDateElement.Value);
+        }
+        if (current.BirthDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.BirthDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_birthDate",false,current.BirthDateElement.Extension,current.BirthDateElement.ElementId);
+        }
       }
 
       if (current.Deceased != null)
@@ -274,6 +288,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.ActiveElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_active":
+          ((Hl7.Fhir.Model.Element)current.ActiveElement).DeserializeJson(ref reader, options);
+          break;
+
         case "name":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -332,6 +350,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.GenderElement =new Code<Hl7.Fhir.Model.AdministrativeGender>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.AdministrativeGender>(reader.GetString()));
           break;
 
+        case "_gender":
+          ((Hl7.Fhir.Model.Element)current.GenderElement).DeserializeJson(ref reader, options);
+          break;
+
         case "birthDate":
           current.BirthDateElement = new Date(reader.GetString());
           break;
@@ -377,7 +399,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "maritalStatus":
           current.MaritalStatus = new Hl7.Fhir.Model.CodeableConcept();
-          current.MaritalStatus.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.MaritalStatus).DeserializeJson(ref reader, options);
           break;
 
         case "multipleBirthBoolean":
@@ -498,7 +520,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "managingOrganization":
           current.ManagingOrganization = new Hl7.Fhir.Model.ResourceReference();
-          current.ManagingOrganization.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.ManagingOrganization).DeserializeJson(ref reader, options);
           break;
 
         case "link":
@@ -659,7 +681,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "name":
           current.Name = new Hl7.Fhir.Model.HumanName();
-          current.Name.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.HumanName)current.Name).DeserializeJson(ref reader, options);
           break;
 
         case "telecom":
@@ -691,21 +713,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "address":
           current.Address = new Hl7.Fhir.Model.Address();
-          current.Address.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Address)current.Address).DeserializeJson(ref reader, options);
           break;
 
         case "gender":
           current.GenderElement =new Code<Hl7.Fhir.Model.AdministrativeGender>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.AdministrativeGender>(reader.GetString()));
           break;
 
+        case "_gender":
+          ((Hl7.Fhir.Model.Element)current.GenderElement).DeserializeJson(ref reader, options);
+          break;
+
         case "organization":
           current.Organization = new Hl7.Fhir.Model.ResourceReference();
-          current.Organization.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Organization).DeserializeJson(ref reader, options);
           break;
 
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         // Complex: contact, Export: ContactComponent, Base: BackboneElement
@@ -727,9 +753,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("language");
       current.Language.SerializeJson(writer, options);
 
-      if ((current.PreferredElement != null) && (current.PreferredElement.Value != null))
+      if (current.PreferredElement != null)
       {
-        writer.WriteBoolean("preferred",(bool)current.PreferredElement.Value);
+        if (current.PreferredElement.Value != null)
+        {
+          writer.WriteBoolean("preferred",(bool)current.PreferredElement.Value);
+        }
+        if (current.PreferredElement.HasExtensions() || (!string.IsNullOrEmpty(current.PreferredElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_preferred",false,current.PreferredElement.Extension,current.PreferredElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -769,11 +802,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "language":
           current.Language = new Hl7.Fhir.Model.CodeableConcept();
-          current.Language.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Language).DeserializeJson(ref reader, options);
           break;
 
         case "preferred":
           current.PreferredElement = new FhirBoolean(reader.GetBoolean());
+          break;
+
+        case "_preferred":
+          ((Hl7.Fhir.Model.Element)current.PreferredElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: communication, Export: CommunicationComponent, Base: BackboneElement
@@ -834,11 +871,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "other":
           current.Other = new Hl7.Fhir.Model.ResourceReference();
-          current.Other.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Other).DeserializeJson(ref reader, options);
           break;
 
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.Patient.LinkType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Patient.LinkType>(reader.GetString()));
+          break;
+
+        case "_type":
+          ((Hl7.Fhir.Model.Element)current.TypeElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: link, Export: LinkComponent, Base: BackboneElement

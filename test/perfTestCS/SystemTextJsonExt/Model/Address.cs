@@ -64,45 +64,123 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
       }
 
-      if ((current.TextElement != null) && (current.TextElement.Value != null))
+      if (current.TextElement != null)
       {
-        writer.WriteString("text",current.TextElement.Value);
+        if (!string.IsNullOrEmpty(current.TextElement.Value))
+        {
+          writer.WriteString("text",current.TextElement.Value);
+        }
+        if (current.TextElement.HasExtensions() || (!string.IsNullOrEmpty(current.TextElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_text",false,current.TextElement.Extension,current.TextElement.ElementId);
+        }
       }
 
       if ((current.LineElement != null) && (current.LineElement.Count != 0))
       {
         writer.WritePropertyName("line");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirString val in current.LineElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirString val in current.LineElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_line");
+          writer.WriteStartArray();
+          foreach (FhirString val in current.LineElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
 
-      if ((current.CityElement != null) && (current.CityElement.Value != null))
+      if (current.CityElement != null)
       {
-        writer.WriteString("city",current.CityElement.Value);
+        if (!string.IsNullOrEmpty(current.CityElement.Value))
+        {
+          writer.WriteString("city",current.CityElement.Value);
+        }
+        if (current.CityElement.HasExtensions() || (!string.IsNullOrEmpty(current.CityElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_city",false,current.CityElement.Extension,current.CityElement.ElementId);
+        }
       }
 
-      if ((current.DistrictElement != null) && (current.DistrictElement.Value != null))
+      if (current.DistrictElement != null)
       {
-        writer.WriteString("district",current.DistrictElement.Value);
+        if (!string.IsNullOrEmpty(current.DistrictElement.Value))
+        {
+          writer.WriteString("district",current.DistrictElement.Value);
+        }
+        if (current.DistrictElement.HasExtensions() || (!string.IsNullOrEmpty(current.DistrictElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_district",false,current.DistrictElement.Extension,current.DistrictElement.ElementId);
+        }
       }
 
-      if ((current.StateElement != null) && (current.StateElement.Value != null))
+      if (current.StateElement != null)
       {
-        writer.WriteString("state",current.StateElement.Value);
+        if (!string.IsNullOrEmpty(current.StateElement.Value))
+        {
+          writer.WriteString("state",current.StateElement.Value);
+        }
+        if (current.StateElement.HasExtensions() || (!string.IsNullOrEmpty(current.StateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_state",false,current.StateElement.Extension,current.StateElement.ElementId);
+        }
       }
 
-      if ((current.PostalCodeElement != null) && (current.PostalCodeElement.Value != null))
+      if (current.PostalCodeElement != null)
       {
-        writer.WriteString("postalCode",current.PostalCodeElement.Value);
+        if (!string.IsNullOrEmpty(current.PostalCodeElement.Value))
+        {
+          writer.WriteString("postalCode",current.PostalCodeElement.Value);
+        }
+        if (current.PostalCodeElement.HasExtensions() || (!string.IsNullOrEmpty(current.PostalCodeElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_postalCode",false,current.PostalCodeElement.Extension,current.PostalCodeElement.ElementId);
+        }
       }
 
-      if ((current.CountryElement != null) && (current.CountryElement.Value != null))
+      if (current.CountryElement != null)
       {
-        writer.WriteString("country",current.CountryElement.Value);
+        if (!string.IsNullOrEmpty(current.CountryElement.Value))
+        {
+          writer.WriteString("country",current.CountryElement.Value);
+        }
+        if (current.CountryElement.HasExtensions() || (!string.IsNullOrEmpty(current.CountryElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_country",false,current.CountryElement.Extension,current.CountryElement.ElementId);
+        }
       }
 
       if (current.Period != null)
@@ -150,12 +228,24 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.UseElement =new Code<Hl7.Fhir.Model.Address.AddressUse>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Address.AddressUse>(reader.GetString()));
           break;
 
+        case "_use":
+          ((Hl7.Fhir.Model.Element)current.UseElement).DeserializeJson(ref reader, options);
+          break;
+
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.Address.AddressType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Address.AddressType>(reader.GetString()));
           break;
 
+        case "_type":
+          ((Hl7.Fhir.Model.Element)current.TypeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "text":
           current.TextElement = new FhirString(reader.GetString());
+          break;
+
+        case "_text":
+          ((Hl7.Fhir.Model.Element)current.TextElement).DeserializeJson(ref reader, options);
           break;
 
         case "line":
@@ -183,29 +273,73 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_line":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_line = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_line >= current.LineElement.Count)
+            {
+              current.LineElement.Add(new FhirString());
+            }
+            ((Hl7.Fhir.Model.Element)current.LineElement[i_line++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "city":
           current.CityElement = new FhirString(reader.GetString());
+          break;
+
+        case "_city":
+          ((Hl7.Fhir.Model.Element)current.CityElement).DeserializeJson(ref reader, options);
           break;
 
         case "district":
           current.DistrictElement = new FhirString(reader.GetString());
           break;
 
+        case "_district":
+          ((Hl7.Fhir.Model.Element)current.DistrictElement).DeserializeJson(ref reader, options);
+          break;
+
         case "state":
           current.StateElement = new FhirString(reader.GetString());
+          break;
+
+        case "_state":
+          ((Hl7.Fhir.Model.Element)current.StateElement).DeserializeJson(ref reader, options);
           break;
 
         case "postalCode":
           current.PostalCodeElement = new FhirString(reader.GetString());
           break;
 
+        case "_postalCode":
+          ((Hl7.Fhir.Model.Element)current.PostalCodeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "country":
           current.CountryElement = new FhirString(reader.GetString());
           break;
 
+        case "_country":
+          ((Hl7.Fhir.Model.Element)current.CountryElement).DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
       }

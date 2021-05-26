@@ -54,33 +54,68 @@ namespace Hl7.Fhir.Model.JsonExtensions
     public static void SerializeJson(this ParameterDefinition current, Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
     {
       if (includeStartObject) { writer.WriteStartObject(); }
-      if ((current.NameElement != null) && (current.NameElement.Value != null))
+      if (current.NameElement != null)
       {
-        writer.WriteString("name",current.NameElement.Value);
+        if (!string.IsNullOrEmpty(current.NameElement.Value))
+        {
+          writer.WriteString("name",current.NameElement.Value);
+        }
+        if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_name",false,current.NameElement.Extension,current.NameElement.ElementId);
+        }
       }
 
       writer.WriteString("use",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.UseElement.Value));
 
-      if ((current.MinElement != null) && (current.MinElement.Value != null))
+      if (current.MinElement != null)
       {
-        writer.WriteNumber("min",(int)current.MinElement.Value);
+        if (current.MinElement.Value != null)
+        {
+          writer.WriteNumber("min",(int)current.MinElement.Value);
+        }
+        if (current.MinElement.HasExtensions() || (!string.IsNullOrEmpty(current.MinElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_min",false,current.MinElement.Extension,current.MinElement.ElementId);
+        }
       }
 
-      if ((current.MaxElement != null) && (current.MaxElement.Value != null))
+      if (current.MaxElement != null)
       {
-        writer.WriteString("max",current.MaxElement.Value);
+        if (!string.IsNullOrEmpty(current.MaxElement.Value))
+        {
+          writer.WriteString("max",current.MaxElement.Value);
+        }
+        if (current.MaxElement.HasExtensions() || (!string.IsNullOrEmpty(current.MaxElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_max",false,current.MaxElement.Extension,current.MaxElement.ElementId);
+        }
       }
 
-      if ((current.DocumentationElement != null) && (current.DocumentationElement.Value != null))
+      if (current.DocumentationElement != null)
       {
-        writer.WriteString("documentation",current.DocumentationElement.Value);
+        if (!string.IsNullOrEmpty(current.DocumentationElement.Value))
+        {
+          writer.WriteString("documentation",current.DocumentationElement.Value);
+        }
+        if (current.DocumentationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DocumentationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_documentation",false,current.DocumentationElement.Extension,current.DocumentationElement.ElementId);
+        }
       }
 
       writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
 
-      if ((current.ProfileElement != null) && (current.ProfileElement.Value != null))
+      if (current.ProfileElement != null)
       {
-        writer.WriteString("profile",current.ProfileElement.Value);
+        if (!string.IsNullOrEmpty(current.ProfileElement.Value))
+        {
+          writer.WriteString("profile",current.ProfileElement.Value);
+        }
+        if (current.ProfileElement.HasExtensions() || (!string.IsNullOrEmpty(current.ProfileElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_profile",false,current.ProfileElement.Extension,current.ProfileElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -130,6 +165,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.UseElement =new Code<Hl7.Fhir.Model.OperationParameterUse>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.OperationParameterUse>(reader.GetString()));
           break;
 
+        case "_use":
+          ((Hl7.Fhir.Model.Element)current.UseElement).DeserializeJson(ref reader, options);
+          break;
+
         case "min":
           current.MinElement = new Integer(reader.GetInt32());
           break;
@@ -142,12 +181,24 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.MaxElement = new FhirString(reader.GetString());
           break;
 
+        case "_max":
+          ((Hl7.Fhir.Model.Element)current.MaxElement).DeserializeJson(ref reader, options);
+          break;
+
         case "documentation":
           current.DocumentationElement = new FhirString(reader.GetString());
           break;
 
+        case "_documentation":
+          ((Hl7.Fhir.Model.Element)current.DocumentationElement).DeserializeJson(ref reader, options);
+          break;
+
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.FHIRAllTypes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.FHIRAllTypes>(reader.GetString()));
+          break;
+
+        case "_type":
+          ((Hl7.Fhir.Model.Element)current.TypeElement).DeserializeJson(ref reader, options);
           break;
 
         case "profile":

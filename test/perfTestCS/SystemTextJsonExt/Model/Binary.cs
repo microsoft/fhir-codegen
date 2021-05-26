@@ -66,9 +66,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.SecurityContext.SerializeJson(writer, options);
       }
 
-      if ((current.DataElement != null) && (current.DataElement.Value != null))
+      if (current.DataElement != null)
       {
-        writer.WriteString("data",System.Convert.ToBase64String(current.DataElement.Value));
+        if (current.DataElement.Value != null)
+        {
+          writer.WriteString("data",System.Convert.ToBase64String(current.DataElement.Value));
+        }
+        if (current.DataElement.HasExtensions() || (!string.IsNullOrEmpty(current.DataElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_data",false,current.DataElement.Extension,current.DataElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -116,11 +123,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "securityContext":
           current.SecurityContext = new Hl7.Fhir.Model.ResourceReference();
-          current.SecurityContext.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.SecurityContext).DeserializeJson(ref reader, options);
           break;
 
         case "data":
           current.DataElement = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
+          break;
+
+        case "_data":
+          ((Hl7.Fhir.Model.Element)current.DataElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Binary, Export: Binary, Base: Resource

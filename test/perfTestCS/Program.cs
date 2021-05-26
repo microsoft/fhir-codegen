@@ -30,8 +30,8 @@ namespace PerfTestCS
         {
             Summary summary = BenchmarkRunner.Run<Benchmark.SerializationBenchmarks>(
                 DefaultConfig.Instance
-                    .WithOption(ConfigOptions.DisableLogFile, true)
-                    .WithOption(ConfigOptions.KeepBenchmarkFiles, true)
+                    .WithOption(ConfigOptions.DisableLogFile, false)
+                    .WithOption(ConfigOptions.KeepBenchmarkFiles, false)
                     .WithOption(ConfigOptions.JoinSummary, true));
 
             // success

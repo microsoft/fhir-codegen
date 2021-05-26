@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "text":
           current.Text = new Hl7.Fhir.Model.Narrative();
-          current.Text.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Narrative)current.Text).DeserializeJson(ref reader, options);
           break;
 
         case "contained":

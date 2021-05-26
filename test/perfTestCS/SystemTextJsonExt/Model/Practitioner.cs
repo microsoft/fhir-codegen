@@ -69,9 +69,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.ActiveElement != null) && (current.ActiveElement.Value != null))
+      if (current.ActiveElement != null)
       {
-        writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        if (current.ActiveElement.Value != null)
+        {
+          writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        }
+        if (current.ActiveElement.HasExtensions() || (!string.IsNullOrEmpty(current.ActiveElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_active",false,current.ActiveElement.Extension,current.ActiveElement.ElementId);
+        }
       }
 
       if ((current.Name != null) && (current.Name.Count != 0))
@@ -112,9 +119,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteString("gender",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.GenderElement.Value));
       }
 
-      if ((current.BirthDateElement != null) && (current.BirthDateElement.Value != null))
+      if (current.BirthDateElement != null)
       {
-        writer.WriteString("birthDate",current.BirthDateElement.Value);
+        if (!string.IsNullOrEmpty(current.BirthDateElement.Value))
+        {
+          writer.WriteString("birthDate",current.BirthDateElement.Value);
+        }
+        if (current.BirthDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.BirthDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_birthDate",false,current.BirthDateElement.Extension,current.BirthDateElement.ElementId);
+        }
       }
 
       if ((current.Photo != null) && (current.Photo.Count != 0))
@@ -216,6 +230,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.ActiveElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_active":
+          ((Hl7.Fhir.Model.Element)current.ActiveElement).DeserializeJson(ref reader, options);
+          break;
+
         case "name":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -299,6 +317,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "gender":
           current.GenderElement =new Code<Hl7.Fhir.Model.AdministrativeGender>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.AdministrativeGender>(reader.GetString()));
+          break;
+
+        case "_gender":
+          ((Hl7.Fhir.Model.Element)current.GenderElement).DeserializeJson(ref reader, options);
           break;
 
         case "birthDate":
@@ -496,17 +518,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         case "issuer":
           current.Issuer = new Hl7.Fhir.Model.ResourceReference();
-          current.Issuer.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Issuer).DeserializeJson(ref reader, options);
           break;
 
         // Complex: qualification, Export: QualificationComponent, Base: BackboneElement

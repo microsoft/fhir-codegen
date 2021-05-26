@@ -56,9 +56,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       if (includeStartObject) { writer.WriteStartObject(); }
       writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
 
-      if ((current.NameElement != null) && (current.NameElement.Value != null))
+      if (current.NameElement != null)
       {
-        writer.WriteString("name",current.NameElement.Value);
+        if (!string.IsNullOrEmpty(current.NameElement.Value))
+        {
+          writer.WriteString("name",current.NameElement.Value);
+        }
+        if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_name",false,current.NameElement.Extension,current.NameElement.ElementId);
+        }
       }
 
       if (current.Timing != null)
@@ -137,18 +144,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.TypeElement =new Code<Hl7.Fhir.Model.TriggerDefinition.TriggerType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.TriggerDefinition.TriggerType>(reader.GetString()));
           break;
 
+        case "_type":
+          ((Hl7.Fhir.Model.Element)current.TypeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "name":
           current.NameElement = new FhirString(reader.GetString());
           break;
 
+        case "_name":
+          ((Hl7.Fhir.Model.Element)current.NameElement).DeserializeJson(ref reader, options);
+          break;
+
         case "timingTiming":
           current.Timing = new Hl7.Fhir.Model.Timing();
-          current.Timing.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Timing)current.Timing).DeserializeJson(ref reader, options);
           break;
 
         case "timingReference":
           current.Timing = new Hl7.Fhir.Model.ResourceReference();
-          current.Timing.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Timing).DeserializeJson(ref reader, options);
           break;
 
         case "timingDate":
@@ -188,7 +203,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "condition":
           current.Condition = new Hl7.Fhir.Model.Expression();
-          current.Condition.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Expression)current.Condition).DeserializeJson(ref reader, options);
           break;
 
       }

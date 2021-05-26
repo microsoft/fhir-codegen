@@ -105,9 +105,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Encounter.SerializeJson(writer, options);
       }
 
-      if ((current.OccurrenceDateTimeElement != null) && (current.OccurrenceDateTimeElement.Value != null))
+      if (current.OccurrenceDateTimeElement != null)
       {
-        writer.WriteString("occurrenceDateTime",current.OccurrenceDateTimeElement.Value);
+        if (!string.IsNullOrEmpty(current.OccurrenceDateTimeElement.Value))
+        {
+          writer.WriteString("occurrenceDateTime",current.OccurrenceDateTimeElement.Value);
+        }
+        if (current.OccurrenceDateTimeElement.HasExtensions() || (!string.IsNullOrEmpty(current.OccurrenceDateTimeElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_occurrenceDateTime",false,current.OccurrenceDateTimeElement.Extension,current.OccurrenceDateTimeElement.ElementId);
+        }
       }
 
       if (current.Performer != null)
@@ -220,7 +227,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "requestIdentifier":
           current.RequestIdentifier = new Hl7.Fhir.Model.Identifier();
-          current.RequestIdentifier.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.RequestIdentifier).DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -260,30 +267,38 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "moduleCodeableConcept":
           current.Module = new Hl7.Fhir.Model.CodeableConcept();
-          current.Module.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Module).DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.GuidanceResponse.GuidanceResponseStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.GuidanceResponse.GuidanceResponseStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "occurrenceDateTime":
           current.OccurrenceDateTimeElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_occurrenceDateTime":
+          ((Hl7.Fhir.Model.Element)current.OccurrenceDateTimeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "performer":
           current.Performer = new Hl7.Fhir.Model.ResourceReference();
-          current.Performer.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Performer).DeserializeJson(ref reader, options);
           break;
 
         case "reasonCode":
@@ -396,12 +411,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "outputParameters":
           current.OutputParameters = new Hl7.Fhir.Model.ResourceReference();
-          current.OutputParameters.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.OutputParameters).DeserializeJson(ref reader, options);
           break;
 
         case "result":
           current.Result = new Hl7.Fhir.Model.ResourceReference();
-          current.Result.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Result).DeserializeJson(ref reader, options);
           break;
 
         case "dataRequirement":

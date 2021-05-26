@@ -195,7 +195,7 @@ namespace PerfTestCS.Benchmark
             return _extConverter.Read(
                 ref reader,
                 typeof(Hl7.Fhir.Model.Resource),
-                Hl7.Fhir.Serialization.FhirSerializerOptions.Compact);
+                Hl7.Fhir.Serialization.FhirSerializerOptions.SerializerOptions);
         }
 
         /// <summary>Serialize this object to the given stream.</summary>
@@ -205,12 +205,13 @@ namespace PerfTestCS.Benchmark
         public string FirelyExtSerialize()
         {
             using (MemoryStream memoryStream = new MemoryStream())
-            using (System.Text.Json.Utf8JsonWriter writer = new System.Text.Json.Utf8JsonWriter(memoryStream))
+            using (System.Text.Json.Utf8JsonWriter writer =
+                new System.Text.Json.Utf8JsonWriter(memoryStream, Hl7.Fhir.Serialization.FhirSerializerOptions.Compact))
             {
                 _extConverter.Write(
                     writer,
                     (Hl7.Fhir.Model.Resource)_firelyModel,
-                    Hl7.Fhir.Serialization.FhirSerializerOptions.Compact);
+                    Hl7.Fhir.Serialization.FhirSerializerOptions.SerializerOptions);
 
                 string test = System.Text.Encoding.UTF8.GetString(memoryStream.GetBuffer());
 

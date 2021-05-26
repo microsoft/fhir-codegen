@@ -189,12 +189,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "disease":
           current.Disease = new Hl7.Fhir.Model.CodeableConcept();
-          current.Disease.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Disease).DeserializeJson(ref reader, options);
           break;
 
         case "diseaseStatus":
           current.DiseaseStatus = new Hl7.Fhir.Model.CodeableConcept();
-          current.DiseaseStatus.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.DiseaseStatus).DeserializeJson(ref reader, options);
           break;
 
         case "comorbidity":
@@ -375,17 +375,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "therapyRelationshipType":
           current.TherapyRelationshipType = new Hl7.Fhir.Model.CodeableConcept();
-          current.TherapyRelationshipType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.TherapyRelationshipType).DeserializeJson(ref reader, options);
           break;
 
         case "medicationCodeableConcept":
           current.Medication = new Hl7.Fhir.Model.CodeableConcept();
-          current.Medication.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Medication).DeserializeJson(ref reader, options);
           break;
 
         case "medicationReference":
           current.Medication = new Hl7.Fhir.Model.ResourceReference();
-          current.Medication.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Medication).DeserializeJson(ref reader, options);
           break;
 
         // Complex: otherTherapy, Export: OtherTherapyComponent, Base: BackboneElement

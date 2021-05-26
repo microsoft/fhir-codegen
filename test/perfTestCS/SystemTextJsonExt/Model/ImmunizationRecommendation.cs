@@ -155,16 +155,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "patient":
           current.Patient = new Hl7.Fhir.Model.ResourceReference();
-          current.Patient.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Patient).DeserializeJson(ref reader, options);
           break;
 
         case "date":
           current.DateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_date":
+          ((Hl7.Fhir.Model.Element)current.DateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "authority":
           current.Authority = new Hl7.Fhir.Model.ResourceReference();
-          current.Authority.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Authority).DeserializeJson(ref reader, options);
           break;
 
         case "recommendation":
@@ -263,14 +267,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
-      if ((current.SeriesElement != null) && (current.SeriesElement.Value != null))
+      if (current.SeriesElement != null)
       {
-        writer.WriteString("series",current.SeriesElement.Value);
+        if (!string.IsNullOrEmpty(current.SeriesElement.Value))
+        {
+          writer.WriteString("series",current.SeriesElement.Value);
+        }
+        if (current.SeriesElement.HasExtensions() || (!string.IsNullOrEmpty(current.SeriesElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_series",false,current.SeriesElement.Extension,current.SeriesElement.ElementId);
+        }
       }
 
       if (current.DoseNumber != null)
@@ -383,7 +401,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "targetDisease":
           current.TargetDisease = new Hl7.Fhir.Model.CodeableConcept();
-          current.TargetDisease.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.TargetDisease).DeserializeJson(ref reader, options);
           break;
 
         case "contraindicatedVaccineCode":
@@ -415,7 +433,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "forecastStatus":
           current.ForecastStatus = new Hl7.Fhir.Model.CodeableConcept();
-          current.ForecastStatus.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ForecastStatus).DeserializeJson(ref reader, options);
           break;
 
         case "forecastReason":
@@ -476,8 +494,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "series":
           current.SeriesElement = new FhirString(reader.GetString());
+          break;
+
+        case "_series":
+          ((Hl7.Fhir.Model.Element)current.SeriesElement).DeserializeJson(ref reader, options);
           break;
 
         case "doseNumberPositiveInt":
@@ -608,11 +634,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "value":
           current.ValueElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_value":
+          ((Hl7.Fhir.Model.Element)current.ValueElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: dateCriterion, Export: DateCriterionComponent, Base: BackboneElement

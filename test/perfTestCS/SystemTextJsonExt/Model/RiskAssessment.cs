@@ -173,9 +173,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.MitigationElement != null) && (current.MitigationElement.Value != null))
+      if (current.MitigationElement != null)
       {
-        writer.WriteString("mitigation",current.MitigationElement.Value);
+        if (!string.IsNullOrEmpty(current.MitigationElement.Value))
+        {
+          writer.WriteString("mitigation",current.MitigationElement.Value);
+        }
+        if (current.MitigationElement.HasExtensions() || (!string.IsNullOrEmpty(current.MitigationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_mitigation",false,current.MitigationElement.Extension,current.MitigationElement.ElementId);
+        }
       }
 
       if ((current.Note != null) && (current.Note.Count != 0))
@@ -253,36 +260,40 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "basedOn":
           current.BasedOn = new Hl7.Fhir.Model.ResourceReference();
-          current.BasedOn.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.BasedOn).DeserializeJson(ref reader, options);
           break;
 
         case "parent":
           current.Parent = new Hl7.Fhir.Model.ResourceReference();
-          current.Parent.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Parent).DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.ObservationStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ObservationStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "method":
           current.Method = new Hl7.Fhir.Model.CodeableConcept();
-          current.Method.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Method).DeserializeJson(ref reader, options);
           break;
 
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "occurrenceDateTime":
@@ -291,17 +302,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "occurrencePeriod":
           current.Occurrence = new Hl7.Fhir.Model.Period();
-          current.Occurrence.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Occurrence).DeserializeJson(ref reader, options);
           break;
 
         case "condition":
           current.Condition = new Hl7.Fhir.Model.ResourceReference();
-          current.Condition.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Condition).DeserializeJson(ref reader, options);
           break;
 
         case "performer":
           current.Performer = new Hl7.Fhir.Model.ResourceReference();
-          current.Performer.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Performer).DeserializeJson(ref reader, options);
           break;
 
         case "reasonCode":
@@ -416,6 +427,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.MitigationElement = new FhirString(reader.GetString());
           break;
 
+        case "_mitigation":
+          ((Hl7.Fhir.Model.Element)current.MitigationElement).DeserializeJson(ref reader, options);
+          break;
+
         case "note":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -484,9 +499,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.QualitativeRisk.SerializeJson(writer, options);
       }
 
-      if ((current.RelativeRiskElement != null) && (current.RelativeRiskElement.Value != null))
+      if (current.RelativeRiskElement != null)
       {
-        writer.WriteNumber("relativeRisk",(decimal)current.RelativeRiskElement.Value);
+        if (current.RelativeRiskElement.Value != null)
+        {
+          writer.WriteNumber("relativeRisk",(decimal)current.RelativeRiskElement.Value);
+        }
+        if (current.RelativeRiskElement.HasExtensions() || (!string.IsNullOrEmpty(current.RelativeRiskElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_relativeRisk",false,current.RelativeRiskElement.Extension,current.RelativeRiskElement.ElementId);
+        }
       }
 
       if (current.When != null)
@@ -503,9 +525,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.RationaleElement != null) && (current.RationaleElement.Value != null))
+      if (current.RationaleElement != null)
       {
-        writer.WriteString("rationale",current.RationaleElement.Value);
+        if (!string.IsNullOrEmpty(current.RationaleElement.Value))
+        {
+          writer.WriteString("rationale",current.RationaleElement.Value);
+        }
+        if (current.RationaleElement.HasExtensions() || (!string.IsNullOrEmpty(current.RationaleElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_rationale",false,current.RationaleElement.Extension,current.RationaleElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -545,7 +574,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "outcome":
           current.Outcome = new Hl7.Fhir.Model.CodeableConcept();
-          current.Outcome.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Outcome).DeserializeJson(ref reader, options);
           break;
 
         case "probabilityDecimal":
@@ -554,30 +583,38 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "probabilityRange":
           current.Probability = new Hl7.Fhir.Model.Range();
-          current.Probability.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Probability).DeserializeJson(ref reader, options);
           break;
 
         case "qualitativeRisk":
           current.QualitativeRisk = new Hl7.Fhir.Model.CodeableConcept();
-          current.QualitativeRisk.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.QualitativeRisk).DeserializeJson(ref reader, options);
           break;
 
         case "relativeRisk":
           current.RelativeRiskElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_relativeRisk":
+          ((Hl7.Fhir.Model.Element)current.RelativeRiskElement).DeserializeJson(ref reader, options);
+          break;
+
         case "whenPeriod":
           current.When = new Hl7.Fhir.Model.Period();
-          current.When.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.When).DeserializeJson(ref reader, options);
           break;
 
         case "whenRange":
           current.When = new Hl7.Fhir.Model.Range();
-          current.When.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.When).DeserializeJson(ref reader, options);
           break;
 
         case "rationale":
           current.RationaleElement = new FhirString(reader.GetString());
+          break;
+
+        case "_rationale":
+          ((Hl7.Fhir.Model.Element)current.RationaleElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: prediction, Export: PredictionComponent, Base: BackboneElement

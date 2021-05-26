@@ -186,12 +186,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "administrableDoseForm":
           current.AdministrableDoseForm = new Hl7.Fhir.Model.CodeableConcept();
-          current.AdministrableDoseForm.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.AdministrableDoseForm).DeserializeJson(ref reader, options);
           break;
 
         case "unitOfPresentation":
           current.UnitOfPresentation = new Hl7.Fhir.Model.CodeableConcept();
-          current.UnitOfPresentation.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.UnitOfPresentation).DeserializeJson(ref reader, options);
           break;
 
         case "ingredient":
@@ -364,12 +364,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.Status = new Hl7.Fhir.Model.CodeableConcept();
-          current.Status.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Status).DeserializeJson(ref reader, options);
           break;
 
         // Complex: characteristics, Export: CharacteristicsComponent, Base: BackboneElement
@@ -469,32 +469,32 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "firstDose":
           current.FirstDose = new Hl7.Fhir.Model.Quantity();
-          current.FirstDose.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.FirstDose).DeserializeJson(ref reader, options);
           break;
 
         case "maxSingleDose":
           current.MaxSingleDose = new Hl7.Fhir.Model.Quantity();
-          current.MaxSingleDose.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.MaxSingleDose).DeserializeJson(ref reader, options);
           break;
 
         case "maxDosePerDay":
           current.MaxDosePerDay = new Hl7.Fhir.Model.Quantity();
-          current.MaxDosePerDay.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.MaxDosePerDay).DeserializeJson(ref reader, options);
           break;
 
         case "maxDosePerTreatmentPeriod":
           current.MaxDosePerTreatmentPeriod = new Hl7.Fhir.Model.Ratio();
-          current.MaxDosePerTreatmentPeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Ratio)current.MaxDosePerTreatmentPeriod).DeserializeJson(ref reader, options);
           break;
 
         case "maxTreatmentPeriod":
           current.MaxTreatmentPeriod = new Hl7.Fhir.Model.Duration();
-          current.MaxTreatmentPeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Duration)current.MaxTreatmentPeriod).DeserializeJson(ref reader, options);
           break;
 
         case "targetSpecies":
@@ -591,7 +591,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "withdrawalPeriod":
@@ -643,9 +643,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("value");
       current.Value.SerializeJson(writer, options);
 
-      if ((current.SupportingInformationElement != null) && (current.SupportingInformationElement.Value != null))
+      if (current.SupportingInformationElement != null)
       {
-        writer.WriteString("supportingInformation",current.SupportingInformationElement.Value);
+        if (!string.IsNullOrEmpty(current.SupportingInformationElement.Value))
+        {
+          writer.WriteString("supportingInformation",current.SupportingInformationElement.Value);
+        }
+        if (current.SupportingInformationElement.HasExtensions() || (!string.IsNullOrEmpty(current.SupportingInformationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_supportingInformation",false,current.SupportingInformationElement.Extension,current.SupportingInformationElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -685,16 +692,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "tissue":
           current.Tissue = new Hl7.Fhir.Model.CodeableConcept();
-          current.Tissue.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Tissue).DeserializeJson(ref reader, options);
           break;
 
         case "value":
           current.Value = new Hl7.Fhir.Model.Quantity();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "supportingInformation":
           current.SupportingInformationElement = new FhirString(reader.GetString());
+          break;
+
+        case "_supportingInformation":
+          ((Hl7.Fhir.Model.Element)current.SupportingInformationElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: withdrawalPeriod, Export: WithdrawalPeriodComponent, Base: BackboneElement

@@ -83,14 +83,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("individual");
       current.Individual.SerializeJson(writer, options);
 
-      if ((current.AssignedArmElement != null) && (current.AssignedArmElement.Value != null))
+      if (current.AssignedArmElement != null)
       {
-        writer.WriteString("assignedArm",current.AssignedArmElement.Value);
+        if (!string.IsNullOrEmpty(current.AssignedArmElement.Value))
+        {
+          writer.WriteString("assignedArm",current.AssignedArmElement.Value);
+        }
+        if (current.AssignedArmElement.HasExtensions() || (!string.IsNullOrEmpty(current.AssignedArmElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_assignedArm",false,current.AssignedArmElement.Extension,current.AssignedArmElement.ElementId);
+        }
       }
 
-      if ((current.ActualArmElement != null) && (current.ActualArmElement.Value != null))
+      if (current.ActualArmElement != null)
       {
-        writer.WriteString("actualArm",current.ActualArmElement.Value);
+        if (!string.IsNullOrEmpty(current.ActualArmElement.Value))
+        {
+          writer.WriteString("actualArm",current.ActualArmElement.Value);
+        }
+        if (current.ActualArmElement.HasExtensions() || (!string.IsNullOrEmpty(current.ActualArmElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_actualArm",false,current.ActualArmElement.Extension,current.ActualArmElement.ElementId);
+        }
       }
 
       if (current.Consent != null)
@@ -165,32 +179,44 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.ResearchSubject.ResearchSubjectStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ResearchSubject.ResearchSubjectStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         case "study":
           current.Study = new Hl7.Fhir.Model.ResourceReference();
-          current.Study.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Study).DeserializeJson(ref reader, options);
           break;
 
         case "individual":
           current.Individual = new Hl7.Fhir.Model.ResourceReference();
-          current.Individual.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Individual).DeserializeJson(ref reader, options);
           break;
 
         case "assignedArm":
           current.AssignedArmElement = new FhirString(reader.GetString());
           break;
 
+        case "_assignedArm":
+          ((Hl7.Fhir.Model.Element)current.AssignedArmElement).DeserializeJson(ref reader, options);
+          break;
+
         case "actualArm":
           current.ActualArmElement = new FhirString(reader.GetString());
           break;
 
+        case "_actualArm":
+          ((Hl7.Fhir.Model.Element)current.ActualArmElement).DeserializeJson(ref reader, options);
+          break;
+
         case "consent":
           current.Consent = new Hl7.Fhir.Model.ResourceReference();
-          current.Consent.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Consent).DeserializeJson(ref reader, options);
           break;
 
         // Complex: ResearchSubject, Export: ResearchSubject, Base: DomainResource

@@ -91,9 +91,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Patient.SerializeJson(writer, options);
       }
 
-      if ((current.DateTimeElement != null) && (current.DateTimeElement.Value != null))
+      if (current.DateTimeElement != null)
       {
-        writer.WriteString("dateTime",current.DateTimeElement.Value);
+        if (!string.IsNullOrEmpty(current.DateTimeElement.Value))
+        {
+          writer.WriteString("dateTime",current.DateTimeElement.Value);
+        }
+        if (current.DateTimeElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateTimeElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_dateTime",false,current.DateTimeElement.Extension,current.DateTimeElement.ElementId);
+        }
       }
 
       if ((current.Performer != null) && (current.Performer.Count != 0))
@@ -232,9 +239,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.Consent.ConsentState>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Consent.ConsentState>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "scope":
           current.Scope = new Hl7.Fhir.Model.CodeableConcept();
-          current.Scope.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Scope).DeserializeJson(ref reader, options);
           break;
 
         case "category":
@@ -266,11 +277,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "patient":
           current.Patient = new Hl7.Fhir.Model.ResourceReference();
-          current.Patient.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Patient).DeserializeJson(ref reader, options);
           break;
 
         case "dateTime":
           current.DateTimeElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_dateTime":
+          ((Hl7.Fhir.Model.Element)current.DateTimeElement).DeserializeJson(ref reader, options);
           break;
 
         case "performer":
@@ -329,12 +344,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "sourceAttachment":
           current.Source = new Hl7.Fhir.Model.Attachment();
-          current.Source.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Attachment)current.Source).DeserializeJson(ref reader, options);
           break;
 
         case "sourceReference":
           current.Source = new Hl7.Fhir.Model.ResourceReference();
-          current.Source.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Source).DeserializeJson(ref reader, options);
           break;
 
         case "policy":
@@ -366,7 +381,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "policyRule":
           current.PolicyRule = new Hl7.Fhir.Model.CodeableConcept();
-          current.PolicyRule.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.PolicyRule).DeserializeJson(ref reader, options);
           break;
 
         case "verification":
@@ -398,7 +413,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "provision":
           current.Provision = new Hl7.Fhir.Model.Consent.provisionComponent();
-          current.Provision.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Consent.provisionComponent)current.Provision).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Consent, Export: Consent, Base: DomainResource
@@ -417,14 +432,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: Consent#Policy, Export: PolicyComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.AuthorityElement != null) && (current.AuthorityElement.Value != null))
+      if (current.AuthorityElement != null)
       {
-        writer.WriteString("authority",current.AuthorityElement.Value);
+        if (!string.IsNullOrEmpty(current.AuthorityElement.Value))
+        {
+          writer.WriteString("authority",current.AuthorityElement.Value);
+        }
+        if (current.AuthorityElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthorityElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_authority",false,current.AuthorityElement.Extension,current.AuthorityElement.ElementId);
+        }
       }
 
-      if ((current.UriElement != null) && (current.UriElement.Value != null))
+      if (current.UriElement != null)
       {
-        writer.WriteString("uri",current.UriElement.Value);
+        if (!string.IsNullOrEmpty(current.UriElement.Value))
+        {
+          writer.WriteString("uri",current.UriElement.Value);
+        }
+        if (current.UriElement.HasExtensions() || (!string.IsNullOrEmpty(current.UriElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_uri",false,current.UriElement.Extension,current.UriElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -466,8 +495,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.AuthorityElement = new FhirUri(reader.GetString());
           break;
 
+        case "_authority":
+          ((Hl7.Fhir.Model.Element)current.AuthorityElement).DeserializeJson(ref reader, options);
+          break;
+
         case "uri":
           current.UriElement = new FhirUri(reader.GetString());
+          break;
+
+        case "_uri":
+          ((Hl7.Fhir.Model.Element)current.UriElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: policy, Export: PolicyComponent, Base: BackboneElement
@@ -494,9 +531,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.VerifiedWith.SerializeJson(writer, options);
       }
 
-      if ((current.VerificationDateElement != null) && (current.VerificationDateElement.Value != null))
+      if (current.VerificationDateElement != null)
       {
-        writer.WriteString("verificationDate",current.VerificationDateElement.Value);
+        if (!string.IsNullOrEmpty(current.VerificationDateElement.Value))
+        {
+          writer.WriteString("verificationDate",current.VerificationDateElement.Value);
+        }
+        if (current.VerificationDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.VerificationDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_verificationDate",false,current.VerificationDateElement.Extension,current.VerificationDateElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -538,13 +582,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.VerifiedElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_verified":
+          ((Hl7.Fhir.Model.Element)current.VerifiedElement).DeserializeJson(ref reader, options);
+          break;
+
         case "verifiedWith":
           current.VerifiedWith = new Hl7.Fhir.Model.ResourceReference();
-          current.VerifiedWith.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.VerifiedWith).DeserializeJson(ref reader, options);
           break;
 
         case "verificationDate":
           current.VerificationDateElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_verificationDate":
+          ((Hl7.Fhir.Model.Element)current.VerificationDateElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: verification, Export: VerificationComponent, Base: BackboneElement
@@ -707,9 +759,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.TypeElement =new Code<Hl7.Fhir.Model.Consent.ConsentProvisionType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Consent.ConsentProvisionType>(reader.GetString()));
           break;
 
+        case "_type":
+          ((Hl7.Fhir.Model.Element)current.TypeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         case "actor":
@@ -876,7 +932,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "dataPeriod":
           current.DataPeriod = new Hl7.Fhir.Model.Period();
-          current.DataPeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.DataPeriod).DeserializeJson(ref reader, options);
           break;
 
         case "data":
@@ -992,12 +1048,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "role":
           current.Role = new Hl7.Fhir.Model.CodeableConcept();
-          current.Role.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Role).DeserializeJson(ref reader, options);
           break;
 
         case "reference":
           current.Reference = new Hl7.Fhir.Model.ResourceReference();
-          current.Reference.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Reference).DeserializeJson(ref reader, options);
           break;
 
         // Complex: actor, Export: provisionActorComponent, Base: BackboneElement
@@ -1060,9 +1116,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.MeaningElement =new Code<Hl7.Fhir.Model.Consent.ConsentDataMeaning>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Consent.ConsentDataMeaning>(reader.GetString()));
           break;
 
+        case "_meaning":
+          ((Hl7.Fhir.Model.Element)current.MeaningElement).DeserializeJson(ref reader, options);
+          break;
+
         case "reference":
           current.Reference = new Hl7.Fhir.Model.ResourceReference();
-          current.Reference.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Reference).DeserializeJson(ref reader, options);
           break;
 
         // Complex: data, Export: provisionDataComponent, Base: BackboneElement

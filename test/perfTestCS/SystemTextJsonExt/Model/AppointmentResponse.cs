@@ -72,14 +72,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("appointment");
       current.Appointment.SerializeJson(writer, options);
 
-      if ((current.StartElement != null) && (current.StartElement.Value != null))
+      if (current.StartElement != null)
       {
-        writer.WriteString("start",((DateTimeOffset)current.StartElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture));
+        if (current.StartElement.Value != null)
+        {
+          writer.WriteString("start",((DateTimeOffset)current.StartElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
+        }
+        if (current.StartElement.HasExtensions() || (!string.IsNullOrEmpty(current.StartElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_start",false,current.StartElement.Extension,current.StartElement.ElementId);
+        }
       }
 
-      if ((current.EndElement != null) && (current.EndElement.Value != null))
+      if (current.EndElement != null)
       {
-        writer.WriteString("end",((DateTimeOffset)current.EndElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture));
+        if (current.EndElement.Value != null)
+        {
+          writer.WriteString("end",((DateTimeOffset)current.EndElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
+        }
+        if (current.EndElement.HasExtensions() || (!string.IsNullOrEmpty(current.EndElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_end",false,current.EndElement.Extension,current.EndElement.ElementId);
+        }
       }
 
       if ((current.ParticipantType != null) && (current.ParticipantType.Count != 0))
@@ -101,9 +115,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("participantStatus",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.ParticipantStatusElement.Value));
 
-      if ((current.CommentElement != null) && (current.CommentElement.Value != null))
+      if (current.CommentElement != null)
       {
-        writer.WriteString("comment",current.CommentElement.Value);
+        if (!string.IsNullOrEmpty(current.CommentElement.Value))
+        {
+          writer.WriteString("comment",current.CommentElement.Value);
+        }
+        if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_comment",false,current.CommentElement.Extension,current.CommentElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -170,7 +191,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "appointment":
           current.Appointment = new Hl7.Fhir.Model.ResourceReference();
-          current.Appointment.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Appointment).DeserializeJson(ref reader, options);
           break;
 
         case "start":
@@ -218,15 +239,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "actor":
           current.Actor = new Hl7.Fhir.Model.ResourceReference();
-          current.Actor.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Actor).DeserializeJson(ref reader, options);
           break;
 
         case "participantStatus":
           current.ParticipantStatusElement =new Code<Hl7.Fhir.Model.ParticipationStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ParticipationStatus>(reader.GetString()));
           break;
 
+        case "_participantStatus":
+          ((Hl7.Fhir.Model.Element)current.ParticipantStatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "comment":
           current.CommentElement = new FhirString(reader.GetString());
+          break;
+
+        case "_comment":
+          ((Hl7.Fhir.Model.Element)current.CommentElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: AppointmentResponse, Export: AppointmentResponse, Base: DomainResource

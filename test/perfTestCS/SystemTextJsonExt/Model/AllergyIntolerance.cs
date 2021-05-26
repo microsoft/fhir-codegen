@@ -141,9 +141,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.RecordedDateElement != null) && (current.RecordedDateElement.Value != null))
+      if (current.RecordedDateElement != null)
       {
-        writer.WriteString("recordedDate",current.RecordedDateElement.Value);
+        if (!string.IsNullOrEmpty(current.RecordedDateElement.Value))
+        {
+          writer.WriteString("recordedDate",current.RecordedDateElement.Value);
+        }
+        if (current.RecordedDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.RecordedDateElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_recordedDate",false,current.RecordedDateElement.Extension,current.RecordedDateElement.ElementId);
+        }
       }
 
       if (current.Recorder != null)
@@ -158,9 +165,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Asserter.SerializeJson(writer, options);
       }
 
-      if ((current.LastOccurrenceElement != null) && (current.LastOccurrenceElement.Value != null))
+      if (current.LastOccurrenceElement != null)
       {
-        writer.WriteString("lastOccurrence",current.LastOccurrenceElement.Value);
+        if (!string.IsNullOrEmpty(current.LastOccurrenceElement.Value))
+        {
+          writer.WriteString("lastOccurrence",current.LastOccurrenceElement.Value);
+        }
+        if (current.LastOccurrenceElement.HasExtensions() || (!string.IsNullOrEmpty(current.LastOccurrenceElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_lastOccurrence",false,current.LastOccurrenceElement.Extension,current.LastOccurrenceElement.ElementId);
+        }
       }
 
       if ((current.Note != null) && (current.Note.Count != 0))
@@ -249,16 +263,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "clinicalStatus":
           current.ClinicalStatus = new Hl7.Fhir.Model.CodeableConcept();
-          current.ClinicalStatus.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ClinicalStatus).DeserializeJson(ref reader, options);
           break;
 
         case "verificationStatus":
           current.VerificationStatus = new Hl7.Fhir.Model.CodeableConcept();
-          current.VerificationStatus.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.VerificationStatus).DeserializeJson(ref reader, options);
           break;
 
         case "type":
           current.TypeElement =new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType>(reader.GetString()));
+          break;
+
+        case "_type":
+          ((Hl7.Fhir.Model.Element)current.TypeElement).DeserializeJson(ref reader, options);
           break;
 
         case "category":
@@ -286,23 +304,51 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_category":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_category = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_category >= current.CategoryElement.Count)
+            {
+              current.CategoryElement.Add(new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCategory>());
+            }
+            ((Hl7.Fhir.Model.Element)current.CategoryElement[i_category++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "criticality":
           current.CriticalityElement =new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality>(reader.GetString()));
           break;
 
+        case "_criticality":
+          ((Hl7.Fhir.Model.Element)current.CriticalityElement).DeserializeJson(ref reader, options);
+          break;
+
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         case "patient":
           current.Patient = new Hl7.Fhir.Model.ResourceReference();
-          current.Patient.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Patient).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "onsetDateTime":
@@ -311,17 +357,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "onsetAge":
           current.Onset = new Hl7.Fhir.Model.Age();
-          current.Onset.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Age)current.Onset).DeserializeJson(ref reader, options);
           break;
 
         case "onsetPeriod":
           current.Onset = new Hl7.Fhir.Model.Period();
-          current.Onset.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Onset).DeserializeJson(ref reader, options);
           break;
 
         case "onsetRange":
           current.Onset = new Hl7.Fhir.Model.Range();
-          current.Onset.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Onset).DeserializeJson(ref reader, options);
           break;
 
         case "onsetString":
@@ -332,18 +378,26 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.RecordedDateElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_recordedDate":
+          ((Hl7.Fhir.Model.Element)current.RecordedDateElement).DeserializeJson(ref reader, options);
+          break;
+
         case "recorder":
           current.Recorder = new Hl7.Fhir.Model.ResourceReference();
-          current.Recorder.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Recorder).DeserializeJson(ref reader, options);
           break;
 
         case "asserter":
           current.Asserter = new Hl7.Fhir.Model.ResourceReference();
-          current.Asserter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Asserter).DeserializeJson(ref reader, options);
           break;
 
         case "lastOccurrence":
           current.LastOccurrenceElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_lastOccurrence":
+          ((Hl7.Fhir.Model.Element)current.LastOccurrenceElement).DeserializeJson(ref reader, options);
           break;
 
         case "note":
@@ -433,14 +487,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
-      if ((current.OnsetElement != null) && (current.OnsetElement.Value != null))
+      if (current.OnsetElement != null)
       {
-        writer.WriteString("onset",current.OnsetElement.Value);
+        if (!string.IsNullOrEmpty(current.OnsetElement.Value))
+        {
+          writer.WriteString("onset",current.OnsetElement.Value);
+        }
+        if (current.OnsetElement.HasExtensions() || (!string.IsNullOrEmpty(current.OnsetElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_onset",false,current.OnsetElement.Extension,current.OnsetElement.ElementId);
+        }
       }
 
       if (current.SeverityElement != null)
@@ -502,7 +570,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "substance":
           current.Substance = new Hl7.Fhir.Model.CodeableConcept();
-          current.Substance.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Substance).DeserializeJson(ref reader, options);
           break;
 
         case "manifestation":
@@ -536,17 +604,29 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "onset":
           current.OnsetElement = new FhirDateTime(reader.GetString());
+          break;
+
+        case "_onset":
+          ((Hl7.Fhir.Model.Element)current.OnsetElement).DeserializeJson(ref reader, options);
           break;
 
         case "severity":
           current.SeverityElement =new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity>(reader.GetString()));
           break;
 
+        case "_severity":
+          ((Hl7.Fhir.Model.Element)current.SeverityElement).DeserializeJson(ref reader, options);
+          break;
+
         case "exposureRoute":
           current.ExposureRoute = new Hl7.Fhir.Model.CodeableConcept();
-          current.ExposureRoute.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ExposureRoute).DeserializeJson(ref reader, options);
           break;
 
         case "note":

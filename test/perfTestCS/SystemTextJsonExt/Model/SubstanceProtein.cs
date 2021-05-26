@@ -64,18 +64,61 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.SequenceType.SerializeJson(writer, options);
       }
 
-      if ((current.NumberOfSubunitsElement != null) && (current.NumberOfSubunitsElement.Value != null))
+      if (current.NumberOfSubunitsElement != null)
       {
-        writer.WriteNumber("numberOfSubunits",(int)current.NumberOfSubunitsElement.Value);
+        if (current.NumberOfSubunitsElement.Value != null)
+        {
+          writer.WriteNumber("numberOfSubunits",(int)current.NumberOfSubunitsElement.Value);
+        }
+        if (current.NumberOfSubunitsElement.HasExtensions() || (!string.IsNullOrEmpty(current.NumberOfSubunitsElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_numberOfSubunits",false,current.NumberOfSubunitsElement.Extension,current.NumberOfSubunitsElement.ElementId);
+        }
       }
 
       if ((current.DisulfideLinkageElement != null) && (current.DisulfideLinkageElement.Count != 0))
       {
         writer.WritePropertyName("disulfideLinkage");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirString val in current.DisulfideLinkageElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirString val in current.DisulfideLinkageElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_disulfideLinkage");
+          writer.WriteStartArray();
+          foreach (FhirString val in current.DisulfideLinkageElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -128,7 +171,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "sequenceType":
           current.SequenceType = new Hl7.Fhir.Model.CodeableConcept();
-          current.SequenceType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.SequenceType).DeserializeJson(ref reader, options);
           break;
 
         case "numberOfSubunits":
@@ -161,6 +204,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
           if (current.DisulfideLinkageElement.Count == 0)
           {
             current.DisulfideLinkageElement = null;
+          }
+          break;
+
+        case "_disulfideLinkage":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_disulfideLinkage = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_disulfideLinkage >= current.DisulfideLinkageElement.Count)
+            {
+              current.DisulfideLinkageElement.Add(new FhirString());
+            }
+            ((Hl7.Fhir.Model.Element)current.DisulfideLinkageElement[i_disulfideLinkage++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
           break;
 
@@ -207,19 +274,40 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: SubstanceProtein#Subunit, Export: SubunitComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.SubunitElement != null) && (current.SubunitElement.Value != null))
+      if (current.SubunitElement != null)
       {
-        writer.WriteNumber("subunit",(int)current.SubunitElement.Value);
+        if (current.SubunitElement.Value != null)
+        {
+          writer.WriteNumber("subunit",(int)current.SubunitElement.Value);
+        }
+        if (current.SubunitElement.HasExtensions() || (!string.IsNullOrEmpty(current.SubunitElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_subunit",false,current.SubunitElement.Extension,current.SubunitElement.ElementId);
+        }
       }
 
-      if ((current.SequenceElement != null) && (current.SequenceElement.Value != null))
+      if (current.SequenceElement != null)
       {
-        writer.WriteString("sequence",current.SequenceElement.Value);
+        if (!string.IsNullOrEmpty(current.SequenceElement.Value))
+        {
+          writer.WriteString("sequence",current.SequenceElement.Value);
+        }
+        if (current.SequenceElement.HasExtensions() || (!string.IsNullOrEmpty(current.SequenceElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_sequence",false,current.SequenceElement.Extension,current.SequenceElement.ElementId);
+        }
       }
 
-      if ((current.LengthElement != null) && (current.LengthElement.Value != null))
+      if (current.LengthElement != null)
       {
-        writer.WriteNumber("length",(int)current.LengthElement.Value);
+        if (current.LengthElement.Value != null)
+        {
+          writer.WriteNumber("length",(int)current.LengthElement.Value);
+        }
+        if (current.LengthElement.HasExtensions() || (!string.IsNullOrEmpty(current.LengthElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_length",false,current.LengthElement.Extension,current.LengthElement.ElementId);
+        }
       }
 
       if (current.SequenceAttachment != null)
@@ -234,9 +322,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.NTerminalModificationId.SerializeJson(writer, options);
       }
 
-      if ((current.NTerminalModificationElement != null) && (current.NTerminalModificationElement.Value != null))
+      if (current.NTerminalModificationElement != null)
       {
-        writer.WriteString("nTerminalModification",current.NTerminalModificationElement.Value);
+        if (!string.IsNullOrEmpty(current.NTerminalModificationElement.Value))
+        {
+          writer.WriteString("nTerminalModification",current.NTerminalModificationElement.Value);
+        }
+        if (current.NTerminalModificationElement.HasExtensions() || (!string.IsNullOrEmpty(current.NTerminalModificationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_nTerminalModification",false,current.NTerminalModificationElement.Extension,current.NTerminalModificationElement.ElementId);
+        }
       }
 
       if (current.CTerminalModificationId != null)
@@ -245,9 +340,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.CTerminalModificationId.SerializeJson(writer, options);
       }
 
-      if ((current.CTerminalModificationElement != null) && (current.CTerminalModificationElement.Value != null))
+      if (current.CTerminalModificationElement != null)
       {
-        writer.WriteString("cTerminalModification",current.CTerminalModificationElement.Value);
+        if (!string.IsNullOrEmpty(current.CTerminalModificationElement.Value))
+        {
+          writer.WriteString("cTerminalModification",current.CTerminalModificationElement.Value);
+        }
+        if (current.CTerminalModificationElement.HasExtensions() || (!string.IsNullOrEmpty(current.CTerminalModificationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_cTerminalModification",false,current.CTerminalModificationElement.Extension,current.CTerminalModificationElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -297,6 +399,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.SequenceElement = new FhirString(reader.GetString());
           break;
 
+        case "_sequence":
+          ((Hl7.Fhir.Model.Element)current.SequenceElement).DeserializeJson(ref reader, options);
+          break;
+
         case "length":
           current.LengthElement = new Integer(reader.GetInt32());
           break;
@@ -307,25 +413,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "sequenceAttachment":
           current.SequenceAttachment = new Hl7.Fhir.Model.Attachment();
-          current.SequenceAttachment.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Attachment)current.SequenceAttachment).DeserializeJson(ref reader, options);
           break;
 
         case "nTerminalModificationId":
           current.NTerminalModificationId = new Hl7.Fhir.Model.Identifier();
-          current.NTerminalModificationId.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.NTerminalModificationId).DeserializeJson(ref reader, options);
           break;
 
         case "nTerminalModification":
           current.NTerminalModificationElement = new FhirString(reader.GetString());
           break;
 
+        case "_nTerminalModification":
+          ((Hl7.Fhir.Model.Element)current.NTerminalModificationElement).DeserializeJson(ref reader, options);
+          break;
+
         case "cTerminalModificationId":
           current.CTerminalModificationId = new Hl7.Fhir.Model.Identifier();
-          current.CTerminalModificationId.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.CTerminalModificationId).DeserializeJson(ref reader, options);
           break;
 
         case "cTerminalModification":
           current.CTerminalModificationElement = new FhirString(reader.GetString());
+          break;
+
+        case "_cTerminalModification":
+          ((Hl7.Fhir.Model.Element)current.CTerminalModificationElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: subunit, Export: SubunitComponent, Base: BackboneElement

@@ -54,9 +54,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
     public static void SerializeJson(this Resource current, Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
     {
       if (includeStartObject) { writer.WriteStartObject(); }
-      if ((current.IdElement != null) && (current.IdElement.Value != null))
+      if (current.IdElement != null)
       {
-        writer.WriteString("id",current.IdElement.Value);
+        if (!string.IsNullOrEmpty(current.IdElement.Value))
+        {
+          writer.WriteString("id",current.IdElement.Value);
+        }
+        if (current.IdElement.HasExtensions() || (!string.IsNullOrEmpty(current.IdElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_id",false,current.IdElement.Extension,current.IdElement.ElementId);
+        }
       }
 
       if (current.Meta != null)
@@ -65,14 +72,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Meta.SerializeJson(writer, options);
       }
 
-      if ((current.ImplicitRulesElement != null) && (current.ImplicitRulesElement.Value != null))
+      if (current.ImplicitRulesElement != null)
       {
-        writer.WriteString("implicitRules",current.ImplicitRulesElement.Value);
+        if (!string.IsNullOrEmpty(current.ImplicitRulesElement.Value))
+        {
+          writer.WriteString("implicitRules",current.ImplicitRulesElement.Value);
+        }
+        if (current.ImplicitRulesElement.HasExtensions() || (!string.IsNullOrEmpty(current.ImplicitRulesElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_implicitRules",false,current.ImplicitRulesElement.Extension,current.ImplicitRulesElement.ElementId);
+        }
       }
 
-      if ((current.LanguageElement != null) && (current.LanguageElement.Value != null))
+      if (current.LanguageElement != null)
       {
-        writer.WriteString("language",current.LanguageElement.Value);
+        if (!string.IsNullOrEmpty(current.LanguageElement.Value))
+        {
+          writer.WriteString("language",current.LanguageElement.Value);
+        }
+        if (current.LanguageElement.HasExtensions() || (!string.IsNullOrEmpty(current.LanguageElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_language",false,current.LanguageElement.Extension,current.LanguageElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -120,11 +141,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "meta":
           current.Meta = new Hl7.Fhir.Model.Meta();
-          current.Meta.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Meta)current.Meta).DeserializeJson(ref reader, options);
           break;
 
         case "implicitRules":
           current.ImplicitRulesElement = new FhirUri(reader.GetString());
+          break;
+
+        case "_implicitRules":
+          ((Hl7.Fhir.Model.Element)current.ImplicitRulesElement).DeserializeJson(ref reader, options);
           break;
 
         case "language":

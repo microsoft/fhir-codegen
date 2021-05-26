@@ -96,9 +96,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.QuantityElement != null) && (current.QuantityElement.Value != null))
+      if (current.QuantityElement != null)
       {
-        writer.WriteNumber("quantity",(int)current.QuantityElement.Value);
+        if (current.QuantityElement.Value != null)
+        {
+          writer.WriteNumber("quantity",(int)current.QuantityElement.Value);
+        }
+        if (current.QuantityElement.HasExtensions() || (!string.IsNullOrEmpty(current.QuantityElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_quantity",false,current.QuantityElement.Extension,current.QuantityElement.ElementId);
+        }
       }
 
       if ((current.Parent != null) && (current.Parent.Count != 0))
@@ -212,13 +219,21 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.ProductCategoryElement =new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductCategory>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductCategory>(reader.GetString()));
           break;
 
+        case "_productCategory":
+          ((Hl7.Fhir.Model.Element)current.ProductCategoryElement).DeserializeJson(ref reader, options);
+          break;
+
         case "productCode":
           current.ProductCode = new Hl7.Fhir.Model.CodeableConcept();
-          current.ProductCode.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ProductCode).DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStatus>(reader.GetString()));
+          break;
+
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
           break;
 
         case "request":
@@ -285,7 +300,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "collection":
           current.Collection = new Hl7.Fhir.Model.BiologicallyDerivedProduct.CollectionComponent();
-          current.Collection.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.BiologicallyDerivedProduct.CollectionComponent)current.Collection).DeserializeJson(ref reader, options);
           break;
 
         case "processing":
@@ -317,7 +332,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "manipulation":
           current.Manipulation = new Hl7.Fhir.Model.BiologicallyDerivedProduct.ManipulationComponent();
-          current.Manipulation.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.BiologicallyDerivedProduct.ManipulationComponent)current.Manipulation).DeserializeJson(ref reader, options);
           break;
 
         case "storage":
@@ -425,12 +440,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "collector":
           current.Collector = new Hl7.Fhir.Model.ResourceReference();
-          current.Collector.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Collector).DeserializeJson(ref reader, options);
           break;
 
         case "source":
           current.Source = new Hl7.Fhir.Model.ResourceReference();
-          current.Source.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Source).DeserializeJson(ref reader, options);
           break;
 
         case "collectedDateTime":
@@ -439,7 +454,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "collectedPeriod":
           current.Collected = new Hl7.Fhir.Model.Period();
-          current.Collected.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Collected).DeserializeJson(ref reader, options);
           break;
 
         // Complex: collection, Export: CollectionComponent, Base: BackboneElement
@@ -458,9 +473,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: BiologicallyDerivedProduct#Processing, Export: ProcessingComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
       if (current.Procedure != null)
@@ -527,14 +549,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "procedure":
           current.Procedure = new Hl7.Fhir.Model.CodeableConcept();
-          current.Procedure.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Procedure).DeserializeJson(ref reader, options);
           break;
 
         case "additive":
           current.Additive = new Hl7.Fhir.Model.ResourceReference();
-          current.Additive.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Additive).DeserializeJson(ref reader, options);
           break;
 
         case "timeDateTime":
@@ -543,7 +569,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "timePeriod":
           current.Time = new Hl7.Fhir.Model.Period();
-          current.Time.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Time).DeserializeJson(ref reader, options);
           break;
 
         // Complex: processing, Export: ProcessingComponent, Base: BackboneElement
@@ -562,9 +588,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: BiologicallyDerivedProduct#Manipulation, Export: ManipulationComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
       if (current.Time != null)
@@ -619,13 +652,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "timeDateTime":
           current.Time = new FhirDateTime(reader.GetString());
           break;
 
         case "timePeriod":
           current.Time = new Hl7.Fhir.Model.Period();
-          current.Time.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Time).DeserializeJson(ref reader, options);
           break;
 
         // Complex: manipulation, Export: ManipulationComponent, Base: BackboneElement
@@ -644,14 +681,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: BiologicallyDerivedProduct#Storage, Export: StorageComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
-      if ((current.TemperatureElement != null) && (current.TemperatureElement.Value != null))
+      if (current.TemperatureElement != null)
       {
-        writer.WriteNumber("temperature",(decimal)current.TemperatureElement.Value);
+        if (current.TemperatureElement.Value != null)
+        {
+          writer.WriteNumber("temperature",(decimal)current.TemperatureElement.Value);
+        }
+        if (current.TemperatureElement.HasExtensions() || (!string.IsNullOrEmpty(current.TemperatureElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_temperature",false,current.TemperatureElement.Extension,current.TemperatureElement.ElementId);
+        }
       }
 
       if (current.ScaleElement != null)
@@ -704,17 +755,29 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "temperature":
           current.TemperatureElement = new FhirDecimal(reader.GetDecimal());
+          break;
+
+        case "_temperature":
+          ((Hl7.Fhir.Model.Element)current.TemperatureElement).DeserializeJson(ref reader, options);
           break;
 
         case "scale":
           current.ScaleElement =new Code<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStorageScale>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.BiologicallyDerivedProduct.BiologicallyDerivedProductStorageScale>(reader.GetString()));
           break;
 
+        case "_scale":
+          ((Hl7.Fhir.Model.Element)current.ScaleElement).DeserializeJson(ref reader, options);
+          break;
+
         case "duration":
           current.Duration = new Hl7.Fhir.Model.Period();
-          current.Duration.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Duration).DeserializeJson(ref reader, options);
           break;
 
         // Complex: storage, Export: StorageComponent, Base: BackboneElement

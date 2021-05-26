@@ -113,9 +113,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.RecordedOnElement != null) && (current.RecordedOnElement.Value != null))
+      if (current.RecordedOnElement != null)
       {
-        writer.WriteString("recordedOn",current.RecordedOnElement.Value);
+        if (!string.IsNullOrEmpty(current.RecordedOnElement.Value))
+        {
+          writer.WriteString("recordedOn",current.RecordedOnElement.Value);
+        }
+        if (current.RecordedOnElement.HasExtensions() || (!string.IsNullOrEmpty(current.RecordedOnElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_recordedOn",false,current.RecordedOnElement.Extension,current.RecordedOnElement.ElementId);
+        }
       }
 
       if (current.Source != null)
@@ -259,9 +266,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.DeviceUseStatement.DeviceUseStatementStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.DeviceUseStatement.DeviceUseStatementStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "derivedFrom":
@@ -293,12 +304,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "timingTiming":
           current.Timing = new Hl7.Fhir.Model.Timing();
-          current.Timing.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Timing)current.Timing).DeserializeJson(ref reader, options);
           break;
 
         case "timingPeriod":
           current.Timing = new Hl7.Fhir.Model.Period();
-          current.Timing.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Timing).DeserializeJson(ref reader, options);
           break;
 
         case "timingDateTime":
@@ -309,14 +320,18 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.RecordedOnElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_recordedOn":
+          ((Hl7.Fhir.Model.Element)current.RecordedOnElement).DeserializeJson(ref reader, options);
+          break;
+
         case "source":
           current.Source = new Hl7.Fhir.Model.ResourceReference();
-          current.Source.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Source).DeserializeJson(ref reader, options);
           break;
 
         case "device":
           current.Device = new Hl7.Fhir.Model.ResourceReference();
-          current.Device.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Device).DeserializeJson(ref reader, options);
           break;
 
         case "reasonCode":
@@ -375,7 +390,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "bodySite":
           current.BodySite = new Hl7.Fhir.Model.CodeableConcept();
-          current.BodySite.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.BodySite).DeserializeJson(ref reader, options);
           break;
 
         case "note":

@@ -85,14 +85,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteString("outcome",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.OutcomeElement.Value));
       }
 
-      if ((current.DispositionElement != null) && (current.DispositionElement.Value != null))
+      if (current.DispositionElement != null)
       {
-        writer.WriteString("disposition",current.DispositionElement.Value);
+        if (!string.IsNullOrEmpty(current.DispositionElement.Value))
+        {
+          writer.WriteString("disposition",current.DispositionElement.Value);
+        }
+        if (current.DispositionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DispositionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_disposition",false,current.DispositionElement.Extension,current.DispositionElement.ElementId);
+        }
       }
 
-      if ((current.CreatedElement != null) && (current.CreatedElement.Value != null))
+      if (current.CreatedElement != null)
       {
-        writer.WriteString("created",current.CreatedElement.Value);
+        if (!string.IsNullOrEmpty(current.CreatedElement.Value))
+        {
+          writer.WriteString("created",current.CreatedElement.Value);
+        }
+        if (current.CreatedElement.HasExtensions() || (!string.IsNullOrEmpty(current.CreatedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_created",false,current.CreatedElement.Extension,current.CreatedElement.ElementId);
+        }
       }
 
       if (current.Organization != null)
@@ -173,31 +187,47 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.FinancialResourceStatusCodes>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "request":
           current.Request = new Hl7.Fhir.Model.ResourceReference();
-          current.Request.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Request).DeserializeJson(ref reader, options);
           break;
 
         case "outcome":
           current.OutcomeElement =new Code<Hl7.Fhir.Model.ClaimProcessingCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ClaimProcessingCodes>(reader.GetString()));
           break;
 
+        case "_outcome":
+          ((Hl7.Fhir.Model.Element)current.OutcomeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "disposition":
           current.DispositionElement = new FhirString(reader.GetString());
+          break;
+
+        case "_disposition":
+          ((Hl7.Fhir.Model.Element)current.DispositionElement).DeserializeJson(ref reader, options);
           break;
 
         case "created":
           current.CreatedElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_created":
+          ((Hl7.Fhir.Model.Element)current.CreatedElement).DeserializeJson(ref reader, options);
+          break;
+
         case "organization":
           current.Organization = new Hl7.Fhir.Model.ResourceReference();
-          current.Organization.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Organization).DeserializeJson(ref reader, options);
           break;
 
         case "requestProvider":
           current.RequestProvider = new Hl7.Fhir.Model.ResourceReference();
-          current.RequestProvider.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.RequestProvider).DeserializeJson(ref reader, options);
           break;
 
         // Complex: EnrollmentResponse, Export: EnrollmentResponse, Base: DomainResource

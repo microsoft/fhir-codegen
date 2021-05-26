@@ -65,7 +65,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      writer.WriteString("when",((DateTimeOffset)current.WhenElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture));
+      writer.WriteString("when",((DateTimeOffset)current.WhenElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
 
       writer.WritePropertyName("who");
       current.Who.SerializeJson(writer, options);
@@ -76,19 +76,40 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.OnBehalfOf.SerializeJson(writer, options);
       }
 
-      if ((current.TargetFormatElement != null) && (current.TargetFormatElement.Value != null))
+      if (current.TargetFormatElement != null)
       {
-        writer.WriteString("targetFormat",current.TargetFormatElement.Value);
+        if (!string.IsNullOrEmpty(current.TargetFormatElement.Value))
+        {
+          writer.WriteString("targetFormat",current.TargetFormatElement.Value);
+        }
+        if (current.TargetFormatElement.HasExtensions() || (!string.IsNullOrEmpty(current.TargetFormatElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_targetFormat",false,current.TargetFormatElement.Extension,current.TargetFormatElement.ElementId);
+        }
       }
 
-      if ((current.SigFormatElement != null) && (current.SigFormatElement.Value != null))
+      if (current.SigFormatElement != null)
       {
-        writer.WriteString("sigFormat",current.SigFormatElement.Value);
+        if (!string.IsNullOrEmpty(current.SigFormatElement.Value))
+        {
+          writer.WriteString("sigFormat",current.SigFormatElement.Value);
+        }
+        if (current.SigFormatElement.HasExtensions() || (!string.IsNullOrEmpty(current.SigFormatElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_sigFormat",false,current.SigFormatElement.Extension,current.SigFormatElement.ElementId);
+        }
       }
 
-      if ((current.DataElement != null) && (current.DataElement.Value != null))
+      if (current.DataElement != null)
       {
-        writer.WriteString("data",System.Convert.ToBase64String(current.DataElement.Value));
+        if (current.DataElement.Value != null)
+        {
+          writer.WriteString("data",System.Convert.ToBase64String(current.DataElement.Value));
+        }
+        if (current.DataElement.HasExtensions() || (!string.IsNullOrEmpty(current.DataElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_data",false,current.DataElement.Extension,current.DataElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -163,12 +184,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "who":
           current.Who = new Hl7.Fhir.Model.ResourceReference();
-          current.Who.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Who).DeserializeJson(ref reader, options);
           break;
 
         case "onBehalfOf":
           current.OnBehalfOf = new Hl7.Fhir.Model.ResourceReference();
-          current.OnBehalfOf.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.OnBehalfOf).DeserializeJson(ref reader, options);
           break;
 
         case "targetFormat":
@@ -189,6 +210,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "data":
           current.DataElement = new Base64Binary(System.Convert.FromBase64String(reader.GetString()));
+          break;
+
+        case "_data":
+          ((Hl7.Fhir.Model.Element)current.DataElement).DeserializeJson(ref reader, options);
           break;
 
       }

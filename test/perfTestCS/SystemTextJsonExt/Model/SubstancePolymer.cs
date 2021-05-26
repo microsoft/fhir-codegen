@@ -85,9 +85,45 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         writer.WritePropertyName("modification");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirString val in current.ModificationElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirString val in current.ModificationElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_modification");
+          writer.WriteStartArray();
+          foreach (FhirString val in current.ModificationElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -151,12 +187,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "class":
           current.Class = new Hl7.Fhir.Model.CodeableConcept();
-          current.Class.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Class).DeserializeJson(ref reader, options);
           break;
 
         case "geometry":
           current.Geometry = new Hl7.Fhir.Model.CodeableConcept();
-          current.Geometry.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Geometry).DeserializeJson(ref reader, options);
           break;
 
         case "copolymerConnectivity":
@@ -208,6 +244,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
           if (current.ModificationElement.Count == 0)
           {
             current.ModificationElement = null;
+          }
+          break;
+
+        case "_modification":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_modification = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_modification >= current.ModificationElement.Count)
+            {
+              current.ModificationElement.Add(new FhirString());
+            }
+            ((Hl7.Fhir.Model.Element)current.ModificationElement[i_modification++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
           break;
 
@@ -335,7 +395,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "ratioType":
           current.RatioType = new Hl7.Fhir.Model.CodeableConcept();
-          current.RatioType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.RatioType).DeserializeJson(ref reader, options);
           break;
 
         case "startingMaterial":
@@ -393,9 +453,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Type.SerializeJson(writer, options);
       }
 
-      if ((current.IsDefiningElement != null) && (current.IsDefiningElement.Value != null))
+      if (current.IsDefiningElement != null)
       {
-        writer.WriteBoolean("isDefining",(bool)current.IsDefiningElement.Value);
+        if (current.IsDefiningElement.Value != null)
+        {
+          writer.WriteBoolean("isDefining",(bool)current.IsDefiningElement.Value);
+        }
+        if (current.IsDefiningElement.HasExtensions() || (!string.IsNullOrEmpty(current.IsDefiningElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_isDefining",false,current.IsDefiningElement.Extension,current.IsDefiningElement.ElementId);
+        }
       }
 
       if (current.Amount != null)
@@ -441,21 +508,25 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "material":
           current.Material = new Hl7.Fhir.Model.CodeableConcept();
-          current.Material.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Material).DeserializeJson(ref reader, options);
           break;
 
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "isDefining":
           current.IsDefiningElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_isDefining":
+          ((Hl7.Fhir.Model.Element)current.IsDefiningElement).DeserializeJson(ref reader, options);
+          break;
+
         case "amount":
           current.Amount = new Hl7.Fhir.Model.SubstanceAmount();
-          current.Amount.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SubstanceAmount)current.Amount).DeserializeJson(ref reader, options);
           break;
 
         // Complex: startingMaterial, Export: StartingMaterialComponent, Base: BackboneElement
@@ -474,14 +545,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: SubstancePolymer#Repeat, Export: RepeatComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      if ((current.NumberOfUnitsElement != null) && (current.NumberOfUnitsElement.Value != null))
+      if (current.NumberOfUnitsElement != null)
       {
-        writer.WriteNumber("numberOfUnits",(int)current.NumberOfUnitsElement.Value);
+        if (current.NumberOfUnitsElement.Value != null)
+        {
+          writer.WriteNumber("numberOfUnits",(int)current.NumberOfUnitsElement.Value);
+        }
+        if (current.NumberOfUnitsElement.HasExtensions() || (!string.IsNullOrEmpty(current.NumberOfUnitsElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_numberOfUnits",false,current.NumberOfUnitsElement.Extension,current.NumberOfUnitsElement.ElementId);
+        }
       }
 
-      if ((current.AverageMolecularFormulaElement != null) && (current.AverageMolecularFormulaElement.Value != null))
+      if (current.AverageMolecularFormulaElement != null)
       {
-        writer.WriteString("averageMolecularFormula",current.AverageMolecularFormulaElement.Value);
+        if (!string.IsNullOrEmpty(current.AverageMolecularFormulaElement.Value))
+        {
+          writer.WriteString("averageMolecularFormula",current.AverageMolecularFormulaElement.Value);
+        }
+        if (current.AverageMolecularFormulaElement.HasExtensions() || (!string.IsNullOrEmpty(current.AverageMolecularFormulaElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_averageMolecularFormula",false,current.AverageMolecularFormulaElement.Extension,current.AverageMolecularFormulaElement.ElementId);
+        }
       }
 
       if (current.RepeatUnitAmountType != null)
@@ -548,9 +633,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.AverageMolecularFormulaElement = new FhirString(reader.GetString());
           break;
 
+        case "_averageMolecularFormula":
+          ((Hl7.Fhir.Model.Element)current.AverageMolecularFormulaElement).DeserializeJson(ref reader, options);
+          break;
+
         case "repeatUnitAmountType":
           current.RepeatUnitAmountType = new Hl7.Fhir.Model.CodeableConcept();
-          current.RepeatUnitAmountType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.RepeatUnitAmountType).DeserializeJson(ref reader, options);
           break;
 
         case "repeatUnit":
@@ -602,9 +691,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.OrientationOfPolymerisation.SerializeJson(writer, options);
       }
 
-      if ((current.RepeatUnitElement != null) && (current.RepeatUnitElement.Value != null))
+      if (current.RepeatUnitElement != null)
       {
-        writer.WriteString("repeatUnit",current.RepeatUnitElement.Value);
+        if (!string.IsNullOrEmpty(current.RepeatUnitElement.Value))
+        {
+          writer.WriteString("repeatUnit",current.RepeatUnitElement.Value);
+        }
+        if (current.RepeatUnitElement.HasExtensions() || (!string.IsNullOrEmpty(current.RepeatUnitElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_repeatUnit",false,current.RepeatUnitElement.Extension,current.RepeatUnitElement.ElementId);
+        }
       }
 
       if (current.Amount != null)
@@ -672,16 +768,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "orientationOfPolymerisation":
           current.OrientationOfPolymerisation = new Hl7.Fhir.Model.CodeableConcept();
-          current.OrientationOfPolymerisation.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.OrientationOfPolymerisation).DeserializeJson(ref reader, options);
           break;
 
         case "repeatUnit":
           current.RepeatUnitElement = new FhirString(reader.GetString());
           break;
 
+        case "_repeatUnit":
+          ((Hl7.Fhir.Model.Element)current.RepeatUnitElement).DeserializeJson(ref reader, options);
+          break;
+
         case "amount":
           current.Amount = new Hl7.Fhir.Model.SubstanceAmount();
-          current.Amount.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SubstanceAmount)current.Amount).DeserializeJson(ref reader, options);
           break;
 
         case "degreeOfPolymerisation":
@@ -803,12 +903,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "degree":
           current.Degree = new Hl7.Fhir.Model.CodeableConcept();
-          current.Degree.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Degree).DeserializeJson(ref reader, options);
           break;
 
         case "amount":
           current.Amount = new Hl7.Fhir.Model.SubstanceAmount();
-          current.Amount.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.SubstanceAmount)current.Amount).DeserializeJson(ref reader, options);
           break;
 
         // Complex: degreeOfPolymerisation, Export: DegreeOfPolymerisationComponent, Base: BackboneElement
@@ -833,9 +933,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Type.SerializeJson(writer, options);
       }
 
-      if ((current.RepresentationElement != null) && (current.RepresentationElement.Value != null))
+      if (current.RepresentationElement != null)
       {
-        writer.WriteString("representation",current.RepresentationElement.Value);
+        if (!string.IsNullOrEmpty(current.RepresentationElement.Value))
+        {
+          writer.WriteString("representation",current.RepresentationElement.Value);
+        }
+        if (current.RepresentationElement.HasExtensions() || (!string.IsNullOrEmpty(current.RepresentationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_representation",false,current.RepresentationElement.Extension,current.RepresentationElement.ElementId);
+        }
       }
 
       if (current.Attachment != null)
@@ -881,16 +988,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "representation":
           current.RepresentationElement = new FhirString(reader.GetString());
           break;
 
+        case "_representation":
+          ((Hl7.Fhir.Model.Element)current.RepresentationElement).DeserializeJson(ref reader, options);
+          break;
+
         case "attachment":
           current.Attachment = new Hl7.Fhir.Model.Attachment();
-          current.Attachment.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Attachment)current.Attachment).DeserializeJson(ref reader, options);
           break;
 
         // Complex: structuralRepresentation, Export: StructuralRepresentationComponent, Base: BackboneElement

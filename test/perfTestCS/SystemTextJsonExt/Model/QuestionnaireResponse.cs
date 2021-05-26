@@ -86,9 +86,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.QuestionnaireElement != null) && (current.QuestionnaireElement.Value != null))
+      if (current.QuestionnaireElement != null)
       {
-        writer.WriteString("questionnaire",current.QuestionnaireElement.Value);
+        if (!string.IsNullOrEmpty(current.QuestionnaireElement.Value))
+        {
+          writer.WriteString("questionnaire",current.QuestionnaireElement.Value);
+        }
+        if (current.QuestionnaireElement.HasExtensions() || (!string.IsNullOrEmpty(current.QuestionnaireElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_questionnaire",false,current.QuestionnaireElement.Extension,current.QuestionnaireElement.ElementId);
+        }
       }
 
       writer.WriteString("status",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.StatusElement.Value));
@@ -105,9 +112,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Encounter.SerializeJson(writer, options);
       }
 
-      if ((current.AuthoredElement != null) && (current.AuthoredElement.Value != null))
+      if (current.AuthoredElement != null)
       {
-        writer.WriteString("authored",current.AuthoredElement.Value);
+        if (!string.IsNullOrEmpty(current.AuthoredElement.Value))
+        {
+          writer.WriteString("authored",current.AuthoredElement.Value);
+        }
+        if (current.AuthoredElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthoredElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_authored",false,current.AuthoredElement.Extension,current.AuthoredElement.ElementId);
+        }
       }
 
       if (current.Author != null)
@@ -170,7 +184,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "identifier":
           current.Identifier = new Hl7.Fhir.Model.Identifier();
-          current.Identifier.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Identifier)current.Identifier).DeserializeJson(ref reader, options);
           break;
 
         case "basedOn":
@@ -239,28 +253,36 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.QuestionnaireResponse.QuestionnaireResponseStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.QuestionnaireResponse.QuestionnaireResponseStatus>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "subject":
           current.Subject = new Hl7.Fhir.Model.ResourceReference();
-          current.Subject.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Subject).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "authored":
           current.AuthoredElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_authored":
+          ((Hl7.Fhir.Model.Element)current.AuthoredElement).DeserializeJson(ref reader, options);
+          break;
+
         case "author":
           current.Author = new Hl7.Fhir.Model.ResourceReference();
-          current.Author.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Author).DeserializeJson(ref reader, options);
           break;
 
         case "source":
           current.Source = new Hl7.Fhir.Model.ResourceReference();
-          current.Source.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Source).DeserializeJson(ref reader, options);
           break;
 
         case "item":
@@ -308,14 +330,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("linkId",current.LinkIdElement.Value);
 
-      if ((current.DefinitionElement != null) && (current.DefinitionElement.Value != null))
+      if (current.DefinitionElement != null)
       {
-        writer.WriteString("definition",current.DefinitionElement.Value);
+        if (!string.IsNullOrEmpty(current.DefinitionElement.Value))
+        {
+          writer.WriteString("definition",current.DefinitionElement.Value);
+        }
+        if (current.DefinitionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DefinitionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_definition",false,current.DefinitionElement.Extension,current.DefinitionElement.ElementId);
+        }
       }
 
-      if ((current.TextElement != null) && (current.TextElement.Value != null))
+      if (current.TextElement != null)
       {
-        writer.WriteString("text",current.TextElement.Value);
+        if (!string.IsNullOrEmpty(current.TextElement.Value))
+        {
+          writer.WriteString("text",current.TextElement.Value);
+        }
+        if (current.TextElement.HasExtensions() || (!string.IsNullOrEmpty(current.TextElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_text",false,current.TextElement.Extension,current.TextElement.ElementId);
+        }
       }
 
       if ((current.Answer != null) && (current.Answer.Count != 0))
@@ -379,12 +415,24 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.LinkIdElement = new FhirString(reader.GetString());
           break;
 
+        case "_linkId":
+          ((Hl7.Fhir.Model.Element)current.LinkIdElement).DeserializeJson(ref reader, options);
+          break;
+
         case "definition":
           current.DefinitionElement = new FhirUri(reader.GetString());
           break;
 
+        case "_definition":
+          ((Hl7.Fhir.Model.Element)current.DefinitionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "text":
           current.TextElement = new FhirString(reader.GetString());
+          break;
+
+        case "_text":
+          ((Hl7.Fhir.Model.Element)current.TextElement).DeserializeJson(ref reader, options);
           break;
 
         case "answer":
@@ -572,7 +620,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "valueTime":
           current.Value = new Hl7.Fhir.Model.Time();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Time)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueString":
@@ -585,22 +633,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "valueAttachment":
           current.Value = new Hl7.Fhir.Model.Attachment();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Attachment)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueCoding":
           current.Value = new Hl7.Fhir.Model.Coding();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Coding)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueQuantity":
           current.Value = new Hl7.Fhir.Model.Quantity();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "valueReference":
           current.Value = new Hl7.Fhir.Model.ResourceReference();
-          current.Value.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Value).DeserializeJson(ref reader, options);
           break;
 
         case "item":

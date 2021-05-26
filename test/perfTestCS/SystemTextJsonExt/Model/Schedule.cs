@@ -69,9 +69,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.ActiveElement != null) && (current.ActiveElement.Value != null))
+      if (current.ActiveElement != null)
       {
-        writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        if (current.ActiveElement.Value != null)
+        {
+          writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        }
+        if (current.ActiveElement.HasExtensions() || (!string.IsNullOrEmpty(current.ActiveElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_active",false,current.ActiveElement.Extension,current.ActiveElement.ElementId);
+        }
       }
 
       if ((current.ServiceCategory != null) && (current.ServiceCategory.Count != 0))
@@ -124,9 +131,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.PlanningHorizon.SerializeJson(writer, options);
       }
 
-      if ((current.CommentElement != null) && (current.CommentElement.Value != null))
+      if (current.CommentElement != null)
       {
-        writer.WriteString("comment",current.CommentElement.Value);
+        if (!string.IsNullOrEmpty(current.CommentElement.Value))
+        {
+          writer.WriteString("comment",current.CommentElement.Value);
+        }
+        if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_comment",false,current.CommentElement.Extension,current.CommentElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -193,6 +207,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "active":
           current.ActiveElement = new FhirBoolean(reader.GetBoolean());
+          break;
+
+        case "_active":
+          ((Hl7.Fhir.Model.Element)current.ActiveElement).DeserializeJson(ref reader, options);
           break;
 
         case "serviceCategory":
@@ -305,11 +323,15 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "planningHorizon":
           current.PlanningHorizon = new Hl7.Fhir.Model.Period();
-          current.PlanningHorizon.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.PlanningHorizon).DeserializeJson(ref reader, options);
           break;
 
         case "comment":
           current.CommentElement = new FhirString(reader.GetString());
+          break;
+
+        case "_comment":
+          ((Hl7.Fhir.Model.Element)current.CommentElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Schedule, Export: Schedule, Base: DomainResource

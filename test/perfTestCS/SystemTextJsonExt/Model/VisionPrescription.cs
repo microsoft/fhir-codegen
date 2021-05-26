@@ -164,27 +164,39 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.FinancialResourceStatusCodes>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "created":
           current.CreatedElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_created":
+          ((Hl7.Fhir.Model.Element)current.CreatedElement).DeserializeJson(ref reader, options);
+          break;
+
         case "patient":
           current.Patient = new Hl7.Fhir.Model.ResourceReference();
-          current.Patient.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Patient).DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
           current.Encounter = new Hl7.Fhir.Model.ResourceReference();
-          current.Encounter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Encounter).DeserializeJson(ref reader, options);
           break;
 
         case "dateWritten":
           current.DateWrittenElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_dateWritten":
+          ((Hl7.Fhir.Model.Element)current.DateWrittenElement).DeserializeJson(ref reader, options);
+          break;
+
         case "prescriber":
           current.Prescriber = new Hl7.Fhir.Model.ResourceReference();
-          current.Prescriber.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Prescriber).DeserializeJson(ref reader, options);
           break;
 
         case "lensSpecification":
@@ -235,19 +247,40 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("eye",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.EyeElement.Value));
 
-      if ((current.SphereElement != null) && (current.SphereElement.Value != null))
+      if (current.SphereElement != null)
       {
-        writer.WriteNumber("sphere",(decimal)current.SphereElement.Value);
+        if (current.SphereElement.Value != null)
+        {
+          writer.WriteNumber("sphere",(decimal)current.SphereElement.Value);
+        }
+        if (current.SphereElement.HasExtensions() || (!string.IsNullOrEmpty(current.SphereElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_sphere",false,current.SphereElement.Extension,current.SphereElement.ElementId);
+        }
       }
 
-      if ((current.CylinderElement != null) && (current.CylinderElement.Value != null))
+      if (current.CylinderElement != null)
       {
-        writer.WriteNumber("cylinder",(decimal)current.CylinderElement.Value);
+        if (current.CylinderElement.Value != null)
+        {
+          writer.WriteNumber("cylinder",(decimal)current.CylinderElement.Value);
+        }
+        if (current.CylinderElement.HasExtensions() || (!string.IsNullOrEmpty(current.CylinderElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_cylinder",false,current.CylinderElement.Extension,current.CylinderElement.ElementId);
+        }
       }
 
-      if ((current.AxisElement != null) && (current.AxisElement.Value != null))
+      if (current.AxisElement != null)
       {
-        writer.WriteNumber("axis",(int)current.AxisElement.Value);
+        if (current.AxisElement.Value != null)
+        {
+          writer.WriteNumber("axis",(int)current.AxisElement.Value);
+        }
+        if (current.AxisElement.HasExtensions() || (!string.IsNullOrEmpty(current.AxisElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_axis",false,current.AxisElement.Extension,current.AxisElement.ElementId);
+        }
       }
 
       if ((current.Prism != null) && (current.Prism.Count != 0))
@@ -261,24 +294,52 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.AddElement != null) && (current.AddElement.Value != null))
+      if (current.AddElement != null)
       {
-        writer.WriteNumber("add",(decimal)current.AddElement.Value);
+        if (current.AddElement.Value != null)
+        {
+          writer.WriteNumber("add",(decimal)current.AddElement.Value);
+        }
+        if (current.AddElement.HasExtensions() || (!string.IsNullOrEmpty(current.AddElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_add",false,current.AddElement.Extension,current.AddElement.ElementId);
+        }
       }
 
-      if ((current.PowerElement != null) && (current.PowerElement.Value != null))
+      if (current.PowerElement != null)
       {
-        writer.WriteNumber("power",(decimal)current.PowerElement.Value);
+        if (current.PowerElement.Value != null)
+        {
+          writer.WriteNumber("power",(decimal)current.PowerElement.Value);
+        }
+        if (current.PowerElement.HasExtensions() || (!string.IsNullOrEmpty(current.PowerElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_power",false,current.PowerElement.Extension,current.PowerElement.ElementId);
+        }
       }
 
-      if ((current.BackCurveElement != null) && (current.BackCurveElement.Value != null))
+      if (current.BackCurveElement != null)
       {
-        writer.WriteNumber("backCurve",(decimal)current.BackCurveElement.Value);
+        if (current.BackCurveElement.Value != null)
+        {
+          writer.WriteNumber("backCurve",(decimal)current.BackCurveElement.Value);
+        }
+        if (current.BackCurveElement.HasExtensions() || (!string.IsNullOrEmpty(current.BackCurveElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_backCurve",false,current.BackCurveElement.Extension,current.BackCurveElement.ElementId);
+        }
       }
 
-      if ((current.DiameterElement != null) && (current.DiameterElement.Value != null))
+      if (current.DiameterElement != null)
       {
-        writer.WriteNumber("diameter",(decimal)current.DiameterElement.Value);
+        if (current.DiameterElement.Value != null)
+        {
+          writer.WriteNumber("diameter",(decimal)current.DiameterElement.Value);
+        }
+        if (current.DiameterElement.HasExtensions() || (!string.IsNullOrEmpty(current.DiameterElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_diameter",false,current.DiameterElement.Extension,current.DiameterElement.ElementId);
+        }
       }
 
       if (current.Duration != null)
@@ -287,14 +348,28 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Duration.SerializeJson(writer, options);
       }
 
-      if ((current.ColorElement != null) && (current.ColorElement.Value != null))
+      if (current.ColorElement != null)
       {
-        writer.WriteString("color",current.ColorElement.Value);
+        if (!string.IsNullOrEmpty(current.ColorElement.Value))
+        {
+          writer.WriteString("color",current.ColorElement.Value);
+        }
+        if (current.ColorElement.HasExtensions() || (!string.IsNullOrEmpty(current.ColorElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_color",false,current.ColorElement.Extension,current.ColorElement.ElementId);
+        }
       }
 
-      if ((current.BrandElement != null) && (current.BrandElement.Value != null))
+      if (current.BrandElement != null)
       {
-        writer.WriteString("brand",current.BrandElement.Value);
+        if (!string.IsNullOrEmpty(current.BrandElement.Value))
+        {
+          writer.WriteString("brand",current.BrandElement.Value);
+        }
+        if (current.BrandElement.HasExtensions() || (!string.IsNullOrEmpty(current.BrandElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_brand",false,current.BrandElement.Extension,current.BrandElement.ElementId);
+        }
       }
 
       if ((current.Note != null) && (current.Note.Count != 0))
@@ -345,19 +420,31 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "product":
           current.Product = new Hl7.Fhir.Model.CodeableConcept();
-          current.Product.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Product).DeserializeJson(ref reader, options);
           break;
 
         case "eye":
           current.EyeElement =new Code<Hl7.Fhir.Model.VisionPrescription.VisionEyes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.VisionPrescription.VisionEyes>(reader.GetString()));
           break;
 
+        case "_eye":
+          ((Hl7.Fhir.Model.Element)current.EyeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "sphere":
           current.SphereElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_sphere":
+          ((Hl7.Fhir.Model.Element)current.SphereElement).DeserializeJson(ref reader, options);
+          break;
+
         case "cylinder":
           current.CylinderElement = new FhirDecimal(reader.GetDecimal());
+          break;
+
+        case "_cylinder":
+          ((Hl7.Fhir.Model.Element)current.CylinderElement).DeserializeJson(ref reader, options);
           break;
 
         case "axis":
@@ -399,29 +486,53 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.AddElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_add":
+          ((Hl7.Fhir.Model.Element)current.AddElement).DeserializeJson(ref reader, options);
+          break;
+
         case "power":
           current.PowerElement = new FhirDecimal(reader.GetDecimal());
+          break;
+
+        case "_power":
+          ((Hl7.Fhir.Model.Element)current.PowerElement).DeserializeJson(ref reader, options);
           break;
 
         case "backCurve":
           current.BackCurveElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_backCurve":
+          ((Hl7.Fhir.Model.Element)current.BackCurveElement).DeserializeJson(ref reader, options);
+          break;
+
         case "diameter":
           current.DiameterElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_diameter":
+          ((Hl7.Fhir.Model.Element)current.DiameterElement).DeserializeJson(ref reader, options);
+          break;
+
         case "duration":
           current.Duration = new Hl7.Fhir.Model.Quantity();
-          current.Duration.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Duration).DeserializeJson(ref reader, options);
           break;
 
         case "color":
           current.ColorElement = new FhirString(reader.GetString());
           break;
 
+        case "_color":
+          ((Hl7.Fhir.Model.Element)current.ColorElement).DeserializeJson(ref reader, options);
+          break;
+
         case "brand":
           current.BrandElement = new FhirString(reader.GetString());
+          break;
+
+        case "_brand":
+          ((Hl7.Fhir.Model.Element)current.BrandElement).DeserializeJson(ref reader, options);
           break;
 
         case "note":
@@ -510,8 +621,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.AmountElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_amount":
+          ((Hl7.Fhir.Model.Element)current.AmountElement).DeserializeJson(ref reader, options);
+          break;
+
         case "base":
           current.BaseElement =new Code<Hl7.Fhir.Model.VisionPrescription.VisionBase>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.VisionPrescription.VisionBase>(reader.GetString()));
+          break;
+
+        case "_base":
+          ((Hl7.Fhir.Model.Element)current.BaseElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: prism, Export: PrismComponent, Base: BackboneElement

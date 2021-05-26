@@ -111,9 +111,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("outcome",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.OutcomeElement.Value));
 
-      if ((current.DispositionElement != null) && (current.DispositionElement.Value != null))
+      if (current.DispositionElement != null)
       {
-        writer.WriteString("disposition",current.DispositionElement.Value);
+        if (!string.IsNullOrEmpty(current.DispositionElement.Value))
+        {
+          writer.WriteString("disposition",current.DispositionElement.Value);
+        }
+        if (current.DispositionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DispositionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_disposition",false,current.DispositionElement.Extension,current.DispositionElement.ElementId);
+        }
       }
 
       writer.WritePropertyName("insurer");
@@ -130,9 +137,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.PreAuthRefElement != null) && (current.PreAuthRefElement.Value != null))
+      if (current.PreAuthRefElement != null)
       {
-        writer.WriteString("preAuthRef",current.PreAuthRefElement.Value);
+        if (!string.IsNullOrEmpty(current.PreAuthRefElement.Value))
+        {
+          writer.WriteString("preAuthRef",current.PreAuthRefElement.Value);
+        }
+        if (current.PreAuthRefElement.HasExtensions() || (!string.IsNullOrEmpty(current.PreAuthRefElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_preAuthRef",false,current.PreAuthRefElement.Extension,current.PreAuthRefElement.ElementId);
+        }
       }
 
       if (current.Form != null)
@@ -218,6 +232,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.StatusElement =new Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.FinancialResourceStatusCodes>(reader.GetString()));
           break;
 
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
+          break;
+
         case "purpose":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -243,9 +261,33 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_purpose":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_purpose = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_purpose >= current.PurposeElement.Count)
+            {
+              current.PurposeElement.Add(new Code<Hl7.Fhir.Model.CoverageEligibilityResponse.EligibilityResponsePurpose>());
+            }
+            ((Hl7.Fhir.Model.Element)current.PurposeElement[i_purpose++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "patient":
           current.Patient = new Hl7.Fhir.Model.ResourceReference();
-          current.Patient.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Patient).DeserializeJson(ref reader, options);
           break;
 
         case "servicedDate":
@@ -254,34 +296,46 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "servicedPeriod":
           current.Serviced = new Hl7.Fhir.Model.Period();
-          current.Serviced.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Serviced).DeserializeJson(ref reader, options);
           break;
 
         case "created":
           current.CreatedElement = new FhirDateTime(reader.GetString());
           break;
 
+        case "_created":
+          ((Hl7.Fhir.Model.Element)current.CreatedElement).DeserializeJson(ref reader, options);
+          break;
+
         case "requestor":
           current.Requestor = new Hl7.Fhir.Model.ResourceReference();
-          current.Requestor.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Requestor).DeserializeJson(ref reader, options);
           break;
 
         case "request":
           current.Request = new Hl7.Fhir.Model.ResourceReference();
-          current.Request.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Request).DeserializeJson(ref reader, options);
           break;
 
         case "outcome":
           current.OutcomeElement =new Code<Hl7.Fhir.Model.ClaimProcessingCodes>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.ClaimProcessingCodes>(reader.GetString()));
           break;
 
+        case "_outcome":
+          ((Hl7.Fhir.Model.Element)current.OutcomeElement).DeserializeJson(ref reader, options);
+          break;
+
         case "disposition":
           current.DispositionElement = new FhirString(reader.GetString());
           break;
 
+        case "_disposition":
+          ((Hl7.Fhir.Model.Element)current.DispositionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "insurer":
           current.Insurer = new Hl7.Fhir.Model.ResourceReference();
-          current.Insurer.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Insurer).DeserializeJson(ref reader, options);
           break;
 
         case "insurance":
@@ -315,9 +369,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.PreAuthRefElement = new FhirString(reader.GetString());
           break;
 
+        case "_preAuthRef":
+          ((Hl7.Fhir.Model.Element)current.PreAuthRefElement).DeserializeJson(ref reader, options);
+          break;
+
         case "form":
           current.Form = new Hl7.Fhir.Model.CodeableConcept();
-          current.Form.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Form).DeserializeJson(ref reader, options);
           break;
 
         case "error":
@@ -366,9 +424,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("coverage");
       current.Coverage.SerializeJson(writer, options);
 
-      if ((current.InforceElement != null) && (current.InforceElement.Value != null))
+      if (current.InforceElement != null)
       {
-        writer.WriteBoolean("inforce",(bool)current.InforceElement.Value);
+        if (current.InforceElement.Value != null)
+        {
+          writer.WriteBoolean("inforce",(bool)current.InforceElement.Value);
+        }
+        if (current.InforceElement.HasExtensions() || (!string.IsNullOrEmpty(current.InforceElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_inforce",false,current.InforceElement.Extension,current.InforceElement.ElementId);
+        }
       }
 
       if (current.BenefitPeriod != null)
@@ -425,16 +490,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "coverage":
           current.Coverage = new Hl7.Fhir.Model.ResourceReference();
-          current.Coverage.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Coverage).DeserializeJson(ref reader, options);
           break;
 
         case "inforce":
           current.InforceElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_inforce":
+          ((Hl7.Fhir.Model.Element)current.InforceElement).DeserializeJson(ref reader, options);
+          break;
+
         case "benefitPeriod":
           current.BenefitPeriod = new Hl7.Fhir.Model.Period();
-          current.BenefitPeriod.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.BenefitPeriod).DeserializeJson(ref reader, options);
           break;
 
         case "item":
@@ -509,19 +578,40 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Provider.SerializeJson(writer, options);
       }
 
-      if ((current.ExcludedElement != null) && (current.ExcludedElement.Value != null))
+      if (current.ExcludedElement != null)
       {
-        writer.WriteBoolean("excluded",(bool)current.ExcludedElement.Value);
+        if (current.ExcludedElement.Value != null)
+        {
+          writer.WriteBoolean("excluded",(bool)current.ExcludedElement.Value);
+        }
+        if (current.ExcludedElement.HasExtensions() || (!string.IsNullOrEmpty(current.ExcludedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_excluded",false,current.ExcludedElement.Extension,current.ExcludedElement.ElementId);
+        }
       }
 
-      if ((current.NameElement != null) && (current.NameElement.Value != null))
+      if (current.NameElement != null)
       {
-        writer.WriteString("name",current.NameElement.Value);
+        if (!string.IsNullOrEmpty(current.NameElement.Value))
+        {
+          writer.WriteString("name",current.NameElement.Value);
+        }
+        if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_name",false,current.NameElement.Extension,current.NameElement.ElementId);
+        }
       }
 
-      if ((current.DescriptionElement != null) && (current.DescriptionElement.Value != null))
+      if (current.DescriptionElement != null)
       {
-        writer.WriteString("description",current.DescriptionElement.Value);
+        if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
+        {
+          writer.WriteString("description",current.DescriptionElement.Value);
+        }
+        if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_description",false,current.DescriptionElement.Extension,current.DescriptionElement.ElementId);
+        }
       }
 
       if (current.Network != null)
@@ -553,9 +643,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.AuthorizationRequiredElement != null) && (current.AuthorizationRequiredElement.Value != null))
+      if (current.AuthorizationRequiredElement != null)
       {
-        writer.WriteBoolean("authorizationRequired",(bool)current.AuthorizationRequiredElement.Value);
+        if (current.AuthorizationRequiredElement.Value != null)
+        {
+          writer.WriteBoolean("authorizationRequired",(bool)current.AuthorizationRequiredElement.Value);
+        }
+        if (current.AuthorizationRequiredElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthorizationRequiredElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_authorizationRequired",false,current.AuthorizationRequiredElement.Extension,current.AuthorizationRequiredElement.ElementId);
+        }
       }
 
       if ((current.AuthorizationSupporting != null) && (current.AuthorizationSupporting.Count != 0))
@@ -569,9 +666,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.AuthorizationUrlElement != null) && (current.AuthorizationUrlElement.Value != null))
+      if (current.AuthorizationUrlElement != null)
       {
-        writer.WriteString("authorizationUrl",current.AuthorizationUrlElement.Value);
+        if (!string.IsNullOrEmpty(current.AuthorizationUrlElement.Value))
+        {
+          writer.WriteString("authorizationUrl",current.AuthorizationUrlElement.Value);
+        }
+        if (current.AuthorizationUrlElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthorizationUrlElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_authorizationUrl",false,current.AuthorizationUrlElement.Extension,current.AuthorizationUrlElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -611,12 +715,12 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "category":
           current.Category = new Hl7.Fhir.Model.CodeableConcept();
-          current.Category.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Category).DeserializeJson(ref reader, options);
           break;
 
         case "productOrService":
           current.ProductOrService = new Hl7.Fhir.Model.CodeableConcept();
-          current.ProductOrService.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ProductOrService).DeserializeJson(ref reader, options);
           break;
 
         case "modifier":
@@ -648,34 +752,46 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "provider":
           current.Provider = new Hl7.Fhir.Model.ResourceReference();
-          current.Provider.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Provider).DeserializeJson(ref reader, options);
           break;
 
         case "excluded":
           current.ExcludedElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_excluded":
+          ((Hl7.Fhir.Model.Element)current.ExcludedElement).DeserializeJson(ref reader, options);
+          break;
+
         case "name":
           current.NameElement = new FhirString(reader.GetString());
+          break;
+
+        case "_name":
+          ((Hl7.Fhir.Model.Element)current.NameElement).DeserializeJson(ref reader, options);
           break;
 
         case "description":
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "network":
           current.Network = new Hl7.Fhir.Model.CodeableConcept();
-          current.Network.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Network).DeserializeJson(ref reader, options);
           break;
 
         case "unit":
           current.Unit = new Hl7.Fhir.Model.CodeableConcept();
-          current.Unit.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Unit).DeserializeJson(ref reader, options);
           break;
 
         case "term":
           current.Term = new Hl7.Fhir.Model.CodeableConcept();
-          current.Term.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Term).DeserializeJson(ref reader, options);
           break;
 
         case "benefit":
@@ -709,6 +825,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.AuthorizationRequiredElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_authorizationRequired":
+          ((Hl7.Fhir.Model.Element)current.AuthorizationRequiredElement).DeserializeJson(ref reader, options);
+          break;
+
         case "authorizationSupporting":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -738,6 +858,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "authorizationUrl":
           current.AuthorizationUrlElement = new FhirUri(reader.GetString());
+          break;
+
+        case "_authorizationUrl":
+          ((Hl7.Fhir.Model.Element)current.AuthorizationUrlElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: item, Export: ItemsComponent, Base: BackboneElement
@@ -828,7 +952,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "type":
           current.Type = new Hl7.Fhir.Model.CodeableConcept();
-          current.Type.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Type).DeserializeJson(ref reader, options);
           break;
 
         case "allowedUnsignedInt":
@@ -841,7 +965,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "allowedMoney":
           current.Allowed = new Hl7.Fhir.Model.Money();
-          current.Allowed.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Money)current.Allowed).DeserializeJson(ref reader, options);
           break;
 
         case "usedUnsignedInt":
@@ -854,7 +978,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "usedMoney":
           current.Used = new Hl7.Fhir.Model.Money();
-          current.Used.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Money)current.Used).DeserializeJson(ref reader, options);
           break;
 
         // Complex: benefit, Export: BenefitComponent, Base: BackboneElement
@@ -913,7 +1037,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         // Complex: error, Export: ErrorsComponent, Base: BackboneElement

@@ -113,18 +113,32 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("status",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.StatusElement.Value));
 
-      writer.WriteString("start",((DateTimeOffset)current.StartElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture));
+      writer.WriteString("start",((DateTimeOffset)current.StartElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
 
-      writer.WriteString("end",((DateTimeOffset)current.EndElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture));
+      writer.WriteString("end",((DateTimeOffset)current.EndElement.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
 
-      if ((current.OverbookedElement != null) && (current.OverbookedElement.Value != null))
+      if (current.OverbookedElement != null)
       {
-        writer.WriteBoolean("overbooked",(bool)current.OverbookedElement.Value);
+        if (current.OverbookedElement.Value != null)
+        {
+          writer.WriteBoolean("overbooked",(bool)current.OverbookedElement.Value);
+        }
+        if (current.OverbookedElement.HasExtensions() || (!string.IsNullOrEmpty(current.OverbookedElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_overbooked",false,current.OverbookedElement.Extension,current.OverbookedElement.ElementId);
+        }
       }
 
-      if ((current.CommentElement != null) && (current.CommentElement.Value != null))
+      if (current.CommentElement != null)
       {
-        writer.WriteString("comment",current.CommentElement.Value);
+        if (!string.IsNullOrEmpty(current.CommentElement.Value))
+        {
+          writer.WriteString("comment",current.CommentElement.Value);
+        }
+        if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_comment",false,current.CommentElement.Extension,current.CommentElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -272,16 +286,20 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "appointmentType":
           current.AppointmentType = new Hl7.Fhir.Model.CodeableConcept();
-          current.AppointmentType.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.AppointmentType).DeserializeJson(ref reader, options);
           break;
 
         case "schedule":
           current.Schedule = new Hl7.Fhir.Model.ResourceReference();
-          current.Schedule.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Schedule).DeserializeJson(ref reader, options);
           break;
 
         case "status":
           current.StatusElement =new Code<Hl7.Fhir.Model.Slot.SlotStatus>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Slot.SlotStatus>(reader.GetString()));
+          break;
+
+        case "_status":
+          ((Hl7.Fhir.Model.Element)current.StatusElement).DeserializeJson(ref reader, options);
           break;
 
         case "start":
@@ -304,8 +322,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.OverbookedElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_overbooked":
+          ((Hl7.Fhir.Model.Element)current.OverbookedElement).DeserializeJson(ref reader, options);
+          break;
+
         case "comment":
           current.CommentElement = new FhirString(reader.GetString());
+          break;
+
+        case "_comment":
+          ((Hl7.Fhir.Model.Element)current.CommentElement).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Slot, Export: Slot, Base: DomainResource

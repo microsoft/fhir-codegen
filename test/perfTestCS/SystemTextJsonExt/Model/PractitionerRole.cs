@@ -69,9 +69,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.ActiveElement != null) && (current.ActiveElement.Value != null))
+      if (current.ActiveElement != null)
       {
-        writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        if (current.ActiveElement.Value != null)
+        {
+          writer.WriteBoolean("active",(bool)current.ActiveElement.Value);
+        }
+        if (current.ActiveElement.HasExtensions() || (!string.IsNullOrEmpty(current.ActiveElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_active",false,current.ActiveElement.Extension,current.ActiveElement.ElementId);
+        }
       }
 
       if (current.Period != null)
@@ -169,9 +176,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.AvailabilityExceptionsElement != null) && (current.AvailabilityExceptionsElement.Value != null))
+      if (current.AvailabilityExceptionsElement != null)
       {
-        writer.WriteString("availabilityExceptions",current.AvailabilityExceptionsElement.Value);
+        if (!string.IsNullOrEmpty(current.AvailabilityExceptionsElement.Value))
+        {
+          writer.WriteString("availabilityExceptions",current.AvailabilityExceptionsElement.Value);
+        }
+        if (current.AvailabilityExceptionsElement.HasExtensions() || (!string.IsNullOrEmpty(current.AvailabilityExceptionsElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_availabilityExceptions",false,current.AvailabilityExceptionsElement.Extension,current.AvailabilityExceptionsElement.ElementId);
+        }
       }
 
       if ((current.Endpoint != null) && (current.Endpoint.Count != 0))
@@ -251,19 +265,23 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.ActiveElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_active":
+          ((Hl7.Fhir.Model.Element)current.ActiveElement).DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           current.Period = new Hl7.Fhir.Model.Period();
-          current.Period.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Period).DeserializeJson(ref reader, options);
           break;
 
         case "practitioner":
           current.Practitioner = new Hl7.Fhir.Model.ResourceReference();
-          current.Practitioner.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Practitioner).DeserializeJson(ref reader, options);
           break;
 
         case "organization":
           current.Organization = new Hl7.Fhir.Model.ResourceReference();
-          current.Organization.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ResourceReference)current.Organization).DeserializeJson(ref reader, options);
           break;
 
         case "code":
@@ -459,6 +477,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.AvailabilityExceptionsElement = new FhirString(reader.GetString());
           break;
 
+        case "_availabilityExceptions":
+          ((Hl7.Fhir.Model.Element)current.AvailabilityExceptionsElement).DeserializeJson(ref reader, options);
+          break;
+
         case "endpoint":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -513,9 +535,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.AllDayElement != null) && (current.AllDayElement.Value != null))
+      if (current.AllDayElement != null)
       {
-        writer.WriteBoolean("allDay",(bool)current.AllDayElement.Value);
+        if (current.AllDayElement.Value != null)
+        {
+          writer.WriteBoolean("allDay",(bool)current.AllDayElement.Value);
+        }
+        if (current.AllDayElement.HasExtensions() || (!string.IsNullOrEmpty(current.AllDayElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_allDay",false,current.AllDayElement.Extension,current.AllDayElement.ElementId);
+        }
       }
 
       if (current.AvailableStartTimeElement != null)
@@ -590,13 +619,41 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_daysOfWeek":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_daysOfWeek = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_daysOfWeek >= current.DaysOfWeekElement.Count)
+            {
+              current.DaysOfWeekElement.Add(new Code<Hl7.Fhir.Model.DaysOfWeek>());
+            }
+            ((Hl7.Fhir.Model.Element)current.DaysOfWeekElement[i_daysOfWeek++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "allDay":
           current.AllDayElement = new FhirBoolean(reader.GetBoolean());
           break;
 
+        case "_allDay":
+          ((Hl7.Fhir.Model.Element)current.AllDayElement).DeserializeJson(ref reader, options);
+          break;
+
         case "availableStartTime":
           current.AvailableStartTimeElement = new Hl7.Fhir.Model.Time();
-          current.AvailableStartTimeElement.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Time)current.AvailableStartTimeElement).DeserializeJson(ref reader, options);
           break;
 
         case "_availableStartTime":
@@ -605,7 +662,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "availableEndTime":
           current.AvailableEndTimeElement = new Hl7.Fhir.Model.Time();
-          current.AvailableEndTimeElement.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Time)current.AvailableEndTimeElement).DeserializeJson(ref reader, options);
           break;
 
         case "_availableEndTime":
@@ -675,9 +732,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
           current.DescriptionElement = new FhirString(reader.GetString());
           break;
 
+        case "_description":
+          ((Hl7.Fhir.Model.Element)current.DescriptionElement).DeserializeJson(ref reader, options);
+          break;
+
         case "during":
           current.During = new Hl7.Fhir.Model.Period();
-          current.During.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.During).DeserializeJson(ref reader, options);
           break;
 
         // Complex: notAvailable, Export: NotAvailableComponent, Base: BackboneElement

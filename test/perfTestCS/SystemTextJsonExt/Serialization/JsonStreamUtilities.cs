@@ -51,25 +51,40 @@ namespace Hl7.Fhir.Serialization
     /// <summary>
     /// Serialize an extension list.
     /// </summary>
+    /// <param name="writer">      The writer.</param>
+    /// <param name="options">     Options for controlling the operation.</param>
+    /// <param name="propertyName">Name of the property.</param>
+    /// <param name="isArray">     True if is array, false if not.</param>
+    /// <param name="extensions">  The extensions.</param>
+    /// <param name="elementId">   The element id.</param>
     public static void SerializeExtensionList(
       Utf8JsonWriter writer,
       JsonSerializerOptions options,
       string propertyName,
-      List<Extension> extensions)
+      bool isArray,
+      List<Extension> extensions,
+      string elementId)
     {
-      if ((extensions == null) || (extensions.Count == 0))
+      if (((extensions == null) || (extensions.Count == 0)) && (string.IsNullOrEmpty(elementId)))
       {
         return;
       }
-      writer.WritePropertyName(propertyName);
+
+      if (!isArray) { writer.WritePropertyName(propertyName); }
       writer.WriteStartObject();
-      writer.WritePropertyName("extension");
-      writer.WriteStartArray();
-      foreach (Extension ext in extensions)
+      if (!string.IsNullOrEmpty(elementId)) { writer.WriteString("id",elementId); }
+      if ((extensions != null) && (extensions.Count > 0))
       {
-        ext.SerializeJson(writer, options, true);
+        writer.WritePropertyName("extension");
+        writer.WriteStartArray();
+
+        foreach (Extension ext in extensions)
+        {
+          ext.SerializeJson(writer, options, true);
+        }
+
+        writer.WriteEndArray();
       }
-      writer.WriteEndArray();
       writer.WriteEndObject();
     }
   }

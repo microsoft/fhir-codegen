@@ -34,9 +34,6 @@ namespace fhirCsR5.Models
     /// </summary>
     public void DeserializeJsonProperty(ref Utf8JsonReader reader, JsonSerializerOptions options, string propertyName)
     {
-      switch (propertyName)
-      {
-      }
     }
 
     /// <summary>

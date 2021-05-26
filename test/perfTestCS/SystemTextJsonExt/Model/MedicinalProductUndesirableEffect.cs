@@ -162,17 +162,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "symptomConditionEffect":
           current.SymptomConditionEffect = new Hl7.Fhir.Model.CodeableConcept();
-          current.SymptomConditionEffect.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.SymptomConditionEffect).DeserializeJson(ref reader, options);
           break;
 
         case "classification":
           current.Classification = new Hl7.Fhir.Model.CodeableConcept();
-          current.Classification.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Classification).DeserializeJson(ref reader, options);
           break;
 
         case "frequencyOfOccurrence":
           current.FrequencyOfOccurrence = new Hl7.Fhir.Model.CodeableConcept();
-          current.FrequencyOfOccurrence.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.FrequencyOfOccurrence).DeserializeJson(ref reader, options);
           break;
 
         case "population":

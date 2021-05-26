@@ -146,17 +146,17 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "manufacturedDoseForm":
           current.ManufacturedDoseForm = new Hl7.Fhir.Model.CodeableConcept();
-          current.ManufacturedDoseForm.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.ManufacturedDoseForm).DeserializeJson(ref reader, options);
           break;
 
         case "unitOfPresentation":
           current.UnitOfPresentation = new Hl7.Fhir.Model.CodeableConcept();
-          current.UnitOfPresentation.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.UnitOfPresentation).DeserializeJson(ref reader, options);
           break;
 
         case "quantity":
           current.Quantity = new Hl7.Fhir.Model.Quantity();
-          current.Quantity.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Quantity).DeserializeJson(ref reader, options);
           break;
 
         case "manufacturer":
@@ -215,7 +215,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "physicalCharacteristics":
           current.PhysicalCharacteristics = new Hl7.Fhir.Model.ProdCharacteristic();
-          current.PhysicalCharacteristics.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.ProdCharacteristic)current.PhysicalCharacteristics).DeserializeJson(ref reader, options);
           break;
 
         case "otherCharacteristics":

@@ -93,18 +93,61 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.ExternalDiameter.SerializeJson(writer, options);
       }
 
-      if ((current.ShapeElement != null) && (current.ShapeElement.Value != null))
+      if (current.ShapeElement != null)
       {
-        writer.WriteString("shape",current.ShapeElement.Value);
+        if (!string.IsNullOrEmpty(current.ShapeElement.Value))
+        {
+          writer.WriteString("shape",current.ShapeElement.Value);
+        }
+        if (current.ShapeElement.HasExtensions() || (!string.IsNullOrEmpty(current.ShapeElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_shape",false,current.ShapeElement.Extension,current.ShapeElement.ElementId);
+        }
       }
 
       if ((current.ColorElement != null) && (current.ColorElement.Count != 0))
       {
         writer.WritePropertyName("color");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirString val in current.ColorElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirString val in current.ColorElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_color");
+          writer.WriteStartArray();
+          foreach (FhirString val in current.ColorElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -113,9 +156,45 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         writer.WritePropertyName("imprint");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirString val in current.ImprintElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirString val in current.ImprintElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_imprint");
+          writer.WriteStartArray();
+          foreach (FhirString val in current.ImprintElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -174,36 +253,40 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "height":
           current.Height = new Hl7.Fhir.Model.Quantity();
-          current.Height.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Height).DeserializeJson(ref reader, options);
           break;
 
         case "width":
           current.Width = new Hl7.Fhir.Model.Quantity();
-          current.Width.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Width).DeserializeJson(ref reader, options);
           break;
 
         case "depth":
           current.Depth = new Hl7.Fhir.Model.Quantity();
-          current.Depth.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Depth).DeserializeJson(ref reader, options);
           break;
 
         case "weight":
           current.Weight = new Hl7.Fhir.Model.Quantity();
-          current.Weight.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.Weight).DeserializeJson(ref reader, options);
           break;
 
         case "nominalVolume":
           current.NominalVolume = new Hl7.Fhir.Model.Quantity();
-          current.NominalVolume.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.NominalVolume).DeserializeJson(ref reader, options);
           break;
 
         case "externalDiameter":
           current.ExternalDiameter = new Hl7.Fhir.Model.Quantity();
-          current.ExternalDiameter.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Quantity)current.ExternalDiameter).DeserializeJson(ref reader, options);
           break;
 
         case "shape":
           current.ShapeElement = new FhirString(reader.GetString());
+          break;
+
+        case "_shape":
+          ((Hl7.Fhir.Model.Element)current.ShapeElement).DeserializeJson(ref reader, options);
           break;
 
         case "color":
@@ -231,6 +314,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_color":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_color = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_color >= current.ColorElement.Count)
+            {
+              current.ColorElement.Add(new FhirString());
+            }
+            ((Hl7.Fhir.Model.Element)current.ColorElement[i_color++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "imprint":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -253,6 +360,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
           if (current.ImprintElement.Count == 0)
           {
             current.ImprintElement = null;
+          }
+          break;
+
+        case "_imprint":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_imprint = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_imprint >= current.ImprintElement.Count)
+            {
+              current.ImprintElement.Add(new FhirString());
+            }
+            ((Hl7.Fhir.Model.Element)current.ImprintElement[i_imprint++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
           break;
 
@@ -285,7 +416,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
         case "scoring":
           current.Scoring = new Hl7.Fhir.Model.CodeableConcept();
-          current.Scoring.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Scoring).DeserializeJson(ref reader, options);
           break;
 
         // Complex: ProdCharacteristic, Export: ProdCharacteristic, Base: BackboneElement

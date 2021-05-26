@@ -61,9 +61,45 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         writer.WritePropertyName("event");
         writer.WriteStartArray();
+        bool foundExtensions = false;
         foreach (FhirDateTime val in current.EventElement)
         {
-          writer.WriteStringValue(val.Value);
+          if (val.HasExtensions())
+          {
+            foundExtensions = true;
+            break;
+          }
+        }
+
+        foreach (FhirDateTime val in current.EventElement)
+        {
+          if (string.IsNullOrEmpty(val.Value))
+          {
+            if (foundExtensions) { writer.WriteNullValue(); }
+          }
+          else
+          {
+            writer.WriteStringValue(val.Value);
+          }
+
+        }
+        if (foundExtensions)
+        {
+          writer.WriteEndArray();
+          writer.WritePropertyName("_event");
+          writer.WriteStartArray();
+          foreach (FhirDateTime val in current.EventElement)
+          {
+            if (val.HasExtensions() || (!string.IsNullOrEmpty(val.ElementId)))
+            {
+              JsonStreamUtilities.SerializeExtensionList(writer,options,string.Empty,true,val.Extension,val.ElementId);
+            }
+            else
+            {
+              writer.WriteNullValue();
+            }
+
+          }
         }
         writer.WriteEndArray();
       }
@@ -140,14 +176,38 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_event":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_event = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_event >= current.EventElement.Count)
+            {
+              current.EventElement.Add(new FhirDateTime());
+            }
+            ((Hl7.Fhir.Model.Element)current.EventElement[i_event++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "repeat":
           current.Repeat = new Hl7.Fhir.Model.Timing.RepeatComponent();
-          current.Repeat.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Timing.RepeatComponent)current.Repeat).DeserializeJson(ref reader, options);
           break;
 
         case "code":
           current.Code = new Hl7.Fhir.Model.CodeableConcept();
-          current.Code.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.CodeableConcept)current.Code).DeserializeJson(ref reader, options);
           break;
 
         // Complex: Timing, Export: Timing, Base: BackboneElement
@@ -181,24 +241,52 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      if ((current.CountElement != null) && (current.CountElement.Value != null))
+      if (current.CountElement != null)
       {
-        writer.WriteNumber("count",(int)current.CountElement.Value);
+        if (current.CountElement.Value != null)
+        {
+          writer.WriteNumber("count",(int)current.CountElement.Value);
+        }
+        if (current.CountElement.HasExtensions() || (!string.IsNullOrEmpty(current.CountElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_count",false,current.CountElement.Extension,current.CountElement.ElementId);
+        }
       }
 
-      if ((current.CountMaxElement != null) && (current.CountMaxElement.Value != null))
+      if (current.CountMaxElement != null)
       {
-        writer.WriteNumber("countMax",(int)current.CountMaxElement.Value);
+        if (current.CountMaxElement.Value != null)
+        {
+          writer.WriteNumber("countMax",(int)current.CountMaxElement.Value);
+        }
+        if (current.CountMaxElement.HasExtensions() || (!string.IsNullOrEmpty(current.CountMaxElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_countMax",false,current.CountMaxElement.Extension,current.CountMaxElement.ElementId);
+        }
       }
 
-      if ((current.DurationElement != null) && (current.DurationElement.Value != null))
+      if (current.DurationElement != null)
       {
-        writer.WriteNumber("duration",(decimal)current.DurationElement.Value);
+        if (current.DurationElement.Value != null)
+        {
+          writer.WriteNumber("duration",(decimal)current.DurationElement.Value);
+        }
+        if (current.DurationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DurationElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_duration",false,current.DurationElement.Extension,current.DurationElement.ElementId);
+        }
       }
 
-      if ((current.DurationMaxElement != null) && (current.DurationMaxElement.Value != null))
+      if (current.DurationMaxElement != null)
       {
-        writer.WriteNumber("durationMax",(decimal)current.DurationMaxElement.Value);
+        if (current.DurationMaxElement.Value != null)
+        {
+          writer.WriteNumber("durationMax",(decimal)current.DurationMaxElement.Value);
+        }
+        if (current.DurationMaxElement.HasExtensions() || (!string.IsNullOrEmpty(current.DurationMaxElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_durationMax",false,current.DurationMaxElement.Extension,current.DurationMaxElement.ElementId);
+        }
       }
 
       if (current.DurationUnitElement != null)
@@ -206,24 +294,52 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteString("durationUnit",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.DurationUnitElement.Value));
       }
 
-      if ((current.FrequencyElement != null) && (current.FrequencyElement.Value != null))
+      if (current.FrequencyElement != null)
       {
-        writer.WriteNumber("frequency",(int)current.FrequencyElement.Value);
+        if (current.FrequencyElement.Value != null)
+        {
+          writer.WriteNumber("frequency",(int)current.FrequencyElement.Value);
+        }
+        if (current.FrequencyElement.HasExtensions() || (!string.IsNullOrEmpty(current.FrequencyElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_frequency",false,current.FrequencyElement.Extension,current.FrequencyElement.ElementId);
+        }
       }
 
-      if ((current.FrequencyMaxElement != null) && (current.FrequencyMaxElement.Value != null))
+      if (current.FrequencyMaxElement != null)
       {
-        writer.WriteNumber("frequencyMax",(int)current.FrequencyMaxElement.Value);
+        if (current.FrequencyMaxElement.Value != null)
+        {
+          writer.WriteNumber("frequencyMax",(int)current.FrequencyMaxElement.Value);
+        }
+        if (current.FrequencyMaxElement.HasExtensions() || (!string.IsNullOrEmpty(current.FrequencyMaxElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_frequencyMax",false,current.FrequencyMaxElement.Extension,current.FrequencyMaxElement.ElementId);
+        }
       }
 
-      if ((current.PeriodElement != null) && (current.PeriodElement.Value != null))
+      if (current.PeriodElement != null)
       {
-        writer.WriteNumber("period",(decimal)current.PeriodElement.Value);
+        if (current.PeriodElement.Value != null)
+        {
+          writer.WriteNumber("period",(decimal)current.PeriodElement.Value);
+        }
+        if (current.PeriodElement.HasExtensions() || (!string.IsNullOrEmpty(current.PeriodElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_period",false,current.PeriodElement.Extension,current.PeriodElement.ElementId);
+        }
       }
 
-      if ((current.PeriodMaxElement != null) && (current.PeriodMaxElement.Value != null))
+      if (current.PeriodMaxElement != null)
       {
-        writer.WriteNumber("periodMax",(decimal)current.PeriodMaxElement.Value);
+        if (current.PeriodMaxElement.Value != null)
+        {
+          writer.WriteNumber("periodMax",(decimal)current.PeriodMaxElement.Value);
+        }
+        if (current.PeriodMaxElement.HasExtensions() || (!string.IsNullOrEmpty(current.PeriodMaxElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_periodMax",false,current.PeriodMaxElement.Extension,current.PeriodMaxElement.ElementId);
+        }
       }
 
       if (current.PeriodUnitElement != null)
@@ -264,9 +380,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      if ((current.OffsetElement != null) && (current.OffsetElement.Value != null))
+      if (current.OffsetElement != null)
       {
-        writer.WriteNumber("offset",(int)current.OffsetElement.Value);
+        if (current.OffsetElement.Value != null)
+        {
+          writer.WriteNumber("offset",(int)current.OffsetElement.Value);
+        }
+        if (current.OffsetElement.HasExtensions() || (!string.IsNullOrEmpty(current.OffsetElement.ElementId)))
+        {
+          JsonStreamUtilities.SerializeExtensionList(writer,options,"_offset",false,current.OffsetElement.Extension,current.OffsetElement.ElementId);
+        }
       }
 
       if (includeStartObject) { writer.WriteEndObject(); }
@@ -306,57 +429,97 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         case "boundsDuration":
           current.Bounds = new Hl7.Fhir.Model.Duration();
-          current.Bounds.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Duration)current.Bounds).DeserializeJson(ref reader, options);
           break;
 
         case "boundsRange":
           current.Bounds = new Hl7.Fhir.Model.Range();
-          current.Bounds.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Range)current.Bounds).DeserializeJson(ref reader, options);
           break;
 
         case "boundsPeriod":
           current.Bounds = new Hl7.Fhir.Model.Period();
-          current.Bounds.DeserializeJson(ref reader, options);
+          ((Hl7.Fhir.Model.Period)current.Bounds).DeserializeJson(ref reader, options);
           break;
 
         case "count":
           current.CountElement = new PositiveInt(reader.GetInt32());
           break;
 
+        case "_count":
+          ((Hl7.Fhir.Model.Element)current.CountElement).DeserializeJson(ref reader, options);
+          break;
+
         case "countMax":
           current.CountMaxElement = new PositiveInt(reader.GetInt32());
+          break;
+
+        case "_countMax":
+          ((Hl7.Fhir.Model.Element)current.CountMaxElement).DeserializeJson(ref reader, options);
           break;
 
         case "duration":
           current.DurationElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_duration":
+          ((Hl7.Fhir.Model.Element)current.DurationElement).DeserializeJson(ref reader, options);
+          break;
+
         case "durationMax":
           current.DurationMaxElement = new FhirDecimal(reader.GetDecimal());
+          break;
+
+        case "_durationMax":
+          ((Hl7.Fhir.Model.Element)current.DurationMaxElement).DeserializeJson(ref reader, options);
           break;
 
         case "durationUnit":
           current.DurationUnitElement =new Code<Hl7.Fhir.Model.Timing.UnitsOfTime>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Timing.UnitsOfTime>(reader.GetString()));
           break;
 
+        case "_durationUnit":
+          ((Hl7.Fhir.Model.Element)current.DurationUnitElement).DeserializeJson(ref reader, options);
+          break;
+
         case "frequency":
           current.FrequencyElement = new PositiveInt(reader.GetInt32());
+          break;
+
+        case "_frequency":
+          ((Hl7.Fhir.Model.Element)current.FrequencyElement).DeserializeJson(ref reader, options);
           break;
 
         case "frequencyMax":
           current.FrequencyMaxElement = new PositiveInt(reader.GetInt32());
           break;
 
+        case "_frequencyMax":
+          ((Hl7.Fhir.Model.Element)current.FrequencyMaxElement).DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           current.PeriodElement = new FhirDecimal(reader.GetDecimal());
+          break;
+
+        case "_period":
+          ((Hl7.Fhir.Model.Element)current.PeriodElement).DeserializeJson(ref reader, options);
           break;
 
         case "periodMax":
           current.PeriodMaxElement = new FhirDecimal(reader.GetDecimal());
           break;
 
+        case "_periodMax":
+          ((Hl7.Fhir.Model.Element)current.PeriodMaxElement).DeserializeJson(ref reader, options);
+          break;
+
         case "periodUnit":
           current.PeriodUnitElement =new Code<Hl7.Fhir.Model.Timing.UnitsOfTime>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<Hl7.Fhir.Model.Timing.UnitsOfTime>(reader.GetString()));
+          break;
+
+        case "_periodUnit":
+          ((Hl7.Fhir.Model.Element)current.PeriodUnitElement).DeserializeJson(ref reader, options);
           break;
 
         case "dayOfWeek":
@@ -381,6 +544,30 @@ namespace Hl7.Fhir.Model.JsonExtensions
           if (current.DayOfWeekElement.Count == 0)
           {
             current.DayOfWeekElement = null;
+          }
+          break;
+
+        case "_dayOfWeek":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_dayOfWeek = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_dayOfWeek >= current.DayOfWeekElement.Count)
+            {
+              current.DayOfWeekElement.Add(new Code<Hl7.Fhir.Model.DaysOfWeek>());
+            }
+            ((Hl7.Fhir.Model.Element)current.DayOfWeekElement[i_dayOfWeek++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
           break;
 
@@ -421,6 +608,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
           while (reader.TokenType != JsonTokenType.EndArray)
           {
+            if (i_timeOfDay >= current.TimeOfDayElement.Count)
+            {
+              current.TimeOfDayElement.Add(new Time());
+            }
             ((Hl7.Fhir.Model.Element)current.TimeOfDayElement[i_timeOfDay++]).DeserializeJson(ref reader, options);
 
             if (!reader.Read())
@@ -456,8 +647,36 @@ namespace Hl7.Fhir.Model.JsonExtensions
           }
           break;
 
+        case "_when":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          int i_when = 0;
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            if (i_when >= current.WhenElement.Count)
+            {
+              current.WhenElement.Add(new Code<Hl7.Fhir.Model.Timing.EventTiming>());
+            }
+            ((Hl7.Fhir.Model.Element)current.WhenElement[i_when++]).DeserializeJson(ref reader, options);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+            if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
+          }
+          break;
+
         case "offset":
           current.OffsetElement = new UnsignedInt(reader.GetInt32());
+          break;
+
+        case "_offset":
+          ((Hl7.Fhir.Model.Element)current.OffsetElement).DeserializeJson(ref reader, options);
           break;
 
       }
