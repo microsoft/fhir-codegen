@@ -818,13 +818,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteSerializable();
 
+            string fhirTypeConstructor = $"\"{complex.Name}\",\"{complex.URL}\"";
+
             if (isResource)
             {
-                _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\", IsResource=true)]");
+                _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor}, IsResource=true)]");
             }
             else
             {
-                _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
+                _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
             }
 
             if (complex.BaseTypeName == "Quantity")
@@ -2224,7 +2226,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.WriteLineIndented("[System.Diagnostics.DebuggerDisplay(@\"\\{Value={Value}}\")]");
                 WriteSerializable();
-                _writer.WriteLineIndented($"[FhirType(\"{primitive.Name}\")]");
+
+                string fhirTypeConstructor = $"\"{primitive.Name}\",\"{primitive.URL}\"";
+                _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
 
                 _writer.WriteLineIndented(
                     $"public partial class" +
