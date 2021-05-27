@@ -1060,7 +1060,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLine();
             }
 
-            WriteSerializeJsonElements(complex, exportName);
+            WriteJsonSerializeElements(complex, exportName);
 
             _writer.WriteLineIndented(
                 $"if (includeStartObject)" +
@@ -1272,7 +1272,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLine();
             }
 
-            WriteSerializeJsonElements(complex, exportName);
+            WriteJsonSerializeElements(complex, exportName);
 
             _writer.WriteLineIndented(
                 $"if (includeStartObject)" +
@@ -2099,7 +2099,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Writes the elements.</summary>
         /// <param name="complex">              The complex data type.</param>
         /// <param name="exportedComplexName">  Name of the exported complex parent.</param>
-        private void WriteSerializeJsonElements(
+        private void WriteJsonSerializeElements(
             FhirComplex complex,
             string exportedComplexName)
         {
@@ -2205,7 +2205,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                         case "Base64Binary":
 
-                            WriteSerializeJsonElementPrimitive(
+                            WriteJsonSerializeElementPrimitive(
                                 csType,
                                 currentName,
                                 elementInfo.FhirElementName,
@@ -2216,7 +2216,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 "System.Convert.ToBase64String",
                                 string.Empty,
                                 false,
-                                string.Empty);
+                                string.Empty,
+                                false);
 
                             break;
 
@@ -2233,8 +2234,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         case "Oid":
                         case "Uuid":
                         case "XHtml":
-
-                            WriteSerializeJsonElementPrimitive(
+                            WriteJsonSerializeElementPrimitive(
                                 csType,
                                 currentName,
                                 elementInfo.FhirElementName,
@@ -2245,7 +2245,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 string.Empty,
                                 string.Empty,
                                 false,
-                                string.Empty);
+                                string.Empty,
+                                true);
 
                             break;
 
@@ -2260,7 +2261,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                                 _writer.WriteLineIndented($"foreach (string val in {currentName})");
                                 _writer.OpenScope();
-                                _writer.WriteLineIndented($"writer.WriteStringValue(val);");
+                                _writer.WriteLineIndented($"writer.WriteStringValue(val.Trim());");
                                 _writer.CloseScope();
 
                                 _writer.WriteLineIndented($"writer.WriteEndArray();");
@@ -2270,13 +2271,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             {
                                 if (elementInfo.IsMandatory)
                                 {
-                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName});");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName}.Trim());");
                                 }
                                 else
                                 {
                                     _writer.WriteLineIndented($"if (!string.IsNullOrEmpty({currentName}))");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName});");
+                                    _writer.WriteLineIndented($"writer.WriteString(\"{elementInfo.FhirElementName}\",{currentName}.Trim());");
                                     _writer.CloseScope();
                                 }
                             }
@@ -2284,8 +2285,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             break;
 
                         case "FhirBoolean":
-
-                            WriteSerializeJsonElementPrimitive(
+                            WriteJsonSerializeElementPrimitive(
                                 csType,
                                 currentName,
                                 elementInfo.FhirElementName,
@@ -2296,13 +2296,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 string.Empty,
                                 "bool",
                                 false,
-                                string.Empty);
+                                string.Empty,
+                                false);
 
                             break;
 
                         case "FhirDecimal":
-
-                            WriteSerializeJsonElementPrimitive(
+                            WriteJsonSerializeElementPrimitive(
                                 csType,
                                 currentName,
                                 elementInfo.FhirElementName,
@@ -2313,15 +2313,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 string.Empty,
                                 "decimal",
                                 false,
-                                string.Empty);
+                                string.Empty,
+                                false);
 
                             break;
 
                         case "Integer":
                         case "PositiveInt":
                         case "UnsignedInt":
-
-                            WriteSerializeJsonElementPrimitive(
+                            WriteJsonSerializeElementPrimitive(
                                 csType,
                                 currentName,
                                 elementInfo.FhirElementName,
@@ -2332,13 +2332,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 string.Empty,
                                 "int",
                                 false,
-                                string.Empty);
+                                string.Empty,
+                                false);
 
                             break;
 
                         case "Instant":
-
-                            WriteSerializeJsonElementPrimitive(
+                            WriteJsonSerializeElementPrimitive(
                                 csType,
                                 currentName,
                                 elementInfo.FhirElementName,
@@ -2349,13 +2349,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 string.Empty,
                                 "DateTimeOffset",
                                 true,
-                                "yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK");
+                                "yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",
+                                false);
 
                             break;
 
                         case "Integer64":
-
-                            WriteSerializeJsonElementPrimitive(
+                            WriteJsonSerializeElementPrimitive(
                                 csType,
                                 currentName,
                                 elementInfo.FhirElementName,
@@ -2366,16 +2366,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 string.Empty,
                                 string.Empty,
                                 true,
-                                string.Empty);
+                                string.Empty,
+                                false);
 
                             break;
 
                         default:
-
                             // check for enum-typed codes (non-enum codes are handled above)
                             if (csType.StartsWith("Code<", StringComparison.Ordinal))
                             {
-                                WriteSerializeJsonElementPrimitive(
+                                WriteJsonSerializeElementPrimitive(
                                     csType,
                                     currentName,
                                     elementInfo.FhirElementName,
@@ -2386,7 +2386,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                     "Hl7.Fhir.Utility.EnumUtility.GetLiteral",
                                     string.Empty,
                                     false,
-                                    string.Empty);
+                                    string.Empty,
+                                    false);
                             }
                             else
                             {
@@ -2443,7 +2444,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="castType">           Type of the cast.</param>
         /// <param name="requiresToString">   True to requires to string.</param>
         /// <param name="stringFormat">       The string format.</param>
-        private void WriteSerializeJsonElementPrimitive(
+        /// <param name="requiresTrim">       True to requires trim.</param>
+        private void WriteJsonSerializeElementPrimitive(
             string csType,
             string currentName,
             string fhirElementName,
@@ -2454,7 +2456,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string conversionFunction,
             string castType,
             bool requiresToString,
-            string stringFormat)
+            string stringFormat,
+            bool requiresTrim)
         {
             if (isList)
             {
@@ -2477,6 +2480,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     {
                         valueString = $"({valueString}).ToString(\"{stringFormat}\",System.Globalization.CultureInfo.InvariantCulture)";
                     }
+                }
+
+                if (requiresTrim)
+                {
+                    valueString = $"{valueString}.Trim()";
                 }
 
                 // open if - element exists
@@ -2623,6 +2631,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     }
                 }
 
+                if (requiresTrim)
+                {
+                    valueString = $"{valueString}.Trim()";
+                }
+
                 if (isMandatory)
                 {
                     _writer.WriteLineIndented($"writer.Write{writerFunctionClass}(\"{fhirElementName}\",{valueString});");
@@ -2724,18 +2737,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         break;
 
                     case "Base64Binary":
-                        WriteSerializeJsonElementPrimitive(
+                        WriteJsonSerializeElementPrimitive(
                             kvp.Value,
                             caseVarName,
                             fhirCombinedName,
                             elementInfo.IsList,
                             elementInfo.IsMandatory,
-                            NullCheckType.None,
+                            NullCheckType.Equality,
                             "String",
                             "System.Convert.ToBase64String",
                             string.Empty,
                             false,
-                            string.Empty);
+                            string.Empty,
+                            false);
 
                         break;
 
@@ -2752,105 +2766,111 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     case "Oid":
                     case "Uuid":
                     case "XHtml":
-                        WriteSerializeJsonElementPrimitive(
+                        WriteJsonSerializeElementPrimitive(
                             kvp.Value,
                             caseVarName,
                             fhirCombinedName,
                             elementInfo.IsList,
                             elementInfo.IsMandatory,
-                            NullCheckType.None,
+                            NullCheckType.String,
                             "String",
                             string.Empty,
                             string.Empty,
                             false,
-                            string.Empty);
+                            string.Empty,
+                            true);
 
                         break;
 
                     // special case for Element.id, Extension.url, and Narrative.div
                     case "string":
-                        _writer.WriteLineIndented($"writer.WriteString(\"{fhirCombinedName}\",{caseVarName});");
+                        _writer.WriteLineIndented($"writer.WriteString(\"{fhirCombinedName}\",{caseVarName}.Trim());");
                         break;
 
                     case "FhirBoolean":
-                        WriteSerializeJsonElementPrimitive(
+                        WriteJsonSerializeElementPrimitive(
                             kvp.Value,
                             caseVarName,
                             fhirCombinedName,
                             elementInfo.IsList,
                             elementInfo.IsMandatory,
-                            NullCheckType.None,
+                            NullCheckType.Equality,
                             "Boolean",
                             string.Empty,
                             "bool",
                             false,
-                            string.Empty);
+                            string.Empty,
+                            false);
 
                         break;
 
                     case "FhirDecimal":
-                        WriteSerializeJsonElementPrimitive(
+                        WriteJsonSerializeElementPrimitive(
                             kvp.Value,
                             caseVarName,
                             fhirCombinedName,
                             elementInfo.IsList,
                             elementInfo.IsMandatory,
-                            NullCheckType.None,
+                            NullCheckType.Equality,
                             "Number",
                             string.Empty,
                             "decimal",
                             false,
-                            string.Empty);
+                            string.Empty,
+                            false);
 
                         break;
 
                     case "Integer":
                     case "PositiveInt":
                     case "UnsignedInt":
-                        WriteSerializeJsonElementPrimitive(
+                        WriteJsonSerializeElementPrimitive(
                             kvp.Value,
                             caseVarName,
                             fhirCombinedName,
                             elementInfo.IsList,
                             elementInfo.IsMandatory,
-                            NullCheckType.None,
+                            NullCheckType.Equality,
                             "Number",
                             string.Empty,
                             "int",
                             false,
-                            string.Empty);
+                            string.Empty,
+                            false);
 
                         break;
 
                     case "Instant":
-                        WriteSerializeJsonElementPrimitive(
+                        WriteJsonSerializeElementPrimitive(
                             kvp.Value,
                             caseVarName,
                             fhirCombinedName,
                             elementInfo.IsList,
                             elementInfo.IsMandatory,
-                            NullCheckType.None,
+                            NullCheckType.Equality,
                             "String",
                             string.Empty,
                             "DateTimeOffset",
                             true,
-                            "yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK");
+                            "yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",
+                            false);
 
                         break;
 
                     case "Integer64":
-                        WriteSerializeJsonElementPrimitive(
+                        WriteJsonSerializeElementPrimitive(
                             kvp.Value,
                             caseVarName,
                             fhirCombinedName,
                             elementInfo.IsList,
                             elementInfo.IsMandatory,
-                            NullCheckType.None,
+                            NullCheckType.Equality,
                             "String",
                             string.Empty,
                             string.Empty,
                             true,
-                            string.Empty);
+                            string.Empty,
+                            false);
 
                         break;
 
@@ -2858,18 +2878,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         // check for enum-typed codes (non-enum codes are handled above)
                         if (kvp.Value.StartsWith("Code<", StringComparison.Ordinal))
                         {
-                            WriteSerializeJsonElementPrimitive(
+                            WriteJsonSerializeElementPrimitive(
                                 kvp.Value,
                                 caseVarName,
                                 fhirCombinedName,
                                 elementInfo.IsList,
                                 elementInfo.IsMandatory,
-                                NullCheckType.None,
+                                NullCheckType.Equality,
                                 "String",
                                 "Hl7.Fhir.Utility.EnumUtility.GetLiteral",
                                 string.Empty,
                                 false,
-                                string.Empty);
+                                string.Empty,
+                                false);
                         }
                         else
                         {

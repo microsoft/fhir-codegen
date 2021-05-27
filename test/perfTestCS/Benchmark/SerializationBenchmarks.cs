@@ -24,9 +24,6 @@ namespace PerfTestCS.Benchmark
         /// <summary>The JSON.</summary>
         private string _json;
 
-        /// <summary>The JSON in bytes.</summary>
-        private byte[] _jsonBytes;
-
         /// <summary>The JSON parser.</summary>
         private Hl7.Fhir.Serialization.FhirJsonParser _firelyParser;
 
@@ -40,10 +37,10 @@ namespace PerfTestCS.Benchmark
         private Newtonsoft.Json.JsonConverter _basicNewtonsoftConverter;
 
         /// <summary>The basic newtonsoft model.</summary>
-        private fhirNewtonsoft.Resource _basicNewtonsoftModel;
+        private fhir.Resource _basicNewtonsoftModel;
 
         /// <summary>The basic system JSON model.</summary>
-        private Fhir.R4.Models.Resource _basicSystemJsonModel;
+        private fhirCsR4.Models.Resource _basicSystemJsonModel;
 
         /// <summary>The extent converter.</summary>
         private Hl7.Fhir.Serialization.JsonStreamResourceConverter _extConverter;
@@ -89,12 +86,11 @@ namespace PerfTestCS.Benchmark
                 Pretty = false,
             });
 
-            _basicNewtonsoftConverter = new fhirNewtonsoft.ResourceConverter();
+            _basicNewtonsoftConverter = new fhir.ResourceConverter();
 
             _extConverter = new Hl7.Fhir.Serialization.JsonStreamResourceConverter();
 
             _json = null;
-            _jsonBytes = null;
             _firelyModel = null;
         }
 
@@ -170,17 +166,15 @@ namespace PerfTestCS.Benchmark
                 throw new FileNotFoundException();
             }
 
-            if (_jsonBytes == null)
+            if (string.IsNullOrEmpty(_json))
             {
-                _jsonBytes = File.ReadAllBytes(filename);
-                Console.WriteLine($"Loaded {Filename}, {_jsonBytes.Length} bytes");
+                _json = File.ReadAllText(filename);
+                Console.WriteLine($"Loaded {Filename}, {_json.Length} bytes");
             }
 
             if (_firelyModel == null)
             {
-                _json = File.ReadAllText(filename);
                 _firelyModel = _firelyParser.Parse(_json);
-                _json = null;
             }
         }
 
@@ -190,12 +184,10 @@ namespace PerfTestCS.Benchmark
         [Benchmark]
         public object FirelyExtParse()
         {
-            System.Text.Json.Utf8JsonReader reader = new System.Text.Json.Utf8JsonReader(_jsonBytes.AsSpan<byte>());
-
-            return _extConverter.Read(
-                ref reader,
+            return System.Text.Json.JsonSerializer.Deserialize(
+                _json,
                 typeof(Hl7.Fhir.Model.Resource),
-                Hl7.Fhir.Serialization.FhirSerializerOptions.SerializerOptions);
+                Hl7.Fhir.Serialization.FhirSerializerOptions.SerializerCompact);
         }
 
         /// <summary>Serialize this object to the given stream.</summary>
@@ -204,22 +196,14 @@ namespace PerfTestCS.Benchmark
         [Benchmark]
         public string FirelyExtSerialize()
         {
-            using (MemoryStream memoryStream = new MemoryStream())
-            using (System.Text.Json.Utf8JsonWriter writer =
-                new System.Text.Json.Utf8JsonWriter(memoryStream, Hl7.Fhir.Serialization.FhirSerializerOptions.Compact))
-            {
-                _extConverter.Write(
-                    writer,
-                    (Hl7.Fhir.Model.Resource)_firelyModel,
-                    Hl7.Fhir.Serialization.FhirSerializerOptions.SerializerOptions);
+            string test = System.Text.Json.JsonSerializer.Serialize<object>(
+                _firelyModel,
+                Hl7.Fhir.Serialization.FhirSerializerOptions.SerializerCompact);
 
-                string test = System.Text.Encoding.UTF8.GetString(memoryStream.GetBuffer());
-
-                return test;
-            }
+            return test;
         }
 
-#if CAKE // 2021.05.24 - just testing Firely right now
+#if !CAKE // 2021.05.24 - just testing Firely right now
         /// <summary>Basic newtonsoft setup.</summary>
         [GlobalSetup(Targets = new[] { nameof(BasicNewtonsoftParse), nameof(BasicNewtonsoftSerialize) })]
         public void BasicNewtonsoftSetup()
@@ -238,7 +222,7 @@ namespace PerfTestCS.Benchmark
 
             if (_basicNewtonsoftModel == null)
             {
-                _basicNewtonsoftModel = Newtonsoft.Json.JsonConvert.DeserializeObject<fhirNewtonsoft.Resource>(_json, _basicNewtonsoftConverter);
+                _basicNewtonsoftModel = Newtonsoft.Json.JsonConvert.DeserializeObject<fhir.Resource>(_json, _basicNewtonsoftConverter);
             }
         }
 
@@ -248,7 +232,7 @@ namespace PerfTestCS.Benchmark
         [Benchmark]
         public object BasicNewtonsoftParse()
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<fhirNewtonsoft.Resource>(_json, _basicNewtonsoftConverter);
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<fhir.Resource>(_json, _basicNewtonsoftConverter);
         }
 
         /// <summary>Basic newtonsoft serialize.</summary>
@@ -279,7 +263,7 @@ namespace PerfTestCS.Benchmark
 
             if (_basicSystemJsonModel == null)
             {
-                _basicSystemJsonModel = System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(_json);
+                _basicSystemJsonModel = System.Text.Json.JsonSerializer.Deserialize<fhirCsR4.Models.Resource>(_json);
             }
         }
 
@@ -289,7 +273,7 @@ namespace PerfTestCS.Benchmark
         [Benchmark]
         public object BasicSystemJsonParse()
         {
-            return System.Text.Json.JsonSerializer.Deserialize<Fhir.R4.Models.Resource>(_json);
+            return System.Text.Json.JsonSerializer.Deserialize<fhirCsR4.Models.Resource>(_json);
         }
 
         /// <summary>Basic system JSON serialize.</summary>
