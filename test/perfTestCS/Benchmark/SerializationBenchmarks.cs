@@ -203,7 +203,7 @@ namespace PerfTestCS.Benchmark
             return test;
         }
 
-#if !CAKE // 2021.05.24 - just testing Firely right now
+#if CAKE // 2021.05.24 - just testing Firely right now
         /// <summary>Basic newtonsoft setup.</summary>
         [GlobalSetup(Targets = new[] { nameof(BasicNewtonsoftParse), nameof(BasicNewtonsoftSerialize) })]
         public void BasicNewtonsoftSetup()
