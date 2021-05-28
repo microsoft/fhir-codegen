@@ -96,7 +96,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {
@@ -108,7 +108,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DetectedElement.Value))
         {
-          writer.WriteString("detected",current.DetectedElement.Value.Trim());
+          writer.WriteString("detected",current.DetectedElement.Value);
         }
         if (current.DetectedElement.HasExtensions() || (!string.IsNullOrEmpty(current.DetectedElement.ElementId)))
         {
@@ -120,7 +120,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RecordedDateElement.Value))
         {
-          writer.WriteString("recordedDate",current.RecordedDateElement.Value.Trim());
+          writer.WriteString("recordedDate",current.RecordedDateElement.Value);
         }
         if (current.RecordedDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.RecordedDateElement.ElementId)))
         {
@@ -686,7 +686,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ProductRelatednessElement.Value))
         {
-          writer.WriteString("productRelatedness",current.ProductRelatednessElement.Value.Trim());
+          writer.WriteString("productRelatedness",current.ProductRelatednessElement.Value);
         }
         if (current.ProductRelatednessElement.HasExtensions() || (!string.IsNullOrEmpty(current.ProductRelatednessElement.ElementId)))
         {

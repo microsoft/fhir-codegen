@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.BirthDateElement.Value))
         {
-          writer.WriteString("birthDate",current.BirthDateElement.Value.Trim());
+          writer.WriteString("birthDate",current.BirthDateElement.Value);
         }
         if (current.BirthDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.BirthDateElement.ElementId)))
         {

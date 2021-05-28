@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -141,7 +141,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -203,7 +203,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("occurrenceDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("occurrenceDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -289,7 +289,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.OverrideReasonElement.Value))
         {
-          writer.WriteString("overrideReason",current.OverrideReasonElement.Value.Trim());
+          writer.WriteString("overrideReason",current.OverrideReasonElement.Value);
         }
         if (current.OverrideReasonElement.HasExtensions() || (!string.IsNullOrEmpty(current.OverrideReasonElement.ElementId)))
         {
@@ -307,7 +307,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.EnteredDateElement.Value))
         {
-          writer.WriteString("enteredDate",current.EnteredDateElement.Value.Trim());
+          writer.WriteString("enteredDate",current.EnteredDateElement.Value);
         }
         if (current.EnteredDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.EnteredDateElement.ElementId)))
         {

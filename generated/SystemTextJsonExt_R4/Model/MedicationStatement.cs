@@ -142,7 +142,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("effectiveDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("effectiveDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -160,7 +160,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateAssertedElement.Value))
         {
-          writer.WriteString("dateAsserted",current.DateAssertedElement.Value.Trim());
+          writer.WriteString("dateAsserted",current.DateAssertedElement.Value);
         }
         if (current.DateAssertedElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateAssertedElement.ElementId)))
         {

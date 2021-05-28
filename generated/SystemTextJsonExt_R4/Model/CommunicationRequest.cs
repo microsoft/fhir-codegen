@@ -194,7 +194,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("occurrenceDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("occurrenceDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -212,7 +212,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AuthoredOnElement.Value))
         {
-          writer.WriteString("authoredOn",current.AuthoredOnElement.Value.Trim());
+          writer.WriteString("authoredOn",current.AuthoredOnElement.Value);
         }
         if (current.AuthoredOnElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthoredOnElement.ElementId)))
         {
@@ -750,7 +750,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.Content)
         {
           case FhirString v_FhirString:
-            writer.WriteString("contentString",v_FhirString.Value.Trim());
+            writer.WriteString("contentString",v_FhirString.Value);
             break;
           case Attachment v_Attachment:
             writer.WritePropertyName("contentAttachment");

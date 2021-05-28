@@ -96,7 +96,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -126,7 +126,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 

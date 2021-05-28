@@ -154,7 +154,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
         {
-          writer.WriteString("description",current.DescriptionElement.Value.Trim());
+          writer.WriteString("description",current.DescriptionElement.Value);
         }
         if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
         {
@@ -224,7 +224,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CreatedElement.Value))
         {
-          writer.WriteString("created",current.CreatedElement.Value.Trim());
+          writer.WriteString("created",current.CreatedElement.Value);
         }
         if (current.CreatedElement.HasExtensions() || (!string.IsNullOrEmpty(current.CreatedElement.ElementId)))
         {
@@ -236,7 +236,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CommentElement.Value))
         {
-          writer.WriteString("comment",current.CommentElement.Value.Trim());
+          writer.WriteString("comment",current.CommentElement.Value);
         }
         if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
         {
@@ -248,7 +248,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PatientInstructionElement.Value))
         {
-          writer.WriteString("patientInstruction",current.PatientInstructionElement.Value.Trim());
+          writer.WriteString("patientInstruction",current.PatientInstructionElement.Value);
         }
         if (current.PatientInstructionElement.HasExtensions() || (!string.IsNullOrEmpty(current.PatientInstructionElement.ElementId)))
         {

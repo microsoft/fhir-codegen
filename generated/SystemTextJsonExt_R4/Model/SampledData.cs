@@ -104,7 +104,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DataElement.Value))
         {
-          writer.WriteString("data",current.DataElement.Value.Trim());
+          writer.WriteString("data",current.DataElement.Value);
         }
         if (current.DataElement.HasExtensions() || (!string.IsNullOrEmpty(current.DataElement.ElementId)))
         {

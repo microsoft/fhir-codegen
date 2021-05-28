@@ -180,7 +180,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AvailabilityExceptionsElement.Value))
         {
-          writer.WriteString("availabilityExceptions",current.AvailabilityExceptionsElement.Value.Trim());
+          writer.WriteString("availabilityExceptions",current.AvailabilityExceptionsElement.Value);
         }
         if (current.AvailabilityExceptionsElement.HasExtensions() || (!string.IsNullOrEmpty(current.AvailabilityExceptionsElement.ElementId)))
         {
@@ -760,7 +760,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: PractitionerRole#NotAvailable, Export: NotAvailableComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("description",current.DescriptionElement.Value.Trim());
+      writer.WriteString("description",current.DescriptionElement.Value);
 
       if (current.During != null)
       {

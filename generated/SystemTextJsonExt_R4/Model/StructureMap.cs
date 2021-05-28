@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Complex: StructureMap, Export: StructureMap, Base: DomainResource (DomainResource)
       ((Hl7.Fhir.Model.DomainResource)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("url",current.UrlElement.Value.Trim());
+      writer.WriteString("url",current.UrlElement.Value);
 
       if ((current.Identifier != null) && (current.Identifier.Count != 0))
       {
@@ -75,7 +75,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.VersionElement.Value))
         {
-          writer.WriteString("version",current.VersionElement.Value.Trim());
+          writer.WriteString("version",current.VersionElement.Value);
         }
         if (current.VersionElement.HasExtensions() || (!string.IsNullOrEmpty(current.VersionElement.ElementId)))
         {
@@ -83,13 +83,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
         }
       }
 
-      writer.WriteString("name",current.NameElement.Value.Trim());
+      writer.WriteString("name",current.NameElement.Value);
 
       if (current.TitleElement != null)
       {
         if (!string.IsNullOrEmpty(current.TitleElement.Value))
         {
-          writer.WriteString("title",current.TitleElement.Value.Trim());
+          writer.WriteString("title",current.TitleElement.Value);
         }
         if (current.TitleElement.HasExtensions() || (!string.IsNullOrEmpty(current.TitleElement.ElementId)))
         {
@@ -115,7 +115,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {
@@ -127,7 +127,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PublisherElement.Value))
         {
-          writer.WriteString("publisher",current.PublisherElement.Value.Trim());
+          writer.WriteString("publisher",current.PublisherElement.Value);
         }
         if (current.PublisherElement.HasExtensions() || (!string.IsNullOrEmpty(current.PublisherElement.ElementId)))
         {
@@ -150,7 +150,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Description.Value))
         {
-          writer.WriteString("description",current.Description.Value.Trim());
+          writer.WriteString("description",current.Description.Value);
         }
         if (current.Description.HasExtensions() || (!string.IsNullOrEmpty(current.Description.ElementId)))
         {
@@ -184,7 +184,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Purpose.Value))
         {
-          writer.WriteString("purpose",current.Purpose.Value.Trim());
+          writer.WriteString("purpose",current.Purpose.Value);
         }
         if (current.Purpose.HasExtensions() || (!string.IsNullOrEmpty(current.Purpose.ElementId)))
         {
@@ -196,7 +196,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Copyright.Value))
         {
-          writer.WriteString("copyright",current.Copyright.Value.Trim());
+          writer.WriteString("copyright",current.Copyright.Value);
         }
         if (current.Copyright.HasExtensions() || (!string.IsNullOrEmpty(current.Copyright.ElementId)))
         {
@@ -237,7 +237,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -741,7 +741,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: StructureMap#Structure, Export: StructureComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("url",current.UrlElement.Value.Trim());
+      writer.WriteString("url",current.UrlElement.Value);
 
       writer.WriteString("mode",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.ModeElement.Value));
 
@@ -749,7 +749,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AliasElement.Value))
         {
-          writer.WriteString("alias",current.AliasElement.Value.Trim());
+          writer.WriteString("alias",current.AliasElement.Value);
         }
         if (current.AliasElement.HasExtensions() || (!string.IsNullOrEmpty(current.AliasElement.ElementId)))
         {
@@ -761,7 +761,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DocumentationElement.Value))
         {
-          writer.WriteString("documentation",current.DocumentationElement.Value.Trim());
+          writer.WriteString("documentation",current.DocumentationElement.Value);
         }
         if (current.DocumentationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DocumentationElement.ElementId)))
         {
@@ -889,13 +889,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: StructureMap#Group, Export: GroupComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("name",current.NameElement.Value.Trim());
+      writer.WriteString("name",current.NameElement.Value);
 
       if (current.ExtendsElement != null)
       {
         if (!string.IsNullOrEmpty(current.ExtendsElement.Value))
         {
-          writer.WriteString("extends",current.ExtendsElement.Value.Trim());
+          writer.WriteString("extends",current.ExtendsElement.Value);
         }
         if (current.ExtendsElement.HasExtensions() || (!string.IsNullOrEmpty(current.ExtendsElement.ElementId)))
         {
@@ -909,7 +909,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DocumentationElement.Value))
         {
-          writer.WriteString("documentation",current.DocumentationElement.Value.Trim());
+          writer.WriteString("documentation",current.DocumentationElement.Value);
         }
         if (current.DocumentationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DocumentationElement.ElementId)))
         {
@@ -1113,13 +1113,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: StructureMap#Input, Export: InputComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("name",current.NameElement.Value.Trim());
+      writer.WriteString("name",current.NameElement.Value);
 
       if (current.TypeElement != null)
       {
         if (!string.IsNullOrEmpty(current.TypeElement.Value))
         {
-          writer.WriteString("type",current.TypeElement.Value.Trim());
+          writer.WriteString("type",current.TypeElement.Value);
         }
         if (current.TypeElement.HasExtensions() || (!string.IsNullOrEmpty(current.TypeElement.ElementId)))
         {
@@ -1133,7 +1133,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DocumentationElement.Value))
         {
-          writer.WriteString("documentation",current.DocumentationElement.Value.Trim());
+          writer.WriteString("documentation",current.DocumentationElement.Value);
         }
         if (current.DocumentationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DocumentationElement.ElementId)))
         {
@@ -1261,7 +1261,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: StructureMap#Rule, Export: RuleComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("name",current.NameElement.Value.Trim());
+      writer.WriteString("name",current.NameElement.Value);
 
       if ((current.Source != null) && (current.Source.Count != 0))
       {
@@ -1311,7 +1311,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DocumentationElement.Value))
         {
-          writer.WriteString("documentation",current.DocumentationElement.Value.Trim());
+          writer.WriteString("documentation",current.DocumentationElement.Value);
         }
         if (current.DocumentationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DocumentationElement.ElementId)))
         {
@@ -1513,7 +1513,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: StructureMap#Source, Export: SourceComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("context",current.ContextElement.Value.Trim());
+      writer.WriteString("context",current.ContextElement.Value);
 
       if (current.MinElement != null)
       {
@@ -1531,7 +1531,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MaxElement.Value))
         {
-          writer.WriteString("max",current.MaxElement.Value.Trim());
+          writer.WriteString("max",current.MaxElement.Value);
         }
         if (current.MaxElement.HasExtensions() || (!string.IsNullOrEmpty(current.MaxElement.ElementId)))
         {
@@ -1543,7 +1543,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TypeElement.Value))
         {
-          writer.WriteString("type",current.TypeElement.Value.Trim());
+          writer.WriteString("type",current.TypeElement.Value);
         }
         if (current.TypeElement.HasExtensions() || (!string.IsNullOrEmpty(current.TypeElement.ElementId)))
         {
@@ -1586,7 +1586,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Canonical.Value))
               {
-                writer.WriteString("defaultValueCanonical",v_Canonical.Value.Trim());
+                writer.WriteString("defaultValueCanonical",v_Canonical.Value);
               }
               if (v_Canonical.HasExtensions() || (!string.IsNullOrEmpty(v_Canonical.ElementId)))
               {
@@ -1612,7 +1612,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Date.Value))
               {
-                writer.WriteString("defaultValueDate",v_Date.Value.Trim());
+                writer.WriteString("defaultValueDate",v_Date.Value);
               }
               if (v_Date.HasExtensions() || (!string.IsNullOrEmpty(v_Date.ElementId)))
               {
@@ -1625,7 +1625,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("defaultValueDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("defaultValueDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -1651,7 +1651,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Id.Value))
               {
-                writer.WriteString("defaultValueId",v_Id.Value.Trim());
+                writer.WriteString("defaultValueId",v_Id.Value);
               }
               if (v_Id.HasExtensions() || (!string.IsNullOrEmpty(v_Id.ElementId)))
               {
@@ -1690,7 +1690,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Markdown.Value))
               {
-                writer.WriteString("defaultValueMarkdown",v_Markdown.Value.Trim());
+                writer.WriteString("defaultValueMarkdown",v_Markdown.Value);
               }
               if (v_Markdown.HasExtensions() || (!string.IsNullOrEmpty(v_Markdown.ElementId)))
               {
@@ -1703,7 +1703,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Oid.Value))
               {
-                writer.WriteString("defaultValueOid",v_Oid.Value.Trim());
+                writer.WriteString("defaultValueOid",v_Oid.Value);
               }
               if (v_Oid.HasExtensions() || (!string.IsNullOrEmpty(v_Oid.ElementId)))
               {
@@ -1729,7 +1729,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("defaultValueString",v_FhirString.Value.Trim());
+                writer.WriteString("defaultValueString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -1759,7 +1759,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirUri.Value))
               {
-                writer.WriteString("defaultValueUri",v_FhirUri.Value.Trim());
+                writer.WriteString("defaultValueUri",v_FhirUri.Value);
               }
               if (v_FhirUri.HasExtensions() || (!string.IsNullOrEmpty(v_FhirUri.ElementId)))
               {
@@ -1772,7 +1772,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirUrl.Value))
               {
-                writer.WriteString("defaultValueUrl",v_FhirUrl.Value.Trim());
+                writer.WriteString("defaultValueUrl",v_FhirUrl.Value);
               }
               if (v_FhirUrl.HasExtensions() || (!string.IsNullOrEmpty(v_FhirUrl.ElementId)))
               {
@@ -1785,7 +1785,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Uuid.Value))
               {
-                writer.WriteString("defaultValueUuid",v_Uuid.Value.Trim());
+                writer.WriteString("defaultValueUuid",v_Uuid.Value);
               }
               if (v_Uuid.HasExtensions() || (!string.IsNullOrEmpty(v_Uuid.ElementId)))
               {
@@ -1923,7 +1923,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ElementElement.Value))
         {
-          writer.WriteString("element",current.ElementElement.Value.Trim());
+          writer.WriteString("element",current.ElementElement.Value);
         }
         if (current.ElementElement.HasExtensions() || (!string.IsNullOrEmpty(current.ElementElement.ElementId)))
         {
@@ -1947,7 +1947,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.VariableElement.Value))
         {
-          writer.WriteString("variable",current.VariableElement.Value.Trim());
+          writer.WriteString("variable",current.VariableElement.Value);
         }
         if (current.VariableElement.HasExtensions() || (!string.IsNullOrEmpty(current.VariableElement.ElementId)))
         {
@@ -1959,7 +1959,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ConditionElement.Value))
         {
-          writer.WriteString("condition",current.ConditionElement.Value.Trim());
+          writer.WriteString("condition",current.ConditionElement.Value);
         }
         if (current.ConditionElement.HasExtensions() || (!string.IsNullOrEmpty(current.ConditionElement.ElementId)))
         {
@@ -1971,7 +1971,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CheckElement.Value))
         {
-          writer.WriteString("check",current.CheckElement.Value.Trim());
+          writer.WriteString("check",current.CheckElement.Value);
         }
         if (current.CheckElement.HasExtensions() || (!string.IsNullOrEmpty(current.CheckElement.ElementId)))
         {
@@ -1983,7 +1983,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.LogMessageElement.Value))
         {
-          writer.WriteString("logMessage",current.LogMessageElement.Value.Trim());
+          writer.WriteString("logMessage",current.LogMessageElement.Value);
         }
         if (current.LogMessageElement.HasExtensions() || (!string.IsNullOrEmpty(current.LogMessageElement.ElementId)))
         {
@@ -2683,7 +2683,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ContextElement.Value))
         {
-          writer.WriteString("context",current.ContextElement.Value.Trim());
+          writer.WriteString("context",current.ContextElement.Value);
         }
         if (current.ContextElement.HasExtensions() || (!string.IsNullOrEmpty(current.ContextElement.ElementId)))
         {
@@ -2707,7 +2707,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ElementElement.Value))
         {
-          writer.WriteString("element",current.ElementElement.Value.Trim());
+          writer.WriteString("element",current.ElementElement.Value);
         }
         if (current.ElementElement.HasExtensions() || (!string.IsNullOrEmpty(current.ElementElement.ElementId)))
         {
@@ -2719,7 +2719,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.VariableElement.Value))
         {
-          writer.WriteString("variable",current.VariableElement.Value.Trim());
+          writer.WriteString("variable",current.VariableElement.Value);
         }
         if (current.VariableElement.HasExtensions() || (!string.IsNullOrEmpty(current.VariableElement.ElementId)))
         {
@@ -2781,7 +2781,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ListRuleIdElement.Value))
         {
-          writer.WriteString("listRuleId",current.ListRuleIdElement.Value.Trim());
+          writer.WriteString("listRuleId",current.ListRuleIdElement.Value);
         }
         if (current.ListRuleIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.ListRuleIdElement.ElementId)))
         {
@@ -3062,10 +3062,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.Value)
         {
           case Id v_Id:
-            writer.WriteString("valueId",v_Id.Value.Trim());
+            writer.WriteString("valueId",v_Id.Value);
             break;
           case FhirString v_FhirString:
-            writer.WriteString("valueString",v_FhirString.Value.Trim());
+            writer.WriteString("valueString",v_FhirString.Value);
             break;
           case FhirBoolean v_FhirBoolean:
             writer.WriteBoolean("valueBoolean",(bool)v_FhirBoolean.Value);
@@ -3215,7 +3215,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: StructureMap#Dependent, Export: DependentComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("name",current.NameElement.Value.Trim());
+      writer.WriteString("name",current.NameElement.Value);
 
       if ((current.VariableElement != null) && (current.VariableElement.Count != 0))
       {
@@ -3239,7 +3239,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 

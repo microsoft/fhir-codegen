@@ -87,7 +87,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
         {
-          writer.WriteString("description",current.DescriptionElement.Value.Trim());
+          writer.WriteString("description",current.DescriptionElement.Value);
         }
         if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
         {
@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("effectiveDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("effectiveDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -131,7 +131,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {
@@ -195,7 +195,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -227,7 +227,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SummaryElement.Value))
         {
-          writer.WriteString("summary",current.SummaryElement.Value.Trim());
+          writer.WriteString("summary",current.SummaryElement.Value);
         }
         if (current.SummaryElement.HasExtensions() || (!string.IsNullOrEmpty(current.SummaryElement.ElementId)))
         {
@@ -856,7 +856,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.BasisElement.Value))
         {
-          writer.WriteString("basis",current.BasisElement.Value.Trim());
+          writer.WriteString("basis",current.BasisElement.Value);
         }
         if (current.BasisElement.HasExtensions() || (!string.IsNullOrEmpty(current.BasisElement.ElementId)))
         {

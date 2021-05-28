@@ -121,7 +121,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -784,7 +784,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: MedicinalProduct#Name, Export: NameComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("productName",current.ProductNameElement.Value.Trim());
+      writer.WriteString("productName",current.ProductNameElement.Value);
 
       if ((current.NamePart != null) && (current.NamePart.Count != 0))
       {
@@ -931,7 +931,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: MedicinalProduct#NamePart, Export: NamePartComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("part",current.PartElement.Value.Trim());
+      writer.WriteString("part",current.PartElement.Value);
 
       writer.WritePropertyName("type");
       current.Type.SerializeJson(writer, options);
@@ -1105,7 +1105,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.EffectiveDateElement.Value))
         {
-          writer.WriteString("effectiveDate",current.EffectiveDateElement.Value.Trim());
+          writer.WriteString("effectiveDate",current.EffectiveDateElement.Value);
         }
         if (current.EffectiveDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.EffectiveDateElement.ElementId)))
         {
@@ -1299,7 +1299,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {

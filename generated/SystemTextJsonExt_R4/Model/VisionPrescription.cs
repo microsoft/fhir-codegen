@@ -71,7 +71,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("status",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.StatusElement.Value));
 
-      writer.WriteString("created",current.CreatedElement.Value.Trim());
+      writer.WriteString("created",current.CreatedElement.Value);
 
       writer.WritePropertyName("patient");
       current.Patient.SerializeJson(writer, options);
@@ -82,7 +82,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Encounter.SerializeJson(writer, options);
       }
 
-      writer.WriteString("dateWritten",current.DateWrittenElement.Value.Trim());
+      writer.WriteString("dateWritten",current.DateWrittenElement.Value);
 
       writer.WritePropertyName("prescriber");
       current.Prescriber.SerializeJson(writer, options);
@@ -380,7 +380,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ColorElement.Value))
         {
-          writer.WriteString("color",current.ColorElement.Value.Trim());
+          writer.WriteString("color",current.ColorElement.Value);
         }
         if (current.ColorElement.HasExtensions() || (!string.IsNullOrEmpty(current.ColorElement.ElementId)))
         {
@@ -392,7 +392,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.BrandElement.Value))
         {
-          writer.WriteString("brand",current.BrandElement.Value.Trim());
+          writer.WriteString("brand",current.BrandElement.Value);
         }
         if (current.BrandElement.HasExtensions() || (!string.IsNullOrEmpty(current.BrandElement.ElementId)))
         {

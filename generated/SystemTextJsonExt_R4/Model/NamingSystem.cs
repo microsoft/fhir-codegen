@@ -58,19 +58,19 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Complex: NamingSystem, Export: NamingSystem, Base: DomainResource (DomainResource)
       ((Hl7.Fhir.Model.DomainResource)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("name",current.NameElement.Value.Trim());
+      writer.WriteString("name",current.NameElement.Value);
 
       writer.WriteString("status",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.StatusElement.Value));
 
       writer.WriteString("kind",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.KindElement.Value));
 
-      writer.WriteString("date",current.DateElement.Value.Trim());
+      writer.WriteString("date",current.DateElement.Value);
 
       if (current.PublisherElement != null)
       {
         if (!string.IsNullOrEmpty(current.PublisherElement.Value))
         {
-          writer.WriteString("publisher",current.PublisherElement.Value.Trim());
+          writer.WriteString("publisher",current.PublisherElement.Value);
         }
         if (current.PublisherElement.HasExtensions() || (!string.IsNullOrEmpty(current.PublisherElement.ElementId)))
         {
@@ -93,7 +93,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ResponsibleElement.Value))
         {
-          writer.WriteString("responsible",current.ResponsibleElement.Value.Trim());
+          writer.WriteString("responsible",current.ResponsibleElement.Value);
         }
         if (current.ResponsibleElement.HasExtensions() || (!string.IsNullOrEmpty(current.ResponsibleElement.ElementId)))
         {
@@ -111,7 +111,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Description.Value))
         {
-          writer.WriteString("description",current.Description.Value.Trim());
+          writer.WriteString("description",current.Description.Value);
         }
         if (current.Description.HasExtensions() || (!string.IsNullOrEmpty(current.Description.ElementId)))
         {
@@ -145,7 +145,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.UsageElement.Value))
         {
-          writer.WriteString("usage",current.UsageElement.Value.Trim());
+          writer.WriteString("usage",current.UsageElement.Value);
         }
         if (current.UsageElement.HasExtensions() || (!string.IsNullOrEmpty(current.UsageElement.ElementId)))
         {
@@ -467,7 +467,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
 
-      writer.WriteString("value",current.ValueElement.Value.Trim());
+      writer.WriteString("value",current.ValueElement.Value);
 
       if (current.PreferredElement != null)
       {
@@ -485,7 +485,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CommentElement.Value))
         {
-          writer.WriteString("comment",current.CommentElement.Value.Trim());
+          writer.WriteString("comment",current.CommentElement.Value);
         }
         if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
         {

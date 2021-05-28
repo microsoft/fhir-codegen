@@ -387,7 +387,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MeasurementPointElement.Value))
         {
-          writer.WriteString("measurementPoint",current.MeasurementPointElement.Value.Trim());
+          writer.WriteString("measurementPoint",current.MeasurementPointElement.Value);
         }
         if (current.MeasurementPointElement.HasExtensions() || (!string.IsNullOrEmpty(current.MeasurementPointElement.ElementId)))
         {
@@ -579,7 +579,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MeasurementPointElement.Value))
         {
-          writer.WriteString("measurementPoint",current.MeasurementPointElement.Value.Trim());
+          writer.WriteString("measurementPoint",current.MeasurementPointElement.Value);
         }
         if (current.MeasurementPointElement.HasExtensions() || (!string.IsNullOrEmpty(current.MeasurementPointElement.ElementId)))
         {

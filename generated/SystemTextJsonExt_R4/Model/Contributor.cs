@@ -59,7 +59,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
 
-      writer.WriteString("name",current.NameElement.Value.Trim());
+      writer.WriteString("name",current.NameElement.Value);
 
       if ((current.Contact != null) && (current.Contact.Count != 0))
       {

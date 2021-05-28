@@ -80,10 +80,10 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.Module)
         {
           case FhirUri v_FhirUri:
-            writer.WriteString("moduleUri",v_FhirUri.Value.Trim());
+            writer.WriteString("moduleUri",v_FhirUri.Value);
             break;
           case Canonical v_Canonical:
-            writer.WriteString("moduleCanonical",v_Canonical.Value.Trim());
+            writer.WriteString("moduleCanonical",v_Canonical.Value);
             break;
           case CodeableConcept v_CodeableConcept:
             writer.WritePropertyName("moduleCodeableConcept");
@@ -109,7 +109,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.OccurrenceDateTimeElement.Value))
         {
-          writer.WriteString("occurrenceDateTime",current.OccurrenceDateTimeElement.Value.Trim());
+          writer.WriteString("occurrenceDateTime",current.OccurrenceDateTimeElement.Value);
         }
         if (current.OccurrenceDateTimeElement.HasExtensions() || (!string.IsNullOrEmpty(current.OccurrenceDateTimeElement.ElementId)))
         {

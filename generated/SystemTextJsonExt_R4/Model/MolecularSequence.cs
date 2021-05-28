@@ -134,7 +134,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ObservedSeqElement.Value))
         {
-          writer.WriteString("observedSeq",current.ObservedSeqElement.Value.Trim());
+          writer.WriteString("observedSeq",current.ObservedSeqElement.Value);
         }
         if (current.ObservedSeqElement.HasExtensions() || (!string.IsNullOrEmpty(current.ObservedSeqElement.ElementId)))
         {
@@ -520,7 +520,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.GenomeBuildElement.Value))
         {
-          writer.WriteString("genomeBuild",current.GenomeBuildElement.Value.Trim());
+          writer.WriteString("genomeBuild",current.GenomeBuildElement.Value);
         }
         if (current.GenomeBuildElement.HasExtensions() || (!string.IsNullOrEmpty(current.GenomeBuildElement.ElementId)))
         {
@@ -556,7 +556,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ReferenceSeqStringElement.Value))
         {
-          writer.WriteString("referenceSeqString",current.ReferenceSeqStringElement.Value.Trim());
+          writer.WriteString("referenceSeqString",current.ReferenceSeqStringElement.Value);
         }
         if (current.ReferenceSeqStringElement.HasExtensions() || (!string.IsNullOrEmpty(current.ReferenceSeqStringElement.ElementId)))
         {
@@ -797,7 +797,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ObservedAlleleElement.Value))
         {
-          writer.WriteString("observedAllele",current.ObservedAlleleElement.Value.Trim());
+          writer.WriteString("observedAllele",current.ObservedAlleleElement.Value);
         }
         if (current.ObservedAlleleElement.HasExtensions() || (!string.IsNullOrEmpty(current.ObservedAlleleElement.ElementId)))
         {
@@ -809,7 +809,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ReferenceAlleleElement.Value))
         {
-          writer.WriteString("referenceAllele",current.ReferenceAlleleElement.Value.Trim());
+          writer.WriteString("referenceAllele",current.ReferenceAlleleElement.Value);
         }
         if (current.ReferenceAlleleElement.HasExtensions() || (!string.IsNullOrEmpty(current.ReferenceAlleleElement.ElementId)))
         {
@@ -821,7 +821,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CigarElement.Value))
         {
-          writer.WriteString("cigar",current.CigarElement.Value.Trim());
+          writer.WriteString("cigar",current.CigarElement.Value);
         }
         if (current.CigarElement.HasExtensions() || (!string.IsNullOrEmpty(current.CigarElement.ElementId)))
         {
@@ -2238,7 +2238,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.UrlElement.Value))
         {
-          writer.WriteString("url",current.UrlElement.Value.Trim());
+          writer.WriteString("url",current.UrlElement.Value);
         }
         if (current.UrlElement.HasExtensions() || (!string.IsNullOrEmpty(current.UrlElement.ElementId)))
         {
@@ -2250,7 +2250,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -2262,7 +2262,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DatasetIdElement.Value))
         {
-          writer.WriteString("datasetId",current.DatasetIdElement.Value.Trim());
+          writer.WriteString("datasetId",current.DatasetIdElement.Value);
         }
         if (current.DatasetIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.DatasetIdElement.ElementId)))
         {
@@ -2274,7 +2274,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.VariantsetIdElement.Value))
         {
-          writer.WriteString("variantsetId",current.VariantsetIdElement.Value.Trim());
+          writer.WriteString("variantsetId",current.VariantsetIdElement.Value);
         }
         if (current.VariantsetIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.VariantsetIdElement.ElementId)))
         {
@@ -2286,7 +2286,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ReadsetIdElement.Value))
         {
-          writer.WriteString("readsetId",current.ReadsetIdElement.Value.Trim());
+          writer.WriteString("readsetId",current.ReadsetIdElement.Value);
         }
         if (current.ReadsetIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.ReadsetIdElement.ElementId)))
         {

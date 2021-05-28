@@ -95,7 +95,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.StartedElement.Value))
         {
-          writer.WriteString("started",current.StartedElement.Value.Trim());
+          writer.WriteString("started",current.StartedElement.Value);
         }
         if (current.StartedElement.HasExtensions() || (!string.IsNullOrEmpty(current.StartedElement.ElementId)))
         {
@@ -226,7 +226,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
         {
-          writer.WriteString("description",current.DescriptionElement.Value.Trim());
+          writer.WriteString("description",current.DescriptionElement.Value);
         }
         if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
         {
@@ -677,7 +677,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: ImagingStudy#Series, Export: SeriesComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("uid",current.UidElement.Value.Trim());
+      writer.WriteString("uid",current.UidElement.Value);
 
       if (current.NumberElement != null)
       {
@@ -698,7 +698,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
         {
-          writer.WriteString("description",current.DescriptionElement.Value.Trim());
+          writer.WriteString("description",current.DescriptionElement.Value);
         }
         if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
         {
@@ -756,7 +756,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.StartedElement.Value))
         {
-          writer.WriteString("started",current.StartedElement.Value.Trim());
+          writer.WriteString("started",current.StartedElement.Value);
         }
         if (current.StartedElement.HasExtensions() || (!string.IsNullOrEmpty(current.StartedElement.ElementId)))
         {
@@ -1117,7 +1117,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: ImagingStudy#Instance, Export: InstanceComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("uid",current.UidElement.Value.Trim());
+      writer.WriteString("uid",current.UidElement.Value);
 
       writer.WritePropertyName("sopClass");
       current.SopClass.SerializeJson(writer, options);
@@ -1138,7 +1138,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TitleElement.Value))
         {
-          writer.WriteString("title",current.TitleElement.Value.Trim());
+          writer.WriteString("title",current.TitleElement.Value);
         }
         if (current.TitleElement.HasExtensions() || (!string.IsNullOrEmpty(current.TitleElement.ElementId)))
         {

@@ -77,7 +77,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Period.SerializeJson(writer, options);
       }
 
-      writer.WriteString("created",current.CreatedElement.Value.Trim());
+      writer.WriteString("created",current.CreatedElement.Value);
 
       if (current.PaymentIssuer != null)
       {
@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DispositionElement.Value))
         {
-          writer.WriteString("disposition",current.DispositionElement.Value.Trim());
+          writer.WriteString("disposition",current.DispositionElement.Value);
         }
         if (current.DispositionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DispositionElement.ElementId)))
         {
@@ -121,7 +121,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         }
       }
 
-      writer.WriteString("paymentDate",current.PaymentDateElement.Value.Trim());
+      writer.WriteString("paymentDate",current.PaymentDateElement.Value);
 
       writer.WritePropertyName("paymentAmount");
       current.PaymentAmount.SerializeJson(writer, options);
@@ -450,7 +450,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {
@@ -606,7 +606,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TextElement.Value))
         {
-          writer.WriteString("text",current.TextElement.Value.Trim());
+          writer.WriteString("text",current.TextElement.Value);
         }
         if (current.TextElement.HasExtensions() || (!string.IsNullOrEmpty(current.TextElement.ElementId)))
         {

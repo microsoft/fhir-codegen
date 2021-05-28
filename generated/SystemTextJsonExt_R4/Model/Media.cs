@@ -132,7 +132,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("createdDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("createdDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -185,7 +185,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DeviceNameElement.Value))
         {
-          writer.WriteString("deviceName",current.DeviceNameElement.Value.Trim());
+          writer.WriteString("deviceName",current.DeviceNameElement.Value);
         }
         if (current.DeviceNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.DeviceNameElement.ElementId)))
         {

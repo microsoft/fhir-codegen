@@ -73,7 +73,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
 
-      writer.WriteString("measure",current.MeasureElement.Value.Trim());
+      writer.WriteString("measure",current.MeasureElement.Value);
 
       if (current.Subject != null)
       {
@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {

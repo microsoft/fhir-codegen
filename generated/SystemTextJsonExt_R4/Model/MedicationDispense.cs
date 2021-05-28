@@ -189,7 +189,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.WhenPreparedElement.Value))
         {
-          writer.WriteString("whenPrepared",current.WhenPreparedElement.Value.Trim());
+          writer.WriteString("whenPrepared",current.WhenPreparedElement.Value);
         }
         if (current.WhenPreparedElement.HasExtensions() || (!string.IsNullOrEmpty(current.WhenPreparedElement.ElementId)))
         {
@@ -201,7 +201,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.WhenHandedOverElement.Value))
         {
-          writer.WriteString("whenHandedOver",current.WhenHandedOverElement.Value.Trim());
+          writer.WriteString("whenHandedOver",current.WhenHandedOverElement.Value);
         }
         if (current.WhenHandedOverElement.HasExtensions() || (!string.IsNullOrEmpty(current.WhenHandedOverElement.ElementId)))
         {

@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -141,7 +141,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -289,7 +289,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("occurrenceDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("occurrenceDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -334,7 +334,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AuthoredOnElement.Value))
         {
-          writer.WriteString("authoredOn",current.AuthoredOnElement.Value.Trim());
+          writer.WriteString("authoredOn",current.AuthoredOnElement.Value);
         }
         if (current.AuthoredOnElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthoredOnElement.ElementId)))
         {
@@ -468,7 +468,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PatientInstructionElement.Value))
         {
-          writer.WriteString("patientInstruction",current.PatientInstructionElement.Value.Trim());
+          writer.WriteString("patientInstruction",current.PatientInstructionElement.Value);
         }
         if (current.PatientInstructionElement.HasExtensions() || (!string.IsNullOrEmpty(current.PatientInstructionElement.ElementId)))
         {

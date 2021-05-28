@@ -92,7 +92,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Encounter.SerializeJson(writer, options);
       }
 
-      writer.WriteString("date",current.DateElement.Value.Trim());
+      writer.WriteString("date",current.DateElement.Value);
 
       if ((current.Author != null) && (current.Author.Count != 0))
       {
@@ -105,7 +105,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         writer.WriteEndArray();
       }
 
-      writer.WriteString("title",current.TitleElement.Value.Trim());
+      writer.WriteString("title",current.TitleElement.Value);
 
       if (current.ConfidentialityElement != null)
       {
@@ -482,7 +482,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TimeElement.Value))
         {
-          writer.WriteString("time",current.TimeElement.Value.Trim());
+          writer.WriteString("time",current.TimeElement.Value);
         }
         if (current.TimeElement.HasExtensions() || (!string.IsNullOrEmpty(current.TimeElement.ElementId)))
         {
@@ -825,7 +825,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TitleElement.Value))
         {
-          writer.WriteString("title",current.TitleElement.Value.Trim());
+          writer.WriteString("title",current.TitleElement.Value);
         }
         if (current.TitleElement.HasExtensions() || (!string.IsNullOrEmpty(current.TitleElement.ElementId)))
         {

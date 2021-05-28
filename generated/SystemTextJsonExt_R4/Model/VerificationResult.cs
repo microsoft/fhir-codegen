@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -131,7 +131,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.StatusDateElement.Value))
         {
-          writer.WriteString("statusDate",current.StatusDateElement.Value.Trim());
+          writer.WriteString("statusDate",current.StatusDateElement.Value);
         }
         if (current.StatusDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.StatusDateElement.ElementId)))
         {
@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.LastPerformedElement.Value))
         {
-          writer.WriteString("lastPerformed",current.LastPerformedElement.Value.Trim());
+          writer.WriteString("lastPerformed",current.LastPerformedElement.Value);
         }
         if (current.LastPerformedElement.HasExtensions() || (!string.IsNullOrEmpty(current.LastPerformedElement.ElementId)))
         {
@@ -178,7 +178,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NextScheduledElement.Value))
         {
-          writer.WriteString("nextScheduled",current.NextScheduledElement.Value.Trim());
+          writer.WriteString("nextScheduled",current.NextScheduledElement.Value);
         }
         if (current.NextScheduledElement.HasExtensions() || (!string.IsNullOrEmpty(current.NextScheduledElement.ElementId)))
         {
@@ -575,7 +575,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ValidationDateElement.Value))
         {
-          writer.WriteString("validationDate",current.ValidationDateElement.Value.Trim());
+          writer.WriteString("validationDate",current.ValidationDateElement.Value);
         }
         if (current.ValidationDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.ValidationDateElement.ElementId)))
         {
@@ -787,7 +787,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {
@@ -799,7 +799,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SourceIdentityCertificateElement.Value))
         {
-          writer.WriteString("sourceIdentityCertificate",current.SourceIdentityCertificateElement.Value.Trim());
+          writer.WriteString("sourceIdentityCertificate",current.SourceIdentityCertificateElement.Value);
         }
         if (current.SourceIdentityCertificateElement.HasExtensions() || (!string.IsNullOrEmpty(current.SourceIdentityCertificateElement.ElementId)))
         {
@@ -811,7 +811,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ProxyIdentityCertificateElement.Value))
         {
-          writer.WriteString("proxyIdentityCertificate",current.ProxyIdentityCertificateElement.Value.Trim());
+          writer.WriteString("proxyIdentityCertificate",current.ProxyIdentityCertificateElement.Value);
         }
         if (current.ProxyIdentityCertificateElement.HasExtensions() || (!string.IsNullOrEmpty(current.ProxyIdentityCertificateElement.ElementId)))
         {
@@ -966,7 +966,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.IdentityCertificateElement.Value))
         {
-          writer.WriteString("identityCertificate",current.IdentityCertificateElement.Value.Trim());
+          writer.WriteString("identityCertificate",current.IdentityCertificateElement.Value);
         }
         if (current.IdentityCertificateElement.HasExtensions() || (!string.IsNullOrEmpty(current.IdentityCertificateElement.ElementId)))
         {

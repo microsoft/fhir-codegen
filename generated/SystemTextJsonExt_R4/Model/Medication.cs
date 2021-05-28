@@ -390,7 +390,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.LotNumberElement.Value))
         {
-          writer.WriteString("lotNumber",current.LotNumberElement.Value.Trim());
+          writer.WriteString("lotNumber",current.LotNumberElement.Value);
         }
         if (current.LotNumberElement.HasExtensions() || (!string.IsNullOrEmpty(current.LotNumberElement.ElementId)))
         {
@@ -402,7 +402,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ExpirationDateElement.Value))
         {
-          writer.WriteString("expirationDate",current.ExpirationDateElement.Value.Trim());
+          writer.WriteString("expirationDate",current.ExpirationDateElement.Value);
         }
         if (current.ExpirationDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.ExpirationDateElement.ElementId)))
         {

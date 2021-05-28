@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TextElement.Value))
         {
-          writer.WriteString("text",current.TextElement.Value.Trim());
+          writer.WriteString("text",current.TextElement.Value);
         }
         if (current.TextElement.HasExtensions() || (!string.IsNullOrEmpty(current.TextElement.ElementId)))
         {
@@ -115,7 +115,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -147,7 +147,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CityElement.Value))
         {
-          writer.WriteString("city",current.CityElement.Value.Trim());
+          writer.WriteString("city",current.CityElement.Value);
         }
         if (current.CityElement.HasExtensions() || (!string.IsNullOrEmpty(current.CityElement.ElementId)))
         {
@@ -159,7 +159,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DistrictElement.Value))
         {
-          writer.WriteString("district",current.DistrictElement.Value.Trim());
+          writer.WriteString("district",current.DistrictElement.Value);
         }
         if (current.DistrictElement.HasExtensions() || (!string.IsNullOrEmpty(current.DistrictElement.ElementId)))
         {
@@ -171,7 +171,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.StateElement.Value))
         {
-          writer.WriteString("state",current.StateElement.Value.Trim());
+          writer.WriteString("state",current.StateElement.Value);
         }
         if (current.StateElement.HasExtensions() || (!string.IsNullOrEmpty(current.StateElement.ElementId)))
         {
@@ -183,7 +183,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PostalCodeElement.Value))
         {
-          writer.WriteString("postalCode",current.PostalCodeElement.Value.Trim());
+          writer.WriteString("postalCode",current.PostalCodeElement.Value);
         }
         if (current.PostalCodeElement.HasExtensions() || (!string.IsNullOrEmpty(current.PostalCodeElement.ElementId)))
         {
@@ -195,7 +195,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CountryElement.Value))
         {
-          writer.WriteString("country",current.CountryElement.Value.Trim());
+          writer.WriteString("country",current.CountryElement.Value);
         }
         if (current.CountryElement.HasExtensions() || (!string.IsNullOrEmpty(current.CountryElement.ElementId)))
         {

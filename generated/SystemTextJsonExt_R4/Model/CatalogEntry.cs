@@ -124,7 +124,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ValidToElement.Value))
         {
-          writer.WriteString("validTo",current.ValidToElement.Value.Trim());
+          writer.WriteString("validTo",current.ValidToElement.Value);
         }
         if (current.ValidToElement.HasExtensions() || (!string.IsNullOrEmpty(current.ValidToElement.ElementId)))
         {
@@ -136,7 +136,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.LastUpdatedElement.Value))
         {
-          writer.WriteString("lastUpdated",current.LastUpdatedElement.Value.Trim());
+          writer.WriteString("lastUpdated",current.LastUpdatedElement.Value);
         }
         if (current.LastUpdatedElement.HasExtensions() || (!string.IsNullOrEmpty(current.LastUpdatedElement.ElementId)))
         {

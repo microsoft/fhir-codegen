@@ -81,7 +81,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -145,7 +145,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -527,7 +527,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PathElement.Value))
         {
-          writer.WriteString("path",current.PathElement.Value.Trim());
+          writer.WriteString("path",current.PathElement.Value);
         }
         if (current.PathElement.HasExtensions() || (!string.IsNullOrEmpty(current.PathElement.ElementId)))
         {
@@ -539,7 +539,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SearchParamElement.Value))
         {
-          writer.WriteString("searchParam",current.SearchParamElement.Value.Trim());
+          writer.WriteString("searchParam",current.SearchParamElement.Value);
         }
         if (current.SearchParamElement.HasExtensions() || (!string.IsNullOrEmpty(current.SearchParamElement.ElementId)))
         {
@@ -551,7 +551,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ValueSetElement.Value))
         {
-          writer.WriteString("valueSet",current.ValueSetElement.Value.Trim());
+          writer.WriteString("valueSet",current.ValueSetElement.Value);
         }
         if (current.ValueSetElement.HasExtensions() || (!string.IsNullOrEmpty(current.ValueSetElement.ElementId)))
         {
@@ -704,7 +704,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PathElement.Value))
         {
-          writer.WriteString("path",current.PathElement.Value.Trim());
+          writer.WriteString("path",current.PathElement.Value);
         }
         if (current.PathElement.HasExtensions() || (!string.IsNullOrEmpty(current.PathElement.ElementId)))
         {
@@ -716,7 +716,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SearchParamElement.Value))
         {
-          writer.WriteString("searchParam",current.SearchParamElement.Value.Trim());
+          writer.WriteString("searchParam",current.SearchParamElement.Value);
         }
         if (current.SearchParamElement.HasExtensions() || (!string.IsNullOrEmpty(current.SearchParamElement.ElementId)))
         {
@@ -733,7 +733,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("valueDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("valueDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -864,7 +864,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: DataRequirement#Sort, Export: SortComponent, Base: Element (Element)
       ((Hl7.Fhir.Model.Element)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("path",current.PathElement.Value.Trim());
+      writer.WriteString("path",current.PathElement.Value);
 
       writer.WriteString("direction",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.DirectionElement.Value));
 

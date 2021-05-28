@@ -651,7 +651,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SupportingInformationElement.Value))
         {
-          writer.WriteString("supportingInformation",current.SupportingInformationElement.Value.Trim());
+          writer.WriteString("supportingInformation",current.SupportingInformationElement.Value);
         }
         if (current.SupportingInformationElement.HasExtensions() || (!string.IsNullOrEmpty(current.SupportingInformationElement.ElementId)))
         {

@@ -104,7 +104,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("identifiedDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("identifiedDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -150,7 +150,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DetailElement.Value))
         {
-          writer.WriteString("detail",current.DetailElement.Value.Trim());
+          writer.WriteString("detail",current.DetailElement.Value);
         }
         if (current.DetailElement.HasExtensions() || (!string.IsNullOrEmpty(current.DetailElement.ElementId)))
         {
@@ -162,7 +162,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ReferenceElement.Value))
         {
-          writer.WriteString("reference",current.ReferenceElement.Value.Trim());
+          writer.WriteString("reference",current.ReferenceElement.Value);
         }
         if (current.ReferenceElement.HasExtensions() || (!string.IsNullOrEmpty(current.ReferenceElement.ElementId)))
         {
@@ -581,7 +581,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {

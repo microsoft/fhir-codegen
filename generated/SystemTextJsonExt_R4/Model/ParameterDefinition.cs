@@ -87,7 +87,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MaxElement.Value))
         {
-          writer.WriteString("max",current.MaxElement.Value.Trim());
+          writer.WriteString("max",current.MaxElement.Value);
         }
         if (current.MaxElement.HasExtensions() || (!string.IsNullOrEmpty(current.MaxElement.ElementId)))
         {
@@ -99,7 +99,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DocumentationElement.Value))
         {
-          writer.WriteString("documentation",current.DocumentationElement.Value.Trim());
+          writer.WriteString("documentation",current.DocumentationElement.Value);
         }
         if (current.DocumentationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DocumentationElement.ElementId)))
         {
@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ProfileElement.Value))
         {
-          writer.WriteString("profile",current.ProfileElement.Value.Trim());
+          writer.WriteString("profile",current.ProfileElement.Value);
         }
         if (current.ProfileElement.HasExtensions() || (!string.IsNullOrEmpty(current.ProfileElement.ElementId)))
         {

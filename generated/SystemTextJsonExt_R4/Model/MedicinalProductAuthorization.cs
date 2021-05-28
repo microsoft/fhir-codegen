@@ -107,7 +107,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.StatusDateElement.Value))
         {
-          writer.WriteString("statusDate",current.StatusDateElement.Value.Trim());
+          writer.WriteString("statusDate",current.StatusDateElement.Value);
         }
         if (current.StatusDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.StatusDateElement.ElementId)))
         {
@@ -119,7 +119,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RestoreDateElement.Value))
         {
-          writer.WriteString("restoreDate",current.RestoreDateElement.Value.Trim());
+          writer.WriteString("restoreDate",current.RestoreDateElement.Value);
         }
         if (current.RestoreDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.RestoreDateElement.ElementId)))
         {
@@ -143,7 +143,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateOfFirstAuthorizationElement.Value))
         {
-          writer.WriteString("dateOfFirstAuthorization",current.DateOfFirstAuthorizationElement.Value.Trim());
+          writer.WriteString("dateOfFirstAuthorization",current.DateOfFirstAuthorizationElement.Value);
         }
         if (current.DateOfFirstAuthorizationElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateOfFirstAuthorizationElement.ElementId)))
         {
@@ -155,7 +155,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.InternationalBirthDateElement.Value))
         {
-          writer.WriteString("internationalBirthDate",current.InternationalBirthDateElement.Value.Trim());
+          writer.WriteString("internationalBirthDate",current.InternationalBirthDateElement.Value);
         }
         if (current.InternationalBirthDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.InternationalBirthDateElement.ElementId)))
         {
@@ -649,7 +649,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("dateDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("dateDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {

@@ -76,7 +76,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RestoreDateElement.Value))
         {
-          writer.WriteString("restoreDate",current.RestoreDateElement.Value.Trim());
+          writer.WriteString("restoreDate",current.RestoreDateElement.Value);
         }
         if (current.RestoreDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.RestoreDateElement.ElementId)))
         {

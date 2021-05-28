@@ -73,7 +73,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.InstantiatesCanonicalElement.Value))
         {
-          writer.WriteString("instantiatesCanonical",current.InstantiatesCanonicalElement.Value.Trim());
+          writer.WriteString("instantiatesCanonical",current.InstantiatesCanonicalElement.Value);
         }
         if (current.InstantiatesCanonicalElement.HasExtensions() || (!string.IsNullOrEmpty(current.InstantiatesCanonicalElement.ElementId)))
         {
@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.InstantiatesUriElement.Value))
         {
-          writer.WriteString("instantiatesUri",current.InstantiatesUriElement.Value.Trim());
+          writer.WriteString("instantiatesUri",current.InstantiatesUriElement.Value);
         }
         if (current.InstantiatesUriElement.HasExtensions() || (!string.IsNullOrEmpty(current.InstantiatesUriElement.ElementId)))
         {
@@ -159,7 +159,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
         {
-          writer.WriteString("description",current.DescriptionElement.Value.Trim());
+          writer.WriteString("description",current.DescriptionElement.Value);
         }
         if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
         {
@@ -195,7 +195,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AuthoredOnElement.Value))
         {
-          writer.WriteString("authoredOn",current.AuthoredOnElement.Value.Trim());
+          writer.WriteString("authoredOn",current.AuthoredOnElement.Value);
         }
         if (current.AuthoredOnElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthoredOnElement.ElementId)))
         {
@@ -207,7 +207,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.LastModifiedElement.Value))
         {
-          writer.WriteString("lastModified",current.LastModifiedElement.Value.Trim());
+          writer.WriteString("lastModified",current.LastModifiedElement.Value);
         }
         if (current.LastModifiedElement.HasExtensions() || (!string.IsNullOrEmpty(current.LastModifiedElement.ElementId)))
         {
@@ -962,22 +962,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
             writer.WriteBoolean("valueBoolean",(bool)v_FhirBoolean.Value);
             break;
           case Canonical v_Canonical:
-            writer.WriteString("valueCanonical",v_Canonical.Value.Trim());
+            writer.WriteString("valueCanonical",v_Canonical.Value);
             break;
           case Code v_Code:
             writer.WriteString("valueCode",v_Code.Value.Trim());
             break;
           case Date v_Date:
-            writer.WriteString("valueDate",v_Date.Value.Trim());
+            writer.WriteString("valueDate",v_Date.Value);
             break;
           case FhirDateTime v_FhirDateTime:
-            writer.WriteString("valueDateTime",v_FhirDateTime.Value.Trim());
+            writer.WriteString("valueDateTime",v_FhirDateTime.Value);
             break;
           case FhirDecimal v_FhirDecimal:
             writer.WriteNumber("valueDecimal",(decimal)v_FhirDecimal.Value);
             break;
           case Id v_Id:
-            writer.WriteString("valueId",v_Id.Value.Trim());
+            writer.WriteString("valueId",v_Id.Value);
             break;
           case Instant v_Instant:
             writer.WriteString("valueInstant",((DateTimeOffset)v_Instant.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
@@ -986,16 +986,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             writer.WriteNumber("valueInteger",(int)v_Integer.Value);
             break;
           case Markdown v_Markdown:
-            writer.WriteString("valueMarkdown",v_Markdown.Value.Trim());
+            writer.WriteString("valueMarkdown",v_Markdown.Value);
             break;
           case Oid v_Oid:
-            writer.WriteString("valueOid",v_Oid.Value.Trim());
+            writer.WriteString("valueOid",v_Oid.Value);
             break;
           case PositiveInt v_PositiveInt:
             writer.WriteNumber("valuePositiveInt",(int)v_PositiveInt.Value);
             break;
           case FhirString v_FhirString:
-            writer.WriteString("valueString",v_FhirString.Value.Trim());
+            writer.WriteString("valueString",v_FhirString.Value);
             break;
           case Time v_Time:
             writer.WritePropertyName("valueTime");
@@ -1005,13 +1005,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             writer.WriteNumber("valueUnsignedInt",(int)v_UnsignedInt.Value);
             break;
           case FhirUri v_FhirUri:
-            writer.WriteString("valueUri",v_FhirUri.Value.Trim());
+            writer.WriteString("valueUri",v_FhirUri.Value);
             break;
           case FhirUrl v_FhirUrl:
-            writer.WriteString("valueUrl",v_FhirUrl.Value.Trim());
+            writer.WriteString("valueUrl",v_FhirUrl.Value);
             break;
           case Uuid v_Uuid:
-            writer.WriteString("valueUuid",v_Uuid.Value.Trim());
+            writer.WriteString("valueUuid",v_Uuid.Value);
             break;
           case Address v_Address:
             writer.WritePropertyName("valueAddress");
@@ -1676,22 +1676,22 @@ namespace Hl7.Fhir.Model.JsonExtensions
             writer.WriteBoolean("valueBoolean",(bool)v_FhirBoolean.Value);
             break;
           case Canonical v_Canonical:
-            writer.WriteString("valueCanonical",v_Canonical.Value.Trim());
+            writer.WriteString("valueCanonical",v_Canonical.Value);
             break;
           case Code v_Code:
             writer.WriteString("valueCode",v_Code.Value.Trim());
             break;
           case Date v_Date:
-            writer.WriteString("valueDate",v_Date.Value.Trim());
+            writer.WriteString("valueDate",v_Date.Value);
             break;
           case FhirDateTime v_FhirDateTime:
-            writer.WriteString("valueDateTime",v_FhirDateTime.Value.Trim());
+            writer.WriteString("valueDateTime",v_FhirDateTime.Value);
             break;
           case FhirDecimal v_FhirDecimal:
             writer.WriteNumber("valueDecimal",(decimal)v_FhirDecimal.Value);
             break;
           case Id v_Id:
-            writer.WriteString("valueId",v_Id.Value.Trim());
+            writer.WriteString("valueId",v_Id.Value);
             break;
           case Instant v_Instant:
             writer.WriteString("valueInstant",((DateTimeOffset)v_Instant.Value).ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK",System.Globalization.CultureInfo.InvariantCulture));
@@ -1700,16 +1700,16 @@ namespace Hl7.Fhir.Model.JsonExtensions
             writer.WriteNumber("valueInteger",(int)v_Integer.Value);
             break;
           case Markdown v_Markdown:
-            writer.WriteString("valueMarkdown",v_Markdown.Value.Trim());
+            writer.WriteString("valueMarkdown",v_Markdown.Value);
             break;
           case Oid v_Oid:
-            writer.WriteString("valueOid",v_Oid.Value.Trim());
+            writer.WriteString("valueOid",v_Oid.Value);
             break;
           case PositiveInt v_PositiveInt:
             writer.WriteNumber("valuePositiveInt",(int)v_PositiveInt.Value);
             break;
           case FhirString v_FhirString:
-            writer.WriteString("valueString",v_FhirString.Value.Trim());
+            writer.WriteString("valueString",v_FhirString.Value);
             break;
           case Time v_Time:
             writer.WritePropertyName("valueTime");
@@ -1719,13 +1719,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
             writer.WriteNumber("valueUnsignedInt",(int)v_UnsignedInt.Value);
             break;
           case FhirUri v_FhirUri:
-            writer.WriteString("valueUri",v_FhirUri.Value.Trim());
+            writer.WriteString("valueUri",v_FhirUri.Value);
             break;
           case FhirUrl v_FhirUrl:
-            writer.WriteString("valueUrl",v_FhirUrl.Value.Trim());
+            writer.WriteString("valueUrl",v_FhirUrl.Value);
             break;
           case Uuid v_Uuid:
-            writer.WriteString("valueUuid",v_Uuid.Value.Trim());
+            writer.WriteString("valueUuid",v_Uuid.Value);
             break;
           case Address v_Address:
             writer.WritePropertyName("valueAddress");

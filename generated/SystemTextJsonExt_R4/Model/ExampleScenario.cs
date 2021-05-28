@@ -62,7 +62,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.UrlElement.Value))
         {
-          writer.WriteString("url",current.UrlElement.Value.Trim());
+          writer.WriteString("url",current.UrlElement.Value);
         }
         if (current.UrlElement.HasExtensions() || (!string.IsNullOrEmpty(current.UrlElement.ElementId)))
         {
@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.VersionElement.Value))
         {
-          writer.WriteString("version",current.VersionElement.Value.Trim());
+          writer.WriteString("version",current.VersionElement.Value);
         }
         if (current.VersionElement.HasExtensions() || (!string.IsNullOrEmpty(current.VersionElement.ElementId)))
         {
@@ -97,7 +97,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -123,7 +123,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {
@@ -135,7 +135,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PublisherElement.Value))
         {
-          writer.WriteString("publisher",current.PublisherElement.Value.Trim());
+          writer.WriteString("publisher",current.PublisherElement.Value);
         }
         if (current.PublisherElement.HasExtensions() || (!string.IsNullOrEmpty(current.PublisherElement.ElementId)))
         {
@@ -180,7 +180,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Copyright.Value))
         {
-          writer.WriteString("copyright",current.Copyright.Value.Trim());
+          writer.WriteString("copyright",current.Copyright.Value);
         }
         if (current.Copyright.HasExtensions() || (!string.IsNullOrEmpty(current.Copyright.ElementId)))
         {
@@ -192,7 +192,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Purpose.Value))
         {
-          writer.WriteString("purpose",current.Purpose.Value.Trim());
+          writer.WriteString("purpose",current.Purpose.Value);
         }
         if (current.Purpose.HasExtensions() || (!string.IsNullOrEmpty(current.Purpose.ElementId)))
         {
@@ -255,7 +255,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -741,7 +741,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: ExampleScenario#Actor, Export: ActorComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("actorId",current.ActorIdElement.Value.Trim());
+      writer.WriteString("actorId",current.ActorIdElement.Value);
 
       writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
 
@@ -749,7 +749,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -761,7 +761,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Description.Value))
         {
-          writer.WriteString("description",current.Description.Value.Trim());
+          writer.WriteString("description",current.Description.Value);
         }
         if (current.Description.HasExtensions() || (!string.IsNullOrEmpty(current.Description.ElementId)))
         {
@@ -889,7 +889,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: ExampleScenario#Instance, Export: InstanceComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("resourceId",current.ResourceIdElement.Value.Trim());
+      writer.WriteString("resourceId",current.ResourceIdElement.Value);
 
       writer.WriteString("resourceType",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.ResourceTypeElement.Value));
 
@@ -897,7 +897,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -909,7 +909,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Description.Value))
         {
-          writer.WriteString("description",current.Description.Value.Trim());
+          writer.WriteString("description",current.Description.Value);
         }
         if (current.Description.HasExtensions() || (!string.IsNullOrEmpty(current.Description.ElementId)))
         {
@@ -1113,9 +1113,9 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: ExampleScenario#Version, Export: VersionComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("versionId",current.VersionIdElement.Value.Trim());
+      writer.WriteString("versionId",current.VersionIdElement.Value);
 
-      writer.WriteString("description",current.Description.Value.Trim());
+      writer.WriteString("description",current.Description.Value);
 
       if (includeStartObject) { writer.WriteEndObject(); }
     }
@@ -1203,13 +1203,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: ExampleScenario#ContainedInstance, Export: ContainedInstanceComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("resourceId",current.ResourceIdElement.Value.Trim());
+      writer.WriteString("resourceId",current.ResourceIdElement.Value);
 
       if (current.VersionIdElement != null)
       {
         if (!string.IsNullOrEmpty(current.VersionIdElement.Value))
         {
-          writer.WriteString("versionId",current.VersionIdElement.Value.Trim());
+          writer.WriteString("versionId",current.VersionIdElement.Value);
         }
         if (current.VersionIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.VersionIdElement.ElementId)))
         {
@@ -1303,13 +1303,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: ExampleScenario#Process, Export: ProcessComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("title",current.TitleElement.Value.Trim());
+      writer.WriteString("title",current.TitleElement.Value);
 
       if (current.Description != null)
       {
         if (!string.IsNullOrEmpty(current.Description.Value))
         {
-          writer.WriteString("description",current.Description.Value.Trim());
+          writer.WriteString("description",current.Description.Value);
         }
         if (current.Description.HasExtensions() || (!string.IsNullOrEmpty(current.Description.ElementId)))
         {
@@ -1321,7 +1321,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PreConditions.Value))
         {
-          writer.WriteString("preConditions",current.PreConditions.Value.Trim());
+          writer.WriteString("preConditions",current.PreConditions.Value);
         }
         if (current.PreConditions.HasExtensions() || (!string.IsNullOrEmpty(current.PreConditions.ElementId)))
         {
@@ -1333,7 +1333,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PostConditions.Value))
         {
-          writer.WriteString("postConditions",current.PostConditions.Value.Trim());
+          writer.WriteString("postConditions",current.PostConditions.Value);
         }
         if (current.PostConditions.HasExtensions() || (!string.IsNullOrEmpty(current.PostConditions.ElementId)))
         {
@@ -1667,13 +1667,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: ExampleScenario#Operation, Export: OperationComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("number",current.NumberElement.Value.Trim());
+      writer.WriteString("number",current.NumberElement.Value);
 
       if (current.TypeElement != null)
       {
         if (!string.IsNullOrEmpty(current.TypeElement.Value))
         {
-          writer.WriteString("type",current.TypeElement.Value.Trim());
+          writer.WriteString("type",current.TypeElement.Value);
         }
         if (current.TypeElement.HasExtensions() || (!string.IsNullOrEmpty(current.TypeElement.ElementId)))
         {
@@ -1685,7 +1685,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -1697,7 +1697,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.InitiatorElement.Value))
         {
-          writer.WriteString("initiator",current.InitiatorElement.Value.Trim());
+          writer.WriteString("initiator",current.InitiatorElement.Value);
         }
         if (current.InitiatorElement.HasExtensions() || (!string.IsNullOrEmpty(current.InitiatorElement.ElementId)))
         {
@@ -1709,7 +1709,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ReceiverElement.Value))
         {
-          writer.WriteString("receiver",current.ReceiverElement.Value.Trim());
+          writer.WriteString("receiver",current.ReceiverElement.Value);
         }
         if (current.ReceiverElement.HasExtensions() || (!string.IsNullOrEmpty(current.ReceiverElement.ElementId)))
         {
@@ -1721,7 +1721,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Description.Value))
         {
-          writer.WriteString("description",current.Description.Value.Trim());
+          writer.WriteString("description",current.Description.Value);
         }
         if (current.Description.HasExtensions() || (!string.IsNullOrEmpty(current.Description.ElementId)))
         {
@@ -1963,13 +1963,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: ExampleScenario#Alternative, Export: AlternativeComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("title",current.TitleElement.Value.Trim());
+      writer.WriteString("title",current.TitleElement.Value);
 
       if (current.Description != null)
       {
         if (!string.IsNullOrEmpty(current.Description.Value))
         {
-          writer.WriteString("description",current.Description.Value.Trim());
+          writer.WriteString("description",current.Description.Value);
         }
         if (current.Description.HasExtensions() || (!string.IsNullOrEmpty(current.Description.ElementId)))
         {

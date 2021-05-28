@@ -179,7 +179,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("onsetDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("onsetDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -204,7 +204,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("onsetString",v_FhirString.Value.Trim());
+                writer.WriteString("onsetString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -218,7 +218,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RecordedDateElement.Value))
         {
-          writer.WriteString("recordedDate",current.RecordedDateElement.Value.Trim());
+          writer.WriteString("recordedDate",current.RecordedDateElement.Value);
         }
         if (current.RecordedDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.RecordedDateElement.ElementId)))
         {
@@ -242,7 +242,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.LastOccurrenceElement.Value))
         {
-          writer.WriteString("lastOccurrence",current.LastOccurrenceElement.Value.Trim());
+          writer.WriteString("lastOccurrence",current.LastOccurrenceElement.Value);
         }
         if (current.LastOccurrenceElement.HasExtensions() || (!string.IsNullOrEmpty(current.LastOccurrenceElement.ElementId)))
         {
@@ -642,7 +642,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
         {
-          writer.WriteString("description",current.DescriptionElement.Value.Trim());
+          writer.WriteString("description",current.DescriptionElement.Value);
         }
         if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
         {
@@ -654,7 +654,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.OnsetElement.Value))
         {
-          writer.WriteString("onset",current.OnsetElement.Value.Trim());
+          writer.WriteString("onset",current.OnsetElement.Value);
         }
         if (current.OnsetElement.HasExtensions() || (!string.IsNullOrEmpty(current.OnsetElement.ElementId)))
         {

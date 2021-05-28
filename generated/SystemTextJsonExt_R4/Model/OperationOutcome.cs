@@ -162,7 +162,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DiagnosticsElement.Value))
         {
-          writer.WriteString("diagnostics",current.DiagnosticsElement.Value.Trim());
+          writer.WriteString("diagnostics",current.DiagnosticsElement.Value);
         }
         if (current.DiagnosticsElement.HasExtensions() || (!string.IsNullOrEmpty(current.DiagnosticsElement.ElementId)))
         {
@@ -192,7 +192,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -242,7 +242,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 

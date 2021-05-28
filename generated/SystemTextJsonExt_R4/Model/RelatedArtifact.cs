@@ -63,7 +63,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.LabelElement.Value))
         {
-          writer.WriteString("label",current.LabelElement.Value.Trim());
+          writer.WriteString("label",current.LabelElement.Value);
         }
         if (current.LabelElement.HasExtensions() || (!string.IsNullOrEmpty(current.LabelElement.ElementId)))
         {
@@ -75,7 +75,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DisplayElement.Value))
         {
-          writer.WriteString("display",current.DisplayElement.Value.Trim());
+          writer.WriteString("display",current.DisplayElement.Value);
         }
         if (current.DisplayElement.HasExtensions() || (!string.IsNullOrEmpty(current.DisplayElement.ElementId)))
         {
@@ -87,7 +87,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Citation.Value))
         {
-          writer.WriteString("citation",current.Citation.Value.Trim());
+          writer.WriteString("citation",current.Citation.Value);
         }
         if (current.Citation.HasExtensions() || (!string.IsNullOrEmpty(current.Citation.ElementId)))
         {
@@ -99,7 +99,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.UrlElement.Value))
         {
-          writer.WriteString("url",current.UrlElement.Value.Trim());
+          writer.WriteString("url",current.UrlElement.Value);
         }
         if (current.UrlElement.HasExtensions() || (!string.IsNullOrEmpty(current.UrlElement.ElementId)))
         {
@@ -117,7 +117,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ResourceElement.Value))
         {
-          writer.WriteString("resource",current.ResourceElement.Value.Trim());
+          writer.WriteString("resource",current.ResourceElement.Value);
         }
         if (current.ResourceElement.HasExtensions() || (!string.IsNullOrEmpty(current.ResourceElement.ElementId)))
         {

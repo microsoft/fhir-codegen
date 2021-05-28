@@ -109,7 +109,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Date.Value))
               {
-                writer.WriteString("startDate",v_Date.Value.Trim());
+                writer.WriteString("startDate",v_Date.Value);
               }
               if (v_Date.HasExtensions() || (!string.IsNullOrEmpty(v_Date.ElementId)))
               {
@@ -138,7 +138,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.StatusDateElement.Value))
         {
-          writer.WriteString("statusDate",current.StatusDateElement.Value.Trim());
+          writer.WriteString("statusDate",current.StatusDateElement.Value);
         }
         if (current.StatusDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.StatusDateElement.ElementId)))
         {
@@ -150,7 +150,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.StatusReasonElement.Value))
         {
-          writer.WriteString("statusReason",current.StatusReasonElement.Value.Trim());
+          writer.WriteString("statusReason",current.StatusReasonElement.Value);
         }
         if (current.StatusReasonElement.HasExtensions() || (!string.IsNullOrEmpty(current.StatusReasonElement.ElementId)))
         {
@@ -574,7 +574,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("detailString",v_FhirString.Value.Trim());
+                writer.WriteString("detailString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -623,7 +623,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Date.Value))
               {
-                writer.WriteString("dueDate",v_Date.Value.Trim());
+                writer.WriteString("dueDate",v_Date.Value);
               }
               if (v_Date.HasExtensions() || (!string.IsNullOrEmpty(v_Date.ElementId)))
               {

@@ -139,7 +139,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Date.Value))
               {
-                writer.WriteString("servicedDate",v_Date.Value.Trim());
+                writer.WriteString("servicedDate",v_Date.Value);
               }
               if (v_Date.HasExtensions() || (!string.IsNullOrEmpty(v_Date.ElementId)))
               {
@@ -153,7 +153,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             break;
         }
       }
-      writer.WriteString("created",current.CreatedElement.Value.Trim());
+      writer.WriteString("created",current.CreatedElement.Value);
 
       if (current.Enterer != null)
       {
@@ -646,7 +646,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.BusinessArrangementElement.Value))
         {
-          writer.WriteString("businessArrangement",current.BusinessArrangementElement.Value.Trim());
+          writer.WriteString("businessArrangement",current.BusinessArrangementElement.Value);
         }
         if (current.BusinessArrangementElement.HasExtensions() || (!string.IsNullOrEmpty(current.BusinessArrangementElement.ElementId)))
         {

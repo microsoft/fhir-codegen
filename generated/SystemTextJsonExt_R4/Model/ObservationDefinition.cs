@@ -155,7 +155,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PreferredReportNameElement.Value))
         {
-          writer.WriteString("preferredReportName",current.PreferredReportNameElement.Value.Trim());
+          writer.WriteString("preferredReportName",current.PreferredReportNameElement.Value);
         }
         if (current.PreferredReportNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.PreferredReportNameElement.ElementId)))
         {
@@ -665,7 +665,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ConditionElement.Value))
         {
-          writer.WriteString("condition",current.ConditionElement.Value.Trim());
+          writer.WriteString("condition",current.ConditionElement.Value);
         }
         if (current.ConditionElement.HasExtensions() || (!string.IsNullOrEmpty(current.ConditionElement.ElementId)))
         {

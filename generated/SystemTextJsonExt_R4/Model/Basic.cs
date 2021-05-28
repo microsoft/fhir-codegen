@@ -82,7 +82,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CreatedElement.Value))
         {
-          writer.WriteString("created",current.CreatedElement.Value.Trim());
+          writer.WriteString("created",current.CreatedElement.Value);
         }
         if (current.CreatedElement.HasExtensions() || (!string.IsNullOrEmpty(current.CreatedElement.ElementId)))
         {

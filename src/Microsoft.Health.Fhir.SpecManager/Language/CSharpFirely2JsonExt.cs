@@ -54,9 +54,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Pathname of the export directory.</summary>
         private string _exportDirectory;
 
-        /// <summary>Full pathname of the folder to write extension files in.</summary>
-        private string _extensionDirectory;
-
         /// <summary>Name of the language.</summary>
         private const string _languageName = "CSharpFirely2JsonExt";
 
@@ -272,20 +269,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 Directory.CreateDirectory(exportDirectory);
             }
 
-            _extensionDirectory = Path.Combine(exportDirectory, "SystemTextJsonExt");
-
-            if (!Directory.Exists(_extensionDirectory))
-            {
-                Directory.CreateDirectory(_extensionDirectory);
-            }
-
-            string modelDir = Path.Combine(_extensionDirectory, "Model");
+            string modelDir = Path.Combine(_exportDirectory, "Model");
             if (!Directory.Exists(modelDir))
             {
                 Directory.CreateDirectory(modelDir);
             }
 
-            string serializationDir = Path.Combine(_extensionDirectory, "Serialization");
+            string serializationDir = Path.Combine(_exportDirectory, "Serialization");
             if (!Directory.Exists(serializationDir))
             {
                 Directory.CreateDirectory(serializationDir);
@@ -326,7 +316,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteJsonSerializerOptions()
         {
             // create a filename for writing
-            string filename = Path.Combine(_extensionDirectory, "Serialization", "FhirSerializerOptions.cs");
+            string filename = Path.Combine(_exportDirectory, "Serialization", "FhirSerializerOptions.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -471,7 +461,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteJsonStreamResourceConverter()
         {
             // create a filename for writing
-            string filename = Path.Combine(_extensionDirectory, "Serialization", "JsonStreamResourceConverter.cs");
+            string filename = Path.Combine(_exportDirectory, "Serialization", "JsonStreamResourceConverter.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -836,7 +826,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         private void WriteJsonStreamUtilities()
         {
             // create a filename for writing
-            string filename = Path.Combine(_extensionDirectory, "Serialization", "JsonStreamUtilities.cs");
+            string filename = Path.Combine(_exportDirectory, "Serialization", "JsonStreamUtilities.cs");
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -921,7 +911,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             string exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
 
-            string filename = Path.Combine(_extensionDirectory, "Model", $"{exportName}.cs");
+            string filename = Path.Combine(_exportDirectory, "Model", $"{exportName}.cs");
 
             _writtenModels.Add(complex.Name, new WrittenModelInfo()
             {
@@ -976,7 +966,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             //string csName = $"{_modelNamespace}.{exportName}";
 
-            string filename = Path.Combine(_extensionDirectory, "Model", $"{exportName}.cs");
+            string filename = Path.Combine(_exportDirectory, "Model", $"{exportName}.cs");
 
             _writtenModels.Add(complex.Name, new WrittenModelInfo()
             {
@@ -2221,8 +2211,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             break;
 
-                        case "Canonical":
                         case "Code":
+                            WriteJsonSerializeElementPrimitive(
+                                csType,
+                                currentName,
+                                elementInfo.FhirElementName,
+                                elementInfo.IsList,
+                                elementInfo.IsMandatory,
+                                NullCheckType.String,
+                                "String",
+                                string.Empty,
+                                string.Empty,
+                                false,
+                                string.Empty,
+                                true);
+                            break;
+
+                        case "Canonical":
                         case "Date":
                         case "DateTime":
                         case "FhirDateTime":
@@ -2246,8 +2251,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 string.Empty,
                                 false,
                                 string.Empty,
-                                true);
-
+                                false);
                             break;
 
                         // special case for Element.id, Extension.url, and Narrative.div
@@ -2753,8 +2757,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                         break;
 
-                    case "Canonical":
                     case "Code":
+                        WriteJsonSerializeElementPrimitive(
+                            kvp.Value,
+                            caseVarName,
+                            fhirCombinedName,
+                            elementInfo.IsList,
+                            elementInfo.IsMandatory,
+                            NullCheckType.String,
+                            "String",
+                            string.Empty,
+                            string.Empty,
+                            false,
+                            string.Empty,
+                            true);
+
+                        break;
+
+                    case "Canonical":
                     case "Date":
                     case "DateTime":
                     case "FhirDateTime":
@@ -2778,7 +2798,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             string.Empty,
                             false,
                             string.Empty,
-                            true);
+                            false);
 
                         break;
 

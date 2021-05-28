@@ -103,7 +103,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -591,7 +591,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AverageMolecularFormulaElement.Value))
         {
-          writer.WriteString("averageMolecularFormula",current.AverageMolecularFormulaElement.Value.Trim());
+          writer.WriteString("averageMolecularFormula",current.AverageMolecularFormulaElement.Value);
         }
         if (current.AverageMolecularFormulaElement.HasExtensions() || (!string.IsNullOrEmpty(current.AverageMolecularFormulaElement.ElementId)))
         {
@@ -744,7 +744,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RepeatUnitElement.Value))
         {
-          writer.WriteString("repeatUnit",current.RepeatUnitElement.Value.Trim());
+          writer.WriteString("repeatUnit",current.RepeatUnitElement.Value);
         }
         if (current.RepeatUnitElement.HasExtensions() || (!string.IsNullOrEmpty(current.RepeatUnitElement.ElementId)))
         {
@@ -997,7 +997,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RepresentationElement.Value))
         {
-          writer.WriteString("representation",current.RepresentationElement.Value.Trim());
+          writer.WriteString("representation",current.RepresentationElement.Value);
         }
         if (current.RepresentationElement.HasExtensions() || (!string.IsNullOrEmpty(current.RepresentationElement.ElementId)))
         {

@@ -70,7 +70,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("authorString",v_FhirString.Value.Trim());
+                writer.WriteString("authorString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -84,7 +84,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TimeElement.Value))
         {
-          writer.WriteString("time",current.TimeElement.Value.Trim());
+          writer.WriteString("time",current.TimeElement.Value);
         }
         if (current.TimeElement.HasExtensions() || (!string.IsNullOrEmpty(current.TimeElement.ElementId)))
         {
@@ -92,7 +92,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         }
       }
 
-      writer.WriteString("text",current.Text.Value.Trim());
+      writer.WriteString("text",current.Text.Value);
 
       if (includeStartObject) { writer.WriteEndObject(); }
     }

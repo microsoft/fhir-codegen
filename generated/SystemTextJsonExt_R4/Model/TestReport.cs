@@ -68,7 +68,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -99,7 +99,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TesterElement.Value))
         {
-          writer.WriteString("tester",current.TesterElement.Value.Trim());
+          writer.WriteString("tester",current.TesterElement.Value);
         }
         if (current.TesterElement.HasExtensions() || (!string.IsNullOrEmpty(current.TesterElement.ElementId)))
         {
@@ -111,7 +111,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.IssuedElement.Value))
         {
-          writer.WriteString("issued",current.IssuedElement.Value.Trim());
+          writer.WriteString("issued",current.IssuedElement.Value);
         }
         if (current.IssuedElement.HasExtensions() || (!string.IsNullOrEmpty(current.IssuedElement.ElementId)))
         {
@@ -383,13 +383,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
 
-      writer.WriteString("uri",current.UriElement.Value.Trim());
+      writer.WriteString("uri",current.UriElement.Value);
 
       if (current.DisplayElement != null)
       {
         if (!string.IsNullOrEmpty(current.DisplayElement.Value))
         {
-          writer.WriteString("display",current.DisplayElement.Value.Trim());
+          writer.WriteString("display",current.DisplayElement.Value);
         }
         if (current.DisplayElement.HasExtensions() || (!string.IsNullOrEmpty(current.DisplayElement.ElementId)))
         {
@@ -670,7 +670,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Message.Value))
         {
-          writer.WriteString("message",current.Message.Value.Trim());
+          writer.WriteString("message",current.Message.Value);
         }
         if (current.Message.HasExtensions() || (!string.IsNullOrEmpty(current.Message.ElementId)))
         {
@@ -682,7 +682,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DetailElement.Value))
         {
-          writer.WriteString("detail",current.DetailElement.Value.Trim());
+          writer.WriteString("detail",current.DetailElement.Value);
         }
         if (current.DetailElement.HasExtensions() || (!string.IsNullOrEmpty(current.DetailElement.ElementId)))
         {
@@ -799,7 +799,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Message.Value))
         {
-          writer.WriteString("message",current.Message.Value.Trim());
+          writer.WriteString("message",current.Message.Value);
         }
         if (current.Message.HasExtensions() || (!string.IsNullOrEmpty(current.Message.ElementId)))
         {
@@ -811,7 +811,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DetailElement.Value))
         {
-          writer.WriteString("detail",current.DetailElement.Value.Trim());
+          writer.WriteString("detail",current.DetailElement.Value);
         }
         if (current.DetailElement.HasExtensions() || (!string.IsNullOrEmpty(current.DetailElement.ElementId)))
         {
@@ -926,7 +926,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -938,7 +938,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
         {
-          writer.WriteString("description",current.DescriptionElement.Value.Trim());
+          writer.WriteString("description",current.DescriptionElement.Value);
         }
         if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
         {

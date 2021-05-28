@@ -175,7 +175,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AuthoredOnElement.Value))
         {
-          writer.WriteString("authoredOn",current.AuthoredOnElement.Value.Trim());
+          writer.WriteString("authoredOn",current.AuthoredOnElement.Value);
         }
         if (current.AuthoredOnElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthoredOnElement.ElementId)))
         {
@@ -251,7 +251,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -301,7 +301,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 

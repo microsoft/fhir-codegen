@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("timingDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("timingDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -127,7 +127,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RecordedOnElement.Value))
         {
-          writer.WriteString("recordedOn",current.RecordedOnElement.Value.Trim());
+          writer.WriteString("recordedOn",current.RecordedOnElement.Value);
         }
         if (current.RecordedOnElement.HasExtensions() || (!string.IsNullOrEmpty(current.RecordedOnElement.ElementId)))
         {

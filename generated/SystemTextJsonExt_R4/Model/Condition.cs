@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("onsetDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("onsetDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -158,7 +158,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("onsetString",v_FhirString.Value.Trim());
+                writer.WriteString("onsetString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -177,7 +177,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("abatementDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("abatementDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -202,7 +202,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("abatementString",v_FhirString.Value.Trim());
+                writer.WriteString("abatementString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -216,7 +216,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RecordedDateElement.Value))
         {
-          writer.WriteString("recordedDate",current.RecordedDateElement.Value.Trim());
+          writer.WriteString("recordedDate",current.RecordedDateElement.Value);
         }
         if (current.RecordedDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.RecordedDateElement.ElementId)))
         {

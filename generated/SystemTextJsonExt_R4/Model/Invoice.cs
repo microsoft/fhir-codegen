@@ -75,7 +75,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CancelledReasonElement.Value))
         {
-          writer.WriteString("cancelledReason",current.CancelledReasonElement.Value.Trim());
+          writer.WriteString("cancelledReason",current.CancelledReasonElement.Value);
         }
         if (current.CancelledReasonElement.HasExtensions() || (!string.IsNullOrEmpty(current.CancelledReasonElement.ElementId)))
         {
@@ -105,7 +105,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {
@@ -174,7 +174,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PaymentTerms.Value))
         {
-          writer.WriteString("paymentTerms",current.PaymentTerms.Value.Trim());
+          writer.WriteString("paymentTerms",current.PaymentTerms.Value);
         }
         if (current.PaymentTerms.HasExtensions() || (!string.IsNullOrEmpty(current.PaymentTerms.ElementId)))
         {

@@ -89,7 +89,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("manufacturerString",v_FhirString.Value.Trim());
+                writer.WriteString("manufacturerString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -118,7 +118,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ModelNumberElement.Value))
         {
-          writer.WriteString("modelNumber",current.ModelNumberElement.Value.Trim());
+          writer.WriteString("modelNumber",current.ModelNumberElement.Value);
         }
         if (current.ModelNumberElement.HasExtensions() || (!string.IsNullOrEmpty(current.ModelNumberElement.ElementId)))
         {
@@ -165,7 +165,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -275,7 +275,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.UrlElement.Value))
         {
-          writer.WriteString("url",current.UrlElement.Value.Trim());
+          writer.WriteString("url",current.UrlElement.Value);
         }
         if (current.UrlElement.HasExtensions() || (!string.IsNullOrEmpty(current.UrlElement.ElementId)))
         {
@@ -287,7 +287,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.OnlineInformationElement.Value))
         {
-          writer.WriteString("onlineInformation",current.OnlineInformationElement.Value.Trim());
+          writer.WriteString("onlineInformation",current.OnlineInformationElement.Value);
         }
         if (current.OnlineInformationElement.HasExtensions() || (!string.IsNullOrEmpty(current.OnlineInformationElement.ElementId)))
         {
@@ -867,11 +867,11 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: DeviceDefinition#UdiDeviceIdentifier, Export: UdiDeviceIdentifierComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("deviceIdentifier",current.DeviceIdentifierElement.Value.Trim());
+      writer.WriteString("deviceIdentifier",current.DeviceIdentifierElement.Value);
 
-      writer.WriteString("issuer",current.IssuerElement.Value.Trim());
+      writer.WriteString("issuer",current.IssuerElement.Value);
 
-      writer.WriteString("jurisdiction",current.JurisdictionElement.Value.Trim());
+      writer.WriteString("jurisdiction",current.JurisdictionElement.Value);
 
       if (includeStartObject) { writer.WriteEndObject(); }
     }
@@ -976,7 +976,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: DeviceDefinition#DeviceName, Export: DeviceNameComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("name",current.NameElement.Value.Trim());
+      writer.WriteString("name",current.NameElement.Value);
 
       writer.WriteString("type",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.TypeElement.Value));
 
@@ -1066,13 +1066,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: DeviceDefinition#Specialization, Export: SpecializationComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("systemType",current.SystemTypeElement.Value.Trim());
+      writer.WriteString("systemType",current.SystemTypeElement.Value);
 
       if (current.VersionElement != null)
       {
         if (!string.IsNullOrEmpty(current.VersionElement.Value))
         {
-          writer.WriteString("version",current.VersionElement.Value.Trim());
+          writer.WriteString("version",current.VersionElement.Value);
         }
         if (current.VersionElement.HasExtensions() || (!string.IsNullOrEmpty(current.VersionElement.ElementId)))
         {

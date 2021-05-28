@@ -86,7 +86,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.OrganismNameElement.Value))
         {
-          writer.WriteString("organismName",current.OrganismNameElement.Value.Trim());
+          writer.WriteString("organismName",current.OrganismNameElement.Value);
         }
         if (current.OrganismNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.OrganismNameElement.ElementId)))
         {
@@ -127,7 +127,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -188,7 +188,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -589,7 +589,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.FractionElement.Value))
         {
-          writer.WriteString("fraction",current.FractionElement.Value.Trim());
+          writer.WriteString("fraction",current.FractionElement.Value);
         }
         if (current.FractionElement.HasExtensions() || (!string.IsNullOrEmpty(current.FractionElement.ElementId)))
         {
@@ -705,7 +705,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.IntraspecificDescriptionElement.Value))
         {
-          writer.WriteString("intraspecificDescription",current.IntraspecificDescriptionElement.Value.Trim());
+          writer.WriteString("intraspecificDescription",current.IntraspecificDescriptionElement.Value);
         }
         if (current.IntraspecificDescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.IntraspecificDescriptionElement.ElementId)))
         {
@@ -872,7 +872,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AuthorDescriptionElement.Value))
         {
-          writer.WriteString("authorDescription",current.AuthorDescriptionElement.Value.Trim());
+          writer.WriteString("authorDescription",current.AuthorDescriptionElement.Value);
         }
         if (current.AuthorDescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.AuthorDescriptionElement.ElementId)))
         {
@@ -958,7 +958,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MaternalOrganismIdElement.Value))
         {
-          writer.WriteString("maternalOrganismId",current.MaternalOrganismIdElement.Value.Trim());
+          writer.WriteString("maternalOrganismId",current.MaternalOrganismIdElement.Value);
         }
         if (current.MaternalOrganismIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.MaternalOrganismIdElement.ElementId)))
         {
@@ -970,7 +970,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MaternalOrganismNameElement.Value))
         {
-          writer.WriteString("maternalOrganismName",current.MaternalOrganismNameElement.Value.Trim());
+          writer.WriteString("maternalOrganismName",current.MaternalOrganismNameElement.Value);
         }
         if (current.MaternalOrganismNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.MaternalOrganismNameElement.ElementId)))
         {
@@ -982,7 +982,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PaternalOrganismIdElement.Value))
         {
-          writer.WriteString("paternalOrganismId",current.PaternalOrganismIdElement.Value.Trim());
+          writer.WriteString("paternalOrganismId",current.PaternalOrganismIdElement.Value);
         }
         if (current.PaternalOrganismIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.PaternalOrganismIdElement.ElementId)))
         {
@@ -994,7 +994,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PaternalOrganismNameElement.Value))
         {
-          writer.WriteString("paternalOrganismName",current.PaternalOrganismNameElement.Value.Trim());
+          writer.WriteString("paternalOrganismName",current.PaternalOrganismNameElement.Value);
         }
         if (current.PaternalOrganismNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.PaternalOrganismNameElement.ElementId)))
         {

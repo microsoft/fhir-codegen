@@ -285,9 +285,9 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: Bundle#Link, Export: LinkComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("relation",current.RelationElement.Value.Trim());
+      writer.WriteString("relation",current.RelationElement.Value);
 
-      writer.WriteString("url",current.UrlElement.Value.Trim());
+      writer.WriteString("url",current.UrlElement.Value);
 
       if (includeStartObject) { writer.WriteEndObject(); }
     }
@@ -390,7 +390,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.FullUrlElement.Value))
         {
-          writer.WriteString("fullUrl",current.FullUrlElement.Value.Trim());
+          writer.WriteString("fullUrl",current.FullUrlElement.Value);
         }
         if (current.FullUrlElement.HasExtensions() || (!string.IsNullOrEmpty(current.FullUrlElement.ElementId)))
         {
@@ -649,13 +649,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
       writer.WriteString("method",Hl7.Fhir.Utility.EnumUtility.GetLiteral(current.MethodElement.Value));
 
-      writer.WriteString("url",current.UrlElement.Value.Trim());
+      writer.WriteString("url",current.UrlElement.Value);
 
       if (current.IfNoneMatchElement != null)
       {
         if (!string.IsNullOrEmpty(current.IfNoneMatchElement.Value))
         {
-          writer.WriteString("ifNoneMatch",current.IfNoneMatchElement.Value.Trim());
+          writer.WriteString("ifNoneMatch",current.IfNoneMatchElement.Value);
         }
         if (current.IfNoneMatchElement.HasExtensions() || (!string.IsNullOrEmpty(current.IfNoneMatchElement.ElementId)))
         {
@@ -679,7 +679,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.IfMatchElement.Value))
         {
-          writer.WriteString("ifMatch",current.IfMatchElement.Value.Trim());
+          writer.WriteString("ifMatch",current.IfMatchElement.Value);
         }
         if (current.IfMatchElement.HasExtensions() || (!string.IsNullOrEmpty(current.IfMatchElement.ElementId)))
         {
@@ -691,7 +691,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.IfNoneExistElement.Value))
         {
-          writer.WriteString("ifNoneExist",current.IfNoneExistElement.Value.Trim());
+          writer.WriteString("ifNoneExist",current.IfNoneExistElement.Value);
         }
         if (current.IfNoneExistElement.HasExtensions() || (!string.IsNullOrEmpty(current.IfNoneExistElement.ElementId)))
         {
@@ -853,13 +853,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: Bundle#Response, Export: ResponseComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("status",current.StatusElement.Value.Trim());
+      writer.WriteString("status",current.StatusElement.Value);
 
       if (current.LocationElement != null)
       {
         if (!string.IsNullOrEmpty(current.LocationElement.Value))
         {
-          writer.WriteString("location",current.LocationElement.Value.Trim());
+          writer.WriteString("location",current.LocationElement.Value);
         }
         if (current.LocationElement.HasExtensions() || (!string.IsNullOrEmpty(current.LocationElement.ElementId)))
         {
@@ -871,7 +871,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.EtagElement.Value))
         {
-          writer.WriteString("etag",current.EtagElement.Value.Trim());
+          writer.WriteString("etag",current.EtagElement.Value);
         }
         if (current.EtagElement.HasExtensions() || (!string.IsNullOrEmpty(current.EtagElement.ElementId)))
         {

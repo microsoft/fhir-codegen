@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -188,7 +188,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.Effective)
         {
           case FhirDateTime v_FhirDateTime:
-            writer.WriteString("effectiveDateTime",v_FhirDateTime.Value.Trim());
+            writer.WriteString("effectiveDateTime",v_FhirDateTime.Value);
             break;
           case Period v_Period:
             writer.WritePropertyName("effectivePeriod");
@@ -809,7 +809,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TextElement.Value))
         {
-          writer.WriteString("text",current.TextElement.Value.Trim());
+          writer.WriteString("text",current.TextElement.Value);
         }
         if (current.TextElement.HasExtensions() || (!string.IsNullOrEmpty(current.TextElement.ElementId)))
         {

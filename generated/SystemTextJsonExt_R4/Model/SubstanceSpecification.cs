@@ -86,7 +86,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
         {
-          writer.WriteString("description",current.DescriptionElement.Value.Trim());
+          writer.WriteString("description",current.DescriptionElement.Value);
         }
         if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
         {
@@ -109,7 +109,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CommentElement.Value))
         {
-          writer.WriteString("comment",current.CommentElement.Value.Trim());
+          writer.WriteString("comment",current.CommentElement.Value);
         }
         if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
         {
@@ -560,7 +560,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -584,7 +584,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MolecularFormulaElement.Value))
         {
-          writer.WriteString("molecularFormula",current.MolecularFormulaElement.Value.Trim());
+          writer.WriteString("molecularFormula",current.MolecularFormulaElement.Value);
         }
         if (current.MolecularFormulaElement.HasExtensions() || (!string.IsNullOrEmpty(current.MolecularFormulaElement.ElementId)))
         {
@@ -605,7 +605,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("amountString",v_FhirString.Value.Trim());
+                writer.WriteString("amountString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -759,7 +759,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ParametersElement.Value))
         {
-          writer.WriteString("parameters",current.ParametersElement.Value.Trim());
+          writer.WriteString("parameters",current.ParametersElement.Value);
         }
         if (current.ParametersElement.HasExtensions() || (!string.IsNullOrEmpty(current.ParametersElement.ElementId)))
         {
@@ -794,7 +794,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("amountString",v_FhirString.Value.Trim());
+                writer.WriteString("amountString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -931,7 +931,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MolecularFormulaElement.Value))
         {
-          writer.WriteString("molecularFormula",current.MolecularFormulaElement.Value.Trim());
+          writer.WriteString("molecularFormula",current.MolecularFormulaElement.Value);
         }
         if (current.MolecularFormulaElement.HasExtensions() || (!string.IsNullOrEmpty(current.MolecularFormulaElement.ElementId)))
         {
@@ -943,7 +943,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MolecularFormulaByMoietyElement.Value))
         {
-          writer.WriteString("molecularFormulaByMoiety",current.MolecularFormulaByMoietyElement.Value.Trim());
+          writer.WriteString("molecularFormulaByMoiety",current.MolecularFormulaByMoietyElement.Value);
         }
         if (current.MolecularFormulaByMoietyElement.HasExtensions() || (!string.IsNullOrEmpty(current.MolecularFormulaByMoietyElement.ElementId)))
         {
@@ -1374,7 +1374,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RepresentationElement.Value))
         {
-          writer.WriteString("representation",current.RepresentationElement.Value.Trim());
+          writer.WriteString("representation",current.RepresentationElement.Value);
         }
         if (current.RepresentationElement.HasExtensions() || (!string.IsNullOrEmpty(current.RepresentationElement.ElementId)))
         {
@@ -1483,7 +1483,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.StatusDateElement.Value))
         {
-          writer.WriteString("statusDate",current.StatusDateElement.Value.Trim());
+          writer.WriteString("statusDate",current.StatusDateElement.Value);
         }
         if (current.StatusDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.StatusDateElement.ElementId)))
         {
@@ -1495,7 +1495,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CommentElement.Value))
         {
-          writer.WriteString("comment",current.CommentElement.Value.Trim());
+          writer.WriteString("comment",current.CommentElement.Value);
         }
         if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
         {
@@ -1637,7 +1637,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: SubstanceSpecification#Name, Export: NameComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("name",current.NameElement.Value.Trim());
+      writer.WriteString("name",current.NameElement.Value);
 
       if (current.Type != null)
       {
@@ -2041,7 +2041,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DateElement.Value))
         {
-          writer.WriteString("date",current.DateElement.Value.Trim());
+          writer.WriteString("date",current.DateElement.Value);
         }
         if (current.DateElement.HasExtensions() || (!string.IsNullOrEmpty(current.DateElement.ElementId)))
         {
@@ -2181,7 +2181,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("amountString",v_FhirString.Value.Trim());
+                writer.WriteString("amountString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {

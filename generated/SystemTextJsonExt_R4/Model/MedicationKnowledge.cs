@@ -116,7 +116,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -203,7 +203,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PreparationInstruction.Value))
         {
-          writer.WriteString("preparationInstruction",current.PreparationInstruction.Value.Trim());
+          writer.WriteString("preparationInstruction",current.PreparationInstruction.Value);
         }
         if (current.PreparationInstruction.HasExtensions() || (!string.IsNullOrEmpty(current.PreparationInstruction.ElementId)))
         {
@@ -1164,7 +1164,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SourceElement.Value))
         {
-          writer.WriteString("source",current.SourceElement.Value.Trim());
+          writer.WriteString("source",current.SourceElement.Value);
         }
         if (current.SourceElement.HasExtensions() || (!string.IsNullOrEmpty(current.SourceElement.ElementId)))
         {
@@ -1264,7 +1264,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -1632,7 +1632,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -1977,7 +1977,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("valueString",v_FhirString.Value.Trim());
+                writer.WriteString("valueString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {

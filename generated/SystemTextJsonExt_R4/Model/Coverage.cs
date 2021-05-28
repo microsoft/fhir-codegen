@@ -93,7 +93,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SubscriberIdElement.Value))
         {
-          writer.WriteString("subscriberId",current.SubscriberIdElement.Value.Trim());
+          writer.WriteString("subscriberId",current.SubscriberIdElement.Value);
         }
         if (current.SubscriberIdElement.HasExtensions() || (!string.IsNullOrEmpty(current.SubscriberIdElement.ElementId)))
         {
@@ -108,7 +108,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DependentElement.Value))
         {
-          writer.WriteString("dependent",current.DependentElement.Value.Trim());
+          writer.WriteString("dependent",current.DependentElement.Value);
         }
         if (current.DependentElement.HasExtensions() || (!string.IsNullOrEmpty(current.DependentElement.ElementId)))
         {
@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NetworkElement.Value))
         {
-          writer.WriteString("network",current.NetworkElement.Value.Trim());
+          writer.WriteString("network",current.NetworkElement.Value);
         }
         if (current.NetworkElement.HasExtensions() || (!string.IsNullOrEmpty(current.NetworkElement.ElementId)))
         {
@@ -530,13 +530,13 @@ namespace Hl7.Fhir.Model.JsonExtensions
       writer.WritePropertyName("type");
       current.Type.SerializeJson(writer, options);
 
-      writer.WriteString("value",current.ValueElement.Value.Trim());
+      writer.WriteString("value",current.ValueElement.Value);
 
       if (current.NameElement != null)
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {

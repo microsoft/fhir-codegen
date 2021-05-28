@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("occurrenceDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("occurrenceDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -187,7 +187,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.MitigationElement.Value))
         {
-          writer.WriteString("mitigation",current.MitigationElement.Value.Trim());
+          writer.WriteString("mitigation",current.MitigationElement.Value);
         }
         if (current.MitigationElement.HasExtensions() || (!string.IsNullOrEmpty(current.MitigationElement.ElementId)))
         {
@@ -581,7 +581,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RationaleElement.Value))
         {
-          writer.WriteString("rationale",current.RationaleElement.Value.Trim());
+          writer.WriteString("rationale",current.RationaleElement.Value);
         }
         if (current.RationaleElement.HasExtensions() || (!string.IsNullOrEmpty(current.RationaleElement.ElementId)))
         {

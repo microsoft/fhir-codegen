@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -141,7 +141,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -191,7 +191,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -232,7 +232,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         current.Encounter.SerializeJson(writer, options);
       }
 
-      writer.WriteString("dateTime",current.DateTimeElement.Value.Trim());
+      writer.WriteString("dateTime",current.DateTimeElement.Value);
 
       if (current.Orderer != null)
       {
@@ -848,7 +848,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.InstructionElement.Value))
         {
-          writer.WriteString("instruction",current.InstructionElement.Value.Trim());
+          writer.WriteString("instruction",current.InstructionElement.Value);
         }
         if (current.InstructionElement.HasExtensions() || (!string.IsNullOrEmpty(current.InstructionElement.ElementId)))
         {
@@ -1218,7 +1218,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ProductNameElement.Value))
         {
-          writer.WriteString("productName",current.ProductNameElement.Value.Trim());
+          writer.WriteString("productName",current.ProductNameElement.Value);
         }
         if (current.ProductNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.ProductNameElement.ElementId)))
         {
@@ -1247,7 +1247,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.InstructionElement.Value))
         {
-          writer.WriteString("instruction",current.InstructionElement.Value.Trim());
+          writer.WriteString("instruction",current.InstructionElement.Value);
         }
         if (current.InstructionElement.HasExtensions() || (!string.IsNullOrEmpty(current.InstructionElement.ElementId)))
         {
@@ -1388,7 +1388,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.BaseFormulaProductNameElement.Value))
         {
-          writer.WriteString("baseFormulaProductName",current.BaseFormulaProductNameElement.Value.Trim());
+          writer.WriteString("baseFormulaProductName",current.BaseFormulaProductNameElement.Value);
         }
         if (current.BaseFormulaProductNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.BaseFormulaProductNameElement.ElementId)))
         {
@@ -1406,7 +1406,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AdditiveProductNameElement.Value))
         {
-          writer.WriteString("additiveProductName",current.AdditiveProductNameElement.Value.Trim());
+          writer.WriteString("additiveProductName",current.AdditiveProductNameElement.Value);
         }
         if (current.AdditiveProductNameElement.HasExtensions() || (!string.IsNullOrEmpty(current.AdditiveProductNameElement.ElementId)))
         {
@@ -1447,7 +1447,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AdministrationInstructionElement.Value))
         {
-          writer.WriteString("administrationInstruction",current.AdministrationInstructionElement.Value.Trim());
+          writer.WriteString("administrationInstruction",current.AdministrationInstructionElement.Value);
         }
         if (current.AdministrationInstructionElement.HasExtensions() || (!string.IsNullOrEmpty(current.AdministrationInstructionElement.ElementId)))
         {

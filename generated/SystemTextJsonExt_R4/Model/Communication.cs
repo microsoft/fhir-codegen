@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -141,7 +141,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -277,7 +277,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SentElement.Value))
         {
-          writer.WriteString("sent",current.SentElement.Value.Trim());
+          writer.WriteString("sent",current.SentElement.Value);
         }
         if (current.SentElement.HasExtensions() || (!string.IsNullOrEmpty(current.SentElement.ElementId)))
         {
@@ -289,7 +289,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ReceivedElement.Value))
         {
-          writer.WriteString("received",current.ReceivedElement.Value.Trim());
+          writer.WriteString("received",current.ReceivedElement.Value);
         }
         if (current.ReceivedElement.HasExtensions() || (!string.IsNullOrEmpty(current.ReceivedElement.ElementId)))
         {
@@ -960,7 +960,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
         switch (current.Content)
         {
           case FhirString v_FhirString:
-            writer.WriteString("contentString",v_FhirString.Value.Trim());
+            writer.WriteString("contentString",v_FhirString.Value);
             break;
           case Attachment v_Attachment:
             writer.WritePropertyName("contentAttachment");

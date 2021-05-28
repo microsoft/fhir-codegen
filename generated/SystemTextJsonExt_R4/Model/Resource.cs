@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.IdElement.Value))
         {
-          writer.WriteString("id",current.IdElement.Value.Trim());
+          writer.WriteString("id",current.IdElement.Value);
         }
         if (current.IdElement.HasExtensions() || (!string.IsNullOrEmpty(current.IdElement.ElementId)))
         {
@@ -76,7 +76,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ImplicitRulesElement.Value))
         {
-          writer.WriteString("implicitRules",current.ImplicitRulesElement.Value.Trim());
+          writer.WriteString("implicitRules",current.ImplicitRulesElement.Value);
         }
         if (current.ImplicitRulesElement.HasExtensions() || (!string.IsNullOrEmpty(current.ImplicitRulesElement.ElementId)))
         {

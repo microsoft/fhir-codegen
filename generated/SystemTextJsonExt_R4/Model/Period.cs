@@ -61,7 +61,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.StartElement.Value))
         {
-          writer.WriteString("start",current.StartElement.Value.Trim());
+          writer.WriteString("start",current.StartElement.Value);
         }
         if (current.StartElement.HasExtensions() || (!string.IsNullOrEmpty(current.StartElement.ElementId)))
         {
@@ -73,7 +73,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.EndElement.Value))
         {
-          writer.WriteString("end",current.EndElement.Value.Trim());
+          writer.WriteString("end",current.EndElement.Value);
         }
         if (current.EndElement.HasExtensions() || (!string.IsNullOrEmpty(current.EndElement.ElementId)))
         {

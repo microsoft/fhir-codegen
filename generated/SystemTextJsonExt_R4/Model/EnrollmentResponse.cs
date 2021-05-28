@@ -103,7 +103,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DispositionElement.Value))
         {
-          writer.WriteString("disposition",current.DispositionElement.Value.Trim());
+          writer.WriteString("disposition",current.DispositionElement.Value);
         }
         if (current.DispositionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DispositionElement.ElementId)))
         {
@@ -115,7 +115,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CreatedElement.Value))
         {
-          writer.WriteString("created",current.CreatedElement.Value.Trim());
+          writer.WriteString("created",current.CreatedElement.Value);
         }
         if (current.CreatedElement.HasExtensions() || (!string.IsNullOrEmpty(current.CreatedElement.ElementId)))
         {

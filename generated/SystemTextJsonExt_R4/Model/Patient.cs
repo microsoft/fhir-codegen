@@ -119,7 +119,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.BirthDateElement.Value))
         {
-          writer.WriteString("birthDate",current.BirthDateElement.Value.Trim());
+          writer.WriteString("birthDate",current.BirthDateElement.Value);
         }
         if (current.BirthDateElement.HasExtensions() || (!string.IsNullOrEmpty(current.BirthDateElement.ElementId)))
         {
@@ -149,7 +149,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("deceasedDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("deceasedDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {

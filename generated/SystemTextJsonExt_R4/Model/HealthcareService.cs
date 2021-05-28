@@ -135,7 +135,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -147,7 +147,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CommentElement.Value))
         {
-          writer.WriteString("comment",current.CommentElement.Value.Trim());
+          writer.WriteString("comment",current.CommentElement.Value);
         }
         if (current.CommentElement.HasExtensions() || (!string.IsNullOrEmpty(current.CommentElement.ElementId)))
         {
@@ -159,7 +159,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ExtraDetails.Value))
         {
-          writer.WriteString("extraDetails",current.ExtraDetails.Value.Trim());
+          writer.WriteString("extraDetails",current.ExtraDetails.Value);
         }
         if (current.ExtraDetails.HasExtensions() || (!string.IsNullOrEmpty(current.ExtraDetails.ElementId)))
         {
@@ -299,7 +299,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AvailabilityExceptionsElement.Value))
         {
-          writer.WriteString("availabilityExceptions",current.AvailabilityExceptionsElement.Value.Trim());
+          writer.WriteString("availabilityExceptions",current.AvailabilityExceptionsElement.Value);
         }
         if (current.AvailabilityExceptionsElement.HasExtensions() || (!string.IsNullOrEmpty(current.AvailabilityExceptionsElement.ElementId)))
         {
@@ -924,7 +924,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.Comment.Value))
         {
-          writer.WriteString("comment",current.Comment.Value.Trim());
+          writer.WriteString("comment",current.Comment.Value);
         }
         if (current.Comment.HasExtensions() || (!string.IsNullOrEmpty(current.Comment.ElementId)))
         {
@@ -1223,7 +1223,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       // Component: HealthcareService#NotAvailable, Export: NotAvailableComponent, Base: BackboneElement (BackboneElement)
       ((Hl7.Fhir.Model.BackboneElement)current).SerializeJson(writer, options, false);
 
-      writer.WriteString("description",current.DescriptionElement.Value.Trim());
+      writer.WriteString("description",current.DescriptionElement.Value);
 
       if (current.During != null)
       {

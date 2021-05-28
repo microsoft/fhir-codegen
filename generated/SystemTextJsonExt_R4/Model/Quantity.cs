@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.UnitElement.Value))
         {
-          writer.WriteString("unit",current.UnitElement.Value.Trim());
+          writer.WriteString("unit",current.UnitElement.Value);
         }
         if (current.UnitElement.HasExtensions() || (!string.IsNullOrEmpty(current.UnitElement.ElementId)))
         {
@@ -97,7 +97,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SystemElement.Value))
         {
-          writer.WriteString("system",current.SystemElement.Value.Trim());
+          writer.WriteString("system",current.SystemElement.Value);
         }
         if (current.SystemElement.HasExtensions() || (!string.IsNullOrEmpty(current.SystemElement.ElementId)))
         {

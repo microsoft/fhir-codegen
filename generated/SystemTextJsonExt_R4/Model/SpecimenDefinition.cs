@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.TimeAspectElement.Value))
         {
-          writer.WriteString("timeAspect",current.TimeAspectElement.Value.Trim());
+          writer.WriteString("timeAspect",current.TimeAspectElement.Value);
         }
         if (current.TimeAspectElement.HasExtensions() || (!string.IsNullOrEmpty(current.TimeAspectElement.ElementId)))
         {
@@ -305,7 +305,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.RequirementElement.Value))
         {
-          writer.WriteString("requirement",current.RequirementElement.Value.Trim());
+          writer.WriteString("requirement",current.RequirementElement.Value);
         }
         if (current.RequirementElement.HasExtensions() || (!string.IsNullOrEmpty(current.RequirementElement.ElementId)))
         {
@@ -535,7 +535,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.DescriptionElement.Value))
         {
-          writer.WriteString("description",current.DescriptionElement.Value.Trim());
+          writer.WriteString("description",current.DescriptionElement.Value);
         }
         if (current.DescriptionElement.HasExtensions() || (!string.IsNullOrEmpty(current.DescriptionElement.ElementId)))
         {
@@ -562,7 +562,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("minimumVolumeString",v_FhirString.Value.Trim());
+                writer.WriteString("minimumVolumeString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -587,7 +587,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.PreparationElement.Value))
         {
-          writer.WriteString("preparation",current.PreparationElement.Value.Trim());
+          writer.WriteString("preparation",current.PreparationElement.Value);
         }
         if (current.PreparationElement.HasExtensions() || (!string.IsNullOrEmpty(current.PreparationElement.ElementId)))
         {
@@ -848,7 +848,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.InstructionElement.Value))
         {
-          writer.WriteString("instruction",current.InstructionElement.Value.Trim());
+          writer.WriteString("instruction",current.InstructionElement.Value);
         }
         if (current.InstructionElement.HasExtensions() || (!string.IsNullOrEmpty(current.InstructionElement.ElementId)))
         {

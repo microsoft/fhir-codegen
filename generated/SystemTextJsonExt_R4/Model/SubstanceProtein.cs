@@ -98,7 +98,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             }
             else
             {
-              writer.WriteStringValue(val.Value.Trim());
+              writer.WriteStringValue(val.Value);
             }
           }
 
@@ -318,7 +318,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SequenceElement.Value))
         {
-          writer.WriteString("sequence",current.SequenceElement.Value.Trim());
+          writer.WriteString("sequence",current.SequenceElement.Value);
         }
         if (current.SequenceElement.HasExtensions() || (!string.IsNullOrEmpty(current.SequenceElement.ElementId)))
         {
@@ -354,7 +354,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NTerminalModificationElement.Value))
         {
-          writer.WriteString("nTerminalModification",current.NTerminalModificationElement.Value.Trim());
+          writer.WriteString("nTerminalModification",current.NTerminalModificationElement.Value);
         }
         if (current.NTerminalModificationElement.HasExtensions() || (!string.IsNullOrEmpty(current.NTerminalModificationElement.ElementId)))
         {
@@ -372,7 +372,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.CTerminalModificationElement.Value))
         {
-          writer.WriteString("cTerminalModification",current.CTerminalModificationElement.Value.Trim());
+          writer.WriteString("cTerminalModification",current.CTerminalModificationElement.Value);
         }
         if (current.CTerminalModificationElement.HasExtensions() || (!string.IsNullOrEmpty(current.CTerminalModificationElement.ElementId)))
         {

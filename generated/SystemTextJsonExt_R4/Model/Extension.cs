@@ -94,7 +94,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Canonical.Value))
               {
-                writer.WriteString("valueCanonical",v_Canonical.Value.Trim());
+                writer.WriteString("valueCanonical",v_Canonical.Value);
               }
               if (v_Canonical.HasExtensions() || (!string.IsNullOrEmpty(v_Canonical.ElementId)))
               {
@@ -120,7 +120,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Date.Value))
               {
-                writer.WriteString("valueDate",v_Date.Value.Trim());
+                writer.WriteString("valueDate",v_Date.Value);
               }
               if (v_Date.HasExtensions() || (!string.IsNullOrEmpty(v_Date.ElementId)))
               {
@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirDateTime.Value))
               {
-                writer.WriteString("valueDateTime",v_FhirDateTime.Value.Trim());
+                writer.WriteString("valueDateTime",v_FhirDateTime.Value);
               }
               if (v_FhirDateTime.HasExtensions() || (!string.IsNullOrEmpty(v_FhirDateTime.ElementId)))
               {
@@ -159,7 +159,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Id.Value))
               {
-                writer.WriteString("valueId",v_Id.Value.Trim());
+                writer.WriteString("valueId",v_Id.Value);
               }
               if (v_Id.HasExtensions() || (!string.IsNullOrEmpty(v_Id.ElementId)))
               {
@@ -198,7 +198,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Markdown.Value))
               {
-                writer.WriteString("valueMarkdown",v_Markdown.Value.Trim());
+                writer.WriteString("valueMarkdown",v_Markdown.Value);
               }
               if (v_Markdown.HasExtensions() || (!string.IsNullOrEmpty(v_Markdown.ElementId)))
               {
@@ -211,7 +211,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Oid.Value))
               {
-                writer.WriteString("valueOid",v_Oid.Value.Trim());
+                writer.WriteString("valueOid",v_Oid.Value);
               }
               if (v_Oid.HasExtensions() || (!string.IsNullOrEmpty(v_Oid.ElementId)))
               {
@@ -237,7 +237,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirString.Value))
               {
-                writer.WriteString("valueString",v_FhirString.Value.Trim());
+                writer.WriteString("valueString",v_FhirString.Value);
               }
               if (v_FhirString.HasExtensions() || (!string.IsNullOrEmpty(v_FhirString.ElementId)))
               {
@@ -267,7 +267,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirUri.Value))
               {
-                writer.WriteString("valueUri",v_FhirUri.Value.Trim());
+                writer.WriteString("valueUri",v_FhirUri.Value);
               }
               if (v_FhirUri.HasExtensions() || (!string.IsNullOrEmpty(v_FhirUri.ElementId)))
               {
@@ -280,7 +280,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_FhirUrl.Value))
               {
-                writer.WriteString("valueUrl",v_FhirUrl.Value.Trim());
+                writer.WriteString("valueUrl",v_FhirUrl.Value);
               }
               if (v_FhirUrl.HasExtensions() || (!string.IsNullOrEmpty(v_FhirUrl.ElementId)))
               {
@@ -293,7 +293,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
             {
               if (!string.IsNullOrEmpty(v_Uuid.Value))
               {
-                writer.WriteString("valueUuid",v_Uuid.Value.Trim());
+                writer.WriteString("valueUuid",v_Uuid.Value);
               }
               if (v_Uuid.HasExtensions() || (!string.IsNullOrEmpty(v_Uuid.ElementId)))
               {

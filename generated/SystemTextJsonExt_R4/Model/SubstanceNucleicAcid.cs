@@ -80,7 +80,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.AreaOfHybridisationElement.Value))
         {
-          writer.WriteString("areaOfHybridisation",current.AreaOfHybridisationElement.Value.Trim());
+          writer.WriteString("areaOfHybridisation",current.AreaOfHybridisationElement.Value);
         }
         if (current.AreaOfHybridisationElement.HasExtensions() || (!string.IsNullOrEmpty(current.AreaOfHybridisationElement.ElementId)))
         {
@@ -244,7 +244,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.SequenceElement.Value))
         {
-          writer.WriteString("sequence",current.SequenceElement.Value.Trim());
+          writer.WriteString("sequence",current.SequenceElement.Value);
         }
         if (current.SequenceElement.HasExtensions() || (!string.IsNullOrEmpty(current.SequenceElement.ElementId)))
         {
@@ -480,7 +480,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ConnectivityElement.Value))
         {
-          writer.WriteString("connectivity",current.ConnectivityElement.Value.Trim());
+          writer.WriteString("connectivity",current.ConnectivityElement.Value);
         }
         if (current.ConnectivityElement.HasExtensions() || (!string.IsNullOrEmpty(current.ConnectivityElement.ElementId)))
         {
@@ -498,7 +498,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -510,7 +510,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ResidueSiteElement.Value))
         {
-          writer.WriteString("residueSite",current.ResidueSiteElement.Value.Trim());
+          writer.WriteString("residueSite",current.ResidueSiteElement.Value);
         }
         if (current.ResidueSiteElement.HasExtensions() || (!string.IsNullOrEmpty(current.ResidueSiteElement.ElementId)))
         {
@@ -636,7 +636,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.NameElement.Value))
         {
-          writer.WriteString("name",current.NameElement.Value.Trim());
+          writer.WriteString("name",current.NameElement.Value);
         }
         if (current.NameElement.HasExtensions() || (!string.IsNullOrEmpty(current.NameElement.ElementId)))
         {
@@ -648,7 +648,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
       {
         if (!string.IsNullOrEmpty(current.ResidueSiteElement.Value))
         {
-          writer.WriteString("residueSite",current.ResidueSiteElement.Value.Trim());
+          writer.WriteString("residueSite",current.ResidueSiteElement.Value);
         }
         if (current.ResidueSiteElement.HasExtensions() || (!string.IsNullOrEmpty(current.ResidueSiteElement.ElementId)))
         {
