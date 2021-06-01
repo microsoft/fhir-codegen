@@ -13,7 +13,6 @@ using System.Text.Json;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
-using Fhir.R4.Serialization;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
@@ -30,8 +29,8 @@ namespace PerfTestCS
         {
             Summary summary = BenchmarkRunner.Run<Benchmark.SerializationBenchmarks>(
                 DefaultConfig.Instance
-                    .WithOption(ConfigOptions.DisableLogFile, true)
-                    .WithOption(ConfigOptions.KeepBenchmarkFiles, true)
+                    .WithOption(ConfigOptions.DisableLogFile, false)
+                    .WithOption(ConfigOptions.KeepBenchmarkFiles, false)
                     .WithOption(ConfigOptions.JoinSummary, true));
 
             // success

@@ -630,14 +630,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.Empty,
                 FhirTypeBase.NamingConvention.PascalCase);
 
-            if (codeName.Contains("[x]"))
+            if (codeName.Contains("[x]", StringComparison.OrdinalIgnoreCase))
             {
-                codeName = codeName.Replace("[x]", string.Empty);
-            }
-
-            if (codeName.Contains("[X]"))
-            {
-                codeName = codeName.Replace("[X]", string.Empty);
+                codeName = codeName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
             }
 
             if (_exportedCodes.Contains(codeName))
