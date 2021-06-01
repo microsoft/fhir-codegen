@@ -818,13 +818,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteSerializable();
 
+            string fhirTypeConstructor = $"\"{complex.Name}\",\"{complex.URL}\"";
+
             if (isResource)
             {
-                _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\", IsResource=true)]");
+                _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor}, IsResource=true)]");
             }
             else
             {
-                _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
+                _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
             }
 
             if (complex.BaseTypeName == "Quantity")
@@ -1189,6 +1191,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //   explicitname in the definition for attributes:
             //   - Statistic.attributeEstimate.attributeEstimate
             //   - Citation.contributorship.summary
+
             if (complex.Id.StartsWith("Citation") || complex.Id.StartsWith("Statistic") || complex.Id.StartsWith("DeviceDefinition"))
             {
                 string parentName = complex.Id.Substring(0, complex.Id.IndexOf('.'));
@@ -2224,7 +2227,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.WriteLineIndented("[System.Diagnostics.DebuggerDisplay(@\"\\{Value={Value}}\")]");
                 WriteSerializable();
-                _writer.WriteLineIndented($"[FhirType(\"{primitive.Name}\")]");
+
+                string fhirTypeConstructor = $"\"{primitive.Name}\",\"{primitive.URL}\"";
+                _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
 
                 _writer.WriteLineIndented(
                     $"public partial class" +
@@ -2258,6 +2263,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment("Primitive value of the element");
 
                 _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof({getSystemTypeForFhirType(primitive.Name)}))]");
 
                 if (CSharpFirelyCommon.PrimitiveValidationPatterns.ContainsKey(primitive.Name))
                 {
@@ -2288,6 +2294,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteFooter();
             }
+        }
+
+        private string getSystemTypeForFhirType(string fhirType)
+        {
+            var systemTypeName = fhirType switch
+            {
+                "boolean" => "Boolean",
+                "integer" => "Integer",
+                "unsignedInt" => "Integer",
+                "positiveInt" => "Integer",
+                "integer64" => "Long",
+                "time" => "Time",
+                "date" => "Date",
+                "instant" => "DateTime",
+                "dateTime" => "DateTime",
+                "decimal" => "Decimal",
+                _ => "String"
+            };
+
+            return "SystemPrimitive." + systemTypeName;
         }
 
         private void WriteSerializable()
@@ -2368,6 +2394,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
             _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
             _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
+            _writer.WriteLineIndented("using SystemPrimitive = Hl7.Fhir.ElementModel.Types;");
             _writer.WriteLine(string.Empty);
 
             WriteCopyright();
