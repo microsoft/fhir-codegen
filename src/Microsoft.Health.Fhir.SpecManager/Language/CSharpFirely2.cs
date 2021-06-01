@@ -1189,7 +1189,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //   explicitname in the definition for attributes:
             //   - Statistic.attributeEstimate.attributeEstimate
             //   - Citation.contributorship.summary
-            if (complex.Id.StartsWith("Citation") || complex.Id.StartsWith("Statistic"))
+            if (complex.Id.StartsWith("Citation") || complex.Id.StartsWith("Statistic") || complex.Id.StartsWith("DeviceDefinition"))
             {
                 string parentName = complex.Id.Substring(0, complex.Id.IndexOf('.'));
                 var sillyBackboneName = complex.Id.Substring(parentName.Length);
@@ -1931,7 +1931,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //   - Statistic.attributeEstimate.attributeEstimate
             //   - Citation.contributorship.summary
 
-            if (type.StartsWith("Citation") || type.StartsWith("Statistic"))
+            if (type.StartsWith("Citation") || type.StartsWith("Statistic") || type.StartsWith("DeviceDefinition"))
             {
                 string parentName = type.Substring(0, type.IndexOf('.'));
                 var sillyBackboneName = type.Substring(parentName.Length);
