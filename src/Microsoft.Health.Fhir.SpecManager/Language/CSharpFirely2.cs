@@ -1495,6 +1495,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice})]");
 
+            if (hasDefinedEnum)
+            {
+                _writer.WriteLineIndented("[DeclaredType(Type = typeof(Code))]");
+            }
+
             if (!string.IsNullOrEmpty(resourceReferences))
             {
                 _writer.WriteLineIndented("[CLSCompliant(false)]");
