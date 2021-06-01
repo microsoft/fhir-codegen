@@ -9,6 +9,7 @@ using System.CommandLine.Builder;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -83,20 +84,21 @@ namespace FhirCodegenCli
             }
 
             bool isBatch = false;
+            string currentFilePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             List<string> filesWritten = new List<string>();
 
             _extensionsOutputted = new HashSet<string>();
 
             if (string.IsNullOrEmpty(fhirSpecDirectory))
             {
-                fhirSpecDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\fhirVersions");
+                fhirSpecDirectory = Path.Combine(currentFilePath, "..", "..", "..", "..", "..", "fhirVersions");
             }
 
             if (!string.IsNullOrEmpty(loadLocalFhirBuild))
             {
                 if (string.IsNullOrEmpty(fhirPublishDirectory))
                 {
-                    fhirPublishDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\fhir\\publish");
+                    fhirPublishDirectory = Path.Combine(currentFilePath, "..", "..", "..", "..", "..", "..", "fhir", "publish");
                 }
             }
             else
@@ -106,7 +108,7 @@ namespace FhirCodegenCli
 
             if (string.IsNullOrEmpty(outputPath))
             {
-                outputPath = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\generated");
+                outputPath = Path.Combine(currentFilePath, "..", "..", "..", "..", "..", "generated");
             }
 
             if (string.IsNullOrEmpty(language))
