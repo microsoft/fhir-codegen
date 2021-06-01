@@ -248,7 +248,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Composition error reading 'category' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -302,7 +302,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Composition error reading 'author' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -363,7 +363,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Composition error reading 'attester' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -395,7 +395,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Composition error reading 'relatesTo' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -422,7 +422,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Composition error reading 'event' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -449,7 +449,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Composition error reading 'section' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -762,7 +762,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"EventComponent error reading 'code' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -794,7 +794,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"EventComponent error reading 'detail' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -982,7 +982,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SectionComponent error reading 'author' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -1041,7 +1041,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SectionComponent error reading 'entry' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -1073,7 +1073,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SectionComponent error reading 'section' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }

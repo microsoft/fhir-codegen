@@ -339,7 +339,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SubstanceSourceMaterial error reading 'parentSubstanceId' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -372,7 +372,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SubstanceSourceMaterial error reading 'parentSubstanceName' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -408,7 +408,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SubstanceSourceMaterial error reading 'parentSubstanceName' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -430,7 +430,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SubstanceSourceMaterial error reading 'countryOfOrigin' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -463,7 +463,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SubstanceSourceMaterial error reading 'geographicalLocation' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -499,7 +499,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SubstanceSourceMaterial error reading 'geographicalLocation' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -526,7 +526,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SubstanceSourceMaterial error reading 'fractionDescription' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -558,7 +558,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"SubstanceSourceMaterial error reading 'partDescription' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -825,7 +825,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"OrganismComponent error reading 'author' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }

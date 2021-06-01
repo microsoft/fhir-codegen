@@ -342,7 +342,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'identifier' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -472,7 +472,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'problem' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -499,7 +499,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'investigation' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -532,7 +532,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'protocol' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -568,7 +568,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'protocol' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -607,7 +607,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'finding' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -634,7 +634,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'prognosisCodeableConcept' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -661,7 +661,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'prognosisReference' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -688,7 +688,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'supportingInfo' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -715,7 +715,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"ClinicalImpression error reading 'note' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -813,7 +813,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"InvestigationComponent error reading 'item' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }

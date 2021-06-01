@@ -245,7 +245,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Invoice error reading 'identifier' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -338,7 +338,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Invoice error reading 'participant' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -375,7 +375,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Invoice error reading 'lineItem' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -402,7 +402,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Invoice error reading 'totalPriceComponent' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -456,7 +456,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"Invoice error reading 'note' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }
@@ -670,7 +670,7 @@ namespace Hl7.Fhir.Model.JsonExtensions
 
             if (!reader.Read())
             {
-              throw new JsonException();
+              throw new JsonException($"LineItemComponent error reading 'priceComponent' array, read failed! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
             }
             if (reader.TokenType == JsonTokenType.EndObject) { reader.Read(); }
           }

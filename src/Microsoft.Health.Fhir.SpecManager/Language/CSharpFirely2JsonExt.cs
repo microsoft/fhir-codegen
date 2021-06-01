@@ -636,13 +636,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLine();
                 _writer.WriteLineIndented("if (reader.TokenType != JsonTokenType.StartObject)");
                 _writer.OpenScope();
-                _writer.WriteLineIndented("throw new JsonException();");
+                _writer.WriteLineIndented($"throw new JsonException($\"PolymorphicRead <<< error reading: expected StartObject, found {{reader.TokenType}}! depth: {{reader.CurrentDepth}}, pos: {{reader.BytesConsumed}}\");");
                 _writer.CloseScope();
                 _writer.WriteLine();
                 _writer.WriteLineIndented("reader.Read();");
                 _writer.WriteLineIndented("if (reader.TokenType != JsonTokenType.PropertyName)");
                 _writer.OpenScope();
-                _writer.WriteLineIndented("throw new JsonException();");
+                _writer.WriteLineIndented($"throw new JsonException($\"PolymorphicRead <<< error reading: expected PropertyName, found {{reader.TokenType}}! depth: {{reader.CurrentDepth}}, pos: {{reader.BytesConsumed}}\");");
                 _writer.CloseScope();
                 _writer.WriteLine();
 
@@ -652,7 +652,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented("reader.Read();");
                 _writer.WriteLineIndented("if (reader.TokenType != JsonTokenType.String)");
                 _writer.OpenScope();
-                _writer.WriteLineIndented("throw new JsonException();");
+                _writer.WriteLineIndented($"throw new JsonException($\"PolymorphicRead <<< error reading 'resourceType': expected String, found {{reader.TokenType}}! depth: {{reader.CurrentDepth}}, pos: {{reader.BytesConsumed}}\");");
                 _writer.CloseScope();
                 _writer.WriteLine();
                 _writer.WriteLineIndented("resourceType = reader.GetString();");
@@ -1517,7 +1517,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                 _writer.WriteLine();
                                 _writer.WriteLineIndented($"if (!reader.Read())");
                                 _writer.OpenScope();
-                                _writer.WriteLineIndented("throw new JsonException();");
+                                _writer.WriteLineIndented($"throw new JsonException($\"{exportedComplexName} error reading '{elementInfo.FhirElementName}' array, read failed! depth: {{reader.CurrentDepth}}, pos: {{reader.BytesConsumed}}\");");
                                 _writer.CloseScope();
 
                                 _writer.WriteLineIndented($"if (reader.TokenType == JsonTokenType.EndObject) {{ reader.Read(); }}");
@@ -1706,7 +1706,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                                     _writer.WriteLine();
                                     _writer.WriteLineIndented($"if (!reader.Read())");
                                     _writer.OpenScope();
-                                    _writer.WriteLineIndented("throw new JsonException();");
+                                    _writer.WriteLineIndented($"throw new JsonException($\"{exportedComplexName} error reading '{elementInfo.FhirElementName}' array, read failed! depth: {{reader.CurrentDepth}}, pos: {{reader.BytesConsumed}}\");");
                                     _writer.CloseScope();
 
                                     _writer.WriteLineIndented($"if (reader.TokenType == JsonTokenType.EndObject) {{ reader.Read(); }}");
@@ -1795,7 +1795,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLine();
                 _writer.WriteLineIndented($"if (!reader.Read())");
                 _writer.OpenScope();
-                _writer.WriteLineIndented("throw new JsonException();");
+                _writer.WriteLineIndented($"throw new JsonException($\"{exportedComplexName} error reading '{fhirElementName}' array, read failed! depth: {{reader.CurrentDepth}}, pos: {{reader.BytesConsumed}}\");");
                 _writer.CloseScope();
 
                 _writer.WriteLineIndented($"if (reader.TokenType == JsonTokenType.EndObject) {{ reader.Read(); }}");
@@ -1882,7 +1882,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // read block (open and close)
                 _writer.WriteLineIndented($"if (!reader.Read())");
                 _writer.OpenScope();
-                _writer.WriteLineIndented("throw new JsonException();");
+                _writer.WriteLineIndented($"throw new JsonException($\"{exportedComplexName} error reading '{fhirElementName}' array, read failed! depth: {{reader.CurrentDepth}}, pos: {{reader.BytesConsumed}}\");");
                 _writer.CloseScope();
 
                 _writer.WriteLineIndented($"if (reader.TokenType == JsonTokenType.EndObject) {{ reader.Read(); }}");
