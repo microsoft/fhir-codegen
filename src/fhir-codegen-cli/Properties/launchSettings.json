@@ -192,12 +192,12 @@
         },
         "csV2Test": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\temp\\JsonRoundtrip\\RoundtripCli\\R4\\ --load-r4 latest --language-options CSharp2|namespace=fhirCsR4 --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\generated\\CSBasic2_R4\\ --load-r4 latest --language-options CSharp2|namespace=fhirCsR4 --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "firelyJsonTest": {
             "commandName": "Project",
-            "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\temp\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2JsonExt --official-expansions-only true",
+            "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\generated\\SystemTextJsonExt_R4\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2JsonExt --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }
