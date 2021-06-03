@@ -578,13 +578,13 @@ namespace Hl7.Fhir.Serialization
 
       if (reader.TokenType != JsonTokenType.StartObject)
       {
-        throw new JsonException();
+        throw new JsonException($"PolymorphicRead <<< error reading: expected StartObject, found {reader.TokenType}! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
       }
 
       reader.Read();
       if (reader.TokenType != JsonTokenType.PropertyName)
       {
-        throw new JsonException();
+        throw new JsonException($"PolymorphicRead <<< error reading: expected PropertyName, found {reader.TokenType}! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
       }
 
       propertyName = reader.GetString();
@@ -593,7 +593,7 @@ namespace Hl7.Fhir.Serialization
         reader.Read();
         if (reader.TokenType != JsonTokenType.String)
         {
-          throw new JsonException();
+          throw new JsonException($"PolymorphicRead <<< error reading 'resourceType': expected String, found {reader.TokenType}! depth: {reader.CurrentDepth}, pos: {reader.BytesConsumed}");
         }
 
         resourceType = reader.GetString();

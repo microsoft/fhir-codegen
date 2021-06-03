@@ -9,6 +9,7 @@ using System.CommandLine.Builder;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
@@ -83,20 +84,21 @@ namespace FhirCodegenCli
             }
 
             bool isBatch = false;
+            string currentFilePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             List<string> filesWritten = new List<string>();
 
             _extensionsOutputted = new HashSet<string>();
 
             if (string.IsNullOrEmpty(fhirSpecDirectory))
             {
-                fhirSpecDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\fhirVersions");
+                fhirSpecDirectory = FindFhirDir(currentFilePath, "fhirVersions");
             }
 
             if (!string.IsNullOrEmpty(loadLocalFhirBuild))
             {
                 if (string.IsNullOrEmpty(fhirPublishDirectory))
                 {
-                    fhirPublishDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\fhir\\publish");
+                    fhirPublishDirectory = Path.Combine(currentFilePath, "..", "..", "..", "..", "..", "..", "fhir", "publish");
                 }
             }
             else
@@ -106,7 +108,7 @@ namespace FhirCodegenCli
 
             if (string.IsNullOrEmpty(outputPath))
             {
-                outputPath = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\generated");
+                outputPath = FindFhirDir(currentFilePath, "generated");
             }
 
             if (string.IsNullOrEmpty(language))
@@ -370,6 +372,32 @@ namespace FhirCodegenCli
             {
                 Console.WriteLine($"+ {file}");
             }
+        }
+
+        /// <summary>Searches for the FHIR specification directory.</summary>
+        /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
+        ///  present.</exception>
+        /// <param name="startingDir">The starting dir.</param>
+        /// <param name="dirName">    The name of the directory we are searching for.</param>
+        /// <returns>The found FHIR directory.</returns>
+        public static string FindFhirDir(string startingDir, string dirName)
+        {
+            string currentDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testDir = Path.Combine(currentDir, dirName);
+
+            while (!Directory.Exists(testDir))
+            {
+                currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
+
+                if (currentDir == Path.GetPathRoot(currentDir))
+                {
+                    throw new DirectoryNotFoundException("Could not find spec directory in path!");
+                }
+
+                testDir = Path.Combine(currentDir, dirName);
+            }
+
+            return testDir;
         }
 
         /// <summary>Shows the language help.</summary>
