@@ -86,11 +86,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "CanonicalResource",
             "MetadataResource",
 
-            /* Citation somehow generates incorrect code - there must be something new
-             * going on with this resource type. For now, it has been disabled so we can
-             * take a look at it later, before R5 ships. */
-            "Citation",
-
             /* UCUM is used as a required binding in a codeable concept. Since we do not
              * use enums in this situation, it is not useful to generate this valueset
              */
@@ -146,6 +141,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
          /*   "CodeSystem",
             "ValueSet", */
         };
+
+        private static readonly string[] _allCommonTypes = _commmonComplexTypes
+            .Concat(_commmonResourceTypes)
+            .Concat(_commonR5DataTypes.Select(r5dt => r5dt.FhirName)).ToArray();
 
         private static readonly List<string> _commonValueSets = new List<string>()
         {
@@ -661,7 +660,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                         _modelWriter.DecreaseIndent();
                         _modelWriter.WriteLine(string.Empty);
-
                     }
                 }
 
@@ -837,8 +835,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             string abstractFlag = isAbstract ? " abstract" : string.Empty;
-
-
 
             List<string> interfaces = new List<string>();
 
@@ -1181,9 +1177,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteIndentedComment($"{complex.ShortDescription}");
 
-            string componentName = parentExportName + "#" + (string.IsNullOrEmpty(complex.ExplicitName) ?
+            string explicitName = complex.ExplicitName;
+
+            // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
+            //   explicitname in the definition for attributes:
+            //   - Statistic.attributeEstimate.attributeEstimate
+            //   - Citation.contributorship.summary
+            if (complex.Id == "Statistic.attributeEstimate.attributeEstimate")
+            {
+                explicitName = "AttributeEstimateAttributeEstimate";
+                exportName = "AttributeEstimateAttributeEstimateComponent";
+            }
+            else if (complex.Id == "Citation.contributorship.summary")
+            {
+                explicitName = "ContributorshipSummary";
+                exportName = "ContributorshipSummaryComponent";
+            }
+
+            // end of repair
+            string componentName = parentExportName + "#" + (string.IsNullOrEmpty(explicitName) ?
                 complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
-                complex.ExplicitName);
+                explicitName);
 
             Debug.Assert(!string.IsNullOrEmpty(componentName), $"Found a type at element {complex.Path} without a name or explicit name.");
 
@@ -1343,7 +1357,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 OpenScope();
 
-
                 HashSet<string> usedLiterals = new HashSet<string>();
 
                 foreach (FhirConcept concept in vs.Concepts)
@@ -1471,6 +1484,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             BuildElementOptionals(
                 element,
+                subset,
                 out string summary,
                 out string choice,
                 out string allowedTypes,
@@ -1659,6 +1673,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             BuildElementOptionals(
                 element,
+                subset,
                 out string summary,
                 out string choice,
                 out string allowedTypes,
@@ -1688,17 +1703,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Canonical), Since = FhirRelease.R4)]");
             }
 
-            if ((!string.IsNullOrEmpty(resourceReferences)) && string.IsNullOrEmpty(allowedTypes))
+            // Generate the [AllowedTypes] and [ResourceReference] attributes, except when we are
+            // generating datatypes and resources in Common, since this list probably contains
+            // classes that we have not yet moved to common.
+            bool notClsCompliant = !string.IsNullOrEmpty(allowedTypes) ||
+                !string.IsNullOrEmpty(resourceReferences);
+
+            if (notClsCompliant)
             {
                 _writer.WriteLineIndented("[CLSCompliant(false)]");
+            }
+
+            if (!string.IsNullOrEmpty(resourceReferences))
+            {
                 _writer.WriteLineIndented(resourceReferences);
             }
 
-            // Generate the [AllowedTypes] attribute, except when we are generating datatypes and resources
-            // in Common, since this list probably contains classes that we have not yet moved to common.
-            if (!string.IsNullOrEmpty(allowedTypes) && !subset.HasFlag(GenSubset.Common))
+            if (!string.IsNullOrEmpty(allowedTypes))
             {
-                _writer.WriteLineIndented("[CLSCompliant(false)]");
                 _writer.WriteLineIndented(allowedTypes);
             }
 
@@ -1896,7 +1918,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <returns>A string.</returns>
         private string BuildTypeFromPath(string type)
         {
-            if (_info.TryGetExplicitName(type, out string explicitTypeName))
+            // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
+            //   explicitname in the definition for attributes:
+            //   - Statistic.attributeEstimate.attributeEstimate
+            //   - Citation.contributorship.summary
+            if (type == "Statistic.attributeEstimate.attributeEstimate")
+            {
+                type = "Statistic.AttributeEstimateAttributeEstimateComponent";
+            }
+            else if (type == "Citation.contributorship.summary")
+            {
+                type = "Citation.ContributorshipSummaryComponent";
+            }
+
+            // end of repair
+            else if (_info.TryGetExplicitName(type, out string explicitTypeName))
             {
                 string parentName = type.Substring(0, type.IndexOf('.'));
                 type = $"{parentName}" +
@@ -1944,6 +1980,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <param name="resourceReferences">[out] The resource references.</param>
         private void BuildElementOptionals(
             FhirElement element,
+            GenSubset subset,
             out string summary,
             out string choice,
             out string allowedTypes,
@@ -1952,8 +1989,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             choice = string.Empty;
             allowedTypes = string.Empty;
             resourceReferences = string.Empty;
-
             summary = element.IsSummary ? ", InSummary=true" : string.Empty;
+
+            bool inCommon = subset.HasFlag(GenSubset.Common);
 
             if (element.ElementTypes != null)
             {
@@ -1982,51 +2020,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         choice = ", Choice=ChoiceType.ResourceChoice";
                     }
 
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("[AllowedTypes(");
-
-                    bool needsSep = false;
-                    foreach (FhirElementType elementType in element.ElementTypes.Values)
-                    {
-                        if (needsSep)
-                        {
-                            sb.Append(",");
-                        }
-
-                        needsSep = true;
-
-                        sb.Append("typeof(");
-                        sb.Append(Namespace);
-                        sb.Append(".");
-
-                        if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(elementType.Name))
-                        {
-                            sb.Append(CSharpFirelyCommon.TypeNameMappings[elementType.Name]);
-                        }
-                        else
-                        {
-                            sb.Append(FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase));
-                        }
-
-                        sb.Append(")");
-                    }
-
-                    sb.Append(")]");
-                    allowedTypes = sb.ToString();
-                }
-            }
-
-            if (element.ElementTypes != null)
-            {
-                foreach (FhirElementType elementType in element.ElementTypes.Values)
-                {
-                    if (elementType.Name == "Reference" && elementType.Profiles.Values.Any())
+                    // When we generating classes in Common, we have to avoid generating an
+                    // [AllowedTypes] attribute that contains class names that are not
+                    // present in the current version of the standard. So, in principle, we don't generate
+                    // this attribute in Common, unless all types mentioned are present in the
+                    // exception list above.
+                    if (!inCommon || element.ElementTypes.Values
+                            .Select(v => v.Name)
+                            .All(en => _allCommonTypes.Contains(en)))
                     {
                         StringBuilder sb = new StringBuilder();
-                        sb.Append("[References(");
+                        sb.Append("[AllowedTypes(");
 
                         bool needsSep = false;
-                        foreach (FhirElementProfile profile in elementType.Profiles.Values)
+                        foreach (FhirElementType elementType in element.ElementTypes.Values)
                         {
                             if (needsSep)
                             {
@@ -2035,15 +2042,66 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                             needsSep = true;
 
-                            sb.Append("\"");
-                            sb.Append(profile.Name);
-                            sb.Append("\"");
+                            sb.Append("typeof(");
+                            sb.Append(Namespace);
+                            sb.Append(".");
+
+                            if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(elementType.Name))
+                            {
+                                sb.Append(CSharpFirelyCommon.TypeNameMappings[elementType.Name]);
+                            }
+                            else
+                            {
+                                sb.Append(FhirUtils.SanitizedToConvention(elementType.Name, FhirTypeBase.NamingConvention.PascalCase));
+                            }
+
+                            sb.Append(")");
                         }
 
                         sb.Append(")]");
-                        resourceReferences = sb.ToString();
+                        allowedTypes = sb.ToString();
+                    }
+                }
+            }
 
-                        break;
+            if (element.ElementTypes != null)
+            {
+                foreach (FhirElementType elementType in element.ElementTypes.Values)
+                {
+                    if (elementType.Name == "Reference" && elementType.Profiles.Any())
+                    {
+                        // When we generating classes in Common, we have to avoid generating an
+                        // [ResourceReference] attribute that contains class names that are not
+                        // present in the current version of the standard. So, in principle, we don't generate
+                        // this attribute in Common, unless all types mentioned are present in the
+                        // exception list above.
+                        if (!inCommon || elementType.Profiles.Values
+                            .Select(v => v.Name)
+                            .All(en => _allCommonTypes.Contains(en)))
+                        {
+                            StringBuilder sb = new StringBuilder();
+                            sb.Append("[References(");
+
+                            bool needsSep = false;
+                            foreach (FhirElementProfile profile in elementType.Profiles.Values)
+                            {
+                                if (needsSep)
+                                {
+                                    sb.Append(",");
+                                }
+
+                                needsSep = true;
+
+                                sb.Append("\"");
+                                sb.Append(profile.Name);
+                                sb.Append("\"");
+                            }
+
+                            sb.Append(")]");
+                            resourceReferences = sb.ToString();
+
+                            break;
+                        }
                     }
                 }
             }

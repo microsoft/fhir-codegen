@@ -380,5 +380,4 @@ msbuild.wrn
 /firely
 /temp
 /cytoscape
-/fhirVersions/local-*
 /generated/local_*
