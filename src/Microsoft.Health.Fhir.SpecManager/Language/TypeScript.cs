@@ -475,25 +475,30 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
                 string typeName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
 
-                _writer.WriteLineIndented($"export interface {exportName} extends {typeName} {{");
+                if (ShouldSupportGenerics(exportName)) {
+                    _writer.WriteLineIndented($"export interface {exportName}<T extends {typeName} = Resource> {{");
+                } else {
+                    _writer.WriteLineIndented($"export interface {exportName} extends {typeName} {{");
+                }
             }
 
             _writer.IncreaseIndent();
 
             if (isResource)
             {
+                string resourceType;
                 if (ShouldWriteResourceName(complex.Name))
                 {
                     _exportedResources.Add(exportName);
-
-                    _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
-                    _writer.WriteLineIndented($"resourceType: '{complex.Name}';");
+                    resourceType = complex.Name;
                 }
                 else
                 {
-                    _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
-                    _writer.WriteLineIndented($"resourceType: string;");
+                    resourceType = "string";
                 }
+
+                _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
+                _writer.WriteLineIndented($"resourceType: '{resourceType}';");
             }
 
             // write elements
@@ -582,6 +587,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return true;
+        }
+
+        /// <summary>Determine if the export should support generics</summary>
+        /// <param name="name">The name.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private static bool ShouldSupportGenerics(string name)
+        {
+            switch (name)
+            {
+                case "Bundle":
+                case "BundleEntry":
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>Writes the elements.</summary>
@@ -677,7 +697,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
                 else
                 {
-                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                    if (ShouldSupportGenerics(kvp.Value)) {
+                         _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}<T>{arrayFlagString};");
+                    } else {
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                    }
                 }
 
                 if (RequiresExtension(kvp.Value))
