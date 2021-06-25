@@ -969,7 +969,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (var info in exportedElements)
             {
-                _writer.WriteLineIndented($"if ({info.ExportedName} is not null) yield return new KeyValuePair<string,object>(\"{info.FhirElementName}\",{info.ExportedName});");
+                var nullcheck = !info.IsList ? " is not null" : "?.Any() == true";
+                _writer.WriteLineIndented($"if ({info.ExportedName}{nullcheck}) yield return new KeyValuePair<string,object>(\"{info.FhirElementName}\",{info.ExportedName});");
             }
 
             CloseScope();
@@ -987,8 +988,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (WrittenElementInfo info in exportedElements)
             {
-                _writer.WriteLineIndented(
-                      $"\"{info.FhirElementName}\" => {info.ExportedName},");
+                _writer.WriteIndented($"\"{info.FhirElementName}\" => ");
+
+                if (!info.IsList)
+                    _writer.WriteLine($"{info.ExportedName},");
+                else
+                    _writer.WriteLine($"{info.ExportedName}?.Any() == true ? {info.ExportedName} : null,");
             }
 
             _writer.WriteLineIndented("_ => default");
