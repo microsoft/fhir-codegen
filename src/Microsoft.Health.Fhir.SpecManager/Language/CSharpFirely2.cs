@@ -919,6 +919,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteChildren(exportedElements);
             WriteNamedChildren(exportedElements);
 
+            WriteIDictionarySupport(exportedElements);
+
             // close class
             CloseScope();
         }
@@ -947,6 +949,58 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return baseTypeName;
+        }
+
+        private void WriteIDictionarySupport(IEnumerable<WrittenElementInfo> exportedElements)
+        {
+            WriteDictionaryTryGetValue(exportedElements);
+            WriteDictionaryPairs(exportedElements);
+        }
+
+
+        private void WriteDictionaryPairs(IEnumerable<WrittenElementInfo> exportedElements)
+        {
+            if (!exportedElements.Any()) return;
+
+            _writer.WriteLineIndented("protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()");
+            OpenScope();
+
+            _writer.WriteLineIndented("foreach (var kvp in base.GetElementPairs()) yield return kvp;");
+
+            foreach (var info in exportedElements)
+            {
+                var nullcheck = !info.IsList ? " is not null" : "?.Any() == true";
+                _writer.WriteLineIndented($"if ({info.ExportedName}{nullcheck}) yield return new KeyValuePair<string,object>(\"{info.FhirElementName}\",{info.ExportedName});");
+            }
+
+            CloseScope();
+        }
+
+        private void WriteDictionaryTryGetValue(IEnumerable<WrittenElementInfo> exportedElements)
+        {
+            // Don't override anything if there are no additional elements.
+            if (!exportedElements.Any()) return;
+
+            _writer.WriteLineIndented("public override bool TryGetValue(string key, out object value)");
+            OpenScope();
+            _writer.WriteLineIndented("value = key switch");
+            OpenScope();
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                _writer.WriteIndented($"\"{info.FhirElementName}\" => ");
+
+                if (!info.IsList)
+                    _writer.WriteLine($"{info.ExportedName},");
+                else
+                    _writer.WriteLine($"{info.ExportedName}?.Any() == true ? {info.ExportedName} : null,");
+            }
+
+            _writer.WriteLineIndented("_ => default");
+            CloseScope(includeSemicolon: true);
+
+            _writer.WriteLineIndented("return value is not null || base.TryGetValue(key, out value);");
+            CloseScope();
         }
 
         /// <summary>Writes the children of this item.</summary>
@@ -1234,6 +1288,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIsExactly(exportName, exportedElements);
                 WriteChildren(exportedElements);
                 WriteNamedChildren(exportedElements);
+                WriteIDictionarySupport(exportedElements);
             }
 
             // close class
@@ -2539,3 +2594,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
     }
 }
+
+

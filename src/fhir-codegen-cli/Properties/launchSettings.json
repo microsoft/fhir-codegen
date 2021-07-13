@@ -145,11 +145,18 @@
             "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\common\\src\\Hl7.Fhir.Support.Poco\\Model --load-r5 4.6.0 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --language-options CSharpFirely2|subset=common --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Firely 2.x Parsers": {
+            "commandName": "Project",
+            "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Serialization.Poco --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2JsonExt --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+
         "FirelyAll": {
             "commandName": "Project",
             "commandLineArgs": "--output-path ..\\..\\firely --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 4.5.0 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+
         "server2": {
             "commandName": "Project",
             "commandLineArgs": "--fhir-server-url http://hapi.fhir.org/baseDstu2/ --output-path ..\\..\\temp --fhir-spec-directory ..\\..\\fhirVersions --language Info",
