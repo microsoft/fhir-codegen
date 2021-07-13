@@ -82,6 +82,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>The single file export extension.</summary>
         private const string _singleFileExportExtension = ".ts";
 
+        /// <summary>The minimum type script version.</summary>
+        private const string _minimumTypeScriptVersion = "3.7";
+
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
@@ -809,6 +812,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.WriteLineIndented($"  // Language option: \"{kvp.Key}\" = \"{kvp.Value}\"");
                 }
             }
+
+            _writer.WriteLine($"// Minimum TypeScript Version: {_minimumTypeScriptVersion}");
         }
 
         /// <summary>Writes a footer.</summary>
