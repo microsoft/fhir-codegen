@@ -82,6 +82,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>The single file export extension.</summary>
         private const string _singleFileExportExtension = ".ts";
 
+        /// <summary>The minimum type script version.</summary>
+        private const string _minimumTypeScriptVersion = "3.7";
+
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
         private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
         {
@@ -117,6 +120,39 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "enum",
             "export",
             "interface",
+        };
+
+        /// <summary>The generics and type hints.</summary>
+        private static readonly Dictionary<string, GenericTypeHintInfo> _genericsAndTypeHints = new Dictionary<string, GenericTypeHintInfo>()
+        {
+            {
+                "Bundle",
+                new GenericTypeHintInfo()
+                {
+                    Alias = "BundleContentType",
+                    GenericHint = "FhirResource",
+                    IncludeBase = true,
+                }
+            },
+            {
+                "Bundle.entry",
+                new GenericTypeHintInfo()
+                {
+                    Alias = "BundleContentType",
+                    GenericHint = "FhirResource",
+                    IncludeBase = true,
+                }
+            },
+            {
+                "Bundle.entry.resource",
+                new GenericTypeHintInfo()
+                {
+                    Alias = "BundleContentType",
+                    GenericHint = string.Empty,
+                    IncludeBase = false,
+                }
+            },
+
         };
 
         /// <summary>Gets the name of the language.</summary>
@@ -475,24 +511,35 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
                 string typeName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
 
-                _writer.WriteLineIndented($"export interface {exportName} extends {typeName} {{");
+                //if (ShouldSupportGenerics(complex.Path))
+                if (_genericsAndTypeHints.ContainsKey(complex.Path))
+                {
+                    _writer.WriteLineIndented(
+                        $"export interface" +
+                        $" {exportName}<{_genericsAndTypeHints[complex.Path].Alias} = {_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                        $" extends {typeName} {{");
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"export interface {exportName} extends {typeName} {{");
+                }
             }
 
             _writer.IncreaseIndent();
 
             if (isResource)
             {
-                if (ShouldWriteResourceName(complex.Name))
+                if (ShouldWriteResourceType(complex.Name))
                 {
                     _exportedResources.Add(exportName);
 
                     _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
-                    _writer.WriteLineIndented($"resourceType: '{complex.Name}';");
+                    _writer.WriteLineIndented($"readonly resourceType: '{complex.Name}';");
                 }
                 else
                 {
                     _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
-                    _writer.WriteLineIndented($"resourceType: string;");
+                    _writer.WriteLineIndented($"readonly resourceType: string;");
                 }
             }
 
@@ -570,7 +617,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Determine if we should write resource name.</summary>
         /// <param name="name">The name.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ShouldWriteResourceName(string name)
+        private static bool ShouldWriteResourceType(string name)
         {
             switch (name)
             {
@@ -582,6 +629,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return true;
+        }
+
+        /// <summary>Determine if the export should support generics</summary>
+        /// <param name="name">The name.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        private static bool ShouldSupportGenerics(string name)
+        {
+            switch (name)
+            {
+                case "Bundle":
+                case "Bundle.entry":
+                case "Bundle.entry.resource":
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>Writes the elements.</summary>
@@ -671,6 +734,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString};");
                     }
                 }
+                //else if (ShouldSupportGenerics(element.Path))
+                else if (_genericsAndTypeHints.ContainsKey(element.Path))
+                {
+                    GenericTypeHintInfo typeHint = _genericsAndTypeHints[element.Path];
+
+                    if (typeHint.IncludeBase)
+                    {
+                        _writer.WriteLineIndented(
+                            $"{kvp.Key}{optionalFlagString}:" +
+                            $" {kvp.Value}" +
+                            $"<{_genericsAndTypeHints[element.Path].Alias}>{arrayFlagString};");
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented(
+                            $"{kvp.Key}{optionalFlagString}:" +
+                            $" {_genericsAndTypeHints[element.Path].Alias}{arrayFlagString};");
+                    }
+
+                    //_writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}<T>{arrayFlagString};");
+                }
                 else if (kvp.Value.Equals("Resource", StringComparison.Ordinal))
                 {
                     _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: FhirResource{arrayFlagString};");
@@ -728,6 +812,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _writer.WriteLineIndented($"  // Language option: \"{kvp.Key}\" = \"{kvp.Value}\"");
                 }
             }
+
+            _writer.WriteLine($"// Minimum TypeScript Version: {_minimumTypeScriptVersion}");
         }
 
         /// <summary>Writes a footer.</summary>
@@ -759,6 +845,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             internal string Name;
             internal string ConstName;
+        }
+
+        /// <summary>Information about the generic type hint.</summary>
+        private struct GenericTypeHintInfo
+        {
+            internal string Alias;
+            internal bool IncludeBase;
+            internal string GenericHint;
         }
     }
 }

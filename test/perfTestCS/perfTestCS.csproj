@@ -8,6 +8,29 @@
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" Link="stylecop.json" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\generated\CSharpBasic_R4.cs" Link="CSharpBasic_R4.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\generated\CSBasic2_R4\**\*">
+      <Link>CSBasic2_R4\%(RecursiveDir)/%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\generated\SystemTextJsonExt_R4\**\*">
+      <Link>SystemTextJsonExt_R4\%(RecursiveDir)/%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Benchmark\BasicNewtonsoftSerialization.cs" />
+    <Compile Remove="Benchmark\BenchmarkBase.cs" />
+    <Compile Remove="Benchmark\FirelySerialization.cs" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.12.1" />
     <PackageReference Include="Hl7.Fhir.R4" Version="3.2.0" />

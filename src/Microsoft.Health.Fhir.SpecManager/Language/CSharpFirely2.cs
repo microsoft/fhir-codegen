@@ -818,13 +818,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             WriteSerializable();
 
+            string fhirTypeConstructor = $"\"{complex.Name}\",\"{complex.URL}\"";
+
             if (isResource)
             {
-                _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\", IsResource=true)]");
+                _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor}, IsResource=true)]");
             }
             else
             {
-                _writer.WriteLineIndented($"[FhirType(\"{complex.Name}\")]");
+                _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
             }
 
             if (complex.BaseTypeName == "Quantity")
@@ -1159,6 +1161,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             CloseScope();
         }
 
+        private string capitalizeThoseSillyBackboneNames(string path) =>
+            path.Length == 1 ? path :
+                   path.StartsWith(".") ?
+                    char.ToUpper(path[1]) + capitalizeThoseSillyBackboneNames(path.Substring(2))
+                    : path[0] + capitalizeThoseSillyBackboneNames(path.Substring(1));
+
         /// <summary>Writes a component.</summary>
         /// <param name="complex">              The complex data type.</param>
         /// <param name="exportName">           Name of the export.</param>
@@ -1183,18 +1191,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //   explicitname in the definition for attributes:
             //   - Statistic.attributeEstimate.attributeEstimate
             //   - Citation.contributorship.summary
-            if (complex.Id == "Statistic.attributeEstimate.attributeEstimate")
-            {
-                explicitName = "AttributeEstimateAttributeEstimate";
-                exportName = "AttributeEstimateAttributeEstimateComponent";
-            }
-            else if (complex.Id == "Citation.contributorship.summary")
-            {
-                explicitName = "ContributorshipSummary";
-                exportName = "ContributorshipSummaryComponent";
-            }
 
+            if (complex.Id.StartsWith("Citation") || complex.Id.StartsWith("Statistic") || complex.Id.StartsWith("DeviceDefinition"))
+            {
+                string parentName = complex.Id.Substring(0, complex.Id.IndexOf('.'));
+                var sillyBackboneName = complex.Id.Substring(parentName.Length);
+                explicitName = capitalizeThoseSillyBackboneNames(sillyBackboneName);
+                exportName = explicitName + "Component";
+            }
             // end of repair
+
             string componentName = parentExportName + "#" + (string.IsNullOrEmpty(explicitName) ?
                 complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase) :
                 explicitName);
@@ -1491,6 +1497,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 out string resourceReferences);
 
             _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice})]");
+
+            if (hasDefinedEnum)
+            {
+                _writer.WriteLineIndented("[DeclaredType(Type = typeof(Code))]");
+            }
 
             if (!string.IsNullOrEmpty(resourceReferences))
             {
@@ -1922,15 +1933,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             //   explicitname in the definition for attributes:
             //   - Statistic.attributeEstimate.attributeEstimate
             //   - Citation.contributorship.summary
-            if (type == "Statistic.attributeEstimate.attributeEstimate")
-            {
-                type = "Statistic.AttributeEstimateAttributeEstimateComponent";
-            }
-            else if (type == "Citation.contributorship.summary")
-            {
-                type = "Citation.ContributorshipSummaryComponent";
-            }
 
+            if (type.StartsWith("Citation") || type.StartsWith("Statistic") || type.StartsWith("DeviceDefinition"))
+            {
+                string parentName = type.Substring(0, type.IndexOf('.'));
+                var sillyBackboneName = type.Substring(parentName.Length);
+                type = parentName + "." + capitalizeThoseSillyBackboneNames(sillyBackboneName) + "Component";
+            }
             // end of repair
             else if (_info.TryGetExplicitName(type, out string explicitTypeName))
             {
@@ -2218,7 +2227,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.WriteLineIndented("[System.Diagnostics.DebuggerDisplay(@\"\\{Value={Value}}\")]");
                 WriteSerializable();
-                _writer.WriteLineIndented($"[FhirType(\"{primitive.Name}\")]");
+
+                string fhirTypeConstructor = $"\"{primitive.Name}\",\"{primitive.URL}\"";
+                _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
 
                 _writer.WriteLineIndented(
                     $"public partial class" +
@@ -2252,6 +2263,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIndentedComment("Primitive value of the element");
 
                 _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof({getSystemTypeForFhirType(primitive.Name)}))]");
 
                 if (CSharpFirelyCommon.PrimitiveValidationPatterns.ContainsKey(primitive.Name))
                 {
@@ -2282,6 +2294,26 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteFooter();
             }
+        }
+
+        private string getSystemTypeForFhirType(string fhirType)
+        {
+            var systemTypeName = fhirType switch
+            {
+                "boolean" => "Boolean",
+                "integer" => "Integer",
+                "unsignedInt" => "Integer",
+                "positiveInt" => "Integer",
+                "integer64" => "Long",
+                "time" => "Time",
+                "date" => "Date",
+                "instant" => "DateTime",
+                "dateTime" => "DateTime",
+                "decimal" => "Decimal",
+                _ => "String"
+            };
+
+            return "SystemPrimitive." + systemTypeName;
         }
 
         private void WriteSerializable()
@@ -2362,6 +2394,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
             _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
             _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
+            _writer.WriteLineIndented("using SystemPrimitive = Hl7.Fhir.ElementModel.Types;");
             _writer.WriteLine(string.Empty);
 
             WriteCopyright();
