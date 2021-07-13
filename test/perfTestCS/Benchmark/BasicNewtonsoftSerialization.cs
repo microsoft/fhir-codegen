@@ -19,7 +19,7 @@ namespace PerfTestCS.Benchmark
         private string _json;
 
         /// <summary>The model.</summary>
-        private fhirNewtonsoft.Resource _model;
+        private fhir.Resource _model;
 
         /// <summary>The converter.</summary>
         private JsonConverter _converter;
@@ -29,7 +29,7 @@ namespace PerfTestCS.Benchmark
         /// </summary>
         public BasicNewtonsoftSerialization()
         {
-            _converter = new fhirNewtonsoft.ResourceConverter();
+            _converter = new fhir.ResourceConverter();
         }
 
         /// <summary>Global setup, executed once per parameter value.</summary>
@@ -41,7 +41,7 @@ namespace PerfTestCS.Benchmark
             }
 
             _json = File.ReadAllText(Filename);
-            _model = JsonConvert.DeserializeObject<fhirNewtonsoft.Resource>(_json, _converter);
+            _model = JsonConvert.DeserializeObject<fhir.Resource>(_json, _converter);
         }
 
         /// <summary>Global cleanup.</summary>
@@ -55,7 +55,7 @@ namespace PerfTestCS.Benchmark
         /// <returns>An object.</returns>
         public override object Parse()
         {
-            return JsonConvert.DeserializeObject<fhirNewtonsoft.Resource>(_json, _converter);
+            return JsonConvert.DeserializeObject<fhir.Resource>(_json, _converter);
         }
 
         /// <summary>Serialize this object to the given stream.</summary>
