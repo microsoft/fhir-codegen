@@ -1345,10 +1345,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented($"writer.WriteStartObject();");
             _writer.CloseScope();
 
-            if (isResource &&
-                (nameForExport != "Resource") &&
-                (nameForExport != "DomainResource") &&
-                (nameForExport != "MetadataResource"))
+            if (isResource && ShouldWriteResourceName(nameForExport))
             {
                 WriteJsonSerializeElement("ResourceType", "resourceType", "string", false, "WriteString");
                 _writer.WriteLine();
@@ -1530,6 +1527,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     break;
 
+                case "byte[]":
+                    if (isOptional)
+                    {
+                        _writer.WriteLineIndented($"if ({elementName} != null)");
+                        _writer.OpenScope();
+                        _writer.WriteLineIndented($"writer.WriteString(\"{camel}\", System.Convert.ToBase64String({elementName}));");
+                        _writer.CloseScope();
+                    }
+                    else
+                    {
+                        _writer.WriteLineIndented($"writer.WriteString(\"{camel}\", System.Convert.ToBase64String({elementName}));");
+                    }
+
+                    break;
+
                 // non-string types that are serialized as strings
                 case "guid":
                 case "integer64":
@@ -1625,6 +1637,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     // _writer.WriteLineIndented($"foreach (Resource resource in {elementName})");
                     // _writer.WriteLineIndented($"((Resource)this).SerializeJson(writer, options, true);");
+                    break;
+
+                case "byte[]":
+                    _writer.WriteLineIndented($"foreach (byte[] byteArr{elementName} in {elementName})");
+                    _writer.OpenScope();
+                    _writer.WriteLineIndented($"writer.WriteStringValue(System.Convert.ToBase64String(byteArr{elementName}));");
+                    _writer.CloseScope();
+
                     break;
 
                 case "guid":
@@ -1902,7 +1922,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "DomainResource":
                 case "MetadataResource":
                 case "CanonicalResource":
-
                     _writer.WriteLineIndented($"{_namespaceModels}.Resource item{elementName} = new {_namespaceModels}.Resource();");
                     _writer.WriteLineIndented($"item{elementName}.LoadFromJsonElements(jList{elementName}[i]);");
                     _writer.WriteLineIndented($"{elementName}.Add(item{elementName});");
@@ -1912,7 +1931,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 case "integer64":
                 case "int64":
                 case "long":
-
                     _writer.WriteLineIndented($"string strVal{elementName} = jList{elementName}[i].GetString();");
                     _writer.WriteLineIndented($"if (long.TryParse(strVal{elementName}, out long longVal{elementName}))");
                     _writer.OpenScope();
@@ -2165,7 +2183,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     break;
 
                 case "byte[]":
-                    _writer.WriteLineIndented($"{elementName} = reader.{getterFunctionName}();");
+                    _writer.WriteLineIndented($"{elementName} = System.Convert.FromBase64String(reader.GetString());");
                     break;
 
                 case "integer64":
@@ -2243,7 +2261,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     break;
 
                 case "byte[]":
-                    _writer.WriteLineIndented($"{elementName}.Add(reader.{getterFunctionName}());");
+                    _writer.WriteLineIndented($"{elementName}.Add(System.Convert.FromBase64String(reader.GetString()));");
                     break;
 
                 case "integer64":
