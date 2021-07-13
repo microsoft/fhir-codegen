@@ -9,7 +9,7 @@ Usage:
   fhir-codegen-cli [options]
 
 Options:
-  --fhir-spec-directory <fhir-spec-directory>    The full path to the directory where FHIR 
+  --fhir-spec-directory <fhir-spec-directory>    The full path to the directory where FHIR
                                                     specifications are downloaded and cached.
   --output-path <output-path>                    File or directory to write output.
   --verbose                                      Show verbose output.
@@ -88,7 +88,7 @@ Export base C# classes needed for the Firely-maintained C# API ([FHIR-Net-API](h
 Export a [cytoscape](https://js.cytoscape.org/) data file (JSON).
 
 ### Info
-    
+
 Basic text output of a version of FHIR for information and testing.
 
 ### OpenAPI **EXPERIMENTAL**
@@ -122,6 +122,12 @@ Export an OpenAPI 2 or 3 JSON version of the standard.
 ### TypeScript
 
 Basic TypeScript bindings, useful for prototyping and small projects.  Exported classes are able to serialize to and parse from FHIR JSON.
+
+# Developing/Building
+
+`dotnet` required. [Cross platform installation instructions](https://dotnet.microsoft.com/download).
+
+Build with `dotnet build`. Run the cli project with `dotnet run -p src/fhir-codegen-cli`.
 
 # Testing
 
