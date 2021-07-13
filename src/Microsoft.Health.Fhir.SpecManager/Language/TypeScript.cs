@@ -487,12 +487,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     _exportedResources.Add(exportName);
 
                     _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
-                    _writer.WriteLineIndented($"resourceType: '{complex.Name}';");
+                    _writer.WriteLineIndented($"readonly resourceType: '{complex.Name}';");
                 }
                 else
                 {
                     _writer.WriteLineIndented("/** Resource Type Name (for serialization) */");
-                    _writer.WriteLineIndented($"resourceType: string;");
+                    _writer.WriteLineIndented($"readonly resourceType: string;");
                 }
             }
 
