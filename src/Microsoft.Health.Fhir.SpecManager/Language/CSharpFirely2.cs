@@ -919,6 +919,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             WriteChildren(exportedElements);
             WriteNamedChildren(exportedElements);
 
+            WriteIDictionarySupport(exportedElements, isResource ? complex.Name : null);
+
             // close class
             CloseScope();
         }
@@ -947,6 +949,124 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return baseTypeName;
+        }
+
+        private void WriteIDictionarySupport(IEnumerable<WrittenElementInfo> exportedElements, string resourceName)
+        {
+            WriteDictionaryTryGetValue(exportedElements, resourceName);
+            WriteDictionaryPairs(exportedElements, resourceName);
+        }
+
+
+        private string NullCheck(WrittenElementInfo info) => info.ExportedName + (!info.IsList ? " is not null" : "?.Any() == true");
+
+        private void WriteDictionaryPairs(IEnumerable<WrittenElementInfo> exportedElements, string resourceName)
+        {
+            if (!exportedElements.Any())
+            {
+                return;
+            }
+
+            _writer.WriteLineIndented("protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()");
+            OpenScope();
+
+            if (resourceName == "Resource")
+                _writer.WriteLineIndented($"yield return new KeyValuePair<string,object>(\"resourceType\",TypeName);");
+
+            _writer.WriteLineIndented("foreach (var kvp in base.GetElementPairs()) yield return kvp;");
+
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                string elementProp = info.IsChoice ?
+                    $"PocoDictionary.ComposeChoiceElementName(\"{info.FhirElementName}\", {info.ExportedName})"
+                    : $"\"{info.FhirElementName}\"";
+                _writer.WriteLineIndented($"if ({NullCheck(info)}) yield return new " +
+                    $"KeyValuePair<string,object>({elementProp},{info.ExportedName});");
+            }
+
+            CloseScope();
+        }
+
+        private void WriteDictionaryTryGetValue(IEnumerable<WrittenElementInfo> exportedElements, string resourceName)
+        {
+            // Don't override anything if there are no additional elements.
+            if (!exportedElements.Any())
+            {
+                return;
+            }
+
+            _writer.WriteLineIndented("protected override bool TryGetValue(string key, out object value)");
+            OpenScope();
+
+            // switch
+            _writer.WriteLineIndented("switch (key)");
+            OpenScope();
+
+            if (resourceName == "Resource")
+            {
+                _writer.WriteLineIndented($"case \"resourceType\":");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented("value = TypeName;");
+                _writer.WriteLineIndented("return true;");
+                _writer.DecreaseIndent();
+            }
+
+            bool hasChoices = false;
+            foreach (WrittenElementInfo info in exportedElements)
+            {
+                _writer.WriteLineIndented($"case \"{info.FhirElementName}\":");
+                _writer.IncreaseIndent();
+
+                _writer.WriteLineIndented($"value = {info.ExportedName};");
+                _writer.WriteLineIndented($"return {NullCheck(info)};");
+
+                _writer.DecreaseIndent();
+
+                hasChoices |= info.IsChoice;
+            }
+
+            _writer.WriteLineIndented("default:");
+            _writer.IncreaseIndent();
+            if (!hasChoices)
+                writeBaseTryGetValue();
+            else
+                _writer.WriteLineIndented("return choiceMatches(out value);");
+            _writer.DecreaseIndent();
+
+            // end switch
+            CloseScope(includeSemicolon: true);
+
+            if (hasChoices)
+            {
+                // write a matches for prefixes of element names for choice elements
+                _writer.WriteLineIndented("bool choiceMatches(out object value)");
+                OpenScope();
+
+                bool needElse = false;
+
+                foreach (WrittenElementInfo info in exportedElements.Where(i => i.IsChoice))
+                {
+                    _writer.WriteLineIndented($"{(needElse ? "else if" : "if")} (key.StartsWith(\"{info.FhirElementName}\"))");
+                    needElse = true;
+                    _writer.OpenScope();
+
+                    _writer.WriteLineIndented($"value = {info.ExportedName};");
+                    _writer.WriteIndented($"return {NullCheck(info)} && ");
+                    // && PocoDictionary.HasCorrectSuffix(key, Value.TypeName, 5);
+                    _writer.WriteLine($"PocoDictionary.HasCorrectSuffix(key, {info.ExportedName}.TypeName, {info.FhirElementName.Length});");
+
+                    _writer.CloseScope();
+                }
+
+                writeBaseTryGetValue();
+
+                CloseScope();
+            }
+
+            // end function
+            CloseScope();
+
+            void writeBaseTryGetValue() => _writer.WriteLineIndented("return base.TryGetValue(key, out value);");
         }
 
         /// <summary>Writes the children of this item.</summary>
@@ -1234,6 +1354,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 WriteIsExactly(exportName, exportedElements);
                 WriteChildren(exportedElements);
                 WriteNamedChildren(exportedElements);
+                WriteIDictionarySupport(exportedElements, isResource ? complex.Name : null);
             }
 
             // close class
@@ -1575,6 +1696,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ExportedName = $"{pascal}{matchTrailer}Element",
                         ExportedType = codeLiteral,
                         IsList = false,
+                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
 
                 _writer.WriteLineIndented($"public {codeLiteral} {pascal}{matchTrailer}Element");
@@ -1596,6 +1718,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ExportedName = $"{pascal}{matchTrailer}Element",
                         ExportedType = $"List<{codeLiteral}>",
                         IsList = true,
+                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
 
                 _writer.WriteLineIndented($"public List<{codeLiteral}> {pascal}{matchTrailer}Element");
@@ -1825,6 +1948,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ExportedName = $"{pascal}{elementTag}",
                         ExportedType = $"{Namespace}.{type}",
                         IsList = false,
+                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
 
                 _writer.WriteLineIndented($"public {Namespace}.{type} {pascal}{elementTag}");
@@ -1846,6 +1970,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         ExportedName = $"{pascal}{elementTag}",
                         ExportedType = $"List<{Namespace}.{type}>",
                         IsList = true,
+                        IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                     });
 
                 _writer.WriteLineIndented($"public List<{Namespace}.{type}> {pascal}{elementTag}");
@@ -2528,6 +2653,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             internal string ExportedName;
             internal string ExportedType;
             internal bool IsList;
+            internal bool IsChoice;
         }
 
         /// <summary>Information about the written model.</summary>
@@ -2539,3 +2665,5 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
     }
 }
+
+
