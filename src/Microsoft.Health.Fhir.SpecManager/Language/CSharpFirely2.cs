@@ -978,7 +978,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             foreach (WrittenElementInfo info in exportedElements)
             {
                 string elementProp = info.IsChoice ?
-                    $"PocoDictionary.ComposeChoiceElementName(\"{info.FhirElementName}\", {info.ExportedName})"
+                    $"ElementName.AddSuffixToElementName(\"{info.FhirElementName}\", {info.ExportedName})"
                     : $"\"{info.FhirElementName}\"";
                 _writer.WriteLineIndented($"if ({NullCheck(info)}) yield return new " +
                     $"KeyValuePair<string,object>({elementProp},{info.ExportedName});");
@@ -1052,8 +1052,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                     _writer.WriteLineIndented($"value = {info.ExportedName};");
                     _writer.WriteIndented($"return {NullCheck(info)} && ");
-                    // && PocoDictionary.HasCorrectSuffix(key, Value.TypeName, 5);
-                    _writer.WriteLine($"PocoDictionary.HasCorrectSuffix(key, {info.ExportedName}.TypeName, {info.FhirElementName.Length});");
+                    _writer.WriteLine($"ElementName.HasCorrectSuffix(key, \"{info.FhirElementName}\", {info.ExportedName}.TypeName);");
 
                     _writer.CloseScope();
                 }
