@@ -152,7 +152,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     IncludeBase = false,
                 }
             },
-
         };
 
         /// <summary>Gets the name of the language.</summary>
@@ -511,7 +510,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
                 string typeName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
 
-                //if (ShouldSupportGenerics(complex.Path))
                 if (_genericsAndTypeHints.ContainsKey(complex.Path))
                 {
                     _writer.WriteLineIndented(
@@ -570,9 +568,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.Empty,
                 FhirTypeBase.NamingConvention.PascalCase);
 
-            if (codeName.Contains("[x]"))
+            if (codeName.Contains("[x]", StringComparison.Ordinal))
             {
-                codeName = codeName.Replace("[x]", string.Empty);
+                codeName = codeName.Replace("[x]", string.Empty, StringComparison.Ordinal);
             }
 
             if (_exportedCodes.Contains(codeName))
@@ -629,22 +627,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return true;
-        }
-
-        /// <summary>Determine if the export should support generics</summary>
-        /// <param name="name">The name.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ShouldSupportGenerics(string name)
-        {
-            switch (name)
-            {
-                case "Bundle":
-                case "Bundle.entry":
-                case "Bundle.entry.resource":
-                    return true;
-            }
-
-            return false;
         }
 
         /// <summary>Writes the elements.</summary>
@@ -734,7 +716,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString};");
                     }
                 }
-                //else if (ShouldSupportGenerics(element.Path))
                 else if (_genericsAndTypeHints.ContainsKey(element.Path))
                 {
                     GenericTypeHintInfo typeHint = _genericsAndTypeHints[element.Path];
@@ -752,8 +733,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             $"{kvp.Key}{optionalFlagString}:" +
                             $" {_genericsAndTypeHints[element.Path].Alias}{arrayFlagString};");
                     }
-
-                    //_writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}<T>{arrayFlagString};");
                 }
                 else if (kvp.Value.Equals("Resource", StringComparison.Ordinal))
                 {
