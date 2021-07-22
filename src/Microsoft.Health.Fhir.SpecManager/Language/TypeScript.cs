@@ -240,9 +240,55 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 WriteExpandedResourceInterfaceBinding();
+                WriteExpandedResourceEnum();
 
                 WriteFooter();
             }
+        }
+
+        /// <summary>Writes the expanded resource enum.</summary>
+        private void WriteExpandedResourceEnum()
+        {
+            if (_exportedResources.Count == 0)
+            {
+                return;
+            }
+
+            _exportedResources.Sort();
+
+            WriteIndentedComment("String enum/union covering all known resource types.");
+
+            if (_exportedResources.Count == 1)
+            {
+                _writer.WriteLineIndented($"export type FhirResourceType = '{_exportedResources[0]}';");
+                return;
+            }
+
+            _writer.WriteLineIndented("export type FhirResourceType = ");
+
+            _writer.IncreaseIndent();
+
+            int index = 0;
+            int last = _exportedResources.Count - 1;
+            foreach (string exportedName in _exportedResources)
+            {
+                if (index == 0)
+                {
+                    _writer.WriteLineIndented("'" + exportedName + "'");
+                }
+                else if (index == last)
+                {
+                    _writer.WriteLineIndented(" | '" + exportedName + "';");
+                }
+                else
+                {
+                    _writer.WriteLineIndented(" | '" + exportedName + "'");
+                }
+
+                index++;
+            }
+
+            _writer.DecreaseIndent();
         }
 
         /// <summary>Writes the expanded resource interface binding.</summary>
