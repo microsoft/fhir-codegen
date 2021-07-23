@@ -1,9 +1,7 @@
-﻿// -------------------------------------------------------------------------------------------------
-// <copyright file="Loader.cs" company="Microsoft Corporation">
+﻿// <copyright file="FhirSpecificationLoader.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
-// -------------------------------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
@@ -13,10 +11,10 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
-    /// <summary>A FHIR Specification loader.</summary>
-    public abstract class Loader
+    /// <summary>A FHIR Specification Package loader (e.g., R4).</summary>
+    public abstract class FhirSpecificationLoader
     {
-        /// <summary>Searches for the currently specified package.</summary>
+        /// <summary>Searches for a specification package.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="releaseName">      The release name (e.g., R4, DSTU2).</param>
         /// <param name="packageName">      Name of the package.</param>
@@ -76,7 +74,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
-        /// <summary>Loads a package.</summary>
+        /// <summary>Loads a local build of the FHIR specification.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="localPublishDirectory"> Local FHIR Publish directory.</param>
         /// <param name="fhirSpecDirectory">     Pathname of the FHIR spec directory.</param>
@@ -130,7 +128,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             FhirPackageInfo expansionPackageInfo = FhirPackageInfo.Load(expansionDir);
 
             // tell the user what's going on
-            Console.WriteLine($"LoadPackage <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
+            Console.WriteLine($"LoadLocalBuild <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
 
             if (localLoadType == "latest")
             {
@@ -155,7 +153,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             FhirPackageInfo packageInfo = FhirPackageInfo.Load(packageDir);
 
             // tell the user what's going on
-            Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
+            Console.WriteLine($"LoadLocalBuild <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
 
             // update our structure
             fhirVersionInfo.VersionString = packageInfo.Version;
@@ -186,10 +184,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             AddSearchMagicParameters(ref fhirVersionInfo);
 
             // make sure we cleared the last line
-            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+            Console.WriteLine($"LoadLocalBuild <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
         }
 
-        /// <summary>Loads a package.</summary>
+        /// <summary>Loads a FHIR Specification package.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
         /// <param name="fhirSpecDirectory">     Pathname of the FHIR spec directory.</param>

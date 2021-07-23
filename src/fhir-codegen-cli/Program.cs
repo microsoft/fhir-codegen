@@ -255,6 +255,8 @@ namespace FhirCodegenCli
                 isBatch = true;
             }
 
+            // check for profiles
+
             // done loading
             long loadMS = timingWatch.ElapsedMilliseconds;
 

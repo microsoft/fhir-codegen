@@ -199,6 +199,11 @@
             "commandName": "Project",
             "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\generated\\SystemTextJsonExt_R4\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2JsonExt --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "igTest": {
+            "commandName": "Project",
+            "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\generated\\IG\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2JsonExt --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }
 }

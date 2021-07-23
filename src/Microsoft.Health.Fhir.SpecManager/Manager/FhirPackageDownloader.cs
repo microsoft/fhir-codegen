@@ -39,7 +39,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="version">          The version string (e.g., 4.0.1).</param>
         /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool Download(
+        public static bool DownloadFhirSpecification(
             string releaseName,
             string ballotPrefix,
             string packageName,
@@ -50,10 +50,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             try
             {
-                Console.WriteLine($" <<< downloading PACKAGE {packageName}:{version}");
+                Console.WriteLine($" <<< downloading FHIR specification via package: {packageName}:{version}");
 
                 // download from the package manager
-                loaded = FhirPackageDownloader.DownloadPackage(
+                loaded = FhirPackageDownloader.DownloadSpecificationPackage(
                     releaseName,
                     packageName,
                     version,
@@ -79,10 +79,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             try
             {
-                Console.WriteLine($" <<< downloading PUBLISHED {packageName}:{version}");
+                Console.WriteLine($" <<< downloading FHIR specification via published directory: {packageName}:{version}");
 
                 // download from publish URL
-                loaded = FhirPackageDownloader.DownloadPublished(
+                loaded = FhirPackageDownloader.DownloadPublishedSpecification(
                     releaseName,
                     ballotPrefix,
                     packageName,
@@ -105,6 +105,167 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return loaded;
         }
 
+        /// <summary>Downloads the FHIR package.</summary>
+        /// <param name="packageName">     Name of the package.</param>
+        /// <param name="packageVersion">         The version string (e.g., 4.0.1).</param>
+        /// <param name="fhirVersion">     The FHIR version.</param>
+        /// <param name="packageDirectory">Pathname of the package directory.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public static bool DownloadFhirPackage(
+            string packageName,
+            string packageVersion,
+            string fhirVersion,
+            string packageDirectory)
+        {
+            bool loaded = false;
+
+            try
+            {
+                Console.WriteLine($" <<< downloading FHIR specification via package: {packageName}:{packageVersion}");
+
+                // download from the package manager
+                loaded = FhirPackageDownloader.DownloadPackageFromRegistry(
+                    packageName,
+                    packageVersion,
+                    fhirVersion,
+                    packageDirectory);
+
+                if (loaded)
+                {
+                    return true;
+                }
+            }
+            catch (HttpRequestException)
+            {
+                Console.WriteLine($"Failed to download Package: {packageName}:{packageVersion}");
+            }
+            catch (AggregateException)
+            {
+                Console.WriteLine($"Failed to download Published: {packageName}:{packageVersion}");
+            }
+            catch (System.Threading.Tasks.TaskCanceledException)
+            {
+                Console.WriteLine($"Failed to download Published: {packageName}:{packageVersion}");
+            }
+
+            // TODO(ginoc): Add support for packages not in the registry
+            return loaded;
+        }
+
+        /// <summary>Downloads the a FHIR package from the registry.</summary>
+        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+        /// <exception cref="InvalidDataException"> Thrown when an Invalid Data error condition occurs.</exception>
+        /// <param name="packageName">     Name of the package.</param>
+        /// <param name="packageVersion">         The version string (e.g., 4.0.1).</param>
+        /// <param name="fhirVersion">     The FHIR version.</param>
+        /// <param name="packageDirectory">Pathname of the package directory.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public static bool DownloadPackageFromRegistry(
+            string packageName,
+            string packageVersion,
+            string fhirVersion,
+            string packageDirectory)
+        {
+            string requestName = packageName;
+
+            if (!string.IsNullOrEmpty(packageVersion))
+            {
+                requestName += "-" + packageVersion;
+            }
+
+            if (!string.IsNullOrEmpty(fhirVersion))
+            {
+                requestName += " (" + fhirVersion + ")";
+            }
+
+            Uri infoUri = new Uri(PackageDownloadUriBase, packageName);
+
+            // check the package server for version information
+            HttpResponseMessage response = _httpClient.GetAsync(infoUri).Result;
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"Failed to get package info: {response.StatusCode}");
+                return false;
+            }
+
+            string versionInfoJson = response.Content.ReadAsStringAsync().Result;
+
+            // deserialize our version info
+            Models.PackagesVersionInfo info = JsonConvert.DeserializeObject<Models.PackagesVersionInfo>(versionInfoJson);
+
+            // make sure we match
+            if (info.Name != packageName)
+            {
+                throw new FileNotFoundException($"Package not found: {requestName}");
+            }
+
+            if (info.Versions == null)
+            {
+                throw new InvalidDataException($"Version information not found for package: {requestName}");
+            }
+
+            int fhirMajorVersion = 0;
+            if (!string.IsNullOrEmpty(fhirVersion))
+            {
+                string extracted = System.Text.RegularExpressions.Regex.Match(fhirVersion, @"\d+").Value;
+
+                if (!int.TryParse(extracted, out fhirMajorVersion))
+                {
+                    fhirMajorVersion = 0;
+                }
+            }
+
+            if (string.IsNullOrEmpty(packageVersion) ||
+                packageVersion.Equals("latest", StringComparison.OrdinalIgnoreCase))
+            {
+                string bestMatchVersion = string.Empty;
+
+                // known versions are sorted in ascending order
+                foreach (string foundVersion in info.Versions.Keys)
+                {
+                    if (fhirMajorVersion != 0)
+                    {
+                        string extracted = System.Text.RegularExpressions.Regex.Match(
+                            info.Versions[foundVersion].FhirVersion,
+                            @"\d+")
+                            .Value;
+
+                        if ((!int.TryParse(extracted, out int foundMajorVersion)) ||
+                            (foundMajorVersion != fhirMajorVersion))
+                        {
+                            // FHIR version doesn't match
+                            continue;
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(bestMatchVersion))
+                    {
+                        bestMatchVersion = foundVersion;
+                    }
+                }
+
+                if (string.IsNullOrEmpty(bestMatchVersion))
+                {
+                    if (string.IsNullOrEmpty(fhirVersion))
+                    {
+                        throw new InvalidDataException($"No downloadable version of package {packageName} found!");
+                    }
+
+                    throw new InvalidDataException($"No version of package {packageName} found for FHIR {fhirVersion}");
+                }
+
+                packageVersion = bestMatchVersion;
+            }
+            else if (!info.Versions.ContainsKey(packageVersion))
+            {
+                throw new InvalidDataException($"Version {packageVersion} not found in package {packageName}");
+            }
+
+            // download and extract our package
+            return DownloadAndExtract(info.Versions[packageVersion].URL, packageName, packageVersion, packageDirectory);
+        }
+
         /// <summary>Downloads a published FHIR package.</summary>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
         /// <exception cref="InvalidDataException"> Thrown when an Invalid Data error condition occurs.</exception>
@@ -113,7 +274,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="version">          The version string (e.g., 4.0.1).</param>
         /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool DownloadPackage(
+        public static bool DownloadSpecificationPackage(
             string releaseName,
             string packageName,
             string version,
@@ -163,7 +324,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="version">          The version string (e.g., 4.0.1).</param>
         /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool DownloadPublished(
+        public static bool DownloadPublishedSpecification(
             string releaseName,
             string ballotPrefix,
             string packageName,
@@ -221,7 +382,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"DownloadPublishedPackage <<< failed to download package: {packageName}-{version}: {ex.Message}");
+                Console.WriteLine($"DownloadAndExtract <<< failed to download package: {packageName}-{version}: {ex.Message}");
                 throw;
             }
         }
@@ -272,17 +433,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"DownloadPublishedPackage <<< failed to download package: {packageName}-{version}: {ex.Message}");
+                Console.WriteLine($"CopyAndExtract <<< failed to copy package: {packageName}-{version}: {ex.Message}");
                 throw;
             }
-        }
-
-        /// <summary>Downloads a package from the Dev build server.</summary>
-        ///
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool DownloadBuildPackage()
-        {
-            return false;
         }
     }
 }

@@ -241,7 +241,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             if (string.IsNullOrEmpty(_localPublishDirectory))
             {
+#pragma warning disable CA2208 // Instantiate argument exceptions correctly
                 throw new ArgumentNullException($"Loading a local FHIR build requires a --fhir-publish-directory");
+#pragma warning restore CA2208 // Instantiate argument exceptions correctly
             }
 
             GetLocalVersionInfo(
@@ -271,7 +273,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             };
 
             // load the package
-            Loader.LoadLocalBuild(_localPublishDirectory, _fhirSpecDirectory, ref _localVersion, localLoadType, officialExpansionsOnly);
+            FhirSpecificationLoader.LoadLocalBuild(_localPublishDirectory, _fhirSpecDirectory, ref _localVersion, localLoadType, officialExpansionsOnly);
 
             return _localVersion;
         }
@@ -468,7 +470,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 true);
 
             // load the package
-            Loader.LoadPackage(_fhirSpecDirectory, ref info, officialExpansionsOnly);
+            FhirSpecificationLoader.LoadPackage(_fhirSpecDirectory, ref info, officialExpansionsOnly);
 
             // update our version information
             _publishedVersionDict[versionToLoad] = info;
@@ -507,7 +509,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 throw new ArgumentNullException(nameof(packageName));
             }
 
-            if (!Loader.TryFindPackage(
+            if (!FhirSpecificationLoader.TryFindPackage(
                 releaseName,
                 packageName,
                 version,
@@ -532,7 +534,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                 Console.WriteLine($" <<< downloading {packageName}-{version}...");
 
-                if (!FhirPackageDownloader.Download(
+                if (!FhirPackageDownloader.DownloadFhirSpecification(
                         releaseName,
                         ballotPrefix,
                         packageName,

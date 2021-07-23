@@ -37,25 +37,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         }
 
         /// <summary>Gets the identifier.</summary>
-        /// <value>The identifier.</value>
         [JsonProperty(PropertyName = "_id")]
         internal string Id { get; }
 
         /// <summary>Gets the name.</summary>
-        /// <value>The name.</value>
+        [JsonProperty(PropertyName = "name")]
         internal string Name { get; }
 
         /// <summary>Gets the description.</summary>
-        /// <value>The description.</value>
+        [JsonProperty(PropertyName = "description")]
         internal string Description { get; }
 
         /// <summary>Gets the distribution tags.</summary>
-        /// <value>The distribution tags.</value>
-        [JsonProperty(PropertyName ="disttags")]
+        [JsonProperty(PropertyName ="dist-tags")]
         internal Dictionary<string, string> DistributionTags { get; }
 
         /// <summary>Gets the versions.</summary>
-        /// <value>The versions.</value>
+        [JsonProperty(PropertyName = "versions")]
         internal Dictionary<string, VersionInfo> Versions { get; }
 
         /// <summary>Information about the version.</summary>
@@ -67,28 +65,34 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             /// <param name="name">       The name.</param>
             /// <param name="version">    The version.</param>
             /// <param name="description">The description.</param>
+            /// <param name="dist">       The distribution info.</param>
+            /// <param name="fhirVersion">The FHIR version.</param>
             /// <param name="url">        The URL.</param>
             /// <param name="unlisted">   The unlisted.</param>
             internal VersionInfo(
                 string name,
                 string version,
                 string description,
+                DistributionInfo dist,
+                string fhirVersion,
                 Uri url,
                 string unlisted)
             {
                 Name = name;
                 Version = version;
                 Description = description;
+                Distribution = dist;
+                FhirVersion = fhirVersion;
                 URL = url;
                 Unlisted = unlisted;
             }
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="VersionInfo"/> class.
-            /// </summary>
+            /// <summary>Initializes a new instance of the <see cref="VersionInfo"/> class.</summary>
             /// <param name="name">       The name.</param>
             /// <param name="version">    The version.</param>
             /// <param name="description">The description.</param>
+            /// <param name="dist">       The distribution info.</param>
+            /// <param name="fhirVersion">The FHIR version.</param>
             /// <param name="url">        The URL.</param>
             /// <param name="unlisted">   The unlisted.</param>
             [JsonConstructor]
@@ -96,36 +100,60 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 string name,
                 string version,
                 string description,
+                DistributionInfo dist,
+                string fhirVersion,
                 string url,
                 string unlisted)
                 : this(
                     name,
                     version,
                     description,
+                    dist,
+                    fhirVersion,
                     new Uri(url),
                     unlisted)
             {
             }
 
             /// <summary>Gets the name.</summary>
-            /// <value>The name.</value>
+            [JsonProperty(PropertyName = "name")]
             internal string Name { get; }
 
             /// <summary>Gets the version.</summary>
-            /// <value>The version.</value>
+            [JsonProperty(PropertyName = "version")]
             internal string Version { get; }
 
             /// <summary>Gets the description.</summary>
-            /// <value>The description.</value>
+            [JsonProperty(PropertyName = "description")]
             internal string Description { get; }
 
             /// <summary>Gets URL of the document.</summary>
-            /// <value>The URL.</value>
+            [JsonProperty(PropertyName = "url")]
             internal Uri URL { get; }
 
+            /// <summary>Gets the distribution.</summary>
+            [JsonProperty(PropertyName = "dist")]
+            internal DistributionInfo Distribution { get; }
+
+            /// <summary>Gets the FHIR version.</summary>
+            [JsonProperty(PropertyName = "fhirVersion")]
+            internal string FhirVersion { get; }
+
             /// <summary>Gets the unlisted.</summary>
-            /// <value>The unlisted.</value>
+            [JsonProperty(PropertyName = "unlisted")]
             internal string Unlisted { get; }
+
+            /// <summary>Information about the distribution.</summary>
+            internal class DistributionInfo
+            {
+                /// <summary>Gets the hash sha.</summary>
+                [JsonProperty(PropertyName = "shasum")]
+                internal string HashSHA { get; }
+
+                /// <summary>Gets URL of the tarball.</summary>
+                [JsonProperty(PropertyName = "tarball")]
+                internal string TarballUrl { get; }
+            }
         }
     }
 }
