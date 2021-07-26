@@ -709,6 +709,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             string optionalFlagString = element.IsOptional ? "?" : string.Empty;
             string arrayFlagString = element.IsArray ? "[]" : string.Empty;
+            string undefinedPostfix = element.IsOptional ? "|undefined" : string.Empty;
 
             Dictionary<string, string> values = element.NamesAndTypesForExport(
                 FhirTypeBase.NamingConvention.CamelCase,
@@ -722,6 +723,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.IsNullOrEmpty(optionalFlagString))
             {
                 optionalFlagString = "?";
+                undefinedPostfix = "|undefined";
             }
 
             foreach (KeyValuePair<string, string> kvp in values)
@@ -749,17 +751,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             string.Empty,
                             FhirTypeBase.NamingConvention.PascalCase);
 
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName}{arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName}{arrayFlagString}{undefinedPostfix};");
                     }
                     else if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
                     {
                         // use the full expansion
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))}){arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))}){arrayFlagString}{undefinedPostfix};");
                     }
                     else
                     {
                         // otherwise, inline the required codes
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString}{undefinedPostfix};");
                     }
                 }
                 else if (_genericsAndTypeHints.ContainsKey(element.Path))
@@ -771,27 +773,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _writer.WriteLineIndented(
                             $"{kvp.Key}{optionalFlagString}:" +
                             $" {kvp.Value}" +
-                            $"<{_genericsAndTypeHints[element.Path].Alias}>{arrayFlagString};");
+                            $"<{_genericsAndTypeHints[element.Path].Alias}>{arrayFlagString}{undefinedPostfix};");
                     }
                     else
                     {
                         _writer.WriteLineIndented(
                             $"{kvp.Key}{optionalFlagString}:" +
-                            $" {_genericsAndTypeHints[element.Path].Alias}{arrayFlagString};");
+                            $" {_genericsAndTypeHints[element.Path].Alias}{arrayFlagString}{undefinedPostfix};");
                     }
                 }
                 else if (kvp.Value.Equals("Resource", StringComparison.Ordinal))
                 {
-                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: FhirResource{arrayFlagString};");
+                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: FhirResource{arrayFlagString}{undefinedPostfix};");
                 }
                 else
                 {
-                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString}{undefinedPostfix};");
                 }
 
                 if (RequiresExtension(kvp.Value))
                 {
-                    _writer.WriteLineIndented($"_{kvp.Key}?: Element{arrayFlagString};");
+                    _writer.WriteLineIndented($"_{kvp.Key}?: Element{arrayFlagString}|undefined;");
                 }
             }
         }
