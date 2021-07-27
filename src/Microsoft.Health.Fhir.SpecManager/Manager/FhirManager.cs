@@ -33,14 +33,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Pathname of the local FHIR Publish directory.</summary>
         private string _localPublishDirectory;
 
+        /// <summary>Pathname of the package directory.</summary>
+        private string _packageDirectory;
+
         /// <summary>Initializes a new instance of the <see cref="FhirManager"/> class.</summary>
-        /// <param name="npmDirectory">    Pathname of the npm directory.</param>
-        /// <param name="fhirPublishDirectory">Pathname of the fhir build directory.</param>
-        private FhirManager(string npmDirectory, string fhirPublishDirectory)
+        /// <param name="fhirCoreSpecDirectory">  Pathname of the FHIR core specification directory (fhirVersions).</param>
+        /// <param name="localFhirBuildDirectory">Pathname of the local FHIR build directory (publish).</param>
+        /// <param name="packageDirectory">       Pathname of the package directory (fhirPackages).</param>
+        private FhirManager(
+            string fhirCoreSpecDirectory,
+            string localFhirBuildDirectory,
+            string packageDirectory)
         {
             // set locals
-            _fhirSpecDirectory = npmDirectory;
-            _localPublishDirectory = fhirPublishDirectory;
+            _fhirSpecDirectory = fhirCoreSpecDirectory;
+            _localPublishDirectory = localFhirBuildDirectory;
+            _packageDirectory = packageDirectory;
             _localVersion = null;
 
             _knownVersions = new Dictionary<int, SortedSet<string>>()
@@ -163,18 +171,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Gets the current singleton.</summary>
-        ///
-        /// <value>The current FHIR Manager singleton.</value>
         public static FhirManager Current => _instance;
+
+        /// <summary>Gets the pathname of the FHIR core specifier directory.</summary>
+        public string FhirCoreSpecDirectory => _fhirSpecDirectory;
+
+        /// <summary>Gets the pathname of the FHIR local build directory.</summary>
+        public string FhirLocalBuildDirectory => _localPublishDirectory;
+
+        /// <summary>Gets the pathname of the FHIR package directory.</summary>
+        public string FhirPackageDirectory => _packageDirectory;
 
         /// <summary>Initializes this object.</summary>
         /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
         ///  null.</exception>
         /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
         ///  present.</exception>
-        /// <param name="fhirSpecDirectory">        Pathname of the FHIR Spec directory.</param>
+        /// <param name="fhirSpecDirectory">   Pathname of the FHIR Spec directory.</param>
         /// <param name="fhirPublishDirectory">Pathname of the FHIR local publish directory.</param>
-        public static void Init(string fhirSpecDirectory, string fhirPublishDirectory)
+        /// <param name="packageDirectory">    Pathname of the package directory.</param>
+        public static void Init(
+            string fhirSpecDirectory,
+            string fhirPublishDirectory,
+            string packageDirectory)
         {
             // check to make sure we have a directory to work from
             if (string.IsNullOrEmpty(fhirSpecDirectory) && string.IsNullOrEmpty(fhirPublishDirectory))
@@ -184,6 +203,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             string specDir = string.Empty;
             string publishDir = string.Empty;
+            string packageDir = string.Empty;
 
             if (!string.IsNullOrEmpty(fhirSpecDirectory))
             {
@@ -223,8 +243,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 }
             }
 
+            if (!string.IsNullOrEmpty(packageDirectory))
+            {
+                // check for rooted vs relative
+                if (Path.IsPathRooted(packageDirectory))
+                {
+                    packageDir = Path.GetFullPath(packageDirectory);
+                }
+                else
+                {
+                    packageDir = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), packageDirectory));
+                }
+
+                // make sure the directory exists
+                if (!Directory.Exists(packageDir))
+                {
+                    throw new DirectoryNotFoundException($"FHIR Package Directory not found: {packageDirectory}");
+                }
+            }
+
             // make our instance
-            _instance = new FhirManager(specDir, publishDir);
+            _instance = new FhirManager(specDir, publishDir, packageDir);
         }
 
         /// <summary>Loads the local.</summary>

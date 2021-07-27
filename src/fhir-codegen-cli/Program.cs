@@ -25,7 +25,7 @@ namespace FhirCodegenCli
         /// Command-line utility for processing the FHIR specification into other computer languages.
         /// </summary>
         /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
-        ///  are downloaded and cached.</param>
+        ///  are downloaded and cached (.../fhirVersions).</param>
         /// <param name="outputPath">            File or directory to write output.</param>
         /// <param name="verbose">               Show verbose output.</param>
         /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
@@ -56,6 +56,8 @@ namespace FhirCodegenCli
         /// <param name="languageHelp">          Display languages and their options.</param>
         /// <param name="fhirPublishDirectory">  The full path to a local FHIR build publish directory (.../publish).</param>
         /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
+        /// <param name="packageDirectory">  The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
+        /// <param name="packages">'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0).</param>
         public static void Main(
             string fhirSpecDirectory = "",
             string outputPath = "",
@@ -75,7 +77,9 @@ namespace FhirCodegenCli
             string extensionSupport = "",
             bool languageHelp = false,
             string fhirPublishDirectory = "",
-            string loadLocalFhirBuild = "")
+            string loadLocalFhirBuild = "",
+            string packageDirectory = "",
+            string packages = "")
         {
             if (languageHelp)
             {
@@ -84,14 +88,14 @@ namespace FhirCodegenCli
             }
 
             bool isBatch = false;
-            string currentFilePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string currentFilePath = Path.GetDirectoryName(AppContext.BaseDirectory);
             List<string> filesWritten = new List<string>();
 
             _extensionsOutputted = new HashSet<string>();
 
             if (string.IsNullOrEmpty(fhirSpecDirectory))
             {
-                fhirSpecDirectory = FindFhirDir(currentFilePath, "fhirVersions");
+                fhirSpecDirectory = FindRelativeDir(currentFilePath, "fhirVersions", "FHIR Core Specification");
             }
 
             if (!string.IsNullOrEmpty(loadLocalFhirBuild))
@@ -106,9 +110,14 @@ namespace FhirCodegenCli
                 fhirPublishDirectory = string.Empty;
             }
 
+            if (string.IsNullOrEmpty(packageDirectory))
+            {
+                fhirSpecDirectory = FindRelativeDir(currentFilePath, "fhirPackages", "FHIR Package");
+            }
+
             if (string.IsNullOrEmpty(outputPath))
             {
-                outputPath = FindFhirDir(currentFilePath, "generated");
+                outputPath = FindRelativeDir(currentFilePath, "generated", "Output");
             }
 
             if (string.IsNullOrEmpty(language))
@@ -163,8 +172,10 @@ namespace FhirCodegenCli
             // start timing
             Stopwatch timingWatch = Stopwatch.StartNew();
 
-            // initialize the FHIR version manager with our requested directory
-            FhirManager.Init(fhirSpecDirectory, fhirPublishDirectory);
+            // initialize the FHIR version manager with our requested directories
+            FhirManager.Init(fhirSpecDirectory, fhirPublishDirectory, packageDirectory);
+
+            Dictionary<string, FhirVersionInfo> fhirVersions = new Dictionary<string, FhirVersionInfo>();
 
             FhirVersionInfo r2 = null;
             FhirVersionInfo r3 = null;
@@ -219,72 +230,78 @@ namespace FhirCodegenCli
                 }
             }
 
-            int fhirVersionCount = 0;
             if (!string.IsNullOrEmpty(loadR2))
             {
-                r2 = FhirManager.Current.LoadPublished(2, loadR2, offlineMode, officialExpansionsOnly);
-                fhirVersionCount++;
+                fhirVersions.Add(
+                    "DSTU2",
+                    FhirManager.Current.LoadPublished(2, loadR2, offlineMode, officialExpansionsOnly));
             }
 
             if (!string.IsNullOrEmpty(loadR3))
             {
-                r3 = FhirManager.Current.LoadPublished(3, loadR3, offlineMode, officialExpansionsOnly);
-                fhirVersionCount++;
+                fhirVersions.Add(
+                    "STU3",
+                    FhirManager.Current.LoadPublished(3, loadR3, offlineMode, officialExpansionsOnly));
             }
 
             if (!string.IsNullOrEmpty(loadR4))
             {
-                r4 = FhirManager.Current.LoadPublished(4, loadR4, offlineMode, officialExpansionsOnly);
-                fhirVersionCount++;
+                fhirVersions.Add(
+                    "R4",
+                    FhirManager.Current.LoadPublished(4, loadR4, offlineMode, officialExpansionsOnly));
             }
 
             if (!string.IsNullOrEmpty(loadR5))
             {
-                r5 = FhirManager.Current.LoadPublished(5, loadR5, offlineMode, officialExpansionsOnly);
-                fhirVersionCount++;
+                fhirVersions.Add(
+                    "R5",
+                    FhirManager.Current.LoadPublished(5, loadR5, offlineMode, officialExpansionsOnly));
             }
 
             if (!string.IsNullOrEmpty(loadLocalFhirBuild))
             {
-                localVersion = FhirManager.Current.LoadLocal(loadLocalFhirBuild, officialExpansionsOnly);
-                fhirVersionCount++;
+                fhirVersions.Add(
+                    "local",
+                    FhirManager.Current.LoadLocal(loadLocalFhirBuild, officialExpansionsOnly));
             }
 
-            if (fhirVersionCount > 1)
+            if (fhirVersions.Count > 1)
             {
                 isBatch = true;
             }
 
-            // check for profiles
+            // check for packages / profiles
+            if (!string.IsNullOrEmpty(packages))
+            {
+                string[] packageDirectives = packages.Split('|');
+
+                foreach (FhirVersionInfo info in fhirVersions.Values)
+                {
+                    info.TryLoadPackages(
+                        packageDirectives,
+                        out List<string> packagesLoaded,
+                        out List<string> packagesFailed);
+
+                    foreach (string package in packagesLoaded)
+                    {
+                        Console.WriteLine($" <<< FHIR {info.VersionString}: Loaded package: {package}");
+                    }
+
+                    foreach (string package in packagesFailed)
+                    {
+                        Console.WriteLine($" <<< FHIR {info.VersionString}: FAILED to load package: {package}");
+                    }
+                }
+            }
 
             // done loading
             long loadMS = timingWatch.ElapsedMilliseconds;
 
-            if (string.IsNullOrEmpty(outputPath))
+            if (string.IsNullOrEmpty(outputPath) && (verbose == true))
             {
-                if ((verbose == true) && (r2 != null))
+                foreach (FhirVersionInfo info in fhirVersions.Values)
                 {
-                    DumpFhirVersion(Console.Out, r2);
-                }
-
-                if ((verbose == true) && (r3 != null))
-                {
-                    DumpFhirVersion(Console.Out, r3);
-                }
-
-                if ((verbose == true) && (r4 != null))
-                {
-                    DumpFhirVersion(Console.Out, r4);
-                }
-
-                if ((verbose == true) && (r5 != null))
-                {
-                    DumpFhirVersion(Console.Out, r5);
-                }
-
-                if ((verbose == true) && (localVersion != null))
-                {
-                    DumpFhirVersion(Console.Out, localVersion);
+                    DumpFhirVersion(Console.Out, info);
                 }
             }
 
@@ -338,29 +355,9 @@ namespace FhirCodegenCli
                         fhirServerUrl,
                         includeExperimental);
 
-                    if (r2 != null)
+                    foreach (FhirVersionInfo info in fhirVersions.Values)
                     {
-                        filesWritten.AddRange(Exporter.Export(r2, serverInfo, lang, options, outputPath, isBatch));
-                    }
-
-                    if (r3 != null)
-                    {
-                        filesWritten.AddRange(Exporter.Export(r3, serverInfo, lang, options, outputPath, isBatch));
-                    }
-
-                    if (r4 != null)
-                    {
-                        filesWritten.AddRange(Exporter.Export(r4, serverInfo, lang, options, outputPath, isBatch));
-                    }
-
-                    if (r5 != null)
-                    {
-                        filesWritten.AddRange(Exporter.Export(r5, serverInfo, lang, options, outputPath, isBatch));
-                    }
-
-                    if (localVersion != null)
-                    {
-                        filesWritten.AddRange(Exporter.Export(localVersion, serverInfo, lang, options, outputPath, isBatch));
+                        filesWritten.AddRange(Exporter.Export(info, serverInfo, lang, options, outputPath, isBatch));
                     }
                 }
             }
@@ -381,10 +378,14 @@ namespace FhirCodegenCli
         ///  present.</exception>
         /// <param name="startingDir">The starting dir.</param>
         /// <param name="dirName">    The name of the directory we are searching for.</param>
+        /// <param name="directoryType">  The directory type (error hint).</param>
         /// <returns>The found FHIR directory.</returns>
-        public static string FindFhirDir(string startingDir, string dirName)
+        public static string FindRelativeDir(
+            string startingDir,
+            string dirName,
+            string directoryType)
         {
-            string currentDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string currentDir = Path.GetDirectoryName(AppContext.BaseDirectory);
             string testDir = Path.Combine(currentDir, dirName);
 
             while (!Directory.Exists(testDir))
@@ -393,7 +394,7 @@ namespace FhirCodegenCli
 
                 if (currentDir == Path.GetPathRoot(currentDir))
                 {
-                    throw new DirectoryNotFoundException("Could not find spec directory in path!");
+                    throw new DirectoryNotFoundException($"Could not find directory type: {directoryType} from: {startingDir}!");
                 }
 
                 testDir = Path.Combine(currentDir, dirName);
@@ -415,15 +416,13 @@ namespace FhirCodegenCli
 
             foreach (ILanguage language in languages.OrderBy(l => l.LanguageName))
             {
-                Console.WriteLine($"- {language.LanguageName}");
-
                 if ((language.LanguageOptions == null) || (language.LanguageOptions.Count == 0))
                 {
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
-                    Console.WriteLine("\t- No extended options are available.");
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
+                    Console.WriteLine($"- {language.LanguageName}\n\t- No extended options are defined.");
                     continue;
                 }
+
+                Console.WriteLine($"- {language.LanguageName}");
 
                 foreach (KeyValuePair<string, string> kvp in language.LanguageOptions)
                 {

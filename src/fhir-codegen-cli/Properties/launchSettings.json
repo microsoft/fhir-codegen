@@ -202,7 +202,7 @@
         },
         "igTest": {
             "commandName": "Project",
-            "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\generated\\IG\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2JsonExt --official-expansions-only true",
+            "commandLineArgs": "--packages hl7.fhir.us.core --export-types \"primitive|complex|resource\" --output-path ..\\..\\generated\\IG\\ --load-r4 latest --package-directory ..\\..\\fhirPackages --fhir-spec-directory ..\\..\\fhirVersions --language Info --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         }
     }

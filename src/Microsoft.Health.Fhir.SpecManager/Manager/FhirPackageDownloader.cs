@@ -53,7 +53,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 Console.WriteLine($" <<< downloading FHIR specification via package: {packageName}:{version}");
 
                 // download from the package manager
-                loaded = FhirPackageDownloader.DownloadSpecificationPackage(
+                loaded = FhirPackageDownloader.DownloadCoreSpecificationPackage(
                     releaseName,
                     packageName,
                     version,
@@ -106,29 +106,40 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Downloads the FHIR package.</summary>
-        /// <param name="packageName">     Name of the package.</param>
-        /// <param name="packageVersion">         The version string (e.g., 4.0.1).</param>
-        /// <param name="fhirVersion">     The FHIR version.</param>
-        /// <param name="packageDirectory">Pathname of the package directory.</param>
+        /// <param name="packageName">              Name of the package.</param>
+        /// <param name="packageVersion">           [in,out] The package version string (e.g., 4.0.1).</param>
+        /// <param name="fhirMajorVersion">         The FHIR major version (e.g., 4).</param>
+        /// <param name="packageDirectory">         Pathname of the package directory.</param>
+        /// <param name="versionedPackageDirectory">[out] Pathname of the versioned package directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public static bool DownloadFhirPackage(
             string packageName,
-            string packageVersion,
-            string fhirVersion,
-            string packageDirectory)
+            ref string packageVersion,
+            int fhirMajorVersion,
+            string packageDirectory,
+            out string versionedPackageDirectory)
         {
             bool loaded = false;
+            versionedPackageDirectory = string.Empty;
 
             try
             {
-                Console.WriteLine($" <<< downloading FHIR specification via package: {packageName}:{packageVersion}");
+                if (string.IsNullOrEmpty(packageVersion))
+                {
+                    Console.WriteLine($" <<< downloading package: {packageName} for FHIR R{fhirMajorVersion}");
+                }
+                else
+                {
+                    Console.WriteLine($" <<< downloading package: {packageName}-{packageVersion} for FHIR R{fhirMajorVersion}");
+                }
 
                 // download from the package manager
                 loaded = FhirPackageDownloader.DownloadPackageFromRegistry(
                     packageName,
-                    packageVersion,
-                    fhirVersion,
-                    packageDirectory);
+                    ref packageVersion,
+                    fhirMajorVersion,
+                    packageDirectory,
+                    out versionedPackageDirectory);
 
                 if (loaded)
                 {
@@ -155,27 +166,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Downloads the a FHIR package from the registry.</summary>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
         /// <exception cref="InvalidDataException"> Thrown when an Invalid Data error condition occurs.</exception>
-        /// <param name="packageName">     Name of the package.</param>
-        /// <param name="packageVersion">         The version string (e.g., 4.0.1).</param>
-        /// <param name="fhirVersion">     The FHIR version.</param>
-        /// <param name="packageDirectory">Pathname of the package directory.</param>
+        /// <param name="packageName">              Name of the package.</param>
+        /// <param name="packageVersion">           [in,out] The version string (e.g., 4.0.1).</param>
+        /// <param name="fhirMajorVersion">         The FHIR major version (e.g., 4).</param>
+        /// <param name="packageDirectory">         Pathname of the package directory.</param>
+        /// <param name="versionedPackageDirectory">[out] Pathname of the versioned package directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public static bool DownloadPackageFromRegistry(
             string packageName,
-            string packageVersion,
-            string fhirVersion,
-            string packageDirectory)
+            ref string packageVersion,
+            int fhirMajorVersion,
+            string packageDirectory,
+            out string versionedPackageDirectory)
         {
             string requestName = packageName;
 
             if (!string.IsNullOrEmpty(packageVersion))
             {
-                requestName += "-" + packageVersion;
+                requestName += $"{packageName}-{packageVersion} (FHIR Release: {fhirMajorVersion})";
             }
-
-            if (!string.IsNullOrEmpty(fhirVersion))
+            else
             {
-                requestName += " (" + fhirVersion + ")";
+                requestName += $"{packageName} (FHIR Release: {fhirMajorVersion})";
             }
 
             Uri infoUri = new Uri(PackageDownloadUriBase, packageName);
@@ -186,6 +198,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine($"Failed to get package info: {response.StatusCode}");
+                versionedPackageDirectory = string.Empty;
                 return false;
             }
 
@@ -203,17 +216,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             if (info.Versions == null)
             {
                 throw new InvalidDataException($"Version information not found for package: {requestName}");
-            }
-
-            int fhirMajorVersion = 0;
-            if (!string.IsNullOrEmpty(fhirVersion))
-            {
-                string extracted = System.Text.RegularExpressions.Regex.Match(fhirVersion, @"\d+").Value;
-
-                if (!int.TryParse(extracted, out fhirMajorVersion))
-                {
-                    fhirMajorVersion = 0;
-                }
             }
 
             if (string.IsNullOrEmpty(packageVersion) ||
@@ -242,17 +244,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     if (string.IsNullOrEmpty(bestMatchVersion))
                     {
                         bestMatchVersion = foundVersion;
+                        continue;
+                    }
+
+                    if (string.CompareOrdinal(foundVersion, bestMatchVersion) > 0)
+                    {
+                        bestMatchVersion = foundVersion;
+                        continue;
                     }
                 }
 
                 if (string.IsNullOrEmpty(bestMatchVersion))
                 {
-                    if (string.IsNullOrEmpty(fhirVersion))
+                    if (fhirMajorVersion == 0)
                     {
                         throw new InvalidDataException($"No downloadable version of package {packageName} found!");
                     }
 
-                    throw new InvalidDataException($"No version of package {packageName} found for FHIR {fhirVersion}");
+                    throw new InvalidDataException($"No version of package {packageName} found for FHIR Release {fhirMajorVersion}");
                 }
 
                 packageVersion = bestMatchVersion;
@@ -260,6 +269,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             else if (!info.Versions.ContainsKey(packageVersion))
             {
                 throw new InvalidDataException($"Version {packageVersion} not found in package {packageName}");
+            }
+
+            versionedPackageDirectory = Path.Combine(packageDirectory, $"{packageName}-{packageVersion}");
+
+            string subDir = Path.Combine(versionedPackageDirectory, "package");
+
+            // use the cached version if we have one
+            if (Directory.Exists(subDir))
+            {
+                versionedPackageDirectory = subDir;
+                return true;
             }
 
             // download and extract our package
@@ -274,7 +294,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <param name="version">          The version string (e.g., 4.0.1).</param>
         /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool DownloadSpecificationPackage(
+        public static bool DownloadCoreSpecificationPackage(
             string releaseName,
             string packageName,
             string version,

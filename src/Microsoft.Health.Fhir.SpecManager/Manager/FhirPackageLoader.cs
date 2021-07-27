@@ -12,20 +12,18 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 namespace Microsoft.Health.Fhir.SpecManager.Manager
 {
     /// <summary>A FHIR package loader (e.g., hl7.fhir.us.core).</summary>
-    public abstract class FhirPackageLoader
+    public static class FhirPackageLoader
     {
         /// <summary>Attempts to find a FHIRpackage.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <param name="packageName">     Name of the package.</param>
         /// <param name="version">         The version.</param>
-        /// <param name="fhirVersion">     The FHIR version.</param>
         /// <param name="packageDirectory">Pathname of the package directory.</param>
         /// <param name="versionDirectory">[out] Pathname of the version directory.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool TryFindPackage(
+        private static bool TryFindPackage(
             string packageName,
             string version,
-            string fhirVersion,
             string packageDirectory,
             out string versionDirectory)
         {
@@ -66,43 +64,126 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             return true;
         }
 
+        /// <summary>A FhirVersionInfo extension method that attempts to load packages.</summary>
+        /// <param name="fhirVersionInfo">  Information describing the fhir version.</param>
+        /// <param name="packageDirectives">The package directives.</param>
+        /// <param name="packagesLoaded">   [out] The packages loaded.</param>
+        /// <param name="packagesFailed">   [out] The packages failed.</param>
+        /// <returns>True if all packages loaded, false if one or more failed.</returns>
+        public static bool TryLoadPackages(
+            this FhirVersionInfo fhirVersionInfo,
+            string[] packageDirectives,
+            out List<string> packagesLoaded,
+            out List<string> packagesFailed)
+        {
+            if (fhirVersionInfo == null)
+            {
+                Console.WriteLine($"LoadPackage <<< {nameof(fhirVersionInfo)} is NULL, cannot load packages: {packageDirectives}!");
+                packagesLoaded = null;
+                packagesFailed = null;
+                return false;
+            }
+
+            packagesLoaded = new List<string>();
+            packagesFailed = new List<string>();
+
+            if ((packageDirectives == null) || (packageDirectives.Length == 0))
+            {
+                return true;
+            }
+
+            foreach (string packageDirective in packageDirectives)
+            {
+                if (TryLoadPackage(fhirVersionInfo, packageDirective, out string loadedDirective))
+                {
+                    packagesLoaded.Add(loadedDirective);
+                }
+                else
+                {
+                    packagesFailed.Add(packageDirective);
+                }
+            }
+
+            return true;
+        }
+
         /// <summary>Loads a FHIR package (e.g., hl7.fhir.us.core-4.0.0).</summary>
-        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
-        /// <param name="packageName">     Name of the package.</param>
-        /// <param name="packageVersion">         The version.</param>
-        /// <param name="fhirVersion">     The FHIR version.</param>
-        /// <param name="packageDirectory">Pathname of the package directory.</param>
-        /// <param name="fhirVersionInfo"> [in,out] Information describing the fhir version.</param>
-        public static void LoadPackage(
-            string packageName,
-            string packageVersion,
-            string fhirVersion,
-            string packageDirectory,
-            ref FhirVersionInfo fhirVersionInfo)
+        /// <param name="fhirVersionInfo">       Information describing the fhir version.</param>
+        /// <param name="packageDirective">      Name of the package, may inlcude a version.</param>
+        /// <param name="loadedPackageDirective">[out] The loaded package directive.</param>
+        /// <returns>True if it succeeds, false if it fails.</returns>
+        public static bool TryLoadPackage(
+            this FhirVersionInfo fhirVersionInfo,
+            string packageDirective,
+            out string loadedPackageDirective)
         {
             // sanity checks
             if (fhirVersionInfo == null)
             {
-                Console.WriteLine($"LoadPackage <<< invalid version info is NULL, cannot load {packageDirectory}");
-                throw new ArgumentNullException(nameof(fhirVersionInfo));
+                Console.WriteLine($"LoadPackage <<< {nameof(fhirVersionInfo)} is NULL, cannot load {packageDirective}!");
+                loadedPackageDirective = string.Empty;
+                return false;
             }
 
-            // TODO(ginoc): need to sort out finding/downloading/loading logic
+            if (string.IsNullOrEmpty(packageDirective))
+            {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+                Console.WriteLine($"LoadPackage <<< {nameof(packageDirective)} is required!");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
+                loadedPackageDirective = string.Empty;
+                return false;
+            }
 
-            if (!TryFindPackage(
+            string packageName = string.Empty;
+            string packageVersion = string.Empty;
+
+            if (packageDirective.Contains('-', StringComparison.Ordinal))
+            {
+                string[] parts = packageDirective.Split('-');
+
+                if (parts.Length != 2)
+                {
+                    Console.WriteLine($"LoadPackage <<< unable to parse package directive: {packageDirective}!");
+                    loadedPackageDirective = string.Empty;
+                    return false;
+                }
+
+                packageName = parts[0];
+                packageVersion = parts[1];
+            }
+            else
+            {
+                // need to get package info from the registry
+                packageName = packageDirective;
+            }
+
+            string versionedPackageDirectory = string.Empty;
+
+            // need to download if we don't have an explicit version that we have cached
+            if (string.IsNullOrEmpty(packageVersion) ||
+                (!TryFindPackage(
                     packageName,
                     packageVersion,
-                    fhirVersion,
-                    packageDirectory,
-                    out string dir))
+                    FhirManager.Current.FhirPackageDirectory,
+                    out versionedPackageDirectory)))
             {
-                Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.ExpansionsPackageName}!");
-                throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.ExpansionsPackageName}");
+                if (!FhirPackageDownloader.DownloadFhirPackage(
+                    packageName,
+                    ref packageVersion,
+                    fhirVersionInfo.MajorVersion,
+                    FhirManager.Current.FhirPackageDirectory,
+                    out versionedPackageDirectory))
+                {
+                    Console.WriteLine($"LoadPackage <<< cannot downlaod package for {fhirVersionInfo.ReleaseName}: {packageDirective}!");
+                    loadedPackageDirective = string.Empty;
+                    return false;
+                }
             }
 
+            loadedPackageDirective = packageName + "-" + packageVersion;
+
             // load package info
-            FhirPackageInfo packageInfo = FhirPackageInfo.Load(dir);
+            FhirPackageInfo packageInfo = FhirPackageInfo.Load(versionedPackageDirectory);
 
             // tell the user what's going on
             Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
@@ -112,35 +193,37 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             HashSet<string> processedFiles = new HashSet<string>();
 
-            // process Code Systems
-            ProcessFileGroup(dir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
+            //// process Code Systems
+            //ProcessFileGroup(dir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
 
-            // process Value Set expansions
-            ProcessFileGroup(dir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+            //// process Value Set expansions
+            //ProcessFileGroup(dir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
 
-            // process structure definitions
-            ProcessFileGroup(dir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
+            //// process structure definitions
+            //ProcessFileGroup(dir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
 
-            // process search parameters (adds to resources)
-            ProcessFileGroup(dir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
+            //// process search parameters (adds to resources)
+            //ProcessFileGroup(dir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
 
-            // process operations (adds to resources and version info (server level))
-            ProcessFileGroup(dir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
+            //// process operations (adds to resources and version info (server level))
+            //ProcessFileGroup(dir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
 
-            if (fhirVersionInfo.ConverterHasIssues(out int errorCount, out int warningCount))
-            {
-                // make sure we cleared the last line
-                Console.WriteLine($"LoadPackage <<< Loaded and Parsed {packageName}-{packageVersion}" +
-                    $" with {errorCount} errors" +
-                    $" and {warningCount} warnings" +
-                    $"{new string(' ', 100)}");
-                fhirVersionInfo.DisplayConverterIssues();
-            }
-            else
-            {
-                // make sure we cleared the last line
-                Console.WriteLine($"LoadPackage <<< Loaded and Parsed {packageName}-{packageVersion}{new string(' ', 100)}");
-            }
+            //if (fhirVersionInfo.ConverterHasIssues(out int errorCount, out int warningCount))
+            //{
+            //    // make sure we cleared the last line
+            //    Console.WriteLine($"LoadPackage <<< Loaded and Parsed {packageName}-{packageVersion}" +
+            //        $" with {errorCount} errors" +
+            //        $" and {warningCount} warnings" +
+            //        $"{new string(' ', 100)}");
+            //    fhirVersionInfo.DisplayConverterIssues();
+            //}
+            //else
+            //{
+            //    // make sure we cleared the last line
+            //    Console.WriteLine($"LoadPackage <<< Loaded and Parsed {packageName}-{packageVersion}{new string(' ', 100)}");
+            //}
+
+            return true;
         }
 
         /// <summary>
