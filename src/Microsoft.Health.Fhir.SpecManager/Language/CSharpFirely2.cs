@@ -970,16 +970,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("protected override IEnumerable<KeyValuePair<string, object>> GetElementPairs()");
             OpenScope();
 
-            if (resourceName == "Resource")
-                _writer.WriteLineIndented($"yield return new KeyValuePair<string,object>(\"resourceType\",TypeName);");
+            // [EK20210802] Removed generation of "resourceType" after design discussions.
+            //if (resourceName == "Resource")
+            //    _writer.WriteLineIndented($"yield return new KeyValuePair<string,object>(\"resourceType\",TypeName);");
 
             _writer.WriteLineIndented("foreach (var kvp in base.GetElementPairs()) yield return kvp;");
 
             foreach (WrittenElementInfo info in exportedElements)
             {
-                string elementProp = info.IsChoice ?
-                    $"ElementName.AddSuffixToElementName(\"{info.FhirElementName}\", {info.ExportedName})"
-                    : $"\"{info.FhirElementName}\"";
+                // [EK20210802] Removed generation of suffixed choice elements after design discussions.
+                //string elementProp = info.IsChoice ?
+                //    $"ElementName.AddSuffixToElementName(\"{info.FhirElementName}\", {info.ExportedName})"
+                //    : $"\"{info.FhirElementName}\"";
+                string elementProp = $"\"{info.FhirElementName}\"";
                 _writer.WriteLineIndented($"if ({NullCheck(info)}) yield return new " +
                     $"KeyValuePair<string,object>({elementProp},{info.ExportedName});");
             }
@@ -1002,16 +1005,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("switch (key)");
             OpenScope();
 
-            if (resourceName == "Resource")
-            {
-                _writer.WriteLineIndented($"case \"resourceType\":");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented("value = TypeName;");
-                _writer.WriteLineIndented("return true;");
-                _writer.DecreaseIndent();
-            }
+            // [EK20210802] Removed generation of "resourceType" after design discussions.
+            //if (resourceName == "Resource")
+            //{
+            //    _writer.WriteLineIndented($"case \"resourceType\":");
+            //    _writer.IncreaseIndent();
+            //    _writer.WriteLineIndented("value = TypeName;");
+            //    _writer.WriteLineIndented("return true;");
+            //    _writer.DecreaseIndent();
+            //}
 
-            bool hasChoices = false;
+            // [EK20210802] Removed generation of suffixed choice elements after design discussions.
+            //bool hasChoices = false;
             foreach (WrittenElementInfo info in exportedElements)
             {
                 _writer.WriteLineIndented($"case \"{info.FhirElementName}\":");
@@ -1022,45 +1027,50 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.DecreaseIndent();
 
-                hasChoices |= info.IsChoice;
+                //hasChoices |= info.IsChoice;
             }
 
             _writer.WriteLineIndented("default:");
             _writer.IncreaseIndent();
-            if (!hasChoices)
-                writeBaseTryGetValue();
-            else
-                _writer.WriteLineIndented("return choiceMatches(out value);");
+            writeBaseTryGetValue();
+
+            // [EK20210802] Removed generation of suffixed choice elements after design discussions.
+            //if (!hasChoices)
+            //    writeBaseTryGetValue();
+            //else
+            //    _writer.WriteLineIndented("return choiceMatches(out value);");
+
             _writer.DecreaseIndent();
 
             // end switch
             CloseScope(includeSemicolon: true);
 
-            if (hasChoices)
-            {
-                // write a matches for prefixes of element names for choice elements
-                _writer.WriteLineIndented("bool choiceMatches(out object value)");
-                OpenScope();
+            // [EK20210802] Removed generation of suffixed choice elements after design discussions.
+            //if (hasChoices)
+            //{
+            //    // write a matches for prefixes of element names for choice elements
+            //    _writer.WriteLineIndented("bool choiceMatches(out object value)");
+            //    OpenScope();
 
-                bool needElse = false;
+            //    bool needElse = false;
 
-                foreach (WrittenElementInfo info in exportedElements.Where(i => i.IsChoice))
-                {
-                    _writer.WriteLineIndented($"{(needElse ? "else if" : "if")} (key.StartsWith(\"{info.FhirElementName}\"))");
-                    needElse = true;
-                    _writer.OpenScope();
+            //    foreach (WrittenElementInfo info in exportedElements.Where(i => i.IsChoice))
+            //    {
+            //        _writer.WriteLineIndented($"{(needElse ? "else if" : "if")} (key.StartsWith(\"{info.FhirElementName}\"))");
+            //        needElse = true;
+            //        _writer.OpenScope();
 
-                    _writer.WriteLineIndented($"value = {info.ExportedName};");
-                    _writer.WriteIndented($"return {NullCheck(info)} && ");
-                    _writer.WriteLine($"ElementName.HasCorrectSuffix(key, \"{info.FhirElementName}\", {info.ExportedName}.TypeName);");
+            //        _writer.WriteLineIndented($"value = {info.ExportedName};");
+            //        _writer.WriteIndented($"return {NullCheck(info)} && ");
+            //        _writer.WriteLine($"ElementName.HasCorrectSuffix(key, \"{info.FhirElementName}\", {info.ExportedName}.TypeName);");
 
-                    _writer.CloseScope();
-                }
+            //        _writer.CloseScope();
+            //    }
 
-                writeBaseTryGetValue();
+            //    writeBaseTryGetValue();
 
-                CloseScope();
-            }
+            //    CloseScope();
+            //}
 
             // end function
             CloseScope();
