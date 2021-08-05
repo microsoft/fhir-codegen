@@ -241,7 +241,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         {
             if (string.IsNullOrEmpty(_localPublishDirectory))
             {
+#pragma warning disable CA2208 // Instantiate argument exceptions correctly
                 throw new ArgumentNullException($"Loading a local FHIR build requires a --fhir-publish-directory");
+#pragma warning restore CA2208 // Instantiate argument exceptions correctly
             }
 
             GetLocalVersionInfo(
@@ -257,12 +259,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 throw new ArgumentOutOfRangeException($"Unknown FHIR version: {versionString}");
             }
 
+            string unfortunateVersionNameAppend =
+                (versionString == "4.1.0")
+                ? "b"
+                : string.Empty;
+
             _localVersion = new FhirVersionInfo(majorVersion)
             {
                 ReleaseName = buildId,
-                PackageName = $"hl7.fhir.r{majorVersion}.core",
+                PackageName = $"hl7.fhir.r{majorVersion}{unfortunateVersionNameAppend}.core",
                 ExamplesPackageName = string.Empty,
-                ExpansionsPackageName = $"hl7.fhir.r{majorVersion}.expansions",
+                ExpansionsPackageName = $"hl7.fhir.r{majorVersion}{unfortunateVersionNameAppend}.expansions",
                 VersionString = versionString,
                 IsDevBuild = true,
                 DevBranch = string.Empty,
