@@ -156,6 +156,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             {
                 5,
                 new HashSet<string>()
+                {
+                    "StructureDefinition-structuredefinition-conformance-derivedFrom.json",
+                }
             },
         };
 

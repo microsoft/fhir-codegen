@@ -67,6 +67,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>True to export enums.</summary>
         private bool _exportEnums;
 
+        /// <summary>The namespace to use when exporting files.</summary>
+        private string _namespace;
+
+        /// <summary>The directory root.</summary>
+        private string _directoryRoot;
+
+        /// <summary>Pathname of the model directory.</summary>
+        private string _directoryModels;
+
+        /// <summary>Pathname of the value set directory.</summary>
+        private string _directoryValueSets;
+
         /// <summary>The exported codes.</summary>
         private HashSet<string> _exportedCodes = new HashSet<string>();
 
@@ -79,8 +91,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Name of the language.</summary>
         private const string _languageName = "TypeScript";
 
-        /// <summary>The single file export extension.</summary>
-        private const string _singleFileExportExtension = ".ts";
+        /// <summary>The single file export extension - requires directory export.</summary>
+        private const string _singleFileExportExtension = ".d.ts";
 
         /// <summary>The minimum type script version.</summary>
         private const string _minimumTypeScriptVersion = "3.7";
@@ -191,7 +203,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         };
 
         /// <summary>Gets language-specific options and their descriptions.</summary>
-        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>();
+        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
+        {
+            { "namespace", "Export namespace for TypeScript files (default: fhir{VersionNumber})." },
+        };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -221,6 +236,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _exportEnums = false;
             }
 
+            _namespace = options.GetParam("namespace", $"fhir{info.MajorVersion}");
+
+            //_directoryRoot = exportDirectory;
+            //if (!Directory.Exists(_directoryRoot))
+            //{
+            //    Directory.CreateDirectory(_directoryRoot);
+            //}
+
+            //_directoryModels = Path.Combine(exportDirectory, "Models");
+            //if (!Directory.Exists(_directoryModels))
+            //{
+            //    Directory.CreateDirectory(_directoryModels);
+            //}
+
+            //_directoryValueSets = Path.Combine(exportDirectory, "ValueSets");
+            //if (_exportEnums)
+            //{
+            //    if (!Directory.Exists(_directoryValueSets))
+            //    {
+            //        Directory.CreateDirectory(_directoryValueSets);
+            //    }
+            //}
+
             // create a filename for writing (single file for now)
             string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.ts");
 
@@ -238,6 +276,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     WriteValueSets(_info.ValueSetsByUrl.Values);
                 }
+
+                WriteExpandedResourceInterfaceBinding();
+                WriteExpandedResourceEnum();
+
+                WriteFooter();
+            }
+
+            // WriteMainDefinitionFile();
+        }
+
+        /// <summary>Writes the main definition file.</summary>
+        private void WriteMainDefinitionFile()
+        {
+            // create a filename for writing
+            string filename = Path.Combine(_directoryRoot, $"fhir.d.ts");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteHeader();
 
                 WriteExpandedResourceInterfaceBinding();
                 WriteExpandedResourceEnum();
@@ -426,7 +486,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     new WrittenCodeInfo() { Name = codeName, ConstName = constName });
                 writtenNames.Add(constName);
 
-                _writer.WriteLineIndented($"const {constName}: Coding = {{");
+                _writer.WriteLineIndented($"declare const {constName}: Coding = {{");
                 _writer.IncreaseIndent();
 
                 _writer.WriteLineIndented($"code: \"{codeValue}\",");
@@ -630,7 +690,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented($" * Code Values for the {element.Path} field");
             _writer.WriteLineIndented($" */");
 
-            _writer.WriteLineIndented($"export enum {codeName} {{");
+            _writer.WriteLineIndented($"export const enum {codeName} {{");
 
             _writer.IncreaseIndent();
 
@@ -640,7 +700,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
 
-                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = '{value}',");
                 }
             }
             else
@@ -649,7 +709,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
-                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = '{value}',");
                 }
             }
 
@@ -841,6 +901,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             _writer.WriteLine($"// Minimum TypeScript Version: {_minimumTypeScriptVersion}");
+
+            if (!string.IsNullOrEmpty(_namespace))
+            {
+                _writer.WriteLine();
+                _writer.WriteLine($"export as namespace {_namespace};");
+                _writer.WriteLine();
+            }
         }
 
         /// <summary>Writes a footer.</summary>
