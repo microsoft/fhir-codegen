@@ -41,6 +41,8 @@ namespace FhirCodegenCli
         ///  or latest).</param>
         /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
         ///  or latest).</param>
+        ///  <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
+        ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
         /// <param name="languageOptions">       Language specific options, see documentation for more
         ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
         /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
@@ -69,6 +71,7 @@ namespace FhirCodegenCli
             string loadR3 = "",
             string loadR4 = "",
             string loadR5 = "",
+            string loadFromCache = "",
             string languageOptions = "",
             bool officialExpansionsOnly = false,
             string fhirServerUrl = "",
@@ -177,12 +180,6 @@ namespace FhirCodegenCli
 
             Dictionary<string, FhirVersionInfo> fhirVersions = new Dictionary<string, FhirVersionInfo>();
 
-            FhirVersionInfo r2 = null;
-            FhirVersionInfo r3 = null;
-            FhirVersionInfo r4 = null;
-            FhirVersionInfo r5 = null;
-            FhirVersionInfo localVersion = null;
-
             FhirServerInfo serverInfo = null;
 
             if (!string.IsNullOrEmpty(fhirServerUrl))
@@ -198,6 +195,7 @@ namespace FhirCodegenCli
                 string.IsNullOrEmpty(loadR3) &&
                 string.IsNullOrEmpty(loadR4) &&
                 string.IsNullOrEmpty(loadR5) &&
+                string.IsNullOrEmpty(loadFromCache) &&
                 string.IsNullOrEmpty(loadLocalFhirBuild))
             {
                 if (serverInfo == null)
@@ -263,6 +261,23 @@ namespace FhirCodegenCli
                 fhirVersions.Add(
                     "local",
                     FhirManager.Current.LoadLocal(loadLocalFhirBuild, officialExpansionsOnly));
+            }
+
+            if (!string.IsNullOrEmpty(loadFromCache))
+            {
+                string[] directives = loadFromCache.Split('|');
+
+                foreach (string directive in directives)
+                {
+                    FhirVersionInfo info = FhirManager.Current.LoadCached(directive, officialExpansionsOnly);
+
+                    if (info == null)
+                    {
+                        continue;
+                    }
+
+                    fhirVersions.Add(info.ReleaseName, info);
+                }
             }
 
             if (fhirVersions.Count > 1)

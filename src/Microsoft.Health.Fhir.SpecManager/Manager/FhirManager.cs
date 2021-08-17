@@ -380,6 +380,74 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             }
         }
 
+        /// <summary>Loads a cached.</summary>
+        /// <exception cref="ArgumentNullException">      Thrown when one or more required arguments are
+        ///  null.</exception>
+        /// <exception cref="ArgumentException">          Thrown when one or more arguments have
+        ///  unsupported or illegal values.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
+        ///  required range.</exception>
+        /// <param name="versionDirective">      The version directive.</param>
+        /// <param name="officialExpansionsOnly">(Optional) True to official expansions only.</param>
+        /// <returns>The cached.</returns>
+        public FhirVersionInfo LoadCached(
+            string versionDirective,
+            bool officialExpansionsOnly = false)
+        {
+            if (string.IsNullOrEmpty(versionDirective))
+            {
+                throw new ArgumentNullException(nameof(versionDirective));
+            }
+
+            if (!versionDirective.Contains('#', StringComparison.Ordinal))
+            {
+                throw new ArgumentException($"Invalid version directive: {versionDirective}");
+            }
+
+            string[] components = versionDirective.Split('#');
+
+            if (components.Length != 2)
+            {
+                throw new ArgumentException($"Invalid version directive: {versionDirective}");
+            }
+
+            string[] versionParts = components[1].Split('.');
+
+            if (!int.TryParse(versionParts[0], out int majorRelease))
+            {
+                throw new ArgumentException($"Invalid FHIR version: {versionDirective}");
+            }
+
+            if ((!_knownVersions.ContainsKey(majorRelease)) ||
+                (!_knownVersions[majorRelease].Contains(components[1])))
+            {
+                throw new ArgumentOutOfRangeException($"Unknown Published FHIR version: {majorRelease}");
+            }
+
+            string upper = components[0].ToUpperInvariant();
+            string lower = components[0].ToLowerInvariant();
+
+            // grab the correct basic version info
+            FhirVersionInfo info = new FhirVersionInfo(majorRelease)
+            {
+                ReleaseName = upper,
+                BallotPrefix = string.Empty,
+                PackageName = $"hl7.fhir.{lower}.core",
+                ExamplesPackageName = $"hl7.fhir.{lower}.examples",
+                ExpansionsPackageName = $"hl7.fhir.{lower}.expansions",
+                VersionString = components[1],
+                IsDevBuild = false,
+                IsLocalBuild = false,
+                IsOnDisk = true,
+            };
+
+            // load the package
+            FhirSpecificationLoader.LoadCached(ref info, officialExpansionsOnly);
+
+            // return this record
+            return info;
+        }
+
         /// <summary>Loads a published version of FHIR.</summary>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when one or more arguments are outside the
         ///  required range.</exception>

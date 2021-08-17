@@ -47,7 +47,7 @@
         },
         "ts4": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+            "commandLineArgs": "--export-types primitive|complex|resource --output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "ts5": {
@@ -85,9 +85,24 @@
             "commandLineArgs": "--output-path ..\\..\\generated --load-r2 latest --load-r3 latest --load-r4 latest --load-r5 latest --include-experimental --fhir-publish-directory ..\\..\\..\\fhir\\publish --language CSharpBasic",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "csLocal": {
+        "tsLocal-R4B": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated --load-local-fhir-build true --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharpBasic",
+            "commandLineArgs": "--export-types primitive|complex|resource --output-path C:\\git\\argonaut-subscription-client-ui\\src\\local_dts\\fhir4.d.ts --fhir-publish-directory c:\\specs\\R4B\\publish  --load-local-fhir-build latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "tsLocal-R5": {
+            "commandName": "Project",
+            "commandLineArgs": "--export-types primitive|complex|resource --output-path C:\\git\\argonaut-subscription-client-ui\\src\\local_dts\\fhir5.d.ts --fhir-publish-directory c:\\specs\\R5\\publish  --load-local-fhir-build latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "csLocal-R4B": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path C:\\git\\argonaut-subscription-server-proxy\\argonaut-subscription-server-proxy\\Fhir\\R4B --load-from-cache R4B#4.1.0 --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --language-options CSharp2|namespace=fhirCsR4",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "csLocal-R5": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path C:\\git\\argonaut-subscription-server-proxy\\argonaut-subscription-server-proxy\\Fhir\\R5 --fhir-publish-directory c:\\specs\\R5\\publish  --load-local-fhir-build latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --language-options CSharp2|namespace=fhirCsR5",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "GenerateAll": {

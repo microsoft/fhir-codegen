@@ -187,6 +187,90 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             Console.WriteLine($"LoadLocalBuild <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
         }
 
+        /// <summary>Loads a cached version of FHIR.</summary>
+        /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
+        ///  null.</exception>
+        /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
+        ///  present.</exception>
+        /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>
+        /// <param name="officialExpansionsOnly">True to official expansions only.</param>
+        public static void LoadCached(
+            ref FhirVersionInfo fhirVersionInfo,
+            bool officialExpansionsOnly)
+        {
+            if (fhirVersionInfo == null)
+            {
+                throw new ArgumentNullException(nameof(fhirVersionInfo));
+            }
+
+            string fhirCacheDir = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                ".fhir",
+                "packages");
+
+            if (!Directory.Exists(fhirCacheDir))
+            {
+                throw new DirectoryNotFoundException($"Could not find FHIR cache directory: {fhirCacheDir}.");
+            }
+
+            string core = fhirVersionInfo.PackageName + "#" + fhirVersionInfo.VersionString;
+            string coreDir = Path.Combine(fhirCacheDir, core, "package");
+
+            string expansion = fhirVersionInfo.ExpansionsPackageName + "#" + fhirVersionInfo.VersionString;
+            string expansionDir = Path.Combine(fhirCacheDir, expansion, "package");
+
+            if (!Directory.Exists(coreDir))
+            {
+                throw new DirectoryNotFoundException($"Could not find FHIR cached package: {coreDir}.");
+            }
+
+            if (!Directory.Exists(expansionDir))
+            {
+                throw new DirectoryNotFoundException($"Could not find FHIR cached package: {expansionDir}.");
+            }
+
+            HashSet<string> processedFiles = new HashSet<string>();
+
+            // process Code Systems
+            ProcessFileGroup(coreDir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
+
+            // process Value Set expansions
+            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+
+            // process other value set definitions (if requested)
+            if (!officialExpansionsOnly)
+            {
+                ProcessFileGroup(coreDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+            }
+
+            // process structure definitions
+            ProcessFileGroup(coreDir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
+
+            // process search parameters (adds to resources)
+            ProcessFileGroup(coreDir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
+
+            // process operations (adds to resources and version info (server level))
+            ProcessFileGroup(coreDir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
+
+            // add version-specific "MAGIC" items
+            AddSearchMagicParameters(ref fhirVersionInfo);
+
+            if (fhirVersionInfo.ConverterHasIssues(out int errorCount, out int warningCount))
+            {
+                // make sure we cleared the last line
+                Console.WriteLine($"LoadCached <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}" +
+                    $" with {errorCount} errors" +
+                    $" and {warningCount} warnings" +
+                    $"{new string(' ', 100)}");
+                fhirVersionInfo.DisplayConverterIssues();
+            }
+            else
+            {
+                // make sure we cleared the last line
+                Console.WriteLine($"LoadCached <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+            }
+        }
+
         /// <summary>Loads a FHIR Specification package.</summary>
         /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
