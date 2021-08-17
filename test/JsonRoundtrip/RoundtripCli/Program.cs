@@ -89,8 +89,8 @@ namespace RoundtripCli
                     continue;
                 }
 
-                // if (!RoundtripFileCSv2(fullName, filename))
-                if (!RoundtripFileFirelyExt(fullName, filename))
+                if (!RoundtripFileCSv2(fullName, filename))
+                // if (!RoundtripFileFirelyExt(fullName, filename))
                 {
                     if (breakOnError)
                     {

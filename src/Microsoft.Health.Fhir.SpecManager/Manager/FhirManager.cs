@@ -298,12 +298,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                 throw new ArgumentOutOfRangeException($"Unknown FHIR version: {versionString}");
             }
 
+            string unfortunateVersionNameAppend =
+                (versionString == "4.1.0")
+                ? "b"
+                : string.Empty;
+
             _localVersion = new FhirVersionInfo(majorVersion)
             {
                 ReleaseName = buildId,
-                PackageName = $"hl7.fhir.r{majorVersion}.core",
+                PackageName = $"hl7.fhir.r{majorVersion}{unfortunateVersionNameAppend}.core",
                 ExamplesPackageName = string.Empty,
-                ExpansionsPackageName = $"hl7.fhir.r{majorVersion}.expansions",
+                ExpansionsPackageName = $"hl7.fhir.r{majorVersion}{unfortunateVersionNameAppend}.expansions",
                 VersionString = versionString,
                 IsDevBuild = true,
                 DevBranch = string.Empty,
