@@ -640,7 +640,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 // loop through our types
                 foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
                 {
-                    _writer.WriteLineIndented($"case {kvp.Value} typed{kvp.Value}:");
+                    _writer.WriteLineIndented($"case {_namespaceModels}.{kvp.Value} typed{kvp.Value}:");
                     _writer.IncreaseIndent();
                     _writer.WriteLineIndented($"typed{kvp.Value}.SerializeJson(writer, options, true);");
                     _writer.WriteLineIndented("break;");
