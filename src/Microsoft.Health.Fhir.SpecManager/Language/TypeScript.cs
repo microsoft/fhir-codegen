@@ -67,6 +67,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>True to export enums.</summary>
         private bool _exportEnums;
 
+        /// <summary>The namespace to use when exporting files.</summary>
+        private string _namespace;
+
+        /// <summary>The directory root.</summary>
+        private string _directoryRoot;
+
+        /// <summary>Pathname of the model directory.</summary>
+        private string _directoryModels;
+
+        /// <summary>Pathname of the value set directory.</summary>
+        private string _directoryValueSets;
+
         /// <summary>The exported codes.</summary>
         private HashSet<string> _exportedCodes = new HashSet<string>();
 
@@ -79,8 +91,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Name of the language.</summary>
         private const string _languageName = "TypeScript";
 
-        /// <summary>The single file export extension.</summary>
-        private const string _singleFileExportExtension = ".ts";
+        /// <summary>The single file export extension - requires directory export.</summary>
+        private const string _singleFileExportExtension = ".d.ts";
 
         /// <summary>The minimum type script version.</summary>
         private const string _minimumTypeScriptVersion = "3.7";
@@ -152,7 +164,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     IncludeBase = false,
                 }
             },
-
         };
 
         /// <summary>Gets the name of the language.</summary>
@@ -192,7 +203,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         };
 
         /// <summary>Gets language-specific options and their descriptions.</summary>
-        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>();
+        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
+        {
+            { "namespace", "Export namespace for TypeScript files (default: fhir{VersionNumber})." },
+        };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -222,6 +236,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _exportEnums = false;
             }
 
+            _namespace = options.GetParam("namespace", $"fhir{info.MajorVersion}");
+
+            //_directoryRoot = exportDirectory;
+            //if (!Directory.Exists(_directoryRoot))
+            //{
+            //    Directory.CreateDirectory(_directoryRoot);
+            //}
+
+            //_directoryModels = Path.Combine(exportDirectory, "Models");
+            //if (!Directory.Exists(_directoryModels))
+            //{
+            //    Directory.CreateDirectory(_directoryModels);
+            //}
+
+            //_directoryValueSets = Path.Combine(exportDirectory, "ValueSets");
+            //if (_exportEnums)
+            //{
+            //    if (!Directory.Exists(_directoryValueSets))
+            //    {
+            //        Directory.CreateDirectory(_directoryValueSets);
+            //    }
+            //}
+
             // create a filename for writing (single file for now)
             string filename = Path.Combine(exportDirectory, $"R{info.MajorVersion}.ts");
 
@@ -241,9 +278,77 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 WriteExpandedResourceInterfaceBinding();
+                WriteExpandedResourceEnum();
 
                 WriteFooter();
             }
+
+            // WriteMainDefinitionFile();
+        }
+
+        /// <summary>Writes the main definition file.</summary>
+        private void WriteMainDefinitionFile()
+        {
+            // create a filename for writing
+            string filename = Path.Combine(_directoryRoot, $"fhir.d.ts");
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+            {
+                _writer = writer;
+
+                WriteHeader();
+
+                WriteExpandedResourceInterfaceBinding();
+                WriteExpandedResourceEnum();
+
+                WriteFooter();
+            }
+        }
+
+        /// <summary>Writes the expanded resource enum.</summary>
+        private void WriteExpandedResourceEnum()
+        {
+            if (_exportedResources.Count == 0)
+            {
+                return;
+            }
+
+            _exportedResources.Sort();
+
+            WriteIndentedComment("String enum/union covering all known resource types.");
+
+            if (_exportedResources.Count == 1)
+            {
+                _writer.WriteLineIndented($"export type FhirResourceType = '{_exportedResources[0]}';");
+                return;
+            }
+
+            _writer.WriteLineIndented("export type FhirResourceType = ");
+
+            _writer.IncreaseIndent();
+
+            int index = 0;
+            int last = _exportedResources.Count - 1;
+            foreach (string exportedName in _exportedResources)
+            {
+                if (index == 0)
+                {
+                    _writer.WriteLineIndented("'" + exportedName + "'");
+                }
+                else if (index == last)
+                {
+                    _writer.WriteLineIndented(" | '" + exportedName + "';");
+                }
+                else
+                {
+                    _writer.WriteLineIndented(" | '" + exportedName + "'");
+                }
+
+                index++;
+            }
+
+            _writer.DecreaseIndent();
         }
 
         /// <summary>Writes the expanded resource interface binding.</summary>
@@ -381,7 +486,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     new WrittenCodeInfo() { Name = codeName, ConstName = constName });
                 writtenNames.Add(constName);
 
-                _writer.WriteLineIndented($"const {constName}: Coding = {{");
+                _writer.WriteLineIndented($"declare const {constName}: Coding = {{");
                 _writer.IncreaseIndent();
 
                 _writer.WriteLineIndented($"code: \"{codeValue}\",");
@@ -511,7 +616,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 exportName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
                 string typeName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
 
-                //if (ShouldSupportGenerics(complex.Path))
                 if (_genericsAndTypeHints.ContainsKey(complex.Path))
                 {
                     _writer.WriteLineIndented(
@@ -570,9 +674,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.Empty,
                 FhirTypeBase.NamingConvention.PascalCase);
 
-            if (codeName.Contains("[x]"))
+            if (codeName.Contains("[x]", StringComparison.Ordinal))
             {
-                codeName = codeName.Replace("[x]", string.Empty);
+                codeName = codeName.Replace("[x]", string.Empty, StringComparison.Ordinal);
             }
 
             if (_exportedCodes.Contains(codeName))
@@ -586,7 +690,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented($" * Code Values for the {element.Path} field");
             _writer.WriteLineIndented($" */");
 
-            _writer.WriteLineIndented($"export enum {codeName} {{");
+            _writer.WriteLineIndented($"export const enum {codeName} {{");
 
             _writer.IncreaseIndent();
 
@@ -596,7 +700,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
 
-                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = '{value}',");
                 }
             }
             else
@@ -605,7 +709,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
-                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
+                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = '{value}',");
                 }
             }
 
@@ -629,22 +733,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return true;
-        }
-
-        /// <summary>Determine if the export should support generics</summary>
-        /// <param name="name">The name.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ShouldSupportGenerics(string name)
-        {
-            switch (name)
-            {
-                case "Bundle":
-                case "Bundle.entry":
-                case "Bundle.entry.resource":
-                    return true;
-            }
-
-            return false;
         }
 
         /// <summary>Writes the elements.</summary>
@@ -681,6 +769,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             string optionalFlagString = element.IsOptional ? "?" : string.Empty;
             string arrayFlagString = element.IsArray ? "[]" : string.Empty;
+            string undefinedPostfix = element.IsOptional ? "|undefined" : string.Empty;
 
             Dictionary<string, string> values = element.NamesAndTypesForExport(
                 FhirTypeBase.NamingConvention.CamelCase,
@@ -694,6 +783,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 string.IsNullOrEmpty(optionalFlagString))
             {
                 optionalFlagString = "?";
+                undefinedPostfix = "|undefined";
             }
 
             foreach (KeyValuePair<string, string> kvp in values)
@@ -721,20 +811,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                             string.Empty,
                             FhirTypeBase.NamingConvention.PascalCase);
 
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName}{arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {codeName}{arrayFlagString}{undefinedPostfix};");
                     }
                     else if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
                     {
                         // use the full expansion
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))}){arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))}){arrayFlagString}{undefinedPostfix};");
                     }
                     else
                     {
                         // otherwise, inline the required codes
-                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString};");
+                        _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: ({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString}{undefinedPostfix};");
                     }
                 }
-                //else if (ShouldSupportGenerics(element.Path))
                 else if (_genericsAndTypeHints.ContainsKey(element.Path))
                 {
                     GenericTypeHintInfo typeHint = _genericsAndTypeHints[element.Path];
@@ -744,29 +833,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                         _writer.WriteLineIndented(
                             $"{kvp.Key}{optionalFlagString}:" +
                             $" {kvp.Value}" +
-                            $"<{_genericsAndTypeHints[element.Path].Alias}>{arrayFlagString};");
+                            $"<{_genericsAndTypeHints[element.Path].Alias}>{arrayFlagString}{undefinedPostfix};");
                     }
                     else
                     {
                         _writer.WriteLineIndented(
                             $"{kvp.Key}{optionalFlagString}:" +
-                            $" {_genericsAndTypeHints[element.Path].Alias}{arrayFlagString};");
+                            $" {_genericsAndTypeHints[element.Path].Alias}{arrayFlagString}{undefinedPostfix};");
                     }
-
-                    //_writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}<T>{arrayFlagString};");
                 }
                 else if (kvp.Value.Equals("Resource", StringComparison.Ordinal))
                 {
-                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: FhirResource{arrayFlagString};");
+                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: FhirResource{arrayFlagString}{undefinedPostfix};");
                 }
                 else
                 {
-                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString};");
+                    _writer.WriteLineIndented($"{kvp.Key}{optionalFlagString}: {kvp.Value}{arrayFlagString}{undefinedPostfix};");
                 }
 
                 if (RequiresExtension(kvp.Value))
                 {
-                    _writer.WriteLineIndented($"_{kvp.Key}?: Element{arrayFlagString};");
+                    _writer.WriteLineIndented($"_{kvp.Key}?: Element{arrayFlagString}|undefined;");
                 }
             }
         }
@@ -814,6 +901,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             _writer.WriteLine($"// Minimum TypeScript Version: {_minimumTypeScriptVersion}");
+
+            if (!string.IsNullOrEmpty(_namespace))
+            {
+                _writer.WriteLine();
+                _writer.WriteLine($"export as namespace {_namespace};");
+                _writer.WriteLine();
+            }
         }
 
         /// <summary>Writes a footer.</summary>
