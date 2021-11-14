@@ -1510,6 +1510,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented(resourceReferences);
             }
 
+            if (element.FwMapping != null && element.FwMapping.Count > 0)
+            {
+                foreach(var fwMapping in element.FwMapping)
+                {
+                    _writer.WriteLineIndented($"[FwMapping(\"{fwMapping}\")]");
+                }
+            }
+
             // Generate the [AllowedTypes] attribute, except when we are generating an element for the
             // open datatypes in Common, since this list contains classes that we have not yet moved to common.
             bool isOpenTypeInCommon = subset.HasFlag(GenSubset.Common) && element.ElementTypes.Count > 25;
@@ -1724,6 +1732,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (notClsCompliant)
             {
                 _writer.WriteLineIndented("[CLSCompliant(false)]");
+            }
+
+            if (element.FwMapping != null && element.FwMapping.Count > 0)
+            {
+                foreach(var fwMapping in element.FwMapping)
+                {
+                    _writer.WriteLineIndented($"[FwMapping(\"{fwMapping}\")]");
+                }
             }
 
             if (!string.IsNullOrEmpty(resourceReferences))
