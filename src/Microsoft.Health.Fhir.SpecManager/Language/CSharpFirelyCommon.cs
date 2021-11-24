@@ -60,6 +60,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["dateTime"] = "DateTimePattern",
             ["oid"] = "OidPattern",
             ["code"] = "CodePattern",
+            ["time"] = "TimePattern",
         };
 
         /// <summary>Writes an indented comment.</summary>
