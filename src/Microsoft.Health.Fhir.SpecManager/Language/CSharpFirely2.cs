@@ -2414,12 +2414,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 /* Generate validator for simple string-based values that have a regex to validate them.
                  * Skip validator for some types for which we have more performant, hand-written validators.
                  */
-                if (!string.IsNullOrEmpty(primitive.ValidationRegEx) &&
-                    exportName != "FhirString" && exportName != "FhirUri" && exportName != "Markdown")
-                {
-                    _writer.WriteLineIndented("public static bool IsValidValue(string value) => Regex.IsMatch(value, \"^\" + PATTERN + \"$\", RegexOptions.Singleline);");
-                    _writer.WriteLine(string.Empty);
-                }
+                //if (!string.IsNullOrEmpty(primitive.ValidationRegEx) &&
+                //    exportName != "FhirString" && exportName != "FhirUri" && exportName != "Markdown")
+                //{
+                //    _writer.WriteLineIndented("public static bool IsValidValue(string value) => Regex.IsMatch(value, \"^\" + PATTERN + \"$\", RegexOptions.Singleline);");
+                //    _writer.WriteLine(string.Empty);
+                //}
 
                 // close class
                 CloseScope();
