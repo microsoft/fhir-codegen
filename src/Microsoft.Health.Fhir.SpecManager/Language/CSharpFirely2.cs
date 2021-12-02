@@ -1828,17 +1828,29 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              *
              * If we start to include more classes like this, we might need to
              * automate this, by scanning differences between 3/4/5/6/7 etc.. */
+            string BuildExceptionElementAttribute(string versionString = null)
+            {
+                var prefix = $"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}";
+                if (versionString is { })
+                {
+                    prefix += $", Since=FhirRelease.{versionString}";
+                }
+
+                prefix += ")]";
+                return prefix;
+            }
+
             if (element.Path == "Meta.source")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=FhirRelease.R4)]");
+                _writer.WriteLineIndented(BuildExceptionElementAttribute("R4"));
             }
             else if (element.Path == "Reference.type")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=FhirRelease.R4)]");
+                _writer.WriteLineIndented(BuildExceptionElementAttribute("R4"));
             }
             else
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice})]");
+                _writer.WriteLineIndented(BuildExceptionElementAttribute());
             }
 
             if (element.Path == "Meta.profile")
