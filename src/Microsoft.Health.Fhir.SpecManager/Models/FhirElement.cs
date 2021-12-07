@@ -167,7 +167,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 ValueSetBindingStrength = bindingStrength.ToFhirEnum<ElementDefinitionBindingStrength>();
             }
 
-            FwMapping = fWmapping;
+            FiveWs = fWmapping;
         }
 
         /// <summary>Values that represent element definition binding strengths.</summary>
@@ -278,7 +278,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets a value indicating whether this object is optional.</summary>
         public bool IsOptional => CardinalityMin == 0;
 
-        public List<string> FwMapping {get;}
+        public List<string> FiveWs {get;}
 
         /// <summary>Maximum cardinality.</summary>
         /// <param name="max">The maximum.</param>
@@ -404,7 +404,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 ModifiesParent,
                 BindingStrength,
                 ValueSet,
-                FwMapping);
+                FiveWs);
 
             // check for base type name
             if (!string.IsNullOrEmpty(BaseTypeName))

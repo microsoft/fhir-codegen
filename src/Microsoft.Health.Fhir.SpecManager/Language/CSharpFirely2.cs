@@ -1497,7 +1497,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 out string allowedTypes,
                 out string resourceReferences);
 
-            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice})]");
+            // If exists, create Five W's mapping
+            var fiveWs = new StringBuilder();
+            if (element.FiveWs != null && element.FiveWs.Count > 0)
+            {
+                fiveWs.Append(", FiveWs= new string[] {");
+                fiveWs.Append(string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")));
+                fiveWs.Append("}");
+            }
+
+            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice} {fiveWs})]");
 
             if (hasDefinedEnum)
             {
@@ -1508,14 +1517,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 _writer.WriteLineIndented("[CLSCompliant(false)]");
                 _writer.WriteLineIndented(resourceReferences);
-            }
-
-            if (element.FwMapping != null && element.FwMapping.Count > 0)
-            {
-                foreach(var fwMapping in element.FwMapping)
-                {
-                    _writer.WriteLineIndented($"[FwMapping(\"{fwMapping}\")]");
-                }
             }
 
             // Generate the [AllowedTypes] attribute, except when we are generating an element for the
@@ -1699,6 +1700,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 out string allowedTypes,
                 out string resourceReferences);
 
+            // If exists, create Five W's mapping
+            var fiveWs = new StringBuilder();
+            if (element.FiveWs != null && element.FiveWs.Count > 0)
+            {
+                fiveWs.Append(", FiveWs= new string[] {");
+                fiveWs.Append(string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")));
+                fiveWs.Append("}");
+            }
+
             /* Exceptions:
              *  o Meta.source only exists since R5, it is still present in the common version.
              *  o Meta.profile has changed types from `uri` to `canonical`, but we stick to Uri for the common version
@@ -1707,15 +1717,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              * automate this, by scanning differences between 3/4/5/6/7 etc.. */
             if (element.Path == "Meta.source")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=FhirRelease.R4)]");
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs}, Since=FhirRelease.R4)]");
             }
             else if (element.Path == "Reference.type")
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}, Since=FhirRelease.R4)]");
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs}, Since=FhirRelease.R4)]");
             }
             else
             {
-                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice})]");
+                _writer.WriteLineIndented($"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs})]");
             }
 
             if (element.Path == "Meta.profile")
@@ -1732,14 +1742,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (notClsCompliant)
             {
                 _writer.WriteLineIndented("[CLSCompliant(false)]");
-            }
-
-            if (element.FwMapping != null && element.FwMapping.Count > 0)
-            {
-                foreach(var fwMapping in element.FwMapping)
-                {
-                    _writer.WriteLineIndented($"[FwMapping(\"{fwMapping}\")]");
-                }
             }
 
             if (!string.IsNullOrEmpty(resourceReferences))
