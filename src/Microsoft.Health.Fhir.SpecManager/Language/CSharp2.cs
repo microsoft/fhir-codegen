@@ -1009,6 +1009,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             bool prefixWithSystem = vs.ReferencedCodeSystems.Count > 1;
             HashSet<string> usedValues = new HashSet<string>();
 
+            Dictionary<string, string> literals = new Dictionary<string, string>();
+
             foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
             {
                 string input = concept.Display;
@@ -1058,6 +1060,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 usedValues.Add(name);
 
+                literals.Add(name, codeValue);
+
                 WriteIndentedComment(concept.Definition ?? concept.Display);
 
                 if (_namesRequiringKeywordNew.Contains(name))
@@ -1082,6 +1086,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 _writer.DecreaseIndent();
                 _writer.WriteLineIndented("};");
+            }
+
+            foreach (KeyValuePair<string, string> kvp in literals)
+            {
+                _writer.WriteLine();
+                WriteIndentedComment($"Literal for code: {kvp.Key}");
+                _writer.WriteLineIndented($"public const string Literal{kvp.Key} = \"{kvp.Value}\";");
             }
 
             _writer.DecreaseIndent();
@@ -1220,12 +1231,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _writer.IncreaseIndent();
 
-            if (isResource && ShouldWriteResourceName(nameForExport))
+            if (isResource)
             {
-                _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
+                if (nameForExport == "Resource")
+                {
+                    WriteIndentedComment("Resource Type Name");
+                    _writer.WriteLineIndented($"{_accessModifier} virtual string ResourceType => string.Empty;");
+                }
+                else if (ShouldWriteResourceName(nameForExport))
+                {
+                    _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
 
-                WriteIndentedComment("Resource Type Name");
-                _writer.WriteLineIndented($"{_accessModifier} string ResourceType => \"{complex.Name}\";");
+                    WriteIndentedComment("Resource Type Name");
+                    _writer.WriteLineIndented($"{_accessModifier} override string ResourceType => \"{complex.Name}\";");
+                }
             }
 
             // write elements
