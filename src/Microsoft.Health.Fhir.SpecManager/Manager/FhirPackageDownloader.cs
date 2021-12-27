@@ -175,7 +175,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             if (string.IsNullOrEmpty(ballotPrefix))
             {
-                url = $"{PublishedDownloadUrlBase}{releaseName}/{packageName}.tgz";
+                if ((!string.IsNullOrEmpty(version)) && (version.Length > 5))
+                {
+                    url = $"{PublishedDownloadUrlBase}{version}/{packageName}.tgz";
+                }
+                else
+                {
+                    url = $"{PublishedDownloadUrlBase}{releaseName}/{packageName}.tgz";
+                }
             }
             else
             {
