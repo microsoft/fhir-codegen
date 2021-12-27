@@ -32,10 +32,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         // private readonly JsonConverter _jsonConverter;
 
         /// <summary>The errors.</summary>
-        private List<string> _errors;
+        private static List<string> _errors;
 
         /// <summary>The warnings.</summary>
-        private List<string> _warnings;
+        private static List<string> _warnings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FromR5"/> class.
@@ -87,7 +87,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Process the value set.</summary>
         /// <param name="vs">             The vs.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        private void ProcessValueSet(
+        private static void ProcessValueSet(
             fhir_5.ValueSet vs,
             FhirVersionInfo fhirVersionInfo)
         {
@@ -249,7 +249,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Query if 'includes' is expandable.</summary>
         /// <param name="includes">The includes.</param>
         /// <returns>True if expandable, false if not.</returns>
-        private bool IsExpandable(List<FhirValueSetComposition> includes)
+        private static bool IsExpandable(List<FhirValueSetComposition> includes)
         {
             if ((includes == null) || (includes.Count == 0))
             {
@@ -284,7 +284,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Adds the contains to 'ec'.</summary>
         /// <param name="contains">[in,out] The contains.</param>
         /// <param name="ec">      The ec.</param>
-        private void AddContains(ref List<FhirConcept> contains, fhir_5.ValueSetExpansionContains ec)
+        private static void AddContains(ref List<FhirConcept> contains, fhir_5.ValueSetExpansionContains ec)
         {
             if (contains == null)
             {
@@ -402,7 +402,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Process the code system.</summary>
         /// <param name="cs">             The create struct.</param>
         /// <param name="fhirVersionInfo">FHIR Version information.</param>
-        private void ProcessCodeSystem(
+        private static void ProcessCodeSystem(
             fhir_5.CodeSystem cs,
             FhirVersionInfo fhirVersionInfo)
         {
@@ -449,7 +449,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <param name="concepts">     The concept.</param>
         /// <param name="parent">       [in,out] The parent.</param>
         /// <param name="nodeLookup">   [in,out] The node lookup.</param>
-        private void AddConceptTree(
+        private static void AddConceptTree(
             string codeSystemUrl,
             string codeSystemId,
             List<fhir_5.CodeSystemConcept> concepts,
@@ -781,6 +781,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             elementTypes = new Dictionary<string, FhirElementType>();
             regex = string.Empty;
 
+            // TODO(ginoc): 5.0.0-snapshot1 needs these fixed
+            switch (element.Path)
+            {
+                case "ArtifactAssessment.approvalDate":
+                case "ArtifactAssessment.lastReviewDate":
+                    elementTypes.Add("date", new FhirElementType("date"));
+                    _warnings.Add($"StructureDefinition - {structureName} coerced {element.Id} to type 'date'");
+                    return true;
+            }
+
             /* Correct some mistakes in the spec. Need to discuss this with Gino.
              */
             if (element.Path == "Resource.id")
@@ -920,7 +930,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                     {
                         if (context.Type != "element")
                         {
-                            throw new ArgumentException($"Invalid extension context type: {context.Type}");
+                            //throw new ArgumentException($"Invalid extension context type: {context.Type}");
+                            _errors.Add($"StructureDefinition {sd.Name} ({sd.Id}) unhandled context type: {context.Type}");
+                            return;
                         }
 
                         contextElements.Add(context.Expression);

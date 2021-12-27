@@ -224,6 +224,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             return false;
         }
 
+        /// <summary>Sanitize to Printable ASCII.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>A string.</returns>
+        public static string SanitizeToAscii(string value)
+        {
+            string pattern = "[^ -~]+";
+            Regex reg_exp = new Regex(pattern);
+            return reg_exp.Replace(value, string.Empty);
+        }
+
         /// <summary>Sanitize for property.</summary>
         /// <param name="value">        The value.</param>
         /// <param name="reservedWords">The reserved words.</param>
@@ -449,7 +459,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     case '\n':
                         break;
 
+                    case 'ł':
+                        sb.Append("l");
+                        break;
+
                     default:
+                        if (second == '\u0002')
+                        {
+                            if (ch == 'E')
+                            {
+                                sb.Append("l");
+                                i += 1;
+                                continue;
+                            }
+                        }
+
                         if (ch < 128)
                         {
                             sb.Append(ch);
