@@ -19,7 +19,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private static FhirManager _instance;
 
         /// <summary>Map of known major versions and version strings.</summary>
-        private Dictionary<int, SortedSet<string>> _knownVersions;
+        private Dictionary<string, SortedSet<string>> _knownVersions;
+
+        /// <summary>Dictionary to map specific versions to releases.</summary>
+        private Dictionary<string, string> _versionToReleaseDict;
 
         /// <summary>Dictionary of published versions.</summary>
         private Dictionary<string, FhirVersionInfo> _publishedVersionDict;
@@ -51,12 +54,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             _packageDirectory = packageDirectory;
             _localVersion = null;
 
-            _knownVersions = new Dictionary<int, SortedSet<string>>()
+            _knownVersions = new Dictionary<string, SortedSet<string>>()
             {
-                { 2, new SortedSet<string>() { "1.0.2" } },
-                { 3, new SortedSet<string>() { "3.0.2" } },
-                { 4, new SortedSet<string>() { "4.0.1", "4.1.0", "4.3.0-snapshot1" } },
-                { 5, new SortedSet<string>() { "4.4.0", "4.5.0", "4.6.0", "5.0.0-snapshot1" } },
+                { "DSTU2", new SortedSet<string>() { "1.0.2" } },
+                { "STU3", new SortedSet<string>() { "3.0.2" } },
+                { "R4", new SortedSet<string>() { "4.0.1" } },
+                { "R4B", new SortedSet<string>() { "4.1.0", "4.3.0-snapshot1" } },
+                { "R5", new SortedSet<string>() { "4.2.0", "4.4.0", "4.5.0", "4.6.0", "5.0.0-snapshot1" } },
+            };
+
+            _versionToReleaseDict = new Dictionary<string, string>()
+            {
+                { "1.0.2", "DSTU2" },
+                { "3.0.2", "STU3" },
+                { "4.0.1", "R4" },
+                { "4.1.0", "R4B" },
+                { "4.3.0-snapshot1", "R4B" },
+                { "4.2.0", "R5" },
+                { "4.4.0", "R5" },
+                { "4.5.0", "R5" },
+                { "4.6.0", "R5" },
+                { "5.0.0", "R5" },
             };
 
             // build the dictionary of published versions*
@@ -132,6 +150,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                         ExamplesPackageName = "hl7.fhir.r4b.examples",
                         ExpansionsPackageName = "hl7.fhir.r4b.expansions",
                         VersionString = "4.3.0-snapshot1",
+                        IsDevBuild = false,
+                        IsLocalBuild = false,
+                        IsOnDisk = false,
+                    }
+                },
+                {
+                    "4.2.0",
+                    new FhirVersionInfo(5)
+                    {
+                        ReleaseName = "R5",
+                        BallotPrefix = "2020Feb",
+                        PackageName = "hl7.fhir.r5.core",
+                        ExamplesPackageName = string.Empty,                         // "hl7.fhir.r5.examples",
+                        ExpansionsPackageName = "hl7.fhir.r5.expansions",
+                        VersionString = "4.2.0",
                         IsDevBuild = false,
                         IsLocalBuild = false,
                         IsOnDisk = false,
@@ -448,24 +481,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
             string[] versionParts = components[1].Split('.');
 
-            if (!int.TryParse(versionParts[0], out int majorRelease))
+            if (!int.TryParse(versionParts[0], out int versionNumberMajor))
             {
                 throw new ArgumentException($"Invalid FHIR version: {versionDirective}");
             }
 
-            if ((!_knownVersions.ContainsKey(majorRelease)) ||
-                (!_knownVersions[majorRelease].Contains(components[1])))
+            if (!_versionToReleaseDict.ContainsKey(components[1]))
             {
-                throw new ArgumentOutOfRangeException($"Unknown Published FHIR version: {majorRelease}");
+                throw new ArgumentOutOfRangeException($"Unknown Published FHIR version: {components[1]}");
             }
 
             string upper = components[0].ToUpperInvariant();
             string lower = components[0].ToLowerInvariant();
 
             // grab the correct basic version info
-            FhirVersionInfo info = new FhirVersionInfo(majorRelease)
+            FhirVersionInfo info = new FhirVersionInfo(versionNumberMajor)
             {
-                ReleaseName = upper,
+                ReleaseName = _versionToReleaseDict[components[1]],
                 BallotPrefix = string.Empty,
                 PackageName = $"hl7.fhir.{lower}.core",
                 ExamplesPackageName = $"hl7.fhir.{lower}.examples",
@@ -488,14 +520,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         ///  required range.</exception>
         /// <exception cref="ArgumentException">          Thrown when one or more arguments have
         ///  unsupported or illegal values.</exception>
-        /// <param name="majorRelease">          The release number of FHIR to load (e.g., 2 for DSTU2).</param>
+        /// <param name="majorRelease">          The release of FHIR to load (e.g., DSTU2, R4B).</param>
         /// <param name="versions">              The specific version of FHIR to load, or 'latest' for
         ///  highest known version.</param>
         /// <param name="offlineMode">           (Optional) True to allow, false to suppress the download.</param>
         /// <param name="officialExpansionsOnly">(Optional) True to official expansions only.</param>
         /// <returns>True if it succeeds, false if it fails.</returns>
         public FhirVersionInfo LoadPublished(
-            int majorRelease,
+            string majorRelease,
             string versions,
             bool offlineMode = false,
             bool officialExpansionsOnly = false)

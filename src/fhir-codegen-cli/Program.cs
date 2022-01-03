@@ -5,7 +5,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.CommandLine;
 using System.CommandLine.Builder;
+using System.CommandLine.NamingConventionBinder;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -19,7 +21,200 @@ namespace FhirCodegenCli
     /// <summary>FHIR CodeGen CLI.</summary>
     public static class Program
     {
+        /// <summary>The extensions outputted.</summary>
         private static HashSet<string> _extensionsOutputted;
+
+        /// <summary>Delegate function to do actual processing - matches Process.</summary>
+        /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
+        ///  are downloaded and cached (.../fhirVersions).</param>
+        /// <param name="outputPath">            File or directory to write output.</param>
+        /// <param name="verbose">               Show verbose output.</param>
+        /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
+        /// <param name="language">              Name of the language to export (default:
+        ///  Info|TypeScript|CSharpBasic).</param>
+        /// <param name="exportKeys">            '|' separated list of items to export (not present to
+        ///  export everything).</param>
+        /// <param name="loadR2">                If FHIR R2 should be loaded, which version (e.g., 1.0.2
+        ///  or latest).</param>
+        /// <param name="loadR3">                If FHIR R3 should be loaded, which version (e.g., 3.0.2
+        ///  or latest).</param>
+        /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
+        ///  or latest).</param>
+        /// <param name="loadR4B">                If FHIR R4 should be loaded, which version (e.g., 4.3.0-snapshot1
+        ///  or latest).</param>
+        /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
+        ///  or latest).</param>
+        /// <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
+        ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
+        /// <param name="languageOptions">       Language specific options, see documentation for more
+        ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
+        /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
+        ///  expansions (default: false).</param>
+        /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
+        ///  Conformance) from.  Requires application/fhir+json.</param>
+        /// <param name="includeExperimental">   If the output should include structures marked
+        ///  experimental (false|true).</param>
+        /// <param name="exportTypes">           Which FHIR classes types to export
+        ///  (primitive|complex|resource|interaction|enum), default is all.</param>
+        /// <param name="extensionSupport">      The level of extensions to include
+        ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
+        /// <param name="languageHelp">          Display languages and their options.</param>
+        /// <param name="fhirPublishDirectory">  The full path to a local FHIR build publish directory (.../publish).</param>
+        /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
+        /// <param name="packageDirectory">  The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
+        /// <param name="packages">'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0).</param>
+        public delegate void ProcessDelegate(
+            string fhirSpecDirectory = "",
+            string outputPath = "",
+            bool verbose = false,
+            bool offlineMode = false,
+            string language = "",
+            string exportKeys = "",
+            string loadR2 = "",
+            string loadR3 = "",
+            string loadR4 = "",
+            string loadR4B = "",
+            string loadR5 = "",
+            string loadFromCache = "",
+            string languageOptions = "",
+            bool officialExpansionsOnly = false,
+            string fhirServerUrl = "",
+            bool includeExperimental = false,
+            string exportTypes = "",
+            string extensionSupport = "",
+            bool languageHelp = false,
+            string fhirPublishDirectory = "",
+            string loadLocalFhirBuild = "",
+            string packageDirectory = "",
+            string packages = "");
+
+        /// <summary>Main entry-point for this application.</summary>
+        /// <param name="args">An array of command-line argument strings.</param>
+        public static void Main(string[] args)
+        {
+            // convert commands to lower-case for matching
+            if (args != null)
+            {
+                for (int i = 0; i < args.Length; i++)
+                {
+                    if (string.IsNullOrEmpty(args[i]))
+                    {
+                        continue;
+                    }
+
+                    if (args[i][0] == '-')
+                    {
+#pragma warning disable CA1308 // Normalize strings to uppercase
+                        args[i] = args[i].ToLowerInvariant();
+#pragma warning restore CA1308 // Normalize strings to uppercase
+                    }
+                }
+            }
+
+            RootCommand rootCommand = new RootCommand
+            {
+                new Option<string>(
+                    name: "--fhir-spec-directory",
+                    getDefaultValue: () => string.Empty,
+                    "The full path to the directory where FHIR specifications are downloaded and cached (.../fhirVersions)."),
+                new Option<string>(
+                    aliases: new string[] { "--output-path", "-o" },
+                    getDefaultValue: () => string.Empty,
+                    "File or directory to write output."),
+                new Option<bool>(
+                    aliases: new string[] { "--verbose", "-v" },
+                    getDefaultValue: () => false,
+                    "Show verbose output."),
+                new Option<bool>(
+                    name: "--offline-mode",
+                    getDefaultValue: () => false,
+                    "Offline mode (will not download missing specifications)."),
+                new Option<string>(
+                    aliases: new string[] { "--language", "-l" },
+                    getDefaultValue: () => string.Empty,
+                    "Name of the language to export (default: Info|TypeScript|CS2)."),
+                new Option<string>(
+                    aliases: new string[] { "--export-keys", "-k" },
+                    getDefaultValue: () => string.Empty,
+                    "'|' separated list of items to export (not present to export everything)."),
+                new Option<string>(
+                    aliases: new string[] { "--load-r2", "--load-DSTU2" },
+                    getDefaultValue: () => string.Empty,
+                    "If FHIR version 2 (DSTU2) should be loaded, which version (e.g., 1.0.2 or latest)"),
+                new Option<string>(
+                    aliases: new string[] { "--load-r3", "--load-STU3" },
+                    getDefaultValue: () => string.Empty,
+                    "If FHIR version 3 (STU3) should be loaded, which version (e.g., 3.0.2 or latest)"),
+                new Option<string>(
+                    name: "--load-r4",
+                    getDefaultValue: () => string.Empty,
+                    "If FHIR version 4 (R4) should be loaded, which version (e.g., 4.0.1 or latest)"),
+                new Option<string>(
+                    name: "--load-r4b",
+                    getDefaultValue: () => string.Empty,
+                    "If FHIR version 4B (R4B) should be loaded, which version (e.g., 4.3.0-snapshot1 or latest)"),
+                new Option<string>(
+                    name: "--load-r5",
+                    getDefaultValue: () => string.Empty,
+                    "If FHIR version 5 (R5) should be loaded, which version (e.g., 5.0.0-snapshot1 or latest)"),
+                new Option<string>(
+                    name: "--load-from-cache",
+                    getDefaultValue: () => string.Empty,
+                    "If content should be loaded from the user's FHIR cache, pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0)"),
+                new Option<string>(
+                    aliases: new string[] { "--language-options", "--opts" },
+                    getDefaultValue: () => string.Empty,
+                    "Language specific options, see documentation for more details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo."),
+                new Option<bool>(
+                    name: "--official-expansions-only",
+                    getDefaultValue: () => false,
+                    "True to restrict value-sets exported to only official expansions (default: false)."),
+                new Option<string>(
+                    aliases: new string[] { "--fhir-server-url", "--server" },
+                    getDefaultValue: () => string.Empty,
+                    "FHIR Server URL to pull a CapabilityStatement or Conformance from.  Requires application/fhir+json support."),
+                new Option<bool>(
+                    aliases: new string[] { "--include-experimental", "--experimental" },
+                    getDefaultValue: () => false,
+                    "If the output should include structures marked experimental (default: false)."),
+                new Option<string>(
+                    aliases: new string[] { "--export-types", "--types" },
+                    getDefaultValue: () => string.Empty,
+                    "Types of FHIR structures to export (primitive|complex|resource|interaction|enum), default is all."),
+                new Option<string>(
+                    name: "--extension-support",
+                    getDefaultValue: () => string.Empty,
+                    "The level of extensions to include (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive."),
+                new Option<bool>(
+                    name: "--language-help",
+                    getDefaultValue: () => false,
+                    "Display languages and their options."),
+                new Option<string>(
+                    aliases: new string[] { "--fhir-publish-directory", "-d" },
+                    getDefaultValue: () => string.Empty,
+                    "The full path to a local FHIR build publish directory (.../publish)."),
+                new Option<string>(
+                    aliases: new string[] { "--load-local-fhir-build", "--local" },
+                    getDefaultValue: () => string.Empty,
+                    "'latest' to copy from a local FHIR build directory, 'current' to use a previous copy (default: none)."),
+                new Option<string>(
+                    aliases: new string[] { "--package-directory", "-p" },
+                    getDefaultValue: () => string.Empty,
+                    "The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages))."),
+                new Option<string>(
+                    name: "--packages",
+                    getDefaultValue: () => string.Empty,
+                    "'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0)."),
+            };
+
+            rootCommand.Description = "Command-line utility for processing the FHIR specification into other computer languages.";
+
+            ProcessDelegate handler = Process;
+
+            rootCommand.Handler = CommandHandler.Create(handler);
+
+            rootCommand.InvokeAsync(args);
+        }
 
         /// <summary>
         /// Command-line utility for processing the FHIR specification into other computer languages.
@@ -39,9 +234,11 @@ namespace FhirCodegenCli
         ///  or latest).</param>
         /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
         ///  or latest).</param>
+        /// <param name="loadR4B">                If FHIR R4 should be loaded, which version (e.g., 4.3.0-snapshot1
+        ///  or latest).</param>
         /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
         ///  or latest).</param>
-        ///  <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
+        /// <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
         ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
         /// <param name="languageOptions">       Language specific options, see documentation for more
         ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
@@ -60,7 +257,7 @@ namespace FhirCodegenCli
         /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
         /// <param name="packageDirectory">  The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
         /// <param name="packages">'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0).</param>
-        public static void Main(
+        public static void Process(
             string fhirSpecDirectory = "",
             string outputPath = "",
             bool verbose = false,
@@ -70,6 +267,7 @@ namespace FhirCodegenCli
             string loadR2 = "",
             string loadR3 = "",
             string loadR4 = "",
+            string loadR4B = "",
             string loadR5 = "",
             string loadFromCache = "",
             string languageOptions = "",
@@ -194,6 +392,7 @@ namespace FhirCodegenCli
             if (string.IsNullOrEmpty(loadR2) &&
                 string.IsNullOrEmpty(loadR3) &&
                 string.IsNullOrEmpty(loadR4) &&
+                string.IsNullOrEmpty(loadR4B) &&
                 string.IsNullOrEmpty(loadR5) &&
                 string.IsNullOrEmpty(loadFromCache) &&
                 string.IsNullOrEmpty(loadLocalFhirBuild))
@@ -203,6 +402,7 @@ namespace FhirCodegenCli
                     loadR2 = "latest";
                     loadR3 = "latest";
                     loadR4 = "latest";
+                    loadR4B = "latest";
                     loadR5 = "latest";
                 }
                 else
@@ -232,28 +432,35 @@ namespace FhirCodegenCli
             {
                 fhirVersions.Add(
                     "DSTU2",
-                    FhirManager.Current.LoadPublished(2, loadR2, offlineMode, officialExpansionsOnly));
+                    FhirManager.Current.LoadPublished("DSTU2", loadR2, offlineMode, officialExpansionsOnly));
             }
 
             if (!string.IsNullOrEmpty(loadR3))
             {
                 fhirVersions.Add(
                     "STU3",
-                    FhirManager.Current.LoadPublished(3, loadR3, offlineMode, officialExpansionsOnly));
+                    FhirManager.Current.LoadPublished("STU3", loadR3, offlineMode, officialExpansionsOnly));
             }
 
             if (!string.IsNullOrEmpty(loadR4))
             {
                 fhirVersions.Add(
                     "R4",
-                    FhirManager.Current.LoadPublished(4, loadR4, offlineMode, officialExpansionsOnly));
+                    FhirManager.Current.LoadPublished("R4", loadR4, offlineMode, officialExpansionsOnly));
+            }
+
+            if (!string.IsNullOrEmpty(loadR4B))
+            {
+                fhirVersions.Add(
+                    "R4B",
+                    FhirManager.Current.LoadPublished("R4B", loadR4, offlineMode, officialExpansionsOnly));
             }
 
             if (!string.IsNullOrEmpty(loadR5))
             {
                 fhirVersions.Add(
                     "R5",
-                    FhirManager.Current.LoadPublished(5, loadR5, offlineMode, officialExpansionsOnly));
+                    FhirManager.Current.LoadPublished("R5", loadR5, offlineMode, officialExpansionsOnly));
             }
 
             if (!string.IsNullOrEmpty(loadLocalFhirBuild))

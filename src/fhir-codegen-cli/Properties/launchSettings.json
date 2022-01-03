@@ -22,7 +22,7 @@
         },
         "r4b": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B.txt --load-r4 4.3.0-snapshot1 --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B.txt --load-R4B latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r5": {
@@ -52,7 +52,7 @@
         },
         "ts4B": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R4B.ts --load-r4 4.3.0-snapshot1 --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R4B.ts --load-r4b latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "ts5": {
@@ -102,7 +102,7 @@
         },
         "csLocal-R4B": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path C:\\git\\argonaut-subscription-server-proxy\\argonaut-subscription-server-proxy\\Fhir\\R4B --load-from-cache R4B#4.1.0 --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --language-options CSharp2|namespace=fhirCsR4",
+            "commandLineArgs": "--output-path C:\\git\\argonaut-subscription-server-proxy\\argonaut-subscription-server-proxy\\Fhir\\R4B --load-from-cache R4B#4.3.0 --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --language-options CSharp2|namespace=fhirCsR4",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "csLocal-R5": {
@@ -152,7 +152,7 @@
         },
         "Firely 2.x R4B": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r4 4.1.0 --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
+            "commandLineArgs": "--output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Core\\Model --load-r4b latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 2.x R5": {
