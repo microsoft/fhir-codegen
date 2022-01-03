@@ -22,7 +22,7 @@
         },
         "r4b": {
             "commandName": "Project",
-            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B.txt --load-r4 4.1.0 --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
+            "commandLineArgs": "--output-path ..\\..\\generated\\Info_R4B.txt --load-r4 4.3.0-snapshot1 --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language Info",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "r5": {
@@ -48,6 +48,11 @@
         "ts4": {
             "commandName": "Project",
             "commandLineArgs": "--export-types primitive|complex|resource --output-path ..\\..\\generated --load-r4 latest --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "ts4B": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\generated\\TypeScript_R4B.ts --load-r4 4.3.0-snapshot1 --include-experimental --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "ts5": {

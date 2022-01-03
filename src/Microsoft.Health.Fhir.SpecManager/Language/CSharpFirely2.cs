@@ -1022,6 +1022,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             string exportName,
             List<WrittenElementInfo> exportedElements)
         {
+            _writer.WriteLineIndented("///<inheritdoc />");
             _writer.WriteLineIndented("public override bool Matches(IDeepComparable other)");
             OpenScope();
             _writer.WriteLineIndented($"var otherT = other as {exportName};");
