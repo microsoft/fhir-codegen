@@ -3151,6 +3151,141 @@ Resources: 96
   - url[1..1]: uri
     .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-de-submitter-org
   - valueReference[1..1]: Reference(Organization)
+  +http://hl7.org/fhir/StructureDefinition/sdc-element
+  - id[0..1]: id
+  - meta[0..1]: Meta
+  - implicitRules[0..1]: uri
+  - language[0..1]: code
+  - text[0..1]: Narrative
+  - contained[0..*]: Resource
+  - extension[0..*]: Extension
+  - modifierExtension[0..*]: Extension
+  - url[1..1]: uri
+  - identifier[1..*]: Identifier
+  - version[0..1]: string
+  - name[1..1]: string
+  - status[1..1]: code
+    {draft|active|retired}
+  - experimental[0..1]: boolean
+  - publisher[0..1]: string
+  - contact[0..*]: BackboneElement
+    - id[0..1]: id
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - name[0..1]: string
+    - telecom[0..*]: ContactPoint
+    Extensions: 1
+    +http://hl7.org/fhir/StructureDefinition/11179-de-contact-address
+    - id[0..1]: id
+    - url[1..1]: uri
+      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-de-contact-address
+    - valueAddress[1..1]: Address
+  - date[0..1]: dateTime
+  - useContext[0..*]: CodeableConcept
+    Extensions: 1
+    +http://hl7.org/fhir/StructureDefinition/11179-de-classification-or-context
+    - id[0..1]: id
+    - url[1..1]: uri
+      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-de-classification-or-context
+    - valueCode[1..1]: code
+  - copyright[0..1]: string
+  - stringency[1..1]: code
+    {comparable|fully-specified|equivalent|convertable|scaleable|flexible}
+  - mapping[0..*]: BackboneElement
+    - id[0..1]: id
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identity[1..1]: id
+    - uri[0..1]: uri
+    - name[0..1]: string
+    - comments[0..1]: string
+    Extensions: 1
+    +http://hl7.org/fhir/StructureDefinition/mapSourcePublisher
+    - id[0..1]: id
+    - url[1..1]: uri
+      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/mapSourcePublisher
+    - valueString[1..1]: string
+  - element[1..*]: ElementDefinition
+    - id[0..1]: id
+    - extension[0..*]: Extension
+      : http://hl7.org/fhir/StructureDefinition/sdc-element - Open (value@url)
+        : Slice 0:question - on extension
+        : Slice 1:allowedUnits - on extension
+        : Slice 2:minLength - on extension
+        : Slice 3:regex - on extension
+        : Slice 4:entryFormat - on extension
+        : Slice 5:maxDecimalPlaces - on extension
+    - path[1..1]: string
+    - representation[0..*]: code
+    - name[0..1]: string
+    - label[0..1]: string
+    - code[0..*]: Coding
+      Extensions: 1
+      +http://hl7.org/fhir/StructureDefinition/11179-de-is-data-element-concept
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-de-is-data-element-concept
+      - valueBoolean[1..1]: boolean
+    - slicing[0..1]: Element
+      - id[0..1]: id
+      - extension[0..*]: Extension
+      - discriminator[0..*]: string
+      - description[0..1]: string
+      - ordered[0..1]: boolean
+      - rules[1..1]: code
+        {closed|open|openAtEnd}
+    - short[0..1]: string
+    - definition[1..1]: markdown
+    - comments[0..1]: markdown
+    - requirements[0..1]: markdown
+    - alias[0..*]: string
+    - type[0..1]: Element
+      - id[0..1]: id
+      - extension[0..*]: Extension
+      - code[1..1]: code
+      - profile[0..*]: uri
+      - aggregation[0..*]: code
+        {contained|referenced|bundled}
+    - nameReference[0..1]: string
+    - fixed[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
+    - pattern[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
+    - example[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
+    - minValue[x][0..1]: date|dateTime|decimal|instant|integer|Quantity|time
+    - maxValue[x][0..1]: date|dateTime|decimal|instant|integer|Quantity|time
+    - maxLength[0..1]: integer
+    - isModifier[0..1]: boolean
+    - isSummary[0..1]: boolean
+    - binding[0..1]: Element
+      - id[0..1]: id
+      - extension[0..*]: Extension
+      - strength[1..1]: code
+        {required|extensible|preferred|example}
+      - description[0..1]: string
+      - valueSetReference[1..1]: Reference(ValueSet)
+        Extensions: 2
+        +http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap
+        - valueReference[1..1]: Reference(ConceptMap)
+        +http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
+        - valueReference[1..1]: Reference(ValueSet)
+    - mapping[0..*]: Element
+      - id[0..1]: id
+      - extension[0..*]: Extension
+        : http://hl7.org/fhir/StructureDefinition/sdc-element - Open (value@url)
+          : Slice 0:MappingEquivalence - on extension
+            - id[0..1]: id
+            - url[1..1]: uri
+              .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-equivalence
+            - valueCode[1..1]: code
+              .fixedValueCode = equivalent
+      - identity[1..1]: id
+      - language[0..1]: code
+      - map[1..1]: string
   +http://hl7.org/fhir/StructureDefinition/sdcde-dataelement
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3375,141 +3510,6 @@ Resources: 96
           - identity[1..1]: id
           - language[0..1]: code
           - map[1..1]: string
-  +http://hl7.org/fhir/StructureDefinition/sdc-element
-  - id[0..1]: id
-  - meta[0..1]: Meta
-  - implicitRules[0..1]: uri
-  - language[0..1]: code
-  - text[0..1]: Narrative
-  - contained[0..*]: Resource
-  - extension[0..*]: Extension
-  - modifierExtension[0..*]: Extension
-  - url[1..1]: uri
-  - identifier[1..*]: Identifier
-  - version[0..1]: string
-  - name[1..1]: string
-  - status[1..1]: code
-    {draft|active|retired}
-  - experimental[0..1]: boolean
-  - publisher[0..1]: string
-  - contact[0..*]: BackboneElement
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - name[0..1]: string
-    - telecom[0..*]: ContactPoint
-    Extensions: 1
-    +http://hl7.org/fhir/StructureDefinition/11179-de-contact-address
-    - id[0..1]: id
-    - url[1..1]: uri
-      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-de-contact-address
-    - valueAddress[1..1]: Address
-  - date[0..1]: dateTime
-  - useContext[0..*]: CodeableConcept
-    Extensions: 1
-    +http://hl7.org/fhir/StructureDefinition/11179-de-classification-or-context
-    - id[0..1]: id
-    - url[1..1]: uri
-      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-de-classification-or-context
-    - valueCode[1..1]: code
-  - copyright[0..1]: string
-  - stringency[1..1]: code
-    {comparable|fully-specified|equivalent|convertable|scaleable|flexible}
-  - mapping[0..*]: BackboneElement
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - identity[1..1]: id
-    - uri[0..1]: uri
-    - name[0..1]: string
-    - comments[0..1]: string
-    Extensions: 1
-    +http://hl7.org/fhir/StructureDefinition/mapSourcePublisher
-    - id[0..1]: id
-    - url[1..1]: uri
-      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/mapSourcePublisher
-    - valueString[1..1]: string
-  - element[1..*]: ElementDefinition
-    - id[0..1]: id
-    - extension[0..*]: Extension
-      : http://hl7.org/fhir/StructureDefinition/sdc-element - Open (value@url)
-        : Slice 0:question - on extension
-        : Slice 1:allowedUnits - on extension
-        : Slice 2:minLength - on extension
-        : Slice 3:regex - on extension
-        : Slice 4:entryFormat - on extension
-        : Slice 5:maxDecimalPlaces - on extension
-    - path[1..1]: string
-    - representation[0..*]: code
-    - name[0..1]: string
-    - label[0..1]: string
-    - code[0..*]: Coding
-      Extensions: 1
-      +http://hl7.org/fhir/StructureDefinition/11179-de-is-data-element-concept
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-de-is-data-element-concept
-      - valueBoolean[1..1]: boolean
-    - slicing[0..1]: Element
-      - id[0..1]: id
-      - extension[0..*]: Extension
-      - discriminator[0..*]: string
-      - description[0..1]: string
-      - ordered[0..1]: boolean
-      - rules[1..1]: code
-        {closed|open|openAtEnd}
-    - short[0..1]: string
-    - definition[1..1]: markdown
-    - comments[0..1]: markdown
-    - requirements[0..1]: markdown
-    - alias[0..*]: string
-    - type[0..1]: Element
-      - id[0..1]: id
-      - extension[0..*]: Extension
-      - code[1..1]: code
-      - profile[0..*]: uri
-      - aggregation[0..*]: code
-        {contained|referenced|bundled}
-    - nameReference[0..1]: string
-    - fixed[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
-    - pattern[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
-    - example[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
-    - minValue[x][0..1]: date|dateTime|decimal|instant|integer|Quantity|time
-    - maxValue[x][0..1]: date|dateTime|decimal|instant|integer|Quantity|time
-    - maxLength[0..1]: integer
-    - isModifier[0..1]: boolean
-    - isSummary[0..1]: boolean
-    - binding[0..1]: Element
-      - id[0..1]: id
-      - extension[0..*]: Extension
-      - strength[1..1]: code
-        {required|extensible|preferred|example}
-      - description[0..1]: string
-      - valueSetReference[1..1]: Reference(ValueSet)
-        Extensions: 2
-        +http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap
-        - valueReference[1..1]: Reference(ConceptMap)
-        +http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
-        - valueReference[1..1]: Reference(ValueSet)
-    - mapping[0..*]: Element
-      - id[0..1]: id
-      - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/sdc-element - Open (value@url)
-          : Slice 0:MappingEquivalence - on extension
-            - id[0..1]: id
-            - url[1..1]: uri
-              .fixedValueUri = http://hl7.org/fhir/StructureDefinition/elementdefinition-equivalence
-            - valueCode[1..1]: code
-              .fixedValueCode = equivalent
-      - identity[1..1]: id
-      - language[0..1]: code
-      - map[1..1]: string
   ?code=token (code)
   ?context=token (context)
   ?date=date (date)
@@ -4851,9 +4851,9 @@ Resources: 96
   ?length=number (length)
   ?location=reference (location)
   ?location-period=date (location-period)
+  ?part-of=reference (part-of)
   ?participant=reference (participant)
   ?participant-type=token (participant-type)
-  ?part-of=reference (part-of)
   ?patient=reference (patient)
   ?practitioner=reference (practitioner)
   ?procedure=reference (procedure)
@@ -5051,6 +5051,27 @@ Resources: 96
     - url[1..1]: uri
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/familymemberhistory-severity
     - valueCodeableConcept[1..1]: CodeableConcept
+  +http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-observation
+  - id[0..1]: id
+  - url[1..1]: uri
+    .fixedValueUri = http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-observation
+  - valueReference[1..1]: Reference(Observation)
+  +http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent
+  - id[0..1]: id
+  - extension[0..*]: Extension
+    : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent - Open (value@url)
+      : Slice 0:type - on extension
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = type
+        - valueCodeableConcept[1..1]: CodeableConcept
+      : Slice 1:identifier - on extension
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = identifier
+        - valueReference[1..1]: Reference(FamilyMemberHistory)
+  - url[1..1]: uri
+    .fixedValueUri = http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent
   +http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5095,27 +5116,6 @@ Resources: 96
     - url[1..1]: uri
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/familymemberhistory-severity
     - valueCodeableConcept[1..1]: CodeableConcept
-  +http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-observation
-  - id[0..1]: id
-  - url[1..1]: uri
-    .fixedValueUri = http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-observation
-  - valueReference[1..1]: Reference(Observation)
-  +http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent
-  - id[0..1]: id
-  - extension[0..*]: Extension
-    : http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent - Open (value@url)
-      : Slice 0:type - on extension
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = type
-        - valueCodeableConcept[1..1]: CodeableConcept
-      : Slice 1:identifier - on extension
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = identifier
-        - valueReference[1..1]: Reference(FamilyMemberHistory)
-  - url[1..1]: uri
-    .fixedValueUri = http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent
   +http://hl7.org/fhir/StructureDefinition/familymemberhistory-patient-record
   - id[0..1]: id
   - url[1..1]: uri
@@ -13360,246 +13360,6 @@ Resources: 96
       .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-unclosed
     - valueBoolean[1..1]: boolean
   Extensions: 17
-  +http://hl7.org/fhir/StructureDefinition/sdcde-valueset
-  - id[0..1]: id
-  - meta[0..1]: Meta
-  - implicitRules[0..1]: uri
-  - language[0..1]: code
-  - text[0..1]: Narrative
-  - contained[0..*]: Resource
-  - extension[0..*]: Extension
-    : http://hl7.org/fhir/StructureDefinition/sdcde-valueset - Open (value@url)
-      : Slice 0:styleSensitive - on extension
-      : Slice 1:trustedExpansion - on extension
-      : Slice 2:effectiveDate - on extension
-      : Slice 3:expirationDate - on extension
-  - modifierExtension[0..*]: Extension
-  - url[0..1]: uri
-  - identifier[1..1]: Identifier
-  - version[0..1]: string
-  - name[1..1]: string
-  - status[1..1]: code
-    {draft|active|retired}
-  - experimental[0..1]: boolean
-  - publisher[0..1]: string
-  - contact[0..*]: BackboneElement
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - name[0..1]: string
-    - telecom[0..*]: ContactPoint
-  - date[0..1]: dateTime
-  - lockedDate[0..1]: date
-  - description[0..1]: string
-  - useContext[0..*]: CodeableConcept
-  - immutable[0..1]: boolean
-  - requirements[0..1]: string
-  - copyright[0..1]: string
-  - extensible[0..1]: boolean
-  - codeSystem[0..1]: BackboneElement
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - system[1..1]: uri
-    - version[0..1]: string
-    - caseSensitive[0..1]: boolean
-    - concept[1..*]: BackboneElement
-      - id[0..1]: id
-      - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/sdcde-valueset - Open (value@url)
-          : Slice 0:conceptConceptOrder - on extension
-      - modifierExtension[0..*]: Extension
-      - code[1..1]: code
-      - abstract[0..1]: boolean
-      - display[0..1]: string
-      - definition[0..1]: string
-      - designation[0..*]: BackboneElement
-        - id[0..1]: id
-        - extension[0..*]: Extension
-        - modifierExtension[0..*]: Extension
-        - language[0..1]: code
-        - use[0..1]: Coding
-        - value[1..1]: string
-      - concept[0..*]: ValueSet.codeSystem.concept
-        Extensions: 1
-        +http://hl7.org/fhir/StructureDefinition/valueset-deprecated
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-deprecated
-        - valueBoolean[1..1]: boolean
-      Extensions: 7
-      +http://hl7.org/fhir/StructureDefinition/valueset-comments
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-comments
-      - valueString[1..1]: string
-      +http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
-      - valueInteger[1..1]: integer
-      +http://hl7.org/fhir/StructureDefinition/valueset-deprecated
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-deprecated
-      - valueBoolean[1..1]: boolean
-      +http://hl7.org/fhir/StructureDefinition/valueset-label
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-label
-      - valueString[1..1]: string
-      +http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
-      - valueDecimal[1..1]: decimal
-      +http://hl7.org/fhir/StructureDefinition/valueset-replacedby
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-replacedby
-      - valueCoding[1..1]: Coding
-      +http://hl7.org/fhir/StructureDefinition/valueset-subsumes
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-subsumes
-      - valueCode[1..1]: code
-    Extensions: 1
-    +http://hl7.org/fhir/StructureDefinition/valueset-oid
-    - id[0..1]: id
-    - url[1..1]: uri
-      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-oid
-    - valueUri[1..1]: uri
-  - compose[0..1]: BackboneElement
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - import[0..*]: uri
-    - include[0..*]: BackboneElement
-      - id[0..1]: id
-      - extension[0..*]: Extension
-      - modifierExtension[0..*]: Extension
-      - system[1..1]: uri
-      - version[0..1]: string
-      - concept[0..*]: BackboneElement
-        - id[0..1]: id
-        - extension[0..*]: Extension
-          : http://hl7.org/fhir/StructureDefinition/sdcde-valueset - Open (value@url)
-            : Slice 0:conceptConceptOrder - on extension
-        - modifierExtension[0..*]: Extension
-        - code[1..1]: code
-        - display[0..1]: string
-        - designation[0..*]: ValueSet.codeSystem.concept.designation
-        Extensions: 5
-        +http://hl7.org/fhir/StructureDefinition/valueset-comments
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-comments
-        - valueString[1..1]: string
-        +http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
-        - valueInteger[1..1]: integer
-        +http://hl7.org/fhir/StructureDefinition/valueset-definition
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-definition
-        - valueString[1..1]: string
-        +http://hl7.org/fhir/StructureDefinition/valueset-label
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-label
-        - valueString[1..1]: string
-        +http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
-        - id[0..1]: id
-        - url[1..1]: uri
-          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
-        - valueDecimal[1..1]: decimal
-      - filter[0..*]: BackboneElement
-        - id[0..1]: id
-        - extension[0..*]: Extension
-        - modifierExtension[0..*]: Extension
-        - property[1..1]: code
-        - op[1..1]: code
-          {=|is-a|is-not-a|regex|in|not-in}
-        - value[1..1]: code
-      Extensions: 2
-      +http://hl7.org/fhir/StructureDefinition/valueset-systemName
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemName
-      - valueString[1..1]: string
-      +http://hl7.org/fhir/StructureDefinition/valueset-systemRef
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemRef
-      - valueUri[1..1]: uri
-    - exclude[0..*]: ValueSet.compose.include
-  - expansion[0..1]: BackboneElement
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - identifier[1..1]: uri
-    - timestamp[1..1]: dateTime
-    - total[0..1]: integer
-    - offset[0..1]: integer
-    - parameter[0..*]: BackboneElement
-      - id[0..1]: id
-      - extension[0..*]: Extension
-      - modifierExtension[0..*]: Extension
-      - name[1..1]: string
-      - value[x][0..1]: boolean|code|decimal|integer|string|uri
-    - contains[0..*]: BackboneElement
-      - id[0..1]: id
-      - extension[0..*]: Extension
-        : http://hl7.org/fhir/StructureDefinition/sdcde-valueset - Open (value@url)
-          : Slice 0:conceptConceptOrder - on extension
-          : Slice 1:definition - on extension
-          : Slice 2:systemName - on extension
-      - modifierExtension[0..*]: Extension
-      - system[0..1]: uri
-      - abstract[0..1]: boolean
-      - version[0..1]: string
-      - code[0..1]: code
-      - display[0..1]: string
-      - contains[0..*]: ValueSet.expansion.contains
-      Extensions: 5
-      +http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
-      - valueBoolean[1..1]: boolean
-      +http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
-      - valueInteger[1..1]: integer
-      +http://hl7.org/fhir/StructureDefinition/valueset-definition
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-definition
-      - valueString[1..1]: string
-      +http://hl7.org/fhir/StructureDefinition/valueset-label
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-label
-      - valueString[1..1]: string
-      +http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
-      - id[0..1]: id
-      - url[1..1]: uri
-        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
-      - valueDecimal[1..1]: decimal
-    Extensions: 2
-    +http://hl7.org/fhir/StructureDefinition/valueset-expansionSource
-    - id[0..1]: id
-    - url[1..1]: uri
-      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-expansionSource
-    - valueUri[1..1]: uri
-    +http://hl7.org/fhir/StructureDefinition/valueset-unclosed
-    - id[0..1]: id
-    - url[1..1]: uri
-      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-unclosed
-    - valueBoolean[1..1]: boolean
   +http://hl7.org/fhir/StructureDefinition/sdc-valueset
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13848,6 +13608,246 @@ Resources: 96
             : Slice 0:expansionDisplay.renderingStyle - on extension
             : Slice 1:expansionDisplay.markup - on extension
         - value[0..1]: ValueSet.expansion.contains.display.value
+      - contains[0..*]: ValueSet.expansion.contains
+      Extensions: 5
+      +http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
+      - valueBoolean[1..1]: boolean
+      +http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+      - valueInteger[1..1]: integer
+      +http://hl7.org/fhir/StructureDefinition/valueset-definition
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-definition
+      - valueString[1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/valueset-label
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-label
+      - valueString[1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
+      - valueDecimal[1..1]: decimal
+    Extensions: 2
+    +http://hl7.org/fhir/StructureDefinition/valueset-expansionSource
+    - id[0..1]: id
+    - url[1..1]: uri
+      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-expansionSource
+    - valueUri[1..1]: uri
+    +http://hl7.org/fhir/StructureDefinition/valueset-unclosed
+    - id[0..1]: id
+    - url[1..1]: uri
+      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-unclosed
+    - valueBoolean[1..1]: boolean
+  +http://hl7.org/fhir/StructureDefinition/sdcde-valueset
+  - id[0..1]: id
+  - meta[0..1]: Meta
+  - implicitRules[0..1]: uri
+  - language[0..1]: code
+  - text[0..1]: Narrative
+  - contained[0..*]: Resource
+  - extension[0..*]: Extension
+    : http://hl7.org/fhir/StructureDefinition/sdcde-valueset - Open (value@url)
+      : Slice 0:styleSensitive - on extension
+      : Slice 1:trustedExpansion - on extension
+      : Slice 2:effectiveDate - on extension
+      : Slice 3:expirationDate - on extension
+  - modifierExtension[0..*]: Extension
+  - url[0..1]: uri
+  - identifier[1..1]: Identifier
+  - version[0..1]: string
+  - name[1..1]: string
+  - status[1..1]: code
+    {draft|active|retired}
+  - experimental[0..1]: boolean
+  - publisher[0..1]: string
+  - contact[0..*]: BackboneElement
+    - id[0..1]: id
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - name[0..1]: string
+    - telecom[0..*]: ContactPoint
+  - date[0..1]: dateTime
+  - lockedDate[0..1]: date
+  - description[0..1]: string
+  - useContext[0..*]: CodeableConcept
+  - immutable[0..1]: boolean
+  - requirements[0..1]: string
+  - copyright[0..1]: string
+  - extensible[0..1]: boolean
+  - codeSystem[0..1]: BackboneElement
+    - id[0..1]: id
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - system[1..1]: uri
+    - version[0..1]: string
+    - caseSensitive[0..1]: boolean
+    - concept[1..*]: BackboneElement
+      - id[0..1]: id
+      - extension[0..*]: Extension
+        : http://hl7.org/fhir/StructureDefinition/sdcde-valueset - Open (value@url)
+          : Slice 0:conceptConceptOrder - on extension
+      - modifierExtension[0..*]: Extension
+      - code[1..1]: code
+      - abstract[0..1]: boolean
+      - display[0..1]: string
+      - definition[0..1]: string
+      - designation[0..*]: BackboneElement
+        - id[0..1]: id
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - language[0..1]: code
+        - use[0..1]: Coding
+        - value[1..1]: string
+      - concept[0..*]: ValueSet.codeSystem.concept
+        Extensions: 1
+        +http://hl7.org/fhir/StructureDefinition/valueset-deprecated
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-deprecated
+        - valueBoolean[1..1]: boolean
+      Extensions: 7
+      +http://hl7.org/fhir/StructureDefinition/valueset-comments
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-comments
+      - valueString[1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+      - valueInteger[1..1]: integer
+      +http://hl7.org/fhir/StructureDefinition/valueset-deprecated
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-deprecated
+      - valueBoolean[1..1]: boolean
+      +http://hl7.org/fhir/StructureDefinition/valueset-label
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-label
+      - valueString[1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
+      - valueDecimal[1..1]: decimal
+      +http://hl7.org/fhir/StructureDefinition/valueset-replacedby
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-replacedby
+      - valueCoding[1..1]: Coding
+      +http://hl7.org/fhir/StructureDefinition/valueset-subsumes
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-subsumes
+      - valueCode[1..1]: code
+    Extensions: 1
+    +http://hl7.org/fhir/StructureDefinition/valueset-oid
+    - id[0..1]: id
+    - url[1..1]: uri
+      .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-oid
+    - valueUri[1..1]: uri
+  - compose[0..1]: BackboneElement
+    - id[0..1]: id
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - import[0..*]: uri
+    - include[0..*]: BackboneElement
+      - id[0..1]: id
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - system[1..1]: uri
+      - version[0..1]: string
+      - concept[0..*]: BackboneElement
+        - id[0..1]: id
+        - extension[0..*]: Extension
+          : http://hl7.org/fhir/StructureDefinition/sdcde-valueset - Open (value@url)
+            : Slice 0:conceptConceptOrder - on extension
+        - modifierExtension[0..*]: Extension
+        - code[1..1]: code
+        - display[0..1]: string
+        - designation[0..*]: ValueSet.codeSystem.concept.designation
+        Extensions: 5
+        +http://hl7.org/fhir/StructureDefinition/valueset-comments
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-comments
+        - valueString[1..1]: string
+        +http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
+        - valueInteger[1..1]: integer
+        +http://hl7.org/fhir/StructureDefinition/valueset-definition
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-definition
+        - valueString[1..1]: string
+        +http://hl7.org/fhir/StructureDefinition/valueset-label
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-label
+        - valueString[1..1]: string
+        +http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
+        - id[0..1]: id
+        - url[1..1]: uri
+          .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-ordinalValue
+        - valueDecimal[1..1]: decimal
+      - filter[0..*]: BackboneElement
+        - id[0..1]: id
+        - extension[0..*]: Extension
+        - modifierExtension[0..*]: Extension
+        - property[1..1]: code
+        - op[1..1]: code
+          {=|is-a|is-not-a|regex|in|not-in}
+        - value[1..1]: code
+      Extensions: 2
+      +http://hl7.org/fhir/StructureDefinition/valueset-systemName
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemName
+      - valueString[1..1]: string
+      +http://hl7.org/fhir/StructureDefinition/valueset-systemRef
+      - id[0..1]: id
+      - url[1..1]: uri
+        .fixedValueUri = http://hl7.org/fhir/StructureDefinition/valueset-systemRef
+      - valueUri[1..1]: uri
+    - exclude[0..*]: ValueSet.compose.include
+  - expansion[0..1]: BackboneElement
+    - id[0..1]: id
+    - extension[0..*]: Extension
+    - modifierExtension[0..*]: Extension
+    - identifier[1..1]: uri
+    - timestamp[1..1]: dateTime
+    - total[0..1]: integer
+    - offset[0..1]: integer
+    - parameter[0..*]: BackboneElement
+      - id[0..1]: id
+      - extension[0..*]: Extension
+      - modifierExtension[0..*]: Extension
+      - name[1..1]: string
+      - value[x][0..1]: boolean|code|decimal|integer|string|uri
+    - contains[0..*]: BackboneElement
+      - id[0..1]: id
+      - extension[0..*]: Extension
+        : http://hl7.org/fhir/StructureDefinition/sdcde-valueset - Open (value@url)
+          : Slice 0:conceptConceptOrder - on extension
+          : Slice 1:definition - on extension
+          : Slice 2:systemName - on extension
+      - modifierExtension[0..*]: Extension
+      - system[0..1]: uri
+      - abstract[0..1]: boolean
+      - version[0..1]: string
+      - code[0..1]: code
+      - display[0..1]: string
       - contains[0..*]: ValueSet.expansion.contains
       Extensions: 5
       +http://hl7.org/fhir/StructureDefinition/valueset-caseSensitive
@@ -14341,7 +14341,7 @@ Search Result Parameters: 8
   ?_summary=string (_summary)
 All Interaction Parameters: 1
   ?_format=string (_format)
-Value Sets: 930 (unversioned)
+Value Sets: 931 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/account-status|1.0.2
     references: 1, strongest binding: Preferred
   - #active: Active
@@ -14416,17 +14416,22 @@ Value Sets: 930 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-status|1.0.2
     references: 1, strongest binding: Required
   - #active: Active
+  - #confirmed: Confirmed
+  - #entered-in-error: Entered In Error
   - #inactive: Inactive
+  - #refuted: Refuted
+  - #resolved: Resolved
+  - #unconfirmed: Unconfirmed
+- ValueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-type|1.0.2
+    references: 1, strongest binding: Required
+  - #allergy: Allergy
+  - #intolerance: Intolerance
 - ValueSet: http://hl7.org/fhir/ValueSet/allergyintolerance-substance-code|1.0.2
     references: 1, strongest binding: Example
   - #160244002: No Known Allergies
   - #409137002: No Known Drug Allergies
   - #428607008: No Known Environmental Allergy
   - #429625007: No Known Food Allergies
-- ValueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-type|1.0.2
-    references: 1, strongest binding: Required
-  - #allergy: Allergy
-  - #intolerance: Intolerance
 - ValueSet: http://hl7.org/fhir/ValueSet/animal-breeds|1.0.2
     references: 1, strongest binding: Example
   - #gret: Golden Retriever
@@ -22710,6 +22715,8 @@ Value Sets: 930 (unversioned)
   - #preliminary: Preliminary
 - ValueSet: http://hl7.org/fhir/ValueSet/concept-map-equivalence|1.0.2
     references: 1, strongest binding: Required
+  - #disjoint: Disjoint
+  - #equal: Equal
   - #equivalent: Equivalent
   - #inexact: Inexact
   - #narrower: Narrower
@@ -22717,11 +22724,6 @@ Value Sets: 930 (unversioned)
   - #subsumes: Subsumes
   - #unmatched: Unmatched
   - #wider: Wider
-- ValueSet: http://hl7.org/fhir/ValueSet/conditional-delete-status|1.0.2
-    references: 1, strongest binding: Required
-  - #multiple: Multiple Deletes Supported
-  - #not-supported: Not Supported
-  - #single: Single Deletes Supported
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-category|1.0.2
     references: 1, strongest binding: Preferred
   - #complaint: Complaint
@@ -22753,6 +22755,11 @@ Value Sets: 930 (unversioned)
   - #provisional: Provisional
   - #refuted: Refuted
   - #unknown: Unknown
+- ValueSet: http://hl7.org/fhir/ValueSet/conditional-delete-status|1.0.2
+    references: 1, strongest binding: Required
+  - #multiple: Multiple Deletes Supported
+  - #not-supported: Not Supported
+  - #single: Single Deletes Supported
 - ValueSet: http://hl7.org/fhir/ValueSet/conformance-expectation|1.0.2
     references: 0, strongest binding: 
   - #MAY: MAY
@@ -22779,14 +22786,6 @@ Value Sets: 930 (unversioned)
     references: 1, strongest binding: Required
   - #error: Error
   - #warning: Warning
-- ValueSet: http://hl7.org/fhir/ValueSet/contactentity-type|1.0.2
-    references: 1, strongest binding: Extensible
-  - #ADMIN: Administrative
-  - #BILL: Billing
-  - #HR: Human Resource
-  - #PATINF: Patient
-  - #PAYOR: Payor
-  - #PRESS: Press
 - ValueSet: http://hl7.org/fhir/ValueSet/contact-point-system|1.0.2
     references: 1, strongest binding: Required
   - #email: Email
@@ -22801,6 +22800,14 @@ Value Sets: 930 (unversioned)
   - #old: Old
   - #temp: Temp
   - #work: Work
+- ValueSet: http://hl7.org/fhir/ValueSet/contactentity-type|1.0.2
+    references: 1, strongest binding: Extensible
+  - #ADMIN: Administrative
+  - #BILL: Billing
+  - #HR: Human Resource
+  - #PATINF: Patient
+  - #PAYOR: Payor
+  - #PRESS: Press
 - ValueSet: http://hl7.org/fhir/ValueSet/content-type|1.0.2
     references: 3, strongest binding: Required
   - #json: json
@@ -23200,8 +23207,8 @@ Value Sets: 930 (unversioned)
   - #429625007: No Known Food Allergies
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-ucum-vitals-common|1.0.2
     references: 2, strongest binding: Required
-  - #%: percent
   - #/min: per minute
+  - #%: percent
   - #Cel: degree Celsius
   - #cm: centimeter
   - #kg: kilogram
@@ -23214,14 +23221,11 @@ Value Sets: 930 (unversioned)
   - #astext: As Text
   - #error: Error
   - #masked: Masked
+  - #NaN: Not a Number
   - #not-asked: Not Asked
   - #temp: Temp
   - #unknown: Unknown
   - #unsupported: Unsupported
-- ValueSet: http://hl7.org/fhir/ValueSet/dataelement-stringency|1.0.2
-    references: 1, strongest binding: Required
-  - #comparable: Comparable
-  - #flexible: Flexible
 - ValueSet: http://hl7.org/fhir/ValueSet/data-types|1.0.2
     references: 0, strongest binding: 
   - #Address: Address
@@ -23270,6 +23274,14 @@ Value Sets: 930 (unversioned)
   - #uri: uri
   - #uuid: uuid
   - #xhtml: XHTML
+- ValueSet: http://hl7.org/fhir/ValueSet/dataelement-stringency|1.0.2
+    references: 1, strongest binding: Required
+  - #comparable: Comparable
+  - #convertable: Convertable
+  - #equivalent: Equivalent
+  - #flexible: Flexible
+  - #fully-specified: Fully Specified
+  - #scaleable: Scaleable
 - ValueSet: http://hl7.org/fhir/ValueSet/days-of-week|1.0.2
     references: 1, strongest binding: Required
   - #fri: Friday
@@ -23490,11 +23502,6 @@ Value Sets: 930 (unversioned)
   - #explanted: Explanted
   - #implanted: Implanted
   - #manipulated: Manipulated
-- ValueSet: http://hl7.org/fhir/ValueSet/devicestatus|1.0.2
-    references: 1, strongest binding: Required
-  - #available: Available
-  - #entered-in-error: Entered in Error
-  - #not-available: Not Available
 - ValueSet: http://hl7.org/fhir/ValueSet/device-use-request-priority|1.0.2
     references: 1, strongest binding: Required
   - #asap: ASAP
@@ -23513,6 +23520,11 @@ Value Sets: 930 (unversioned)
   - #rejected: Rejected
   - #requested: Requested
   - #suspended: Suspended
+- ValueSet: http://hl7.org/fhir/ValueSet/devicestatus|1.0.2
+    references: 1, strongest binding: Required
+  - #available: Available
+  - #entered-in-error: Entered in Error
+  - #not-available: Not Available
 - ValueSet: http://hl7.org/fhir/ValueSet/diagnostic-order-event|1.0.2
     references: 1, strongest binding: Example
   - #26895000: 
@@ -30463,8 +30475,8 @@ Value Sets: 930 (unversioned)
   - #urn:ihe:dent:CDA:ImagingReportStructuredHeadings:2013: Dental CDA
   - #urn:ihe:dent:PDF: Dental PDF
   - #urn:ihe:dent:TEXT: Dental Text
-  - #urn:ihe:iti:bppc:2007: Basic Patient Privacy Consents
   - #urn:ihe:iti:bppc-sd:2007: Basic Patient Privacy Consents with Scanned Document
+  - #urn:ihe:iti:bppc:2007: Basic Patient Privacy Consents
   - #urn:ihe:iti:dsg:detached:2014: DSG Detached Document
   - #urn:ihe:iti:dsg:enveloping:2014: DSG Enveloping Document
   - #urn:ihe:iti:xds-sd:pdf:2008: PDF embedded in CDA per XDS-SD profile
@@ -30596,6 +30608,7 @@ Value Sets: 930 (unversioned)
   - #reference: Reference
 - ValueSet: http://hl7.org/fhir/ValueSet/guide-page-kind|1.0.2
     references: 1, strongest binding: Required
+  - #dictionary: Dictionary
   - #directory: Directory
   - #example: Example
   - #include: Include
@@ -30703,11 +30716,35 @@ Value Sets: 930 (unversioned)
   - #warning: Warning
 - ValueSet: http://hl7.org/fhir/ValueSet/issue-type|1.0.2
     references: 1, strongest binding: Required
+  - #business-rule: Business Rule Violation
+  - #code-invalid: Invalid Code
+  - #conflict: Edit Version Conflict
+  - #duplicate: Duplicate
+  - #exception: Exception
+  - #expired: Session Expired
+  - #extension: Unacceptable Extension
+  - #forbidden: Forbidden
+  - #incomplete: Incomplete Results
   - #informational: Informational Note
   - #invalid: Invalid Content
+  - #invariant: Validation rule failed
+  - #lock-error: Lock Error
+  - #login: Login Required
+  - #no-store: No Store Available
+  - #not-found: Not Found
+  - #not-supported: Content not supported
   - #processing: Processing Failure
+  - #required: Required element missing
   - #security: Security Problem
+  - #structure: Structural Issue
+  - #suppressed: Information  Suppressed
+  - #throttled: Throttled
+  - #timeout: Timeout
+  - #too-costly: Operation Too Costly
+  - #too-long: Content Too Long
   - #transient: Transient Issue
+  - #unknown: Unknown User
+  - #value: Element value invalid
 - ValueSet: http://hl7.org/fhir/ValueSet/kos-title|1.0.2
     references: 1, strongest binding: Required
   - #113000: Of Interest
@@ -31539,6 +31576,158 @@ Value Sets: 930 (unversioned)
   - #SEARCH_MULTIPLE: Error: Multiple matches exist for %s search parameters "%s"
   - #SEARCH_NONE: Error: no processable search found for %s search parameters "%s"
   - #UPDATE_MULTIPLE_MATCHES: Error: Multiple matches exist for the conditional update
+- ValueSet: http://hl7.org/fhir/ValueSet/operation-parameter-type|1.0.2
+    references: 1, strongest binding: Required
+  - #Account: Account
+  - #Address: Address
+  - #Age: Age
+  - #AllergyIntolerance: AllergyIntolerance
+  - #Annotation: Annotation
+  - #Appointment: Appointment
+  - #AppointmentResponse: AppointmentResponse
+  - #Attachment: Attachment
+  - #AuditEvent: AuditEvent
+  - #BackboneElement: BackboneElement
+  - #base64Binary: base64Binary
+  - #Basic: Basic
+  - #Binary: Binary
+  - #BodySite: BodySite
+  - #boolean: boolean
+  - #Bundle: Bundle
+  - #CarePlan: CarePlan
+  - #Claim: Claim
+  - #ClaimResponse: ClaimResponse
+  - #ClinicalImpression: ClinicalImpression
+  - #code: code
+  - #CodeableConcept: CodeableConcept
+  - #Coding: Coding
+  - #Communication: Communication
+  - #CommunicationRequest: CommunicationRequest
+  - #composite: Composite
+  - #Composition: Composition
+  - #ConceptMap: ConceptMap
+  - #Condition: Condition
+  - #Conformance: Conformance
+  - #ContactPoint: ContactPoint
+  - #Contract: Contract
+  - #Count: Count
+  - #Coverage: Coverage
+  - #DataElement: DataElement
+  - #date: Date/DateTime
+  - #date: date
+  - #dateTime: dateTime
+  - #decimal: decimal
+  - #DetectedIssue: DetectedIssue
+  - #Device: Device
+  - #DeviceComponent: DeviceComponent
+  - #DeviceMetric: DeviceMetric
+  - #DeviceUseRequest: DeviceUseRequest
+  - #DeviceUseStatement: DeviceUseStatement
+  - #DiagnosticOrder: DiagnosticOrder
+  - #DiagnosticReport: DiagnosticReport
+  - #Distance: Distance
+  - #DocumentManifest: DocumentManifest
+  - #DocumentReference: DocumentReference
+  - #DomainResource: DomainResource
+  - #Duration: Duration
+  - #Element: Element
+  - #ElementDefinition: ElementDefinition
+  - #EligibilityRequest: EligibilityRequest
+  - #EligibilityResponse: EligibilityResponse
+  - #Encounter: Encounter
+  - #EnrollmentRequest: EnrollmentRequest
+  - #EnrollmentResponse: EnrollmentResponse
+  - #EpisodeOfCare: EpisodeOfCare
+  - #ExplanationOfBenefit: ExplanationOfBenefit
+  - #Extension: Extension
+  - #FamilyMemberHistory: FamilyMemberHistory
+  - #Flag: Flag
+  - #Goal: Goal
+  - #Group: Group
+  - #HealthcareService: HealthcareService
+  - #HumanName: HumanName
+  - #id: id
+  - #Identifier: Identifier
+  - #ImagingObjectSelection: ImagingObjectSelection
+  - #ImagingStudy: ImagingStudy
+  - #Immunization: Immunization
+  - #ImmunizationRecommendation: ImmunizationRecommendation
+  - #ImplementationGuide: ImplementationGuide
+  - #instant: instant
+  - #integer: integer
+  - #List: List
+  - #Location: Location
+  - #markdown: markdown
+  - #Media: Media
+  - #Medication: Medication
+  - #MedicationAdministration: MedicationAdministration
+  - #MedicationDispense: MedicationDispense
+  - #MedicationOrder: MedicationOrder
+  - #MedicationStatement: MedicationStatement
+  - #MessageHeader: MessageHeader
+  - #Meta: Meta
+  - #Money: Money
+  - #NamingSystem: NamingSystem
+  - #Narrative: Narrative
+  - #number: Number
+  - #NutritionOrder: NutritionOrder
+  - #Observation: Observation
+  - #oid: oid
+  - #OperationDefinition: OperationDefinition
+  - #OperationOutcome: OperationOutcome
+  - #Order: Order
+  - #OrderResponse: OrderResponse
+  - #Organization: Organization
+  - #Parameters: Parameters
+  - #Patient: Patient
+  - #PaymentNotice: PaymentNotice
+  - #PaymentReconciliation: PaymentReconciliation
+  - #Period: Period
+  - #Person: Person
+  - #positiveInt: positiveInt
+  - #Practitioner: Practitioner
+  - #Procedure: Procedure
+  - #ProcedureRequest: ProcedureRequest
+  - #ProcessRequest: ProcessRequest
+  - #ProcessResponse: ProcessResponse
+  - #Provenance: Provenance
+  - #quantity: Quantity
+  - #Quantity: Quantity
+  - #Questionnaire: Questionnaire
+  - #QuestionnaireResponse: QuestionnaireResponse
+  - #Range: Range
+  - #Ratio: Ratio
+  - #reference: Reference
+  - #Reference: Reference
+  - #ReferralRequest: ReferralRequest
+  - #RelatedPerson: RelatedPerson
+  - #Resource: Resource
+  - #RiskAssessment: RiskAssessment
+  - #SampledData: SampledData
+  - #Schedule: Schedule
+  - #SearchParameter: SearchParameter
+  - #Signature: Signature
+  - #SimpleQuantity: SimpleQuantity
+  - #Slot: Slot
+  - #Specimen: Specimen
+  - #string: String
+  - #string: string
+  - #StructureDefinition: StructureDefinition
+  - #Subscription: Subscription
+  - #Substance: Substance
+  - #SupplyDelivery: SupplyDelivery
+  - #SupplyRequest: SupplyRequest
+  - #TestScript: TestScript
+  - #time: time
+  - #Timing: Timing
+  - #token: Token
+  - #unsignedInt: unsignedInt
+  - #uri: URI
+  - #uri: uri
+  - #uuid: uuid
+  - #ValueSet: ValueSet
+  - #VisionPrescription: VisionPrescription
+  - #xhtml: XHTML
 - ValueSet: http://hl7.org/fhir/ValueSet/operation-parameter-use|1.0.2
     references: 1, strongest binding: Required
   - #in: In
@@ -31558,6 +31747,7 @@ Value Sets: 930 (unversioned)
   - #error: Error
   - #pending: Pending
   - #rejected: Rejected
+  - #replaced: Replaced
   - #review: Review
 - ValueSet: http://hl7.org/fhir/ValueSet/organization-type|1.0.2
     references: 1, strongest binding: Example
@@ -31780,6 +31970,9 @@ Value Sets: 930 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/provenance-entity-role|1.0.2
     references: 1, strongest binding: Required
   - #derivation: Derivation
+  - #quotation: Quotation
+  - #revision: Revision
+  - #source: Source
 - ValueSet: http://hl7.org/fhir/ValueSet/qicore-adverseevent-category|1.0.2
     references: 0, strongest binding: 
   - #blood: Blood or Blood Product
@@ -32072,6 +32265,7 @@ Value Sets: 930 (unversioned)
   - #error: Error
 - ValueSet: http://hl7.org/fhir/ValueSet/resource-aggregation-mode|1.0.2
     references: 1, strongest binding: Required
+  - #bundled: Bundled
   - #contained: Contained
   - #referenced: Referenced
 - ValueSet: http://hl7.org/fhir/ValueSet/resource-slicing-rules|1.0.2
@@ -38304,8 +38498,8 @@ Value Sets: 930 (unversioned)
   - #SS: Start related service request(s), start current service request.
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0505|2.8.2
     references: 0, strongest binding: 
-  - ##: The last service request in a cyclic group.
   - #*: The first service request in a cyclic group
+  - ##: The last service request in a cyclic group.
 - ValueSet: http://hl7.org/fhir/ValueSet/v2-0506|2.8.2
     references: 0, strongest binding: 
   - #C: Compound
@@ -40459,9 +40653,12 @@ Value Sets: 930 (unversioned)
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-Confidentiality|2015-07-31
     references: 1, strongest binding: Required
   - #_Confidentiality: Confidentiality
-  - #_ConfidentialityByAccessKind: ConfidentialityByAccessKind
-  - #_ConfidentialityByInfoType: ConfidentialityByInfoType
-  - #_ConfidentialityModifiers: ConfidentialityModifiers
+  - #L: low
+  - #M: moderate
+  - #N: normal
+  - #R: restricted
+  - #U: unrestricted
+  - #V: very restricted
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ContainerCap|2015-07-31
     references: 0, strongest binding: 
   - #_MedicationCap: MedicationCap
