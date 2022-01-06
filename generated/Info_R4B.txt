@@ -34771,7 +34771,7 @@ Value Sets: 647 (unversioned)
   - #INR: Indian rupee
   - #IQD: Iraqi dinar
   - #IRR: Iranian rial
-  - #ISK: Icelandic krC3na
+  - #ISK: Icelandic króna
   - #JEP: Jersey Pound
   - #JMD: Jamaican dollar
   - #JOD: Jordanian dinar
@@ -34796,7 +34796,7 @@ Value Sets: 647 (unversioned)
   - #MGA: Malagasy ariary
   - #MKD: Macedonian denar
   - #MMK: Myanmar kyat
-  - #MNT: Mongolian tC6grC6g
+  - #MNT: Mongolian tögrög
   - #MOP: Macanese pataca
   - #MRU: Mauritanian ouguiya
   - #MUR: Mauritian rupee
@@ -34808,7 +34808,7 @@ Value Sets: 647 (unversioned)
   - #MZN: Mozambican metical
   - #NAD: Namibian dollar
   - #NGN: Nigerian naira
-  - #NIO: Nicaraguan cC3rdoba
+  - #NIO: Nicaraguan córdoba
   - #NOK: Norwegian krone
   - #NPR: Nepalese rupee
   - #NZD: New Zealand dollar
@@ -34818,8 +34818,8 @@ Value Sets: 647 (unversioned)
   - #PGK: Papua New Guinean kina
   - #PHP: Philippine piso[13]
   - #PKR: Pakistani rupee
-  - #PLN: Polish zEoty
-  - #PYG: Paraguayan guaranC-
+  - #PLN: Polish złoty
+  - #PYG: Paraguayan guaraní
   - #QAR: Qatari riyal
   - #RON: Romanian leu
   - #RSD: Serbian dinar
@@ -34836,15 +34836,15 @@ Value Sets: 647 (unversioned)
   - #SOS: Somali shilling
   - #SRD: Surinamese dollar
   - #SSP: South Sudanese pound
-  - #STN: SC#o TomC) and PrC-ncipe dobra
-  - #SVC: Salvadoran colC3n
+  - #STN: São Tomé and Príncipe dobra
+  - #SVC: Salvadoran colón
   - #SYP: Syrian pound
   - #SZL: Swazi lilangeni
   - #THB: Thai baht
   - #TJS: Tajikistani somoni
   - #TMT: Turkmenistan manat
   - #TND: Tunisian dinar
-  - #TOP: Tongan paJ;anga
+  - #TOP: Tongan paʻanga
   - #TRY: Turkish lira
   - #TTD: Trinidad and Tobago dollar
   - #TVD: Tuvalu Dollar
@@ -34857,8 +34857,8 @@ Value Sets: 647 (unversioned)
   - #UYI: Uruguay Peso en Unidades Indexadas (URUIURUI) (funds code)
   - #UYU: Uruguayan peso
   - #UZS: Uzbekistan som
-  - #VEF: Venezuelan bolC-var
-  - #VND: Vietnamese D#a;%ng
+  - #VEF: Venezuelan bolívar
+  - #VND: Vietnamese đồng
   - #VUV: Vanuatu vatu
   - #WST: Samoan tala
   - #XAF: CFA franc BEAC

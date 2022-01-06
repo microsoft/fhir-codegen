@@ -4,6 +4,7 @@
 // </copyright>
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using static Microsoft.Health.Fhir.SpecManager.Models.FhirTypeBase;
@@ -252,15 +253,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 value = value.Substring(20);
             }
 
+            char[] chars = value.Normalize(NormalizationForm.FormD).ToCharArray();
+
             StringBuilder sb = new StringBuilder();
 
-            int valueLen = value.Length;
+            int charsLen = chars.Length;
 
-            for (int i = 0; i < valueLen; i++)
+            for (int i = 0; i < charsLen; i++)
             {
-                char ch = value[i];
-                char second = (i + 1 < valueLen) ? value[i + 1] : '\0';
-                char third = (i + 2 < valueLen) ? value[i + 2] : '\0';
+                char ch = chars[i];
+                char second = (i + 1 < charsLen) ? chars[i + 1] : '\0';
+                char third = (i + 2 < charsLen) ? chars[i + 2] : '\0';
 
                 switch (ch)
                 {
@@ -459,25 +462,79 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                     case '\n':
                         break;
 
-                    case 'ł':
-                        sb.Append("l");
-                        break;
-
                     default:
-                        if (second == '\u0002')
+                        UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(ch);
+
+                        switch (uc)
                         {
-                            if (ch == 'E')
-                            {
-                                sb.Append("l");
-                                i += 1;
-                                continue;
-                            }
+                            case UnicodeCategory.UppercaseLetter:
+                            case UnicodeCategory.LowercaseLetter:
+                            case UnicodeCategory.TitlecaseLetter:
+                                sb.Append(ch);
+                                break;
+                            case UnicodeCategory.ModifierLetter:
+                                break;
+                            case UnicodeCategory.OtherLetter:
+                                break;
+                            case UnicodeCategory.NonSpacingMark:
+                                break;
+                            case UnicodeCategory.SpacingCombiningMark:
+                                break;
+                            case UnicodeCategory.EnclosingMark:
+                                break;
+                            case UnicodeCategory.DecimalDigitNumber:
+                                sb.Append(ch);
+                                break;
+                            case UnicodeCategory.LetterNumber:
+                                break;
+                            case UnicodeCategory.OtherNumber:
+                                break;
+                            case UnicodeCategory.SpaceSeparator:
+                                break;
+                            case UnicodeCategory.LineSeparator:
+                                break;
+                            case UnicodeCategory.ParagraphSeparator:
+                                break;
+                            case UnicodeCategory.Control:
+                                break;
+                            case UnicodeCategory.Format:
+                                break;
+                            case UnicodeCategory.Surrogate:
+                                break;
+                            case UnicodeCategory.PrivateUse:
+                                break;
+                            case UnicodeCategory.ConnectorPunctuation:
+                                break;
+                            case UnicodeCategory.DashPunctuation:
+                                break;
+                            case UnicodeCategory.OpenPunctuation:
+                                break;
+                            case UnicodeCategory.ClosePunctuation:
+                                break;
+                            case UnicodeCategory.InitialQuotePunctuation:
+                                break;
+                            case UnicodeCategory.FinalQuotePunctuation:
+                                break;
+                            case UnicodeCategory.OtherPunctuation:
+                                break;
+                            case UnicodeCategory.MathSymbol:
+                                break;
+                            case UnicodeCategory.CurrencySymbol:
+                                break;
+                            case UnicodeCategory.ModifierSymbol:
+                                break;
+                            case UnicodeCategory.OtherSymbol:
+                                break;
+                            case UnicodeCategory.OtherNotAssigned:
+                                break;
+                            default:
+                                break;
                         }
 
-                        if (ch < 128)
-                        {
-                            sb.Append(ch);
-                        }
+                        //if (ch < 128)
+                        //{
+                        //    sb.Append(ch);
+                        //}
 
                         break;
                 }

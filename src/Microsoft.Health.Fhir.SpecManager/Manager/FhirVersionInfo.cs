@@ -702,7 +702,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
         /// <param name="json">The JSON.</param>
         /// <returns>A typed Resource object.</returns>
-        public object ParseResource(string json)
+        public object ParseResource(byte[] json)
         {
             return _fhirConverter.ParseResource(json);
         }

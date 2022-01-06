@@ -1294,6 +1294,28 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
         /// <param name="json">The JSON.</param>
         /// <returns>A typed Resource object.</returns>
+        object IFhirConverter.ParseResource(byte[] json)
+        {
+            try
+            {
+                // try to parse this JSON into a resource object
+                // return JsonConvert.DeserializeObject<fhir_4.Resource>(json, _jsonConverter);
+                // return JsonSerializer.Deserialize<fhir_4.Resource>(json);
+                return System.Text.Json.JsonSerializer.Deserialize<fhir_4.Resource>(
+                    json,
+                    fhirCsR4.Serialization.FhirSerializerOptions.Compact);
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"FromR4.ParseResource <<< failed to parse:\n{ex}\n------------------------------------");
+                throw;
+            }
+        }
+
+        /// <summary>Parses resource an object from the given string.</summary>
+        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
+        /// <param name="json">The JSON.</param>
+        /// <returns>A typed Resource object.</returns>
         object IFhirConverter.ParseResource(string json)
         {
             try

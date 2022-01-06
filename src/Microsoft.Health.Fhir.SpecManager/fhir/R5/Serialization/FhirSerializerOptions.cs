@@ -36,11 +36,13 @@ namespace fhirCsR5.Serialization
     static FhirSerializerOptions()
     {
       _prettyFormat = new JsonSerializerOptions();
-      _prettyFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+      //_prettyFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+      _prettyFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All);
       _prettyFormat.WriteIndented = true;
 
       _compactFormat = new JsonSerializerOptions();
-      _compactFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+      //_compactFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+      _compactFormat.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All);
       _compactFormat.WriteIndented = true;
     }
 

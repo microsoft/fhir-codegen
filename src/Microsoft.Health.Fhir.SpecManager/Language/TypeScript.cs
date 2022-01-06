@@ -388,8 +388,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 if (!string.IsNullOrEmpty(concept.Display))
                 {
-                    string display = FhirUtils.SanitizeToAscii(concept.Display);
-                    _writer.WriteLineIndented($"display: \"{FhirUtils.SanitizeForQuoted(display)}\",");
+                    _writer.WriteLineIndented($"display: \"{FhirUtils.SanitizeForQuoted(concept.Display)}\",");
                 }
 
                 _writer.WriteLineIndented($"system: \"{concept.System}\"");
