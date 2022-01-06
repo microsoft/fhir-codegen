@@ -699,10 +699,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         }
 
         /// <summary>Parses resource an object from the given string.</summary>
-        /// <exception cref="JsonException">Thrown when a JSON error condition occurs.</exception>
         /// <param name="json">The JSON.</param>
         /// <returns>A typed Resource object.</returns>
-        public object ParseResource(byte[] json)
+        public object ParseResource(string json)
         {
             return _fhirConverter.ParseResource(json);
         }

@@ -19,13 +19,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         private static FhirManager _instance;
 
         /// <summary>Map of known major versions and version strings.</summary>
-        private Dictionary<string, SortedSet<string>> _knownVersions;
+        private static Dictionary<string, SortedSet<string>> _knownVersions;
 
         /// <summary>Dictionary to map specific versions to releases.</summary>
-        private Dictionary<string, string> _versionToReleaseDict;
+        private static Dictionary<string, string> _versionToReleaseDict;
 
         /// <summary>Dictionary of published versions.</summary>
-        private Dictionary<string, FhirVersionInfo> _publishedVersionDict;
+        private static Dictionary<string, FhirVersionInfo> _publishedVersionDict;
 
         /// <summary>Local development version (if present).</summary>
         private FhirVersionInfo _localVersion;
@@ -39,21 +39,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
         /// <summary>Pathname of the package directory.</summary>
         private string _packageDirectory;
 
-        /// <summary>Initializes a new instance of the <see cref="FhirManager"/> class.</summary>
-        /// <param name="fhirCoreSpecDirectory">  Pathname of the FHIR core specification directory (fhirVersions).</param>
-        /// <param name="localFhirBuildDirectory">Pathname of the local FHIR build directory (publish).</param>
-        /// <param name="packageDirectory">       Pathname of the package directory (fhirPackages).</param>
-        private FhirManager(
-            string fhirCoreSpecDirectory,
-            string localFhirBuildDirectory,
-            string packageDirectory)
+        /// <summary>
+        /// Initializes static members of the <see cref="FhirManager"/> class.
+        /// </summary>
+        static FhirManager()
         {
-            // set locals
-            _fhirSpecDirectory = fhirCoreSpecDirectory;
-            _localPublishDirectory = localFhirBuildDirectory;
-            _packageDirectory = packageDirectory;
-            _localVersion = null;
-
             _knownVersions = new Dictionary<string, SortedSet<string>>()
             {
                 { "DSTU2", new SortedSet<string>() { "1.0.2" } },
@@ -233,6 +223,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
             };
         }
 
+        /// <summary>Initializes a new instance of the <see cref="FhirManager"/> class.</summary>
+        /// <param name="fhirCoreSpecDirectory">  Pathname of the FHIR core specification directory (fhirVersions).</param>
+        /// <param name="localFhirBuildDirectory">Pathname of the local FHIR build directory (publish).</param>
+        /// <param name="packageDirectory">       Pathname of the package directory (fhirPackages).</param>
+        private FhirManager(
+            string fhirCoreSpecDirectory,
+            string localFhirBuildDirectory,
+            string packageDirectory)
+        {
+            // set locals
+            _fhirSpecDirectory = fhirCoreSpecDirectory;
+            _localPublishDirectory = localFhirBuildDirectory;
+            _packageDirectory = packageDirectory;
+            _localVersion = null;
+        }
+
         /// <summary>Gets the current singleton.</summary>
         public static FhirManager Current => _instance;
 
@@ -244,6 +250,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
         /// <summary>Gets the pathname of the FHIR package directory.</summary>
         public string FhirPackageDirectory => _packageDirectory;
+
+        /// <summary>Gets a dictionary of version to releases.</summary>
+        public static Dictionary<string, string> VersionToReleaseDict => _versionToReleaseDict;
 
         /// <summary>Initializes this object.</summary>
         /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are

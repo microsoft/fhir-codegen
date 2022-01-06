@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
 namespace Microsoft.Health.Fhir.SpecManager.Manager
@@ -511,8 +512,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
 
                     processedFiles.Add(shortName);
 
-                    // read the file
-                    byte[] contents = File.ReadAllBytes(filename);
+                    // Note: this is faster than creating a FileStream and passing that object through
+                    // and uses less total memory.
+                    // Also, don't use ReadAllBytes here, since some DSTU2 stuff is encoded differently
+                    // and the code needs to be modified to handle both cases.
+                    string contents = File.ReadAllText(filename);
 
                     // parse the file - note: using var here is siginificantly more performant than object
                     var resource = fhirVersionInfo.ParseResource(contents);

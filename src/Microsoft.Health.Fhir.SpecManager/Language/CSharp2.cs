@@ -126,6 +126,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             { "base", "Object" },
             { "base64Binary", "byte[]" },
+            { "bool", "bool" },
             { "boolean", "bool" },
             { "canonical", "string" },
             { "code", "string" },
@@ -134,6 +135,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             { "decimal", "decimal" },
             { "id", "string" },
             { "instant", "string" },
+            { "int", "int" },
             { "integer", "int" },
             { "integer64", "long" },
             { "markdown", "string" },
@@ -1171,6 +1173,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (!string.IsNullOrEmpty(complex.Comment))
             {
                 WriteIndentedComment(complex.Comment);
+            }
+
+            if (complex.Path == "ValueSet.codeSystem")
+            {
+                Console.Write("");
             }
 
             string nameForExport;
@@ -2414,7 +2421,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     ? $"List<{kvp.Value}{optionalFlagString}>"
                     : $"{kvp.Value}{optionalFlagString}";
 
-                string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
+                //string camel = FhirUtils.ToConvention(kvp.Key, string.Empty, FhirTypeBase.NamingConvention.CamelCase);
 
                 _writer.WriteLineIndented($"{_accessModifier} {elementType} {elementName} {{ get; set; }}");
 

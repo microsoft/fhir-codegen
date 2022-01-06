@@ -19,11 +19,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
         /// <summary>Parses resource an object from the given string.</summary>
         /// <param name="json">The JSON.</param>
         /// <returns>A typed Resource object.</returns>
-        object ParseResource(byte[] json);
-
-        /// <summary>Parses resource an object from the given string.</summary>
-        /// <param name="json">The JSON.</param>
-        /// <returns>A typed Resource object.</returns>
         object ParseResource(string json);
 
         /// <summary>Attempts to process resource.</summary>

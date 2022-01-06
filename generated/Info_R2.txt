@@ -303,6 +303,7 @@ Complex Types: 28
 - Element: Element
   - id[0..1]: id
   - extension[0..*]: Extension
+  - fhir_comments[0..*]: string
 - ElementDefinition: Element
   - id[0..1]: id
   - extension[0..*]: Extension

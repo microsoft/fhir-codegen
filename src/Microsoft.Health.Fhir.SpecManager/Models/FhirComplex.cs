@@ -547,7 +547,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
                 contextElements = new List<string>();
                 foreach (string contextElement in ContextElements)
                 {
-                    contextElements.Add(string.Copy(contextElement));
+                    contextElements.Add(new string(contextElement));
                 }
             }
 

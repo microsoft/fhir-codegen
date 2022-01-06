@@ -9,13 +9,11 @@
 
   <ItemGroup>
     <Compile Remove="Exporter\**" />
+    <Compile Remove="fhir\**" />
     <EmbeddedResource Remove="Exporter\**" />
+    <EmbeddedResource Remove="fhir\**" />
     <None Remove="Exporter\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="fhir\fhir_4_0_1.cs" />
-    <Compile Remove="fhir\fhir_4_4_0.cs" />
+    <None Remove="fhir\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,20 +21,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Handlebars.Net" Version="1.10.1" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+    <PackageReference Include="Handlebars.Net" Version="2.0.10" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="SharpZipLib" Version="1.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="SharpZipLib" Version="1.3.3" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" />
-    <PackageReference Include="System.Text.Json" Version="6.0.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\fhirCsR2\fhirCsR2.csproj" />
+    <ProjectReference Include="..\fhirCsR3\fhirCsR3.csproj" />
+    <ProjectReference Include="..\fhirCsR4B\fhirCsR4B.csproj" />
+    <ProjectReference Include="..\fhirCsR4\fhirCsR4.csproj" />
+    <ProjectReference Include="..\fhirCsR5\fhirCsR5.csproj" />
   </ItemGroup>
 
 </Project>

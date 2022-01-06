@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Health.Fhir.SpecManager.Manager;
 
 namespace Microsoft.Health.Fhir.SpecManager.Converters
 {
@@ -52,7 +53,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                 throw new ArgumentNullException(nameof(version));
             }
 
-            // create our JSON converter
+            if (FhirManager.VersionToReleaseDict.ContainsKey(version))
+            {
+                switch (FhirManager.VersionToReleaseDict[version])
+                {
+                    case "DSTU2": return new FromR2();
+                    case "STU3":  return new FromR3();
+                    case "R4":    return new FromR4();
+                    case "R4B":   return new FromR4();
+                    case "R5":    return new FromR5();
+                }
+            }
+
+            // fallback to guessing
             switch (version[0])
             {
                 case '1':

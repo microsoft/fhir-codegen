@@ -220,6 +220,31 @@
             "commandLineArgs": "--output-path ..\\..\\generated\\CSBasic2_R4\\ --load-r4 latest --language-options CSharp2|namespace=fhirCsR4 --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "cs2r2": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\temp\\cs2r2 --load-r2 latest --language-options CSharp2|namespace=fhirCsR2 --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "cs2r3": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\temp\\cs2r3 --load-r3 latest --language-options CSharp2|namespace=fhirCsR3 --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "cs2r4": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\temp\\cs2r4 --load-r4 latest --language-options CSharp2|namespace=fhirCsR4 --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "cs2r4B": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\temp\\cs2r4b --load-r4b latest --language-options CSharp2|namespace=fhirCsR4B --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "cs2r5": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\temp\\cs2r5 --load-r5 latest --language-options CSharp2|namespace=fhirCsR5 --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "firelyJsonTest": {
             "commandName": "Project",
             "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\generated\\SystemTextJsonExt_R4\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2JsonExt --official-expansions-only true",

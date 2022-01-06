@@ -301,7 +301,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Manager
                     processedFiles.Add(shortName);
 
                     // read the file
-                    byte[] contents = File.ReadAllBytes(filename);
+                    string contents = File.ReadAllText(filename);
 
                     // parse the file - note: using var here is siginificantly more performant than object
                     var resource = fhirVersionInfo.ParseResource(contents);
