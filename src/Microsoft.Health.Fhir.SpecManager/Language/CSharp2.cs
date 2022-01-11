@@ -1006,12 +1006,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"{_accessModifier} static class {vsName}Codes");
             }
 
+            // class
             _writer.OpenScope();
 
             bool prefixWithSystem = vs.ReferencedCodeSystems.Count > 1;
             HashSet<string> usedValues = new HashSet<string>();
 
-            Dictionary<string, string> literals = new Dictionary<string, string>();
+            Dictionary<string, string> literals = new ();
+            Dictionary<string, string> literalsWithSystemLookup = new ();
 
             foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
             {
@@ -1029,10 +1031,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     input = concept.Code;
                 }
 
+                string codeSystem = FhirUtils.SanitizeForQuoted(concept.System);
+                string codeSystemNameSanitized = FhirUtils.SanitizeForProperty(concept.SystemLocalName, _reservedWords);
                 string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords);
                 string codeValue = FhirUtils.SanitizeForValue(concept.Code);
 
                 codeName = FhirUtils.SanitizedToConvention(codeName, FhirTypeBase.NamingConvention.PascalCase);
+                codeSystemNameSanitized = FhirUtils.SanitizedToConvention(codeSystemNameSanitized, FhirTypeBase.NamingConvention.PascalCase);
 
                 string name;
 
@@ -1063,8 +1068,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 usedValues.Add(name);
 
                 literals.Add(name, codeValue);
+                literals.Add(codeSystemNameSanitized + name, codeSystem + "#" + codeValue);
+                literalsWithSystemLookup.Add(codeSystem + "#" + codeValue, name);
 
-                WriteIndentedComment(concept.Definition ?? concept.Display);
+                if (!string.IsNullOrEmpty(concept.Definition))
+                {
+                    WriteIndentedComment(concept.Definition);
+                }
+                else
+                {
+                    WriteIndentedComment(concept.Display);
+                }
 
                 if (_namesRequiringKeywordNew.Contains(name))
                 {
@@ -1076,7 +1090,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
 
                 _writer.OpenScope();
-
                 _writer.WriteLineIndented($"Code = \"{codeValue}\",");
 
                 if (!string.IsNullOrEmpty(concept.Display))
@@ -1097,8 +1110,27 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"public const string Literal{kvp.Key} = \"{kvp.Value}\";");
             }
 
-            _writer.DecreaseIndent();
-            _writer.WriteLineIndented("};");
+            // values
+            _writer.WriteLine();
+            WriteIndentedComment($"Dictionary for looking up {vsName} Codings based on Codes");
+            _writer.OpenScope("public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {");
+            foreach (KeyValuePair<string, string> kvp in literals)
+            {
+                if (literalsWithSystemLookup.ContainsKey(kvp.Value))
+                {
+                    _writer.WriteLineIndented($"{{ \"{kvp.Value}\", {literalsWithSystemLookup[kvp.Value]} }}, ");
+                }
+                else
+                {
+                    _writer.WriteLineIndented($"{{ \"{kvp.Value}\", {kvp.Key} }}, ");
+                }
+            }
+
+            // Values
+            _writer.CloseScope("};");
+
+            // class
+            _writer.CloseScope("};");
         }
 
         /// <summary>Writes the complexes.</summary>
@@ -1173,11 +1205,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             if (!string.IsNullOrEmpty(complex.Comment))
             {
                 WriteIndentedComment(complex.Comment);
-            }
-
-            if (complex.Path == "ValueSet.codeSystem")
-            {
-                Console.Write("");
             }
 
             string nameForExport;
@@ -1318,6 +1345,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _writer.IncreaseIndent();
 
+            List<string> sanitizedValues = new ();
+
             if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
             {
                 foreach (FhirConcept concept in vs.Concepts)
@@ -1325,6 +1354,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
 
                     _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                    sanitizedValues.Add(value);
                 }
             }
             else
@@ -1334,7 +1364,19 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
                     _writer.WriteLineIndented($"public const string {name.ToUpperInvariant()} = \"{value}\";");
+                    sanitizedValues.Add(value);
                 }
+            }
+
+            if (sanitizedValues.Count > 0)
+            {
+                _writer.OpenScope("public static HashSet<string> Values = new HashSet<string>() {");
+                foreach (string value in sanitizedValues)
+                {
+                    _writer.WriteLineIndented($"\"{value}\",");
+                }
+
+                _writer.CloseScope("};");
             }
 
             _writer.DecreaseIndent();
