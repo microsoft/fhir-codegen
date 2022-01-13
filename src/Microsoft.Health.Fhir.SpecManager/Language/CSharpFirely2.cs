@@ -1623,11 +1623,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 element,
                 subset,
                 out string summary,
+                out string isModifier,
                 out string choice,
                 out string allowedTypes,
                 out string resourceReferences);
 
-            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice})]");
+            /* Exceptions:
+            *  o OperationOutcome.issue.severity does not have `IsModifier` anymore since R4. 
+            */
+
+            if (element.Path == "OperationOutcome.issue.severity")
+            {
+                _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, IsModifier=true, Order={GetOrder(element)}{choice})]");
+                _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice}, Since=FhirRelease.R4)]");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice})]");
+            }
 
             if (hasDefinedEnum)
             {
@@ -1819,6 +1832,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 element,
                 subset,
                 out string summary,
+                out string isModifier,
                 out string choice,
                 out string allowedTypes,
                 out string resourceReferences);
@@ -1831,7 +1845,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              * automate this, by scanning differences between 3/4/5/6/7 etc.. */
             string BuildExceptionElementAttribute(string versionString = null)
             {
-                var prefix = $"[FhirElement(\"{name}\"{summary}, Order={GetOrder(element)}{choice}";
+                var prefix = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}";
                 if (versionString is { })
                 {
                     prefix += $", Since=FhirRelease.{versionString}";
@@ -2138,6 +2152,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             FhirElement element,
             GenSubset subset,
             out string summary,
+            out string isModifier,
             out string choice,
             out string allowedTypes,
             out string resourceReferences)
@@ -2146,6 +2161,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             allowedTypes = string.Empty;
             resourceReferences = string.Empty;
             summary = element.IsSummary ? ", InSummary=true" : string.Empty;
+            isModifier = element.IsModifier ? ", IsModifier=true" : string.Empty;
 
             bool inCommon = subset.HasFlag(GenSubset.Common);
 
