@@ -8,7 +8,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.Health.Fhir.SpecManager.Extensions;
 
 namespace Microsoft.Health.Fhir.SpecManager.Models
@@ -141,7 +140,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
 
             IsModifier = isModifier == true;
-            IsSummary = (isSummary == true) || IsModifier;
+            IsSummary = isSummary == true;
 
             DefaultFieldName = defaultFieldName;
             DefaultFieldValue = defaultFieldValue;
