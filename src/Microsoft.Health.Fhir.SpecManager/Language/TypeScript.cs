@@ -152,7 +152,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     IncludeBase = false,
                 }
             },
-
         };
 
         /// <summary>Gets the name of the language.</summary>

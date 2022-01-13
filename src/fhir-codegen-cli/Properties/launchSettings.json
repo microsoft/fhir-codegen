@@ -245,6 +245,11 @@
             "commandLineArgs": "--output-path ..\\..\\temp\\cs2r5 --load-r5 latest --language-options CSharp2|namespace=fhirCsR5 --fhir-spec-directory ..\\..\\fhirVersions --language CSharp2 --official-expansions-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "ts2r4": {
+            "commandName": "Project",
+            "commandLineArgs": "--output-path ..\\..\\temp\\ts2r4 --load-r4 latest --language-options TypeScript2|namespace=fhirR4 --fhir-spec-directory ..\\..\\fhirVersions --language TypeScript2 --official-expansions-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "firelyJsonTest": {
             "commandName": "Project",
             "commandLineArgs": "--export-types \"primitive|complex|resource\" --output-path ..\\..\\generated\\SystemTextJsonExt_R4\\ --load-r4 latest --fhir-spec-directory ..\\..\\fhirVersions --language CSharpFirely2JsonExt --official-expansions-only true",
