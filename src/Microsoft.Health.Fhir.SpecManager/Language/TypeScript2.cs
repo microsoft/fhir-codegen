@@ -73,29 +73,14 @@ public sealed class TypeScript2 : ILanguage
     /// <summary>True to export enums.</summary>
     private bool _exportEnums;
 
-    /// <summary>The base namespace to use for all exported classes.</summary>
-    private string _namespace;
-
     /// <summary>The namespace models.</summary>
     private string _namespaceModels;
-
-    /// <summary>Sets the namespace value belongs to.</summary>
-    private string _namespaceValueSets;
-
-    /// <summary>The namespace serialization.</summary>
-    private string _namespaceSerialization;
-
-    /// <summary>The access modifier.</summary>
-    private string _accessModifier = "public";
 
     /// <summary>Pathname of the model directory.</summary>
     private string _directoryModels;
 
     /// <summary>Pathname of the value set directory.</summary>
     private string _directoryValueSets;
-
-    /// <summary>Pathname of the serialization directory.</summary>
-    private string _directorySerialization;
 
     /// <summary>List of types of the exported resource names and types.</summary>
     private Dictionary<string, string> _exportedResourceNamesAndTypes = new Dictionary<string, string>();
@@ -147,7 +132,7 @@ public sealed class TypeScript2 : ILanguage
 
     /// <summary>Gets the reserved words.</summary>
     /// <value>The reserved words.</value>
-    private static readonly HashSet<string> _reservedWords = new HashSet<string>()
+    private static readonly HashSet<string> _reservedWords = new ()
     {
         "const",
         "enum",
@@ -156,7 +141,7 @@ public sealed class TypeScript2 : ILanguage
     };
 
     /// <summary>The generics and type hints.</summary>
-    private static readonly Dictionary<string, GenericTypeHintInfo> _genericsAndTypeHints = new Dictionary<string, GenericTypeHintInfo>()
+    private static readonly Dictionary<string, GenericTypeHintInfo> _genericsAndTypeHints = new ()
     {
         {
             "Bundle",
@@ -185,6 +170,14 @@ public sealed class TypeScript2 : ILanguage
                 IncludeBase = false,
             }
         },
+    };
+
+    /// <summary>(Immutable) The Set of all known generic types (needed for casting).</summary>
+    private static readonly HashSet<string> _genericTypeHints = new ()
+    {
+        "FhirResource",
+        "BundleContentType",
+        "BundleEntry<BundleContentType>[]",
     };
 
     /// <summary>Gets the name of the language.</summary>
@@ -254,9 +247,8 @@ public sealed class TypeScript2 : ILanguage
             _exportEnums = false;
         }
 
-        _namespace = options.GetParam("namespace", $"fhirR{info.MajorVersion}");
-        _namespaceModels = _namespace + ".Models";
-        _namespaceValueSets = _namespace + ".ValueSets";
+        // _namespace = options.GetParam("namespace", $"fhirR{info.MajorVersion}");
+        _namespaceModels = "fhirModels";
 
         _exportedResourceNamesAndTypes = new Dictionary<string, string>();
         _exportedCodes = new HashSet<string>();
@@ -276,44 +268,189 @@ public sealed class TypeScript2 : ILanguage
             }
         }
 
-        //_directorySerialization = Path.Combine(exportDirectory, "Serialization");
-        //if (!Directory.Exists(_directorySerialization))
-        //{
-        //    Directory.CreateDirectory(_directorySerialization);
-        //}
+        Dictionary<string, List<string>> modulesAndExports = new ();
 
-        WriteComplexes(_info.ComplexTypes.Values, false);
-        WriteComplexes(_info.Resources.Values, true);
+        WriteComplexes(_info.ComplexTypes.Values, ref modulesAndExports, false);
+        WriteComplexes(_info.Resources.Values, ref modulesAndExports, true);
+
+        WriteModelModule(exportDirectory, modulesAndExports);
 
         if (_exportEnums)
         {
-            WriteValueSets(_info.ValueSetsByUrl.Values);
+            List<string> exportedValueSets = new ();
+
+            WriteValueSets(_info.ValueSetsByUrl.Values, ref exportedValueSets);
+
+            WriteValueSetModule(exportDirectory, exportedValueSets);
+        }
+
+        WriteIndexModule(exportDirectory);
+    }
+
+    /// <summary>Writes an index module.</summary>
+    /// <param name="exportDirectory">Directory to write files.</param>
+    private void WriteIndexModule(
+        string exportDirectory)
+    {
+        // create a filename for writing
+        string filename = Path.Combine(exportDirectory, "index.ts");
+
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            _writer = writer;
+
+            WriteHeader(true, false, false);
+
+            _writer.WriteLineIndented("import * as Models from './models';");
+
+            if (_exportEnums)
+            {
+                _writer.WriteLineIndented("import * as ValueSets from './valuesets';");
+                _writer.WriteLineIndented("export { Models, ValueSets };");
+            }
+            else
+            {
+                _writer.WriteLineIndented("export { Models };");
+            }
+
+            WriteFooter();
         }
     }
 
-    /// <summary>Writes a value sets.</summary>
-    /// <param name="valueSets">List of valueSetCollections.</param>
-    private void WriteValueSets(
-        IEnumerable<FhirValueSetCollection> valueSets)
+    /// <summary>Writes a value set module.</summary>
+    /// <param name="exportDirectory">  Directory to write files.</param>
+    /// <param name="exportedValueSets">The exported value sets.</param>
+    private void WriteValueSetModule(
+        string exportDirectory,
+        List<string> exportedValueSets)
     {
-        Dictionary<string, WrittenCodeInfo> writtenCodesAndNames = new Dictionary<string, WrittenCodeInfo>();
-        HashSet<string> writtenNames = new HashSet<string>();
+        // create a filename for writing
+        string filename = Path.Combine(exportDirectory, "valuesets.ts");
 
-        HashSet<string> exportedNames = new HashSet<string>();
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            _writer = writer;
+
+            WriteHeader(true, false, false);
+
+            foreach (string exportedSet in exportedValueSets)
+            {
+                _writer.WriteLineIndented($"import {{ {exportedSet} }} from './ValueSets/{exportedSet}'");
+            }
+
+            _writer.OpenScope("export {");
+
+            foreach (string exportedSet in exportedValueSets)
+            {
+                _writer.WriteLineIndented(exportedSet + ",");
+            }
+
+            _writer.CloseScope();
+
+            WriteFooter();
+        }
+    }
+
+    /// <summary>Writes a model module.</summary>
+    /// <param name="exportDirectory">  Directory to write files.</param>
+    /// <param name="modulesAndExports">The modules and exports.</param>
+    private void WriteModelModule(
+        string exportDirectory,
+        Dictionary<string, List<string>> modulesAndExports)
+    {
+        // create a filename for writing
+        string filename = Path.Combine(exportDirectory, "models.ts");
+
+        using (FileStream stream = new FileStream(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        {
+            _writer = writer;
+
+            WriteHeader(true, false, false);
+
+            foreach (KeyValuePair<string, List<string>> moduleAndExports in modulesAndExports)
+            {
+                _writer.WriteLineIndented($"import {{ {string.Join(", ", moduleAndExports.Value)} }} from './Models/{moduleAndExports.Key}';");
+            }
+
+            _writer.OpenScope("export {");
+
+            foreach (List<string> exports in modulesAndExports.Values)
+            {
+                _writer.WriteLineIndented(string.Join(", ", exports) + ",");
+            }
+
+            _writer.CloseScope();
+
+            WriteExpandedResourceInterfaceBinding();
+
+            WriteFooter();
+        }
+    }
+
+    /// <summary>Writes the expanded resource interface binding.</summary>
+    private void WriteExpandedResourceInterfaceBinding()
+    {
+        if (_exportedResourceNamesAndTypes.Count == 0)
+        {
+            return;
+        }
+
+        WriteIndentedComment("Resource binding for generic use.");
+
+        if (_exportedResourceNamesAndTypes.Count == 1)
+        {
+            _writer.WriteLineIndented($"export type FhirResource = {_exportedResourceNamesAndTypes.Keys.First()};");
+            return;
+        }
+
+        _writer.WriteLineIndented("export type FhirResource = ");
+
+        _writer.IncreaseIndent();
+
+        int index = 0;
+        int last = _exportedResourceNamesAndTypes.Count - 1;
+        foreach (string exportedName in _exportedResourceNamesAndTypes.Keys)
+        {
+            if (index == 0)
+            {
+                _writer.WriteLineIndented(exportedName);
+            }
+            else if (index == last)
+            {
+                _writer.WriteLineIndented("|" + exportedName + ";");
+            }
+            else
+            {
+                _writer.WriteLineIndented("|" + exportedName);
+            }
+
+            index++;
+        }
+
+        _writer.DecreaseIndent();
+    }
+
+    /// <summary>Writes a value sets.</summary>
+    /// <param name="valueSets">        List of valueSetCollections.</param>
+    /// <param name="exportedValueSets">[in,out] The export value sets.</param>
+    private void WriteValueSets(
+        IEnumerable<FhirValueSetCollection> valueSets,
+        ref List<string> exportedValueSets)
+    {
+        Dictionary<string, WrittenCodeInfo> writtenCodesAndNames = new ();
+        HashSet<string> writtenNames = new ();
+
+        HashSet<string> exportedNames = new ();
 
         foreach (FhirValueSetCollection collection in valueSets)
         {
             foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values)
             {
                 string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
-
                 vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
-
-                if ((!string.IsNullOrEmpty(vs.Version)) &&
-                    (vs.Version != _info.VersionString))
-                {
-                    vsName += "_" + vs.Version.Replace('.', '_');
-                }
 
                 if (exportedNames.Contains(vsName))
                 {
@@ -333,34 +470,47 @@ public sealed class TypeScript2 : ILanguage
 
                     WriteHeader(true, false, false);
 
-                    // open namespace
-                    _writer.WriteLineIndented($"namespace {_namespaceValueSets}");
-                    _writer.OpenScope();
+                    _writer.WriteLineIndented($"import {{ Coding }} from '../models'");
 
                     WriteValueSet(
                         vs,
+                        vsName,
                         ref writtenCodesAndNames,
                         ref writtenNames);
-
-                    // close namespace
-                    _writer.CloseScope();
 
                     WriteFooter();
                 }
             }
         }
+
+        exportedValueSets = exportedNames.ToList<string>();
     }
 
     /// <summary>Writes a value set.</summary>
-    /// <param name="vs">The value set.</param>
+    /// <param name="vs">                  The value set.</param>
+    /// <param name="exportName">              Name of the vs.</param>
+    /// <param name="writtenCodesAndNames">[in,out] List of names of the written codes ands.</param>
+    /// <param name="writtenNames">        [in,out] List of names of the writtens.</param>
     private void WriteValueSet(
         FhirValueSet vs,
+        string exportName,
         ref Dictionary<string, WrittenCodeInfo> writtenCodesAndNames,
         ref HashSet<string> writtenNames)
     {
-        string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords);
+        if (!string.IsNullOrEmpty(vs.Description))
+        {
+            WriteIndentedComment(vs.Description);
+        }
+        else
+        {
+            WriteIndentedComment($"Value Set: {vs.URL}|{vs.Version}");
+        }
 
-        vsName = FhirUtils.SanitizedToConvention(vsName, FhirTypeBase.NamingConvention.PascalCase);
+        _writer.WriteLineIndented($"export const {exportName} = {{");
+        _writer.IncreaseIndent();
+
+        bool prefixWithSystem = vs.ReferencedCodeSystems.Count > 1;
+        HashSet<string> usedValues = new HashSet<string>();
 
         foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
         {
@@ -395,7 +545,7 @@ public sealed class TypeScript2 : ILanguage
             }
             else
             {
-                constName = $"{vsName}_{codeName}";
+                constName = $"{exportName}_{codeName}";
             }
 
             if (writtenNames.Contains(constName))
@@ -418,7 +568,12 @@ public sealed class TypeScript2 : ILanguage
                 new WrittenCodeInfo() { Name = codeName, ConstName = constName });
             writtenNames.Add(constName);
 
-            _writer.WriteLineIndented($"const {constName}: {_namespaceModels}.Coding = {{");
+            if (!string.IsNullOrEmpty(concept.Definition))
+            {
+                WriteIndentedComment(concept.Definition);
+            }
+
+            _writer.WriteLineIndented($"{constName}: {{");
             _writer.IncreaseIndent();
 
             _writer.WriteLineIndented($"code: \"{codeValue}\",");
@@ -432,63 +587,7 @@ public sealed class TypeScript2 : ILanguage
 
             _writer.DecreaseIndent();
 
-            _writer.WriteLineIndented("};");
-        }
-
-        if (!string.IsNullOrEmpty(vs.Description))
-        {
-            WriteIndentedComment(vs.Description);
-        }
-        else
-        {
-            WriteIndentedComment($"Value Set: {vs.URL}|{vs.Version}");
-        }
-
-        _writer.WriteLineIndented($"export const {vsName} = {{");
-        _writer.IncreaseIndent();
-
-        bool prefixWithSystem = vs.ReferencedCodeSystems.Count > 1;
-        HashSet<string> usedValues = new HashSet<string>();
-
-        // TODO: shouldn't loop over this twice, but writer functions don't allow writing in two places at once yet
-        foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
-        {
-            string codeKey = concept.Key();
-
-            if (!string.IsNullOrEmpty(concept.Definition))
-            {
-                WriteIndentedComment(concept.Definition);
-            }
-
-            string name;
-
-            if (prefixWithSystem)
-            {
-                name = $"{writtenCodesAndNames[codeKey].Name}_{concept.SystemLocalName}";
-            }
-            else
-            {
-                name = writtenCodesAndNames[codeKey].Name;
-            }
-
-            if (usedValues.Contains(name))
-            {
-                // start at 2 so that the unadorned version makes sense as v1
-                for (int i = 2; i < 1000; i++)
-                {
-                    if (usedValues.Contains($"{name}_{i}"))
-                    {
-                        continue;
-                    }
-
-                    name = $"{name}_{i}";
-                    break;
-                }
-            }
-
-            usedValues.Add(name);
-
-            _writer.WriteLineIndented($"{name}: {writtenCodesAndNames[codeKey].ConstName},");
+            _writer.WriteLineIndented("} as Coding,");
         }
 
         _writer.DecreaseIndent();
@@ -497,16 +596,25 @@ public sealed class TypeScript2 : ILanguage
     }
 
     /// <summary>Writes the complexes.</summary>
-    /// <param name="complexes"> The complexes.</param>
-    /// <param name="isResource">(Optional) True if is resource, false if not.</param>
+    /// <param name="complexes">        The complexes.</param>
+    /// <param name="modulesAndExports">[in,out] The modules and exports.</param>
+    /// <param name="isResource">       (Optional) True if is resource, false if not.</param>
     private void WriteComplexes(
         IEnumerable<FhirComplex> complexes,
+        ref Dictionary<string, List<string>> modulesAndExports,
         bool isResource = false)
     {
+        if (modulesAndExports == null)
+        {
+            modulesAndExports = new ();
+        }
+
         foreach (FhirComplex complex in complexes)
         {
             // create a filename for writing
             string filename = Path.Combine(_directoryModels, $"{complex.NameCapitalized}.ts");
+
+            List<string> exports = new ();
 
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             using (ExportStreamWriter writer = new ExportStreamWriter(stream))
@@ -515,33 +623,37 @@ public sealed class TypeScript2 : ILanguage
 
                 WriteHeader(false, true, false);
 
-                // open namespace
-                _writer.WriteLineIndented($"namespace {_namespaceModels}");
-                _writer.OpenScope();
+                _writer.WriteLineIndented($"import * as {_namespaceModels} from '../models'");
 
-                WriteComplex(complex, isResource);
-
-                // close namespace
-                _writer.CloseScope();
+                WriteComplex(complex, isResource, ref exports);
 
                 WriteFooter();
             }
+
+            modulesAndExports.Add(complex.NameCapitalized, exports);
         }
     }
 
     /// <summary>Writes a complex.</summary>
     /// <param name="complex">   The complex.</param>
     /// <param name="isResource">True if is resource, false if not.</param>
+    /// <param name="exports">   The exports.</param>
     private void WriteComplex(
         FhirComplex complex,
-        bool isResource)
+        bool isResource,
+        ref List<string> exports)
     {
+        if (exports == null)
+        {
+            exports = new ();
+        }
+
         // check for nested components
         if (complex.Components != null)
         {
             foreach (FhirComplex component in complex.Components.Values)
             {
-                WriteComplex(component, false);
+                WriteComplex(component, false, ref exports);
             }
         }
 
@@ -574,15 +686,37 @@ public sealed class TypeScript2 : ILanguage
             nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
             baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
 
-            _writer.WriteLineIndented($"export class {nameForExport} extends {_namespaceModels}.{baseClassName} {{");
+            if (_genericsAndTypeHints.ContainsKey(complex.Path))
+            {
+                _writer.WriteLineIndented(
+                    $"export class" +
+                    $" {nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceModels}.{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                    $" extends {_namespaceModels}.{baseClassName} {{");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"export class {nameForExport} extends {_namespaceModels}.{baseClassName} {{");
+            }
         }
         else
         {
             nameForExport = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
             baseClassName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap);
 
-            _writer.WriteLineIndented($"export class {nameForExport} extends {_namespaceModels}.{baseClassName} {{");
+            if (_genericsAndTypeHints.ContainsKey(complex.Path))
+            {
+                _writer.WriteLineIndented(
+                    $"export class" +
+                    $" {nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceModels}.{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                    $" extends {_namespaceModels}.{baseClassName} {{");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"export class {nameForExport} extends {_namespaceModels}.{baseClassName} {{");
+            }
         }
+
+        exports.Add(nameForExport);
 
         _writer.IncreaseIndent();
 
@@ -598,7 +732,7 @@ public sealed class TypeScript2 : ILanguage
                 _exportedResourceNamesAndTypes.Add(complex.Name, complex.Name);
 
                 WriteIndentedComment("Resource Type Name");
-                _writer.WriteLineIndented($"readonly resourceType: string = '{complex.Name}';");
+                _writer.WriteLineIndented($"readonly resourceType: string = \"{complex.Name}\";");
 
                 resourceNameForValidation = complex.Name;
             }
@@ -611,7 +745,11 @@ public sealed class TypeScript2 : ILanguage
             out List<KeyValuePair<string, string>> fieldsAndTypes);
 
         // write constructor
-        WriteConstructor(!string.IsNullOrEmpty(baseClassName), fieldsAndTypes, resourceNameForValidation);
+        WriteConstructor(
+            nameForExport,
+            !string.IsNullOrEmpty(baseClassName),
+            fieldsAndTypes,
+            resourceNameForValidation);
 
         // close interface (type)
         _writer.CloseScope();
@@ -630,13 +768,14 @@ public sealed class TypeScript2 : ILanguage
     /// <param name="fieldsAndTypes">           List of types of the fields ands.</param>
     /// <param name="resourceNameForValidation">The resource name for validation.</param>
     private void WriteConstructor(
+        string typeName,
         bool hasParent,
         List<KeyValuePair<string, string>> fieldsAndTypes,
         string resourceNameForValidation)
     {
         WriteIndentedComment("Default constructor");
 
-        _writer.OpenScope("constructor(source: any) {");
+        _writer.OpenScope($"constructor(source: {typeName}) {{");
 
         if (hasParent)
         {
@@ -646,27 +785,32 @@ public sealed class TypeScript2 : ILanguage
         if (!string.IsNullOrEmpty(resourceNameForValidation))
         {
             _writer.WriteLineIndented(
-                $"if (source['resourceType'] !== '{resourceNameForValidation}')" +
+                $"if ((source['resourceType'] !== \"{resourceNameForValidation}\") || (source['resourceType'] !== undefined))" +
                 $" {{ throw 'Invalid resourceType for a {resourceNameForValidation}'; }}");
         }
 
         bool isOptional;
         string name;
+        string genericCast;
 
         foreach (KeyValuePair<string, string> fieldAndType in fieldsAndTypes)
         {
             isOptional = fieldAndType.Key.EndsWith('?');
 
+            genericCast = _genericTypeHints.Contains(fieldAndType.Value)
+                ? $" as unknown as {fieldAndType.Value}"
+                : string.Empty;
+
             if (isOptional)
             {
                 name = fieldAndType.Key.Substring(0, fieldAndType.Key.Length - 1);
-                _writer.WriteLineIndented($"if (source['{name}'] !== undefined) {{ this.{name} = source.{name}; }}");
+                _writer.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{ this.{name} = source.{name}{genericCast}; }}");
             }
             else
             {
                 name = fieldAndType.Key;
-                _writer.WriteLineIndented($"if (source['{name}'] === undefined) {{ throw 'Missing required element {name}';}}");
-                _writer.WriteLineIndented($"this.{name} = source.{name};");
+                _writer.WriteLineIndented($"if (source[\"{name}\"] === undefined) {{ throw 'Missing required element {name}';}}");
+                _writer.WriteLineIndented($"this.{name} = source.{name}{genericCast};");
             }
         }
 
@@ -680,7 +824,7 @@ public sealed class TypeScript2 : ILanguage
         FhirElement element)
     {
         string codeName = FhirUtils.ToConvention(
-            $"{element.Path}.Codes",
+            $"{element.Path}",
             string.Empty,
             FhirTypeBase.NamingConvention.PascalCase);
 
@@ -688,6 +832,8 @@ public sealed class TypeScript2 : ILanguage
         {
             codeName = codeName.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
         }
+
+        codeName += "Enum";
 
         if (_exportedCodes.Contains(codeName))
         {
@@ -697,15 +843,7 @@ public sealed class TypeScript2 : ILanguage
         _exportedCodes.Add(codeName);
 
         WriteIndentedComment($"Code Values for the {element.Path} field");
-
-        if (codeName.EndsWith("Codes", StringComparison.Ordinal))
-        {
-            _writer.WriteLineIndented($"export enum {codeName} {{");
-        }
-        else
-        {
-            _writer.WriteLineIndented($"exprt enum {codeName}Codes {{");
-        }
+        _writer.WriteLineIndented($"export enum {codeName} {{");
 
         _writer.IncreaseIndent();
 
@@ -715,7 +853,7 @@ public sealed class TypeScript2 : ILanguage
             {
                 FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
 
-                _writer.WriteLineIndented($"{name.ToUpperInvariant()} = '{value}',");
+                _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
             }
         }
         else
@@ -724,49 +862,12 @@ public sealed class TypeScript2 : ILanguage
             {
                 FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
 
-                _writer.WriteLineIndented($"{name.ToUpperInvariant()} = '{value}',");
+                _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
             }
         }
 
         _writer.DecreaseIndent();
         _writer.WriteLineIndented("}");
-
-        //List<string> sanitizedValues = new ();
-
-        //if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
-        //{
-        //    foreach (FhirConcept concept in vs.Concepts)
-        //    {
-        //        FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
-
-        //        _writer.WriteLineIndented($"static readonly {name.ToUpperInvariant()}: string = '{value}';");
-        //        sanitizedValues.Add(value);
-        //    }
-        //}
-        //else
-        //{
-        //    foreach (string code in element.Codes)
-        //    {
-        //        FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
-
-        //        _writer.WriteLineIndented($"static readonly string {name.ToUpperInvariant()} = '{value}';");
-        //        sanitizedValues.Add(value);
-        //    }
-        //}
-
-        //if (sanitizedValues.Count > 0)
-        //{
-        //    _writer.OpenScope("static readonly Values:Set<string> = new Set<string>([");
-        //    foreach (string value in sanitizedValues)
-        //    {
-        //        _writer.WriteLineIndented($"'{value}',");
-        //    }
-
-        //    _writer.CloseScope("]);");
-        //}
-
-        //_writer.DecreaseIndent();
-        //_writer.WriteLineIndented("}");
     }
 
     /// <summary>Determine if we should write resource name.</summary>
@@ -864,7 +965,7 @@ public sealed class TypeScript2 : ILanguage
                 {
                     // If we are building enum, reference
                     string codeName = FhirUtils.ToConvention(
-                        $"{element.Path}.Codes",
+                        $"{element.Path}.Enum",
                         string.Empty,
                         FhirTypeBase.NamingConvention.PascalCase);
 
@@ -877,14 +978,14 @@ public sealed class TypeScript2 : ILanguage
                     // use the full expansion
                     nameAndType = new (
                         $"{kvp.Key}{optionalFlagString}",
-                        $"({string.Join("|", vs.Concepts.Select(c => $"'{c.Code}'"))}){arrayFlagString}");
+                        $"({string.Join("|", vs.Concepts.Select(c => $"\"{c.Code}\""))}){arrayFlagString}");
                 }
                 else
                 {
                     // otherwise, inline the required codes
                     nameAndType = new (
                         $"{kvp.Key}{optionalFlagString}",
-                        $"({string.Join("|", element.Codes.Select(c => $"'{c}'"))}){arrayFlagString}");
+                        $"({string.Join("|", element.Codes.Select(c => $"\"{c}\""))}){arrayFlagString}");
                 }
             }
             else if (_genericsAndTypeHints.ContainsKey(element.Path))
@@ -929,51 +1030,6 @@ public sealed class TypeScript2 : ILanguage
                     $"{_namespaceModels}.Element{arrayFlagString}"));
             }
         }
-
-        //foreach (KeyValuePair<string, string> kvp in values)
-        //{
-        //    string elementName;
-        //    if ((kvp.Key == complex.Name) && (!element.IsInherited))
-        //    {
-        //        elementName = $"{kvp.Key}Field";
-        //    }
-        //    else
-        //    {
-        //        elementName = kvp.Key;
-        //    }
-
-        //    if (!string.IsNullOrEmpty(element.Comment))
-        //    {
-        //        WriteIndentedComment(element.Comment);
-        //    }
-
-        //    string elementType = element.IsArray
-        //        ? $"{kvp.Value}[]{optionalFlagString}"
-        //        : $"{kvp.Value}{optionalFlagString}";
-
-        //    if (_primitiveTypeMap.ContainsKey(kvp.Value))
-        //    {
-        //        _writer.WriteLineIndented($"{elementName}: {elementType};");
-        //    }
-        //    else
-        //    {
-        //        _writer.WriteLineIndented($"{elementName}: {_namespaceModels}.{elementType};");
-        //    }
-
-        //    if (RequiresExtension(kvp.Value))
-        //    {
-        //        WriteIndentedComment($"Extension container element for {kvp.Key}");
-
-        //        if (element.IsArray)
-        //        {
-        //            _writer.WriteLineIndented($"_{elementName}: {_namespaceModels}.Element[] ;");
-        //        }
-        //        else
-        //        {
-        //            _writer.WriteLineIndented($"_{elementName}: {_namespaceModels}.Element;");
-        //        }
-        //    }
-        //}
     }
 
     /// <summary>Requires extension.</summary>
@@ -1064,7 +1120,7 @@ public sealed class TypeScript2 : ILanguage
         {
             foreach (KeyValuePair<string, string> kvp in _options.LanguageOptions)
             {
-                _writer.WriteLineIndented($"  // Language option: '{kvp.Key}' = '{kvp.Value}'");
+                _writer.WriteLineIndented($"  // Language option: \"{kvp.Key}\" = \"{kvp.Value}\"");
             }
         }
 
@@ -1119,5 +1175,4 @@ public sealed class TypeScript2 : ILanguage
         internal bool IncludeBase;
         internal string GenericHint;
     }
-
 }
