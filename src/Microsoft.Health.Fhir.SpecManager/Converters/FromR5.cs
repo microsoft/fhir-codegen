@@ -1187,6 +1187,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             }
                         }
 
+                        List<string> fwMapping = element.Mapping?.Where(x =>
+                            (x != null) &&
+                            x.Identity.Equals("w5", StringComparison.InvariantCultureIgnoreCase))?
+                                .Select(x => x.Map).ToList();
+
                         // add this field to the parent type
                         parent.Elements.Add(
                             path,
@@ -1213,7 +1218,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 isInherited,
                                 modifiesParent,
                                 bindingStrength,
-                                valueSet, null));
+                                valueSet,
+                                fwMapping));
 
                         if (element.Slicing != null)
                         {

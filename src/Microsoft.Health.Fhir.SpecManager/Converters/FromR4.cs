@@ -1030,7 +1030,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         true,
                                         true,
                                         string.Empty,
-                                        string.Empty, null));
+                                        string.Empty,
+                                        null));
                             }
 
                             // check for implicit slicing definition
@@ -1155,9 +1156,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 }
                             }
                         }
-                        
-                        //TODO: MAPPING HERE
-                        var fwMapping = element.Mapping?.Where(x => x != null && x.Identity.Equals("w5"))?.Select(x=> x.Map).ToList();
+
+                        List<string> fwMapping = element.Mapping?.Where(x =>
+                            (x != null) &&
+                            x.Identity.Equals("w5", StringComparison.InvariantCultureIgnoreCase))?
+                                .Select(x => x.Map).ToList();
 
                         // add this field to the parent type
                         parent.Elements.Add(
@@ -1185,7 +1188,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 isInherited,
                                 modifiesParent,
                                 bindingStrength,
-                                valueSet, fwMapping));
+                                valueSet,
+                                fwMapping));
 
                         if (element.Slicing != null)
                         {

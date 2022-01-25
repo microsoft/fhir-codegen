@@ -167,6 +167,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "Citation",
         };
 
+        /// <summary>True to export five ws.</summary>
+        private bool _exportFiveWs = false;
+
         /// <summary>
         /// Determines the subset of code to generate.
         /// </summary>
@@ -219,7 +222,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         };
 
         /// <summary>Gets language-specific options and their descriptions.</summary>
-        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>();
+        Dictionary<string, string> ILanguage.LanguageOptions => new Dictionary<string, string>()
+        {
+            { "subset", "Which subset of language exports to make (all|common|main)." },
+            { "w5", "If output should include 5 W's mappings (false|true)." },
+        };
 
         /// <summary>Export the passed FHIR version into the specified directory.</summary>
         /// <param name="info">           The information.</param>
@@ -247,6 +254,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             {
                 Console.WriteLine($"Aborting {_languageName} for {info.MajorVersion}: code generation for the 'common' subset should be run on r5 only.");
                 return;
+            }
+
+            if (options.LanguageOptions.TryGetValue("w5", out string valueW5) &&
+                (!string.IsNullOrEmpty(valueW5)) &&
+                valueW5.StartsWith("t", StringComparison.OrdinalIgnoreCase))
+            {
+                _exportFiveWs = true;
             }
 
             // set internal vars so we don't pass them to every function
@@ -1497,16 +1511,23 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 out string allowedTypes,
                 out string resourceReferences);
 
-            // If exists, create Five W's mapping
-            var fiveWs = new StringBuilder();
-            if (element.FiveWs != null && element.FiveWs.Count > 0)
+            string fiveWs = string.Empty;
+
+            if (_exportFiveWs)
             {
-                fiveWs.Append(", FiveWs= new string[] {");
-                fiveWs.Append(string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")));
-                fiveWs.Append("}");
+                if ((element.FiveWs == null) || (element.FiveWs.Count == 0))
+                {
+                    fiveWs = " , FiveWs= new string[] {}";
+                }
+                else
+                {
+                    fiveWs = " , FiveWs= new string[] {" +
+                        string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")) +
+                        "}";
+                }
             }
 
-            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice} {fiveWs})]");
+            _writer.WriteLineIndented($"[FhirElement(\"{element.Name}\"{summary}, Order={GetOrder(element)}{choice}{fiveWs})]");
 
             if (hasDefinedEnum)
             {
@@ -1700,13 +1721,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 out string allowedTypes,
                 out string resourceReferences);
 
-            // If exists, create Five W's mapping
-            var fiveWs = new StringBuilder();
-            if (element.FiveWs != null && element.FiveWs.Count > 0)
+            string fiveWs = string.Empty;
+
+            if (_exportFiveWs)
             {
-                fiveWs.Append(", FiveWs= new string[] {");
-                fiveWs.Append(string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")));
-                fiveWs.Append("}");
+                if ((element.FiveWs == null) || (element.FiveWs.Count == 0))
+                {
+                    fiveWs = " , FiveWs= new string[] {}";
+                }
+                else
+                {
+                    fiveWs = " , FiveWs= new string[] {" +
+                        string.Join(",", element.FiveWs.Select(fwMapping => $"\"{fwMapping}\"")) +
+                        "}";
+                }
             }
 
             /* Exceptions:

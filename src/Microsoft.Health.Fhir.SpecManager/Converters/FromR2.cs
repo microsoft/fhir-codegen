@@ -1243,11 +1243,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         }
 
                         // determine if there is type expansion
-                        if (field.Contains("[x]"))
+                        if (field.Contains("[x]", StringComparison.OrdinalIgnoreCase))
                         {
                             // fix the field and path names
-                            id = id.Replace("[x]", string.Empty);
-                            field = field.Replace("[x]", string.Empty);
+                            id = id.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
+                            field = field.Replace("[x]", string.Empty, StringComparison.OrdinalIgnoreCase);
 
                             // force no base type
                             elementType = string.Empty;
@@ -1256,7 +1256,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                         {
                             string lookupName;
 
-                            if (element.NameReference.Contains('.'))
+                            if (element.NameReference.Contains('.', StringComparison.Ordinal))
                             {
                                 lookupName = element.NameReference;
                             }
@@ -1334,6 +1334,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             }
                         }
 
+                        List<string> fwMapping = element.Mapping?.Where(x =>
+                            (x != null) &&
+                            x.Identity.Equals("w5", StringComparison.InvariantCultureIgnoreCase))?
+                                .Select(x => x.Map).ToList();
+
                         // elements can repeat in R2 due to the way slicing was done
                         if (!parent.Elements.ContainsKey(path))
                         {
@@ -1363,7 +1368,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                     isInherited,
                                     modifiesParent,
                                     bindingStrength,
-                                    valueSet, null));
+                                    valueSet,
+                                    fwMapping));
                         }
 
                         if (element.Slicing != null)

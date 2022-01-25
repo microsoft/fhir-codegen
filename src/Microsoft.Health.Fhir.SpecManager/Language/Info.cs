@@ -482,10 +482,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 propertyType = element.BaseTypeName;
             }
 
+            string fiveWs = string.Empty;
+
+            if ((element.FiveWs != null) && (element.FiveWs.Count != 0))
+            {
+                fiveWs = " (W5: " + string.Join(',', element.FiveWs) + ")";
+            }
+
             _writer.WriteLineIndented(
                 $"-" +
                 $" {element.NameForExport(FhirTypeBase.NamingConvention.CamelCase)}[{element.FhirCardinality}]:" +
-                $" {propertyType}");
+                $" {propertyType}" +
+                $"{fiveWs}");
 
             _writer.IncreaseIndent();
 
