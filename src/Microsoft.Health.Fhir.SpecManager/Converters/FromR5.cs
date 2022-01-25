@@ -1064,7 +1064,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                         true,
                                         true,
                                         string.Empty,
-                                        string.Empty));
+                                        string.Empty, null));
                             }
 
                             // check for implicit slicing definition
@@ -1213,7 +1213,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                                 isInherited,
                                 modifiesParent,
                                 bindingStrength,
-                                valueSet));
+                                valueSet, null));
 
                         if (element.Slicing != null)
                         {
