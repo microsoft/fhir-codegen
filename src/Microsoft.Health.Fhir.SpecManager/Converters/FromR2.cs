@@ -1483,7 +1483,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
                             false,
                             false,
                             string.Empty,
-                            string.Empty));
+                            string.Empty,
+                            null));
                 }
 
                 switch (definitionComplexType)
@@ -1505,7 +1506,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Converters
             catch (Exception ex)
             {
                 Console.WriteLine(string.Empty);
-                Console.WriteLine($"FromR4.ProcessComplex <<< SD: {sd.Name} ({sd.Id}) - exception: {ex.Message}");
+                Console.WriteLine($"FromR2.ProcessComplex <<< SD: {sd.Name} ({sd.Id}) - exception: {ex.Message}");
                 throw;
             }
         }
