@@ -395,6 +395,10 @@ public sealed class TypeScript2 : ILanguage
                     $" from './Interfaces/{moduleAndExports.Key}';");
             }
 
+            _writer.WriteLine();
+            WriteExpandedResourceInterfaceBinding(true);
+            _writer.WriteLine();
+
             _writer.OpenScope("export {");
 
             foreach (List<string> exports in interfaceExports.Values)
@@ -402,9 +406,8 @@ public sealed class TypeScript2 : ILanguage
                 _writer.WriteLineIndented(string.Join(", ", exports) + ",");
             }
 
+            _writer.WriteLineIndented("IFhirResource,");
             _writer.CloseScope();
-
-            WriteExpandedResourceInterfaceBinding(true);
 
             WriteFooter();
         }
@@ -436,6 +439,12 @@ public sealed class TypeScript2 : ILanguage
                     $" from './Models/{moduleAndExports.Key}';");
             }
 
+            _writer.WriteLine();
+            WriteExpandedResourceInterfaceBinding(false);
+            _writer.WriteLine();
+            WriteFhirResourceFactory();
+            _writer.WriteLine();
+
             _writer.OpenScope("export {");
 
             foreach (List<string> exports in classExports.Values)
@@ -443,12 +452,44 @@ public sealed class TypeScript2 : ILanguage
                 _writer.WriteLineIndented(string.Join(", ", exports) + ",");
             }
 
+            _writer.WriteLineIndented("type FhirResource,");
+            _writer.WriteLineIndented("FhirResourceFactory,");
             _writer.CloseScope();
-
-            WriteExpandedResourceInterfaceBinding(false);
 
             WriteFooter();
         }
+    }
+
+    /// <summary>Writes the FHIR resource factory.</summary>
+    private void WriteFhirResourceFactory()
+    {
+        if (_exportedResourceNamesAndTypes.Count == 0)
+        {
+            return;
+        }
+
+        WriteIndentedComment("Factory creator for FHIR Resources");
+
+        // function open
+        _writer.WriteLineIndented("function FhirResourceFactory(source:any) : FhirResource|null {");
+        _writer.IncreaseIndent();
+
+        // switch open
+        _writer.WriteLineIndented("switch (source[\"resourceType\"]) {");
+        _writer.IncreaseIndent();
+
+        foreach (KeyValuePair<string, string> kvp in _exportedResourceNamesAndTypes)
+        {
+            _writer.WriteLineIndented($"case \"{kvp.Key}\": return new {kvp.Value}(source);");
+        }
+
+        _writer.WriteLineIndented("default: return null;");
+
+        // switch close
+        _writer.CloseScope();
+
+        // function close
+        _writer.CloseScope();
     }
 
     /// <summary>Writes the expanded resource interface binding.</summary>
@@ -466,11 +507,11 @@ public sealed class TypeScript2 : ILanguage
 
         if (_exportedResourceNamesAndTypes.Count == 1)
         {
-            _writer.WriteLineIndented($"export type {prefix}FhirResource = {prefix}{_exportedResourceNamesAndTypes.Keys.First()};");
+            _writer.WriteLineIndented($"type {prefix}FhirResource = {prefix}{_exportedResourceNamesAndTypes.Keys.First()};");
             return;
         }
 
-        _writer.WriteLineIndented($"export type {prefix}FhirResource = ");
+        _writer.WriteLineIndented($"type {prefix}FhirResource = ");
 
         _writer.IncreaseIndent();
 
@@ -768,7 +809,7 @@ public sealed class TypeScript2 : ILanguage
             baseClassName = string.Empty;
 
             sbInterface.WriteLineIndented($"export interface I{nameForExport} {{");
-            sbClass.WriteLineIndented($"export class {nameForExport} implements I{nameForExport} {{");
+            sbClass.WriteLineIndented($"export class {nameForExport} implements {_namespaceInterfaces}.I{nameForExport} {{");
         }
         else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
         {
@@ -776,7 +817,7 @@ public sealed class TypeScript2 : ILanguage
             baseClassName = string.Empty;
 
             sbInterface.WriteLineIndented($"export interface I{nameForExport} {{");
-            sbClass.WriteLineIndented($"export class {nameForExport} implments I{nameForExport} {{");
+            sbClass.WriteLineIndented($"export class {nameForExport} implements {_namespaceInterfaces}.I{nameForExport} {{");
         }
         else if ((complex.Components != null) && complex.Components.ContainsKey(complex.Path))
         {
@@ -787,7 +828,7 @@ public sealed class TypeScript2 : ILanguage
             {
                 sbInterface.WriteLineIndented(
                     $"export interface" +
-                    $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInterfaces}.{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                    $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInterfaces}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
                     $" extends {_namespaceInterfaces}.I{baseClassName} {{");
 
                 sbClass.WriteLineIndented(
@@ -816,14 +857,14 @@ public sealed class TypeScript2 : ILanguage
             {
                 sbInterface.WriteLineIndented(
                     $"export interface" +
-                    $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInterfaces}.{_genericsAndTypeHints[complex.Path].GenericHint}>" +
+                    $" I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceInterfaces}.I{_genericsAndTypeHints[complex.Path].GenericHint}>" +
                     $" extends {_namespaceInterfaces}.I{baseClassName} {{");
 
                 sbClass.WriteLineIndented(
                     $"export class" +
                     $" {nameForExport}<{_genericsAndTypeHints[complex.Path].Alias} = {_namespaceModels}.{_genericsAndTypeHints[complex.Path].GenericHint}>" +
                     $" extends {_namespaceModels}.{baseClassName}" +
-                    $" implements {_namespaceInterfaces}.I{nameForExport} {{");
+                    $" implements {_namespaceInterfaces}.I{nameForExport}<{_genericsAndTypeHints[complex.Path].Alias}> {{");
             }
             else
             {
@@ -916,32 +957,52 @@ public sealed class TypeScript2 : ILanguage
         bool isOptional;
         bool isArray;
         string name;
-        string genericCast;
+        //string genericCast;
 
-        // CreatePartal - open
-        WriteIndentedComment(sbClass, $"Factory function to create a {typeName} from an object that MAY NOT contain all required elements.");
-        sbClass.WriteLineIndented(
-            $"static CreatePartial(source:Partial<{_namespaceInterfaces}.I{typeName}>)" +
-            $":{typeName} {{");
-        sbClass.IncreaseIndent();
+        ExportStringBuilder sbConstructor = new();
+        ExportStringBuilder sbStrict = new();
+        ExportStringBuilder sbHasRequired = new();
 
-        sbClass.WriteLineIndented($"var dest:{typeName} = new {typeName}();");
+        sbConstructor.SetIndent(sbClass.Indentation);
+        sbStrict.SetIndent(sbClass.Indentation);
+        sbHasRequired.SetIndent(sbClass.Indentation);
+
+        // Constructor - open
+        WriteIndentedComment(sbConstructor, $"Default constructor for {typeName} from an object that MAY NOT contain all required elements.");
+        sbConstructor.WriteLineIndented($"constructor(source:Partial<{_namespaceInterfaces}.I{typeName}>) {{");
+        sbConstructor.IncreaseIndent();
+
+        if (hasParent)
+        {
+            sbConstructor.WriteLineIndented($"super(source);");
+        }
 
         if (!string.IsNullOrEmpty(resourceNameForValidation))
         {
-            sbClass.WriteLineIndented(
+            sbConstructor.WriteLineIndented(
                 $"if ((source['resourceType'] !== \"{resourceNameForValidation}\") || (source['resourceType'] !== undefined))" +
                 $" {{ throw 'Invalid resourceType for a {resourceNameForValidation}'; }}");
         }
 
+        // HasRequired - open
+        WriteIndentedComment(sbHasRequired, $"Check if the current {typeName} contains all required elements.");
+        sbHasRequired.WriteLineIndented("checkRequiredElements():string[] {");
+        sbHasRequired.IncreaseIndent();
+        sbHasRequired.WriteLineIndented("var missingElements:string[] = [];");
+
         foreach (KeyValuePair<string, string> fieldAndType in fieldsAndTypes)
         {
+            //if ((typeName == "BundleEntry") && (fieldAndType.Key.Contains("resource", StringComparison.OrdinalIgnoreCase)))
+            //{
+            //    Console.Write("");
+            //}
+
             isOptional = fieldAndType.Key.EndsWith('?');
             isArray = fieldAndType.Value.EndsWith(']');
 
-            genericCast = _genericTypeHints.Contains(fieldAndType.Value)
-                ? $" as unknown as {fieldAndType.Value}"
-                : string.Empty;
+            //genericCast = _genericTypeHints.Contains(fieldAndType.Value)
+            //    ? $" as {fieldAndType.Value}|undefined"
+            //    : string.Empty;
 
             if (isOptional)
             {
@@ -954,152 +1015,226 @@ public sealed class TypeScript2 : ILanguage
 
             if (isArray)
             {
-                // remove array syntax
+                // remove array syntax from type
                 string value = fieldAndType.Value.Substring(0, fieldAndType.Value.Length - 2);
 
-                sbClass.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{");
-                sbClass.IncreaseIndent();
-
-                if (!fieldAndType.Value.StartsWith(_namespaceModels))
+                if (value.Equals($"{_namespaceModels}.FhirResource", StringComparison.Ordinal))
                 {
-                    sbClass.WriteLineIndented($"dest.{name} = [...source.{name}{genericCast}];");
+                    sbConstructor.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{");
+                    sbConstructor.IncreaseIndent();
+                    sbConstructor.WriteLineIndented($"this.{name} = [];");
+                    sbConstructor.WriteLineIndented($"source.{name}.forEach((x) => {{");
+                    sbConstructor.IncreaseIndent();
+                    sbConstructor.WriteLineIndented($"var r = {_namespaceModels}.FhirResourceFactory(x);");
+                    sbConstructor.WriteLineIndented($"if (r) {{ this.{name}!.push(r); }}");
+                    sbConstructor.CloseScope("});");
+                    sbConstructor.CloseScope();
                 }
-                else if (!string.IsNullOrEmpty(genericCast))
+                else if (_genericTypeHints.Contains(fieldAndType.Value))
                 {
-                    sbClass.WriteLineIndented(
-                        $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined)" +
+                        $" {{ this.{name} = source.{name}.map((x) => new {value}(x)); }}");
+
+                    //sbConstructor.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{");
+                    //sbConstructor.IncreaseIndent();
+                    //sbConstructor.WriteLineIndented($"this.{name} = [];");
+                    //sbConstructor.WriteLineIndented($"source.{name}.forEach((x) => {{");
+                    //sbConstructor.IncreaseIndent();
+                    //sbConstructor.WriteLineIndented($"var r = {_namespaceModels}.FhirResourceFactory(x);");
+                    //sbConstructor.WriteLineIndented($"if (r) {{ this.{name}!.push(r as {value}); }}");
+                    //sbConstructor.CloseScope("});");
+                    //sbConstructor.CloseScope();
+                }
+                else if (!fieldAndType.Value.StartsWith(_namespaceModels))
+                {
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined)" +
+                        $" {{ this.{name} = source.{name}.map((x) => (x)); }}");
                 }
                 else
                 {
-                    sbClass.WriteLineIndented(
-                        $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined)" +
+                        $" {{ this.{name} = source.{name}.map((x) => new {value}(x)); }}");
                 }
 
-                sbClass.CloseScope();
+                if (!isOptional)
+                {
+                    sbHasRequired.WriteLineIndented(
+                        $"if ((this[\"{name}\"] === undefined) ||" +
+                        $" (this[\"{name}\"].length === 0))" +
+                        $" {{ missingElements.push(\"{name}\"); }}");
+                }
             }
             else
             {
-                if (!fieldAndType.Value.StartsWith(_namespaceModels))
+                if (fieldAndType.Value.Equals($"{_namespaceModels}.FhirResource", StringComparison.Ordinal))
                 {
-                    sbClass.WriteLineIndented(
+                    sbConstructor.WriteLineIndented(
                         $"if (source[\"{name}\"] !== undefined)" +
-                        $" {{ dest.{name} = source.{name}{genericCast}; }}");
+                        $" {{ this.{name} = ({_namespaceModels}.FhirResourceFactory(source.{name}) ?? undefined); }}");
                 }
-                else if (!string.IsNullOrEmpty(genericCast))
+                else if (_genericTypeHints.Contains(fieldAndType.Value))
                 {
-                    sbClass.WriteLineIndented(
+                    sbConstructor.WriteLineIndented(
+                        $"if (source[\"{name}\"] !== undefined) {{" +
+                        $" this.{name} = ({_namespaceModels}.FhirResourceFactory(source.{name}) ?? undefined)" +
+                        $" as unknown as {fieldAndType.Value}|undefined;" +
+                        $" }}");
+                }
+                else if (!fieldAndType.Value.StartsWith(_namespaceModels))
+                {
+                    sbConstructor.WriteLineIndented(
                         $"if (source[\"{name}\"] !== undefined)" +
-                        $" {{ dest.{name} = {fieldAndType.Value}.CreatePartial(source.{name}{genericCast}); }}");
+                        $" {{ this.{name} = source.{name}; }}");
+                        //$" {{ this.{name} = source.{name}{genericCast}; }}");
                 }
                 else
                 {
-                    sbClass.WriteLineIndented(
+                    sbConstructor.WriteLineIndented(
                         $"if (source[\"{name}\"] !== undefined)" +
-                        $" {{ dest.{name} = {fieldAndType.Value}.CreatePartial(source.{name}); }}");
+                        $" {{ this.{name} = new {fieldAndType.Value}(source.{name}); }}");
+                }
+
+                if (!isOptional)
+                {
+                    sbHasRequired.WriteLineIndented(
+                        $"if (this[\"{name}\"] === undefined)" +
+                        $" {{ missingElements.push(\"{name}\"); }}");
                 }
             }
         }
-
-        sbClass.WriteLineIndented("return dest;");
 
         // CreatePartial - close
-        sbClass.CloseScope();
+        sbConstructor.CloseScope();
+
+        // HasRequired - close
+        if (hasParent)
+        {
+            sbHasRequired.WriteLineIndented("var parentMissing:string[] = super.checkRequiredElements();");
+            sbHasRequired.WriteLineIndented("missingElements.push(...parentMissing);");
+        }
+
+        sbHasRequired.WriteLineIndented("return missingElements;");
+        sbHasRequired.CloseScope();
 
         // CreateStrict - open
-        WriteIndentedComment(sbClass, $"Factory function to create a {typeName} from an object that MUST contain all required elements.");
-        sbClass.WriteLineIndented(
+        WriteIndentedComment(sbStrict, $"Factory function to create a {typeName} from an object that MUST contain all required elements.");
+        sbStrict.WriteLineIndented(
             $"static CreateStrict(source:{_namespaceInterfaces}.I{typeName})" +
             $":{typeName} {{");
-        sbClass.IncreaseIndent();
+        sbStrict.IncreaseIndent();
 
-        sbClass.WriteLineIndented($"var dest:{typeName} = new {typeName}();");
-
-        if (!string.IsNullOrEmpty(resourceNameForValidation))
-        {
-            sbClass.WriteLineIndented(
-                $"if ((source['resourceType'] !== \"{resourceNameForValidation}\") || (source['resourceType'] !== undefined))" +
-                $" {{ throw 'Invalid resourceType for a {resourceNameForValidation}'; }}");
-        }
-
-        foreach (KeyValuePair<string, string> fieldAndType in fieldsAndTypes)
-        {
-            isOptional = fieldAndType.Key.EndsWith('?');
-            isArray = fieldAndType.Value.EndsWith(']');
-
-            genericCast = _genericTypeHints.Contains(fieldAndType.Value)
-                ? $" as unknown as {fieldAndType.Value}"
-                : string.Empty;
-
-            if (isArray)
-            {
-                // remove array syntax
-                string value = fieldAndType.Value.Substring(0, fieldAndType.Value.Length - 2);
-
-                if (isOptional)
-                {
-                    name = fieldAndType.Key.Substring(0, fieldAndType.Key.Length - 1);
-
-                    sbClass.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{");
-                    sbClass.IncreaseIndent();
-
-                    if (!fieldAndType.Value.StartsWith(_namespaceModels))
-                    {
-                        sbClass.WriteLineIndented($"dest.{name} = [...source.{name}{genericCast}];");
-                    }
-                    else if (!string.IsNullOrEmpty(genericCast))
-                    {
-                        sbClass.WriteLineIndented(
-                            $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
-                    }
-                    else
-                    {
-                        sbClass.WriteLineIndented(
-                            $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
-                    }
-
-                    sbClass.CloseScope();
-                }
-                else
-                {
-                    name = fieldAndType.Key;
-
-                    sbClass.WriteLineIndented($"if (source[\"{name}\"] === undefined) {{ throw 'Missing required element {name}';}}");
-                    if (!fieldAndType.Value.StartsWith(_namespaceModels))
-                    {
-                        sbClass.WriteLineIndented($"dest.{name} = [...source.{name}{genericCast}];");
-                    }
-                    else if (!string.IsNullOrEmpty(genericCast))
-                    {
-                        sbClass.WriteLineIndented(
-                            $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
-                    }
-                    else
-                    {
-                        sbClass.WriteLineIndented(
-                            $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
-                    }
-                }
-            }
-            else
-            {
-                if (isOptional)
-                {
-                    name = fieldAndType.Key.Substring(0, fieldAndType.Key.Length - 1);
-                    sbClass.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{ dest.{name} = source.{name}{genericCast}; }}");
-                }
-                else
-                {
-                    name = fieldAndType.Key;
-                    sbClass.WriteLineIndented($"if (source[\"{name}\"] === undefined) {{ throw 'Missing required element {name}';}}");
-                    sbClass.WriteLineIndented($"dest.{name} = source.{name}{genericCast};");
-                }
-            }
-        }
-
-        sbClass.WriteLineIndented("return dest;");
+        sbStrict.WriteLineIndented($"var dest:{typeName} = new {typeName}(source);");
+        sbStrict.WriteLineIndented("var missingElements:string[] = dest.checkRequiredElements();");
+        sbStrict.WriteLineIndented("if (missingElements.length !== 0) {");
+        sbStrict.WriteLineIndented($"throw `{typeName} is missing elements: ${{missingElements.join(\", \")}}`");
+        sbStrict.WriteLineIndented(" }");
+        sbStrict.WriteLineIndented($"return dest;");
 
         // CreateStrict - close
-        sbClass.CloseScope();
+        sbStrict.CloseScope();
+
+        sbClass.Append(sbConstructor);
+        sbClass.Append(sbHasRequired);
+        sbClass.Append(sbStrict);
+
+        //// CreateStrict - open
+        //WriteIndentedComment(sbClass, $"Factory function to create a {typeName} from an object that MUST contain all required elements.");
+        //sbClass.WriteLineIndented(
+        //    $"static CreateStrict(source:{_namespaceInterfaces}.I{typeName})" +
+        //    $":{typeName} {{");
+        //sbClass.IncreaseIndent();
+
+        //sbClass.WriteLineIndented($"var dest:{typeName} = new {typeName}();");
+
+        //if (!string.IsNullOrEmpty(resourceNameForValidation))
+        //{
+        //    sbClass.WriteLineIndented(
+        //        $"if ((source['resourceType'] !== \"{resourceNameForValidation}\") || (source['resourceType'] !== undefined))" +
+        //        $" {{ throw 'Invalid resourceType for a {resourceNameForValidation}'; }}");
+        //}
+
+        //foreach (KeyValuePair<string, string> fieldAndType in fieldsAndTypes)
+        //{
+        //    isOptional = fieldAndType.Key.EndsWith('?');
+        //    isArray = fieldAndType.Value.EndsWith(']');
+
+        //    genericCast = _genericTypeHints.Contains(fieldAndType.Value)
+        //        ? $" as unknown as {fieldAndType.Value}"
+        //        : string.Empty;
+
+        //    if (isArray)
+        //    {
+        //        // remove array syntax
+        //        string value = fieldAndType.Value.Substring(0, fieldAndType.Value.Length - 2);
+
+        //        if (isOptional)
+        //        {
+        //            name = fieldAndType.Key.Substring(0, fieldAndType.Key.Length - 1);
+
+        //            sbClass.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{");
+        //            sbClass.IncreaseIndent();
+
+        //            if (!fieldAndType.Value.StartsWith(_namespaceModels))
+        //            {
+        //                sbClass.WriteLineIndented($"dest.{name} = [...source.{name}{genericCast}];");
+        //            }
+        //            else if (!string.IsNullOrEmpty(genericCast))
+        //            {
+        //                sbClass.WriteLineIndented(
+        //                    $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
+        //            }
+        //            else
+        //            {
+        //                sbClass.WriteLineIndented(
+        //                    $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
+        //            }
+
+        //            sbClass.CloseScope();
+        //        }
+        //        else
+        //        {
+        //            name = fieldAndType.Key;
+
+        //            sbClass.WriteLineIndented($"if (source[\"{name}\"] === undefined) {{ throw 'Missing required element {name}';}}");
+        //            if (!fieldAndType.Value.StartsWith(_namespaceModels))
+        //            {
+        //                sbClass.WriteLineIndented($"dest.{name} = [...source.{name}{genericCast}];");
+        //            }
+        //            else if (!string.IsNullOrEmpty(genericCast))
+        //            {
+        //                sbClass.WriteLineIndented(
+        //                    $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
+        //            }
+        //            else
+        //            {
+        //                sbClass.WriteLineIndented(
+        //                    $"dest.{name} = source.{name}.map((x) => {value}.CreatePartial(x));");
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (isOptional)
+        //        {
+        //            name = fieldAndType.Key.Substring(0, fieldAndType.Key.Length - 1);
+        //            sbClass.WriteLineIndented($"if (source[\"{name}\"] !== undefined) {{ dest.{name} = source.{name}{genericCast}; }}");
+        //        }
+        //        else
+        //        {
+        //            name = fieldAndType.Key;
+        //            sbClass.WriteLineIndented($"if (source[\"{name}\"] === undefined) {{ throw 'Missing required element {name}';}}");
+        //            sbClass.WriteLineIndented($"dest.{name} = source.{name}{genericCast};");
+        //        }
+        //    }
+        //}
+
+        //sbClass.WriteLineIndented("return dest;");
+
+        //// CreateStrict - close
+        //sbClass.CloseScope();
     }
 
     /// <summary>Writes a constructor.</summary>
@@ -1277,7 +1412,7 @@ public sealed class TypeScript2 : ILanguage
     /// <param name="element">       The element.</param>
     /// <param name="sbInterface">   The interface.</param>
     /// <param name="sbClass">       The class.</param>
-    /// <param name="fieldsAndTypes">[in,out] List of types of the fields ands.</param>
+    /// <param name="fieldsAndTypes">[in,out] List of field names and types.</param>
     private void BuildElement(
         FhirComplex complex,
         FhirElement element,
@@ -1351,6 +1486,7 @@ public sealed class TypeScript2 : ILanguage
             }
             else if (_genericsAndTypeHints.ContainsKey(element.Path))
             {
+                //       this.resource = fhirModels.FhirResourceFactory(source.resource) as unknown as BundleContentType;
                 GenericTypeHintInfo typeHint = _genericsAndTypeHints[element.Path];
 
                 if (typeHint.IncludeBase)
@@ -1380,11 +1516,18 @@ public sealed class TypeScript2 : ILanguage
             }
 
             // TODO(gino): interface probably needs to check for sub-type being interface too...
-
             if (nameAndType.Value.Contains(_namespaceModels))
             {
                 string replacement = nameAndType.Value.Replace(_namespaceModels + ".", _namespaceInterfaces + ".I");
                 sbInterface.WriteLineIndented($"{nameAndType.Key}: {replacement}|undefined;");
+            }
+            else if (nameAndType.Value.Contains('<', StringComparison.Ordinal))
+            {
+                sbInterface.WriteLineIndented($"{nameAndType.Key}: I{nameAndType.Value}|undefined;");
+            }
+            else
+            {
+                sbInterface.WriteLineIndented($"{nameAndType.Key}: {nameAndType.Value}|undefined;");
             }
 
             sbClass.WriteLineIndented($"{nameAndType.Key}: {nameAndType.Value}|undefined;");

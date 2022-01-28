@@ -109,6 +109,13 @@ public class ExportStringBuilder
         _charsPerLevel = charsPerIndentLevel;
     }
 
+    /// <summary>Appends a sb.</summary>
+    /// <param name="sb">The string builder.</param>
+    public void Append(ExportStringBuilder sb)
+    {
+        _sb.Append(sb._sb.ToString());
+    }
+
     /// <summary>Writes.</summary>
     /// <param name="value">The value.</param>
     public void Write(string value)
