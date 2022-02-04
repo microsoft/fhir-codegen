@@ -3,543 +3,540 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Text.Json;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
-namespace Microsoft.Health.Fhir.SpecManager.Manager
+namespace Microsoft.Health.Fhir.SpecManager.Manager;
+
+/// <summary>A FHIR Specification Package loader (e.g., R4).</summary>
+public abstract class FhirSpecificationLoader
 {
-    /// <summary>A FHIR Specification Package loader (e.g., R4).</summary>
-    public abstract class FhirSpecificationLoader
+    /// <summary>Searches for a specification package.</summary>
+    /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+    /// <param name="releaseName">      The release name (e.g., R4, DSTU2).</param>
+    /// <param name="packageName">      Name of the package.</param>
+    /// <param name="version">          The version string (e.g., 4.0.1).</param>
+    /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
+    /// <param name="versionDirectory"> [out] Pathname of the version directory.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool TryFindPackage(
+        string releaseName,
+        string packageName,
+        string version,
+        string fhirSpecDirectory,
+        out string versionDirectory)
     {
-        /// <summary>Searches for a specification package.</summary>
-        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-        /// <param name="releaseName">      The release name (e.g., R4, DSTU2).</param>
-        /// <param name="packageName">      Name of the package.</param>
-        /// <param name="version">          The version string (e.g., 4.0.1).</param>
-        /// <param name="fhirSpecDirectory">Pathname of the FHIR spec directory.</param>
-        /// <param name="versionDirectory"> [out] Pathname of the version directory.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        public static bool TryFindPackage(
-            string releaseName,
-            string packageName,
-            string version,
-            string fhirSpecDirectory,
-            out string versionDirectory)
+        versionDirectory = null;
+
+        if (string.IsNullOrEmpty(fhirSpecDirectory))
         {
-            versionDirectory = null;
+            throw new ArgumentNullException(nameof(fhirSpecDirectory));
+        }
 
-            if (string.IsNullOrEmpty(fhirSpecDirectory))
-            {
-                throw new ArgumentNullException(nameof(fhirSpecDirectory));
-            }
+        if (string.IsNullOrEmpty(releaseName))
+        {
+            throw new ArgumentNullException(nameof(releaseName));
+        }
 
-            if (string.IsNullOrEmpty(releaseName))
-            {
-                throw new ArgumentNullException(nameof(releaseName));
-            }
+        if (string.IsNullOrEmpty(packageName))
+        {
+            throw new ArgumentNullException(nameof(packageName));
+        }
 
-            if (string.IsNullOrEmpty(packageName))
-            {
-                throw new ArgumentNullException(nameof(packageName));
-            }
+        if (string.IsNullOrEmpty(version))
+        {
+            throw new ArgumentNullException(nameof(version));
+        }
 
-            if (string.IsNullOrEmpty(version))
-            {
-                throw new ArgumentNullException(nameof(version));
-            }
+        // check for finding the directory
+        string packageDir = Path.Combine(
+            fhirSpecDirectory,
+            $"{packageName}-{version}",
+            "package");
 
-            // check for finding the directory
-            string packageDir = Path.Combine(
-                fhirSpecDirectory,
-                $"{packageName}-{version}",
-                "package");
+        if (!Directory.Exists(packageDir))
+        {
+            // check for NPM installed version
+            packageDir = Path.Combine(fhirSpecDirectory, "node_modules", packageName);
 
             if (!Directory.Exists(packageDir))
             {
-                // check for NPM installed version
-                packageDir = Path.Combine(fhirSpecDirectory, "node_modules", packageName);
-
-                if (!Directory.Exists(packageDir))
-                {
-                    Console.WriteLine($"Cannot find {releaseName}-{packageName} in {fhirSpecDirectory}");
-                    return false;
-                }
-            }
-
-            // set our directory
-            versionDirectory = packageDir;
-            return true;
-        }
-
-        /// <summary>Loads a local build of the FHIR specification.</summary>
-        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-        /// <param name="localPublishDirectory"> Local FHIR Publish directory.</param>
-        /// <param name="fhirSpecDirectory">     Pathname of the FHIR spec directory.</param>
-        /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>
-        /// <param name="localLoadType">         Type of the local load.</param>
-        /// <param name="officialExpansionsOnly">True to official expansions only.</param>
-        public static void LoadLocalBuild(
-            string localPublishDirectory,
-            string fhirSpecDirectory,
-            ref FhirVersionInfo fhirVersionInfo,
-            string localLoadType,
-            bool officialExpansionsOnly)
-        {
-            // sanity checks
-            if (fhirVersionInfo == null)
-            {
-                Console.WriteLine($"LoadLocalBuild <<< invalid version info is NULL, cannot load {localPublishDirectory}");
-                throw new ArgumentNullException(nameof(fhirVersionInfo));
-            }
-
-            // tell the user what's going on
-            Console.WriteLine(
-                $"LoadLocalBuild <<<" +
-                $" Found: {fhirVersionInfo.PackageName}" +
-                $" version: {fhirVersionInfo.VersionString}" +
-                $" build: {fhirVersionInfo.ReleaseName}");
-
-            string expansionDir;
-            string packageDir;
-
-            if (localLoadType == "latest")
-            {
-                FhirPackageDownloader.CopyAndExtract(
-                    localPublishDirectory,
-                    fhirVersionInfo.ExpansionsPackageName,
-                    fhirVersionInfo.VersionString,
-                    fhirSpecDirectory,
-                    out expansionDir);
-
-                expansionDir = Path.Combine(expansionDir, "package");
-            }
-            else
-            {
-                expansionDir = Path.Combine(
-                    fhirSpecDirectory,
-                    $"local-{fhirVersionInfo.ExpansionsPackageName}-{fhirVersionInfo.VersionString}",
-                    "package");
-            }
-
-            // load package info
-            FhirPackageInfo expansionPackageInfo = FhirPackageInfo.Load(expansionDir);
-
-            // tell the user what's going on
-            Console.WriteLine($"LoadLocalBuild <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
-
-            if (localLoadType == "latest")
-            {
-                FhirPackageDownloader.CopyAndExtract(
-                    localPublishDirectory,
-                    fhirVersionInfo.PackageName,
-                    fhirVersionInfo.VersionString,
-                    fhirSpecDirectory,
-                    out packageDir);
-
-                packageDir = Path.Combine(packageDir, "package");
-            }
-            else
-            {
-                packageDir = Path.Combine(
-                    fhirSpecDirectory,
-                    $"local-{fhirVersionInfo.PackageName}-{fhirVersionInfo.VersionString}",
-                    "package");
-            }
-
-            // load package info
-            FhirPackageInfo packageInfo = FhirPackageInfo.Load(packageDir);
-
-            // tell the user what's going on
-            Console.WriteLine($"LoadLocalBuild <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
-
-            // update our structure
-            fhirVersionInfo.VersionString = packageInfo.Version;
-
-            HashSet<string> processedFiles = new HashSet<string>();
-
-            // process Code Systems
-            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
-
-            // process Value Set expansions
-            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
-
-            if (!officialExpansionsOnly)
-            {
-                ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
-            }
-
-            // process structure definitions
-            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
-
-            // process search parameters (adds to resources)
-            ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
-
-            // process operations (adds to resources and version info (server level))
-            ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
-
-            // add version-specific "MAGIC" items
-            AddSearchMagicParameters(ref fhirVersionInfo);
-
-            // make sure we cleared the last line
-            Console.WriteLine($"LoadLocalBuild <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
-        }
-
-        /// <summary>Loads a cached version of FHIR.</summary>
-        /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
-        ///  null.</exception>
-        /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
-        ///  present.</exception>
-        /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>
-        /// <param name="officialExpansionsOnly">True to official expansions only.</param>
-        public static void LoadCached(
-            ref FhirVersionInfo fhirVersionInfo,
-            bool officialExpansionsOnly)
-        {
-            if (fhirVersionInfo == null)
-            {
-                throw new ArgumentNullException(nameof(fhirVersionInfo));
-            }
-
-            string fhirCacheDir = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                ".fhir",
-                "packages");
-
-            if (!Directory.Exists(fhirCacheDir))
-            {
-                throw new DirectoryNotFoundException($"Could not find FHIR cache directory: {fhirCacheDir}.");
-            }
-
-            string core = fhirVersionInfo.PackageName + "#" + fhirVersionInfo.VersionString;
-            string coreDir = Path.Combine(fhirCacheDir, core, "package");
-
-            string expansion = fhirVersionInfo.ExpansionsPackageName + "#" + fhirVersionInfo.VersionString;
-            string expansionDir = Path.Combine(fhirCacheDir, expansion, "package");
-
-            if (!Directory.Exists(coreDir))
-            {
-                throw new DirectoryNotFoundException($"Could not find FHIR cached package: {coreDir}.");
-            }
-
-            if (!Directory.Exists(expansionDir))
-            {
-                throw new DirectoryNotFoundException($"Could not find FHIR cached package: {expansionDir}.");
-            }
-
-            HashSet<string> processedFiles = new HashSet<string>();
-
-            // process Code Systems
-            ProcessFileGroup(coreDir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
-
-            // process Value Set expansions
-            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
-
-            // process other value set definitions (if requested)
-            if (!officialExpansionsOnly)
-            {
-                ProcessFileGroup(coreDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
-            }
-
-            // process structure definitions
-            ProcessFileGroup(coreDir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
-
-            // process search parameters (adds to resources)
-            ProcessFileGroup(coreDir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
-
-            // process operations (adds to resources and version info (server level))
-            ProcessFileGroup(coreDir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
-
-            // add version-specific "MAGIC" items
-            AddSearchMagicParameters(ref fhirVersionInfo);
-
-            if (fhirVersionInfo.ConverterHasIssues(out int errorCount, out int warningCount))
-            {
-                // make sure we cleared the last line
-                Console.WriteLine($"LoadCached <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}" +
-                    $" with {errorCount} errors" +
-                    $" and {warningCount} warnings" +
-                    $"{new string(' ', 100)}");
-                fhirVersionInfo.DisplayConverterIssues();
-            }
-            else
-            {
-                // make sure we cleared the last line
-                Console.WriteLine($"LoadCached <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+                Console.WriteLine($"Cannot find {releaseName}-{packageName} in {fhirSpecDirectory}");
+                return false;
             }
         }
 
-        /// <summary>Loads a FHIR Specification package.</summary>
-        /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
-        /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
-        /// <param name="fhirSpecDirectory">     Pathname of the FHIR spec directory.</param>
-        /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>
-        /// <param name="officialExpansionsOnly">True to official expansions only.</param>
-        public static void LoadPackage(
-            string fhirSpecDirectory,
-            ref FhirVersionInfo fhirVersionInfo,
-            bool officialExpansionsOnly)
-        {
-            // sanity checks
-            if (fhirVersionInfo == null)
-            {
-                Console.WriteLine($"LoadPackage <<< invalid version info is NULL, cannot load {fhirSpecDirectory}");
-                throw new ArgumentNullException(nameof(fhirVersionInfo));
-            }
+        // set our directory
+        versionDirectory = packageDir;
+        return true;
+    }
 
-            // first load value sets
-            if (!TryFindPackage(
-                fhirVersionInfo.ReleaseName,
+    /// <summary>Loads a local build of the FHIR specification.</summary>
+    /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+    /// <param name="localPublishDirectory"> Local FHIR Publish directory.</param>
+    /// <param name="fhirSpecDirectory">     Pathname of the FHIR spec directory.</param>
+    /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>
+    /// <param name="localLoadType">         Type of the local load.</param>
+    /// <param name="officialExpansionsOnly">True to official expansions only.</param>
+    public static void LoadLocalBuild(
+        string localPublishDirectory,
+        string fhirSpecDirectory,
+        ref FhirVersionInfo fhirVersionInfo,
+        string localLoadType,
+        bool officialExpansionsOnly)
+    {
+        // sanity checks
+        if (fhirVersionInfo == null)
+        {
+            Console.WriteLine($"LoadLocalBuild <<< invalid version info is NULL, cannot load {localPublishDirectory}");
+            throw new ArgumentNullException(nameof(fhirVersionInfo));
+        }
+
+        // tell the user what's going on
+        Console.WriteLine(
+            $"LoadLocalBuild <<<" +
+            $" Found: {fhirVersionInfo.PackageName}" +
+            $" version: {fhirVersionInfo.VersionString}" +
+            $" build: {fhirVersionInfo.ReleaseName}");
+
+        string expansionDir;
+        string packageDir;
+
+        if (localLoadType == "latest")
+        {
+            FhirPackageDownloader.CopyAndExtract(
+                localPublishDirectory,
                 fhirVersionInfo.ExpansionsPackageName,
                 fhirVersionInfo.VersionString,
                 fhirSpecDirectory,
-                out string expansionDir))
-            {
-                Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.ExpansionsPackageName}!");
-                throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.ExpansionsPackageName}");
-            }
+                out expansionDir);
 
-            // load package info
-            FhirPackageInfo expansionPackageInfo = FhirPackageInfo.Load(expansionDir);
-
-            // tell the user what's going on
-            Console.WriteLine($"LoadPackage <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
-
-            // find the package
-            if (!TryFindPackage(
-                    fhirVersionInfo.ReleaseName,
-                    fhirVersionInfo.PackageName,
-                    fhirVersionInfo.VersionString,
-                    fhirSpecDirectory,
-                    out string packageDir))
-            {
-                Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.PackageName}!");
-                throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.PackageName}");
-            }
-
-            // load package info
-            FhirPackageInfo packageInfo = FhirPackageInfo.Load(packageDir);
-
-            // tell the user what's going on
-            Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
-
-            // update our structure
-            fhirVersionInfo.VersionString = packageInfo.Version;
-
-            HashSet<string> processedFiles = new HashSet<string>();
-
-            // process Code Systems
-            ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
-
-            // process Value Set expansions
-            ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
-
-            // process other value set definitions (if requested)
-            if (!officialExpansionsOnly)
-            {
-                ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
-            }
-
-            // process structure definitions
-            ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
-
-            // process search parameters (adds to resources)
-            ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
-
-            // process operations (adds to resources and version info (server level))
-            ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
-
-            // add version-specific "MAGIC" items
-            AddSearchMagicParameters(ref fhirVersionInfo);
-
-            if (fhirVersionInfo.ConverterHasIssues(out int errorCount, out int warningCount))
-            {
-                // make sure we cleared the last line
-                Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}" +
-                    $" with {errorCount} errors" +
-                    $" and {warningCount} warnings" +
-                    $"{new string(' ', 100)}");
-                fhirVersionInfo.DisplayConverterIssues();
-            }
-            else
-            {
-                // make sure we cleared the last line
-                Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
-            }
+            expansionDir = Path.Combine(expansionDir, "package");
+        }
+        else
+        {
+            expansionDir = Path.Combine(
+                fhirSpecDirectory,
+                $"local-{fhirVersionInfo.ExpansionsPackageName}-{fhirVersionInfo.VersionString}",
+                "package");
         }
 
-        /// <summary>Adds the search magic parameters.</summary>
-        /// <param name="info">[in,out] The information.</param>
-        private static void AddSearchMagicParameters(ref FhirVersionInfo info)
+        // load package info
+        FhirPackageInfo expansionPackageInfo = FhirPackageInfo.Load(expansionDir);
+
+        // tell the user what's going on
+        Console.WriteLine($"LoadLocalBuild <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
+
+        if (localLoadType == "latest")
         {
-            switch (info.MajorVersion)
+            FhirPackageDownloader.CopyAndExtract(
+                localPublishDirectory,
+                fhirVersionInfo.PackageName,
+                fhirVersionInfo.VersionString,
+                fhirSpecDirectory,
+                out packageDir);
+
+            packageDir = Path.Combine(packageDir, "package");
+        }
+        else
+        {
+            packageDir = Path.Combine(
+                fhirSpecDirectory,
+                $"local-{fhirVersionInfo.PackageName}-{fhirVersionInfo.VersionString}",
+                "package");
+        }
+
+        // load package info
+        FhirPackageInfo packageInfo = FhirPackageInfo.Load(packageDir);
+
+        // tell the user what's going on
+        Console.WriteLine($"LoadLocalBuild <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
+
+        // update our structure
+        fhirVersionInfo.VersionString = packageInfo.Version;
+
+        HashSet<string> processedFiles = new HashSet<string>();
+
+        // process Code Systems
+        ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
+
+        // process Value Set expansions
+        ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+
+        if (!officialExpansionsOnly)
+        {
+            ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+        }
+
+        // process structure definitions
+        ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
+
+        // process search parameters (adds to resources)
+        ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
+
+        // process operations (adds to resources and version info (server level))
+        ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
+
+        // add version-specific "MAGIC" items
+        AddSearchMagicParameters(ref fhirVersionInfo);
+
+        // make sure we cleared the last line
+        Console.WriteLine($"LoadLocalBuild <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+    }
+
+    /// <summary>Loads a cached version of FHIR.</summary>
+    /// <exception cref="ArgumentNullException">     Thrown when one or more required arguments are
+    ///  null.</exception>
+    /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
+    ///  present.</exception>
+    /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>
+    /// <param name="officialExpansionsOnly">True to official expansions only.</param>
+    public static void LoadCached(
+        ref FhirVersionInfo fhirVersionInfo,
+        bool officialExpansionsOnly)
+    {
+        if (fhirVersionInfo == null)
+        {
+            throw new ArgumentNullException(nameof(fhirVersionInfo));
+        }
+
+        string fhirCacheDir = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+            ".fhir",
+            "packages");
+
+        if (!Directory.Exists(fhirCacheDir))
+        {
+            throw new DirectoryNotFoundException($"Could not find FHIR cache directory: {fhirCacheDir}.");
+        }
+
+        string core = fhirVersionInfo.PackageName + "#" + fhirVersionInfo.VersionString;
+        string coreDir = Path.Combine(fhirCacheDir, core, "package");
+
+        string expansion = fhirVersionInfo.ExpansionsPackageName + "#" + fhirVersionInfo.VersionString;
+        string expansionDir = Path.Combine(fhirCacheDir, expansion, "package");
+
+        if (!Directory.Exists(coreDir))
+        {
+            throw new DirectoryNotFoundException($"Could not find FHIR cached package: {coreDir}.");
+        }
+
+        if (!Directory.Exists(expansionDir))
+        {
+            throw new DirectoryNotFoundException($"Could not find FHIR cached package: {expansionDir}.");
+        }
+
+        HashSet<string> processedFiles = new HashSet<string>();
+
+        // process Code Systems
+        ProcessFileGroup(coreDir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
+
+        // process Value Set expansions
+        ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+
+        // process other value set definitions (if requested)
+        if (!officialExpansionsOnly)
+        {
+            ProcessFileGroup(coreDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+        }
+
+        // process structure definitions
+        ProcessFileGroup(coreDir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
+
+        // process search parameters (adds to resources)
+        ProcessFileGroup(coreDir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
+
+        // process operations (adds to resources and version info (server level))
+        ProcessFileGroup(coreDir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
+
+        // add version-specific "MAGIC" items
+        AddSearchMagicParameters(ref fhirVersionInfo);
+
+        if (fhirVersionInfo.ConverterHasIssues(out int errorCount, out int warningCount))
+        {
+            // make sure we cleared the last line
+            Console.WriteLine($"LoadCached <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}" +
+                $" with {errorCount} errors" +
+                $" and {warningCount} warnings" +
+                $"{new string(' ', 100)}");
+            fhirVersionInfo.DisplayConverterIssues();
+        }
+        else
+        {
+            // make sure we cleared the last line
+            Console.WriteLine($"LoadCached <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+        }
+    }
+
+    /// <summary>Loads a FHIR Specification package.</summary>
+    /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
+    /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
+    /// <param name="fhirSpecDirectory">     Pathname of the FHIR spec directory.</param>
+    /// <param name="fhirVersionInfo">       [in,out] Information describing the FHIR version.</param>
+    /// <param name="officialExpansionsOnly">True to official expansions only.</param>
+    public static void LoadPackage(
+        string fhirSpecDirectory,
+        ref FhirVersionInfo fhirVersionInfo,
+        bool officialExpansionsOnly)
+    {
+        // sanity checks
+        if (fhirVersionInfo == null)
+        {
+            Console.WriteLine($"LoadPackage <<< invalid version info is NULL, cannot load {fhirSpecDirectory}");
+            throw new ArgumentNullException(nameof(fhirVersionInfo));
+        }
+
+        // first load value sets
+        if (!TryFindPackage(
+            fhirVersionInfo.ReleaseName,
+            fhirVersionInfo.ExpansionsPackageName,
+            fhirVersionInfo.VersionString,
+            fhirSpecDirectory,
+            out string expansionDir))
+        {
+            Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.ExpansionsPackageName}!");
+            throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.ExpansionsPackageName}");
+        }
+
+        // load package info
+        FhirPackageInfo expansionPackageInfo = FhirPackageInfo.Load(expansionDir);
+
+        // tell the user what's going on
+        Console.WriteLine($"LoadPackage <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
+
+        // find the package
+        if (!TryFindPackage(
+                fhirVersionInfo.ReleaseName,
+                fhirVersionInfo.PackageName,
+                fhirVersionInfo.VersionString,
+                fhirSpecDirectory,
+                out string packageDir))
+        {
+            Console.WriteLine($"LoadPackage <<< cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.PackageName}!");
+            throw new FileNotFoundException($"Cannot find package for {fhirVersionInfo.ReleaseName}: {fhirVersionInfo.PackageName}");
+        }
+
+        // load package info
+        FhirPackageInfo packageInfo = FhirPackageInfo.Load(packageDir);
+
+        // tell the user what's going on
+        Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
+
+        // update our structure
+        fhirVersionInfo.VersionString = packageInfo.Version;
+
+        HashSet<string> processedFiles = new HashSet<string>();
+
+        // process Code Systems
+        ProcessFileGroup(packageDir, "CodeSystem", ref fhirVersionInfo, ref processedFiles);
+
+        // process Value Set expansions
+        ProcessFileGroup(expansionDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+
+        // process other value set definitions (if requested)
+        if (!officialExpansionsOnly)
+        {
+            ProcessFileGroup(packageDir, "ValueSet", ref fhirVersionInfo, ref processedFiles);
+        }
+
+        // process structure definitions
+        ProcessFileGroup(packageDir, "StructureDefinition", ref fhirVersionInfo, ref processedFiles);
+
+        // process search parameters (adds to resources)
+        ProcessFileGroup(packageDir, "SearchParameter", ref fhirVersionInfo, ref processedFiles);
+
+        // process operations (adds to resources and version info (server level))
+        ProcessFileGroup(packageDir, "OperationDefinition", ref fhirVersionInfo, ref processedFiles);
+
+        // add version-specific "MAGIC" items
+        AddSearchMagicParameters(ref fhirVersionInfo);
+
+        if (fhirVersionInfo.ConverterHasIssues(out int errorCount, out int warningCount))
+        {
+            // make sure we cleared the last line
+            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}" +
+                $" with {errorCount} errors" +
+                $" and {warningCount} warnings" +
+                $"{new string(' ', 100)}");
+            fhirVersionInfo.DisplayConverterIssues();
+        }
+        else
+        {
+            // make sure we cleared the last line
+            Console.WriteLine($"LoadPackage <<< Loaded and Parsed FHIR {fhirVersionInfo.ReleaseName}{new string(' ', 100)}");
+        }
+    }
+
+    /// <summary>Adds the search magic parameters.</summary>
+    /// <param name="info">[in,out] The information.</param>
+    private static void AddSearchMagicParameters(ref FhirVersionInfo info)
+    {
+        switch (info.MajorEnum)
+        {
+            case FhirVersionInfo.FhirMajorRelease.DSTU2:
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_content", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_list", "string");
+
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_sort", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_count", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_include", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_revinclude", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_summary", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_elements", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_contained", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_containedType", "string");
+
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_format", "string");
+                break;
+
+            case FhirVersionInfo.FhirMajorRelease.STU3:
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_text", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_content", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_list", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_has", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_type", "string");
+
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_sort", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_count", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_include", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_revinclude", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_summary", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_elements", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_contained", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_containedType", "string");
+
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_format", "string");
+
+                break;
+
+            case FhirVersionInfo.FhirMajorRelease.R4:
+            case FhirVersionInfo.FhirMajorRelease.R4B:
+            case FhirVersionInfo.FhirMajorRelease.R5:
+            default:
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_text", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_content", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_list", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_has", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_type", "string");
+
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_sort", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_count", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_include", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_revinclude", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_summary", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_total", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_elements", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_contained", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_containedType", "string");
+
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_format", "string");
+                info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_pretty", "string");
+
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Process a file group, specified by the file prefix (e.g., StructureDefinition).
+    /// </summary>
+    /// <param name="packageDir">     The package dir.</param>
+    /// <param name="prefix">         The prefix.</param>
+    /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+    /// <param name="processedFiles"> [in,out] The processed files.</param>
+    private static void ProcessFileGroup(
+        string packageDir,
+        string prefix,
+        ref FhirVersionInfo fhirVersionInfo,
+        ref HashSet<string> processedFiles)
+    {
+        // get the files in this directory
+        string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
+
+        // process these files
+        ProcessPackageFiles(files, ref fhirVersionInfo, ref processedFiles);
+    }
+
+    /// <summary>Process the package files.</summary>
+    /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
+    /// <param name="files">          The files.</param>
+    /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
+    /// <param name="processedFiles"> [in,out] The processed files.</param>
+    private static void ProcessPackageFiles(
+        string[] files,
+        ref FhirVersionInfo fhirVersionInfo,
+        ref HashSet<string> processedFiles)
+    {
+        // traverse the files
+        foreach (string filename in files)
+        {
+            // check for skipping file
+            if (fhirVersionInfo.ShouldSkipFile(Path.GetFileName(filename)))
             {
-                case 2:
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_content", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_list", "string");
-
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_sort", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_count", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_include", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_revinclude", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_summary", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_elements", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_contained", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_containedType", "string");
-
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_format", "string");
-                    break;
-
-                case 3:
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_text", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_content", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_list", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_has", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_type", "string");
-
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_sort", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_count", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_include", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_revinclude", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_summary", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_elements", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_contained", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_containedType", "string");
-
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_format", "string");
-
-                    break;
-
-                case 4:
-                default:
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_text", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_content", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_list", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_has", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Global, "_type", "string");
-
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_sort", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_count", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_include", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_revinclude", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_summary", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_total", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_elements", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_contained", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Result, "_containedType", "string");
-
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_format", "string");
-                    info.AddVersionedParam(FhirVersionInfo.SearchMagicParameter.Interaction, "_pretty", "string");
-
-                    break;
+                // skip this file
+                continue;
             }
-        }
 
-        /// <summary>
-        /// Process a file group, specified by the file prefix (e.g., StructureDefinition).
-        /// </summary>
-        /// <param name="packageDir">     The package dir.</param>
-        /// <param name="prefix">         The prefix.</param>
-        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
-        /// <param name="processedFiles"> [in,out] The processed files.</param>
-        private static void ProcessFileGroup(
-            string packageDir,
-            string prefix,
-            ref FhirVersionInfo fhirVersionInfo,
-            ref HashSet<string> processedFiles)
-        {
-            // get the files in this directory
-            string[] files = Directory.GetFiles(packageDir, $"{prefix}*.json", SearchOption.TopDirectoryOnly);
+            // parse the name into parts we want
+            string shortName = Path.GetFileNameWithoutExtension(filename);
+            string[] components = shortName.Split('-');
+            string resourceHint = components[0];
+            string resourceName = shortName.Substring(resourceHint.Length + 1);
 
-            // process these files
-            ProcessPackageFiles(files, ref fhirVersionInfo, ref processedFiles);
-        }
-
-        /// <summary>Process the package files.</summary>
-        /// <exception cref="InvalidDataException">Thrown when an Invalid Data error condition occurs.</exception>
-        /// <param name="files">          The files.</param>
-        /// <param name="fhirVersionInfo">[in,out] Information describing the fhir version.</param>
-        /// <param name="processedFiles"> [in,out] The processed files.</param>
-        private static void ProcessPackageFiles(
-            string[] files,
-            ref FhirVersionInfo fhirVersionInfo,
-            ref HashSet<string> processedFiles)
-        {
-            // traverse the files
-            foreach (string filename in files)
+            // attempt to load this file
+            try
             {
-                // check for skipping file
-                if (fhirVersionInfo.ShouldSkipFile(Path.GetFileName(filename)))
+                Console.Write($"v{fhirVersionInfo.MajorVersion}: {shortName,-85}\r");
+
+                // check for ignored types
+                if (fhirVersionInfo.ShouldIgnoreResource(resourceHint))
                 {
-                    // skip this file
+                    // skip
                     continue;
                 }
 
-                // parse the name into parts we want
-                string shortName = Path.GetFileNameWithoutExtension(filename);
-                string[] components = shortName.Split('-');
-                string resourceHint = components[0];
-                string resourceName = shortName.Substring(resourceHint.Length + 1);
-
-                // attempt to load this file
-                try
+                // this should be listed in process types (validation check)
+                if (!fhirVersionInfo.ShouldProcessResource(resourceHint))
                 {
-                    Console.Write($"v{fhirVersionInfo.MajorVersion}: {shortName,-85}\r");
-
-                    // check for ignored types
-                    if (fhirVersionInfo.ShouldIgnoreResource(resourceHint))
-                    {
-                        // skip
-                        continue;
-                    }
-
-                    // this should be listed in process types (validation check)
-                    if (!fhirVersionInfo.ShouldProcessResource(resourceHint))
-                    {
-                        // type not found
-                        Console.WriteLine($"\nProcessPackageFiles <<< Unhandled type: {shortName}");
-                        throw new InvalidDataException($"Unhandled type: {shortName}");
-                    }
-
-                    if (processedFiles.Contains(shortName))
-                    {
-                        // skip
-                        continue;
-                    }
-
-                    processedFiles.Add(shortName);
-
-                    // Note: this is faster than creating a FileStream and passing that object through
-                    // and uses less total memory.
-                    // Also, don't use ReadAllBytes here, since some DSTU2 stuff is encoded differently
-                    // and the code needs to be modified to handle both cases.
-                    string contents = File.ReadAllText(filename);
-
-                    // parse the file - note: using var here is siginificantly more performant than object
-                    var resource = fhirVersionInfo.ParseResource(contents);
-
-                    // check type matching
-                    if (!resource.GetType().Name.Equals(resourceHint, StringComparison.Ordinal))
-                    {
-                        // type not found
-                        Console.WriteLine($"\nProcessPackageFiles <<<" +
-                            $" Mismatched type: {shortName}," +
-                            $" should be {resourceHint} parsed to:{resource.GetType().Name}");
-                        throw new InvalidDataException($"Mismatched type: {shortName}: {resourceHint} != {resource.GetType().Name}");
-                    }
-
-                    // process this resource
-                    fhirVersionInfo.ProcessResource(resource);
+                    // type not found
+                    Console.WriteLine($"\nProcessPackageFiles <<< Unhandled type: {shortName}");
+                    throw new InvalidDataException($"Unhandled type: {shortName}");
                 }
-                catch (Exception ex)
+
+                if (processedFiles.Contains(shortName))
                 {
-                    Console.WriteLine(string.Empty);
-                    Console.WriteLine($"LoadPackage <<< Failed to process file: {filename}: \n{ex}\n--------------");
-                    throw;
+                    // skip
+                    continue;
                 }
+
+                processedFiles.Add(shortName);
+
+                // Note: this is faster than creating a FileStream and passing that object through
+                // and uses less total memory.
+                // Also, don't use ReadAllBytes here, since some DSTU2 stuff is encoded differently
+                // and the code needs to be modified to handle both cases.
+                string contents = File.ReadAllText(filename);
+
+                // parse the file - note: using var here is siginificantly more performant than object
+                var resource = fhirVersionInfo.ParseResource(contents);
+
+                // check type matching
+                if (!resource.GetType().Name.Equals(resourceHint, StringComparison.Ordinal))
+                {
+                    // type not found
+                    Console.WriteLine($"\nProcessPackageFiles <<<" +
+                        $" Mismatched type: {shortName}," +
+                        $" should be {resourceHint} parsed to:{resource.GetType().Name}");
+                    throw new InvalidDataException($"Mismatched type: {shortName}: {resourceHint} != {resource.GetType().Name}");
+                }
+
+                // process this resource
+                fhirVersionInfo.ProcessResource(resource);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Empty);
+                Console.WriteLine($"LoadPackage <<< Failed to process file: {filename}: \n{ex}\n--------------");
+                throw;
             }
         }
     }

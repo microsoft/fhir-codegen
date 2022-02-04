@@ -14,7 +14,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
     public class FhirServerInfo
     {
         private readonly List<SystemRestfulInteraction> _serverInteractions;
-        private readonly int _fhirMajorVersion;
+        private readonly FhirVersionInfo.FhirMajorRelease _fhirMajorVersion;
 
         /// <summary>Initializes a new instance of the <see cref="FhirServerInfo"/> class.</summary>
         /// <param name="serverInteractions">       The server interaction flags.</param>
@@ -44,7 +44,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Url = url;
             FhirVersion = fhirVersion;
 
-            _fhirMajorVersion = FhirVersionInfo.GetMajorVersion(fhirVersion);
+            _fhirMajorVersion = FhirVersionInfo.MajorReleaseForVersion(fhirVersion);
 
             SoftwareName = softwareName;
             SoftwareVersion = softwareVersion;
@@ -100,34 +100,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             }
             else
             {
-                // create our JSON converter
-                switch (fhirVersion[0])
-                {
-                    case '1':
-                    case '2':
-                        _fhirMajorVersion = 2;
-                        break;
-
-                    case '3':
-                        _fhirMajorVersion = 3;
-                        break;
-
-                    case '4':
-                        if (fhirVersion.StartsWith("4.4", StringComparison.Ordinal))
-                        {
-                            _fhirMajorVersion = 5;
-                        }
-                        else
-                        {
-                            _fhirMajorVersion = 4;
-                        }
-
-                        break;
-
-                    case '5':
-                        _fhirMajorVersion = 5;
-                        break;
-                }
+                _fhirMajorVersion = FhirVersionInfo.MajorReleaseForVersion(fhirVersion);
             }
 
             SoftwareName = softwareName;
@@ -169,7 +142,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         public string FhirVersion { get; }
 
         /// <summary>Gets the major version.</summary>
-        public int MajorVersion => _fhirMajorVersion;
+        public FhirVersionInfo.FhirMajorRelease MajorVersion => _fhirMajorVersion;
 
         /// <summary>Gets the FHIR Server software name.</summary>
         public string SoftwareName { get; }

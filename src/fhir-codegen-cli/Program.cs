@@ -3,1071 +3,1090 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Builder;
 using System.CommandLine.NamingConventionBinder;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using Microsoft.Health.Fhir.SpecManager.Language;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Microsoft.Health.Fhir.SpecManager.Models;
 
-namespace FhirCodegenCli
+namespace FhirCodegenCli;
+
+/// <summary>FHIR CodeGen CLI.</summary>
+public static class Program
 {
-    /// <summary>FHIR CodeGen CLI.</summary>
-    public static class Program
+    /// <summary>The extensions outputted.</summary>
+    private static HashSet<string> _extensionsOutputted;
+
+    /// <summary>Delegate function to do actual processing - matches Process.</summary>
+    /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
+    ///  are downloaded and cached (.../fhirVersions).</param>
+    /// <param name="outputPath">            File or directory to write output.</param>
+    /// <param name="verbose">               Show verbose output.</param>
+    /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
+    /// <param name="language">              Name of the language to export (default:
+    ///  Info|TypeScript|CSharpBasic).</param>
+    /// <param name="exportKeys">            '|' separated list of items to export (not present to
+    ///  export everything).</param>
+    /// <param name="loadR2">                If FHIR R2 should be loaded, which version (e.g., 1.0.2
+    ///  or latest).</param>
+    /// <param name="loadR3">                If FHIR R3 should be loaded, which version (e.g., 3.0.2
+    ///  or latest).</param>
+    /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
+    ///  or latest).</param>
+    /// <param name="loadR4B">                If FHIR R4 should be loaded, which version (e.g., 4.3.0-snapshot1
+    ///  or latest).</param>
+    /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
+    ///  or latest).</param>
+    /// <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
+    ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
+    /// <param name="languageOptions">       Language specific options, see documentation for more
+    ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
+    /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
+    ///  expansions (default: false).</param>
+    /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
+    ///  Conformance) from.  Requires application/fhir+json.</param>
+    /// <param name="includeExperimental">   If the output should include structures marked
+    ///  experimental (false|true).</param>
+    /// <param name="exportTypes">           Which FHIR classes types to export
+    ///  (primitive|complex|resource|interaction|enum), default is all.</param>
+    /// <param name="extensionSupport">      The level of extensions to include
+    ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
+    /// <param name="languageHelp">          Display languages and their options.</param>
+    /// <param name="fhirPublishDirectory">  The full path to a local FHIR build publish directory (.../publish).</param>
+    /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
+    /// <param name="packageDirectory">  The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
+    /// <param name="packages">'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0).</param>
+    public delegate void ProcessDelegate(
+        string fhirSpecDirectory = "",
+        string outputPath = "",
+        bool verbose = false,
+        bool offlineMode = false,
+        string language = "",
+        string exportKeys = "",
+        string loadR2 = "",
+        string loadR3 = "",
+        string loadR4 = "",
+        string loadR4B = "",
+        string loadR5 = "",
+        string loadFromCache = "",
+        string languageOptions = "",
+        bool officialExpansionsOnly = false,
+        string fhirServerUrl = "",
+        bool includeExperimental = false,
+        string exportTypes = "",
+        string extensionSupport = "",
+        bool languageHelp = false,
+        string fhirPublishDirectory = "",
+        string loadLocalFhirBuild = "",
+        string packageDirectory = "",
+        string packages = "");
+
+    /// <summary>Main entry-point for this application.</summary>
+    /// <param name="args">An array of command-line argument strings.</param>
+    public static void Main(string[] args)
     {
-        /// <summary>The extensions outputted.</summary>
-        private static HashSet<string> _extensionsOutputted;
-
-        /// <summary>Delegate function to do actual processing - matches Process.</summary>
-        /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
-        ///  are downloaded and cached (.../fhirVersions).</param>
-        /// <param name="outputPath">            File or directory to write output.</param>
-        /// <param name="verbose">               Show verbose output.</param>
-        /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
-        /// <param name="language">              Name of the language to export (default:
-        ///  Info|TypeScript|CSharpBasic).</param>
-        /// <param name="exportKeys">            '|' separated list of items to export (not present to
-        ///  export everything).</param>
-        /// <param name="loadR2">                If FHIR R2 should be loaded, which version (e.g., 1.0.2
-        ///  or latest).</param>
-        /// <param name="loadR3">                If FHIR R3 should be loaded, which version (e.g., 3.0.2
-        ///  or latest).</param>
-        /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
-        ///  or latest).</param>
-        /// <param name="loadR4B">                If FHIR R4 should be loaded, which version (e.g., 4.3.0-snapshot1
-        ///  or latest).</param>
-        /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
-        ///  or latest).</param>
-        /// <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
-        ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
-        /// <param name="languageOptions">       Language specific options, see documentation for more
-        ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
-        /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
-        ///  expansions (default: false).</param>
-        /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
-        ///  Conformance) from.  Requires application/fhir+json.</param>
-        /// <param name="includeExperimental">   If the output should include structures marked
-        ///  experimental (false|true).</param>
-        /// <param name="exportTypes">           Which FHIR classes types to export
-        ///  (primitive|complex|resource|interaction|enum), default is all.</param>
-        /// <param name="extensionSupport">      The level of extensions to include
-        ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
-        /// <param name="languageHelp">          Display languages and their options.</param>
-        /// <param name="fhirPublishDirectory">  The full path to a local FHIR build publish directory (.../publish).</param>
-        /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
-        /// <param name="packageDirectory">  The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
-        /// <param name="packages">'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0).</param>
-        public delegate void ProcessDelegate(
-            string fhirSpecDirectory = "",
-            string outputPath = "",
-            bool verbose = false,
-            bool offlineMode = false,
-            string language = "",
-            string exportKeys = "",
-            string loadR2 = "",
-            string loadR3 = "",
-            string loadR4 = "",
-            string loadR4B = "",
-            string loadR5 = "",
-            string loadFromCache = "",
-            string languageOptions = "",
-            bool officialExpansionsOnly = false,
-            string fhirServerUrl = "",
-            bool includeExperimental = false,
-            string exportTypes = "",
-            string extensionSupport = "",
-            bool languageHelp = false,
-            string fhirPublishDirectory = "",
-            string loadLocalFhirBuild = "",
-            string packageDirectory = "",
-            string packages = "");
-
-        /// <summary>Main entry-point for this application.</summary>
-        /// <param name="args">An array of command-line argument strings.</param>
-        public static void Main(string[] args)
+        // convert commands to lower-case for matching
+        if (args != null)
         {
-            // convert commands to lower-case for matching
-            if (args != null)
+            for (int i = 0; i < args.Length; i++)
             {
-                for (int i = 0; i < args.Length; i++)
+                if (string.IsNullOrEmpty(args[i]))
                 {
-                    if (string.IsNullOrEmpty(args[i]))
-                    {
-                        continue;
-                    }
+                    continue;
+                }
 
-                    if (args[i][0] == '-')
-                    {
+                if (args[i][0] == '-')
+                {
 #pragma warning disable CA1308 // Normalize strings to uppercase
-                        args[i] = args[i].ToLowerInvariant();
+                    args[i] = args[i].ToLowerInvariant();
 #pragma warning restore CA1308 // Normalize strings to uppercase
-                    }
                 }
             }
-
-            RootCommand rootCommand = new RootCommand
-            {
-                new Option<string>(
-                    name: "--fhir-spec-directory",
-                    getDefaultValue: () => string.Empty,
-                    "The full path to the directory where FHIR specifications are downloaded and cached (.../fhirVersions)."),
-                new Option<string>(
-                    aliases: new string[] { "--output-path", "-o" },
-                    getDefaultValue: () => string.Empty,
-                    "File or directory to write output."),
-                new Option<bool>(
-                    aliases: new string[] { "--verbose", "-v" },
-                    getDefaultValue: () => false,
-                    "Show verbose output."),
-                new Option<bool>(
-                    name: "--offline-mode",
-                    getDefaultValue: () => false,
-                    "Offline mode (will not download missing specifications)."),
-                new Option<string>(
-                    aliases: new string[] { "--language", "-l" },
-                    getDefaultValue: () => string.Empty,
-                    "Name of the language to export (default: Info|TypeScript|CS2)."),
-                new Option<string>(
-                    aliases: new string[] { "--export-keys", "-k" },
-                    getDefaultValue: () => string.Empty,
-                    "'|' separated list of items to export (not present to export everything)."),
-                new Option<string>(
-                    aliases: new string[] { "--load-r2", "--load-DSTU2" },
-                    getDefaultValue: () => string.Empty,
-                    "If FHIR version 2 (DSTU2) should be loaded, which version (e.g., 1.0.2 or latest)"),
-                new Option<string>(
-                    aliases: new string[] { "--load-r3", "--load-STU3" },
-                    getDefaultValue: () => string.Empty,
-                    "If FHIR version 3 (STU3) should be loaded, which version (e.g., 3.0.2 or latest)"),
-                new Option<string>(
-                    name: "--load-r4",
-                    getDefaultValue: () => string.Empty,
-                    "If FHIR version 4 (R4) should be loaded, which version (e.g., 4.0.1 or latest)"),
-                new Option<string>(
-                    name: "--load-r4b",
-                    getDefaultValue: () => string.Empty,
-                    "If FHIR version 4B (R4B) should be loaded, which version (e.g., 4.3.0-snapshot1 or latest)"),
-                new Option<string>(
-                    name: "--load-r5",
-                    getDefaultValue: () => string.Empty,
-                    "If FHIR version 5 (R5) should be loaded, which version (e.g., 5.0.0-snapshot1 or latest)"),
-                new Option<string>(
-                    name: "--load-from-cache",
-                    getDefaultValue: () => string.Empty,
-                    "If content should be loaded from the user's FHIR cache, pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0)"),
-                new Option<string>(
-                    aliases: new string[] { "--language-options", "--opts" },
-                    getDefaultValue: () => string.Empty,
-                    "Language specific options, see documentation for more details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo."),
-                new Option<bool>(
-                    name: "--official-expansions-only",
-                    getDefaultValue: () => false,
-                    "True to restrict value-sets exported to only official expansions (default: false)."),
-                new Option<string>(
-                    aliases: new string[] { "--fhir-server-url", "--server" },
-                    getDefaultValue: () => string.Empty,
-                    "FHIR Server URL to pull a CapabilityStatement or Conformance from.  Requires application/fhir+json support."),
-                new Option<bool>(
-                    aliases: new string[] { "--include-experimental", "--experimental" },
-                    getDefaultValue: () => false,
-                    "If the output should include structures marked experimental (default: false)."),
-                new Option<string>(
-                    aliases: new string[] { "--export-types", "--types" },
-                    getDefaultValue: () => string.Empty,
-                    "Types of FHIR structures to export (primitive|complex|resource|interaction|enum), default is all."),
-                new Option<string>(
-                    name: "--extension-support",
-                    getDefaultValue: () => string.Empty,
-                    "The level of extensions to include (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive."),
-                new Option<bool>(
-                    name: "--language-help",
-                    getDefaultValue: () => false,
-                    "Display languages and their options."),
-                new Option<string>(
-                    aliases: new string[] { "--fhir-publish-directory", "-d" },
-                    getDefaultValue: () => string.Empty,
-                    "The full path to a local FHIR build publish directory (.../publish)."),
-                new Option<string>(
-                    aliases: new string[] { "--load-local-fhir-build", "--local" },
-                    getDefaultValue: () => string.Empty,
-                    "'latest' to copy from a local FHIR build directory, 'current' to use a previous copy (default: none)."),
-                new Option<string>(
-                    aliases: new string[] { "--package-directory", "-p" },
-                    getDefaultValue: () => string.Empty,
-                    "The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages))."),
-                new Option<string>(
-                    name: "--packages",
-                    getDefaultValue: () => string.Empty,
-                    "'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0)."),
-            };
-
-            rootCommand.Description = "Command-line utility for processing the FHIR specification into other computer languages.";
-
-            ProcessDelegate handler = Process;
-
-            rootCommand.Handler = CommandHandler.Create(handler);
-
-            rootCommand.InvokeAsync(args);
         }
 
-        /// <summary>
-        /// Command-line utility for processing the FHIR specification into other computer languages.
-        /// </summary>
-        /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
-        ///  are downloaded and cached (.../fhirVersions).</param>
-        /// <param name="outputPath">            File or directory to write output.</param>
-        /// <param name="verbose">               Show verbose output.</param>
-        /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
-        /// <param name="language">              Name of the language to export (default:
-        ///  Info|TypeScript|CSharpBasic).</param>
-        /// <param name="exportKeys">            '|' separated list of items to export (not present to
-        ///  export everything).</param>
-        /// <param name="loadR2">                If FHIR R2 should be loaded, which version (e.g., 1.0.2
-        ///  or latest).</param>
-        /// <param name="loadR3">                If FHIR R3 should be loaded, which version (e.g., 3.0.2
-        ///  or latest).</param>
-        /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
-        ///  or latest).</param>
-        /// <param name="loadR4B">                If FHIR R4 should be loaded, which version (e.g., 4.3.0-snapshot1
-        ///  or latest).</param>
-        /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
-        ///  or latest).</param>
-        /// <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
-        ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
-        /// <param name="languageOptions">       Language specific options, see documentation for more
-        ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
-        /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
-        ///  expansions (default: false).</param>
-        /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
-        ///  Conformance) from.  Requires application/fhir+json.</param>
-        /// <param name="includeExperimental">   If the output should include structures marked
-        ///  experimental (false|true).</param>
-        /// <param name="exportTypes">           Which FHIR classes types to export
-        ///  (primitive|complex|resource|interaction|enum), default is all.</param>
-        /// <param name="extensionSupport">      The level of extensions to include
-        ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
-        /// <param name="languageHelp">          Display languages and their options.</param>
-        /// <param name="fhirPublishDirectory">  The full path to a local FHIR build publish directory (.../publish).</param>
-        /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
-        /// <param name="packageDirectory">  The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
-        /// <param name="packages">'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0).</param>
-        public static void Process(
-            string fhirSpecDirectory = "",
-            string outputPath = "",
-            bool verbose = false,
-            bool offlineMode = false,
-            string language = "",
-            string exportKeys = "",
-            string loadR2 = "",
-            string loadR3 = "",
-            string loadR4 = "",
-            string loadR4B = "",
-            string loadR5 = "",
-            string loadFromCache = "",
-            string languageOptions = "",
-            bool officialExpansionsOnly = false,
-            string fhirServerUrl = "",
-            bool includeExperimental = false,
-            string exportTypes = "",
-            string extensionSupport = "",
-            bool languageHelp = false,
-            string fhirPublishDirectory = "",
-            string loadLocalFhirBuild = "",
-            string packageDirectory = "",
-            string packages = "")
+        RootCommand rootCommand = new RootCommand
         {
-            if (languageHelp)
+            new Option<string>(
+                name: "--fhir-spec-directory",
+                getDefaultValue: () => string.Empty,
+                "The full path to the directory where FHIR specifications are downloaded and cached (.../fhirVersions)."),
+            new Option<string>(
+                aliases: new string[] { "--output-path", "-o" },
+                getDefaultValue: () => string.Empty,
+                "File or directory to write output."),
+            new Option<bool>(
+                aliases: new string[] { "--verbose", "-v" },
+                getDefaultValue: () => false,
+                "Show verbose output."),
+            new Option<bool>(
+                name: "--offline-mode",
+                getDefaultValue: () => false,
+                "Offline mode (will not download missing specifications)."),
+            new Option<string>(
+                aliases: new string[] { "--language", "-l" },
+                getDefaultValue: () => string.Empty,
+                "Name of the language to export (default: Info|TypeScript|CS2)."),
+            new Option<string>(
+                aliases: new string[] { "--export-keys", "-k" },
+                getDefaultValue: () => string.Empty,
+                "'|' separated list of items to export (not present to export everything)."),
+            new Option<string>(
+                aliases: new string[] { "--load-r2", "--load-DSTU2" },
+                getDefaultValue: () => string.Empty,
+                "If FHIR version 2 (DSTU2) should be loaded, which version (e.g., 1.0.2 or latest)"),
+            new Option<string>(
+                aliases: new string[] { "--load-r3", "--load-STU3" },
+                getDefaultValue: () => string.Empty,
+                "If FHIR version 3 (STU3) should be loaded, which version (e.g., 3.0.2 or latest)"),
+            new Option<string>(
+                name: "--load-r4",
+                getDefaultValue: () => string.Empty,
+                "If FHIR version 4 (R4) should be loaded, which version (e.g., 4.0.1 or latest)"),
+            new Option<string>(
+                name: "--load-r4b",
+                getDefaultValue: () => string.Empty,
+                "If FHIR version 4B (R4B) should be loaded, which version (e.g., 4.3.0-snapshot1 or latest)"),
+            new Option<string>(
+                name: "--load-r5",
+                getDefaultValue: () => string.Empty,
+                "If FHIR version 5 (R5) should be loaded, which version (e.g., 5.0.0-snapshot1 or latest)"),
+            new Option<string>(
+                name: "--load-from-cache",
+                getDefaultValue: () => string.Empty,
+                "If content should be loaded from the user's FHIR cache, pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0)"),
+            new Option<string>(
+                aliases: new string[] { "--language-options", "--opts" },
+                getDefaultValue: () => string.Empty,
+                "Language specific options, see documentation for more details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo."),
+            new Option<bool>(
+                name: "--official-expansions-only",
+                getDefaultValue: () => false,
+                "True to restrict value-sets exported to only official expansions (default: false)."),
+            new Option<string>(
+                aliases: new string[] { "--fhir-server-url", "--server" },
+                getDefaultValue: () => string.Empty,
+                "FHIR Server URL to pull a CapabilityStatement or Conformance from.  Requires application/fhir+json support."),
+            new Option<bool>(
+                aliases: new string[] { "--include-experimental", "--experimental" },
+                getDefaultValue: () => false,
+                "If the output should include structures marked experimental (default: false)."),
+            new Option<string>(
+                aliases: new string[] { "--export-types", "--types" },
+                getDefaultValue: () => string.Empty,
+                "Types of FHIR structures to export (primitive|complex|resource|interaction|enum), default is all."),
+            new Option<string>(
+                name: "--extension-support",
+                getDefaultValue: () => string.Empty,
+                "The level of extensions to include (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive."),
+            new Option<bool>(
+                name: "--language-help",
+                getDefaultValue: () => false,
+                "Display languages and their options."),
+            new Option<string>(
+                aliases: new string[] { "--fhir-publish-directory", "-d" },
+                getDefaultValue: () => string.Empty,
+                "The full path to a local FHIR build publish directory (.../publish)."),
+            new Option<string>(
+                aliases: new string[] { "--load-local-fhir-build", "--local" },
+                getDefaultValue: () => string.Empty,
+                "'latest' to copy from a local FHIR build directory, 'current' to use a previous copy (default: none)."),
+            new Option<string>(
+                aliases: new string[] { "--package-directory", "-p" },
+                getDefaultValue: () => string.Empty,
+                "The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages))."),
+            new Option<string>(
+                name: "--packages",
+                getDefaultValue: () => string.Empty,
+                "'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0)."),
+        };
+
+        rootCommand.Description = "Command-line utility for processing the FHIR specification into other computer languages.";
+
+        ProcessDelegate handler = Process;
+
+        rootCommand.Handler = CommandHandler.Create(handler);
+
+        rootCommand.InvokeAsync(args);
+    }
+
+    /// <summary>
+    /// Command-line utility for processing the FHIR specification into other computer languages.
+    /// </summary>
+    /// <param name="fhirSpecDirectory">     The full path to the directory where FHIR specifications
+    ///  are downloaded and cached (.../fhirVersions).</param>
+    /// <param name="outputPath">            File or directory to write output.</param>
+    /// <param name="verbose">               Show verbose output.</param>
+    /// <param name="offlineMode">           Offline mode (will not download missing specs).</param>
+    /// <param name="language">              Name of the language to export (default:
+    ///  Info|TypeScript|CSharpBasic).</param>
+    /// <param name="exportKeys">            '|' separated list of items to export (not present to
+    ///  export everything).</param>
+    /// <param name="loadR2">                If FHIR R2 should be loaded, which version (e.g., 1.0.2
+    ///  or latest).</param>
+    /// <param name="loadR3">                If FHIR R3 should be loaded, which version (e.g., 3.0.2
+    ///  or latest).</param>
+    /// <param name="loadR4">                If FHIR R4 should be loaded, which version (e.g., 4.0.1
+    ///  or latest).</param>
+    /// <param name="loadR4B">                If FHIR R4 should be loaded, which version (e.g., 4.3.0-snapshot1
+    ///  or latest).</param>
+    /// <param name="loadR5">                If FHIR R5 should be loaded, which version (e.g., 4.4.0
+    ///  or latest).</param>
+    /// <param name="loadFromCache">        If content should be loaded from the user's FHIR cache,
+    ///  pipe separated versions (e.g., R4B#4.1.0|R5#4.6.0).</param>
+    /// <param name="languageOptions">       Language specific options, see documentation for more
+    ///  details. Example: Lang1|opt=a|opt2=b|Lang2|opt=tt|opt3=oo.</param>
+    /// <param name="officialExpansionsOnly">True to restrict value-sets exported to only official
+    ///  expansions (default: false).</param>
+    /// <param name="fhirServerUrl">         FHIR Server URL to pull a CapabilityStatement (or
+    ///  Conformance) from.  Requires application/fhir+json.</param>
+    /// <param name="includeExperimental">   If the output should include structures marked
+    ///  experimental (false|true).</param>
+    /// <param name="exportTypes">           Which FHIR classes types to export
+    ///  (primitive|complex|resource|interaction|enum), default is all.</param>
+    /// <param name="extensionSupport">      The level of extensions to include
+    ///  (none|official|officialNonPrimitive|nonPrimitive|all), default is nonPrimitive.</param>
+    /// <param name="languageHelp">          Display languages and their options.</param>
+    /// <param name="fhirPublishDirectory">  The full path to a local FHIR build publish directory (.../publish).</param>
+    /// <param name="loadLocalFhirBuild">    "latest" to copy from a local FHIR build directory, "current" to use a previous copy (default: not present).</param>
+    /// <param name="packageDirectory">  The full path to a local directory for FHIR packages; e.g., profiles. (.../fhirPackages)).</param>
+    /// <param name="packages">'|' separated list of packages, with or without version numbers (e.g., hl7.fhir.us.core-4.0.0).</param>
+    public static void Process(
+        string fhirSpecDirectory = "",
+        string outputPath = "",
+        bool verbose = false,
+        bool offlineMode = false,
+        string language = "",
+        string exportKeys = "",
+        string loadR2 = "",
+        string loadR3 = "",
+        string loadR4 = "",
+        string loadR4B = "",
+        string loadR5 = "",
+        string loadFromCache = "",
+        string languageOptions = "",
+        bool officialExpansionsOnly = false,
+        string fhirServerUrl = "",
+        bool includeExperimental = false,
+        string exportTypes = "",
+        string extensionSupport = "",
+        bool languageHelp = false,
+        string fhirPublishDirectory = "",
+        string loadLocalFhirBuild = "",
+        string packageDirectory = "",
+        string packages = "")
+    {
+        if (languageHelp)
+        {
+            ShowLanguageHelp(language);
+            return;
+        }
+
+        bool isBatch = false;
+        string currentFilePath = Path.GetDirectoryName(AppContext.BaseDirectory);
+        List<string> filesWritten = new List<string>();
+
+        _extensionsOutputted = new HashSet<string>();
+
+        if (string.IsNullOrEmpty(fhirSpecDirectory))
+        {
+            fhirSpecDirectory = FindRelativeDir(currentFilePath, "fhirVersions", "FHIR Core Specification");
+        }
+
+        if (!string.IsNullOrEmpty(loadLocalFhirBuild))
+        {
+            if (string.IsNullOrEmpty(fhirPublishDirectory))
             {
-                ShowLanguageHelp(language);
+                fhirPublishDirectory = Path.Combine(currentFilePath, "..", "..", "..", "..", "..", "..", "fhir", "publish");
+            }
+        }
+        else
+        {
+            fhirPublishDirectory = string.Empty;
+        }
+
+        if (string.IsNullOrEmpty(packageDirectory))
+        {
+            fhirSpecDirectory = FindRelativeDir(currentFilePath, "fhirPackages", "FHIR Package");
+        }
+
+        if (string.IsNullOrEmpty(outputPath))
+        {
+            outputPath = FindRelativeDir(currentFilePath, "generated", "Output");
+        }
+
+        if (string.IsNullOrEmpty(language))
+        {
+            language = "Info|TypeScript|CSharpBasic";
+        }
+
+        exportTypes ??= string.Empty;
+
+        List<ExporterOptions.FhirExportClassType> typesToExport = exportTypes
+            .Split('|', StringSplitOptions.RemoveEmptyEntries)
+            .Select(et => GetExportClass(et))
+            .Where(et => et != null)
+            .Select(et => et.Value)
+            .ToList();
+
+        static ExporterOptions.FhirExportClassType? GetExportClass(string val)
+        {
+            return val.ToUpperInvariant() switch
+            {
+                "PRIMITIVE" => ExporterOptions.FhirExportClassType.PrimitiveType,
+                "COMPLEX" => ExporterOptions.FhirExportClassType.ComplexType,
+                "RESOURCE" => ExporterOptions.FhirExportClassType.Resource,
+                "INTERACTION" => ExporterOptions.FhirExportClassType.Interaction,
+                "ENUM" => ExporterOptions.FhirExportClassType.Enum,
+                _ => null
+            };
+        }
+
+        ExporterOptions.ExtensionSupportLevel extensionSupportLevel = GetExtensionSupport(extensionSupport);
+
+        static ExporterOptions.ExtensionSupportLevel GetExtensionSupport(string val)
+        {
+            if (string.IsNullOrEmpty(val))
+            {
+                return ExporterOptions.ExtensionSupportLevel.NonPrimitive;
+            }
+
+            return val.ToUpperInvariant() switch
+            {
+                "NONE" => ExporterOptions.ExtensionSupportLevel.None,
+                "OFFICIAL" => ExporterOptions.ExtensionSupportLevel.Official,
+                "OFFICIALNONPRIMITIVE" => ExporterOptions.ExtensionSupportLevel.OfficialNonPrimitive,
+                "ALL" => ExporterOptions.ExtensionSupportLevel.All,
+                "NONPRIMITIVE" => ExporterOptions.ExtensionSupportLevel.NonPrimitive,
+                "BYEXTENSIONURL" => ExporterOptions.ExtensionSupportLevel.ByExtensionUrl,
+                "BYELEMENTPATH" => ExporterOptions.ExtensionSupportLevel.ByElementPath,
+                _ => ExporterOptions.ExtensionSupportLevel.NonPrimitive,
+            };
+        }
+
+        // start timing
+        Stopwatch timingWatch = Stopwatch.StartNew();
+
+        // initialize the FHIR version manager with our requested directories
+        FhirManager.Init(fhirSpecDirectory, fhirPublishDirectory, packageDirectory);
+
+        Dictionary<string, FhirVersionInfo> fhirVersions = new ();
+
+        FhirServerInfo serverInfo = null;
+
+        if (!string.IsNullOrEmpty(fhirServerUrl))
+        {
+            if (!ServerConnector.TryGetServerInfo(fhirServerUrl, out serverInfo))
+            {
+                Console.WriteLine($"Failed to get server information from {fhirServerUrl}!");
                 return;
             }
+        }
 
-            bool isBatch = false;
-            string currentFilePath = Path.GetDirectoryName(AppContext.BaseDirectory);
-            List<string> filesWritten = new List<string>();
-
-            _extensionsOutputted = new HashSet<string>();
-
-            if (string.IsNullOrEmpty(fhirSpecDirectory))
+        if (string.IsNullOrEmpty(loadR2) &&
+            string.IsNullOrEmpty(loadR3) &&
+            string.IsNullOrEmpty(loadR4) &&
+            string.IsNullOrEmpty(loadR4B) &&
+            string.IsNullOrEmpty(loadR5) &&
+            string.IsNullOrEmpty(loadFromCache) &&
+            string.IsNullOrEmpty(loadLocalFhirBuild))
+        {
+            if (serverInfo == null)
             {
-                fhirSpecDirectory = FindRelativeDir(currentFilePath, "fhirVersions", "FHIR Core Specification");
-            }
-
-            if (!string.IsNullOrEmpty(loadLocalFhirBuild))
-            {
-                if (string.IsNullOrEmpty(fhirPublishDirectory))
-                {
-                    fhirPublishDirectory = Path.Combine(currentFilePath, "..", "..", "..", "..", "..", "..", "fhir", "publish");
-                }
+                loadR2 = "latest";
+                loadR3 = "latest";
+                loadR4 = "latest";
+                loadR4B = "latest";
+                loadR5 = "latest";
             }
             else
             {
-                fhirPublishDirectory = string.Empty;
-            }
-
-            if (string.IsNullOrEmpty(packageDirectory))
-            {
-                fhirSpecDirectory = FindRelativeDir(currentFilePath, "fhirPackages", "FHIR Package");
-            }
-
-            if (string.IsNullOrEmpty(outputPath))
-            {
-                outputPath = FindRelativeDir(currentFilePath, "generated", "Output");
-            }
-
-            if (string.IsNullOrEmpty(language))
-            {
-                language = "Info|TypeScript|CSharpBasic";
-            }
-
-            exportTypes ??= string.Empty;
-
-            List<ExporterOptions.FhirExportClassType> typesToExport = exportTypes
-                .Split('|', StringSplitOptions.RemoveEmptyEntries)
-                .Select(et => GetExportClass(et))
-                .Where(et => et != null)
-                .Select(et => et.Value)
-                .ToList();
-
-            static ExporterOptions.FhirExportClassType? GetExportClass(string val)
-            {
-                return val.ToUpperInvariant() switch
+                switch (serverInfo.MajorVersion)
                 {
-                    "PRIMITIVE" => ExporterOptions.FhirExportClassType.PrimitiveType,
-                    "COMPLEX" => ExporterOptions.FhirExportClassType.ComplexType,
-                    "RESOURCE" => ExporterOptions.FhirExportClassType.Resource,
-                    "INTERACTION" => ExporterOptions.FhirExportClassType.Interaction,
-                    "ENUM" => ExporterOptions.FhirExportClassType.Enum,
-                    _ => null
-                };
-            }
+                    case FhirVersionInfo.FhirMajorRelease.DSTU2:
+                        loadR2 = "latest";
+                        break;
 
-            ExporterOptions.ExtensionSupportLevel extensionSupportLevel = GetExtensionSupport(extensionSupport);
+                    case FhirVersionInfo.FhirMajorRelease.STU3:
+                        loadR3 = "latest";
+                        break;
 
-            static ExporterOptions.ExtensionSupportLevel GetExtensionSupport(string val)
-            {
-                if (string.IsNullOrEmpty(val))
-                {
-                    return ExporterOptions.ExtensionSupportLevel.NonPrimitive;
-                }
+                    case FhirVersionInfo.FhirMajorRelease.R4:
+                        loadR4 = "latest";
+                        break;
 
-                return val.ToUpperInvariant() switch
-                {
-                    "NONE" => ExporterOptions.ExtensionSupportLevel.None,
-                    "OFFICIAL" => ExporterOptions.ExtensionSupportLevel.Official,
-                    "OFFICIALNONPRIMITIVE" => ExporterOptions.ExtensionSupportLevel.OfficialNonPrimitive,
-                    "ALL" => ExporterOptions.ExtensionSupportLevel.All,
-                    "NONPRIMITIVE" => ExporterOptions.ExtensionSupportLevel.NonPrimitive,
-                    "BYEXTENSIONURL" => ExporterOptions.ExtensionSupportLevel.ByExtensionUrl,
-                    "BYELEMENTPATH" => ExporterOptions.ExtensionSupportLevel.ByElementPath,
-                    _ => ExporterOptions.ExtensionSupportLevel.NonPrimitive,
-                };
-            }
+                    case FhirVersionInfo.FhirMajorRelease.R4B:
+                        loadR4 = "latest";
+                        break;
 
-            // start timing
-            Stopwatch timingWatch = Stopwatch.StartNew();
-
-            // initialize the FHIR version manager with our requested directories
-            FhirManager.Init(fhirSpecDirectory, fhirPublishDirectory, packageDirectory);
-
-            Dictionary<string, FhirVersionInfo> fhirVersions = new Dictionary<string, FhirVersionInfo>();
-
-            FhirServerInfo serverInfo = null;
-
-            if (!string.IsNullOrEmpty(fhirServerUrl))
-            {
-                if (!ServerConnector.TryGetServerInfo(fhirServerUrl, out serverInfo))
-                {
-                    Console.WriteLine($"Failed to get server information from {fhirServerUrl}!");
-                    return;
+                    case FhirVersionInfo.FhirMajorRelease.R5:
+                        loadR5 = "latest";
+                        break;
                 }
             }
+        }
 
-            if (string.IsNullOrEmpty(loadR2) &&
-                string.IsNullOrEmpty(loadR3) &&
-                string.IsNullOrEmpty(loadR4) &&
-                string.IsNullOrEmpty(loadR4B) &&
-                string.IsNullOrEmpty(loadR5) &&
-                string.IsNullOrEmpty(loadFromCache) &&
-                string.IsNullOrEmpty(loadLocalFhirBuild))
+        if (!string.IsNullOrEmpty(loadR2))
+        {
+            fhirVersions.Add(
+                "DSTU2",
+                FhirManager.Current.LoadPublished(
+                    FhirVersionInfo.FhirMajorRelease.DSTU2,
+                    loadR2,
+                    offlineMode,
+                    officialExpansionsOnly));
+        }
+
+        if (!string.IsNullOrEmpty(loadR3))
+        {
+            fhirVersions.Add(
+                "STU3",
+                FhirManager.Current.LoadPublished(
+                    FhirVersionInfo.FhirMajorRelease.STU3,
+                    loadR3,
+                    offlineMode,
+                    officialExpansionsOnly));
+        }
+
+        if (!string.IsNullOrEmpty(loadR4))
+        {
+            fhirVersions.Add(
+                "R4",
+                FhirManager.Current.LoadPublished(
+                    FhirVersionInfo.FhirMajorRelease.R4,
+                    loadR4,
+                    offlineMode,
+                    officialExpansionsOnly));
+        }
+
+        if (!string.IsNullOrEmpty(loadR4B))
+        {
+            fhirVersions.Add(
+                "R4B",
+                FhirManager.Current.LoadPublished(
+                    FhirVersionInfo.FhirMajorRelease.R4B,
+                    loadR4,
+                    offlineMode,
+                    officialExpansionsOnly));
+        }
+
+        if (!string.IsNullOrEmpty(loadR5))
+        {
+            fhirVersions.Add(
+                "R5",
+                FhirManager.Current.LoadPublished(
+                    FhirVersionInfo.FhirMajorRelease.R5,
+                    loadR5,
+                    offlineMode,
+                    officialExpansionsOnly));
+        }
+
+        if (!string.IsNullOrEmpty(loadLocalFhirBuild))
+        {
+            fhirVersions.Add(
+                "local",
+                FhirManager.Current.LoadLocal(loadLocalFhirBuild, officialExpansionsOnly));
+        }
+
+        if (!string.IsNullOrEmpty(loadFromCache))
+        {
+            string[] directives = loadFromCache.Split('|');
+
+            foreach (string directive in directives)
             {
-                if (serverInfo == null)
+                FhirVersionInfo info = FhirManager.Current.LoadCached(directive, officialExpansionsOnly);
+
+                if (info == null)
                 {
-                    loadR2 = "latest";
-                    loadR3 = "latest";
-                    loadR4 = "latest";
-                    loadR4B = "latest";
-                    loadR5 = "latest";
+                    continue;
                 }
-                else
+
+                fhirVersions.Add(info.ReleaseName, info);
+            }
+        }
+
+        if (fhirVersions.Count > 1)
+        {
+            isBatch = true;
+        }
+
+        // check for packages / profiles
+        if (!string.IsNullOrEmpty(packages))
+        {
+            string[] packageDirectives = packages.Split('|');
+
+            foreach (FhirVersionInfo info in fhirVersions.Values)
+            {
+                info.TryLoadPackages(
+                    packageDirectives,
+                    out List<string> packagesLoaded,
+                    out List<string> packagesFailed);
+
+                foreach (string package in packagesLoaded)
                 {
-                    switch (serverInfo.MajorVersion)
-                    {
-                        case 2:
-                            loadR2 = "latest";
-                            break;
-
-                        case 3:
-                            loadR3 = "latest";
-                            break;
-
-                        case 4:
-                            loadR4 = "latest";
-                            break;
-
-                        case 5:
-                            loadR5 = "latest";
-                            break;
-                    }
+                    Console.WriteLine($" <<< FHIR {info.VersionString}: Loaded package: {package}");
                 }
-            }
 
-            if (!string.IsNullOrEmpty(loadR2))
-            {
-                fhirVersions.Add(
-                    "DSTU2",
-                    FhirManager.Current.LoadPublished("DSTU2", loadR2, offlineMode, officialExpansionsOnly));
-            }
-
-            if (!string.IsNullOrEmpty(loadR3))
-            {
-                fhirVersions.Add(
-                    "STU3",
-                    FhirManager.Current.LoadPublished("STU3", loadR3, offlineMode, officialExpansionsOnly));
-            }
-
-            if (!string.IsNullOrEmpty(loadR4))
-            {
-                fhirVersions.Add(
-                    "R4",
-                    FhirManager.Current.LoadPublished("R4", loadR4, offlineMode, officialExpansionsOnly));
-            }
-
-            if (!string.IsNullOrEmpty(loadR4B))
-            {
-                fhirVersions.Add(
-                    "R4B",
-                    FhirManager.Current.LoadPublished("R4B", loadR4, offlineMode, officialExpansionsOnly));
-            }
-
-            if (!string.IsNullOrEmpty(loadR5))
-            {
-                fhirVersions.Add(
-                    "R5",
-                    FhirManager.Current.LoadPublished("R5", loadR5, offlineMode, officialExpansionsOnly));
-            }
-
-            if (!string.IsNullOrEmpty(loadLocalFhirBuild))
-            {
-                fhirVersions.Add(
-                    "local",
-                    FhirManager.Current.LoadLocal(loadLocalFhirBuild, officialExpansionsOnly));
-            }
-
-            if (!string.IsNullOrEmpty(loadFromCache))
-            {
-                string[] directives = loadFromCache.Split('|');
-
-                foreach (string directive in directives)
+                foreach (string package in packagesFailed)
                 {
-                    FhirVersionInfo info = FhirManager.Current.LoadCached(directive, officialExpansionsOnly);
-
-                    if (info == null)
-                    {
-                        continue;
-                    }
-
-                    fhirVersions.Add(info.ReleaseName, info);
+                    Console.WriteLine($" <<< FHIR {info.VersionString}: FAILED to load package: {package}");
                 }
             }
+        }
 
-            if (fhirVersions.Count > 1)
+        // done loading
+        long loadMS = timingWatch.ElapsedMilliseconds;
+
+        if (string.IsNullOrEmpty(outputPath) && (verbose == true))
+        {
+            foreach (FhirVersionInfo info in fhirVersions.Values)
+            {
+                DumpFhirVersion(Console.Out, info);
+            }
+        }
+
+        if (!string.IsNullOrEmpty(outputPath))
+        {
+            string baseDirectory;
+
+            if (Path.HasExtension(outputPath))
+            {
+                baseDirectory = Path.GetDirectoryName(outputPath);
+            }
+            else
+            {
+                baseDirectory = outputPath;
+            }
+
+            if (!Directory.Exists(Path.GetDirectoryName(baseDirectory)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(baseDirectory));
+            }
+
+            List<ILanguage> languages = LanguageHelper.GetLanguages(language);
+
+            Dictionary<string, Dictionary<string, string>> languageOptsByLang = ParseLanguageOptions(
+                languageOptions,
+                languages);
+
+            if (languages.Count > 1)
             {
                 isBatch = true;
             }
 
-            // check for packages / profiles
-            if (!string.IsNullOrEmpty(packages))
-            {
-                string[] packageDirectives = packages.Split('|');
-
-                foreach (FhirVersionInfo info in fhirVersions.Values)
-                {
-                    info.TryLoadPackages(
-                        packageDirectives,
-                        out List<string> packagesLoaded,
-                        out List<string> packagesFailed);
-
-                    foreach (string package in packagesLoaded)
-                    {
-                        Console.WriteLine($" <<< FHIR {info.VersionString}: Loaded package: {package}");
-                    }
-
-                    foreach (string package in packagesFailed)
-                    {
-                        Console.WriteLine($" <<< FHIR {info.VersionString}: FAILED to load package: {package}");
-                    }
-                }
-            }
-
-            // done loading
-            long loadMS = timingWatch.ElapsedMilliseconds;
-
-            if (string.IsNullOrEmpty(outputPath) && (verbose == true))
-            {
-                foreach (FhirVersionInfo info in fhirVersions.Values)
-                {
-                    DumpFhirVersion(Console.Out, info);
-                }
-            }
-
-            if (!string.IsNullOrEmpty(outputPath))
-            {
-                string baseDirectory;
-
-                if (Path.HasExtension(outputPath))
-                {
-                    baseDirectory = Path.GetDirectoryName(outputPath);
-                }
-                else
-                {
-                    baseDirectory = outputPath;
-                }
-
-                if (!Directory.Exists(Path.GetDirectoryName(baseDirectory)))
-                {
-                    Directory.CreateDirectory(Path.GetDirectoryName(baseDirectory));
-                }
-
-                List<ILanguage> languages = LanguageHelper.GetLanguages(language);
-
-                Dictionary<string, Dictionary<string, string>> languageOptsByLang = ParseLanguageOptions(
-                    languageOptions,
-                    languages);
-
-                if (languages.Count > 1)
-                {
-                    isBatch = true;
-                }
-
-                foreach (ILanguage lang in languages)
-                {
-                    string[] exportList = null;
-
-                    if (!string.IsNullOrEmpty(exportKeys))
-                    {
-                        exportList = exportKeys.Split('|');
-                    }
-
-                    // for now, just include every optional type
-                    ExporterOptions options = new ExporterOptions(
-                        lang.LanguageName,
-                        exportList,
-                        typesToExport.Any() ? typesToExport : lang.OptionalExportClassTypes,
-                        extensionSupportLevel,
-                        null,
-                        null,
-                        languageOptsByLang[lang.LanguageName],
-                        fhirServerUrl,
-                        includeExperimental);
-
-                    foreach (FhirVersionInfo info in fhirVersions.Values)
-                    {
-                        filesWritten.AddRange(Exporter.Export(info, serverInfo, lang, options, outputPath, isBatch));
-                    }
-                }
-            }
-
-            // done
-            long totalMS = timingWatch.ElapsedMilliseconds;
-
-            Console.WriteLine($"Done! Loading: {loadMS / 1000.0}s, Total: {totalMS / 1000.0}s");
-
-            foreach (string file in filesWritten)
-            {
-                Console.WriteLine($"+ {file}");
-            }
-        }
-
-        /// <summary>Searches for the FHIR specification directory.</summary>
-        /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
-        ///  present.</exception>
-        /// <param name="startingDir">The starting dir.</param>
-        /// <param name="dirName">    The name of the directory we are searching for.</param>
-        /// <param name="directoryType">  The directory type (error hint).</param>
-        /// <returns>The found FHIR directory.</returns>
-        public static string FindRelativeDir(
-            string startingDir,
-            string dirName,
-            string directoryType)
-        {
-            string currentDir = Path.GetDirectoryName(AppContext.BaseDirectory);
-            string testDir = Path.Combine(currentDir, dirName);
-
-            while (!Directory.Exists(testDir))
-            {
-                currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
-
-                if (currentDir == Path.GetPathRoot(currentDir))
-                {
-                    throw new DirectoryNotFoundException($"Could not find directory type: {directoryType} from: {startingDir}!");
-                }
-
-                testDir = Path.Combine(currentDir, dirName);
-            }
-
-            return testDir;
-        }
-
-        /// <summary>Shows the language help.</summary>
-        /// <param name="languageName">(Optional) Name of the language.</param>
-        private static void ShowLanguageHelp(string languageName = "")
-        {
-            if (string.IsNullOrEmpty(languageName))
-            {
-                languageName = "*";
-            }
-
-            List<ILanguage> languages = LanguageHelper.GetLanguages(languageName);
-
-            foreach (ILanguage language in languages.OrderBy(l => l.LanguageName))
-            {
-                if ((language.LanguageOptions == null) || (language.LanguageOptions.Count == 0))
-                {
-                    Console.WriteLine($"- {language.LanguageName}\n\t- No extended options are defined.");
-                    continue;
-                }
-
-                Console.WriteLine($"- {language.LanguageName}");
-
-                foreach (KeyValuePair<string, string> kvp in language.LanguageOptions)
-                {
-                    Console.WriteLine($"\t- {kvp.Key}\n\t\t{kvp.Value}");
-                }
-            }
-        }
-
-        /// <summary>Gets options for language.</summary>
-        /// <param name="languageOptions">Options for controlling the language.</param>
-        /// <param name="languages">      The languages.</param>
-        /// <returns>The options for each language.</returns>
-        private static Dictionary<string, Dictionary<string, string>> ParseLanguageOptions(
-            string languageOptions,
-            List<ILanguage> languages)
-        {
-            Dictionary<string, Dictionary<string, string>> optionsByLanguage = new Dictionary<string, Dictionary<string, string>>();
-
-            if ((languages == null) || (languages.Count == 0))
-            {
-                return optionsByLanguage;
-            }
-
             foreach (ILanguage lang in languages)
             {
-                optionsByLanguage.Add(lang.LanguageName, new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase));
-            }
+                string[] exportList = null;
 
-            if (string.IsNullOrEmpty(languageOptions))
+                if (!string.IsNullOrEmpty(exportKeys))
+                {
+                    exportList = exportKeys.Split('|');
+                }
+
+                // for now, just include every optional type
+                ExporterOptions options = new ExporterOptions(
+                    lang.LanguageName,
+                    exportList,
+                    typesToExport.Any() ? typesToExport : lang.OptionalExportClassTypes,
+                    extensionSupportLevel,
+                    null,
+                    null,
+                    languageOptsByLang[lang.LanguageName],
+                    fhirServerUrl,
+                    includeExperimental);
+
+                foreach (FhirVersionInfo info in fhirVersions.Values)
+                {
+                    filesWritten.AddRange(Exporter.Export(info, serverInfo, lang, options, outputPath, isBatch));
+                }
+            }
+        }
+
+        // done
+        long totalMS = timingWatch.ElapsedMilliseconds;
+
+        Console.WriteLine($"Done! Loading: {loadMS / 1000.0}s, Total: {totalMS / 1000.0}s");
+
+        foreach (string file in filesWritten)
+        {
+            Console.WriteLine($"+ {file}");
+        }
+    }
+
+    /// <summary>Searches for the FHIR specification directory.</summary>
+    /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
+    ///  present.</exception>
+    /// <param name="startingDir">The starting dir.</param>
+    /// <param name="dirName">    The name of the directory we are searching for.</param>
+    /// <param name="directoryType">  The directory type (error hint).</param>
+    /// <returns>The found FHIR directory.</returns>
+    public static string FindRelativeDir(
+        string startingDir,
+        string dirName,
+        string directoryType)
+    {
+        string currentDir = Path.GetDirectoryName(AppContext.BaseDirectory);
+        string testDir = Path.Combine(currentDir, dirName);
+
+        while (!Directory.Exists(testDir))
+        {
+            currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
+
+            if (currentDir == Path.GetPathRoot(currentDir))
             {
-                return optionsByLanguage;
+                throw new DirectoryNotFoundException($"Could not find directory type: {directoryType} from: {startingDir}!");
             }
 
-            string[] segments = languageOptions.Split('|');
+            testDir = Path.Combine(currentDir, dirName);
+        }
 
-            if (segments.Length < 2)
+        return testDir;
+    }
+
+    /// <summary>Shows the language help.</summary>
+    /// <param name="languageName">(Optional) Name of the language.</param>
+    private static void ShowLanguageHelp(string languageName = "")
+    {
+        if (string.IsNullOrEmpty(languageName))
+        {
+            languageName = "*";
+        }
+
+        List<ILanguage> languages = LanguageHelper.GetLanguages(languageName);
+
+        foreach (ILanguage language in languages.OrderBy(l => l.LanguageName))
+        {
+            if ((language.LanguageOptions == null) || (language.LanguageOptions.Count == 0))
             {
-                return optionsByLanguage;
+                Console.WriteLine($"- {language.LanguageName}\n\t- No extended options are defined.");
+                continue;
             }
 
-            string currentName = string.Empty;
-            string lastName = string.Empty;
+            Console.WriteLine($"- {language.LanguageName}");
 
-            foreach (string segment in segments)
+            foreach (KeyValuePair<string, string> kvp in language.LanguageOptions)
             {
-                if (string.IsNullOrEmpty(segment))
-                {
-                    continue;
-                }
-
-                string[] kvp = segment.Split('=');
-
-                // segment without '=' is a language name
-                if (kvp.Length == 1)
-                {
-                    currentName = string.Empty;
-
-                    foreach (ILanguage lang in languages)
-                    {
-                        if (lang.LanguageName.ToUpperInvariant() != lastName)
-                        {
-                            lastName = lang.LanguageName.ToUpperInvariant();
-                            currentName = lang.LanguageName;
-
-                            break;
-                        }
-                    }
-
-                    continue;
-                }
-
-                if (string.IsNullOrEmpty(currentName))
-                {
-                    continue;
-                }
-
-                // don't worry about inline '=' symbols yet - add only if it becomes necessary in the CLI
-                if (kvp.Length != 2)
-                {
-                    Console.WriteLine($"Invalid language option: {segment} for language: {currentName}");
-                    continue;
-                }
-
-                string key = kvp[0].ToUpperInvariant();
-
-                if (optionsByLanguage[currentName].ContainsKey(key))
-                {
-                    Console.WriteLine($"Invalid language option redefinition: {segment} for language: {currentName}");
-                    continue;
-                }
-
-                optionsByLanguage[currentName].Add(key, kvp[1]);
+                Console.WriteLine($"\t- {kvp.Key}\n\t\t{kvp.Value}");
             }
+        }
+    }
 
+    /// <summary>Gets options for language.</summary>
+    /// <param name="languageOptions">Options for controlling the language.</param>
+    /// <param name="languages">      The languages.</param>
+    /// <returns>The options for each language.</returns>
+    private static Dictionary<string, Dictionary<string, string>> ParseLanguageOptions(
+        string languageOptions,
+        List<ILanguage> languages)
+    {
+        Dictionary<string, Dictionary<string, string>> optionsByLanguage = new Dictionary<string, Dictionary<string, string>>();
+
+        if ((languages == null) || (languages.Count == 0))
+        {
             return optionsByLanguage;
         }
 
-        /// <summary>Dumps information about a FHIR version to the console.</summary>
-        /// <param name="writer">The writer.</param>
-        /// <param name="info">  The FHIR information.</param>
-        private static void DumpFhirVersion(TextWriter writer, FhirVersionInfo info)
+        foreach (ILanguage lang in languages)
         {
-            // tell the user what's going on
-            writer.WriteLine($"Contents of: {info.PackageName} version: {info.VersionString}");
-
-            // dump primitive types
-            writer.WriteLine($"primitive types: {info.PrimitiveTypes.Count}");
-
-            foreach (FhirPrimitive primitive in info.PrimitiveTypes.Values)
-            {
-                writer.WriteLine($"- {primitive.Name}: {primitive.BaseTypeName}");
-
-                // check for extensions
-                if (info.ExtensionsByPath.ContainsKey(primitive.Name))
-                {
-                    DumpExtensions(writer, info, info.ExtensionsByPath[primitive.Name].Values, 2);
-                }
-            }
-
-            // dump complex types
-            writer.WriteLine($"complex types: {info.ComplexTypes.Count}");
-            DumpComplexDict(writer, info, info.ComplexTypes);
-
-            // dump resources
-            writer.WriteLine($"resources: {info.Resources.Count}");
-            DumpComplexDict(writer, info, info.Resources);
-
-            // dump server level operations
-            writer.WriteLine($"system operations: {info.SystemOperations.Count}");
-            DumpOperations(writer, info.SystemOperations.Values, 0, true);
-
-            // dump magic search parameters - all resource parameters
-            writer.WriteLine($"all resource parameters: {info.AllResourceParameters.Count}");
-            DumpSearchParameters(writer, info.AllResourceParameters.Values, 0);
-
-            // dump magic search parameters - search result parameters
-            writer.WriteLine($"search result parameters: {info.SearchResultParameters.Count}");
-            DumpSearchParameters(writer, info.SearchResultParameters.Values, 0);
-
-            // dump magic search parameters - search result parameters
-            writer.WriteLine($"all interaction parameters: {info.AllInteractionParameters.Count}");
-            DumpSearchParameters(writer, info.AllInteractionParameters.Values, 0);
-
-            // dump extension info
-            writer.WriteLine($"extensions: paths exported {_extensionsOutputted.Count} of {info.ExtensionsByUrl.Count}");
-            DumpMissingExtensions(writer, info, 0);
+            optionsByLanguage.Add(lang.LanguageName, new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase));
         }
 
-        /// <summary>Dumps a complex structure (complex type/resource and properties).</summary>
-        /// <param name="writer">The writer.</param>
-        /// <param name="info">  The FHIR information.</param>
-        /// <param name="dict">  The dictionary.</param>
-        private static void DumpComplexDict(
-            TextWriter writer,
-            FhirVersionInfo info,
-            Dictionary<string, FhirComplex> dict)
+        if (string.IsNullOrEmpty(languageOptions))
         {
-            foreach (KeyValuePair<string, FhirComplex> kvp in dict)
-            {
-                DumpComplex(writer, info, kvp.Value);
-            }
+            return optionsByLanguage;
         }
 
-        /// <summary>Dumps a complex element.</summary>
-        /// <param name="writer">     The writer.</param>
-        /// <param name="info">       The FHIR information.</param>
-        /// <param name="complex">    The complex.</param>
-        /// <param name="indentation">(Optional) The indentation.</param>
-        private static void DumpComplex(
-            TextWriter writer,
-            FhirVersionInfo info,
-            FhirComplex complex,
-            int indentation = 0)
+        string[] segments = languageOptions.Split('|');
+
+        if (segments.Length < 2)
         {
-            // write this type's line, if it's a root element
-            // (sub-properties are written with cardinality in the prior loop)
-            if (indentation == 0)
+            return optionsByLanguage;
+        }
+
+        string currentName = string.Empty;
+        string lastName = string.Empty;
+
+        foreach (string segment in segments)
+        {
+            if (string.IsNullOrEmpty(segment))
             {
-                writer.WriteLine($"{new string(' ', indentation)}- {complex.Name}: {complex.BaseTypeName}");
+                continue;
             }
 
-            // traverse properties for this type
-            foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.FieldOrder))
+            string[] kvp = segment.Split('=');
+
+            // segment without '=' is a language name
+            if (kvp.Length == 1)
             {
-                string max = (element.CardinalityMax == -1) ? "*" : $"{element.CardinalityMax}";
+                currentName = string.Empty;
 
-                string propertyType = string.Empty;
-
-                if (element.ElementTypes != null)
+                foreach (ILanguage lang in languages)
                 {
-                    foreach (FhirElementType elementType in element.ElementTypes.Values)
+                    if (lang.LanguageName.ToUpperInvariant() != lastName)
                     {
-                        string joiner = string.IsNullOrEmpty(propertyType) ? string.Empty : "|";
+                        lastName = lang.LanguageName.ToUpperInvariant();
+                        currentName = lang.LanguageName;
 
-                        string profiles = string.Empty;
-                        if ((elementType.Profiles != null) && (elementType.Profiles.Count > 0))
-                        {
-                            profiles = "(" + string.Join('|', elementType.Profiles.Values) + ")";
-                        }
-
-                        propertyType = $"{propertyType}{joiner}{elementType.Name}{profiles}";
+                        break;
                     }
                 }
 
-                if (string.IsNullOrEmpty(propertyType))
-                {
-                    propertyType = element.BaseTypeName;
-                }
-
-                writer.WriteLine($"{new string(' ', indentation + 2)}- {element.Name}" +
-                    $"[{element.CardinalityMin}..{max}]" +
-                    $": {propertyType}");
-
-                if (!string.IsNullOrEmpty(element.DefaultFieldName))
-                {
-                    writer.WriteLine($"{new string(' ', indentation + 4)}" +
-                        $".{element.DefaultFieldName} = {element.DefaultFieldValue}");
-                }
-
-                if (!string.IsNullOrEmpty(element.FixedFieldName))
-                {
-                    writer.WriteLine($"{new string(' ', indentation + 4)}" +
-                        $".{element.FixedFieldName} = {element.FixedFieldValue}");
-                }
-
-                // check for an inline component definition
-                if (complex.Components.ContainsKey(element.Path))
-                {
-                    // recurse into this definition
-                    DumpComplex(writer, info, complex.Components[element.Path], indentation + 2);
-                }
-                else
-                {
-                    // only check for extensions on elements that are NOT also backbone elements (will dump there)
-                    if (info.ExtensionsByPath.ContainsKey(element.Path))
-                    {
-                        DumpExtensions(writer, info, info.ExtensionsByPath[element.Path].Values, indentation + 2);
-                    }
-                }
-
-                // check for slices
-                if (element.Slicing != null)
-                {
-                    foreach (FhirSlicing slicing in element.Slicing.Values)
-                    {
-                        if (slicing.Slices.Count == 0)
-                        {
-                            continue;
-                        }
-
-                        string rules = string.Empty;
-
-                        foreach (FhirSliceDiscriminatorRule rule in slicing.DiscriminatorRules.Values)
-                        {
-                            if (!string.IsNullOrEmpty(rules))
-                            {
-                                rules += ", ";
-                            }
-
-                            rules += $"{rule.DiscriminatorTypeName}@{rule.Path}";
-                        }
-
-                        writer.WriteLine(
-                            $"{new string(' ', indentation + 4)}" +
-                            $": {slicing.DefinedByUrl}" +
-                            $" - {slicing.SlicingRules}" +
-                            $" ({rules})");
-
-                        int sliceNumber = 0;
-                        foreach (FhirComplex slice in slicing.Slices)
-                        {
-                            writer.WriteLine($"{new string(' ', indentation + 4)}: Slice {sliceNumber++}:{slice.Name}");
-                            DumpComplex(writer, info, slice, indentation + 4);
-                        }
-                    }
-                }
+                continue;
             }
+
+            if (string.IsNullOrEmpty(currentName))
+            {
+                continue;
+            }
+
+            // don't worry about inline '=' symbols yet - add only if it becomes necessary in the CLI
+            if (kvp.Length != 2)
+            {
+                Console.WriteLine($"Invalid language option: {segment} for language: {currentName}");
+                continue;
+            }
+
+            string key = kvp[0].ToUpperInvariant();
+
+            if (optionsByLanguage[currentName].ContainsKey(key))
+            {
+                Console.WriteLine($"Invalid language option redefinition: {segment} for language: {currentName}");
+                continue;
+            }
+
+            optionsByLanguage[currentName].Add(key, kvp[1]);
+        }
+
+        return optionsByLanguage;
+    }
+
+    /// <summary>Dumps information about a FHIR version to the console.</summary>
+    /// <param name="writer">The writer.</param>
+    /// <param name="info">  The FHIR information.</param>
+    private static void DumpFhirVersion(TextWriter writer, FhirVersionInfo info)
+    {
+        // tell the user what's going on
+        writer.WriteLine($"Contents of: {info.PackageName} version: {info.VersionString}");
+
+        // dump primitive types
+        writer.WriteLine($"primitive types: {info.PrimitiveTypes.Count}");
+
+        foreach (FhirPrimitive primitive in info.PrimitiveTypes.Values)
+        {
+            writer.WriteLine($"- {primitive.Name}: {primitive.BaseTypeName}");
 
             // check for extensions
-            if (info.ExtensionsByPath.ContainsKey(complex.Path))
+            if (info.ExtensionsByPath.ContainsKey(primitive.Name))
             {
-                DumpExtensions(writer, info, info.ExtensionsByPath[complex.Path].Values, indentation);
-            }
-
-            // dump search parameters
-            if (complex.SearchParameters != null)
-            {
-                DumpSearchParameters(writer, complex.SearchParameters.Values, indentation);
-            }
-
-            // dump type operations
-            if (complex.TypeOperations != null)
-            {
-                DumpOperations(writer, complex.TypeOperations.Values, indentation, true);
-            }
-
-            // dump instance operations
-            if (complex.InstanceOperations != null)
-            {
-                DumpOperations(writer, complex.InstanceOperations.Values, indentation, false);
+                DumpExtensions(writer, info, info.ExtensionsByPath[primitive.Name].Values, 2);
             }
         }
 
-        /// <summary>Dumps the extensions.</summary>
-        /// <param name="writer">     The writer.</param>
-        /// <param name="info">       The FHIR information.</param>
-        /// <param name="extensions"> The extensions.</param>
-        /// <param name="indentation">The indentation.</param>
-        private static void DumpExtensions(
-            TextWriter writer,
-            FhirVersionInfo info,
-            IEnumerable<FhirComplex> extensions,
-            int indentation)
+        // dump complex types
+        writer.WriteLine($"complex types: {info.ComplexTypes.Count}");
+        DumpComplexDict(writer, info, info.ComplexTypes);
+
+        // dump resources
+        writer.WriteLine($"resources: {info.Resources.Count}");
+        DumpComplexDict(writer, info, info.Resources);
+
+        // dump server level operations
+        writer.WriteLine($"system operations: {info.SystemOperations.Count}");
+        DumpOperations(writer, info.SystemOperations.Values, 0, true);
+
+        // dump magic search parameters - all resource parameters
+        writer.WriteLine($"all resource parameters: {info.AllResourceParameters.Count}");
+        DumpSearchParameters(writer, info.AllResourceParameters.Values, 0);
+
+        // dump magic search parameters - search result parameters
+        writer.WriteLine($"search result parameters: {info.SearchResultParameters.Count}");
+        DumpSearchParameters(writer, info.SearchResultParameters.Values, 0);
+
+        // dump magic search parameters - search result parameters
+        writer.WriteLine($"all interaction parameters: {info.AllInteractionParameters.Count}");
+        DumpSearchParameters(writer, info.AllInteractionParameters.Values, 0);
+
+        // dump extension info
+        writer.WriteLine($"extensions: paths exported {_extensionsOutputted.Count} of {info.ExtensionsByUrl.Count}");
+        DumpMissingExtensions(writer, info, 0);
+    }
+
+    /// <summary>Dumps a complex structure (complex type/resource and properties).</summary>
+    /// <param name="writer">The writer.</param>
+    /// <param name="info">  The FHIR information.</param>
+    /// <param name="dict">  The dictionary.</param>
+    private static void DumpComplexDict(
+        TextWriter writer,
+        FhirVersionInfo info,
+        Dictionary<string, FhirComplex> dict)
+    {
+        foreach (KeyValuePair<string, FhirComplex> kvp in dict)
         {
-            foreach (FhirComplex extension in extensions)
-            {
-                DumpExtension(writer, info, extension, indentation);
-            }
+            DumpComplex(writer, info, kvp.Value);
+        }
+    }
+
+    /// <summary>Dumps a complex element.</summary>
+    /// <param name="writer">     The writer.</param>
+    /// <param name="info">       The FHIR information.</param>
+    /// <param name="complex">    The complex.</param>
+    /// <param name="indentation">(Optional) The indentation.</param>
+    private static void DumpComplex(
+        TextWriter writer,
+        FhirVersionInfo info,
+        FhirComplex complex,
+        int indentation = 0)
+    {
+        // write this type's line, if it's a root element
+        // (sub-properties are written with cardinality in the prior loop)
+        if (indentation == 0)
+        {
+            writer.WriteLine($"{new string(' ', indentation)}- {complex.Name}: {complex.BaseTypeName}");
         }
 
-        /// <summary>Dumps an extension.</summary>
-        /// <param name="writer">     The writer.</param>
-        /// <param name="info">       The FHIR information.</param>
-        /// <param name="extension">  The extension.</param>
-        /// <param name="indentation">The indentation.</param>
-        private static void DumpExtension(
-            TextWriter writer,
-            FhirVersionInfo info,
-            FhirComplex extension,
-            int indentation)
+        // traverse properties for this type
+        foreach (FhirElement element in complex.Elements.Values.OrderBy(s => s.FieldOrder))
         {
-            writer.WriteLine($"{new string(' ', indentation + 2)}+{extension.URL}");
+            string max = (element.CardinalityMax == -1) ? "*" : $"{element.CardinalityMax}";
 
-            if (extension.Elements.Count > 0)
-            {
-                DumpComplex(writer, info, extension, indentation + 2);
-            }
+            string propertyType = string.Empty;
 
-            if (!_extensionsOutputted.Contains(extension.URL.ToString()))
+            if (element.ElementTypes != null)
             {
-                _extensionsOutputted.Add(extension.URL.ToString());
-            }
-        }
-
-        /// <summary>Dumps a missing extensions.</summary>
-        /// <param name="writer">     The writer.</param>
-        /// <param name="info">       The FHIR information.</param>
-        /// <param name="indentation">(Optional) The indentation.</param>
-        private static void DumpMissingExtensions(
-            TextWriter writer,
-            FhirVersionInfo info,
-            int indentation = 0)
-        {
-            // traverse all extensions by URL and see what is missing
-            foreach (KeyValuePair<string, FhirComplex> kvp in info.ExtensionsByUrl)
-            {
-                if (!_extensionsOutputted.Contains(kvp.Key))
+                foreach (FhirElementType elementType in element.ElementTypes.Values)
                 {
-                    writer.WriteLine($"{new string(' ', indentation + 2)}+{kvp.Value.URL}");
+                    string joiner = string.IsNullOrEmpty(propertyType) ? string.Empty : "|";
 
-                    if (kvp.Value.ContextElements != null)
+                    string profiles = string.Empty;
+                    if ((elementType.Profiles != null) && (elementType.Profiles.Count > 0))
                     {
-                        foreach (string contextElement in kvp.Value.ContextElements)
+                        profiles = "(" + string.Join('|', elementType.Profiles.Values) + ")";
+                    }
+
+                    propertyType = $"{propertyType}{joiner}{elementType.Name}{profiles}";
+                }
+            }
+
+            if (string.IsNullOrEmpty(propertyType))
+            {
+                propertyType = element.BaseTypeName;
+            }
+
+            writer.WriteLine($"{new string(' ', indentation + 2)}- {element.Name}" +
+                $"[{element.CardinalityMin}..{max}]" +
+                $": {propertyType}");
+
+            if (!string.IsNullOrEmpty(element.DefaultFieldName))
+            {
+                writer.WriteLine($"{new string(' ', indentation + 4)}" +
+                    $".{element.DefaultFieldName} = {element.DefaultFieldValue}");
+            }
+
+            if (!string.IsNullOrEmpty(element.FixedFieldName))
+            {
+                writer.WriteLine($"{new string(' ', indentation + 4)}" +
+                    $".{element.FixedFieldName} = {element.FixedFieldValue}");
+            }
+
+            // check for an inline component definition
+            if (complex.Components.ContainsKey(element.Path))
+            {
+                // recurse into this definition
+                DumpComplex(writer, info, complex.Components[element.Path], indentation + 2);
+            }
+            else
+            {
+                // only check for extensions on elements that are NOT also backbone elements (will dump there)
+                if (info.ExtensionsByPath.ContainsKey(element.Path))
+                {
+                    DumpExtensions(writer, info, info.ExtensionsByPath[element.Path].Values, indentation + 2);
+                }
+            }
+
+            // check for slices
+            if (element.Slicing != null)
+            {
+                foreach (FhirSlicing slicing in element.Slicing.Values)
+                {
+                    if (slicing.Slices.Count == 0)
+                    {
+                        continue;
+                    }
+
+                    string rules = string.Empty;
+
+                    foreach (FhirSliceDiscriminatorRule rule in slicing.DiscriminatorRules.Values)
+                    {
+                        if (!string.IsNullOrEmpty(rules))
                         {
-                            writer.WriteLine($"{new string(' ', indentation + 4)}- {contextElement}");
+                            rules += ", ";
                         }
+
+                        rules += $"{rule.DiscriminatorTypeName}@{rule.Path}";
                     }
 
-                    if (kvp.Value.Elements.Count > 0)
+                    writer.WriteLine(
+                        $"{new string(' ', indentation + 4)}" +
+                        $": {slicing.DefinedByUrl}" +
+                        $" - {slicing.SlicingRules}" +
+                        $" ({rules})");
+
+                    int sliceNumber = 0;
+                    foreach (FhirComplex slice in slicing.Slices)
                     {
-                        DumpComplex(writer, info, kvp.Value, indentation + 2);
+                        writer.WriteLine($"{new string(' ', indentation + 4)}: Slice {sliceNumber++}:{slice.Name}");
+                        DumpComplex(writer, info, slice, indentation + 4);
                     }
                 }
             }
         }
 
-        /// <summary>Dumps a search parameters.</summary>
-        /// <param name="writer">     The writer.</param>
-        /// <param name="parameters"> Options for controlling the operation.</param>
-        /// <param name="indentation">The indentation.</param>
-        private static void DumpSearchParameters(
-            TextWriter writer,
-            IEnumerable<FhirSearchParam> parameters,
-            int indentation)
+        // check for extensions
+        if (info.ExtensionsByPath.ContainsKey(complex.Path))
         {
-            foreach (FhirSearchParam searchParam in parameters)
-            {
-                writer.WriteLine($"{new string(' ', indentation + 2)}" +
-                    $"?{searchParam.Code}" +
-                    $" = {searchParam.ValueType} ({searchParam.Name})");
-            }
+            DumpExtensions(writer, info, info.ExtensionsByPath[complex.Path].Values, indentation);
         }
 
-        /// <summary>Dumps the operations.</summary>
-        /// <param name="writer">     The writer.</param>
-        /// <param name="operations"> The operations.</param>
-        /// <param name="indentation">The indentation.</param>
-        /// <param name="isTypeLevel">True if is type level, false if not.</param>
-        private static void DumpOperations(
-            TextWriter writer,
-            IEnumerable<FhirOperation> operations,
-            int indentation,
-            bool isTypeLevel)
+        // dump search parameters
+        if (complex.SearchParameters != null)
         {
-            foreach (FhirOperation operation in operations)
+            DumpSearchParameters(writer, complex.SearchParameters.Values, indentation);
+        }
+
+        // dump type operations
+        if (complex.TypeOperations != null)
+        {
+            DumpOperations(writer, complex.TypeOperations.Values, indentation, true);
+        }
+
+        // dump instance operations
+        if (complex.InstanceOperations != null)
+        {
+            DumpOperations(writer, complex.InstanceOperations.Values, indentation, false);
+        }
+    }
+
+    /// <summary>Dumps the extensions.</summary>
+    /// <param name="writer">     The writer.</param>
+    /// <param name="info">       The FHIR information.</param>
+    /// <param name="extensions"> The extensions.</param>
+    /// <param name="indentation">The indentation.</param>
+    private static void DumpExtensions(
+        TextWriter writer,
+        FhirVersionInfo info,
+        IEnumerable<FhirComplex> extensions,
+        int indentation)
+    {
+        foreach (FhirComplex extension in extensions)
+        {
+            DumpExtension(writer, info, extension, indentation);
+        }
+    }
+
+    /// <summary>Dumps an extension.</summary>
+    /// <param name="writer">     The writer.</param>
+    /// <param name="info">       The FHIR information.</param>
+    /// <param name="extension">  The extension.</param>
+    /// <param name="indentation">The indentation.</param>
+    private static void DumpExtension(
+        TextWriter writer,
+        FhirVersionInfo info,
+        FhirComplex extension,
+        int indentation)
+    {
+        writer.WriteLine($"{new string(' ', indentation + 2)}+{extension.URL}");
+
+        if (extension.Elements.Count > 0)
+        {
+            DumpComplex(writer, info, extension, indentation + 2);
+        }
+
+        if (!_extensionsOutputted.Contains(extension.URL.ToString()))
+        {
+            _extensionsOutputted.Add(extension.URL.ToString());
+        }
+    }
+
+    /// <summary>Dumps a missing extensions.</summary>
+    /// <param name="writer">     The writer.</param>
+    /// <param name="info">       The FHIR information.</param>
+    /// <param name="indentation">(Optional) The indentation.</param>
+    private static void DumpMissingExtensions(
+        TextWriter writer,
+        FhirVersionInfo info,
+        int indentation = 0)
+    {
+        // traverse all extensions by URL and see what is missing
+        foreach (KeyValuePair<string, FhirComplex> kvp in info.ExtensionsByUrl)
+        {
+            if (!_extensionsOutputted.Contains(kvp.Key))
             {
-                if (isTypeLevel)
+                writer.WriteLine($"{new string(' ', indentation + 2)}+{kvp.Value.URL}");
+
+                if (kvp.Value.ContextElements != null)
                 {
-                    writer.WriteLine($"{new string(' ', indentation + 2)}${operation.Code}");
-                }
-                else
-                {
-                    writer.WriteLine($"{new string(' ', indentation + 2)}/{{id}}${operation.Code}");
+                    foreach (string contextElement in kvp.Value.ContextElements)
+                    {
+                        writer.WriteLine($"{new string(' ', indentation + 4)}- {contextElement}");
+                    }
                 }
 
-                if (operation.Parameters != null)
+                if (kvp.Value.Elements.Count > 0)
                 {
-                    foreach (FhirParameter parameter in operation.Parameters.OrderBy(p => p.FieldOrder))
-                    {
-                        string max = (parameter.Max == null) ? "*" : parameter.Max.ToString();
-                        writer.WriteLine($"{new string(' ', indentation + 4)}" +
-                            $"{parameter.Use}: {parameter.Name} ({parameter.Min}-{max})");
-                    }
+                    DumpComplex(writer, info, kvp.Value, indentation + 2);
+                }
+            }
+        }
+    }
+
+    /// <summary>Dumps a search parameters.</summary>
+    /// <param name="writer">     The writer.</param>
+    /// <param name="parameters"> Options for controlling the operation.</param>
+    /// <param name="indentation">The indentation.</param>
+    private static void DumpSearchParameters(
+        TextWriter writer,
+        IEnumerable<FhirSearchParam> parameters,
+        int indentation)
+    {
+        foreach (FhirSearchParam searchParam in parameters)
+        {
+            writer.WriteLine($"{new string(' ', indentation + 2)}" +
+                $"?{searchParam.Code}" +
+                $" = {searchParam.ValueType} ({searchParam.Name})");
+        }
+    }
+
+    /// <summary>Dumps the operations.</summary>
+    /// <param name="writer">     The writer.</param>
+    /// <param name="operations"> The operations.</param>
+    /// <param name="indentation">The indentation.</param>
+    /// <param name="isTypeLevel">True if is type level, false if not.</param>
+    private static void DumpOperations(
+        TextWriter writer,
+        IEnumerable<FhirOperation> operations,
+        int indentation,
+        bool isTypeLevel)
+    {
+        foreach (FhirOperation operation in operations)
+        {
+            if (isTypeLevel)
+            {
+                writer.WriteLine($"{new string(' ', indentation + 2)}${operation.Code}");
+            }
+            else
+            {
+                writer.WriteLine($"{new string(' ', indentation + 2)}/{{id}}${operation.Code}");
+            }
+
+            if (operation.Parameters != null)
+            {
+                foreach (FhirParameter parameter in operation.Parameters.OrderBy(p => p.FieldOrder))
+                {
+                    string max = (parameter.Max == null) ? "*" : parameter.Max.ToString();
+                    writer.WriteLine($"{new string(' ', indentation + 4)}" +
+                        $"{parameter.Use}: {parameter.Name} ({parameter.Min}-{max})");
                 }
             }
         }

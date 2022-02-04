@@ -1,4 +1,4 @@
-﻿// <copyright file="CSharpFirely2JsonExt.cs" company="Microsoft Corporation">
+﻿// <copyright file="CSharpFirely2IG.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -16,7 +16,7 @@ using Microsoft.Health.Fhir.SpecManager.Models;
 namespace Microsoft.Health.Fhir.SpecManager.Language
 {
     /// <summary>A language exporter for Firely-compliant C# FHIR JSON Serialization Extension output.</summary>
-    public sealed class CSharpFirely2IG: ILanguage
+    public sealed class CSharpFirely2IG : ILanguage
     {
         /// <summary>The namespace to use during export.</summary>
         private const string _modelNamespace = "Hl7.Fhir.Model";
